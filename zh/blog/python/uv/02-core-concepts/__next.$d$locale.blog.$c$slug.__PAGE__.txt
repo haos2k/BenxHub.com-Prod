@@ -1,0 +1,106 @@
+1:"$Sreact.fragment"
+2:I[14864,["/_next/static/chunks/7923a261b80bb6e1.js","/_next/static/chunks/e09b4358027e8033.js","/_next/static/chunks/2dddb3bc05093f69.js"],"default"]
+8:I[24801,["/_next/static/chunks/7923a261b80bb6e1.js","/_next/static/chunks/e09b4358027e8033.js","/_next/static/chunks/2dddb3bc05093f69.js"],"default"]
+a:I[50183,["/_next/static/chunks/5a5b5b13c22d14f7.js","/_next/static/chunks/a484d1d3dd4b55ab.js"],"OutletBoundary"]
+b:"$Sreact.suspense"
+:HL["/images/posts/uv-core-concepts.jpg","image"]
+3:T158e,<p>在狂敲指令之前，先把這四個概念裝進腦子：你會更清楚「依賴寫在哪、lockfile 幹嘛用、venv 什麼時候建」。就像打遊戲先看技能說明，不然會一直送頭。</p>
+<h2 id="概念一pyprojecttoml-是專案身份證">概念一：pyproject.toml 是專案身份證</h2>
+<p>專案 metadata 跟依賴都寫在這裡，是 PEP 518 的標準格式。</p>
+<figure data-rehype-pretty-code-figure=""><pre style="background-color:#24292e;color:#e1e4e8" tabindex="0" data-language="toml" data-theme="github-dark"><code data-language="toml" data-theme="github-dark" style="display: grid;"><span data-line=""><span style="color:#E1E4E8">[</span><span style="color:#B392F0">project</span><span style="color:#E1E4E8">]</span></span>
+<span data-line=""><span style="color:#E1E4E8">name = </span><span style="color:#9ECBFF">"my-app"</span></span>
+<span data-line=""><span style="color:#E1E4E8">version = </span><span style="color:#9ECBFF">"0.1.0"</span></span>
+<span data-line=""><span style="color:#E1E4E8">requires-python = </span><span style="color:#9ECBFF">">=3.12"</span></span>
+<span data-line=""><span style="color:#E1E4E8">dependencies = [</span></span>
+<span data-line=""><span style="color:#9ECBFF">    "requests>=2.31"</span><span style="color:#E1E4E8">,</span></span>
+<span data-line=""><span style="color:#E1E4E8">]</span></span></code></pre></figure>
+<ul>
+<li><strong>手動改</strong>：直接編輯 <code>pyproject.toml</code></li>
+<li><strong>用指令改</strong>：<code>uv add requests</code>、<code>uv remove requests</code> 會自動幫你更新</li>
+</ul>
+<blockquote>
+<p>不要混用——要嘛都用手動，要嘛都用指令，不然容易打架。</p>
+</blockquote>
+<h2 id="概念二uvlock-是依賴快照">概念二：uv.lock 是依賴快照</h2>
+<p><code>pyproject.toml</code> 寫的是「我要什麼」（例如 <code>requests>=2.31</code>），<code>uv.lock</code> 記錄的是「實際裝了哪些版本」——精確到每一層依賴。</p>
+<ul>
+<li><strong>為什麼要有 lockfile？</strong> 確保所有人、CI、生產環境裝出來的依賴完全一致，不會「我這能跑你那爆」。</li>
+<li><strong>要 commit 嗎？</strong> 要。<code>uv.lock</code> 應該進版控，讓團隊與 CI 都用同一份依賴樹。</li>
+</ul>
+<figure data-rehype-pretty-code-figure=""><pre style="background-color:#24292e;color:#e1e4e8" tabindex="0" data-language="bash" data-theme="github-dark"><code data-language="bash" data-theme="github-dark" style="display: grid;"><span data-line=""><span style="color:#6A737D"># 更新 lockfile（例如升級某個套件）</span></span>
+<span data-line=""><span style="color:#B392F0">uv</span><span style="color:#9ECBFF"> lock</span><span style="color:#79B8FF"> --upgrade-package</span><span style="color:#9ECBFF"> requests</span></span></code></pre></figure>
+<h2 id="概念三venv-是專案專屬沙盒">概念三：.venv 是專案專屬沙盒</h2>
+<p>uv 會在專案根目錄建立 <code>.venv</code>，所有 <code>uv add</code> 的套件都裝在這裡，跟系統 Python 隔離。</p>
+<ul>
+<li><strong>要手動 activate 嗎？</strong> 不用。<code>uv run</code> 會自動用這個環境。</li>
+<li><strong>要 commit 嗎？</strong> 不要。<code>.venv</code> 應該在 <code>.gitignore</code> 裡。</li>
+</ul>
+<figure data-rehype-pretty-code-figure=""><pre style="background-color:#24292e;color:#e1e4e8" tabindex="0" data-language="bash" data-theme="github-dark"><code data-language="bash" data-theme="github-dark" style="display: grid;"><span data-line=""><span style="color:#6A737D"># 手動同步環境（例如剛 clone 下來）</span></span>
+<span data-line=""><span style="color:#B392F0">uv</span><span style="color:#9ECBFF"> sync</span></span>
+<span data-line=""><span style="color:#79B8FF">source</span><span style="color:#9ECBFF"> .venv/bin/activate</span><span style="color:#6A737D">  # 之後可直接用 python、pytest 等</span></span></code></pre></figure>
+<h2 id="概念四uv-run-是無腦執行入口">概念四：uv run 是無腦執行入口</h2>
+<p><code>uv run</code> 會：</p>
+<ol>
+<li>檢查 lockfile 是否與 pyproject.toml 一致</li>
+<li>確保 .venv 與 lockfile 同步</li>
+<li>在正確環境下執行你指定的指令</li>
+</ol>
+<figure data-rehype-pretty-code-figure=""><pre style="background-color:#24292e;color:#e1e4e8" tabindex="0" data-language="bash" data-theme="github-dark"><code data-language="bash" data-theme="github-dark" style="display: grid;"><span data-line=""><span style="color:#B392F0">uv</span><span style="color:#9ECBFF"> run</span><span style="color:#9ECBFF"> python</span><span style="color:#9ECBFF"> main.py</span></span>
+<span data-line=""><span style="color:#B392F0">uv</span><span style="color:#9ECBFF"> run</span><span style="color:#9ECBFF"> pytest</span></span>
+<span data-line=""><span style="color:#B392F0">uv</span><span style="color:#9ECBFF"> run</span><span style="color:#9ECBFF"> flask</span><span style="color:#9ECBFF"> run</span><span style="color:#79B8FF"> -p</span><span style="color:#79B8FF"> 3000</span></span></code></pre></figure>
+<p>你不用記得 activate，也不用擔心環境錯亂——交給 uv 就好，就像貓不用記得貓砂在哪，身體會自動導航。這種「開了就跑」的體驗，用過就回不去了。</p>
+<h2 id="下一步">下一步</h2>
+<p>核心概念消化完，直接進高頻操作：依賴管理、uvx、腳本執行。<br>
+👉 <a href="03-common-patterns">常見模式</a></p>0:{"buildId":"Yck3R4ooQxWkwGLT6is1X","rsc":["$","$1","c",{"children":[[["$","script",null,{"type":"application/ld+json","dangerouslySetInnerHTML":{"__html":"{\"@context\":\"https://schema.org\",\"@type\":\"Article\",\"headline\":\"Python uv 核心概念：pyproject.toml、lockfile 與虛擬環境\",\"description\":\"理解 uv 的四個核心觀念，建立後續操作與維運必備的基礎知識。\",\"url\":\"https://benxhub.com/zh/blog/python/uv/02-core-concepts\",\"mainEntityOfPage\":{\"@type\":\"WebPage\",\"@id\":\"https://benxhub.com/zh/blog/python/uv/02-core-concepts\"},\"datePublished\":\"2026-02-27T00:00:00.000Z\",\"dateModified\":\"2026-02-27T00:00:00.000Z\",\"keywords\":\"python, uv, pyproject, lockfile, venv\",\"inLanguage\":\"zh\",\"author\":{\"@type\":\"Person\",\"name\":\"BenX\",\"url\":\"https://benxhub.com\"},\"publisher\":{\"@type\":\"Organization\",\"name\":\"BenXHub Blog\",\"url\":\"https://benxhub.com\"},\"image\":\"https://benxhub.com/images/posts/uv-core-concepts.jpg\"}"}}],["$","div",null,{"className":"mx-auto max-w-6xl px-4 py-12 sm:px-6","children":["$","div",null,{"className":"lg:grid lg:grid-cols-[1fr_240px] lg:gap-14","children":[["$","article",null,{"children":[["$","header",null,{"className":"mb-10","children":[["$","div",null,{"className":"mb-4 flex flex-wrap gap-2","children":[["$","$L2","python",{"href":"/zh/tags/python","localeCookie":{"name":"NEXT_LOCALE","sameSite":"lax"},"className":"inline-flex items-center rounded-full px-2.5 py-0.5 text-xs font-medium transition-colors","style":{"background":"var(--color-code-bg)","color":"var(--color-accent)","border":"1px solid var(--color-border)"},"children":["#","python"]}],["$","$L2","uv",{"href":"/zh/tags/uv","localeCookie":{"name":"NEXT_LOCALE","sameSite":"lax"},"className":"inline-flex items-center rounded-full px-2.5 py-0.5 text-xs font-medium transition-colors","style":{"background":"var(--color-code-bg)","color":"var(--color-accent)","border":"1px solid var(--color-border)"},"children":["#","uv"]}],["$","$L2","pyproject",{"href":"/zh/tags/pyproject","localeCookie":{"name":"NEXT_LOCALE","sameSite":"lax"},"className":"inline-flex items-center rounded-full px-2.5 py-0.5 text-xs font-medium transition-colors","style":{"background":"var(--color-code-bg)","color":"var(--color-accent)","border":"1px solid var(--color-border)"},"children":["#","pyproject"]}],["$","$L2","lockfile",{"href":"/zh/tags/lockfile","localeCookie":{"name":"NEXT_LOCALE","sameSite":"lax"},"className":"inline-flex items-center rounded-full px-2.5 py-0.5 text-xs font-medium transition-colors","style":{"background":"var(--color-code-bg)","color":"var(--color-accent)","border":"1px solid var(--color-border)"},"children":["#","lockfile"]}],["$","$L2","venv",{"href":"/zh/tags/venv","localeCookie":{"name":"NEXT_LOCALE","sameSite":"lax"},"className":"inline-flex items-center rounded-full px-2.5 py-0.5 text-xs font-medium transition-colors","style":{"background":"var(--color-code-bg)","color":"var(--color-accent)","border":"1px solid var(--color-border)"},"children":["#","venv"]}]]}],["$","h1",null,{"className":"mb-4 text-3xl leading-snug font-bold tracking-tight sm:text-4xl","style":{"color":"var(--color-text)"},"children":"Python uv 核心概念：pyproject.toml、lockfile 與虛擬環境"}],["$","div",null,{"className":"flex flex-wrap items-center gap-3 text-sm","style":{"color":"var(--color-muted)"},"children":[["$","time",null,{"dateTime":"2026-02-27","children":"2026 年 2 月 27 日"}],["$","span",null,{"aria-hidden":"true","children":"·"}],["$","span",null,{"children":"3 min read"}]]}],["$","div",null,{"className":"mt-6 overflow-hidden rounded-lg","children":["$","img",null,{"src":"/images/posts/uv-core-concepts.jpg","alt":"Python uv 核心概念：pyproject.toml、lockfile 與虛擬環境","className":"w-full h-auto"}]}],["$","div",null,{"className":"mt-6 border-b","style":{"borderColor":"var(--color-border)"}}]]}],["$","div",null,{"className":"prose","dangerouslySetInnerHTML":{"__html":"$3"}}],"$L4"]}],"$L5"]}]}]],["$L6"],"$L7"]}],"loading":null,"isPartial":false}
+4:["$","footer",null,{"className":"mt-14 border-t pt-8","style":{"borderColor":"var(--color-border)"},"children":[["$","div",null,{"className":"mb-8 flex flex-wrap gap-2","children":[["$","$L2","python",{"href":"/zh/tags/python","localeCookie":{"name":"NEXT_LOCALE","sameSite":"lax"},"className":"inline-flex items-center rounded-full px-3 py-1 text-sm font-medium transition-colors","style":{"background":"var(--color-code-bg)","color":"var(--color-accent)","border":"1px solid var(--color-border)"},"children":["#","python"]}],["$","$L2","uv",{"href":"/zh/tags/uv","localeCookie":{"name":"NEXT_LOCALE","sameSite":"lax"},"className":"inline-flex items-center rounded-full px-3 py-1 text-sm font-medium transition-colors","style":{"background":"var(--color-code-bg)","color":"var(--color-accent)","border":"1px solid var(--color-border)"},"children":["#","uv"]}],["$","$L2","pyproject",{"href":"/zh/tags/pyproject","localeCookie":{"name":"NEXT_LOCALE","sameSite":"lax"},"className":"inline-flex items-center rounded-full px-3 py-1 text-sm font-medium transition-colors","style":{"background":"var(--color-code-bg)","color":"var(--color-accent)","border":"1px solid var(--color-border)"},"children":["#","pyproject"]}],["$","$L2","lockfile",{"href":"/zh/tags/lockfile","localeCookie":{"name":"NEXT_LOCALE","sameSite":"lax"},"className":"inline-flex items-center rounded-full px-3 py-1 text-sm font-medium transition-colors","style":{"background":"var(--color-code-bg)","color":"var(--color-accent)","border":"1px solid var(--color-border)"},"children":["#","lockfile"]}],["$","$L2","venv",{"href":"/zh/tags/venv","localeCookie":{"name":"NEXT_LOCALE","sameSite":"lax"},"className":"inline-flex items-center rounded-full px-3 py-1 text-sm font-medium transition-colors","style":{"background":"var(--color-code-bg)","color":"var(--color-accent)","border":"1px solid var(--color-border)"},"children":["#","venv"]}]]}],["$","nav",null,{"aria-label":"文章導覽","className":"grid grid-cols-1 gap-4 sm:grid-cols-2","children":[["$","$L2",null,{"href":"/zh/blog/python/uv/01-quick-start","localeCookie":{"name":"NEXT_LOCALE","sameSite":"lax"},"className":"group rounded-lg border p-4 transition-colors hover:border-accent","style":{"borderColor":"var(--color-border)","background":"var(--color-surface)"},"children":[["$","p",null,{"className":"mb-1 text-xs","style":{"color":"var(--color-muted)"},"children":"← 較新文章"}],["$","p",null,{"className":"line-clamp-1 text-sm font-medium transition-colors group-hover:text-accent","style":{"color":"var(--color-text)"},"children":"Python uv 快速上手：建立第一個專案"}]]}],["$","$L2",null,{"href":"/zh/blog/python/uv/03-common-patterns","localeCookie":{"name":"NEXT_LOCALE","sameSite":"lax"},"className":"group rounded-lg border p-4 text-right transition-colors hover:border-accent","style":{"borderColor":"var(--color-border)","background":"var(--color-surface)"},"children":[["$","p",null,{"className":"mb-1 text-xs","style":{"color":"var(--color-muted)"},"children":"較舊文章 →"}],["$","p",null,{"className":"line-clamp-1 text-sm font-medium transition-colors group-hover:text-accent","style":{"color":"var(--color-text)"},"children":"Python uv 常見操作模式：依賴、uvx 與腳本執行"}]]}]]}]]}]
+9:T158e,<p>在狂敲指令之前，先把這四個概念裝進腦子：你會更清楚「依賴寫在哪、lockfile 幹嘛用、venv 什麼時候建」。就像打遊戲先看技能說明，不然會一直送頭。</p>
+<h2 id="概念一pyprojecttoml-是專案身份證">概念一：pyproject.toml 是專案身份證</h2>
+<p>專案 metadata 跟依賴都寫在這裡，是 PEP 518 的標準格式。</p>
+<figure data-rehype-pretty-code-figure=""><pre style="background-color:#24292e;color:#e1e4e8" tabindex="0" data-language="toml" data-theme="github-dark"><code data-language="toml" data-theme="github-dark" style="display: grid;"><span data-line=""><span style="color:#E1E4E8">[</span><span style="color:#B392F0">project</span><span style="color:#E1E4E8">]</span></span>
+<span data-line=""><span style="color:#E1E4E8">name = </span><span style="color:#9ECBFF">"my-app"</span></span>
+<span data-line=""><span style="color:#E1E4E8">version = </span><span style="color:#9ECBFF">"0.1.0"</span></span>
+<span data-line=""><span style="color:#E1E4E8">requires-python = </span><span style="color:#9ECBFF">">=3.12"</span></span>
+<span data-line=""><span style="color:#E1E4E8">dependencies = [</span></span>
+<span data-line=""><span style="color:#9ECBFF">    "requests>=2.31"</span><span style="color:#E1E4E8">,</span></span>
+<span data-line=""><span style="color:#E1E4E8">]</span></span></code></pre></figure>
+<ul>
+<li><strong>手動改</strong>：直接編輯 <code>pyproject.toml</code></li>
+<li><strong>用指令改</strong>：<code>uv add requests</code>、<code>uv remove requests</code> 會自動幫你更新</li>
+</ul>
+<blockquote>
+<p>不要混用——要嘛都用手動，要嘛都用指令，不然容易打架。</p>
+</blockquote>
+<h2 id="概念二uvlock-是依賴快照">概念二：uv.lock 是依賴快照</h2>
+<p><code>pyproject.toml</code> 寫的是「我要什麼」（例如 <code>requests>=2.31</code>），<code>uv.lock</code> 記錄的是「實際裝了哪些版本」——精確到每一層依賴。</p>
+<ul>
+<li><strong>為什麼要有 lockfile？</strong> 確保所有人、CI、生產環境裝出來的依賴完全一致，不會「我這能跑你那爆」。</li>
+<li><strong>要 commit 嗎？</strong> 要。<code>uv.lock</code> 應該進版控，讓團隊與 CI 都用同一份依賴樹。</li>
+</ul>
+<figure data-rehype-pretty-code-figure=""><pre style="background-color:#24292e;color:#e1e4e8" tabindex="0" data-language="bash" data-theme="github-dark"><code data-language="bash" data-theme="github-dark" style="display: grid;"><span data-line=""><span style="color:#6A737D"># 更新 lockfile（例如升級某個套件）</span></span>
+<span data-line=""><span style="color:#B392F0">uv</span><span style="color:#9ECBFF"> lock</span><span style="color:#79B8FF"> --upgrade-package</span><span style="color:#9ECBFF"> requests</span></span></code></pre></figure>
+<h2 id="概念三venv-是專案專屬沙盒">概念三：.venv 是專案專屬沙盒</h2>
+<p>uv 會在專案根目錄建立 <code>.venv</code>，所有 <code>uv add</code> 的套件都裝在這裡，跟系統 Python 隔離。</p>
+<ul>
+<li><strong>要手動 activate 嗎？</strong> 不用。<code>uv run</code> 會自動用這個環境。</li>
+<li><strong>要 commit 嗎？</strong> 不要。<code>.venv</code> 應該在 <code>.gitignore</code> 裡。</li>
+</ul>
+<figure data-rehype-pretty-code-figure=""><pre style="background-color:#24292e;color:#e1e4e8" tabindex="0" data-language="bash" data-theme="github-dark"><code data-language="bash" data-theme="github-dark" style="display: grid;"><span data-line=""><span style="color:#6A737D"># 手動同步環境（例如剛 clone 下來）</span></span>
+<span data-line=""><span style="color:#B392F0">uv</span><span style="color:#9ECBFF"> sync</span></span>
+<span data-line=""><span style="color:#79B8FF">source</span><span style="color:#9ECBFF"> .venv/bin/activate</span><span style="color:#6A737D">  # 之後可直接用 python、pytest 等</span></span></code></pre></figure>
+<h2 id="概念四uv-run-是無腦執行入口">概念四：uv run 是無腦執行入口</h2>
+<p><code>uv run</code> 會：</p>
+<ol>
+<li>檢查 lockfile 是否與 pyproject.toml 一致</li>
+<li>確保 .venv 與 lockfile 同步</li>
+<li>在正確環境下執行你指定的指令</li>
+</ol>
+<figure data-rehype-pretty-code-figure=""><pre style="background-color:#24292e;color:#e1e4e8" tabindex="0" data-language="bash" data-theme="github-dark"><code data-language="bash" data-theme="github-dark" style="display: grid;"><span data-line=""><span style="color:#B392F0">uv</span><span style="color:#9ECBFF"> run</span><span style="color:#9ECBFF"> python</span><span style="color:#9ECBFF"> main.py</span></span>
+<span data-line=""><span style="color:#B392F0">uv</span><span style="color:#9ECBFF"> run</span><span style="color:#9ECBFF"> pytest</span></span>
+<span data-line=""><span style="color:#B392F0">uv</span><span style="color:#9ECBFF"> run</span><span style="color:#9ECBFF"> flask</span><span style="color:#9ECBFF"> run</span><span style="color:#79B8FF"> -p</span><span style="color:#79B8FF"> 3000</span></span></code></pre></figure>
+<p>你不用記得 activate，也不用擔心環境錯亂——交給 uv 就好，就像貓不用記得貓砂在哪，身體會自動導航。這種「開了就跑」的體驗，用過就回不去了。</p>
+<h2 id="下一步">下一步</h2>
+<p>核心概念消化完，直接進高頻操作：依賴管理、uvx、腳本執行。<br>
+👉 <a href="03-common-patterns">常見模式</a></p>5:["$","aside",null,{"className":"hidden lg:block","children":["$","$L8",null,{"html":"$9"}]}]
+6:["$","script","script-0",{"src":"/_next/static/chunks/2dddb3bc05093f69.js","async":true}]
+7:["$","$La",null,{"children":["$","$b",null,{"name":"Next.MetadataOutlet","children":"$@c"}]}]
+c:null

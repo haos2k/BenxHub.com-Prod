@@ -1,0 +1,181 @@
+1:"$Sreact.fragment"
+2:I[14864,["/_next/static/chunks/7923a261b80bb6e1.js","/_next/static/chunks/e09b4358027e8033.js","/_next/static/chunks/2dddb3bc05093f69.js"],"default"]
+8:I[24801,["/_next/static/chunks/7923a261b80bb6e1.js","/_next/static/chunks/e09b4358027e8033.js","/_next/static/chunks/2dddb3bc05093f69.js"],"default"]
+a:I[50183,["/_next/static/chunks/5a5b5b13c22d14f7.js","/_next/static/chunks/a484d1d3dd4b55ab.js"],"OutletBoundary"]
+b:"$Sreact.suspense"
+3:Tf66,<p>Si un assistant ne répond que quand on lui demande, ce n'est qu'un chatbot. <strong>Un vrai assistant agit de façon proactive.</strong></p>
+<p>C'est exactement à ça que sert la <strong>planification Cron</strong>.</p>
+<h2 id="ce-que-vous-allez-apprendre">Ce que vous allez apprendre</h2>
+<ul>
+<li>Comprendre la différence entre Cron et Heartbeat</li>
+<li>Savoir quelles tâches conviennent à la planification</li>
+<li>Configurer Cron depuis le tableau de bord</li>
+<li>Lire la syntaxe Cron et dépanner les jobs qui ne se déclenchent jamais</li>
+</ul>
+<hr>
+<h2 id="quest-ce-que-cron-et-heartbeat-">Qu'est-ce que Cron et Heartbeat ?</h2>
+<p><strong>Cron</strong> signifie « fais cette chose à ce moment », comme un agenda pour votre assistant :</p>
+<ul>
+<li>Chaque jour à 9 h : résumer les e-mails d'hier</li>
+<li>Chaque lundi : me rappeler ce qui compte cette semaine</li>
+<li>Chaque nuit : archiver automatiquement les notes du jour</li>
+</ul>
+<p><strong>Heartbeat</strong> signifie que l'assistant se réveille à un intervalle fixe (par ex. toutes les 30 minutes), vérifie s'il y a quelque chose à faire et agit si nécessaire.</p>
+<blockquote>
+<p>💡 Si vous voyez un log heartbeat toutes les 30 minutes, c'est normal.</p>
+</blockquote>
+<hr>
+<h2 id="cas-dusage-courants-dautomatisation">Cas d'usage courants d'automatisation</h2>
+<table>
+<thead>
+<tr>
+<th>Tâche planifiée</th>
+<th>Ce qu'elle fait</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td>Briefing quotidien</td>
+<td>Résume e-mails, calendrier ou actualités et vous les envoie</td>
+</tr>
+<tr>
+<td>Rappels</td>
+<td>Vous envoie votre to-do à l'heure voulue</td>
+</tr>
+<tr>
+<td>Surveillance</td>
+<td>Vérifie une API ou une page toutes les heures et vous alerte en cas de problème</td>
+</tr>
+<tr>
+<td>Organisation de notes</td>
+<td>Range les notes éparses en document structuré chaque semaine</td>
+</tr>
+</tbody>
+</table>
+<hr>
+<h2 id="configurer-cron-dans-le-tableau-de-bord">Configurer Cron dans le tableau de bord</h2>
+<p>Ouvrez l'interface de contrôle → onglet <strong>Cron</strong> :</p>
+<ul>
+<li><strong>Ajouter une planification</strong> : saisir une expression Cron et la description de la tâche</li>
+<li><strong>Activer / désactiver</strong> : mettre en pause n'importe quel job à tout moment</li>
+<li><strong>Exécuter maintenant</strong> : tester une planification immédiatement sans attendre</li>
+</ul>
+<hr>
+<h2 id="aide-mémoire-syntaxe-cron">Aide-mémoire syntaxe Cron</h2>
+<pre><code>* * * * *
+│ │ │ │ └─ jour de la semaine (0-7, 0 et 7 = dimanche)
+│ │ │ └─── mois (1-12)
+│ │ └───── jour du mois (1-31)
+│ └─────── heure (0-23)
+└───────── minute (0-59)
+</code></pre>
+<p>Exemples courants :</p>
+<pre><code>0 9 * * *      ← chaque jour à 9 h 00
+0 9 * * 1      ← chaque lundi à 9 h 00
+0 */6 * * *    ← toutes les 6 heures
+</code></pre>
+<hr>
+<h2 id="le-job-cron-ne-se-déclenche-jamais--vérifiez-dabord">Le job Cron ne se déclenche jamais ? Vérifiez d'abord</h2>
+<ol>
+<li>Cron est-il activé dans la Config ?</li>
+<li>Le fuseau horaire est-il correct ?</li>
+<li>Les logs montrent-ils une erreur ? Exécutez <code>openclaw logs --follow</code></li>
+<li>Essayez de redémarrer la Gateway</li>
+</ol>
+<blockquote>
+<p>⚠️ Les jobs planifiés consomment aussi les ressources du modèle. Si vous lancez beaucoup de planifications et de chats en même temps, vous pouvez atteindre les limites (ex. HTTP 429). Les jobs lourds méritent parfois un agent dédié.</p>
+</blockquote>
+<hr>
+<h2 id="suite">Suite</h2>
+<p>Votre assistant peut maintenant travailler tout seul. Dans la prochaine partie nous concluons avec les paramètres avancés et les habitudes de débogage pour un système plus stable.</p>
+<p><a href="08-remote-gateway-nodes">← Précédent : Gateway distante</a> | 👉 <a href="10-advanced-config">Paramètres avancés et état d'esprit débogage</a></p>0:{"buildId":"Yck3R4ooQxWkwGLT6is1X","rsc":["$","$1","c",{"children":[[["$","script",null,{"type":"application/ld+json","dangerouslySetInnerHTML":{"__html":"{\"@context\":\"https://schema.org\",\"@type\":\"Article\",\"headline\":\"Laissez votre assistant travailler automatiquement : il vous aide même sans qu'on lui demande\",\"description\":\"Utiliser la planification Cron pour les tâches récurrentes, comprendre la syntaxe, configurer depuis le tableau de bord et déboguer les exécutions manquées.\",\"url\":\"https://benxhub.com/fr/blog/openclaw/09-cron-automation\",\"mainEntityOfPage\":{\"@type\":\"WebPage\",\"@id\":\"https://benxhub.com/fr/blog/openclaw/09-cron-automation\"},\"datePublished\":\"2026-03-08T00:00:00.000Z\",\"dateModified\":\"2026-03-08T00:00:00.000Z\",\"keywords\":\"openclaw, cron, automation, scheduling\",\"inLanguage\":\"fr\",\"author\":{\"@type\":\"Person\",\"name\":\"BenX\",\"url\":\"https://benxhub.com\"},\"publisher\":{\"@type\":\"Organization\",\"name\":\"BenXHub Blog\",\"url\":\"https://benxhub.com\"}}"}}],["$","div",null,{"className":"mx-auto max-w-6xl px-4 py-12 sm:px-6","children":["$","div",null,{"className":"lg:grid lg:grid-cols-[1fr_240px] lg:gap-14","children":[["$","article",null,{"children":[["$","header",null,{"className":"mb-10","children":[["$","div",null,{"className":"mb-4 flex flex-wrap gap-2","children":[["$","$L2","openclaw",{"href":"/fr/tags/openclaw","localeCookie":{"name":"NEXT_LOCALE","sameSite":"lax"},"className":"inline-flex items-center rounded-full px-2.5 py-0.5 text-xs font-medium transition-colors","style":{"background":"var(--color-code-bg)","color":"var(--color-accent)","border":"1px solid var(--color-border)"},"children":["#","openclaw"]}],["$","$L2","cron",{"href":"/fr/tags/cron","localeCookie":{"name":"NEXT_LOCALE","sameSite":"lax"},"className":"inline-flex items-center rounded-full px-2.5 py-0.5 text-xs font-medium transition-colors","style":{"background":"var(--color-code-bg)","color":"var(--color-accent)","border":"1px solid var(--color-border)"},"children":["#","cron"]}],["$","$L2","automation",{"href":"/fr/tags/automation","localeCookie":{"name":"NEXT_LOCALE","sameSite":"lax"},"className":"inline-flex items-center rounded-full px-2.5 py-0.5 text-xs font-medium transition-colors","style":{"background":"var(--color-code-bg)","color":"var(--color-accent)","border":"1px solid var(--color-border)"},"children":["#","automation"]}],["$","$L2","scheduling",{"href":"/fr/tags/scheduling","localeCookie":{"name":"NEXT_LOCALE","sameSite":"lax"},"className":"inline-flex items-center rounded-full px-2.5 py-0.5 text-xs font-medium transition-colors","style":{"background":"var(--color-code-bg)","color":"var(--color-accent)","border":"1px solid var(--color-border)"},"children":["#","scheduling"]}]]}],["$","h1",null,{"className":"mb-4 text-3xl leading-snug font-bold tracking-tight sm:text-4xl","style":{"color":"var(--color-text)"},"children":"Laissez votre assistant travailler automatiquement : il vous aide même sans qu'on lui demande"}],["$","div",null,{"className":"flex flex-wrap items-center gap-3 text-sm","style":{"color":"var(--color-muted)"},"children":[["$","time",null,{"dateTime":"2026-03-08","children":"8 mars 2026"}],["$","span",null,{"aria-hidden":"true","children":"·"}],["$","span",null,{"children":"3 min read"}]]}],"$undefined",["$","div",null,{"className":"mt-6 border-b","style":{"borderColor":"var(--color-border)"}}]]}],["$","div",null,{"className":"prose","dangerouslySetInnerHTML":{"__html":"$3"}}],"$L4"]}],"$L5"]}]}]],["$L6"],"$L7"]}],"loading":null,"isPartial":false}
+4:["$","footer",null,{"className":"mt-14 border-t pt-8","style":{"borderColor":"var(--color-border)"},"children":[["$","div",null,{"className":"mb-8 flex flex-wrap gap-2","children":[["$","$L2","openclaw",{"href":"/fr/tags/openclaw","localeCookie":{"name":"NEXT_LOCALE","sameSite":"lax"},"className":"inline-flex items-center rounded-full px-3 py-1 text-sm font-medium transition-colors","style":{"background":"var(--color-code-bg)","color":"var(--color-accent)","border":"1px solid var(--color-border)"},"children":["#","openclaw"]}],["$","$L2","cron",{"href":"/fr/tags/cron","localeCookie":{"name":"NEXT_LOCALE","sameSite":"lax"},"className":"inline-flex items-center rounded-full px-3 py-1 text-sm font-medium transition-colors","style":{"background":"var(--color-code-bg)","color":"var(--color-accent)","border":"1px solid var(--color-border)"},"children":["#","cron"]}],["$","$L2","automation",{"href":"/fr/tags/automation","localeCookie":{"name":"NEXT_LOCALE","sameSite":"lax"},"className":"inline-flex items-center rounded-full px-3 py-1 text-sm font-medium transition-colors","style":{"background":"var(--color-code-bg)","color":"var(--color-accent)","border":"1px solid var(--color-border)"},"children":["#","automation"]}],["$","$L2","scheduling",{"href":"/fr/tags/scheduling","localeCookie":{"name":"NEXT_LOCALE","sameSite":"lax"},"className":"inline-flex items-center rounded-full px-3 py-1 text-sm font-medium transition-colors","style":{"background":"var(--color-code-bg)","color":"var(--color-accent)","border":"1px solid var(--color-border)"},"children":["#","scheduling"]}]]}],["$","nav",null,{"aria-label":"Navigation des articles","className":"grid grid-cols-1 gap-4 sm:grid-cols-2","children":[["$","$L2",null,{"href":"/fr/blog/openclaw/08-remote-gateway-nodes","localeCookie":{"name":"NEXT_LOCALE","sameSite":"lax"},"className":"group rounded-lg border p-4 transition-colors hover:border-accent","style":{"borderColor":"var(--color-border)","background":"var(--color-surface)"},"children":[["$","p",null,{"className":"mb-1 text-xs","style":{"color":"var(--color-muted)"},"children":"← Plus récent"}],["$","p",null,{"className":"line-clamp-1 text-sm font-medium transition-colors group-hover:text-accent","style":{"color":"var(--color-text)"},"children":"Votre assistant disparaît quand votre portable s'endort ? Déplacez la Gateway sur un VPS"}]]}],["$","$L2",null,{"href":"/fr/blog/openclaw/10-advanced-config","localeCookie":{"name":"NEXT_LOCALE","sameSite":"lax"},"className":"group rounded-lg border p-4 text-right transition-colors hover:border-accent","style":{"borderColor":"var(--color-border)","background":"var(--color-surface)"},"children":[["$","p",null,{"className":"mb-1 text-xs","style":{"color":"var(--color-muted)"},"children":"Plus ancien →"}],["$","p",null,{"className":"line-clamp-1 text-sm font-medium transition-colors group-hover:text-accent","style":{"color":"var(--color-text)"},"children":"Le système se comporte bizarrement ? Paramètres avancés et guide de débogage"}]]}]]}]]}]
+9:Tf66,<p>Si un assistant ne répond que quand on lui demande, ce n'est qu'un chatbot. <strong>Un vrai assistant agit de façon proactive.</strong></p>
+<p>C'est exactement à ça que sert la <strong>planification Cron</strong>.</p>
+<h2 id="ce-que-vous-allez-apprendre">Ce que vous allez apprendre</h2>
+<ul>
+<li>Comprendre la différence entre Cron et Heartbeat</li>
+<li>Savoir quelles tâches conviennent à la planification</li>
+<li>Configurer Cron depuis le tableau de bord</li>
+<li>Lire la syntaxe Cron et dépanner les jobs qui ne se déclenchent jamais</li>
+</ul>
+<hr>
+<h2 id="quest-ce-que-cron-et-heartbeat-">Qu'est-ce que Cron et Heartbeat ?</h2>
+<p><strong>Cron</strong> signifie « fais cette chose à ce moment », comme un agenda pour votre assistant :</p>
+<ul>
+<li>Chaque jour à 9 h : résumer les e-mails d'hier</li>
+<li>Chaque lundi : me rappeler ce qui compte cette semaine</li>
+<li>Chaque nuit : archiver automatiquement les notes du jour</li>
+</ul>
+<p><strong>Heartbeat</strong> signifie que l'assistant se réveille à un intervalle fixe (par ex. toutes les 30 minutes), vérifie s'il y a quelque chose à faire et agit si nécessaire.</p>
+<blockquote>
+<p>💡 Si vous voyez un log heartbeat toutes les 30 minutes, c'est normal.</p>
+</blockquote>
+<hr>
+<h2 id="cas-dusage-courants-dautomatisation">Cas d'usage courants d'automatisation</h2>
+<table>
+<thead>
+<tr>
+<th>Tâche planifiée</th>
+<th>Ce qu'elle fait</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td>Briefing quotidien</td>
+<td>Résume e-mails, calendrier ou actualités et vous les envoie</td>
+</tr>
+<tr>
+<td>Rappels</td>
+<td>Vous envoie votre to-do à l'heure voulue</td>
+</tr>
+<tr>
+<td>Surveillance</td>
+<td>Vérifie une API ou une page toutes les heures et vous alerte en cas de problème</td>
+</tr>
+<tr>
+<td>Organisation de notes</td>
+<td>Range les notes éparses en document structuré chaque semaine</td>
+</tr>
+</tbody>
+</table>
+<hr>
+<h2 id="configurer-cron-dans-le-tableau-de-bord">Configurer Cron dans le tableau de bord</h2>
+<p>Ouvrez l'interface de contrôle → onglet <strong>Cron</strong> :</p>
+<ul>
+<li><strong>Ajouter une planification</strong> : saisir une expression Cron et la description de la tâche</li>
+<li><strong>Activer / désactiver</strong> : mettre en pause n'importe quel job à tout moment</li>
+<li><strong>Exécuter maintenant</strong> : tester une planification immédiatement sans attendre</li>
+</ul>
+<hr>
+<h2 id="aide-mémoire-syntaxe-cron">Aide-mémoire syntaxe Cron</h2>
+<pre><code>* * * * *
+│ │ │ │ └─ jour de la semaine (0-7, 0 et 7 = dimanche)
+│ │ │ └─── mois (1-12)
+│ │ └───── jour du mois (1-31)
+│ └─────── heure (0-23)
+└───────── minute (0-59)
+</code></pre>
+<p>Exemples courants :</p>
+<pre><code>0 9 * * *      ← chaque jour à 9 h 00
+0 9 * * 1      ← chaque lundi à 9 h 00
+0 */6 * * *    ← toutes les 6 heures
+</code></pre>
+<hr>
+<h2 id="le-job-cron-ne-se-déclenche-jamais--vérifiez-dabord">Le job Cron ne se déclenche jamais ? Vérifiez d'abord</h2>
+<ol>
+<li>Cron est-il activé dans la Config ?</li>
+<li>Le fuseau horaire est-il correct ?</li>
+<li>Les logs montrent-ils une erreur ? Exécutez <code>openclaw logs --follow</code></li>
+<li>Essayez de redémarrer la Gateway</li>
+</ol>
+<blockquote>
+<p>⚠️ Les jobs planifiés consomment aussi les ressources du modèle. Si vous lancez beaucoup de planifications et de chats en même temps, vous pouvez atteindre les limites (ex. HTTP 429). Les jobs lourds méritent parfois un agent dédié.</p>
+</blockquote>
+<hr>
+<h2 id="suite">Suite</h2>
+<p>Votre assistant peut maintenant travailler tout seul. Dans la prochaine partie nous concluons avec les paramètres avancés et les habitudes de débogage pour un système plus stable.</p>
+<p><a href="08-remote-gateway-nodes">← Précédent : Gateway distante</a> | 👉 <a href="10-advanced-config">Paramètres avancés et état d'esprit débogage</a></p>5:["$","aside",null,{"className":"hidden lg:block","children":["$","$L8",null,{"html":"$9"}]}]
+6:["$","script","script-0",{"src":"/_next/static/chunks/2dddb3bc05093f69.js","async":true}]
+7:["$","$La",null,{"children":["$","$b",null,{"name":"Next.MetadataOutlet","children":"$@c"}]}]
+c:null

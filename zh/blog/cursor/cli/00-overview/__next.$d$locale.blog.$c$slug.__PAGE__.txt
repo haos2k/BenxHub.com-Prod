@@ -1,0 +1,238 @@
+1:"$Sreact.fragment"
+2:I[14864,["/_next/static/chunks/7923a261b80bb6e1.js","/_next/static/chunks/e09b4358027e8033.js","/_next/static/chunks/2dddb3bc05093f69.js"],"default"]
+8:I[24801,["/_next/static/chunks/7923a261b80bb6e1.js","/_next/static/chunks/e09b4358027e8033.js","/_next/static/chunks/2dddb3bc05093f69.js"],"default"]
+a:I[50183,["/_next/static/chunks/5a5b5b13c22d14f7.js","/_next/static/chunks/a484d1d3dd4b55ab.js"],"OutletBoundary"]
+b:"$Sreact.suspense"
+:HL["/images/posts/cursor-cli-overview.png","image"]
+3:Td39,<p>你已經在終端機裡了——SSH 連著伺服器、或 tmux 切了一堆面板——然後還要切到 Cursor 視窗去找 AI，再把答案貼回來。來回幾次之後，你會開始想：<strong>有沒有辦法直接在終端機叫 AI？</strong></p>
+<p>有，這就是 <strong>Cursor CLI</strong> 在做的事。一條 <code>cursor agent "幫我改這段"</code> 下去，AI 就在你的目錄裡幫你動手——不用開 IDE、不用滑鼠、不用離開你正在做的事。</p>
+<h2 id="為什麼值得學">為什麼值得學？</h2>
+<table>
+<thead>
+<tr>
+<th>情境</th>
+<th>沒有 Cursor CLI</th>
+<th>有 Cursor CLI</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td>在伺服器上改 code</td>
+<td>SSH 開著，還得另開 IDE 或遠端同步</td>
+<td>終端機直接下指令，就地解決</td>
+</tr>
+<tr>
+<td>腳本、CI 自動化</td>
+<td>AI 用不進 pipeline，只能手動貼</td>
+<td>非互動模式一行搞定，CI 裡也能跑</td>
+</tr>
+<tr>
+<td>已經在終端機做事</td>
+<td>得切到 IDE，做完再切回來</td>
+<td>同一視窗問完繼續做</td>
+</tr>
+<tr>
+<td>偏好鍵盤流</td>
+<td>免不了滑鼠點選</td>
+<td>全部指令完成，手不離鍵盤</td>
+</tr>
+</tbody>
+</table>
+<p>核心概念只有一個：CLI 讓 AI 跟著你的工作環境走，不是反過來要你遷就 IDE。</p>
+<h2 id="系列地圖">系列地圖</h2>
+<table>
+<thead>
+<tr>
+<th>文件</th>
+<th>主題</th>
+<th>約需時間</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td><a href="01-install">01-install</a></td>
+<td>安裝與驗證</td>
+<td>5 分鐘</td>
+</tr>
+<tr>
+<td><a href="02-basic-usage">02-basic-usage</a></td>
+<td>基本使用：下指令、對話</td>
+<td>10 分鐘</td>
+</tr>
+<tr>
+<td><a href="03-modes">03-modes</a></td>
+<td>三種模式：Agent / Plan / Ask</td>
+<td>8 分鐘</td>
+</tr>
+<tr>
+<td><a href="04-non-interactive">04-non-interactive</a></td>
+<td>非互動模式與腳本</td>
+<td>8 分鐘</td>
+</tr>
+<tr>
+<td><a href="05-tips">05-tips</a></td>
+<td>實用技巧與常見問題</td>
+<td>5 分鐘</td>
+</tr>
+<tr>
+<td><a href="06-cursor-cli-with-worktree">06-cursor-cli-with-worktree</a></td>
+<td>CLI 搭配 Git Worktree 並行開發</td>
+<td>8 分鐘</td>
+</tr>
+<tr>
+<td><a href="07-unlimit-loop-debug">07-unlimit-loop-debug</a></td>
+<td>無限除錯迴圈：跑到測試通過</td>
+<td>10 分鐘</td>
+</tr>
+<tr>
+<td><a href="08-worktree-merge">08-worktree-merge</a></td>
+<td>Cursor 內建 Worktree 進階應用</td>
+<td>8 分鐘</td>
+</tr>
+<tr>
+<td><a href="09-worktree-advanced">09-worktree-advanced</a></td>
+<td>Best-of-N 與 worktrees.json 設定</td>
+<td>10 分鐘</td>
+</tr>
+<tr>
+<td><a href="10-headless-scripts">10-headless-scripts</a></td>
+<td>無頭模式 --print、--force 與腳本改檔</td>
+<td>8 分鐘</td>
+</tr>
+<tr>
+<td><a href="11-output-ci">11-output-ci</a></td>
+<td>輸出格式與 CI 整合</td>
+<td>8 分鐘</td>
+</tr>
+<tr>
+<td><a href="12-sessions-cloud">12-sessions-cloud</a></td>
+<td>會話恢復與雲端執行</td>
+<td>6 分鐘</td>
+</tr>
+</tbody>
+</table>
+<h2 id="需要什麼">需要什麼</h2>
+<ul>
+<li>已安裝 <strong>Cursor</strong>（或至少能登入 Cursor 帳號）</li>
+<li><strong>Cursor 訂閱</strong>——CLI 需要訂閱才能用，跟 IDE 是同一套</li>
+<li>基本終端機操作就夠了，不需要特別的背景知識</li>
+</ul>
+<p>從 <a href="01-install">01-install</a> 開始，五分鐘把 CLI 裝好。</p>0:{"buildId":"Yck3R4ooQxWkwGLT6is1X","rsc":["$","$1","c",{"children":[[["$","script",null,{"type":"application/ld+json","dangerouslySetInnerHTML":{"__html":"{\"@context\":\"https://schema.org\",\"@type\":\"Article\",\"headline\":\"Cursor CLI 完整教學系列 — 終端機裡的 AI 助手\",\"description\":\"Cursor CLI 讓你不開 IDE 就能呼叫 AI：在伺服器改 code、跑 CI 自動化、甚至讓 AI 一直循環跑到測試通過。系列共 12 篇，從安裝到進階自動化全覆蓋。\",\"url\":\"https://benxhub.com/zh/blog/cursor/cli/00-overview\",\"mainEntityOfPage\":{\"@type\":\"WebPage\",\"@id\":\"https://benxhub.com/zh/blog/cursor/cli/00-overview\"},\"datePublished\":\"2026-02-24T00:00:00.000Z\",\"dateModified\":\"2026-02-24T00:00:00.000Z\",\"keywords\":\"cursor, cli, terminal\",\"inLanguage\":\"zh\",\"author\":{\"@type\":\"Person\",\"name\":\"BenX\",\"url\":\"https://benxhub.com\"},\"publisher\":{\"@type\":\"Organization\",\"name\":\"BenXHub Blog\",\"url\":\"https://benxhub.com\"},\"image\":\"https://benxhub.com/images/posts/cursor-cli-overview.png\"}"}}],["$","div",null,{"className":"mx-auto max-w-6xl px-4 py-12 sm:px-6","children":["$","div",null,{"className":"lg:grid lg:grid-cols-[1fr_240px] lg:gap-14","children":[["$","article",null,{"children":[["$","header",null,{"className":"mb-10","children":[["$","div",null,{"className":"mb-4 flex flex-wrap gap-2","children":[["$","$L2","cursor",{"href":"/zh/tags/cursor","localeCookie":{"name":"NEXT_LOCALE","sameSite":"lax"},"className":"inline-flex items-center rounded-full px-2.5 py-0.5 text-xs font-medium transition-colors","style":{"background":"var(--color-code-bg)","color":"var(--color-accent)","border":"1px solid var(--color-border)"},"children":["#","cursor"]}],["$","$L2","cli",{"href":"/zh/tags/cli","localeCookie":{"name":"NEXT_LOCALE","sameSite":"lax"},"className":"inline-flex items-center rounded-full px-2.5 py-0.5 text-xs font-medium transition-colors","style":{"background":"var(--color-code-bg)","color":"var(--color-accent)","border":"1px solid var(--color-border)"},"children":["#","cli"]}],["$","$L2","terminal",{"href":"/zh/tags/terminal","localeCookie":{"name":"NEXT_LOCALE","sameSite":"lax"},"className":"inline-flex items-center rounded-full px-2.5 py-0.5 text-xs font-medium transition-colors","style":{"background":"var(--color-code-bg)","color":"var(--color-accent)","border":"1px solid var(--color-border)"},"children":["#","terminal"]}]]}],["$","h1",null,{"className":"mb-4 text-3xl leading-snug font-bold tracking-tight sm:text-4xl","style":{"color":"var(--color-text)"},"children":"Cursor CLI 完整教學系列 — 終端機裡的 AI 助手"}],["$","div",null,{"className":"flex flex-wrap items-center gap-3 text-sm","style":{"color":"var(--color-muted)"},"children":[["$","time",null,{"dateTime":"2026-02-24","children":"2026 年 2 月 24 日"}],["$","span",null,{"aria-hidden":"true","children":"·"}],["$","span",null,{"children":"3 min read"}]]}],["$","div",null,{"className":"mt-6 overflow-hidden rounded-lg","children":["$","img",null,{"src":"/images/posts/cursor-cli-overview.png","alt":"Cursor CLI 完整教學系列 — 終端機裡的 AI 助手","className":"w-full h-auto"}]}],["$","div",null,{"className":"mt-6 border-b","style":{"borderColor":"var(--color-border)"}}]]}],["$","div",null,{"className":"prose","dangerouslySetInnerHTML":{"__html":"$3"}}],"$L4"]}],"$L5"]}]}]],["$L6"],"$L7"]}],"loading":null,"isPartial":false}
+4:["$","footer",null,{"className":"mt-14 border-t pt-8","style":{"borderColor":"var(--color-border)"},"children":[["$","div",null,{"className":"mb-8 flex flex-wrap gap-2","children":[["$","$L2","cursor",{"href":"/zh/tags/cursor","localeCookie":{"name":"NEXT_LOCALE","sameSite":"lax"},"className":"inline-flex items-center rounded-full px-3 py-1 text-sm font-medium transition-colors","style":{"background":"var(--color-code-bg)","color":"var(--color-accent)","border":"1px solid var(--color-border)"},"children":["#","cursor"]}],["$","$L2","cli",{"href":"/zh/tags/cli","localeCookie":{"name":"NEXT_LOCALE","sameSite":"lax"},"className":"inline-flex items-center rounded-full px-3 py-1 text-sm font-medium transition-colors","style":{"background":"var(--color-code-bg)","color":"var(--color-accent)","border":"1px solid var(--color-border)"},"children":["#","cli"]}],["$","$L2","terminal",{"href":"/zh/tags/terminal","localeCookie":{"name":"NEXT_LOCALE","sameSite":"lax"},"className":"inline-flex items-center rounded-full px-3 py-1 text-sm font-medium transition-colors","style":{"background":"var(--color-code-bg)","color":"var(--color-accent)","border":"1px solid var(--color-border)"},"children":["#","terminal"]}]]}],["$","nav",null,{"aria-label":"文章導覽","className":"grid grid-cols-1 gap-4 sm:grid-cols-2","children":[["$","$L2",null,{"href":"/zh/blog/python/uv/05-best-practices","localeCookie":{"name":"NEXT_LOCALE","sameSite":"lax"},"className":"group rounded-lg border p-4 transition-colors hover:border-accent","style":{"borderColor":"var(--color-border)","background":"var(--color-surface)"},"children":[["$","p",null,{"className":"mb-1 text-xs","style":{"color":"var(--color-muted)"},"children":"← 較新文章"}],["$","p",null,{"className":"line-clamp-1 text-sm font-medium transition-colors group-hover:text-accent","style":{"color":"var(--color-text)"},"children":"Python uv 最佳實踐：穩定性與協作清單"}]]}],["$","$L2",null,{"href":"/zh/blog/cursor/cli/01-install","localeCookie":{"name":"NEXT_LOCALE","sameSite":"lax"},"className":"group rounded-lg border p-4 text-right transition-colors hover:border-accent","style":{"borderColor":"var(--color-border)","background":"var(--color-surface)"},"children":[["$","p",null,{"className":"mb-1 text-xs","style":{"color":"var(--color-muted)"},"children":"較舊文章 →"}],["$","p",null,{"className":"line-clamp-1 text-sm font-medium transition-colors group-hover:text-accent","style":{"color":"var(--color-text)"},"children":"Cursor CLI 安裝教學：三分鐘讓終端機長出 AI"}]]}]]}]]}]
+9:Td39,<p>你已經在終端機裡了——SSH 連著伺服器、或 tmux 切了一堆面板——然後還要切到 Cursor 視窗去找 AI，再把答案貼回來。來回幾次之後，你會開始想：<strong>有沒有辦法直接在終端機叫 AI？</strong></p>
+<p>有，這就是 <strong>Cursor CLI</strong> 在做的事。一條 <code>cursor agent "幫我改這段"</code> 下去，AI 就在你的目錄裡幫你動手——不用開 IDE、不用滑鼠、不用離開你正在做的事。</p>
+<h2 id="為什麼值得學">為什麼值得學？</h2>
+<table>
+<thead>
+<tr>
+<th>情境</th>
+<th>沒有 Cursor CLI</th>
+<th>有 Cursor CLI</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td>在伺服器上改 code</td>
+<td>SSH 開著，還得另開 IDE 或遠端同步</td>
+<td>終端機直接下指令，就地解決</td>
+</tr>
+<tr>
+<td>腳本、CI 自動化</td>
+<td>AI 用不進 pipeline，只能手動貼</td>
+<td>非互動模式一行搞定，CI 裡也能跑</td>
+</tr>
+<tr>
+<td>已經在終端機做事</td>
+<td>得切到 IDE，做完再切回來</td>
+<td>同一視窗問完繼續做</td>
+</tr>
+<tr>
+<td>偏好鍵盤流</td>
+<td>免不了滑鼠點選</td>
+<td>全部指令完成，手不離鍵盤</td>
+</tr>
+</tbody>
+</table>
+<p>核心概念只有一個：CLI 讓 AI 跟著你的工作環境走，不是反過來要你遷就 IDE。</p>
+<h2 id="系列地圖">系列地圖</h2>
+<table>
+<thead>
+<tr>
+<th>文件</th>
+<th>主題</th>
+<th>約需時間</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td><a href="01-install">01-install</a></td>
+<td>安裝與驗證</td>
+<td>5 分鐘</td>
+</tr>
+<tr>
+<td><a href="02-basic-usage">02-basic-usage</a></td>
+<td>基本使用：下指令、對話</td>
+<td>10 分鐘</td>
+</tr>
+<tr>
+<td><a href="03-modes">03-modes</a></td>
+<td>三種模式：Agent / Plan / Ask</td>
+<td>8 分鐘</td>
+</tr>
+<tr>
+<td><a href="04-non-interactive">04-non-interactive</a></td>
+<td>非互動模式與腳本</td>
+<td>8 分鐘</td>
+</tr>
+<tr>
+<td><a href="05-tips">05-tips</a></td>
+<td>實用技巧與常見問題</td>
+<td>5 分鐘</td>
+</tr>
+<tr>
+<td><a href="06-cursor-cli-with-worktree">06-cursor-cli-with-worktree</a></td>
+<td>CLI 搭配 Git Worktree 並行開發</td>
+<td>8 分鐘</td>
+</tr>
+<tr>
+<td><a href="07-unlimit-loop-debug">07-unlimit-loop-debug</a></td>
+<td>無限除錯迴圈：跑到測試通過</td>
+<td>10 分鐘</td>
+</tr>
+<tr>
+<td><a href="08-worktree-merge">08-worktree-merge</a></td>
+<td>Cursor 內建 Worktree 進階應用</td>
+<td>8 分鐘</td>
+</tr>
+<tr>
+<td><a href="09-worktree-advanced">09-worktree-advanced</a></td>
+<td>Best-of-N 與 worktrees.json 設定</td>
+<td>10 分鐘</td>
+</tr>
+<tr>
+<td><a href="10-headless-scripts">10-headless-scripts</a></td>
+<td>無頭模式 --print、--force 與腳本改檔</td>
+<td>8 分鐘</td>
+</tr>
+<tr>
+<td><a href="11-output-ci">11-output-ci</a></td>
+<td>輸出格式與 CI 整合</td>
+<td>8 分鐘</td>
+</tr>
+<tr>
+<td><a href="12-sessions-cloud">12-sessions-cloud</a></td>
+<td>會話恢復與雲端執行</td>
+<td>6 分鐘</td>
+</tr>
+</tbody>
+</table>
+<h2 id="需要什麼">需要什麼</h2>
+<ul>
+<li>已安裝 <strong>Cursor</strong>（或至少能登入 Cursor 帳號）</li>
+<li><strong>Cursor 訂閱</strong>——CLI 需要訂閱才能用，跟 IDE 是同一套</li>
+<li>基本終端機操作就夠了，不需要特別的背景知識</li>
+</ul>
+<p>從 <a href="01-install">01-install</a> 開始，五分鐘把 CLI 裝好。</p>5:["$","aside",null,{"className":"hidden lg:block","children":["$","$L8",null,{"html":"$9"}]}]
+6:["$","script","script-0",{"src":"/_next/static/chunks/2dddb3bc05093f69.js","async":true}]
+7:["$","$La",null,{"children":["$","$b",null,{"name":"Next.MetadataOutlet","children":"$@c"}]}]
+c:null

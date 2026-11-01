@@ -1,0 +1,164 @@
+1:"$Sreact.fragment"
+2:I[14864,["/_next/static/chunks/7923a261b80bb6e1.js","/_next/static/chunks/e09b4358027e8033.js","/_next/static/chunks/2dddb3bc05093f69.js"],"default"]
+8:I[24801,["/_next/static/chunks/7923a261b80bb6e1.js","/_next/static/chunks/e09b4358027e8033.js","/_next/static/chunks/2dddb3bc05093f69.js"],"default"]
+a:I[50183,["/_next/static/chunks/5a5b5b13c22d14f7.js","/_next/static/chunks/a484d1d3dd4b55ab.js"],"OutletBoundary"]
+b:"$Sreact.suspense"
+:HL["/images/posts/cursor-cli-sessions-cloud.png","image"]
+3:T13f4,<p>AI 做到一半，你的電腦要關機了——或者你開了一場對話，中斷後想繼續，但上下文都在那個終端機裡。</p>
+<p><strong><code>--resume</code></strong> 和 <strong><code>-c</code></strong> 解決的就是這兩件事：一個讓你接回上次的對話，一個讓任務在雲端繼續跑，你關機了也沒關係。</p>
+<h2 id="--resume接回上次的對話">--resume：接回上次的對話</h2>
+<figure data-rehype-pretty-code-figure=""><pre style="background-color:#24292e;color:#e1e4e8" tabindex="0" data-language="bash" data-theme="github-dark"><code data-language="bash" data-theme="github-dark" style="display: grid;"><span data-line=""><span style="color:#B392F0">cursor</span><span style="color:#9ECBFF"> agent</span><span style="color:#79B8FF"> --resume</span></span></code></pre></figure>
+<p>載入最近一次對話，上下文與之前下的指令都還在——不用從頭描述需求，就像暫停後繼續播，省去重新交代背景。</p>
+<h3 id="想接回特定的那場">想接回特定的那場</h3>
+<p>如果你同時有好幾場對話在進行，想接回某一場特定的：</p>
+<figure data-rehype-pretty-code-figure=""><pre style="background-color:#24292e;color:#e1e4e8" tabindex="0" data-language="bash" data-theme="github-dark"><code data-language="bash" data-theme="github-dark" style="display: grid;"><span data-line=""><span style="color:#B392F0">cursor</span><span style="color:#9ECBFF"> agent</span><span style="color:#79B8FF"> --resume=chat-id-here</span></span></code></pre></figure>
+<p><code>chat-id</code> 從下面這個指令取得。</p>
+<h2 id="cursor-agent-ls查歷史對話">cursor agent ls：查歷史對話</h2>
+<figure data-rehype-pretty-code-figure=""><pre style="background-color:#24292e;color:#e1e4e8" tabindex="0" data-language="bash" data-theme="github-dark"><code data-language="bash" data-theme="github-dark" style="display: grid;"><span data-line=""><span style="color:#B392F0">cursor</span><span style="color:#9ECBFF"> agent</span><span style="color:#9ECBFF"> ls</span></span></code></pre></figure>
+<p>列出過去的對話，含 ID 和識別資訊。找到你要的那一場，把 ID 帶進 <code>--resume=ID</code> 就能接回去。</p>
+<p>整理在一起：</p>
+<table>
+<thead>
+<tr>
+<th>指令</th>
+<th>作用</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td><code>cursor agent ls</code></td>
+<td>列出所有對話</td>
+</tr>
+<tr>
+<td><code>cursor agent --resume</code></td>
+<td>恢復最近一場</td>
+</tr>
+<tr>
+<td><code>cursor agent --resume=聊天ID</code></td>
+<td>恢復指定對話</td>
+</tr>
+</tbody>
+</table>
+<h2 id="-c把任務丟給雲端跑">-c：把任務丟給雲端跑</h2>
+<p>有些任務很重——全 repo 分析、產一大份文件、多輪重構——在本地跑要一直開著終端機，筆電關機或網路斷線就中斷。</p>
+<p>用 <strong><code>-c</code></strong>（或 <code>--cloud</code>）把這一輪對話交給雲端 Agent 執行：</p>
+<figure data-rehype-pretty-code-figure=""><pre style="background-color:#24292e;color:#e1e4e8" tabindex="0" data-language="bash" data-theme="github-dark"><code data-language="bash" data-theme="github-dark" style="display: grid;"><span data-line=""><span style="color:#B392F0">cursor</span><span style="color:#9ECBFF"> agent</span><span style="color:#9ECBFF"> "分析整個專案並產出架構文件到 docs/architecture.md"</span><span style="color:#79B8FF"> -c</span></span></code></pre></figure>
+<p>送出後任務在 Cursor 雲端跑，你可以關掉終端機、關機、去做別的事。之後在任意裝置開 CLI，用 <code>--resume</code> 接回那場對話，看結果或繼續追加指令。</p>
+<p><code>-c</code> 等於：<strong>「這題交給雲端，我不必在電腦前等。」</strong></p>
+<h3 id="什麼時候值得用--c">什麼時候值得用 -c</h3>
+<table>
+<thead>
+<tr>
+<th>情境</th>
+<th>建議</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td>任務預期跑很久</td>
+<td>用 <code>-c</code>，關機也能跑完</td>
+</tr>
+<tr>
+<td>快速問一句、改小東西</td>
+<td>不需要 <code>-c</code>，本地跑就好</td>
+</tr>
+<tr>
+<td>網路不穩或不想依賴雲端</td>
+<td>本地跑，但要保持連線</td>
+</tr>
+</tbody>
+</table>
+<h2 id="典型流程雲端--多裝置">典型流程：雲端 + 多裝置</h2>
+<ol>
+<li>開任務並加 <code>-c</code>，讓雲端跑</li>
+<li>關終端機、去忙別的</li>
+<li>之後跑 <code>cursor agent ls</code> 找到那場</li>
+<li><code>cursor agent --resume=該場ID</code> 接回，看結果或再下指令</li>
+</ol>
+<p>長時間任務、關機、換裝置——這套組合都能兼顧。</p>
+<hr>
+<p><code>--resume</code> 讓對話有記憶、<code>-c</code> 讓任務不用你守著——兩個加在一起，等於 AI 不再只能在你開著電腦的時候才能工作。</p>
+<blockquote>
+<p>系列到這裡告一段落。可從 <a href="00-overview">00-overview</a> 複習全系列，或回頭看 <a href="08-worktree-merge">08-worktree-merge</a>、<a href="09-worktree-advanced">09-worktree-advanced</a> 把 Worktree 與 Best-of-N 練熟。</p>
+</blockquote>0:{"buildId":"Yck3R4ooQxWkwGLT6is1X","rsc":["$","$1","c",{"children":[[["$","script",null,{"type":"application/ld+json","dangerouslySetInnerHTML":{"__html":"{\"@context\":\"https://schema.org\",\"@type\":\"Article\",\"headline\":\"Cursor CLI 會話管理與雲端執行：--resume 與 -c 怎麼用\",\"description\":\"cursor agent --resume 接回上次對話、cursor agent ls 列出歷史、-c 把長任務丟雲端跑，關機也能繼續。\",\"url\":\"https://benxhub.com/zh/blog/cursor/cli/12-sessions-cloud\",\"mainEntityOfPage\":{\"@type\":\"WebPage\",\"@id\":\"https://benxhub.com/zh/blog/cursor/cli/12-sessions-cloud\"},\"datePublished\":\"2026-03-09T00:00:00.000Z\",\"dateModified\":\"2026-03-09T00:00:00.000Z\",\"keywords\":\"cursor, cli, sessions, resume, cloud\",\"inLanguage\":\"zh\",\"author\":{\"@type\":\"Person\",\"name\":\"BenX\",\"url\":\"https://benxhub.com\"},\"publisher\":{\"@type\":\"Organization\",\"name\":\"BenXHub Blog\",\"url\":\"https://benxhub.com\"},\"image\":\"https://benxhub.com/images/posts/cursor-cli-sessions-cloud.png\"}"}}],["$","div",null,{"className":"mx-auto max-w-6xl px-4 py-12 sm:px-6","children":["$","div",null,{"className":"lg:grid lg:grid-cols-[1fr_240px] lg:gap-14","children":[["$","article",null,{"children":[["$","header",null,{"className":"mb-10","children":[["$","div",null,{"className":"mb-4 flex flex-wrap gap-2","children":[["$","$L2","cursor",{"href":"/zh/tags/cursor","localeCookie":{"name":"NEXT_LOCALE","sameSite":"lax"},"className":"inline-flex items-center rounded-full px-2.5 py-0.5 text-xs font-medium transition-colors","style":{"background":"var(--color-code-bg)","color":"var(--color-accent)","border":"1px solid var(--color-border)"},"children":["#","cursor"]}],["$","$L2","cli",{"href":"/zh/tags/cli","localeCookie":{"name":"NEXT_LOCALE","sameSite":"lax"},"className":"inline-flex items-center rounded-full px-2.5 py-0.5 text-xs font-medium transition-colors","style":{"background":"var(--color-code-bg)","color":"var(--color-accent)","border":"1px solid var(--color-border)"},"children":["#","cli"]}],["$","$L2","sessions",{"href":"/zh/tags/sessions","localeCookie":{"name":"NEXT_LOCALE","sameSite":"lax"},"className":"inline-flex items-center rounded-full px-2.5 py-0.5 text-xs font-medium transition-colors","style":{"background":"var(--color-code-bg)","color":"var(--color-accent)","border":"1px solid var(--color-border)"},"children":["#","sessions"]}],["$","$L2","resume",{"href":"/zh/tags/resume","localeCookie":{"name":"NEXT_LOCALE","sameSite":"lax"},"className":"inline-flex items-center rounded-full px-2.5 py-0.5 text-xs font-medium transition-colors","style":{"background":"var(--color-code-bg)","color":"var(--color-accent)","border":"1px solid var(--color-border)"},"children":["#","resume"]}],["$","$L2","cloud",{"href":"/zh/tags/cloud","localeCookie":{"name":"NEXT_LOCALE","sameSite":"lax"},"className":"inline-flex items-center rounded-full px-2.5 py-0.5 text-xs font-medium transition-colors","style":{"background":"var(--color-code-bg)","color":"var(--color-accent)","border":"1px solid var(--color-border)"},"children":["#","cloud"]}]]}],["$","h1",null,{"className":"mb-4 text-3xl leading-snug font-bold tracking-tight sm:text-4xl","style":{"color":"var(--color-text)"},"children":"Cursor CLI 會話管理與雲端執行：--resume 與 -c 怎麼用"}],["$","div",null,{"className":"flex flex-wrap items-center gap-3 text-sm","style":{"color":"var(--color-muted)"},"children":[["$","time",null,{"dateTime":"2026-03-09","children":"2026 年 3 月 9 日"}],["$","span",null,{"aria-hidden":"true","children":"·"}],["$","span",null,{"children":"4 min read"}]]}],["$","div",null,{"className":"mt-6 overflow-hidden rounded-lg","children":["$","img",null,{"src":"/images/posts/cursor-cli-sessions-cloud.png","alt":"Cursor CLI 會話管理與雲端執行：--resume 與 -c 怎麼用","className":"w-full h-auto"}]}],["$","div",null,{"className":"mt-6 border-b","style":{"borderColor":"var(--color-border)"}}]]}],["$","div",null,{"className":"prose","dangerouslySetInnerHTML":{"__html":"$3"}}],"$L4"]}],"$L5"]}]}]],["$L6"],"$L7"]}],"loading":null,"isPartial":false}
+4:["$","footer",null,{"className":"mt-14 border-t pt-8","style":{"borderColor":"var(--color-border)"},"children":[["$","div",null,{"className":"mb-8 flex flex-wrap gap-2","children":[["$","$L2","cursor",{"href":"/zh/tags/cursor","localeCookie":{"name":"NEXT_LOCALE","sameSite":"lax"},"className":"inline-flex items-center rounded-full px-3 py-1 text-sm font-medium transition-colors","style":{"background":"var(--color-code-bg)","color":"var(--color-accent)","border":"1px solid var(--color-border)"},"children":["#","cursor"]}],["$","$L2","cli",{"href":"/zh/tags/cli","localeCookie":{"name":"NEXT_LOCALE","sameSite":"lax"},"className":"inline-flex items-center rounded-full px-3 py-1 text-sm font-medium transition-colors","style":{"background":"var(--color-code-bg)","color":"var(--color-accent)","border":"1px solid var(--color-border)"},"children":["#","cli"]}],["$","$L2","sessions",{"href":"/zh/tags/sessions","localeCookie":{"name":"NEXT_LOCALE","sameSite":"lax"},"className":"inline-flex items-center rounded-full px-3 py-1 text-sm font-medium transition-colors","style":{"background":"var(--color-code-bg)","color":"var(--color-accent)","border":"1px solid var(--color-border)"},"children":["#","sessions"]}],["$","$L2","resume",{"href":"/zh/tags/resume","localeCookie":{"name":"NEXT_LOCALE","sameSite":"lax"},"className":"inline-flex items-center rounded-full px-3 py-1 text-sm font-medium transition-colors","style":{"background":"var(--color-code-bg)","color":"var(--color-accent)","border":"1px solid var(--color-border)"},"children":["#","resume"]}],["$","$L2","cloud",{"href":"/zh/tags/cloud","localeCookie":{"name":"NEXT_LOCALE","sameSite":"lax"},"className":"inline-flex items-center rounded-full px-3 py-1 text-sm font-medium transition-colors","style":{"background":"var(--color-code-bg)","color":"var(--color-accent)","border":"1px solid var(--color-border)"},"children":["#","cloud"]}]]}],["$","nav",null,{"aria-label":"文章導覽","className":"grid grid-cols-1 gap-4 sm:grid-cols-2","children":[["$","$L2",null,{"href":"/zh/blog/cursor/cli/11-output-ci","localeCookie":{"name":"NEXT_LOCALE","sameSite":"lax"},"className":"group rounded-lg border p-4 transition-colors hover:border-accent","style":{"borderColor":"var(--color-border)","background":"var(--color-surface)"},"children":[["$","p",null,{"className":"mb-1 text-xs","style":{"color":"var(--color-muted)"},"children":"← 較新文章"}],["$","p",null,{"className":"line-clamp-1 text-sm font-medium transition-colors group-hover:text-accent","style":{"color":"var(--color-text)"},"children":"Cursor CLI 輸出格式與 CI 整合：text、json、stream-json 怎麼選"}]]}],["$","$L2",null,{"href":"/zh/blog/openclaw/01-intro","localeCookie":{"name":"NEXT_LOCALE","sameSite":"lax"},"className":"group rounded-lg border p-4 text-right transition-colors hover:border-accent","style":{"borderColor":"var(--color-border)","background":"var(--color-surface)"},"children":[["$","p",null,{"className":"mb-1 text-xs","style":{"color":"var(--color-muted)"},"children":"較舊文章 →"}],["$","p",null,{"className":"line-clamp-1 text-sm font-medium transition-colors group-hover:text-accent","style":{"color":"var(--color-text)"},"children":"OpenClaw 教學系列：讓 AI 助理住進你家"}]]}]]}]]}]
+9:T13f4,<p>AI 做到一半，你的電腦要關機了——或者你開了一場對話，中斷後想繼續，但上下文都在那個終端機裡。</p>
+<p><strong><code>--resume</code></strong> 和 <strong><code>-c</code></strong> 解決的就是這兩件事：一個讓你接回上次的對話，一個讓任務在雲端繼續跑，你關機了也沒關係。</p>
+<h2 id="--resume接回上次的對話">--resume：接回上次的對話</h2>
+<figure data-rehype-pretty-code-figure=""><pre style="background-color:#24292e;color:#e1e4e8" tabindex="0" data-language="bash" data-theme="github-dark"><code data-language="bash" data-theme="github-dark" style="display: grid;"><span data-line=""><span style="color:#B392F0">cursor</span><span style="color:#9ECBFF"> agent</span><span style="color:#79B8FF"> --resume</span></span></code></pre></figure>
+<p>載入最近一次對話，上下文與之前下的指令都還在——不用從頭描述需求，就像暫停後繼續播，省去重新交代背景。</p>
+<h3 id="想接回特定的那場">想接回特定的那場</h3>
+<p>如果你同時有好幾場對話在進行，想接回某一場特定的：</p>
+<figure data-rehype-pretty-code-figure=""><pre style="background-color:#24292e;color:#e1e4e8" tabindex="0" data-language="bash" data-theme="github-dark"><code data-language="bash" data-theme="github-dark" style="display: grid;"><span data-line=""><span style="color:#B392F0">cursor</span><span style="color:#9ECBFF"> agent</span><span style="color:#79B8FF"> --resume=chat-id-here</span></span></code></pre></figure>
+<p><code>chat-id</code> 從下面這個指令取得。</p>
+<h2 id="cursor-agent-ls查歷史對話">cursor agent ls：查歷史對話</h2>
+<figure data-rehype-pretty-code-figure=""><pre style="background-color:#24292e;color:#e1e4e8" tabindex="0" data-language="bash" data-theme="github-dark"><code data-language="bash" data-theme="github-dark" style="display: grid;"><span data-line=""><span style="color:#B392F0">cursor</span><span style="color:#9ECBFF"> agent</span><span style="color:#9ECBFF"> ls</span></span></code></pre></figure>
+<p>列出過去的對話，含 ID 和識別資訊。找到你要的那一場，把 ID 帶進 <code>--resume=ID</code> 就能接回去。</p>
+<p>整理在一起：</p>
+<table>
+<thead>
+<tr>
+<th>指令</th>
+<th>作用</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td><code>cursor agent ls</code></td>
+<td>列出所有對話</td>
+</tr>
+<tr>
+<td><code>cursor agent --resume</code></td>
+<td>恢復最近一場</td>
+</tr>
+<tr>
+<td><code>cursor agent --resume=聊天ID</code></td>
+<td>恢復指定對話</td>
+</tr>
+</tbody>
+</table>
+<h2 id="-c把任務丟給雲端跑">-c：把任務丟給雲端跑</h2>
+<p>有些任務很重——全 repo 分析、產一大份文件、多輪重構——在本地跑要一直開著終端機，筆電關機或網路斷線就中斷。</p>
+<p>用 <strong><code>-c</code></strong>（或 <code>--cloud</code>）把這一輪對話交給雲端 Agent 執行：</p>
+<figure data-rehype-pretty-code-figure=""><pre style="background-color:#24292e;color:#e1e4e8" tabindex="0" data-language="bash" data-theme="github-dark"><code data-language="bash" data-theme="github-dark" style="display: grid;"><span data-line=""><span style="color:#B392F0">cursor</span><span style="color:#9ECBFF"> agent</span><span style="color:#9ECBFF"> "分析整個專案並產出架構文件到 docs/architecture.md"</span><span style="color:#79B8FF"> -c</span></span></code></pre></figure>
+<p>送出後任務在 Cursor 雲端跑，你可以關掉終端機、關機、去做別的事。之後在任意裝置開 CLI，用 <code>--resume</code> 接回那場對話，看結果或繼續追加指令。</p>
+<p><code>-c</code> 等於：<strong>「這題交給雲端，我不必在電腦前等。」</strong></p>
+<h3 id="什麼時候值得用--c">什麼時候值得用 -c</h3>
+<table>
+<thead>
+<tr>
+<th>情境</th>
+<th>建議</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td>任務預期跑很久</td>
+<td>用 <code>-c</code>，關機也能跑完</td>
+</tr>
+<tr>
+<td>快速問一句、改小東西</td>
+<td>不需要 <code>-c</code>，本地跑就好</td>
+</tr>
+<tr>
+<td>網路不穩或不想依賴雲端</td>
+<td>本地跑，但要保持連線</td>
+</tr>
+</tbody>
+</table>
+<h2 id="典型流程雲端--多裝置">典型流程：雲端 + 多裝置</h2>
+<ol>
+<li>開任務並加 <code>-c</code>，讓雲端跑</li>
+<li>關終端機、去忙別的</li>
+<li>之後跑 <code>cursor agent ls</code> 找到那場</li>
+<li><code>cursor agent --resume=該場ID</code> 接回，看結果或再下指令</li>
+</ol>
+<p>長時間任務、關機、換裝置——這套組合都能兼顧。</p>
+<hr>
+<p><code>--resume</code> 讓對話有記憶、<code>-c</code> 讓任務不用你守著——兩個加在一起，等於 AI 不再只能在你開著電腦的時候才能工作。</p>
+<blockquote>
+<p>系列到這裡告一段落。可從 <a href="00-overview">00-overview</a> 複習全系列，或回頭看 <a href="08-worktree-merge">08-worktree-merge</a>、<a href="09-worktree-advanced">09-worktree-advanced</a> 把 Worktree 與 Best-of-N 練熟。</p>
+</blockquote>5:["$","aside",null,{"className":"hidden lg:block","children":["$","$L8",null,{"html":"$9"}]}]
+6:["$","script","script-0",{"src":"/_next/static/chunks/2dddb3bc05093f69.js","async":true}]
+7:["$","$La",null,{"children":["$","$b",null,{"name":"Next.MetadataOutlet","children":"$@c"}]}]
+c:null

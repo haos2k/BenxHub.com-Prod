@@ -1,0 +1,143 @@
+1:"$Sreact.fragment"
+2:I[14864,["/_next/static/chunks/7923a261b80bb6e1.js","/_next/static/chunks/e09b4358027e8033.js","/_next/static/chunks/2dddb3bc05093f69.js"],"default"]
+8:I[24801,["/_next/static/chunks/7923a261b80bb6e1.js","/_next/static/chunks/e09b4358027e8033.js","/_next/static/chunks/2dddb3bc05093f69.js"],"default"]
+a:I[50183,["/_next/static/chunks/5a5b5b13c22d14f7.js","/_next/static/chunks/a484d1d3dd4b55ab.js"],"OutletBoundary"]
+b:"$Sreact.suspense"
+3:T116c,<p>세 모드를 한 문장으로 구분하면: <strong>코드를 만질 수 있는 건 누구고, 말만 할 수 있는 건 누구인지</strong>. 이걸 알면 적절한 모드를 고르기 쉽습니다.</p>
+<h2 id="한-문장-비교">한 문장 비교</h2>
+<table>
+<thead>
+<tr>
+<th>모드</th>
+<th>한 문장</th>
+<th>파일을 수정하나요?</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td><strong>Agent</strong></td>
+<td>“해줘”</td>
+<td>✅ 예</td>
+</tr>
+<tr>
+<td><strong>Plan</strong></td>
+<td>먼저 “계획” 세우고, 내가 승인하면 실행</td>
+<td>아직 아님 — 승인 후에만</td>
+</tr>
+<tr>
+<td><strong>Ask</strong></td>
+<td>“질문”이나 조회만</td>
+<td>❌ 아니요</td>
+</tr>
+</tbody>
+</table>
+<p>세 동료로 비유하면: Agent는 “맡겨, 내가 할게”, Plan은 “먼저 제안서 쓸게 검토해줘”, Ask는 “답만 할게, 파일은 안 건드려” — 맞는 사람을 고르면 고생이 반으로 줄어듭니다.</p>
+<h2 id="agent-모드기본">Agent 모드(기본)</h2>
+<p><strong>용도</strong>: AI가 코드를 직접 수정·기능 추가·리팩터링하게 할 때. 논의보다 결과가 필요할 때.</p>
+<figure data-rehype-pretty-code-figure=""><pre style="background-color:#24292e;color:#e1e4e8" tabindex="0" data-language="bash" data-theme="github-dark"><code data-language="bash" data-theme="github-dark" style="display: grid;"><span data-line=""><span style="color:#B392F0">cursor</span><span style="color:#9ECBFF"> agent</span><span style="color:#9ECBFF"> "Change login to use JWT"</span></span></code></pre></figure>
+<ul>
+<li>파일을 읽고, 수정하고, 명령을 실행할 수 있음</li>
+<li>각 단계를 수락/거절할 수 있음 — 주도권은 당신</li>
+</ul>
+<h2 id="plan-모드">Plan 모드</h2>
+<p><strong>용도</strong>: 접근 방법이 불확실하거나, AI가 한꺼번에 너무 많이 바꿀까 걱정될 때. 승인 전에 계획을 먼저 봄.</p>
+<figure data-rehype-pretty-code-figure=""><pre style="background-color:#24292e;color:#e1e4e8" tabindex="0" data-language="bash" data-theme="github-dark"><code data-language="bash" data-theme="github-dark" style="display: grid;"><span data-line=""><span style="color:#B392F0">cursor</span><span style="color:#9ECBFF"> agent</span><span style="color:#79B8FF"> --plan</span><span style="color:#9ECBFF"> "Refactor the entire API layer"</span></span></code></pre></figure>
+<ul>
+<li>AI가 질문하고 접근 방식을 제안함</li>
+<li>동의한 경우에만 실행 — 예상 밖 변경 없음</li>
+</ul>
+<p><strong>언제 쓸지</strong>: 대규모 변경이나 “커밋 전에 명확히 보고 싶을 때”.</p>
+<h2 id="ask-모드읽기-전용">Ask 모드(읽기 전용)</h2>
+<p><strong>용도</strong>: “이 코드가 뭐 하는 거지?” “더 나은 방법 있을까?”만 물어보고, <strong>파일은 절대 바꾸고 싶지 않을</strong> 때.</p>
+<figure data-rehype-pretty-code-figure=""><pre style="background-color:#24292e;color:#e1e4e8" tabindex="0" data-language="bash" data-theme="github-dark"><code data-language="bash" data-theme="github-dark" style="display: grid;"><span data-line=""><span style="color:#B392F0">cursor</span><span style="color:#9ECBFF"> ask</span><span style="color:#9ECBFF"> "What is the logic in src/auth.ts?"</span></span></code></pre></figure>
+<ul>
+<li>읽기·분석·답변만 — 쓰기는 하지 않음</li>
+<li>CI나 “수정 없이 검사만 하고 싶은” 환경에 적합</li>
+</ul>
+<h2 id="대화-중-모드-전환">대화 중 모드 전환</h2>
+<p>이미 <code>cursor agent</code> 대화 중이라면 <strong>슬래시 명령</strong>으로 즉시 전환할 수 있습니다:</p>
+<ul>
+<li><code>/plan</code> → Plan 모드(계획 먼저, 실행 나중)</li>
+<li><code>/ask</code> → Ask 모드(읽기 전용, 자유롭게 질문)</li>
+</ul>
+<p>종료하고 다시 시작할 필요 없습니다. 달리다가 기어만 바꾸는 것과 같습니다.</p>
+<h2 id="요약">요약</h2>
+<ul>
+<li><strong>Agent</strong>: 실행하고 파일 수정 — 결과가 필요할 때</li>
+<li><strong>Plan</strong>: 먼저 계획, 승인 후 실행 — 안전하게 진행하고 싶을 때</li>
+<li><strong>Ask</strong>: 질문만, 읽기 전용 — 변경 없이 답만 필요할 때</li>
+</ul>
+<blockquote>
+<p>다음: <a href="04-non-interactive">04-non-interactive</a> — 스크립트·CI용 비대화형 모드, AI를 무인으로 실행</p>
+</blockquote>0:{"buildId":"Yck3R4ooQxWkwGLT6is1X","rsc":["$","$1","c",{"children":[[["$","script",null,{"type":"application/ld+json","dangerouslySetInnerHTML":{"__html":"{\"@context\":\"https://schema.org\",\"@type\":\"Article\",\"headline\":\"Cursor CLI 세 가지 모드: Agent / Plan / Ask\",\"description\":\"Agent는 파일을 수정하고, Plan은 먼저 계획을 세운 뒤 실행하며, Ask는 읽기 전용. 한 문장으로 구분하는 법 — 대화 중 슬래시 명령으로 전환하기.\",\"url\":\"https://benxhub.com/ko/blog/cursor/cli/03-modes\",\"mainEntityOfPage\":{\"@type\":\"WebPage\",\"@id\":\"https://benxhub.com/ko/blog/cursor/cli/03-modes\"},\"datePublished\":\"2026-02-24T00:00:00.000Z\",\"dateModified\":\"2026-02-24T00:00:00.000Z\",\"keywords\":\"cursor, cli, agent, plan, ask\",\"inLanguage\":\"ko\",\"author\":{\"@type\":\"Person\",\"name\":\"BenX\",\"url\":\"https://benxhub.com\"},\"publisher\":{\"@type\":\"Organization\",\"name\":\"BenXHub Blog\",\"url\":\"https://benxhub.com\"}}"}}],["$","div",null,{"className":"mx-auto max-w-6xl px-4 py-12 sm:px-6","children":["$","div",null,{"className":"lg:grid lg:grid-cols-[1fr_240px] lg:gap-14","children":[["$","article",null,{"children":[["$","header",null,{"className":"mb-10","children":[["$","div",null,{"className":"mb-4 flex flex-wrap gap-2","children":[["$","$L2","cursor",{"href":"/ko/tags/cursor","localeCookie":{"name":"NEXT_LOCALE","sameSite":"lax"},"className":"inline-flex items-center rounded-full px-2.5 py-0.5 text-xs font-medium transition-colors","style":{"background":"var(--color-code-bg)","color":"var(--color-accent)","border":"1px solid var(--color-border)"},"children":["#","cursor"]}],["$","$L2","cli",{"href":"/ko/tags/cli","localeCookie":{"name":"NEXT_LOCALE","sameSite":"lax"},"className":"inline-flex items-center rounded-full px-2.5 py-0.5 text-xs font-medium transition-colors","style":{"background":"var(--color-code-bg)","color":"var(--color-accent)","border":"1px solid var(--color-border)"},"children":["#","cli"]}],["$","$L2","agent",{"href":"/ko/tags/agent","localeCookie":{"name":"NEXT_LOCALE","sameSite":"lax"},"className":"inline-flex items-center rounded-full px-2.5 py-0.5 text-xs font-medium transition-colors","style":{"background":"var(--color-code-bg)","color":"var(--color-accent)","border":"1px solid var(--color-border)"},"children":["#","agent"]}],["$","$L2","plan",{"href":"/ko/tags/plan","localeCookie":{"name":"NEXT_LOCALE","sameSite":"lax"},"className":"inline-flex items-center rounded-full px-2.5 py-0.5 text-xs font-medium transition-colors","style":{"background":"var(--color-code-bg)","color":"var(--color-accent)","border":"1px solid var(--color-border)"},"children":["#","plan"]}],["$","$L2","ask",{"href":"/ko/tags/ask","localeCookie":{"name":"NEXT_LOCALE","sameSite":"lax"},"className":"inline-flex items-center rounded-full px-2.5 py-0.5 text-xs font-medium transition-colors","style":{"background":"var(--color-code-bg)","color":"var(--color-accent)","border":"1px solid var(--color-border)"},"children":["#","ask"]}]]}],["$","h1",null,{"className":"mb-4 text-3xl leading-snug font-bold tracking-tight sm:text-4xl","style":{"color":"var(--color-text)"},"children":"Cursor CLI 세 가지 모드: Agent / Plan / Ask"}],["$","div",null,{"className":"flex flex-wrap items-center gap-3 text-sm","style":{"color":"var(--color-muted)"},"children":[["$","time",null,{"dateTime":"2026-02-24","children":"2026년 2월 24일"}],["$","span",null,{"aria-hidden":"true","children":"·"}],["$","span",null,{"children":"4 min read"}]]}],"$undefined",["$","div",null,{"className":"mt-6 border-b","style":{"borderColor":"var(--color-border)"}}]]}],["$","div",null,{"className":"prose","dangerouslySetInnerHTML":{"__html":"$3"}}],"$L4"]}],"$L5"]}]}]],["$L6"],"$L7"]}],"loading":null,"isPartial":false}
+4:["$","footer",null,{"className":"mt-14 border-t pt-8","style":{"borderColor":"var(--color-border)"},"children":[["$","div",null,{"className":"mb-8 flex flex-wrap gap-2","children":[["$","$L2","cursor",{"href":"/ko/tags/cursor","localeCookie":{"name":"NEXT_LOCALE","sameSite":"lax"},"className":"inline-flex items-center rounded-full px-3 py-1 text-sm font-medium transition-colors","style":{"background":"var(--color-code-bg)","color":"var(--color-accent)","border":"1px solid var(--color-border)"},"children":["#","cursor"]}],["$","$L2","cli",{"href":"/ko/tags/cli","localeCookie":{"name":"NEXT_LOCALE","sameSite":"lax"},"className":"inline-flex items-center rounded-full px-3 py-1 text-sm font-medium transition-colors","style":{"background":"var(--color-code-bg)","color":"var(--color-accent)","border":"1px solid var(--color-border)"},"children":["#","cli"]}],["$","$L2","agent",{"href":"/ko/tags/agent","localeCookie":{"name":"NEXT_LOCALE","sameSite":"lax"},"className":"inline-flex items-center rounded-full px-3 py-1 text-sm font-medium transition-colors","style":{"background":"var(--color-code-bg)","color":"var(--color-accent)","border":"1px solid var(--color-border)"},"children":["#","agent"]}],["$","$L2","plan",{"href":"/ko/tags/plan","localeCookie":{"name":"NEXT_LOCALE","sameSite":"lax"},"className":"inline-flex items-center rounded-full px-3 py-1 text-sm font-medium transition-colors","style":{"background":"var(--color-code-bg)","color":"var(--color-accent)","border":"1px solid var(--color-border)"},"children":["#","plan"]}],["$","$L2","ask",{"href":"/ko/tags/ask","localeCookie":{"name":"NEXT_LOCALE","sameSite":"lax"},"className":"inline-flex items-center rounded-full px-3 py-1 text-sm font-medium transition-colors","style":{"background":"var(--color-code-bg)","color":"var(--color-accent)","border":"1px solid var(--color-border)"},"children":["#","ask"]}]]}],["$","nav",null,{"aria-label":"글 탐색","className":"grid grid-cols-1 gap-4 sm:grid-cols-2","children":[["$","$L2",null,{"href":"/ko/blog/cursor/cli/02-basic-usage","localeCookie":{"name":"NEXT_LOCALE","sameSite":"lax"},"className":"group rounded-lg border p-4 transition-colors hover:border-accent","style":{"borderColor":"var(--color-border)","background":"var(--color-surface)"},"children":[["$","p",null,{"className":"mb-1 text-xs","style":{"color":"var(--color-muted)"},"children":"← 최신 글"}],["$","p",null,{"className":"line-clamp-1 text-sm font-medium transition-colors group-hover:text-accent","style":{"color":"var(--color-text)"},"children":"Cursor CLI 기본 사용법"}]]}],["$","$L2",null,{"href":"/ko/blog/cursor/cli/04-non-interactive","localeCookie":{"name":"NEXT_LOCALE","sameSite":"lax"},"className":"group rounded-lg border p-4 text-right transition-colors hover:border-accent","style":{"borderColor":"var(--color-border)","background":"var(--color-surface)"},"children":[["$","p",null,{"className":"mb-1 text-xs","style":{"color":"var(--color-muted)"},"children":"이전 글 →"}],["$","p",null,{"className":"line-clamp-1 text-sm font-medium transition-colors group-hover:text-accent","style":{"color":"var(--color-text)"},"children":"Cursor CLI 비대화형 모드(스크립트·CI)"}]]}]]}]]}]
+9:T116c,<p>세 모드를 한 문장으로 구분하면: <strong>코드를 만질 수 있는 건 누구고, 말만 할 수 있는 건 누구인지</strong>. 이걸 알면 적절한 모드를 고르기 쉽습니다.</p>
+<h2 id="한-문장-비교">한 문장 비교</h2>
+<table>
+<thead>
+<tr>
+<th>모드</th>
+<th>한 문장</th>
+<th>파일을 수정하나요?</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td><strong>Agent</strong></td>
+<td>“해줘”</td>
+<td>✅ 예</td>
+</tr>
+<tr>
+<td><strong>Plan</strong></td>
+<td>먼저 “계획” 세우고, 내가 승인하면 실행</td>
+<td>아직 아님 — 승인 후에만</td>
+</tr>
+<tr>
+<td><strong>Ask</strong></td>
+<td>“질문”이나 조회만</td>
+<td>❌ 아니요</td>
+</tr>
+</tbody>
+</table>
+<p>세 동료로 비유하면: Agent는 “맡겨, 내가 할게”, Plan은 “먼저 제안서 쓸게 검토해줘”, Ask는 “답만 할게, 파일은 안 건드려” — 맞는 사람을 고르면 고생이 반으로 줄어듭니다.</p>
+<h2 id="agent-모드기본">Agent 모드(기본)</h2>
+<p><strong>용도</strong>: AI가 코드를 직접 수정·기능 추가·리팩터링하게 할 때. 논의보다 결과가 필요할 때.</p>
+<figure data-rehype-pretty-code-figure=""><pre style="background-color:#24292e;color:#e1e4e8" tabindex="0" data-language="bash" data-theme="github-dark"><code data-language="bash" data-theme="github-dark" style="display: grid;"><span data-line=""><span style="color:#B392F0">cursor</span><span style="color:#9ECBFF"> agent</span><span style="color:#9ECBFF"> "Change login to use JWT"</span></span></code></pre></figure>
+<ul>
+<li>파일을 읽고, 수정하고, 명령을 실행할 수 있음</li>
+<li>각 단계를 수락/거절할 수 있음 — 주도권은 당신</li>
+</ul>
+<h2 id="plan-모드">Plan 모드</h2>
+<p><strong>용도</strong>: 접근 방법이 불확실하거나, AI가 한꺼번에 너무 많이 바꿀까 걱정될 때. 승인 전에 계획을 먼저 봄.</p>
+<figure data-rehype-pretty-code-figure=""><pre style="background-color:#24292e;color:#e1e4e8" tabindex="0" data-language="bash" data-theme="github-dark"><code data-language="bash" data-theme="github-dark" style="display: grid;"><span data-line=""><span style="color:#B392F0">cursor</span><span style="color:#9ECBFF"> agent</span><span style="color:#79B8FF"> --plan</span><span style="color:#9ECBFF"> "Refactor the entire API layer"</span></span></code></pre></figure>
+<ul>
+<li>AI가 질문하고 접근 방식을 제안함</li>
+<li>동의한 경우에만 실행 — 예상 밖 변경 없음</li>
+</ul>
+<p><strong>언제 쓸지</strong>: 대규모 변경이나 “커밋 전에 명확히 보고 싶을 때”.</p>
+<h2 id="ask-모드읽기-전용">Ask 모드(읽기 전용)</h2>
+<p><strong>용도</strong>: “이 코드가 뭐 하는 거지?” “더 나은 방법 있을까?”만 물어보고, <strong>파일은 절대 바꾸고 싶지 않을</strong> 때.</p>
+<figure data-rehype-pretty-code-figure=""><pre style="background-color:#24292e;color:#e1e4e8" tabindex="0" data-language="bash" data-theme="github-dark"><code data-language="bash" data-theme="github-dark" style="display: grid;"><span data-line=""><span style="color:#B392F0">cursor</span><span style="color:#9ECBFF"> ask</span><span style="color:#9ECBFF"> "What is the logic in src/auth.ts?"</span></span></code></pre></figure>
+<ul>
+<li>읽기·분석·답변만 — 쓰기는 하지 않음</li>
+<li>CI나 “수정 없이 검사만 하고 싶은” 환경에 적합</li>
+</ul>
+<h2 id="대화-중-모드-전환">대화 중 모드 전환</h2>
+<p>이미 <code>cursor agent</code> 대화 중이라면 <strong>슬래시 명령</strong>으로 즉시 전환할 수 있습니다:</p>
+<ul>
+<li><code>/plan</code> → Plan 모드(계획 먼저, 실행 나중)</li>
+<li><code>/ask</code> → Ask 모드(읽기 전용, 자유롭게 질문)</li>
+</ul>
+<p>종료하고 다시 시작할 필요 없습니다. 달리다가 기어만 바꾸는 것과 같습니다.</p>
+<h2 id="요약">요약</h2>
+<ul>
+<li><strong>Agent</strong>: 실행하고 파일 수정 — 결과가 필요할 때</li>
+<li><strong>Plan</strong>: 먼저 계획, 승인 후 실행 — 안전하게 진행하고 싶을 때</li>
+<li><strong>Ask</strong>: 질문만, 읽기 전용 — 변경 없이 답만 필요할 때</li>
+</ul>
+<blockquote>
+<p>다음: <a href="04-non-interactive">04-non-interactive</a> — 스크립트·CI용 비대화형 모드, AI를 무인으로 실행</p>
+</blockquote>5:["$","aside",null,{"className":"hidden lg:block","children":["$","$L8",null,{"html":"$9"}]}]
+6:["$","script","script-0",{"src":"/_next/static/chunks/2dddb3bc05093f69.js","async":true}]
+7:["$","$La",null,{"children":["$","$b",null,{"name":"Next.MetadataOutlet","children":"$@c"}]}]
+c:null

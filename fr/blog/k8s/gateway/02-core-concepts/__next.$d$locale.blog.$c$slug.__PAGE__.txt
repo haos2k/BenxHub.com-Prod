@@ -1,0 +1,517 @@
+1:"$Sreact.fragment"
+2:I[14864,["/_next/static/chunks/7923a261b80bb6e1.js","/_next/static/chunks/e09b4358027e8033.js","/_next/static/chunks/2dddb3bc05093f69.js"],"default"]
+c:I[24801,["/_next/static/chunks/7923a261b80bb6e1.js","/_next/static/chunks/e09b4358027e8033.js","/_next/static/chunks/2dddb3bc05093f69.js"],"default"]
+e:I[50183,["/_next/static/chunks/5a5b5b13c22d14f7.js","/_next/static/chunks/a484d1d3dd4b55ab.js"],"OutletBoundary"]
+f:"$Sreact.suspense"
+0:{"buildId":"Yck3R4ooQxWkwGLT6is1X","rsc":["$","$1","c",{"children":[[["$","script",null,{"type":"application/ld+json","dangerouslySetInnerHTML":{"__html":"{\"@context\":\"https://schema.org\",\"@type\":\"Article\",\"headline\":\"Concepts de base d'Envoy Gateway : Gateway, Listener, Proxy et la famille Route expliqués\",\"description\":\"Construire un modèle mental complet d'Envoy Gateway : comprendre les responsabilités de Gateway, Listener, Envoy Proxy et de chaque type de Route.\",\"url\":\"https://benxhub.com/fr/blog/k8s/gateway/02-core-concepts\",\"mainEntityOfPage\":{\"@type\":\"WebPage\",\"@id\":\"https://benxhub.com/fr/blog/k8s/gateway/02-core-concepts\"},\"datePublished\":\"2026-03-10T00:00:00.000Z\",\"dateModified\":\"2026-03-10T00:00:00.000Z\",\"keywords\":\"kubernetes, envoy-gateway, gateway-api, gatewayclass, listener, httproute, grpcroute\",\"inLanguage\":\"fr\",\"author\":{\"@type\":\"Person\",\"name\":\"BenX\",\"url\":\"https://benxhub.com\"},\"publisher\":{\"@type\":\"Organization\",\"name\":\"BenXHub Blog\",\"url\":\"https://benxhub.com\"}}"}}],["$","div",null,{"className":"mx-auto max-w-6xl px-4 py-12 sm:px-6","children":["$","div",null,{"className":"lg:grid lg:grid-cols-[1fr_240px] lg:gap-14","children":[["$","article",null,{"children":[["$","header",null,{"className":"mb-10","children":[["$","div",null,{"className":"mb-4 flex flex-wrap gap-2","children":[["$","$L2","kubernetes",{"href":"/fr/tags/kubernetes","localeCookie":{"name":"NEXT_LOCALE","sameSite":"lax"},"className":"inline-flex items-center rounded-full px-2.5 py-0.5 text-xs font-medium transition-colors","style":{"background":"var(--color-code-bg)","color":"var(--color-accent)","border":"1px solid var(--color-border)"},"children":["#","kubernetes"]}],["$","$L2","envoy-gateway",{"href":"/fr/tags/envoy-gateway","localeCookie":{"name":"NEXT_LOCALE","sameSite":"lax"},"className":"inline-flex items-center rounded-full px-2.5 py-0.5 text-xs font-medium transition-colors","style":{"background":"var(--color-code-bg)","color":"var(--color-accent)","border":"1px solid var(--color-border)"},"children":["#","envoy-gateway"]}],["$","$L2","gateway-api",{"href":"/fr/tags/gateway-api","localeCookie":{"name":"NEXT_LOCALE","sameSite":"lax"},"className":"inline-flex items-center rounded-full px-2.5 py-0.5 text-xs font-medium transition-colors","style":{"background":"var(--color-code-bg)","color":"var(--color-accent)","border":"1px solid var(--color-border)"},"children":["#","gateway-api"]}],["$","$L2","gatewayclass",{"href":"/fr/tags/gatewayclass","localeCookie":{"name":"NEXT_LOCALE","sameSite":"lax"},"className":"inline-flex items-center rounded-full px-2.5 py-0.5 text-xs font-medium transition-colors","style":{"background":"var(--color-code-bg)","color":"var(--color-accent)","border":"1px solid var(--color-border)"},"children":["#","gatewayclass"]}],["$","$L2","listener",{"href":"/fr/tags/listener","localeCookie":{"name":"NEXT_LOCALE","sameSite":"lax"},"className":"inline-flex items-center rounded-full px-2.5 py-0.5 text-xs font-medium transition-colors","style":{"background":"var(--color-code-bg)","color":"var(--color-accent)","border":"1px solid var(--color-border)"},"children":["#","listener"]}],["$","$L2","httproute",{"href":"/fr/tags/httproute","localeCookie":{"name":"NEXT_LOCALE","sameSite":"lax"},"className":"inline-flex items-center rounded-full px-2.5 py-0.5 text-xs font-medium transition-colors","style":{"background":"var(--color-code-bg)","color":"var(--color-accent)","border":"1px solid var(--color-border)"},"children":["#","httproute"]}],["$","$L2","grpcroute",{"href":"/fr/tags/grpcroute","localeCookie":{"name":"NEXT_LOCALE","sameSite":"lax"},"className":"inline-flex items-center rounded-full px-2.5 py-0.5 text-xs font-medium transition-colors","style":{"background":"var(--color-code-bg)","color":"var(--color-accent)","border":"1px solid var(--color-border)"},"children":["#","grpcroute"]}]]}],"$L3","$L4","$undefined","$L5"]}],"$L6","$L7"]}],"$L8"]}]}]],["$L9"],"$La"]}],"loading":null,"isPartial":false}
+3:["$","h1",null,{"className":"mb-4 text-3xl leading-snug font-bold tracking-tight sm:text-4xl","style":{"color":"var(--color-text)"},"children":"Concepts de base d'Envoy Gateway : Gateway, Listener, Proxy et la famille Route expliqués"}]
+4:["$","div",null,{"className":"flex flex-wrap items-center gap-3 text-sm","style":{"color":"var(--color-muted)"},"children":[["$","time",null,{"dateTime":"2026-03-10","children":"10 mars 2026"}],["$","span",null,{"aria-hidden":"true","children":"·"}],["$","span",null,{"children":"9 min read"}]]}]
+5:["$","div",null,{"className":"mt-6 border-b","style":{"borderColor":"var(--color-border)"}}]
+b:T5583,<p>La première impression de beaucoup de gens face à Gateway API ressemble à ceci : "Il n'y a pas tant de termes que ça, mais mon cerveau a l'impression de regarder une liste d'acteurs avec des noms trop similaires : impossible de savoir qui est le protagoniste et qui est le second rôle." Cet article est là pour dissiper cette confusion, tout en couvrant les types de routes les plus courants.</p>
+<h2 id="larchitecture-globale">L'architecture globale</h2>
+<p>Les concepts officiels d'Envoy Gateway découpent le système en trois couches :</p>
+<ul>
+<li><strong>User Configuration</strong> : les ressources <code>Gateway API</code> et les CRD d'extension Envoy Gateway que vous écrivez</li>
+<li><strong>Envoy Gateway Controller</strong> : lit les ressources, les valide et traduit la configuration</li>
+<li><strong>Envoy Proxy</strong> : le plan de données qui gère réellement le trafic</li>
+</ul>
+<p>Autrement dit, ce que vous modifiez d'habitude n'est pas Envoy Proxy lui-même : vous êtes en train de "déclarer ce que vous voulez".
+Envoy Gateway traduit ensuite ces déclarations en configuration qu'Envoy Proxy peut exécuter. C'est ce qui rend l'approche plus agréable que l'écriture manuelle d'une configuration proxy.</p>
+<h2 id="les-rôles-clés">Les rôles clés</h2>
+<p>Pour l'instant, retenez simplement ceci :</p>
+<ul>
+<li><code>GatewayClass</code> : définit "quelle implémentation de Gateway utiliser dans ce cluster"</li>
+<li><code>Gateway</code> : définit "où se trouve l'entrée et quel protocole elle parle"</li>
+<li><code>Listener</code> : définit un point d'entrée précis par port/protocole/hostname</li>
+<li><code>Route</code> : définit "quelles requêtes vont vers quel Service"</li>
+<li><code>Envoy Proxy</code> : le véritable Gateway Proxy qui reçoit et transfère le trafic</li>
+</ul>
+<p>En français courant :</p>
+<ul>
+<li><code>GatewayClass</code> est la fiche technique</li>
+<li><code>Gateway</code> est l'entrée principale du bâtiment</li>
+<li><code>Listener</code> est le bureau d'accueil</li>
+<li><code>Route</code> est la signalétique à l'intérieur du bâtiment</li>
+<li><code>Envoy Proxy</code> est le système de sécurité qui contrôle l'accès et escorte les gens</li>
+</ul>
+<p>S'il en manque un seul, le trafic n'ira pas là où vous voulez.</p>
+<h2 id="un-yaml-minimal-qui-montre-toute-limage">Un YAML minimal qui montre toute l'image</h2>
+<p>Voici le plus petit exemple réellement compréhensible :</p>
+<figure data-rehype-pretty-code-figure=""><pre style="background-color:#24292e;color:#e1e4e8" tabindex="0" data-language="yaml" data-theme="github-dark"><code data-language="yaml" data-theme="github-dark" style="display: grid;"><span data-line=""><span style="color:#85E89D">apiVersion</span><span style="color:#E1E4E8">: </span><span style="color:#9ECBFF">gateway.networking.k8s.io/v1</span></span>
+<span data-line=""><span style="color:#85E89D">kind</span><span style="color:#E1E4E8">: </span><span style="color:#9ECBFF">GatewayClass</span></span>
+<span data-line=""><span style="color:#85E89D">metadata</span><span style="color:#E1E4E8">:</span></span>
+<span data-line=""><span style="color:#85E89D">  name</span><span style="color:#E1E4E8">: </span><span style="color:#9ECBFF">eg</span></span>
+<span data-line=""><span style="color:#85E89D">spec</span><span style="color:#E1E4E8">:</span></span>
+<span data-line=""><span style="color:#85E89D">  controllerName</span><span style="color:#E1E4E8">: </span><span style="color:#9ECBFF">gateway.envoyproxy.io/gatewayclass-controller</span></span>
+<span data-line=""><span style="color:#B392F0">---</span></span>
+<span data-line=""><span style="color:#85E89D">apiVersion</span><span style="color:#E1E4E8">: </span><span style="color:#9ECBFF">gateway.networking.k8s.io/v1</span></span>
+<span data-line=""><span style="color:#85E89D">kind</span><span style="color:#E1E4E8">: </span><span style="color:#9ECBFF">Gateway</span></span>
+<span data-line=""><span style="color:#85E89D">metadata</span><span style="color:#E1E4E8">:</span></span>
+<span data-line=""><span style="color:#85E89D">  name</span><span style="color:#E1E4E8">: </span><span style="color:#9ECBFF">eg</span></span>
+<span data-line=""><span style="color:#85E89D">spec</span><span style="color:#E1E4E8">:</span></span>
+<span data-line=""><span style="color:#85E89D">  gatewayClassName</span><span style="color:#E1E4E8">: </span><span style="color:#9ECBFF">eg</span></span>
+<span data-line=""><span style="color:#85E89D">  listeners</span><span style="color:#E1E4E8">:</span></span>
+<span data-line=""><span style="color:#E1E4E8">    - </span><span style="color:#85E89D">name</span><span style="color:#E1E4E8">: </span><span style="color:#9ECBFF">http</span></span>
+<span data-line=""><span style="color:#85E89D">      protocol</span><span style="color:#E1E4E8">: </span><span style="color:#9ECBFF">HTTP</span></span>
+<span data-line=""><span style="color:#85E89D">      port</span><span style="color:#E1E4E8">: </span><span style="color:#79B8FF">80</span></span>
+<span data-line=""><span style="color:#B392F0">---</span></span>
+<span data-line=""><span style="color:#85E89D">apiVersion</span><span style="color:#E1E4E8">: </span><span style="color:#9ECBFF">gateway.networking.k8s.io/v1</span></span>
+<span data-line=""><span style="color:#85E89D">kind</span><span style="color:#E1E4E8">: </span><span style="color:#9ECBFF">HTTPRoute</span></span>
+<span data-line=""><span style="color:#85E89D">metadata</span><span style="color:#E1E4E8">:</span></span>
+<span data-line=""><span style="color:#85E89D">  name</span><span style="color:#E1E4E8">: </span><span style="color:#9ECBFF">backend</span></span>
+<span data-line=""><span style="color:#85E89D">spec</span><span style="color:#E1E4E8">:</span></span>
+<span data-line=""><span style="color:#85E89D">  parentRefs</span><span style="color:#E1E4E8">:</span></span>
+<span data-line=""><span style="color:#E1E4E8">    - </span><span style="color:#85E89D">name</span><span style="color:#E1E4E8">: </span><span style="color:#9ECBFF">eg</span></span>
+<span data-line=""><span style="color:#85E89D">  hostnames</span><span style="color:#E1E4E8">:</span></span>
+<span data-line=""><span style="color:#E1E4E8">    - </span><span style="color:#9ECBFF">"www.example.com"</span></span>
+<span data-line=""><span style="color:#85E89D">  rules</span><span style="color:#E1E4E8">:</span></span>
+<span data-line=""><span style="color:#E1E4E8">    - </span><span style="color:#85E89D">backendRefs</span><span style="color:#E1E4E8">:</span></span>
+<span data-line=""><span style="color:#E1E4E8">        - </span><span style="color:#85E89D">name</span><span style="color:#E1E4E8">: </span><span style="color:#9ECBFF">backend</span></span>
+<span data-line=""><span style="color:#85E89D">          port</span><span style="color:#E1E4E8">: </span><span style="color:#79B8FF">3000</span></span></code></pre></figure>
+<p>Assemblé, le raisonnement est :</p>
+<ol>
+<li><code>GatewayClass</code> dit que le contrôleur <code>Envoy Gateway</code> est responsable</li>
+<li><code>Gateway</code> déclare une entrée HTTP sur le port <code>80</code></li>
+<li><code>HTTPRoute</code> dit que les requêtes vers <code>www.example.com</code> doivent aller vers <code>backend:3000</code></li>
+<li><code>Envoy Gateway</code> traduit tout cela pour <code>Envoy Proxy</code></li>
+</ol>
+<h2 id="comprendre-chaque-champ">Comprendre chaque champ</h2>
+<h3 id="gatewayclass"><code>GatewayClass</code></h3>
+<p>Il s'agit d'une définition de type d'entrée au niveau du cluster. Le champ le plus critique est généralement :</p>
+<figure data-rehype-pretty-code-figure=""><pre style="background-color:#24292e;color:#e1e4e8" tabindex="0" data-language="yaml" data-theme="github-dark"><code data-language="yaml" data-theme="github-dark" style="display: grid;"><span data-line=""><span style="color:#85E89D">spec</span><span style="color:#E1E4E8">:</span></span>
+<span data-line=""><span style="color:#85E89D">  controllerName</span><span style="color:#E1E4E8">: </span><span style="color:#9ECBFF">gateway.envoyproxy.io/gatewayclass-controller</span></span></code></pre></figure>
+<p>Cela signifie simplement :
+"Ce <code>GatewayClass</code> est géré par le contrôleur Envoy Gateway."</p>
+<p>Si le controllerName ne correspond pas, c'est comme commander une livraison à la mauvaise entreprise : personne ne vient la récupérer.</p>
+<h3 id="gateway"><code>Gateway</code></h3>
+<p>Cela définit "à quoi ressemble l'entrée". Le champ le plus souvent consulté est <code>listeners</code> :</p>
+<figure data-rehype-pretty-code-figure=""><pre style="background-color:#24292e;color:#e1e4e8" tabindex="0" data-language="yaml" data-theme="github-dark"><code data-language="yaml" data-theme="github-dark" style="display: grid;"><span data-line=""><span style="color:#85E89D">listeners</span><span style="color:#E1E4E8">:</span></span>
+<span data-line=""><span style="color:#E1E4E8">  - </span><span style="color:#85E89D">name</span><span style="color:#E1E4E8">: </span><span style="color:#9ECBFF">http</span></span>
+<span data-line=""><span style="color:#85E89D">    protocol</span><span style="color:#E1E4E8">: </span><span style="color:#9ECBFF">HTTP</span></span>
+<span data-line=""><span style="color:#85E89D">    port</span><span style="color:#E1E4E8">: </span><span style="color:#79B8FF">80</span></span></code></pre></figure>
+<p>Cela signifie :</p>
+<ul>
+<li>Ouvrir un listener nommé <code>http</code></li>
+<li>Accepter du trafic HTTP</li>
+<li>Écouter à l'extérieur sur le port <code>80</code></li>
+</ul>
+<p>Pour HTTPS, vous ajouteriez généralement un autre listener avec <code>protocol: HTTPS</code> et une configuration TLS associée.</p>
+<p><code>Gateway</code> gère généralement :</p>
+<ul>
+<li>Le port externe et le protocole</li>
+<li>Le hostname par listener</li>
+<li>L'endroit où la terminaison TLS se produit</li>
+<li>Quels namespaces peuvent attacher leurs routes</li>
+</ul>
+<p><code>Gateway</code> relève davantage de la couche plateforme : sa responsabilité appartient généralement à l'équipe plateforme.</p>
+<h3 id="listener"><code>Listener</code></h3>
+<p>C'est le rôle que les débutants négligent le plus souvent, alors qu'il est en réalité crucial.</p>
+<p>Un <code>listener</code> est un point d'entrée exposé vers l'extérieur sur le Gateway. Il définit :</p>
+<ul>
+<li><code>name</code></li>
+<li><code>port</code></li>
+<li><code>protocol</code></li>
+<li><code>hostname</code></li>
+<li><code>tls</code></li>
+<li><code>allowedRoutes</code></li>
+</ul>
+<p>Exemple :</p>
+<figure data-rehype-pretty-code-figure=""><pre style="background-color:#24292e;color:#e1e4e8" tabindex="0" data-language="yaml" data-theme="github-dark"><code data-language="yaml" data-theme="github-dark" style="display: grid;"><span data-line=""><span style="color:#85E89D">listeners</span><span style="color:#E1E4E8">:</span></span>
+<span data-line=""><span style="color:#E1E4E8">  - </span><span style="color:#85E89D">name</span><span style="color:#E1E4E8">: </span><span style="color:#9ECBFF">https</span></span>
+<span data-line=""><span style="color:#85E89D">    protocol</span><span style="color:#E1E4E8">: </span><span style="color:#9ECBFF">HTTPS</span></span>
+<span data-line=""><span style="color:#85E89D">    port</span><span style="color:#E1E4E8">: </span><span style="color:#79B8FF">443</span></span>
+<span data-line=""><span style="color:#85E89D">    hostname</span><span style="color:#E1E4E8">: </span><span style="color:#9ECBFF">api.example.com</span></span></code></pre></figure>
+<p>Cela signifie :</p>
+<ul>
+<li>Ce point s'appelle <code>https</code></li>
+<li>Il accepte HTTPS</li>
+<li>Il écoute sur le port <code>443</code></li>
+<li>Il est dédié à <code>api.example.com</code></li>
+</ul>
+<p>Si vous avez plusieurs listeners comme :</p>
+<ul>
+<li><code>http</code> pour le port 80</li>
+<li><code>https</code> pour le port 443</li>
+<li><code>grpc</code> pour le port 50051</li>
+</ul>
+<p>Alors vous ouvrez plusieurs points d'entrée sur le même Gateway, chacun pouvant accueillir des routes différentes.</p>
+<h3 id="envoy-proxy"><code>Envoy Proxy</code></h3>
+<p>Beaucoup de gens se concentrent uniquement sur le YAML et oublient que c'est <code>Envoy Proxy</code> qui traite réellement le trafic vivant.</p>
+<p>Son rôle est :</p>
+<ul>
+<li>Recevoir les requêtes clientes</li>
+<li>Faire le matching avec la configuration poussée par Envoy Gateway</li>
+<li>Transférer le trafic vers le backend approprié</li>
+<li>Gérer TLS, headers, timeouts, retries et autres comportements du plan de données</li>
+</ul>
+<p>Voyez donc Envoy Gateway comme le "plan de contrôle", et Envoy Proxy comme le "plan de données / Gateway Proxy".</p>
+<h3 id="la-famille-route">La famille Route</h3>
+<p><code>Route</code>, ce n'est pas seulement <code>HTTPRoute</code>. Toute la famille est au coeur de la conception de Gateway API.</p>
+<h4 id="httproute"><code>HTTPRoute</code></h4>
+<p>C'est celui que vous écrirez et modifierez le plus souvent. Trois champs clés :</p>
+<figure data-rehype-pretty-code-figure=""><pre style="background-color:#24292e;color:#e1e4e8" tabindex="0" data-language="yaml" data-theme="github-dark"><code data-language="yaml" data-theme="github-dark" style="display: grid;"><span data-line=""><span style="color:#85E89D">spec</span><span style="color:#E1E4E8">:</span></span>
+<span data-line=""><span style="color:#85E89D">  parentRefs</span><span style="color:#E1E4E8">:</span></span>
+<span data-line=""><span style="color:#E1E4E8">    - </span><span style="color:#85E89D">name</span><span style="color:#E1E4E8">: </span><span style="color:#9ECBFF">eg</span></span>
+<span data-line=""><span style="color:#85E89D">  hostnames</span><span style="color:#E1E4E8">:</span></span>
+<span data-line=""><span style="color:#E1E4E8">    - </span><span style="color:#9ECBFF">"www.example.com"</span></span>
+<span data-line=""><span style="color:#85E89D">  rules</span><span style="color:#E1E4E8">:</span></span>
+<span data-line=""><span style="color:#E1E4E8">    - </span><span style="color:#85E89D">backendRefs</span><span style="color:#E1E4E8">:</span></span>
+<span data-line=""><span style="color:#E1E4E8">        - </span><span style="color:#85E89D">name</span><span style="color:#E1E4E8">: </span><span style="color:#9ECBFF">backend</span></span>
+<span data-line=""><span style="color:#85E89D">          port</span><span style="color:#E1E4E8">: </span><span style="color:#79B8FF">3000</span></span></code></pre></figure>
+<ul>
+<li><code>parentRefs</code> : à quel Gateway s'attacher</li>
+<li><code>hostnames</code> : quel header Host déclenche cette règle</li>
+<li><code>backendRefs</code> : où envoyer les requêtes correspondantes</li>
+</ul>
+<p>La confusion la plus fréquente : <code>Gateway</code> n'est pas l'endroit où vous écrivez le routage fin, c'est <code>HTTPRoute</code> qui décide réellement "comment répartir le trafic".</p>
+<h4 id="grpcroute"><code>GRPCRoute</code></h4>
+<p>Si vous gérez du gRPC, <code>GRPCRoute</code> est plus naturel que de forcer cela dans <code>HTTPRoute</code>.</p>
+<p>Il peut faire du matching sur :</p>
+<ul>
+<li>Le hostname gRPC</li>
+<li>Le service gRPC</li>
+<li>La méthode gRPC</li>
+<li>Les headers</li>
+</ul>
+<p>Exemple :</p>
+<figure data-rehype-pretty-code-figure=""><pre style="background-color:#24292e;color:#e1e4e8" tabindex="0" data-language="yaml" data-theme="github-dark"><code data-language="yaml" data-theme="github-dark" style="display: grid;"><span data-line=""><span style="color:#85E89D">matches</span><span style="color:#E1E4E8">:</span></span>
+<span data-line=""><span style="color:#E1E4E8">  - </span><span style="color:#85E89D">method</span><span style="color:#E1E4E8">:</span></span>
+<span data-line=""><span style="color:#85E89D">      service</span><span style="color:#E1E4E8">: </span><span style="color:#9ECBFF">com.example.User</span></span>
+<span data-line=""><span style="color:#85E89D">      method</span><span style="color:#E1E4E8">: </span><span style="color:#9ECBFF">Login</span></span></code></pre></figure>
+<p>Cette sémantique s'aligne naturellement avec gRPC : vous ne faites pas seulement du matching sur des chemins d'URL, vous matchez directement sur le modèle service/method de gRPC.</p>
+<p>La documentation officielle précise aussi que si <code>GRPCRoute</code> et <code>HTTPRoute</code> partagent le même listener avec des hostnames en conflit, l'implémentation doit en rejeter un. En gros, ne laissez pas HTTP et gRPC se battre pour le même hostname.</p>
+<h4 id="tcproute"><code>TCPRoute</code></h4>
+<p><code>TCPRoute</code> gère le trafic TCP brut.
+Contrairement à <code>HTTPRoute</code>, il ne comprend pas les notions L7 comme les chemins ou les headers ; il est plus proche d'un forwarding L4.</p>
+<p>Scénarios adaptés :</p>
+<ul>
+<li>Services avec protocole non HTTP</li>
+<li>Services TCP purs</li>
+<li>Routage des connexions vers différents backends uniquement selon le port du listener</li>
+</ul>
+<p>Les bases de données utilisant des protocoles personnalisés ou des protocoles TCP propriétaires sont des cas d'usage typiques de <code>TCPRoute</code>.</p>
+<h4 id="tlsroute"><code>TLSRoute</code></h4>
+<p><code>TLSRoute</code> gère le trafic TLS et apparaît particulièrement souvent dans les scénarios de <strong>TLS passthrough</strong>.</p>
+<p>Concept central :</p>
+<ul>
+<li>Le Gateway ne termine pas forcément TLS</li>
+<li>Il peut router le trafic uniquement à partir du hostname SNI dans la négociation TLS</li>
+<li>Le trafic chiffré est conservé jusqu'au backend</li>
+</ul>
+<p>C'est important pour les scénarios qui exigent un chiffrement de bout en bout, ou quand vous ne voulez pas terminer TLS au niveau du Gateway.</p>
+<h2 id="comment-choisir-un-type-de-route">Comment choisir un type de route</h2>
+<table>
+<thead>
+<tr>
+<th>Besoin</th>
+<th>Utiliser ceci</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td>Sites web, API REST, trafic web général</td>
+<td><code>HTTPRoute</code></td>
+</tr>
+<tr>
+<td>Routage par service/method gRPC</td>
+<td><code>GRPCRoute</code></td>
+</tr>
+<tr>
+<td>Trafic TCP brut</td>
+<td><code>TCPRoute</code></td>
+</tr>
+<tr>
+<td>TLS passthrough / routage basé sur SNI</td>
+<td><code>TLSRoute</code></td>
+</tr>
+</tbody>
+</table>
+<p>Ce tableau compte beaucoup, car beaucoup de gens écrivent instinctivement <code>HTTPRoute</code> pour tout. Mais si vous traitez en réalité du gRPC ou du TCP, le forcer dans <code>HTTPRoute</code> ne fait que rendre le YAML de plus en plus maladroit.</p>
+<h2 id="pourquoi-les-routes-sont-plus-faciles-à-raisonner-quingress">Pourquoi les routes sont plus faciles à raisonner qu'Ingress</h2>
+<p>Les anciennes configurations Ingress entassaient souvent trop de responsabilités dans une seule ressource, ce qui menait à des douleurs récurrentes :</p>
+<ul>
+<li>Mélange entre configuration plateforme et routage applicatif</li>
+<li>Fonctions avancées exprimées via des annotations peu lisibles</li>
+<li>Expressivité limitée pour les protocoles non HTTP</li>
+</ul>
+<p>L'approche de Gateway API consiste à séparer les responsabilités :</p>
+<ul>
+<li>Les équipes plateforme gèrent <code>GatewayClass</code> / <code>Gateway</code></li>
+<li>Les équipes applicatives gèrent leur propre <code>HTTPRoute</code></li>
+</ul>
+<p>Cette séparation fonctionne bien pour la collaboration à plusieurs. Vous n'avez pas besoin de toucher toute la couche d'entrée juste pour changer un chemin, et le taux de "les équipes se marchent dessus" baisse fortement.</p>
+<h2 id="commencez-à-prêter-attention-au-status">Commencez à prêter attention au status</h2>
+<p>Au-delà de <code>spec</code>, prenez progressivement l'habitude de vérifier <code>status</code>. En particulier pour <code>HTTPRoute</code> et <code>Gateway</code> :</p>
+<figure data-rehype-pretty-code-figure=""><pre style="background-color:#24292e;color:#e1e4e8" tabindex="0" data-language="bash" data-theme="github-dark"><code data-language="bash" data-theme="github-dark" style="display: grid;"><span data-line=""><span style="color:#B392F0">kubectl</span><span style="color:#9ECBFF"> get</span><span style="color:#9ECBFF"> gateway</span><span style="color:#9ECBFF"> eg</span><span style="color:#79B8FF"> -o</span><span style="color:#9ECBFF"> yaml</span></span>
+<span data-line=""><span style="color:#B392F0">kubectl</span><span style="color:#9ECBFF"> get</span><span style="color:#9ECBFF"> httproute</span><span style="color:#9ECBFF"> backend</span><span style="color:#79B8FF"> -o</span><span style="color:#9ECBFF"> yaml</span></span></code></pre></figure>
+<p>Commencez par regarder :</p>
+<ul>
+<li>Si la route a été <code>Accepted</code></li>
+<li>Si le listener du gateway est Ready</li>
+<li>Si une adresse a été attribuée avec succès</li>
+</ul>
+<p>C'est comme vérifier le résultat d'un examen. Ne vérifiez pas seulement que vous avez rendu votre copie ; vérifiez qu'elle a été corrigée et validée.</p>
+<h2 id="résumé-en-une-ligne">Résumé en une ligne</h2>
+<p>Pensez à <code>GatewayClass</code>, <code>Gateway</code>, <code>Listener</code>, <code>Route</code> et <code>Envoy Proxy</code> comme à "qui gère, comment l'entrée s'ouvre, comment chaque point d'entrée se connecte, comment le trafic se répartit et qui l'exécute" — et vous avez déjà saisi 80 % des concepts de base.</p>
+<blockquote>
+<p>💡 Les débutants plongent souvent directement dans les détails des CRD. Ne vous pressez pas : mettez d'abord ces rôles au clair, et le YAML cessera de donner l'impression de rencontrer des inconnus à chaque fois.</p>
+</blockquote>
+<h2 id="étape-suivante">Étape suivante</h2>
+<p>Maintenant que les concepts sont en place, l'article suivant se concentre sur les scénarios de routage HTTP les plus courants — hôte, chemin, header et répartition de trafic :
+👉 <a href="03-http-routing">Routage HTTP en pratique</a></p>6:["$","div",null,{"className":"prose","dangerouslySetInnerHTML":{"__html":"$b"}}]
+7:["$","footer",null,{"className":"mt-14 border-t pt-8","style":{"borderColor":"var(--color-border)"},"children":[["$","div",null,{"className":"mb-8 flex flex-wrap gap-2","children":[["$","$L2","kubernetes",{"href":"/fr/tags/kubernetes","localeCookie":{"name":"NEXT_LOCALE","sameSite":"lax"},"className":"inline-flex items-center rounded-full px-3 py-1 text-sm font-medium transition-colors","style":{"background":"var(--color-code-bg)","color":"var(--color-accent)","border":"1px solid var(--color-border)"},"children":["#","kubernetes"]}],["$","$L2","envoy-gateway",{"href":"/fr/tags/envoy-gateway","localeCookie":{"name":"NEXT_LOCALE","sameSite":"lax"},"className":"inline-flex items-center rounded-full px-3 py-1 text-sm font-medium transition-colors","style":{"background":"var(--color-code-bg)","color":"var(--color-accent)","border":"1px solid var(--color-border)"},"children":["#","envoy-gateway"]}],["$","$L2","gateway-api",{"href":"/fr/tags/gateway-api","localeCookie":{"name":"NEXT_LOCALE","sameSite":"lax"},"className":"inline-flex items-center rounded-full px-3 py-1 text-sm font-medium transition-colors","style":{"background":"var(--color-code-bg)","color":"var(--color-accent)","border":"1px solid var(--color-border)"},"children":["#","gateway-api"]}],["$","$L2","gatewayclass",{"href":"/fr/tags/gatewayclass","localeCookie":{"name":"NEXT_LOCALE","sameSite":"lax"},"className":"inline-flex items-center rounded-full px-3 py-1 text-sm font-medium transition-colors","style":{"background":"var(--color-code-bg)","color":"var(--color-accent)","border":"1px solid var(--color-border)"},"children":["#","gatewayclass"]}],["$","$L2","listener",{"href":"/fr/tags/listener","localeCookie":{"name":"NEXT_LOCALE","sameSite":"lax"},"className":"inline-flex items-center rounded-full px-3 py-1 text-sm font-medium transition-colors","style":{"background":"var(--color-code-bg)","color":"var(--color-accent)","border":"1px solid var(--color-border)"},"children":["#","listener"]}],["$","$L2","httproute",{"href":"/fr/tags/httproute","localeCookie":{"name":"NEXT_LOCALE","sameSite":"lax"},"className":"inline-flex items-center rounded-full px-3 py-1 text-sm font-medium transition-colors","style":{"background":"var(--color-code-bg)","color":"var(--color-accent)","border":"1px solid var(--color-border)"},"children":["#","httproute"]}],["$","$L2","grpcroute",{"href":"/fr/tags/grpcroute","localeCookie":{"name":"NEXT_LOCALE","sameSite":"lax"},"className":"inline-flex items-center rounded-full px-3 py-1 text-sm font-medium transition-colors","style":{"background":"var(--color-code-bg)","color":"var(--color-accent)","border":"1px solid var(--color-border)"},"children":["#","grpcroute"]}]]}],["$","nav",null,{"aria-label":"Navigation des articles","className":"grid grid-cols-1 gap-4 sm:grid-cols-2","children":[["$","$L2",null,{"href":"/fr/blog/k8s/gateway/01-quick-start","localeCookie":{"name":"NEXT_LOCALE","sameSite":"lax"},"className":"group rounded-lg border p-4 transition-colors hover:border-accent","style":{"borderColor":"var(--color-border)","background":"var(--color-surface)"},"children":[["$","p",null,{"className":"mb-1 text-xs","style":{"color":"var(--color-muted)"},"children":"← Plus récent"}],["$","p",null,{"className":"line-clamp-1 text-sm font-medium transition-colors group-hover:text-accent","style":{"color":"var(--color-text)"},"children":"Démarrage rapide d'Envoy Gateway : faites passer votre première requête en 10 minutes"}]]}],["$","$L2",null,{"href":"/fr/blog/k8s/gateway/03-http-routing","localeCookie":{"name":"NEXT_LOCALE","sameSite":"lax"},"className":"group rounded-lg border p-4 text-right transition-colors hover:border-accent","style":{"borderColor":"var(--color-border)","background":"var(--color-surface)"},"children":[["$","p",null,{"className":"mb-1 text-xs","style":{"color":"var(--color-muted)"},"children":"Plus ancien →"}],["$","p",null,{"className":"line-clamp-1 text-sm font-medium transition-colors group-hover:text-accent","style":{"color":"var(--color-text)"},"children":"Routage HTTP avec Envoy Gateway en pratique : host, path, header et répartition du trafic"}]]}]]}]]}]
+d:T5583,<p>La première impression de beaucoup de gens face à Gateway API ressemble à ceci : "Il n'y a pas tant de termes que ça, mais mon cerveau a l'impression de regarder une liste d'acteurs avec des noms trop similaires : impossible de savoir qui est le protagoniste et qui est le second rôle." Cet article est là pour dissiper cette confusion, tout en couvrant les types de routes les plus courants.</p>
+<h2 id="larchitecture-globale">L'architecture globale</h2>
+<p>Les concepts officiels d'Envoy Gateway découpent le système en trois couches :</p>
+<ul>
+<li><strong>User Configuration</strong> : les ressources <code>Gateway API</code> et les CRD d'extension Envoy Gateway que vous écrivez</li>
+<li><strong>Envoy Gateway Controller</strong> : lit les ressources, les valide et traduit la configuration</li>
+<li><strong>Envoy Proxy</strong> : le plan de données qui gère réellement le trafic</li>
+</ul>
+<p>Autrement dit, ce que vous modifiez d'habitude n'est pas Envoy Proxy lui-même : vous êtes en train de "déclarer ce que vous voulez".
+Envoy Gateway traduit ensuite ces déclarations en configuration qu'Envoy Proxy peut exécuter. C'est ce qui rend l'approche plus agréable que l'écriture manuelle d'une configuration proxy.</p>
+<h2 id="les-rôles-clés">Les rôles clés</h2>
+<p>Pour l'instant, retenez simplement ceci :</p>
+<ul>
+<li><code>GatewayClass</code> : définit "quelle implémentation de Gateway utiliser dans ce cluster"</li>
+<li><code>Gateway</code> : définit "où se trouve l'entrée et quel protocole elle parle"</li>
+<li><code>Listener</code> : définit un point d'entrée précis par port/protocole/hostname</li>
+<li><code>Route</code> : définit "quelles requêtes vont vers quel Service"</li>
+<li><code>Envoy Proxy</code> : le véritable Gateway Proxy qui reçoit et transfère le trafic</li>
+</ul>
+<p>En français courant :</p>
+<ul>
+<li><code>GatewayClass</code> est la fiche technique</li>
+<li><code>Gateway</code> est l'entrée principale du bâtiment</li>
+<li><code>Listener</code> est le bureau d'accueil</li>
+<li><code>Route</code> est la signalétique à l'intérieur du bâtiment</li>
+<li><code>Envoy Proxy</code> est le système de sécurité qui contrôle l'accès et escorte les gens</li>
+</ul>
+<p>S'il en manque un seul, le trafic n'ira pas là où vous voulez.</p>
+<h2 id="un-yaml-minimal-qui-montre-toute-limage">Un YAML minimal qui montre toute l'image</h2>
+<p>Voici le plus petit exemple réellement compréhensible :</p>
+<figure data-rehype-pretty-code-figure=""><pre style="background-color:#24292e;color:#e1e4e8" tabindex="0" data-language="yaml" data-theme="github-dark"><code data-language="yaml" data-theme="github-dark" style="display: grid;"><span data-line=""><span style="color:#85E89D">apiVersion</span><span style="color:#E1E4E8">: </span><span style="color:#9ECBFF">gateway.networking.k8s.io/v1</span></span>
+<span data-line=""><span style="color:#85E89D">kind</span><span style="color:#E1E4E8">: </span><span style="color:#9ECBFF">GatewayClass</span></span>
+<span data-line=""><span style="color:#85E89D">metadata</span><span style="color:#E1E4E8">:</span></span>
+<span data-line=""><span style="color:#85E89D">  name</span><span style="color:#E1E4E8">: </span><span style="color:#9ECBFF">eg</span></span>
+<span data-line=""><span style="color:#85E89D">spec</span><span style="color:#E1E4E8">:</span></span>
+<span data-line=""><span style="color:#85E89D">  controllerName</span><span style="color:#E1E4E8">: </span><span style="color:#9ECBFF">gateway.envoyproxy.io/gatewayclass-controller</span></span>
+<span data-line=""><span style="color:#B392F0">---</span></span>
+<span data-line=""><span style="color:#85E89D">apiVersion</span><span style="color:#E1E4E8">: </span><span style="color:#9ECBFF">gateway.networking.k8s.io/v1</span></span>
+<span data-line=""><span style="color:#85E89D">kind</span><span style="color:#E1E4E8">: </span><span style="color:#9ECBFF">Gateway</span></span>
+<span data-line=""><span style="color:#85E89D">metadata</span><span style="color:#E1E4E8">:</span></span>
+<span data-line=""><span style="color:#85E89D">  name</span><span style="color:#E1E4E8">: </span><span style="color:#9ECBFF">eg</span></span>
+<span data-line=""><span style="color:#85E89D">spec</span><span style="color:#E1E4E8">:</span></span>
+<span data-line=""><span style="color:#85E89D">  gatewayClassName</span><span style="color:#E1E4E8">: </span><span style="color:#9ECBFF">eg</span></span>
+<span data-line=""><span style="color:#85E89D">  listeners</span><span style="color:#E1E4E8">:</span></span>
+<span data-line=""><span style="color:#E1E4E8">    - </span><span style="color:#85E89D">name</span><span style="color:#E1E4E8">: </span><span style="color:#9ECBFF">http</span></span>
+<span data-line=""><span style="color:#85E89D">      protocol</span><span style="color:#E1E4E8">: </span><span style="color:#9ECBFF">HTTP</span></span>
+<span data-line=""><span style="color:#85E89D">      port</span><span style="color:#E1E4E8">: </span><span style="color:#79B8FF">80</span></span>
+<span data-line=""><span style="color:#B392F0">---</span></span>
+<span data-line=""><span style="color:#85E89D">apiVersion</span><span style="color:#E1E4E8">: </span><span style="color:#9ECBFF">gateway.networking.k8s.io/v1</span></span>
+<span data-line=""><span style="color:#85E89D">kind</span><span style="color:#E1E4E8">: </span><span style="color:#9ECBFF">HTTPRoute</span></span>
+<span data-line=""><span style="color:#85E89D">metadata</span><span style="color:#E1E4E8">:</span></span>
+<span data-line=""><span style="color:#85E89D">  name</span><span style="color:#E1E4E8">: </span><span style="color:#9ECBFF">backend</span></span>
+<span data-line=""><span style="color:#85E89D">spec</span><span style="color:#E1E4E8">:</span></span>
+<span data-line=""><span style="color:#85E89D">  parentRefs</span><span style="color:#E1E4E8">:</span></span>
+<span data-line=""><span style="color:#E1E4E8">    - </span><span style="color:#85E89D">name</span><span style="color:#E1E4E8">: </span><span style="color:#9ECBFF">eg</span></span>
+<span data-line=""><span style="color:#85E89D">  hostnames</span><span style="color:#E1E4E8">:</span></span>
+<span data-line=""><span style="color:#E1E4E8">    - </span><span style="color:#9ECBFF">"www.example.com"</span></span>
+<span data-line=""><span style="color:#85E89D">  rules</span><span style="color:#E1E4E8">:</span></span>
+<span data-line=""><span style="color:#E1E4E8">    - </span><span style="color:#85E89D">backendRefs</span><span style="color:#E1E4E8">:</span></span>
+<span data-line=""><span style="color:#E1E4E8">        - </span><span style="color:#85E89D">name</span><span style="color:#E1E4E8">: </span><span style="color:#9ECBFF">backend</span></span>
+<span data-line=""><span style="color:#85E89D">          port</span><span style="color:#E1E4E8">: </span><span style="color:#79B8FF">3000</span></span></code></pre></figure>
+<p>Assemblé, le raisonnement est :</p>
+<ol>
+<li><code>GatewayClass</code> dit que le contrôleur <code>Envoy Gateway</code> est responsable</li>
+<li><code>Gateway</code> déclare une entrée HTTP sur le port <code>80</code></li>
+<li><code>HTTPRoute</code> dit que les requêtes vers <code>www.example.com</code> doivent aller vers <code>backend:3000</code></li>
+<li><code>Envoy Gateway</code> traduit tout cela pour <code>Envoy Proxy</code></li>
+</ol>
+<h2 id="comprendre-chaque-champ">Comprendre chaque champ</h2>
+<h3 id="gatewayclass"><code>GatewayClass</code></h3>
+<p>Il s'agit d'une définition de type d'entrée au niveau du cluster. Le champ le plus critique est généralement :</p>
+<figure data-rehype-pretty-code-figure=""><pre style="background-color:#24292e;color:#e1e4e8" tabindex="0" data-language="yaml" data-theme="github-dark"><code data-language="yaml" data-theme="github-dark" style="display: grid;"><span data-line=""><span style="color:#85E89D">spec</span><span style="color:#E1E4E8">:</span></span>
+<span data-line=""><span style="color:#85E89D">  controllerName</span><span style="color:#E1E4E8">: </span><span style="color:#9ECBFF">gateway.envoyproxy.io/gatewayclass-controller</span></span></code></pre></figure>
+<p>Cela signifie simplement :
+"Ce <code>GatewayClass</code> est géré par le contrôleur Envoy Gateway."</p>
+<p>Si le controllerName ne correspond pas, c'est comme commander une livraison à la mauvaise entreprise : personne ne vient la récupérer.</p>
+<h3 id="gateway"><code>Gateway</code></h3>
+<p>Cela définit "à quoi ressemble l'entrée". Le champ le plus souvent consulté est <code>listeners</code> :</p>
+<figure data-rehype-pretty-code-figure=""><pre style="background-color:#24292e;color:#e1e4e8" tabindex="0" data-language="yaml" data-theme="github-dark"><code data-language="yaml" data-theme="github-dark" style="display: grid;"><span data-line=""><span style="color:#85E89D">listeners</span><span style="color:#E1E4E8">:</span></span>
+<span data-line=""><span style="color:#E1E4E8">  - </span><span style="color:#85E89D">name</span><span style="color:#E1E4E8">: </span><span style="color:#9ECBFF">http</span></span>
+<span data-line=""><span style="color:#85E89D">    protocol</span><span style="color:#E1E4E8">: </span><span style="color:#9ECBFF">HTTP</span></span>
+<span data-line=""><span style="color:#85E89D">    port</span><span style="color:#E1E4E8">: </span><span style="color:#79B8FF">80</span></span></code></pre></figure>
+<p>Cela signifie :</p>
+<ul>
+<li>Ouvrir un listener nommé <code>http</code></li>
+<li>Accepter du trafic HTTP</li>
+<li>Écouter à l'extérieur sur le port <code>80</code></li>
+</ul>
+<p>Pour HTTPS, vous ajouteriez généralement un autre listener avec <code>protocol: HTTPS</code> et une configuration TLS associée.</p>
+<p><code>Gateway</code> gère généralement :</p>
+<ul>
+<li>Le port externe et le protocole</li>
+<li>Le hostname par listener</li>
+<li>L'endroit où la terminaison TLS se produit</li>
+<li>Quels namespaces peuvent attacher leurs routes</li>
+</ul>
+<p><code>Gateway</code> relève davantage de la couche plateforme : sa responsabilité appartient généralement à l'équipe plateforme.</p>
+<h3 id="listener"><code>Listener</code></h3>
+<p>C'est le rôle que les débutants négligent le plus souvent, alors qu'il est en réalité crucial.</p>
+<p>Un <code>listener</code> est un point d'entrée exposé vers l'extérieur sur le Gateway. Il définit :</p>
+<ul>
+<li><code>name</code></li>
+<li><code>port</code></li>
+<li><code>protocol</code></li>
+<li><code>hostname</code></li>
+<li><code>tls</code></li>
+<li><code>allowedRoutes</code></li>
+</ul>
+<p>Exemple :</p>
+<figure data-rehype-pretty-code-figure=""><pre style="background-color:#24292e;color:#e1e4e8" tabindex="0" data-language="yaml" data-theme="github-dark"><code data-language="yaml" data-theme="github-dark" style="display: grid;"><span data-line=""><span style="color:#85E89D">listeners</span><span style="color:#E1E4E8">:</span></span>
+<span data-line=""><span style="color:#E1E4E8">  - </span><span style="color:#85E89D">name</span><span style="color:#E1E4E8">: </span><span style="color:#9ECBFF">https</span></span>
+<span data-line=""><span style="color:#85E89D">    protocol</span><span style="color:#E1E4E8">: </span><span style="color:#9ECBFF">HTTPS</span></span>
+<span data-line=""><span style="color:#85E89D">    port</span><span style="color:#E1E4E8">: </span><span style="color:#79B8FF">443</span></span>
+<span data-line=""><span style="color:#85E89D">    hostname</span><span style="color:#E1E4E8">: </span><span style="color:#9ECBFF">api.example.com</span></span></code></pre></figure>
+<p>Cela signifie :</p>
+<ul>
+<li>Ce point s'appelle <code>https</code></li>
+<li>Il accepte HTTPS</li>
+<li>Il écoute sur le port <code>443</code></li>
+<li>Il est dédié à <code>api.example.com</code></li>
+</ul>
+<p>Si vous avez plusieurs listeners comme :</p>
+<ul>
+<li><code>http</code> pour le port 80</li>
+<li><code>https</code> pour le port 443</li>
+<li><code>grpc</code> pour le port 50051</li>
+</ul>
+<p>Alors vous ouvrez plusieurs points d'entrée sur le même Gateway, chacun pouvant accueillir des routes différentes.</p>
+<h3 id="envoy-proxy"><code>Envoy Proxy</code></h3>
+<p>Beaucoup de gens se concentrent uniquement sur le YAML et oublient que c'est <code>Envoy Proxy</code> qui traite réellement le trafic vivant.</p>
+<p>Son rôle est :</p>
+<ul>
+<li>Recevoir les requêtes clientes</li>
+<li>Faire le matching avec la configuration poussée par Envoy Gateway</li>
+<li>Transférer le trafic vers le backend approprié</li>
+<li>Gérer TLS, headers, timeouts, retries et autres comportements du plan de données</li>
+</ul>
+<p>Voyez donc Envoy Gateway comme le "plan de contrôle", et Envoy Proxy comme le "plan de données / Gateway Proxy".</p>
+<h3 id="la-famille-route">La famille Route</h3>
+<p><code>Route</code>, ce n'est pas seulement <code>HTTPRoute</code>. Toute la famille est au coeur de la conception de Gateway API.</p>
+<h4 id="httproute"><code>HTTPRoute</code></h4>
+<p>C'est celui que vous écrirez et modifierez le plus souvent. Trois champs clés :</p>
+<figure data-rehype-pretty-code-figure=""><pre style="background-color:#24292e;color:#e1e4e8" tabindex="0" data-language="yaml" data-theme="github-dark"><code data-language="yaml" data-theme="github-dark" style="display: grid;"><span data-line=""><span style="color:#85E89D">spec</span><span style="color:#E1E4E8">:</span></span>
+<span data-line=""><span style="color:#85E89D">  parentRefs</span><span style="color:#E1E4E8">:</span></span>
+<span data-line=""><span style="color:#E1E4E8">    - </span><span style="color:#85E89D">name</span><span style="color:#E1E4E8">: </span><span style="color:#9ECBFF">eg</span></span>
+<span data-line=""><span style="color:#85E89D">  hostnames</span><span style="color:#E1E4E8">:</span></span>
+<span data-line=""><span style="color:#E1E4E8">    - </span><span style="color:#9ECBFF">"www.example.com"</span></span>
+<span data-line=""><span style="color:#85E89D">  rules</span><span style="color:#E1E4E8">:</span></span>
+<span data-line=""><span style="color:#E1E4E8">    - </span><span style="color:#85E89D">backendRefs</span><span style="color:#E1E4E8">:</span></span>
+<span data-line=""><span style="color:#E1E4E8">        - </span><span style="color:#85E89D">name</span><span style="color:#E1E4E8">: </span><span style="color:#9ECBFF">backend</span></span>
+<span data-line=""><span style="color:#85E89D">          port</span><span style="color:#E1E4E8">: </span><span style="color:#79B8FF">3000</span></span></code></pre></figure>
+<ul>
+<li><code>parentRefs</code> : à quel Gateway s'attacher</li>
+<li><code>hostnames</code> : quel header Host déclenche cette règle</li>
+<li><code>backendRefs</code> : où envoyer les requêtes correspondantes</li>
+</ul>
+<p>La confusion la plus fréquente : <code>Gateway</code> n'est pas l'endroit où vous écrivez le routage fin, c'est <code>HTTPRoute</code> qui décide réellement "comment répartir le trafic".</p>
+<h4 id="grpcroute"><code>GRPCRoute</code></h4>
+<p>Si vous gérez du gRPC, <code>GRPCRoute</code> est plus naturel que de forcer cela dans <code>HTTPRoute</code>.</p>
+<p>Il peut faire du matching sur :</p>
+<ul>
+<li>Le hostname gRPC</li>
+<li>Le service gRPC</li>
+<li>La méthode gRPC</li>
+<li>Les headers</li>
+</ul>
+<p>Exemple :</p>
+<figure data-rehype-pretty-code-figure=""><pre style="background-color:#24292e;color:#e1e4e8" tabindex="0" data-language="yaml" data-theme="github-dark"><code data-language="yaml" data-theme="github-dark" style="display: grid;"><span data-line=""><span style="color:#85E89D">matches</span><span style="color:#E1E4E8">:</span></span>
+<span data-line=""><span style="color:#E1E4E8">  - </span><span style="color:#85E89D">method</span><span style="color:#E1E4E8">:</span></span>
+<span data-line=""><span style="color:#85E89D">      service</span><span style="color:#E1E4E8">: </span><span style="color:#9ECBFF">com.example.User</span></span>
+<span data-line=""><span style="color:#85E89D">      method</span><span style="color:#E1E4E8">: </span><span style="color:#9ECBFF">Login</span></span></code></pre></figure>
+<p>Cette sémantique s'aligne naturellement avec gRPC : vous ne faites pas seulement du matching sur des chemins d'URL, vous matchez directement sur le modèle service/method de gRPC.</p>
+<p>La documentation officielle précise aussi que si <code>GRPCRoute</code> et <code>HTTPRoute</code> partagent le même listener avec des hostnames en conflit, l'implémentation doit en rejeter un. En gros, ne laissez pas HTTP et gRPC se battre pour le même hostname.</p>
+<h4 id="tcproute"><code>TCPRoute</code></h4>
+<p><code>TCPRoute</code> gère le trafic TCP brut.
+Contrairement à <code>HTTPRoute</code>, il ne comprend pas les notions L7 comme les chemins ou les headers ; il est plus proche d'un forwarding L4.</p>
+<p>Scénarios adaptés :</p>
+<ul>
+<li>Services avec protocole non HTTP</li>
+<li>Services TCP purs</li>
+<li>Routage des connexions vers différents backends uniquement selon le port du listener</li>
+</ul>
+<p>Les bases de données utilisant des protocoles personnalisés ou des protocoles TCP propriétaires sont des cas d'usage typiques de <code>TCPRoute</code>.</p>
+<h4 id="tlsroute"><code>TLSRoute</code></h4>
+<p><code>TLSRoute</code> gère le trafic TLS et apparaît particulièrement souvent dans les scénarios de <strong>TLS passthrough</strong>.</p>
+<p>Concept central :</p>
+<ul>
+<li>Le Gateway ne termine pas forcément TLS</li>
+<li>Il peut router le trafic uniquement à partir du hostname SNI dans la négociation TLS</li>
+<li>Le trafic chiffré est conservé jusqu'au backend</li>
+</ul>
+<p>C'est important pour les scénarios qui exigent un chiffrement de bout en bout, ou quand vous ne voulez pas terminer TLS au niveau du Gateway.</p>
+<h2 id="comment-choisir-un-type-de-route">Comment choisir un type de route</h2>
+<table>
+<thead>
+<tr>
+<th>Besoin</th>
+<th>Utiliser ceci</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td>Sites web, API REST, trafic web général</td>
+<td><code>HTTPRoute</code></td>
+</tr>
+<tr>
+<td>Routage par service/method gRPC</td>
+<td><code>GRPCRoute</code></td>
+</tr>
+<tr>
+<td>Trafic TCP brut</td>
+<td><code>TCPRoute</code></td>
+</tr>
+<tr>
+<td>TLS passthrough / routage basé sur SNI</td>
+<td><code>TLSRoute</code></td>
+</tr>
+</tbody>
+</table>
+<p>Ce tableau compte beaucoup, car beaucoup de gens écrivent instinctivement <code>HTTPRoute</code> pour tout. Mais si vous traitez en réalité du gRPC ou du TCP, le forcer dans <code>HTTPRoute</code> ne fait que rendre le YAML de plus en plus maladroit.</p>
+<h2 id="pourquoi-les-routes-sont-plus-faciles-à-raisonner-quingress">Pourquoi les routes sont plus faciles à raisonner qu'Ingress</h2>
+<p>Les anciennes configurations Ingress entassaient souvent trop de responsabilités dans une seule ressource, ce qui menait à des douleurs récurrentes :</p>
+<ul>
+<li>Mélange entre configuration plateforme et routage applicatif</li>
+<li>Fonctions avancées exprimées via des annotations peu lisibles</li>
+<li>Expressivité limitée pour les protocoles non HTTP</li>
+</ul>
+<p>L'approche de Gateway API consiste à séparer les responsabilités :</p>
+<ul>
+<li>Les équipes plateforme gèrent <code>GatewayClass</code> / <code>Gateway</code></li>
+<li>Les équipes applicatives gèrent leur propre <code>HTTPRoute</code></li>
+</ul>
+<p>Cette séparation fonctionne bien pour la collaboration à plusieurs. Vous n'avez pas besoin de toucher toute la couche d'entrée juste pour changer un chemin, et le taux de "les équipes se marchent dessus" baisse fortement.</p>
+<h2 id="commencez-à-prêter-attention-au-status">Commencez à prêter attention au status</h2>
+<p>Au-delà de <code>spec</code>, prenez progressivement l'habitude de vérifier <code>status</code>. En particulier pour <code>HTTPRoute</code> et <code>Gateway</code> :</p>
+<figure data-rehype-pretty-code-figure=""><pre style="background-color:#24292e;color:#e1e4e8" tabindex="0" data-language="bash" data-theme="github-dark"><code data-language="bash" data-theme="github-dark" style="display: grid;"><span data-line=""><span style="color:#B392F0">kubectl</span><span style="color:#9ECBFF"> get</span><span style="color:#9ECBFF"> gateway</span><span style="color:#9ECBFF"> eg</span><span style="color:#79B8FF"> -o</span><span style="color:#9ECBFF"> yaml</span></span>
+<span data-line=""><span style="color:#B392F0">kubectl</span><span style="color:#9ECBFF"> get</span><span style="color:#9ECBFF"> httproute</span><span style="color:#9ECBFF"> backend</span><span style="color:#79B8FF"> -o</span><span style="color:#9ECBFF"> yaml</span></span></code></pre></figure>
+<p>Commencez par regarder :</p>
+<ul>
+<li>Si la route a été <code>Accepted</code></li>
+<li>Si le listener du gateway est Ready</li>
+<li>Si une adresse a été attribuée avec succès</li>
+</ul>
+<p>C'est comme vérifier le résultat d'un examen. Ne vérifiez pas seulement que vous avez rendu votre copie ; vérifiez qu'elle a été corrigée et validée.</p>
+<h2 id="résumé-en-une-ligne">Résumé en une ligne</h2>
+<p>Pensez à <code>GatewayClass</code>, <code>Gateway</code>, <code>Listener</code>, <code>Route</code> et <code>Envoy Proxy</code> comme à "qui gère, comment l'entrée s'ouvre, comment chaque point d'entrée se connecte, comment le trafic se répartit et qui l'exécute" — et vous avez déjà saisi 80 % des concepts de base.</p>
+<blockquote>
+<p>💡 Les débutants plongent souvent directement dans les détails des CRD. Ne vous pressez pas : mettez d'abord ces rôles au clair, et le YAML cessera de donner l'impression de rencontrer des inconnus à chaque fois.</p>
+</blockquote>
+<h2 id="étape-suivante">Étape suivante</h2>
+<p>Maintenant que les concepts sont en place, l'article suivant se concentre sur les scénarios de routage HTTP les plus courants — hôte, chemin, header et répartition de trafic :
+👉 <a href="03-http-routing">Routage HTTP en pratique</a></p>8:["$","aside",null,{"className":"hidden lg:block","children":["$","$Lc",null,{"html":"$d"}]}]
+9:["$","script","script-0",{"src":"/_next/static/chunks/2dddb3bc05093f69.js","async":true}]
+a:["$","$Le",null,{"children":["$","$f",null,{"name":"Next.MetadataOutlet","children":"$@10"}]}]
+10:null

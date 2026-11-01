@@ -1,0 +1,261 @@
+1:"$Sreact.fragment"
+2:I[14864,["/_next/static/chunks/7923a261b80bb6e1.js","/_next/static/chunks/e09b4358027e8033.js","/_next/static/chunks/2dddb3bc05093f69.js"],"default"]
+8:I[24801,["/_next/static/chunks/7923a261b80bb6e1.js","/_next/static/chunks/e09b4358027e8033.js","/_next/static/chunks/2dddb3bc05093f69.js"],"default"]
+a:I[50183,["/_next/static/chunks/5a5b5b13c22d14f7.js","/_next/static/chunks/a484d1d3dd4b55ab.js"],"OutletBoundary"]
+b:"$Sreact.suspense"
+3:T1c7d,<p>走到這一篇，代表你已經把 OpenClaw 從零搭到有了。恭喜！</p>
+<p>最後這篇整理一些讓系統跑得更穩、更好維護的心法。</p>
+<h2 id="本篇學習目標">本篇學習目標</h2>
+<ul>
+<li>知道設定檔在哪，以及兩種編輯方式</li>
+<li>看懂最小可用設定的結構</li>
+<li>學會用環境變數安全保管 API key</li>
+<li>掌握除錯的萬能工具和常見錯誤對照表</li>
+<li>了解版本選擇的原則</li>
+</ul>
+<hr>
+<h2 id="設定檔在哪裡">設定檔在哪裡？</h2>
+<pre><code>~/.openclaw/openclaw.json
+</code></pre>
+<p>格式是 <strong>JSON5</strong>（可以加註解、行尾逗號，比一般 JSON 友善）。</p>
+<p>你可以：</p>
+<ul>
+<li>在 Control UI 的 Config 頁用<strong>表單模式</strong>編輯（新手友善）</li>
+<li>切到 <strong>Raw JSON</strong> 模式直接改（精準快速）</li>
+</ul>
+<p>兩種模式改的是同一份檔案，儲存後都會寫入上面那個路徑。</p>
+<hr>
+<h2 id="最小可用設定長什麼樣">最小可用設定長什麼樣？</h2>
+<figure data-rehype-pretty-code-figure=""><pre style="background-color:#24292e;color:#e1e4e8" tabindex="0" data-language="json5" data-theme="github-dark"><code data-language="json5" data-theme="github-dark" style="display: grid;"><span data-line=""><span style="color:#E1E4E8">{</span></span>
+<span data-line=""><span style="color:#9ECBFF">  "agents"</span><span style="color:#E1E4E8">: {</span></span>
+<span data-line=""><span style="color:#9ECBFF">    "list"</span><span style="color:#E1E4E8">: [</span></span>
+<span data-line=""><span style="color:#E1E4E8">      { </span><span style="color:#9ECBFF">"id"</span><span style="color:#E1E4E8">: </span><span style="color:#9ECBFF">"main"</span><span style="color:#E1E4E8">, </span><span style="color:#9ECBFF">"workspace"</span><span style="color:#E1E4E8">: </span><span style="color:#9ECBFF">"~/.openclaw/workspace-main"</span><span style="color:#E1E4E8">, </span><span style="color:#9ECBFF">"default"</span><span style="color:#E1E4E8">: </span><span style="color:#79B8FF">true</span><span style="color:#E1E4E8"> }</span></span>
+<span data-line=""><span style="color:#E1E4E8">    ]</span></span>
+<span data-line=""><span style="color:#E1E4E8">  },</span></span>
+<span data-line=""><span style="color:#9ECBFF">  "channels"</span><span style="color:#E1E4E8">: {</span></span>
+<span data-line=""><span style="color:#9ECBFF">    "telegram"</span><span style="color:#E1E4E8">: {</span></span>
+<span data-line=""><span style="color:#9ECBFF">      "enabled"</span><span style="color:#E1E4E8">: </span><span style="color:#79B8FF">true</span><span style="color:#E1E4E8">,</span></span>
+<span data-line=""><span style="color:#9ECBFF">      "botToken"</span><span style="color:#E1E4E8">: </span><span style="color:#9ECBFF">"你的 Bot Token"</span></span>
+<span data-line=""><span style="color:#E1E4E8">    }</span></span>
+<span data-line=""><span style="color:#E1E4E8">  },</span></span>
+<span data-line=""><span style="color:#9ECBFF">  "bindings"</span><span style="color:#E1E4E8">: [</span></span>
+<span data-line=""><span style="color:#E1E4E8">    { </span><span style="color:#9ECBFF">"agentId"</span><span style="color:#E1E4E8">: </span><span style="color:#9ECBFF">"main"</span><span style="color:#E1E4E8">, </span><span style="color:#9ECBFF">"match"</span><span style="color:#E1E4E8">: { </span><span style="color:#9ECBFF">"channel"</span><span style="color:#E1E4E8">: </span><span style="color:#9ECBFF">"telegram"</span><span style="color:#E1E4E8"> } }</span></span>
+<span data-line=""><span style="color:#E1E4E8">  ]</span></span>
+<span data-line=""><span style="color:#E1E4E8">}</span></span></code></pre></figure>
+<p>能跑起來先，之後再慢慢加功能。</p>
+<hr>
+<h2 id="api-key-的正確保存方式">API Key 的正確保存方式</h2>
+<p><strong>不要把 API key 直接寫在 config 裡</strong>（雖然可以，但不好習慣）。</p>
+<p>用環境變數更安全：</p>
+<figure data-rehype-pretty-code-figure=""><pre style="background-color:#24292e;color:#e1e4e8" tabindex="0" data-language="bash" data-theme="github-dark"><code data-language="bash" data-theme="github-dark" style="display: grid;"><span data-line=""><span style="color:#6A737D"># 在 .env 或系統環境變數裡設定</span></span>
+<span data-line=""><span style="color:#E1E4E8">ANTHROPIC_API_KEY</span><span style="color:#F97583">=</span><span style="color:#9ECBFF">sk-ant-xxxxx</span></span></code></pre></figure>
+<blockquote>
+<p>⚠️ 如果用系統服務（systemd 等）啟動 Gateway，要確認服務有載入 <code>.env</code>，不然助理可能因為找不到 API key 而無法運作（會看到「Shell env off」之類的錯誤）。</p>
+</blockquote>
+<hr>
+<h2 id="除錯的萬能工具">除錯的萬能工具</h2>
+<p>有問題先跑這個：</p>
+<figure data-rehype-pretty-code-figure=""><pre style="background-color:#24292e;color:#e1e4e8" tabindex="0" data-language="bash" data-theme="github-dark"><code data-language="bash" data-theme="github-dark" style="display: grid;"><span data-line=""><span style="color:#B392F0">openclaw</span><span style="color:#9ECBFF"> logs</span><span style="color:#79B8FF"> --follow</span></span></code></pre></figure>
+<p>即時看 log，90% 的問題答案都在裡面。</p>
+<p>常見錯誤對照表：</p>
+<table>
+<thead>
+<tr>
+<th>錯誤訊息</th>
+<th>可能原因</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td><code>HTTP 429</code></td>
+<td>打 API 太頻繁，觸發 rate limit</td>
+</tr>
+<tr>
+<td><code>unauthorized</code></td>
+<td>Token 沒設好，或 gateway.bind 設定問題</td>
+</tr>
+<tr>
+<td><code>content tool_use input field required</code></td>
+<td>模型版本相容性問題，查官方文件</td>
+</tr>
+<tr>
+<td>Context 過長被截斷</td>
+<td>開新 session，或依文件做 compact</td>
+</tr>
+</tbody>
+</table>
+<hr>
+<h2 id="版本選擇要用哪一個">版本選擇：要用哪一個？</h2>
+<table>
+<thead>
+<tr>
+<th>版本</th>
+<th>適合誰</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td><strong>Stable（穩定版）</strong></td>
+<td>日常使用，優先選這個</td>
+</tr>
+<tr>
+<td><strong>Beta</strong></td>
+<td>想嘗鮮新功能，接受偶爾有 bug</td>
+</tr>
+<tr>
+<td><strong>Dev</strong></td>
+<td>開發者，想看最新動態</td>
+</tr>
+</tbody>
+</table>
+<blockquote>
+<p>💡 重大版本升級前，先備份 <code>~/.openclaw</code>，萬一出問題還能回去。</p>
+</blockquote>
+<hr>
+<h2 id="系列完結你學到了什麼">系列完結！你學到了什麼？</h2>
+<p>走過這十篇，你已經知道怎麼：</p>
+<ol>
+<li>認識 OpenClaw 的核心概念</li>
+<li>安裝並第一次啟動</li>
+<li>搞定儀表板認證</li>
+<li>接上 Telegram 等通道</li>
+<li>用 Skills 讓助理更強</li>
+<li>管理記憶與工作區</li>
+<li>多個助理各司其職</li>
+<li>把 Gateway 部署到 VPS</li>
+<li>設定排程讓助理自動工作</li>
+<li>進階設定與除錯（就是本篇）</li>
+</ol>
+<p>更多細節，永遠以 <a href="https://docs.openclaw.ai">docs.openclaw.ai</a> 的官方文件為準。</p>
+<p><strong>你的 AI 助理已經準備好了——去讓他為你工作吧！</strong></p>
+<p><a href="09-cron-automation">← 上一篇：排程與自動化</a> | <a href="01-intro">回系列首篇</a></p>0:{"buildId":"Yck3R4ooQxWkwGLT6is1X","rsc":["$","$1","c",{"children":[[["$","script",null,{"type":"application/ld+json","dangerouslySetInnerHTML":{"__html":"{\"@context\":\"https://schema.org\",\"@type\":\"Article\",\"headline\":\"系統跑歪了怎麼辦？進階設定與除錯心法大全\",\"description\":\"設定檔在哪、API key 怎麼保管、除錯工具怎麼用、常見錯誤怎麼解。走到這篇，代表你已經把 OpenClaw 從零搭到有了。\",\"url\":\"https://benxhub.com/zh/blog/openclaw/10-advanced-config\",\"mainEntityOfPage\":{\"@type\":\"WebPage\",\"@id\":\"https://benxhub.com/zh/blog/openclaw/10-advanced-config\"},\"datePublished\":\"2026-03-08T00:00:00.000Z\",\"dateModified\":\"2026-03-08T00:00:00.000Z\",\"keywords\":\"openclaw, configuration, debugging, advanced\",\"inLanguage\":\"zh\",\"author\":{\"@type\":\"Person\",\"name\":\"BenX\",\"url\":\"https://benxhub.com\"},\"publisher\":{\"@type\":\"Organization\",\"name\":\"BenXHub Blog\",\"url\":\"https://benxhub.com\"}}"}}],["$","div",null,{"className":"mx-auto max-w-6xl px-4 py-12 sm:px-6","children":["$","div",null,{"className":"lg:grid lg:grid-cols-[1fr_240px] lg:gap-14","children":[["$","article",null,{"children":[["$","header",null,{"className":"mb-10","children":[["$","div",null,{"className":"mb-4 flex flex-wrap gap-2","children":[["$","$L2","openclaw",{"href":"/zh/tags/openclaw","localeCookie":{"name":"NEXT_LOCALE","sameSite":"lax"},"className":"inline-flex items-center rounded-full px-2.5 py-0.5 text-xs font-medium transition-colors","style":{"background":"var(--color-code-bg)","color":"var(--color-accent)","border":"1px solid var(--color-border)"},"children":["#","openclaw"]}],["$","$L2","configuration",{"href":"/zh/tags/configuration","localeCookie":{"name":"NEXT_LOCALE","sameSite":"lax"},"className":"inline-flex items-center rounded-full px-2.5 py-0.5 text-xs font-medium transition-colors","style":{"background":"var(--color-code-bg)","color":"var(--color-accent)","border":"1px solid var(--color-border)"},"children":["#","configuration"]}],["$","$L2","debugging",{"href":"/zh/tags/debugging","localeCookie":{"name":"NEXT_LOCALE","sameSite":"lax"},"className":"inline-flex items-center rounded-full px-2.5 py-0.5 text-xs font-medium transition-colors","style":{"background":"var(--color-code-bg)","color":"var(--color-accent)","border":"1px solid var(--color-border)"},"children":["#","debugging"]}],["$","$L2","advanced",{"href":"/zh/tags/advanced","localeCookie":{"name":"NEXT_LOCALE","sameSite":"lax"},"className":"inline-flex items-center rounded-full px-2.5 py-0.5 text-xs font-medium transition-colors","style":{"background":"var(--color-code-bg)","color":"var(--color-accent)","border":"1px solid var(--color-border)"},"children":["#","advanced"]}]]}],["$","h1",null,{"className":"mb-4 text-3xl leading-snug font-bold tracking-tight sm:text-4xl","style":{"color":"var(--color-text)"},"children":"系統跑歪了怎麼辦？進階設定與除錯心法大全"}],["$","div",null,{"className":"flex flex-wrap items-center gap-3 text-sm","style":{"color":"var(--color-muted)"},"children":[["$","time",null,{"dateTime":"2026-03-08","children":"2026 年 3 月 8 日"}],["$","span",null,{"aria-hidden":"true","children":"·"}],["$","span",null,{"children":"4 min read"}]]}],"$undefined",["$","div",null,{"className":"mt-6 border-b","style":{"borderColor":"var(--color-border)"}}]]}],["$","div",null,{"className":"prose","dangerouslySetInnerHTML":{"__html":"$3"}}],"$L4"]}],"$L5"]}]}]],["$L6"],"$L7"]}],"loading":null,"isPartial":false}
+4:["$","footer",null,{"className":"mt-14 border-t pt-8","style":{"borderColor":"var(--color-border)"},"children":[["$","div",null,{"className":"mb-8 flex flex-wrap gap-2","children":[["$","$L2","openclaw",{"href":"/zh/tags/openclaw","localeCookie":{"name":"NEXT_LOCALE","sameSite":"lax"},"className":"inline-flex items-center rounded-full px-3 py-1 text-sm font-medium transition-colors","style":{"background":"var(--color-code-bg)","color":"var(--color-accent)","border":"1px solid var(--color-border)"},"children":["#","openclaw"]}],["$","$L2","configuration",{"href":"/zh/tags/configuration","localeCookie":{"name":"NEXT_LOCALE","sameSite":"lax"},"className":"inline-flex items-center rounded-full px-3 py-1 text-sm font-medium transition-colors","style":{"background":"var(--color-code-bg)","color":"var(--color-accent)","border":"1px solid var(--color-border)"},"children":["#","configuration"]}],["$","$L2","debugging",{"href":"/zh/tags/debugging","localeCookie":{"name":"NEXT_LOCALE","sameSite":"lax"},"className":"inline-flex items-center rounded-full px-3 py-1 text-sm font-medium transition-colors","style":{"background":"var(--color-code-bg)","color":"var(--color-accent)","border":"1px solid var(--color-border)"},"children":["#","debugging"]}],["$","$L2","advanced",{"href":"/zh/tags/advanced","localeCookie":{"name":"NEXT_LOCALE","sameSite":"lax"},"className":"inline-flex items-center rounded-full px-3 py-1 text-sm font-medium transition-colors","style":{"background":"var(--color-code-bg)","color":"var(--color-accent)","border":"1px solid var(--color-border)"},"children":["#","advanced"]}]]}],["$","nav",null,{"aria-label":"文章導覽","className":"grid grid-cols-1 gap-4 sm:grid-cols-2","children":[["$","$L2",null,{"href":"/zh/blog/openclaw/09-cron-automation","localeCookie":{"name":"NEXT_LOCALE","sameSite":"lax"},"className":"group rounded-lg border p-4 transition-colors hover:border-accent","style":{"borderColor":"var(--color-border)","background":"var(--color-surface)"},"children":[["$","p",null,{"className":"mb-1 text-xs","style":{"color":"var(--color-muted)"},"children":"← 較新文章"}],["$","p",null,{"className":"line-clamp-1 text-sm font-medium transition-colors group-hover:text-accent","style":{"color":"var(--color-text)"},"children":"讓助理自動打工——不用你叫，他就主動幫你做事"}]]}],["$","$L2",null,{"href":"/zh/blog/openclaw/11-openclaw-web-ui-setup","localeCookie":{"name":"NEXT_LOCALE","sameSite":"lax"},"className":"group rounded-lg border p-4 text-right transition-colors hover:border-accent","style":{"borderColor":"var(--color-border)","background":"var(--color-surface)"},"children":[["$","p",null,{"className":"mb-1 text-xs","style":{"color":"var(--color-muted)"},"children":"較舊文章 →"}],["$","p",null,{"className":"line-clamp-1 text-sm font-medium transition-colors group-hover:text-accent","style":{"color":"var(--color-text)"},"children":"不用碰設定檔！用 Web UI 完成所有 OpenClaw 設定"}]]}]]}]]}]
+9:T1c7d,<p>走到這一篇，代表你已經把 OpenClaw 從零搭到有了。恭喜！</p>
+<p>最後這篇整理一些讓系統跑得更穩、更好維護的心法。</p>
+<h2 id="本篇學習目標">本篇學習目標</h2>
+<ul>
+<li>知道設定檔在哪，以及兩種編輯方式</li>
+<li>看懂最小可用設定的結構</li>
+<li>學會用環境變數安全保管 API key</li>
+<li>掌握除錯的萬能工具和常見錯誤對照表</li>
+<li>了解版本選擇的原則</li>
+</ul>
+<hr>
+<h2 id="設定檔在哪裡">設定檔在哪裡？</h2>
+<pre><code>~/.openclaw/openclaw.json
+</code></pre>
+<p>格式是 <strong>JSON5</strong>（可以加註解、行尾逗號，比一般 JSON 友善）。</p>
+<p>你可以：</p>
+<ul>
+<li>在 Control UI 的 Config 頁用<strong>表單模式</strong>編輯（新手友善）</li>
+<li>切到 <strong>Raw JSON</strong> 模式直接改（精準快速）</li>
+</ul>
+<p>兩種模式改的是同一份檔案，儲存後都會寫入上面那個路徑。</p>
+<hr>
+<h2 id="最小可用設定長什麼樣">最小可用設定長什麼樣？</h2>
+<figure data-rehype-pretty-code-figure=""><pre style="background-color:#24292e;color:#e1e4e8" tabindex="0" data-language="json5" data-theme="github-dark"><code data-language="json5" data-theme="github-dark" style="display: grid;"><span data-line=""><span style="color:#E1E4E8">{</span></span>
+<span data-line=""><span style="color:#9ECBFF">  "agents"</span><span style="color:#E1E4E8">: {</span></span>
+<span data-line=""><span style="color:#9ECBFF">    "list"</span><span style="color:#E1E4E8">: [</span></span>
+<span data-line=""><span style="color:#E1E4E8">      { </span><span style="color:#9ECBFF">"id"</span><span style="color:#E1E4E8">: </span><span style="color:#9ECBFF">"main"</span><span style="color:#E1E4E8">, </span><span style="color:#9ECBFF">"workspace"</span><span style="color:#E1E4E8">: </span><span style="color:#9ECBFF">"~/.openclaw/workspace-main"</span><span style="color:#E1E4E8">, </span><span style="color:#9ECBFF">"default"</span><span style="color:#E1E4E8">: </span><span style="color:#79B8FF">true</span><span style="color:#E1E4E8"> }</span></span>
+<span data-line=""><span style="color:#E1E4E8">    ]</span></span>
+<span data-line=""><span style="color:#E1E4E8">  },</span></span>
+<span data-line=""><span style="color:#9ECBFF">  "channels"</span><span style="color:#E1E4E8">: {</span></span>
+<span data-line=""><span style="color:#9ECBFF">    "telegram"</span><span style="color:#E1E4E8">: {</span></span>
+<span data-line=""><span style="color:#9ECBFF">      "enabled"</span><span style="color:#E1E4E8">: </span><span style="color:#79B8FF">true</span><span style="color:#E1E4E8">,</span></span>
+<span data-line=""><span style="color:#9ECBFF">      "botToken"</span><span style="color:#E1E4E8">: </span><span style="color:#9ECBFF">"你的 Bot Token"</span></span>
+<span data-line=""><span style="color:#E1E4E8">    }</span></span>
+<span data-line=""><span style="color:#E1E4E8">  },</span></span>
+<span data-line=""><span style="color:#9ECBFF">  "bindings"</span><span style="color:#E1E4E8">: [</span></span>
+<span data-line=""><span style="color:#E1E4E8">    { </span><span style="color:#9ECBFF">"agentId"</span><span style="color:#E1E4E8">: </span><span style="color:#9ECBFF">"main"</span><span style="color:#E1E4E8">, </span><span style="color:#9ECBFF">"match"</span><span style="color:#E1E4E8">: { </span><span style="color:#9ECBFF">"channel"</span><span style="color:#E1E4E8">: </span><span style="color:#9ECBFF">"telegram"</span><span style="color:#E1E4E8"> } }</span></span>
+<span data-line=""><span style="color:#E1E4E8">  ]</span></span>
+<span data-line=""><span style="color:#E1E4E8">}</span></span></code></pre></figure>
+<p>能跑起來先，之後再慢慢加功能。</p>
+<hr>
+<h2 id="api-key-的正確保存方式">API Key 的正確保存方式</h2>
+<p><strong>不要把 API key 直接寫在 config 裡</strong>（雖然可以，但不好習慣）。</p>
+<p>用環境變數更安全：</p>
+<figure data-rehype-pretty-code-figure=""><pre style="background-color:#24292e;color:#e1e4e8" tabindex="0" data-language="bash" data-theme="github-dark"><code data-language="bash" data-theme="github-dark" style="display: grid;"><span data-line=""><span style="color:#6A737D"># 在 .env 或系統環境變數裡設定</span></span>
+<span data-line=""><span style="color:#E1E4E8">ANTHROPIC_API_KEY</span><span style="color:#F97583">=</span><span style="color:#9ECBFF">sk-ant-xxxxx</span></span></code></pre></figure>
+<blockquote>
+<p>⚠️ 如果用系統服務（systemd 等）啟動 Gateway，要確認服務有載入 <code>.env</code>，不然助理可能因為找不到 API key 而無法運作（會看到「Shell env off」之類的錯誤）。</p>
+</blockquote>
+<hr>
+<h2 id="除錯的萬能工具">除錯的萬能工具</h2>
+<p>有問題先跑這個：</p>
+<figure data-rehype-pretty-code-figure=""><pre style="background-color:#24292e;color:#e1e4e8" tabindex="0" data-language="bash" data-theme="github-dark"><code data-language="bash" data-theme="github-dark" style="display: grid;"><span data-line=""><span style="color:#B392F0">openclaw</span><span style="color:#9ECBFF"> logs</span><span style="color:#79B8FF"> --follow</span></span></code></pre></figure>
+<p>即時看 log，90% 的問題答案都在裡面。</p>
+<p>常見錯誤對照表：</p>
+<table>
+<thead>
+<tr>
+<th>錯誤訊息</th>
+<th>可能原因</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td><code>HTTP 429</code></td>
+<td>打 API 太頻繁，觸發 rate limit</td>
+</tr>
+<tr>
+<td><code>unauthorized</code></td>
+<td>Token 沒設好，或 gateway.bind 設定問題</td>
+</tr>
+<tr>
+<td><code>content tool_use input field required</code></td>
+<td>模型版本相容性問題，查官方文件</td>
+</tr>
+<tr>
+<td>Context 過長被截斷</td>
+<td>開新 session，或依文件做 compact</td>
+</tr>
+</tbody>
+</table>
+<hr>
+<h2 id="版本選擇要用哪一個">版本選擇：要用哪一個？</h2>
+<table>
+<thead>
+<tr>
+<th>版本</th>
+<th>適合誰</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td><strong>Stable（穩定版）</strong></td>
+<td>日常使用，優先選這個</td>
+</tr>
+<tr>
+<td><strong>Beta</strong></td>
+<td>想嘗鮮新功能，接受偶爾有 bug</td>
+</tr>
+<tr>
+<td><strong>Dev</strong></td>
+<td>開發者，想看最新動態</td>
+</tr>
+</tbody>
+</table>
+<blockquote>
+<p>💡 重大版本升級前，先備份 <code>~/.openclaw</code>，萬一出問題還能回去。</p>
+</blockquote>
+<hr>
+<h2 id="系列完結你學到了什麼">系列完結！你學到了什麼？</h2>
+<p>走過這十篇，你已經知道怎麼：</p>
+<ol>
+<li>認識 OpenClaw 的核心概念</li>
+<li>安裝並第一次啟動</li>
+<li>搞定儀表板認證</li>
+<li>接上 Telegram 等通道</li>
+<li>用 Skills 讓助理更強</li>
+<li>管理記憶與工作區</li>
+<li>多個助理各司其職</li>
+<li>把 Gateway 部署到 VPS</li>
+<li>設定排程讓助理自動工作</li>
+<li>進階設定與除錯（就是本篇）</li>
+</ol>
+<p>更多細節，永遠以 <a href="https://docs.openclaw.ai">docs.openclaw.ai</a> 的官方文件為準。</p>
+<p><strong>你的 AI 助理已經準備好了——去讓他為你工作吧！</strong></p>
+<p><a href="09-cron-automation">← 上一篇：排程與自動化</a> | <a href="01-intro">回系列首篇</a></p>5:["$","aside",null,{"className":"hidden lg:block","children":["$","$L8",null,{"html":"$9"}]}]
+6:["$","script","script-0",{"src":"/_next/static/chunks/2dddb3bc05093f69.js","async":true}]
+7:["$","$La",null,{"children":["$","$b",null,{"name":"Next.MetadataOutlet","children":"$@c"}]}]
+c:null

@@ -1,0 +1,147 @@
+1:"$Sreact.fragment"
+2:I[14864,["/_next/static/chunks/7923a261b80bb6e1.js","/_next/static/chunks/e09b4358027e8033.js","/_next/static/chunks/2dddb3bc05093f69.js"],"default"]
+8:I[24801,["/_next/static/chunks/7923a261b80bb6e1.js","/_next/static/chunks/e09b4358027e8033.js","/_next/static/chunks/2dddb3bc05093f69.js"],"default"]
+a:I[50183,["/_next/static/chunks/5a5b5b13c22d14f7.js","/_next/static/chunks/a484d1d3dd4b55ab.js"],"OutletBoundary"]
+b:"$Sreact.suspense"
+3:T22ba,<p><strong>Worktree</strong> يتيح لك عدة مجلدات (كل واحد على فرع مختلف) لنفس المستودع. <strong>Cursor CLI</strong> يعمل على المجلد الذي تُشغّل فيه. اجمعها وتحصل على عدة طرفيات تشغّل وكلاء CLI بالتوازي على فروع مختلفة — دون نوافذ Cursor متعددة، تعدد مهام بالكامل بلوحة المفاتيح.</p>
+<h2 id="لماذا-الجمع-بينهما">لماذا الجمع بينهما؟</h2>
+<table>
+<thead>
+<tr>
+<th>النهج</th>
+<th>كيف</th>
+<th>الأنسب لـ</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td>Worktree + نوافذ Cursor <strong>متعددة</strong></td>
+<td>فتح worktree واحد لكل نافذة</td>
+<td>مستخدمي IDE الذين يريدون شجرة الملفات والمعاينة</td>
+</tr>
+<tr>
+<td>Worktree + <strong>CLI</strong></td>
+<td>طرفيات متعددة، كل واحدة <code>cd</code> إلى worktree، تشغيل <code>cursor agent</code></td>
+<td>مستخدمون يعتمدون لوحة المفاتيح أو بيئات خادم/SSH</td>
+</tr>
+</tbody>
+</table>
+<p>القاسم المشترك: كل worktree مجلد مستقل → لكل واحد سياقه → تطوير متوازي دون التداخل. كأن يكون لديك عدة نسخ تعمل على فروع مختلفة في الوقت نفسه.</p>
+<h2 id="الاستخدام-الأساسي-طرفية-واحدة-لكل-worktree">الاستخدام الأساسي: طرفية واحدة لكل Worktree</h2>
+<p>بافتراض أنك أنشأت worktrees بالفعل:</p>
+<pre><code>~/projects/
+├── my-app/                  ← main
+├── my-app--feature-auth/    ← feature/auth
+└── my-app--feature-payment/  ← feature/payment
+</code></pre>
+<p><strong>الطرفية 1</strong> (تعمل على auth):</p>
+<figure data-rehype-pretty-code-figure=""><pre style="background-color:#24292e;color:#e1e4e8" tabindex="0" data-language="bash" data-theme="github-dark"><code data-language="bash" data-theme="github-dark" style="display: grid;"><span data-line=""><span style="color:#79B8FF">cd</span><span style="color:#9ECBFF"> ~/projects/my-app--feature-auth</span></span>
+<span data-line=""><span style="color:#B392F0">cursor</span><span style="color:#9ECBFF"> agent</span><span style="color:#9ECBFF"> "Implement JWT login"</span></span></code></pre></figure>
+<p><strong>الطرفية 2</strong> (تعمل على payment):</p>
+<figure data-rehype-pretty-code-figure=""><pre style="background-color:#24292e;color:#e1e4e8" tabindex="0" data-language="bash" data-theme="github-dark"><code data-language="bash" data-theme="github-dark" style="display: grid;"><span data-line=""><span style="color:#79B8FF">cd</span><span style="color:#9ECBFF"> ~/projects/my-app--feature-payment</span></span>
+<span data-line=""><span style="color:#B392F0">cursor</span><span style="color:#9ECBFF"> agent</span><span style="color:#9ECBFF"> "Add Stripe checkout flow"</span></span></code></pre></figure>
+<p>CLI يستخدم <strong>المجلد الحالي</strong> كسياقه افتراضياً، فكلا الطرفيتين يعدّلان فقط worktree الخاص به. هذا "وكيلا CLI يعملان بالتوازي" — لا حاجة لفتح نافذتي Cursor، توفير موارد وتجنّب تبديل السياق.</p>
+<h2 id="دون-تغيير-المجلد-استخدم---path-لاستهداف-worktree">دون تغيير المجلد: استخدم <code>--path</code> لاستهداف Worktree</h2>
+<p>أنت في مجلد المشروع الرئيسي لكن تريد أن يعمل CLI على worktree معيّن:</p>
+<figure data-rehype-pretty-code-figure=""><pre style="background-color:#24292e;color:#e1e4e8" tabindex="0" data-language="bash" data-theme="github-dark"><code data-language="bash" data-theme="github-dark" style="display: grid;"><span data-line=""><span style="color:#79B8FF">cd</span><span style="color:#9ECBFF"> ~/projects/my-app</span></span>
+<span data-line=""><span style="color:#B392F0">cursor</span><span style="color:#9ECBFF"> agent</span><span style="color:#9ECBFF"> "Add unit tests for feature/auth"</span><span style="color:#79B8FF"> --path</span><span style="color:#9ECBFF"> ../my-app--feature-auth</span></span></code></pre></figure>
+<p><code>--path</code> يحدد له أي مجلد ينظر — مسار الـ worktree. مفيد عند التعامل مع worktree واحد في المرة، أو عندما يكون المسار ثابتاً في سكربت.</p>
+<h2 id="غير-تفاعلي--worktree-سكربتات--عمليات-دفعة">غير تفاعلي + Worktree (سكربتات / عمليات دفعة)</h2>
+<p>تشغيل نفس نوع المهمة على عدة worktrees بالتسلسل (مثلاً إضافة README للكل، إصلاح lint في الكل):</p>
+<figure data-rehype-pretty-code-figure=""><pre style="background-color:#24292e;color:#e1e4e8" tabindex="0" data-language="bash" data-theme="github-dark"><code data-language="bash" data-theme="github-dark" style="display: grid;"><span data-line=""><span style="color:#6A737D"># مثال: تشغيل "fix lint" على كلا worktree</span></span>
+<span data-line=""><span style="color:#B392F0">cursor</span><span style="color:#9ECBFF"> agent</span><span style="color:#9ECBFF"> "Fix all auto-fixable errors per .eslintrc"</span><span style="color:#79B8FF"> --path</span><span style="color:#9ECBFF"> ../my-app--feature-auth</span><span style="color:#79B8FF"> --no-interactive</span></span>
+<span data-line=""><span style="color:#B392F0">cursor</span><span style="color:#9ECBFF"> agent</span><span style="color:#9ECBFF"> "Fix all auto-fixable errors per .eslintrc"</span><span style="color:#79B8FF"> --path</span><span style="color:#9ECBFF"> ../my-app--feature-payment</span><span style="color:#79B8FF"> --no-interactive</span></span></code></pre></figure>
+<p>أو اكتب حلقة (عدّل المسارات حسب إعدادك):</p>
+<figure data-rehype-pretty-code-figure=""><pre style="background-color:#24292e;color:#e1e4e8" tabindex="0" data-language="bash" data-theme="github-dark"><code data-language="bash" data-theme="github-dark" style="display: grid;"><span data-line=""><span style="color:#F97583">for</span><span style="color:#E1E4E8"> dir </span><span style="color:#F97583">in</span><span style="color:#9ECBFF"> ../my-app--feature-auth</span><span style="color:#9ECBFF"> ../my-app--feature-payment</span><span style="color:#E1E4E8">; </span><span style="color:#F97583">do</span></span>
+<span data-line=""><span style="color:#B392F0">  cursor</span><span style="color:#9ECBFF"> agent</span><span style="color:#9ECBFF"> "Fix linter errors"</span><span style="color:#79B8FF"> --path</span><span style="color:#9ECBFF"> "</span><span style="color:#E1E4E8">$dir</span><span style="color:#9ECBFF">"</span><span style="color:#79B8FF"> --no-interactive</span></span>
+<span data-line=""><span style="color:#F97583">done</span></span></code></pre></figure>
+<p>تعليمة واحدة، تنظيف عدة فروع دفعة واحدة — ممتاز للمرور النهائي قبل رفع PR.</p>
+<h2 id="العلاقة-مع-worktree--نوافذ-متعددة">العلاقة مع "Worktree + نوافذ متعددة"</h2>
+<ul>
+<li><strong>نوافذ متعددة</strong>: كل نافذة Cursor تفتح worktree، باستخدام Agent والـ Chat والإكمال Tab في الـ IDE.</li>
+<li><strong>CLI + Worktree</strong>: طرفية + <code>cursor agent</code> — نفس فكرة "مجلد واحد، سياق واحد"، فقط افتح طرفيات أكثر للتوزيع المتوازي.</li>
+</ul>
+<p>يمكنك أيضاً المزج: التطوير الرئيسي في النافذة، واستخدام CLI على الخادم لإصلاحات صغيرة على فرع آخر.</p>
+<h2 id="ملخص">ملخص</h2>
+<ul>
+<li><strong>Worktree</strong> = مجلدات متعددة، فروع متعددة؛ <strong>CLI</strong> = يعمل على المجلد الحالي أو <code>--path</code> → ثنائي طبيعي.</li>
+<li><strong>متوازي</strong>: افتح طرفيات متعددة، كل واحدة <code>cd</code> إلى worktree مختلف، ثم شغّل <code>cursor agent</code>.</li>
+<li><strong>طرفية واحدة</strong>: استخدم <code>--path &#x3C;worktree-path></code> لاستهداف الـ worktree المطلوب.</li>
+<li><strong>سكربتات/دفعة</strong>: <code>--path</code> + <code>--no-interactive</code> لتشغيل نفس المهمة على عدة worktrees.</li>
+</ul>
+<blockquote>
+<p>التالي: <a href="07-unlimit-loop-debug">07-unlimit-loop-debug</a> — دع CLI يحلّق تلقائياً ويصلح الكود حتى تمر الاختبارات (يمكنك أن تذهب لتشرب قهوة).</p>
+</blockquote>0:{"buildId":"Yck3R4ooQxWkwGLT6is1X","rsc":["$","$1","c",{"children":[[["$","script",null,{"type":"application/ld+json","dangerouslySetInnerHTML":{"__html":"{\"@context\":\"https://schema.org\",\"@type\":\"Article\",\"headline\":\"Cursor CLI مع Git Worktree\",\"description\":\"Worktree يعطيك عدة مجلدات لنفس المستودع؛ CLI يعمل على المجلد الذي يُشغّل فيه. معاً يتيحان العمل المتوازي على فروع بعدة طرفيات.\",\"url\":\"https://benxhub.com/ar/blog/cursor/cli/06-cursor-cli-with-worktree\",\"mainEntityOfPage\":{\"@type\":\"WebPage\",\"@id\":\"https://benxhub.com/ar/blog/cursor/cli/06-cursor-cli-with-worktree\"},\"datePublished\":\"2026-02-24T00:00:00.000Z\",\"dateModified\":\"2026-02-24T00:00:00.000Z\",\"keywords\":\"cursor, cli, git, worktree\",\"inLanguage\":\"ar\",\"author\":{\"@type\":\"Person\",\"name\":\"BenX\",\"url\":\"https://benxhub.com\"},\"publisher\":{\"@type\":\"Organization\",\"name\":\"BenXHub Blog\",\"url\":\"https://benxhub.com\"}}"}}],["$","div",null,{"className":"mx-auto max-w-6xl px-4 py-12 sm:px-6","children":["$","div",null,{"className":"lg:grid lg:grid-cols-[1fr_240px] lg:gap-14","children":[["$","article",null,{"children":[["$","header",null,{"className":"mb-10","children":[["$","div",null,{"className":"mb-4 flex flex-wrap gap-2","children":[["$","$L2","cursor",{"href":"/ar/tags/cursor","localeCookie":{"name":"NEXT_LOCALE","sameSite":"lax"},"className":"inline-flex items-center rounded-full px-2.5 py-0.5 text-xs font-medium transition-colors","style":{"background":"var(--color-code-bg)","color":"var(--color-accent)","border":"1px solid var(--color-border)"},"children":["#","cursor"]}],["$","$L2","cli",{"href":"/ar/tags/cli","localeCookie":{"name":"NEXT_LOCALE","sameSite":"lax"},"className":"inline-flex items-center rounded-full px-2.5 py-0.5 text-xs font-medium transition-colors","style":{"background":"var(--color-code-bg)","color":"var(--color-accent)","border":"1px solid var(--color-border)"},"children":["#","cli"]}],["$","$L2","git",{"href":"/ar/tags/git","localeCookie":{"name":"NEXT_LOCALE","sameSite":"lax"},"className":"inline-flex items-center rounded-full px-2.5 py-0.5 text-xs font-medium transition-colors","style":{"background":"var(--color-code-bg)","color":"var(--color-accent)","border":"1px solid var(--color-border)"},"children":["#","git"]}],["$","$L2","worktree",{"href":"/ar/tags/worktree","localeCookie":{"name":"NEXT_LOCALE","sameSite":"lax"},"className":"inline-flex items-center rounded-full px-2.5 py-0.5 text-xs font-medium transition-colors","style":{"background":"var(--color-code-bg)","color":"var(--color-accent)","border":"1px solid var(--color-border)"},"children":["#","worktree"]}]]}],["$","h1",null,{"className":"mb-4 text-3xl leading-snug font-bold tracking-tight sm:text-4xl","style":{"color":"var(--color-text)"},"children":"Cursor CLI مع Git Worktree"}],["$","div",null,{"className":"flex flex-wrap items-center gap-3 text-sm","style":{"color":"var(--color-muted)"},"children":[["$","time",null,{"dateTime":"2026-02-24","children":"24 2月 2026"}],["$","span",null,{"aria-hidden":"true","children":"·"}],["$","span",null,{"children":"3 min read"}]]}],"$undefined",["$","div",null,{"className":"mt-6 border-b","style":{"borderColor":"var(--color-border)"}}]]}],["$","div",null,{"className":"prose","dangerouslySetInnerHTML":{"__html":"$3"}}],"$L4"]}],"$L5"]}]}]],["$L6"],"$L7"]}],"loading":null,"isPartial":false}
+4:["$","footer",null,{"className":"mt-14 border-t pt-8","style":{"borderColor":"var(--color-border)"},"children":[["$","div",null,{"className":"mb-8 flex flex-wrap gap-2","children":[["$","$L2","cursor",{"href":"/ar/tags/cursor","localeCookie":{"name":"NEXT_LOCALE","sameSite":"lax"},"className":"inline-flex items-center rounded-full px-3 py-1 text-sm font-medium transition-colors","style":{"background":"var(--color-code-bg)","color":"var(--color-accent)","border":"1px solid var(--color-border)"},"children":["#","cursor"]}],["$","$L2","cli",{"href":"/ar/tags/cli","localeCookie":{"name":"NEXT_LOCALE","sameSite":"lax"},"className":"inline-flex items-center rounded-full px-3 py-1 text-sm font-medium transition-colors","style":{"background":"var(--color-code-bg)","color":"var(--color-accent)","border":"1px solid var(--color-border)"},"children":["#","cli"]}],["$","$L2","git",{"href":"/ar/tags/git","localeCookie":{"name":"NEXT_LOCALE","sameSite":"lax"},"className":"inline-flex items-center rounded-full px-3 py-1 text-sm font-medium transition-colors","style":{"background":"var(--color-code-bg)","color":"var(--color-accent)","border":"1px solid var(--color-border)"},"children":["#","git"]}],["$","$L2","worktree",{"href":"/ar/tags/worktree","localeCookie":{"name":"NEXT_LOCALE","sameSite":"lax"},"className":"inline-flex items-center rounded-full px-3 py-1 text-sm font-medium transition-colors","style":{"background":"var(--color-code-bg)","color":"var(--color-accent)","border":"1px solid var(--color-border)"},"children":["#","worktree"]}]]}],["$","nav",null,{"aria-label":"التنقل بين المقالات","className":"grid grid-cols-1 gap-4 sm:grid-cols-2","children":[["$","$L2",null,{"href":"/ar/blog/cursor/cli/05-tips","localeCookie":{"name":"NEXT_LOCALE","sameSite":"lax"},"className":"group rounded-lg border p-4 transition-colors hover:border-accent","style":{"borderColor":"var(--color-border)","background":"var(--color-surface)"},"children":[["$","p",null,{"className":"mb-1 text-xs","style":{"color":"var(--color-muted)"},"children":"→ الأحدث"}],["$","p",null,{"className":"line-clamp-1 text-sm font-medium transition-colors group-hover:text-accent","style":{"color":"var(--color-text)"},"children":"Cursor CLI نصائح وأسئلة شائعة"}]]}],["$","$L2",null,{"href":"/ar/blog/cursor/cli/07-unlimit-loop-debug","localeCookie":{"name":"NEXT_LOCALE","sameSite":"lax"},"className":"group rounded-lg border p-4 text-right transition-colors hover:border-accent","style":{"borderColor":"var(--color-border)","background":"var(--color-surface)"},"children":[["$","p",null,{"className":"mb-1 text-xs","style":{"color":"var(--color-muted)"},"children":"الأقدم ←"}],["$","p",null,{"className":"line-clamp-1 text-sm font-medium transition-colors group-hover:text-accent","style":{"color":"var(--color-text)"},"children":"حلقة التصحيح اللانهائية: دع Cursor CLI يصلح حتى تمر الاختبارات"}]]}]]}]]}]
+9:T22ba,<p><strong>Worktree</strong> يتيح لك عدة مجلدات (كل واحد على فرع مختلف) لنفس المستودع. <strong>Cursor CLI</strong> يعمل على المجلد الذي تُشغّل فيه. اجمعها وتحصل على عدة طرفيات تشغّل وكلاء CLI بالتوازي على فروع مختلفة — دون نوافذ Cursor متعددة، تعدد مهام بالكامل بلوحة المفاتيح.</p>
+<h2 id="لماذا-الجمع-بينهما">لماذا الجمع بينهما؟</h2>
+<table>
+<thead>
+<tr>
+<th>النهج</th>
+<th>كيف</th>
+<th>الأنسب لـ</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td>Worktree + نوافذ Cursor <strong>متعددة</strong></td>
+<td>فتح worktree واحد لكل نافذة</td>
+<td>مستخدمي IDE الذين يريدون شجرة الملفات والمعاينة</td>
+</tr>
+<tr>
+<td>Worktree + <strong>CLI</strong></td>
+<td>طرفيات متعددة، كل واحدة <code>cd</code> إلى worktree، تشغيل <code>cursor agent</code></td>
+<td>مستخدمون يعتمدون لوحة المفاتيح أو بيئات خادم/SSH</td>
+</tr>
+</tbody>
+</table>
+<p>القاسم المشترك: كل worktree مجلد مستقل → لكل واحد سياقه → تطوير متوازي دون التداخل. كأن يكون لديك عدة نسخ تعمل على فروع مختلفة في الوقت نفسه.</p>
+<h2 id="الاستخدام-الأساسي-طرفية-واحدة-لكل-worktree">الاستخدام الأساسي: طرفية واحدة لكل Worktree</h2>
+<p>بافتراض أنك أنشأت worktrees بالفعل:</p>
+<pre><code>~/projects/
+├── my-app/                  ← main
+├── my-app--feature-auth/    ← feature/auth
+└── my-app--feature-payment/  ← feature/payment
+</code></pre>
+<p><strong>الطرفية 1</strong> (تعمل على auth):</p>
+<figure data-rehype-pretty-code-figure=""><pre style="background-color:#24292e;color:#e1e4e8" tabindex="0" data-language="bash" data-theme="github-dark"><code data-language="bash" data-theme="github-dark" style="display: grid;"><span data-line=""><span style="color:#79B8FF">cd</span><span style="color:#9ECBFF"> ~/projects/my-app--feature-auth</span></span>
+<span data-line=""><span style="color:#B392F0">cursor</span><span style="color:#9ECBFF"> agent</span><span style="color:#9ECBFF"> "Implement JWT login"</span></span></code></pre></figure>
+<p><strong>الطرفية 2</strong> (تعمل على payment):</p>
+<figure data-rehype-pretty-code-figure=""><pre style="background-color:#24292e;color:#e1e4e8" tabindex="0" data-language="bash" data-theme="github-dark"><code data-language="bash" data-theme="github-dark" style="display: grid;"><span data-line=""><span style="color:#79B8FF">cd</span><span style="color:#9ECBFF"> ~/projects/my-app--feature-payment</span></span>
+<span data-line=""><span style="color:#B392F0">cursor</span><span style="color:#9ECBFF"> agent</span><span style="color:#9ECBFF"> "Add Stripe checkout flow"</span></span></code></pre></figure>
+<p>CLI يستخدم <strong>المجلد الحالي</strong> كسياقه افتراضياً، فكلا الطرفيتين يعدّلان فقط worktree الخاص به. هذا "وكيلا CLI يعملان بالتوازي" — لا حاجة لفتح نافذتي Cursor، توفير موارد وتجنّب تبديل السياق.</p>
+<h2 id="دون-تغيير-المجلد-استخدم---path-لاستهداف-worktree">دون تغيير المجلد: استخدم <code>--path</code> لاستهداف Worktree</h2>
+<p>أنت في مجلد المشروع الرئيسي لكن تريد أن يعمل CLI على worktree معيّن:</p>
+<figure data-rehype-pretty-code-figure=""><pre style="background-color:#24292e;color:#e1e4e8" tabindex="0" data-language="bash" data-theme="github-dark"><code data-language="bash" data-theme="github-dark" style="display: grid;"><span data-line=""><span style="color:#79B8FF">cd</span><span style="color:#9ECBFF"> ~/projects/my-app</span></span>
+<span data-line=""><span style="color:#B392F0">cursor</span><span style="color:#9ECBFF"> agent</span><span style="color:#9ECBFF"> "Add unit tests for feature/auth"</span><span style="color:#79B8FF"> --path</span><span style="color:#9ECBFF"> ../my-app--feature-auth</span></span></code></pre></figure>
+<p><code>--path</code> يحدد له أي مجلد ينظر — مسار الـ worktree. مفيد عند التعامل مع worktree واحد في المرة، أو عندما يكون المسار ثابتاً في سكربت.</p>
+<h2 id="غير-تفاعلي--worktree-سكربتات--عمليات-دفعة">غير تفاعلي + Worktree (سكربتات / عمليات دفعة)</h2>
+<p>تشغيل نفس نوع المهمة على عدة worktrees بالتسلسل (مثلاً إضافة README للكل، إصلاح lint في الكل):</p>
+<figure data-rehype-pretty-code-figure=""><pre style="background-color:#24292e;color:#e1e4e8" tabindex="0" data-language="bash" data-theme="github-dark"><code data-language="bash" data-theme="github-dark" style="display: grid;"><span data-line=""><span style="color:#6A737D"># مثال: تشغيل "fix lint" على كلا worktree</span></span>
+<span data-line=""><span style="color:#B392F0">cursor</span><span style="color:#9ECBFF"> agent</span><span style="color:#9ECBFF"> "Fix all auto-fixable errors per .eslintrc"</span><span style="color:#79B8FF"> --path</span><span style="color:#9ECBFF"> ../my-app--feature-auth</span><span style="color:#79B8FF"> --no-interactive</span></span>
+<span data-line=""><span style="color:#B392F0">cursor</span><span style="color:#9ECBFF"> agent</span><span style="color:#9ECBFF"> "Fix all auto-fixable errors per .eslintrc"</span><span style="color:#79B8FF"> --path</span><span style="color:#9ECBFF"> ../my-app--feature-payment</span><span style="color:#79B8FF"> --no-interactive</span></span></code></pre></figure>
+<p>أو اكتب حلقة (عدّل المسارات حسب إعدادك):</p>
+<figure data-rehype-pretty-code-figure=""><pre style="background-color:#24292e;color:#e1e4e8" tabindex="0" data-language="bash" data-theme="github-dark"><code data-language="bash" data-theme="github-dark" style="display: grid;"><span data-line=""><span style="color:#F97583">for</span><span style="color:#E1E4E8"> dir </span><span style="color:#F97583">in</span><span style="color:#9ECBFF"> ../my-app--feature-auth</span><span style="color:#9ECBFF"> ../my-app--feature-payment</span><span style="color:#E1E4E8">; </span><span style="color:#F97583">do</span></span>
+<span data-line=""><span style="color:#B392F0">  cursor</span><span style="color:#9ECBFF"> agent</span><span style="color:#9ECBFF"> "Fix linter errors"</span><span style="color:#79B8FF"> --path</span><span style="color:#9ECBFF"> "</span><span style="color:#E1E4E8">$dir</span><span style="color:#9ECBFF">"</span><span style="color:#79B8FF"> --no-interactive</span></span>
+<span data-line=""><span style="color:#F97583">done</span></span></code></pre></figure>
+<p>تعليمة واحدة، تنظيف عدة فروع دفعة واحدة — ممتاز للمرور النهائي قبل رفع PR.</p>
+<h2 id="العلاقة-مع-worktree--نوافذ-متعددة">العلاقة مع "Worktree + نوافذ متعددة"</h2>
+<ul>
+<li><strong>نوافذ متعددة</strong>: كل نافذة Cursor تفتح worktree، باستخدام Agent والـ Chat والإكمال Tab في الـ IDE.</li>
+<li><strong>CLI + Worktree</strong>: طرفية + <code>cursor agent</code> — نفس فكرة "مجلد واحد، سياق واحد"، فقط افتح طرفيات أكثر للتوزيع المتوازي.</li>
+</ul>
+<p>يمكنك أيضاً المزج: التطوير الرئيسي في النافذة، واستخدام CLI على الخادم لإصلاحات صغيرة على فرع آخر.</p>
+<h2 id="ملخص">ملخص</h2>
+<ul>
+<li><strong>Worktree</strong> = مجلدات متعددة، فروع متعددة؛ <strong>CLI</strong> = يعمل على المجلد الحالي أو <code>--path</code> → ثنائي طبيعي.</li>
+<li><strong>متوازي</strong>: افتح طرفيات متعددة، كل واحدة <code>cd</code> إلى worktree مختلف، ثم شغّل <code>cursor agent</code>.</li>
+<li><strong>طرفية واحدة</strong>: استخدم <code>--path &#x3C;worktree-path></code> لاستهداف الـ worktree المطلوب.</li>
+<li><strong>سكربتات/دفعة</strong>: <code>--path</code> + <code>--no-interactive</code> لتشغيل نفس المهمة على عدة worktrees.</li>
+</ul>
+<blockquote>
+<p>التالي: <a href="07-unlimit-loop-debug">07-unlimit-loop-debug</a> — دع CLI يحلّق تلقائياً ويصلح الكود حتى تمر الاختبارات (يمكنك أن تذهب لتشرب قهوة).</p>
+</blockquote>5:["$","aside",null,{"className":"hidden lg:block","children":["$","$L8",null,{"html":"$9"}]}]
+6:["$","script","script-0",{"src":"/_next/static/chunks/2dddb3bc05093f69.js","async":true}]
+7:["$","$La",null,{"children":["$","$b",null,{"name":"Next.MetadataOutlet","children":"$@c"}]}]
+c:null

@@ -1,0 +1,245 @@
+1:"$Sreact.fragment"
+2:I[14864,["/_next/static/chunks/7923a261b80bb6e1.js","/_next/static/chunks/e09b4358027e8033.js","/_next/static/chunks/2dddb3bc05093f69.js"],"default"]
+8:I[24801,["/_next/static/chunks/7923a261b80bb6e1.js","/_next/static/chunks/e09b4358027e8033.js","/_next/static/chunks/2dddb3bc05093f69.js"],"default"]
+a:I[50183,["/_next/static/chunks/5a5b5b13c22d14f7.js","/_next/static/chunks/a484d1d3dd4b55ab.js"],"OutletBoundary"]
+b:"$Sreact.suspense"
+3:T2f01,<p>這篇的目標超單純：<strong>不要先談人生大道理，先把 Envoy Gateway 跑起來。</strong> 你只要成功打到範例服務，就已經贏過一票還停留在看文件首頁的人了。</p>
+<h2 id="前置條件">前置條件</h2>
+<p>你至少要有一個可用的 Kubernetes 叢集，像是：</p>
+<ul>
+<li>本地：<code>kind</code>、<code>minikube</code>、<code>k3d</code></li>
+<li>雲上：EKS、GKE、AKS</li>
+<li>家裡 lab：K3s + MetalLB 也可以</li>
+</ul>
+<p>另外要準備：</p>
+<ul>
+<li><code>kubectl</code></li>
+<li><code>helm</code></li>
+<li>叢集能拿到 <code>LoadBalancer</code> 位址，或能接受你用 <code>port-forward</code></li>
+</ul>
+<blockquote>
+<p>⚠️ 如果你的叢集沒有 <code>LoadBalancer</code>，官方也建議搭配 MetalLB。沒有外部位址不是世界末日，但測試路徑會改成 <code>port-forward</code>。</p>
+</blockquote>
+<h2 id="步驟-1安裝-envoy-gateway">步驟 1：安裝 Envoy Gateway</h2>
+<p>先裝控制平面：</p>
+<figure data-rehype-pretty-code-figure=""><pre style="background-color:#24292e;color:#e1e4e8" tabindex="0" data-language="bash" data-theme="github-dark"><code data-language="bash" data-theme="github-dark" style="display: grid;"><span data-line=""><span style="color:#B392F0">helm</span><span style="color:#9ECBFF"> install</span><span style="color:#9ECBFF"> eg</span><span style="color:#9ECBFF"> oci://docker.io/envoyproxy/gateway-helm</span><span style="color:#79B8FF"> \</span></span>
+<span data-line=""><span style="color:#79B8FF">  --version</span><span style="color:#9ECBFF"> v1.7.0</span><span style="color:#79B8FF"> \</span></span>
+<span data-line=""><span style="color:#79B8FF">  -n</span><span style="color:#9ECBFF"> envoy-gateway-system</span><span style="color:#79B8FF"> \</span></span>
+<span data-line=""><span style="color:#79B8FF">  --create-namespace</span></span></code></pre></figure>
+<p>等它 Ready：</p>
+<figure data-rehype-pretty-code-figure=""><pre style="background-color:#24292e;color:#e1e4e8" tabindex="0" data-language="bash" data-theme="github-dark"><code data-language="bash" data-theme="github-dark" style="display: grid;"><span data-line=""><span style="color:#B392F0">kubectl</span><span style="color:#9ECBFF"> wait</span><span style="color:#79B8FF"> --timeout=5m</span><span style="color:#79B8FF"> -n</span><span style="color:#9ECBFF"> envoy-gateway-system</span><span style="color:#79B8FF"> \</span></span>
+<span data-line=""><span style="color:#9ECBFF">  deployment/envoy-gateway</span><span style="color:#79B8FF"> \</span></span>
+<span data-line=""><span style="color:#79B8FF">  --for=condition=Available</span></span></code></pre></figure>
+<p>這一步完成後，代表 Envoy Gateway controller 已經進駐叢集，可以開始看懂 <code>Gateway API</code> 資源並幫你建立對應的 Envoy 設定。</p>
+<h2 id="步驟-2套用官方-quickstart-資源">步驟 2：套用官方 quickstart 資源</h2>
+<p>官方直接準備了一包範例，裡面包含：</p>
+<ul>
+<li><code>GatewayClass</code></li>
+<li><code>Gateway</code></li>
+<li><code>HTTPRoute</code></li>
+<li>範例 backend app</li>
+</ul>
+<p>直接套：</p>
+<figure data-rehype-pretty-code-figure=""><pre style="background-color:#24292e;color:#e1e4e8" tabindex="0" data-language="bash" data-theme="github-dark"><code data-language="bash" data-theme="github-dark" style="display: grid;"><span data-line=""><span style="color:#B392F0">kubectl</span><span style="color:#9ECBFF"> apply</span><span style="color:#79B8FF"> -f</span><span style="color:#79B8FF"> \</span></span>
+<span data-line=""><span style="color:#9ECBFF">  https://github.com/envoyproxy/gateway/releases/download/v1.7.0/quickstart.yaml</span><span style="color:#79B8FF"> \</span></span>
+<span data-line=""><span style="color:#79B8FF">  -n</span><span style="color:#9ECBFF"> default</span></span></code></pre></figure>
+<p>你可以把它想成「官方幫你把 demo 場景一次鋪好」，先求能跑，之後再自己拆開研究。</p>
+<h2 id="步驟-3驗證流量有沒有通">步驟 3：驗證流量有沒有通</h2>
+<h3 id="做法-a叢集有-loadbalancer">做法 A：叢集有 LoadBalancer</h3>
+<p>拿到 Gateway 位址：</p>
+<figure data-rehype-pretty-code-figure=""><pre style="background-color:#24292e;color:#e1e4e8" tabindex="0" data-language="bash" data-theme="github-dark"><code data-language="bash" data-theme="github-dark" style="display: grid;"><span data-line=""><span style="color:#F97583">export</span><span style="color:#E1E4E8"> GATEWAY_HOST</span><span style="color:#F97583">=</span><span style="color:#E1E4E8">$(</span><span style="color:#B392F0">kubectl</span><span style="color:#9ECBFF"> get</span><span style="color:#9ECBFF"> gateway/eg</span><span style="color:#79B8FF"> -o</span><span style="color:#9ECBFF"> jsonpath='{.status.addresses[0].value}'</span><span style="color:#E1E4E8">)</span></span></code></pre></figure>
+<p>打請求：</p>
+<figure data-rehype-pretty-code-figure=""><pre style="background-color:#24292e;color:#e1e4e8" tabindex="0" data-language="bash" data-theme="github-dark"><code data-language="bash" data-theme="github-dark" style="display: grid;"><span data-line=""><span style="color:#B392F0">curl</span><span style="color:#79B8FF"> --verbose</span><span style="color:#79B8FF"> \</span></span>
+<span data-line=""><span style="color:#79B8FF">  --header</span><span style="color:#9ECBFF"> "Host: www.example.com"</span><span style="color:#79B8FF"> \</span></span>
+<span data-line=""><span style="color:#9ECBFF">  http://</span><span style="color:#E1E4E8">$GATEWAY_HOST</span><span style="color:#9ECBFF">/get</span></span></code></pre></figure>
+<p>如果你看到 HTTP <code>200</code>，就代表：</p>
+<ul>
+<li>Gateway 有對外提供入口</li>
+<li>HTTPRoute 有成功附掛</li>
+<li>backend service 有被正確轉送</li>
+</ul>
+<h3 id="做法-b沒有-loadbalancer用-port-forward">做法 B：沒有 LoadBalancer，用 port-forward</h3>
+<p>先找出 Envoy service：</p>
+<figure data-rehype-pretty-code-figure=""><pre style="background-color:#24292e;color:#e1e4e8" tabindex="0" data-language="bash" data-theme="github-dark"><code data-language="bash" data-theme="github-dark" style="display: grid;"><span data-line=""><span style="color:#F97583">export</span><span style="color:#E1E4E8"> ENVOY_SERVICE</span><span style="color:#F97583">=</span><span style="color:#E1E4E8">$(</span><span style="color:#B392F0">kubectl</span><span style="color:#9ECBFF"> get</span><span style="color:#9ECBFF"> svc</span><span style="color:#79B8FF"> -n</span><span style="color:#9ECBFF"> envoy-gateway-system</span><span style="color:#79B8FF"> \</span></span>
+<span data-line=""><span style="color:#79B8FF">  --selector=gateway.envoyproxy.io/owning-gateway-namespace=default,gateway.envoyproxy.io/owning-gateway-name=eg</span><span style="color:#79B8FF"> \</span></span>
+<span data-line=""><span style="color:#79B8FF">  -o</span><span style="color:#9ECBFF"> jsonpath='{.items[0].metadata.name}'</span><span style="color:#E1E4E8">)</span></span></code></pre></figure>
+<p>把本機 <code>8888</code> 轉到 Gateway 的 <code>80</code>：</p>
+<figure data-rehype-pretty-code-figure=""><pre style="background-color:#24292e;color:#e1e4e8" tabindex="0" data-language="bash" data-theme="github-dark"><code data-language="bash" data-theme="github-dark" style="display: grid;"><span data-line=""><span style="color:#B392F0">kubectl</span><span style="color:#79B8FF"> -n</span><span style="color:#9ECBFF"> envoy-gateway-system</span><span style="color:#9ECBFF"> port-forward</span><span style="color:#9ECBFF"> service/</span><span style="color:#E1E4E8">${ENVOY_SERVICE} </span><span style="color:#9ECBFF">8888:80</span></span></code></pre></figure>
+<p>另一個 terminal 打：</p>
+<figure data-rehype-pretty-code-figure=""><pre style="background-color:#24292e;color:#e1e4e8" tabindex="0" data-language="bash" data-theme="github-dark"><code data-language="bash" data-theme="github-dark" style="display: grid;"><span data-line=""><span style="color:#B392F0">curl</span><span style="color:#79B8FF"> --verbose</span><span style="color:#79B8FF"> \</span></span>
+<span data-line=""><span style="color:#79B8FF">  --header</span><span style="color:#9ECBFF"> "Host: www.example.com"</span><span style="color:#79B8FF"> \</span></span>
+<span data-line=""><span style="color:#9ECBFF">  http://localhost:8888/get</span></span></code></pre></figure>
+<p>這條路適合本機測試。雖然比較像走後門，但能驗證就先給過，工程師的浪漫有時候就是「先通再優雅」。</p>
+<h2 id="出問題先看哪裡">出問題先看哪裡</h2>
+<p>最常見的卡點通常不是 Envoy Gateway 壞掉，而是其中一段沒接上：</p>
+<table>
+<thead>
+<tr>
+<th>現象</th>
+<th>先檢查什麼</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td><code>gateway/eg</code> 沒地址</td>
+<td>叢集有沒有 <code>LoadBalancer</code> 實作</td>
+</tr>
+<tr>
+<td><code>curl</code> 404 或 503</td>
+<td><code>HTTPRoute</code>、<code>Service</code>、backend Pod 狀態</td>
+</tr>
+<tr>
+<td><code>kubectl wait</code> 卡住</td>
+<td><code>envoy-gateway-system</code> 裡的 Pod 有沒有起來</td>
+</tr>
+</tbody>
+</table>
+<p>幾個實用指令：</p>
+<figure data-rehype-pretty-code-figure=""><pre style="background-color:#24292e;color:#e1e4e8" tabindex="0" data-language="bash" data-theme="github-dark"><code data-language="bash" data-theme="github-dark" style="display: grid;"><span data-line=""><span style="color:#B392F0">kubectl</span><span style="color:#9ECBFF"> get</span><span style="color:#9ECBFF"> pods</span><span style="color:#79B8FF"> -n</span><span style="color:#9ECBFF"> envoy-gateway-system</span></span>
+<span data-line=""><span style="color:#B392F0">kubectl</span><span style="color:#9ECBFF"> get</span><span style="color:#9ECBFF"> gatewayclass</span></span>
+<span data-line=""><span style="color:#B392F0">kubectl</span><span style="color:#9ECBFF"> get</span><span style="color:#9ECBFF"> gateway</span><span style="color:#79B8FF"> -A</span></span>
+<span data-line=""><span style="color:#B392F0">kubectl</span><span style="color:#9ECBFF"> get</span><span style="color:#9ECBFF"> httproute</span><span style="color:#79B8FF"> -A</span></span>
+<span data-line=""><span style="color:#B392F0">kubectl</span><span style="color:#9ECBFF"> get</span><span style="color:#9ECBFF"> svc,pod</span><span style="color:#79B8FF"> -n</span><span style="color:#9ECBFF"> default</span></span></code></pre></figure>
+<p>如果你想更進一步確認 Gateway 狀態：</p>
+<figure data-rehype-pretty-code-figure=""><pre style="background-color:#24292e;color:#e1e4e8" tabindex="0" data-language="bash" data-theme="github-dark"><code data-language="bash" data-theme="github-dark" style="display: grid;"><span data-line=""><span style="color:#B392F0">kubectl</span><span style="color:#9ECBFF"> get</span><span style="color:#9ECBFF"> gateway/eg</span><span style="color:#79B8FF"> -o</span><span style="color:#9ECBFF"> yaml</span></span></code></pre></figure>
+<p>重點看：</p>
+<ul>
+<li><code>status.addresses</code></li>
+<li>listener 的 condition</li>
+<li>route 有沒有被接受</li>
+</ul>
+<h2 id="你剛剛其實做了什麼">你剛剛其實做了什麼</h2>
+<p>雖然只貼了幾個指令，但背後其實已經跑完一條完整鏈路：</p>
+<ol>
+<li>安裝 <code>Envoy Gateway</code></li>
+<li>建立 <code>GatewayClass</code>，告訴叢集用哪個 gateway controller</li>
+<li>建立 <code>Gateway</code>，宣告入口 port 與 protocol</li>
+<li>建立 <code>HTTPRoute</code>，把流量導到 backend service</li>
+<li>Envoy Gateway 幫你把這些宣告翻成 Envoy Proxy 可執行的設定</li>
+</ol>
+<p>這就是為什麼 Gateway API 很香。你寫的是 Kubernetes 資源，不是自己手工維護一大坨代理設定檔。</p>
+<h2 id="下一步">下一步</h2>
+<p>現在你已經跑通第一條流量，下一篇要補的是「這些資源各自到底在幹嘛」，把腦內模型建起來：
+👉 <a href="02-core-concepts">核心概念</a></p>0:{"buildId":"Yck3R4ooQxWkwGLT6is1X","rsc":["$","$1","c",{"children":[[["$","script",null,{"type":"application/ld+json","dangerouslySetInnerHTML":{"__html":"{\"@context\":\"https://schema.org\",\"@type\":\"Article\",\"headline\":\"Envoy Gateway 快速上手：10 分鐘跑通第一條流量\",\"description\":\"用官方 quickstart 安裝 Envoy Gateway、套用 Gateway 與 HTTPRoute，確認請求真的有通。\",\"url\":\"https://benxhub.com/zh/blog/k8s/gateway/01-quick-start\",\"mainEntityOfPage\":{\"@type\":\"WebPage\",\"@id\":\"https://benxhub.com/zh/blog/k8s/gateway/01-quick-start\"},\"datePublished\":\"2026-03-10T00:00:00.000Z\",\"dateModified\":\"2026-03-10T00:00:00.000Z\",\"keywords\":\"kubernetes, envoy-gateway, gateway-api, quick-start, httproute\",\"inLanguage\":\"zh\",\"author\":{\"@type\":\"Person\",\"name\":\"BenX\",\"url\":\"https://benxhub.com\"},\"publisher\":{\"@type\":\"Organization\",\"name\":\"BenXHub Blog\",\"url\":\"https://benxhub.com\"}}"}}],["$","div",null,{"className":"mx-auto max-w-6xl px-4 py-12 sm:px-6","children":["$","div",null,{"className":"lg:grid lg:grid-cols-[1fr_240px] lg:gap-14","children":[["$","article",null,{"children":[["$","header",null,{"className":"mb-10","children":[["$","div",null,{"className":"mb-4 flex flex-wrap gap-2","children":[["$","$L2","kubernetes",{"href":"/zh/tags/kubernetes","localeCookie":{"name":"NEXT_LOCALE","sameSite":"lax"},"className":"inline-flex items-center rounded-full px-2.5 py-0.5 text-xs font-medium transition-colors","style":{"background":"var(--color-code-bg)","color":"var(--color-accent)","border":"1px solid var(--color-border)"},"children":["#","kubernetes"]}],["$","$L2","envoy-gateway",{"href":"/zh/tags/envoy-gateway","localeCookie":{"name":"NEXT_LOCALE","sameSite":"lax"},"className":"inline-flex items-center rounded-full px-2.5 py-0.5 text-xs font-medium transition-colors","style":{"background":"var(--color-code-bg)","color":"var(--color-accent)","border":"1px solid var(--color-border)"},"children":["#","envoy-gateway"]}],["$","$L2","gateway-api",{"href":"/zh/tags/gateway-api","localeCookie":{"name":"NEXT_LOCALE","sameSite":"lax"},"className":"inline-flex items-center rounded-full px-2.5 py-0.5 text-xs font-medium transition-colors","style":{"background":"var(--color-code-bg)","color":"var(--color-accent)","border":"1px solid var(--color-border)"},"children":["#","gateway-api"]}],["$","$L2","quick-start",{"href":"/zh/tags/quick-start","localeCookie":{"name":"NEXT_LOCALE","sameSite":"lax"},"className":"inline-flex items-center rounded-full px-2.5 py-0.5 text-xs font-medium transition-colors","style":{"background":"var(--color-code-bg)","color":"var(--color-accent)","border":"1px solid var(--color-border)"},"children":["#","quick-start"]}],["$","$L2","httproute",{"href":"/zh/tags/httproute","localeCookie":{"name":"NEXT_LOCALE","sameSite":"lax"},"className":"inline-flex items-center rounded-full px-2.5 py-0.5 text-xs font-medium transition-colors","style":{"background":"var(--color-code-bg)","color":"var(--color-accent)","border":"1px solid var(--color-border)"},"children":["#","httproute"]}]]}],["$","h1",null,{"className":"mb-4 text-3xl leading-snug font-bold tracking-tight sm:text-4xl","style":{"color":"var(--color-text)"},"children":"Envoy Gateway 快速上手：10 分鐘跑通第一條流量"}],["$","div",null,{"className":"flex flex-wrap items-center gap-3 text-sm","style":{"color":"var(--color-muted)"},"children":[["$","time",null,{"dateTime":"2026-03-10","children":"2026 年 3 月 10 日"}],["$","span",null,{"aria-hidden":"true","children":"·"}],["$","span",null,{"children":"4 min read"}]]}],"$undefined",["$","div",null,{"className":"mt-6 border-b","style":{"borderColor":"var(--color-border)"}}]]}],["$","div",null,{"className":"prose","dangerouslySetInnerHTML":{"__html":"$3"}}],"$L4"]}],"$L5"]}]}]],["$L6"],"$L7"]}],"loading":null,"isPartial":false}
+4:["$","footer",null,{"className":"mt-14 border-t pt-8","style":{"borderColor":"var(--color-border)"},"children":[["$","div",null,{"className":"mb-8 flex flex-wrap gap-2","children":[["$","$L2","kubernetes",{"href":"/zh/tags/kubernetes","localeCookie":{"name":"NEXT_LOCALE","sameSite":"lax"},"className":"inline-flex items-center rounded-full px-3 py-1 text-sm font-medium transition-colors","style":{"background":"var(--color-code-bg)","color":"var(--color-accent)","border":"1px solid var(--color-border)"},"children":["#","kubernetes"]}],["$","$L2","envoy-gateway",{"href":"/zh/tags/envoy-gateway","localeCookie":{"name":"NEXT_LOCALE","sameSite":"lax"},"className":"inline-flex items-center rounded-full px-3 py-1 text-sm font-medium transition-colors","style":{"background":"var(--color-code-bg)","color":"var(--color-accent)","border":"1px solid var(--color-border)"},"children":["#","envoy-gateway"]}],["$","$L2","gateway-api",{"href":"/zh/tags/gateway-api","localeCookie":{"name":"NEXT_LOCALE","sameSite":"lax"},"className":"inline-flex items-center rounded-full px-3 py-1 text-sm font-medium transition-colors","style":{"background":"var(--color-code-bg)","color":"var(--color-accent)","border":"1px solid var(--color-border)"},"children":["#","gateway-api"]}],["$","$L2","quick-start",{"href":"/zh/tags/quick-start","localeCookie":{"name":"NEXT_LOCALE","sameSite":"lax"},"className":"inline-flex items-center rounded-full px-3 py-1 text-sm font-medium transition-colors","style":{"background":"var(--color-code-bg)","color":"var(--color-accent)","border":"1px solid var(--color-border)"},"children":["#","quick-start"]}],["$","$L2","httproute",{"href":"/zh/tags/httproute","localeCookie":{"name":"NEXT_LOCALE","sameSite":"lax"},"className":"inline-flex items-center rounded-full px-3 py-1 text-sm font-medium transition-colors","style":{"background":"var(--color-code-bg)","color":"var(--color-accent)","border":"1px solid var(--color-border)"},"children":["#","httproute"]}]]}],["$","nav",null,{"aria-label":"文章導覽","className":"grid grid-cols-1 gap-4 sm:grid-cols-2","children":[["$","$L2",null,{"href":"/zh/blog/k8s/gateway/00-overview","localeCookie":{"name":"NEXT_LOCALE","sameSite":"lax"},"className":"group rounded-lg border p-4 transition-colors hover:border-accent","style":{"borderColor":"var(--color-border)","background":"var(--color-surface)"},"children":[["$","p",null,{"className":"mb-1 text-xs","style":{"color":"var(--color-muted)"},"children":"← 較新文章"}],["$","p",null,{"className":"line-clamp-1 text-sm font-medium transition-colors group-hover:text-accent","style":{"color":"var(--color-text)"},"children":"K8S Envoy Gateway 系列總覽：比 Ingress 更像現代人的流量入口"}]]}],["$","$L2",null,{"href":"/zh/blog/k8s/gateway/02-core-concepts","localeCookie":{"name":"NEXT_LOCALE","sameSite":"lax"},"className":"group rounded-lg border p-4 text-right transition-colors hover:border-accent","style":{"borderColor":"var(--color-border)","background":"var(--color-surface)"},"children":[["$","p",null,{"className":"mb-1 text-xs","style":{"color":"var(--color-muted)"},"children":"較舊文章 →"}],["$","p",null,{"className":"line-clamp-1 text-sm font-medium transition-colors group-hover:text-accent","style":{"color":"var(--color-text)"},"children":"Envoy Gateway 核心概念：Gateway、Listener、Proxy 與 Route 家族一次搞懂"}]]}]]}]]}]
+9:T2f01,<p>這篇的目標超單純：<strong>不要先談人生大道理，先把 Envoy Gateway 跑起來。</strong> 你只要成功打到範例服務，就已經贏過一票還停留在看文件首頁的人了。</p>
+<h2 id="前置條件">前置條件</h2>
+<p>你至少要有一個可用的 Kubernetes 叢集，像是：</p>
+<ul>
+<li>本地：<code>kind</code>、<code>minikube</code>、<code>k3d</code></li>
+<li>雲上：EKS、GKE、AKS</li>
+<li>家裡 lab：K3s + MetalLB 也可以</li>
+</ul>
+<p>另外要準備：</p>
+<ul>
+<li><code>kubectl</code></li>
+<li><code>helm</code></li>
+<li>叢集能拿到 <code>LoadBalancer</code> 位址，或能接受你用 <code>port-forward</code></li>
+</ul>
+<blockquote>
+<p>⚠️ 如果你的叢集沒有 <code>LoadBalancer</code>，官方也建議搭配 MetalLB。沒有外部位址不是世界末日，但測試路徑會改成 <code>port-forward</code>。</p>
+</blockquote>
+<h2 id="步驟-1安裝-envoy-gateway">步驟 1：安裝 Envoy Gateway</h2>
+<p>先裝控制平面：</p>
+<figure data-rehype-pretty-code-figure=""><pre style="background-color:#24292e;color:#e1e4e8" tabindex="0" data-language="bash" data-theme="github-dark"><code data-language="bash" data-theme="github-dark" style="display: grid;"><span data-line=""><span style="color:#B392F0">helm</span><span style="color:#9ECBFF"> install</span><span style="color:#9ECBFF"> eg</span><span style="color:#9ECBFF"> oci://docker.io/envoyproxy/gateway-helm</span><span style="color:#79B8FF"> \</span></span>
+<span data-line=""><span style="color:#79B8FF">  --version</span><span style="color:#9ECBFF"> v1.7.0</span><span style="color:#79B8FF"> \</span></span>
+<span data-line=""><span style="color:#79B8FF">  -n</span><span style="color:#9ECBFF"> envoy-gateway-system</span><span style="color:#79B8FF"> \</span></span>
+<span data-line=""><span style="color:#79B8FF">  --create-namespace</span></span></code></pre></figure>
+<p>等它 Ready：</p>
+<figure data-rehype-pretty-code-figure=""><pre style="background-color:#24292e;color:#e1e4e8" tabindex="0" data-language="bash" data-theme="github-dark"><code data-language="bash" data-theme="github-dark" style="display: grid;"><span data-line=""><span style="color:#B392F0">kubectl</span><span style="color:#9ECBFF"> wait</span><span style="color:#79B8FF"> --timeout=5m</span><span style="color:#79B8FF"> -n</span><span style="color:#9ECBFF"> envoy-gateway-system</span><span style="color:#79B8FF"> \</span></span>
+<span data-line=""><span style="color:#9ECBFF">  deployment/envoy-gateway</span><span style="color:#79B8FF"> \</span></span>
+<span data-line=""><span style="color:#79B8FF">  --for=condition=Available</span></span></code></pre></figure>
+<p>這一步完成後，代表 Envoy Gateway controller 已經進駐叢集，可以開始看懂 <code>Gateway API</code> 資源並幫你建立對應的 Envoy 設定。</p>
+<h2 id="步驟-2套用官方-quickstart-資源">步驟 2：套用官方 quickstart 資源</h2>
+<p>官方直接準備了一包範例，裡面包含：</p>
+<ul>
+<li><code>GatewayClass</code></li>
+<li><code>Gateway</code></li>
+<li><code>HTTPRoute</code></li>
+<li>範例 backend app</li>
+</ul>
+<p>直接套：</p>
+<figure data-rehype-pretty-code-figure=""><pre style="background-color:#24292e;color:#e1e4e8" tabindex="0" data-language="bash" data-theme="github-dark"><code data-language="bash" data-theme="github-dark" style="display: grid;"><span data-line=""><span style="color:#B392F0">kubectl</span><span style="color:#9ECBFF"> apply</span><span style="color:#79B8FF"> -f</span><span style="color:#79B8FF"> \</span></span>
+<span data-line=""><span style="color:#9ECBFF">  https://github.com/envoyproxy/gateway/releases/download/v1.7.0/quickstart.yaml</span><span style="color:#79B8FF"> \</span></span>
+<span data-line=""><span style="color:#79B8FF">  -n</span><span style="color:#9ECBFF"> default</span></span></code></pre></figure>
+<p>你可以把它想成「官方幫你把 demo 場景一次鋪好」，先求能跑，之後再自己拆開研究。</p>
+<h2 id="步驟-3驗證流量有沒有通">步驟 3：驗證流量有沒有通</h2>
+<h3 id="做法-a叢集有-loadbalancer">做法 A：叢集有 LoadBalancer</h3>
+<p>拿到 Gateway 位址：</p>
+<figure data-rehype-pretty-code-figure=""><pre style="background-color:#24292e;color:#e1e4e8" tabindex="0" data-language="bash" data-theme="github-dark"><code data-language="bash" data-theme="github-dark" style="display: grid;"><span data-line=""><span style="color:#F97583">export</span><span style="color:#E1E4E8"> GATEWAY_HOST</span><span style="color:#F97583">=</span><span style="color:#E1E4E8">$(</span><span style="color:#B392F0">kubectl</span><span style="color:#9ECBFF"> get</span><span style="color:#9ECBFF"> gateway/eg</span><span style="color:#79B8FF"> -o</span><span style="color:#9ECBFF"> jsonpath='{.status.addresses[0].value}'</span><span style="color:#E1E4E8">)</span></span></code></pre></figure>
+<p>打請求：</p>
+<figure data-rehype-pretty-code-figure=""><pre style="background-color:#24292e;color:#e1e4e8" tabindex="0" data-language="bash" data-theme="github-dark"><code data-language="bash" data-theme="github-dark" style="display: grid;"><span data-line=""><span style="color:#B392F0">curl</span><span style="color:#79B8FF"> --verbose</span><span style="color:#79B8FF"> \</span></span>
+<span data-line=""><span style="color:#79B8FF">  --header</span><span style="color:#9ECBFF"> "Host: www.example.com"</span><span style="color:#79B8FF"> \</span></span>
+<span data-line=""><span style="color:#9ECBFF">  http://</span><span style="color:#E1E4E8">$GATEWAY_HOST</span><span style="color:#9ECBFF">/get</span></span></code></pre></figure>
+<p>如果你看到 HTTP <code>200</code>，就代表：</p>
+<ul>
+<li>Gateway 有對外提供入口</li>
+<li>HTTPRoute 有成功附掛</li>
+<li>backend service 有被正確轉送</li>
+</ul>
+<h3 id="做法-b沒有-loadbalancer用-port-forward">做法 B：沒有 LoadBalancer，用 port-forward</h3>
+<p>先找出 Envoy service：</p>
+<figure data-rehype-pretty-code-figure=""><pre style="background-color:#24292e;color:#e1e4e8" tabindex="0" data-language="bash" data-theme="github-dark"><code data-language="bash" data-theme="github-dark" style="display: grid;"><span data-line=""><span style="color:#F97583">export</span><span style="color:#E1E4E8"> ENVOY_SERVICE</span><span style="color:#F97583">=</span><span style="color:#E1E4E8">$(</span><span style="color:#B392F0">kubectl</span><span style="color:#9ECBFF"> get</span><span style="color:#9ECBFF"> svc</span><span style="color:#79B8FF"> -n</span><span style="color:#9ECBFF"> envoy-gateway-system</span><span style="color:#79B8FF"> \</span></span>
+<span data-line=""><span style="color:#79B8FF">  --selector=gateway.envoyproxy.io/owning-gateway-namespace=default,gateway.envoyproxy.io/owning-gateway-name=eg</span><span style="color:#79B8FF"> \</span></span>
+<span data-line=""><span style="color:#79B8FF">  -o</span><span style="color:#9ECBFF"> jsonpath='{.items[0].metadata.name}'</span><span style="color:#E1E4E8">)</span></span></code></pre></figure>
+<p>把本機 <code>8888</code> 轉到 Gateway 的 <code>80</code>：</p>
+<figure data-rehype-pretty-code-figure=""><pre style="background-color:#24292e;color:#e1e4e8" tabindex="0" data-language="bash" data-theme="github-dark"><code data-language="bash" data-theme="github-dark" style="display: grid;"><span data-line=""><span style="color:#B392F0">kubectl</span><span style="color:#79B8FF"> -n</span><span style="color:#9ECBFF"> envoy-gateway-system</span><span style="color:#9ECBFF"> port-forward</span><span style="color:#9ECBFF"> service/</span><span style="color:#E1E4E8">${ENVOY_SERVICE} </span><span style="color:#9ECBFF">8888:80</span></span></code></pre></figure>
+<p>另一個 terminal 打：</p>
+<figure data-rehype-pretty-code-figure=""><pre style="background-color:#24292e;color:#e1e4e8" tabindex="0" data-language="bash" data-theme="github-dark"><code data-language="bash" data-theme="github-dark" style="display: grid;"><span data-line=""><span style="color:#B392F0">curl</span><span style="color:#79B8FF"> --verbose</span><span style="color:#79B8FF"> \</span></span>
+<span data-line=""><span style="color:#79B8FF">  --header</span><span style="color:#9ECBFF"> "Host: www.example.com"</span><span style="color:#79B8FF"> \</span></span>
+<span data-line=""><span style="color:#9ECBFF">  http://localhost:8888/get</span></span></code></pre></figure>
+<p>這條路適合本機測試。雖然比較像走後門，但能驗證就先給過，工程師的浪漫有時候就是「先通再優雅」。</p>
+<h2 id="出問題先看哪裡">出問題先看哪裡</h2>
+<p>最常見的卡點通常不是 Envoy Gateway 壞掉，而是其中一段沒接上：</p>
+<table>
+<thead>
+<tr>
+<th>現象</th>
+<th>先檢查什麼</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td><code>gateway/eg</code> 沒地址</td>
+<td>叢集有沒有 <code>LoadBalancer</code> 實作</td>
+</tr>
+<tr>
+<td><code>curl</code> 404 或 503</td>
+<td><code>HTTPRoute</code>、<code>Service</code>、backend Pod 狀態</td>
+</tr>
+<tr>
+<td><code>kubectl wait</code> 卡住</td>
+<td><code>envoy-gateway-system</code> 裡的 Pod 有沒有起來</td>
+</tr>
+</tbody>
+</table>
+<p>幾個實用指令：</p>
+<figure data-rehype-pretty-code-figure=""><pre style="background-color:#24292e;color:#e1e4e8" tabindex="0" data-language="bash" data-theme="github-dark"><code data-language="bash" data-theme="github-dark" style="display: grid;"><span data-line=""><span style="color:#B392F0">kubectl</span><span style="color:#9ECBFF"> get</span><span style="color:#9ECBFF"> pods</span><span style="color:#79B8FF"> -n</span><span style="color:#9ECBFF"> envoy-gateway-system</span></span>
+<span data-line=""><span style="color:#B392F0">kubectl</span><span style="color:#9ECBFF"> get</span><span style="color:#9ECBFF"> gatewayclass</span></span>
+<span data-line=""><span style="color:#B392F0">kubectl</span><span style="color:#9ECBFF"> get</span><span style="color:#9ECBFF"> gateway</span><span style="color:#79B8FF"> -A</span></span>
+<span data-line=""><span style="color:#B392F0">kubectl</span><span style="color:#9ECBFF"> get</span><span style="color:#9ECBFF"> httproute</span><span style="color:#79B8FF"> -A</span></span>
+<span data-line=""><span style="color:#B392F0">kubectl</span><span style="color:#9ECBFF"> get</span><span style="color:#9ECBFF"> svc,pod</span><span style="color:#79B8FF"> -n</span><span style="color:#9ECBFF"> default</span></span></code></pre></figure>
+<p>如果你想更進一步確認 Gateway 狀態：</p>
+<figure data-rehype-pretty-code-figure=""><pre style="background-color:#24292e;color:#e1e4e8" tabindex="0" data-language="bash" data-theme="github-dark"><code data-language="bash" data-theme="github-dark" style="display: grid;"><span data-line=""><span style="color:#B392F0">kubectl</span><span style="color:#9ECBFF"> get</span><span style="color:#9ECBFF"> gateway/eg</span><span style="color:#79B8FF"> -o</span><span style="color:#9ECBFF"> yaml</span></span></code></pre></figure>
+<p>重點看：</p>
+<ul>
+<li><code>status.addresses</code></li>
+<li>listener 的 condition</li>
+<li>route 有沒有被接受</li>
+</ul>
+<h2 id="你剛剛其實做了什麼">你剛剛其實做了什麼</h2>
+<p>雖然只貼了幾個指令，但背後其實已經跑完一條完整鏈路：</p>
+<ol>
+<li>安裝 <code>Envoy Gateway</code></li>
+<li>建立 <code>GatewayClass</code>，告訴叢集用哪個 gateway controller</li>
+<li>建立 <code>Gateway</code>，宣告入口 port 與 protocol</li>
+<li>建立 <code>HTTPRoute</code>，把流量導到 backend service</li>
+<li>Envoy Gateway 幫你把這些宣告翻成 Envoy Proxy 可執行的設定</li>
+</ol>
+<p>這就是為什麼 Gateway API 很香。你寫的是 Kubernetes 資源，不是自己手工維護一大坨代理設定檔。</p>
+<h2 id="下一步">下一步</h2>
+<p>現在你已經跑通第一條流量，下一篇要補的是「這些資源各自到底在幹嘛」，把腦內模型建起來：
+👉 <a href="02-core-concepts">核心概念</a></p>5:["$","aside",null,{"className":"hidden lg:block","children":["$","$L8",null,{"html":"$9"}]}]
+6:["$","script","script-0",{"src":"/_next/static/chunks/2dddb3bc05093f69.js","async":true}]
+7:["$","$La",null,{"children":["$","$b",null,{"name":"Next.MetadataOutlet","children":"$@c"}]}]
+c:null

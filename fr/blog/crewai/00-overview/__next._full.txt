@@ -1,0 +1,143 @@
+1:"$Sreact.fragment"
+2:I[26795,["/_next/static/chunks/5a5b5b13c22d14f7.js","/_next/static/chunks/a484d1d3dd4b55ab.js"],"default"]
+3:I[73489,["/_next/static/chunks/5a5b5b13c22d14f7.js","/_next/static/chunks/a484d1d3dd4b55ab.js"],"default"]
+6:I[50183,["/_next/static/chunks/5a5b5b13c22d14f7.js","/_next/static/chunks/a484d1d3dd4b55ab.js"],"OutletBoundary"]
+7:"$Sreact.suspense"
+9:I[50183,["/_next/static/chunks/5a5b5b13c22d14f7.js","/_next/static/chunks/a484d1d3dd4b55ab.js"],"ViewportBoundary"]
+b:I[50183,["/_next/static/chunks/5a5b5b13c22d14f7.js","/_next/static/chunks/a484d1d3dd4b55ab.js"],"MetadataBoundary"]
+d:I[63847,[],"default"]
+:HL["/_next/static/chunks/446a7883c02a95fe.css","style"]
+:HL["/_next/static/media/797e433ab948586e-s.p.29207c2f.woff2","font",{"crossOrigin":"","type":"font/woff2"}]
+:HL["/_next/static/media/caa3a2e1cccd8315-s.p.3b6cae6d.woff2","font",{"crossOrigin":"","type":"font/woff2"}]
+0:{"P":null,"b":"Yck3R4ooQxWkwGLT6is1X","c":["","fr","blog","crewai","00-overview"],"q":"","i":false,"f":[[["",{"children":[["locale","fr","d"],{"children":["blog",{"children":[["slug","crewai/00-overview","c"],{"children":["__PAGE__",{}]}]}]}]},"$undefined","$undefined",true],[["$","$1","c",{"children":[null,["$","html",null,{"children":["$","body",null,{"children":["$","$L2",null,{"parallelRouterKey":"children","error":"$undefined","errorStyles":"$undefined","errorScripts":"$undefined","template":["$","$L3",null,{}],"templateStyles":"$undefined","templateScripts":"$undefined","notFound":[[["$","title",null,{"children":"404: This page could not be found."}],["$","div",null,{"style":{"fontFamily":"system-ui,\"Segoe UI\",Roboto,Helvetica,Arial,sans-serif,\"Apple Color Emoji\",\"Segoe UI Emoji\"","height":"100vh","textAlign":"center","display":"flex","flexDirection":"column","alignItems":"center","justifyContent":"center"},"children":["$","div",null,{"children":[["$","style",null,{"dangerouslySetInnerHTML":{"__html":"body{color:#000;background:#fff;margin:0}.next-error-h1{border-right:1px solid rgba(0,0,0,.3)}@media (prefers-color-scheme:dark){body{color:#fff;background:#000}.next-error-h1{border-right:1px solid rgba(255,255,255,.3)}}"}}],["$","h1",null,{"className":"next-error-h1","style":{"display":"inline-block","margin":"0 20px 0 0","padding":"0 23px 0 0","fontSize":24,"fontWeight":500,"verticalAlign":"top","lineHeight":"49px"},"children":404}],["$","div",null,{"style":{"display":"inline-block"},"children":["$","h2",null,{"style":{"fontSize":14,"fontWeight":400,"lineHeight":"49px","margin":0},"children":"This page could not be found."}]}]]}]}]],[]],"forbidden":"$undefined","unauthorized":"$undefined"}]}]}]]}],{"children":[["$","$1","c",{"children":[[["$","link","0",{"rel":"stylesheet","href":"/_next/static/chunks/446a7883c02a95fe.css","precedence":"next","crossOrigin":"$undefined","nonce":"$undefined"}],["$","script","script-0",{"src":"/_next/static/chunks/7923a261b80bb6e1.js","async":true,"nonce":"$undefined"}],["$","script","script-1",{"src":"/_next/static/chunks/e09b4358027e8033.js","async":true,"nonce":"$undefined"}]],"$L4"]}],{"children":[["$","$1","c",{"children":[null,["$","$L2",null,{"parallelRouterKey":"children","error":"$undefined","errorStyles":"$undefined","errorScripts":"$undefined","template":["$","$L3",null,{}],"templateStyles":"$undefined","templateScripts":"$undefined","notFound":"$undefined","forbidden":"$undefined","unauthorized":"$undefined"}]]}],{"children":[["$","$1","c",{"children":[null,["$","$L2",null,{"parallelRouterKey":"children","error":"$undefined","errorStyles":"$undefined","errorScripts":"$undefined","template":["$","$L3",null,{}],"templateStyles":"$undefined","templateScripts":"$undefined","notFound":"$undefined","forbidden":"$undefined","unauthorized":"$undefined"}]]}],{"children":[["$","$1","c",{"children":["$L5",[["$","script","script-0",{"src":"/_next/static/chunks/2dddb3bc05093f69.js","async":true,"nonce":"$undefined"}]],["$","$L6",null,{"children":["$","$7",null,{"name":"Next.MetadataOutlet","children":"$@8"}]}]]}],{},null,false,false]},null,false,false]},null,false,false]},null,false,false]},null,false,false],["$","$1","h",{"children":[null,["$","$L9",null,{"children":"$La"}],["$","div",null,{"hidden":true,"children":["$","$Lb",null,{"children":["$","$7",null,{"name":"Next.Metadata","children":"$Lc"}]}]}],["$","meta",null,{"name":"next-size-adjust","content":""}]]}],false]],"m":"$undefined","G":["$d",[]],"S":true}
+4:["$","div",null,{"lang":"fr","dir":"ltr","className":"geist_a71539c9-module__T19VSG__variable geist_mono_8d43a2aa-module__8Li5zG__variable flex min-h-screen flex-col antialiased","children":[["$","script",null,{"type":"application/ld+json","dangerouslySetInnerHTML":{"__html":"[{\"@context\":\"https://schema.org\",\"@type\":\"WebSite\",\"name\":\"BenXHub Blog\",\"url\":\"https://benxhub.com/fr\",\"inLanguage\":\"fr\",\"publisher\":{\"@type\":\"Organization\",\"name\":\"BenXHub Blog\",\"url\":\"https://benxhub.com\"},\"potentialAction\":{\"@type\":\"SearchAction\",\"target\":{\"@type\":\"EntryPoint\",\"urlTemplate\":\"https://benxhub.com/fr/search?q={search_term_string}\"},\"query-input\":\"required name=search_term_string\"}},{\"@context\":\"https://schema.org\",\"@type\":\"Person\",\"name\":\"BenX\",\"url\":\"https://benxhub.com\",\"sameAs\":[\"https://github.com/benzhub\"]}]"}}],"$Le"]}]
+14:Te72,<p>Si vous entendez sans cesse « agents IA » et « collaboration multi-agents » sans trop savoir par où commencer, cette série est pour vous.<br>
+En une phrase : <strong>CrewAI est un framework qui permet à plusieurs rôles IA de collaborer pour décomposer et accomplir des tâches complexes.</strong></p>
+<p>Imaginez une petite équipe de projet :</p>
+<ul>
+<li>Un chercheur trouve l'information</li>
+<li>Un analyste organise les points clés</li>
+<li>Un rédacteur produit le rapport final</li>
+</ul>
+<p>Quand le flux tourne bien, c'est comme avoir une équipe de contenu qui ne demande jamais d'heures sup' (les factures d'API, elles, arrivent quand même).</p>
+<h2 id="que-peut-faire-crewai-">Que peut faire CrewAI ?</h2>
+<p>Cas d'usage courants :</p>
+<ul>
+<li>Génération automatique de rapports de recherche</li>
+<li>Création de contenu en plusieurs étapes (recherche → brouillon → polish)</li>
+<li>Automatisation du support client ou des processus opérationnels</li>
+<li>Q&#x26;A sur la base de connaissances interne et traitement de documents</li>
+</ul>
+<blockquote>
+<p>💡 La valeur centrale n'est pas « un super agent », mais <strong>la collaboration entre agents spécialisés</strong>.</p>
+</blockquote>
+<h2 id="trois-termes-clés-à-retenir">Trois termes clés à retenir</h2>
+<ul>
+<li><code>Agent</code> : le rôle (qui fait quoi)</li>
+<li><code>Task</code> : la tâche (ce qui est accompli)</li>
+<li><code>Crew</code> : l'équipe (qui travaille ensemble, et dans quel ordre)</li>
+</ul>
+<p>Pour la plupart des projets, commencer avec <code>Process.sequential</code> suffit amplement :<br>
+<strong>A termine en premier, puis passe le relais à B.</strong> C'est la façon la plus stable et la plus simple à déboguer.</p>
+<h2 id="comment-lire-ces-10-articles">Comment lire ces 10 articles</h2>
+<ol>
+<li><a href="01-quick-start">Démarrage rapide</a> : Lancer votre premier Crew en 10 minutes</li>
+<li><a href="02-agents-and-tasks">Agents et tâches</a> : Comment répartir les rôles et les tâches</li>
+<li><a href="03-crew-and-process">Crew et Process</a> : Configuration d'équipe et stratégie de processus</li>
+<li><a href="04-tools-integration">Intégration des outils</a> : Laisser les agents chercher et lire des fichiers</li>
+<li><a href="05-structured-output-pydantic">Sortie structurée avec Pydantic</a> : Éviter la dérive des sorties</li>
+<li><a href="06-flow-basics">Bases du Flow</a> : Coordonner plusieurs crews</li>
+<li><a href="07-memory-and-knowledge">Mémoire et connaissances</a> : Éviter que les agents oublient tout</li>
+<li><a href="08-debug-and-common-errors">Débogage et erreurs courantes</a> : Lire d'abord cette carte des pièges</li>
+<li><a href="09-production-best-practices">Bonnes pratiques en production</a> : Passer de la démo au système maintenable</li>
+</ol>
+<h2 id="prérequis">Prérequis</h2>
+<ul>
+<li>Python 3.10+</li>
+<li>Votre outil d'environnement préféré (<code>uv</code>, <code>venv</code> ou <code>poetry</code>)</li>
+<li>Une clé API LLM (OpenAI, Anthropic, etc.)</li>
+</ul>
+<h2 id="un-état-desprit-avant-de-commencer">Un état d'esprit avant de commencer</h2>
+<p>Pour la v1, ne courez pas après les astuces avancées. <strong>Rendez d'abord le workflow reproductible.</strong><br>
+Construisez un processus qui donne des résultats similaires à chaque exécution, puis optimisez vitesse, coût et précision.<br>
+Comme dans un jeu : finissez la quête principale avant de farmer l'équipement secondaire.</p>
+<h2 id="prochaine-étape">Prochaine étape</h2>
+<p>Passez au <a href="01-quick-start">Démarrage rapide</a>. Nous lancerons votre premier Crew et obtiendrons des résultats visibles en 10 minutes.</p>5:[["$","script",null,{"type":"application/ld+json","dangerouslySetInnerHTML":{"__html":"{\"@context\":\"https://schema.org\",\"@type\":\"Article\",\"headline\":\"Vue d'ensemble de la série CrewAI : des workflows multi-agents de zéro à la production\",\"description\":\"Comprendre d'abord ce que fait CrewAI et quels problèmes il résout, puis passer des bases à la pratique réelle en 10 articles.\",\"url\":\"https://benxhub.com/fr/blog/crewai/00-overview\",\"mainEntityOfPage\":{\"@type\":\"WebPage\",\"@id\":\"https://benxhub.com/fr/blog/crewai/00-overview\"},\"datePublished\":\"2026-03-01T00:00:00.000Z\",\"dateModified\":\"2026-03-01T00:00:00.000Z\",\"keywords\":\"crewai, ai-agent, python, workflow, multi-agent\",\"inLanguage\":\"fr\",\"author\":{\"@type\":\"Person\",\"name\":\"BenX\",\"url\":\"https://benxhub.com\"},\"publisher\":{\"@type\":\"Organization\",\"name\":\"BenXHub Blog\",\"url\":\"https://benxhub.com\"}}"}}],["$","div",null,{"className":"mx-auto max-w-6xl px-4 py-12 sm:px-6","children":["$","div",null,{"className":"lg:grid lg:grid-cols-[1fr_240px] lg:gap-14","children":[["$","article",null,{"children":[["$","header",null,{"className":"mb-10","children":[["$","div",null,{"className":"mb-4 flex flex-wrap gap-2","children":["$Lf","$L10","$L11","$L12","$L13"]}],["$","h1",null,{"className":"mb-4 text-3xl leading-snug font-bold tracking-tight sm:text-4xl","style":{"color":"var(--color-text)"},"children":"Vue d'ensemble de la série CrewAI : des workflows multi-agents de zéro à la production"}],["$","div",null,{"className":"flex flex-wrap items-center gap-3 text-sm","style":{"color":"var(--color-muted)"},"children":[["$","time",null,{"dateTime":"2026-03-01","children":"1 mars 2026"}],["$","span",null,{"aria-hidden":"true","children":"·"}],["$","span",null,{"children":"3 min read"}]]}],"$undefined",["$","div",null,{"className":"mt-6 border-b","style":{"borderColor":"var(--color-border)"}}]]}],["$","div",null,{"className":"prose","dangerouslySetInnerHTML":{"__html":"$14"}}],"$L15"]}],"$L16"]}]}]]
+1e:I[24801,["/_next/static/chunks/7923a261b80bb6e1.js","/_next/static/chunks/e09b4358027e8033.js","/_next/static/chunks/2dddb3bc05093f69.js"],"default"]
+15:["$","footer",null,{"className":"mt-14 border-t pt-8","style":{"borderColor":"var(--color-border)"},"children":[["$","div",null,{"className":"mb-8 flex flex-wrap gap-2","children":["$L17","$L18","$L19","$L1a","$L1b"]}],["$","nav",null,{"aria-label":"Navigation des articles","className":"grid grid-cols-1 gap-4 sm:grid-cols-2","children":["$L1c","$L1d"]}]]}]
+1f:Te72,<p>Si vous entendez sans cesse « agents IA » et « collaboration multi-agents » sans trop savoir par où commencer, cette série est pour vous.<br>
+En une phrase : <strong>CrewAI est un framework qui permet à plusieurs rôles IA de collaborer pour décomposer et accomplir des tâches complexes.</strong></p>
+<p>Imaginez une petite équipe de projet :</p>
+<ul>
+<li>Un chercheur trouve l'information</li>
+<li>Un analyste organise les points clés</li>
+<li>Un rédacteur produit le rapport final</li>
+</ul>
+<p>Quand le flux tourne bien, c'est comme avoir une équipe de contenu qui ne demande jamais d'heures sup' (les factures d'API, elles, arrivent quand même).</p>
+<h2 id="que-peut-faire-crewai-">Que peut faire CrewAI ?</h2>
+<p>Cas d'usage courants :</p>
+<ul>
+<li>Génération automatique de rapports de recherche</li>
+<li>Création de contenu en plusieurs étapes (recherche → brouillon → polish)</li>
+<li>Automatisation du support client ou des processus opérationnels</li>
+<li>Q&#x26;A sur la base de connaissances interne et traitement de documents</li>
+</ul>
+<blockquote>
+<p>💡 La valeur centrale n'est pas « un super agent », mais <strong>la collaboration entre agents spécialisés</strong>.</p>
+</blockquote>
+<h2 id="trois-termes-clés-à-retenir">Trois termes clés à retenir</h2>
+<ul>
+<li><code>Agent</code> : le rôle (qui fait quoi)</li>
+<li><code>Task</code> : la tâche (ce qui est accompli)</li>
+<li><code>Crew</code> : l'équipe (qui travaille ensemble, et dans quel ordre)</li>
+</ul>
+<p>Pour la plupart des projets, commencer avec <code>Process.sequential</code> suffit amplement :<br>
+<strong>A termine en premier, puis passe le relais à B.</strong> C'est la façon la plus stable et la plus simple à déboguer.</p>
+<h2 id="comment-lire-ces-10-articles">Comment lire ces 10 articles</h2>
+<ol>
+<li><a href="01-quick-start">Démarrage rapide</a> : Lancer votre premier Crew en 10 minutes</li>
+<li><a href="02-agents-and-tasks">Agents et tâches</a> : Comment répartir les rôles et les tâches</li>
+<li><a href="03-crew-and-process">Crew et Process</a> : Configuration d'équipe et stratégie de processus</li>
+<li><a href="04-tools-integration">Intégration des outils</a> : Laisser les agents chercher et lire des fichiers</li>
+<li><a href="05-structured-output-pydantic">Sortie structurée avec Pydantic</a> : Éviter la dérive des sorties</li>
+<li><a href="06-flow-basics">Bases du Flow</a> : Coordonner plusieurs crews</li>
+<li><a href="07-memory-and-knowledge">Mémoire et connaissances</a> : Éviter que les agents oublient tout</li>
+<li><a href="08-debug-and-common-errors">Débogage et erreurs courantes</a> : Lire d'abord cette carte des pièges</li>
+<li><a href="09-production-best-practices">Bonnes pratiques en production</a> : Passer de la démo au système maintenable</li>
+</ol>
+<h2 id="prérequis">Prérequis</h2>
+<ul>
+<li>Python 3.10+</li>
+<li>Votre outil d'environnement préféré (<code>uv</code>, <code>venv</code> ou <code>poetry</code>)</li>
+<li>Une clé API LLM (OpenAI, Anthropic, etc.)</li>
+</ul>
+<h2 id="un-état-desprit-avant-de-commencer">Un état d'esprit avant de commencer</h2>
+<p>Pour la v1, ne courez pas après les astuces avancées. <strong>Rendez d'abord le workflow reproductible.</strong><br>
+Construisez un processus qui donne des résultats similaires à chaque exécution, puis optimisez vitesse, coût et précision.<br>
+Comme dans un jeu : finissez la quête principale avant de farmer l'équipement secondaire.</p>
+<h2 id="prochaine-étape">Prochaine étape</h2>
+<p>Passez au <a href="01-quick-start">Démarrage rapide</a>. Nous lancerons votre premier Crew et obtiendrons des résultats visibles en 10 minutes.</p>16:["$","aside",null,{"className":"hidden lg:block","children":["$","$L1e",null,{"html":"$1f"}]}]
+20:I[14864,["/_next/static/chunks/7923a261b80bb6e1.js","/_next/static/chunks/e09b4358027e8033.js","/_next/static/chunks/2dddb3bc05093f69.js"],"default"]
+f:["$","$L20","crewai",{"ref":"$undefined","href":"/fr/tags/crewai","locale":"$undefined","localeCookie":{"name":"NEXT_LOCALE","sameSite":"lax"},"className":"inline-flex items-center rounded-full px-2.5 py-0.5 text-xs font-medium transition-colors","style":{"background":"var(--color-code-bg)","color":"var(--color-accent)","border":"1px solid var(--color-border)"},"children":["#","crewai"]}]
+10:["$","$L20","ai-agent",{"ref":"$undefined","href":"/fr/tags/ai-agent","locale":"$undefined","localeCookie":"$f:props:localeCookie","className":"inline-flex items-center rounded-full px-2.5 py-0.5 text-xs font-medium transition-colors","style":{"background":"var(--color-code-bg)","color":"var(--color-accent)","border":"1px solid var(--color-border)"},"children":["#","ai-agent"]}]
+11:["$","$L20","python",{"ref":"$undefined","href":"/fr/tags/python","locale":"$undefined","localeCookie":"$f:props:localeCookie","className":"inline-flex items-center rounded-full px-2.5 py-0.5 text-xs font-medium transition-colors","style":{"background":"var(--color-code-bg)","color":"var(--color-accent)","border":"1px solid var(--color-border)"},"children":["#","python"]}]
+12:["$","$L20","workflow",{"ref":"$undefined","href":"/fr/tags/workflow","locale":"$undefined","localeCookie":"$f:props:localeCookie","className":"inline-flex items-center rounded-full px-2.5 py-0.5 text-xs font-medium transition-colors","style":{"background":"var(--color-code-bg)","color":"var(--color-accent)","border":"1px solid var(--color-border)"},"children":["#","workflow"]}]
+13:["$","$L20","multi-agent",{"ref":"$undefined","href":"/fr/tags/multi-agent","locale":"$undefined","localeCookie":"$f:props:localeCookie","className":"inline-flex items-center rounded-full px-2.5 py-0.5 text-xs font-medium transition-colors","style":{"background":"var(--color-code-bg)","color":"var(--color-accent)","border":"1px solid var(--color-border)"},"children":["#","multi-agent"]}]
+17:["$","$L20","crewai",{"ref":"$undefined","href":"/fr/tags/crewai","locale":"$undefined","localeCookie":"$f:props:localeCookie","className":"inline-flex items-center rounded-full px-3 py-1 text-sm font-medium transition-colors","style":{"background":"var(--color-code-bg)","color":"var(--color-accent)","border":"1px solid var(--color-border)"},"children":["#","crewai"]}]
+18:["$","$L20","ai-agent",{"ref":"$undefined","href":"/fr/tags/ai-agent","locale":"$undefined","localeCookie":"$f:props:localeCookie","className":"inline-flex items-center rounded-full px-3 py-1 text-sm font-medium transition-colors","style":{"background":"var(--color-code-bg)","color":"var(--color-accent)","border":"1px solid var(--color-border)"},"children":["#","ai-agent"]}]
+19:["$","$L20","python",{"ref":"$undefined","href":"/fr/tags/python","locale":"$undefined","localeCookie":"$f:props:localeCookie","className":"inline-flex items-center rounded-full px-3 py-1 text-sm font-medium transition-colors","style":{"background":"var(--color-code-bg)","color":"var(--color-accent)","border":"1px solid var(--color-border)"},"children":["#","python"]}]
+1a:["$","$L20","workflow",{"ref":"$undefined","href":"/fr/tags/workflow","locale":"$undefined","localeCookie":"$f:props:localeCookie","className":"inline-flex items-center rounded-full px-3 py-1 text-sm font-medium transition-colors","style":{"background":"var(--color-code-bg)","color":"var(--color-accent)","border":"1px solid var(--color-border)"},"children":["#","workflow"]}]
+1b:["$","$L20","multi-agent",{"ref":"$undefined","href":"/fr/tags/multi-agent","locale":"$undefined","localeCookie":"$f:props:localeCookie","className":"inline-flex items-center rounded-full px-3 py-1 text-sm font-medium transition-colors","style":{"background":"var(--color-code-bg)","color":"var(--color-accent)","border":"1px solid var(--color-border)"},"children":["#","multi-agent"]}]
+1c:["$","$L20",null,{"ref":"$undefined","href":"/fr/blog/crewai/05-structured-output-pydantic","locale":"$undefined","localeCookie":"$f:props:localeCookie","className":"group rounded-lg border p-4 transition-colors hover:border-accent","style":{"borderColor":"var(--color-border)","background":"var(--color-surface)"},"children":[["$","p",null,{"className":"mb-1 text-xs","style":{"color":"var(--color-muted)"},"children":"← Plus récent"}],["$","p",null,{"className":"line-clamp-1 text-sm font-medium transition-colors group-hover:text-accent","style":{"color":"var(--color-text)"},"children":"CrewAI — Sortie structurée : en finir avec la dérive des données grâce à Pydantic"}]]}]
+1d:["$","$L20",null,{"ref":"$undefined","href":"/fr/blog/crewai/01-quick-start","locale":"$undefined","localeCookie":"$f:props:localeCookie","className":"group rounded-lg border p-4 text-right transition-colors hover:border-accent","style":{"borderColor":"var(--color-border)","background":"var(--color-surface)"},"children":[["$","p",null,{"className":"mb-1 text-xs","style":{"color":"var(--color-muted)"},"children":"Plus ancien →"}],["$","p",null,{"className":"line-clamp-1 text-sm font-medium transition-colors group-hover:text-accent","style":{"color":"var(--color-text)"},"children":"CrewAI — Démarrage rapide : votre premier Crew de recherche en 10 minutes"}]]}]
+21:I[33343,["/_next/static/chunks/7923a261b80bb6e1.js","/_next/static/chunks/e09b4358027e8033.js"],"default"]
+22:I[26817,["/_next/static/chunks/7923a261b80bb6e1.js","/_next/static/chunks/e09b4358027e8033.js"],"default"]
+23:I[6197,["/_next/static/chunks/7923a261b80bb6e1.js","/_next/static/chunks/e09b4358027e8033.js"],"default"]
+25:I[40018,["/_next/static/chunks/7923a261b80bb6e1.js","/_next/static/chunks/e09b4358027e8033.js"],"default"]
+e:["$","$L21",null,{"formats":"$undefined","locale":"fr","messages":{"common":{"siteName":"BenXHub Blog","siteDescription":"Blog tech de BenX — développement Web, architecture et pratiques d'ingénierie."},"nav":{"home":"Accueil","tags":"Tags","about":"À propos","searchLabel":"Rechercher des articles"},"hero":{"subtitle":"Notes tech sur le développement Web, l'architecture et les pratiques d'ingénierie","cta":"Parcourir les articles"},"posts":{"title":"Articles","count":"{total} articles au total","empty":"Pas encore d'articles, restez à l'écoute !","newerPost":"← Plus récent","olderPost":"Plus ancien →","navLabel":"Navigation des articles"},"pagination":{"prev":"Précédent","next":"Suivant","page":"Page {current} sur {total}","label":"Pagination de la liste des articles","pageTitle":"Page {num}","pageDescription":"Blog tech de BenX — liste des articles."},"search":{"title":"Rechercher des articles","description":"Rechercher tous les articles du blog BenXHub par titre, description ou tags.","subtitle":"Rechercher par titre, description ou tags","placeholder":"Rechercher par titre, description ou tags…","found":"{count} articles trouvés","notFound":"Aucun article pour « {query} »","emptyTitle":"Aucun résultat","emptyHint":"Essayez d'autres mots-clés ou parcourez","allPosts":"tous les articles","totalCount":"{count} articles au total — tapez pour rechercher"},"tags":{"title":"Tous les tags","description":"Parcourir tous les articles par tag.","count":"{count} tags au total","empty":"Pas encore de tags, restez à l'écoute !","allTags":"Tous les tags","postCount":"{count} articles","otherTags":"Autres tags","tagTitle":"Articles avec le tag #{tag}","tagDescription":"Tous les articles avec le tag « {tag} »."},"about":{"title":"À propos","description":"À propos du blog BenXHub et de ce site.","subtitle":"À propos du blog BenXHub et de ce site","siteTitle":"À propos de ce site","siteContent":"BenXHub Blog est le blog tech de BenX : développement Web, architecture et pratiques d'ingénierie.","authorTitle":"À propos de moi","authorContent":"J'aime coder et partager. Je documente les problèmes rencontrés et leurs solutions. N'hésitez pas à me contacter via les liens dans la barre latérale ou le pied de page.","linksTitle":"Liens"},"sidebar":{"label":"Barre latérale","authorBio":"Passionné de code et de partage — développement Web, architecture et DevOps.","searchPlaceholder":"Rechercher des articles…","seriesTitle":"Séries","articleCount":"{count} articles"},"toc":{"title":"Sommaire","label":"Table des matières"},"notFound":{"message":"Cette page n'existe pas. Le lien est peut-être cassé ou l'URL incorrecte.","backHome":"Retour à l'accueil"},"localeSwitcher":{"label":"Changer de langue"}},"now":"$undefined","timeZone":"UTC","children":[["$","$L22",null,{}],["$","$L23",null,{}],["$","main",null,{"className":"flex-1 pt-16","children":["$","$L2",null,{"parallelRouterKey":"children","error":"$undefined","errorStyles":"$undefined","errorScripts":"$undefined","template":["$","$L3",null,{}],"templateStyles":"$undefined","templateScripts":"$undefined","notFound":["$L24",[]],"forbidden":"$undefined","unauthorized":"$undefined"}]}],["$","$L25",null,{}]]}]
+24:["$","div",null,{"className":"mx-auto max-w-2xl px-4 py-20 text-center sm:px-6","children":[["$","h1",null,{"className":"mb-3 text-4xl font-bold tracking-tight","style":{"color":"var(--color-text)"},"children":"404"}],["$","p",null,{"className":"mb-8 text-lg","style":{"color":"var(--color-muted)"},"children":"Cette page n'existe pas. Le lien est peut-être cassé ou l'URL incorrecte."}],"$L26"]}]
+a:[["$","meta","0",{"charSet":"utf-8"}],["$","meta","1",{"name":"viewport","content":"width=device-width, initial-scale=1"}]]
+26:["$","$L20",null,{"ref":"$undefined","href":"/fr","locale":"$undefined","localeCookie":"$f:props:localeCookie","className":"inline-flex items-center rounded-lg border px-4 py-2.5 text-sm font-medium transition-colors hover:border-accent","style":{"borderColor":"var(--color-border)","color":"var(--color-accent)","background":"var(--color-surface)"},"children":"Retour à l'accueil"}]
+27:I[92204,["/_next/static/chunks/5a5b5b13c22d14f7.js","/_next/static/chunks/a484d1d3dd4b55ab.js"],"IconMark"]
+8:null
+c:[["$","title","0",{"children":"Vue d'ensemble de la série CrewAI : des workflows multi-agents de zéro à la production | BenXHub Blog"}],["$","meta","1",{"name":"description","content":"Comprendre d'abord ce que fait CrewAI et quels problèmes il résout, puis passer des bases à la pratique réelle en 10 articles."}],["$","meta","2",{"property":"og:title","content":"Vue d'ensemble de la série CrewAI : des workflows multi-agents de zéro à la production"}],["$","meta","3",{"property":"og:description","content":"Comprendre d'abord ce que fait CrewAI et quels problèmes il résout, puis passer des bases à la pratique réelle en 10 articles."}],["$","meta","4",{"property":"og:url","content":"https://benxhub.com/fr/blog/crewai/00-overview"}],["$","meta","5",{"property":"og:type","content":"article"}],["$","meta","6",{"property":"article:published_time","content":"2026-03-01T00:00:00.000Z"}],["$","meta","7",{"property":"article:tag","content":"crewai"}],["$","meta","8",{"property":"article:tag","content":"ai-agent"}],["$","meta","9",{"property":"article:tag","content":"python"}],["$","meta","10",{"property":"article:tag","content":"workflow"}],["$","meta","11",{"property":"article:tag","content":"multi-agent"}],["$","meta","12",{"name":"twitter:card","content":"summary_large_image"}],["$","meta","13",{"name":"twitter:title","content":"Vue d'ensemble de la série CrewAI : des workflows multi-agents de zéro à la production"}],["$","meta","14",{"name":"twitter:description","content":"Comprendre d'abord ce que fait CrewAI et quels problèmes il résout, puis passer des bases à la pratique réelle en 10 articles."}],["$","link","15",{"rel":"icon","href":"/favicon.ico?favicon.0b3bf435.ico","sizes":"256x256","type":"image/x-icon"}],["$","$L27","16",{}]]

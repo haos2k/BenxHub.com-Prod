@@ -1,0 +1,156 @@
+1:"$Sreact.fragment"
+2:I[26795,["/_next/static/chunks/5a5b5b13c22d14f7.js","/_next/static/chunks/a484d1d3dd4b55ab.js"],"default"]
+3:I[73489,["/_next/static/chunks/5a5b5b13c22d14f7.js","/_next/static/chunks/a484d1d3dd4b55ab.js"],"default"]
+6:I[50183,["/_next/static/chunks/5a5b5b13c22d14f7.js","/_next/static/chunks/a484d1d3dd4b55ab.js"],"OutletBoundary"]
+7:"$Sreact.suspense"
+9:I[50183,["/_next/static/chunks/5a5b5b13c22d14f7.js","/_next/static/chunks/a484d1d3dd4b55ab.js"],"ViewportBoundary"]
+b:I[50183,["/_next/static/chunks/5a5b5b13c22d14f7.js","/_next/static/chunks/a484d1d3dd4b55ab.js"],"MetadataBoundary"]
+d:I[63847,[],"default"]
+:HL["/_next/static/chunks/446a7883c02a95fe.css","style"]
+:HL["/_next/static/media/797e433ab948586e-s.p.29207c2f.woff2","font",{"crossOrigin":"","type":"font/woff2"}]
+:HL["/_next/static/media/caa3a2e1cccd8315-s.p.3b6cae6d.woff2","font",{"crossOrigin":"","type":"font/woff2"}]
+0:{"P":null,"b":"Yck3R4ooQxWkwGLT6is1X","c":["","ko","blog","python","uv","01-quick-start"],"q":"","i":false,"f":[[["",{"children":[["locale","ko","d"],{"children":["blog",{"children":[["slug","python/uv/01-quick-start","c"],{"children":["__PAGE__",{}]}]}]}]},"$undefined","$undefined",true],[["$","$1","c",{"children":[null,["$","html",null,{"children":["$","body",null,{"children":["$","$L2",null,{"parallelRouterKey":"children","error":"$undefined","errorStyles":"$undefined","errorScripts":"$undefined","template":["$","$L3",null,{}],"templateStyles":"$undefined","templateScripts":"$undefined","notFound":[[["$","title",null,{"children":"404: This page could not be found."}],["$","div",null,{"style":{"fontFamily":"system-ui,\"Segoe UI\",Roboto,Helvetica,Arial,sans-serif,\"Apple Color Emoji\",\"Segoe UI Emoji\"","height":"100vh","textAlign":"center","display":"flex","flexDirection":"column","alignItems":"center","justifyContent":"center"},"children":["$","div",null,{"children":[["$","style",null,{"dangerouslySetInnerHTML":{"__html":"body{color:#000;background:#fff;margin:0}.next-error-h1{border-right:1px solid rgba(0,0,0,.3)}@media (prefers-color-scheme:dark){body{color:#fff;background:#000}.next-error-h1{border-right:1px solid rgba(255,255,255,.3)}}"}}],["$","h1",null,{"className":"next-error-h1","style":{"display":"inline-block","margin":"0 20px 0 0","padding":"0 23px 0 0","fontSize":24,"fontWeight":500,"verticalAlign":"top","lineHeight":"49px"},"children":404}],["$","div",null,{"style":{"display":"inline-block"},"children":["$","h2",null,{"style":{"fontSize":14,"fontWeight":400,"lineHeight":"49px","margin":0},"children":"This page could not be found."}]}]]}]}]],[]],"forbidden":"$undefined","unauthorized":"$undefined"}]}]}]]}],{"children":[["$","$1","c",{"children":[[["$","link","0",{"rel":"stylesheet","href":"/_next/static/chunks/446a7883c02a95fe.css","precedence":"next","crossOrigin":"$undefined","nonce":"$undefined"}],["$","script","script-0",{"src":"/_next/static/chunks/7923a261b80bb6e1.js","async":true,"nonce":"$undefined"}],["$","script","script-1",{"src":"/_next/static/chunks/e09b4358027e8033.js","async":true,"nonce":"$undefined"}]],"$L4"]}],{"children":[["$","$1","c",{"children":[null,["$","$L2",null,{"parallelRouterKey":"children","error":"$undefined","errorStyles":"$undefined","errorScripts":"$undefined","template":["$","$L3",null,{}],"templateStyles":"$undefined","templateScripts":"$undefined","notFound":"$undefined","forbidden":"$undefined","unauthorized":"$undefined"}]]}],{"children":[["$","$1","c",{"children":[null,["$","$L2",null,{"parallelRouterKey":"children","error":"$undefined","errorStyles":"$undefined","errorScripts":"$undefined","template":["$","$L3",null,{}],"templateStyles":"$undefined","templateScripts":"$undefined","notFound":"$undefined","forbidden":"$undefined","unauthorized":"$undefined"}]]}],{"children":[["$","$1","c",{"children":["$L5",[["$","script","script-0",{"src":"/_next/static/chunks/2dddb3bc05093f69.js","async":true,"nonce":"$undefined"}]],["$","$L6",null,{"children":["$","$7",null,{"name":"Next.MetadataOutlet","children":"$@8"}]}]]}],{},null,false,false]},null,false,false]},null,false,false]},null,false,false]},null,false,false],["$","$1","h",{"children":[null,["$","$L9",null,{"children":"$La"}],["$","div",null,{"hidden":true,"children":["$","$Lb",null,{"children":["$","$7",null,{"name":"Next.Metadata","children":"$Lc"}]}]}],["$","meta",null,{"name":"next-size-adjust","content":""}]]}],false]],"m":"$undefined","G":["$d",[]],"S":true}
+4:["$","div",null,{"lang":"ko","dir":"ltr","className":"geist_a71539c9-module__T19VSG__variable geist_mono_8d43a2aa-module__8Li5zG__variable flex min-h-screen flex-col antialiased","children":[["$","script",null,{"type":"application/ld+json","dangerouslySetInnerHTML":{"__html":"[{\"@context\":\"https://schema.org\",\"@type\":\"WebSite\",\"name\":\"BenXHub Blog\",\"url\":\"https://benxhub.com/ko\",\"inLanguage\":\"ko\",\"publisher\":{\"@type\":\"Organization\",\"name\":\"BenXHub Blog\",\"url\":\"https://benxhub.com\"},\"potentialAction\":{\"@type\":\"SearchAction\",\"target\":{\"@type\":\"EntryPoint\",\"urlTemplate\":\"https://benxhub.com/ko/search?q={search_term_string}\"},\"query-input\":\"required name=search_term_string\"}},{\"@context\":\"https://schema.org\",\"@type\":\"Person\",\"name\":\"BenX\",\"url\":\"https://benxhub.com\",\"sameAs\":[\"https://github.com/benzhub\"]}]"}}],"$Le"]}]
+f:I[33343,["/_next/static/chunks/7923a261b80bb6e1.js","/_next/static/chunks/e09b4358027e8033.js"],"default"]
+10:I[26817,["/_next/static/chunks/7923a261b80bb6e1.js","/_next/static/chunks/e09b4358027e8033.js"],"default"]
+11:I[6197,["/_next/static/chunks/7923a261b80bb6e1.js","/_next/static/chunks/e09b4358027e8033.js"],"default"]
+13:I[40018,["/_next/static/chunks/7923a261b80bb6e1.js","/_next/static/chunks/e09b4358027e8033.js"],"default"]
+e:["$","$Lf",null,{"formats":"$undefined","locale":"ko","messages":{"common":{"siteName":"BenXHub Blog","siteDescription":"BenX의 기술 블로그 — Web 개발, 아키텍처, 엔지니어링 실천을 공유합니다."},"nav":{"home":"홈","tags":"태그","about":"소개","searchLabel":"글 검색"},"hero":{"subtitle":"Web 개발, 아키텍처, 엔지니어링 실천에 관한 기술 노트","cta":"글 보기"},"posts":{"title":"글 목록","count":"총 {total}개의 글","empty":"아직 글이 없습니다. 기대해 주세요!","newerPost":"← 최신 글","olderPost":"이전 글 →","navLabel":"글 탐색"},"pagination":{"prev":"이전","next":"다음","page":"{current} / {total} 페이지","label":"글 목록 페이지네이션","pageTitle":"페이지 {num}","pageDescription":"BenX의 기술 블로그 — 글 목록."},"search":{"title":"글 검색","description":"제목, 설명, 태그로 BenXHub Blog의 모든 글을 실시간 검색합니다.","subtitle":"제목, 설명 또는 태그로 검색","placeholder":"제목, 설명 또는 태그로 검색…","found":"{count}개의 관련 글을 찾았습니다","notFound":"\"{query}\"에 관한 글을 찾을 수 없습니다","emptyTitle":"결과를 찾을 수 없습니다","emptyHint":"다른 키워드를 시도하거나","allPosts":"모든 글 보기","totalCount":"총 {count}개의 글 — 키워드를 입력하여 검색"},"tags":{"title":"모든 태그","description":"태그별로 글을 탐색합니다.","count":"총 {count}개의 태그","empty":"아직 태그가 없습니다. 기대해 주세요!","allTags":"모든 태그","postCount":"글 {count}개","otherTags":"다른 태그","tagTitle":"#{tag} 글","tagDescription":"\"{tag}\" 태그의 모든 글 목록."},"about":{"title":"소개","description":"BenXHub Blog와 이 사이트에 대해.","subtitle":"BenXHub Blog와 이 사이트에 대해","siteTitle":"이 사이트에 대해","siteContent":"BenXHub Blog는 BenX의 기술 블로그로, Web 개발, 아키텍처, 엔지니어링 실천을 공유합니다.","authorTitle":"자기소개","authorContent":"코딩과 지식 공유를 좋아합니다. 겪은 문제와 해결책을 기록하는 것을 즐깁니다. 사이드바 또는 푸터 링크로 편하게 연락하세요.","linksTitle":"링크"},"sidebar":{"label":"사이드바","authorBio":"코딩과 공유를 좋아하며, Web 개발, 아키텍처, DevOps에 집중합니다.","searchPlaceholder":"글 검색…","seriesTitle":"시리즈","articleCount":"{count}개"},"toc":{"title":"목차","label":"목차"},"notFound":{"message":"이 페이지는 존재하지 않습니다. 링크가 유효하지 않거나 URL이 잘못되었을 수 있습니다.","backHome":"홈으로 돌아가기"},"localeSwitcher":{"label":"언어 변경"}},"now":"$undefined","timeZone":"UTC","children":[["$","$L10",null,{}],["$","$L11",null,{}],["$","main",null,{"className":"flex-1 pt-16","children":["$","$L2",null,{"parallelRouterKey":"children","error":"$undefined","errorStyles":"$undefined","errorScripts":"$undefined","template":["$","$L3",null,{}],"templateStyles":"$undefined","templateScripts":"$undefined","notFound":["$L12",[]],"forbidden":"$undefined","unauthorized":"$undefined"}]}],["$","$L13",null,{}]]}]
+12:["$","div",null,{"className":"mx-auto max-w-2xl px-4 py-20 text-center sm:px-6","children":[["$","h1",null,{"className":"mb-3 text-4xl font-bold tracking-tight","style":{"color":"var(--color-text)"},"children":"404"}],["$","p",null,{"className":"mb-8 text-lg","style":{"color":"var(--color-muted)"},"children":"이 페이지는 존재하지 않습니다. 링크가 유효하지 않거나 URL이 잘못되었을 수 있습니다."}],"$L14"]}]
+a:[["$","meta","0",{"charSet":"utf-8"}],["$","meta","1",{"name":"viewport","content":"width=device-width, initial-scale=1"}]]
+15:I[14864,["/_next/static/chunks/7923a261b80bb6e1.js","/_next/static/chunks/e09b4358027e8033.js","/_next/static/chunks/2dddb3bc05093f69.js"],"default"]
+14:["$","$L15",null,{"ref":"$undefined","href":"/ko","locale":"$undefined","localeCookie":{"name":"NEXT_LOCALE","sameSite":"lax"},"className":"inline-flex items-center rounded-lg border px-4 py-2.5 text-sm font-medium transition-colors hover:border-accent","style":{"borderColor":"var(--color-border)","color":"var(--color-accent)","background":"var(--color-surface)"},"children":"홈으로 돌아가기"}]
+:HL["/images/posts/uv-quick-start.jpg","image"]
+1a:T1589,<p>이 가이드는 최단 경로로 <strong>동작하는 Python 프로젝트</strong>를 완성합니다 — uv에서의 첫 번째 사용 가능한 환경 구축. 작은 수달을 처음 키우는 것처럼: 먹고 자는 것부터 해결하고, 고급 기술은 나중에 배웁니다.</p>
+<h2 id="사전-조건">사전 조건</h2>
+<ul>
+<li>uv 설치 완료 (<a href="00-overview">개요</a>의 설치 명령어 참조)</li>
+<li>터미널에서 <code>uv</code> 명령 실행 가능</li>
+</ul>
+<h2 id="최소-예제-첫-번째-프로젝트-만들기">최소 예제: 첫 번째 프로젝트 만들기</h2>
+<h3 id="1단계-uv-설치-확인">1단계: uv 설치 확인</h3>
+<figure data-rehype-pretty-code-figure=""><pre style="background-color:#24292e;color:#e1e4e8" tabindex="0" data-language="bash" data-theme="github-dark"><code data-language="bash" data-theme="github-dark" style="display: grid;"><span data-line=""><span style="color:#B392F0">uv</span><span style="color:#79B8FF"> --version</span></span></code></pre></figure>
+<p>버전 번호가 나오면 설치 완료. 없으면 설치 스크립트를 다시 실행하고 터미널을 재시작하세요.</p>
+<h3 id="2단계-프로젝트-초기화">2단계: 프로젝트 초기화</h3>
+<figure data-rehype-pretty-code-figure=""><pre style="background-color:#24292e;color:#e1e4e8" tabindex="0" data-language="bash" data-theme="github-dark"><code data-language="bash" data-theme="github-dark" style="display: grid;"><span data-line=""><span style="color:#B392F0">uv</span><span style="color:#9ECBFF"> init</span><span style="color:#9ECBFF"> my-app</span></span>
+<span data-line=""><span style="color:#79B8FF">cd</span><span style="color:#9ECBFF"> my-app</span></span></code></pre></figure>
+<p>uv가 자동으로 <code>pyproject.toml</code>·<code>.python-version</code>·<code>main.py</code>·<code>README.md</code>를 만듭니다. 구조는 대략 이렇습니다:</p>
+<pre><code>my-app/
+├── .gitignore
+├── .python-version
+├── README.md
+├── main.py
+└── pyproject.toml
+</code></pre>
+<h3 id="3단계-기본-프로그램-실행">3단계: 기본 프로그램 실행</h3>
+<figure data-rehype-pretty-code-figure=""><pre style="background-color:#24292e;color:#e1e4e8" tabindex="0" data-language="bash" data-theme="github-dark"><code data-language="bash" data-theme="github-dark" style="display: grid;"><span data-line=""><span style="color:#B392F0">uv</span><span style="color:#9ECBFF"> run</span><span style="color:#9ECBFF"> main.py</span></span></code></pre></figure>
+<p><code>Hello from my-app!</code>이 보이면 — 축하합니다, 첫 번째 프로젝트 탄생!</p>
+<h3 id="4단계-의존성-추가-후-실행">4단계: 의존성 추가 후 실행</h3>
+<figure data-rehype-pretty-code-figure=""><pre style="background-color:#24292e;color:#e1e4e8" tabindex="0" data-language="bash" data-theme="github-dark"><code data-language="bash" data-theme="github-dark" style="display: grid;"><span data-line=""><span style="color:#B392F0">uv</span><span style="color:#9ECBFF"> add</span><span style="color:#9ECBFF"> requests</span></span></code></pre></figure>
+<p><code>main.py</code>를 수정해서 테스트:</p>
+<figure data-rehype-pretty-code-figure=""><pre style="background-color:#24292e;color:#e1e4e8" tabindex="0" data-language="python" data-theme="github-dark"><code data-language="python" data-theme="github-dark" style="display: grid;"><span data-line=""><span style="color:#F97583">import</span><span style="color:#E1E4E8"> requests</span></span>
+<span data-line=""><span style="color:#E1E4E8">r </span><span style="color:#F97583">=</span><span style="color:#E1E4E8"> requests.get(</span><span style="color:#9ECBFF">"https://httpbin.org/get"</span><span style="color:#E1E4E8">)</span></span>
+<span data-line=""><span style="color:#79B8FF">print</span><span style="color:#E1E4E8">(r.status_code)</span></span></code></pre></figure>
+<p>실행:</p>
+<figure data-rehype-pretty-code-figure=""><pre style="background-color:#24292e;color:#e1e4e8" tabindex="0" data-language="bash" data-theme="github-dark"><code data-language="bash" data-theme="github-dark" style="display: grid;"><span data-line=""><span style="color:#B392F0">uv</span><span style="color:#9ECBFF"> run</span><span style="color:#9ECBFF"> main.py</span></span></code></pre></figure>
+<p><code>200</code>이 보이면 의존성이 가상 환경에 올바르게 설치된 것 — 수동 <code>pip install</code>도, <code>source .venv/bin/activate</code>도 필요 없습니다. 이 "생각 없이 쓰는" 느낌이 uv의 즐거움입니다.</p>
+<h2 id="일반적인-트러블슈팅">일반적인 트러블슈팅</h2>
+<table>
+<thead>
+<tr>
+<th>현상</th>
+<th>확인 방향</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td><code>uv: command not found</code></td>
+<td>PATH 미설정 — 터미널 재시작 또는 인스톨러 출력에 따라 <code>source ...</code> 실행</td>
+</tr>
+<tr>
+<td><code>Permission denied</code></td>
+<td>설치 경로 권한 문제 — <code>~/.local/bin</code>이 쓰기 가능한지 확인</td>
+</tr>
+<tr>
+<td>의존성 설치가 느림</td>
+<td>첫 번째는 다운로드 필요, 이후는 캐시 사용; 네트워크 문제 시 프록시 확인</td>
+</tr>
+</tbody>
+</table>
+<h2 id="다음-단계">다음 단계</h2>
+<p>프로젝트가 실행되면 pyproject.toml과 uv.lock이 무엇을 하는지 이해하는 것을 권장합니다. 다음 글에서 이 핵심 개념들을 설명합니다:
+👉 <a href="02-core-concepts">핵심 개념</a></p>5:[["$","script",null,{"type":"application/ld+json","dangerouslySetInnerHTML":{"__html":"{\"@context\":\"https://schema.org\",\"@type\":\"Article\",\"headline\":\"Python uv 빠른 시작: 첫 번째 프로젝트 만들기\",\"description\":\"설치 확인부터 시작해 프로젝트 초기화·의존성 추가·실행 확인까지 단계별 안내.\",\"url\":\"https://benxhub.com/ko/blog/python/uv/01-quick-start\",\"mainEntityOfPage\":{\"@type\":\"WebPage\",\"@id\":\"https://benxhub.com/ko/blog/python/uv/01-quick-start\"},\"datePublished\":\"2026-02-27T00:00:00.000Z\",\"dateModified\":\"2026-02-27T00:00:00.000Z\",\"keywords\":\"python, uv, quick-start, package-manager\",\"inLanguage\":\"ko\",\"author\":{\"@type\":\"Person\",\"name\":\"BenX\",\"url\":\"https://benxhub.com\"},\"publisher\":{\"@type\":\"Organization\",\"name\":\"BenXHub Blog\",\"url\":\"https://benxhub.com\"},\"image\":\"https://benxhub.com/images/posts/uv-quick-start.jpg\"}"}}],["$","div",null,{"className":"mx-auto max-w-6xl px-4 py-12 sm:px-6","children":["$","div",null,{"className":"lg:grid lg:grid-cols-[1fr_240px] lg:gap-14","children":[["$","article",null,{"children":[["$","header",null,{"className":"mb-10","children":[["$","div",null,{"className":"mb-4 flex flex-wrap gap-2","children":["$L16","$L17","$L18","$L19"]}],["$","h1",null,{"className":"mb-4 text-3xl leading-snug font-bold tracking-tight sm:text-4xl","style":{"color":"var(--color-text)"},"children":"Python uv 빠른 시작: 첫 번째 프로젝트 만들기"}],["$","div",null,{"className":"flex flex-wrap items-center gap-3 text-sm","style":{"color":"var(--color-muted)"},"children":[["$","time",null,{"dateTime":"2026-02-27","children":"2026년 2월 27일"}],["$","span",null,{"aria-hidden":"true","children":"·"}],["$","span",null,{"children":"3 min read"}]]}],["$","div",null,{"className":"mt-6 overflow-hidden rounded-lg","children":["$","img",null,{"src":"/images/posts/uv-quick-start.jpg","alt":"Python uv 빠른 시작: 첫 번째 프로젝트 만들기","className":"w-full h-auto"}]}],["$","div",null,{"className":"mt-6 border-b","style":{"borderColor":"var(--color-border)"}}]]}],["$","div",null,{"className":"prose","dangerouslySetInnerHTML":{"__html":"$1a"}}],"$L1b"]}],"$L1c"]}]}]]
+23:I[24801,["/_next/static/chunks/7923a261b80bb6e1.js","/_next/static/chunks/e09b4358027e8033.js","/_next/static/chunks/2dddb3bc05093f69.js"],"default"]
+1b:["$","footer",null,{"className":"mt-14 border-t pt-8","style":{"borderColor":"var(--color-border)"},"children":[["$","div",null,{"className":"mb-8 flex flex-wrap gap-2","children":["$L1d","$L1e","$L1f","$L20"]}],["$","nav",null,{"aria-label":"글 탐색","className":"grid grid-cols-1 gap-4 sm:grid-cols-2","children":["$L21","$L22"]}]]}]
+24:T1589,<p>이 가이드는 최단 경로로 <strong>동작하는 Python 프로젝트</strong>를 완성합니다 — uv에서의 첫 번째 사용 가능한 환경 구축. 작은 수달을 처음 키우는 것처럼: 먹고 자는 것부터 해결하고, 고급 기술은 나중에 배웁니다.</p>
+<h2 id="사전-조건">사전 조건</h2>
+<ul>
+<li>uv 설치 완료 (<a href="00-overview">개요</a>의 설치 명령어 참조)</li>
+<li>터미널에서 <code>uv</code> 명령 실행 가능</li>
+</ul>
+<h2 id="최소-예제-첫-번째-프로젝트-만들기">최소 예제: 첫 번째 프로젝트 만들기</h2>
+<h3 id="1단계-uv-설치-확인">1단계: uv 설치 확인</h3>
+<figure data-rehype-pretty-code-figure=""><pre style="background-color:#24292e;color:#e1e4e8" tabindex="0" data-language="bash" data-theme="github-dark"><code data-language="bash" data-theme="github-dark" style="display: grid;"><span data-line=""><span style="color:#B392F0">uv</span><span style="color:#79B8FF"> --version</span></span></code></pre></figure>
+<p>버전 번호가 나오면 설치 완료. 없으면 설치 스크립트를 다시 실행하고 터미널을 재시작하세요.</p>
+<h3 id="2단계-프로젝트-초기화">2단계: 프로젝트 초기화</h3>
+<figure data-rehype-pretty-code-figure=""><pre style="background-color:#24292e;color:#e1e4e8" tabindex="0" data-language="bash" data-theme="github-dark"><code data-language="bash" data-theme="github-dark" style="display: grid;"><span data-line=""><span style="color:#B392F0">uv</span><span style="color:#9ECBFF"> init</span><span style="color:#9ECBFF"> my-app</span></span>
+<span data-line=""><span style="color:#79B8FF">cd</span><span style="color:#9ECBFF"> my-app</span></span></code></pre></figure>
+<p>uv가 자동으로 <code>pyproject.toml</code>·<code>.python-version</code>·<code>main.py</code>·<code>README.md</code>를 만듭니다. 구조는 대략 이렇습니다:</p>
+<pre><code>my-app/
+├── .gitignore
+├── .python-version
+├── README.md
+├── main.py
+└── pyproject.toml
+</code></pre>
+<h3 id="3단계-기본-프로그램-실행">3단계: 기본 프로그램 실행</h3>
+<figure data-rehype-pretty-code-figure=""><pre style="background-color:#24292e;color:#e1e4e8" tabindex="0" data-language="bash" data-theme="github-dark"><code data-language="bash" data-theme="github-dark" style="display: grid;"><span data-line=""><span style="color:#B392F0">uv</span><span style="color:#9ECBFF"> run</span><span style="color:#9ECBFF"> main.py</span></span></code></pre></figure>
+<p><code>Hello from my-app!</code>이 보이면 — 축하합니다, 첫 번째 프로젝트 탄생!</p>
+<h3 id="4단계-의존성-추가-후-실행">4단계: 의존성 추가 후 실행</h3>
+<figure data-rehype-pretty-code-figure=""><pre style="background-color:#24292e;color:#e1e4e8" tabindex="0" data-language="bash" data-theme="github-dark"><code data-language="bash" data-theme="github-dark" style="display: grid;"><span data-line=""><span style="color:#B392F0">uv</span><span style="color:#9ECBFF"> add</span><span style="color:#9ECBFF"> requests</span></span></code></pre></figure>
+<p><code>main.py</code>를 수정해서 테스트:</p>
+<figure data-rehype-pretty-code-figure=""><pre style="background-color:#24292e;color:#e1e4e8" tabindex="0" data-language="python" data-theme="github-dark"><code data-language="python" data-theme="github-dark" style="display: grid;"><span data-line=""><span style="color:#F97583">import</span><span style="color:#E1E4E8"> requests</span></span>
+<span data-line=""><span style="color:#E1E4E8">r </span><span style="color:#F97583">=</span><span style="color:#E1E4E8"> requests.get(</span><span style="color:#9ECBFF">"https://httpbin.org/get"</span><span style="color:#E1E4E8">)</span></span>
+<span data-line=""><span style="color:#79B8FF">print</span><span style="color:#E1E4E8">(r.status_code)</span></span></code></pre></figure>
+<p>실행:</p>
+<figure data-rehype-pretty-code-figure=""><pre style="background-color:#24292e;color:#e1e4e8" tabindex="0" data-language="bash" data-theme="github-dark"><code data-language="bash" data-theme="github-dark" style="display: grid;"><span data-line=""><span style="color:#B392F0">uv</span><span style="color:#9ECBFF"> run</span><span style="color:#9ECBFF"> main.py</span></span></code></pre></figure>
+<p><code>200</code>이 보이면 의존성이 가상 환경에 올바르게 설치된 것 — 수동 <code>pip install</code>도, <code>source .venv/bin/activate</code>도 필요 없습니다. 이 "생각 없이 쓰는" 느낌이 uv의 즐거움입니다.</p>
+<h2 id="일반적인-트러블슈팅">일반적인 트러블슈팅</h2>
+<table>
+<thead>
+<tr>
+<th>현상</th>
+<th>확인 방향</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td><code>uv: command not found</code></td>
+<td>PATH 미설정 — 터미널 재시작 또는 인스톨러 출력에 따라 <code>source ...</code> 실행</td>
+</tr>
+<tr>
+<td><code>Permission denied</code></td>
+<td>설치 경로 권한 문제 — <code>~/.local/bin</code>이 쓰기 가능한지 확인</td>
+</tr>
+<tr>
+<td>의존성 설치가 느림</td>
+<td>첫 번째는 다운로드 필요, 이후는 캐시 사용; 네트워크 문제 시 프록시 확인</td>
+</tr>
+</tbody>
+</table>
+<h2 id="다음-단계">다음 단계</h2>
+<p>프로젝트가 실행되면 pyproject.toml과 uv.lock이 무엇을 하는지 이해하는 것을 권장합니다. 다음 글에서 이 핵심 개념들을 설명합니다:
+👉 <a href="02-core-concepts">핵심 개념</a></p>1c:["$","aside",null,{"className":"hidden lg:block","children":["$","$L23",null,{"html":"$24"}]}]
+16:["$","$L15","python",{"ref":"$undefined","href":"/ko/tags/python","locale":"$undefined","localeCookie":"$14:props:localeCookie","className":"inline-flex items-center rounded-full px-2.5 py-0.5 text-xs font-medium transition-colors","style":{"background":"var(--color-code-bg)","color":"var(--color-accent)","border":"1px solid var(--color-border)"},"children":["#","python"]}]
+17:["$","$L15","uv",{"ref":"$undefined","href":"/ko/tags/uv","locale":"$undefined","localeCookie":"$14:props:localeCookie","className":"inline-flex items-center rounded-full px-2.5 py-0.5 text-xs font-medium transition-colors","style":{"background":"var(--color-code-bg)","color":"var(--color-accent)","border":"1px solid var(--color-border)"},"children":["#","uv"]}]
+18:["$","$L15","quick-start",{"ref":"$undefined","href":"/ko/tags/quick-start","locale":"$undefined","localeCookie":"$14:props:localeCookie","className":"inline-flex items-center rounded-full px-2.5 py-0.5 text-xs font-medium transition-colors","style":{"background":"var(--color-code-bg)","color":"var(--color-accent)","border":"1px solid var(--color-border)"},"children":["#","quick-start"]}]
+19:["$","$L15","package-manager",{"ref":"$undefined","href":"/ko/tags/package-manager","locale":"$undefined","localeCookie":"$14:props:localeCookie","className":"inline-flex items-center rounded-full px-2.5 py-0.5 text-xs font-medium transition-colors","style":{"background":"var(--color-code-bg)","color":"var(--color-accent)","border":"1px solid var(--color-border)"},"children":["#","package-manager"]}]
+1d:["$","$L15","python",{"ref":"$undefined","href":"/ko/tags/python","locale":"$undefined","localeCookie":"$14:props:localeCookie","className":"inline-flex items-center rounded-full px-3 py-1 text-sm font-medium transition-colors","style":{"background":"var(--color-code-bg)","color":"var(--color-accent)","border":"1px solid var(--color-border)"},"children":["#","python"]}]
+1e:["$","$L15","uv",{"ref":"$undefined","href":"/ko/tags/uv","locale":"$undefined","localeCookie":"$14:props:localeCookie","className":"inline-flex items-center rounded-full px-3 py-1 text-sm font-medium transition-colors","style":{"background":"var(--color-code-bg)","color":"var(--color-accent)","border":"1px solid var(--color-border)"},"children":["#","uv"]}]
+1f:["$","$L15","quick-start",{"ref":"$undefined","href":"/ko/tags/quick-start","locale":"$undefined","localeCookie":"$14:props:localeCookie","className":"inline-flex items-center rounded-full px-3 py-1 text-sm font-medium transition-colors","style":{"background":"var(--color-code-bg)","color":"var(--color-accent)","border":"1px solid var(--color-border)"},"children":["#","quick-start"]}]
+20:["$","$L15","package-manager",{"ref":"$undefined","href":"/ko/tags/package-manager","locale":"$undefined","localeCookie":"$14:props:localeCookie","className":"inline-flex items-center rounded-full px-3 py-1 text-sm font-medium transition-colors","style":{"background":"var(--color-code-bg)","color":"var(--color-accent)","border":"1px solid var(--color-border)"},"children":["#","package-manager"]}]
+21:["$","$L15",null,{"ref":"$undefined","href":"/ko/blog/python/uv/00-overview","locale":"$undefined","localeCookie":"$14:props:localeCookie","className":"group rounded-lg border p-4 transition-colors hover:border-accent","style":{"borderColor":"var(--color-border)","background":"var(--color-surface)"},"children":[["$","p",null,{"className":"mb-1 text-xs","style":{"color":"var(--color-muted)"},"children":"← 최신 글"}],["$","p",null,{"className":"line-clamp-1 text-sm font-medium transition-colors group-hover:text-accent","style":{"color":"var(--color-text)"},"children":"Python uv 시리즈 개요: pip보다 100배 빠른 후계자"}]]}]
+22:["$","$L15",null,{"ref":"$undefined","href":"/ko/blog/python/uv/02-core-concepts","locale":"$undefined","localeCookie":"$14:props:localeCookie","className":"group rounded-lg border p-4 text-right transition-colors hover:border-accent","style":{"borderColor":"var(--color-border)","background":"var(--color-surface)"},"children":[["$","p",null,{"className":"mb-1 text-xs","style":{"color":"var(--color-muted)"},"children":"이전 글 →"}],["$","p",null,{"className":"line-clamp-1 text-sm font-medium transition-colors group-hover:text-accent","style":{"color":"var(--color-text)"},"children":"Python uv 핵심 개념: pyproject.toml·잠금 파일·가상 환경"}]]}]
+25:I[92204,["/_next/static/chunks/5a5b5b13c22d14f7.js","/_next/static/chunks/a484d1d3dd4b55ab.js"],"IconMark"]
+8:null
+c:[["$","title","0",{"children":"Python uv 빠른 시작: 첫 번째 프로젝트 만들기 | BenXHub Blog"}],["$","meta","1",{"name":"description","content":"설치 확인부터 시작해 프로젝트 초기화·의존성 추가·실행 확인까지 단계별 안내."}],["$","meta","2",{"property":"og:title","content":"Python uv 빠른 시작: 첫 번째 프로젝트 만들기"}],["$","meta","3",{"property":"og:description","content":"설치 확인부터 시작해 프로젝트 초기화·의존성 추가·실행 확인까지 단계별 안내."}],["$","meta","4",{"property":"og:url","content":"https://benxhub.com/ko/blog/python/uv/01-quick-start"}],["$","meta","5",{"property":"og:image","content":"https://benxhub.com/images/posts/uv-quick-start.jpg"}],["$","meta","6",{"property":"og:type","content":"article"}],["$","meta","7",{"property":"article:published_time","content":"2026-02-27T00:00:00.000Z"}],["$","meta","8",{"property":"article:tag","content":"python"}],["$","meta","9",{"property":"article:tag","content":"uv"}],["$","meta","10",{"property":"article:tag","content":"quick-start"}],["$","meta","11",{"property":"article:tag","content":"package-manager"}],["$","meta","12",{"name":"twitter:card","content":"summary_large_image"}],["$","meta","13",{"name":"twitter:title","content":"Python uv 빠른 시작: 첫 번째 프로젝트 만들기"}],["$","meta","14",{"name":"twitter:description","content":"설치 확인부터 시작해 프로젝트 초기화·의존성 추가·실행 확인까지 단계별 안내."}],["$","meta","15",{"name":"twitter:image","content":"https://benxhub.com/images/posts/uv-quick-start.jpg"}],["$","link","16",{"rel":"icon","href":"/favicon.ico?favicon.0b3bf435.ico","sizes":"256x256","type":"image/x-icon"}],["$","$L25","17",{}]]

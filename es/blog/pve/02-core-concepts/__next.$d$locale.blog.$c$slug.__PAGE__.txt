@@ -1,0 +1,122 @@
+1:"$Sreact.fragment"
+2:I[14864,["/_next/static/chunks/7923a261b80bb6e1.js","/_next/static/chunks/e09b4358027e8033.js","/_next/static/chunks/2dddb3bc05093f69.js"],"default"]
+8:I[24801,["/_next/static/chunks/7923a261b80bb6e1.js","/_next/static/chunks/e09b4358027e8033.js","/_next/static/chunks/2dddb3bc05093f69.js"],"default"]
+a:I[50183,["/_next/static/chunks/5a5b5b13c22d14f7.js","/_next/static/chunks/a484d1d3dd4b55ab.js"],"OutletBoundary"]
+b:"$Sreact.suspense"
+:HL["/images/posts/pve-core-concepts.jpg","image"]
+3:T12f3,<p>Antes de tocar botones al azar, domina estos cuatro conceptos: te ayudará a decidir VM vs LXC, dónde guardar discos y cómo conectar red.</p>
+<h2 id="concepto-1-diferencia-entre-vm-y-lxc">Concepto 1: diferencia entre VM y LXC</h2>
+<table>
+<thead>
+<tr>
+<th>Tipo</th>
+<th>Tecnología</th>
+<th>Características</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td><strong>VM</strong></td>
+<td>KVM/QEMU</td>
+<td>Sistema completo, alta aislación, corre Windows y Linux</td>
+</tr>
+<tr>
+<td><strong>LXC</strong></td>
+<td>Linux Containers</td>
+<td>Ligero, arranque rápido, alta densidad, pero <strong>solo Linux</strong></td>
+</tr>
+</tbody>
+</table>
+<p>Regla rápida: necesitas aislación total o Windows -> VM; quieres eficiencia y servicio Linux -> LXC.</p>
+<figure data-rehype-pretty-code-figure=""><pre style="background-color:#24292e;color:#e1e4e8" tabindex="0" data-language="bash" data-theme="github-dark"><code data-language="bash" data-theme="github-dark" style="display: grid;"><span data-line=""><span style="color:#6A737D"># Crear VM (ejemplo)</span></span>
+<span data-line=""><span style="color:#B392F0">qm</span><span style="color:#9ECBFF"> create</span><span style="color:#79B8FF"> 100</span><span style="color:#79B8FF"> --name</span><span style="color:#9ECBFF"> my-vm</span><span style="color:#79B8FF"> --memory</span><span style="color:#79B8FF"> 1024</span><span style="color:#79B8FF"> --cores</span><span style="color:#79B8FF"> 2</span></span>
+<span data-line=""> </span>
+<span data-line=""><span style="color:#6A737D"># Crear contenedor LXC (ejemplo)</span></span>
+<span data-line=""><span style="color:#B392F0">pct</span><span style="color:#9ECBFF"> create</span><span style="color:#79B8FF"> 200</span><span style="color:#9ECBFF"> local:vztmpl/debian-12-standard_12.2-1_amd64.tar.zst</span><span style="color:#79B8FF"> --hostname</span><span style="color:#9ECBFF"> my-ct</span><span style="color:#79B8FF"> --memory</span><span style="color:#79B8FF"> 512</span></span></code></pre></figure>
+<h2 id="concepto-2-almacenamiento-define-tus-límites">Concepto 2: almacenamiento define tus límites</h2>
+<p>Elegir mal storage te limita en HA y migraciones.</p>
+<ul>
+<li><strong>local</strong>: almacenamiento local de un nodo</li>
+<li><strong>local-lvm</strong>: LVM local, útil para snapshot y clone</li>
+<li><strong>NFS/CIFS</strong>: almacenamiento compartido de red</li>
+<li><strong>ZFS/Ceph</strong>: opciones avanzadas con replicación y HA</li>
+</ul>
+<figure data-rehype-pretty-code-figure=""><pre style="background-color:#24292e;color:#e1e4e8" tabindex="0" data-language="bash" data-theme="github-dark"><code data-language="bash" data-theme="github-dark" style="display: grid;"><span data-line=""><span style="color:#B392F0">pvesm</span><span style="color:#9ECBFF"> status</span></span>
+<span data-line=""><span style="color:#B392F0">pvesm</span><span style="color:#9ECBFF"> list</span><span style="color:#9ECBFF"> local</span></span></code></pre></figure>
+<blockquote>
+<p>Para live migration o HA, los discos suelen necesitar <strong>shared storage</strong>.</p>
+</blockquote>
+<h2 id="concepto-3-modelo-de-red-vmbr0">Concepto 3: modelo de red (vmbr0)</h2>
+<p>PVE usa red tipo bridge: <code>vmbr0</code> puentea a NIC física y hace que las VMs parezcan conectadas al switch físico.</p>
+<figure data-rehype-pretty-code-figure=""><pre style="background-color:#24292e;color:#e1e4e8" tabindex="0" data-language="text" data-theme="github-dark"><code data-language="text" data-theme="github-dark" style="display: grid;"><span data-line=""><span>[Physical NIC] --> [vmbr0] --> [VM1] [VM2] [VM3]</span></span></code></pre></figure>
+<figure data-rehype-pretty-code-figure=""><pre style="background-color:#24292e;color:#e1e4e8" tabindex="0" data-language="bash" data-theme="github-dark"><code data-language="bash" data-theme="github-dark" style="display: grid;"><span data-line=""><span style="color:#B392F0">cat</span><span style="color:#9ECBFF"> /etc/network/interfaces</span></span></code></pre></figure>
+<h2 id="concepto-4-nodo-y-clúster">Concepto 4: nodo y clúster</h2>
+<ul>
+<li><strong>Nodo único</strong>: ideal para empezar y homelab</li>
+<li><strong>Clúster</strong>: varios hosts con gestión unificada, migración y HA</li>
+</ul>
+<figure data-rehype-pretty-code-figure=""><pre style="background-color:#24292e;color:#e1e4e8" tabindex="0" data-language="text" data-theme="github-dark"><code data-language="text" data-theme="github-dark" style="display: grid;"><span data-line=""><span>[Node1] &#x3C;--> [Node2] &#x3C;--> [Node3]</span></span>
+<span data-line=""><span>   \\_______ shared config (pmxcfs) _______//</span></span></code></pre></figure>
+<h2 id="siguiente-paso">Siguiente paso</h2>
+<p>Ya con base conceptual, toca operaciones frecuentes: backup, clone, migrate, snapshot.
+👉 <a href="03-common-patterns">Common Patterns</a></p>0:{"buildId":"Yck3R4ooQxWkwGLT6is1X","rsc":["$","$1","c",{"children":[[["$","script",null,{"type":"application/ld+json","dangerouslySetInnerHTML":{"__html":"{\"@context\":\"https://schema.org\",\"@type\":\"Article\",\"headline\":\"Conceptos clave de Proxmox VE: VM, LXC, almacenamiento y red\",\"description\":\"Entiende los cuatro conceptos clave de PVE y construye la base para operar y mantener el sistema.\",\"url\":\"https://benxhub.com/es/blog/pve/02-core-concepts\",\"mainEntityOfPage\":{\"@type\":\"WebPage\",\"@id\":\"https://benxhub.com/es/blog/pve/02-core-concepts\"},\"datePublished\":\"2026-02-24T00:00:00.000Z\",\"dateModified\":\"2026-02-24T00:00:00.000Z\",\"keywords\":\"proxmox, kvm, lxc, storage, network\",\"inLanguage\":\"es\",\"author\":{\"@type\":\"Person\",\"name\":\"BenX\",\"url\":\"https://benxhub.com\"},\"publisher\":{\"@type\":\"Organization\",\"name\":\"BenXHub Blog\",\"url\":\"https://benxhub.com\"},\"image\":\"https://benxhub.com/images/posts/pve-core-concepts.jpg\"}"}}],["$","div",null,{"className":"mx-auto max-w-6xl px-4 py-12 sm:px-6","children":["$","div",null,{"className":"lg:grid lg:grid-cols-[1fr_240px] lg:gap-14","children":[["$","article",null,{"children":[["$","header",null,{"className":"mb-10","children":[["$","div",null,{"className":"mb-4 flex flex-wrap gap-2","children":[["$","$L2","proxmox",{"href":"/es/tags/proxmox","localeCookie":{"name":"NEXT_LOCALE","sameSite":"lax"},"className":"inline-flex items-center rounded-full px-2.5 py-0.5 text-xs font-medium transition-colors","style":{"background":"var(--color-code-bg)","color":"var(--color-accent)","border":"1px solid var(--color-border)"},"children":["#","proxmox"]}],["$","$L2","kvm",{"href":"/es/tags/kvm","localeCookie":{"name":"NEXT_LOCALE","sameSite":"lax"},"className":"inline-flex items-center rounded-full px-2.5 py-0.5 text-xs font-medium transition-colors","style":{"background":"var(--color-code-bg)","color":"var(--color-accent)","border":"1px solid var(--color-border)"},"children":["#","kvm"]}],["$","$L2","lxc",{"href":"/es/tags/lxc","localeCookie":{"name":"NEXT_LOCALE","sameSite":"lax"},"className":"inline-flex items-center rounded-full px-2.5 py-0.5 text-xs font-medium transition-colors","style":{"background":"var(--color-code-bg)","color":"var(--color-accent)","border":"1px solid var(--color-border)"},"children":["#","lxc"]}],["$","$L2","storage",{"href":"/es/tags/storage","localeCookie":{"name":"NEXT_LOCALE","sameSite":"lax"},"className":"inline-flex items-center rounded-full px-2.5 py-0.5 text-xs font-medium transition-colors","style":{"background":"var(--color-code-bg)","color":"var(--color-accent)","border":"1px solid var(--color-border)"},"children":["#","storage"]}],["$","$L2","network",{"href":"/es/tags/network","localeCookie":{"name":"NEXT_LOCALE","sameSite":"lax"},"className":"inline-flex items-center rounded-full px-2.5 py-0.5 text-xs font-medium transition-colors","style":{"background":"var(--color-code-bg)","color":"var(--color-accent)","border":"1px solid var(--color-border)"},"children":["#","network"]}]]}],["$","h1",null,{"className":"mb-4 text-3xl leading-snug font-bold tracking-tight sm:text-4xl","style":{"color":"var(--color-text)"},"children":"Conceptos clave de Proxmox VE: VM, LXC, almacenamiento y red"}],["$","div",null,{"className":"flex flex-wrap items-center gap-3 text-sm","style":{"color":"var(--color-muted)"},"children":[["$","time",null,{"dateTime":"2026-02-24","children":"24 2月 2026"}],["$","span",null,{"aria-hidden":"true","children":"·"}],["$","span",null,{"children":"2 min read"}]]}],["$","div",null,{"className":"mt-6 overflow-hidden rounded-lg","children":["$","img",null,{"src":"/images/posts/pve-core-concepts.jpg","alt":"Conceptos clave de Proxmox VE: VM, LXC, almacenamiento y red","className":"w-full h-auto"}]}],["$","div",null,{"className":"mt-6 border-b","style":{"borderColor":"var(--color-border)"}}]]}],["$","div",null,{"className":"prose","dangerouslySetInnerHTML":{"__html":"$3"}}],"$L4"]}],"$L5"]}]}]],["$L6"],"$L7"]}],"loading":null,"isPartial":false}
+4:["$","footer",null,{"className":"mt-14 border-t pt-8","style":{"borderColor":"var(--color-border)"},"children":[["$","div",null,{"className":"mb-8 flex flex-wrap gap-2","children":[["$","$L2","proxmox",{"href":"/es/tags/proxmox","localeCookie":{"name":"NEXT_LOCALE","sameSite":"lax"},"className":"inline-flex items-center rounded-full px-3 py-1 text-sm font-medium transition-colors","style":{"background":"var(--color-code-bg)","color":"var(--color-accent)","border":"1px solid var(--color-border)"},"children":["#","proxmox"]}],["$","$L2","kvm",{"href":"/es/tags/kvm","localeCookie":{"name":"NEXT_LOCALE","sameSite":"lax"},"className":"inline-flex items-center rounded-full px-3 py-1 text-sm font-medium transition-colors","style":{"background":"var(--color-code-bg)","color":"var(--color-accent)","border":"1px solid var(--color-border)"},"children":["#","kvm"]}],["$","$L2","lxc",{"href":"/es/tags/lxc","localeCookie":{"name":"NEXT_LOCALE","sameSite":"lax"},"className":"inline-flex items-center rounded-full px-3 py-1 text-sm font-medium transition-colors","style":{"background":"var(--color-code-bg)","color":"var(--color-accent)","border":"1px solid var(--color-border)"},"children":["#","lxc"]}],["$","$L2","storage",{"href":"/es/tags/storage","localeCookie":{"name":"NEXT_LOCALE","sameSite":"lax"},"className":"inline-flex items-center rounded-full px-3 py-1 text-sm font-medium transition-colors","style":{"background":"var(--color-code-bg)","color":"var(--color-accent)","border":"1px solid var(--color-border)"},"children":["#","storage"]}],["$","$L2","network",{"href":"/es/tags/network","localeCookie":{"name":"NEXT_LOCALE","sameSite":"lax"},"className":"inline-flex items-center rounded-full px-3 py-1 text-sm font-medium transition-colors","style":{"background":"var(--color-code-bg)","color":"var(--color-accent)","border":"1px solid var(--color-border)"},"children":["#","network"]}]]}],["$","nav",null,{"aria-label":"Navegación de artículos","className":"grid grid-cols-1 gap-4 sm:grid-cols-2","children":[["$","$L2",null,{"href":"/es/blog/pve/01-quick-start","localeCookie":{"name":"NEXT_LOCALE","sameSite":"lax"},"className":"group rounded-lg border p-4 transition-colors hover:border-accent","style":{"borderColor":"var(--color-border)","background":"var(--color-surface)"},"children":[["$","p",null,{"className":"mb-1 text-xs","style":{"color":"var(--color-muted)"},"children":"← Artículo más reciente"}],["$","p",null,{"className":"line-clamp-1 text-sm font-medium transition-colors group-hover:text-accent","style":{"color":"var(--color-text)"},"children":"Inicio rápido de Proxmox VE: crea tu primera VM"}]]}],["$","$L2",null,{"href":"/es/blog/pve/03-common-patterns","localeCookie":{"name":"NEXT_LOCALE","sameSite":"lax"},"className":"group rounded-lg border p-4 text-right transition-colors hover:border-accent","style":{"borderColor":"var(--color-border)","background":"var(--color-surface)"},"children":[["$","p",null,{"className":"mb-1 text-xs","style":{"color":"var(--color-muted)"},"children":"Artículo más antiguo →"}],["$","p",null,{"className":"line-clamp-1 text-sm font-medium transition-colors group-hover:text-accent","style":{"color":"var(--color-text)"},"children":"Patrones comunes en Proxmox VE: backup, clone y migration"}]]}]]}]]}]
+9:T12f3,<p>Antes de tocar botones al azar, domina estos cuatro conceptos: te ayudará a decidir VM vs LXC, dónde guardar discos y cómo conectar red.</p>
+<h2 id="concepto-1-diferencia-entre-vm-y-lxc">Concepto 1: diferencia entre VM y LXC</h2>
+<table>
+<thead>
+<tr>
+<th>Tipo</th>
+<th>Tecnología</th>
+<th>Características</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td><strong>VM</strong></td>
+<td>KVM/QEMU</td>
+<td>Sistema completo, alta aislación, corre Windows y Linux</td>
+</tr>
+<tr>
+<td><strong>LXC</strong></td>
+<td>Linux Containers</td>
+<td>Ligero, arranque rápido, alta densidad, pero <strong>solo Linux</strong></td>
+</tr>
+</tbody>
+</table>
+<p>Regla rápida: necesitas aislación total o Windows -> VM; quieres eficiencia y servicio Linux -> LXC.</p>
+<figure data-rehype-pretty-code-figure=""><pre style="background-color:#24292e;color:#e1e4e8" tabindex="0" data-language="bash" data-theme="github-dark"><code data-language="bash" data-theme="github-dark" style="display: grid;"><span data-line=""><span style="color:#6A737D"># Crear VM (ejemplo)</span></span>
+<span data-line=""><span style="color:#B392F0">qm</span><span style="color:#9ECBFF"> create</span><span style="color:#79B8FF"> 100</span><span style="color:#79B8FF"> --name</span><span style="color:#9ECBFF"> my-vm</span><span style="color:#79B8FF"> --memory</span><span style="color:#79B8FF"> 1024</span><span style="color:#79B8FF"> --cores</span><span style="color:#79B8FF"> 2</span></span>
+<span data-line=""> </span>
+<span data-line=""><span style="color:#6A737D"># Crear contenedor LXC (ejemplo)</span></span>
+<span data-line=""><span style="color:#B392F0">pct</span><span style="color:#9ECBFF"> create</span><span style="color:#79B8FF"> 200</span><span style="color:#9ECBFF"> local:vztmpl/debian-12-standard_12.2-1_amd64.tar.zst</span><span style="color:#79B8FF"> --hostname</span><span style="color:#9ECBFF"> my-ct</span><span style="color:#79B8FF"> --memory</span><span style="color:#79B8FF"> 512</span></span></code></pre></figure>
+<h2 id="concepto-2-almacenamiento-define-tus-límites">Concepto 2: almacenamiento define tus límites</h2>
+<p>Elegir mal storage te limita en HA y migraciones.</p>
+<ul>
+<li><strong>local</strong>: almacenamiento local de un nodo</li>
+<li><strong>local-lvm</strong>: LVM local, útil para snapshot y clone</li>
+<li><strong>NFS/CIFS</strong>: almacenamiento compartido de red</li>
+<li><strong>ZFS/Ceph</strong>: opciones avanzadas con replicación y HA</li>
+</ul>
+<figure data-rehype-pretty-code-figure=""><pre style="background-color:#24292e;color:#e1e4e8" tabindex="0" data-language="bash" data-theme="github-dark"><code data-language="bash" data-theme="github-dark" style="display: grid;"><span data-line=""><span style="color:#B392F0">pvesm</span><span style="color:#9ECBFF"> status</span></span>
+<span data-line=""><span style="color:#B392F0">pvesm</span><span style="color:#9ECBFF"> list</span><span style="color:#9ECBFF"> local</span></span></code></pre></figure>
+<blockquote>
+<p>Para live migration o HA, los discos suelen necesitar <strong>shared storage</strong>.</p>
+</blockquote>
+<h2 id="concepto-3-modelo-de-red-vmbr0">Concepto 3: modelo de red (vmbr0)</h2>
+<p>PVE usa red tipo bridge: <code>vmbr0</code> puentea a NIC física y hace que las VMs parezcan conectadas al switch físico.</p>
+<figure data-rehype-pretty-code-figure=""><pre style="background-color:#24292e;color:#e1e4e8" tabindex="0" data-language="text" data-theme="github-dark"><code data-language="text" data-theme="github-dark" style="display: grid;"><span data-line=""><span>[Physical NIC] --> [vmbr0] --> [VM1] [VM2] [VM3]</span></span></code></pre></figure>
+<figure data-rehype-pretty-code-figure=""><pre style="background-color:#24292e;color:#e1e4e8" tabindex="0" data-language="bash" data-theme="github-dark"><code data-language="bash" data-theme="github-dark" style="display: grid;"><span data-line=""><span style="color:#B392F0">cat</span><span style="color:#9ECBFF"> /etc/network/interfaces</span></span></code></pre></figure>
+<h2 id="concepto-4-nodo-y-clúster">Concepto 4: nodo y clúster</h2>
+<ul>
+<li><strong>Nodo único</strong>: ideal para empezar y homelab</li>
+<li><strong>Clúster</strong>: varios hosts con gestión unificada, migración y HA</li>
+</ul>
+<figure data-rehype-pretty-code-figure=""><pre style="background-color:#24292e;color:#e1e4e8" tabindex="0" data-language="text" data-theme="github-dark"><code data-language="text" data-theme="github-dark" style="display: grid;"><span data-line=""><span>[Node1] &#x3C;--> [Node2] &#x3C;--> [Node3]</span></span>
+<span data-line=""><span>   \\_______ shared config (pmxcfs) _______//</span></span></code></pre></figure>
+<h2 id="siguiente-paso">Siguiente paso</h2>
+<p>Ya con base conceptual, toca operaciones frecuentes: backup, clone, migrate, snapshot.
+👉 <a href="03-common-patterns">Common Patterns</a></p>5:["$","aside",null,{"className":"hidden lg:block","children":["$","$L8",null,{"html":"$9"}]}]
+6:["$","script","script-0",{"src":"/_next/static/chunks/2dddb3bc05093f69.js","async":true}]
+7:["$","$La",null,{"children":["$","$b",null,{"name":"Next.MetadataOutlet","children":"$@c"}]}]
+c:null

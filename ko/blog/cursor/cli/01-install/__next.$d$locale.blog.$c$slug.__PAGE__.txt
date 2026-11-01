@@ -1,0 +1,65 @@
+1:"$Sreact.fragment"
+2:I[14864,["/_next/static/chunks/7923a261b80bb6e1.js","/_next/static/chunks/e09b4358027e8033.js","/_next/static/chunks/2dddb3bc05093f69.js"],"default"]
+8:I[24801,["/_next/static/chunks/7923a261b80bb6e1.js","/_next/static/chunks/e09b4358027e8033.js","/_next/static/chunks/2dddb3bc05093f69.js"],"default"]
+a:I[50183,["/_next/static/chunks/5a5b5b13c22d14f7.js","/_next/static/chunks/a484d1d3dd4b55ab.js"],"OutletBoundary"]
+b:"$Sreact.suspense"
+3:Tcf7,<p>설치는 간단합니다. 터미널에서 공식 스크립트를 실행하면 <code>cursor</code> 명령을 사용할 수 있습니다. 플랫폼에 따라 방법이 다릅니다.</p>
+<h2 id="macos--linux--wsl">macOS / Linux / WSL</h2>
+<p>터미널에서 다음을 실행하세요:</p>
+<figure data-rehype-pretty-code-figure=""><pre style="background-color:#24292e;color:#e1e4e8" tabindex="0" data-language="bash" data-theme="github-dark"><code data-language="bash" data-theme="github-dark" style="display: grid;"><span data-line=""><span style="color:#B392F0">curl</span><span style="color:#9ECBFF"> https://cursor.com/install</span><span style="color:#79B8FF"> -fsS</span><span style="color:#F97583"> |</span><span style="color:#B392F0"> bash</span></span></code></pre></figure>
+<ul>
+<li>스크립트가 <code>cursor</code> 명령을 자동으로 다운로드·설치합니다</li>
+<li>설치 후 <strong>터미널을 닫았다가 다시 열거나</strong>, <code>source ~/.bashrc</code> / <code>source ~/.zshrc</code>를 실행해 PATH를 갱신하세요</li>
+</ul>
+<h2 id="windows-powershell">Windows (PowerShell)</h2>
+<p>PowerShell을 <strong>관리자 권한으로</strong> 열고 다음을 실행하세요:</p>
+<figure data-rehype-pretty-code-figure=""><pre style="background-color:#24292e;color:#e1e4e8" tabindex="0" data-language="powershell" data-theme="github-dark"><code data-language="powershell" data-theme="github-dark" style="display: grid;"><span data-line=""><span style="color:#E1E4E8">irm </span><span style="color:#9ECBFF">'https://cursor.com/install?win32=true'</span><span style="color:#F97583"> |</span><span style="color:#E1E4E8"> iex</span></span></code></pre></figure>
+<h2 id="설치-확인">설치 확인</h2>
+<figure data-rehype-pretty-code-figure=""><pre style="background-color:#24292e;color:#e1e4e8" tabindex="0" data-language="bash" data-theme="github-dark"><code data-language="bash" data-theme="github-dark" style="display: grid;"><span data-line=""><span style="color:#B392F0">cursor</span><span style="color:#79B8FF"> --version</span></span></code></pre></figure>
+<p>버전 번호가 나오면 설치가 성공한 것입니다.</p>
+<h2 id="첫-사용-로그인">첫 사용: 로그인</h2>
+<p>처음 실행할 때 Cursor 계정 로그인을 요청할 수 있습니다:</p>
+<figure data-rehype-pretty-code-figure=""><pre style="background-color:#24292e;color:#e1e4e8" tabindex="0" data-language="bash" data-theme="github-dark"><code data-language="bash" data-theme="github-dark" style="display: grid;"><span data-line=""><span style="color:#B392F0">cursor</span><span style="color:#9ECBFF"> auth</span><span style="color:#9ECBFF"> login</span></span></code></pre></figure>
+<p>화면 안내에 따라 브라우저에서 로그인을 완료하세요. 같은 기기에서는 보통 다시 로그인할 필요가 없습니다.</p>
+<h2 id="요약">요약</h2>
+<ul>
+<li><strong>macOS / Linux</strong>: <code>curl ... | bash</code></li>
+<li><strong>Windows</strong>: PowerShell에서 <code>irm ... | iex</code> 실행</li>
+<li><strong>확인</strong>: <code>cursor --version</code></li>
+<li><strong>로그인</strong>: <code>cursor auth login</code></li>
+</ul>
+<blockquote>
+<p>다음: <a href="02-basic-usage">02-basic-usage</a> — 명령 실행 및 AI와 대화하기</p>
+</blockquote>0:{"buildId":"Yck3R4ooQxWkwGLT6is1X","rsc":["$","$1","c",{"children":[[["$","script",null,{"type":"application/ld+json","dangerouslySetInnerHTML":{"__html":"{\"@context\":\"https://schema.org\",\"@type\":\"Article\",\"headline\":\"Cursor CLI 설치하기\",\"description\":\"공식 스크립트로 터미널 한 줄로 Cursor CLI 설치. macOS, Linux, WSL, Windows 지원.\",\"url\":\"https://benxhub.com/ko/blog/cursor/cli/01-install\",\"mainEntityOfPage\":{\"@type\":\"WebPage\",\"@id\":\"https://benxhub.com/ko/blog/cursor/cli/01-install\"},\"datePublished\":\"2026-02-24T00:00:00.000Z\",\"dateModified\":\"2026-02-24T00:00:00.000Z\",\"keywords\":\"cursor, cli, install\",\"inLanguage\":\"ko\",\"author\":{\"@type\":\"Person\",\"name\":\"BenX\",\"url\":\"https://benxhub.com\"},\"publisher\":{\"@type\":\"Organization\",\"name\":\"BenXHub Blog\",\"url\":\"https://benxhub.com\"}}"}}],["$","div",null,{"className":"mx-auto max-w-6xl px-4 py-12 sm:px-6","children":["$","div",null,{"className":"lg:grid lg:grid-cols-[1fr_240px] lg:gap-14","children":[["$","article",null,{"children":[["$","header",null,{"className":"mb-10","children":[["$","div",null,{"className":"mb-4 flex flex-wrap gap-2","children":[["$","$L2","cursor",{"href":"/ko/tags/cursor","localeCookie":{"name":"NEXT_LOCALE","sameSite":"lax"},"className":"inline-flex items-center rounded-full px-2.5 py-0.5 text-xs font-medium transition-colors","style":{"background":"var(--color-code-bg)","color":"var(--color-accent)","border":"1px solid var(--color-border)"},"children":["#","cursor"]}],["$","$L2","cli",{"href":"/ko/tags/cli","localeCookie":{"name":"NEXT_LOCALE","sameSite":"lax"},"className":"inline-flex items-center rounded-full px-2.5 py-0.5 text-xs font-medium transition-colors","style":{"background":"var(--color-code-bg)","color":"var(--color-accent)","border":"1px solid var(--color-border)"},"children":["#","cli"]}],["$","$L2","install",{"href":"/ko/tags/install","localeCookie":{"name":"NEXT_LOCALE","sameSite":"lax"},"className":"inline-flex items-center rounded-full px-2.5 py-0.5 text-xs font-medium transition-colors","style":{"background":"var(--color-code-bg)","color":"var(--color-accent)","border":"1px solid var(--color-border)"},"children":["#","install"]}]]}],["$","h1",null,{"className":"mb-4 text-3xl leading-snug font-bold tracking-tight sm:text-4xl","style":{"color":"var(--color-text)"},"children":"Cursor CLI 설치하기"}],["$","div",null,{"className":"flex flex-wrap items-center gap-3 text-sm","style":{"color":"var(--color-muted)"},"children":[["$","time",null,{"dateTime":"2026-02-24","children":"2026년 2월 24일"}],["$","span",null,{"aria-hidden":"true","children":"·"}],["$","span",null,{"children":"2 min read"}]]}],"$undefined",["$","div",null,{"className":"mt-6 border-b","style":{"borderColor":"var(--color-border)"}}]]}],["$","div",null,{"className":"prose","dangerouslySetInnerHTML":{"__html":"$3"}}],"$L4"]}],"$L5"]}]}]],["$L6"],"$L7"]}],"loading":null,"isPartial":false}
+4:["$","footer",null,{"className":"mt-14 border-t pt-8","style":{"borderColor":"var(--color-border)"},"children":[["$","div",null,{"className":"mb-8 flex flex-wrap gap-2","children":[["$","$L2","cursor",{"href":"/ko/tags/cursor","localeCookie":{"name":"NEXT_LOCALE","sameSite":"lax"},"className":"inline-flex items-center rounded-full px-3 py-1 text-sm font-medium transition-colors","style":{"background":"var(--color-code-bg)","color":"var(--color-accent)","border":"1px solid var(--color-border)"},"children":["#","cursor"]}],["$","$L2","cli",{"href":"/ko/tags/cli","localeCookie":{"name":"NEXT_LOCALE","sameSite":"lax"},"className":"inline-flex items-center rounded-full px-3 py-1 text-sm font-medium transition-colors","style":{"background":"var(--color-code-bg)","color":"var(--color-accent)","border":"1px solid var(--color-border)"},"children":["#","cli"]}],["$","$L2","install",{"href":"/ko/tags/install","localeCookie":{"name":"NEXT_LOCALE","sameSite":"lax"},"className":"inline-flex items-center rounded-full px-3 py-1 text-sm font-medium transition-colors","style":{"background":"var(--color-code-bg)","color":"var(--color-accent)","border":"1px solid var(--color-border)"},"children":["#","install"]}]]}],["$","nav",null,{"aria-label":"글 탐색","className":"grid grid-cols-1 gap-4 sm:grid-cols-2","children":[["$","$L2",null,{"href":"/ko/blog/cursor/cli/00-overview","localeCookie":{"name":"NEXT_LOCALE","sameSite":"lax"},"className":"group rounded-lg border p-4 transition-colors hover:border-accent","style":{"borderColor":"var(--color-border)","background":"var(--color-surface)"},"children":[["$","p",null,{"className":"mb-1 text-xs","style":{"color":"var(--color-muted)"},"children":"← 최신 글"}],["$","p",null,{"className":"line-clamp-1 text-sm font-medium transition-colors group-hover:text-accent","style":{"color":"var(--color-text)"},"children":"Cursor CLI 튜토리얼 — 개요"}]]}],["$","$L2",null,{"href":"/ko/blog/cursor/cli/02-basic-usage","localeCookie":{"name":"NEXT_LOCALE","sameSite":"lax"},"className":"group rounded-lg border p-4 text-right transition-colors hover:border-accent","style":{"borderColor":"var(--color-border)","background":"var(--color-surface)"},"children":[["$","p",null,{"className":"mb-1 text-xs","style":{"color":"var(--color-muted)"},"children":"이전 글 →"}],["$","p",null,{"className":"line-clamp-1 text-sm font-medium transition-colors group-hover:text-accent","style":{"color":"var(--color-text)"},"children":"Cursor CLI 기본 사용법"}]]}]]}]]}]
+9:Tcf7,<p>설치는 간단합니다. 터미널에서 공식 스크립트를 실행하면 <code>cursor</code> 명령을 사용할 수 있습니다. 플랫폼에 따라 방법이 다릅니다.</p>
+<h2 id="macos--linux--wsl">macOS / Linux / WSL</h2>
+<p>터미널에서 다음을 실행하세요:</p>
+<figure data-rehype-pretty-code-figure=""><pre style="background-color:#24292e;color:#e1e4e8" tabindex="0" data-language="bash" data-theme="github-dark"><code data-language="bash" data-theme="github-dark" style="display: grid;"><span data-line=""><span style="color:#B392F0">curl</span><span style="color:#9ECBFF"> https://cursor.com/install</span><span style="color:#79B8FF"> -fsS</span><span style="color:#F97583"> |</span><span style="color:#B392F0"> bash</span></span></code></pre></figure>
+<ul>
+<li>스크립트가 <code>cursor</code> 명령을 자동으로 다운로드·설치합니다</li>
+<li>설치 후 <strong>터미널을 닫았다가 다시 열거나</strong>, <code>source ~/.bashrc</code> / <code>source ~/.zshrc</code>를 실행해 PATH를 갱신하세요</li>
+</ul>
+<h2 id="windows-powershell">Windows (PowerShell)</h2>
+<p>PowerShell을 <strong>관리자 권한으로</strong> 열고 다음을 실행하세요:</p>
+<figure data-rehype-pretty-code-figure=""><pre style="background-color:#24292e;color:#e1e4e8" tabindex="0" data-language="powershell" data-theme="github-dark"><code data-language="powershell" data-theme="github-dark" style="display: grid;"><span data-line=""><span style="color:#E1E4E8">irm </span><span style="color:#9ECBFF">'https://cursor.com/install?win32=true'</span><span style="color:#F97583"> |</span><span style="color:#E1E4E8"> iex</span></span></code></pre></figure>
+<h2 id="설치-확인">설치 확인</h2>
+<figure data-rehype-pretty-code-figure=""><pre style="background-color:#24292e;color:#e1e4e8" tabindex="0" data-language="bash" data-theme="github-dark"><code data-language="bash" data-theme="github-dark" style="display: grid;"><span data-line=""><span style="color:#B392F0">cursor</span><span style="color:#79B8FF"> --version</span></span></code></pre></figure>
+<p>버전 번호가 나오면 설치가 성공한 것입니다.</p>
+<h2 id="첫-사용-로그인">첫 사용: 로그인</h2>
+<p>처음 실행할 때 Cursor 계정 로그인을 요청할 수 있습니다:</p>
+<figure data-rehype-pretty-code-figure=""><pre style="background-color:#24292e;color:#e1e4e8" tabindex="0" data-language="bash" data-theme="github-dark"><code data-language="bash" data-theme="github-dark" style="display: grid;"><span data-line=""><span style="color:#B392F0">cursor</span><span style="color:#9ECBFF"> auth</span><span style="color:#9ECBFF"> login</span></span></code></pre></figure>
+<p>화면 안내에 따라 브라우저에서 로그인을 완료하세요. 같은 기기에서는 보통 다시 로그인할 필요가 없습니다.</p>
+<h2 id="요약">요약</h2>
+<ul>
+<li><strong>macOS / Linux</strong>: <code>curl ... | bash</code></li>
+<li><strong>Windows</strong>: PowerShell에서 <code>irm ... | iex</code> 실행</li>
+<li><strong>확인</strong>: <code>cursor --version</code></li>
+<li><strong>로그인</strong>: <code>cursor auth login</code></li>
+</ul>
+<blockquote>
+<p>다음: <a href="02-basic-usage">02-basic-usage</a> — 명령 실행 및 AI와 대화하기</p>
+</blockquote>5:["$","aside",null,{"className":"hidden lg:block","children":["$","$L8",null,{"html":"$9"}]}]
+6:["$","script","script-0",{"src":"/_next/static/chunks/2dddb3bc05093f69.js","async":true}]
+7:["$","$La",null,{"children":["$","$b",null,{"name":"Next.MetadataOutlet","children":"$@c"}]}]
+c:null

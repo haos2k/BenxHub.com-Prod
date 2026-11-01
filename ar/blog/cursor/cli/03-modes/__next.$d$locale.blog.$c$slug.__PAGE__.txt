@@ -1,0 +1,143 @@
+1:"$Sreact.fragment"
+2:I[14864,["/_next/static/chunks/7923a261b80bb6e1.js","/_next/static/chunks/e09b4358027e8033.js","/_next/static/chunks/2dddb3bc05093f69.js"],"default"]
+8:I[24801,["/_next/static/chunks/7923a261b80bb6e1.js","/_next/static/chunks/e09b4358027e8033.js","/_next/static/chunks/2dddb3bc05093f69.js"],"default"]
+a:I[50183,["/_next/static/chunks/5a5b5b13c22d14f7.js","/_next/static/chunks/a484d1d3dd4b55ab.js"],"OutletBoundary"]
+b:"$Sreact.suspense"
+3:T1575,<p>ثلاثة أوضاع، جملة واحدة للتمييز بينها: <strong>من يمكنه لمس كودك، ومن يكتفي بالحديث</strong>. بمجرد استيعاب ذلك، اختيار الوضع المناسب يصبح سهلاً.</p>
+<h2 id="مقارنة-في-جملة">مقارنة في جملة</h2>
+<table>
+<thead>
+<tr>
+<th>الوضع</th>
+<th>جملة واحدة</th>
+<th>هل يعدّل ملفاتك؟</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td><strong>Agent</strong></td>
+<td>"افعل" شيئاً لي</td>
+<td>✅ نعم</td>
+</tr>
+<tr>
+<td><strong>Plan</strong></td>
+<td>"خطّط" أولاً كيف ستفعل، ثم أقرّر أنا</td>
+<td>ليس بعد — فقط بعد موافقتك</td>
+</tr>
+<tr>
+<td><strong>Ask</strong></td>
+<td>فقط "اسأل" سؤالاً أو ابحث عن شيء</td>
+<td>❌ لا</td>
+</tr>
+</tbody>
+</table>
+<p>تخيلهم ثلاثة زملاء: Agent من يقول "أعطني، أنا أنفّذ"؛ Plan من يقول "دعني أكتب اقتراحاً لتراجعَه أولاً"؛ Ask من يقول "أجاوب فقط، لا ألمس الملفات" — اختر الشخص المناسب ووفر على نفسك نصف المتاعب.</p>
+<h2 id="وضع-agent-الافتراضي">وضع Agent (الافتراضي)</h2>
+<p><strong>حالة الاستخدام</strong>: أن يعدّل الذكاء الاصطناعي الكود مباشرة أو يضيف ميزات أو يعيد الهيكلة. تريد النتائج، لا النقاش.</p>
+<figure data-rehype-pretty-code-figure=""><pre style="background-color:#24292e;color:#e1e4e8" tabindex="0" data-language="bash" data-theme="github-dark"><code data-language="bash" data-theme="github-dark" style="display: grid;"><span data-line=""><span style="color:#B392F0">cursor</span><span style="color:#9ECBFF"> agent</span><span style="color:#9ECBFF"> "Change login to use JWT"</span></span></code></pre></figure>
+<ul>
+<li>يقرأ الملفات، يعدّلها، وقد يشغّل أوامر</li>
+<li>يمكنك قبول أو رفض كل خطوة — أنت المسيطر</li>
+</ul>
+<h2 id="وضع-plan">وضع Plan</h2>
+<p><strong>حالة الاستخدام</strong>: غير متأكد كيف تتعامل مع شيء، أو قلق من أن يغيّر الذكاء الاصطناعي الكثير دفعة واحدة؟ اعرض الخطة قبل الإذن.</p>
+<figure data-rehype-pretty-code-figure=""><pre style="background-color:#24292e;color:#e1e4e8" tabindex="0" data-language="bash" data-theme="github-dark"><code data-language="bash" data-theme="github-dark" style="display: grid;"><span data-line=""><span style="color:#B392F0">cursor</span><span style="color:#9ECBFF"> agent</span><span style="color:#79B8FF"> --plan</span><span style="color:#9ECBFF"> "Refactor the entire API layer"</span></span></code></pre></figure>
+<ul>
+<li>يطرح الذكاء الاصطناعي بعض الأسئلة ويقترح نهجاً</li>
+<li>ينفّذ فقط بعد موافقتك — دون مفاجآت</li>
+</ul>
+<p><strong>متى تستخدمه</strong>: للتغييرات الكبيرة، أو عندما تريد "أن ترى الأمر بوضوح قبل الالتزام."</p>
+<h2 id="وضع-ask-قراءة-فقط">وضع Ask (قراءة فقط)</h2>
+<p><strong>حالة الاستخدام</strong>: تريد فقط أن تسأل "ماذا يفعل هذا الكود" أو "هل هناك طريقة أفضل لكتابة هذا" — ولا تريد <strong>أبداً</strong> تغيير أي ملفات.</p>
+<figure data-rehype-pretty-code-figure=""><pre style="background-color:#24292e;color:#e1e4e8" tabindex="0" data-language="bash" data-theme="github-dark"><code data-language="bash" data-theme="github-dark" style="display: grid;"><span data-line=""><span style="color:#B392F0">cursor</span><span style="color:#9ECBFF"> ask</span><span style="color:#9ECBFF"> "What is the logic in src/auth.ts?"</span></span></code></pre></figure>
+<ul>
+<li>يقرأ ويحلل ويجيب فقط — لا يكتب أبداً</li>
+<li>مفيد لـ CI أو بيئات تريد فيها الفحص فقط دون التعديل</li>
+</ul>
+<h2 id="التبديل-بين-الأوضاع-أثناء-المحادثة">التبديل بين الأوضاع أثناء المحادثة</h2>
+<p>أنت بالفعل داخل محادثة <code>cursor agent</code>؟ استخدم <strong>أوامر الشرطة</strong> للتبديل فوراً:</p>
+<ul>
+<li><code>/plan</code> → التبديل لوضع Plan (خطة أولاً، تنفيذ لاحقاً)</li>
+<li><code>/ask</code> → التبديل لوضع Ask (قراءة فقط، اسأل بحرية)</li>
+</ul>
+<p>لا حاجة للخروج وإعادة التشغيل — كالتبديل بين السرعات أثناء السير.</p>
+<h2 id="ملخص">ملخص</h2>
+<ul>
+<li><strong>Agent</strong>: ينفّذ ويعدّل الملفات — استخدمه عندما تريد النتائج</li>
+<li><strong>Plan</strong>: يخطّط أولاً، ينفّذ فقط بعد موافقتك — استخدمه عندما تريد الأمان</li>
+<li><strong>Ask</strong>: أسئلة فقط، قراءة فقط — استخدمه عندما تريد إجابات دون تغييرات</li>
+</ul>
+<blockquote>
+<p>التالي: <a href="04-non-interactive">04-non-interactive</a> — الوضع غير التفاعلي للسكربتات وCI، تشغيل الذكاء الاصطناعي دون مراقبة</p>
+</blockquote>0:{"buildId":"Yck3R4ooQxWkwGLT6is1X","rsc":["$","$1","c",{"children":[[["$","script",null,{"type":"application/ld+json","dangerouslySetInnerHTML":{"__html":"{\"@context\":\"https://schema.org\",\"@type\":\"Article\",\"headline\":\"Cursor CLI ثلاثة أوضاع: Agent / Plan / Ask\",\"description\":\"Agent يعدّل الملفات، Plan يضع خطة قبل التنفيذ، Ask للقراءة فقط. جملة واحدة للتمييز بينها — وتعلّم التبديل بأوامر الشرطة أثناء المحادثة.\",\"url\":\"https://benxhub.com/ar/blog/cursor/cli/03-modes\",\"mainEntityOfPage\":{\"@type\":\"WebPage\",\"@id\":\"https://benxhub.com/ar/blog/cursor/cli/03-modes\"},\"datePublished\":\"2026-02-24T00:00:00.000Z\",\"dateModified\":\"2026-02-24T00:00:00.000Z\",\"keywords\":\"cursor, cli, agent, plan, ask\",\"inLanguage\":\"ar\",\"author\":{\"@type\":\"Person\",\"name\":\"BenX\",\"url\":\"https://benxhub.com\"},\"publisher\":{\"@type\":\"Organization\",\"name\":\"BenXHub Blog\",\"url\":\"https://benxhub.com\"}}"}}],["$","div",null,{"className":"mx-auto max-w-6xl px-4 py-12 sm:px-6","children":["$","div",null,{"className":"lg:grid lg:grid-cols-[1fr_240px] lg:gap-14","children":[["$","article",null,{"children":[["$","header",null,{"className":"mb-10","children":[["$","div",null,{"className":"mb-4 flex flex-wrap gap-2","children":[["$","$L2","cursor",{"href":"/ar/tags/cursor","localeCookie":{"name":"NEXT_LOCALE","sameSite":"lax"},"className":"inline-flex items-center rounded-full px-2.5 py-0.5 text-xs font-medium transition-colors","style":{"background":"var(--color-code-bg)","color":"var(--color-accent)","border":"1px solid var(--color-border)"},"children":["#","cursor"]}],["$","$L2","cli",{"href":"/ar/tags/cli","localeCookie":{"name":"NEXT_LOCALE","sameSite":"lax"},"className":"inline-flex items-center rounded-full px-2.5 py-0.5 text-xs font-medium transition-colors","style":{"background":"var(--color-code-bg)","color":"var(--color-accent)","border":"1px solid var(--color-border)"},"children":["#","cli"]}],["$","$L2","agent",{"href":"/ar/tags/agent","localeCookie":{"name":"NEXT_LOCALE","sameSite":"lax"},"className":"inline-flex items-center rounded-full px-2.5 py-0.5 text-xs font-medium transition-colors","style":{"background":"var(--color-code-bg)","color":"var(--color-accent)","border":"1px solid var(--color-border)"},"children":["#","agent"]}],["$","$L2","plan",{"href":"/ar/tags/plan","localeCookie":{"name":"NEXT_LOCALE","sameSite":"lax"},"className":"inline-flex items-center rounded-full px-2.5 py-0.5 text-xs font-medium transition-colors","style":{"background":"var(--color-code-bg)","color":"var(--color-accent)","border":"1px solid var(--color-border)"},"children":["#","plan"]}],["$","$L2","ask",{"href":"/ar/tags/ask","localeCookie":{"name":"NEXT_LOCALE","sameSite":"lax"},"className":"inline-flex items-center rounded-full px-2.5 py-0.5 text-xs font-medium transition-colors","style":{"background":"var(--color-code-bg)","color":"var(--color-accent)","border":"1px solid var(--color-border)"},"children":["#","ask"]}]]}],["$","h1",null,{"className":"mb-4 text-3xl leading-snug font-bold tracking-tight sm:text-4xl","style":{"color":"var(--color-text)"},"children":"Cursor CLI ثلاثة أوضاع: Agent / Plan / Ask"}],["$","div",null,{"className":"flex flex-wrap items-center gap-3 text-sm","style":{"color":"var(--color-muted)"},"children":[["$","time",null,{"dateTime":"2026-02-24","children":"24 2月 2026"}],["$","span",null,{"aria-hidden":"true","children":"·"}],["$","span",null,{"children":"2 min read"}]]}],"$undefined",["$","div",null,{"className":"mt-6 border-b","style":{"borderColor":"var(--color-border)"}}]]}],["$","div",null,{"className":"prose","dangerouslySetInnerHTML":{"__html":"$3"}}],"$L4"]}],"$L5"]}]}]],["$L6"],"$L7"]}],"loading":null,"isPartial":false}
+4:["$","footer",null,{"className":"mt-14 border-t pt-8","style":{"borderColor":"var(--color-border)"},"children":[["$","div",null,{"className":"mb-8 flex flex-wrap gap-2","children":[["$","$L2","cursor",{"href":"/ar/tags/cursor","localeCookie":{"name":"NEXT_LOCALE","sameSite":"lax"},"className":"inline-flex items-center rounded-full px-3 py-1 text-sm font-medium transition-colors","style":{"background":"var(--color-code-bg)","color":"var(--color-accent)","border":"1px solid var(--color-border)"},"children":["#","cursor"]}],["$","$L2","cli",{"href":"/ar/tags/cli","localeCookie":{"name":"NEXT_LOCALE","sameSite":"lax"},"className":"inline-flex items-center rounded-full px-3 py-1 text-sm font-medium transition-colors","style":{"background":"var(--color-code-bg)","color":"var(--color-accent)","border":"1px solid var(--color-border)"},"children":["#","cli"]}],["$","$L2","agent",{"href":"/ar/tags/agent","localeCookie":{"name":"NEXT_LOCALE","sameSite":"lax"},"className":"inline-flex items-center rounded-full px-3 py-1 text-sm font-medium transition-colors","style":{"background":"var(--color-code-bg)","color":"var(--color-accent)","border":"1px solid var(--color-border)"},"children":["#","agent"]}],["$","$L2","plan",{"href":"/ar/tags/plan","localeCookie":{"name":"NEXT_LOCALE","sameSite":"lax"},"className":"inline-flex items-center rounded-full px-3 py-1 text-sm font-medium transition-colors","style":{"background":"var(--color-code-bg)","color":"var(--color-accent)","border":"1px solid var(--color-border)"},"children":["#","plan"]}],["$","$L2","ask",{"href":"/ar/tags/ask","localeCookie":{"name":"NEXT_LOCALE","sameSite":"lax"},"className":"inline-flex items-center rounded-full px-3 py-1 text-sm font-medium transition-colors","style":{"background":"var(--color-code-bg)","color":"var(--color-accent)","border":"1px solid var(--color-border)"},"children":["#","ask"]}]]}],["$","nav",null,{"aria-label":"التنقل بين المقالات","className":"grid grid-cols-1 gap-4 sm:grid-cols-2","children":[["$","$L2",null,{"href":"/ar/blog/cursor/cli/02-basic-usage","localeCookie":{"name":"NEXT_LOCALE","sameSite":"lax"},"className":"group rounded-lg border p-4 transition-colors hover:border-accent","style":{"borderColor":"var(--color-border)","background":"var(--color-surface)"},"children":[["$","p",null,{"className":"mb-1 text-xs","style":{"color":"var(--color-muted)"},"children":"→ الأحدث"}],["$","p",null,{"className":"line-clamp-1 text-sm font-medium transition-colors group-hover:text-accent","style":{"color":"var(--color-text)"},"children":"الاستخدام الأساسي لـ Cursor CLI"}]]}],["$","$L2",null,{"href":"/ar/blog/cursor/cli/04-non-interactive","localeCookie":{"name":"NEXT_LOCALE","sameSite":"lax"},"className":"group rounded-lg border p-4 text-right transition-colors hover:border-accent","style":{"borderColor":"var(--color-border)","background":"var(--color-surface)"},"children":[["$","p",null,{"className":"mb-1 text-xs","style":{"color":"var(--color-muted)"},"children":"الأقدم ←"}],["$","p",null,{"className":"line-clamp-1 text-sm font-medium transition-colors group-hover:text-accent","style":{"color":"var(--color-text)"},"children":"Cursor CLI الوضع غير التفاعلي (السكربتات وCI)"}]]}]]}]]}]
+9:T1575,<p>ثلاثة أوضاع، جملة واحدة للتمييز بينها: <strong>من يمكنه لمس كودك، ومن يكتفي بالحديث</strong>. بمجرد استيعاب ذلك، اختيار الوضع المناسب يصبح سهلاً.</p>
+<h2 id="مقارنة-في-جملة">مقارنة في جملة</h2>
+<table>
+<thead>
+<tr>
+<th>الوضع</th>
+<th>جملة واحدة</th>
+<th>هل يعدّل ملفاتك؟</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td><strong>Agent</strong></td>
+<td>"افعل" شيئاً لي</td>
+<td>✅ نعم</td>
+</tr>
+<tr>
+<td><strong>Plan</strong></td>
+<td>"خطّط" أولاً كيف ستفعل، ثم أقرّر أنا</td>
+<td>ليس بعد — فقط بعد موافقتك</td>
+</tr>
+<tr>
+<td><strong>Ask</strong></td>
+<td>فقط "اسأل" سؤالاً أو ابحث عن شيء</td>
+<td>❌ لا</td>
+</tr>
+</tbody>
+</table>
+<p>تخيلهم ثلاثة زملاء: Agent من يقول "أعطني، أنا أنفّذ"؛ Plan من يقول "دعني أكتب اقتراحاً لتراجعَه أولاً"؛ Ask من يقول "أجاوب فقط، لا ألمس الملفات" — اختر الشخص المناسب ووفر على نفسك نصف المتاعب.</p>
+<h2 id="وضع-agent-الافتراضي">وضع Agent (الافتراضي)</h2>
+<p><strong>حالة الاستخدام</strong>: أن يعدّل الذكاء الاصطناعي الكود مباشرة أو يضيف ميزات أو يعيد الهيكلة. تريد النتائج، لا النقاش.</p>
+<figure data-rehype-pretty-code-figure=""><pre style="background-color:#24292e;color:#e1e4e8" tabindex="0" data-language="bash" data-theme="github-dark"><code data-language="bash" data-theme="github-dark" style="display: grid;"><span data-line=""><span style="color:#B392F0">cursor</span><span style="color:#9ECBFF"> agent</span><span style="color:#9ECBFF"> "Change login to use JWT"</span></span></code></pre></figure>
+<ul>
+<li>يقرأ الملفات، يعدّلها، وقد يشغّل أوامر</li>
+<li>يمكنك قبول أو رفض كل خطوة — أنت المسيطر</li>
+</ul>
+<h2 id="وضع-plan">وضع Plan</h2>
+<p><strong>حالة الاستخدام</strong>: غير متأكد كيف تتعامل مع شيء، أو قلق من أن يغيّر الذكاء الاصطناعي الكثير دفعة واحدة؟ اعرض الخطة قبل الإذن.</p>
+<figure data-rehype-pretty-code-figure=""><pre style="background-color:#24292e;color:#e1e4e8" tabindex="0" data-language="bash" data-theme="github-dark"><code data-language="bash" data-theme="github-dark" style="display: grid;"><span data-line=""><span style="color:#B392F0">cursor</span><span style="color:#9ECBFF"> agent</span><span style="color:#79B8FF"> --plan</span><span style="color:#9ECBFF"> "Refactor the entire API layer"</span></span></code></pre></figure>
+<ul>
+<li>يطرح الذكاء الاصطناعي بعض الأسئلة ويقترح نهجاً</li>
+<li>ينفّذ فقط بعد موافقتك — دون مفاجآت</li>
+</ul>
+<p><strong>متى تستخدمه</strong>: للتغييرات الكبيرة، أو عندما تريد "أن ترى الأمر بوضوح قبل الالتزام."</p>
+<h2 id="وضع-ask-قراءة-فقط">وضع Ask (قراءة فقط)</h2>
+<p><strong>حالة الاستخدام</strong>: تريد فقط أن تسأل "ماذا يفعل هذا الكود" أو "هل هناك طريقة أفضل لكتابة هذا" — ولا تريد <strong>أبداً</strong> تغيير أي ملفات.</p>
+<figure data-rehype-pretty-code-figure=""><pre style="background-color:#24292e;color:#e1e4e8" tabindex="0" data-language="bash" data-theme="github-dark"><code data-language="bash" data-theme="github-dark" style="display: grid;"><span data-line=""><span style="color:#B392F0">cursor</span><span style="color:#9ECBFF"> ask</span><span style="color:#9ECBFF"> "What is the logic in src/auth.ts?"</span></span></code></pre></figure>
+<ul>
+<li>يقرأ ويحلل ويجيب فقط — لا يكتب أبداً</li>
+<li>مفيد لـ CI أو بيئات تريد فيها الفحص فقط دون التعديل</li>
+</ul>
+<h2 id="التبديل-بين-الأوضاع-أثناء-المحادثة">التبديل بين الأوضاع أثناء المحادثة</h2>
+<p>أنت بالفعل داخل محادثة <code>cursor agent</code>؟ استخدم <strong>أوامر الشرطة</strong> للتبديل فوراً:</p>
+<ul>
+<li><code>/plan</code> → التبديل لوضع Plan (خطة أولاً، تنفيذ لاحقاً)</li>
+<li><code>/ask</code> → التبديل لوضع Ask (قراءة فقط، اسأل بحرية)</li>
+</ul>
+<p>لا حاجة للخروج وإعادة التشغيل — كالتبديل بين السرعات أثناء السير.</p>
+<h2 id="ملخص">ملخص</h2>
+<ul>
+<li><strong>Agent</strong>: ينفّذ ويعدّل الملفات — استخدمه عندما تريد النتائج</li>
+<li><strong>Plan</strong>: يخطّط أولاً، ينفّذ فقط بعد موافقتك — استخدمه عندما تريد الأمان</li>
+<li><strong>Ask</strong>: أسئلة فقط، قراءة فقط — استخدمه عندما تريد إجابات دون تغييرات</li>
+</ul>
+<blockquote>
+<p>التالي: <a href="04-non-interactive">04-non-interactive</a> — الوضع غير التفاعلي للسكربتات وCI، تشغيل الذكاء الاصطناعي دون مراقبة</p>
+</blockquote>5:["$","aside",null,{"className":"hidden lg:block","children":["$","$L8",null,{"html":"$9"}]}]
+6:["$","script","script-0",{"src":"/_next/static/chunks/2dddb3bc05093f69.js","async":true}]
+7:["$","$La",null,{"children":["$","$b",null,{"name":"Next.MetadataOutlet","children":"$@c"}]}]
+c:null

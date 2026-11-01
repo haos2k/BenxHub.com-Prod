@@ -1,0 +1,369 @@
+1:"$Sreact.fragment"
+2:I[14864,["/_next/static/chunks/7923a261b80bb6e1.js","/_next/static/chunks/e09b4358027e8033.js","/_next/static/chunks/2dddb3bc05093f69.js"],"default"]
+8:I[24801,["/_next/static/chunks/7923a261b80bb6e1.js","/_next/static/chunks/e09b4358027e8033.js","/_next/static/chunks/2dddb3bc05093f69.js"],"default"]
+a:I[50183,["/_next/static/chunks/5a5b5b13c22d14f7.js","/_next/static/chunks/a484d1d3dd4b55ab.js"],"OutletBoundary"]
+b:"$Sreact.suspense"
+3:T23dc,<p>PVE 的網路其實就是 Linux 標準網路堆疊，沒有什麼黑魔法。但如果概念不清楚，改個設定就斷網、改完發現 VM 全部失聯的慘劇屢見不鮮——就像裝潢的時候不小心切到主水管，整層樓一起停水。如果你還沒裝好 PVE 和第一台 VM，建議先看 <a href="02-install-first-vm">安裝與建立首台 VM</a>。</p>
+<h2 id="網路怎麼接的">網路怎麼接的？</h2>
+<p>PVE 的網路模型長這樣，由下往上看：</p>
+<pre><code>┌──────────────────────────────┐
+│       VM / LXC 容器           │
+│     (tap / veth 虛擬網卡)     │
+├──────────────────────────────┤
+│    Linux Bridge (vmbr0)      │
+│    → 虛擬交換機               │
+├──────────────────────────────┤
+│    Bond / VLAN (可選)         │
+├──────────────────────────────┤
+│    實體網卡 (eno1, enp3s0)    │
+└──────────────────────────────┘
+</code></pre>
+<p>簡單說：<code>vmbr0</code> 就是一台虛擬交換機，VM 插上去就能跟實體網路通訊。PVE 安裝完會自動建好一個 <code>vmbr0</code> 橋接到第一張實體網卡，開箱即用。</p>
+<h2 id="linux-bridge預設就夠用">Linux Bridge：預設就夠用</h2>
+<p>大多數場景根本不需要換，Linux Bridge 就是你的好朋友。設定檔在 <code>/etc/network/interfaces</code>：</p>
+<pre><code>auto vmbr0
+iface vmbr0 inet static
+    address 192.168.1.100/24
+    gateway 192.168.1.1
+    bridge-ports eno1
+    bridge-stp off
+    bridge-fd 0
+</code></pre>
+<p>所有 VM 跟容器預設都接到 <code>vmbr0</code>，大家共用同一條對外通道。Homelab 單網卡的情境，這樣就完事了。</p>
+<blockquote>
+<p>Open vSwitch（OVS）是進階選項，支援 OpenFlow、VXLAN tunnel 這些 SDN 功能。除非你要做軟體定義網路或者有特殊需求，不然 Linux Bridge 就很夠。要裝的話：<code>apt install openvswitch-switch</code>。</p>
+</blockquote>
+<h2 id="bonding兩條網線綁一起">Bonding：兩條網線綁一起</h2>
+<p>家裡或機房有兩張以上的網卡？可以用 Bonding 把它們綁成一個邏輯介面，達到冗餘或提升頻寬。就像停車場有兩個出口——一個塞住了還有另一個能走。</p>
+<p>六種模式，挑重點講：</p>
+<table>
+<thead>
+<tr>
+<th>模式</th>
+<th>名稱</th>
+<th>白話說明</th>
+<th align="center">需要交換機配合？</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td>0</td>
+<td>balance-rr</td>
+<td>輪流用，封包一人一個</td>
+<td align="center">是</td>
+</tr>
+<tr>
+<td>1</td>
+<td>active-backup</td>
+<td>主備切換，最穩最安全</td>
+<td align="center">否</td>
+</tr>
+<tr>
+<td>2</td>
+<td>balance-xor</td>
+<td>雜湊分配</td>
+<td align="center">是</td>
+</tr>
+<tr>
+<td>4</td>
+<td>802.3ad (LACP)</td>
+<td>IEEE 標準聚合，吞吐量翻倍</td>
+<td align="center">是</td>
+</tr>
+<tr>
+<td>5</td>
+<td>balance-tlb</td>
+<td>自動平衡傳輸負載</td>
+<td align="center">否</td>
+</tr>
+<tr>
+<td>6</td>
+<td>balance-alb</td>
+<td>自動平衡收發負載</td>
+<td align="center">否</td>
+</tr>
+</tbody>
+</table>
+<p><strong>Homelab 推薦</strong>：<code>active-backup</code>（mode 1），不用管交換機設定，插上就有冗餘。</p>
+<p><strong>生產環境推薦</strong>：<code>802.3ad</code>（mode 4），需要交換機那邊也開 LACP，但頻寬真的會加倍。</p>
+<pre><code>auto bond0
+iface bond0 inet manual
+    bond-slaves eno1 eno2
+    bond-miimon 100
+    bond-mode 802.3ad
+    bond-xmit-hash-policy layer3+4
+
+auto vmbr0
+iface vmbr0 inet static
+    address 192.168.1.100/24
+    gateway 192.168.1.1
+    bridge-ports bond0
+    bridge-stp off
+    bridge-fd 0
+</code></pre>
+<blockquote>
+<p><code>bond-miimon 100</code> 是每 100 毫秒偵測一次鏈路狀態。設太長的話，網卡斷了你會慢半拍才知道。</p>
+</blockquote>
+<h2 id="vlan一條線切成好幾段">VLAN：一條線切成好幾段</h2>
+<p>VLAN 讓你在同一張實體網卡上切出多個邏輯網路，彼此隔離。像一棟公寓裡的不同樓層——住同一棟但互不干擾。</p>
+<p>PVE 有兩種做法：</p>
+<p><strong>老方法：每個 VLAN 一個 Bridge</strong></p>
+<pre><code>auto eno1.100
+iface eno1.100 inet manual
+
+auto vmbr100
+iface vmbr100 inet static
+    address 10.100.0.1/24
+    bridge-ports eno1.100
+</code></pre>
+<p><strong>新方法：VLAN-aware Bridge（推薦）</strong></p>
+<pre><code>auto vmbr0
+iface vmbr0 inet static
+    address 192.168.1.100/24
+    gateway 192.168.1.1
+    bridge-ports eno1
+    bridge-vlan-aware yes
+    bridge-vids 2-4094
+</code></pre>
+<p>VLAN-aware 的好處是<strong>一個 Bridge 搞定所有 VLAN</strong>，在 VM 的網卡設定裡直接填 VLAN Tag 就好，不用為每個 VLAN 建一個 Bridge。維護起來乾淨很多，就像用一個衣櫃分隔板取代買十個小櫃子。</p>
+<h2 id="網路規劃建議">網路規劃建議</h2>
+<p><strong>Homelab（1-2 張網卡）</strong></p>
+<p>把 <code>vmbr0</code> 設成 VLAN-aware，管理跟 VM 流量用 VLAN Tag 分開就好。簡單、夠用、不折騰。</p>
+<p><strong>生產環境（4 張以上網卡）</strong></p>
+<table>
+<thead>
+<tr>
+<th>Bridge</th>
+<th>用途</th>
+<th>建議頻寬</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td><code>vmbr0</code></td>
+<td>管理網路</td>
+<td>1 Gbps</td>
+</tr>
+<tr>
+<td><code>vmbr1</code></td>
+<td>VM/CT 業務流量</td>
+<td>1-10 Gbps</td>
+</tr>
+<tr>
+<td><code>vmbr2</code></td>
+<td>存儲網路（Ceph/NFS）</td>
+<td>10 Gbps+</td>
+</tr>
+<tr>
+<td><code>vmbr3</code></td>
+<td>Corosync 叢集通訊</td>
+<td>1 Gbps（低延遲）</td>
+</tr>
+</tbody>
+</table>
+<p>管理、存儲、業務三條路分開走，跟高速公路的客運車道、貨運車道分流是一樣的道理。混在一起跑，塞車的時候大家一起塞。尤其是跑 <a href="10-ceph-storage">Ceph 存儲</a> 或 <a href="08-cluster">叢集 Corosync 通訊</a> 的時候，獨立網段幾乎是必備的。</p>
+<figure data-rehype-pretty-code-figure=""><pre style="background-color:#24292e;color:#e1e4e8" tabindex="0" data-language="bash" data-theme="github-dark"><code data-language="bash" data-theme="github-dark" style="display: grid;"><span data-line=""><span style="color:#6A737D"># 改完網路設定後套用（小心，改錯會斷線）</span></span>
+<span data-line=""><span style="color:#B392F0">ifreload</span><span style="color:#79B8FF"> -a</span></span>
+<span data-line=""> </span>
+<span data-line=""><span style="color:#6A737D"># 或者比較保險的做法：改完先重開看看</span></span>
+<span data-line=""><span style="color:#B392F0">systemctl</span><span style="color:#9ECBFF"> restart</span><span style="color:#9ECBFF"> networking</span></span></code></pre></figure>
+<blockquote>
+<p>遠端改網路設定是高風險操作。改之前確認有 IPMI、iDRAC 或者其他帶外管理方式可以救場，不然改錯就等著跑機房了。網路安全方面的配套措施，可以參考 <a href="12-firewall-permissions">防火牆與權限管理</a>。</p>
+</blockquote>
+<p>更完整的網路設定參數，可以參考 <a href="https://pve.proxmox.com/pve-docs/chapter-sysadmin.html#_network_configuration">Proxmox VE 網路官方文件</a> 以及 <a href="https://pve.proxmox.com/wiki/Network_Configuration">Proxmox Wiki 的 Network Configuration 頁面</a>。Linux Bridge 的底層機制可以看 <a href="https://wiki.linuxfoundation.org/networking/bridge">kernel.org 的 Bridge 文件</a>。</p>
+<h2 id="常見問題">常見問題</h2>
+<h3 id="q-pve-網路改完設定後-vm-斷線怎麼辦">Q: PVE 網路改完設定後 VM 斷線怎麼辦？</h3>
+<p>先用 <code>ifreload -a</code> 重新載入網路設定。如果還是不通，檢查 <code>/etc/network/interfaces</code> 的 bridge-ports 有沒有對應到正確的實體網卡，以及 VM 的網卡是否綁到正確的 Bridge。</p>
+<h3 id="q-proxmox-vlan-用哪種方式比較好">Q: Proxmox VLAN 用哪種方式比較好？</h3>
+<p>推薦使用 VLAN-aware Bridge，只需一個 vmbr0 就能管理所有 VLAN，在 VM 網卡設定裡填 Tag 即可。比起每個 VLAN 建一個 Bridge，維護起來簡單乾淨很多。</p>
+<h3 id="q-linux-bridge-和-open-vswitch-該選哪個">Q: Linux Bridge 和 Open vSwitch 該選哪個？</h3>
+<p>Homelab 和一般生產環境用 Linux Bridge 就夠了，穩定且不需要額外安裝。只有在需要 OpenFlow、VXLAN tunnel 或複雜 SDN 場景時，才考慮 Open vSwitch。</p>
+<h3 id="q-network-bonding-模式怎麼選">Q: Network Bonding 模式怎麼選？</h3>
+<p>Homelab 選 active-backup（mode 1），不需要交換機配合就有冗餘。生產環境選 802.3ad LACP（mode 4），頻寬可以真正加倍，但交換機也要開 LACP。</p>
+<h2 id="下一步">下一步</h2>
+<p>網路拉好了，接下來是每個維運工程師的必修課——備份與還原：
+👉 <a href="07-backup-restore">備份與還原</a></p>0:{"buildId":"Yck3R4ooQxWkwGLT6is1X","rsc":["$","$1","c",{"children":[[["$","script",null,{"type":"application/ld+json","dangerouslySetInnerHTML":{"__html":"{\"@context\":\"https://schema.org\",\"@type\":\"Article\",\"headline\":\"Proxmox VE 網路管理：Bridge、Bond 與 VLAN\",\"description\":\"PVE 網路設定完整教學：Linux Bridge、Network Bonding、VLAN 隔離一次搞懂，避免改錯設定斷網的悲劇。\",\"url\":\"https://benxhub.com/zh/blog/pve/06-networking\",\"mainEntityOfPage\":{\"@type\":\"WebPage\",\"@id\":\"https://benxhub.com/zh/blog/pve/06-networking\"},\"datePublished\":\"2026-04-29T00:00:00.000Z\",\"dateModified\":\"2026-04-29T00:00:00.000Z\",\"keywords\":\"proxmox, networking, bridge, vlan, bonding\",\"inLanguage\":\"zh\",\"author\":{\"@type\":\"Person\",\"name\":\"BenX\",\"url\":\"https://benxhub.com\"},\"publisher\":{\"@type\":\"Organization\",\"name\":\"BenXHub Blog\",\"url\":\"https://benxhub.com\"}}"}}],["$","div",null,{"className":"mx-auto max-w-6xl px-4 py-12 sm:px-6","children":["$","div",null,{"className":"lg:grid lg:grid-cols-[1fr_240px] lg:gap-14","children":[["$","article",null,{"children":[["$","header",null,{"className":"mb-10","children":[["$","div",null,{"className":"mb-4 flex flex-wrap gap-2","children":[["$","$L2","proxmox",{"href":"/zh/tags/proxmox","localeCookie":{"name":"NEXT_LOCALE","sameSite":"lax"},"className":"inline-flex items-center rounded-full px-2.5 py-0.5 text-xs font-medium transition-colors","style":{"background":"var(--color-code-bg)","color":"var(--color-accent)","border":"1px solid var(--color-border)"},"children":["#","proxmox"]}],["$","$L2","networking",{"href":"/zh/tags/networking","localeCookie":{"name":"NEXT_LOCALE","sameSite":"lax"},"className":"inline-flex items-center rounded-full px-2.5 py-0.5 text-xs font-medium transition-colors","style":{"background":"var(--color-code-bg)","color":"var(--color-accent)","border":"1px solid var(--color-border)"},"children":["#","networking"]}],["$","$L2","bridge",{"href":"/zh/tags/bridge","localeCookie":{"name":"NEXT_LOCALE","sameSite":"lax"},"className":"inline-flex items-center rounded-full px-2.5 py-0.5 text-xs font-medium transition-colors","style":{"background":"var(--color-code-bg)","color":"var(--color-accent)","border":"1px solid var(--color-border)"},"children":["#","bridge"]}],["$","$L2","vlan",{"href":"/zh/tags/vlan","localeCookie":{"name":"NEXT_LOCALE","sameSite":"lax"},"className":"inline-flex items-center rounded-full px-2.5 py-0.5 text-xs font-medium transition-colors","style":{"background":"var(--color-code-bg)","color":"var(--color-accent)","border":"1px solid var(--color-border)"},"children":["#","vlan"]}],["$","$L2","bonding",{"href":"/zh/tags/bonding","localeCookie":{"name":"NEXT_LOCALE","sameSite":"lax"},"className":"inline-flex items-center rounded-full px-2.5 py-0.5 text-xs font-medium transition-colors","style":{"background":"var(--color-code-bg)","color":"var(--color-accent)","border":"1px solid var(--color-border)"},"children":["#","bonding"]}]]}],["$","h1",null,{"className":"mb-4 text-3xl leading-snug font-bold tracking-tight sm:text-4xl","style":{"color":"var(--color-text)"},"children":"Proxmox VE 網路管理：Bridge、Bond 與 VLAN"}],["$","div",null,{"className":"flex flex-wrap items-center gap-3 text-sm","style":{"color":"var(--color-muted)"},"children":[["$","time",null,{"dateTime":"2026-04-29","children":"2026 年 4 月 29 日"}],["$","span",null,{"aria-hidden":"true","children":"·"}],["$","span",null,{"children":"8 min read"}]]}],"$undefined",["$","div",null,{"className":"mt-6 border-b","style":{"borderColor":"var(--color-border)"}}]]}],["$","div",null,{"className":"prose","dangerouslySetInnerHTML":{"__html":"$3"}}],"$L4"]}],"$L5"]}]}]],["$L6"],"$L7"]}],"loading":null,"isPartial":false}
+4:["$","footer",null,{"className":"mt-14 border-t pt-8","style":{"borderColor":"var(--color-border)"},"children":[["$","div",null,{"className":"mb-8 flex flex-wrap gap-2","children":[["$","$L2","proxmox",{"href":"/zh/tags/proxmox","localeCookie":{"name":"NEXT_LOCALE","sameSite":"lax"},"className":"inline-flex items-center rounded-full px-3 py-1 text-sm font-medium transition-colors","style":{"background":"var(--color-code-bg)","color":"var(--color-accent)","border":"1px solid var(--color-border)"},"children":["#","proxmox"]}],["$","$L2","networking",{"href":"/zh/tags/networking","localeCookie":{"name":"NEXT_LOCALE","sameSite":"lax"},"className":"inline-flex items-center rounded-full px-3 py-1 text-sm font-medium transition-colors","style":{"background":"var(--color-code-bg)","color":"var(--color-accent)","border":"1px solid var(--color-border)"},"children":["#","networking"]}],["$","$L2","bridge",{"href":"/zh/tags/bridge","localeCookie":{"name":"NEXT_LOCALE","sameSite":"lax"},"className":"inline-flex items-center rounded-full px-3 py-1 text-sm font-medium transition-colors","style":{"background":"var(--color-code-bg)","color":"var(--color-accent)","border":"1px solid var(--color-border)"},"children":["#","bridge"]}],["$","$L2","vlan",{"href":"/zh/tags/vlan","localeCookie":{"name":"NEXT_LOCALE","sameSite":"lax"},"className":"inline-flex items-center rounded-full px-3 py-1 text-sm font-medium transition-colors","style":{"background":"var(--color-code-bg)","color":"var(--color-accent)","border":"1px solid var(--color-border)"},"children":["#","vlan"]}],["$","$L2","bonding",{"href":"/zh/tags/bonding","localeCookie":{"name":"NEXT_LOCALE","sameSite":"lax"},"className":"inline-flex items-center rounded-full px-3 py-1 text-sm font-medium transition-colors","style":{"background":"var(--color-code-bg)","color":"var(--color-accent)","border":"1px solid var(--color-border)"},"children":["#","bonding"]}]]}],["$","nav",null,{"aria-label":"文章導覽","className":"grid grid-cols-1 gap-4 sm:grid-cols-2","children":[["$","$L2",null,{"href":"/zh/blog/pve/07-backup-restore","localeCookie":{"name":"NEXT_LOCALE","sameSite":"lax"},"className":"group rounded-lg border p-4 transition-colors hover:border-accent","style":{"borderColor":"var(--color-border)","background":"var(--color-surface)"},"children":[["$","p",null,{"className":"mb-1 text-xs","style":{"color":"var(--color-muted)"},"children":"← 較新文章"}],["$","p",null,{"className":"line-clamp-1 text-sm font-medium transition-colors group-hover:text-accent","style":{"color":"var(--color-text)"},"children":"Proxmox VE 備份與還原：你的後悔藥指南"}]]}],["$","$L2",null,{"href":"/zh/blog/pve/05-storage","localeCookie":{"name":"NEXT_LOCALE","sameSite":"lax"},"className":"group rounded-lg border p-4 text-right transition-colors hover:border-accent","style":{"borderColor":"var(--color-border)","background":"var(--color-surface)"},"children":[["$","p",null,{"className":"mb-1 text-xs","style":{"color":"var(--color-muted)"},"children":"較舊文章 →"}],["$","p",null,{"className":"line-clamp-1 text-sm font-medium transition-colors group-hover:text-accent","style":{"color":"var(--color-text)"},"children":"Proxmox VE 存儲全攻略：磁碟該放哪才對？"}]]}]]}]]}]
+9:T23dc,<p>PVE 的網路其實就是 Linux 標準網路堆疊，沒有什麼黑魔法。但如果概念不清楚，改個設定就斷網、改完發現 VM 全部失聯的慘劇屢見不鮮——就像裝潢的時候不小心切到主水管，整層樓一起停水。如果你還沒裝好 PVE 和第一台 VM，建議先看 <a href="02-install-first-vm">安裝與建立首台 VM</a>。</p>
+<h2 id="網路怎麼接的">網路怎麼接的？</h2>
+<p>PVE 的網路模型長這樣，由下往上看：</p>
+<pre><code>┌──────────────────────────────┐
+│       VM / LXC 容器           │
+│     (tap / veth 虛擬網卡)     │
+├──────────────────────────────┤
+│    Linux Bridge (vmbr0)      │
+│    → 虛擬交換機               │
+├──────────────────────────────┤
+│    Bond / VLAN (可選)         │
+├──────────────────────────────┤
+│    實體網卡 (eno1, enp3s0)    │
+└──────────────────────────────┘
+</code></pre>
+<p>簡單說：<code>vmbr0</code> 就是一台虛擬交換機，VM 插上去就能跟實體網路通訊。PVE 安裝完會自動建好一個 <code>vmbr0</code> 橋接到第一張實體網卡，開箱即用。</p>
+<h2 id="linux-bridge預設就夠用">Linux Bridge：預設就夠用</h2>
+<p>大多數場景根本不需要換，Linux Bridge 就是你的好朋友。設定檔在 <code>/etc/network/interfaces</code>：</p>
+<pre><code>auto vmbr0
+iface vmbr0 inet static
+    address 192.168.1.100/24
+    gateway 192.168.1.1
+    bridge-ports eno1
+    bridge-stp off
+    bridge-fd 0
+</code></pre>
+<p>所有 VM 跟容器預設都接到 <code>vmbr0</code>，大家共用同一條對外通道。Homelab 單網卡的情境，這樣就完事了。</p>
+<blockquote>
+<p>Open vSwitch（OVS）是進階選項，支援 OpenFlow、VXLAN tunnel 這些 SDN 功能。除非你要做軟體定義網路或者有特殊需求，不然 Linux Bridge 就很夠。要裝的話：<code>apt install openvswitch-switch</code>。</p>
+</blockquote>
+<h2 id="bonding兩條網線綁一起">Bonding：兩條網線綁一起</h2>
+<p>家裡或機房有兩張以上的網卡？可以用 Bonding 把它們綁成一個邏輯介面，達到冗餘或提升頻寬。就像停車場有兩個出口——一個塞住了還有另一個能走。</p>
+<p>六種模式，挑重點講：</p>
+<table>
+<thead>
+<tr>
+<th>模式</th>
+<th>名稱</th>
+<th>白話說明</th>
+<th align="center">需要交換機配合？</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td>0</td>
+<td>balance-rr</td>
+<td>輪流用，封包一人一個</td>
+<td align="center">是</td>
+</tr>
+<tr>
+<td>1</td>
+<td>active-backup</td>
+<td>主備切換，最穩最安全</td>
+<td align="center">否</td>
+</tr>
+<tr>
+<td>2</td>
+<td>balance-xor</td>
+<td>雜湊分配</td>
+<td align="center">是</td>
+</tr>
+<tr>
+<td>4</td>
+<td>802.3ad (LACP)</td>
+<td>IEEE 標準聚合，吞吐量翻倍</td>
+<td align="center">是</td>
+</tr>
+<tr>
+<td>5</td>
+<td>balance-tlb</td>
+<td>自動平衡傳輸負載</td>
+<td align="center">否</td>
+</tr>
+<tr>
+<td>6</td>
+<td>balance-alb</td>
+<td>自動平衡收發負載</td>
+<td align="center">否</td>
+</tr>
+</tbody>
+</table>
+<p><strong>Homelab 推薦</strong>：<code>active-backup</code>（mode 1），不用管交換機設定，插上就有冗餘。</p>
+<p><strong>生產環境推薦</strong>：<code>802.3ad</code>（mode 4），需要交換機那邊也開 LACP，但頻寬真的會加倍。</p>
+<pre><code>auto bond0
+iface bond0 inet manual
+    bond-slaves eno1 eno2
+    bond-miimon 100
+    bond-mode 802.3ad
+    bond-xmit-hash-policy layer3+4
+
+auto vmbr0
+iface vmbr0 inet static
+    address 192.168.1.100/24
+    gateway 192.168.1.1
+    bridge-ports bond0
+    bridge-stp off
+    bridge-fd 0
+</code></pre>
+<blockquote>
+<p><code>bond-miimon 100</code> 是每 100 毫秒偵測一次鏈路狀態。設太長的話，網卡斷了你會慢半拍才知道。</p>
+</blockquote>
+<h2 id="vlan一條線切成好幾段">VLAN：一條線切成好幾段</h2>
+<p>VLAN 讓你在同一張實體網卡上切出多個邏輯網路，彼此隔離。像一棟公寓裡的不同樓層——住同一棟但互不干擾。</p>
+<p>PVE 有兩種做法：</p>
+<p><strong>老方法：每個 VLAN 一個 Bridge</strong></p>
+<pre><code>auto eno1.100
+iface eno1.100 inet manual
+
+auto vmbr100
+iface vmbr100 inet static
+    address 10.100.0.1/24
+    bridge-ports eno1.100
+</code></pre>
+<p><strong>新方法：VLAN-aware Bridge（推薦）</strong></p>
+<pre><code>auto vmbr0
+iface vmbr0 inet static
+    address 192.168.1.100/24
+    gateway 192.168.1.1
+    bridge-ports eno1
+    bridge-vlan-aware yes
+    bridge-vids 2-4094
+</code></pre>
+<p>VLAN-aware 的好處是<strong>一個 Bridge 搞定所有 VLAN</strong>，在 VM 的網卡設定裡直接填 VLAN Tag 就好，不用為每個 VLAN 建一個 Bridge。維護起來乾淨很多，就像用一個衣櫃分隔板取代買十個小櫃子。</p>
+<h2 id="網路規劃建議">網路規劃建議</h2>
+<p><strong>Homelab（1-2 張網卡）</strong></p>
+<p>把 <code>vmbr0</code> 設成 VLAN-aware，管理跟 VM 流量用 VLAN Tag 分開就好。簡單、夠用、不折騰。</p>
+<p><strong>生產環境（4 張以上網卡）</strong></p>
+<table>
+<thead>
+<tr>
+<th>Bridge</th>
+<th>用途</th>
+<th>建議頻寬</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td><code>vmbr0</code></td>
+<td>管理網路</td>
+<td>1 Gbps</td>
+</tr>
+<tr>
+<td><code>vmbr1</code></td>
+<td>VM/CT 業務流量</td>
+<td>1-10 Gbps</td>
+</tr>
+<tr>
+<td><code>vmbr2</code></td>
+<td>存儲網路（Ceph/NFS）</td>
+<td>10 Gbps+</td>
+</tr>
+<tr>
+<td><code>vmbr3</code></td>
+<td>Corosync 叢集通訊</td>
+<td>1 Gbps（低延遲）</td>
+</tr>
+</tbody>
+</table>
+<p>管理、存儲、業務三條路分開走，跟高速公路的客運車道、貨運車道分流是一樣的道理。混在一起跑，塞車的時候大家一起塞。尤其是跑 <a href="10-ceph-storage">Ceph 存儲</a> 或 <a href="08-cluster">叢集 Corosync 通訊</a> 的時候，獨立網段幾乎是必備的。</p>
+<figure data-rehype-pretty-code-figure=""><pre style="background-color:#24292e;color:#e1e4e8" tabindex="0" data-language="bash" data-theme="github-dark"><code data-language="bash" data-theme="github-dark" style="display: grid;"><span data-line=""><span style="color:#6A737D"># 改完網路設定後套用（小心，改錯會斷線）</span></span>
+<span data-line=""><span style="color:#B392F0">ifreload</span><span style="color:#79B8FF"> -a</span></span>
+<span data-line=""> </span>
+<span data-line=""><span style="color:#6A737D"># 或者比較保險的做法：改完先重開看看</span></span>
+<span data-line=""><span style="color:#B392F0">systemctl</span><span style="color:#9ECBFF"> restart</span><span style="color:#9ECBFF"> networking</span></span></code></pre></figure>
+<blockquote>
+<p>遠端改網路設定是高風險操作。改之前確認有 IPMI、iDRAC 或者其他帶外管理方式可以救場，不然改錯就等著跑機房了。網路安全方面的配套措施，可以參考 <a href="12-firewall-permissions">防火牆與權限管理</a>。</p>
+</blockquote>
+<p>更完整的網路設定參數，可以參考 <a href="https://pve.proxmox.com/pve-docs/chapter-sysadmin.html#_network_configuration">Proxmox VE 網路官方文件</a> 以及 <a href="https://pve.proxmox.com/wiki/Network_Configuration">Proxmox Wiki 的 Network Configuration 頁面</a>。Linux Bridge 的底層機制可以看 <a href="https://wiki.linuxfoundation.org/networking/bridge">kernel.org 的 Bridge 文件</a>。</p>
+<h2 id="常見問題">常見問題</h2>
+<h3 id="q-pve-網路改完設定後-vm-斷線怎麼辦">Q: PVE 網路改完設定後 VM 斷線怎麼辦？</h3>
+<p>先用 <code>ifreload -a</code> 重新載入網路設定。如果還是不通，檢查 <code>/etc/network/interfaces</code> 的 bridge-ports 有沒有對應到正確的實體網卡，以及 VM 的網卡是否綁到正確的 Bridge。</p>
+<h3 id="q-proxmox-vlan-用哪種方式比較好">Q: Proxmox VLAN 用哪種方式比較好？</h3>
+<p>推薦使用 VLAN-aware Bridge，只需一個 vmbr0 就能管理所有 VLAN，在 VM 網卡設定裡填 Tag 即可。比起每個 VLAN 建一個 Bridge，維護起來簡單乾淨很多。</p>
+<h3 id="q-linux-bridge-和-open-vswitch-該選哪個">Q: Linux Bridge 和 Open vSwitch 該選哪個？</h3>
+<p>Homelab 和一般生產環境用 Linux Bridge 就夠了，穩定且不需要額外安裝。只有在需要 OpenFlow、VXLAN tunnel 或複雜 SDN 場景時，才考慮 Open vSwitch。</p>
+<h3 id="q-network-bonding-模式怎麼選">Q: Network Bonding 模式怎麼選？</h3>
+<p>Homelab 選 active-backup（mode 1），不需要交換機配合就有冗餘。生產環境選 802.3ad LACP（mode 4），頻寬可以真正加倍，但交換機也要開 LACP。</p>
+<h2 id="下一步">下一步</h2>
+<p>網路拉好了，接下來是每個維運工程師的必修課——備份與還原：
+👉 <a href="07-backup-restore">備份與還原</a></p>5:["$","aside",null,{"className":"hidden lg:block","children":["$","$L8",null,{"html":"$9"}]}]
+6:["$","script","script-0",{"src":"/_next/static/chunks/2dddb3bc05093f69.js","async":true}]
+7:["$","$La",null,{"children":["$","$b",null,{"name":"Next.MetadataOutlet","children":"$@c"}]}]
+c:null

@@ -1,0 +1,87 @@
+1:"$Sreact.fragment"
+2:I[14864,["/_next/static/chunks/7923a261b80bb6e1.js","/_next/static/chunks/e09b4358027e8033.js","/_next/static/chunks/2dddb3bc05093f69.js"],"default"]
+8:I[24801,["/_next/static/chunks/7923a261b80bb6e1.js","/_next/static/chunks/e09b4358027e8033.js","/_next/static/chunks/2dddb3bc05093f69.js"],"default"]
+a:I[50183,["/_next/static/chunks/5a5b5b13c22d14f7.js","/_next/static/chunks/a484d1d3dd4b55ab.js"],"OutletBoundary"]
+b:"$Sreact.suspense"
+3:T1085,<p>بعض النصائح العملية وإجابات عن الأسئلة الأكثر شيوعاً — حلّ "أين كنت؟" و"لماذا لا يعمل؟" دفعة واحدة.</p>
+<h2 id="نصائح">نصائح</h2>
+<h3 id="1-استئناف-المحادثة-السابقة">1. استئناف المحادثة السابقة</h3>
+<p>أغلقت في منتصف الجلسة وتريد متابعة من حيث توقفت؟ لا حاجة للبدء من جديد:</p>
+<figure data-rehype-pretty-code-figure=""><pre style="background-color:#24292e;color:#e1e4e8" tabindex="0" data-language="bash" data-theme="github-dark"><code data-language="bash" data-theme="github-dark" style="display: grid;"><span data-line=""><span style="color:#B392F0">cursor</span><span style="color:#9ECBFF"> agent</span><span style="color:#79B8FF"> --resume</span></span></code></pre></figure>
+<p>هذا يحمّل أحدث محادثة مع كل السياق — كضغط "استئناف" على فيديو متوقف.</p>
+<h3 id="2-التأكيد-قبل-تشغيل-الأوامر">2. التأكيد قبل تشغيل الأوامر</h3>
+<p>قد يريد الـ Agent تشغيل أوامر مثل <code>npm install</code> أو <code>git</code>.</p>
+<ul>
+<li><strong>الوضع التفاعلي</strong>: سيسألك أولاً</li>
+<li>إن كنت حذراً، قل له في المحادثة: "اسألني قبل تشغيل أي أوامر"</li>
+</ul>
+<p>هكذا لن تكون لحظات من نوع "متى شغّل ذلك؟".</p>
+<h3 id="3-استخدم-cli-و-ide-معاً">3. استخدم CLI و IDE معاً</h3>
+<p>يمكن استخدام <strong>CLI ونافذة Cursor في الوقت نفسه</strong> — ليست إما/أو:</p>
+<ul>
+<li>استخدم النافذة للتطوير الرئيسي وتصفح شجرة الملفات والإكمال بـ Tab</li>
+<li>استخدم CLI للمهام الصغيرة والاستعلام وتشغيل الأتمتة</li>
+</ul>
+<p>واحد يتولى المعركة الرئيسية والآخر المناوشات — فرّق تسد.</p>
+<h2 id="أسئلة-شائعة">أسئلة شائعة</h2>
+<p><strong>س: <code>cursor: command not found</code>؟</strong>
+ج: أعد تشغيل الطرفية بعد التثبيت، أو شغّل <code>source ~/.zshrc</code> (أو <code>~/.bashrc</code>). تأكد أن مسار التثبيت في <code>PATH</code> — مشكلة "ثبّت الأداة لكن النظام لا يجدها" تكون في الغالب مشكلة PATH.</p>
+<p><strong>س: هل CLI مدفوع؟</strong>
+ج: نعم. تحتاج اشتراك Cursor لاستخدام CLI — وهو نفس اشتراك الـ IDE.</p>
+<p><strong>س: هل يمكن استخدامه على خادم / في Docker؟</strong>
+ج: نعم. المتطلبات: القدرة على تشغيل سكربت التثبيت، وتسجيل الدخول إلى Cursor (أو إعداد token). انتبه للشبكة والتفويض — لا تتوقع الوصول إلى سحابة Cursor في بيئة شبكة مقيدة.</p>
+<p><strong>س: هل هو نفسه الـ Agent في نافذة Cursor؟</strong>
+ج: نفس القدرة الأساسية. الفرق أن CLI واجهة طرفية، يدعم الوضع غير التفاعلي ويتكامل مع السكربتات وCI — نفس الذكاء الاصطناعي، واجهة مختلفة.</p>
+<h2 id="ملخص">ملخص</h2>
+<ul>
+<li><strong>استئناف المحادثة</strong>: <code>cursor agent --resume</code></li>
+<li><strong>تأكيد الأوامر</strong>: يمكنك أن تطلب "تأكيد قبل تشغيل أي أوامر"</li>
+<li><strong>CLI و IDE</strong>: يمكن استخدامهما معاً، لا يستبعد أحدهما الآخر</li>
+<li><strong>عند التعثّر</strong>: راجع <code>cursor --help</code> والوثائق الرسمية — معظم المشاكل لها حلول معروفة</li>
+</ul>
+<blockquote>
+<p>التالي: <a href="06-cursor-cli-with-worktree">06-cursor-cli-with-worktree</a> — استخدم CLI مع Worktree للتطوير المتوازي. أو ارجع إلى <a href="00-overview">00-overview</a> لمراجعة خريطة الدورة.</p>
+</blockquote>0:{"buildId":"Yck3R4ooQxWkwGLT6is1X","rsc":["$","$1","c",{"children":[[["$","script",null,{"type":"application/ld+json","dangerouslySetInnerHTML":{"__html":"{\"@context\":\"https://schema.org\",\"@type\":\"Article\",\"headline\":\"Cursor CLI نصائح وأسئلة شائعة\",\"description\":\"استئناف المحادثات بـ --resume، التأكيد قبل تشغيل الأوامر، استخدام CLI مع IDE، وإجابات عن command not found والتسعير والاستخدام على الخادم.\",\"url\":\"https://benxhub.com/ar/blog/cursor/cli/05-tips\",\"mainEntityOfPage\":{\"@type\":\"WebPage\",\"@id\":\"https://benxhub.com/ar/blog/cursor/cli/05-tips\"},\"datePublished\":\"2026-02-24T00:00:00.000Z\",\"dateModified\":\"2026-02-24T00:00:00.000Z\",\"keywords\":\"cursor, cli, tips, faq\",\"inLanguage\":\"ar\",\"author\":{\"@type\":\"Person\",\"name\":\"BenX\",\"url\":\"https://benxhub.com\"},\"publisher\":{\"@type\":\"Organization\",\"name\":\"BenXHub Blog\",\"url\":\"https://benxhub.com\"}}"}}],["$","div",null,{"className":"mx-auto max-w-6xl px-4 py-12 sm:px-6","children":["$","div",null,{"className":"lg:grid lg:grid-cols-[1fr_240px] lg:gap-14","children":[["$","article",null,{"children":[["$","header",null,{"className":"mb-10","children":[["$","div",null,{"className":"mb-4 flex flex-wrap gap-2","children":[["$","$L2","cursor",{"href":"/ar/tags/cursor","localeCookie":{"name":"NEXT_LOCALE","sameSite":"lax"},"className":"inline-flex items-center rounded-full px-2.5 py-0.5 text-xs font-medium transition-colors","style":{"background":"var(--color-code-bg)","color":"var(--color-accent)","border":"1px solid var(--color-border)"},"children":["#","cursor"]}],["$","$L2","cli",{"href":"/ar/tags/cli","localeCookie":{"name":"NEXT_LOCALE","sameSite":"lax"},"className":"inline-flex items-center rounded-full px-2.5 py-0.5 text-xs font-medium transition-colors","style":{"background":"var(--color-code-bg)","color":"var(--color-accent)","border":"1px solid var(--color-border)"},"children":["#","cli"]}],["$","$L2","tips",{"href":"/ar/tags/tips","localeCookie":{"name":"NEXT_LOCALE","sameSite":"lax"},"className":"inline-flex items-center rounded-full px-2.5 py-0.5 text-xs font-medium transition-colors","style":{"background":"var(--color-code-bg)","color":"var(--color-accent)","border":"1px solid var(--color-border)"},"children":["#","tips"]}],["$","$L2","faq",{"href":"/ar/tags/faq","localeCookie":{"name":"NEXT_LOCALE","sameSite":"lax"},"className":"inline-flex items-center rounded-full px-2.5 py-0.5 text-xs font-medium transition-colors","style":{"background":"var(--color-code-bg)","color":"var(--color-accent)","border":"1px solid var(--color-border)"},"children":["#","faq"]}]]}],["$","h1",null,{"className":"mb-4 text-3xl leading-snug font-bold tracking-tight sm:text-4xl","style":{"color":"var(--color-text)"},"children":"Cursor CLI نصائح وأسئلة شائعة"}],["$","div",null,{"className":"flex flex-wrap items-center gap-3 text-sm","style":{"color":"var(--color-muted)"},"children":[["$","time",null,{"dateTime":"2026-02-24","children":"24 2月 2026"}],["$","span",null,{"aria-hidden":"true","children":"·"}],["$","span",null,{"children":"2 min read"}]]}],"$undefined",["$","div",null,{"className":"mt-6 border-b","style":{"borderColor":"var(--color-border)"}}]]}],["$","div",null,{"className":"prose","dangerouslySetInnerHTML":{"__html":"$3"}}],"$L4"]}],"$L5"]}]}]],["$L6"],"$L7"]}],"loading":null,"isPartial":false}
+4:["$","footer",null,{"className":"mt-14 border-t pt-8","style":{"borderColor":"var(--color-border)"},"children":[["$","div",null,{"className":"mb-8 flex flex-wrap gap-2","children":[["$","$L2","cursor",{"href":"/ar/tags/cursor","localeCookie":{"name":"NEXT_LOCALE","sameSite":"lax"},"className":"inline-flex items-center rounded-full px-3 py-1 text-sm font-medium transition-colors","style":{"background":"var(--color-code-bg)","color":"var(--color-accent)","border":"1px solid var(--color-border)"},"children":["#","cursor"]}],["$","$L2","cli",{"href":"/ar/tags/cli","localeCookie":{"name":"NEXT_LOCALE","sameSite":"lax"},"className":"inline-flex items-center rounded-full px-3 py-1 text-sm font-medium transition-colors","style":{"background":"var(--color-code-bg)","color":"var(--color-accent)","border":"1px solid var(--color-border)"},"children":["#","cli"]}],["$","$L2","tips",{"href":"/ar/tags/tips","localeCookie":{"name":"NEXT_LOCALE","sameSite":"lax"},"className":"inline-flex items-center rounded-full px-3 py-1 text-sm font-medium transition-colors","style":{"background":"var(--color-code-bg)","color":"var(--color-accent)","border":"1px solid var(--color-border)"},"children":["#","tips"]}],["$","$L2","faq",{"href":"/ar/tags/faq","localeCookie":{"name":"NEXT_LOCALE","sameSite":"lax"},"className":"inline-flex items-center rounded-full px-3 py-1 text-sm font-medium transition-colors","style":{"background":"var(--color-code-bg)","color":"var(--color-accent)","border":"1px solid var(--color-border)"},"children":["#","faq"]}]]}],["$","nav",null,{"aria-label":"التنقل بين المقالات","className":"grid grid-cols-1 gap-4 sm:grid-cols-2","children":[["$","$L2",null,{"href":"/ar/blog/cursor/cli/04-non-interactive","localeCookie":{"name":"NEXT_LOCALE","sameSite":"lax"},"className":"group rounded-lg border p-4 transition-colors hover:border-accent","style":{"borderColor":"var(--color-border)","background":"var(--color-surface)"},"children":[["$","p",null,{"className":"mb-1 text-xs","style":{"color":"var(--color-muted)"},"children":"→ الأحدث"}],["$","p",null,{"className":"line-clamp-1 text-sm font-medium transition-colors group-hover:text-accent","style":{"color":"var(--color-text)"},"children":"Cursor CLI الوضع غير التفاعلي (السكربتات وCI)"}]]}],["$","$L2",null,{"href":"/ar/blog/cursor/cli/06-cursor-cli-with-worktree","localeCookie":{"name":"NEXT_LOCALE","sameSite":"lax"},"className":"group rounded-lg border p-4 text-right transition-colors hover:border-accent","style":{"borderColor":"var(--color-border)","background":"var(--color-surface)"},"children":[["$","p",null,{"className":"mb-1 text-xs","style":{"color":"var(--color-muted)"},"children":"الأقدم ←"}],["$","p",null,{"className":"line-clamp-1 text-sm font-medium transition-colors group-hover:text-accent","style":{"color":"var(--color-text)"},"children":"Cursor CLI مع Git Worktree"}]]}]]}]]}]
+9:T1085,<p>بعض النصائح العملية وإجابات عن الأسئلة الأكثر شيوعاً — حلّ "أين كنت؟" و"لماذا لا يعمل؟" دفعة واحدة.</p>
+<h2 id="نصائح">نصائح</h2>
+<h3 id="1-استئناف-المحادثة-السابقة">1. استئناف المحادثة السابقة</h3>
+<p>أغلقت في منتصف الجلسة وتريد متابعة من حيث توقفت؟ لا حاجة للبدء من جديد:</p>
+<figure data-rehype-pretty-code-figure=""><pre style="background-color:#24292e;color:#e1e4e8" tabindex="0" data-language="bash" data-theme="github-dark"><code data-language="bash" data-theme="github-dark" style="display: grid;"><span data-line=""><span style="color:#B392F0">cursor</span><span style="color:#9ECBFF"> agent</span><span style="color:#79B8FF"> --resume</span></span></code></pre></figure>
+<p>هذا يحمّل أحدث محادثة مع كل السياق — كضغط "استئناف" على فيديو متوقف.</p>
+<h3 id="2-التأكيد-قبل-تشغيل-الأوامر">2. التأكيد قبل تشغيل الأوامر</h3>
+<p>قد يريد الـ Agent تشغيل أوامر مثل <code>npm install</code> أو <code>git</code>.</p>
+<ul>
+<li><strong>الوضع التفاعلي</strong>: سيسألك أولاً</li>
+<li>إن كنت حذراً، قل له في المحادثة: "اسألني قبل تشغيل أي أوامر"</li>
+</ul>
+<p>هكذا لن تكون لحظات من نوع "متى شغّل ذلك؟".</p>
+<h3 id="3-استخدم-cli-و-ide-معاً">3. استخدم CLI و IDE معاً</h3>
+<p>يمكن استخدام <strong>CLI ونافذة Cursor في الوقت نفسه</strong> — ليست إما/أو:</p>
+<ul>
+<li>استخدم النافذة للتطوير الرئيسي وتصفح شجرة الملفات والإكمال بـ Tab</li>
+<li>استخدم CLI للمهام الصغيرة والاستعلام وتشغيل الأتمتة</li>
+</ul>
+<p>واحد يتولى المعركة الرئيسية والآخر المناوشات — فرّق تسد.</p>
+<h2 id="أسئلة-شائعة">أسئلة شائعة</h2>
+<p><strong>س: <code>cursor: command not found</code>؟</strong>
+ج: أعد تشغيل الطرفية بعد التثبيت، أو شغّل <code>source ~/.zshrc</code> (أو <code>~/.bashrc</code>). تأكد أن مسار التثبيت في <code>PATH</code> — مشكلة "ثبّت الأداة لكن النظام لا يجدها" تكون في الغالب مشكلة PATH.</p>
+<p><strong>س: هل CLI مدفوع؟</strong>
+ج: نعم. تحتاج اشتراك Cursor لاستخدام CLI — وهو نفس اشتراك الـ IDE.</p>
+<p><strong>س: هل يمكن استخدامه على خادم / في Docker؟</strong>
+ج: نعم. المتطلبات: القدرة على تشغيل سكربت التثبيت، وتسجيل الدخول إلى Cursor (أو إعداد token). انتبه للشبكة والتفويض — لا تتوقع الوصول إلى سحابة Cursor في بيئة شبكة مقيدة.</p>
+<p><strong>س: هل هو نفسه الـ Agent في نافذة Cursor؟</strong>
+ج: نفس القدرة الأساسية. الفرق أن CLI واجهة طرفية، يدعم الوضع غير التفاعلي ويتكامل مع السكربتات وCI — نفس الذكاء الاصطناعي، واجهة مختلفة.</p>
+<h2 id="ملخص">ملخص</h2>
+<ul>
+<li><strong>استئناف المحادثة</strong>: <code>cursor agent --resume</code></li>
+<li><strong>تأكيد الأوامر</strong>: يمكنك أن تطلب "تأكيد قبل تشغيل أي أوامر"</li>
+<li><strong>CLI و IDE</strong>: يمكن استخدامهما معاً، لا يستبعد أحدهما الآخر</li>
+<li><strong>عند التعثّر</strong>: راجع <code>cursor --help</code> والوثائق الرسمية — معظم المشاكل لها حلول معروفة</li>
+</ul>
+<blockquote>
+<p>التالي: <a href="06-cursor-cli-with-worktree">06-cursor-cli-with-worktree</a> — استخدم CLI مع Worktree للتطوير المتوازي. أو ارجع إلى <a href="00-overview">00-overview</a> لمراجعة خريطة الدورة.</p>
+</blockquote>5:["$","aside",null,{"className":"hidden lg:block","children":["$","$L8",null,{"html":"$9"}]}]
+6:["$","script","script-0",{"src":"/_next/static/chunks/2dddb3bc05093f69.js","async":true}]
+7:["$","$La",null,{"children":["$","$b",null,{"name":"Next.MetadataOutlet","children":"$@c"}]}]
+c:null

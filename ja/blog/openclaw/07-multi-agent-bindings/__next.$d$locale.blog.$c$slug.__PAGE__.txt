@@ -1,0 +1,185 @@
+1:"$Sreact.fragment"
+2:I[14864,["/_next/static/chunks/7923a261b80bb6e1.js","/_next/static/chunks/e09b4358027e8033.js","/_next/static/chunks/2dddb3bc05093f69.js"],"default"]
+8:I[24801,["/_next/static/chunks/7923a261b80bb6e1.js","/_next/static/chunks/e09b4358027e8033.js","/_next/static/chunks/2dddb3bc05093f69.js"],"default"]
+a:I[50183,["/_next/static/chunks/5a5b5b13c22d14f7.js","/_next/static/chunks/a484d1d3dd4b55ab.js"],"OutletBoundary"]
+b:"$Sreact.suspense"
+3:T2ea5,<p>仕事用グループも個人チャットも同じアシスタントに任せると、すぐに混線します。</p>
+<p>それを解決するのが <strong>複数 Agent + Bindings</strong> です。場面ごとに適切なアシスタントを出せます。</p>
+<h2 id="このページで学べること">このページで学べること</h2>
+<ul>
+<li>複数 Agent が必要になる場面</li>
+<li>Config で複数 Agent を定義する方法</li>
+<li>Bindings ルールでメッセージを振り分ける方法</li>
+<li>Telegram グループ ID の調べ方</li>
+</ul>
+<hr>
+<h2 id="なぜ複数-agent-が必要">なぜ複数 Agent が必要？</h2>
+<table>
+<thead>
+<tr>
+<th>シナリオ</th>
+<th>必要なもの</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td>仕事グループと個人会話</td>
+<td>Workspace 分離とデータ分離</td>
+</tr>
+<tr>
+<td>速い返答と深い分析</td>
+<td>別モデル</td>
+</tr>
+<tr>
+<td>複数プロジェクトの独立運用</td>
+<td>プロジェクトごとの Workspace</td>
+</tr>
+</tbody>
+</table>
+<hr>
+<h2 id="設定方法">設定方法</h2>
+<h3 id="手順-1-agentslist-に-agent-を定義する">手順 1: <code>agents.list</code> に Agent を定義する</h3>
+<figure data-rehype-pretty-code-figure=""><pre style="background-color:#24292e;color:#e1e4e8" tabindex="0" data-language="json5" data-theme="github-dark"><code data-language="json5" data-theme="github-dark" style="display: grid;"><span data-line=""><span style="color:#E1E4E8">{</span></span>
+<span data-line=""><span style="color:#9ECBFF">  "agents"</span><span style="color:#E1E4E8">: {</span></span>
+<span data-line=""><span style="color:#9ECBFF">    "list"</span><span style="color:#E1E4E8">: [</span></span>
+<span data-line=""><span style="color:#E1E4E8">      { </span><span style="color:#9ECBFF">"id"</span><span style="color:#E1E4E8">: </span><span style="color:#9ECBFF">"main"</span><span style="color:#E1E4E8">,      </span><span style="color:#9ECBFF">"name"</span><span style="color:#E1E4E8">: </span><span style="color:#9ECBFF">"Main Assistant"</span><span style="color:#E1E4E8">, </span><span style="color:#9ECBFF">"workspace"</span><span style="color:#E1E4E8">: </span><span style="color:#9ECBFF">"~/.openclaw/workspace-main"</span><span style="color:#E1E4E8">, </span><span style="color:#9ECBFF">"default"</span><span style="color:#E1E4E8">: </span><span style="color:#79B8FF">true</span><span style="color:#E1E4E8"> },</span></span>
+<span data-line=""><span style="color:#E1E4E8">      { </span><span style="color:#9ECBFF">"id"</span><span style="color:#E1E4E8">: </span><span style="color:#9ECBFF">"project-a"</span><span style="color:#E1E4E8">, </span><span style="color:#9ECBFF">"name"</span><span style="color:#E1E4E8">: </span><span style="color:#9ECBFF">"Project A"</span><span style="color:#E1E4E8">,      </span><span style="color:#9ECBFF">"workspace"</span><span style="color:#E1E4E8">: </span><span style="color:#9ECBFF">"~/.openclaw/workspace-project-a"</span><span style="color:#E1E4E8"> },</span></span>
+<span data-line=""><span style="color:#E1E4E8">      { </span><span style="color:#9ECBFF">"id"</span><span style="color:#E1E4E8">: </span><span style="color:#9ECBFF">"project-b"</span><span style="color:#E1E4E8">, </span><span style="color:#9ECBFF">"name"</span><span style="color:#E1E4E8">: </span><span style="color:#9ECBFF">"Project B"</span><span style="color:#E1E4E8">,      </span><span style="color:#9ECBFF">"workspace"</span><span style="color:#E1E4E8">: </span><span style="color:#9ECBFF">"~/.openclaw/workspace-project-b"</span><span style="color:#E1E4E8"> }</span></span>
+<span data-line=""><span style="color:#E1E4E8">    ]</span></span>
+<span data-line=""><span style="color:#E1E4E8">  }</span></span>
+<span data-line=""><span style="color:#E1E4E8">}</span></span></code></pre></figure>
+<h3 id="手順-2-bindings-に振り分けルールを入れる">手順 2: <code>bindings</code> に振り分けルールを入れる</h3>
+<p>受付係のように考えると分かりやすいです。</p>
+<p>「グループ A から来たら Agent A。グループ B なら Agent B。その他はデフォルトへ」</p>
+<figure data-rehype-pretty-code-figure=""><pre style="background-color:#24292e;color:#e1e4e8" tabindex="0" data-language="json5" data-theme="github-dark"><code data-language="json5" data-theme="github-dark" style="display: grid;"><span data-line=""><span style="color:#E1E4E8">{</span></span>
+<span data-line=""><span style="color:#9ECBFF">  "bindings"</span><span style="color:#E1E4E8">: [</span></span>
+<span data-line=""><span style="color:#E1E4E8">    { </span><span style="color:#9ECBFF">"agentId"</span><span style="color:#E1E4E8">: </span><span style="color:#9ECBFF">"project-a"</span><span style="color:#E1E4E8">, </span><span style="color:#9ECBFF">"match"</span><span style="color:#E1E4E8">: { </span><span style="color:#9ECBFF">"channel"</span><span style="color:#E1E4E8">: </span><span style="color:#9ECBFF">"telegram"</span><span style="color:#E1E4E8">, </span><span style="color:#9ECBFF">"peer"</span><span style="color:#E1E4E8">: { </span><span style="color:#9ECBFF">"kind"</span><span style="color:#E1E4E8">: </span><span style="color:#9ECBFF">"group"</span><span style="color:#E1E4E8">, </span><span style="color:#9ECBFF">"id"</span><span style="color:#E1E4E8">: </span><span style="color:#9ECBFF">"-1001234567890"</span><span style="color:#E1E4E8"> } } },</span></span>
+<span data-line=""><span style="color:#E1E4E8">    { </span><span style="color:#9ECBFF">"agentId"</span><span style="color:#E1E4E8">: </span><span style="color:#9ECBFF">"project-b"</span><span style="color:#E1E4E8">, </span><span style="color:#9ECBFF">"match"</span><span style="color:#E1E4E8">: { </span><span style="color:#9ECBFF">"channel"</span><span style="color:#E1E4E8">: </span><span style="color:#9ECBFF">"telegram"</span><span style="color:#E1E4E8">, </span><span style="color:#9ECBFF">"peer"</span><span style="color:#E1E4E8">: { </span><span style="color:#9ECBFF">"kind"</span><span style="color:#E1E4E8">: </span><span style="color:#9ECBFF">"group"</span><span style="color:#E1E4E8">, </span><span style="color:#9ECBFF">"id"</span><span style="color:#E1E4E8">: </span><span style="color:#9ECBFF">"-1009876543210"</span><span style="color:#E1E4E8"> } } },</span></span>
+<span data-line=""><span style="color:#E1E4E8">    { </span><span style="color:#9ECBFF">"agentId"</span><span style="color:#E1E4E8">: </span><span style="color:#9ECBFF">"main"</span><span style="color:#E1E4E8">,      </span><span style="color:#9ECBFF">"match"</span><span style="color:#E1E4E8">: { </span><span style="color:#9ECBFF">"channel"</span><span style="color:#E1E4E8">: </span><span style="color:#9ECBFF">"telegram"</span><span style="color:#E1E4E8"> } }</span></span>
+<span data-line=""><span style="color:#E1E4E8">  ]</span></span>
+<span data-line=""><span style="color:#E1E4E8">}</span></span></code></pre></figure>
+<blockquote>
+<p>⚠️ <strong>Bindings の順番は重要です。</strong> より具体的なルールを前に置いてください。マッチングは「先に当たったもの勝ち」です。</p>
+</blockquote>
+<hr>
+<h2 id="グループ-id-はどうやって調べる">グループ ID はどうやって調べる？</h2>
+<p>方法 1: グループに適当なメッセージを送ってから次を実行します。</p>
+<figure data-rehype-pretty-code-figure=""><pre style="background-color:#24292e;color:#e1e4e8" tabindex="0" data-language="bash" data-theme="github-dark"><code data-language="bash" data-theme="github-dark" style="display: grid;"><span data-line=""><span style="color:#B392F0">openclaw</span><span style="color:#9ECBFF"> logs</span><span style="color:#79B8FF"> --follow</span></span>
+<span data-line=""><span style="color:#6A737D"># ログ中の chat.id を探す。多くの場合は -1001234567890 のような負の数</span></span></code></pre></figure>
+<p>方法 2: そのグループのメッセージを <a href="https://t.me/userinfobot">@userinfobot</a> に転送します。</p>
+<hr>
+<h2 id="発展編-bot-アカウントごとに別-agent-を使う">発展編: Bot アカウントごとに別 Agent を使う</h2>
+<p>複数の Bot Token がある場合:</p>
+<figure data-rehype-pretty-code-figure=""><pre style="background-color:#24292e;color:#e1e4e8" tabindex="0" data-language="json5" data-theme="github-dark"><code data-language="json5" data-theme="github-dark" style="display: grid;"><span data-line=""><span style="color:#E1E4E8">{</span></span>
+<span data-line=""><span style="color:#9ECBFF">  "channels"</span><span style="color:#E1E4E8">: {</span></span>
+<span data-line=""><span style="color:#9ECBFF">    "telegram"</span><span style="color:#E1E4E8">: {</span></span>
+<span data-line=""><span style="color:#9ECBFF">      "accounts"</span><span style="color:#E1E4E8">: {</span></span>
+<span data-line=""><span style="color:#9ECBFF">        "default"</span><span style="color:#E1E4E8">: { </span><span style="color:#9ECBFF">"botToken"</span><span style="color:#E1E4E8">: </span><span style="color:#9ECBFF">"Bot A の Token"</span><span style="color:#E1E4E8"> },</span></span>
+<span data-line=""><span style="color:#9ECBFF">        "alerts"</span><span style="color:#E1E4E8">:  { </span><span style="color:#9ECBFF">"botToken"</span><span style="color:#E1E4E8">: </span><span style="color:#9ECBFF">"Bot B の Token"</span><span style="color:#E1E4E8"> }</span></span>
+<span data-line=""><span style="color:#E1E4E8">      }</span></span>
+<span data-line=""><span style="color:#E1E4E8">    }</span></span>
+<span data-line=""><span style="color:#E1E4E8">  },</span></span>
+<span data-line=""><span style="color:#9ECBFF">  "bindings"</span><span style="color:#E1E4E8">: [</span></span>
+<span data-line=""><span style="color:#E1E4E8">    { </span><span style="color:#9ECBFF">"agentId"</span><span style="color:#E1E4E8">: </span><span style="color:#9ECBFF">"main"</span><span style="color:#E1E4E8">,   </span><span style="color:#9ECBFF">"match"</span><span style="color:#E1E4E8">: { </span><span style="color:#9ECBFF">"channel"</span><span style="color:#E1E4E8">: </span><span style="color:#9ECBFF">"telegram"</span><span style="color:#E1E4E8">, </span><span style="color:#9ECBFF">"accountId"</span><span style="color:#E1E4E8">: </span><span style="color:#9ECBFF">"default"</span><span style="color:#E1E4E8"> } },</span></span>
+<span data-line=""><span style="color:#E1E4E8">    { </span><span style="color:#9ECBFF">"agentId"</span><span style="color:#E1E4E8">: </span><span style="color:#9ECBFF">"alerts"</span><span style="color:#E1E4E8">, </span><span style="color:#9ECBFF">"match"</span><span style="color:#E1E4E8">: { </span><span style="color:#9ECBFF">"channel"</span><span style="color:#E1E4E8">: </span><span style="color:#9ECBFF">"telegram"</span><span style="color:#E1E4E8">, </span><span style="color:#9ECBFF">"accountId"</span><span style="color:#E1E4E8">: </span><span style="color:#9ECBFF">"alerts"</span><span style="color:#E1E4E8"> } }</span></span>
+<span data-line=""><span style="color:#E1E4E8">  ]</span></span>
+<span data-line=""><span style="color:#E1E4E8">}</span></span></code></pre></figure>
+<hr>
+<h2 id="編集後は保存を忘れずに">編集後は保存を忘れずに</h2>
+<p>Config を変更したら <strong>Save / Apply</strong> を押します。<code>baseHash</code> conflict が出た場合は、どこかで別変更が入った状態です。Config を再読み込みして、もう一度編集してください。</p>
+<hr>
+<h2 id="次へ">次へ</h2>
+<p>これで複数アシスタントを使えるようになりました。次はそのうちの 1 つを <strong>VPS</strong> に移して 24 時間待機させます。</p>
+<p><a href="06-memory-workspace">← 前の記事: メモリとワークスペース</a> | 👉 <a href="08-remote-gateway-nodes">VPS に移してリモートから使う</a></p>0:{"buildId":"Yck3R4ooQxWkwGLT6is1X","rsc":["$","$1","c",{"children":[[["$","script",null,{"type":"application/ld+json","dangerouslySetInnerHTML":{"__html":"{\"@context\":\"https://schema.org\",\"@type\":\"Article\",\"headline\":\"1 つの Gateway で複数アシスタント: Bindings で正しいメッセージを正しい Agent へ\",\"description\":\"複数 Agent を定義し、Bindings でメッセージを振り分けて、Telegram グループごとに異なる Workspace を使い分けます。\",\"url\":\"https://benxhub.com/ja/blog/openclaw/07-multi-agent-bindings\",\"mainEntityOfPage\":{\"@type\":\"WebPage\",\"@id\":\"https://benxhub.com/ja/blog/openclaw/07-multi-agent-bindings\"},\"datePublished\":\"2026-03-08T00:00:00.000Z\",\"dateModified\":\"2026-03-08T00:00:00.000Z\",\"keywords\":\"openclaw, multi-agent, bindings, routing, telegram\",\"inLanguage\":\"ja\",\"author\":{\"@type\":\"Person\",\"name\":\"BenX\",\"url\":\"https://benxhub.com\"},\"publisher\":{\"@type\":\"Organization\",\"name\":\"BenXHub Blog\",\"url\":\"https://benxhub.com\"}}"}}],["$","div",null,{"className":"mx-auto max-w-6xl px-4 py-12 sm:px-6","children":["$","div",null,{"className":"lg:grid lg:grid-cols-[1fr_240px] lg:gap-14","children":[["$","article",null,{"children":[["$","header",null,{"className":"mb-10","children":[["$","div",null,{"className":"mb-4 flex flex-wrap gap-2","children":[["$","$L2","openclaw",{"href":"/ja/tags/openclaw","localeCookie":{"name":"NEXT_LOCALE","sameSite":"lax"},"className":"inline-flex items-center rounded-full px-2.5 py-0.5 text-xs font-medium transition-colors","style":{"background":"var(--color-code-bg)","color":"var(--color-accent)","border":"1px solid var(--color-border)"},"children":["#","openclaw"]}],["$","$L2","multi-agent",{"href":"/ja/tags/multi-agent","localeCookie":{"name":"NEXT_LOCALE","sameSite":"lax"},"className":"inline-flex items-center rounded-full px-2.5 py-0.5 text-xs font-medium transition-colors","style":{"background":"var(--color-code-bg)","color":"var(--color-accent)","border":"1px solid var(--color-border)"},"children":["#","multi-agent"]}],["$","$L2","bindings",{"href":"/ja/tags/bindings","localeCookie":{"name":"NEXT_LOCALE","sameSite":"lax"},"className":"inline-flex items-center rounded-full px-2.5 py-0.5 text-xs font-medium transition-colors","style":{"background":"var(--color-code-bg)","color":"var(--color-accent)","border":"1px solid var(--color-border)"},"children":["#","bindings"]}],["$","$L2","routing",{"href":"/ja/tags/routing","localeCookie":{"name":"NEXT_LOCALE","sameSite":"lax"},"className":"inline-flex items-center rounded-full px-2.5 py-0.5 text-xs font-medium transition-colors","style":{"background":"var(--color-code-bg)","color":"var(--color-accent)","border":"1px solid var(--color-border)"},"children":["#","routing"]}],["$","$L2","telegram",{"href":"/ja/tags/telegram","localeCookie":{"name":"NEXT_LOCALE","sameSite":"lax"},"className":"inline-flex items-center rounded-full px-2.5 py-0.5 text-xs font-medium transition-colors","style":{"background":"var(--color-code-bg)","color":"var(--color-accent)","border":"1px solid var(--color-border)"},"children":["#","telegram"]}]]}],["$","h1",null,{"className":"mb-4 text-3xl leading-snug font-bold tracking-tight sm:text-4xl","style":{"color":"var(--color-text)"},"children":"1 つの Gateway で複数アシスタント: Bindings で正しいメッセージを正しい Agent へ"}],["$","div",null,{"className":"flex flex-wrap items-center gap-3 text-sm","style":{"color":"var(--color-muted)"},"children":[["$","time",null,{"dateTime":"2026-03-08","children":"2026年3月8日"}],["$","span",null,{"aria-hidden":"true","children":"·"}],["$","span",null,{"children":"4 min read"}]]}],"$undefined",["$","div",null,{"className":"mt-6 border-b","style":{"borderColor":"var(--color-border)"}}]]}],["$","div",null,{"className":"prose","dangerouslySetInnerHTML":{"__html":"$3"}}],"$L4"]}],"$L5"]}]}]],["$L6"],"$L7"]}],"loading":null,"isPartial":false}
+4:["$","footer",null,{"className":"mt-14 border-t pt-8","style":{"borderColor":"var(--color-border)"},"children":[["$","div",null,{"className":"mb-8 flex flex-wrap gap-2","children":[["$","$L2","openclaw",{"href":"/ja/tags/openclaw","localeCookie":{"name":"NEXT_LOCALE","sameSite":"lax"},"className":"inline-flex items-center rounded-full px-3 py-1 text-sm font-medium transition-colors","style":{"background":"var(--color-code-bg)","color":"var(--color-accent)","border":"1px solid var(--color-border)"},"children":["#","openclaw"]}],["$","$L2","multi-agent",{"href":"/ja/tags/multi-agent","localeCookie":{"name":"NEXT_LOCALE","sameSite":"lax"},"className":"inline-flex items-center rounded-full px-3 py-1 text-sm font-medium transition-colors","style":{"background":"var(--color-code-bg)","color":"var(--color-accent)","border":"1px solid var(--color-border)"},"children":["#","multi-agent"]}],["$","$L2","bindings",{"href":"/ja/tags/bindings","localeCookie":{"name":"NEXT_LOCALE","sameSite":"lax"},"className":"inline-flex items-center rounded-full px-3 py-1 text-sm font-medium transition-colors","style":{"background":"var(--color-code-bg)","color":"var(--color-accent)","border":"1px solid var(--color-border)"},"children":["#","bindings"]}],["$","$L2","routing",{"href":"/ja/tags/routing","localeCookie":{"name":"NEXT_LOCALE","sameSite":"lax"},"className":"inline-flex items-center rounded-full px-3 py-1 text-sm font-medium transition-colors","style":{"background":"var(--color-code-bg)","color":"var(--color-accent)","border":"1px solid var(--color-border)"},"children":["#","routing"]}],["$","$L2","telegram",{"href":"/ja/tags/telegram","localeCookie":{"name":"NEXT_LOCALE","sameSite":"lax"},"className":"inline-flex items-center rounded-full px-3 py-1 text-sm font-medium transition-colors","style":{"background":"var(--color-code-bg)","color":"var(--color-accent)","border":"1px solid var(--color-border)"},"children":["#","telegram"]}]]}],["$","nav",null,{"aria-label":"記事ナビゲーション","className":"grid grid-cols-1 gap-4 sm:grid-cols-2","children":[["$","$L2",null,{"href":"/ja/blog/openclaw/06-memory-workspace","localeCookie":{"name":"NEXT_LOCALE","sameSite":"lax"},"className":"group rounded-lg border p-4 transition-colors hover:border-accent","style":{"borderColor":"var(--color-border)","background":"var(--color-surface)"},"children":[["$","p",null,{"className":"mb-1 text-xs","style":{"color":"var(--color-muted)"},"children":"← 新しい記事"}],["$","p",null,{"className":"line-clamp-1 text-sm font-medium transition-colors group-hover:text-accent","style":{"color":"var(--color-text)"},"children":"アシスタントの脳はどこにある？ メモリとワークスペースを理解しよう"}]]}],["$","$L2",null,{"href":"/ja/blog/openclaw/08-remote-gateway-nodes","localeCookie":{"name":"NEXT_LOCALE","sameSite":"lax"},"className":"group rounded-lg border p-4 text-right transition-colors hover:border-accent","style":{"borderColor":"var(--color-border)","background":"var(--color-surface)"},"children":[["$","p",null,{"className":"mb-1 text-xs","style":{"color":"var(--color-muted)"},"children":"古い記事 →"}],["$","p",null,{"className":"line-clamp-1 text-sm font-medium transition-colors group-hover:text-accent","style":{"color":"var(--color-text)"},"children":"ノート PC が寝るとアシスタントも消える？ Gateway を VPS に移そう"}]]}]]}]]}]
+9:T2ea5,<p>仕事用グループも個人チャットも同じアシスタントに任せると、すぐに混線します。</p>
+<p>それを解決するのが <strong>複数 Agent + Bindings</strong> です。場面ごとに適切なアシスタントを出せます。</p>
+<h2 id="このページで学べること">このページで学べること</h2>
+<ul>
+<li>複数 Agent が必要になる場面</li>
+<li>Config で複数 Agent を定義する方法</li>
+<li>Bindings ルールでメッセージを振り分ける方法</li>
+<li>Telegram グループ ID の調べ方</li>
+</ul>
+<hr>
+<h2 id="なぜ複数-agent-が必要">なぜ複数 Agent が必要？</h2>
+<table>
+<thead>
+<tr>
+<th>シナリオ</th>
+<th>必要なもの</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td>仕事グループと個人会話</td>
+<td>Workspace 分離とデータ分離</td>
+</tr>
+<tr>
+<td>速い返答と深い分析</td>
+<td>別モデル</td>
+</tr>
+<tr>
+<td>複数プロジェクトの独立運用</td>
+<td>プロジェクトごとの Workspace</td>
+</tr>
+</tbody>
+</table>
+<hr>
+<h2 id="設定方法">設定方法</h2>
+<h3 id="手順-1-agentslist-に-agent-を定義する">手順 1: <code>agents.list</code> に Agent を定義する</h3>
+<figure data-rehype-pretty-code-figure=""><pre style="background-color:#24292e;color:#e1e4e8" tabindex="0" data-language="json5" data-theme="github-dark"><code data-language="json5" data-theme="github-dark" style="display: grid;"><span data-line=""><span style="color:#E1E4E8">{</span></span>
+<span data-line=""><span style="color:#9ECBFF">  "agents"</span><span style="color:#E1E4E8">: {</span></span>
+<span data-line=""><span style="color:#9ECBFF">    "list"</span><span style="color:#E1E4E8">: [</span></span>
+<span data-line=""><span style="color:#E1E4E8">      { </span><span style="color:#9ECBFF">"id"</span><span style="color:#E1E4E8">: </span><span style="color:#9ECBFF">"main"</span><span style="color:#E1E4E8">,      </span><span style="color:#9ECBFF">"name"</span><span style="color:#E1E4E8">: </span><span style="color:#9ECBFF">"Main Assistant"</span><span style="color:#E1E4E8">, </span><span style="color:#9ECBFF">"workspace"</span><span style="color:#E1E4E8">: </span><span style="color:#9ECBFF">"~/.openclaw/workspace-main"</span><span style="color:#E1E4E8">, </span><span style="color:#9ECBFF">"default"</span><span style="color:#E1E4E8">: </span><span style="color:#79B8FF">true</span><span style="color:#E1E4E8"> },</span></span>
+<span data-line=""><span style="color:#E1E4E8">      { </span><span style="color:#9ECBFF">"id"</span><span style="color:#E1E4E8">: </span><span style="color:#9ECBFF">"project-a"</span><span style="color:#E1E4E8">, </span><span style="color:#9ECBFF">"name"</span><span style="color:#E1E4E8">: </span><span style="color:#9ECBFF">"Project A"</span><span style="color:#E1E4E8">,      </span><span style="color:#9ECBFF">"workspace"</span><span style="color:#E1E4E8">: </span><span style="color:#9ECBFF">"~/.openclaw/workspace-project-a"</span><span style="color:#E1E4E8"> },</span></span>
+<span data-line=""><span style="color:#E1E4E8">      { </span><span style="color:#9ECBFF">"id"</span><span style="color:#E1E4E8">: </span><span style="color:#9ECBFF">"project-b"</span><span style="color:#E1E4E8">, </span><span style="color:#9ECBFF">"name"</span><span style="color:#E1E4E8">: </span><span style="color:#9ECBFF">"Project B"</span><span style="color:#E1E4E8">,      </span><span style="color:#9ECBFF">"workspace"</span><span style="color:#E1E4E8">: </span><span style="color:#9ECBFF">"~/.openclaw/workspace-project-b"</span><span style="color:#E1E4E8"> }</span></span>
+<span data-line=""><span style="color:#E1E4E8">    ]</span></span>
+<span data-line=""><span style="color:#E1E4E8">  }</span></span>
+<span data-line=""><span style="color:#E1E4E8">}</span></span></code></pre></figure>
+<h3 id="手順-2-bindings-に振り分けルールを入れる">手順 2: <code>bindings</code> に振り分けルールを入れる</h3>
+<p>受付係のように考えると分かりやすいです。</p>
+<p>「グループ A から来たら Agent A。グループ B なら Agent B。その他はデフォルトへ」</p>
+<figure data-rehype-pretty-code-figure=""><pre style="background-color:#24292e;color:#e1e4e8" tabindex="0" data-language="json5" data-theme="github-dark"><code data-language="json5" data-theme="github-dark" style="display: grid;"><span data-line=""><span style="color:#E1E4E8">{</span></span>
+<span data-line=""><span style="color:#9ECBFF">  "bindings"</span><span style="color:#E1E4E8">: [</span></span>
+<span data-line=""><span style="color:#E1E4E8">    { </span><span style="color:#9ECBFF">"agentId"</span><span style="color:#E1E4E8">: </span><span style="color:#9ECBFF">"project-a"</span><span style="color:#E1E4E8">, </span><span style="color:#9ECBFF">"match"</span><span style="color:#E1E4E8">: { </span><span style="color:#9ECBFF">"channel"</span><span style="color:#E1E4E8">: </span><span style="color:#9ECBFF">"telegram"</span><span style="color:#E1E4E8">, </span><span style="color:#9ECBFF">"peer"</span><span style="color:#E1E4E8">: { </span><span style="color:#9ECBFF">"kind"</span><span style="color:#E1E4E8">: </span><span style="color:#9ECBFF">"group"</span><span style="color:#E1E4E8">, </span><span style="color:#9ECBFF">"id"</span><span style="color:#E1E4E8">: </span><span style="color:#9ECBFF">"-1001234567890"</span><span style="color:#E1E4E8"> } } },</span></span>
+<span data-line=""><span style="color:#E1E4E8">    { </span><span style="color:#9ECBFF">"agentId"</span><span style="color:#E1E4E8">: </span><span style="color:#9ECBFF">"project-b"</span><span style="color:#E1E4E8">, </span><span style="color:#9ECBFF">"match"</span><span style="color:#E1E4E8">: { </span><span style="color:#9ECBFF">"channel"</span><span style="color:#E1E4E8">: </span><span style="color:#9ECBFF">"telegram"</span><span style="color:#E1E4E8">, </span><span style="color:#9ECBFF">"peer"</span><span style="color:#E1E4E8">: { </span><span style="color:#9ECBFF">"kind"</span><span style="color:#E1E4E8">: </span><span style="color:#9ECBFF">"group"</span><span style="color:#E1E4E8">, </span><span style="color:#9ECBFF">"id"</span><span style="color:#E1E4E8">: </span><span style="color:#9ECBFF">"-1009876543210"</span><span style="color:#E1E4E8"> } } },</span></span>
+<span data-line=""><span style="color:#E1E4E8">    { </span><span style="color:#9ECBFF">"agentId"</span><span style="color:#E1E4E8">: </span><span style="color:#9ECBFF">"main"</span><span style="color:#E1E4E8">,      </span><span style="color:#9ECBFF">"match"</span><span style="color:#E1E4E8">: { </span><span style="color:#9ECBFF">"channel"</span><span style="color:#E1E4E8">: </span><span style="color:#9ECBFF">"telegram"</span><span style="color:#E1E4E8"> } }</span></span>
+<span data-line=""><span style="color:#E1E4E8">  ]</span></span>
+<span data-line=""><span style="color:#E1E4E8">}</span></span></code></pre></figure>
+<blockquote>
+<p>⚠️ <strong>Bindings の順番は重要です。</strong> より具体的なルールを前に置いてください。マッチングは「先に当たったもの勝ち」です。</p>
+</blockquote>
+<hr>
+<h2 id="グループ-id-はどうやって調べる">グループ ID はどうやって調べる？</h2>
+<p>方法 1: グループに適当なメッセージを送ってから次を実行します。</p>
+<figure data-rehype-pretty-code-figure=""><pre style="background-color:#24292e;color:#e1e4e8" tabindex="0" data-language="bash" data-theme="github-dark"><code data-language="bash" data-theme="github-dark" style="display: grid;"><span data-line=""><span style="color:#B392F0">openclaw</span><span style="color:#9ECBFF"> logs</span><span style="color:#79B8FF"> --follow</span></span>
+<span data-line=""><span style="color:#6A737D"># ログ中の chat.id を探す。多くの場合は -1001234567890 のような負の数</span></span></code></pre></figure>
+<p>方法 2: そのグループのメッセージを <a href="https://t.me/userinfobot">@userinfobot</a> に転送します。</p>
+<hr>
+<h2 id="発展編-bot-アカウントごとに別-agent-を使う">発展編: Bot アカウントごとに別 Agent を使う</h2>
+<p>複数の Bot Token がある場合:</p>
+<figure data-rehype-pretty-code-figure=""><pre style="background-color:#24292e;color:#e1e4e8" tabindex="0" data-language="json5" data-theme="github-dark"><code data-language="json5" data-theme="github-dark" style="display: grid;"><span data-line=""><span style="color:#E1E4E8">{</span></span>
+<span data-line=""><span style="color:#9ECBFF">  "channels"</span><span style="color:#E1E4E8">: {</span></span>
+<span data-line=""><span style="color:#9ECBFF">    "telegram"</span><span style="color:#E1E4E8">: {</span></span>
+<span data-line=""><span style="color:#9ECBFF">      "accounts"</span><span style="color:#E1E4E8">: {</span></span>
+<span data-line=""><span style="color:#9ECBFF">        "default"</span><span style="color:#E1E4E8">: { </span><span style="color:#9ECBFF">"botToken"</span><span style="color:#E1E4E8">: </span><span style="color:#9ECBFF">"Bot A の Token"</span><span style="color:#E1E4E8"> },</span></span>
+<span data-line=""><span style="color:#9ECBFF">        "alerts"</span><span style="color:#E1E4E8">:  { </span><span style="color:#9ECBFF">"botToken"</span><span style="color:#E1E4E8">: </span><span style="color:#9ECBFF">"Bot B の Token"</span><span style="color:#E1E4E8"> }</span></span>
+<span data-line=""><span style="color:#E1E4E8">      }</span></span>
+<span data-line=""><span style="color:#E1E4E8">    }</span></span>
+<span data-line=""><span style="color:#E1E4E8">  },</span></span>
+<span data-line=""><span style="color:#9ECBFF">  "bindings"</span><span style="color:#E1E4E8">: [</span></span>
+<span data-line=""><span style="color:#E1E4E8">    { </span><span style="color:#9ECBFF">"agentId"</span><span style="color:#E1E4E8">: </span><span style="color:#9ECBFF">"main"</span><span style="color:#E1E4E8">,   </span><span style="color:#9ECBFF">"match"</span><span style="color:#E1E4E8">: { </span><span style="color:#9ECBFF">"channel"</span><span style="color:#E1E4E8">: </span><span style="color:#9ECBFF">"telegram"</span><span style="color:#E1E4E8">, </span><span style="color:#9ECBFF">"accountId"</span><span style="color:#E1E4E8">: </span><span style="color:#9ECBFF">"default"</span><span style="color:#E1E4E8"> } },</span></span>
+<span data-line=""><span style="color:#E1E4E8">    { </span><span style="color:#9ECBFF">"agentId"</span><span style="color:#E1E4E8">: </span><span style="color:#9ECBFF">"alerts"</span><span style="color:#E1E4E8">, </span><span style="color:#9ECBFF">"match"</span><span style="color:#E1E4E8">: { </span><span style="color:#9ECBFF">"channel"</span><span style="color:#E1E4E8">: </span><span style="color:#9ECBFF">"telegram"</span><span style="color:#E1E4E8">, </span><span style="color:#9ECBFF">"accountId"</span><span style="color:#E1E4E8">: </span><span style="color:#9ECBFF">"alerts"</span><span style="color:#E1E4E8"> } }</span></span>
+<span data-line=""><span style="color:#E1E4E8">  ]</span></span>
+<span data-line=""><span style="color:#E1E4E8">}</span></span></code></pre></figure>
+<hr>
+<h2 id="編集後は保存を忘れずに">編集後は保存を忘れずに</h2>
+<p>Config を変更したら <strong>Save / Apply</strong> を押します。<code>baseHash</code> conflict が出た場合は、どこかで別変更が入った状態です。Config を再読み込みして、もう一度編集してください。</p>
+<hr>
+<h2 id="次へ">次へ</h2>
+<p>これで複数アシスタントを使えるようになりました。次はそのうちの 1 つを <strong>VPS</strong> に移して 24 時間待機させます。</p>
+<p><a href="06-memory-workspace">← 前の記事: メモリとワークスペース</a> | 👉 <a href="08-remote-gateway-nodes">VPS に移してリモートから使う</a></p>5:["$","aside",null,{"className":"hidden lg:block","children":["$","$L8",null,{"html":"$9"}]}]
+6:["$","script","script-0",{"src":"/_next/static/chunks/2dddb3bc05093f69.js","async":true}]
+7:["$","$La",null,{"children":["$","$b",null,{"name":"Next.MetadataOutlet","children":"$@c"}]}]
+c:null

@@ -1,0 +1,379 @@
+1:"$Sreact.fragment"
+2:I[14864,["/_next/static/chunks/7923a261b80bb6e1.js","/_next/static/chunks/e09b4358027e8033.js","/_next/static/chunks/2dddb3bc05093f69.js"],"default"]
+8:I[24801,["/_next/static/chunks/7923a261b80bb6e1.js","/_next/static/chunks/e09b4358027e8033.js","/_next/static/chunks/2dddb3bc05093f69.js"],"default"]
+a:I[50183,["/_next/static/chunks/5a5b5b13c22d14f7.js","/_next/static/chunks/a484d1d3dd4b55ab.js"],"OutletBoundary"]
+b:"$Sreact.suspense"
+3:T4024,<p>너무 많은 튜토리얼이 첫날부터 JSON 을 수정하라고 하고, 초보자가 도망가면 왜 그런지 궁금해합니다. 좋은 소식은 이겁니다. <strong>클릭할 수 있는 UI 가 있습니다.</strong></p>
+<h2 id="이번-글에서-배울-것">이번 글에서 배울 것</h2>
+<ul>
+<li>Web UI 를 열고 인증 마치기</li>
+<li>폼 모드와 Raw JSON 모드의 차이 이해하기</li>
+<li>UI 에서 여러 Workspace 라우팅 설정하기</li>
+<li>주요 기능 위치 파악하기</li>
+</ul>
+<hr>
+<h2 id="web-ui-열기">Web UI 열기</h2>
+<p><strong>1단계: Gateway 가 실행 중인지 확인</strong></p>
+<figure data-rehype-pretty-code-figure=""><pre style="background-color:#24292e;color:#e1e4e8" tabindex="0" data-language="bash" data-theme="github-dark"><code data-language="bash" data-theme="github-dark" style="display: grid;"><span data-line=""><span style="color:#B392F0">openclaw</span><span style="color:#9ECBFF"> gateway</span></span></code></pre></figure>
+<p><strong>2단계: 브라우저 열기</strong></p>
+<pre><code>http://127.0.0.1:18789/
+</code></pre>
+<p><code>basePath</code> 를 예를 들어 <code>/openclaw</code> 로 설정했다면:</p>
+<pre><code>http://127.0.0.1:18789/openclaw
+</code></pre>
+<p><strong>3단계: 인증 처리</strong></p>
+<table>
+<thead>
+<tr>
+<th>화면</th>
+<th>해결 방법</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td><code>pairing required</code></td>
+<td><code>openclaw devices list</code> 후 <code>openclaw devices approve &#x3C;requestId></code></td>
+</tr>
+<tr>
+<td>token 요청</td>
+<td>온보딩 token 붙여넣기</td>
+</tr>
+</tbody>
+</table>
+<blockquote>
+<p>💡 UI 언어는 <strong>Access</strong> 섹션에서 바꿀 수 있습니다.</p>
+</blockquote>
+<hr>
+<h2 id="config-편집-방식-두-가지-폼-모드-vs-raw-json">Config 편집 방식 두 가지: 폼 모드 vs Raw JSON</h2>
+<p><strong>Config</strong> 페이지에 들어가면 두 가지 방식이 보입니다.</p>
+<p><strong>폼 모드</strong>: 보기 좋고 입력 필드가 잘 정리되어 있어 초보자나 소규모 수정에 적합합니다.</p>
+<p><strong>Raw JSON 모드</strong>: 설정 파일을 직접 수정하므로 고급 사용자나 큰 수정에 적합합니다.</p>
+<p>둘 다 같은 파일 <code>~/.openclaw/openclaw.json</code> 을 편집합니다.</p>
+<hr>
+<h2 id="가장-흔한-설정-telegram-그룹마다-다른-비서-쓰기">가장 흔한 설정: Telegram 그룹마다 다른 비서 쓰기</h2>
+<h3 id="시나리오-a-같은-봇-다른-그룹-다른-워크스페이스">시나리오 A: 같은 봇, 다른 그룹, 다른 워크스페이스</h3>
+<p>Raw JSON 으로 전환한 뒤 다음 구조를 추가합니다.</p>
+<figure data-rehype-pretty-code-figure=""><pre style="background-color:#24292e;color:#e1e4e8" tabindex="0" data-language="json5" data-theme="github-dark"><code data-language="json5" data-theme="github-dark" style="display: grid;"><span data-line=""><span style="color:#E1E4E8">{</span></span>
+<span data-line=""><span style="color:#9ECBFF">  "agents"</span><span style="color:#E1E4E8">: {</span></span>
+<span data-line=""><span style="color:#9ECBFF">    "list"</span><span style="color:#E1E4E8">: [</span></span>
+<span data-line=""><span style="color:#E1E4E8">      { </span><span style="color:#9ECBFF">"id"</span><span style="color:#E1E4E8">: </span><span style="color:#9ECBFF">"main"</span><span style="color:#E1E4E8">,      </span><span style="color:#9ECBFF">"name"</span><span style="color:#E1E4E8">: </span><span style="color:#9ECBFF">"Main"</span><span style="color:#E1E4E8">,      </span><span style="color:#9ECBFF">"workspace"</span><span style="color:#E1E4E8">: </span><span style="color:#9ECBFF">"~/.openclaw/workspace-main"</span><span style="color:#E1E4E8">,      </span><span style="color:#9ECBFF">"default"</span><span style="color:#E1E4E8">: </span><span style="color:#79B8FF">true</span><span style="color:#E1E4E8"> },</span></span>
+<span data-line=""><span style="color:#E1E4E8">      { </span><span style="color:#9ECBFF">"id"</span><span style="color:#E1E4E8">: </span><span style="color:#9ECBFF">"project-a"</span><span style="color:#E1E4E8">, </span><span style="color:#9ECBFF">"name"</span><span style="color:#E1E4E8">: </span><span style="color:#9ECBFF">"Project A"</span><span style="color:#E1E4E8">, </span><span style="color:#9ECBFF">"workspace"</span><span style="color:#E1E4E8">: </span><span style="color:#9ECBFF">"~/.openclaw/workspace-project-a"</span><span style="color:#E1E4E8"> },</span></span>
+<span data-line=""><span style="color:#E1E4E8">      { </span><span style="color:#9ECBFF">"id"</span><span style="color:#E1E4E8">: </span><span style="color:#9ECBFF">"project-b"</span><span style="color:#E1E4E8">, </span><span style="color:#9ECBFF">"name"</span><span style="color:#E1E4E8">: </span><span style="color:#9ECBFF">"Project B"</span><span style="color:#E1E4E8">, </span><span style="color:#9ECBFF">"workspace"</span><span style="color:#E1E4E8">: </span><span style="color:#9ECBFF">"~/.openclaw/workspace-project-b"</span><span style="color:#E1E4E8"> }</span></span>
+<span data-line=""><span style="color:#E1E4E8">    ]</span></span>
+<span data-line=""><span style="color:#E1E4E8">  },</span></span>
+<span data-line=""><span style="color:#9ECBFF">  "bindings"</span><span style="color:#E1E4E8">: [</span></span>
+<span data-line=""><span style="color:#E1E4E8">    { </span><span style="color:#9ECBFF">"agentId"</span><span style="color:#E1E4E8">: </span><span style="color:#9ECBFF">"project-a"</span><span style="color:#E1E4E8">, </span><span style="color:#9ECBFF">"match"</span><span style="color:#E1E4E8">: { </span><span style="color:#9ECBFF">"channel"</span><span style="color:#E1E4E8">: </span><span style="color:#9ECBFF">"telegram"</span><span style="color:#E1E4E8">, </span><span style="color:#9ECBFF">"peer"</span><span style="color:#E1E4E8">: { </span><span style="color:#9ECBFF">"kind"</span><span style="color:#E1E4E8">: </span><span style="color:#9ECBFF">"group"</span><span style="color:#E1E4E8">, </span><span style="color:#9ECBFF">"id"</span><span style="color:#E1E4E8">: </span><span style="color:#9ECBFF">"-1001234567890"</span><span style="color:#E1E4E8"> } } },</span></span>
+<span data-line=""><span style="color:#E1E4E8">    { </span><span style="color:#9ECBFF">"agentId"</span><span style="color:#E1E4E8">: </span><span style="color:#9ECBFF">"project-b"</span><span style="color:#E1E4E8">, </span><span style="color:#9ECBFF">"match"</span><span style="color:#E1E4E8">: { </span><span style="color:#9ECBFF">"channel"</span><span style="color:#E1E4E8">: </span><span style="color:#9ECBFF">"telegram"</span><span style="color:#E1E4E8">, </span><span style="color:#9ECBFF">"peer"</span><span style="color:#E1E4E8">: { </span><span style="color:#9ECBFF">"kind"</span><span style="color:#E1E4E8">: </span><span style="color:#9ECBFF">"group"</span><span style="color:#E1E4E8">, </span><span style="color:#9ECBFF">"id"</span><span style="color:#E1E4E8">: </span><span style="color:#9ECBFF">"-1009876543210"</span><span style="color:#E1E4E8"> } } },</span></span>
+<span data-line=""><span style="color:#E1E4E8">    { </span><span style="color:#9ECBFF">"agentId"</span><span style="color:#E1E4E8">: </span><span style="color:#9ECBFF">"main"</span><span style="color:#E1E4E8">,      </span><span style="color:#9ECBFF">"match"</span><span style="color:#E1E4E8">: { </span><span style="color:#9ECBFF">"channel"</span><span style="color:#E1E4E8">: </span><span style="color:#9ECBFF">"telegram"</span><span style="color:#E1E4E8"> } }</span></span>
+<span data-line=""><span style="color:#E1E4E8">  ],</span></span>
+<span data-line=""><span style="color:#9ECBFF">  "channels"</span><span style="color:#E1E4E8">: {</span></span>
+<span data-line=""><span style="color:#9ECBFF">    "telegram"</span><span style="color:#E1E4E8">: {</span></span>
+<span data-line=""><span style="color:#9ECBFF">      "enabled"</span><span style="color:#E1E4E8">: </span><span style="color:#79B8FF">true</span><span style="color:#E1E4E8">,</span></span>
+<span data-line=""><span style="color:#9ECBFF">      "botToken"</span><span style="color:#E1E4E8">: </span><span style="color:#9ECBFF">"your bot token"</span><span style="color:#E1E4E8">,</span></span>
+<span data-line=""><span style="color:#9ECBFF">      "dmPolicy"</span><span style="color:#E1E4E8">: </span><span style="color:#9ECBFF">"pairing"</span><span style="color:#E1E4E8">,</span></span>
+<span data-line=""><span style="color:#9ECBFF">      "groups"</span><span style="color:#E1E4E8">: { </span><span style="color:#9ECBFF">"*"</span><span style="color:#E1E4E8">: { </span><span style="color:#9ECBFF">"requireMention"</span><span style="color:#E1E4E8">: </span><span style="color:#79B8FF">true</span><span style="color:#E1E4E8"> } }</span></span>
+<span data-line=""><span style="color:#E1E4E8">    }</span></span>
+<span data-line=""><span style="color:#E1E4E8">  }</span></span>
+<span data-line=""><span style="color:#E1E4E8">}</span></span></code></pre></figure>
+<p><strong>그룹 ID 찾는 방법</strong></p>
+<ul>
+<li>방법 1: 그룹에 메시지를 보내고 <code>openclaw logs --follow</code> 로 <code>chat.id</code> 확인</li>
+<li>방법 2: 메시지를 <a href="https://t.me/userinfobot">@userinfobot</a> 에 전달</li>
+</ul>
+<hr>
+<h3 id="시나리오-b-bot-계정마다-다른-workspace">시나리오 B: Bot 계정마다 다른 Workspace</h3>
+<figure data-rehype-pretty-code-figure=""><pre style="background-color:#24292e;color:#e1e4e8" tabindex="0" data-language="json5" data-theme="github-dark"><code data-language="json5" data-theme="github-dark" style="display: grid;"><span data-line=""><span style="color:#E1E4E8">{</span></span>
+<span data-line=""><span style="color:#9ECBFF">  "agents"</span><span style="color:#E1E4E8">: {</span></span>
+<span data-line=""><span style="color:#9ECBFF">    "list"</span><span style="color:#E1E4E8">: [</span></span>
+<span data-line=""><span style="color:#E1E4E8">      { </span><span style="color:#9ECBFF">"id"</span><span style="color:#E1E4E8">: </span><span style="color:#9ECBFF">"main"</span><span style="color:#E1E4E8">,   </span><span style="color:#9ECBFF">"workspace"</span><span style="color:#E1E4E8">: </span><span style="color:#9ECBFF">"~/.openclaw/workspace-main"</span><span style="color:#E1E4E8"> },</span></span>
+<span data-line=""><span style="color:#E1E4E8">      { </span><span style="color:#9ECBFF">"id"</span><span style="color:#E1E4E8">: </span><span style="color:#9ECBFF">"alerts"</span><span style="color:#E1E4E8">, </span><span style="color:#9ECBFF">"workspace"</span><span style="color:#E1E4E8">: </span><span style="color:#9ECBFF">"~/.openclaw/workspace-alerts"</span><span style="color:#E1E4E8"> }</span></span>
+<span data-line=""><span style="color:#E1E4E8">    ]</span></span>
+<span data-line=""><span style="color:#E1E4E8">  },</span></span>
+<span data-line=""><span style="color:#9ECBFF">  "bindings"</span><span style="color:#E1E4E8">: [</span></span>
+<span data-line=""><span style="color:#E1E4E8">    { </span><span style="color:#9ECBFF">"agentId"</span><span style="color:#E1E4E8">: </span><span style="color:#9ECBFF">"main"</span><span style="color:#E1E4E8">,   </span><span style="color:#9ECBFF">"match"</span><span style="color:#E1E4E8">: { </span><span style="color:#9ECBFF">"channel"</span><span style="color:#E1E4E8">: </span><span style="color:#9ECBFF">"telegram"</span><span style="color:#E1E4E8">, </span><span style="color:#9ECBFF">"accountId"</span><span style="color:#E1E4E8">: </span><span style="color:#9ECBFF">"default"</span><span style="color:#E1E4E8"> } },</span></span>
+<span data-line=""><span style="color:#E1E4E8">    { </span><span style="color:#9ECBFF">"agentId"</span><span style="color:#E1E4E8">: </span><span style="color:#9ECBFF">"alerts"</span><span style="color:#E1E4E8">, </span><span style="color:#9ECBFF">"match"</span><span style="color:#E1E4E8">: { </span><span style="color:#9ECBFF">"channel"</span><span style="color:#E1E4E8">: </span><span style="color:#9ECBFF">"telegram"</span><span style="color:#E1E4E8">, </span><span style="color:#9ECBFF">"accountId"</span><span style="color:#E1E4E8">: </span><span style="color:#9ECBFF">"alerts"</span><span style="color:#E1E4E8"> } }</span></span>
+<span data-line=""><span style="color:#E1E4E8">  ],</span></span>
+<span data-line=""><span style="color:#9ECBFF">  "channels"</span><span style="color:#E1E4E8">: {</span></span>
+<span data-line=""><span style="color:#9ECBFF">    "telegram"</span><span style="color:#E1E4E8">: {</span></span>
+<span data-line=""><span style="color:#9ECBFF">      "accounts"</span><span style="color:#E1E4E8">: {</span></span>
+<span data-line=""><span style="color:#9ECBFF">        "default"</span><span style="color:#E1E4E8">: { </span><span style="color:#9ECBFF">"botToken"</span><span style="color:#E1E4E8">: </span><span style="color:#9ECBFF">"123456:ABC..."</span><span style="color:#E1E4E8">, </span><span style="color:#9ECBFF">"dmPolicy"</span><span style="color:#E1E4E8">: </span><span style="color:#9ECBFF">"pairing"</span><span style="color:#E1E4E8"> },</span></span>
+<span data-line=""><span style="color:#9ECBFF">        "alerts"</span><span style="color:#E1E4E8">:  { </span><span style="color:#9ECBFF">"botToken"</span><span style="color:#E1E4E8">: </span><span style="color:#9ECBFF">"987654:XYZ..."</span><span style="color:#E1E4E8">, </span><span style="color:#9ECBFF">"dmPolicy"</span><span style="color:#E1E4E8">: </span><span style="color:#9ECBFF">"allowlist"</span><span style="color:#E1E4E8">, </span><span style="color:#9ECBFF">"allowFrom"</span><span style="color:#E1E4E8">: [</span><span style="color:#9ECBFF">"tg:123456789"</span><span style="color:#E1E4E8">] }</span></span>
+<span data-line=""><span style="color:#E1E4E8">      }</span></span>
+<span data-line=""><span style="color:#E1E4E8">    }</span></span>
+<span data-line=""><span style="color:#E1E4E8">  }</span></span>
+<span data-line=""><span style="color:#E1E4E8">}</span></span></code></pre></figure>
+<hr>
+<h2 id="저장을-잊지-마세요">저장을 잊지 마세요</h2>
+<p><strong>Save / Apply</strong> 를 누르면 OpenClaw 가 다음을 수행합니다.</p>
+<ol>
+<li>설정 형식 검증</li>
+<li>적용. 보통은 핫 리로드</li>
+</ol>
+<blockquote>
+<p>⚠️ <code>baseHash</code> conflict 가 뜨면 다른 곳에서 설정이 바뀐 것입니다. 다시 불러오고 재시도하세요.</p>
+</blockquote>
+<hr>
+<h2 id="web-ui-로-또-무엇을-할-수-있을까">Web UI 로 또 무엇을 할 수 있을까?</h2>
+<table>
+<thead>
+<tr>
+<th>섹션</th>
+<th>할 수 있는 일</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td><strong>Chat</strong></td>
+<td>브라우저에서 바로 비서와 대화</td>
+</tr>
+<tr>
+<td><strong>Sessions</strong></td>
+<td>세션 확인 및 관리</td>
+</tr>
+<tr>
+<td><strong>Cron</strong></td>
+<td>예약 작업 추가, 수정, 즉시 실행</td>
+</tr>
+<tr>
+<td><strong>Skills</strong></td>
+<td>Skill 활성화, 비활성화, 설치</td>
+</tr>
+<tr>
+<td><strong>Channels</strong></td>
+<td>채널 상태 확인</td>
+</tr>
+<tr>
+<td><strong>Debug / Logs</strong></td>
+<td>로그 확인과 수동 RPC 실행</td>
+</tr>
+</tbody>
+</table>
+<hr>
+<h2 id="빠른-참고표">빠른 참고표</h2>
+<table>
+<thead>
+<tr>
+<th>내가 하고 싶은 것</th>
+<th>Web UI 에서 찾는 위치</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td>Telegram 그룹마다 다른 Workspace 연결</td>
+<td>Config → Raw JSON → <code>agents</code> + <code>bindings</code></td>
+</tr>
+<tr>
+<td>Bot 계정마다 다른 Workspace 연결</td>
+<td>Config → <code>channels.telegram.accounts</code> + <code>bindings</code></td>
+</tr>
+<tr>
+<td>Bot Token 변경</td>
+<td>Config → <code>channels.telegram.botToken</code></td>
+</tr>
+<tr>
+<td>스케줄 관리</td>
+<td>Cron 탭</td>
+</tr>
+<tr>
+<td>실시간 로그 보기</td>
+<td>Debug / Logs 탭</td>
+</tr>
+</tbody>
+</table>
+<p>핵심은 이것입니다. <strong>Workspace 라우팅은 항상 <code>agents</code> 와 <code>bindings</code> 가 결정</strong> 합니다. Web UI 는 그걸 더 편하게 편집하게 해 줄 뿐입니다.</p>
+<hr>
+<h2 id="관련-글">관련 글</h2>
+<ul>
+<li><a href="07-multi-agent-bindings">멀티 Agent 와 Bindings</a></li>
+<li><a href="06-memory-workspace">메모리와 워크스페이스</a></li>
+<li><a href="12-openclaw-workspace-telegram-setup">Workspace x Telegram 완전 가이드</a></li>
+</ul>0:{"buildId":"Yck3R4ooQxWkwGLT6is1X","rsc":["$","$1","c",{"children":[[["$","script",null,{"type":"application/ld+json","dangerouslySetInnerHTML":{"__html":"{\"@context\":\"https://schema.org\",\"@type\":\"Article\",\"headline\":\"설정 파일을 만지지 않아도 된다: Web UI 만으로 OpenClaw 설정하기\",\"description\":\"Web UI 사용법, 폼 모드와 Raw JSON 의 차이, 여러 Workspace 라우팅 예시를 한 번에 정리합니다.\",\"url\":\"https://benxhub.com/ko/blog/openclaw/11-openclaw-web-ui-setup\",\"mainEntityOfPage\":{\"@type\":\"WebPage\",\"@id\":\"https://benxhub.com/ko/blog/openclaw/11-openclaw-web-ui-setup\"},\"datePublished\":\"2026-03-08T00:00:00.000Z\",\"dateModified\":\"2026-03-08T00:00:00.000Z\",\"keywords\":\"openclaw, web-ui, configuration, setup, bindings\",\"inLanguage\":\"ko\",\"author\":{\"@type\":\"Person\",\"name\":\"BenX\",\"url\":\"https://benxhub.com\"},\"publisher\":{\"@type\":\"Organization\",\"name\":\"BenXHub Blog\",\"url\":\"https://benxhub.com\"}}"}}],["$","div",null,{"className":"mx-auto max-w-6xl px-4 py-12 sm:px-6","children":["$","div",null,{"className":"lg:grid lg:grid-cols-[1fr_240px] lg:gap-14","children":[["$","article",null,{"children":[["$","header",null,{"className":"mb-10","children":[["$","div",null,{"className":"mb-4 flex flex-wrap gap-2","children":[["$","$L2","openclaw",{"href":"/ko/tags/openclaw","localeCookie":{"name":"NEXT_LOCALE","sameSite":"lax"},"className":"inline-flex items-center rounded-full px-2.5 py-0.5 text-xs font-medium transition-colors","style":{"background":"var(--color-code-bg)","color":"var(--color-accent)","border":"1px solid var(--color-border)"},"children":["#","openclaw"]}],["$","$L2","web-ui",{"href":"/ko/tags/web-ui","localeCookie":{"name":"NEXT_LOCALE","sameSite":"lax"},"className":"inline-flex items-center rounded-full px-2.5 py-0.5 text-xs font-medium transition-colors","style":{"background":"var(--color-code-bg)","color":"var(--color-accent)","border":"1px solid var(--color-border)"},"children":["#","web-ui"]}],["$","$L2","configuration",{"href":"/ko/tags/configuration","localeCookie":{"name":"NEXT_LOCALE","sameSite":"lax"},"className":"inline-flex items-center rounded-full px-2.5 py-0.5 text-xs font-medium transition-colors","style":{"background":"var(--color-code-bg)","color":"var(--color-accent)","border":"1px solid var(--color-border)"},"children":["#","configuration"]}],["$","$L2","setup",{"href":"/ko/tags/setup","localeCookie":{"name":"NEXT_LOCALE","sameSite":"lax"},"className":"inline-flex items-center rounded-full px-2.5 py-0.5 text-xs font-medium transition-colors","style":{"background":"var(--color-code-bg)","color":"var(--color-accent)","border":"1px solid var(--color-border)"},"children":["#","setup"]}],["$","$L2","bindings",{"href":"/ko/tags/bindings","localeCookie":{"name":"NEXT_LOCALE","sameSite":"lax"},"className":"inline-flex items-center rounded-full px-2.5 py-0.5 text-xs font-medium transition-colors","style":{"background":"var(--color-code-bg)","color":"var(--color-accent)","border":"1px solid var(--color-border)"},"children":["#","bindings"]}]]}],["$","h1",null,{"className":"mb-4 text-3xl leading-snug font-bold tracking-tight sm:text-4xl","style":{"color":"var(--color-text)"},"children":"설정 파일을 만지지 않아도 된다: Web UI 만으로 OpenClaw 설정하기"}],["$","div",null,{"className":"flex flex-wrap items-center gap-3 text-sm","style":{"color":"var(--color-muted)"},"children":[["$","time",null,{"dateTime":"2026-03-08","children":"2026년 3월 8일"}],["$","span",null,{"aria-hidden":"true","children":"·"}],["$","span",null,{"children":"5 min read"}]]}],"$undefined",["$","div",null,{"className":"mt-6 border-b","style":{"borderColor":"var(--color-border)"}}]]}],["$","div",null,{"className":"prose","dangerouslySetInnerHTML":{"__html":"$3"}}],"$L4"]}],"$L5"]}]}]],["$L6"],"$L7"]}],"loading":null,"isPartial":false}
+4:["$","footer",null,{"className":"mt-14 border-t pt-8","style":{"borderColor":"var(--color-border)"},"children":[["$","div",null,{"className":"mb-8 flex flex-wrap gap-2","children":[["$","$L2","openclaw",{"href":"/ko/tags/openclaw","localeCookie":{"name":"NEXT_LOCALE","sameSite":"lax"},"className":"inline-flex items-center rounded-full px-3 py-1 text-sm font-medium transition-colors","style":{"background":"var(--color-code-bg)","color":"var(--color-accent)","border":"1px solid var(--color-border)"},"children":["#","openclaw"]}],["$","$L2","web-ui",{"href":"/ko/tags/web-ui","localeCookie":{"name":"NEXT_LOCALE","sameSite":"lax"},"className":"inline-flex items-center rounded-full px-3 py-1 text-sm font-medium transition-colors","style":{"background":"var(--color-code-bg)","color":"var(--color-accent)","border":"1px solid var(--color-border)"},"children":["#","web-ui"]}],["$","$L2","configuration",{"href":"/ko/tags/configuration","localeCookie":{"name":"NEXT_LOCALE","sameSite":"lax"},"className":"inline-flex items-center rounded-full px-3 py-1 text-sm font-medium transition-colors","style":{"background":"var(--color-code-bg)","color":"var(--color-accent)","border":"1px solid var(--color-border)"},"children":["#","configuration"]}],["$","$L2","setup",{"href":"/ko/tags/setup","localeCookie":{"name":"NEXT_LOCALE","sameSite":"lax"},"className":"inline-flex items-center rounded-full px-3 py-1 text-sm font-medium transition-colors","style":{"background":"var(--color-code-bg)","color":"var(--color-accent)","border":"1px solid var(--color-border)"},"children":["#","setup"]}],["$","$L2","bindings",{"href":"/ko/tags/bindings","localeCookie":{"name":"NEXT_LOCALE","sameSite":"lax"},"className":"inline-flex items-center rounded-full px-3 py-1 text-sm font-medium transition-colors","style":{"background":"var(--color-code-bg)","color":"var(--color-accent)","border":"1px solid var(--color-border)"},"children":["#","bindings"]}]]}],["$","nav",null,{"aria-label":"글 탐색","className":"grid grid-cols-1 gap-4 sm:grid-cols-2","children":[["$","$L2",null,{"href":"/ko/blog/openclaw/10-advanced-config","localeCookie":{"name":"NEXT_LOCALE","sameSite":"lax"},"className":"group rounded-lg border p-4 transition-colors hover:border-accent","style":{"borderColor":"var(--color-border)","background":"var(--color-surface)"},"children":[["$","p",null,{"className":"mb-1 text-xs","style":{"color":"var(--color-muted)"},"children":"← 최신 글"}],["$","p",null,{"className":"line-clamp-1 text-sm font-medium transition-colors group-hover:text-accent","style":{"color":"var(--color-text)"},"children":"시스템이 이상하게 굴까? 고급 설정과 디버깅 가이드"}]]}],["$","$L2",null,{"href":"/ko/blog/openclaw/12-openclaw-workspace-telegram-setup","localeCookie":{"name":"NEXT_LOCALE","sameSite":"lax"},"className":"group rounded-lg border p-4 text-right transition-colors hover:border-accent","style":{"borderColor":"var(--color-border)","background":"var(--color-surface)"},"children":[["$","p",null,{"className":"mb-1 text-xs","style":{"color":"var(--color-muted)"},"children":"이전 글 →"}],["$","p",null,{"className":"line-clamp-1 text-sm font-medium transition-colors group-hover:text-accent","style":{"color":"var(--color-text)"},"children":"하나의 봇, 여러 작업: Workspace x Telegram 완전 설정 가이드"}]]}]]}]]}]
+9:T4024,<p>너무 많은 튜토리얼이 첫날부터 JSON 을 수정하라고 하고, 초보자가 도망가면 왜 그런지 궁금해합니다. 좋은 소식은 이겁니다. <strong>클릭할 수 있는 UI 가 있습니다.</strong></p>
+<h2 id="이번-글에서-배울-것">이번 글에서 배울 것</h2>
+<ul>
+<li>Web UI 를 열고 인증 마치기</li>
+<li>폼 모드와 Raw JSON 모드의 차이 이해하기</li>
+<li>UI 에서 여러 Workspace 라우팅 설정하기</li>
+<li>주요 기능 위치 파악하기</li>
+</ul>
+<hr>
+<h2 id="web-ui-열기">Web UI 열기</h2>
+<p><strong>1단계: Gateway 가 실행 중인지 확인</strong></p>
+<figure data-rehype-pretty-code-figure=""><pre style="background-color:#24292e;color:#e1e4e8" tabindex="0" data-language="bash" data-theme="github-dark"><code data-language="bash" data-theme="github-dark" style="display: grid;"><span data-line=""><span style="color:#B392F0">openclaw</span><span style="color:#9ECBFF"> gateway</span></span></code></pre></figure>
+<p><strong>2단계: 브라우저 열기</strong></p>
+<pre><code>http://127.0.0.1:18789/
+</code></pre>
+<p><code>basePath</code> 를 예를 들어 <code>/openclaw</code> 로 설정했다면:</p>
+<pre><code>http://127.0.0.1:18789/openclaw
+</code></pre>
+<p><strong>3단계: 인증 처리</strong></p>
+<table>
+<thead>
+<tr>
+<th>화면</th>
+<th>해결 방법</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td><code>pairing required</code></td>
+<td><code>openclaw devices list</code> 후 <code>openclaw devices approve &#x3C;requestId></code></td>
+</tr>
+<tr>
+<td>token 요청</td>
+<td>온보딩 token 붙여넣기</td>
+</tr>
+</tbody>
+</table>
+<blockquote>
+<p>💡 UI 언어는 <strong>Access</strong> 섹션에서 바꿀 수 있습니다.</p>
+</blockquote>
+<hr>
+<h2 id="config-편집-방식-두-가지-폼-모드-vs-raw-json">Config 편집 방식 두 가지: 폼 모드 vs Raw JSON</h2>
+<p><strong>Config</strong> 페이지에 들어가면 두 가지 방식이 보입니다.</p>
+<p><strong>폼 모드</strong>: 보기 좋고 입력 필드가 잘 정리되어 있어 초보자나 소규모 수정에 적합합니다.</p>
+<p><strong>Raw JSON 모드</strong>: 설정 파일을 직접 수정하므로 고급 사용자나 큰 수정에 적합합니다.</p>
+<p>둘 다 같은 파일 <code>~/.openclaw/openclaw.json</code> 을 편집합니다.</p>
+<hr>
+<h2 id="가장-흔한-설정-telegram-그룹마다-다른-비서-쓰기">가장 흔한 설정: Telegram 그룹마다 다른 비서 쓰기</h2>
+<h3 id="시나리오-a-같은-봇-다른-그룹-다른-워크스페이스">시나리오 A: 같은 봇, 다른 그룹, 다른 워크스페이스</h3>
+<p>Raw JSON 으로 전환한 뒤 다음 구조를 추가합니다.</p>
+<figure data-rehype-pretty-code-figure=""><pre style="background-color:#24292e;color:#e1e4e8" tabindex="0" data-language="json5" data-theme="github-dark"><code data-language="json5" data-theme="github-dark" style="display: grid;"><span data-line=""><span style="color:#E1E4E8">{</span></span>
+<span data-line=""><span style="color:#9ECBFF">  "agents"</span><span style="color:#E1E4E8">: {</span></span>
+<span data-line=""><span style="color:#9ECBFF">    "list"</span><span style="color:#E1E4E8">: [</span></span>
+<span data-line=""><span style="color:#E1E4E8">      { </span><span style="color:#9ECBFF">"id"</span><span style="color:#E1E4E8">: </span><span style="color:#9ECBFF">"main"</span><span style="color:#E1E4E8">,      </span><span style="color:#9ECBFF">"name"</span><span style="color:#E1E4E8">: </span><span style="color:#9ECBFF">"Main"</span><span style="color:#E1E4E8">,      </span><span style="color:#9ECBFF">"workspace"</span><span style="color:#E1E4E8">: </span><span style="color:#9ECBFF">"~/.openclaw/workspace-main"</span><span style="color:#E1E4E8">,      </span><span style="color:#9ECBFF">"default"</span><span style="color:#E1E4E8">: </span><span style="color:#79B8FF">true</span><span style="color:#E1E4E8"> },</span></span>
+<span data-line=""><span style="color:#E1E4E8">      { </span><span style="color:#9ECBFF">"id"</span><span style="color:#E1E4E8">: </span><span style="color:#9ECBFF">"project-a"</span><span style="color:#E1E4E8">, </span><span style="color:#9ECBFF">"name"</span><span style="color:#E1E4E8">: </span><span style="color:#9ECBFF">"Project A"</span><span style="color:#E1E4E8">, </span><span style="color:#9ECBFF">"workspace"</span><span style="color:#E1E4E8">: </span><span style="color:#9ECBFF">"~/.openclaw/workspace-project-a"</span><span style="color:#E1E4E8"> },</span></span>
+<span data-line=""><span style="color:#E1E4E8">      { </span><span style="color:#9ECBFF">"id"</span><span style="color:#E1E4E8">: </span><span style="color:#9ECBFF">"project-b"</span><span style="color:#E1E4E8">, </span><span style="color:#9ECBFF">"name"</span><span style="color:#E1E4E8">: </span><span style="color:#9ECBFF">"Project B"</span><span style="color:#E1E4E8">, </span><span style="color:#9ECBFF">"workspace"</span><span style="color:#E1E4E8">: </span><span style="color:#9ECBFF">"~/.openclaw/workspace-project-b"</span><span style="color:#E1E4E8"> }</span></span>
+<span data-line=""><span style="color:#E1E4E8">    ]</span></span>
+<span data-line=""><span style="color:#E1E4E8">  },</span></span>
+<span data-line=""><span style="color:#9ECBFF">  "bindings"</span><span style="color:#E1E4E8">: [</span></span>
+<span data-line=""><span style="color:#E1E4E8">    { </span><span style="color:#9ECBFF">"agentId"</span><span style="color:#E1E4E8">: </span><span style="color:#9ECBFF">"project-a"</span><span style="color:#E1E4E8">, </span><span style="color:#9ECBFF">"match"</span><span style="color:#E1E4E8">: { </span><span style="color:#9ECBFF">"channel"</span><span style="color:#E1E4E8">: </span><span style="color:#9ECBFF">"telegram"</span><span style="color:#E1E4E8">, </span><span style="color:#9ECBFF">"peer"</span><span style="color:#E1E4E8">: { </span><span style="color:#9ECBFF">"kind"</span><span style="color:#E1E4E8">: </span><span style="color:#9ECBFF">"group"</span><span style="color:#E1E4E8">, </span><span style="color:#9ECBFF">"id"</span><span style="color:#E1E4E8">: </span><span style="color:#9ECBFF">"-1001234567890"</span><span style="color:#E1E4E8"> } } },</span></span>
+<span data-line=""><span style="color:#E1E4E8">    { </span><span style="color:#9ECBFF">"agentId"</span><span style="color:#E1E4E8">: </span><span style="color:#9ECBFF">"project-b"</span><span style="color:#E1E4E8">, </span><span style="color:#9ECBFF">"match"</span><span style="color:#E1E4E8">: { </span><span style="color:#9ECBFF">"channel"</span><span style="color:#E1E4E8">: </span><span style="color:#9ECBFF">"telegram"</span><span style="color:#E1E4E8">, </span><span style="color:#9ECBFF">"peer"</span><span style="color:#E1E4E8">: { </span><span style="color:#9ECBFF">"kind"</span><span style="color:#E1E4E8">: </span><span style="color:#9ECBFF">"group"</span><span style="color:#E1E4E8">, </span><span style="color:#9ECBFF">"id"</span><span style="color:#E1E4E8">: </span><span style="color:#9ECBFF">"-1009876543210"</span><span style="color:#E1E4E8"> } } },</span></span>
+<span data-line=""><span style="color:#E1E4E8">    { </span><span style="color:#9ECBFF">"agentId"</span><span style="color:#E1E4E8">: </span><span style="color:#9ECBFF">"main"</span><span style="color:#E1E4E8">,      </span><span style="color:#9ECBFF">"match"</span><span style="color:#E1E4E8">: { </span><span style="color:#9ECBFF">"channel"</span><span style="color:#E1E4E8">: </span><span style="color:#9ECBFF">"telegram"</span><span style="color:#E1E4E8"> } }</span></span>
+<span data-line=""><span style="color:#E1E4E8">  ],</span></span>
+<span data-line=""><span style="color:#9ECBFF">  "channels"</span><span style="color:#E1E4E8">: {</span></span>
+<span data-line=""><span style="color:#9ECBFF">    "telegram"</span><span style="color:#E1E4E8">: {</span></span>
+<span data-line=""><span style="color:#9ECBFF">      "enabled"</span><span style="color:#E1E4E8">: </span><span style="color:#79B8FF">true</span><span style="color:#E1E4E8">,</span></span>
+<span data-line=""><span style="color:#9ECBFF">      "botToken"</span><span style="color:#E1E4E8">: </span><span style="color:#9ECBFF">"your bot token"</span><span style="color:#E1E4E8">,</span></span>
+<span data-line=""><span style="color:#9ECBFF">      "dmPolicy"</span><span style="color:#E1E4E8">: </span><span style="color:#9ECBFF">"pairing"</span><span style="color:#E1E4E8">,</span></span>
+<span data-line=""><span style="color:#9ECBFF">      "groups"</span><span style="color:#E1E4E8">: { </span><span style="color:#9ECBFF">"*"</span><span style="color:#E1E4E8">: { </span><span style="color:#9ECBFF">"requireMention"</span><span style="color:#E1E4E8">: </span><span style="color:#79B8FF">true</span><span style="color:#E1E4E8"> } }</span></span>
+<span data-line=""><span style="color:#E1E4E8">    }</span></span>
+<span data-line=""><span style="color:#E1E4E8">  }</span></span>
+<span data-line=""><span style="color:#E1E4E8">}</span></span></code></pre></figure>
+<p><strong>그룹 ID 찾는 방법</strong></p>
+<ul>
+<li>방법 1: 그룹에 메시지를 보내고 <code>openclaw logs --follow</code> 로 <code>chat.id</code> 확인</li>
+<li>방법 2: 메시지를 <a href="https://t.me/userinfobot">@userinfobot</a> 에 전달</li>
+</ul>
+<hr>
+<h3 id="시나리오-b-bot-계정마다-다른-workspace">시나리오 B: Bot 계정마다 다른 Workspace</h3>
+<figure data-rehype-pretty-code-figure=""><pre style="background-color:#24292e;color:#e1e4e8" tabindex="0" data-language="json5" data-theme="github-dark"><code data-language="json5" data-theme="github-dark" style="display: grid;"><span data-line=""><span style="color:#E1E4E8">{</span></span>
+<span data-line=""><span style="color:#9ECBFF">  "agents"</span><span style="color:#E1E4E8">: {</span></span>
+<span data-line=""><span style="color:#9ECBFF">    "list"</span><span style="color:#E1E4E8">: [</span></span>
+<span data-line=""><span style="color:#E1E4E8">      { </span><span style="color:#9ECBFF">"id"</span><span style="color:#E1E4E8">: </span><span style="color:#9ECBFF">"main"</span><span style="color:#E1E4E8">,   </span><span style="color:#9ECBFF">"workspace"</span><span style="color:#E1E4E8">: </span><span style="color:#9ECBFF">"~/.openclaw/workspace-main"</span><span style="color:#E1E4E8"> },</span></span>
+<span data-line=""><span style="color:#E1E4E8">      { </span><span style="color:#9ECBFF">"id"</span><span style="color:#E1E4E8">: </span><span style="color:#9ECBFF">"alerts"</span><span style="color:#E1E4E8">, </span><span style="color:#9ECBFF">"workspace"</span><span style="color:#E1E4E8">: </span><span style="color:#9ECBFF">"~/.openclaw/workspace-alerts"</span><span style="color:#E1E4E8"> }</span></span>
+<span data-line=""><span style="color:#E1E4E8">    ]</span></span>
+<span data-line=""><span style="color:#E1E4E8">  },</span></span>
+<span data-line=""><span style="color:#9ECBFF">  "bindings"</span><span style="color:#E1E4E8">: [</span></span>
+<span data-line=""><span style="color:#E1E4E8">    { </span><span style="color:#9ECBFF">"agentId"</span><span style="color:#E1E4E8">: </span><span style="color:#9ECBFF">"main"</span><span style="color:#E1E4E8">,   </span><span style="color:#9ECBFF">"match"</span><span style="color:#E1E4E8">: { </span><span style="color:#9ECBFF">"channel"</span><span style="color:#E1E4E8">: </span><span style="color:#9ECBFF">"telegram"</span><span style="color:#E1E4E8">, </span><span style="color:#9ECBFF">"accountId"</span><span style="color:#E1E4E8">: </span><span style="color:#9ECBFF">"default"</span><span style="color:#E1E4E8"> } },</span></span>
+<span data-line=""><span style="color:#E1E4E8">    { </span><span style="color:#9ECBFF">"agentId"</span><span style="color:#E1E4E8">: </span><span style="color:#9ECBFF">"alerts"</span><span style="color:#E1E4E8">, </span><span style="color:#9ECBFF">"match"</span><span style="color:#E1E4E8">: { </span><span style="color:#9ECBFF">"channel"</span><span style="color:#E1E4E8">: </span><span style="color:#9ECBFF">"telegram"</span><span style="color:#E1E4E8">, </span><span style="color:#9ECBFF">"accountId"</span><span style="color:#E1E4E8">: </span><span style="color:#9ECBFF">"alerts"</span><span style="color:#E1E4E8"> } }</span></span>
+<span data-line=""><span style="color:#E1E4E8">  ],</span></span>
+<span data-line=""><span style="color:#9ECBFF">  "channels"</span><span style="color:#E1E4E8">: {</span></span>
+<span data-line=""><span style="color:#9ECBFF">    "telegram"</span><span style="color:#E1E4E8">: {</span></span>
+<span data-line=""><span style="color:#9ECBFF">      "accounts"</span><span style="color:#E1E4E8">: {</span></span>
+<span data-line=""><span style="color:#9ECBFF">        "default"</span><span style="color:#E1E4E8">: { </span><span style="color:#9ECBFF">"botToken"</span><span style="color:#E1E4E8">: </span><span style="color:#9ECBFF">"123456:ABC..."</span><span style="color:#E1E4E8">, </span><span style="color:#9ECBFF">"dmPolicy"</span><span style="color:#E1E4E8">: </span><span style="color:#9ECBFF">"pairing"</span><span style="color:#E1E4E8"> },</span></span>
+<span data-line=""><span style="color:#9ECBFF">        "alerts"</span><span style="color:#E1E4E8">:  { </span><span style="color:#9ECBFF">"botToken"</span><span style="color:#E1E4E8">: </span><span style="color:#9ECBFF">"987654:XYZ..."</span><span style="color:#E1E4E8">, </span><span style="color:#9ECBFF">"dmPolicy"</span><span style="color:#E1E4E8">: </span><span style="color:#9ECBFF">"allowlist"</span><span style="color:#E1E4E8">, </span><span style="color:#9ECBFF">"allowFrom"</span><span style="color:#E1E4E8">: [</span><span style="color:#9ECBFF">"tg:123456789"</span><span style="color:#E1E4E8">] }</span></span>
+<span data-line=""><span style="color:#E1E4E8">      }</span></span>
+<span data-line=""><span style="color:#E1E4E8">    }</span></span>
+<span data-line=""><span style="color:#E1E4E8">  }</span></span>
+<span data-line=""><span style="color:#E1E4E8">}</span></span></code></pre></figure>
+<hr>
+<h2 id="저장을-잊지-마세요">저장을 잊지 마세요</h2>
+<p><strong>Save / Apply</strong> 를 누르면 OpenClaw 가 다음을 수행합니다.</p>
+<ol>
+<li>설정 형식 검증</li>
+<li>적용. 보통은 핫 리로드</li>
+</ol>
+<blockquote>
+<p>⚠️ <code>baseHash</code> conflict 가 뜨면 다른 곳에서 설정이 바뀐 것입니다. 다시 불러오고 재시도하세요.</p>
+</blockquote>
+<hr>
+<h2 id="web-ui-로-또-무엇을-할-수-있을까">Web UI 로 또 무엇을 할 수 있을까?</h2>
+<table>
+<thead>
+<tr>
+<th>섹션</th>
+<th>할 수 있는 일</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td><strong>Chat</strong></td>
+<td>브라우저에서 바로 비서와 대화</td>
+</tr>
+<tr>
+<td><strong>Sessions</strong></td>
+<td>세션 확인 및 관리</td>
+</tr>
+<tr>
+<td><strong>Cron</strong></td>
+<td>예약 작업 추가, 수정, 즉시 실행</td>
+</tr>
+<tr>
+<td><strong>Skills</strong></td>
+<td>Skill 활성화, 비활성화, 설치</td>
+</tr>
+<tr>
+<td><strong>Channels</strong></td>
+<td>채널 상태 확인</td>
+</tr>
+<tr>
+<td><strong>Debug / Logs</strong></td>
+<td>로그 확인과 수동 RPC 실행</td>
+</tr>
+</tbody>
+</table>
+<hr>
+<h2 id="빠른-참고표">빠른 참고표</h2>
+<table>
+<thead>
+<tr>
+<th>내가 하고 싶은 것</th>
+<th>Web UI 에서 찾는 위치</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td>Telegram 그룹마다 다른 Workspace 연결</td>
+<td>Config → Raw JSON → <code>agents</code> + <code>bindings</code></td>
+</tr>
+<tr>
+<td>Bot 계정마다 다른 Workspace 연결</td>
+<td>Config → <code>channels.telegram.accounts</code> + <code>bindings</code></td>
+</tr>
+<tr>
+<td>Bot Token 변경</td>
+<td>Config → <code>channels.telegram.botToken</code></td>
+</tr>
+<tr>
+<td>스케줄 관리</td>
+<td>Cron 탭</td>
+</tr>
+<tr>
+<td>실시간 로그 보기</td>
+<td>Debug / Logs 탭</td>
+</tr>
+</tbody>
+</table>
+<p>핵심은 이것입니다. <strong>Workspace 라우팅은 항상 <code>agents</code> 와 <code>bindings</code> 가 결정</strong> 합니다. Web UI 는 그걸 더 편하게 편집하게 해 줄 뿐입니다.</p>
+<hr>
+<h2 id="관련-글">관련 글</h2>
+<ul>
+<li><a href="07-multi-agent-bindings">멀티 Agent 와 Bindings</a></li>
+<li><a href="06-memory-workspace">메모리와 워크스페이스</a></li>
+<li><a href="12-openclaw-workspace-telegram-setup">Workspace x Telegram 완전 가이드</a></li>
+</ul>5:["$","aside",null,{"className":"hidden lg:block","children":["$","$L8",null,{"html":"$9"}]}]
+6:["$","script","script-0",{"src":"/_next/static/chunks/2dddb3bc05093f69.js","async":true}]
+7:["$","$La",null,{"children":["$","$b",null,{"name":"Next.MetadataOutlet","children":"$@c"}]}]
+c:null

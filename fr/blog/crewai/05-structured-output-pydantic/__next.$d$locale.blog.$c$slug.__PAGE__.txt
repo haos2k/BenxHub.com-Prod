@@ -1,0 +1,105 @@
+1:"$Sreact.fragment"
+2:I[14864,["/_next/static/chunks/7923a261b80bb6e1.js","/_next/static/chunks/e09b4358027e8033.js","/_next/static/chunks/2dddb3bc05093f69.js"],"default"]
+8:I[24801,["/_next/static/chunks/7923a261b80bb6e1.js","/_next/static/chunks/e09b4358027e8033.js","/_next/static/chunks/2dddb3bc05093f69.js"],"default"]
+a:I[50183,["/_next/static/chunks/5a5b5b13c22d14f7.js","/_next/static/chunks/a484d1d3dd4b55ab.js"],"OutletBoundary"]
+b:"$Sreact.suspense"
+3:T18a5,<p>Si vous avez déjà vu une tâche retourner du markdown une fois et un texte libre la fois suivante, vous n'êtes pas seul.<br>
+La solution est simple : <strong>définir le schéma de sortie avec Pydantic</strong>.</p>
+<h2 id="pourquoi-une-sortie-structurée-">Pourquoi une sortie structurée ?</h2>
+<ul>
+<li>Les tâches en aval peuvent lire des champs fixes</li>
+<li>Plus besoin de parsing de chaînes fragile à chaque exécution</li>
+<li>Les erreurs sont détectées plus tôt (un champ manquant lève une erreur)</li>
+</ul>
+<p>En résumé : c'est un contrat d'API. Une collaboration stable a besoin d'un contrat.</p>
+<h2 id="créer-des-modèles-de-sortie">Créer des modèles de sortie</h2>
+<figure data-rehype-pretty-code-figure=""><pre style="background-color:#24292e;color:#e1e4e8" tabindex="0" data-language="python" data-theme="github-dark"><code data-language="python" data-theme="github-dark" style="display: grid;"><span data-line=""><span style="color:#F97583">from</span><span style="color:#E1E4E8"> pydantic </span><span style="color:#F97583">import</span><span style="color:#E1E4E8"> BaseModel, Field</span></span>
+<span data-line=""> </span>
+<span data-line=""><span style="color:#F97583">class</span><span style="color:#B392F0"> Finding</span><span style="color:#E1E4E8">(</span><span style="color:#B392F0">BaseModel</span><span style="color:#E1E4E8">):</span></span>
+<span data-line=""><span style="color:#E1E4E8">    title: </span><span style="color:#79B8FF">str</span><span style="color:#F97583"> =</span><span style="color:#E1E4E8"> Field(</span><span style="color:#FFAB70">description</span><span style="color:#F97583">=</span><span style="color:#9ECBFF">"Finding title"</span><span style="color:#E1E4E8">)</span></span>
+<span data-line=""><span style="color:#E1E4E8">    summary: </span><span style="color:#79B8FF">str</span><span style="color:#F97583"> =</span><span style="color:#E1E4E8"> Field(</span><span style="color:#FFAB70">description</span><span style="color:#F97583">=</span><span style="color:#9ECBFF">"Brief explanation"</span><span style="color:#E1E4E8">)</span></span>
+<span data-line=""><span style="color:#E1E4E8">    source: </span><span style="color:#79B8FF">str</span><span style="color:#F97583"> =</span><span style="color:#E1E4E8"> Field(</span><span style="color:#FFAB70">description</span><span style="color:#F97583">=</span><span style="color:#9ECBFF">"Reference URL"</span><span style="color:#E1E4E8">)</span></span>
+<span data-line=""> </span>
+<span data-line=""><span style="color:#F97583">class</span><span style="color:#B392F0"> ResearchReport</span><span style="color:#E1E4E8">(</span><span style="color:#B392F0">BaseModel</span><span style="color:#E1E4E8">):</span></span>
+<span data-line=""><span style="color:#E1E4E8">    topic: </span><span style="color:#79B8FF">str</span><span style="color:#F97583"> =</span><span style="color:#E1E4E8"> Field(</span><span style="color:#FFAB70">description</span><span style="color:#F97583">=</span><span style="color:#9ECBFF">"Topic name"</span><span style="color:#E1E4E8">)</span></span>
+<span data-line=""><span style="color:#E1E4E8">    findings: list[Finding] </span><span style="color:#F97583">=</span><span style="color:#E1E4E8"> Field(</span><span style="color:#FFAB70">description</span><span style="color:#F97583">=</span><span style="color:#9ECBFF">"Key findings list"</span><span style="color:#E1E4E8">)</span></span>
+<span data-line=""><span style="color:#E1E4E8">    conclusion: </span><span style="color:#79B8FF">str</span><span style="color:#F97583"> =</span><span style="color:#E1E4E8"> Field(</span><span style="color:#FFAB70">description</span><span style="color:#F97583">=</span><span style="color:#9ECBFF">"Final conclusion"</span><span style="color:#E1E4E8">)</span></span></code></pre></figure>
+<h2 id="utiliser-output_pydantic-dans-une-tâche">Utiliser <code>output_pydantic</code> dans une tâche</h2>
+<figure data-rehype-pretty-code-figure=""><pre style="background-color:#24292e;color:#e1e4e8" tabindex="0" data-language="python" data-theme="github-dark"><code data-language="python" data-theme="github-dark" style="display: grid;"><span data-line=""><span style="color:#F97583">from</span><span style="color:#E1E4E8"> crewai </span><span style="color:#F97583">import</span><span style="color:#E1E4E8"> Task</span></span>
+<span data-line=""> </span>
+<span data-line=""><span style="color:#E1E4E8">research_task </span><span style="color:#F97583">=</span><span style="color:#E1E4E8"> Task(</span></span>
+<span data-line=""><span style="color:#FFAB70">    description</span><span style="color:#F97583">=</span><span style="color:#9ECBFF">"Research AI observability tools in 2026."</span><span style="color:#E1E4E8">,</span></span>
+<span data-line=""><span style="color:#FFAB70">    expected_output</span><span style="color:#F97583">=</span><span style="color:#9ECBFF">"Structured research result."</span><span style="color:#E1E4E8">,</span></span>
+<span data-line=""><span style="color:#FFAB70">    output_pydantic</span><span style="color:#F97583">=</span><span style="color:#E1E4E8">ResearchReport,</span></span>
+<span data-line=""><span style="color:#E1E4E8">)</span></span></code></pre></figure>
+<p>Après exécution, vous accédez directement aux champs stables au lieu de deviner à partir du texte.</p>
+<h2 id="style-de-couplage-recommandé">Style de couplage recommandé</h2>
+<ul>
+<li>Gardez les exigences de qualité dans <code>expected_output</code> explicites</li>
+<li>Définissez la sémantique des champs (longueur de <code>summary</code>, format de <code>source</code>)</li>
+<li>Faites en sorte que les tâches en aval s'appuient sur les champs, pas sur le style d'écriture</li>
+</ul>
+<h2 id="erreurs-courantes-des-débutants">Erreurs courantes des débutants</h2>
+<ol>
+<li>Penser que Pydantic rend <code>expected_output</code> inutile</li>
+<li>Trop peu de champs, donc des infos manquantes</li>
+<li>Trop de champs fins, donc des oublis fréquents</li>
+</ol>
+<blockquote>
+<p>⚠️ Commencez avec 3 à 5 champs clés. N'étendez que si besoin.</p>
+</blockquote>
+<h2 id="prochaine-étape">Prochaine étape</h2>
+<p>Votre crew unique peut maintenant produire des sorties fiables. Passons à l'orchestration multi-crews.<br>
+👉 <a href="06-flow-basics">Bases du Flow</a></p>0:{"buildId":"Yck3R4ooQxWkwGLT6is1X","rsc":["$","$1","c",{"children":[[["$","script",null,{"type":"application/ld+json","dangerouslySetInnerHTML":{"__html":"{\"@context\":\"https://schema.org\",\"@type\":\"Article\",\"headline\":\"CrewAI — Sortie structurée : en finir avec la dérive des données grâce à Pydantic\",\"description\":\"Utiliser output_pydantic pour définir des schémas de sortie stables et améliorer la fiabilité en aval.\",\"url\":\"https://benxhub.com/fr/blog/crewai/05-structured-output-pydantic\",\"mainEntityOfPage\":{\"@type\":\"WebPage\",\"@id\":\"https://benxhub.com/fr/blog/crewai/05-structured-output-pydantic\"},\"datePublished\":\"2026-03-02T00:00:00.000Z\",\"dateModified\":\"2026-03-02T00:00:00.000Z\",\"keywords\":\"crewai, pydantic, structured-output, python\",\"inLanguage\":\"fr\",\"author\":{\"@type\":\"Person\",\"name\":\"BenX\",\"url\":\"https://benxhub.com\"},\"publisher\":{\"@type\":\"Organization\",\"name\":\"BenXHub Blog\",\"url\":\"https://benxhub.com\"}}"}}],["$","div",null,{"className":"mx-auto max-w-6xl px-4 py-12 sm:px-6","children":["$","div",null,{"className":"lg:grid lg:grid-cols-[1fr_240px] lg:gap-14","children":[["$","article",null,{"children":[["$","header",null,{"className":"mb-10","children":[["$","div",null,{"className":"mb-4 flex flex-wrap gap-2","children":[["$","$L2","crewai",{"href":"/fr/tags/crewai","localeCookie":{"name":"NEXT_LOCALE","sameSite":"lax"},"className":"inline-flex items-center rounded-full px-2.5 py-0.5 text-xs font-medium transition-colors","style":{"background":"var(--color-code-bg)","color":"var(--color-accent)","border":"1px solid var(--color-border)"},"children":["#","crewai"]}],["$","$L2","pydantic",{"href":"/fr/tags/pydantic","localeCookie":{"name":"NEXT_LOCALE","sameSite":"lax"},"className":"inline-flex items-center rounded-full px-2.5 py-0.5 text-xs font-medium transition-colors","style":{"background":"var(--color-code-bg)","color":"var(--color-accent)","border":"1px solid var(--color-border)"},"children":["#","pydantic"]}],["$","$L2","structured-output",{"href":"/fr/tags/structured-output","localeCookie":{"name":"NEXT_LOCALE","sameSite":"lax"},"className":"inline-flex items-center rounded-full px-2.5 py-0.5 text-xs font-medium transition-colors","style":{"background":"var(--color-code-bg)","color":"var(--color-accent)","border":"1px solid var(--color-border)"},"children":["#","structured-output"]}],["$","$L2","python",{"href":"/fr/tags/python","localeCookie":{"name":"NEXT_LOCALE","sameSite":"lax"},"className":"inline-flex items-center rounded-full px-2.5 py-0.5 text-xs font-medium transition-colors","style":{"background":"var(--color-code-bg)","color":"var(--color-accent)","border":"1px solid var(--color-border)"},"children":["#","python"]}]]}],["$","h1",null,{"className":"mb-4 text-3xl leading-snug font-bold tracking-tight sm:text-4xl","style":{"color":"var(--color-text)"},"children":"CrewAI — Sortie structurée : en finir avec la dérive des données grâce à Pydantic"}],["$","div",null,{"className":"flex flex-wrap items-center gap-3 text-sm","style":{"color":"var(--color-muted)"},"children":[["$","time",null,{"dateTime":"2026-03-02","children":"2 mars 2026"}],["$","span",null,{"aria-hidden":"true","children":"·"}],["$","span",null,{"children":"2 min read"}]]}],"$undefined",["$","div",null,{"className":"mt-6 border-b","style":{"borderColor":"var(--color-border)"}}]]}],["$","div",null,{"className":"prose","dangerouslySetInnerHTML":{"__html":"$3"}}],"$L4"]}],"$L5"]}]}]],["$L6"],"$L7"]}],"loading":null,"isPartial":false}
+4:["$","footer",null,{"className":"mt-14 border-t pt-8","style":{"borderColor":"var(--color-border)"},"children":[["$","div",null,{"className":"mb-8 flex flex-wrap gap-2","children":[["$","$L2","crewai",{"href":"/fr/tags/crewai","localeCookie":{"name":"NEXT_LOCALE","sameSite":"lax"},"className":"inline-flex items-center rounded-full px-3 py-1 text-sm font-medium transition-colors","style":{"background":"var(--color-code-bg)","color":"var(--color-accent)","border":"1px solid var(--color-border)"},"children":["#","crewai"]}],["$","$L2","pydantic",{"href":"/fr/tags/pydantic","localeCookie":{"name":"NEXT_LOCALE","sameSite":"lax"},"className":"inline-flex items-center rounded-full px-3 py-1 text-sm font-medium transition-colors","style":{"background":"var(--color-code-bg)","color":"var(--color-accent)","border":"1px solid var(--color-border)"},"children":["#","pydantic"]}],["$","$L2","structured-output",{"href":"/fr/tags/structured-output","localeCookie":{"name":"NEXT_LOCALE","sameSite":"lax"},"className":"inline-flex items-center rounded-full px-3 py-1 text-sm font-medium transition-colors","style":{"background":"var(--color-code-bg)","color":"var(--color-accent)","border":"1px solid var(--color-border)"},"children":["#","structured-output"]}],["$","$L2","python",{"href":"/fr/tags/python","localeCookie":{"name":"NEXT_LOCALE","sameSite":"lax"},"className":"inline-flex items-center rounded-full px-3 py-1 text-sm font-medium transition-colors","style":{"background":"var(--color-code-bg)","color":"var(--color-accent)","border":"1px solid var(--color-border)"},"children":["#","python"]}]]}],["$","nav",null,{"aria-label":"Navigation des articles","className":"grid grid-cols-1 gap-4 sm:grid-cols-2","children":[["$","$L2",null,{"href":"/fr/blog/crewai/04-tools-integration","localeCookie":{"name":"NEXT_LOCALE","sameSite":"lax"},"className":"group rounded-lg border p-4 transition-colors hover:border-accent","style":{"borderColor":"var(--color-border)","background":"var(--color-surface)"},"children":[["$","p",null,{"className":"mb-1 text-xs","style":{"color":"var(--color-muted)"},"children":"← Plus récent"}],["$","p",null,{"className":"line-clamp-1 text-sm font-medium transition-colors group-hover:text-accent","style":{"color":"var(--color-text)"},"children":"CrewAI — Intégration des outils : laisser les agents chercher, lire et vraiment travailler"}]]}],["$","$L2",null,{"href":"/fr/blog/crewai/00-overview","localeCookie":{"name":"NEXT_LOCALE","sameSite":"lax"},"className":"group rounded-lg border p-4 text-right transition-colors hover:border-accent","style":{"borderColor":"var(--color-border)","background":"var(--color-surface)"},"children":[["$","p",null,{"className":"mb-1 text-xs","style":{"color":"var(--color-muted)"},"children":"Plus ancien →"}],["$","p",null,{"className":"line-clamp-1 text-sm font-medium transition-colors group-hover:text-accent","style":{"color":"var(--color-text)"},"children":"Vue d'ensemble de la série CrewAI : des workflows multi-agents de zéro à la production"}]]}]]}]]}]
+9:T18a5,<p>Si vous avez déjà vu une tâche retourner du markdown une fois et un texte libre la fois suivante, vous n'êtes pas seul.<br>
+La solution est simple : <strong>définir le schéma de sortie avec Pydantic</strong>.</p>
+<h2 id="pourquoi-une-sortie-structurée-">Pourquoi une sortie structurée ?</h2>
+<ul>
+<li>Les tâches en aval peuvent lire des champs fixes</li>
+<li>Plus besoin de parsing de chaînes fragile à chaque exécution</li>
+<li>Les erreurs sont détectées plus tôt (un champ manquant lève une erreur)</li>
+</ul>
+<p>En résumé : c'est un contrat d'API. Une collaboration stable a besoin d'un contrat.</p>
+<h2 id="créer-des-modèles-de-sortie">Créer des modèles de sortie</h2>
+<figure data-rehype-pretty-code-figure=""><pre style="background-color:#24292e;color:#e1e4e8" tabindex="0" data-language="python" data-theme="github-dark"><code data-language="python" data-theme="github-dark" style="display: grid;"><span data-line=""><span style="color:#F97583">from</span><span style="color:#E1E4E8"> pydantic </span><span style="color:#F97583">import</span><span style="color:#E1E4E8"> BaseModel, Field</span></span>
+<span data-line=""> </span>
+<span data-line=""><span style="color:#F97583">class</span><span style="color:#B392F0"> Finding</span><span style="color:#E1E4E8">(</span><span style="color:#B392F0">BaseModel</span><span style="color:#E1E4E8">):</span></span>
+<span data-line=""><span style="color:#E1E4E8">    title: </span><span style="color:#79B8FF">str</span><span style="color:#F97583"> =</span><span style="color:#E1E4E8"> Field(</span><span style="color:#FFAB70">description</span><span style="color:#F97583">=</span><span style="color:#9ECBFF">"Finding title"</span><span style="color:#E1E4E8">)</span></span>
+<span data-line=""><span style="color:#E1E4E8">    summary: </span><span style="color:#79B8FF">str</span><span style="color:#F97583"> =</span><span style="color:#E1E4E8"> Field(</span><span style="color:#FFAB70">description</span><span style="color:#F97583">=</span><span style="color:#9ECBFF">"Brief explanation"</span><span style="color:#E1E4E8">)</span></span>
+<span data-line=""><span style="color:#E1E4E8">    source: </span><span style="color:#79B8FF">str</span><span style="color:#F97583"> =</span><span style="color:#E1E4E8"> Field(</span><span style="color:#FFAB70">description</span><span style="color:#F97583">=</span><span style="color:#9ECBFF">"Reference URL"</span><span style="color:#E1E4E8">)</span></span>
+<span data-line=""> </span>
+<span data-line=""><span style="color:#F97583">class</span><span style="color:#B392F0"> ResearchReport</span><span style="color:#E1E4E8">(</span><span style="color:#B392F0">BaseModel</span><span style="color:#E1E4E8">):</span></span>
+<span data-line=""><span style="color:#E1E4E8">    topic: </span><span style="color:#79B8FF">str</span><span style="color:#F97583"> =</span><span style="color:#E1E4E8"> Field(</span><span style="color:#FFAB70">description</span><span style="color:#F97583">=</span><span style="color:#9ECBFF">"Topic name"</span><span style="color:#E1E4E8">)</span></span>
+<span data-line=""><span style="color:#E1E4E8">    findings: list[Finding] </span><span style="color:#F97583">=</span><span style="color:#E1E4E8"> Field(</span><span style="color:#FFAB70">description</span><span style="color:#F97583">=</span><span style="color:#9ECBFF">"Key findings list"</span><span style="color:#E1E4E8">)</span></span>
+<span data-line=""><span style="color:#E1E4E8">    conclusion: </span><span style="color:#79B8FF">str</span><span style="color:#F97583"> =</span><span style="color:#E1E4E8"> Field(</span><span style="color:#FFAB70">description</span><span style="color:#F97583">=</span><span style="color:#9ECBFF">"Final conclusion"</span><span style="color:#E1E4E8">)</span></span></code></pre></figure>
+<h2 id="utiliser-output_pydantic-dans-une-tâche">Utiliser <code>output_pydantic</code> dans une tâche</h2>
+<figure data-rehype-pretty-code-figure=""><pre style="background-color:#24292e;color:#e1e4e8" tabindex="0" data-language="python" data-theme="github-dark"><code data-language="python" data-theme="github-dark" style="display: grid;"><span data-line=""><span style="color:#F97583">from</span><span style="color:#E1E4E8"> crewai </span><span style="color:#F97583">import</span><span style="color:#E1E4E8"> Task</span></span>
+<span data-line=""> </span>
+<span data-line=""><span style="color:#E1E4E8">research_task </span><span style="color:#F97583">=</span><span style="color:#E1E4E8"> Task(</span></span>
+<span data-line=""><span style="color:#FFAB70">    description</span><span style="color:#F97583">=</span><span style="color:#9ECBFF">"Research AI observability tools in 2026."</span><span style="color:#E1E4E8">,</span></span>
+<span data-line=""><span style="color:#FFAB70">    expected_output</span><span style="color:#F97583">=</span><span style="color:#9ECBFF">"Structured research result."</span><span style="color:#E1E4E8">,</span></span>
+<span data-line=""><span style="color:#FFAB70">    output_pydantic</span><span style="color:#F97583">=</span><span style="color:#E1E4E8">ResearchReport,</span></span>
+<span data-line=""><span style="color:#E1E4E8">)</span></span></code></pre></figure>
+<p>Après exécution, vous accédez directement aux champs stables au lieu de deviner à partir du texte.</p>
+<h2 id="style-de-couplage-recommandé">Style de couplage recommandé</h2>
+<ul>
+<li>Gardez les exigences de qualité dans <code>expected_output</code> explicites</li>
+<li>Définissez la sémantique des champs (longueur de <code>summary</code>, format de <code>source</code>)</li>
+<li>Faites en sorte que les tâches en aval s'appuient sur les champs, pas sur le style d'écriture</li>
+</ul>
+<h2 id="erreurs-courantes-des-débutants">Erreurs courantes des débutants</h2>
+<ol>
+<li>Penser que Pydantic rend <code>expected_output</code> inutile</li>
+<li>Trop peu de champs, donc des infos manquantes</li>
+<li>Trop de champs fins, donc des oublis fréquents</li>
+</ol>
+<blockquote>
+<p>⚠️ Commencez avec 3 à 5 champs clés. N'étendez que si besoin.</p>
+</blockquote>
+<h2 id="prochaine-étape">Prochaine étape</h2>
+<p>Votre crew unique peut maintenant produire des sorties fiables. Passons à l'orchestration multi-crews.<br>
+👉 <a href="06-flow-basics">Bases du Flow</a></p>5:["$","aside",null,{"className":"hidden lg:block","children":["$","$L8",null,{"html":"$9"}]}]
+6:["$","script","script-0",{"src":"/_next/static/chunks/2dddb3bc05093f69.js","async":true}]
+7:["$","$La",null,{"children":["$","$b",null,{"name":"Next.MetadataOutlet","children":"$@c"}]}]
+c:null

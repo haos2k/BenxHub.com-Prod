@@ -1,0 +1,249 @@
+1:"$Sreact.fragment"
+2:I[14864,["/_next/static/chunks/7923a261b80bb6e1.js","/_next/static/chunks/e09b4358027e8033.js","/_next/static/chunks/2dddb3bc05093f69.js"],"default"]
+d:I[24801,["/_next/static/chunks/7923a261b80bb6e1.js","/_next/static/chunks/e09b4358027e8033.js","/_next/static/chunks/2dddb3bc05093f69.js"],"default"]
+f:I[50183,["/_next/static/chunks/5a5b5b13c22d14f7.js","/_next/static/chunks/a484d1d3dd4b55ab.js"],"OutletBoundary"]
+10:"$Sreact.suspense"
+:HL["/images/posts/omz-themes.png","image"]
+0:{"buildId":"Yck3R4ooQxWkwGLT6is1X","rsc":["$","$1","c",{"children":[[["$","script",null,{"type":"application/ld+json","dangerouslySetInnerHTML":{"__html":"{\"@context\":\"https://schema.org\",\"@type\":\"Article\",\"headline\":\"Oh My Zsh 主題設定：Powerlevel10k 安裝與客製化完整教學\",\"description\":\"Powerlevel10k 安裝、設定精靈走一遍、手動客製化 prompt、以及效能為什麼不像其他主題那樣讓 shell 變慢的完整說明。\",\"url\":\"https://benxhub.com/zh/blog/Oh-My-Zsh/04-themes\",\"mainEntityOfPage\":{\"@type\":\"WebPage\",\"@id\":\"https://benxhub.com/zh/blog/Oh-My-Zsh/04-themes\"},\"datePublished\":\"2026-04-19T00:00:00.000Z\",\"dateModified\":\"2026-04-19T00:00:00.000Z\",\"keywords\":\"powerlevel10k, oh-my-zsh, zsh, terminal, theme, p10k, prompt, shell\",\"inLanguage\":\"zh\",\"author\":{\"@type\":\"Person\",\"name\":\"BenX\",\"url\":\"https://benxhub.com\"},\"publisher\":{\"@type\":\"Organization\",\"name\":\"BenXHub Blog\",\"url\":\"https://benxhub.com\"},\"image\":\"https://benxhub.com/images/posts/omz-themes.png\"}"}}],["$","div",null,{"className":"mx-auto max-w-6xl px-4 py-12 sm:px-6","children":["$","div",null,{"className":"lg:grid lg:grid-cols-[1fr_240px] lg:gap-14","children":[["$","article",null,{"children":[["$","header",null,{"className":"mb-10","children":[["$","div",null,{"className":"mb-4 flex flex-wrap gap-2","children":[["$","$L2","powerlevel10k",{"href":"/zh/tags/powerlevel10k","localeCookie":{"name":"NEXT_LOCALE","sameSite":"lax"},"className":"inline-flex items-center rounded-full px-2.5 py-0.5 text-xs font-medium transition-colors","style":{"background":"var(--color-code-bg)","color":"var(--color-accent)","border":"1px solid var(--color-border)"},"children":["#","powerlevel10k"]}],["$","$L2","oh-my-zsh",{"href":"/zh/tags/oh-my-zsh","localeCookie":{"name":"NEXT_LOCALE","sameSite":"lax"},"className":"inline-flex items-center rounded-full px-2.5 py-0.5 text-xs font-medium transition-colors","style":{"background":"var(--color-code-bg)","color":"var(--color-accent)","border":"1px solid var(--color-border)"},"children":["#","oh-my-zsh"]}],["$","$L2","zsh",{"href":"/zh/tags/zsh","localeCookie":{"name":"NEXT_LOCALE","sameSite":"lax"},"className":"inline-flex items-center rounded-full px-2.5 py-0.5 text-xs font-medium transition-colors","style":{"background":"var(--color-code-bg)","color":"var(--color-accent)","border":"1px solid var(--color-border)"},"children":["#","zsh"]}],["$","$L2","terminal",{"href":"/zh/tags/terminal","localeCookie":{"name":"NEXT_LOCALE","sameSite":"lax"},"className":"inline-flex items-center rounded-full px-2.5 py-0.5 text-xs font-medium transition-colors","style":{"background":"var(--color-code-bg)","color":"var(--color-accent)","border":"1px solid var(--color-border)"},"children":["#","terminal"]}],["$","$L2","theme",{"href":"/zh/tags/theme","localeCookie":{"name":"NEXT_LOCALE","sameSite":"lax"},"className":"inline-flex items-center rounded-full px-2.5 py-0.5 text-xs font-medium transition-colors","style":{"background":"var(--color-code-bg)","color":"var(--color-accent)","border":"1px solid var(--color-border)"},"children":["#","theme"]}],["$","$L2","p10k",{"href":"/zh/tags/p10k","localeCookie":{"name":"NEXT_LOCALE","sameSite":"lax"},"className":"inline-flex items-center rounded-full px-2.5 py-0.5 text-xs font-medium transition-colors","style":{"background":"var(--color-code-bg)","color":"var(--color-accent)","border":"1px solid var(--color-border)"},"children":["#","p10k"]}],["$","$L2","prompt",{"href":"/zh/tags/prompt","localeCookie":{"name":"NEXT_LOCALE","sameSite":"lax"},"className":"inline-flex items-center rounded-full px-2.5 py-0.5 text-xs font-medium transition-colors","style":{"background":"var(--color-code-bg)","color":"var(--color-accent)","border":"1px solid var(--color-border)"},"children":["#","prompt"]}],["$","$L2","shell",{"href":"/zh/tags/shell","localeCookie":{"name":"NEXT_LOCALE","sameSite":"lax"},"className":"inline-flex items-center rounded-full px-2.5 py-0.5 text-xs font-medium transition-colors","style":{"background":"var(--color-code-bg)","color":"var(--color-accent)","border":"1px solid var(--color-border)"},"children":["#","shell"]}]]}],"$L3","$L4","$L5","$L6"]}],"$L7","$L8"]}],"$L9"]}]}]],["$La"],"$Lb"]}],"loading":null,"isPartial":false}
+3:["$","h1",null,{"className":"mb-4 text-3xl leading-snug font-bold tracking-tight sm:text-4xl","style":{"color":"var(--color-text)"},"children":"Oh My Zsh 主題設定：Powerlevel10k 安裝與客製化完整教學"}]
+4:["$","div",null,{"className":"flex flex-wrap items-center gap-3 text-sm","style":{"color":"var(--color-muted)"},"children":[["$","time",null,{"dateTime":"2026-04-19","children":"2026 年 4 月 19 日"}],["$","span",null,{"aria-hidden":"true","children":"·"}],["$","span",null,{"children":"6 min read"}]]}]
+5:["$","div",null,{"className":"mt-6 overflow-hidden rounded-lg","children":["$","img",null,{"src":"/images/posts/omz-themes.png","alt":"Oh My Zsh 主題設定：Powerlevel10k 安裝與客製化完整教學","className":"w-full h-auto"}]}]
+6:["$","div",null,{"className":"mt-6 border-b","style":{"borderColor":"var(--color-border)"}}]
+c:T3a42,<p>Oh My Zsh 內建了一百多個主題，但大多數人裝完玩了兩天就停在 Powerlevel10k——因為它把「好看」和「有用」這兩件事都做到位了。</p>
+<p>這篇說清楚怎麼裝、設定精靈怎麼走、以及不想用精靈要怎麼手動改。</p>
+<h2 id="為什麼是-powerlevel10k">為什麼是 Powerlevel10k</h2>
+<p>其他主題的問題在於：要顯示 git 狀態、Node 版本、Python venv 之類的資訊，每次都得跑一堆子程序——你按 Enter 之後，下一個 prompt 要等一兩秒才出現。</p>
+<p>Powerlevel10k 用了一個聰明的做法：<strong>Instant Prompt</strong>。它在 shell 載入時先把上一個 prompt 的結果快取起來，顯示出來之前不等 shell 完整初始化。結果就是，視覺上幾乎感覺不到延遲，但 prompt 裡的資訊還是完整的。</p>
+<table>
+<thead>
+<tr>
+<th></th>
+<th>一般主題</th>
+<th>Powerlevel10k</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td>Git 狀態顯示</td>
+<td>每次都跑 git</td>
+<td>非同步更新，不卡主線</td>
+</tr>
+<tr>
+<td>Shell 啟動速度</td>
+<td>可能 1–2 秒</td>
+<td>即時（Instant Prompt）</td>
+</tr>
+<tr>
+<td>客製化彈性</td>
+<td>改 theme 檔案</td>
+<td>獨立的 <code>.p10k.zsh</code> 設定檔</td>
+</tr>
+<tr>
+<td>安裝難度</td>
+<td>各自不同</td>
+<td>有互動式設定精靈</td>
+</tr>
+</tbody>
+</table>
+<h2 id="安裝-powerlevel10k">安裝 Powerlevel10k</h2>
+<p><strong>第一步：安裝字型</strong></p>
+<p>Powerlevel10k 需要支援 Powerline 符號的字型。官方推薦 <strong>MesloLGS NF</strong>：</p>
+<figure data-rehype-pretty-code-figure=""><pre style="background-color:#24292e;color:#e1e4e8" tabindex="0" data-language="bash" data-theme="github-dark"><code data-language="bash" data-theme="github-dark" style="display: grid;"><span data-line=""><span style="color:#6A737D"># macOS 用 Homebrew</span></span>
+<span data-line=""><span style="color:#B392F0">brew</span><span style="color:#9ECBFF"> install</span><span style="color:#79B8FF"> --cask</span><span style="color:#9ECBFF"> font-meslo-lg-nerd-font</span></span>
+<span data-line=""> </span>
+<span data-line=""><span style="color:#6A737D"># 或手動下載（四個檔案）：</span></span>
+<span data-line=""><span style="color:#6A737D"># https://github.com/romkatv/powerlevel10k#meslo-nerd-font-patched-for-powerlevel10k</span></span></code></pre></figure>
+<p>裝完之後，去終端機設定（iTerm2 / Terminal.app / Warp 等）把字型改成 <code>MesloLGS NF</code>。這步不做的話，prompt 的圖示會顯示成方塊。</p>
+<p><strong>第二步：clone 主題</strong></p>
+<figure data-rehype-pretty-code-figure=""><pre style="background-color:#24292e;color:#e1e4e8" tabindex="0" data-language="bash" data-theme="github-dark"><code data-language="bash" data-theme="github-dark" style="display: grid;"><span data-line=""><span style="color:#B392F0">git</span><span style="color:#9ECBFF"> clone</span><span style="color:#79B8FF"> --depth=1</span><span style="color:#9ECBFF"> https://github.com/romkatv/powerlevel10k.git</span><span style="color:#79B8FF"> \</span></span>
+<span data-line=""><span style="color:#E1E4E8">  ${ZSH_CUSTOM</span><span style="color:#F97583">:-</span><span style="color:#E1E4E8">~</span><span style="color:#F97583">/</span><span style="color:#E1E4E8">.oh-my-zsh</span><span style="color:#F97583">/</span><span style="color:#E1E4E8">custom}</span><span style="color:#9ECBFF">/themes/powerlevel10k</span></span></code></pre></figure>
+<p><strong>第三步：套用主題</strong></p>
+<p>打開 <code>~/.zshrc</code>，把 <code>ZSH_THEME</code> 改成：</p>
+<figure data-rehype-pretty-code-figure=""><pre style="background-color:#24292e;color:#e1e4e8" tabindex="0" data-language="zsh" data-theme="github-dark"><code data-language="zsh" data-theme="github-dark" style="display: grid;"><span data-line=""><span style="color:#E1E4E8">ZSH_THEME</span><span style="color:#F97583">=</span><span style="color:#9ECBFF">"powerlevel10k/powerlevel10k"</span></span></code></pre></figure>
+<p>然後 <code>source ~/.zshrc</code>，設定精靈應該會自動跳出來。</p>
+<h2 id="跑設定精靈">跑設定精靈</h2>
+<p>設定精靈會問你一系列問題，根據你的答案生成 <code>~/.p10k.zsh</code>。整個流程大概 3–5 分鐘：</p>
+<ol>
+<li><strong>字型確認</strong>：精靈會顯示幾個符號，問你看起來有沒有正確——這是確認字型裝好了沒</li>
+<li><strong>Prompt 樣式</strong>：幾個視覺風格選一個（精簡/豐富/超豐富）</li>
+<li><strong>字符集</strong>：Unicode 或純 ASCII（SSH 環境建議 ASCII 比較不容易出問題）</li>
+<li><strong>顯示資訊</strong>：要不要顯示 git 狀態、Node 版本、Python venv 等</li>
+<li><strong>Prompt 位置</strong>：左邊和右邊各放什麼</li>
+<li><strong>換行</strong>：指令和 prompt 之間要不要空一行</li>
+</ol>
+<p>如果之後想重新跑精靈：</p>
+<figure data-rehype-pretty-code-figure=""><pre style="background-color:#24292e;color:#e1e4e8" tabindex="0" data-language="bash" data-theme="github-dark"><code data-language="bash" data-theme="github-dark" style="display: grid;"><span data-line=""><span style="color:#B392F0">p10k</span><span style="color:#9ECBFF"> configure</span></span></code></pre></figure>
+<h2 id="手動客製化-p10kzsh">手動客製化 <code>.p10k.zsh</code></h2>
+<p>設定精靈跑完之後，所有設定都在 <code>~/.p10k.zsh</code>——這個檔案控制 prompt 裡顯示什麼、順序、顏色。</p>
+<p><strong>找到 prompt 左側和右側的元素清單：</strong></p>
+<figure data-rehype-pretty-code-figure=""><pre style="background-color:#24292e;color:#e1e4e8" tabindex="0" data-language="zsh" data-theme="github-dark"><code data-language="zsh" data-theme="github-dark" style="display: grid;"><span data-line=""><span style="color:#6A737D"># ~/.p10k.zsh</span></span>
+<span data-line=""><span style="color:#F97583">typeset</span><span style="color:#79B8FF"> -g</span><span style="color:#E1E4E8"> POWERLEVEL9K_LEFT_PROMPT_ELEMENTS</span><span style="color:#F97583">=</span><span style="color:#E1E4E8">(</span></span>
+<span data-line=""><span style="color:#9ECBFF">  os_icon</span><span style="color:#6A737D">               # 左上角 OS icon</span></span>
+<span data-line=""><span style="color:#9ECBFF">  dir</span><span style="color:#6A737D">                   # 當前目錄</span></span>
+<span data-line=""><span style="color:#9ECBFF">  vcs</span><span style="color:#6A737D">                   # git 狀態</span></span>
+<span data-line=""><span style="color:#9ECBFF">  newline</span><span style="color:#6A737D">               # 換行</span></span>
+<span data-line=""><span style="color:#9ECBFF">  prompt_char</span><span style="color:#6A737D">           # 提示符號（$ 或 ❯）</span></span>
+<span data-line=""><span style="color:#E1E4E8">)</span></span>
+<span data-line=""> </span>
+<span data-line=""><span style="color:#F97583">typeset</span><span style="color:#79B8FF"> -g</span><span style="color:#E1E4E8"> POWERLEVEL9K_RIGHT_PROMPT_ELEMENTS</span><span style="color:#F97583">=</span><span style="color:#E1E4E8">(</span></span>
+<span data-line=""><span style="color:#9ECBFF">  status</span><span style="color:#6A737D">                # 上個指令的 exit code</span></span>
+<span data-line=""><span style="color:#9ECBFF">  command_execution_time</span><span style="color:#6A737D">  # 上個指令執行了多久</span></span>
+<span data-line=""><span style="color:#9ECBFF">  node_version</span><span style="color:#6A737D">          # Node.js 版本</span></span>
+<span data-line=""><span style="color:#9ECBFF">  python_version</span><span style="color:#6A737D">        # Python 版本</span></span>
+<span data-line=""><span style="color:#F97583">  time</span><span style="color:#6A737D">                  # 時間</span></span>
+<span data-line=""><span style="color:#E1E4E8">)</span></span></code></pre></figure>
+<p>不想看的東西，直接把那一行刪掉或用 <code>#</code> 注解掉，<code>source ~/.zshrc</code> 立刻生效。</p>
+<p><strong>修改目錄縮短的長度：</strong></p>
+<figure data-rehype-pretty-code-figure=""><pre style="background-color:#24292e;color:#e1e4e8" tabindex="0" data-language="zsh" data-theme="github-dark"><code data-language="zsh" data-theme="github-dark" style="display: grid;"><span data-line=""><span style="color:#6A737D"># 預設只顯示最後 3 層路徑</span></span>
+<span data-line=""><span style="color:#F97583">typeset</span><span style="color:#79B8FF"> -g</span><span style="color:#E1E4E8"> POWERLEVEL9K_SHORTEN_STRATEGY</span><span style="color:#F97583">=</span><span style="color:#E1E4E8">truncate_to_last</span></span>
+<span data-line=""><span style="color:#F97583">typeset</span><span style="color:#79B8FF"> -g</span><span style="color:#E1E4E8"> POWERLEVEL9K_SHORTEN_DIR_LENGTH</span><span style="color:#F97583">=</span><span style="color:#79B8FF">3</span></span></code></pre></figure>
+<p><strong>修改 git 狀態顯示：</strong></p>
+<figure data-rehype-pretty-code-figure=""><pre style="background-color:#24292e;color:#e1e4e8" tabindex="0" data-language="zsh" data-theme="github-dark"><code data-language="zsh" data-theme="github-dark" style="display: grid;"><span data-line=""><span style="color:#6A737D"># 不顯示 untracked files 數量（大 repo 跑 git status 比較快）</span></span>
+<span data-line=""><span style="color:#F97583">typeset</span><span style="color:#79B8FF"> -g</span><span style="color:#E1E4E8"> POWERLEVEL9K_VCS_UNTRACKED_ICON</span><span style="color:#F97583">=</span><span style="color:#9ECBFF">''</span></span>
+<span data-line=""><span style="color:#F97583">typeset</span><span style="color:#79B8FF"> -g</span><span style="color:#E1E4E8"> POWERLEVEL9K_VCS_MAX_NUM_STATUS_FILE_UPDATES</span><span style="color:#F97583">=</span><span style="color:#79B8FF">32</span></span></code></pre></figure>
+<h2 id="instant-prompt-設定">Instant Prompt 設定</h2>
+<p>Powerlevel10k 的 Instant Prompt 需要在 <code>~/.zshrc</code> 的<strong>最頂端</strong>加這段：</p>
+<figure data-rehype-pretty-code-figure=""><pre style="background-color:#24292e;color:#e1e4e8" tabindex="0" data-language="zsh" data-theme="github-dark"><code data-language="zsh" data-theme="github-dark" style="display: grid;"><span data-line=""><span style="color:#6A737D"># ~/.zshrc 最頂端</span></span>
+<span data-line=""><span style="color:#F97583">if</span><span style="color:#E1E4E8"> [[ </span><span style="color:#F97583">-r</span><span style="color:#9ECBFF"> "${</span><span style="color:#E1E4E8">XDG_CACHE_HOME</span><span style="color:#F97583">:-</span><span style="color:#E1E4E8">$HOME</span><span style="color:#F97583">/</span><span style="color:#9ECBFF">.</span><span style="color:#E1E4E8">cache</span><span style="color:#9ECBFF">}/p10k-instant-prompt-${(</span><span style="color:#F97583">%</span><span style="color:#9ECBFF">)</span><span style="color:#F97583">:-%</span><span style="color:#E1E4E8">n</span><span style="color:#9ECBFF">}.zsh"</span><span style="color:#E1E4E8"> ]]; </span><span style="color:#F97583">then</span></span>
+<span data-line=""><span style="color:#79B8FF">  source</span><span style="color:#9ECBFF"> "${</span><span style="color:#E1E4E8">XDG_CACHE_HOME</span><span style="color:#F97583">:-</span><span style="color:#E1E4E8">$HOME</span><span style="color:#F97583">/</span><span style="color:#9ECBFF">.</span><span style="color:#E1E4E8">cache</span><span style="color:#9ECBFF">}/p10k-instant-prompt-${(</span><span style="color:#F97583">%</span><span style="color:#9ECBFF">)</span><span style="color:#F97583">:-%</span><span style="color:#E1E4E8">n</span><span style="color:#9ECBFF">}.zsh"</span></span>
+<span data-line=""><span style="color:#F97583">fi</span></span></code></pre></figure>
+<p>精靈通常會自動加，但如果你是手動安裝或刪掉了，要記得補回去。</p>
+<p>如果你的 <code>~/.zshrc</code> 裡有 <code>echo</code> 或其他會輸出文字到 stdout 的指令，Instant Prompt 會報警告。把那些輸出改成寫到 stderr：</p>
+<figure data-rehype-pretty-code-figure=""><pre style="background-color:#24292e;color:#e1e4e8" tabindex="0" data-language="bash" data-theme="github-dark"><code data-language="bash" data-theme="github-dark" style="display: grid;"><span data-line=""><span style="color:#79B8FF">echo</span><span style="color:#9ECBFF"> "訊息"</span><span style="color:#F97583"> >&#x26;2</span></span></code></pre></figure>
+<h2 id="常見問題">常見問題</h2>
+<p><strong>圖示顯示方塊</strong></p>
+<p>字型沒裝好，或是終端機設定裡沒換字型。確認 iTerm2 / 你的終端機 Preferences → Profiles → Text → Font 改成 <code>MesloLGS NF</code>。</p>
+<p><strong><code>p10k configure</code> 沒反應</strong></p>
+<p>可能是 <code>~/.zshrc</code> 最底下那行沒有：</p>
+<figure data-rehype-pretty-code-figure=""><pre style="background-color:#24292e;color:#e1e4e8" tabindex="0" data-language="zsh" data-theme="github-dark"><code data-language="zsh" data-theme="github-dark" style="display: grid;"><span data-line=""><span style="color:#E1E4E8">[[ </span><span style="color:#F97583">!</span><span style="color:#F97583"> -f</span><span style="color:#F97583"> ~</span><span style="color:#E1E4E8">/.p10k.zsh ]] </span><span style="color:#F97583">||</span><span style="color:#79B8FF"> source</span><span style="color:#9ECBFF"> ~/.p10k.zsh</span></span></code></pre></figure>
+<p>補上去再 <code>source ~/.zshrc</code>。</p>
+<p><strong>右側的 Node/Python 版本一直顯示</strong></p>
+<p>每個目錄都顯示版本資訊讓 prompt 很雜——可以設定只在特定條件顯示：</p>
+<figure data-rehype-pretty-code-figure=""><pre style="background-color:#24292e;color:#e1e4e8" tabindex="0" data-language="zsh" data-theme="github-dark"><code data-language="zsh" data-theme="github-dark" style="display: grid;"><span data-line=""><span style="color:#6A737D"># 只有在目錄下有 package.json 時才顯示 node 版本</span></span>
+<span data-line=""><span style="color:#F97583">typeset</span><span style="color:#79B8FF"> -g</span><span style="color:#E1E4E8"> POWERLEVEL9K_NODE_VERSION_PROJECT_ONLY</span><span style="color:#F97583">=</span><span style="color:#E1E4E8">true</span></span>
+<span data-line=""> </span>
+<span data-line=""><span style="color:#6A737D"># 只有在啟用 venv 時才顯示 python 版本</span></span>
+<span data-line=""><span style="color:#F97583">typeset</span><span style="color:#79B8FF"> -g</span><span style="color:#E1E4E8"> POWERLEVEL9K_PYTHON_VERSION_PROJECT_ONLY</span><span style="color:#F97583">=</span><span style="color:#E1E4E8">true</span></span></code></pre></figure>
+<hr>
+<p>主題設定好了，最後一篇 <a href="05-tips">05-tips</a>：讓整套設定真正活下去的 alias 和維護習慣。</p>7:["$","div",null,{"className":"prose","dangerouslySetInnerHTML":{"__html":"$c"}}]
+8:["$","footer",null,{"className":"mt-14 border-t pt-8","style":{"borderColor":"var(--color-border)"},"children":[["$","div",null,{"className":"mb-8 flex flex-wrap gap-2","children":[["$","$L2","powerlevel10k",{"href":"/zh/tags/powerlevel10k","localeCookie":{"name":"NEXT_LOCALE","sameSite":"lax"},"className":"inline-flex items-center rounded-full px-3 py-1 text-sm font-medium transition-colors","style":{"background":"var(--color-code-bg)","color":"var(--color-accent)","border":"1px solid var(--color-border)"},"children":["#","powerlevel10k"]}],["$","$L2","oh-my-zsh",{"href":"/zh/tags/oh-my-zsh","localeCookie":{"name":"NEXT_LOCALE","sameSite":"lax"},"className":"inline-flex items-center rounded-full px-3 py-1 text-sm font-medium transition-colors","style":{"background":"var(--color-code-bg)","color":"var(--color-accent)","border":"1px solid var(--color-border)"},"children":["#","oh-my-zsh"]}],["$","$L2","zsh",{"href":"/zh/tags/zsh","localeCookie":{"name":"NEXT_LOCALE","sameSite":"lax"},"className":"inline-flex items-center rounded-full px-3 py-1 text-sm font-medium transition-colors","style":{"background":"var(--color-code-bg)","color":"var(--color-accent)","border":"1px solid var(--color-border)"},"children":["#","zsh"]}],["$","$L2","terminal",{"href":"/zh/tags/terminal","localeCookie":{"name":"NEXT_LOCALE","sameSite":"lax"},"className":"inline-flex items-center rounded-full px-3 py-1 text-sm font-medium transition-colors","style":{"background":"var(--color-code-bg)","color":"var(--color-accent)","border":"1px solid var(--color-border)"},"children":["#","terminal"]}],["$","$L2","theme",{"href":"/zh/tags/theme","localeCookie":{"name":"NEXT_LOCALE","sameSite":"lax"},"className":"inline-flex items-center rounded-full px-3 py-1 text-sm font-medium transition-colors","style":{"background":"var(--color-code-bg)","color":"var(--color-accent)","border":"1px solid var(--color-border)"},"children":["#","theme"]}],["$","$L2","p10k",{"href":"/zh/tags/p10k","localeCookie":{"name":"NEXT_LOCALE","sameSite":"lax"},"className":"inline-flex items-center rounded-full px-3 py-1 text-sm font-medium transition-colors","style":{"background":"var(--color-code-bg)","color":"var(--color-accent)","border":"1px solid var(--color-border)"},"children":["#","p10k"]}],["$","$L2","prompt",{"href":"/zh/tags/prompt","localeCookie":{"name":"NEXT_LOCALE","sameSite":"lax"},"className":"inline-flex items-center rounded-full px-3 py-1 text-sm font-medium transition-colors","style":{"background":"var(--color-code-bg)","color":"var(--color-accent)","border":"1px solid var(--color-border)"},"children":["#","prompt"]}],["$","$L2","shell",{"href":"/zh/tags/shell","localeCookie":{"name":"NEXT_LOCALE","sameSite":"lax"},"className":"inline-flex items-center rounded-full px-3 py-1 text-sm font-medium transition-colors","style":{"background":"var(--color-code-bg)","color":"var(--color-accent)","border":"1px solid var(--color-border)"},"children":["#","shell"]}]]}],["$","nav",null,{"aria-label":"文章導覽","className":"grid grid-cols-1 gap-4 sm:grid-cols-2","children":[["$","$L2",null,{"href":"/zh/blog/Oh-My-Zsh/03-auto-suggestions","localeCookie":{"name":"NEXT_LOCALE","sameSite":"lax"},"className":"group rounded-lg border p-4 transition-colors hover:border-accent","style":{"borderColor":"var(--color-border)","background":"var(--color-surface)"},"children":[["$","p",null,{"className":"mb-1 text-xs","style":{"color":"var(--color-muted)"},"children":"← 較新文章"}],["$","p",null,{"className":"line-clamp-1 text-sm font-medium transition-colors group-hover:text-accent","style":{"color":"var(--color-text)"},"children":"zsh-autosuggestions 完整設定教學：打字速度直接快一倍"}]]}],["$","$L2",null,{"href":"/zh/blog/Oh-My-Zsh/05-tips","localeCookie":{"name":"NEXT_LOCALE","sameSite":"lax"},"className":"group rounded-lg border p-4 text-right transition-colors hover:border-accent","style":{"borderColor":"var(--color-border)","background":"var(--color-surface)"},"children":[["$","p",null,{"className":"mb-1 text-xs","style":{"color":"var(--color-muted)"},"children":"較舊文章 →"}],["$","p",null,{"className":"line-clamp-1 text-sm font-medium transition-colors group-hover:text-accent","style":{"color":"var(--color-text)"},"children":"Oh My Zsh 實用技巧：alias 設定、更新維護、讓設定活下去的習慣"}]]}]]}]]}]
+e:T3a42,<p>Oh My Zsh 內建了一百多個主題，但大多數人裝完玩了兩天就停在 Powerlevel10k——因為它把「好看」和「有用」這兩件事都做到位了。</p>
+<p>這篇說清楚怎麼裝、設定精靈怎麼走、以及不想用精靈要怎麼手動改。</p>
+<h2 id="為什麼是-powerlevel10k">為什麼是 Powerlevel10k</h2>
+<p>其他主題的問題在於：要顯示 git 狀態、Node 版本、Python venv 之類的資訊，每次都得跑一堆子程序——你按 Enter 之後，下一個 prompt 要等一兩秒才出現。</p>
+<p>Powerlevel10k 用了一個聰明的做法：<strong>Instant Prompt</strong>。它在 shell 載入時先把上一個 prompt 的結果快取起來，顯示出來之前不等 shell 完整初始化。結果就是，視覺上幾乎感覺不到延遲，但 prompt 裡的資訊還是完整的。</p>
+<table>
+<thead>
+<tr>
+<th></th>
+<th>一般主題</th>
+<th>Powerlevel10k</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td>Git 狀態顯示</td>
+<td>每次都跑 git</td>
+<td>非同步更新，不卡主線</td>
+</tr>
+<tr>
+<td>Shell 啟動速度</td>
+<td>可能 1–2 秒</td>
+<td>即時（Instant Prompt）</td>
+</tr>
+<tr>
+<td>客製化彈性</td>
+<td>改 theme 檔案</td>
+<td>獨立的 <code>.p10k.zsh</code> 設定檔</td>
+</tr>
+<tr>
+<td>安裝難度</td>
+<td>各自不同</td>
+<td>有互動式設定精靈</td>
+</tr>
+</tbody>
+</table>
+<h2 id="安裝-powerlevel10k">安裝 Powerlevel10k</h2>
+<p><strong>第一步：安裝字型</strong></p>
+<p>Powerlevel10k 需要支援 Powerline 符號的字型。官方推薦 <strong>MesloLGS NF</strong>：</p>
+<figure data-rehype-pretty-code-figure=""><pre style="background-color:#24292e;color:#e1e4e8" tabindex="0" data-language="bash" data-theme="github-dark"><code data-language="bash" data-theme="github-dark" style="display: grid;"><span data-line=""><span style="color:#6A737D"># macOS 用 Homebrew</span></span>
+<span data-line=""><span style="color:#B392F0">brew</span><span style="color:#9ECBFF"> install</span><span style="color:#79B8FF"> --cask</span><span style="color:#9ECBFF"> font-meslo-lg-nerd-font</span></span>
+<span data-line=""> </span>
+<span data-line=""><span style="color:#6A737D"># 或手動下載（四個檔案）：</span></span>
+<span data-line=""><span style="color:#6A737D"># https://github.com/romkatv/powerlevel10k#meslo-nerd-font-patched-for-powerlevel10k</span></span></code></pre></figure>
+<p>裝完之後，去終端機設定（iTerm2 / Terminal.app / Warp 等）把字型改成 <code>MesloLGS NF</code>。這步不做的話，prompt 的圖示會顯示成方塊。</p>
+<p><strong>第二步：clone 主題</strong></p>
+<figure data-rehype-pretty-code-figure=""><pre style="background-color:#24292e;color:#e1e4e8" tabindex="0" data-language="bash" data-theme="github-dark"><code data-language="bash" data-theme="github-dark" style="display: grid;"><span data-line=""><span style="color:#B392F0">git</span><span style="color:#9ECBFF"> clone</span><span style="color:#79B8FF"> --depth=1</span><span style="color:#9ECBFF"> https://github.com/romkatv/powerlevel10k.git</span><span style="color:#79B8FF"> \</span></span>
+<span data-line=""><span style="color:#E1E4E8">  ${ZSH_CUSTOM</span><span style="color:#F97583">:-</span><span style="color:#E1E4E8">~</span><span style="color:#F97583">/</span><span style="color:#E1E4E8">.oh-my-zsh</span><span style="color:#F97583">/</span><span style="color:#E1E4E8">custom}</span><span style="color:#9ECBFF">/themes/powerlevel10k</span></span></code></pre></figure>
+<p><strong>第三步：套用主題</strong></p>
+<p>打開 <code>~/.zshrc</code>，把 <code>ZSH_THEME</code> 改成：</p>
+<figure data-rehype-pretty-code-figure=""><pre style="background-color:#24292e;color:#e1e4e8" tabindex="0" data-language="zsh" data-theme="github-dark"><code data-language="zsh" data-theme="github-dark" style="display: grid;"><span data-line=""><span style="color:#E1E4E8">ZSH_THEME</span><span style="color:#F97583">=</span><span style="color:#9ECBFF">"powerlevel10k/powerlevel10k"</span></span></code></pre></figure>
+<p>然後 <code>source ~/.zshrc</code>，設定精靈應該會自動跳出來。</p>
+<h2 id="跑設定精靈">跑設定精靈</h2>
+<p>設定精靈會問你一系列問題，根據你的答案生成 <code>~/.p10k.zsh</code>。整個流程大概 3–5 分鐘：</p>
+<ol>
+<li><strong>字型確認</strong>：精靈會顯示幾個符號，問你看起來有沒有正確——這是確認字型裝好了沒</li>
+<li><strong>Prompt 樣式</strong>：幾個視覺風格選一個（精簡/豐富/超豐富）</li>
+<li><strong>字符集</strong>：Unicode 或純 ASCII（SSH 環境建議 ASCII 比較不容易出問題）</li>
+<li><strong>顯示資訊</strong>：要不要顯示 git 狀態、Node 版本、Python venv 等</li>
+<li><strong>Prompt 位置</strong>：左邊和右邊各放什麼</li>
+<li><strong>換行</strong>：指令和 prompt 之間要不要空一行</li>
+</ol>
+<p>如果之後想重新跑精靈：</p>
+<figure data-rehype-pretty-code-figure=""><pre style="background-color:#24292e;color:#e1e4e8" tabindex="0" data-language="bash" data-theme="github-dark"><code data-language="bash" data-theme="github-dark" style="display: grid;"><span data-line=""><span style="color:#B392F0">p10k</span><span style="color:#9ECBFF"> configure</span></span></code></pre></figure>
+<h2 id="手動客製化-p10kzsh">手動客製化 <code>.p10k.zsh</code></h2>
+<p>設定精靈跑完之後，所有設定都在 <code>~/.p10k.zsh</code>——這個檔案控制 prompt 裡顯示什麼、順序、顏色。</p>
+<p><strong>找到 prompt 左側和右側的元素清單：</strong></p>
+<figure data-rehype-pretty-code-figure=""><pre style="background-color:#24292e;color:#e1e4e8" tabindex="0" data-language="zsh" data-theme="github-dark"><code data-language="zsh" data-theme="github-dark" style="display: grid;"><span data-line=""><span style="color:#6A737D"># ~/.p10k.zsh</span></span>
+<span data-line=""><span style="color:#F97583">typeset</span><span style="color:#79B8FF"> -g</span><span style="color:#E1E4E8"> POWERLEVEL9K_LEFT_PROMPT_ELEMENTS</span><span style="color:#F97583">=</span><span style="color:#E1E4E8">(</span></span>
+<span data-line=""><span style="color:#9ECBFF">  os_icon</span><span style="color:#6A737D">               # 左上角 OS icon</span></span>
+<span data-line=""><span style="color:#9ECBFF">  dir</span><span style="color:#6A737D">                   # 當前目錄</span></span>
+<span data-line=""><span style="color:#9ECBFF">  vcs</span><span style="color:#6A737D">                   # git 狀態</span></span>
+<span data-line=""><span style="color:#9ECBFF">  newline</span><span style="color:#6A737D">               # 換行</span></span>
+<span data-line=""><span style="color:#9ECBFF">  prompt_char</span><span style="color:#6A737D">           # 提示符號（$ 或 ❯）</span></span>
+<span data-line=""><span style="color:#E1E4E8">)</span></span>
+<span data-line=""> </span>
+<span data-line=""><span style="color:#F97583">typeset</span><span style="color:#79B8FF"> -g</span><span style="color:#E1E4E8"> POWERLEVEL9K_RIGHT_PROMPT_ELEMENTS</span><span style="color:#F97583">=</span><span style="color:#E1E4E8">(</span></span>
+<span data-line=""><span style="color:#9ECBFF">  status</span><span style="color:#6A737D">                # 上個指令的 exit code</span></span>
+<span data-line=""><span style="color:#9ECBFF">  command_execution_time</span><span style="color:#6A737D">  # 上個指令執行了多久</span></span>
+<span data-line=""><span style="color:#9ECBFF">  node_version</span><span style="color:#6A737D">          # Node.js 版本</span></span>
+<span data-line=""><span style="color:#9ECBFF">  python_version</span><span style="color:#6A737D">        # Python 版本</span></span>
+<span data-line=""><span style="color:#F97583">  time</span><span style="color:#6A737D">                  # 時間</span></span>
+<span data-line=""><span style="color:#E1E4E8">)</span></span></code></pre></figure>
+<p>不想看的東西，直接把那一行刪掉或用 <code>#</code> 注解掉，<code>source ~/.zshrc</code> 立刻生效。</p>
+<p><strong>修改目錄縮短的長度：</strong></p>
+<figure data-rehype-pretty-code-figure=""><pre style="background-color:#24292e;color:#e1e4e8" tabindex="0" data-language="zsh" data-theme="github-dark"><code data-language="zsh" data-theme="github-dark" style="display: grid;"><span data-line=""><span style="color:#6A737D"># 預設只顯示最後 3 層路徑</span></span>
+<span data-line=""><span style="color:#F97583">typeset</span><span style="color:#79B8FF"> -g</span><span style="color:#E1E4E8"> POWERLEVEL9K_SHORTEN_STRATEGY</span><span style="color:#F97583">=</span><span style="color:#E1E4E8">truncate_to_last</span></span>
+<span data-line=""><span style="color:#F97583">typeset</span><span style="color:#79B8FF"> -g</span><span style="color:#E1E4E8"> POWERLEVEL9K_SHORTEN_DIR_LENGTH</span><span style="color:#F97583">=</span><span style="color:#79B8FF">3</span></span></code></pre></figure>
+<p><strong>修改 git 狀態顯示：</strong></p>
+<figure data-rehype-pretty-code-figure=""><pre style="background-color:#24292e;color:#e1e4e8" tabindex="0" data-language="zsh" data-theme="github-dark"><code data-language="zsh" data-theme="github-dark" style="display: grid;"><span data-line=""><span style="color:#6A737D"># 不顯示 untracked files 數量（大 repo 跑 git status 比較快）</span></span>
+<span data-line=""><span style="color:#F97583">typeset</span><span style="color:#79B8FF"> -g</span><span style="color:#E1E4E8"> POWERLEVEL9K_VCS_UNTRACKED_ICON</span><span style="color:#F97583">=</span><span style="color:#9ECBFF">''</span></span>
+<span data-line=""><span style="color:#F97583">typeset</span><span style="color:#79B8FF"> -g</span><span style="color:#E1E4E8"> POWERLEVEL9K_VCS_MAX_NUM_STATUS_FILE_UPDATES</span><span style="color:#F97583">=</span><span style="color:#79B8FF">32</span></span></code></pre></figure>
+<h2 id="instant-prompt-設定">Instant Prompt 設定</h2>
+<p>Powerlevel10k 的 Instant Prompt 需要在 <code>~/.zshrc</code> 的<strong>最頂端</strong>加這段：</p>
+<figure data-rehype-pretty-code-figure=""><pre style="background-color:#24292e;color:#e1e4e8" tabindex="0" data-language="zsh" data-theme="github-dark"><code data-language="zsh" data-theme="github-dark" style="display: grid;"><span data-line=""><span style="color:#6A737D"># ~/.zshrc 最頂端</span></span>
+<span data-line=""><span style="color:#F97583">if</span><span style="color:#E1E4E8"> [[ </span><span style="color:#F97583">-r</span><span style="color:#9ECBFF"> "${</span><span style="color:#E1E4E8">XDG_CACHE_HOME</span><span style="color:#F97583">:-</span><span style="color:#E1E4E8">$HOME</span><span style="color:#F97583">/</span><span style="color:#9ECBFF">.</span><span style="color:#E1E4E8">cache</span><span style="color:#9ECBFF">}/p10k-instant-prompt-${(</span><span style="color:#F97583">%</span><span style="color:#9ECBFF">)</span><span style="color:#F97583">:-%</span><span style="color:#E1E4E8">n</span><span style="color:#9ECBFF">}.zsh"</span><span style="color:#E1E4E8"> ]]; </span><span style="color:#F97583">then</span></span>
+<span data-line=""><span style="color:#79B8FF">  source</span><span style="color:#9ECBFF"> "${</span><span style="color:#E1E4E8">XDG_CACHE_HOME</span><span style="color:#F97583">:-</span><span style="color:#E1E4E8">$HOME</span><span style="color:#F97583">/</span><span style="color:#9ECBFF">.</span><span style="color:#E1E4E8">cache</span><span style="color:#9ECBFF">}/p10k-instant-prompt-${(</span><span style="color:#F97583">%</span><span style="color:#9ECBFF">)</span><span style="color:#F97583">:-%</span><span style="color:#E1E4E8">n</span><span style="color:#9ECBFF">}.zsh"</span></span>
+<span data-line=""><span style="color:#F97583">fi</span></span></code></pre></figure>
+<p>精靈通常會自動加，但如果你是手動安裝或刪掉了，要記得補回去。</p>
+<p>如果你的 <code>~/.zshrc</code> 裡有 <code>echo</code> 或其他會輸出文字到 stdout 的指令，Instant Prompt 會報警告。把那些輸出改成寫到 stderr：</p>
+<figure data-rehype-pretty-code-figure=""><pre style="background-color:#24292e;color:#e1e4e8" tabindex="0" data-language="bash" data-theme="github-dark"><code data-language="bash" data-theme="github-dark" style="display: grid;"><span data-line=""><span style="color:#79B8FF">echo</span><span style="color:#9ECBFF"> "訊息"</span><span style="color:#F97583"> >&#x26;2</span></span></code></pre></figure>
+<h2 id="常見問題">常見問題</h2>
+<p><strong>圖示顯示方塊</strong></p>
+<p>字型沒裝好，或是終端機設定裡沒換字型。確認 iTerm2 / 你的終端機 Preferences → Profiles → Text → Font 改成 <code>MesloLGS NF</code>。</p>
+<p><strong><code>p10k configure</code> 沒反應</strong></p>
+<p>可能是 <code>~/.zshrc</code> 最底下那行沒有：</p>
+<figure data-rehype-pretty-code-figure=""><pre style="background-color:#24292e;color:#e1e4e8" tabindex="0" data-language="zsh" data-theme="github-dark"><code data-language="zsh" data-theme="github-dark" style="display: grid;"><span data-line=""><span style="color:#E1E4E8">[[ </span><span style="color:#F97583">!</span><span style="color:#F97583"> -f</span><span style="color:#F97583"> ~</span><span style="color:#E1E4E8">/.p10k.zsh ]] </span><span style="color:#F97583">||</span><span style="color:#79B8FF"> source</span><span style="color:#9ECBFF"> ~/.p10k.zsh</span></span></code></pre></figure>
+<p>補上去再 <code>source ~/.zshrc</code>。</p>
+<p><strong>右側的 Node/Python 版本一直顯示</strong></p>
+<p>每個目錄都顯示版本資訊讓 prompt 很雜——可以設定只在特定條件顯示：</p>
+<figure data-rehype-pretty-code-figure=""><pre style="background-color:#24292e;color:#e1e4e8" tabindex="0" data-language="zsh" data-theme="github-dark"><code data-language="zsh" data-theme="github-dark" style="display: grid;"><span data-line=""><span style="color:#6A737D"># 只有在目錄下有 package.json 時才顯示 node 版本</span></span>
+<span data-line=""><span style="color:#F97583">typeset</span><span style="color:#79B8FF"> -g</span><span style="color:#E1E4E8"> POWERLEVEL9K_NODE_VERSION_PROJECT_ONLY</span><span style="color:#F97583">=</span><span style="color:#E1E4E8">true</span></span>
+<span data-line=""> </span>
+<span data-line=""><span style="color:#6A737D"># 只有在啟用 venv 時才顯示 python 版本</span></span>
+<span data-line=""><span style="color:#F97583">typeset</span><span style="color:#79B8FF"> -g</span><span style="color:#E1E4E8"> POWERLEVEL9K_PYTHON_VERSION_PROJECT_ONLY</span><span style="color:#F97583">=</span><span style="color:#E1E4E8">true</span></span></code></pre></figure>
+<hr>
+<p>主題設定好了，最後一篇 <a href="05-tips">05-tips</a>：讓整套設定真正活下去的 alias 和維護習慣。</p>9:["$","aside",null,{"className":"hidden lg:block","children":["$","$Ld",null,{"html":"$e"}]}]
+a:["$","script","script-0",{"src":"/_next/static/chunks/2dddb3bc05093f69.js","async":true}]
+b:["$","$Lf",null,{"children":["$","$10",null,{"name":"Next.MetadataOutlet","children":"$@11"}]}]
+11:null

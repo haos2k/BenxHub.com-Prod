@@ -1,0 +1,245 @@
+1:"$Sreact.fragment"
+2:I[14864,["/_next/static/chunks/7923a261b80bb6e1.js","/_next/static/chunks/e09b4358027e8033.js","/_next/static/chunks/2dddb3bc05093f69.js"],"default"]
+8:I[24801,["/_next/static/chunks/7923a261b80bb6e1.js","/_next/static/chunks/e09b4358027e8033.js","/_next/static/chunks/2dddb3bc05093f69.js"],"default"]
+a:I[50183,["/_next/static/chunks/5a5b5b13c22d14f7.js","/_next/static/chunks/a484d1d3dd4b55ab.js"],"OutletBoundary"]
+b:"$Sreact.suspense"
+3:T33a8,<p>Le but de cet article est simple : <strong>laisser de côté la philosophie et faire tourner Envoy Gateway tout de suite.</strong> Si vous atteignez le service d'exemple avec succès, vous aurez déjà fait plus que tous ceux qui sont encore bloqués sur la page d'accueil de la documentation.</p>
+<h2 id="prérequis">Prérequis</h2>
+<p>Vous avez besoin d'au moins un cluster Kubernetes fonctionnel, par exemple :</p>
+<ul>
+<li>En local : <code>kind</code>, <code>minikube</code>, <code>k3d</code></li>
+<li>Dans le cloud : EKS, GKE, AKS</li>
+<li>Homelab : K3s + MetalLB fonctionne aussi</li>
+</ul>
+<p>Il vous faudra également :</p>
+<ul>
+<li><code>kubectl</code></li>
+<li><code>helm</code></li>
+<li>Un cluster capable de provisionner une adresse <code>LoadBalancer</code>, ou un cluster où l'utilisation de <code>port-forward</code> vous convient</li>
+</ul>
+<blockquote>
+<p>⚠️ Si votre cluster ne prend pas en charge <code>LoadBalancer</code>, la documentation officielle recommande de l'associer à MetalLB. Ne pas avoir d'adresse externe n'est pas la fin du monde : vous testerez simplement via <code>port-forward</code>.</p>
+</blockquote>
+<h2 id="étape-1--installer-envoy-gateway">Étape 1 : installer Envoy Gateway</h2>
+<p>Installez le plan de contrôle :</p>
+<figure data-rehype-pretty-code-figure=""><pre style="background-color:#24292e;color:#e1e4e8" tabindex="0" data-language="bash" data-theme="github-dark"><code data-language="bash" data-theme="github-dark" style="display: grid;"><span data-line=""><span style="color:#B392F0">helm</span><span style="color:#9ECBFF"> install</span><span style="color:#9ECBFF"> eg</span><span style="color:#9ECBFF"> oci://docker.io/envoyproxy/gateway-helm</span><span style="color:#79B8FF"> \</span></span>
+<span data-line=""><span style="color:#79B8FF">  --version</span><span style="color:#9ECBFF"> v1.7.0</span><span style="color:#79B8FF"> \</span></span>
+<span data-line=""><span style="color:#79B8FF">  -n</span><span style="color:#9ECBFF"> envoy-gateway-system</span><span style="color:#79B8FF"> \</span></span>
+<span data-line=""><span style="color:#79B8FF">  --create-namespace</span></span></code></pre></figure>
+<p>Attendez qu'il soit prêt :</p>
+<figure data-rehype-pretty-code-figure=""><pre style="background-color:#24292e;color:#e1e4e8" tabindex="0" data-language="bash" data-theme="github-dark"><code data-language="bash" data-theme="github-dark" style="display: grid;"><span data-line=""><span style="color:#B392F0">kubectl</span><span style="color:#9ECBFF"> wait</span><span style="color:#79B8FF"> --timeout=5m</span><span style="color:#79B8FF"> -n</span><span style="color:#9ECBFF"> envoy-gateway-system</span><span style="color:#79B8FF"> \</span></span>
+<span data-line=""><span style="color:#9ECBFF">  deployment/envoy-gateway</span><span style="color:#79B8FF"> \</span></span>
+<span data-line=""><span style="color:#79B8FF">  --for=condition=Available</span></span></code></pre></figure>
+<p>Une fois cette étape terminée, le contrôleur Envoy Gateway tourne dans votre cluster. Il peut désormais lire les ressources <code>Gateway API</code> et générer la configuration Envoy correspondante.</p>
+<h2 id="étape-2--appliquer-les-ressources-officielles-du-quickstart">Étape 2 : appliquer les ressources officielles du quickstart</h2>
+<p>Le dépôt officiel fournit un exemple groupé qui inclut :</p>
+<ul>
+<li><code>GatewayClass</code></li>
+<li><code>Gateway</code></li>
+<li><code>HTTPRoute</code></li>
+<li>Une application backend d'exemple</li>
+</ul>
+<p>Appliquez-le directement :</p>
+<figure data-rehype-pretty-code-figure=""><pre style="background-color:#24292e;color:#e1e4e8" tabindex="0" data-language="bash" data-theme="github-dark"><code data-language="bash" data-theme="github-dark" style="display: grid;"><span data-line=""><span style="color:#B392F0">kubectl</span><span style="color:#9ECBFF"> apply</span><span style="color:#79B8FF"> -f</span><span style="color:#79B8FF"> \</span></span>
+<span data-line=""><span style="color:#9ECBFF">  https://github.com/envoyproxy/gateway/releases/download/v1.7.0/quickstart.yaml</span><span style="color:#79B8FF"> \</span></span>
+<span data-line=""><span style="color:#79B8FF">  -n</span><span style="color:#9ECBFF"> default</span></span></code></pre></figure>
+<p>Voyez cela comme l'équipe officielle qui vous prépare une scène de démonstration complète. Faites-la d'abord fonctionner, puis démontez-la ensuite pour comprendre les détails.</p>
+<h2 id="étape-3--vérifier-que-le-trafic-circule">Étape 3 : vérifier que le trafic circule</h2>
+<h3 id="option-a--le-cluster-possède-un-loadbalancer">Option A : le cluster possède un <code>LoadBalancer</code></h3>
+<p>Récupérez l'adresse du Gateway :</p>
+<figure data-rehype-pretty-code-figure=""><pre style="background-color:#24292e;color:#e1e4e8" tabindex="0" data-language="bash" data-theme="github-dark"><code data-language="bash" data-theme="github-dark" style="display: grid;"><span data-line=""><span style="color:#F97583">export</span><span style="color:#E1E4E8"> GATEWAY_HOST</span><span style="color:#F97583">=</span><span style="color:#E1E4E8">$(</span><span style="color:#B392F0">kubectl</span><span style="color:#9ECBFF"> get</span><span style="color:#9ECBFF"> gateway/eg</span><span style="color:#79B8FF"> -o</span><span style="color:#9ECBFF"> jsonpath='{.status.addresses[0].value}'</span><span style="color:#E1E4E8">)</span></span></code></pre></figure>
+<p>Envoyez une requête :</p>
+<figure data-rehype-pretty-code-figure=""><pre style="background-color:#24292e;color:#e1e4e8" tabindex="0" data-language="bash" data-theme="github-dark"><code data-language="bash" data-theme="github-dark" style="display: grid;"><span data-line=""><span style="color:#B392F0">curl</span><span style="color:#79B8FF"> --verbose</span><span style="color:#79B8FF"> \</span></span>
+<span data-line=""><span style="color:#79B8FF">  --header</span><span style="color:#9ECBFF"> "Host: www.example.com"</span><span style="color:#79B8FF"> \</span></span>
+<span data-line=""><span style="color:#9ECBFF">  http://</span><span style="color:#E1E4E8">$GATEWAY_HOST</span><span style="color:#9ECBFF">/get</span></span></code></pre></figure>
+<p>Si vous obtenez un HTTP <code>200</code>, cela signifie :</p>
+<ul>
+<li>Le Gateway sert correctement d'entrée</li>
+<li>Le HTTPRoute a bien été attaché</li>
+<li>Le service backend est correctement ciblé par le routage</li>
+</ul>
+<h3 id="option-b--pas-de-loadbalancer--utiliser-port-forward">Option B : pas de <code>LoadBalancer</code> — utiliser <code>port-forward</code></h3>
+<p>Trouvez le service Envoy :</p>
+<figure data-rehype-pretty-code-figure=""><pre style="background-color:#24292e;color:#e1e4e8" tabindex="0" data-language="bash" data-theme="github-dark"><code data-language="bash" data-theme="github-dark" style="display: grid;"><span data-line=""><span style="color:#F97583">export</span><span style="color:#E1E4E8"> ENVOY_SERVICE</span><span style="color:#F97583">=</span><span style="color:#E1E4E8">$(</span><span style="color:#B392F0">kubectl</span><span style="color:#9ECBFF"> get</span><span style="color:#9ECBFF"> svc</span><span style="color:#79B8FF"> -n</span><span style="color:#9ECBFF"> envoy-gateway-system</span><span style="color:#79B8FF"> \</span></span>
+<span data-line=""><span style="color:#79B8FF">  --selector=gateway.envoyproxy.io/owning-gateway-namespace=default,gateway.envoyproxy.io/owning-gateway-name=eg</span><span style="color:#79B8FF"> \</span></span>
+<span data-line=""><span style="color:#79B8FF">  -o</span><span style="color:#9ECBFF"> jsonpath='{.items[0].metadata.name}'</span><span style="color:#E1E4E8">)</span></span></code></pre></figure>
+<p>Redirigez le port local <code>8888</code> vers le port <code>80</code> du Gateway :</p>
+<figure data-rehype-pretty-code-figure=""><pre style="background-color:#24292e;color:#e1e4e8" tabindex="0" data-language="bash" data-theme="github-dark"><code data-language="bash" data-theme="github-dark" style="display: grid;"><span data-line=""><span style="color:#B392F0">kubectl</span><span style="color:#79B8FF"> -n</span><span style="color:#9ECBFF"> envoy-gateway-system</span><span style="color:#9ECBFF"> port-forward</span><span style="color:#9ECBFF"> service/</span><span style="color:#E1E4E8">${ENVOY_SERVICE} </span><span style="color:#9ECBFF">8888:80</span></span></code></pre></figure>
+<p>Dans un autre terminal :</p>
+<figure data-rehype-pretty-code-figure=""><pre style="background-color:#24292e;color:#e1e4e8" tabindex="0" data-language="bash" data-theme="github-dark"><code data-language="bash" data-theme="github-dark" style="display: grid;"><span data-line=""><span style="color:#B392F0">curl</span><span style="color:#79B8FF"> --verbose</span><span style="color:#79B8FF"> \</span></span>
+<span data-line=""><span style="color:#79B8FF">  --header</span><span style="color:#9ECBFF"> "Host: www.example.com"</span><span style="color:#79B8FF"> \</span></span>
+<span data-line=""><span style="color:#9ECBFF">  http://localhost:8888/get</span></span></code></pre></figure>
+<p>C'est le chemin de test local. Cela donne un peu l'impression d'entrer par la porte de derrière, mais si cela valide le routage, c'est très bien ; parfois, l'ingénierie consiste d'abord à "faire marcher", puis à rendre ça élégant.</p>
+<h2 id="où-regarder-quand-ça-casse">Où regarder quand ça casse</h2>
+<p>Les problèmes les plus courants ne viennent pas du fait qu'Envoy Gateway serait cassé, mais du fait qu'un maillon de la chaîne ne s'est pas connecté :</p>
+<table>
+<thead>
+<tr>
+<th>Symptôme</th>
+<th>À vérifier en premier</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td><code>gateway/eg</code> n'a pas d'adresse</td>
+<td>Le cluster dispose-t-il d'une implémentation <code>LoadBalancer</code> ?</td>
+</tr>
+<tr>
+<td><code>curl</code> renvoie 404 ou 503</td>
+<td>État de <code>HTTPRoute</code>, <code>Service</code> et des Pods backend</td>
+</tr>
+<tr>
+<td><code>kubectl wait</code> reste bloqué</td>
+<td>Les Pods de <code>envoy-gateway-system</code> sont-ils en cours d'exécution ?</td>
+</tr>
+</tbody>
+</table>
+<p>Commandes utiles :</p>
+<figure data-rehype-pretty-code-figure=""><pre style="background-color:#24292e;color:#e1e4e8" tabindex="0" data-language="bash" data-theme="github-dark"><code data-language="bash" data-theme="github-dark" style="display: grid;"><span data-line=""><span style="color:#B392F0">kubectl</span><span style="color:#9ECBFF"> get</span><span style="color:#9ECBFF"> pods</span><span style="color:#79B8FF"> -n</span><span style="color:#9ECBFF"> envoy-gateway-system</span></span>
+<span data-line=""><span style="color:#B392F0">kubectl</span><span style="color:#9ECBFF"> get</span><span style="color:#9ECBFF"> gatewayclass</span></span>
+<span data-line=""><span style="color:#B392F0">kubectl</span><span style="color:#9ECBFF"> get</span><span style="color:#9ECBFF"> gateway</span><span style="color:#79B8FF"> -A</span></span>
+<span data-line=""><span style="color:#B392F0">kubectl</span><span style="color:#9ECBFF"> get</span><span style="color:#9ECBFF"> httproute</span><span style="color:#79B8FF"> -A</span></span>
+<span data-line=""><span style="color:#B392F0">kubectl</span><span style="color:#9ECBFF"> get</span><span style="color:#9ECBFF"> svc,pod</span><span style="color:#79B8FF"> -n</span><span style="color:#9ECBFF"> default</span></span></code></pre></figure>
+<p>Pour creuser le status du Gateway :</p>
+<figure data-rehype-pretty-code-figure=""><pre style="background-color:#24292e;color:#e1e4e8" tabindex="0" data-language="bash" data-theme="github-dark"><code data-language="bash" data-theme="github-dark" style="display: grid;"><span data-line=""><span style="color:#B392F0">kubectl</span><span style="color:#9ECBFF"> get</span><span style="color:#9ECBFF"> gateway/eg</span><span style="color:#79B8FF"> -o</span><span style="color:#9ECBFF"> yaml</span></span></code></pre></figure>
+<p>Les points clés à vérifier :</p>
+<ul>
+<li><code>status.addresses</code></li>
+<li>Les conditions du listener</li>
+<li>Si les routes ont été acceptées</li>
+</ul>
+<h2 id="ce-que-vous-venez-réellement-de-faire">Ce que vous venez réellement de faire</h2>
+<p>Vous n'avez exécuté que quelques commandes, mais vous avez complété toute une chaîne de bout en bout :</p>
+<ol>
+<li>Installation de <code>Envoy Gateway</code></li>
+<li>Création d'un <code>GatewayClass</code> pour indiquer au cluster quel contrôleur de gateway utiliser</li>
+<li>Création d'un <code>Gateway</code> qui déclare le port et le protocole d'entrée</li>
+<li>Création d'un <code>HTTPRoute</code> qui route le trafic vers le service backend</li>
+<li>Envoy Gateway a traduit ces déclarations en configuration que Envoy Proxy peut exécuter</li>
+</ol>
+<p>C'est exactement pour cela que Gateway API vaut la peine d'être utilisé. Vous écrivez des ressources Kubernetes, vous ne maintenez pas à la main une pile de fichiers de configuration proxy.</p>
+<h2 id="étape-suivante">Étape suivante</h2>
+<p>Maintenant que votre première requête circule, l'article suivant explique ce que chacune de ces ressources fait réellement, afin de construire le bon modèle mental :
+👉 <a href="02-core-concepts">Concepts de base</a></p>0:{"buildId":"Yck3R4ooQxWkwGLT6is1X","rsc":["$","$1","c",{"children":[[["$","script",null,{"type":"application/ld+json","dangerouslySetInnerHTML":{"__html":"{\"@context\":\"https://schema.org\",\"@type\":\"Article\",\"headline\":\"Démarrage rapide d'Envoy Gateway : faites passer votre première requête en 10 minutes\",\"description\":\"Installer Envoy Gateway avec le quickstart officiel, appliquer un Gateway et un HTTPRoute, puis confirmer que les requêtes circulent réellement.\",\"url\":\"https://benxhub.com/fr/blog/k8s/gateway/01-quick-start\",\"mainEntityOfPage\":{\"@type\":\"WebPage\",\"@id\":\"https://benxhub.com/fr/blog/k8s/gateway/01-quick-start\"},\"datePublished\":\"2026-03-10T00:00:00.000Z\",\"dateModified\":\"2026-03-10T00:00:00.000Z\",\"keywords\":\"kubernetes, envoy-gateway, gateway-api, quick-start, httproute\",\"inLanguage\":\"fr\",\"author\":{\"@type\":\"Person\",\"name\":\"BenX\",\"url\":\"https://benxhub.com\"},\"publisher\":{\"@type\":\"Organization\",\"name\":\"BenXHub Blog\",\"url\":\"https://benxhub.com\"}}"}}],["$","div",null,{"className":"mx-auto max-w-6xl px-4 py-12 sm:px-6","children":["$","div",null,{"className":"lg:grid lg:grid-cols-[1fr_240px] lg:gap-14","children":[["$","article",null,{"children":[["$","header",null,{"className":"mb-10","children":[["$","div",null,{"className":"mb-4 flex flex-wrap gap-2","children":[["$","$L2","kubernetes",{"href":"/fr/tags/kubernetes","localeCookie":{"name":"NEXT_LOCALE","sameSite":"lax"},"className":"inline-flex items-center rounded-full px-2.5 py-0.5 text-xs font-medium transition-colors","style":{"background":"var(--color-code-bg)","color":"var(--color-accent)","border":"1px solid var(--color-border)"},"children":["#","kubernetes"]}],["$","$L2","envoy-gateway",{"href":"/fr/tags/envoy-gateway","localeCookie":{"name":"NEXT_LOCALE","sameSite":"lax"},"className":"inline-flex items-center rounded-full px-2.5 py-0.5 text-xs font-medium transition-colors","style":{"background":"var(--color-code-bg)","color":"var(--color-accent)","border":"1px solid var(--color-border)"},"children":["#","envoy-gateway"]}],["$","$L2","gateway-api",{"href":"/fr/tags/gateway-api","localeCookie":{"name":"NEXT_LOCALE","sameSite":"lax"},"className":"inline-flex items-center rounded-full px-2.5 py-0.5 text-xs font-medium transition-colors","style":{"background":"var(--color-code-bg)","color":"var(--color-accent)","border":"1px solid var(--color-border)"},"children":["#","gateway-api"]}],["$","$L2","quick-start",{"href":"/fr/tags/quick-start","localeCookie":{"name":"NEXT_LOCALE","sameSite":"lax"},"className":"inline-flex items-center rounded-full px-2.5 py-0.5 text-xs font-medium transition-colors","style":{"background":"var(--color-code-bg)","color":"var(--color-accent)","border":"1px solid var(--color-border)"},"children":["#","quick-start"]}],["$","$L2","httproute",{"href":"/fr/tags/httproute","localeCookie":{"name":"NEXT_LOCALE","sameSite":"lax"},"className":"inline-flex items-center rounded-full px-2.5 py-0.5 text-xs font-medium transition-colors","style":{"background":"var(--color-code-bg)","color":"var(--color-accent)","border":"1px solid var(--color-border)"},"children":["#","httproute"]}]]}],["$","h1",null,{"className":"mb-4 text-3xl leading-snug font-bold tracking-tight sm:text-4xl","style":{"color":"var(--color-text)"},"children":"Démarrage rapide d'Envoy Gateway : faites passer votre première requête en 10 minutes"}],["$","div",null,{"className":"flex flex-wrap items-center gap-3 text-sm","style":{"color":"var(--color-muted)"},"children":[["$","time",null,{"dateTime":"2026-03-10","children":"10 mars 2026"}],["$","span",null,{"aria-hidden":"true","children":"·"}],["$","span",null,{"children":"4 min read"}]]}],"$undefined",["$","div",null,{"className":"mt-6 border-b","style":{"borderColor":"var(--color-border)"}}]]}],["$","div",null,{"className":"prose","dangerouslySetInnerHTML":{"__html":"$3"}}],"$L4"]}],"$L5"]}]}]],["$L6"],"$L7"]}],"loading":null,"isPartial":false}
+4:["$","footer",null,{"className":"mt-14 border-t pt-8","style":{"borderColor":"var(--color-border)"},"children":[["$","div",null,{"className":"mb-8 flex flex-wrap gap-2","children":[["$","$L2","kubernetes",{"href":"/fr/tags/kubernetes","localeCookie":{"name":"NEXT_LOCALE","sameSite":"lax"},"className":"inline-flex items-center rounded-full px-3 py-1 text-sm font-medium transition-colors","style":{"background":"var(--color-code-bg)","color":"var(--color-accent)","border":"1px solid var(--color-border)"},"children":["#","kubernetes"]}],["$","$L2","envoy-gateway",{"href":"/fr/tags/envoy-gateway","localeCookie":{"name":"NEXT_LOCALE","sameSite":"lax"},"className":"inline-flex items-center rounded-full px-3 py-1 text-sm font-medium transition-colors","style":{"background":"var(--color-code-bg)","color":"var(--color-accent)","border":"1px solid var(--color-border)"},"children":["#","envoy-gateway"]}],["$","$L2","gateway-api",{"href":"/fr/tags/gateway-api","localeCookie":{"name":"NEXT_LOCALE","sameSite":"lax"},"className":"inline-flex items-center rounded-full px-3 py-1 text-sm font-medium transition-colors","style":{"background":"var(--color-code-bg)","color":"var(--color-accent)","border":"1px solid var(--color-border)"},"children":["#","gateway-api"]}],["$","$L2","quick-start",{"href":"/fr/tags/quick-start","localeCookie":{"name":"NEXT_LOCALE","sameSite":"lax"},"className":"inline-flex items-center rounded-full px-3 py-1 text-sm font-medium transition-colors","style":{"background":"var(--color-code-bg)","color":"var(--color-accent)","border":"1px solid var(--color-border)"},"children":["#","quick-start"]}],["$","$L2","httproute",{"href":"/fr/tags/httproute","localeCookie":{"name":"NEXT_LOCALE","sameSite":"lax"},"className":"inline-flex items-center rounded-full px-3 py-1 text-sm font-medium transition-colors","style":{"background":"var(--color-code-bg)","color":"var(--color-accent)","border":"1px solid var(--color-border)"},"children":["#","httproute"]}]]}],["$","nav",null,{"aria-label":"Navigation des articles","className":"grid grid-cols-1 gap-4 sm:grid-cols-2","children":[["$","$L2",null,{"href":"/fr/blog/k8s/gateway/00-overview","localeCookie":{"name":"NEXT_LOCALE","sameSite":"lax"},"className":"group rounded-lg border p-4 transition-colors hover:border-accent","style":{"borderColor":"var(--color-border)","background":"var(--color-surface)"},"children":[["$","p",null,{"className":"mb-1 text-xs","style":{"color":"var(--color-muted)"},"children":"← Plus récent"}],["$","p",null,{"className":"line-clamp-1 text-sm font-medium transition-colors group-hover:text-accent","style":{"color":"var(--color-text)"},"children":"Vue d'ensemble de la série K8S Envoy Gateway : une entrée de trafic plus moderne qu'Ingress"}]]}],["$","$L2",null,{"href":"/fr/blog/k8s/gateway/02-core-concepts","localeCookie":{"name":"NEXT_LOCALE","sameSite":"lax"},"className":"group rounded-lg border p-4 text-right transition-colors hover:border-accent","style":{"borderColor":"var(--color-border)","background":"var(--color-surface)"},"children":[["$","p",null,{"className":"mb-1 text-xs","style":{"color":"var(--color-muted)"},"children":"Plus ancien →"}],["$","p",null,{"className":"line-clamp-1 text-sm font-medium transition-colors group-hover:text-accent","style":{"color":"var(--color-text)"},"children":"Concepts de base d'Envoy Gateway : Gateway, Listener, Proxy et la famille Route expliqués"}]]}]]}]]}]
+9:T33a8,<p>Le but de cet article est simple : <strong>laisser de côté la philosophie et faire tourner Envoy Gateway tout de suite.</strong> Si vous atteignez le service d'exemple avec succès, vous aurez déjà fait plus que tous ceux qui sont encore bloqués sur la page d'accueil de la documentation.</p>
+<h2 id="prérequis">Prérequis</h2>
+<p>Vous avez besoin d'au moins un cluster Kubernetes fonctionnel, par exemple :</p>
+<ul>
+<li>En local : <code>kind</code>, <code>minikube</code>, <code>k3d</code></li>
+<li>Dans le cloud : EKS, GKE, AKS</li>
+<li>Homelab : K3s + MetalLB fonctionne aussi</li>
+</ul>
+<p>Il vous faudra également :</p>
+<ul>
+<li><code>kubectl</code></li>
+<li><code>helm</code></li>
+<li>Un cluster capable de provisionner une adresse <code>LoadBalancer</code>, ou un cluster où l'utilisation de <code>port-forward</code> vous convient</li>
+</ul>
+<blockquote>
+<p>⚠️ Si votre cluster ne prend pas en charge <code>LoadBalancer</code>, la documentation officielle recommande de l'associer à MetalLB. Ne pas avoir d'adresse externe n'est pas la fin du monde : vous testerez simplement via <code>port-forward</code>.</p>
+</blockquote>
+<h2 id="étape-1--installer-envoy-gateway">Étape 1 : installer Envoy Gateway</h2>
+<p>Installez le plan de contrôle :</p>
+<figure data-rehype-pretty-code-figure=""><pre style="background-color:#24292e;color:#e1e4e8" tabindex="0" data-language="bash" data-theme="github-dark"><code data-language="bash" data-theme="github-dark" style="display: grid;"><span data-line=""><span style="color:#B392F0">helm</span><span style="color:#9ECBFF"> install</span><span style="color:#9ECBFF"> eg</span><span style="color:#9ECBFF"> oci://docker.io/envoyproxy/gateway-helm</span><span style="color:#79B8FF"> \</span></span>
+<span data-line=""><span style="color:#79B8FF">  --version</span><span style="color:#9ECBFF"> v1.7.0</span><span style="color:#79B8FF"> \</span></span>
+<span data-line=""><span style="color:#79B8FF">  -n</span><span style="color:#9ECBFF"> envoy-gateway-system</span><span style="color:#79B8FF"> \</span></span>
+<span data-line=""><span style="color:#79B8FF">  --create-namespace</span></span></code></pre></figure>
+<p>Attendez qu'il soit prêt :</p>
+<figure data-rehype-pretty-code-figure=""><pre style="background-color:#24292e;color:#e1e4e8" tabindex="0" data-language="bash" data-theme="github-dark"><code data-language="bash" data-theme="github-dark" style="display: grid;"><span data-line=""><span style="color:#B392F0">kubectl</span><span style="color:#9ECBFF"> wait</span><span style="color:#79B8FF"> --timeout=5m</span><span style="color:#79B8FF"> -n</span><span style="color:#9ECBFF"> envoy-gateway-system</span><span style="color:#79B8FF"> \</span></span>
+<span data-line=""><span style="color:#9ECBFF">  deployment/envoy-gateway</span><span style="color:#79B8FF"> \</span></span>
+<span data-line=""><span style="color:#79B8FF">  --for=condition=Available</span></span></code></pre></figure>
+<p>Une fois cette étape terminée, le contrôleur Envoy Gateway tourne dans votre cluster. Il peut désormais lire les ressources <code>Gateway API</code> et générer la configuration Envoy correspondante.</p>
+<h2 id="étape-2--appliquer-les-ressources-officielles-du-quickstart">Étape 2 : appliquer les ressources officielles du quickstart</h2>
+<p>Le dépôt officiel fournit un exemple groupé qui inclut :</p>
+<ul>
+<li><code>GatewayClass</code></li>
+<li><code>Gateway</code></li>
+<li><code>HTTPRoute</code></li>
+<li>Une application backend d'exemple</li>
+</ul>
+<p>Appliquez-le directement :</p>
+<figure data-rehype-pretty-code-figure=""><pre style="background-color:#24292e;color:#e1e4e8" tabindex="0" data-language="bash" data-theme="github-dark"><code data-language="bash" data-theme="github-dark" style="display: grid;"><span data-line=""><span style="color:#B392F0">kubectl</span><span style="color:#9ECBFF"> apply</span><span style="color:#79B8FF"> -f</span><span style="color:#79B8FF"> \</span></span>
+<span data-line=""><span style="color:#9ECBFF">  https://github.com/envoyproxy/gateway/releases/download/v1.7.0/quickstart.yaml</span><span style="color:#79B8FF"> \</span></span>
+<span data-line=""><span style="color:#79B8FF">  -n</span><span style="color:#9ECBFF"> default</span></span></code></pre></figure>
+<p>Voyez cela comme l'équipe officielle qui vous prépare une scène de démonstration complète. Faites-la d'abord fonctionner, puis démontez-la ensuite pour comprendre les détails.</p>
+<h2 id="étape-3--vérifier-que-le-trafic-circule">Étape 3 : vérifier que le trafic circule</h2>
+<h3 id="option-a--le-cluster-possède-un-loadbalancer">Option A : le cluster possède un <code>LoadBalancer</code></h3>
+<p>Récupérez l'adresse du Gateway :</p>
+<figure data-rehype-pretty-code-figure=""><pre style="background-color:#24292e;color:#e1e4e8" tabindex="0" data-language="bash" data-theme="github-dark"><code data-language="bash" data-theme="github-dark" style="display: grid;"><span data-line=""><span style="color:#F97583">export</span><span style="color:#E1E4E8"> GATEWAY_HOST</span><span style="color:#F97583">=</span><span style="color:#E1E4E8">$(</span><span style="color:#B392F0">kubectl</span><span style="color:#9ECBFF"> get</span><span style="color:#9ECBFF"> gateway/eg</span><span style="color:#79B8FF"> -o</span><span style="color:#9ECBFF"> jsonpath='{.status.addresses[0].value}'</span><span style="color:#E1E4E8">)</span></span></code></pre></figure>
+<p>Envoyez une requête :</p>
+<figure data-rehype-pretty-code-figure=""><pre style="background-color:#24292e;color:#e1e4e8" tabindex="0" data-language="bash" data-theme="github-dark"><code data-language="bash" data-theme="github-dark" style="display: grid;"><span data-line=""><span style="color:#B392F0">curl</span><span style="color:#79B8FF"> --verbose</span><span style="color:#79B8FF"> \</span></span>
+<span data-line=""><span style="color:#79B8FF">  --header</span><span style="color:#9ECBFF"> "Host: www.example.com"</span><span style="color:#79B8FF"> \</span></span>
+<span data-line=""><span style="color:#9ECBFF">  http://</span><span style="color:#E1E4E8">$GATEWAY_HOST</span><span style="color:#9ECBFF">/get</span></span></code></pre></figure>
+<p>Si vous obtenez un HTTP <code>200</code>, cela signifie :</p>
+<ul>
+<li>Le Gateway sert correctement d'entrée</li>
+<li>Le HTTPRoute a bien été attaché</li>
+<li>Le service backend est correctement ciblé par le routage</li>
+</ul>
+<h3 id="option-b--pas-de-loadbalancer--utiliser-port-forward">Option B : pas de <code>LoadBalancer</code> — utiliser <code>port-forward</code></h3>
+<p>Trouvez le service Envoy :</p>
+<figure data-rehype-pretty-code-figure=""><pre style="background-color:#24292e;color:#e1e4e8" tabindex="0" data-language="bash" data-theme="github-dark"><code data-language="bash" data-theme="github-dark" style="display: grid;"><span data-line=""><span style="color:#F97583">export</span><span style="color:#E1E4E8"> ENVOY_SERVICE</span><span style="color:#F97583">=</span><span style="color:#E1E4E8">$(</span><span style="color:#B392F0">kubectl</span><span style="color:#9ECBFF"> get</span><span style="color:#9ECBFF"> svc</span><span style="color:#79B8FF"> -n</span><span style="color:#9ECBFF"> envoy-gateway-system</span><span style="color:#79B8FF"> \</span></span>
+<span data-line=""><span style="color:#79B8FF">  --selector=gateway.envoyproxy.io/owning-gateway-namespace=default,gateway.envoyproxy.io/owning-gateway-name=eg</span><span style="color:#79B8FF"> \</span></span>
+<span data-line=""><span style="color:#79B8FF">  -o</span><span style="color:#9ECBFF"> jsonpath='{.items[0].metadata.name}'</span><span style="color:#E1E4E8">)</span></span></code></pre></figure>
+<p>Redirigez le port local <code>8888</code> vers le port <code>80</code> du Gateway :</p>
+<figure data-rehype-pretty-code-figure=""><pre style="background-color:#24292e;color:#e1e4e8" tabindex="0" data-language="bash" data-theme="github-dark"><code data-language="bash" data-theme="github-dark" style="display: grid;"><span data-line=""><span style="color:#B392F0">kubectl</span><span style="color:#79B8FF"> -n</span><span style="color:#9ECBFF"> envoy-gateway-system</span><span style="color:#9ECBFF"> port-forward</span><span style="color:#9ECBFF"> service/</span><span style="color:#E1E4E8">${ENVOY_SERVICE} </span><span style="color:#9ECBFF">8888:80</span></span></code></pre></figure>
+<p>Dans un autre terminal :</p>
+<figure data-rehype-pretty-code-figure=""><pre style="background-color:#24292e;color:#e1e4e8" tabindex="0" data-language="bash" data-theme="github-dark"><code data-language="bash" data-theme="github-dark" style="display: grid;"><span data-line=""><span style="color:#B392F0">curl</span><span style="color:#79B8FF"> --verbose</span><span style="color:#79B8FF"> \</span></span>
+<span data-line=""><span style="color:#79B8FF">  --header</span><span style="color:#9ECBFF"> "Host: www.example.com"</span><span style="color:#79B8FF"> \</span></span>
+<span data-line=""><span style="color:#9ECBFF">  http://localhost:8888/get</span></span></code></pre></figure>
+<p>C'est le chemin de test local. Cela donne un peu l'impression d'entrer par la porte de derrière, mais si cela valide le routage, c'est très bien ; parfois, l'ingénierie consiste d'abord à "faire marcher", puis à rendre ça élégant.</p>
+<h2 id="où-regarder-quand-ça-casse">Où regarder quand ça casse</h2>
+<p>Les problèmes les plus courants ne viennent pas du fait qu'Envoy Gateway serait cassé, mais du fait qu'un maillon de la chaîne ne s'est pas connecté :</p>
+<table>
+<thead>
+<tr>
+<th>Symptôme</th>
+<th>À vérifier en premier</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td><code>gateway/eg</code> n'a pas d'adresse</td>
+<td>Le cluster dispose-t-il d'une implémentation <code>LoadBalancer</code> ?</td>
+</tr>
+<tr>
+<td><code>curl</code> renvoie 404 ou 503</td>
+<td>État de <code>HTTPRoute</code>, <code>Service</code> et des Pods backend</td>
+</tr>
+<tr>
+<td><code>kubectl wait</code> reste bloqué</td>
+<td>Les Pods de <code>envoy-gateway-system</code> sont-ils en cours d'exécution ?</td>
+</tr>
+</tbody>
+</table>
+<p>Commandes utiles :</p>
+<figure data-rehype-pretty-code-figure=""><pre style="background-color:#24292e;color:#e1e4e8" tabindex="0" data-language="bash" data-theme="github-dark"><code data-language="bash" data-theme="github-dark" style="display: grid;"><span data-line=""><span style="color:#B392F0">kubectl</span><span style="color:#9ECBFF"> get</span><span style="color:#9ECBFF"> pods</span><span style="color:#79B8FF"> -n</span><span style="color:#9ECBFF"> envoy-gateway-system</span></span>
+<span data-line=""><span style="color:#B392F0">kubectl</span><span style="color:#9ECBFF"> get</span><span style="color:#9ECBFF"> gatewayclass</span></span>
+<span data-line=""><span style="color:#B392F0">kubectl</span><span style="color:#9ECBFF"> get</span><span style="color:#9ECBFF"> gateway</span><span style="color:#79B8FF"> -A</span></span>
+<span data-line=""><span style="color:#B392F0">kubectl</span><span style="color:#9ECBFF"> get</span><span style="color:#9ECBFF"> httproute</span><span style="color:#79B8FF"> -A</span></span>
+<span data-line=""><span style="color:#B392F0">kubectl</span><span style="color:#9ECBFF"> get</span><span style="color:#9ECBFF"> svc,pod</span><span style="color:#79B8FF"> -n</span><span style="color:#9ECBFF"> default</span></span></code></pre></figure>
+<p>Pour creuser le status du Gateway :</p>
+<figure data-rehype-pretty-code-figure=""><pre style="background-color:#24292e;color:#e1e4e8" tabindex="0" data-language="bash" data-theme="github-dark"><code data-language="bash" data-theme="github-dark" style="display: grid;"><span data-line=""><span style="color:#B392F0">kubectl</span><span style="color:#9ECBFF"> get</span><span style="color:#9ECBFF"> gateway/eg</span><span style="color:#79B8FF"> -o</span><span style="color:#9ECBFF"> yaml</span></span></code></pre></figure>
+<p>Les points clés à vérifier :</p>
+<ul>
+<li><code>status.addresses</code></li>
+<li>Les conditions du listener</li>
+<li>Si les routes ont été acceptées</li>
+</ul>
+<h2 id="ce-que-vous-venez-réellement-de-faire">Ce que vous venez réellement de faire</h2>
+<p>Vous n'avez exécuté que quelques commandes, mais vous avez complété toute une chaîne de bout en bout :</p>
+<ol>
+<li>Installation de <code>Envoy Gateway</code></li>
+<li>Création d'un <code>GatewayClass</code> pour indiquer au cluster quel contrôleur de gateway utiliser</li>
+<li>Création d'un <code>Gateway</code> qui déclare le port et le protocole d'entrée</li>
+<li>Création d'un <code>HTTPRoute</code> qui route le trafic vers le service backend</li>
+<li>Envoy Gateway a traduit ces déclarations en configuration que Envoy Proxy peut exécuter</li>
+</ol>
+<p>C'est exactement pour cela que Gateway API vaut la peine d'être utilisé. Vous écrivez des ressources Kubernetes, vous ne maintenez pas à la main une pile de fichiers de configuration proxy.</p>
+<h2 id="étape-suivante">Étape suivante</h2>
+<p>Maintenant que votre première requête circule, l'article suivant explique ce que chacune de ces ressources fait réellement, afin de construire le bon modèle mental :
+👉 <a href="02-core-concepts">Concepts de base</a></p>5:["$","aside",null,{"className":"hidden lg:block","children":["$","$L8",null,{"html":"$9"}]}]
+6:["$","script","script-0",{"src":"/_next/static/chunks/2dddb3bc05093f69.js","async":true}]
+7:["$","$La",null,{"children":["$","$b",null,{"name":"Next.MetadataOutlet","children":"$@c"}]}]
+c:null

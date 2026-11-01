@@ -1,0 +1,415 @@
+1:"$Sreact.fragment"
+2:I[14864,["/_next/static/chunks/7923a261b80bb6e1.js","/_next/static/chunks/e09b4358027e8033.js","/_next/static/chunks/2dddb3bc05093f69.js"],"default"]
+8:I[24801,["/_next/static/chunks/7923a261b80bb6e1.js","/_next/static/chunks/e09b4358027e8033.js","/_next/static/chunks/2dddb3bc05093f69.js"],"default"]
+a:I[50183,["/_next/static/chunks/5a5b5b13c22d14f7.js","/_next/static/chunks/a484d1d3dd4b55ab.js"],"OutletBoundary"]
+b:"$Sreact.suspense"
+3:T3a49,<p>If you've worked with Kubernetes external traffic before, chances are you started with <code>Ingress</code>. It works, and for many scenarios it's genuinely sufficient. But once you hit more complex requirements — multiple listeners, multi-team ownership, gRPC, TCP, TLS passthrough, fine-grained traffic policies — you inevitably end up in a situation where "keep it alive with annotations" becomes the norm. The YAML starts looking like an incantation, and the people maintaining it feel like they're breaking a seal.</p>
+<p>That's where <code>Gateway API + Envoy Gateway</code> comes in — it's the new kit. It doesn't make things more complicated; it cleanly separates the responsibilities that used to be tangled together, making ingress traffic, routing rules, TLS security settings, protocol types, and team ownership much easier to reason about.</p>
+<h2 id="what-is-it-exactly">What Is It, Exactly</h2>
+<p>Let's say it plainly in one sentence:</p>
+<ul>
+<li><code>Envoy Proxy</code>: The data plane that actually receives traffic and forwards requests — also called a Gateway Proxy</li>
+<li><code>Envoy Gateway</code>: The control plane that manages Envoy Proxy for you</li>
+<li><code>Gateway API</code>: The standard interface you use in Kubernetes to declare traffic rules</li>
+</ul>
+<p>Think of it this way:</p>
+<ul>
+<li><code>Gateway API</code> is where you write the requirements</li>
+<li><code>Envoy Gateway</code> is the manager who translates and delegates</li>
+<li><code>Envoy Proxy</code> is the actual guard standing at the door</li>
+</ul>
+<p>The benefit of this separation is that you don't need to hand-craft low-level Envoy config, nor do you need to memorize every private annotation from various controllers. You declare Kubernetes resources, and Envoy Gateway translates them into configuration that Envoy Proxy can actually execute.</p>
+<h2 id="gateway-vs-ingress-whats-the-difference">Gateway vs Ingress: What's the Difference</h2>
+<p>The short answer: <strong>Ingress isn't obsolete, but Gateway API is better suited for medium-to-large systems that need more governance.</strong></p>
+<table>
+<thead>
+<tr>
+<th>Comparison</th>
+<th>Ingress</th>
+<th>Gateway API</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td>Ingress model</td>
+<td>Usually combines ingress and routing in one object</td>
+<td>Separates <code>GatewayClass</code>, <code>Gateway</code>, and <code>Route</code></td>
+</tr>
+<tr>
+<td>Expressiveness</td>
+<td>Primarily HTTP/HTTPS; advanced features rely on annotations</td>
+<td>Native support for multiple route types and clearer fields</td>
+</tr>
+<tr>
+<td>Extension model</td>
+<td>Many capabilities depend on controller-specific private annotations</td>
+<td>Standard fields, plus extension points via CRDs</td>
+</tr>
+<tr>
+<td>Protocol support</td>
+<td>Mostly HTTP/Web-focused</td>
+<td>Supports <code>HTTPRoute</code>, <code>GRPCRoute</code>, <code>TCPRoute</code>, <code>TLSRoute</code></td>
+</tr>
+<tr>
+<td>Team ownership</td>
+<td>Easy to mix platform and app config</td>
+<td>Better suited for platform teams managing ingress, app teams managing routes</td>
+</tr>
+<tr>
+<td>Portability</td>
+<td>Annotations are often tied to specific controllers</td>
+<td>More standardized, better cross-implementation readability</td>
+</tr>
+</tbody>
+</table>
+<p>If your requirements are simply:</p>
+<ul>
+<li>A single website or simple API</li>
+<li>Basic path/host routing</li>
+<li>Small team</li>
+</ul>
+<p>Then Ingress is still fine. But if your requirements start to include:</p>
+<ul>
+<li>One ingress serving multiple protocols</li>
+<li>Multiple listeners, domains, or certificates</li>
+<li>HTTP and gRPC coexisting</li>
+<li>Separating platform ingress from application route permissions</li>
+<li>Config that reads like a proper API, not an annotation wishlist</li>
+</ul>
+<p>Then Gateway API will start to look very appealing.</p>
+<h2 id="why-not-just-use-ingress">Why Not Just Use Ingress</h2>
+<p>The official Gateway API goal is to address several common pain points with Ingress at scale:</p>
+<ul>
+<li><strong>Better expressiveness</strong>: Routing, TLS, traffic policies, and protocol types are more clearly defined</li>
+<li><strong>Better portability</strong>: Less reliance on controller-specific private annotations</li>
+<li><strong>More natural role separation</strong>: Platform teams own ingress, app teams own routes</li>
+</ul>
+<p>For example, Ingress configs often look like this:</p>
+<figure data-rehype-pretty-code-figure=""><pre style="background-color:#24292e;color:#e1e4e8" tabindex="0" data-language="yaml" data-theme="github-dark"><code data-language="yaml" data-theme="github-dark" style="display: grid;"><span data-line=""><span style="color:#85E89D">metadata</span><span style="color:#E1E4E8">:</span></span>
+<span data-line=""><span style="color:#85E89D">  annotations</span><span style="color:#E1E4E8">:</span></span>
+<span data-line=""><span style="color:#85E89D">    some.ingress.controller/rewrite-target</span><span style="color:#E1E4E8">: </span><span style="color:#9ECBFF">/</span></span>
+<span data-line=""><span style="color:#85E89D">    some.ingress.controller/auth-type</span><span style="color:#E1E4E8">: </span><span style="color:#9ECBFF">basic</span></span>
+<span data-line=""><span style="color:#85E89D">    some.ingress.controller/ssl-redirect</span><span style="color:#E1E4E8">: </span><span style="color:#9ECBFF">"true"</span></span></code></pre></figure>
+<p>Not that it doesn't work — but as requirements grow, annotations easily become mysterious YAML black magic. Gateway API pulls these needs into proper fields. It reads like "configuration," not a "wishlist."</p>
+<h2 id="the-layered-structure">The Layered Structure</h2>
+<p>The official concept page breaks Envoy Gateway into three layers — worth memorizing as a mental map:</p>
+<ul>
+<li><strong>User Configuration</strong>: The <code>Gateway API</code> resources and Envoy Gateway extension CRDs you write</li>
+<li><strong>Envoy Gateway Controller</strong>: Reads these resources, translates them into executable config</li>
+<li><strong>Envoy Proxy</strong>: The data plane that actually handles live traffic</li>
+</ul>
+<p>In practice, you'll spend most of your time modifying the "declarative layer," not SSH-ing into proxy instances to tweak low-level config. This is the elegance of being Kubernetes-native.</p>
+<h2 id="what-youll-learn-in-this-series">What You'll Learn in This Series</h2>
+<p>This series follows a "build it first, then go deeper" order — <strong>10 posts including this overview</strong>:</p>
+<ol>
+<li><a href="01-quick-start">Quick Start</a>: Install Envoy Gateway and run your first HTTP request end-to-end</li>
+<li><a href="02-core-concepts">Core Concepts</a>: Understand <code>GatewayClass</code>, <code>Gateway</code>, <code>Listener</code>, and <code>Envoy Proxy</code></li>
+<li><a href="03-http-routing">HTTP Routing in Practice</a>: Deep dive into <code>HTTPRoute</code> — host, path, header, filter, timeout</li>
+<li><a href="04-tls-and-security">TLS and Security</a>: Set up HTTPS, understand <code>certificateRefs</code>, TLS termination, and <code>TLSRoute</code></li>
+<li><a href="05-best-practices">Best Practices</a>: Key habits before going to production</li>
+<li><a href="06-route-types-cheatsheet">Route Type Cheatsheet</a>: Quickly decide between <code>HTTPRoute</code>, <code>GRPCRoute</code>, <code>TCPRoute</code>, and <code>TLSRoute</code></li>
+<li><a href="07-listener-design">Listener Design Guide</a>: Multi-port, multi-hostname, multi-ingress design patterns</li>
+<li><a href="08-multi-namespace-and-teamwork">Multi-Namespace and Team Ownership</a>: Master <code>allowedRoutes</code>, <code>ReferenceGrant</code>, and shared ingress governance</li>
+<li><a href="09-debugging-and-status">Status and Debugging Handbook</a>: Read <code>Accepted</code>, <code>ResolvedRefs</code>, <code>Programmed</code>, and follow the shortest troubleshooting path</li>
+</ol>
+<p>If you just want to feel what Envoy Gateway is like, go straight to the next post. Getting it running beats memorizing every term first — just like going to the gym, actually showing up beats watching 30 YouTube videos first.</p>
+<h2 id="core-resources-youll-encounter">Core Resources You'll Encounter</h2>
+<p>Beginners often stumble because they assume Gateway API only has <code>Gateway</code> and <code>HTTPRoute</code>. It's actually a whole family of resources.</p>
+<h3 id="gatewayclass"><code>GatewayClass</code></h3>
+<p>Defines "which Gateway implementation to use in this cluster."
+For Envoy Gateway, the key is getting <code>controllerName</code> to point to the right controller.</p>
+<h3 id="gateway"><code>Gateway</code></h3>
+<p>Defines "what the ingress looks like."
+For example: which ports to open, which protocols to listen on, how TLS is attached, which routes are allowed.</p>
+<h3 id="listener"><code>Listener</code></h3>
+<p><code>Listener</code> is one of the most important units inside a <code>Gateway</code>.
+Think of it as an outward-facing slot on the Gateway — each slot defines:</p>
+<ul>
+<li>port</li>
+<li>protocol</li>
+<li>hostname</li>
+<li>TLS config</li>
+<li><code>allowedRoutes</code></li>
+</ul>
+<p>Many people think of <code>Gateway</code> as a black box, but what actually determines ingress behavior is each individual <code>listener</code> inside it.</p>
+<h3 id="the-route-family">The Route Family</h3>
+<ul>
+<li><code>HTTPRoute</code>: HTTP/HTTPS traffic — the most common</li>
+<li><code>GRPCRoute</code>: gRPC traffic — can match on service/method</li>
+<li><code>TCPRoute</code>: Raw TCP traffic — doesn't parse HTTP semantics</li>
+<li><code>TLSRoute</code>: Routes based on TLS SNI — common for TLS passthrough</li>
+</ul>
+<p>What all routes share:
+<strong>They don't "open the door" — they decide "how to route traffic after it enters."</strong></p>
+<h2 id="minimal-mental-model">Minimal Mental Model</h2>
+<p>Keep this map in your head:</p>
+<figure data-rehype-pretty-code-figure=""><pre style="background-color:#24292e;color:#e1e4e8" tabindex="0" data-language="yaml" data-theme="github-dark"><code data-language="yaml" data-theme="github-dark" style="display: grid;"><span data-line=""><span style="color:#9ECBFF">GatewayClass</span><span style="color:#6A737D">  # Which Gateway implementation to use in this cluster</span></span>
+<span data-line=""><span style="color:#9ECBFF">Gateway</span><span style="color:#6A737D">       # Which listeners this ingress opens</span></span>
+<span data-line=""><span style="color:#9ECBFF">Listener</span><span style="color:#6A737D">      # A port / protocol / hostname / TLS slot</span></span>
+<span data-line=""><span style="color:#9ECBFF">Route</span><span style="color:#6A737D">         # How to distribute traffic once it enters</span></span>
+<span data-line=""><span style="color:#9ECBFF">Service</span><span style="color:#6A737D">       # The backend actually serving requests in the cluster</span></span>
+<span data-line=""><span style="color:#9ECBFF">Envoy Proxy</span><span style="color:#6A737D">   # The data plane that ultimately handles the traffic</span></span></code></pre></figure>
+<p>A minimal example looks like this:</p>
+<figure data-rehype-pretty-code-figure=""><pre style="background-color:#24292e;color:#e1e4e8" tabindex="0" data-language="yaml" data-theme="github-dark"><code data-language="yaml" data-theme="github-dark" style="display: grid;"><span data-line=""><span style="color:#85E89D">apiVersion</span><span style="color:#E1E4E8">: </span><span style="color:#9ECBFF">gateway.networking.k8s.io/v1</span></span>
+<span data-line=""><span style="color:#85E89D">kind</span><span style="color:#E1E4E8">: </span><span style="color:#9ECBFF">HTTPRoute</span></span>
+<span data-line=""><span style="color:#85E89D">metadata</span><span style="color:#E1E4E8">:</span></span>
+<span data-line=""><span style="color:#85E89D">  name</span><span style="color:#E1E4E8">: </span><span style="color:#9ECBFF">demo</span></span>
+<span data-line=""><span style="color:#85E89D">spec</span><span style="color:#E1E4E8">:</span></span>
+<span data-line=""><span style="color:#85E89D">  parentRefs</span><span style="color:#E1E4E8">:</span></span>
+<span data-line=""><span style="color:#E1E4E8">    - </span><span style="color:#85E89D">name</span><span style="color:#E1E4E8">: </span><span style="color:#9ECBFF">eg</span></span>
+<span data-line=""><span style="color:#85E89D">  hostnames</span><span style="color:#E1E4E8">:</span></span>
+<span data-line=""><span style="color:#E1E4E8">    - </span><span style="color:#9ECBFF">"www.example.com"</span></span>
+<span data-line=""><span style="color:#85E89D">  rules</span><span style="color:#E1E4E8">:</span></span>
+<span data-line=""><span style="color:#E1E4E8">    - </span><span style="color:#85E89D">backendRefs</span><span style="color:#E1E4E8">:</span></span>
+<span data-line=""><span style="color:#E1E4E8">        - </span><span style="color:#85E89D">name</span><span style="color:#E1E4E8">: </span><span style="color:#9ECBFF">backend</span></span>
+<span data-line=""><span style="color:#85E89D">          port</span><span style="color:#E1E4E8">: </span><span style="color:#79B8FF">3000</span></span></code></pre></figure>
+<p>You don't need to memorize every field now. Just understand what it's doing:</p>
+<ul>
+<li><code>parentRefs</code>: Which Gateway this rule attaches to</li>
+<li><code>hostnames</code>: Which domain should match this rule</li>
+<li><code>backendRefs</code>: Which Service to send traffic to</li>
+</ul>
+<h2 id="at-a-glance-when-to-use-which-route">At a Glance: When to Use Which Route</h2>
+<table>
+<thead>
+<tr>
+<th>Requirement</th>
+<th>Recommended Resource</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td>Websites, REST APIs, header/path routing</td>
+<td><code>HTTPRoute</code></td>
+</tr>
+<tr>
+<td>gRPC service/method routing</td>
+<td><code>GRPCRoute</code></td>
+</tr>
+<tr>
+<td>Pure TCP services (custom protocol or non-HTTP)</td>
+<td><code>TCPRoute</code></td>
+</tr>
+<tr>
+<td>Preserve end-to-end TLS, don't decrypt at Gateway</td>
+<td><code>TLSRoute</code></td>
+</tr>
+</tbody>
+</table>
+<p>This decision matrix is very practical. Before writing YAML, ask yourself:</p>
+<p>"Am I dealing with HTTP, gRPC, or raw TCP/TLS traffic?"</p>
+<h2 id="one-line-summary">One-Line Summary</h2>
+<p><code>Envoy Gateway</code> isn't just another term you have to memorize — it's a way to elevate Kubernetes external traffic from "good enough" to "something that resembles an engineering system."</p>
+<blockquote>
+<p>💡 If this is your first time with this stack, don't try to learn every CRD at once. Install it, get your first request through, then revisit the concepts — the absorption rate is much faster that way.</p>
+</blockquote>
+<h2 id="next-step">Next Step</h2>
+<p>Next post, we get hands-on — install Envoy Gateway in your cluster and run your first <code>Gateway + HTTPRoute</code>:
+👉 <a href="01-quick-start">Quick Start</a></p>0:{"buildId":"Yck3R4ooQxWkwGLT6is1X","rsc":["$","$1","c",{"children":[[["$","script",null,{"type":"application/ld+json","dangerouslySetInnerHTML":{"__html":"{\"@context\":\"https://schema.org\",\"@type\":\"Article\",\"headline\":\"K8S Envoy Gateway Series Overview: A More Modern Traffic Ingress Than Ingress\",\"description\":\"Understand the relationship between Envoy Gateway, Gateway API, and Envoy Proxy, and build a learning map for the entire series.\",\"url\":\"https://benxhub.com/en/blog/k8s/gateway/00-overview\",\"mainEntityOfPage\":{\"@type\":\"WebPage\",\"@id\":\"https://benxhub.com/en/blog/k8s/gateway/00-overview\"},\"datePublished\":\"2026-03-10T00:00:00.000Z\",\"dateModified\":\"2026-03-10T00:00:00.000Z\",\"keywords\":\"kubernetes, envoy-gateway, gateway-api, envoy-proxy, ingress\",\"inLanguage\":\"en\",\"author\":{\"@type\":\"Person\",\"name\":\"BenX\",\"url\":\"https://benxhub.com\"},\"publisher\":{\"@type\":\"Organization\",\"name\":\"BenXHub Blog\",\"url\":\"https://benxhub.com\"}}"}}],["$","div",null,{"className":"mx-auto max-w-6xl px-4 py-12 sm:px-6","children":["$","div",null,{"className":"lg:grid lg:grid-cols-[1fr_240px] lg:gap-14","children":[["$","article",null,{"children":[["$","header",null,{"className":"mb-10","children":[["$","div",null,{"className":"mb-4 flex flex-wrap gap-2","children":[["$","$L2","kubernetes",{"href":"/en/tags/kubernetes","localeCookie":{"name":"NEXT_LOCALE","sameSite":"lax"},"className":"inline-flex items-center rounded-full px-2.5 py-0.5 text-xs font-medium transition-colors","style":{"background":"var(--color-code-bg)","color":"var(--color-accent)","border":"1px solid var(--color-border)"},"children":["#","kubernetes"]}],["$","$L2","envoy-gateway",{"href":"/en/tags/envoy-gateway","localeCookie":{"name":"NEXT_LOCALE","sameSite":"lax"},"className":"inline-flex items-center rounded-full px-2.5 py-0.5 text-xs font-medium transition-colors","style":{"background":"var(--color-code-bg)","color":"var(--color-accent)","border":"1px solid var(--color-border)"},"children":["#","envoy-gateway"]}],["$","$L2","gateway-api",{"href":"/en/tags/gateway-api","localeCookie":{"name":"NEXT_LOCALE","sameSite":"lax"},"className":"inline-flex items-center rounded-full px-2.5 py-0.5 text-xs font-medium transition-colors","style":{"background":"var(--color-code-bg)","color":"var(--color-accent)","border":"1px solid var(--color-border)"},"children":["#","gateway-api"]}],["$","$L2","envoy-proxy",{"href":"/en/tags/envoy-proxy","localeCookie":{"name":"NEXT_LOCALE","sameSite":"lax"},"className":"inline-flex items-center rounded-full px-2.5 py-0.5 text-xs font-medium transition-colors","style":{"background":"var(--color-code-bg)","color":"var(--color-accent)","border":"1px solid var(--color-border)"},"children":["#","envoy-proxy"]}],["$","$L2","ingress",{"href":"/en/tags/ingress","localeCookie":{"name":"NEXT_LOCALE","sameSite":"lax"},"className":"inline-flex items-center rounded-full px-2.5 py-0.5 text-xs font-medium transition-colors","style":{"background":"var(--color-code-bg)","color":"var(--color-accent)","border":"1px solid var(--color-border)"},"children":["#","ingress"]}]]}],["$","h1",null,{"className":"mb-4 text-3xl leading-snug font-bold tracking-tight sm:text-4xl","style":{"color":"var(--color-text)"},"children":"K8S Envoy Gateway Series Overview: A More Modern Traffic Ingress Than Ingress"}],["$","div",null,{"className":"flex flex-wrap items-center gap-3 text-sm","style":{"color":"var(--color-muted)"},"children":[["$","time",null,{"dateTime":"2026-03-10","children":"Mar 10, 2026"}],["$","span",null,{"aria-hidden":"true","children":"·"}],["$","span",null,{"children":"7 min read"}]]}],"$undefined",["$","div",null,{"className":"mt-6 border-b","style":{"borderColor":"var(--color-border)"}}]]}],["$","div",null,{"className":"prose","dangerouslySetInnerHTML":{"__html":"$3"}}],"$L4"]}],"$L5"]}]}]],["$L6"],"$L7"]}],"loading":null,"isPartial":false}
+4:["$","footer",null,{"className":"mt-14 border-t pt-8","style":{"borderColor":"var(--color-border)"},"children":[["$","div",null,{"className":"mb-8 flex flex-wrap gap-2","children":[["$","$L2","kubernetes",{"href":"/en/tags/kubernetes","localeCookie":{"name":"NEXT_LOCALE","sameSite":"lax"},"className":"inline-flex items-center rounded-full px-3 py-1 text-sm font-medium transition-colors","style":{"background":"var(--color-code-bg)","color":"var(--color-accent)","border":"1px solid var(--color-border)"},"children":["#","kubernetes"]}],["$","$L2","envoy-gateway",{"href":"/en/tags/envoy-gateway","localeCookie":{"name":"NEXT_LOCALE","sameSite":"lax"},"className":"inline-flex items-center rounded-full px-3 py-1 text-sm font-medium transition-colors","style":{"background":"var(--color-code-bg)","color":"var(--color-accent)","border":"1px solid var(--color-border)"},"children":["#","envoy-gateway"]}],["$","$L2","gateway-api",{"href":"/en/tags/gateway-api","localeCookie":{"name":"NEXT_LOCALE","sameSite":"lax"},"className":"inline-flex items-center rounded-full px-3 py-1 text-sm font-medium transition-colors","style":{"background":"var(--color-code-bg)","color":"var(--color-accent)","border":"1px solid var(--color-border)"},"children":["#","gateway-api"]}],["$","$L2","envoy-proxy",{"href":"/en/tags/envoy-proxy","localeCookie":{"name":"NEXT_LOCALE","sameSite":"lax"},"className":"inline-flex items-center rounded-full px-3 py-1 text-sm font-medium transition-colors","style":{"background":"var(--color-code-bg)","color":"var(--color-accent)","border":"1px solid var(--color-border)"},"children":["#","envoy-proxy"]}],["$","$L2","ingress",{"href":"/en/tags/ingress","localeCookie":{"name":"NEXT_LOCALE","sameSite":"lax"},"className":"inline-flex items-center rounded-full px-3 py-1 text-sm font-medium transition-colors","style":{"background":"var(--color-code-bg)","color":"var(--color-accent)","border":"1px solid var(--color-border)"},"children":["#","ingress"]}]]}],["$","nav",null,{"aria-label":"Post navigation","className":"grid grid-cols-1 gap-4 sm:grid-cols-2","children":[["$","div",null,{}],["$","$L2",null,{"href":"/en/blog/k8s/gateway/01-quick-start","localeCookie":{"name":"NEXT_LOCALE","sameSite":"lax"},"className":"group rounded-lg border p-4 text-right transition-colors hover:border-accent","style":{"borderColor":"var(--color-border)","background":"var(--color-surface)"},"children":[["$","p",null,{"className":"mb-1 text-xs","style":{"color":"var(--color-muted)"},"children":"Older →"}],["$","p",null,{"className":"line-clamp-1 text-sm font-medium transition-colors group-hover:text-accent","style":{"color":"var(--color-text)"},"children":"Envoy Gateway Quick Start: Get Your First Request Through in 10 Minutes"}]]}]]}]]}]
+9:T3a49,<p>If you've worked with Kubernetes external traffic before, chances are you started with <code>Ingress</code>. It works, and for many scenarios it's genuinely sufficient. But once you hit more complex requirements — multiple listeners, multi-team ownership, gRPC, TCP, TLS passthrough, fine-grained traffic policies — you inevitably end up in a situation where "keep it alive with annotations" becomes the norm. The YAML starts looking like an incantation, and the people maintaining it feel like they're breaking a seal.</p>
+<p>That's where <code>Gateway API + Envoy Gateway</code> comes in — it's the new kit. It doesn't make things more complicated; it cleanly separates the responsibilities that used to be tangled together, making ingress traffic, routing rules, TLS security settings, protocol types, and team ownership much easier to reason about.</p>
+<h2 id="what-is-it-exactly">What Is It, Exactly</h2>
+<p>Let's say it plainly in one sentence:</p>
+<ul>
+<li><code>Envoy Proxy</code>: The data plane that actually receives traffic and forwards requests — also called a Gateway Proxy</li>
+<li><code>Envoy Gateway</code>: The control plane that manages Envoy Proxy for you</li>
+<li><code>Gateway API</code>: The standard interface you use in Kubernetes to declare traffic rules</li>
+</ul>
+<p>Think of it this way:</p>
+<ul>
+<li><code>Gateway API</code> is where you write the requirements</li>
+<li><code>Envoy Gateway</code> is the manager who translates and delegates</li>
+<li><code>Envoy Proxy</code> is the actual guard standing at the door</li>
+</ul>
+<p>The benefit of this separation is that you don't need to hand-craft low-level Envoy config, nor do you need to memorize every private annotation from various controllers. You declare Kubernetes resources, and Envoy Gateway translates them into configuration that Envoy Proxy can actually execute.</p>
+<h2 id="gateway-vs-ingress-whats-the-difference">Gateway vs Ingress: What's the Difference</h2>
+<p>The short answer: <strong>Ingress isn't obsolete, but Gateway API is better suited for medium-to-large systems that need more governance.</strong></p>
+<table>
+<thead>
+<tr>
+<th>Comparison</th>
+<th>Ingress</th>
+<th>Gateway API</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td>Ingress model</td>
+<td>Usually combines ingress and routing in one object</td>
+<td>Separates <code>GatewayClass</code>, <code>Gateway</code>, and <code>Route</code></td>
+</tr>
+<tr>
+<td>Expressiveness</td>
+<td>Primarily HTTP/HTTPS; advanced features rely on annotations</td>
+<td>Native support for multiple route types and clearer fields</td>
+</tr>
+<tr>
+<td>Extension model</td>
+<td>Many capabilities depend on controller-specific private annotations</td>
+<td>Standard fields, plus extension points via CRDs</td>
+</tr>
+<tr>
+<td>Protocol support</td>
+<td>Mostly HTTP/Web-focused</td>
+<td>Supports <code>HTTPRoute</code>, <code>GRPCRoute</code>, <code>TCPRoute</code>, <code>TLSRoute</code></td>
+</tr>
+<tr>
+<td>Team ownership</td>
+<td>Easy to mix platform and app config</td>
+<td>Better suited for platform teams managing ingress, app teams managing routes</td>
+</tr>
+<tr>
+<td>Portability</td>
+<td>Annotations are often tied to specific controllers</td>
+<td>More standardized, better cross-implementation readability</td>
+</tr>
+</tbody>
+</table>
+<p>If your requirements are simply:</p>
+<ul>
+<li>A single website or simple API</li>
+<li>Basic path/host routing</li>
+<li>Small team</li>
+</ul>
+<p>Then Ingress is still fine. But if your requirements start to include:</p>
+<ul>
+<li>One ingress serving multiple protocols</li>
+<li>Multiple listeners, domains, or certificates</li>
+<li>HTTP and gRPC coexisting</li>
+<li>Separating platform ingress from application route permissions</li>
+<li>Config that reads like a proper API, not an annotation wishlist</li>
+</ul>
+<p>Then Gateway API will start to look very appealing.</p>
+<h2 id="why-not-just-use-ingress">Why Not Just Use Ingress</h2>
+<p>The official Gateway API goal is to address several common pain points with Ingress at scale:</p>
+<ul>
+<li><strong>Better expressiveness</strong>: Routing, TLS, traffic policies, and protocol types are more clearly defined</li>
+<li><strong>Better portability</strong>: Less reliance on controller-specific private annotations</li>
+<li><strong>More natural role separation</strong>: Platform teams own ingress, app teams own routes</li>
+</ul>
+<p>For example, Ingress configs often look like this:</p>
+<figure data-rehype-pretty-code-figure=""><pre style="background-color:#24292e;color:#e1e4e8" tabindex="0" data-language="yaml" data-theme="github-dark"><code data-language="yaml" data-theme="github-dark" style="display: grid;"><span data-line=""><span style="color:#85E89D">metadata</span><span style="color:#E1E4E8">:</span></span>
+<span data-line=""><span style="color:#85E89D">  annotations</span><span style="color:#E1E4E8">:</span></span>
+<span data-line=""><span style="color:#85E89D">    some.ingress.controller/rewrite-target</span><span style="color:#E1E4E8">: </span><span style="color:#9ECBFF">/</span></span>
+<span data-line=""><span style="color:#85E89D">    some.ingress.controller/auth-type</span><span style="color:#E1E4E8">: </span><span style="color:#9ECBFF">basic</span></span>
+<span data-line=""><span style="color:#85E89D">    some.ingress.controller/ssl-redirect</span><span style="color:#E1E4E8">: </span><span style="color:#9ECBFF">"true"</span></span></code></pre></figure>
+<p>Not that it doesn't work — but as requirements grow, annotations easily become mysterious YAML black magic. Gateway API pulls these needs into proper fields. It reads like "configuration," not a "wishlist."</p>
+<h2 id="the-layered-structure">The Layered Structure</h2>
+<p>The official concept page breaks Envoy Gateway into three layers — worth memorizing as a mental map:</p>
+<ul>
+<li><strong>User Configuration</strong>: The <code>Gateway API</code> resources and Envoy Gateway extension CRDs you write</li>
+<li><strong>Envoy Gateway Controller</strong>: Reads these resources, translates them into executable config</li>
+<li><strong>Envoy Proxy</strong>: The data plane that actually handles live traffic</li>
+</ul>
+<p>In practice, you'll spend most of your time modifying the "declarative layer," not SSH-ing into proxy instances to tweak low-level config. This is the elegance of being Kubernetes-native.</p>
+<h2 id="what-youll-learn-in-this-series">What You'll Learn in This Series</h2>
+<p>This series follows a "build it first, then go deeper" order — <strong>10 posts including this overview</strong>:</p>
+<ol>
+<li><a href="01-quick-start">Quick Start</a>: Install Envoy Gateway and run your first HTTP request end-to-end</li>
+<li><a href="02-core-concepts">Core Concepts</a>: Understand <code>GatewayClass</code>, <code>Gateway</code>, <code>Listener</code>, and <code>Envoy Proxy</code></li>
+<li><a href="03-http-routing">HTTP Routing in Practice</a>: Deep dive into <code>HTTPRoute</code> — host, path, header, filter, timeout</li>
+<li><a href="04-tls-and-security">TLS and Security</a>: Set up HTTPS, understand <code>certificateRefs</code>, TLS termination, and <code>TLSRoute</code></li>
+<li><a href="05-best-practices">Best Practices</a>: Key habits before going to production</li>
+<li><a href="06-route-types-cheatsheet">Route Type Cheatsheet</a>: Quickly decide between <code>HTTPRoute</code>, <code>GRPCRoute</code>, <code>TCPRoute</code>, and <code>TLSRoute</code></li>
+<li><a href="07-listener-design">Listener Design Guide</a>: Multi-port, multi-hostname, multi-ingress design patterns</li>
+<li><a href="08-multi-namespace-and-teamwork">Multi-Namespace and Team Ownership</a>: Master <code>allowedRoutes</code>, <code>ReferenceGrant</code>, and shared ingress governance</li>
+<li><a href="09-debugging-and-status">Status and Debugging Handbook</a>: Read <code>Accepted</code>, <code>ResolvedRefs</code>, <code>Programmed</code>, and follow the shortest troubleshooting path</li>
+</ol>
+<p>If you just want to feel what Envoy Gateway is like, go straight to the next post. Getting it running beats memorizing every term first — just like going to the gym, actually showing up beats watching 30 YouTube videos first.</p>
+<h2 id="core-resources-youll-encounter">Core Resources You'll Encounter</h2>
+<p>Beginners often stumble because they assume Gateway API only has <code>Gateway</code> and <code>HTTPRoute</code>. It's actually a whole family of resources.</p>
+<h3 id="gatewayclass"><code>GatewayClass</code></h3>
+<p>Defines "which Gateway implementation to use in this cluster."
+For Envoy Gateway, the key is getting <code>controllerName</code> to point to the right controller.</p>
+<h3 id="gateway"><code>Gateway</code></h3>
+<p>Defines "what the ingress looks like."
+For example: which ports to open, which protocols to listen on, how TLS is attached, which routes are allowed.</p>
+<h3 id="listener"><code>Listener</code></h3>
+<p><code>Listener</code> is one of the most important units inside a <code>Gateway</code>.
+Think of it as an outward-facing slot on the Gateway — each slot defines:</p>
+<ul>
+<li>port</li>
+<li>protocol</li>
+<li>hostname</li>
+<li>TLS config</li>
+<li><code>allowedRoutes</code></li>
+</ul>
+<p>Many people think of <code>Gateway</code> as a black box, but what actually determines ingress behavior is each individual <code>listener</code> inside it.</p>
+<h3 id="the-route-family">The Route Family</h3>
+<ul>
+<li><code>HTTPRoute</code>: HTTP/HTTPS traffic — the most common</li>
+<li><code>GRPCRoute</code>: gRPC traffic — can match on service/method</li>
+<li><code>TCPRoute</code>: Raw TCP traffic — doesn't parse HTTP semantics</li>
+<li><code>TLSRoute</code>: Routes based on TLS SNI — common for TLS passthrough</li>
+</ul>
+<p>What all routes share:
+<strong>They don't "open the door" — they decide "how to route traffic after it enters."</strong></p>
+<h2 id="minimal-mental-model">Minimal Mental Model</h2>
+<p>Keep this map in your head:</p>
+<figure data-rehype-pretty-code-figure=""><pre style="background-color:#24292e;color:#e1e4e8" tabindex="0" data-language="yaml" data-theme="github-dark"><code data-language="yaml" data-theme="github-dark" style="display: grid;"><span data-line=""><span style="color:#9ECBFF">GatewayClass</span><span style="color:#6A737D">  # Which Gateway implementation to use in this cluster</span></span>
+<span data-line=""><span style="color:#9ECBFF">Gateway</span><span style="color:#6A737D">       # Which listeners this ingress opens</span></span>
+<span data-line=""><span style="color:#9ECBFF">Listener</span><span style="color:#6A737D">      # A port / protocol / hostname / TLS slot</span></span>
+<span data-line=""><span style="color:#9ECBFF">Route</span><span style="color:#6A737D">         # How to distribute traffic once it enters</span></span>
+<span data-line=""><span style="color:#9ECBFF">Service</span><span style="color:#6A737D">       # The backend actually serving requests in the cluster</span></span>
+<span data-line=""><span style="color:#9ECBFF">Envoy Proxy</span><span style="color:#6A737D">   # The data plane that ultimately handles the traffic</span></span></code></pre></figure>
+<p>A minimal example looks like this:</p>
+<figure data-rehype-pretty-code-figure=""><pre style="background-color:#24292e;color:#e1e4e8" tabindex="0" data-language="yaml" data-theme="github-dark"><code data-language="yaml" data-theme="github-dark" style="display: grid;"><span data-line=""><span style="color:#85E89D">apiVersion</span><span style="color:#E1E4E8">: </span><span style="color:#9ECBFF">gateway.networking.k8s.io/v1</span></span>
+<span data-line=""><span style="color:#85E89D">kind</span><span style="color:#E1E4E8">: </span><span style="color:#9ECBFF">HTTPRoute</span></span>
+<span data-line=""><span style="color:#85E89D">metadata</span><span style="color:#E1E4E8">:</span></span>
+<span data-line=""><span style="color:#85E89D">  name</span><span style="color:#E1E4E8">: </span><span style="color:#9ECBFF">demo</span></span>
+<span data-line=""><span style="color:#85E89D">spec</span><span style="color:#E1E4E8">:</span></span>
+<span data-line=""><span style="color:#85E89D">  parentRefs</span><span style="color:#E1E4E8">:</span></span>
+<span data-line=""><span style="color:#E1E4E8">    - </span><span style="color:#85E89D">name</span><span style="color:#E1E4E8">: </span><span style="color:#9ECBFF">eg</span></span>
+<span data-line=""><span style="color:#85E89D">  hostnames</span><span style="color:#E1E4E8">:</span></span>
+<span data-line=""><span style="color:#E1E4E8">    - </span><span style="color:#9ECBFF">"www.example.com"</span></span>
+<span data-line=""><span style="color:#85E89D">  rules</span><span style="color:#E1E4E8">:</span></span>
+<span data-line=""><span style="color:#E1E4E8">    - </span><span style="color:#85E89D">backendRefs</span><span style="color:#E1E4E8">:</span></span>
+<span data-line=""><span style="color:#E1E4E8">        - </span><span style="color:#85E89D">name</span><span style="color:#E1E4E8">: </span><span style="color:#9ECBFF">backend</span></span>
+<span data-line=""><span style="color:#85E89D">          port</span><span style="color:#E1E4E8">: </span><span style="color:#79B8FF">3000</span></span></code></pre></figure>
+<p>You don't need to memorize every field now. Just understand what it's doing:</p>
+<ul>
+<li><code>parentRefs</code>: Which Gateway this rule attaches to</li>
+<li><code>hostnames</code>: Which domain should match this rule</li>
+<li><code>backendRefs</code>: Which Service to send traffic to</li>
+</ul>
+<h2 id="at-a-glance-when-to-use-which-route">At a Glance: When to Use Which Route</h2>
+<table>
+<thead>
+<tr>
+<th>Requirement</th>
+<th>Recommended Resource</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td>Websites, REST APIs, header/path routing</td>
+<td><code>HTTPRoute</code></td>
+</tr>
+<tr>
+<td>gRPC service/method routing</td>
+<td><code>GRPCRoute</code></td>
+</tr>
+<tr>
+<td>Pure TCP services (custom protocol or non-HTTP)</td>
+<td><code>TCPRoute</code></td>
+</tr>
+<tr>
+<td>Preserve end-to-end TLS, don't decrypt at Gateway</td>
+<td><code>TLSRoute</code></td>
+</tr>
+</tbody>
+</table>
+<p>This decision matrix is very practical. Before writing YAML, ask yourself:</p>
+<p>"Am I dealing with HTTP, gRPC, or raw TCP/TLS traffic?"</p>
+<h2 id="one-line-summary">One-Line Summary</h2>
+<p><code>Envoy Gateway</code> isn't just another term you have to memorize — it's a way to elevate Kubernetes external traffic from "good enough" to "something that resembles an engineering system."</p>
+<blockquote>
+<p>💡 If this is your first time with this stack, don't try to learn every CRD at once. Install it, get your first request through, then revisit the concepts — the absorption rate is much faster that way.</p>
+</blockquote>
+<h2 id="next-step">Next Step</h2>
+<p>Next post, we get hands-on — install Envoy Gateway in your cluster and run your first <code>Gateway + HTTPRoute</code>:
+👉 <a href="01-quick-start">Quick Start</a></p>5:["$","aside",null,{"className":"hidden lg:block","children":["$","$L8",null,{"html":"$9"}]}]
+6:["$","script","script-0",{"src":"/_next/static/chunks/2dddb3bc05093f69.js","async":true}]
+7:["$","$La",null,{"children":["$","$b",null,{"name":"Next.MetadataOutlet","children":"$@c"}]}]
+c:null

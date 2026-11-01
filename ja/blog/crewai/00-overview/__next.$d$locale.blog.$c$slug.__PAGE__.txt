@@ -1,0 +1,115 @@
+1:"$Sreact.fragment"
+2:I[14864,["/_next/static/chunks/7923a261b80bb6e1.js","/_next/static/chunks/e09b4358027e8033.js","/_next/static/chunks/2dddb3bc05093f69.js"],"default"]
+8:I[24801,["/_next/static/chunks/7923a261b80bb6e1.js","/_next/static/chunks/e09b4358027e8033.js","/_next/static/chunks/2dddb3bc05093f69.js"],"default"]
+a:I[50183,["/_next/static/chunks/5a5b5b13c22d14f7.js","/_next/static/chunks/a484d1d3dd4b55ab.js"],"OutletBoundary"]
+b:"$Sreact.suspense"
+3:Te6d,<p>最近「AI Agent」や「マルチエージェント協調」をよく聞くけれど、ドキュメントを読むと頭が真っ白になる。そんな人向けのシリーズです。<br>
+一言でいうと、<strong>CrewAI は複数の AI 役割を分担・協調させ、複雑なタスクを分解して完了させるためのフレームワーク</strong>です。</p>
+<p>小さなプロジェクトチームのように考えると分かりやすいです。</p>
+<ul>
+<li>リサーチ担当が情報収集</li>
+<li>分析担当が要点整理</li>
+<li>編集担当が最終レポート作成</li>
+</ul>
+<p>流れがハマると、残業代を請求しないコンテンツチームが手に入った感覚です（ただし API 料金は正直に来ます）。</p>
+<h2 id="crewai-でできること">CrewAI でできること</h2>
+<p>よくある利用シーン:</p>
+<ul>
+<li>調査レポートの自動生成</li>
+<li>多段階コンテンツ生成（調査 -> 下書き -> 推敲）</li>
+<li>カスタマーサポート／運用フローの自動化</li>
+<li>社内ナレッジ Q&#x26;A とドキュメント処理</li>
+</ul>
+<blockquote>
+<p>💡 価値の本質は「最強の単体エージェント」ではなく、「専門エージェント同士の協調」です。</p>
+</blockquote>
+<h2 id="まず押さえる-3-つの用語">まず押さえる 3 つの用語</h2>
+<ul>
+<li><code>Agent</code>: 役割（誰がやるか）</li>
+<li><code>Task</code>: タスク（何をやるか）</li>
+<li><code>Crew</code>: チーム（誰がどの順番で連携するか）</li>
+</ul>
+<p>多くのプロジェクトでは、まず <code>Process.sequential</code> で十分です。<br>
+<strong>A が終わってから B に渡す。</strong> これが最も安定し、デバッグしやすい開始方法です。</p>
+<h2 id="この-10-本の読み方">この 10 本の読み方</h2>
+<ol>
+<li><a href="01-quick-start">クイックスタート</a>：10 分で最初の Crew を動かす</li>
+<li><a href="02-agents-and-tasks">Agent と Task 入門</a>：役割とタスクの分け方</li>
+<li><a href="03-crew-and-process">Crew と Process</a>：チーム構成とフロー戦略</li>
+<li><a href="04-tools-integration">Tools 連携</a>：エージェントに検索・読取能力を与える</li>
+<li><a href="05-structured-output-pydantic">構造化出力 Pydantic</a>：出力のブレを防ぐ</li>
+<li><a href="06-flow-basics">Flow 入門</a>：複数 Crew のオーケストレーション</li>
+<li><a href="07-memory-and-knowledge">Memory と Knowledge</a>：金魚脳問題を解決</li>
+<li><a href="08-debug-and-common-errors">デバッグとよくあるエラー</a>：先に地雷マップを見る</li>
+<li><a href="09-production-best-practices">本番運用ベストプラクティス</a>：デモから運用へ</li>
+</ol>
+<h2 id="事前準備">事前準備</h2>
+<ul>
+<li>Python 3.10+</li>
+<li>使い慣れた環境ツール（<code>uv</code>、<code>venv</code>、<code>poetry</code> など）</li>
+<li>LLM の API キー（OpenAI、Anthropic など）</li>
+</ul>
+<h2 id="最初に持っておく心構え">最初に持っておく心構え</h2>
+<p>初版で派手さは不要です。<strong>まず再現可能なフローを作ること。</strong><br>
+毎回ほぼ同じ結果を出せるようにしてから、速度・コスト・精度を最適化しましょう。<br>
+ゲームで言えば、まずメインクエストを終わらせてから装備掘りです。</p>
+<h2 id="次へ">次へ</h2>
+<p><a href="01-quick-start">クイックスタート</a> へ進みましょう。<br>
+10 分で最初の Crew を動かして成果を確認します。</p>0:{"buildId":"Yck3R4ooQxWkwGLT6is1X","rsc":["$","$1","c",{"children":[[["$","script",null,{"type":"application/ld+json","dangerouslySetInnerHTML":{"__html":"{\"@context\":\"https://schema.org\",\"@type\":\"Article\",\"headline\":\"CrewAI チュートリアル総覧：ゼロから本番運用できるマルチエージェントワークフローへ\",\"description\":\"まず CrewAI が何を解決するのかを理解し、10 本の記事で入門から実践まで一気に進みます。\",\"url\":\"https://benxhub.com/ja/blog/crewai/00-overview\",\"mainEntityOfPage\":{\"@type\":\"WebPage\",\"@id\":\"https://benxhub.com/ja/blog/crewai/00-overview\"},\"datePublished\":\"2026-03-01T00:00:00.000Z\",\"dateModified\":\"2026-03-01T00:00:00.000Z\",\"keywords\":\"crewai, ai-agent, python, workflow, multi-agent\",\"inLanguage\":\"ja\",\"author\":{\"@type\":\"Person\",\"name\":\"BenX\",\"url\":\"https://benxhub.com\"},\"publisher\":{\"@type\":\"Organization\",\"name\":\"BenXHub Blog\",\"url\":\"https://benxhub.com\"}}"}}],["$","div",null,{"className":"mx-auto max-w-6xl px-4 py-12 sm:px-6","children":["$","div",null,{"className":"lg:grid lg:grid-cols-[1fr_240px] lg:gap-14","children":[["$","article",null,{"children":[["$","header",null,{"className":"mb-10","children":[["$","div",null,{"className":"mb-4 flex flex-wrap gap-2","children":[["$","$L2","crewai",{"href":"/ja/tags/crewai","localeCookie":{"name":"NEXT_LOCALE","sameSite":"lax"},"className":"inline-flex items-center rounded-full px-2.5 py-0.5 text-xs font-medium transition-colors","style":{"background":"var(--color-code-bg)","color":"var(--color-accent)","border":"1px solid var(--color-border)"},"children":["#","crewai"]}],["$","$L2","ai-agent",{"href":"/ja/tags/ai-agent","localeCookie":{"name":"NEXT_LOCALE","sameSite":"lax"},"className":"inline-flex items-center rounded-full px-2.5 py-0.5 text-xs font-medium transition-colors","style":{"background":"var(--color-code-bg)","color":"var(--color-accent)","border":"1px solid var(--color-border)"},"children":["#","ai-agent"]}],["$","$L2","python",{"href":"/ja/tags/python","localeCookie":{"name":"NEXT_LOCALE","sameSite":"lax"},"className":"inline-flex items-center rounded-full px-2.5 py-0.5 text-xs font-medium transition-colors","style":{"background":"var(--color-code-bg)","color":"var(--color-accent)","border":"1px solid var(--color-border)"},"children":["#","python"]}],["$","$L2","workflow",{"href":"/ja/tags/workflow","localeCookie":{"name":"NEXT_LOCALE","sameSite":"lax"},"className":"inline-flex items-center rounded-full px-2.5 py-0.5 text-xs font-medium transition-colors","style":{"background":"var(--color-code-bg)","color":"var(--color-accent)","border":"1px solid var(--color-border)"},"children":["#","workflow"]}],["$","$L2","multi-agent",{"href":"/ja/tags/multi-agent","localeCookie":{"name":"NEXT_LOCALE","sameSite":"lax"},"className":"inline-flex items-center rounded-full px-2.5 py-0.5 text-xs font-medium transition-colors","style":{"background":"var(--color-code-bg)","color":"var(--color-accent)","border":"1px solid var(--color-border)"},"children":["#","multi-agent"]}]]}],["$","h1",null,{"className":"mb-4 text-3xl leading-snug font-bold tracking-tight sm:text-4xl","style":{"color":"var(--color-text)"},"children":"CrewAI チュートリアル総覧：ゼロから本番運用できるマルチエージェントワークフローへ"}],["$","div",null,{"className":"flex flex-wrap items-center gap-3 text-sm","style":{"color":"var(--color-muted)"},"children":[["$","time",null,{"dateTime":"2026-03-01","children":"2026年3月1日"}],["$","span",null,{"aria-hidden":"true","children":"·"}],["$","span",null,{"children":"3 min read"}]]}],"$undefined",["$","div",null,{"className":"mt-6 border-b","style":{"borderColor":"var(--color-border)"}}]]}],["$","div",null,{"className":"prose","dangerouslySetInnerHTML":{"__html":"$3"}}],"$L4"]}],"$L5"]}]}]],["$L6"],"$L7"]}],"loading":null,"isPartial":false}
+4:["$","footer",null,{"className":"mt-14 border-t pt-8","style":{"borderColor":"var(--color-border)"},"children":[["$","div",null,{"className":"mb-8 flex flex-wrap gap-2","children":[["$","$L2","crewai",{"href":"/ja/tags/crewai","localeCookie":{"name":"NEXT_LOCALE","sameSite":"lax"},"className":"inline-flex items-center rounded-full px-3 py-1 text-sm font-medium transition-colors","style":{"background":"var(--color-code-bg)","color":"var(--color-accent)","border":"1px solid var(--color-border)"},"children":["#","crewai"]}],["$","$L2","ai-agent",{"href":"/ja/tags/ai-agent","localeCookie":{"name":"NEXT_LOCALE","sameSite":"lax"},"className":"inline-flex items-center rounded-full px-3 py-1 text-sm font-medium transition-colors","style":{"background":"var(--color-code-bg)","color":"var(--color-accent)","border":"1px solid var(--color-border)"},"children":["#","ai-agent"]}],["$","$L2","python",{"href":"/ja/tags/python","localeCookie":{"name":"NEXT_LOCALE","sameSite":"lax"},"className":"inline-flex items-center rounded-full px-3 py-1 text-sm font-medium transition-colors","style":{"background":"var(--color-code-bg)","color":"var(--color-accent)","border":"1px solid var(--color-border)"},"children":["#","python"]}],["$","$L2","workflow",{"href":"/ja/tags/workflow","localeCookie":{"name":"NEXT_LOCALE","sameSite":"lax"},"className":"inline-flex items-center rounded-full px-3 py-1 text-sm font-medium transition-colors","style":{"background":"var(--color-code-bg)","color":"var(--color-accent)","border":"1px solid var(--color-border)"},"children":["#","workflow"]}],["$","$L2","multi-agent",{"href":"/ja/tags/multi-agent","localeCookie":{"name":"NEXT_LOCALE","sameSite":"lax"},"className":"inline-flex items-center rounded-full px-3 py-1 text-sm font-medium transition-colors","style":{"background":"var(--color-code-bg)","color":"var(--color-accent)","border":"1px solid var(--color-border)"},"children":["#","multi-agent"]}]]}],["$","nav",null,{"aria-label":"記事ナビゲーション","className":"grid grid-cols-1 gap-4 sm:grid-cols-2","children":[["$","$L2",null,{"href":"/ja/blog/crewai/05-structured-output-pydantic","localeCookie":{"name":"NEXT_LOCALE","sameSite":"lax"},"className":"group rounded-lg border p-4 transition-colors hover:border-accent","style":{"borderColor":"var(--color-border)","background":"var(--color-surface)"},"children":[["$","p",null,{"className":"mb-1 text-xs","style":{"color":"var(--color-muted)"},"children":"← 新しい記事"}],["$","p",null,{"className":"line-clamp-1 text-sm font-medium transition-colors group-hover:text-accent","style":{"color":"var(--color-text)"},"children":"CrewAI 構造化出力：Pydantic でデータのブレを止める"}]]}],["$","$L2",null,{"href":"/ja/blog/crewai/01-quick-start","localeCookie":{"name":"NEXT_LOCALE","sameSite":"lax"},"className":"group rounded-lg border p-4 text-right transition-colors hover:border-accent","style":{"borderColor":"var(--color-border)","background":"var(--color-surface)"},"children":[["$","p",null,{"className":"mb-1 text-xs","style":{"color":"var(--color-muted)"},"children":"古い記事 →"}],["$","p",null,{"className":"line-clamp-1 text-sm font-medium transition-colors group-hover:text-accent","style":{"color":"var(--color-text)"},"children":"CrewAI クイックスタート：10 分で最初のリサーチ Crew を作る"}]]}]]}]]}]
+9:Te6d,<p>最近「AI Agent」や「マルチエージェント協調」をよく聞くけれど、ドキュメントを読むと頭が真っ白になる。そんな人向けのシリーズです。<br>
+一言でいうと、<strong>CrewAI は複数の AI 役割を分担・協調させ、複雑なタスクを分解して完了させるためのフレームワーク</strong>です。</p>
+<p>小さなプロジェクトチームのように考えると分かりやすいです。</p>
+<ul>
+<li>リサーチ担当が情報収集</li>
+<li>分析担当が要点整理</li>
+<li>編集担当が最終レポート作成</li>
+</ul>
+<p>流れがハマると、残業代を請求しないコンテンツチームが手に入った感覚です（ただし API 料金は正直に来ます）。</p>
+<h2 id="crewai-でできること">CrewAI でできること</h2>
+<p>よくある利用シーン:</p>
+<ul>
+<li>調査レポートの自動生成</li>
+<li>多段階コンテンツ生成（調査 -> 下書き -> 推敲）</li>
+<li>カスタマーサポート／運用フローの自動化</li>
+<li>社内ナレッジ Q&#x26;A とドキュメント処理</li>
+</ul>
+<blockquote>
+<p>💡 価値の本質は「最強の単体エージェント」ではなく、「専門エージェント同士の協調」です。</p>
+</blockquote>
+<h2 id="まず押さえる-3-つの用語">まず押さえる 3 つの用語</h2>
+<ul>
+<li><code>Agent</code>: 役割（誰がやるか）</li>
+<li><code>Task</code>: タスク（何をやるか）</li>
+<li><code>Crew</code>: チーム（誰がどの順番で連携するか）</li>
+</ul>
+<p>多くのプロジェクトでは、まず <code>Process.sequential</code> で十分です。<br>
+<strong>A が終わってから B に渡す。</strong> これが最も安定し、デバッグしやすい開始方法です。</p>
+<h2 id="この-10-本の読み方">この 10 本の読み方</h2>
+<ol>
+<li><a href="01-quick-start">クイックスタート</a>：10 分で最初の Crew を動かす</li>
+<li><a href="02-agents-and-tasks">Agent と Task 入門</a>：役割とタスクの分け方</li>
+<li><a href="03-crew-and-process">Crew と Process</a>：チーム構成とフロー戦略</li>
+<li><a href="04-tools-integration">Tools 連携</a>：エージェントに検索・読取能力を与える</li>
+<li><a href="05-structured-output-pydantic">構造化出力 Pydantic</a>：出力のブレを防ぐ</li>
+<li><a href="06-flow-basics">Flow 入門</a>：複数 Crew のオーケストレーション</li>
+<li><a href="07-memory-and-knowledge">Memory と Knowledge</a>：金魚脳問題を解決</li>
+<li><a href="08-debug-and-common-errors">デバッグとよくあるエラー</a>：先に地雷マップを見る</li>
+<li><a href="09-production-best-practices">本番運用ベストプラクティス</a>：デモから運用へ</li>
+</ol>
+<h2 id="事前準備">事前準備</h2>
+<ul>
+<li>Python 3.10+</li>
+<li>使い慣れた環境ツール（<code>uv</code>、<code>venv</code>、<code>poetry</code> など）</li>
+<li>LLM の API キー（OpenAI、Anthropic など）</li>
+</ul>
+<h2 id="最初に持っておく心構え">最初に持っておく心構え</h2>
+<p>初版で派手さは不要です。<strong>まず再現可能なフローを作ること。</strong><br>
+毎回ほぼ同じ結果を出せるようにしてから、速度・コスト・精度を最適化しましょう。<br>
+ゲームで言えば、まずメインクエストを終わらせてから装備掘りです。</p>
+<h2 id="次へ">次へ</h2>
+<p><a href="01-quick-start">クイックスタート</a> へ進みましょう。<br>
+10 分で最初の Crew を動かして成果を確認します。</p>5:["$","aside",null,{"className":"hidden lg:block","children":["$","$L8",null,{"html":"$9"}]}]
+6:["$","script","script-0",{"src":"/_next/static/chunks/2dddb3bc05093f69.js","async":true}]
+7:["$","$La",null,{"children":["$","$b",null,{"name":"Next.MetadataOutlet","children":"$@c"}]}]
+c:null

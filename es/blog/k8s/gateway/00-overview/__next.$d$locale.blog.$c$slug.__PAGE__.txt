@@ -1,0 +1,415 @@
+1:"$Sreact.fragment"
+2:I[14864,["/_next/static/chunks/7923a261b80bb6e1.js","/_next/static/chunks/e09b4358027e8033.js","/_next/static/chunks/2dddb3bc05093f69.js"],"default"]
+8:I[24801,["/_next/static/chunks/7923a261b80bb6e1.js","/_next/static/chunks/e09b4358027e8033.js","/_next/static/chunks/2dddb3bc05093f69.js"],"default"]
+a:I[50183,["/_next/static/chunks/5a5b5b13c22d14f7.js","/_next/static/chunks/a484d1d3dd4b55ab.js"],"OutletBoundary"]
+b:"$Sreact.suspense"
+3:T3e5c,<p>Si alguna vez has trabajado con tráfico externo en Kubernetes, lo más probable es que hayas empezado con <code>Ingress</code>. Funciona, y para muchos escenarios es genuinamente suficiente. Pero una vez que te enfrentas a requisitos más complejos — múltiples listeners, propiedad multi-equipo, gRPC, TCP, TLS passthrough, políticas de tráfico de grano fino — inevitablemente llegas a una situación donde "mantenerlo vivo con annotations" se convierte en la norma. El YAML empieza a parecer un conjuro, y las personas que lo mantienen sienten que están rompiendo un sello.</p>
+<p>Ahí es donde entra <code>Gateway API + Envoy Gateway</code> — es el nuevo conjunto de herramientas. No complica las cosas; separa de forma limpia las responsabilidades que antes estaban entrelazadas, haciendo que el tráfico de entrada, las reglas de enrutamiento, la configuración de seguridad TLS, los tipos de protocolo y la propiedad de los equipos sean mucho más fáciles de razonar.</p>
+<h2 id="qué-es-exactamente">Qué Es, Exactamente</h2>
+<p>Digámoslo claramente en una sola oración:</p>
+<ul>
+<li><code>Envoy Proxy</code>: El plano de datos que realmente recibe el tráfico y reenvía las solicitudes — también conocido como Gateway Proxy</li>
+<li><code>Envoy Gateway</code>: El plano de control que gestiona Envoy Proxy por ti</li>
+<li><code>Gateway API</code>: La interfaz estándar que usas en Kubernetes para declarar reglas de tráfico</li>
+</ul>
+<p>Piénsalo así:</p>
+<ul>
+<li><code>Gateway API</code> es donde escribes los requisitos</li>
+<li><code>Envoy Gateway</code> es el gestor que traduce y delega</li>
+<li><code>Envoy Proxy</code> es el guardia real que está en la puerta</li>
+</ul>
+<p>La ventaja de esta separación es que no necesitas construir manualmente configuración de bajo nivel de Envoy, ni memorizar cada annotation privada de varios controladores. Declaras recursos de Kubernetes, y Envoy Gateway los traduce en configuración que Envoy Proxy puede ejecutar realmente.</p>
+<h2 id="gateway-vs-ingress-cuál-es-la-diferencia">Gateway vs Ingress: Cuál Es la Diferencia</h2>
+<p>La respuesta corta: <strong>Ingress no está obsoleto, pero Gateway API está mejor adaptado para sistemas medianos y grandes que necesitan más gobernanza.</strong></p>
+<table>
+<thead>
+<tr>
+<th>Comparación</th>
+<th>Ingress</th>
+<th>Gateway API</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td>Modelo de ingreso</td>
+<td>Normalmente combina ingreso y enrutamiento en un solo objeto</td>
+<td>Separa <code>GatewayClass</code>, <code>Gateway</code> y <code>Route</code></td>
+</tr>
+<tr>
+<td>Expresividad</td>
+<td>Principalmente HTTP/HTTPS; las funcionalidades avanzadas dependen de annotations</td>
+<td>Soporte nativo para múltiples tipos de ruta y campos más claros</td>
+</tr>
+<tr>
+<td>Modelo de extensión</td>
+<td>Muchas capacidades dependen de annotations privadas específicas del controlador</td>
+<td>Campos estándar, más puntos de extensión mediante CRDs</td>
+</tr>
+<tr>
+<td>Soporte de protocolos</td>
+<td>Principalmente enfocado en HTTP/Web</td>
+<td>Soporta <code>HTTPRoute</code>, <code>GRPCRoute</code>, <code>TCPRoute</code>, <code>TLSRoute</code></td>
+</tr>
+<tr>
+<td>Propiedad del equipo</td>
+<td>Fácil mezclar configuración de plataforma y de aplicación</td>
+<td>Más adecuado para equipos de plataforma gestionando ingreso, equipos de aplicación gestionando rutas</td>
+</tr>
+<tr>
+<td>Portabilidad</td>
+<td>Las annotations suelen estar ligadas a controladores específicos</td>
+<td>Más estandarizado, mejor legibilidad entre implementaciones</td>
+</tr>
+</tbody>
+</table>
+<p>Si tus requisitos son simplemente:</p>
+<ul>
+<li>Un solo sitio web o API sencilla</li>
+<li>Enrutamiento básico por ruta/host</li>
+<li>Equipo pequeño</li>
+</ul>
+<p>Entonces Ingress sigue siendo válido. Pero si tus requisitos empiezan a incluir:</p>
+<ul>
+<li>Un ingreso que sirve múltiples protocolos</li>
+<li>Múltiples listeners, dominios o certificados</li>
+<li>HTTP y gRPC coexistiendo</li>
+<li>Separar los permisos de ingreso de plataforma de los de ruta de aplicación</li>
+<li>Configuración que se lee como una API real, no como una lista de deseos de annotations</li>
+</ul>
+<p>Entonces Gateway API empezará a resultar muy atractivo.</p>
+<h2 id="por-qué-no-usar-simplemente-ingress">Por Qué No Usar Simplemente Ingress</h2>
+<p>El objetivo oficial de Gateway API es abordar varios puntos de dolor comunes con Ingress a escala:</p>
+<ul>
+<li><strong>Mejor expresividad</strong>: El enrutamiento, TLS, las políticas de tráfico y los tipos de protocolo están definidos de forma más clara</li>
+<li><strong>Mejor portabilidad</strong>: Menor dependencia de annotations privadas específicas del controlador</li>
+<li><strong>Separación de roles más natural</strong>: Los equipos de plataforma poseen el ingreso, los equipos de aplicación poseen las rutas</li>
+</ul>
+<p>Por ejemplo, las configuraciones de Ingress a menudo lucen así:</p>
+<figure data-rehype-pretty-code-figure=""><pre style="background-color:#24292e;color:#e1e4e8" tabindex="0" data-language="yaml" data-theme="github-dark"><code data-language="yaml" data-theme="github-dark" style="display: grid;"><span data-line=""><span style="color:#85E89D">metadata</span><span style="color:#E1E4E8">:</span></span>
+<span data-line=""><span style="color:#85E89D">  annotations</span><span style="color:#E1E4E8">:</span></span>
+<span data-line=""><span style="color:#85E89D">    some.ingress.controller/rewrite-target</span><span style="color:#E1E4E8">: </span><span style="color:#9ECBFF">/</span></span>
+<span data-line=""><span style="color:#85E89D">    some.ingress.controller/auth-type</span><span style="color:#E1E4E8">: </span><span style="color:#9ECBFF">basic</span></span>
+<span data-line=""><span style="color:#85E89D">    some.ingress.controller/ssl-redirect</span><span style="color:#E1E4E8">: </span><span style="color:#9ECBFF">"true"</span></span></code></pre></figure>
+<p>No es que no funcione — pero a medida que crecen los requisitos, las annotations fácilmente se convierten en magia negra de YAML misteriosa. Gateway API traslada estas necesidades a campos apropiados. Se lee como "configuración," no como una "lista de deseos."</p>
+<h2 id="la-estructura-en-capas">La Estructura en Capas</h2>
+<p>La página de conceptos oficial divide Envoy Gateway en tres capas — vale la pena memorizarlas como mapa mental:</p>
+<ul>
+<li><strong>Configuración de usuario</strong>: Los recursos de <code>Gateway API</code> y los CRDs de extensión de Envoy Gateway que escribes</li>
+<li><strong>Controlador de Envoy Gateway</strong>: Lee estos recursos, los traduce en configuración ejecutable</li>
+<li><strong>Envoy Proxy</strong>: El plano de datos que realmente maneja el tráfico en vivo</li>
+</ul>
+<p>En la práctica, pasarás la mayor parte de tu tiempo modificando la "capa declarativa," no conectándote por SSH a instancias de proxy para ajustar configuración de bajo nivel. Esta es la elegancia de ser nativo de Kubernetes.</p>
+<h2 id="qué-aprenderás-en-esta-serie">Qué Aprenderás en Esta Serie</h2>
+<p>Esta serie sigue un orden de "construir primero, profundizar después" — <strong>10 publicaciones incluyendo esta visión general</strong>:</p>
+<ol>
+<li><a href="01-quick-start">Quick Start</a>: Instala Envoy Gateway y ejecuta tu primera solicitud HTTP de extremo a extremo</li>
+<li><a href="02-core-concepts">Conceptos Principales</a>: Comprende <code>GatewayClass</code>, <code>Gateway</code>, <code>Listener</code> y <code>Envoy Proxy</code></li>
+<li><a href="03-http-routing">Enrutamiento HTTP en la Práctica</a>: Análisis profundo de <code>HTTPRoute</code> — host, ruta, cabecera, filtro, timeout</li>
+<li><a href="04-tls-and-security">TLS y Seguridad</a>: Configura HTTPS, comprende <code>certificateRefs</code>, la terminación TLS y <code>TLSRoute</code></li>
+<li><a href="05-best-practices">Buenas Prácticas</a>: Hábitos clave antes de ir a producción</li>
+<li><a href="06-route-types-cheatsheet">Hoja de Referencia de Tipos de Ruta</a>: Decide rápidamente entre <code>HTTPRoute</code>, <code>GRPCRoute</code>, <code>TCPRoute</code> y <code>TLSRoute</code></li>
+<li><a href="07-listener-design">Guía de Diseño de Listener</a>: Patrones de diseño multi-puerto, multi-hostname y multi-ingreso</li>
+<li><a href="08-multi-namespace-and-teamwork">Multi-Namespace y Propiedad de Equipos</a>: Domina <code>allowedRoutes</code>, <code>ReferenceGrant</code> y la gobernanza de ingreso compartido</li>
+<li><a href="09-debugging-and-status">Manual de Estado y Depuración</a>: Lee <code>Accepted</code>, <code>ResolvedRefs</code>, <code>Programmed</code> y sigue el camino de resolución de problemas más corto</li>
+</ol>
+<p>Si solo quieres probar cómo se siente Envoy Gateway, ve directamente al siguiente post. Ponerlo en marcha supera memorizar cada término primero — igual que ir al gimnasio, aparecer de verdad supera ver 30 videos de YouTube primero.</p>
+<h2 id="recursos-principales-que-encontrarás">Recursos Principales que Encontrarás</h2>
+<p>Los principiantes suelen tropezar porque asumen que Gateway API solo tiene <code>Gateway</code> y <code>HTTPRoute</code>. En realidad es toda una familia de recursos.</p>
+<h3 id="gatewayclass"><code>GatewayClass</code></h3>
+<p>Define "qué implementación de Gateway usar en este clúster."
+Para Envoy Gateway, la clave es que <code>controllerName</code> apunte al controlador correcto.</p>
+<h3 id="gateway"><code>Gateway</code></h3>
+<p>Define "cómo luce el ingreso."
+Por ejemplo: qué puertos abrir, en qué protocolos escuchar, cómo se adjunta TLS, qué rutas están permitidas.</p>
+<h3 id="listener"><code>Listener</code></h3>
+<p><code>Listener</code> es una de las unidades más importantes dentro de un <code>Gateway</code>.
+Piénsalo como una ranura orientada hacia el exterior del Gateway — cada ranura define:</p>
+<ul>
+<li>puerto</li>
+<li>protocolo</li>
+<li>hostname</li>
+<li>configuración TLS</li>
+<li><code>allowedRoutes</code></li>
+</ul>
+<p>Mucha gente piensa en <code>Gateway</code> como una caja negra, pero lo que realmente determina el comportamiento del ingreso es cada <code>listener</code> individual dentro de él.</p>
+<h3 id="la-familia-de-route">La Familia de Route</h3>
+<ul>
+<li><code>HTTPRoute</code>: Tráfico HTTP/HTTPS — el más común</li>
+<li><code>GRPCRoute</code>: Tráfico gRPC — puede coincidir en servicio/método</li>
+<li><code>TCPRoute</code>: Tráfico TCP puro — no analiza semántica HTTP</li>
+<li><code>TLSRoute</code>: Enruta basándose en TLS SNI — común para TLS passthrough</li>
+</ul>
+<p>Lo que todos los routes comparten:
+<strong>No "abren la puerta" — deciden "cómo enrutar el tráfico una vez que entra."</strong></p>
+<h2 id="modelo-mental-mínimo">Modelo Mental Mínimo</h2>
+<p>Guarda este mapa en tu cabeza:</p>
+<figure data-rehype-pretty-code-figure=""><pre style="background-color:#24292e;color:#e1e4e8" tabindex="0" data-language="yaml" data-theme="github-dark"><code data-language="yaml" data-theme="github-dark" style="display: grid;"><span data-line=""><span style="color:#9ECBFF">GatewayClass</span><span style="color:#6A737D">  # Which Gateway implementation to use in this cluster</span></span>
+<span data-line=""><span style="color:#9ECBFF">Gateway</span><span style="color:#6A737D">       # Which listeners this ingress opens</span></span>
+<span data-line=""><span style="color:#9ECBFF">Listener</span><span style="color:#6A737D">      # A port / protocol / hostname / TLS slot</span></span>
+<span data-line=""><span style="color:#9ECBFF">Route</span><span style="color:#6A737D">         # How to distribute traffic once it enters</span></span>
+<span data-line=""><span style="color:#9ECBFF">Service</span><span style="color:#6A737D">       # The backend actually serving requests in the cluster</span></span>
+<span data-line=""><span style="color:#9ECBFF">Envoy Proxy</span><span style="color:#6A737D">   # The data plane that ultimately handles the traffic</span></span></code></pre></figure>
+<p>Un ejemplo mínimo luce así:</p>
+<figure data-rehype-pretty-code-figure=""><pre style="background-color:#24292e;color:#e1e4e8" tabindex="0" data-language="yaml" data-theme="github-dark"><code data-language="yaml" data-theme="github-dark" style="display: grid;"><span data-line=""><span style="color:#85E89D">apiVersion</span><span style="color:#E1E4E8">: </span><span style="color:#9ECBFF">gateway.networking.k8s.io/v1</span></span>
+<span data-line=""><span style="color:#85E89D">kind</span><span style="color:#E1E4E8">: </span><span style="color:#9ECBFF">HTTPRoute</span></span>
+<span data-line=""><span style="color:#85E89D">metadata</span><span style="color:#E1E4E8">:</span></span>
+<span data-line=""><span style="color:#85E89D">  name</span><span style="color:#E1E4E8">: </span><span style="color:#9ECBFF">demo</span></span>
+<span data-line=""><span style="color:#85E89D">spec</span><span style="color:#E1E4E8">:</span></span>
+<span data-line=""><span style="color:#85E89D">  parentRefs</span><span style="color:#E1E4E8">:</span></span>
+<span data-line=""><span style="color:#E1E4E8">    - </span><span style="color:#85E89D">name</span><span style="color:#E1E4E8">: </span><span style="color:#9ECBFF">eg</span></span>
+<span data-line=""><span style="color:#85E89D">  hostnames</span><span style="color:#E1E4E8">:</span></span>
+<span data-line=""><span style="color:#E1E4E8">    - </span><span style="color:#9ECBFF">"www.example.com"</span></span>
+<span data-line=""><span style="color:#85E89D">  rules</span><span style="color:#E1E4E8">:</span></span>
+<span data-line=""><span style="color:#E1E4E8">    - </span><span style="color:#85E89D">backendRefs</span><span style="color:#E1E4E8">:</span></span>
+<span data-line=""><span style="color:#E1E4E8">        - </span><span style="color:#85E89D">name</span><span style="color:#E1E4E8">: </span><span style="color:#9ECBFF">backend</span></span>
+<span data-line=""><span style="color:#85E89D">          port</span><span style="color:#E1E4E8">: </span><span style="color:#79B8FF">3000</span></span></code></pre></figure>
+<p>No necesitas memorizar cada campo ahora. Solo comprende qué está haciendo:</p>
+<ul>
+<li><code>parentRefs</code>: A qué Gateway se adjunta esta regla</li>
+<li><code>hostnames</code>: Qué dominio debe coincidir con esta regla</li>
+<li><code>backendRefs</code>: A qué Service enviar el tráfico</li>
+</ul>
+<h2 id="de-un-vistazo-cuándo-usar-qué-route">De un Vistazo: Cuándo Usar Qué Route</h2>
+<table>
+<thead>
+<tr>
+<th>Requisito</th>
+<th>Recurso Recomendado</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td>Sitios web, REST APIs, enrutamiento por cabecera/ruta</td>
+<td><code>HTTPRoute</code></td>
+</tr>
+<tr>
+<td>Enrutamiento por servicio/método gRPC</td>
+<td><code>GRPCRoute</code></td>
+</tr>
+<tr>
+<td>Servicios TCP puros (protocolo personalizado o no HTTP)</td>
+<td><code>TCPRoute</code></td>
+</tr>
+<tr>
+<td>Preservar TLS de extremo a extremo, no descifrar en el Gateway</td>
+<td><code>TLSRoute</code></td>
+</tr>
+</tbody>
+</table>
+<p>Esta matriz de decisión es muy práctica. Antes de escribir YAML, pregúntate:</p>
+<p>"¿Estoy trabajando con tráfico HTTP, gRPC o TCP/TLS puro?"</p>
+<h2 id="resumen-en-una-línea">Resumen en Una Línea</h2>
+<p><code>Envoy Gateway</code> no es solo otro término que tienes que memorizar — es una forma de elevar el tráfico externo de Kubernetes de "suficientemente bueno" a "algo que se parece a un sistema de ingeniería."</p>
+<blockquote>
+<p>💡 Si es tu primera vez con esta pila, no intentes aprender cada CRD de una vez. Instálalo, haz pasar tu primera solicitud, luego revisa los conceptos — la tasa de absorción es mucho más rápida de esa manera.</p>
+</blockquote>
+<h2 id="siguiente-paso">Siguiente Paso</h2>
+<p>En el próximo post, nos ponemos manos a la obra — instala Envoy Gateway en tu clúster y ejecuta tu primer <code>Gateway + HTTPRoute</code>:
+👉 <a href="01-quick-start">Quick Start</a></p>0:{"buildId":"Yck3R4ooQxWkwGLT6is1X","rsc":["$","$1","c",{"children":[[["$","script",null,{"type":"application/ld+json","dangerouslySetInnerHTML":{"__html":"{\"@context\":\"https://schema.org\",\"@type\":\"Article\",\"headline\":\"Visión General de la Serie K8S Envoy Gateway: Un Ingreso de Tráfico Más Moderno que Ingress\",\"description\":\"Comprende la relación entre Envoy Gateway, Gateway API y Envoy Proxy, y construye un mapa de aprendizaje para toda la serie.\",\"url\":\"https://benxhub.com/es/blog/k8s/gateway/00-overview\",\"mainEntityOfPage\":{\"@type\":\"WebPage\",\"@id\":\"https://benxhub.com/es/blog/k8s/gateway/00-overview\"},\"datePublished\":\"2026-03-10T00:00:00.000Z\",\"dateModified\":\"2026-03-10T00:00:00.000Z\",\"keywords\":\"kubernetes, envoy-gateway, gateway-api, envoy-proxy, ingress\",\"inLanguage\":\"es\",\"author\":{\"@type\":\"Person\",\"name\":\"BenX\",\"url\":\"https://benxhub.com\"},\"publisher\":{\"@type\":\"Organization\",\"name\":\"BenXHub Blog\",\"url\":\"https://benxhub.com\"}}"}}],["$","div",null,{"className":"mx-auto max-w-6xl px-4 py-12 sm:px-6","children":["$","div",null,{"className":"lg:grid lg:grid-cols-[1fr_240px] lg:gap-14","children":[["$","article",null,{"children":[["$","header",null,{"className":"mb-10","children":[["$","div",null,{"className":"mb-4 flex flex-wrap gap-2","children":[["$","$L2","kubernetes",{"href":"/es/tags/kubernetes","localeCookie":{"name":"NEXT_LOCALE","sameSite":"lax"},"className":"inline-flex items-center rounded-full px-2.5 py-0.5 text-xs font-medium transition-colors","style":{"background":"var(--color-code-bg)","color":"var(--color-accent)","border":"1px solid var(--color-border)"},"children":["#","kubernetes"]}],["$","$L2","envoy-gateway",{"href":"/es/tags/envoy-gateway","localeCookie":{"name":"NEXT_LOCALE","sameSite":"lax"},"className":"inline-flex items-center rounded-full px-2.5 py-0.5 text-xs font-medium transition-colors","style":{"background":"var(--color-code-bg)","color":"var(--color-accent)","border":"1px solid var(--color-border)"},"children":["#","envoy-gateway"]}],["$","$L2","gateway-api",{"href":"/es/tags/gateway-api","localeCookie":{"name":"NEXT_LOCALE","sameSite":"lax"},"className":"inline-flex items-center rounded-full px-2.5 py-0.5 text-xs font-medium transition-colors","style":{"background":"var(--color-code-bg)","color":"var(--color-accent)","border":"1px solid var(--color-border)"},"children":["#","gateway-api"]}],["$","$L2","envoy-proxy",{"href":"/es/tags/envoy-proxy","localeCookie":{"name":"NEXT_LOCALE","sameSite":"lax"},"className":"inline-flex items-center rounded-full px-2.5 py-0.5 text-xs font-medium transition-colors","style":{"background":"var(--color-code-bg)","color":"var(--color-accent)","border":"1px solid var(--color-border)"},"children":["#","envoy-proxy"]}],["$","$L2","ingress",{"href":"/es/tags/ingress","localeCookie":{"name":"NEXT_LOCALE","sameSite":"lax"},"className":"inline-flex items-center rounded-full px-2.5 py-0.5 text-xs font-medium transition-colors","style":{"background":"var(--color-code-bg)","color":"var(--color-accent)","border":"1px solid var(--color-border)"},"children":["#","ingress"]}]]}],["$","h1",null,{"className":"mb-4 text-3xl leading-snug font-bold tracking-tight sm:text-4xl","style":{"color":"var(--color-text)"},"children":"Visión General de la Serie K8S Envoy Gateway: Un Ingreso de Tráfico Más Moderno que Ingress"}],["$","div",null,{"className":"flex flex-wrap items-center gap-3 text-sm","style":{"color":"var(--color-muted)"},"children":[["$","time",null,{"dateTime":"2026-03-10","children":"10 3月 2026"}],["$","span",null,{"aria-hidden":"true","children":"·"}],["$","span",null,{"children":"8 min read"}]]}],"$undefined",["$","div",null,{"className":"mt-6 border-b","style":{"borderColor":"var(--color-border)"}}]]}],["$","div",null,{"className":"prose","dangerouslySetInnerHTML":{"__html":"$3"}}],"$L4"]}],"$L5"]}]}]],["$L6"],"$L7"]}],"loading":null,"isPartial":false}
+4:["$","footer",null,{"className":"mt-14 border-t pt-8","style":{"borderColor":"var(--color-border)"},"children":[["$","div",null,{"className":"mb-8 flex flex-wrap gap-2","children":[["$","$L2","kubernetes",{"href":"/es/tags/kubernetes","localeCookie":{"name":"NEXT_LOCALE","sameSite":"lax"},"className":"inline-flex items-center rounded-full px-3 py-1 text-sm font-medium transition-colors","style":{"background":"var(--color-code-bg)","color":"var(--color-accent)","border":"1px solid var(--color-border)"},"children":["#","kubernetes"]}],["$","$L2","envoy-gateway",{"href":"/es/tags/envoy-gateway","localeCookie":{"name":"NEXT_LOCALE","sameSite":"lax"},"className":"inline-flex items-center rounded-full px-3 py-1 text-sm font-medium transition-colors","style":{"background":"var(--color-code-bg)","color":"var(--color-accent)","border":"1px solid var(--color-border)"},"children":["#","envoy-gateway"]}],["$","$L2","gateway-api",{"href":"/es/tags/gateway-api","localeCookie":{"name":"NEXT_LOCALE","sameSite":"lax"},"className":"inline-flex items-center rounded-full px-3 py-1 text-sm font-medium transition-colors","style":{"background":"var(--color-code-bg)","color":"var(--color-accent)","border":"1px solid var(--color-border)"},"children":["#","gateway-api"]}],["$","$L2","envoy-proxy",{"href":"/es/tags/envoy-proxy","localeCookie":{"name":"NEXT_LOCALE","sameSite":"lax"},"className":"inline-flex items-center rounded-full px-3 py-1 text-sm font-medium transition-colors","style":{"background":"var(--color-code-bg)","color":"var(--color-accent)","border":"1px solid var(--color-border)"},"children":["#","envoy-proxy"]}],["$","$L2","ingress",{"href":"/es/tags/ingress","localeCookie":{"name":"NEXT_LOCALE","sameSite":"lax"},"className":"inline-flex items-center rounded-full px-3 py-1 text-sm font-medium transition-colors","style":{"background":"var(--color-code-bg)","color":"var(--color-accent)","border":"1px solid var(--color-border)"},"children":["#","ingress"]}]]}],["$","nav",null,{"aria-label":"Navegación de artículos","className":"grid grid-cols-1 gap-4 sm:grid-cols-2","children":[["$","div",null,{}],["$","$L2",null,{"href":"/es/blog/k8s/gateway/01-quick-start","localeCookie":{"name":"NEXT_LOCALE","sameSite":"lax"},"className":"group rounded-lg border p-4 text-right transition-colors hover:border-accent","style":{"borderColor":"var(--color-border)","background":"var(--color-surface)"},"children":[["$","p",null,{"className":"mb-1 text-xs","style":{"color":"var(--color-muted)"},"children":"Artículo más antiguo →"}],["$","p",null,{"className":"line-clamp-1 text-sm font-medium transition-colors group-hover:text-accent","style":{"color":"var(--color-text)"},"children":"Inicio Rápido de Envoy Gateway: Haz Pasar Tu Primera Solicitud en 10 Minutos"}]]}]]}]]}]
+9:T3e5c,<p>Si alguna vez has trabajado con tráfico externo en Kubernetes, lo más probable es que hayas empezado con <code>Ingress</code>. Funciona, y para muchos escenarios es genuinamente suficiente. Pero una vez que te enfrentas a requisitos más complejos — múltiples listeners, propiedad multi-equipo, gRPC, TCP, TLS passthrough, políticas de tráfico de grano fino — inevitablemente llegas a una situación donde "mantenerlo vivo con annotations" se convierte en la norma. El YAML empieza a parecer un conjuro, y las personas que lo mantienen sienten que están rompiendo un sello.</p>
+<p>Ahí es donde entra <code>Gateway API + Envoy Gateway</code> — es el nuevo conjunto de herramientas. No complica las cosas; separa de forma limpia las responsabilidades que antes estaban entrelazadas, haciendo que el tráfico de entrada, las reglas de enrutamiento, la configuración de seguridad TLS, los tipos de protocolo y la propiedad de los equipos sean mucho más fáciles de razonar.</p>
+<h2 id="qué-es-exactamente">Qué Es, Exactamente</h2>
+<p>Digámoslo claramente en una sola oración:</p>
+<ul>
+<li><code>Envoy Proxy</code>: El plano de datos que realmente recibe el tráfico y reenvía las solicitudes — también conocido como Gateway Proxy</li>
+<li><code>Envoy Gateway</code>: El plano de control que gestiona Envoy Proxy por ti</li>
+<li><code>Gateway API</code>: La interfaz estándar que usas en Kubernetes para declarar reglas de tráfico</li>
+</ul>
+<p>Piénsalo así:</p>
+<ul>
+<li><code>Gateway API</code> es donde escribes los requisitos</li>
+<li><code>Envoy Gateway</code> es el gestor que traduce y delega</li>
+<li><code>Envoy Proxy</code> es el guardia real que está en la puerta</li>
+</ul>
+<p>La ventaja de esta separación es que no necesitas construir manualmente configuración de bajo nivel de Envoy, ni memorizar cada annotation privada de varios controladores. Declaras recursos de Kubernetes, y Envoy Gateway los traduce en configuración que Envoy Proxy puede ejecutar realmente.</p>
+<h2 id="gateway-vs-ingress-cuál-es-la-diferencia">Gateway vs Ingress: Cuál Es la Diferencia</h2>
+<p>La respuesta corta: <strong>Ingress no está obsoleto, pero Gateway API está mejor adaptado para sistemas medianos y grandes que necesitan más gobernanza.</strong></p>
+<table>
+<thead>
+<tr>
+<th>Comparación</th>
+<th>Ingress</th>
+<th>Gateway API</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td>Modelo de ingreso</td>
+<td>Normalmente combina ingreso y enrutamiento en un solo objeto</td>
+<td>Separa <code>GatewayClass</code>, <code>Gateway</code> y <code>Route</code></td>
+</tr>
+<tr>
+<td>Expresividad</td>
+<td>Principalmente HTTP/HTTPS; las funcionalidades avanzadas dependen de annotations</td>
+<td>Soporte nativo para múltiples tipos de ruta y campos más claros</td>
+</tr>
+<tr>
+<td>Modelo de extensión</td>
+<td>Muchas capacidades dependen de annotations privadas específicas del controlador</td>
+<td>Campos estándar, más puntos de extensión mediante CRDs</td>
+</tr>
+<tr>
+<td>Soporte de protocolos</td>
+<td>Principalmente enfocado en HTTP/Web</td>
+<td>Soporta <code>HTTPRoute</code>, <code>GRPCRoute</code>, <code>TCPRoute</code>, <code>TLSRoute</code></td>
+</tr>
+<tr>
+<td>Propiedad del equipo</td>
+<td>Fácil mezclar configuración de plataforma y de aplicación</td>
+<td>Más adecuado para equipos de plataforma gestionando ingreso, equipos de aplicación gestionando rutas</td>
+</tr>
+<tr>
+<td>Portabilidad</td>
+<td>Las annotations suelen estar ligadas a controladores específicos</td>
+<td>Más estandarizado, mejor legibilidad entre implementaciones</td>
+</tr>
+</tbody>
+</table>
+<p>Si tus requisitos son simplemente:</p>
+<ul>
+<li>Un solo sitio web o API sencilla</li>
+<li>Enrutamiento básico por ruta/host</li>
+<li>Equipo pequeño</li>
+</ul>
+<p>Entonces Ingress sigue siendo válido. Pero si tus requisitos empiezan a incluir:</p>
+<ul>
+<li>Un ingreso que sirve múltiples protocolos</li>
+<li>Múltiples listeners, dominios o certificados</li>
+<li>HTTP y gRPC coexistiendo</li>
+<li>Separar los permisos de ingreso de plataforma de los de ruta de aplicación</li>
+<li>Configuración que se lee como una API real, no como una lista de deseos de annotations</li>
+</ul>
+<p>Entonces Gateway API empezará a resultar muy atractivo.</p>
+<h2 id="por-qué-no-usar-simplemente-ingress">Por Qué No Usar Simplemente Ingress</h2>
+<p>El objetivo oficial de Gateway API es abordar varios puntos de dolor comunes con Ingress a escala:</p>
+<ul>
+<li><strong>Mejor expresividad</strong>: El enrutamiento, TLS, las políticas de tráfico y los tipos de protocolo están definidos de forma más clara</li>
+<li><strong>Mejor portabilidad</strong>: Menor dependencia de annotations privadas específicas del controlador</li>
+<li><strong>Separación de roles más natural</strong>: Los equipos de plataforma poseen el ingreso, los equipos de aplicación poseen las rutas</li>
+</ul>
+<p>Por ejemplo, las configuraciones de Ingress a menudo lucen así:</p>
+<figure data-rehype-pretty-code-figure=""><pre style="background-color:#24292e;color:#e1e4e8" tabindex="0" data-language="yaml" data-theme="github-dark"><code data-language="yaml" data-theme="github-dark" style="display: grid;"><span data-line=""><span style="color:#85E89D">metadata</span><span style="color:#E1E4E8">:</span></span>
+<span data-line=""><span style="color:#85E89D">  annotations</span><span style="color:#E1E4E8">:</span></span>
+<span data-line=""><span style="color:#85E89D">    some.ingress.controller/rewrite-target</span><span style="color:#E1E4E8">: </span><span style="color:#9ECBFF">/</span></span>
+<span data-line=""><span style="color:#85E89D">    some.ingress.controller/auth-type</span><span style="color:#E1E4E8">: </span><span style="color:#9ECBFF">basic</span></span>
+<span data-line=""><span style="color:#85E89D">    some.ingress.controller/ssl-redirect</span><span style="color:#E1E4E8">: </span><span style="color:#9ECBFF">"true"</span></span></code></pre></figure>
+<p>No es que no funcione — pero a medida que crecen los requisitos, las annotations fácilmente se convierten en magia negra de YAML misteriosa. Gateway API traslada estas necesidades a campos apropiados. Se lee como "configuración," no como una "lista de deseos."</p>
+<h2 id="la-estructura-en-capas">La Estructura en Capas</h2>
+<p>La página de conceptos oficial divide Envoy Gateway en tres capas — vale la pena memorizarlas como mapa mental:</p>
+<ul>
+<li><strong>Configuración de usuario</strong>: Los recursos de <code>Gateway API</code> y los CRDs de extensión de Envoy Gateway que escribes</li>
+<li><strong>Controlador de Envoy Gateway</strong>: Lee estos recursos, los traduce en configuración ejecutable</li>
+<li><strong>Envoy Proxy</strong>: El plano de datos que realmente maneja el tráfico en vivo</li>
+</ul>
+<p>En la práctica, pasarás la mayor parte de tu tiempo modificando la "capa declarativa," no conectándote por SSH a instancias de proxy para ajustar configuración de bajo nivel. Esta es la elegancia de ser nativo de Kubernetes.</p>
+<h2 id="qué-aprenderás-en-esta-serie">Qué Aprenderás en Esta Serie</h2>
+<p>Esta serie sigue un orden de "construir primero, profundizar después" — <strong>10 publicaciones incluyendo esta visión general</strong>:</p>
+<ol>
+<li><a href="01-quick-start">Quick Start</a>: Instala Envoy Gateway y ejecuta tu primera solicitud HTTP de extremo a extremo</li>
+<li><a href="02-core-concepts">Conceptos Principales</a>: Comprende <code>GatewayClass</code>, <code>Gateway</code>, <code>Listener</code> y <code>Envoy Proxy</code></li>
+<li><a href="03-http-routing">Enrutamiento HTTP en la Práctica</a>: Análisis profundo de <code>HTTPRoute</code> — host, ruta, cabecera, filtro, timeout</li>
+<li><a href="04-tls-and-security">TLS y Seguridad</a>: Configura HTTPS, comprende <code>certificateRefs</code>, la terminación TLS y <code>TLSRoute</code></li>
+<li><a href="05-best-practices">Buenas Prácticas</a>: Hábitos clave antes de ir a producción</li>
+<li><a href="06-route-types-cheatsheet">Hoja de Referencia de Tipos de Ruta</a>: Decide rápidamente entre <code>HTTPRoute</code>, <code>GRPCRoute</code>, <code>TCPRoute</code> y <code>TLSRoute</code></li>
+<li><a href="07-listener-design">Guía de Diseño de Listener</a>: Patrones de diseño multi-puerto, multi-hostname y multi-ingreso</li>
+<li><a href="08-multi-namespace-and-teamwork">Multi-Namespace y Propiedad de Equipos</a>: Domina <code>allowedRoutes</code>, <code>ReferenceGrant</code> y la gobernanza de ingreso compartido</li>
+<li><a href="09-debugging-and-status">Manual de Estado y Depuración</a>: Lee <code>Accepted</code>, <code>ResolvedRefs</code>, <code>Programmed</code> y sigue el camino de resolución de problemas más corto</li>
+</ol>
+<p>Si solo quieres probar cómo se siente Envoy Gateway, ve directamente al siguiente post. Ponerlo en marcha supera memorizar cada término primero — igual que ir al gimnasio, aparecer de verdad supera ver 30 videos de YouTube primero.</p>
+<h2 id="recursos-principales-que-encontrarás">Recursos Principales que Encontrarás</h2>
+<p>Los principiantes suelen tropezar porque asumen que Gateway API solo tiene <code>Gateway</code> y <code>HTTPRoute</code>. En realidad es toda una familia de recursos.</p>
+<h3 id="gatewayclass"><code>GatewayClass</code></h3>
+<p>Define "qué implementación de Gateway usar en este clúster."
+Para Envoy Gateway, la clave es que <code>controllerName</code> apunte al controlador correcto.</p>
+<h3 id="gateway"><code>Gateway</code></h3>
+<p>Define "cómo luce el ingreso."
+Por ejemplo: qué puertos abrir, en qué protocolos escuchar, cómo se adjunta TLS, qué rutas están permitidas.</p>
+<h3 id="listener"><code>Listener</code></h3>
+<p><code>Listener</code> es una de las unidades más importantes dentro de un <code>Gateway</code>.
+Piénsalo como una ranura orientada hacia el exterior del Gateway — cada ranura define:</p>
+<ul>
+<li>puerto</li>
+<li>protocolo</li>
+<li>hostname</li>
+<li>configuración TLS</li>
+<li><code>allowedRoutes</code></li>
+</ul>
+<p>Mucha gente piensa en <code>Gateway</code> como una caja negra, pero lo que realmente determina el comportamiento del ingreso es cada <code>listener</code> individual dentro de él.</p>
+<h3 id="la-familia-de-route">La Familia de Route</h3>
+<ul>
+<li><code>HTTPRoute</code>: Tráfico HTTP/HTTPS — el más común</li>
+<li><code>GRPCRoute</code>: Tráfico gRPC — puede coincidir en servicio/método</li>
+<li><code>TCPRoute</code>: Tráfico TCP puro — no analiza semántica HTTP</li>
+<li><code>TLSRoute</code>: Enruta basándose en TLS SNI — común para TLS passthrough</li>
+</ul>
+<p>Lo que todos los routes comparten:
+<strong>No "abren la puerta" — deciden "cómo enrutar el tráfico una vez que entra."</strong></p>
+<h2 id="modelo-mental-mínimo">Modelo Mental Mínimo</h2>
+<p>Guarda este mapa en tu cabeza:</p>
+<figure data-rehype-pretty-code-figure=""><pre style="background-color:#24292e;color:#e1e4e8" tabindex="0" data-language="yaml" data-theme="github-dark"><code data-language="yaml" data-theme="github-dark" style="display: grid;"><span data-line=""><span style="color:#9ECBFF">GatewayClass</span><span style="color:#6A737D">  # Which Gateway implementation to use in this cluster</span></span>
+<span data-line=""><span style="color:#9ECBFF">Gateway</span><span style="color:#6A737D">       # Which listeners this ingress opens</span></span>
+<span data-line=""><span style="color:#9ECBFF">Listener</span><span style="color:#6A737D">      # A port / protocol / hostname / TLS slot</span></span>
+<span data-line=""><span style="color:#9ECBFF">Route</span><span style="color:#6A737D">         # How to distribute traffic once it enters</span></span>
+<span data-line=""><span style="color:#9ECBFF">Service</span><span style="color:#6A737D">       # The backend actually serving requests in the cluster</span></span>
+<span data-line=""><span style="color:#9ECBFF">Envoy Proxy</span><span style="color:#6A737D">   # The data plane that ultimately handles the traffic</span></span></code></pre></figure>
+<p>Un ejemplo mínimo luce así:</p>
+<figure data-rehype-pretty-code-figure=""><pre style="background-color:#24292e;color:#e1e4e8" tabindex="0" data-language="yaml" data-theme="github-dark"><code data-language="yaml" data-theme="github-dark" style="display: grid;"><span data-line=""><span style="color:#85E89D">apiVersion</span><span style="color:#E1E4E8">: </span><span style="color:#9ECBFF">gateway.networking.k8s.io/v1</span></span>
+<span data-line=""><span style="color:#85E89D">kind</span><span style="color:#E1E4E8">: </span><span style="color:#9ECBFF">HTTPRoute</span></span>
+<span data-line=""><span style="color:#85E89D">metadata</span><span style="color:#E1E4E8">:</span></span>
+<span data-line=""><span style="color:#85E89D">  name</span><span style="color:#E1E4E8">: </span><span style="color:#9ECBFF">demo</span></span>
+<span data-line=""><span style="color:#85E89D">spec</span><span style="color:#E1E4E8">:</span></span>
+<span data-line=""><span style="color:#85E89D">  parentRefs</span><span style="color:#E1E4E8">:</span></span>
+<span data-line=""><span style="color:#E1E4E8">    - </span><span style="color:#85E89D">name</span><span style="color:#E1E4E8">: </span><span style="color:#9ECBFF">eg</span></span>
+<span data-line=""><span style="color:#85E89D">  hostnames</span><span style="color:#E1E4E8">:</span></span>
+<span data-line=""><span style="color:#E1E4E8">    - </span><span style="color:#9ECBFF">"www.example.com"</span></span>
+<span data-line=""><span style="color:#85E89D">  rules</span><span style="color:#E1E4E8">:</span></span>
+<span data-line=""><span style="color:#E1E4E8">    - </span><span style="color:#85E89D">backendRefs</span><span style="color:#E1E4E8">:</span></span>
+<span data-line=""><span style="color:#E1E4E8">        - </span><span style="color:#85E89D">name</span><span style="color:#E1E4E8">: </span><span style="color:#9ECBFF">backend</span></span>
+<span data-line=""><span style="color:#85E89D">          port</span><span style="color:#E1E4E8">: </span><span style="color:#79B8FF">3000</span></span></code></pre></figure>
+<p>No necesitas memorizar cada campo ahora. Solo comprende qué está haciendo:</p>
+<ul>
+<li><code>parentRefs</code>: A qué Gateway se adjunta esta regla</li>
+<li><code>hostnames</code>: Qué dominio debe coincidir con esta regla</li>
+<li><code>backendRefs</code>: A qué Service enviar el tráfico</li>
+</ul>
+<h2 id="de-un-vistazo-cuándo-usar-qué-route">De un Vistazo: Cuándo Usar Qué Route</h2>
+<table>
+<thead>
+<tr>
+<th>Requisito</th>
+<th>Recurso Recomendado</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td>Sitios web, REST APIs, enrutamiento por cabecera/ruta</td>
+<td><code>HTTPRoute</code></td>
+</tr>
+<tr>
+<td>Enrutamiento por servicio/método gRPC</td>
+<td><code>GRPCRoute</code></td>
+</tr>
+<tr>
+<td>Servicios TCP puros (protocolo personalizado o no HTTP)</td>
+<td><code>TCPRoute</code></td>
+</tr>
+<tr>
+<td>Preservar TLS de extremo a extremo, no descifrar en el Gateway</td>
+<td><code>TLSRoute</code></td>
+</tr>
+</tbody>
+</table>
+<p>Esta matriz de decisión es muy práctica. Antes de escribir YAML, pregúntate:</p>
+<p>"¿Estoy trabajando con tráfico HTTP, gRPC o TCP/TLS puro?"</p>
+<h2 id="resumen-en-una-línea">Resumen en Una Línea</h2>
+<p><code>Envoy Gateway</code> no es solo otro término que tienes que memorizar — es una forma de elevar el tráfico externo de Kubernetes de "suficientemente bueno" a "algo que se parece a un sistema de ingeniería."</p>
+<blockquote>
+<p>💡 Si es tu primera vez con esta pila, no intentes aprender cada CRD de una vez. Instálalo, haz pasar tu primera solicitud, luego revisa los conceptos — la tasa de absorción es mucho más rápida de esa manera.</p>
+</blockquote>
+<h2 id="siguiente-paso">Siguiente Paso</h2>
+<p>En el próximo post, nos ponemos manos a la obra — instala Envoy Gateway en tu clúster y ejecuta tu primer <code>Gateway + HTTPRoute</code>:
+👉 <a href="01-quick-start">Quick Start</a></p>5:["$","aside",null,{"className":"hidden lg:block","children":["$","$L8",null,{"html":"$9"}]}]
+6:["$","script","script-0",{"src":"/_next/static/chunks/2dddb3bc05093f69.js","async":true}]
+7:["$","$La",null,{"children":["$","$b",null,{"name":"Next.MetadataOutlet","children":"$@c"}]}]
+c:null

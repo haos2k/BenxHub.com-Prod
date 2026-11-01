@@ -1,0 +1,199 @@
+1:"$Sreact.fragment"
+2:I[14864,["/_next/static/chunks/7923a261b80bb6e1.js","/_next/static/chunks/e09b4358027e8033.js","/_next/static/chunks/2dddb3bc05093f69.js"],"default"]
+8:I[24801,["/_next/static/chunks/7923a261b80bb6e1.js","/_next/static/chunks/e09b4358027e8033.js","/_next/static/chunks/2dddb3bc05093f69.js"],"default"]
+a:I[50183,["/_next/static/chunks/5a5b5b13c22d14f7.js","/_next/static/chunks/a484d1d3dd4b55ab.js"],"OutletBoundary"]
+b:"$Sreact.suspense"
+3:T1bfb,<p>真相時間：Agent 開發不是最難的部分，<strong>除錯才是</strong>。</p>
+<p>你會花不少時間盯著輸出想「為什麼這次格式又不一樣」、「明明有工具但 Agent 沒用它」、「第二個 Task 怎麼什麼都不知道」。這篇幫你把最常踩的雷整理成一張地圖，讓你少繞一些彎路。</p>
+<h2 id="8-個最常見問題快速對照">8 個最常見問題快速對照</h2>
+<table>
+<thead>
+<tr>
+<th>現象</th>
+<th>常見原因</th>
+<th>快速解法</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td>輸出格式每次不同</td>
+<td><code>expected_output</code> 太模糊</td>
+<td>加入明確格式規範，或改用 <code>output_pydantic</code></td>
+</tr>
+<tr>
+<td>後續 Task 拿不到前面資料</td>
+<td>缺 <code>context</code></td>
+<td>在 tasks.yaml 或 Task 物件明確加入 <code>context</code></td>
+</tr>
+<tr>
+<td>Tool 完全沒被呼叫</td>
+<td>Task 描述沒提到工具使用條件</td>
+<td>在 description 裡加「Use the X tool first」</td>
+</tr>
+<tr>
+<td>成本暴增</td>
+<td>Task 太長、重複呼叫模型</td>
+<td>任務拆小、縮短 prompt、加快取機制</td>
+</tr>
+<tr>
+<td>回答幻覺嚴重</td>
+<td>缺來源約束</td>
+<td>要求 <code>expected_output</code> 包含 source URL</td>
+</tr>
+<tr>
+<td>流程卡在某個步驟</td>
+<td>router 回傳值沒有對應的 listener</td>
+<td>檢查所有可能的 router 回傳值，確認都有 listener</td>
+</tr>
+<tr>
+<td>啟動就報錯</td>
+<td>環境變數未設定</td>
+<td>檢查 <code>.env</code> 裡的 API Key，確認 <code>crewai install</code> 跑完</td>
+</tr>
+<tr>
+<td>表現忽好忽壞</td>
+<td>測試輸入每次不固定</td>
+<td>建立固定測試輸入與驗收規則，用同一份輸入做比較</td>
+</tr>
+</tbody>
+</table>
+<h2 id="除錯要按順序別一出問題就怪模型">除錯要按順序，別一出問題就怪模型</h2>
+<p>很多人碰到問題，第一反應是「是不是模型不夠聰明」或者「要不要換 GPT-4o」——這個直覺大多數時候是錯的。</p>
+<p>按這個順序查，命中率最高：</p>
+<p><strong>第一步：查配置</strong><br>
+先看 <code>agents.yaml</code> 和 <code>tasks.yaml</code>。角色設定是不是有意義？Task 描述是不是清楚？<code>expected_output</code> 有沒有格式要求？<code>context</code> 有沒有串好？80% 的問題在這裡。</p>
+<p><strong>第二步：查輸入</strong><br>
+<code>inputs</code> 的資料是不是穩定的？如果你用動態資料做測試，你根本沒辦法判斷輸出是否變好或變差。先用固定輸入，確認行為可重現。</p>
+<p><strong>第三步：查工具</strong><br>
+Tool 有沒有被呼叫（看 verbose 輸出）？參數對不對？回傳格式有沒有模型能解析的結構？</p>
+<p><strong>第四步：才考慮模型</strong><br>
+確認前三步都沒問題了，再考慮是否要調模型的溫度、上下文長度，或換一個模型試試。</p>
+<p>順序不要反過來。大部分的「模型問題」，查下去都是 YAML 少一行或者 Task 描述太模糊。</p>
+<h2 id="一個被低估的除錯技巧">一個被低估的除錯技巧</h2>
+<p>每個 Task 加一個「輸出自我檢查」的要求，像這樣：</p>
+<figure data-rehype-pretty-code-figure=""><pre style="background-color:#24292e;color:#e1e4e8" tabindex="0" data-language="yaml" data-theme="github-dark"><code data-language="yaml" data-theme="github-dark" style="display: grid;"><span data-line=""><span style="color:#85E89D">research_task</span><span style="color:#E1E4E8">:</span></span>
+<span data-line=""><span style="color:#85E89D">  expected_output</span><span style="color:#E1E4E8">: </span><span style="color:#F97583">></span></span>
+<span data-line=""><span style="color:#9ECBFF">    A markdown bullet list with 8-10 items.</span></span>
+<span data-line=""><span style="color:#9ECBFF">    Each item MUST include: title, summary (2 sentences), and source URL.</span></span>
+<span data-line=""><span style="color:#9ECBFF">    At the end, add a one-line self-check: "✅ All items have title, summary, and source."</span></span></code></pre></figure>
+<p>讓模型在完成任務之後自己確認輸出是否符合格式，是一種低成本的「流程內單元測試」。不是 100% 可靠，但可以抓到很多格式不符的情況。</p>
+<p>另一個有效的做法是加「負面要求」——明確告訴模型什麼不要做：</p>
+<figure data-rehype-pretty-code-figure=""><pre style="background-color:#24292e;color:#e1e4e8" tabindex="0" data-language="yaml" data-theme="github-dark"><code data-language="yaml" data-theme="github-dark" style="display: grid;"><span data-line=""><span style="color:#85E89D">description</span><span style="color:#E1E4E8">: </span><span style="color:#F97583">></span></span>
+<span data-line=""><span style="color:#9ECBFF">  Research {topic}. Use the search tool to find current information.</span></span>
+<span data-line=""><span style="color:#9ECBFF">  Do NOT include information published before 2025.</span></span>
+<span data-line=""><span style="color:#9ECBFF">  Do NOT make up sources — if you don't have a URL, write "source not found".</span></span></code></pre></figure>
+<p>這兩種寫法比「加長 expected_output 到 200 字」效果好很多。</p>
+<h2 id="verbose-模式開著永遠開著">verbose 模式：開著，永遠開著</h2>
+<p>開發期間 <code>verbose=True</code> 一定要開——它會讓你在終端看到每個 Agent 的思考過程、工具呼叫記錄、和每個 Task 的輸出。沒有這個，你只能看到最終結果，完全不知道哪一步出了問題。</p>
+<p>生產環境可以關掉，開發和測試期間這個開關值那個 API 費的。</p>
+<h2 id="常見問題">常見問題</h2>
+<p><strong>Q：<code>expected_output</code> 寫很詳細了，輸出還是會飄，怎麼辦？</strong><br>
+試試 <code>output_pydantic</code>——把格式從「文字描述」變成「強制 schema 驗證」。如果連 Pydantic 也過不了，才要考慮是不是任務本身太複雜需要拆分。</p>
+<p><strong>Q：Tool 有被呼叫，但回傳的資料 Agent 沒有用到，怎麼辦？</strong><br>
+可能是 Tool 回傳的格式太難解析。把 Tool 的回傳改成清楚的結構化字串，並在 Task description 裡說明「根據工具回傳的 X 欄位來...」。</p>
+<p><strong>Q：流程有時候會突然超出 context window，怎麼辦？</strong><br>
+把任務拆小，每個 Task 只做一件事，不要讓單一任務的輸出太長。有些情況也可以加 <code>max_iter</code>（最大迭代次數）來限制模型的回答長度。</p>
+<p><strong>Q：同一個流程，今天跑和明天跑結果差很多，怎麼辦？</strong><br>
+兩個方向：一是固定測試輸入，確認是輸入造成的差異還是模型本身的隨機性；二是調低模型溫度（temperature），降低輸出的隨機程度。</p>
+<h2 id="下一步">下一步</h2>
+<p>雷大概都知道在哪了。最後一篇把前面全部串起來，看看一個可以真正上線的 CrewAI 系統長什麼樣：<br>
+👉 <a href="09-production-best-practices">上線最佳實踐</a></p>0:{"buildId":"Yck3R4ooQxWkwGLT6is1X","rsc":["$","$1","c",{"children":[[["$","script",null,{"type":"application/ld+json","dangerouslySetInnerHTML":{"__html":"{\"@context\":\"https://schema.org\",\"@type\":\"Article\",\"headline\":\"CrewAI 除錯指南：新手最常爆的 8 個雷與最快排查路徑\",\"description\":\"整理 CrewAI 開發最常見的 8 個錯誤與排查步驟，從輸出不穩、任務串接失敗到成本暴增，一篇解決。\",\"url\":\"https://benxhub.com/zh/blog/crewai/08-debug-and-common-errors\",\"mainEntityOfPage\":{\"@type\":\"WebPage\",\"@id\":\"https://benxhub.com/zh/blog/crewai/08-debug-and-common-errors\"},\"datePublished\":\"2026-03-05T00:00:00.000Z\",\"dateModified\":\"2026-03-05T00:00:00.000Z\",\"keywords\":\"crewai, debug, troubleshooting, agent, error\",\"inLanguage\":\"zh\",\"author\":{\"@type\":\"Person\",\"name\":\"BenX\",\"url\":\"https://benxhub.com\"},\"publisher\":{\"@type\":\"Organization\",\"name\":\"BenXHub Blog\",\"url\":\"https://benxhub.com\"}}"}}],["$","div",null,{"className":"mx-auto max-w-6xl px-4 py-12 sm:px-6","children":["$","div",null,{"className":"lg:grid lg:grid-cols-[1fr_240px] lg:gap-14","children":[["$","article",null,{"children":[["$","header",null,{"className":"mb-10","children":[["$","div",null,{"className":"mb-4 flex flex-wrap gap-2","children":[["$","$L2","crewai",{"href":"/zh/tags/crewai","localeCookie":{"name":"NEXT_LOCALE","sameSite":"lax"},"className":"inline-flex items-center rounded-full px-2.5 py-0.5 text-xs font-medium transition-colors","style":{"background":"var(--color-code-bg)","color":"var(--color-accent)","border":"1px solid var(--color-border)"},"children":["#","crewai"]}],["$","$L2","debug",{"href":"/zh/tags/debug","localeCookie":{"name":"NEXT_LOCALE","sameSite":"lax"},"className":"inline-flex items-center rounded-full px-2.5 py-0.5 text-xs font-medium transition-colors","style":{"background":"var(--color-code-bg)","color":"var(--color-accent)","border":"1px solid var(--color-border)"},"children":["#","debug"]}],["$","$L2","troubleshooting",{"href":"/zh/tags/troubleshooting","localeCookie":{"name":"NEXT_LOCALE","sameSite":"lax"},"className":"inline-flex items-center rounded-full px-2.5 py-0.5 text-xs font-medium transition-colors","style":{"background":"var(--color-code-bg)","color":"var(--color-accent)","border":"1px solid var(--color-border)"},"children":["#","troubleshooting"]}],["$","$L2","agent",{"href":"/zh/tags/agent","localeCookie":{"name":"NEXT_LOCALE","sameSite":"lax"},"className":"inline-flex items-center rounded-full px-2.5 py-0.5 text-xs font-medium transition-colors","style":{"background":"var(--color-code-bg)","color":"var(--color-accent)","border":"1px solid var(--color-border)"},"children":["#","agent"]}],["$","$L2","error",{"href":"/zh/tags/error","localeCookie":{"name":"NEXT_LOCALE","sameSite":"lax"},"className":"inline-flex items-center rounded-full px-2.5 py-0.5 text-xs font-medium transition-colors","style":{"background":"var(--color-code-bg)","color":"var(--color-accent)","border":"1px solid var(--color-border)"},"children":["#","error"]}]]}],["$","h1",null,{"className":"mb-4 text-3xl leading-snug font-bold tracking-tight sm:text-4xl","style":{"color":"var(--color-text)"},"children":"CrewAI 除錯指南：新手最常爆的 8 個雷與最快排查路徑"}],["$","div",null,{"className":"flex flex-wrap items-center gap-3 text-sm","style":{"color":"var(--color-muted)"},"children":[["$","time",null,{"dateTime":"2026-03-05","children":"2026 年 3 月 5 日"}],["$","span",null,{"aria-hidden":"true","children":"·"}],["$","span",null,{"children":"7 min read"}]]}],"$undefined",["$","div",null,{"className":"mt-6 border-b","style":{"borderColor":"var(--color-border)"}}]]}],["$","div",null,{"className":"prose","dangerouslySetInnerHTML":{"__html":"$3"}}],"$L4"]}],"$L5"]}]}]],["$L6"],"$L7"]}],"loading":null,"isPartial":false}
+4:["$","footer",null,{"className":"mt-14 border-t pt-8","style":{"borderColor":"var(--color-border)"},"children":[["$","div",null,{"className":"mb-8 flex flex-wrap gap-2","children":[["$","$L2","crewai",{"href":"/zh/tags/crewai","localeCookie":{"name":"NEXT_LOCALE","sameSite":"lax"},"className":"inline-flex items-center rounded-full px-3 py-1 text-sm font-medium transition-colors","style":{"background":"var(--color-code-bg)","color":"var(--color-accent)","border":"1px solid var(--color-border)"},"children":["#","crewai"]}],["$","$L2","debug",{"href":"/zh/tags/debug","localeCookie":{"name":"NEXT_LOCALE","sameSite":"lax"},"className":"inline-flex items-center rounded-full px-3 py-1 text-sm font-medium transition-colors","style":{"background":"var(--color-code-bg)","color":"var(--color-accent)","border":"1px solid var(--color-border)"},"children":["#","debug"]}],["$","$L2","troubleshooting",{"href":"/zh/tags/troubleshooting","localeCookie":{"name":"NEXT_LOCALE","sameSite":"lax"},"className":"inline-flex items-center rounded-full px-3 py-1 text-sm font-medium transition-colors","style":{"background":"var(--color-code-bg)","color":"var(--color-accent)","border":"1px solid var(--color-border)"},"children":["#","troubleshooting"]}],["$","$L2","agent",{"href":"/zh/tags/agent","localeCookie":{"name":"NEXT_LOCALE","sameSite":"lax"},"className":"inline-flex items-center rounded-full px-3 py-1 text-sm font-medium transition-colors","style":{"background":"var(--color-code-bg)","color":"var(--color-accent)","border":"1px solid var(--color-border)"},"children":["#","agent"]}],["$","$L2","error",{"href":"/zh/tags/error","localeCookie":{"name":"NEXT_LOCALE","sameSite":"lax"},"className":"inline-flex items-center rounded-full px-3 py-1 text-sm font-medium transition-colors","style":{"background":"var(--color-code-bg)","color":"var(--color-accent)","border":"1px solid var(--color-border)"},"children":["#","error"]}]]}],["$","nav",null,{"aria-label":"文章導覽","className":"grid grid-cols-1 gap-4 sm:grid-cols-2","children":[["$","$L2",null,{"href":"/zh/blog/openclaw/12-openclaw-workspace-telegram-setup","localeCookie":{"name":"NEXT_LOCALE","sameSite":"lax"},"className":"group rounded-lg border p-4 transition-colors hover:border-accent","style":{"borderColor":"var(--color-border)","background":"var(--color-surface)"},"children":[["$","p",null,{"className":"mb-1 text-xs","style":{"color":"var(--color-muted)"},"children":"← 較新文章"}],["$","p",null,{"className":"line-clamp-1 text-sm font-medium transition-colors group-hover:text-accent","style":{"color":"var(--color-text)"},"children":"一個 Bot，多個任務不混亂——Workspace × Telegram 完整設定指南"}]]}],["$","$L2",null,{"href":"/zh/blog/crewai/09-production-best-practices","localeCookie":{"name":"NEXT_LOCALE","sameSite":"lax"},"className":"group rounded-lg border p-4 text-right transition-colors hover:border-accent","style":{"borderColor":"var(--color-border)","background":"var(--color-surface)"},"children":[["$","p",null,{"className":"mb-1 text-xs","style":{"color":"var(--color-muted)"},"children":"較舊文章 →"}],["$","p",null,{"className":"line-clamp-1 text-sm font-medium transition-colors group-hover:text-accent","style":{"color":"var(--color-text)"},"children":"CrewAI 上線最佳實踐：從 Demo 走到可維運的生產系統"}]]}]]}]]}]
+9:T1bfb,<p>真相時間：Agent 開發不是最難的部分，<strong>除錯才是</strong>。</p>
+<p>你會花不少時間盯著輸出想「為什麼這次格式又不一樣」、「明明有工具但 Agent 沒用它」、「第二個 Task 怎麼什麼都不知道」。這篇幫你把最常踩的雷整理成一張地圖，讓你少繞一些彎路。</p>
+<h2 id="8-個最常見問題快速對照">8 個最常見問題快速對照</h2>
+<table>
+<thead>
+<tr>
+<th>現象</th>
+<th>常見原因</th>
+<th>快速解法</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td>輸出格式每次不同</td>
+<td><code>expected_output</code> 太模糊</td>
+<td>加入明確格式規範，或改用 <code>output_pydantic</code></td>
+</tr>
+<tr>
+<td>後續 Task 拿不到前面資料</td>
+<td>缺 <code>context</code></td>
+<td>在 tasks.yaml 或 Task 物件明確加入 <code>context</code></td>
+</tr>
+<tr>
+<td>Tool 完全沒被呼叫</td>
+<td>Task 描述沒提到工具使用條件</td>
+<td>在 description 裡加「Use the X tool first」</td>
+</tr>
+<tr>
+<td>成本暴增</td>
+<td>Task 太長、重複呼叫模型</td>
+<td>任務拆小、縮短 prompt、加快取機制</td>
+</tr>
+<tr>
+<td>回答幻覺嚴重</td>
+<td>缺來源約束</td>
+<td>要求 <code>expected_output</code> 包含 source URL</td>
+</tr>
+<tr>
+<td>流程卡在某個步驟</td>
+<td>router 回傳值沒有對應的 listener</td>
+<td>檢查所有可能的 router 回傳值，確認都有 listener</td>
+</tr>
+<tr>
+<td>啟動就報錯</td>
+<td>環境變數未設定</td>
+<td>檢查 <code>.env</code> 裡的 API Key，確認 <code>crewai install</code> 跑完</td>
+</tr>
+<tr>
+<td>表現忽好忽壞</td>
+<td>測試輸入每次不固定</td>
+<td>建立固定測試輸入與驗收規則，用同一份輸入做比較</td>
+</tr>
+</tbody>
+</table>
+<h2 id="除錯要按順序別一出問題就怪模型">除錯要按順序，別一出問題就怪模型</h2>
+<p>很多人碰到問題，第一反應是「是不是模型不夠聰明」或者「要不要換 GPT-4o」——這個直覺大多數時候是錯的。</p>
+<p>按這個順序查，命中率最高：</p>
+<p><strong>第一步：查配置</strong><br>
+先看 <code>agents.yaml</code> 和 <code>tasks.yaml</code>。角色設定是不是有意義？Task 描述是不是清楚？<code>expected_output</code> 有沒有格式要求？<code>context</code> 有沒有串好？80% 的問題在這裡。</p>
+<p><strong>第二步：查輸入</strong><br>
+<code>inputs</code> 的資料是不是穩定的？如果你用動態資料做測試，你根本沒辦法判斷輸出是否變好或變差。先用固定輸入，確認行為可重現。</p>
+<p><strong>第三步：查工具</strong><br>
+Tool 有沒有被呼叫（看 verbose 輸出）？參數對不對？回傳格式有沒有模型能解析的結構？</p>
+<p><strong>第四步：才考慮模型</strong><br>
+確認前三步都沒問題了，再考慮是否要調模型的溫度、上下文長度，或換一個模型試試。</p>
+<p>順序不要反過來。大部分的「模型問題」，查下去都是 YAML 少一行或者 Task 描述太模糊。</p>
+<h2 id="一個被低估的除錯技巧">一個被低估的除錯技巧</h2>
+<p>每個 Task 加一個「輸出自我檢查」的要求，像這樣：</p>
+<figure data-rehype-pretty-code-figure=""><pre style="background-color:#24292e;color:#e1e4e8" tabindex="0" data-language="yaml" data-theme="github-dark"><code data-language="yaml" data-theme="github-dark" style="display: grid;"><span data-line=""><span style="color:#85E89D">research_task</span><span style="color:#E1E4E8">:</span></span>
+<span data-line=""><span style="color:#85E89D">  expected_output</span><span style="color:#E1E4E8">: </span><span style="color:#F97583">></span></span>
+<span data-line=""><span style="color:#9ECBFF">    A markdown bullet list with 8-10 items.</span></span>
+<span data-line=""><span style="color:#9ECBFF">    Each item MUST include: title, summary (2 sentences), and source URL.</span></span>
+<span data-line=""><span style="color:#9ECBFF">    At the end, add a one-line self-check: "✅ All items have title, summary, and source."</span></span></code></pre></figure>
+<p>讓模型在完成任務之後自己確認輸出是否符合格式，是一種低成本的「流程內單元測試」。不是 100% 可靠，但可以抓到很多格式不符的情況。</p>
+<p>另一個有效的做法是加「負面要求」——明確告訴模型什麼不要做：</p>
+<figure data-rehype-pretty-code-figure=""><pre style="background-color:#24292e;color:#e1e4e8" tabindex="0" data-language="yaml" data-theme="github-dark"><code data-language="yaml" data-theme="github-dark" style="display: grid;"><span data-line=""><span style="color:#85E89D">description</span><span style="color:#E1E4E8">: </span><span style="color:#F97583">></span></span>
+<span data-line=""><span style="color:#9ECBFF">  Research {topic}. Use the search tool to find current information.</span></span>
+<span data-line=""><span style="color:#9ECBFF">  Do NOT include information published before 2025.</span></span>
+<span data-line=""><span style="color:#9ECBFF">  Do NOT make up sources — if you don't have a URL, write "source not found".</span></span></code></pre></figure>
+<p>這兩種寫法比「加長 expected_output 到 200 字」效果好很多。</p>
+<h2 id="verbose-模式開著永遠開著">verbose 模式：開著，永遠開著</h2>
+<p>開發期間 <code>verbose=True</code> 一定要開——它會讓你在終端看到每個 Agent 的思考過程、工具呼叫記錄、和每個 Task 的輸出。沒有這個，你只能看到最終結果，完全不知道哪一步出了問題。</p>
+<p>生產環境可以關掉，開發和測試期間這個開關值那個 API 費的。</p>
+<h2 id="常見問題">常見問題</h2>
+<p><strong>Q：<code>expected_output</code> 寫很詳細了，輸出還是會飄，怎麼辦？</strong><br>
+試試 <code>output_pydantic</code>——把格式從「文字描述」變成「強制 schema 驗證」。如果連 Pydantic 也過不了，才要考慮是不是任務本身太複雜需要拆分。</p>
+<p><strong>Q：Tool 有被呼叫，但回傳的資料 Agent 沒有用到，怎麼辦？</strong><br>
+可能是 Tool 回傳的格式太難解析。把 Tool 的回傳改成清楚的結構化字串，並在 Task description 裡說明「根據工具回傳的 X 欄位來...」。</p>
+<p><strong>Q：流程有時候會突然超出 context window，怎麼辦？</strong><br>
+把任務拆小，每個 Task 只做一件事，不要讓單一任務的輸出太長。有些情況也可以加 <code>max_iter</code>（最大迭代次數）來限制模型的回答長度。</p>
+<p><strong>Q：同一個流程，今天跑和明天跑結果差很多，怎麼辦？</strong><br>
+兩個方向：一是固定測試輸入，確認是輸入造成的差異還是模型本身的隨機性；二是調低模型溫度（temperature），降低輸出的隨機程度。</p>
+<h2 id="下一步">下一步</h2>
+<p>雷大概都知道在哪了。最後一篇把前面全部串起來，看看一個可以真正上線的 CrewAI 系統長什麼樣：<br>
+👉 <a href="09-production-best-practices">上線最佳實踐</a></p>5:["$","aside",null,{"className":"hidden lg:block","children":["$","$L8",null,{"html":"$9"}]}]
+6:["$","script","script-0",{"src":"/_next/static/chunks/2dddb3bc05093f69.js","async":true}]
+7:["$","$La",null,{"children":["$","$b",null,{"name":"Next.MetadataOutlet","children":"$@c"}]}]
+c:null

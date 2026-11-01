@@ -1,0 +1,105 @@
+1:"$Sreact.fragment"
+2:I[14864,["/_next/static/chunks/7923a261b80bb6e1.js","/_next/static/chunks/e09b4358027e8033.js","/_next/static/chunks/2dddb3bc05093f69.js"],"default"]
+8:I[24801,["/_next/static/chunks/7923a261b80bb6e1.js","/_next/static/chunks/e09b4358027e8033.js","/_next/static/chunks/2dddb3bc05093f69.js"],"default"]
+a:I[50183,["/_next/static/chunks/5a5b5b13c22d14f7.js","/_next/static/chunks/a484d1d3dd4b55ab.js"],"OutletBoundary"]
+b:"$Sreact.suspense"
+3:T1a97,<p>إذا رأيت مهمة تُعيد markdown هذه المرة وعرضاً نثرياً حراً في المرة القادمة، فلست وحدك.<br>
+الحل مباشر: <strong>عرّف مخطط الإخراج مع Pydantic</strong>.</p>
+<h2 id="لماذا-الإخراج-المنظم">لماذا الإخراج المنظم؟</h2>
+<ul>
+<li>المهام اللاحقة تستطيع قراءة حقول ثابتة</li>
+<li>لا تحليل نصي هش في كل تشغيل</li>
+<li>الفشل يُكتشف مبكراً (عدم تطابق الحقول يُلقي أخطاء)</li>
+</ul>
+<p>إنه عقد API بشكل أساسي. التعاون المستقر يحتاج عقداً.</p>
+<h2 id="إنشاء-نماذج-الإخراج">إنشاء نماذج الإخراج</h2>
+<figure data-rehype-pretty-code-figure=""><pre style="background-color:#24292e;color:#e1e4e8" tabindex="0" data-language="python" data-theme="github-dark"><code data-language="python" data-theme="github-dark" style="display: grid;"><span data-line=""><span style="color:#F97583">from</span><span style="color:#E1E4E8"> pydantic </span><span style="color:#F97583">import</span><span style="color:#E1E4E8"> BaseModel, Field</span></span>
+<span data-line=""> </span>
+<span data-line=""><span style="color:#F97583">class</span><span style="color:#B392F0"> Finding</span><span style="color:#E1E4E8">(</span><span style="color:#B392F0">BaseModel</span><span style="color:#E1E4E8">):</span></span>
+<span data-line=""><span style="color:#E1E4E8">    title: </span><span style="color:#79B8FF">str</span><span style="color:#F97583"> =</span><span style="color:#E1E4E8"> Field(</span><span style="color:#FFAB70">description</span><span style="color:#F97583">=</span><span style="color:#9ECBFF">"عنوان النتيجة"</span><span style="color:#E1E4E8">)</span></span>
+<span data-line=""><span style="color:#E1E4E8">    summary: </span><span style="color:#79B8FF">str</span><span style="color:#F97583"> =</span><span style="color:#E1E4E8"> Field(</span><span style="color:#FFAB70">description</span><span style="color:#F97583">=</span><span style="color:#9ECBFF">"شرح مختصر"</span><span style="color:#E1E4E8">)</span></span>
+<span data-line=""><span style="color:#E1E4E8">    source: </span><span style="color:#79B8FF">str</span><span style="color:#F97583"> =</span><span style="color:#E1E4E8"> Field(</span><span style="color:#FFAB70">description</span><span style="color:#F97583">=</span><span style="color:#9ECBFF">"رابط المرجع"</span><span style="color:#E1E4E8">)</span></span>
+<span data-line=""> </span>
+<span data-line=""><span style="color:#F97583">class</span><span style="color:#B392F0"> ResearchReport</span><span style="color:#E1E4E8">(</span><span style="color:#B392F0">BaseModel</span><span style="color:#E1E4E8">):</span></span>
+<span data-line=""><span style="color:#E1E4E8">    topic: </span><span style="color:#79B8FF">str</span><span style="color:#F97583"> =</span><span style="color:#E1E4E8"> Field(</span><span style="color:#FFAB70">description</span><span style="color:#F97583">=</span><span style="color:#9ECBFF">"اسم الموضوع"</span><span style="color:#E1E4E8">)</span></span>
+<span data-line=""><span style="color:#E1E4E8">    findings: list[Finding] </span><span style="color:#F97583">=</span><span style="color:#E1E4E8"> Field(</span><span style="color:#FFAB70">description</span><span style="color:#F97583">=</span><span style="color:#9ECBFF">"قائمة النتائج الرئيسية"</span><span style="color:#E1E4E8">)</span></span>
+<span data-line=""><span style="color:#E1E4E8">    conclusion: </span><span style="color:#79B8FF">str</span><span style="color:#F97583"> =</span><span style="color:#E1E4E8"> Field(</span><span style="color:#FFAB70">description</span><span style="color:#F97583">=</span><span style="color:#9ECBFF">"الخلاصة النهائية"</span><span style="color:#E1E4E8">)</span></span></code></pre></figure>
+<h2 id="استخدام-output_pydantic-في-مهمة">استخدام <code>output_pydantic</code> في مهمة</h2>
+<figure data-rehype-pretty-code-figure=""><pre style="background-color:#24292e;color:#e1e4e8" tabindex="0" data-language="python" data-theme="github-dark"><code data-language="python" data-theme="github-dark" style="display: grid;"><span data-line=""><span style="color:#F97583">from</span><span style="color:#E1E4E8"> crewai </span><span style="color:#F97583">import</span><span style="color:#E1E4E8"> Task</span></span>
+<span data-line=""> </span>
+<span data-line=""><span style="color:#E1E4E8">research_task </span><span style="color:#F97583">=</span><span style="color:#E1E4E8"> Task(</span></span>
+<span data-line=""><span style="color:#FFAB70">    description</span><span style="color:#F97583">=</span><span style="color:#9ECBFF">"ابحث في أدوات مراقبة الذكاء الاصطناعي في 2026."</span><span style="color:#E1E4E8">,</span></span>
+<span data-line=""><span style="color:#FFAB70">    expected_output</span><span style="color:#F97583">=</span><span style="color:#9ECBFF">"نتيجة بحث منظمة."</span><span style="color:#E1E4E8">,</span></span>
+<span data-line=""><span style="color:#FFAB70">    output_pydantic</span><span style="color:#F97583">=</span><span style="color:#E1E4E8">ResearchReport,</span></span>
+<span data-line=""><span style="color:#E1E4E8">)</span></span></code></pre></figure>
+<p>بعد التنفيذ، يمكنك الوصول إلى الحقول الثابتة مباشرةً بدلاً من التخمين من النص.</p>
+<h2 id="أسلوب-الإقران-الموصى-به">أسلوب الإقران الموصى به</h2>
+<ul>
+<li>أبقِ متطلبات جودة <code>expected_output</code> صريحة</li>
+<li>عرّف دلالات الحقول (طول <code>summary</code>، صيغة <code>source</code>)</li>
+<li>اجعل المهام اللاحقة تعتمد على الحقول، وليس على أسلوب الكتابة</li>
+</ul>
+<h2 id="أخطاء-المبتدئين-الشائعة">أخطاء المبتدئين الشائعة</h2>
+<ol>
+<li>الاعتقاد بأن Pydantic يجعل <code>expected_output</code> غير ضروري</li>
+<li>حقول قليلة جداً، مما يؤدي إلى ضياع معلومات</li>
+<li>حقول تفصيلية كثيرة جداً، مما يسبب حذفاً متكرراً</li>
+</ol>
+<blockquote>
+<p>⚠️ ابدأ بـ 3-5 حقول رئيسية أولاً. وسّع فقط عند الحاجة.</p>
+</blockquote>
+<h2 id="الخطوة-التالية">الخطوة التالية</h2>
+<p>الآن طاقمك الواحد يستطيع الإخراج بشكل موثوق. بعد ذلك، ننتقل إلى تنسيق أطقم متعددة.<br>
+👉 <a href="06-flow-basics">أساسيات Flow</a></p>0:{"buildId":"Yck3R4ooQxWkwGLT6is1X","rsc":["$","$1","c",{"children":[[["$","script",null,{"type":"application/ld+json","dangerouslySetInnerHTML":{"__html":"{\"@context\":\"https://schema.org\",\"@type\":\"Article\",\"headline\":\"الإخراج المنظم في CrewAI: أوقف انجراف البيانات مع Pydantic\",\"description\":\"استخدم output_pydantic لتعريف مخططات إخراج مستقرة وتحسين موثوقية العمليات اللاحقة.\",\"url\":\"https://benxhub.com/ar/blog/crewai/05-structured-output-pydantic\",\"mainEntityOfPage\":{\"@type\":\"WebPage\",\"@id\":\"https://benxhub.com/ar/blog/crewai/05-structured-output-pydantic\"},\"datePublished\":\"2026-03-02T00:00:00.000Z\",\"dateModified\":\"2026-03-02T00:00:00.000Z\",\"keywords\":\"crewai, pydantic, structured-output, python\",\"inLanguage\":\"ar\",\"author\":{\"@type\":\"Person\",\"name\":\"BenX\",\"url\":\"https://benxhub.com\"},\"publisher\":{\"@type\":\"Organization\",\"name\":\"BenXHub Blog\",\"url\":\"https://benxhub.com\"}}"}}],["$","div",null,{"className":"mx-auto max-w-6xl px-4 py-12 sm:px-6","children":["$","div",null,{"className":"lg:grid lg:grid-cols-[1fr_240px] lg:gap-14","children":[["$","article",null,{"children":[["$","header",null,{"className":"mb-10","children":[["$","div",null,{"className":"mb-4 flex flex-wrap gap-2","children":[["$","$L2","crewai",{"href":"/ar/tags/crewai","localeCookie":{"name":"NEXT_LOCALE","sameSite":"lax"},"className":"inline-flex items-center rounded-full px-2.5 py-0.5 text-xs font-medium transition-colors","style":{"background":"var(--color-code-bg)","color":"var(--color-accent)","border":"1px solid var(--color-border)"},"children":["#","crewai"]}],["$","$L2","pydantic",{"href":"/ar/tags/pydantic","localeCookie":{"name":"NEXT_LOCALE","sameSite":"lax"},"className":"inline-flex items-center rounded-full px-2.5 py-0.5 text-xs font-medium transition-colors","style":{"background":"var(--color-code-bg)","color":"var(--color-accent)","border":"1px solid var(--color-border)"},"children":["#","pydantic"]}],["$","$L2","structured-output",{"href":"/ar/tags/structured-output","localeCookie":{"name":"NEXT_LOCALE","sameSite":"lax"},"className":"inline-flex items-center rounded-full px-2.5 py-0.5 text-xs font-medium transition-colors","style":{"background":"var(--color-code-bg)","color":"var(--color-accent)","border":"1px solid var(--color-border)"},"children":["#","structured-output"]}],["$","$L2","python",{"href":"/ar/tags/python","localeCookie":{"name":"NEXT_LOCALE","sameSite":"lax"},"className":"inline-flex items-center rounded-full px-2.5 py-0.5 text-xs font-medium transition-colors","style":{"background":"var(--color-code-bg)","color":"var(--color-accent)","border":"1px solid var(--color-border)"},"children":["#","python"]}]]}],["$","h1",null,{"className":"mb-4 text-3xl leading-snug font-bold tracking-tight sm:text-4xl","style":{"color":"var(--color-text)"},"children":"الإخراج المنظم في CrewAI: أوقف انجراف البيانات مع Pydantic"}],["$","div",null,{"className":"flex flex-wrap items-center gap-3 text-sm","style":{"color":"var(--color-muted)"},"children":[["$","time",null,{"dateTime":"2026-03-02","children":"2 3月 2026"}],["$","span",null,{"aria-hidden":"true","children":"·"}],["$","span",null,{"children":"2 min read"}]]}],"$undefined",["$","div",null,{"className":"mt-6 border-b","style":{"borderColor":"var(--color-border)"}}]]}],["$","div",null,{"className":"prose","dangerouslySetInnerHTML":{"__html":"$3"}}],"$L4"]}],"$L5"]}]}]],["$L6"],"$L7"]}],"loading":null,"isPartial":false}
+4:["$","footer",null,{"className":"mt-14 border-t pt-8","style":{"borderColor":"var(--color-border)"},"children":[["$","div",null,{"className":"mb-8 flex flex-wrap gap-2","children":[["$","$L2","crewai",{"href":"/ar/tags/crewai","localeCookie":{"name":"NEXT_LOCALE","sameSite":"lax"},"className":"inline-flex items-center rounded-full px-3 py-1 text-sm font-medium transition-colors","style":{"background":"var(--color-code-bg)","color":"var(--color-accent)","border":"1px solid var(--color-border)"},"children":["#","crewai"]}],["$","$L2","pydantic",{"href":"/ar/tags/pydantic","localeCookie":{"name":"NEXT_LOCALE","sameSite":"lax"},"className":"inline-flex items-center rounded-full px-3 py-1 text-sm font-medium transition-colors","style":{"background":"var(--color-code-bg)","color":"var(--color-accent)","border":"1px solid var(--color-border)"},"children":["#","pydantic"]}],["$","$L2","structured-output",{"href":"/ar/tags/structured-output","localeCookie":{"name":"NEXT_LOCALE","sameSite":"lax"},"className":"inline-flex items-center rounded-full px-3 py-1 text-sm font-medium transition-colors","style":{"background":"var(--color-code-bg)","color":"var(--color-accent)","border":"1px solid var(--color-border)"},"children":["#","structured-output"]}],["$","$L2","python",{"href":"/ar/tags/python","localeCookie":{"name":"NEXT_LOCALE","sameSite":"lax"},"className":"inline-flex items-center rounded-full px-3 py-1 text-sm font-medium transition-colors","style":{"background":"var(--color-code-bg)","color":"var(--color-accent)","border":"1px solid var(--color-border)"},"children":["#","python"]}]]}],["$","nav",null,{"aria-label":"التنقل بين المقالات","className":"grid grid-cols-1 gap-4 sm:grid-cols-2","children":[["$","$L2",null,{"href":"/ar/blog/crewai/04-tools-integration","localeCookie":{"name":"NEXT_LOCALE","sameSite":"lax"},"className":"group rounded-lg border p-4 transition-colors hover:border-accent","style":{"borderColor":"var(--color-border)","background":"var(--color-surface)"},"children":[["$","p",null,{"className":"mb-1 text-xs","style":{"color":"var(--color-muted)"},"children":"→ الأحدث"}],["$","p",null,{"className":"line-clamp-1 text-sm font-medium transition-colors group-hover:text-accent","style":{"color":"var(--color-text)"},"children":"دمج أدوات CrewAI: دع الوكلاء يبحثون ويقرؤون وينجزون العمل فعلاً"}]]}],["$","$L2",null,{"href":"/ar/blog/crewai/00-overview","localeCookie":{"name":"NEXT_LOCALE","sameSite":"lax"},"className":"group rounded-lg border p-4 text-right transition-colors hover:border-accent","style":{"borderColor":"var(--color-border)","background":"var(--color-surface)"},"children":[["$","p",null,{"className":"mb-1 text-xs","style":{"color":"var(--color-muted)"},"children":"الأقدم ←"}],["$","p",null,{"className":"line-clamp-1 text-sm font-medium transition-colors group-hover:text-accent","style":{"color":"var(--color-text)"},"children":"نظرة عامة على سلسلة CrewAI: من الصفر إلى سير عمل متعدد الوكلاء جاهز للإنتاج"}]]}]]}]]}]
+9:T1a97,<p>إذا رأيت مهمة تُعيد markdown هذه المرة وعرضاً نثرياً حراً في المرة القادمة، فلست وحدك.<br>
+الحل مباشر: <strong>عرّف مخطط الإخراج مع Pydantic</strong>.</p>
+<h2 id="لماذا-الإخراج-المنظم">لماذا الإخراج المنظم؟</h2>
+<ul>
+<li>المهام اللاحقة تستطيع قراءة حقول ثابتة</li>
+<li>لا تحليل نصي هش في كل تشغيل</li>
+<li>الفشل يُكتشف مبكراً (عدم تطابق الحقول يُلقي أخطاء)</li>
+</ul>
+<p>إنه عقد API بشكل أساسي. التعاون المستقر يحتاج عقداً.</p>
+<h2 id="إنشاء-نماذج-الإخراج">إنشاء نماذج الإخراج</h2>
+<figure data-rehype-pretty-code-figure=""><pre style="background-color:#24292e;color:#e1e4e8" tabindex="0" data-language="python" data-theme="github-dark"><code data-language="python" data-theme="github-dark" style="display: grid;"><span data-line=""><span style="color:#F97583">from</span><span style="color:#E1E4E8"> pydantic </span><span style="color:#F97583">import</span><span style="color:#E1E4E8"> BaseModel, Field</span></span>
+<span data-line=""> </span>
+<span data-line=""><span style="color:#F97583">class</span><span style="color:#B392F0"> Finding</span><span style="color:#E1E4E8">(</span><span style="color:#B392F0">BaseModel</span><span style="color:#E1E4E8">):</span></span>
+<span data-line=""><span style="color:#E1E4E8">    title: </span><span style="color:#79B8FF">str</span><span style="color:#F97583"> =</span><span style="color:#E1E4E8"> Field(</span><span style="color:#FFAB70">description</span><span style="color:#F97583">=</span><span style="color:#9ECBFF">"عنوان النتيجة"</span><span style="color:#E1E4E8">)</span></span>
+<span data-line=""><span style="color:#E1E4E8">    summary: </span><span style="color:#79B8FF">str</span><span style="color:#F97583"> =</span><span style="color:#E1E4E8"> Field(</span><span style="color:#FFAB70">description</span><span style="color:#F97583">=</span><span style="color:#9ECBFF">"شرح مختصر"</span><span style="color:#E1E4E8">)</span></span>
+<span data-line=""><span style="color:#E1E4E8">    source: </span><span style="color:#79B8FF">str</span><span style="color:#F97583"> =</span><span style="color:#E1E4E8"> Field(</span><span style="color:#FFAB70">description</span><span style="color:#F97583">=</span><span style="color:#9ECBFF">"رابط المرجع"</span><span style="color:#E1E4E8">)</span></span>
+<span data-line=""> </span>
+<span data-line=""><span style="color:#F97583">class</span><span style="color:#B392F0"> ResearchReport</span><span style="color:#E1E4E8">(</span><span style="color:#B392F0">BaseModel</span><span style="color:#E1E4E8">):</span></span>
+<span data-line=""><span style="color:#E1E4E8">    topic: </span><span style="color:#79B8FF">str</span><span style="color:#F97583"> =</span><span style="color:#E1E4E8"> Field(</span><span style="color:#FFAB70">description</span><span style="color:#F97583">=</span><span style="color:#9ECBFF">"اسم الموضوع"</span><span style="color:#E1E4E8">)</span></span>
+<span data-line=""><span style="color:#E1E4E8">    findings: list[Finding] </span><span style="color:#F97583">=</span><span style="color:#E1E4E8"> Field(</span><span style="color:#FFAB70">description</span><span style="color:#F97583">=</span><span style="color:#9ECBFF">"قائمة النتائج الرئيسية"</span><span style="color:#E1E4E8">)</span></span>
+<span data-line=""><span style="color:#E1E4E8">    conclusion: </span><span style="color:#79B8FF">str</span><span style="color:#F97583"> =</span><span style="color:#E1E4E8"> Field(</span><span style="color:#FFAB70">description</span><span style="color:#F97583">=</span><span style="color:#9ECBFF">"الخلاصة النهائية"</span><span style="color:#E1E4E8">)</span></span></code></pre></figure>
+<h2 id="استخدام-output_pydantic-في-مهمة">استخدام <code>output_pydantic</code> في مهمة</h2>
+<figure data-rehype-pretty-code-figure=""><pre style="background-color:#24292e;color:#e1e4e8" tabindex="0" data-language="python" data-theme="github-dark"><code data-language="python" data-theme="github-dark" style="display: grid;"><span data-line=""><span style="color:#F97583">from</span><span style="color:#E1E4E8"> crewai </span><span style="color:#F97583">import</span><span style="color:#E1E4E8"> Task</span></span>
+<span data-line=""> </span>
+<span data-line=""><span style="color:#E1E4E8">research_task </span><span style="color:#F97583">=</span><span style="color:#E1E4E8"> Task(</span></span>
+<span data-line=""><span style="color:#FFAB70">    description</span><span style="color:#F97583">=</span><span style="color:#9ECBFF">"ابحث في أدوات مراقبة الذكاء الاصطناعي في 2026."</span><span style="color:#E1E4E8">,</span></span>
+<span data-line=""><span style="color:#FFAB70">    expected_output</span><span style="color:#F97583">=</span><span style="color:#9ECBFF">"نتيجة بحث منظمة."</span><span style="color:#E1E4E8">,</span></span>
+<span data-line=""><span style="color:#FFAB70">    output_pydantic</span><span style="color:#F97583">=</span><span style="color:#E1E4E8">ResearchReport,</span></span>
+<span data-line=""><span style="color:#E1E4E8">)</span></span></code></pre></figure>
+<p>بعد التنفيذ، يمكنك الوصول إلى الحقول الثابتة مباشرةً بدلاً من التخمين من النص.</p>
+<h2 id="أسلوب-الإقران-الموصى-به">أسلوب الإقران الموصى به</h2>
+<ul>
+<li>أبقِ متطلبات جودة <code>expected_output</code> صريحة</li>
+<li>عرّف دلالات الحقول (طول <code>summary</code>، صيغة <code>source</code>)</li>
+<li>اجعل المهام اللاحقة تعتمد على الحقول، وليس على أسلوب الكتابة</li>
+</ul>
+<h2 id="أخطاء-المبتدئين-الشائعة">أخطاء المبتدئين الشائعة</h2>
+<ol>
+<li>الاعتقاد بأن Pydantic يجعل <code>expected_output</code> غير ضروري</li>
+<li>حقول قليلة جداً، مما يؤدي إلى ضياع معلومات</li>
+<li>حقول تفصيلية كثيرة جداً، مما يسبب حذفاً متكرراً</li>
+</ol>
+<blockquote>
+<p>⚠️ ابدأ بـ 3-5 حقول رئيسية أولاً. وسّع فقط عند الحاجة.</p>
+</blockquote>
+<h2 id="الخطوة-التالية">الخطوة التالية</h2>
+<p>الآن طاقمك الواحد يستطيع الإخراج بشكل موثوق. بعد ذلك، ننتقل إلى تنسيق أطقم متعددة.<br>
+👉 <a href="06-flow-basics">أساسيات Flow</a></p>5:["$","aside",null,{"className":"hidden lg:block","children":["$","$L8",null,{"html":"$9"}]}]
+6:["$","script","script-0",{"src":"/_next/static/chunks/2dddb3bc05093f69.js","async":true}]
+7:["$","$La",null,{"children":["$","$b",null,{"name":"Next.MetadataOutlet","children":"$@c"}]}]
+c:null

@@ -1,0 +1,251 @@
+1:"$Sreact.fragment"
+2:I[26795,["/_next/static/chunks/5a5b5b13c22d14f7.js","/_next/static/chunks/a484d1d3dd4b55ab.js"],"default"]
+3:I[73489,["/_next/static/chunks/5a5b5b13c22d14f7.js","/_next/static/chunks/a484d1d3dd4b55ab.js"],"default"]
+6:I[50183,["/_next/static/chunks/5a5b5b13c22d14f7.js","/_next/static/chunks/a484d1d3dd4b55ab.js"],"OutletBoundary"]
+7:"$Sreact.suspense"
+9:I[50183,["/_next/static/chunks/5a5b5b13c22d14f7.js","/_next/static/chunks/a484d1d3dd4b55ab.js"],"ViewportBoundary"]
+b:I[50183,["/_next/static/chunks/5a5b5b13c22d14f7.js","/_next/static/chunks/a484d1d3dd4b55ab.js"],"MetadataBoundary"]
+d:I[63847,[],"default"]
+:HL["/_next/static/chunks/446a7883c02a95fe.css","style"]
+:HL["/_next/static/media/797e433ab948586e-s.p.29207c2f.woff2","font",{"crossOrigin":"","type":"font/woff2"}]
+:HL["/_next/static/media/caa3a2e1cccd8315-s.p.3b6cae6d.woff2","font",{"crossOrigin":"","type":"font/woff2"}]
+0:{"P":null,"b":"Yck3R4ooQxWkwGLT6is1X","c":["","en","blog","k8s","gateway","05-best-practices"],"q":"","i":false,"f":[[["",{"children":[["locale","en","d"],{"children":["blog",{"children":[["slug","k8s/gateway/05-best-practices","c"],{"children":["__PAGE__",{}]}]}]}]},"$undefined","$undefined",true],[["$","$1","c",{"children":[null,["$","html",null,{"children":["$","body",null,{"children":["$","$L2",null,{"parallelRouterKey":"children","error":"$undefined","errorStyles":"$undefined","errorScripts":"$undefined","template":["$","$L3",null,{}],"templateStyles":"$undefined","templateScripts":"$undefined","notFound":[[["$","title",null,{"children":"404: This page could not be found."}],["$","div",null,{"style":{"fontFamily":"system-ui,\"Segoe UI\",Roboto,Helvetica,Arial,sans-serif,\"Apple Color Emoji\",\"Segoe UI Emoji\"","height":"100vh","textAlign":"center","display":"flex","flexDirection":"column","alignItems":"center","justifyContent":"center"},"children":["$","div",null,{"children":[["$","style",null,{"dangerouslySetInnerHTML":{"__html":"body{color:#000;background:#fff;margin:0}.next-error-h1{border-right:1px solid rgba(0,0,0,.3)}@media (prefers-color-scheme:dark){body{color:#fff;background:#000}.next-error-h1{border-right:1px solid rgba(255,255,255,.3)}}"}}],["$","h1",null,{"className":"next-error-h1","style":{"display":"inline-block","margin":"0 20px 0 0","padding":"0 23px 0 0","fontSize":24,"fontWeight":500,"verticalAlign":"top","lineHeight":"49px"},"children":404}],["$","div",null,{"style":{"display":"inline-block"},"children":["$","h2",null,{"style":{"fontSize":14,"fontWeight":400,"lineHeight":"49px","margin":0},"children":"This page could not be found."}]}]]}]}]],[]],"forbidden":"$undefined","unauthorized":"$undefined"}]}]}]]}],{"children":[["$","$1","c",{"children":[[["$","link","0",{"rel":"stylesheet","href":"/_next/static/chunks/446a7883c02a95fe.css","precedence":"next","crossOrigin":"$undefined","nonce":"$undefined"}],["$","script","script-0",{"src":"/_next/static/chunks/7923a261b80bb6e1.js","async":true,"nonce":"$undefined"}],["$","script","script-1",{"src":"/_next/static/chunks/e09b4358027e8033.js","async":true,"nonce":"$undefined"}]],"$L4"]}],{"children":[["$","$1","c",{"children":[null,["$","$L2",null,{"parallelRouterKey":"children","error":"$undefined","errorStyles":"$undefined","errorScripts":"$undefined","template":["$","$L3",null,{}],"templateStyles":"$undefined","templateScripts":"$undefined","notFound":"$undefined","forbidden":"$undefined","unauthorized":"$undefined"}]]}],{"children":[["$","$1","c",{"children":[null,["$","$L2",null,{"parallelRouterKey":"children","error":"$undefined","errorStyles":"$undefined","errorScripts":"$undefined","template":["$","$L3",null,{}],"templateStyles":"$undefined","templateScripts":"$undefined","notFound":"$undefined","forbidden":"$undefined","unauthorized":"$undefined"}]]}],{"children":[["$","$1","c",{"children":["$L5",[["$","script","script-0",{"src":"/_next/static/chunks/2dddb3bc05093f69.js","async":true,"nonce":"$undefined"}]],["$","$L6",null,{"children":["$","$7",null,{"name":"Next.MetadataOutlet","children":"$@8"}]}]]}],{},null,false,false]},null,false,false]},null,false,false]},null,false,false]},null,false,false],["$","$1","h",{"children":[null,["$","$L9",null,{"children":"$La"}],["$","div",null,{"hidden":true,"children":["$","$Lb",null,{"children":["$","$7",null,{"name":"Next.Metadata","children":"$Lc"}]}]}],["$","meta",null,{"name":"next-size-adjust","content":""}]]}],false]],"m":"$undefined","G":["$d",[]],"S":true}
+4:["$","div",null,{"lang":"en","dir":"ltr","className":"geist_a71539c9-module__T19VSG__variable geist_mono_8d43a2aa-module__8Li5zG__variable flex min-h-screen flex-col antialiased","children":[["$","script",null,{"type":"application/ld+json","dangerouslySetInnerHTML":{"__html":"[{\"@context\":\"https://schema.org\",\"@type\":\"WebSite\",\"name\":\"BenXHub Blog\",\"url\":\"https://benxhub.com/en\",\"inLanguage\":\"en\",\"publisher\":{\"@type\":\"Organization\",\"name\":\"BenXHub Blog\",\"url\":\"https://benxhub.com\"},\"potentialAction\":{\"@type\":\"SearchAction\",\"target\":{\"@type\":\"EntryPoint\",\"urlTemplate\":\"https://benxhub.com/en/search?q={search_term_string}\"},\"query-input\":\"required name=search_term_string\"}},{\"@context\":\"https://schema.org\",\"@type\":\"Person\",\"name\":\"BenX\",\"url\":\"https://benxhub.com\",\"sameAs\":[\"https://github.com/benzhub\"]}]"}}],"$Le"]}]
+f:I[33343,["/_next/static/chunks/7923a261b80bb6e1.js","/_next/static/chunks/e09b4358027e8033.js"],"default"]
+10:I[26817,["/_next/static/chunks/7923a261b80bb6e1.js","/_next/static/chunks/e09b4358027e8033.js"],"default"]
+11:I[6197,["/_next/static/chunks/7923a261b80bb6e1.js","/_next/static/chunks/e09b4358027e8033.js"],"default"]
+13:I[40018,["/_next/static/chunks/7923a261b80bb6e1.js","/_next/static/chunks/e09b4358027e8033.js"],"default"]
+e:["$","$Lf",null,{"formats":"$undefined","locale":"en","messages":{"common":{"siteName":"BenXHub Blog","siteDescription":"BenX's tech blog — sharing Web development, architecture, and engineering practices."},"nav":{"home":"Home","tags":"Tags","about":"About","searchLabel":"Search articles"},"hero":{"subtitle":"Tech notes on Web development, architecture, and engineering practices","cta":"Browse Articles"},"posts":{"title":"Articles","count":"{total} articles total","empty":"No articles yet, stay tuned!","newerPost":"← Newer","olderPost":"Older →","navLabel":"Post navigation"},"pagination":{"prev":"Previous","next":"Next","page":"Page {current} of {total}","label":"Article list pagination","pageTitle":"Page {num}","pageDescription":"BenX's tech blog — article list."},"search":{"title":"Search Articles","description":"Search all articles on BenXHub Blog by title, description, or tags.","subtitle":"Search by title, description, or tags","placeholder":"Search articles by title, description, or tags…","found":"Found {count} related articles","notFound":"No articles found for \"{query}\"","emptyTitle":"No results found","emptyHint":"Try different keywords, or browse","allPosts":"all articles","totalCount":"{count} articles total — type to search"},"tags":{"title":"All Tags","description":"Browse all articles by tag.","count":"{count} tags total","empty":"No tags yet, stay tuned!","allTags":"All Tags","postCount":"{count} articles","otherTags":"Other Tags","tagTitle":"Articles tagged #{tag}","tagDescription":"All articles tagged \"{tag}\"."},"about":{"title":"About","description":"About BenXHub Blog and this site.","subtitle":"About BenXHub Blog and this site","siteTitle":"About This Site","siteContent":"BenXHub Blog is BenX's tech blog, sharing Web development, architecture, and engineering practices.","authorTitle":"About Me","authorContent":"I enjoy coding and sharing knowledge. I like documenting problems I've encountered and their solutions. Feel free to reach out through the links in the sidebar or footer.","linksTitle":"Links"},"sidebar":{"label":"Sidebar","authorBio":"Enjoys coding and sharing — focused on Web development, architecture, and DevOps.","searchPlaceholder":"Search articles…","seriesTitle":"Series","articleCount":"{count} articles"},"toc":{"title":"Contents","label":"Table of contents"},"notFound":{"message":"This page does not exist. The link may be broken or the URL is incorrect.","backHome":"Back to Home"},"localeSwitcher":{"label":"Switch language"}},"now":"$undefined","timeZone":"UTC","children":[["$","$L10",null,{}],["$","$L11",null,{}],["$","main",null,{"className":"flex-1 pt-16","children":["$","$L2",null,{"parallelRouterKey":"children","error":"$undefined","errorStyles":"$undefined","errorScripts":"$undefined","template":["$","$L3",null,{}],"templateStyles":"$undefined","templateScripts":"$undefined","notFound":["$L12",[]],"forbidden":"$undefined","unauthorized":"$undefined"}]}],["$","$L13",null,{}]]}]
+12:["$","div",null,{"className":"mx-auto max-w-2xl px-4 py-20 text-center sm:px-6","children":[["$","h1",null,{"className":"mb-3 text-4xl font-bold tracking-tight","style":{"color":"var(--color-text)"},"children":"404"}],["$","p",null,{"className":"mb-8 text-lg","style":{"color":"var(--color-muted)"},"children":"This page does not exist. The link may be broken or the URL is incorrect."}],"$L14"]}]
+a:[["$","meta","0",{"charSet":"utf-8"}],["$","meta","1",{"name":"viewport","content":"width=device-width, initial-scale=1"}]]
+15:I[14864,["/_next/static/chunks/7923a261b80bb6e1.js","/_next/static/chunks/e09b4358027e8033.js","/_next/static/chunks/2dddb3bc05093f69.js"],"default"]
+14:["$","$L15",null,{"ref":"$undefined","href":"/en","locale":"$undefined","localeCookie":{"name":"NEXT_LOCALE","sameSite":"lax"},"className":"inline-flex items-center rounded-lg border px-4 py-2.5 text-sm font-medium transition-colors hover:border-accent","style":{"borderColor":"var(--color-border)","color":"var(--color-accent)","background":"var(--color-surface)"},"children":"Back to Home"}]
+1c:T2599,<p>"It runs" and "the system is actually stable" are two completely different universes. Most ingress layer incidents aren't caused by Envoy Gateway being insufficient — they're caused by config that was set up too casually, turning operations into an ongoing surprise box. This post compiles the most practical recommendations into a checklist.</p>
+<h2 id="recommended-practices">Recommended Practices</h2>
+<h3 id="1-be-clear-about-who-owns-gateway-vs-who-owns-routes">1. Be Clear About Who Owns Gateway vs. Who Owns Routes</h3>
+<p>If multiple people are involved, split the responsibilities:</p>
+<ul>
+<li>Platform team manages <code>GatewayClass</code>, <code>Gateway</code></li>
+<li>App teams manage their own <code>HTTPRoute</code></li>
+</ul>
+<p>The benefit: the ingress layer's security and exposure surface doesn't get randomly modified by every app that comes along, while app teams still retain routing flexibility. This is exactly why Gateway API's design is worth using — don't flatten it back into a monolithic YAML blob.</p>
+<h3 id="2-treat-tls-as-a-default-from-the-start">2. Treat TLS as a Default from the Start</h3>
+<p>Don't think "HTTP first, add HTTPS later."
+That "later" almost always turns into a Friday night emergency.</p>
+<p>At minimum:</p>
+<ul>
+<li>External listeners default to HTTPS</li>
+<li>Certificate sources have a defined management process</li>
+<li>Test, self-signed, and production CA workflows are kept separate</li>
+</ul>
+<p>If you already have cert-manager, integrate it. Automated certificate rotation is far more reliable than manually patching Secrets every renewal cycle.</p>
+<h3 id="3-write-route-rules-explicitly--dont-over-optimize-for-convenience">3. Write Route Rules Explicitly — Don't Over-Optimize for Convenience</h3>
+<p>Rules like this are convenient but tend to become black holes:</p>
+<figure data-rehype-pretty-code-figure=""><pre style="background-color:#24292e;color:#e1e4e8" tabindex="0" data-language="yaml" data-theme="github-dark"><code data-language="yaml" data-theme="github-dark" style="display: grid;"><span data-line=""><span style="color:#85E89D">rules</span><span style="color:#E1E4E8">:</span></span>
+<span data-line=""><span style="color:#E1E4E8">  - </span><span style="color:#85E89D">backendRefs</span><span style="color:#E1E4E8">:</span></span>
+<span data-line=""><span style="color:#E1E4E8">      - </span><span style="color:#85E89D">name</span><span style="color:#E1E4E8">: </span><span style="color:#9ECBFF">backend</span></span>
+<span data-line=""><span style="color:#85E89D">        port</span><span style="color:#E1E4E8">: </span><span style="color:#79B8FF">8080</span></span></code></pre></figure>
+<p>It's not wrong — but as the system grows, too many "catch everything" rules make debugging painful.
+If you can write <code>hostnames</code>, if you can write <code>path</code>, write them clearly.</p>
+<h3 id="4-use-small-traffic-cuts--dont-go-all-in-at-once">4. Use Small Traffic Cuts — Don't Go All-In at Once</h3>
+<p>When launching a new version, cut a small percentage of traffic first:</p>
+<figure data-rehype-pretty-code-figure=""><pre style="background-color:#24292e;color:#e1e4e8" tabindex="0" data-language="yaml" data-theme="github-dark"><code data-language="yaml" data-theme="github-dark" style="display: grid;"><span data-line=""><span style="color:#85E89D">backendRefs</span><span style="color:#E1E4E8">:</span></span>
+<span data-line=""><span style="color:#E1E4E8">  - </span><span style="color:#85E89D">name</span><span style="color:#E1E4E8">: </span><span style="color:#9ECBFF">api-v1</span></span>
+<span data-line=""><span style="color:#85E89D">    port</span><span style="color:#E1E4E8">: </span><span style="color:#79B8FF">8080</span></span>
+<span data-line=""><span style="color:#85E89D">    weight</span><span style="color:#E1E4E8">: </span><span style="color:#79B8FF">90</span></span>
+<span data-line=""><span style="color:#E1E4E8">  - </span><span style="color:#85E89D">name</span><span style="color:#E1E4E8">: </span><span style="color:#9ECBFF">api-v2</span></span>
+<span data-line=""><span style="color:#85E89D">    port</span><span style="color:#E1E4E8">: </span><span style="color:#79B8FF">8080</span></span>
+<span data-line=""><span style="color:#85E89D">    weight</span><span style="color:#E1E4E8">: </span><span style="color:#79B8FF">10</span></span></code></pre></figure>
+<p>This is much gentler than "flip the entire service selector in one shot."
+When things go wrong, rolling back is also much faster — at 3 AM, you'll be very grateful for this.</p>
+<h3 id="5-build-the-habit-of-checking-status-and-events">5. Build the Habit of Checking <code>status</code> and Events</h3>
+<p>Just reading YAML isn't enough — you need to see if the controller actually accepted your config:</p>
+<figure data-rehype-pretty-code-figure=""><pre style="background-color:#24292e;color:#e1e4e8" tabindex="0" data-language="bash" data-theme="github-dark"><code data-language="bash" data-theme="github-dark" style="display: grid;"><span data-line=""><span style="color:#B392F0">kubectl</span><span style="color:#9ECBFF"> get</span><span style="color:#9ECBFF"> gateway</span><span style="color:#79B8FF"> -A</span></span>
+<span data-line=""><span style="color:#B392F0">kubectl</span><span style="color:#9ECBFF"> get</span><span style="color:#9ECBFF"> httproute</span><span style="color:#79B8FF"> -A</span></span>
+<span data-line=""><span style="color:#B392F0">kubectl</span><span style="color:#9ECBFF"> describe</span><span style="color:#9ECBFF"> gateway</span><span style="color:#9ECBFF"> eg</span></span>
+<span data-line=""><span style="color:#B392F0">kubectl</span><span style="color:#9ECBFF"> describe</span><span style="color:#9ECBFF"> httproute</span><span style="color:#9ECBFF"> app-route</span></span></code></pre></figure>
+<p>These categories of problems often can't be spotted just from <code>spec</code>:</p>
+<ul>
+<li>Route not accepted</li>
+<li>Cross-namespace reference blocked</li>
+<li>Listener status anomalies</li>
+</ul>
+<p>The worst thing isn't a bug — it's "I thought it took effect, but it was never even picked up."</p>
+<h2 id="common-pitfalls">Common Pitfalls</h2>
+<h3 id="pitfall-1-treating-envoy-gateway-as-a-dumb-forwarding-black-box">Pitfall 1: Treating Envoy Gateway as a Dumb Forwarding Black Box</h3>
+<p>It's not just moving packets from A to B.
+The official docs explicitly position it as a Kubernetes-native API Gateway with room to layer on more traffic and security policy. If you only use it as an Ingress replacement, you're massively underutilizing it.</p>
+<h3 id="pitfall-2-referencing-cross-namespace-certificates-without-referencegrant">Pitfall 2: Referencing Cross-Namespace Certificates Without <code>ReferenceGrant</code></h3>
+<p>Many people see <code>certificateRefs</code> supports a namespace field and just point across namespaces directly, then wonder why nothing happens.
+The answer usually isn't haunting — it's a missing <code>ReferenceGrant</code>.</p>
+<h3 id="pitfall-3-only-testing-the-happy-path">Pitfall 3: Only Testing the Happy Path</h3>
+<p>Don't just test:</p>
+<ul>
+<li><code>curl http://...</code> succeeds once</li>
+</ul>
+<p>Also test:</p>
+<ul>
+<li>Different hostnames</li>
+<li>Different paths</li>
+<li>TLS certificate validity</li>
+<li>Whether traffic split ratios behave as expected</li>
+</ul>
+<p>The ingress layer is most dangerous when happy paths look perfect but edge cases break immediately.</p>
+<h3 id="pitfall-4-using-demo-config-directly-in-production">Pitfall 4: Using Demo Config Directly in Production</h3>
+<p>The official quickstart is excellent for learning, but it's positioned as a quickstart.
+For production, at minimum add:</p>
+<ul>
+<li>Certificate automation</li>
+<li>Monitoring and alerting</li>
+<li>Change management process</li>
+<li>Route naming conventions</li>
+</ul>
+<p>Otherwise, today's quickstart becomes tomorrow's quick-fall.</p>
+<h2 id="a-minimal-pre-launch-checklist">A Minimal Pre-Launch Checklist</h2>
+<p>Use this before going live:</p>
+<ul>
+<li>Does the <code>Gateway</code> listener clearly separate HTTP / HTTPS?</li>
+<li>Is the certificate Secret and rotation process well-defined?</li>
+<li>Does <code>HTTPRoute</code> have clear <code>hostnames</code> / <code>matches</code>?</li>
+<li>Are significant changes deployed using small traffic cuts?</li>
+<li>Can you quickly locate problems from <code>status</code> and events?</li>
+</ul>
+<p>If all five are in place, you're already operating at a higher level than "it works so it's fine."</p>
+<h2 id="one-line-summary">One-Line Summary</h2>
+<p>The real value of Envoy Gateway isn't just routing traffic — it's making your ingress layer configuration more standardized, divisible, and governable. Features are temporary; operations are long-term. Being kind to your future self actually matters.</p>
+<h2 id="next-step">Next Step</h2>
+<p>If you still have this question in the back of your mind:</p>
+<p>"I get it conceptually, but when a new requirement comes in, which route type do I actually pick?"</p>
+<p>The next post is your cheatsheet:
+👉 <a href="06-route-types-cheatsheet">Route Type Cheatsheet</a></p>
+<h2 id="further-reading">Further Reading</h2>
+<ul>
+<li><a href="https://gateway.envoyproxy.io/docs/concepts/">Envoy Gateway Concepts</a></li>
+<li><a href="https://gateway.envoyproxy.io/v1.7/tasks/quickstart/">Envoy Gateway Quickstart</a></li>
+<li><a href="https://gateway.envoyproxy.io/docs/tasks/security/secure-gateways/">Envoy Gateway Secure Gateways</a></li>
+<li><a href="https://gateway-api.sigs.k8s.io/">Kubernetes Gateway API Official Docs</a></li>
+</ul>5:[["$","script",null,{"type":"application/ld+json","dangerouslySetInnerHTML":{"__html":"{\"@context\":\"https://schema.org\",\"@type\":\"Article\",\"headline\":\"Envoy Gateway Best Practices: Do Future-You a Favor Before Going to Production\",\"description\":\"A practical collection of recommended approaches and pitfalls to avoid when running Envoy Gateway in production — covering TLS, route governance, observability, and change strategy.\",\"url\":\"https://benxhub.com/en/blog/k8s/gateway/05-best-practices\",\"mainEntityOfPage\":{\"@type\":\"WebPage\",\"@id\":\"https://benxhub.com/en/blog/k8s/gateway/05-best-practices\"},\"datePublished\":\"2026-03-10T00:00:00.000Z\",\"dateModified\":\"2026-03-10T00:00:00.000Z\",\"keywords\":\"kubernetes, envoy-gateway, gateway-api, best-practices, operations, security\",\"inLanguage\":\"en\",\"author\":{\"@type\":\"Person\",\"name\":\"BenX\",\"url\":\"https://benxhub.com\"},\"publisher\":{\"@type\":\"Organization\",\"name\":\"BenXHub Blog\",\"url\":\"https://benxhub.com\"}}"}}],["$","div",null,{"className":"mx-auto max-w-6xl px-4 py-12 sm:px-6","children":["$","div",null,{"className":"lg:grid lg:grid-cols-[1fr_240px] lg:gap-14","children":[["$","article",null,{"children":[["$","header",null,{"className":"mb-10","children":[["$","div",null,{"className":"mb-4 flex flex-wrap gap-2","children":["$L16","$L17","$L18","$L19","$L1a","$L1b"]}],["$","h1",null,{"className":"mb-4 text-3xl leading-snug font-bold tracking-tight sm:text-4xl","style":{"color":"var(--color-text)"},"children":"Envoy Gateway Best Practices: Do Future-You a Favor Before Going to Production"}],["$","div",null,{"className":"flex flex-wrap items-center gap-3 text-sm","style":{"color":"var(--color-muted)"},"children":[["$","time",null,{"dateTime":"2026-03-10","children":"Mar 10, 2026"}],["$","span",null,{"aria-hidden":"true","children":"·"}],["$","span",null,{"children":"5 min read"}]]}],"$undefined",["$","div",null,{"className":"mt-6 border-b","style":{"borderColor":"var(--color-border)"}}]]}],["$","div",null,{"className":"prose","dangerouslySetInnerHTML":{"__html":"$1c"}}],"$L1d"]}],"$L1e"]}]}]]
+27:I[24801,["/_next/static/chunks/7923a261b80bb6e1.js","/_next/static/chunks/e09b4358027e8033.js","/_next/static/chunks/2dddb3bc05093f69.js"],"default"]
+1d:["$","footer",null,{"className":"mt-14 border-t pt-8","style":{"borderColor":"var(--color-border)"},"children":[["$","div",null,{"className":"mb-8 flex flex-wrap gap-2","children":["$L1f","$L20","$L21","$L22","$L23","$L24"]}],["$","nav",null,{"aria-label":"Post navigation","className":"grid grid-cols-1 gap-4 sm:grid-cols-2","children":["$L25","$L26"]}]]}]
+28:T2599,<p>"It runs" and "the system is actually stable" are two completely different universes. Most ingress layer incidents aren't caused by Envoy Gateway being insufficient — they're caused by config that was set up too casually, turning operations into an ongoing surprise box. This post compiles the most practical recommendations into a checklist.</p>
+<h2 id="recommended-practices">Recommended Practices</h2>
+<h3 id="1-be-clear-about-who-owns-gateway-vs-who-owns-routes">1. Be Clear About Who Owns Gateway vs. Who Owns Routes</h3>
+<p>If multiple people are involved, split the responsibilities:</p>
+<ul>
+<li>Platform team manages <code>GatewayClass</code>, <code>Gateway</code></li>
+<li>App teams manage their own <code>HTTPRoute</code></li>
+</ul>
+<p>The benefit: the ingress layer's security and exposure surface doesn't get randomly modified by every app that comes along, while app teams still retain routing flexibility. This is exactly why Gateway API's design is worth using — don't flatten it back into a monolithic YAML blob.</p>
+<h3 id="2-treat-tls-as-a-default-from-the-start">2. Treat TLS as a Default from the Start</h3>
+<p>Don't think "HTTP first, add HTTPS later."
+That "later" almost always turns into a Friday night emergency.</p>
+<p>At minimum:</p>
+<ul>
+<li>External listeners default to HTTPS</li>
+<li>Certificate sources have a defined management process</li>
+<li>Test, self-signed, and production CA workflows are kept separate</li>
+</ul>
+<p>If you already have cert-manager, integrate it. Automated certificate rotation is far more reliable than manually patching Secrets every renewal cycle.</p>
+<h3 id="3-write-route-rules-explicitly--dont-over-optimize-for-convenience">3. Write Route Rules Explicitly — Don't Over-Optimize for Convenience</h3>
+<p>Rules like this are convenient but tend to become black holes:</p>
+<figure data-rehype-pretty-code-figure=""><pre style="background-color:#24292e;color:#e1e4e8" tabindex="0" data-language="yaml" data-theme="github-dark"><code data-language="yaml" data-theme="github-dark" style="display: grid;"><span data-line=""><span style="color:#85E89D">rules</span><span style="color:#E1E4E8">:</span></span>
+<span data-line=""><span style="color:#E1E4E8">  - </span><span style="color:#85E89D">backendRefs</span><span style="color:#E1E4E8">:</span></span>
+<span data-line=""><span style="color:#E1E4E8">      - </span><span style="color:#85E89D">name</span><span style="color:#E1E4E8">: </span><span style="color:#9ECBFF">backend</span></span>
+<span data-line=""><span style="color:#85E89D">        port</span><span style="color:#E1E4E8">: </span><span style="color:#79B8FF">8080</span></span></code></pre></figure>
+<p>It's not wrong — but as the system grows, too many "catch everything" rules make debugging painful.
+If you can write <code>hostnames</code>, if you can write <code>path</code>, write them clearly.</p>
+<h3 id="4-use-small-traffic-cuts--dont-go-all-in-at-once">4. Use Small Traffic Cuts — Don't Go All-In at Once</h3>
+<p>When launching a new version, cut a small percentage of traffic first:</p>
+<figure data-rehype-pretty-code-figure=""><pre style="background-color:#24292e;color:#e1e4e8" tabindex="0" data-language="yaml" data-theme="github-dark"><code data-language="yaml" data-theme="github-dark" style="display: grid;"><span data-line=""><span style="color:#85E89D">backendRefs</span><span style="color:#E1E4E8">:</span></span>
+<span data-line=""><span style="color:#E1E4E8">  - </span><span style="color:#85E89D">name</span><span style="color:#E1E4E8">: </span><span style="color:#9ECBFF">api-v1</span></span>
+<span data-line=""><span style="color:#85E89D">    port</span><span style="color:#E1E4E8">: </span><span style="color:#79B8FF">8080</span></span>
+<span data-line=""><span style="color:#85E89D">    weight</span><span style="color:#E1E4E8">: </span><span style="color:#79B8FF">90</span></span>
+<span data-line=""><span style="color:#E1E4E8">  - </span><span style="color:#85E89D">name</span><span style="color:#E1E4E8">: </span><span style="color:#9ECBFF">api-v2</span></span>
+<span data-line=""><span style="color:#85E89D">    port</span><span style="color:#E1E4E8">: </span><span style="color:#79B8FF">8080</span></span>
+<span data-line=""><span style="color:#85E89D">    weight</span><span style="color:#E1E4E8">: </span><span style="color:#79B8FF">10</span></span></code></pre></figure>
+<p>This is much gentler than "flip the entire service selector in one shot."
+When things go wrong, rolling back is also much faster — at 3 AM, you'll be very grateful for this.</p>
+<h3 id="5-build-the-habit-of-checking-status-and-events">5. Build the Habit of Checking <code>status</code> and Events</h3>
+<p>Just reading YAML isn't enough — you need to see if the controller actually accepted your config:</p>
+<figure data-rehype-pretty-code-figure=""><pre style="background-color:#24292e;color:#e1e4e8" tabindex="0" data-language="bash" data-theme="github-dark"><code data-language="bash" data-theme="github-dark" style="display: grid;"><span data-line=""><span style="color:#B392F0">kubectl</span><span style="color:#9ECBFF"> get</span><span style="color:#9ECBFF"> gateway</span><span style="color:#79B8FF"> -A</span></span>
+<span data-line=""><span style="color:#B392F0">kubectl</span><span style="color:#9ECBFF"> get</span><span style="color:#9ECBFF"> httproute</span><span style="color:#79B8FF"> -A</span></span>
+<span data-line=""><span style="color:#B392F0">kubectl</span><span style="color:#9ECBFF"> describe</span><span style="color:#9ECBFF"> gateway</span><span style="color:#9ECBFF"> eg</span></span>
+<span data-line=""><span style="color:#B392F0">kubectl</span><span style="color:#9ECBFF"> describe</span><span style="color:#9ECBFF"> httproute</span><span style="color:#9ECBFF"> app-route</span></span></code></pre></figure>
+<p>These categories of problems often can't be spotted just from <code>spec</code>:</p>
+<ul>
+<li>Route not accepted</li>
+<li>Cross-namespace reference blocked</li>
+<li>Listener status anomalies</li>
+</ul>
+<p>The worst thing isn't a bug — it's "I thought it took effect, but it was never even picked up."</p>
+<h2 id="common-pitfalls">Common Pitfalls</h2>
+<h3 id="pitfall-1-treating-envoy-gateway-as-a-dumb-forwarding-black-box">Pitfall 1: Treating Envoy Gateway as a Dumb Forwarding Black Box</h3>
+<p>It's not just moving packets from A to B.
+The official docs explicitly position it as a Kubernetes-native API Gateway with room to layer on more traffic and security policy. If you only use it as an Ingress replacement, you're massively underutilizing it.</p>
+<h3 id="pitfall-2-referencing-cross-namespace-certificates-without-referencegrant">Pitfall 2: Referencing Cross-Namespace Certificates Without <code>ReferenceGrant</code></h3>
+<p>Many people see <code>certificateRefs</code> supports a namespace field and just point across namespaces directly, then wonder why nothing happens.
+The answer usually isn't haunting — it's a missing <code>ReferenceGrant</code>.</p>
+<h3 id="pitfall-3-only-testing-the-happy-path">Pitfall 3: Only Testing the Happy Path</h3>
+<p>Don't just test:</p>
+<ul>
+<li><code>curl http://...</code> succeeds once</li>
+</ul>
+<p>Also test:</p>
+<ul>
+<li>Different hostnames</li>
+<li>Different paths</li>
+<li>TLS certificate validity</li>
+<li>Whether traffic split ratios behave as expected</li>
+</ul>
+<p>The ingress layer is most dangerous when happy paths look perfect but edge cases break immediately.</p>
+<h3 id="pitfall-4-using-demo-config-directly-in-production">Pitfall 4: Using Demo Config Directly in Production</h3>
+<p>The official quickstart is excellent for learning, but it's positioned as a quickstart.
+For production, at minimum add:</p>
+<ul>
+<li>Certificate automation</li>
+<li>Monitoring and alerting</li>
+<li>Change management process</li>
+<li>Route naming conventions</li>
+</ul>
+<p>Otherwise, today's quickstart becomes tomorrow's quick-fall.</p>
+<h2 id="a-minimal-pre-launch-checklist">A Minimal Pre-Launch Checklist</h2>
+<p>Use this before going live:</p>
+<ul>
+<li>Does the <code>Gateway</code> listener clearly separate HTTP / HTTPS?</li>
+<li>Is the certificate Secret and rotation process well-defined?</li>
+<li>Does <code>HTTPRoute</code> have clear <code>hostnames</code> / <code>matches</code>?</li>
+<li>Are significant changes deployed using small traffic cuts?</li>
+<li>Can you quickly locate problems from <code>status</code> and events?</li>
+</ul>
+<p>If all five are in place, you're already operating at a higher level than "it works so it's fine."</p>
+<h2 id="one-line-summary">One-Line Summary</h2>
+<p>The real value of Envoy Gateway isn't just routing traffic — it's making your ingress layer configuration more standardized, divisible, and governable. Features are temporary; operations are long-term. Being kind to your future self actually matters.</p>
+<h2 id="next-step">Next Step</h2>
+<p>If you still have this question in the back of your mind:</p>
+<p>"I get it conceptually, but when a new requirement comes in, which route type do I actually pick?"</p>
+<p>The next post is your cheatsheet:
+👉 <a href="06-route-types-cheatsheet">Route Type Cheatsheet</a></p>
+<h2 id="further-reading">Further Reading</h2>
+<ul>
+<li><a href="https://gateway.envoyproxy.io/docs/concepts/">Envoy Gateway Concepts</a></li>
+<li><a href="https://gateway.envoyproxy.io/v1.7/tasks/quickstart/">Envoy Gateway Quickstart</a></li>
+<li><a href="https://gateway.envoyproxy.io/docs/tasks/security/secure-gateways/">Envoy Gateway Secure Gateways</a></li>
+<li><a href="https://gateway-api.sigs.k8s.io/">Kubernetes Gateway API Official Docs</a></li>
+</ul>1e:["$","aside",null,{"className":"hidden lg:block","children":["$","$L27",null,{"html":"$28"}]}]
+16:["$","$L15","kubernetes",{"ref":"$undefined","href":"/en/tags/kubernetes","locale":"$undefined","localeCookie":"$14:props:localeCookie","className":"inline-flex items-center rounded-full px-2.5 py-0.5 text-xs font-medium transition-colors","style":{"background":"var(--color-code-bg)","color":"var(--color-accent)","border":"1px solid var(--color-border)"},"children":["#","kubernetes"]}]
+17:["$","$L15","envoy-gateway",{"ref":"$undefined","href":"/en/tags/envoy-gateway","locale":"$undefined","localeCookie":"$14:props:localeCookie","className":"inline-flex items-center rounded-full px-2.5 py-0.5 text-xs font-medium transition-colors","style":{"background":"var(--color-code-bg)","color":"var(--color-accent)","border":"1px solid var(--color-border)"},"children":["#","envoy-gateway"]}]
+18:["$","$L15","gateway-api",{"ref":"$undefined","href":"/en/tags/gateway-api","locale":"$undefined","localeCookie":"$14:props:localeCookie","className":"inline-flex items-center rounded-full px-2.5 py-0.5 text-xs font-medium transition-colors","style":{"background":"var(--color-code-bg)","color":"var(--color-accent)","border":"1px solid var(--color-border)"},"children":["#","gateway-api"]}]
+19:["$","$L15","best-practices",{"ref":"$undefined","href":"/en/tags/best-practices","locale":"$undefined","localeCookie":"$14:props:localeCookie","className":"inline-flex items-center rounded-full px-2.5 py-0.5 text-xs font-medium transition-colors","style":{"background":"var(--color-code-bg)","color":"var(--color-accent)","border":"1px solid var(--color-border)"},"children":["#","best-practices"]}]
+1a:["$","$L15","operations",{"ref":"$undefined","href":"/en/tags/operations","locale":"$undefined","localeCookie":"$14:props:localeCookie","className":"inline-flex items-center rounded-full px-2.5 py-0.5 text-xs font-medium transition-colors","style":{"background":"var(--color-code-bg)","color":"var(--color-accent)","border":"1px solid var(--color-border)"},"children":["#","operations"]}]
+1b:["$","$L15","security",{"ref":"$undefined","href":"/en/tags/security","locale":"$undefined","localeCookie":"$14:props:localeCookie","className":"inline-flex items-center rounded-full px-2.5 py-0.5 text-xs font-medium transition-colors","style":{"background":"var(--color-code-bg)","color":"var(--color-accent)","border":"1px solid var(--color-border)"},"children":["#","security"]}]
+1f:["$","$L15","kubernetes",{"ref":"$undefined","href":"/en/tags/kubernetes","locale":"$undefined","localeCookie":"$14:props:localeCookie","className":"inline-flex items-center rounded-full px-3 py-1 text-sm font-medium transition-colors","style":{"background":"var(--color-code-bg)","color":"var(--color-accent)","border":"1px solid var(--color-border)"},"children":["#","kubernetes"]}]
+20:["$","$L15","envoy-gateway",{"ref":"$undefined","href":"/en/tags/envoy-gateway","locale":"$undefined","localeCookie":"$14:props:localeCookie","className":"inline-flex items-center rounded-full px-3 py-1 text-sm font-medium transition-colors","style":{"background":"var(--color-code-bg)","color":"var(--color-accent)","border":"1px solid var(--color-border)"},"children":["#","envoy-gateway"]}]
+21:["$","$L15","gateway-api",{"ref":"$undefined","href":"/en/tags/gateway-api","locale":"$undefined","localeCookie":"$14:props:localeCookie","className":"inline-flex items-center rounded-full px-3 py-1 text-sm font-medium transition-colors","style":{"background":"var(--color-code-bg)","color":"var(--color-accent)","border":"1px solid var(--color-border)"},"children":["#","gateway-api"]}]
+22:["$","$L15","best-practices",{"ref":"$undefined","href":"/en/tags/best-practices","locale":"$undefined","localeCookie":"$14:props:localeCookie","className":"inline-flex items-center rounded-full px-3 py-1 text-sm font-medium transition-colors","style":{"background":"var(--color-code-bg)","color":"var(--color-accent)","border":"1px solid var(--color-border)"},"children":["#","best-practices"]}]
+23:["$","$L15","operations",{"ref":"$undefined","href":"/en/tags/operations","locale":"$undefined","localeCookie":"$14:props:localeCookie","className":"inline-flex items-center rounded-full px-3 py-1 text-sm font-medium transition-colors","style":{"background":"var(--color-code-bg)","color":"var(--color-accent)","border":"1px solid var(--color-border)"},"children":["#","operations"]}]
+24:["$","$L15","security",{"ref":"$undefined","href":"/en/tags/security","locale":"$undefined","localeCookie":"$14:props:localeCookie","className":"inline-flex items-center rounded-full px-3 py-1 text-sm font-medium transition-colors","style":{"background":"var(--color-code-bg)","color":"var(--color-accent)","border":"1px solid var(--color-border)"},"children":["#","security"]}]
+25:["$","$L15",null,{"ref":"$undefined","href":"/en/blog/k8s/gateway/04-tls-and-security","locale":"$undefined","localeCookie":"$14:props:localeCookie","className":"group rounded-lg border p-4 transition-colors hover:border-accent","style":{"borderColor":"var(--color-border)","background":"var(--color-surface)"},"children":[["$","p",null,{"className":"mb-1 text-xs","style":{"color":"var(--color-muted)"},"children":"← Newer"}],["$","p",null,{"className":"line-clamp-1 text-sm font-medium transition-colors group-hover:text-accent","style":{"color":"var(--color-text)"},"children":"Envoy Gateway TLS and Security: Set Up HTTPS and Stop Your API from Running Naked"}]]}]
+26:["$","$L15",null,{"ref":"$undefined","href":"/en/blog/k8s/gateway/06-route-types-cheatsheet","locale":"$undefined","localeCookie":"$14:props:localeCookie","className":"group rounded-lg border p-4 text-right transition-colors hover:border-accent","style":{"borderColor":"var(--color-border)","background":"var(--color-surface)"},"children":[["$","p",null,{"className":"mb-1 text-xs","style":{"color":"var(--color-muted)"},"children":"Older →"}],["$","p",null,{"className":"line-clamp-1 text-sm font-medium transition-colors group-hover:text-accent","style":{"color":"var(--color-text)"},"children":"Envoy Gateway Route Type Cheatsheet: HTTPRoute, GRPCRoute, TCPRoute, or TLSRoute?"}]]}]
+29:I[92204,["/_next/static/chunks/5a5b5b13c22d14f7.js","/_next/static/chunks/a484d1d3dd4b55ab.js"],"IconMark"]
+8:null
+c:[["$","title","0",{"children":"Envoy Gateway Best Practices: Do Future-You a Favor Before Going to Production | BenXHub Blog"}],["$","meta","1",{"name":"description","content":"A practical collection of recommended approaches and pitfalls to avoid when running Envoy Gateway in production — covering TLS, route governance, observability, and change strategy."}],["$","meta","2",{"property":"og:title","content":"Envoy Gateway Best Practices: Do Future-You a Favor Before Going to Production"}],["$","meta","3",{"property":"og:description","content":"A practical collection of recommended approaches and pitfalls to avoid when running Envoy Gateway in production — covering TLS, route governance, observability, and change strategy."}],["$","meta","4",{"property":"og:url","content":"https://benxhub.com/en/blog/k8s/gateway/05-best-practices"}],["$","meta","5",{"property":"og:type","content":"article"}],["$","meta","6",{"property":"article:published_time","content":"2026-03-10T00:00:00.000Z"}],["$","meta","7",{"property":"article:tag","content":"kubernetes"}],["$","meta","8",{"property":"article:tag","content":"envoy-gateway"}],["$","meta","9",{"property":"article:tag","content":"gateway-api"}],["$","meta","10",{"property":"article:tag","content":"best-practices"}],["$","meta","11",{"property":"article:tag","content":"operations"}],["$","meta","12",{"property":"article:tag","content":"security"}],["$","meta","13",{"name":"twitter:card","content":"summary_large_image"}],["$","meta","14",{"name":"twitter:title","content":"Envoy Gateway Best Practices: Do Future-You a Favor Before Going to Production"}],["$","meta","15",{"name":"twitter:description","content":"A practical collection of recommended approaches and pitfalls to avoid when running Envoy Gateway in production — covering TLS, route governance, observability, and change strategy."}],["$","link","16",{"rel":"icon","href":"/favicon.ico?favicon.0b3bf435.ico","sizes":"256x256","type":"image/x-icon"}],["$","$L29","17",{}]]

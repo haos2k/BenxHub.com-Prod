@@ -1,0 +1,147 @@
+1:"$Sreact.fragment"
+2:I[14864,["/_next/static/chunks/7923a261b80bb6e1.js","/_next/static/chunks/e09b4358027e8033.js","/_next/static/chunks/2dddb3bc05093f69.js"],"default"]
+8:I[24801,["/_next/static/chunks/7923a261b80bb6e1.js","/_next/static/chunks/e09b4358027e8033.js","/_next/static/chunks/2dddb3bc05093f69.js"],"default"]
+a:I[50183,["/_next/static/chunks/5a5b5b13c22d14f7.js","/_next/static/chunks/a484d1d3dd4b55ab.js"],"OutletBoundary"]
+b:"$Sreact.suspense"
+3:T20b7,<p><strong>Worktree</strong> を使うと、同じリポジトリに対して複数のディレクトリ（それぞれ別ブランチ）を持てます。<strong>Cursor CLI</strong> は実行したディレクトリに対して動作します。両方を組み合わせると、複数ターミナルでそれぞれ別ブランチの worktree で <code>cursor agent</code> を並行実行できます — Cursor ウィンドウを複数開かず、キーボードだけでマルチタスク。</p>
+<h2 id="なぜ組み合わせるのか">なぜ組み合わせるのか？</h2>
+<table>
+<thead>
+<tr>
+<th>やり方</th>
+<th>方法</th>
+<th>向いている人</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td>Worktree + Cursor <strong>ウィンドウ</strong>複数</td>
+<td>1 worktree につき 1 ウィンドウ</td>
+<td>ファイルツリーやプレビューが欲しい IDE ユーザー</td>
+</tr>
+<tr>
+<td>Worktree + <strong>CLI</strong></td>
+<td>複数ターミナル、それぞれ worktree に <code>cd</code> して <code>cursor agent</code></td>
+<td>キーボード中心 or サーバー/SSH 環境</td>
+</tr>
+</tbody>
+</table>
+<p>共通点：各 worktree は独立したディレクトリ → それぞれ独自のコンテキスト → 足を踏まない並行開発。複数クローンが別ブランチで同時に動いているようなものです。</p>
+<h2 id="基本1-ターミナル-1-worktree">基本：1 ターミナル 1 worktree</h2>
+<p>すでに worktree を作ってある前提で：</p>
+<pre><code>~/projects/
+├── my-app/                  ← main
+├── my-app--feature-auth/    ← feature/auth
+└── my-app--feature-payment/  ← feature/payment
+</code></pre>
+<p><strong>ターミナル 1</strong>（auth 用）：</p>
+<figure data-rehype-pretty-code-figure=""><pre style="background-color:#24292e;color:#e1e4e8" tabindex="0" data-language="bash" data-theme="github-dark"><code data-language="bash" data-theme="github-dark" style="display: grid;"><span data-line=""><span style="color:#79B8FF">cd</span><span style="color:#9ECBFF"> ~/projects/my-app--feature-auth</span></span>
+<span data-line=""><span style="color:#B392F0">cursor</span><span style="color:#9ECBFF"> agent</span><span style="color:#9ECBFF"> "Implement JWT login"</span></span></code></pre></figure>
+<p><strong>ターミナル 2</strong>（payment 用）：</p>
+<figure data-rehype-pretty-code-figure=""><pre style="background-color:#24292e;color:#e1e4e8" tabindex="0" data-language="bash" data-theme="github-dark"><code data-language="bash" data-theme="github-dark" style="display: grid;"><span data-line=""><span style="color:#79B8FF">cd</span><span style="color:#9ECBFF"> ~/projects/my-app--feature-payment</span></span>
+<span data-line=""><span style="color:#B392F0">cursor</span><span style="color:#9ECBFF"> agent</span><span style="color:#9ECBFF"> "Add Stripe checkout flow"</span></span></code></pre></figure>
+<p>CLI はデフォルトで<strong>カレントディレクトリ</strong>をコンテキストにするので、両方のターミナルはそれぞれの worktree だけを変更します。「2 つの CLI Agent が並行動作」— Cursor ウィンドウを 2 つ開く必要がなく、リソース節約とコンテキスト切り替えの削減になります。</p>
+<h2 id="ディレクトリを変えずに--path-で-worktree-を指定">ディレクトリを変えずに：<code>--path</code> で worktree を指定</h2>
+<p>メインプロジェクトのディレクトリにいながら、特定の worktree で CLI に作業させたい場合：</p>
+<figure data-rehype-pretty-code-figure=""><pre style="background-color:#24292e;color:#e1e4e8" tabindex="0" data-language="bash" data-theme="github-dark"><code data-language="bash" data-theme="github-dark" style="display: grid;"><span data-line=""><span style="color:#79B8FF">cd</span><span style="color:#9ECBFF"> ~/projects/my-app</span></span>
+<span data-line=""><span style="color:#B392F0">cursor</span><span style="color:#9ECBFF"> agent</span><span style="color:#9ECBFF"> "Add unit tests for feature/auth"</span><span style="color:#79B8FF"> --path</span><span style="color:#9ECBFF"> ../my-app--feature-auth</span></span></code></pre></figure>
+<p><code>--path</code> で「どのディレクトリを見るか」を指定 — worktree のパスです。1 回に 1 worktree だけ扱うときや、スクリプトでパスが固定のときに便利です。</p>
+<h2 id="非対話--worktreeスクリプト一括処理">非対話 + Worktree（スクリプト・一括処理）</h2>
+<p>複数 worktree に同じ種類のタスクを順番に実行（例：全員に README 追加、全員で lint 修正）：</p>
+<figure data-rehype-pretty-code-figure=""><pre style="background-color:#24292e;color:#e1e4e8" tabindex="0" data-language="bash" data-theme="github-dark"><code data-language="bash" data-theme="github-dark" style="display: grid;"><span data-line=""><span style="color:#6A737D"># 例：両 worktree で "fix lint"</span></span>
+<span data-line=""><span style="color:#B392F0">cursor</span><span style="color:#9ECBFF"> agent</span><span style="color:#9ECBFF"> "Fix all auto-fixable errors per .eslintrc"</span><span style="color:#79B8FF"> --path</span><span style="color:#9ECBFF"> ../my-app--feature-auth</span><span style="color:#79B8FF"> --no-interactive</span></span>
+<span data-line=""><span style="color:#B392F0">cursor</span><span style="color:#9ECBFF"> agent</span><span style="color:#9ECBFF"> "Fix all auto-fixable errors per .eslintrc"</span><span style="color:#79B8FF"> --path</span><span style="color:#9ECBFF"> ../my-app--feature-payment</span><span style="color:#79B8FF"> --no-interactive</span></span></code></pre></figure>
+<p>またはループで（環境に合わせてパスを調整）：</p>
+<figure data-rehype-pretty-code-figure=""><pre style="background-color:#24292e;color:#e1e4e8" tabindex="0" data-language="bash" data-theme="github-dark"><code data-language="bash" data-theme="github-dark" style="display: grid;"><span data-line=""><span style="color:#F97583">for</span><span style="color:#E1E4E8"> dir </span><span style="color:#F97583">in</span><span style="color:#9ECBFF"> ../my-app--feature-auth</span><span style="color:#9ECBFF"> ../my-app--feature-payment</span><span style="color:#E1E4E8">; </span><span style="color:#F97583">do</span></span>
+<span data-line=""><span style="color:#B392F0">  cursor</span><span style="color:#9ECBFF"> agent</span><span style="color:#9ECBFF"> "Fix linter errors"</span><span style="color:#79B8FF"> --path</span><span style="color:#9ECBFF"> "</span><span style="color:#E1E4E8">$dir</span><span style="color:#9ECBFF">"</span><span style="color:#79B8FF"> --no-interactive</span></span>
+<span data-line=""><span style="color:#F97583">done</span></span></code></pre></figure>
+<p>指示 1 つで複数ブランチを一括クリーン — PR 前の最終チェックに最適です。</p>
+<h2 id="worktree--複数ウィンドウとの関係">「Worktree + 複数ウィンドウ」との関係</h2>
+<ul>
+<li><strong>複数ウィンドウ</strong>: 各 Cursor ウィンドウが 1 worktree を開き、IDE の Agent・Chat・Tab 補完を使う</li>
+<li><strong>CLI + Worktree</strong>: ターミナル + <code>cursor agent</code> — 「1 ディレクトリ 1 コンテキスト」は同じで、ターミナルを増やして並列化するだけ</li>
+</ul>
+<p>組み合わせも可能：メイン開発はウィンドウ、サーバーでは CLI で別ブランチの小さい修正、など。</p>
+<h2 id="まとめ">まとめ</h2>
+<ul>
+<li><strong>Worktree</strong> = 複数ディレクトリ・複数ブランチ、<strong>CLI</strong> = カレント or <code>--path</code> で動作 → 相性が良い</li>
+<li><strong>並行</strong>: 複数ターミナルを開き、それぞれ別 worktree に <code>cd</code> して <code>cursor agent</code></li>
+<li><strong>1 ターミナル</strong>: <code>--path &#x3C;worktree-path></code> で対象 worktree を指定</li>
+<li><strong>スクリプト・一括</strong>: <code>--path</code> + <code>--no-interactive</code> で複数 worktree に同じタスクを実行</li>
+</ul>
+<blockquote>
+<p>次: <a href="07-unlimit-loop-debug">07-unlimit-loop-debug</a> — テストが通るまで CLI にループで修正させる（コーヒーを飲んでいる間に）</p>
+</blockquote>0:{"buildId":"Yck3R4ooQxWkwGLT6is1X","rsc":["$","$1","c",{"children":[[["$","script",null,{"type":"application/ld+json","dangerouslySetInnerHTML":{"__html":"{\"@context\":\"https://schema.org\",\"@type\":\"Article\",\"headline\":\"Cursor CLI と Git Worktree\",\"description\":\"Worktree で同一リポジトリに複数ディレクトリ；CLI は実行したディレクトリに対して動作。組み合わせで複数ターミナル・複数ブランチの並行作業が可能。\",\"url\":\"https://benxhub.com/ja/blog/cursor/cli/06-cursor-cli-with-worktree\",\"mainEntityOfPage\":{\"@type\":\"WebPage\",\"@id\":\"https://benxhub.com/ja/blog/cursor/cli/06-cursor-cli-with-worktree\"},\"datePublished\":\"2026-02-24T00:00:00.000Z\",\"dateModified\":\"2026-02-24T00:00:00.000Z\",\"keywords\":\"cursor, cli, git, worktree\",\"inLanguage\":\"ja\",\"author\":{\"@type\":\"Person\",\"name\":\"BenX\",\"url\":\"https://benxhub.com\"},\"publisher\":{\"@type\":\"Organization\",\"name\":\"BenXHub Blog\",\"url\":\"https://benxhub.com\"}}"}}],["$","div",null,{"className":"mx-auto max-w-6xl px-4 py-12 sm:px-6","children":["$","div",null,{"className":"lg:grid lg:grid-cols-[1fr_240px] lg:gap-14","children":[["$","article",null,{"children":[["$","header",null,{"className":"mb-10","children":[["$","div",null,{"className":"mb-4 flex flex-wrap gap-2","children":[["$","$L2","cursor",{"href":"/ja/tags/cursor","localeCookie":{"name":"NEXT_LOCALE","sameSite":"lax"},"className":"inline-flex items-center rounded-full px-2.5 py-0.5 text-xs font-medium transition-colors","style":{"background":"var(--color-code-bg)","color":"var(--color-accent)","border":"1px solid var(--color-border)"},"children":["#","cursor"]}],["$","$L2","cli",{"href":"/ja/tags/cli","localeCookie":{"name":"NEXT_LOCALE","sameSite":"lax"},"className":"inline-flex items-center rounded-full px-2.5 py-0.5 text-xs font-medium transition-colors","style":{"background":"var(--color-code-bg)","color":"var(--color-accent)","border":"1px solid var(--color-border)"},"children":["#","cli"]}],["$","$L2","git",{"href":"/ja/tags/git","localeCookie":{"name":"NEXT_LOCALE","sameSite":"lax"},"className":"inline-flex items-center rounded-full px-2.5 py-0.5 text-xs font-medium transition-colors","style":{"background":"var(--color-code-bg)","color":"var(--color-accent)","border":"1px solid var(--color-border)"},"children":["#","git"]}],["$","$L2","worktree",{"href":"/ja/tags/worktree","localeCookie":{"name":"NEXT_LOCALE","sameSite":"lax"},"className":"inline-flex items-center rounded-full px-2.5 py-0.5 text-xs font-medium transition-colors","style":{"background":"var(--color-code-bg)","color":"var(--color-accent)","border":"1px solid var(--color-border)"},"children":["#","worktree"]}]]}],["$","h1",null,{"className":"mb-4 text-3xl leading-snug font-bold tracking-tight sm:text-4xl","style":{"color":"var(--color-text)"},"children":"Cursor CLI と Git Worktree"}],["$","div",null,{"className":"flex flex-wrap items-center gap-3 text-sm","style":{"color":"var(--color-muted)"},"children":[["$","time",null,{"dateTime":"2026-02-24","children":"2026年2月24日"}],["$","span",null,{"aria-hidden":"true","children":"·"}],["$","span",null,{"children":"4 min read"}]]}],"$undefined",["$","div",null,{"className":"mt-6 border-b","style":{"borderColor":"var(--color-border)"}}]]}],["$","div",null,{"className":"prose","dangerouslySetInnerHTML":{"__html":"$3"}}],"$L4"]}],"$L5"]}]}]],["$L6"],"$L7"]}],"loading":null,"isPartial":false}
+4:["$","footer",null,{"className":"mt-14 border-t pt-8","style":{"borderColor":"var(--color-border)"},"children":[["$","div",null,{"className":"mb-8 flex flex-wrap gap-2","children":[["$","$L2","cursor",{"href":"/ja/tags/cursor","localeCookie":{"name":"NEXT_LOCALE","sameSite":"lax"},"className":"inline-flex items-center rounded-full px-3 py-1 text-sm font-medium transition-colors","style":{"background":"var(--color-code-bg)","color":"var(--color-accent)","border":"1px solid var(--color-border)"},"children":["#","cursor"]}],["$","$L2","cli",{"href":"/ja/tags/cli","localeCookie":{"name":"NEXT_LOCALE","sameSite":"lax"},"className":"inline-flex items-center rounded-full px-3 py-1 text-sm font-medium transition-colors","style":{"background":"var(--color-code-bg)","color":"var(--color-accent)","border":"1px solid var(--color-border)"},"children":["#","cli"]}],["$","$L2","git",{"href":"/ja/tags/git","localeCookie":{"name":"NEXT_LOCALE","sameSite":"lax"},"className":"inline-flex items-center rounded-full px-3 py-1 text-sm font-medium transition-colors","style":{"background":"var(--color-code-bg)","color":"var(--color-accent)","border":"1px solid var(--color-border)"},"children":["#","git"]}],["$","$L2","worktree",{"href":"/ja/tags/worktree","localeCookie":{"name":"NEXT_LOCALE","sameSite":"lax"},"className":"inline-flex items-center rounded-full px-3 py-1 text-sm font-medium transition-colors","style":{"background":"var(--color-code-bg)","color":"var(--color-accent)","border":"1px solid var(--color-border)"},"children":["#","worktree"]}]]}],["$","nav",null,{"aria-label":"記事ナビゲーション","className":"grid grid-cols-1 gap-4 sm:grid-cols-2","children":[["$","$L2",null,{"href":"/ja/blog/cursor/cli/05-tips","localeCookie":{"name":"NEXT_LOCALE","sameSite":"lax"},"className":"group rounded-lg border p-4 transition-colors hover:border-accent","style":{"borderColor":"var(--color-border)","background":"var(--color-surface)"},"children":[["$","p",null,{"className":"mb-1 text-xs","style":{"color":"var(--color-muted)"},"children":"← 新しい記事"}],["$","p",null,{"className":"line-clamp-1 text-sm font-medium transition-colors group-hover:text-accent","style":{"color":"var(--color-text)"},"children":"Cursor CLI ヒントとFAQ"}]]}],["$","$L2",null,{"href":"/ja/blog/cursor/cli/07-unlimit-loop-debug","localeCookie":{"name":"NEXT_LOCALE","sameSite":"lax"},"className":"group rounded-lg border p-4 text-right transition-colors hover:border-accent","style":{"borderColor":"var(--color-border)","background":"var(--color-surface)"},"children":[["$","p",null,{"className":"mb-1 text-xs","style":{"color":"var(--color-muted)"},"children":"古い記事 →"}],["$","p",null,{"className":"line-clamp-1 text-sm font-medium transition-colors group-hover:text-accent","style":{"color":"var(--color-text)"},"children":"無限デバッグループ：Cursor CLI にテストが通るまで修正させる"}]]}]]}]]}]
+9:T20b7,<p><strong>Worktree</strong> を使うと、同じリポジトリに対して複数のディレクトリ（それぞれ別ブランチ）を持てます。<strong>Cursor CLI</strong> は実行したディレクトリに対して動作します。両方を組み合わせると、複数ターミナルでそれぞれ別ブランチの worktree で <code>cursor agent</code> を並行実行できます — Cursor ウィンドウを複数開かず、キーボードだけでマルチタスク。</p>
+<h2 id="なぜ組み合わせるのか">なぜ組み合わせるのか？</h2>
+<table>
+<thead>
+<tr>
+<th>やり方</th>
+<th>方法</th>
+<th>向いている人</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td>Worktree + Cursor <strong>ウィンドウ</strong>複数</td>
+<td>1 worktree につき 1 ウィンドウ</td>
+<td>ファイルツリーやプレビューが欲しい IDE ユーザー</td>
+</tr>
+<tr>
+<td>Worktree + <strong>CLI</strong></td>
+<td>複数ターミナル、それぞれ worktree に <code>cd</code> して <code>cursor agent</code></td>
+<td>キーボード中心 or サーバー/SSH 環境</td>
+</tr>
+</tbody>
+</table>
+<p>共通点：各 worktree は独立したディレクトリ → それぞれ独自のコンテキスト → 足を踏まない並行開発。複数クローンが別ブランチで同時に動いているようなものです。</p>
+<h2 id="基本1-ターミナル-1-worktree">基本：1 ターミナル 1 worktree</h2>
+<p>すでに worktree を作ってある前提で：</p>
+<pre><code>~/projects/
+├── my-app/                  ← main
+├── my-app--feature-auth/    ← feature/auth
+└── my-app--feature-payment/  ← feature/payment
+</code></pre>
+<p><strong>ターミナル 1</strong>（auth 用）：</p>
+<figure data-rehype-pretty-code-figure=""><pre style="background-color:#24292e;color:#e1e4e8" tabindex="0" data-language="bash" data-theme="github-dark"><code data-language="bash" data-theme="github-dark" style="display: grid;"><span data-line=""><span style="color:#79B8FF">cd</span><span style="color:#9ECBFF"> ~/projects/my-app--feature-auth</span></span>
+<span data-line=""><span style="color:#B392F0">cursor</span><span style="color:#9ECBFF"> agent</span><span style="color:#9ECBFF"> "Implement JWT login"</span></span></code></pre></figure>
+<p><strong>ターミナル 2</strong>（payment 用）：</p>
+<figure data-rehype-pretty-code-figure=""><pre style="background-color:#24292e;color:#e1e4e8" tabindex="0" data-language="bash" data-theme="github-dark"><code data-language="bash" data-theme="github-dark" style="display: grid;"><span data-line=""><span style="color:#79B8FF">cd</span><span style="color:#9ECBFF"> ~/projects/my-app--feature-payment</span></span>
+<span data-line=""><span style="color:#B392F0">cursor</span><span style="color:#9ECBFF"> agent</span><span style="color:#9ECBFF"> "Add Stripe checkout flow"</span></span></code></pre></figure>
+<p>CLI はデフォルトで<strong>カレントディレクトリ</strong>をコンテキストにするので、両方のターミナルはそれぞれの worktree だけを変更します。「2 つの CLI Agent が並行動作」— Cursor ウィンドウを 2 つ開く必要がなく、リソース節約とコンテキスト切り替えの削減になります。</p>
+<h2 id="ディレクトリを変えずに--path-で-worktree-を指定">ディレクトリを変えずに：<code>--path</code> で worktree を指定</h2>
+<p>メインプロジェクトのディレクトリにいながら、特定の worktree で CLI に作業させたい場合：</p>
+<figure data-rehype-pretty-code-figure=""><pre style="background-color:#24292e;color:#e1e4e8" tabindex="0" data-language="bash" data-theme="github-dark"><code data-language="bash" data-theme="github-dark" style="display: grid;"><span data-line=""><span style="color:#79B8FF">cd</span><span style="color:#9ECBFF"> ~/projects/my-app</span></span>
+<span data-line=""><span style="color:#B392F0">cursor</span><span style="color:#9ECBFF"> agent</span><span style="color:#9ECBFF"> "Add unit tests for feature/auth"</span><span style="color:#79B8FF"> --path</span><span style="color:#9ECBFF"> ../my-app--feature-auth</span></span></code></pre></figure>
+<p><code>--path</code> で「どのディレクトリを見るか」を指定 — worktree のパスです。1 回に 1 worktree だけ扱うときや、スクリプトでパスが固定のときに便利です。</p>
+<h2 id="非対話--worktreeスクリプト一括処理">非対話 + Worktree（スクリプト・一括処理）</h2>
+<p>複数 worktree に同じ種類のタスクを順番に実行（例：全員に README 追加、全員で lint 修正）：</p>
+<figure data-rehype-pretty-code-figure=""><pre style="background-color:#24292e;color:#e1e4e8" tabindex="0" data-language="bash" data-theme="github-dark"><code data-language="bash" data-theme="github-dark" style="display: grid;"><span data-line=""><span style="color:#6A737D"># 例：両 worktree で "fix lint"</span></span>
+<span data-line=""><span style="color:#B392F0">cursor</span><span style="color:#9ECBFF"> agent</span><span style="color:#9ECBFF"> "Fix all auto-fixable errors per .eslintrc"</span><span style="color:#79B8FF"> --path</span><span style="color:#9ECBFF"> ../my-app--feature-auth</span><span style="color:#79B8FF"> --no-interactive</span></span>
+<span data-line=""><span style="color:#B392F0">cursor</span><span style="color:#9ECBFF"> agent</span><span style="color:#9ECBFF"> "Fix all auto-fixable errors per .eslintrc"</span><span style="color:#79B8FF"> --path</span><span style="color:#9ECBFF"> ../my-app--feature-payment</span><span style="color:#79B8FF"> --no-interactive</span></span></code></pre></figure>
+<p>またはループで（環境に合わせてパスを調整）：</p>
+<figure data-rehype-pretty-code-figure=""><pre style="background-color:#24292e;color:#e1e4e8" tabindex="0" data-language="bash" data-theme="github-dark"><code data-language="bash" data-theme="github-dark" style="display: grid;"><span data-line=""><span style="color:#F97583">for</span><span style="color:#E1E4E8"> dir </span><span style="color:#F97583">in</span><span style="color:#9ECBFF"> ../my-app--feature-auth</span><span style="color:#9ECBFF"> ../my-app--feature-payment</span><span style="color:#E1E4E8">; </span><span style="color:#F97583">do</span></span>
+<span data-line=""><span style="color:#B392F0">  cursor</span><span style="color:#9ECBFF"> agent</span><span style="color:#9ECBFF"> "Fix linter errors"</span><span style="color:#79B8FF"> --path</span><span style="color:#9ECBFF"> "</span><span style="color:#E1E4E8">$dir</span><span style="color:#9ECBFF">"</span><span style="color:#79B8FF"> --no-interactive</span></span>
+<span data-line=""><span style="color:#F97583">done</span></span></code></pre></figure>
+<p>指示 1 つで複数ブランチを一括クリーン — PR 前の最終チェックに最適です。</p>
+<h2 id="worktree--複数ウィンドウとの関係">「Worktree + 複数ウィンドウ」との関係</h2>
+<ul>
+<li><strong>複数ウィンドウ</strong>: 各 Cursor ウィンドウが 1 worktree を開き、IDE の Agent・Chat・Tab 補完を使う</li>
+<li><strong>CLI + Worktree</strong>: ターミナル + <code>cursor agent</code> — 「1 ディレクトリ 1 コンテキスト」は同じで、ターミナルを増やして並列化するだけ</li>
+</ul>
+<p>組み合わせも可能：メイン開発はウィンドウ、サーバーでは CLI で別ブランチの小さい修正、など。</p>
+<h2 id="まとめ">まとめ</h2>
+<ul>
+<li><strong>Worktree</strong> = 複数ディレクトリ・複数ブランチ、<strong>CLI</strong> = カレント or <code>--path</code> で動作 → 相性が良い</li>
+<li><strong>並行</strong>: 複数ターミナルを開き、それぞれ別 worktree に <code>cd</code> して <code>cursor agent</code></li>
+<li><strong>1 ターミナル</strong>: <code>--path &#x3C;worktree-path></code> で対象 worktree を指定</li>
+<li><strong>スクリプト・一括</strong>: <code>--path</code> + <code>--no-interactive</code> で複数 worktree に同じタスクを実行</li>
+</ul>
+<blockquote>
+<p>次: <a href="07-unlimit-loop-debug">07-unlimit-loop-debug</a> — テストが通るまで CLI にループで修正させる（コーヒーを飲んでいる間に）</p>
+</blockquote>5:["$","aside",null,{"className":"hidden lg:block","children":["$","$L8",null,{"html":"$9"}]}]
+6:["$","script","script-0",{"src":"/_next/static/chunks/2dddb3bc05093f69.js","async":true}]
+7:["$","$La",null,{"children":["$","$b",null,{"name":"Next.MetadataOutlet","children":"$@c"}]}]
+c:null

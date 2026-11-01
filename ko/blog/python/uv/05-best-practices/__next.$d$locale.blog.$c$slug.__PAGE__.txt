@@ -1,0 +1,86 @@
+1:"$Sreact.fragment"
+2:I[14864,["/_next/static/chunks/7923a261b80bb6e1.js","/_next/static/chunks/e09b4358027e8033.js","/_next/static/chunks/2dddb3bc05093f69.js"],"default"]
+8:I[24801,["/_next/static/chunks/7923a261b80bb6e1.js","/_next/static/chunks/e09b4358027e8033.js","/_next/static/chunks/2dddb3bc05093f69.js"],"default"]
+a:I[50183,["/_next/static/chunks/5a5b5b13c22d14f7.js","/_next/static/chunks/a484d1d3dd4b55ab.js"],"OutletBoundary"]
+b:"$Sreact.suspense"
+:HL["/images/posts/uv-best-practices.jpg","image"]
+3:T16ce,<p>실제 운영에서 환경을 망가뜨리는 건 대부분 "uv가 충분히 강하지 않아서"가 아니라 <strong>프로세스와 습관</strong> 때문입니다. 아래 체크리스트는 일상 지침으로 바로 사용할 수 있습니다 — 함정 하나를 피할 때마다 정시 퇴근이 한 번 더 가능해집니다.</p>
+<h2 id="권장-사항">권장 사항</h2>
+<h3 id="1-uvlock은-반드시-커밋">1) uv.lock은 반드시 커밋</h3>
+<p>잠금 파일은 재현성의 기반입니다. 커밋하지 않으면 각자·각 머신·각 CI 실행마다 다른 의존성이 설치될 수 있어 버그 재현이 지옥 난이도가 됩니다. 잠금 파일 없는 프로젝트는 신어보지 않은 새 신발과 같습니다 — 실전에서야 발이 아프다는 걸 알게 됩니다.</p>
+<h3 id="2-venv는-커밋하지-않음">2) .venv는 커밋하지 않음</h3>
+<p>가상 환경은 로컬 산물 — <code>.gitignore</code>에 있어야 합니다. uv는 자동으로 <code>.venv</code>를 프로젝트 ignore에 추가합니다. 확인만 하면 됩니다.</p>
+<h3 id="3-의존성은-가능하면-제약">3) 의존성은 가능하면 제약</h3>
+<p><code>pyproject.toml</code>에서 그냥 <code>requests</code>라고 쓰는 건 피하고, <code>requests>=2.31,&#x3C;3</code> 등 더 구체적으로. <code>uv add</code>는 기본적으로 합리적인 제약을 추가합니다. 수동 편집 시 범위를 너무 넓게 두지 마세요.</p>
+<h3 id="4-ci에서-uv-sync-또는-uv-pip-sync-사용">4) CI에서 uv sync 또는 uv pip sync 사용</h3>
+<figure data-rehype-pretty-code-figure=""><pre style="background-color:#24292e;color:#e1e4e8" tabindex="0" data-language="yaml" data-theme="github-dark"><code data-language="yaml" data-theme="github-dark" style="display: grid;"><span data-line=""><span style="color:#6A737D"># GitHub Actions 예시</span></span>
+<span data-line=""><span style="color:#E1E4E8">- </span><span style="color:#85E89D">run</span><span style="color:#E1E4E8">: </span><span style="color:#9ECBFF">uv sync</span></span>
+<span data-line=""><span style="color:#E1E4E8">- </span><span style="color:#85E89D">run</span><span style="color:#E1E4E8">: </span><span style="color:#9ECBFF">uv run pytest</span></span></code></pre></figure>
+<p>먼저 동기화 후 실행 — 환경이 잠금 파일과 일치하도록 보장합니다. CI 안에서 <code>uv add</code>를 실행하지 마세요. 잠금 파일을 변경해서 예상치 못한 diff가 생길 수 있습니다.</p>
+<h3 id="5-개발-도구는-optional--dev에-넣기">5) 개발 도구는 optional / dev에 넣기</h3>
+<figure data-rehype-pretty-code-figure=""><pre style="background-color:#24292e;color:#e1e4e8" tabindex="0" data-language="bash" data-theme="github-dark"><code data-language="bash" data-theme="github-dark" style="display: grid;"><span data-line=""><span style="color:#B392F0">uv</span><span style="color:#9ECBFF"> add</span><span style="color:#79B8FF"> --dev</span><span style="color:#9ECBFF"> pytest</span><span style="color:#9ECBFF"> ruff</span><span style="color:#9ECBFF"> mypy</span></span></code></pre></figure>
+<p>테스트·lint·타입 체크는 프로덕션 의존성에 영향을 주지 않고 wheel에도 패킹되지 않습니다. 프로덕션 이미지는 <code>uv sync --no-dev</code>만 필요합니다.</p>
+<h2 id="일반적인-함정">일반적인 함정</h2>
+<h3 id="함정-1-pip과-uv-add-혼용">함정 1: pip과 uv add 혼용</h3>
+<p>같은 venv에서 <code>pip install</code>과 <code>uv add</code>를 모두 쓰지 마세요 — 잠금 파일이 맞지 않게 됩니다. 하나의 방법을 선택하고 끝까지 따르세요.</p>
+<h3 id="함정-2-uvx를-프로젝트-도구로-사용">함정 2: uvx를 프로젝트 도구로 사용</h3>
+<p>버전 고정이 필요한 프로젝트 도구 (pytest, mypy 등) → <code>uv add --dev</code> + <code>uv run</code> 사용.
+임시 사용·일회성 스크립트 → <code>uvx</code> 사용.</p>
+<h3 id="함정-3-pyprojecttoml을-읽지-않고-수동-편집">함정 3: pyproject.toml을 읽지 않고 수동 편집</h3>
+<p>의존성 변경은 <code>uv add</code> / <code>uv remove</code>를 사용해 형식 문제와 잠금 파일 업데이트 누락을 피하세요.</p>
+<h3 id="함정-4-ci에-uv-설치하지-않기">함정 4: CI에 uv 설치하지 않기</h3>
+<p>많은 CI가 이제 uv를 지원합니다 — 설치도 빠르고 실행은 더 빠릅니다. 공식 인스톨러나 <code>pip install uv</code>를 사용하세요. pip으로 의존성 해결하는 데 계속 고집 피우지 마세요.</p>
+<h3 id="함정-5-프로젝트에-requires-python-없음">함정 5: 프로젝트에 requires-python 없음</h3>
+<p><code>pyproject.toml</code>에 <code>requires-python = ">=3.12"</code> 등을 명시해서 도구와 협업자에게 최소 버전을 알려주세요. "내 3.12에서는 되는데 네 3.8에서는 터진다"는 참사를 방지합니다.</p>
+<hr>
+<p>이 체크리스트를 따른다고 무결고장을 보장하진 않지만 많은 우회로를 피할 수 있습니다. 막히면 공식 문서를 확인하세요 — 대부분의 함정은 이미 누군가가 밟아봤습니다.
+개발이 순탄하기를, 의존성이 깔끔하게 설치되고, 테스트는 항상 초록불이고, CI가 당신을 영원히 기다리게 하지 않기를! 🦦
+(참고로, uv를 쓰기 시작하면 알게 됩니다: pip 스피너를 기다리던 시간에 고양이를 세 번 쓰다듬을 수 있었다는 것을.)</p>
+<h2 id="더-읽어보기">더 읽어보기</h2>
+<ul>
+<li><a href="https://docs.astral.sh/uv/">uv 공식 문서</a></li>
+<li><a href="https://peps.python.org/pep-0518/">PEP 517/518 – pyproject.toml 명세</a></li>
+<li><a href="https://peps.python.org/pep-0723/">PEP 723 – 인라인 스크립트 메타데이터</a></li>
+</ul>0:{"buildId":"Yck3R4ooQxWkwGLT6is1X","rsc":["$","$1","c",{"children":[[["$","script",null,{"type":"application/ld+json","dangerouslySetInnerHTML":{"__html":"{\"@context\":\"https://schema.org\",\"@type\":\"Article\",\"headline\":\"Python uv 베스트 프랙티스: 안정성과 협업 체크리스트\",\"description\":\"uv 장기 운영을 위한 권장 사항과 일반적인 함정 정리, 장애율과 협업 마찰을 줄이는 데 도움이 됩니다.\",\"url\":\"https://benxhub.com/ko/blog/python/uv/05-best-practices\",\"mainEntityOfPage\":{\"@type\":\"WebPage\",\"@id\":\"https://benxhub.com/ko/blog/python/uv/05-best-practices\"},\"datePublished\":\"2026-02-27T00:00:00.000Z\",\"dateModified\":\"2026-02-27T00:00:00.000Z\",\"keywords\":\"python, uv, best-practices, pyproject, ci\",\"inLanguage\":\"ko\",\"author\":{\"@type\":\"Person\",\"name\":\"BenX\",\"url\":\"https://benxhub.com\"},\"publisher\":{\"@type\":\"Organization\",\"name\":\"BenXHub Blog\",\"url\":\"https://benxhub.com\"},\"image\":\"https://benxhub.com/images/posts/uv-best-practices.jpg\"}"}}],["$","div",null,{"className":"mx-auto max-w-6xl px-4 py-12 sm:px-6","children":["$","div",null,{"className":"lg:grid lg:grid-cols-[1fr_240px] lg:gap-14","children":[["$","article",null,{"children":[["$","header",null,{"className":"mb-10","children":[["$","div",null,{"className":"mb-4 flex flex-wrap gap-2","children":[["$","$L2","python",{"href":"/ko/tags/python","localeCookie":{"name":"NEXT_LOCALE","sameSite":"lax"},"className":"inline-flex items-center rounded-full px-2.5 py-0.5 text-xs font-medium transition-colors","style":{"background":"var(--color-code-bg)","color":"var(--color-accent)","border":"1px solid var(--color-border)"},"children":["#","python"]}],["$","$L2","uv",{"href":"/ko/tags/uv","localeCookie":{"name":"NEXT_LOCALE","sameSite":"lax"},"className":"inline-flex items-center rounded-full px-2.5 py-0.5 text-xs font-medium transition-colors","style":{"background":"var(--color-code-bg)","color":"var(--color-accent)","border":"1px solid var(--color-border)"},"children":["#","uv"]}],["$","$L2","best-practices",{"href":"/ko/tags/best-practices","localeCookie":{"name":"NEXT_LOCALE","sameSite":"lax"},"className":"inline-flex items-center rounded-full px-2.5 py-0.5 text-xs font-medium transition-colors","style":{"background":"var(--color-code-bg)","color":"var(--color-accent)","border":"1px solid var(--color-border)"},"children":["#","best-practices"]}],["$","$L2","pyproject",{"href":"/ko/tags/pyproject","localeCookie":{"name":"NEXT_LOCALE","sameSite":"lax"},"className":"inline-flex items-center rounded-full px-2.5 py-0.5 text-xs font-medium transition-colors","style":{"background":"var(--color-code-bg)","color":"var(--color-accent)","border":"1px solid var(--color-border)"},"children":["#","pyproject"]}],["$","$L2","ci",{"href":"/ko/tags/ci","localeCookie":{"name":"NEXT_LOCALE","sameSite":"lax"},"className":"inline-flex items-center rounded-full px-2.5 py-0.5 text-xs font-medium transition-colors","style":{"background":"var(--color-code-bg)","color":"var(--color-accent)","border":"1px solid var(--color-border)"},"children":["#","ci"]}]]}],["$","h1",null,{"className":"mb-4 text-3xl leading-snug font-bold tracking-tight sm:text-4xl","style":{"color":"var(--color-text)"},"children":"Python uv 베스트 프랙티스: 안정성과 협업 체크리스트"}],["$","div",null,{"className":"flex flex-wrap items-center gap-3 text-sm","style":{"color":"var(--color-muted)"},"children":[["$","time",null,{"dateTime":"2026-02-27","children":"2026년 2월 27일"}],["$","span",null,{"aria-hidden":"true","children":"·"}],["$","span",null,{"children":"6 min read"}]]}],["$","div",null,{"className":"mt-6 overflow-hidden rounded-lg","children":["$","img",null,{"src":"/images/posts/uv-best-practices.jpg","alt":"Python uv 베스트 프랙티스: 안정성과 협업 체크리스트","className":"w-full h-auto"}]}],["$","div",null,{"className":"mt-6 border-b","style":{"borderColor":"var(--color-border)"}}]]}],["$","div",null,{"className":"prose","dangerouslySetInnerHTML":{"__html":"$3"}}],"$L4"]}],"$L5"]}]}]],["$L6"],"$L7"]}],"loading":null,"isPartial":false}
+4:["$","footer",null,{"className":"mt-14 border-t pt-8","style":{"borderColor":"var(--color-border)"},"children":[["$","div",null,{"className":"mb-8 flex flex-wrap gap-2","children":[["$","$L2","python",{"href":"/ko/tags/python","localeCookie":{"name":"NEXT_LOCALE","sameSite":"lax"},"className":"inline-flex items-center rounded-full px-3 py-1 text-sm font-medium transition-colors","style":{"background":"var(--color-code-bg)","color":"var(--color-accent)","border":"1px solid var(--color-border)"},"children":["#","python"]}],["$","$L2","uv",{"href":"/ko/tags/uv","localeCookie":{"name":"NEXT_LOCALE","sameSite":"lax"},"className":"inline-flex items-center rounded-full px-3 py-1 text-sm font-medium transition-colors","style":{"background":"var(--color-code-bg)","color":"var(--color-accent)","border":"1px solid var(--color-border)"},"children":["#","uv"]}],["$","$L2","best-practices",{"href":"/ko/tags/best-practices","localeCookie":{"name":"NEXT_LOCALE","sameSite":"lax"},"className":"inline-flex items-center rounded-full px-3 py-1 text-sm font-medium transition-colors","style":{"background":"var(--color-code-bg)","color":"var(--color-accent)","border":"1px solid var(--color-border)"},"children":["#","best-practices"]}],["$","$L2","pyproject",{"href":"/ko/tags/pyproject","localeCookie":{"name":"NEXT_LOCALE","sameSite":"lax"},"className":"inline-flex items-center rounded-full px-3 py-1 text-sm font-medium transition-colors","style":{"background":"var(--color-code-bg)","color":"var(--color-accent)","border":"1px solid var(--color-border)"},"children":["#","pyproject"]}],["$","$L2","ci",{"href":"/ko/tags/ci","localeCookie":{"name":"NEXT_LOCALE","sameSite":"lax"},"className":"inline-flex items-center rounded-full px-3 py-1 text-sm font-medium transition-colors","style":{"background":"var(--color-code-bg)","color":"var(--color-accent)","border":"1px solid var(--color-border)"},"children":["#","ci"]}]]}],["$","nav",null,{"aria-label":"글 탐색","className":"grid grid-cols-1 gap-4 sm:grid-cols-2","children":[["$","$L2",null,{"href":"/ko/blog/python/uv/04-advanced","localeCookie":{"name":"NEXT_LOCALE","sameSite":"lax"},"className":"group rounded-lg border p-4 transition-colors hover:border-accent","style":{"borderColor":"var(--color-border)","background":"var(--color-surface)"},"children":[["$","p",null,{"className":"mb-1 text-xs","style":{"color":"var(--color-muted)"},"children":"← 최신 글"}],["$","p",null,{"className":"line-clamp-1 text-sm font-medium transition-colors group-hover:text-accent","style":{"color":"var(--color-text)"},"children":"Python uv 고급 실무: Python 버전·pip 인터페이스·도구 설치"}]]}],["$","$L2",null,{"href":"/ko/blog/cursor/cli/00-overview","localeCookie":{"name":"NEXT_LOCALE","sameSite":"lax"},"className":"group rounded-lg border p-4 text-right transition-colors hover:border-accent","style":{"borderColor":"var(--color-border)","background":"var(--color-surface)"},"children":[["$","p",null,{"className":"mb-1 text-xs","style":{"color":"var(--color-muted)"},"children":"이전 글 →"}],["$","p",null,{"className":"line-clamp-1 text-sm font-medium transition-colors group-hover:text-accent","style":{"color":"var(--color-text)"},"children":"Cursor CLI 튜토리얼 — 개요"}]]}]]}]]}]
+9:T16ce,<p>실제 운영에서 환경을 망가뜨리는 건 대부분 "uv가 충분히 강하지 않아서"가 아니라 <strong>프로세스와 습관</strong> 때문입니다. 아래 체크리스트는 일상 지침으로 바로 사용할 수 있습니다 — 함정 하나를 피할 때마다 정시 퇴근이 한 번 더 가능해집니다.</p>
+<h2 id="권장-사항">권장 사항</h2>
+<h3 id="1-uvlock은-반드시-커밋">1) uv.lock은 반드시 커밋</h3>
+<p>잠금 파일은 재현성의 기반입니다. 커밋하지 않으면 각자·각 머신·각 CI 실행마다 다른 의존성이 설치될 수 있어 버그 재현이 지옥 난이도가 됩니다. 잠금 파일 없는 프로젝트는 신어보지 않은 새 신발과 같습니다 — 실전에서야 발이 아프다는 걸 알게 됩니다.</p>
+<h3 id="2-venv는-커밋하지-않음">2) .venv는 커밋하지 않음</h3>
+<p>가상 환경은 로컬 산물 — <code>.gitignore</code>에 있어야 합니다. uv는 자동으로 <code>.venv</code>를 프로젝트 ignore에 추가합니다. 확인만 하면 됩니다.</p>
+<h3 id="3-의존성은-가능하면-제약">3) 의존성은 가능하면 제약</h3>
+<p><code>pyproject.toml</code>에서 그냥 <code>requests</code>라고 쓰는 건 피하고, <code>requests>=2.31,&#x3C;3</code> 등 더 구체적으로. <code>uv add</code>는 기본적으로 합리적인 제약을 추가합니다. 수동 편집 시 범위를 너무 넓게 두지 마세요.</p>
+<h3 id="4-ci에서-uv-sync-또는-uv-pip-sync-사용">4) CI에서 uv sync 또는 uv pip sync 사용</h3>
+<figure data-rehype-pretty-code-figure=""><pre style="background-color:#24292e;color:#e1e4e8" tabindex="0" data-language="yaml" data-theme="github-dark"><code data-language="yaml" data-theme="github-dark" style="display: grid;"><span data-line=""><span style="color:#6A737D"># GitHub Actions 예시</span></span>
+<span data-line=""><span style="color:#E1E4E8">- </span><span style="color:#85E89D">run</span><span style="color:#E1E4E8">: </span><span style="color:#9ECBFF">uv sync</span></span>
+<span data-line=""><span style="color:#E1E4E8">- </span><span style="color:#85E89D">run</span><span style="color:#E1E4E8">: </span><span style="color:#9ECBFF">uv run pytest</span></span></code></pre></figure>
+<p>먼저 동기화 후 실행 — 환경이 잠금 파일과 일치하도록 보장합니다. CI 안에서 <code>uv add</code>를 실행하지 마세요. 잠금 파일을 변경해서 예상치 못한 diff가 생길 수 있습니다.</p>
+<h3 id="5-개발-도구는-optional--dev에-넣기">5) 개발 도구는 optional / dev에 넣기</h3>
+<figure data-rehype-pretty-code-figure=""><pre style="background-color:#24292e;color:#e1e4e8" tabindex="0" data-language="bash" data-theme="github-dark"><code data-language="bash" data-theme="github-dark" style="display: grid;"><span data-line=""><span style="color:#B392F0">uv</span><span style="color:#9ECBFF"> add</span><span style="color:#79B8FF"> --dev</span><span style="color:#9ECBFF"> pytest</span><span style="color:#9ECBFF"> ruff</span><span style="color:#9ECBFF"> mypy</span></span></code></pre></figure>
+<p>테스트·lint·타입 체크는 프로덕션 의존성에 영향을 주지 않고 wheel에도 패킹되지 않습니다. 프로덕션 이미지는 <code>uv sync --no-dev</code>만 필요합니다.</p>
+<h2 id="일반적인-함정">일반적인 함정</h2>
+<h3 id="함정-1-pip과-uv-add-혼용">함정 1: pip과 uv add 혼용</h3>
+<p>같은 venv에서 <code>pip install</code>과 <code>uv add</code>를 모두 쓰지 마세요 — 잠금 파일이 맞지 않게 됩니다. 하나의 방법을 선택하고 끝까지 따르세요.</p>
+<h3 id="함정-2-uvx를-프로젝트-도구로-사용">함정 2: uvx를 프로젝트 도구로 사용</h3>
+<p>버전 고정이 필요한 프로젝트 도구 (pytest, mypy 등) → <code>uv add --dev</code> + <code>uv run</code> 사용.
+임시 사용·일회성 스크립트 → <code>uvx</code> 사용.</p>
+<h3 id="함정-3-pyprojecttoml을-읽지-않고-수동-편집">함정 3: pyproject.toml을 읽지 않고 수동 편집</h3>
+<p>의존성 변경은 <code>uv add</code> / <code>uv remove</code>를 사용해 형식 문제와 잠금 파일 업데이트 누락을 피하세요.</p>
+<h3 id="함정-4-ci에-uv-설치하지-않기">함정 4: CI에 uv 설치하지 않기</h3>
+<p>많은 CI가 이제 uv를 지원합니다 — 설치도 빠르고 실행은 더 빠릅니다. 공식 인스톨러나 <code>pip install uv</code>를 사용하세요. pip으로 의존성 해결하는 데 계속 고집 피우지 마세요.</p>
+<h3 id="함정-5-프로젝트에-requires-python-없음">함정 5: 프로젝트에 requires-python 없음</h3>
+<p><code>pyproject.toml</code>에 <code>requires-python = ">=3.12"</code> 등을 명시해서 도구와 협업자에게 최소 버전을 알려주세요. "내 3.12에서는 되는데 네 3.8에서는 터진다"는 참사를 방지합니다.</p>
+<hr>
+<p>이 체크리스트를 따른다고 무결고장을 보장하진 않지만 많은 우회로를 피할 수 있습니다. 막히면 공식 문서를 확인하세요 — 대부분의 함정은 이미 누군가가 밟아봤습니다.
+개발이 순탄하기를, 의존성이 깔끔하게 설치되고, 테스트는 항상 초록불이고, CI가 당신을 영원히 기다리게 하지 않기를! 🦦
+(참고로, uv를 쓰기 시작하면 알게 됩니다: pip 스피너를 기다리던 시간에 고양이를 세 번 쓰다듬을 수 있었다는 것을.)</p>
+<h2 id="더-읽어보기">더 읽어보기</h2>
+<ul>
+<li><a href="https://docs.astral.sh/uv/">uv 공식 문서</a></li>
+<li><a href="https://peps.python.org/pep-0518/">PEP 517/518 – pyproject.toml 명세</a></li>
+<li><a href="https://peps.python.org/pep-0723/">PEP 723 – 인라인 스크립트 메타데이터</a></li>
+</ul>5:["$","aside",null,{"className":"hidden lg:block","children":["$","$L8",null,{"html":"$9"}]}]
+6:["$","script","script-0",{"src":"/_next/static/chunks/2dddb3bc05093f69.js","async":true}]
+7:["$","$La",null,{"children":["$","$b",null,{"name":"Next.MetadataOutlet","children":"$@c"}]}]
+c:null

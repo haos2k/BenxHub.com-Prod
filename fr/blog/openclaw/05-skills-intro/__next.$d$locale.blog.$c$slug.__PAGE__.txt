@@ -1,0 +1,129 @@
+1:"$Sreact.fragment"
+2:I[14864,["/_next/static/chunks/7923a261b80bb6e1.js","/_next/static/chunks/e09b4358027e8033.js","/_next/static/chunks/2dddb3bc05093f69.js"],"default"]
+8:I[24801,["/_next/static/chunks/7923a261b80bb6e1.js","/_next/static/chunks/e09b4358027e8033.js","/_next/static/chunks/2dddb3bc05093f69.js"],"default"]
+a:I[50183,["/_next/static/chunks/5a5b5b13c22d14f7.js","/_next/static/chunks/a484d1d3dd4b55ab.js"],"OutletBoundary"]
+b:"$Sreact.suspense"
+3:T1095,<p>Un assistant qui ne sait que discuter, c'est comme embaucher un employé brillant sans lui donner d'outils. Gaspillage de talent.</p>
+<p>Les <strong>Skills</strong> sont la façon d'équiper votre assistant pour qu'il fasse vraiment des choses.</p>
+<h2 id="ce-que-vous-allez-apprendre">Ce que vous allez apprendre</h2>
+<ul>
+<li>Comprendre ce qu'est une Skill</li>
+<li>Activer les skills intégrées</li>
+<li>Ajouter vos propres skills personnalisées</li>
+<li>Comprendre la priorité et les chemins de chargement des skills</li>
+</ul>
+<hr>
+<h2 id="quest-ce-quune-skill-">Qu'est-ce qu'une Skill ?</h2>
+<p>Une Skill est généralement un petit document d'instructions nommé <code>SKILL.md</code>. Il explique :</p>
+<ul>
+<li>Ce que la skill peut faire</li>
+<li>Quand elle doit être utilisée</li>
+<li>Quels outils et étapes sont autorisés</li>
+</ul>
+<p>Pensez-y comme <strong>au playbook de l'assistant</strong>. Donnez-lui un playbook navigateur et il peut chercher sur le web. Donnez-lui un playbook fichiers et il peut organiser vos documents.</p>
+<hr>
+<h2 id="intégrées-vs-personnalisées">Intégrées vs personnalisées</h2>
+<p>OpenClaw embarque des skills intégrées utiles, et la communauté en ajoute. Vous pouvez :</p>
+<ul>
+<li><strong>Utiliser les skills intégrées</strong> directement depuis le tableau de bord</li>
+<li><strong>Écrire les vôtres</strong> avec un simple fichier <code>SKILL.md</code></li>
+</ul>
+<hr>
+<h2 id="la-bonne-façon-de-créer-des-skills-personnalisées">La bonne façon de créer des skills personnalisées</h2>
+<p>Pour modifier ou ajouter une skill, <strong>ne modifiez pas les fichiers d'origine dans le dépôt OpenClaw</strong>. La prochaine mise à jour pourrait les écraser et gâcher votre journée.</p>
+<p>Mettez plutôt votre version personnalisée ici :</p>
+<pre><code>~/.openclaw/skills/&#x3C;skill-name>/SKILL.md
+</code></pre>
+<p><strong>Ordre de priorité</strong></p>
+<pre><code>workspace/skills  →  ~/.openclaw/skills  →  intégrées  →  extraDirs
+</code></pre>
+<p>La première correspondance l'emporte.</p>
+<hr>
+<h2 id="gérer-les-skills-depuis-le-tableau-de-bord">Gérer les skills depuis le tableau de bord</h2>
+<p>Ouvrez l'interface de contrôle → onglet <strong>Skills</strong>. Vous pouvez :</p>
+<ul>
+<li>Voir toutes les skills disponibles</li>
+<li>Les activer ou désactiver en un clic</li>
+<li>Configurer les skills qui nécessitent des clés API</li>
+<li>Installer des skills fournies par la communauté</li>
+</ul>
+<p>Après enregistrement, OpenClaw recharge généralement les changements à chaud sans redémarrer la Gateway.</p>
+<hr>
+<h2 id="charger-des-skills-depuis-un-dossier-personnalisé">Charger des skills depuis un dossier personnalisé</h2>
+<p>Pour centraliser toutes vos skills personnalisées dans un même répertoire :</p>
+<figure data-rehype-pretty-code-figure=""><pre style="background-color:#24292e;color:#e1e4e8" tabindex="0" data-language="json5" data-theme="github-dark"><code data-language="json5" data-theme="github-dark" style="display: grid;"><span data-line=""><span style="color:#6A737D">// ~/.openclaw/openclaw.json</span></span>
+<span data-line=""><span style="color:#E1E4E8">{</span></span>
+<span data-line=""><span style="color:#9ECBFF">  "skills"</span><span style="color:#E1E4E8">: {</span></span>
+<span data-line=""><span style="color:#9ECBFF">    "load"</span><span style="color:#E1E4E8">: {</span></span>
+<span data-line=""><span style="color:#9ECBFF">      "extraDirs"</span><span style="color:#E1E4E8">: [</span><span style="color:#9ECBFF">"/votre/dossier-skills-personnalisees"</span><span style="color:#E1E4E8">]</span></span>
+<span data-line=""><span style="color:#E1E4E8">    }</span></span>
+<span data-line=""><span style="color:#E1E4E8">  }</span></span>
+<span data-line=""><span style="color:#E1E4E8">}</span></span></code></pre></figure>
+<hr>
+<h2 id="suite">Suite</h2>
+<p>Votre assistant a maintenant des outils ; il lui faut son propre bureau. Dans la prochaine partie nous parlerons de mémoire et d'espaces de travail.</p>
+<p><a href="04-channels-basics">← Précédent : Configuration des canaux</a> | 👉 <a href="06-memory-workspace">Où est le cerveau de votre assistant ? Mémoire et espace de travail</a></p>0:{"buildId":"Yck3R4ooQxWkwGLT6is1X","rsc":["$","$1","c",{"children":[[["$","script",null,{"type":"application/ld+json","dangerouslySetInnerHTML":{"__html":"{\"@context\":\"https://schema.org\",\"@type\":\"Article\",\"headline\":\"Donnez des super-pouvoirs à votre assistant : les Skills le transforment de bavard en acteur\",\"description\":\"Qu'est-ce qu'une Skill, comment fonctionnent les skills intégrées, et comment ajouter des skills personnalisées ou les charger depuis d'autres dossiers ?\",\"url\":\"https://benxhub.com/fr/blog/openclaw/05-skills-intro\",\"mainEntityOfPage\":{\"@type\":\"WebPage\",\"@id\":\"https://benxhub.com/fr/blog/openclaw/05-skills-intro\"},\"datePublished\":\"2026-03-08T00:00:00.000Z\",\"dateModified\":\"2026-03-08T00:00:00.000Z\",\"keywords\":\"openclaw, skills, customization, tools\",\"inLanguage\":\"fr\",\"author\":{\"@type\":\"Person\",\"name\":\"BenX\",\"url\":\"https://benxhub.com\"},\"publisher\":{\"@type\":\"Organization\",\"name\":\"BenXHub Blog\",\"url\":\"https://benxhub.com\"}}"}}],["$","div",null,{"className":"mx-auto max-w-6xl px-4 py-12 sm:px-6","children":["$","div",null,{"className":"lg:grid lg:grid-cols-[1fr_240px] lg:gap-14","children":[["$","article",null,{"children":[["$","header",null,{"className":"mb-10","children":[["$","div",null,{"className":"mb-4 flex flex-wrap gap-2","children":[["$","$L2","openclaw",{"href":"/fr/tags/openclaw","localeCookie":{"name":"NEXT_LOCALE","sameSite":"lax"},"className":"inline-flex items-center rounded-full px-2.5 py-0.5 text-xs font-medium transition-colors","style":{"background":"var(--color-code-bg)","color":"var(--color-accent)","border":"1px solid var(--color-border)"},"children":["#","openclaw"]}],["$","$L2","skills",{"href":"/fr/tags/skills","localeCookie":{"name":"NEXT_LOCALE","sameSite":"lax"},"className":"inline-flex items-center rounded-full px-2.5 py-0.5 text-xs font-medium transition-colors","style":{"background":"var(--color-code-bg)","color":"var(--color-accent)","border":"1px solid var(--color-border)"},"children":["#","skills"]}],["$","$L2","customization",{"href":"/fr/tags/customization","localeCookie":{"name":"NEXT_LOCALE","sameSite":"lax"},"className":"inline-flex items-center rounded-full px-2.5 py-0.5 text-xs font-medium transition-colors","style":{"background":"var(--color-code-bg)","color":"var(--color-accent)","border":"1px solid var(--color-border)"},"children":["#","customization"]}],["$","$L2","tools",{"href":"/fr/tags/tools","localeCookie":{"name":"NEXT_LOCALE","sameSite":"lax"},"className":"inline-flex items-center rounded-full px-2.5 py-0.5 text-xs font-medium transition-colors","style":{"background":"var(--color-code-bg)","color":"var(--color-accent)","border":"1px solid var(--color-border)"},"children":["#","tools"]}]]}],["$","h1",null,{"className":"mb-4 text-3xl leading-snug font-bold tracking-tight sm:text-4xl","style":{"color":"var(--color-text)"},"children":"Donnez des super-pouvoirs à votre assistant : les Skills le transforment de bavard en acteur"}],["$","div",null,{"className":"flex flex-wrap items-center gap-3 text-sm","style":{"color":"var(--color-muted)"},"children":[["$","time",null,{"dateTime":"2026-03-08","children":"8 mars 2026"}],["$","span",null,{"aria-hidden":"true","children":"·"}],["$","span",null,{"children":"2 min read"}]]}],"$undefined",["$","div",null,{"className":"mt-6 border-b","style":{"borderColor":"var(--color-border)"}}]]}],["$","div",null,{"className":"prose","dangerouslySetInnerHTML":{"__html":"$3"}}],"$L4"]}],"$L5"]}]}]],["$L6"],"$L7"]}],"loading":null,"isPartial":false}
+4:["$","footer",null,{"className":"mt-14 border-t pt-8","style":{"borderColor":"var(--color-border)"},"children":[["$","div",null,{"className":"mb-8 flex flex-wrap gap-2","children":[["$","$L2","openclaw",{"href":"/fr/tags/openclaw","localeCookie":{"name":"NEXT_LOCALE","sameSite":"lax"},"className":"inline-flex items-center rounded-full px-3 py-1 text-sm font-medium transition-colors","style":{"background":"var(--color-code-bg)","color":"var(--color-accent)","border":"1px solid var(--color-border)"},"children":["#","openclaw"]}],["$","$L2","skills",{"href":"/fr/tags/skills","localeCookie":{"name":"NEXT_LOCALE","sameSite":"lax"},"className":"inline-flex items-center rounded-full px-3 py-1 text-sm font-medium transition-colors","style":{"background":"var(--color-code-bg)","color":"var(--color-accent)","border":"1px solid var(--color-border)"},"children":["#","skills"]}],["$","$L2","customization",{"href":"/fr/tags/customization","localeCookie":{"name":"NEXT_LOCALE","sameSite":"lax"},"className":"inline-flex items-center rounded-full px-3 py-1 text-sm font-medium transition-colors","style":{"background":"var(--color-code-bg)","color":"var(--color-accent)","border":"1px solid var(--color-border)"},"children":["#","customization"]}],["$","$L2","tools",{"href":"/fr/tags/tools","localeCookie":{"name":"NEXT_LOCALE","sameSite":"lax"},"className":"inline-flex items-center rounded-full px-3 py-1 text-sm font-medium transition-colors","style":{"background":"var(--color-code-bg)","color":"var(--color-accent)","border":"1px solid var(--color-border)"},"children":["#","tools"]}]]}],["$","nav",null,{"aria-label":"Navigation des articles","className":"grid grid-cols-1 gap-4 sm:grid-cols-2","children":[["$","$L2",null,{"href":"/fr/blog/openclaw/04-channels-basics","localeCookie":{"name":"NEXT_LOCALE","sameSite":"lax"},"className":"group rounded-lg border p-4 transition-colors hover:border-accent","style":{"borderColor":"var(--color-border)","background":"var(--color-surface)"},"children":[["$","p",null,{"className":"mb-1 text-xs","style":{"color":"var(--color-muted)"},"children":"← Plus récent"}],["$","p",null,{"className":"line-clamp-1 text-sm font-medium transition-colors group-hover:text-accent","style":{"color":"var(--color-text)"},"children":"Faire travailler votre assistant via Telegram : configuration des canaux pas à pas"}]]}],["$","$L2",null,{"href":"/fr/blog/openclaw/06-memory-workspace","localeCookie":{"name":"NEXT_LOCALE","sameSite":"lax"},"className":"group rounded-lg border p-4 text-right transition-colors hover:border-accent","style":{"borderColor":"var(--color-border)","background":"var(--color-surface)"},"children":[["$","p",null,{"className":"mb-1 text-xs","style":{"color":"var(--color-muted)"},"children":"Plus ancien →"}],["$","p",null,{"className":"line-clamp-1 text-sm font-medium transition-colors group-hover:text-accent","style":{"color":"var(--color-text)"},"children":"Où est le cerveau de votre assistant ? Comprendre mémoire et espaces de travail"}]]}]]}]]}]
+9:T1095,<p>Un assistant qui ne sait que discuter, c'est comme embaucher un employé brillant sans lui donner d'outils. Gaspillage de talent.</p>
+<p>Les <strong>Skills</strong> sont la façon d'équiper votre assistant pour qu'il fasse vraiment des choses.</p>
+<h2 id="ce-que-vous-allez-apprendre">Ce que vous allez apprendre</h2>
+<ul>
+<li>Comprendre ce qu'est une Skill</li>
+<li>Activer les skills intégrées</li>
+<li>Ajouter vos propres skills personnalisées</li>
+<li>Comprendre la priorité et les chemins de chargement des skills</li>
+</ul>
+<hr>
+<h2 id="quest-ce-quune-skill-">Qu'est-ce qu'une Skill ?</h2>
+<p>Une Skill est généralement un petit document d'instructions nommé <code>SKILL.md</code>. Il explique :</p>
+<ul>
+<li>Ce que la skill peut faire</li>
+<li>Quand elle doit être utilisée</li>
+<li>Quels outils et étapes sont autorisés</li>
+</ul>
+<p>Pensez-y comme <strong>au playbook de l'assistant</strong>. Donnez-lui un playbook navigateur et il peut chercher sur le web. Donnez-lui un playbook fichiers et il peut organiser vos documents.</p>
+<hr>
+<h2 id="intégrées-vs-personnalisées">Intégrées vs personnalisées</h2>
+<p>OpenClaw embarque des skills intégrées utiles, et la communauté en ajoute. Vous pouvez :</p>
+<ul>
+<li><strong>Utiliser les skills intégrées</strong> directement depuis le tableau de bord</li>
+<li><strong>Écrire les vôtres</strong> avec un simple fichier <code>SKILL.md</code></li>
+</ul>
+<hr>
+<h2 id="la-bonne-façon-de-créer-des-skills-personnalisées">La bonne façon de créer des skills personnalisées</h2>
+<p>Pour modifier ou ajouter une skill, <strong>ne modifiez pas les fichiers d'origine dans le dépôt OpenClaw</strong>. La prochaine mise à jour pourrait les écraser et gâcher votre journée.</p>
+<p>Mettez plutôt votre version personnalisée ici :</p>
+<pre><code>~/.openclaw/skills/&#x3C;skill-name>/SKILL.md
+</code></pre>
+<p><strong>Ordre de priorité</strong></p>
+<pre><code>workspace/skills  →  ~/.openclaw/skills  →  intégrées  →  extraDirs
+</code></pre>
+<p>La première correspondance l'emporte.</p>
+<hr>
+<h2 id="gérer-les-skills-depuis-le-tableau-de-bord">Gérer les skills depuis le tableau de bord</h2>
+<p>Ouvrez l'interface de contrôle → onglet <strong>Skills</strong>. Vous pouvez :</p>
+<ul>
+<li>Voir toutes les skills disponibles</li>
+<li>Les activer ou désactiver en un clic</li>
+<li>Configurer les skills qui nécessitent des clés API</li>
+<li>Installer des skills fournies par la communauté</li>
+</ul>
+<p>Après enregistrement, OpenClaw recharge généralement les changements à chaud sans redémarrer la Gateway.</p>
+<hr>
+<h2 id="charger-des-skills-depuis-un-dossier-personnalisé">Charger des skills depuis un dossier personnalisé</h2>
+<p>Pour centraliser toutes vos skills personnalisées dans un même répertoire :</p>
+<figure data-rehype-pretty-code-figure=""><pre style="background-color:#24292e;color:#e1e4e8" tabindex="0" data-language="json5" data-theme="github-dark"><code data-language="json5" data-theme="github-dark" style="display: grid;"><span data-line=""><span style="color:#6A737D">// ~/.openclaw/openclaw.json</span></span>
+<span data-line=""><span style="color:#E1E4E8">{</span></span>
+<span data-line=""><span style="color:#9ECBFF">  "skills"</span><span style="color:#E1E4E8">: {</span></span>
+<span data-line=""><span style="color:#9ECBFF">    "load"</span><span style="color:#E1E4E8">: {</span></span>
+<span data-line=""><span style="color:#9ECBFF">      "extraDirs"</span><span style="color:#E1E4E8">: [</span><span style="color:#9ECBFF">"/votre/dossier-skills-personnalisees"</span><span style="color:#E1E4E8">]</span></span>
+<span data-line=""><span style="color:#E1E4E8">    }</span></span>
+<span data-line=""><span style="color:#E1E4E8">  }</span></span>
+<span data-line=""><span style="color:#E1E4E8">}</span></span></code></pre></figure>
+<hr>
+<h2 id="suite">Suite</h2>
+<p>Votre assistant a maintenant des outils ; il lui faut son propre bureau. Dans la prochaine partie nous parlerons de mémoire et d'espaces de travail.</p>
+<p><a href="04-channels-basics">← Précédent : Configuration des canaux</a> | 👉 <a href="06-memory-workspace">Où est le cerveau de votre assistant ? Mémoire et espace de travail</a></p>5:["$","aside",null,{"className":"hidden lg:block","children":["$","$L8",null,{"html":"$9"}]}]
+6:["$","script","script-0",{"src":"/_next/static/chunks/2dddb3bc05093f69.js","async":true}]
+7:["$","$La",null,{"children":["$","$b",null,{"name":"Next.MetadataOutlet","children":"$@c"}]}]
+c:null

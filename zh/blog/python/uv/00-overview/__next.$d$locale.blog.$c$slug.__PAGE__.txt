@@ -1,0 +1,78 @@
+1:"$Sreact.fragment"
+2:I[14864,["/_next/static/chunks/7923a261b80bb6e1.js","/_next/static/chunks/e09b4358027e8033.js","/_next/static/chunks/2dddb3bc05093f69.js"],"default"]
+8:I[24801,["/_next/static/chunks/7923a261b80bb6e1.js","/_next/static/chunks/e09b4358027e8033.js","/_next/static/chunks/2dddb3bc05093f69.js"],"default"]
+a:I[50183,["/_next/static/chunks/5a5b5b13c22d14f7.js","/_next/static/chunks/a484d1d3dd4b55ab.js"],"OutletBoundary"]
+b:"$Sreact.suspense"
+:HL["/images/posts/uv-overview.jpg","image"]
+3:Tda1,<p>uv 是 Astral 用 Rust 打造的<strong>極速 Python 套件與專案管理工具</strong>，整合依賴安裝、虛擬環境、Python 版本管理、CLI 工具執行於一身。簡單講：<strong>pip + virtualenv + pyenv + pipx 的合體強化版，還快到你懷疑人生那種。</strong></p>
+<p>和 pip、poetry、pipenv 相比，uv 的優勢在於 <strong>10–100 倍的速度</strong>、極低磁碟佔用、單一工具搞定全流程。特別適合日常開發、CI/CD、腳本執行——不用再在好幾個工具之間切換，就像一隻貓只需要一個紙箱，但這個紙箱能變出各種功能，還自帶 turbo 模式。</p>
+<h2 id="適用場景">適用場景</h2>
+<ul>
+<li><strong>新專案從零開始</strong>：<code>uv init</code> 秒建、依賴秒裝，不用再等 pip 轉圈圈</li>
+<li><strong>既有 requirements.txt 遷移</strong>：<code>uv pip compile</code> 直接吃，無痛升級</li>
+<li><strong>腳本臨時依賴</strong>：<code>uv run --with rich script.py</code>，不用搞 venv</li>
+<li><strong>CLI 工具執行</strong>：<code>uvx ruff</code> 隨叫隨用，像 pipx 但快 N 倍</li>
+<li><strong>不適合</strong>：還在用 Python 2 的遺產專案——那種先考慮搬遷再說，別逼 uv 穿越時空</li>
+</ul>
+<h2 id="學習地圖">學習地圖</h2>
+<ol>
+<li><a href="01-quick-start">快速上手</a>：安裝並建立第一個專案（你的 uv 初體驗）</li>
+<li><a href="02-core-concepts">核心概念</a>：pyproject.toml、uv.lock、虛擬環境——先把心智模型建好</li>
+<li><a href="03-common-patterns">常見模式</a>：依賴管理、uv run、uvx、腳本執行，日常 80% 情境</li>
+<li><a href="04-advanced">進階用法</a>：Python 版本切換、pip 介面、Workspace——多專案與遷移</li>
+<li><a href="05-best-practices">最佳實踐</a>：避坑策略與維運準則，少踩雷就是省時間</li>
+</ol>
+<h2 id="安裝入口">安裝入口</h2>
+<figure data-rehype-pretty-code-figure=""><pre style="background-color:#24292e;color:#e1e4e8" tabindex="0" data-language="bash" data-theme="github-dark"><code data-language="bash" data-theme="github-dark" style="display: grid;"><span data-line=""><span style="color:#6A737D"># macOS / Linux</span></span>
+<span data-line=""><span style="color:#B392F0">curl</span><span style="color:#79B8FF"> -LsSf</span><span style="color:#9ECBFF"> https://astral.sh/uv/install.sh</span><span style="color:#F97583"> |</span><span style="color:#B392F0"> sh</span></span>
+<span data-line=""> </span>
+<span data-line=""><span style="color:#6A737D"># Windows (PowerShell)</span></span>
+<span data-line=""><span style="color:#B392F0">powershell</span><span style="color:#79B8FF"> -ExecutionPolicy</span><span style="color:#9ECBFF"> ByPass</span><span style="color:#79B8FF"> -c</span><span style="color:#9ECBFF"> "irm https://astral.sh/uv/install.ps1 | iex"</span></span></code></pre></figure>
+<blockquote>
+<p>⚠️ 安裝後建議重開 terminal，或執行 <code>source $HOME/.local/bin/env</code>（依 installer 說明為準），確保 <code>uv</code> 在 PATH 裡。</p>
+</blockquote>
+<h2 id="一句話總結">一句話總結</h2>
+<p><strong>pip 等你轉圈圈的時間，uv 已經幫你裝完、跑完、喝完咖啡了。</strong> 不信？下一篇十分鐘見真章。</p>
+<h2 id="延伸閱讀">延伸閱讀</h2>
+<ul>
+<li><a href="https://docs.astral.sh/uv/">uv 官方文件</a></li>
+<li><a href="https://astral.sh">Astral 官網</a></li>
+</ul>0:{"buildId":"Yck3R4ooQxWkwGLT6is1X","rsc":["$","$1","c",{"children":[[["$","script",null,{"type":"application/ld+json","dangerouslySetInnerHTML":{"__html":"{\"@context\":\"https://schema.org\",\"@type\":\"Article\",\"headline\":\"Python uv 系列總覽：pip 的 100 倍速接班人\",\"description\":\"快速認識 uv 的定位、適用情境與學習路線，作為整個 uv 系列的導讀。\",\"url\":\"https://benxhub.com/zh/blog/python/uv/00-overview\",\"mainEntityOfPage\":{\"@type\":\"WebPage\",\"@id\":\"https://benxhub.com/zh/blog/python/uv/00-overview\"},\"datePublished\":\"2026-02-27T00:00:00.000Z\",\"dateModified\":\"2026-02-27T00:00:00.000Z\",\"keywords\":\"python, uv, package-manager, astral\",\"inLanguage\":\"zh\",\"author\":{\"@type\":\"Person\",\"name\":\"BenX\",\"url\":\"https://benxhub.com\"},\"publisher\":{\"@type\":\"Organization\",\"name\":\"BenXHub Blog\",\"url\":\"https://benxhub.com\"},\"image\":\"https://benxhub.com/images/posts/uv-overview.jpg\"}"}}],["$","div",null,{"className":"mx-auto max-w-6xl px-4 py-12 sm:px-6","children":["$","div",null,{"className":"lg:grid lg:grid-cols-[1fr_240px] lg:gap-14","children":[["$","article",null,{"children":[["$","header",null,{"className":"mb-10","children":[["$","div",null,{"className":"mb-4 flex flex-wrap gap-2","children":[["$","$L2","python",{"href":"/zh/tags/python","localeCookie":{"name":"NEXT_LOCALE","sameSite":"lax"},"className":"inline-flex items-center rounded-full px-2.5 py-0.5 text-xs font-medium transition-colors","style":{"background":"var(--color-code-bg)","color":"var(--color-accent)","border":"1px solid var(--color-border)"},"children":["#","python"]}],["$","$L2","uv",{"href":"/zh/tags/uv","localeCookie":{"name":"NEXT_LOCALE","sameSite":"lax"},"className":"inline-flex items-center rounded-full px-2.5 py-0.5 text-xs font-medium transition-colors","style":{"background":"var(--color-code-bg)","color":"var(--color-accent)","border":"1px solid var(--color-border)"},"children":["#","uv"]}],["$","$L2","package-manager",{"href":"/zh/tags/package-manager","localeCookie":{"name":"NEXT_LOCALE","sameSite":"lax"},"className":"inline-flex items-center rounded-full px-2.5 py-0.5 text-xs font-medium transition-colors","style":{"background":"var(--color-code-bg)","color":"var(--color-accent)","border":"1px solid var(--color-border)"},"children":["#","package-manager"]}],["$","$L2","astral",{"href":"/zh/tags/astral","localeCookie":{"name":"NEXT_LOCALE","sameSite":"lax"},"className":"inline-flex items-center rounded-full px-2.5 py-0.5 text-xs font-medium transition-colors","style":{"background":"var(--color-code-bg)","color":"var(--color-accent)","border":"1px solid var(--color-border)"},"children":["#","astral"]}]]}],["$","h1",null,{"className":"mb-4 text-3xl leading-snug font-bold tracking-tight sm:text-4xl","style":{"color":"var(--color-text)"},"children":"Python uv 系列總覽：pip 的 100 倍速接班人"}],["$","div",null,{"className":"flex flex-wrap items-center gap-3 text-sm","style":{"color":"var(--color-muted)"},"children":[["$","time",null,{"dateTime":"2026-02-27","children":"2026 年 2 月 27 日"}],["$","span",null,{"aria-hidden":"true","children":"·"}],["$","span",null,{"children":"3 min read"}]]}],["$","div",null,{"className":"mt-6 overflow-hidden rounded-lg","children":["$","img",null,{"src":"/images/posts/uv-overview.jpg","alt":"Python uv 系列總覽：pip 的 100 倍速接班人","className":"w-full h-auto"}]}],["$","div",null,{"className":"mt-6 border-b","style":{"borderColor":"var(--color-border)"}}]]}],["$","div",null,{"className":"prose","dangerouslySetInnerHTML":{"__html":"$3"}}],"$L4"]}],"$L5"]}]}]],["$L6"],"$L7"]}],"loading":null,"isPartial":false}
+4:["$","footer",null,{"className":"mt-14 border-t pt-8","style":{"borderColor":"var(--color-border)"},"children":[["$","div",null,{"className":"mb-8 flex flex-wrap gap-2","children":[["$","$L2","python",{"href":"/zh/tags/python","localeCookie":{"name":"NEXT_LOCALE","sameSite":"lax"},"className":"inline-flex items-center rounded-full px-3 py-1 text-sm font-medium transition-colors","style":{"background":"var(--color-code-bg)","color":"var(--color-accent)","border":"1px solid var(--color-border)"},"children":["#","python"]}],["$","$L2","uv",{"href":"/zh/tags/uv","localeCookie":{"name":"NEXT_LOCALE","sameSite":"lax"},"className":"inline-flex items-center rounded-full px-3 py-1 text-sm font-medium transition-colors","style":{"background":"var(--color-code-bg)","color":"var(--color-accent)","border":"1px solid var(--color-border)"},"children":["#","uv"]}],["$","$L2","package-manager",{"href":"/zh/tags/package-manager","localeCookie":{"name":"NEXT_LOCALE","sameSite":"lax"},"className":"inline-flex items-center rounded-full px-3 py-1 text-sm font-medium transition-colors","style":{"background":"var(--color-code-bg)","color":"var(--color-accent)","border":"1px solid var(--color-border)"},"children":["#","package-manager"]}],["$","$L2","astral",{"href":"/zh/tags/astral","localeCookie":{"name":"NEXT_LOCALE","sameSite":"lax"},"className":"inline-flex items-center rounded-full px-3 py-1 text-sm font-medium transition-colors","style":{"background":"var(--color-code-bg)","color":"var(--color-accent)","border":"1px solid var(--color-border)"},"children":["#","astral"]}]]}],["$","nav",null,{"aria-label":"文章導覽","className":"grid grid-cols-1 gap-4 sm:grid-cols-2","children":[["$","$L2",null,{"href":"/zh/blog/crewai/02-agents-and-tasks","localeCookie":{"name":"NEXT_LOCALE","sameSite":"lax"},"className":"group rounded-lg border p-4 transition-colors hover:border-accent","style":{"borderColor":"var(--color-border)","background":"var(--color-surface)"},"children":[["$","p",null,{"className":"mb-1 text-xs","style":{"color":"var(--color-muted)"},"children":"← 較新文章"}],["$","p",null,{"className":"line-clamp-1 text-sm font-medium transition-colors group-hover:text-accent","style":{"color":"var(--color-text)"},"children":"CrewAI Agent 與 Task 設計：怎麼拆角色才不會亂成一團"}]]}],["$","$L2",null,{"href":"/zh/blog/python/uv/01-quick-start","localeCookie":{"name":"NEXT_LOCALE","sameSite":"lax"},"className":"group rounded-lg border p-4 text-right transition-colors hover:border-accent","style":{"borderColor":"var(--color-border)","background":"var(--color-surface)"},"children":[["$","p",null,{"className":"mb-1 text-xs","style":{"color":"var(--color-muted)"},"children":"較舊文章 →"}],["$","p",null,{"className":"line-clamp-1 text-sm font-medium transition-colors group-hover:text-accent","style":{"color":"var(--color-text)"},"children":"Python uv 快速上手：建立第一個專案"}]]}]]}]]}]
+9:Tda1,<p>uv 是 Astral 用 Rust 打造的<strong>極速 Python 套件與專案管理工具</strong>，整合依賴安裝、虛擬環境、Python 版本管理、CLI 工具執行於一身。簡單講：<strong>pip + virtualenv + pyenv + pipx 的合體強化版，還快到你懷疑人生那種。</strong></p>
+<p>和 pip、poetry、pipenv 相比，uv 的優勢在於 <strong>10–100 倍的速度</strong>、極低磁碟佔用、單一工具搞定全流程。特別適合日常開發、CI/CD、腳本執行——不用再在好幾個工具之間切換，就像一隻貓只需要一個紙箱，但這個紙箱能變出各種功能，還自帶 turbo 模式。</p>
+<h2 id="適用場景">適用場景</h2>
+<ul>
+<li><strong>新專案從零開始</strong>：<code>uv init</code> 秒建、依賴秒裝，不用再等 pip 轉圈圈</li>
+<li><strong>既有 requirements.txt 遷移</strong>：<code>uv pip compile</code> 直接吃，無痛升級</li>
+<li><strong>腳本臨時依賴</strong>：<code>uv run --with rich script.py</code>，不用搞 venv</li>
+<li><strong>CLI 工具執行</strong>：<code>uvx ruff</code> 隨叫隨用，像 pipx 但快 N 倍</li>
+<li><strong>不適合</strong>：還在用 Python 2 的遺產專案——那種先考慮搬遷再說，別逼 uv 穿越時空</li>
+</ul>
+<h2 id="學習地圖">學習地圖</h2>
+<ol>
+<li><a href="01-quick-start">快速上手</a>：安裝並建立第一個專案（你的 uv 初體驗）</li>
+<li><a href="02-core-concepts">核心概念</a>：pyproject.toml、uv.lock、虛擬環境——先把心智模型建好</li>
+<li><a href="03-common-patterns">常見模式</a>：依賴管理、uv run、uvx、腳本執行，日常 80% 情境</li>
+<li><a href="04-advanced">進階用法</a>：Python 版本切換、pip 介面、Workspace——多專案與遷移</li>
+<li><a href="05-best-practices">最佳實踐</a>：避坑策略與維運準則，少踩雷就是省時間</li>
+</ol>
+<h2 id="安裝入口">安裝入口</h2>
+<figure data-rehype-pretty-code-figure=""><pre style="background-color:#24292e;color:#e1e4e8" tabindex="0" data-language="bash" data-theme="github-dark"><code data-language="bash" data-theme="github-dark" style="display: grid;"><span data-line=""><span style="color:#6A737D"># macOS / Linux</span></span>
+<span data-line=""><span style="color:#B392F0">curl</span><span style="color:#79B8FF"> -LsSf</span><span style="color:#9ECBFF"> https://astral.sh/uv/install.sh</span><span style="color:#F97583"> |</span><span style="color:#B392F0"> sh</span></span>
+<span data-line=""> </span>
+<span data-line=""><span style="color:#6A737D"># Windows (PowerShell)</span></span>
+<span data-line=""><span style="color:#B392F0">powershell</span><span style="color:#79B8FF"> -ExecutionPolicy</span><span style="color:#9ECBFF"> ByPass</span><span style="color:#79B8FF"> -c</span><span style="color:#9ECBFF"> "irm https://astral.sh/uv/install.ps1 | iex"</span></span></code></pre></figure>
+<blockquote>
+<p>⚠️ 安裝後建議重開 terminal，或執行 <code>source $HOME/.local/bin/env</code>（依 installer 說明為準），確保 <code>uv</code> 在 PATH 裡。</p>
+</blockquote>
+<h2 id="一句話總結">一句話總結</h2>
+<p><strong>pip 等你轉圈圈的時間，uv 已經幫你裝完、跑完、喝完咖啡了。</strong> 不信？下一篇十分鐘見真章。</p>
+<h2 id="延伸閱讀">延伸閱讀</h2>
+<ul>
+<li><a href="https://docs.astral.sh/uv/">uv 官方文件</a></li>
+<li><a href="https://astral.sh">Astral 官網</a></li>
+</ul>5:["$","aside",null,{"className":"hidden lg:block","children":["$","$L8",null,{"html":"$9"}]}]
+6:["$","script","script-0",{"src":"/_next/static/chunks/2dddb3bc05093f69.js","async":true}]
+7:["$","$La",null,{"children":["$","$b",null,{"name":"Next.MetadataOutlet","children":"$@c"}]}]
+c:null

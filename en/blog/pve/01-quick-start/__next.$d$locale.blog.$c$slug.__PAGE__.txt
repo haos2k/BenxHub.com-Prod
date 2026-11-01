@@ -1,0 +1,154 @@
+1:"$Sreact.fragment"
+2:I[14864,["/_next/static/chunks/7923a261b80bb6e1.js","/_next/static/chunks/e09b4358027e8033.js","/_next/static/chunks/2dddb3bc05093f69.js"],"default"]
+8:I[24801,["/_next/static/chunks/7923a261b80bb6e1.js","/_next/static/chunks/e09b4358027e8033.js","/_next/static/chunks/2dddb3bc05093f69.js"],"default"]
+a:I[50183,["/_next/static/chunks/5a5b5b13c22d14f7.js","/_next/static/chunks/a484d1d3dd4b55ab.js"],"OutletBoundary"]
+b:"$Sreact.suspense"
+:HL["/images/posts/pve-quick-start.jpg","image"]
+3:Tf9b,<p>This guide takes the shortest path to get you a <strong>bootable Debian virtual machine</strong> — your first working environment in PVE. Like getting a first pet: make sure it can eat and sleep first; advanced techniques come later.</p>
+<h2 id="prerequisites">Prerequisites</h2>
+<ul>
+<li>64-bit CPU with <strong>Intel VT-x</strong> or <strong>AMD-V</strong> enabled (without this, VMs will refuse to start)</li>
+<li>Minimum 2 GB RAM (8 GB+ recommended — otherwise it'll feel like a 2010 computer)</li>
+<li>At least one working network card</li>
+<li>A host or server that can boot from USB</li>
+</ul>
+<h2 id="minimal-example-create-your-first-virtual-machine">Minimal Example: Create Your First Virtual Machine</h2>
+<h3 id="step-1-log-in-to-the-web-interface">Step 1: Log In to the Web Interface</h3>
+<p>After installation, open <code>https://&#x3C;PVE-IP>:8006</code> and log in with <code>root</code> and the password you set during installation. Your browser may warn about the certificate — it's self-signed, so click "Advanced" → "Proceed anyway." Homelab life.</p>
+<h3 id="step-2-download-the-system-image">Step 2: Download the System Image</h3>
+<ol>
+<li>Select the <code>local</code> storage under your node in the left panel</li>
+<li>Go to <code>Content</code>, click <code>Download from URL</code></li>
+<li>Enter:
+<ul>
+<li>URL: <code>https://cloud.debian.org/images/cloud/bookworm/latest/debian-12-generic-amd64.qcow2</code></li>
+<li>File Name: <code>debian-12-cloud.qcow2</code></li>
+</ul>
+</li>
+<li>Click <code>Query URL</code> then start the download (go get a coffee)</li>
+</ol>
+<h3 id="step-3-create-the-virtual-machine">Step 3: Create the Virtual Machine</h3>
+<ol>
+<li>Click <code>Create VM</code> in the top right</li>
+<li><code>General</code>: set Name to <code>test-vm</code> (or whatever you like)</li>
+<li><code>OS</code>: for a cloud image you can skip the disc setup</li>
+<li><code>Disks</code>: select <strong>Use existing disk image</strong>, choose the <code>debian-12-cloud.qcow2</code> you just downloaded</li>
+<li><code>CPU</code>: 1 vCPU is fine to start</li>
+<li><code>Memory</code>: 512–1024 MB to test the waters</li>
+<li><code>Network</code>: default <code>vmbr0</code> is fine</li>
+<li><code>Confirm</code> → <code>Finish</code></li>
+</ol>
+<h3 id="step-4-start-and-verify">Step 4: Start and Verify</h3>
+<ol>
+<li>Right-click the VM → <code>Start</code></li>
+<li>Open <code>Console</code> (noVNC)</li>
+<li>If you see the Debian boot screen or login prompt, you've succeeded — congratulations, your first VM is live.</li>
+</ol>
+<h2 id="common-troubleshooting">Common Troubleshooting</h2>
+<table>
+<thead>
+<tr>
+<th>Symptom</th>
+<th>What to Check</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td>Can't access web interface</td>
+<td>Check if port 8006 is reachable, confirm <code>pveproxy</code> is running</td>
+</tr>
+<tr>
+<td>VM won't start</td>
+<td>Is VT-x / AMD-V enabled in BIOS? Without it, VMs simply won't start</td>
+</tr>
+<tr>
+<td>Can't find image file</td>
+<td>Back to <code>local -> Content</code> — check if the download completed</td>
+</tr>
+<tr>
+<td>VM has no network</td>
+<td>Check that <code>vmbr0</code> is correctly bound to a physical NIC</td>
+</tr>
+</tbody>
+</table>
+<figure data-rehype-pretty-code-figure=""><pre style="background-color:#24292e;color:#e1e4e8" tabindex="0" data-language="bash" data-theme="github-dark"><code data-language="bash" data-theme="github-dark" style="display: grid;"><span data-line=""><span style="color:#6A737D"># Service status check (run this when something's wrong)</span></span>
+<span data-line=""><span style="color:#B392F0">systemctl</span><span style="color:#9ECBFF"> status</span><span style="color:#9ECBFF"> pveproxy</span></span></code></pre></figure>
+<h2 id="next-steps">Next Steps</h2>
+<p>Once your first VM is up, it's a good idea to build the mental map of the system. The next article covers the core concepts of VM / LXC / storage / network:
+👉 <a href="02-core-concepts">Core Concepts</a></p>0:{"buildId":"Yck3R4ooQxWkwGLT6is1X","rsc":["$","$1","c",{"children":[[["$","script",null,{"type":"application/ld+json","dangerouslySetInnerHTML":{"__html":"{\"@context\":\"https://schema.org\",\"@type\":\"Article\",\"headline\":\"Proxmox VE Quick Start: Create Your First VM\",\"description\":\"Starting from your first login after installation, walk through downloading an image, creating a VM, and verifying it boots.\",\"url\":\"https://benxhub.com/en/blog/pve/01-quick-start\",\"mainEntityOfPage\":{\"@type\":\"WebPage\",\"@id\":\"https://benxhub.com/en/blog/pve/01-quick-start\"},\"datePublished\":\"2026-02-24T00:00:00.000Z\",\"dateModified\":\"2026-02-24T00:00:00.000Z\",\"keywords\":\"proxmox, quick-start, kvm\",\"inLanguage\":\"en\",\"author\":{\"@type\":\"Person\",\"name\":\"BenX\",\"url\":\"https://benxhub.com\"},\"publisher\":{\"@type\":\"Organization\",\"name\":\"BenXHub Blog\",\"url\":\"https://benxhub.com\"},\"image\":\"https://benxhub.com/images/posts/pve-quick-start.jpg\"}"}}],["$","div",null,{"className":"mx-auto max-w-6xl px-4 py-12 sm:px-6","children":["$","div",null,{"className":"lg:grid lg:grid-cols-[1fr_240px] lg:gap-14","children":[["$","article",null,{"children":[["$","header",null,{"className":"mb-10","children":[["$","div",null,{"className":"mb-4 flex flex-wrap gap-2","children":[["$","$L2","proxmox",{"href":"/en/tags/proxmox","localeCookie":{"name":"NEXT_LOCALE","sameSite":"lax"},"className":"inline-flex items-center rounded-full px-2.5 py-0.5 text-xs font-medium transition-colors","style":{"background":"var(--color-code-bg)","color":"var(--color-accent)","border":"1px solid var(--color-border)"},"children":["#","proxmox"]}],["$","$L2","quick-start",{"href":"/en/tags/quick-start","localeCookie":{"name":"NEXT_LOCALE","sameSite":"lax"},"className":"inline-flex items-center rounded-full px-2.5 py-0.5 text-xs font-medium transition-colors","style":{"background":"var(--color-code-bg)","color":"var(--color-accent)","border":"1px solid var(--color-border)"},"children":["#","quick-start"]}],["$","$L2","kvm",{"href":"/en/tags/kvm","localeCookie":{"name":"NEXT_LOCALE","sameSite":"lax"},"className":"inline-flex items-center rounded-full px-2.5 py-0.5 text-xs font-medium transition-colors","style":{"background":"var(--color-code-bg)","color":"var(--color-accent)","border":"1px solid var(--color-border)"},"children":["#","kvm"]}]]}],["$","h1",null,{"className":"mb-4 text-3xl leading-snug font-bold tracking-tight sm:text-4xl","style":{"color":"var(--color-text)"},"children":"Proxmox VE Quick Start: Create Your First VM"}],["$","div",null,{"className":"flex flex-wrap items-center gap-3 text-sm","style":{"color":"var(--color-muted)"},"children":[["$","time",null,{"dateTime":"2026-02-24","children":"Feb 24, 2026"}],["$","span",null,{"aria-hidden":"true","children":"·"}],["$","span",null,{"children":"3 min read"}]]}],["$","div",null,{"className":"mt-6 overflow-hidden rounded-lg","children":["$","img",null,{"src":"/images/posts/pve-quick-start.jpg","alt":"Proxmox VE Quick Start: Create Your First VM","className":"w-full h-auto"}]}],["$","div",null,{"className":"mt-6 border-b","style":{"borderColor":"var(--color-border)"}}]]}],["$","div",null,{"className":"prose","dangerouslySetInnerHTML":{"__html":"$3"}}],"$L4"]}],"$L5"]}]}]],["$L6"],"$L7"]}],"loading":null,"isPartial":false}
+4:["$","footer",null,{"className":"mt-14 border-t pt-8","style":{"borderColor":"var(--color-border)"},"children":[["$","div",null,{"className":"mb-8 flex flex-wrap gap-2","children":[["$","$L2","proxmox",{"href":"/en/tags/proxmox","localeCookie":{"name":"NEXT_LOCALE","sameSite":"lax"},"className":"inline-flex items-center rounded-full px-3 py-1 text-sm font-medium transition-colors","style":{"background":"var(--color-code-bg)","color":"var(--color-accent)","border":"1px solid var(--color-border)"},"children":["#","proxmox"]}],["$","$L2","quick-start",{"href":"/en/tags/quick-start","localeCookie":{"name":"NEXT_LOCALE","sameSite":"lax"},"className":"inline-flex items-center rounded-full px-3 py-1 text-sm font-medium transition-colors","style":{"background":"var(--color-code-bg)","color":"var(--color-accent)","border":"1px solid var(--color-border)"},"children":["#","quick-start"]}],["$","$L2","kvm",{"href":"/en/tags/kvm","localeCookie":{"name":"NEXT_LOCALE","sameSite":"lax"},"className":"inline-flex items-center rounded-full px-3 py-1 text-sm font-medium transition-colors","style":{"background":"var(--color-code-bg)","color":"var(--color-accent)","border":"1px solid var(--color-border)"},"children":["#","kvm"]}]]}],["$","nav",null,{"aria-label":"Post navigation","className":"grid grid-cols-1 gap-4 sm:grid-cols-2","children":[["$","$L2",null,{"href":"/en/blog/pve/00-overview","localeCookie":{"name":"NEXT_LOCALE","sameSite":"lax"},"className":"group rounded-lg border p-4 transition-colors hover:border-accent","style":{"borderColor":"var(--color-border)","background":"var(--color-surface)"},"children":[["$","p",null,{"className":"mb-1 text-xs","style":{"color":"var(--color-muted)"},"children":"← Newer"}],["$","p",null,{"className":"line-clamp-1 text-sm font-medium transition-colors group-hover:text-accent","style":{"color":"var(--color-text)"},"children":"Proxmox VE Series Overview: From Beginner to Advanced"}]]}],["$","$L2",null,{"href":"/en/blog/pve/02-core-concepts","localeCookie":{"name":"NEXT_LOCALE","sameSite":"lax"},"className":"group rounded-lg border p-4 text-right transition-colors hover:border-accent","style":{"borderColor":"var(--color-border)","background":"var(--color-surface)"},"children":[["$","p",null,{"className":"mb-1 text-xs","style":{"color":"var(--color-muted)"},"children":"Older →"}],["$","p",null,{"className":"line-clamp-1 text-sm font-medium transition-colors group-hover:text-accent","style":{"color":"var(--color-text)"},"children":"Proxmox VE Core Concepts: VM, LXC, Storage & Network"}]]}]]}]]}]
+9:Tf9b,<p>This guide takes the shortest path to get you a <strong>bootable Debian virtual machine</strong> — your first working environment in PVE. Like getting a first pet: make sure it can eat and sleep first; advanced techniques come later.</p>
+<h2 id="prerequisites">Prerequisites</h2>
+<ul>
+<li>64-bit CPU with <strong>Intel VT-x</strong> or <strong>AMD-V</strong> enabled (without this, VMs will refuse to start)</li>
+<li>Minimum 2 GB RAM (8 GB+ recommended — otherwise it'll feel like a 2010 computer)</li>
+<li>At least one working network card</li>
+<li>A host or server that can boot from USB</li>
+</ul>
+<h2 id="minimal-example-create-your-first-virtual-machine">Minimal Example: Create Your First Virtual Machine</h2>
+<h3 id="step-1-log-in-to-the-web-interface">Step 1: Log In to the Web Interface</h3>
+<p>After installation, open <code>https://&#x3C;PVE-IP>:8006</code> and log in with <code>root</code> and the password you set during installation. Your browser may warn about the certificate — it's self-signed, so click "Advanced" → "Proceed anyway." Homelab life.</p>
+<h3 id="step-2-download-the-system-image">Step 2: Download the System Image</h3>
+<ol>
+<li>Select the <code>local</code> storage under your node in the left panel</li>
+<li>Go to <code>Content</code>, click <code>Download from URL</code></li>
+<li>Enter:
+<ul>
+<li>URL: <code>https://cloud.debian.org/images/cloud/bookworm/latest/debian-12-generic-amd64.qcow2</code></li>
+<li>File Name: <code>debian-12-cloud.qcow2</code></li>
+</ul>
+</li>
+<li>Click <code>Query URL</code> then start the download (go get a coffee)</li>
+</ol>
+<h3 id="step-3-create-the-virtual-machine">Step 3: Create the Virtual Machine</h3>
+<ol>
+<li>Click <code>Create VM</code> in the top right</li>
+<li><code>General</code>: set Name to <code>test-vm</code> (or whatever you like)</li>
+<li><code>OS</code>: for a cloud image you can skip the disc setup</li>
+<li><code>Disks</code>: select <strong>Use existing disk image</strong>, choose the <code>debian-12-cloud.qcow2</code> you just downloaded</li>
+<li><code>CPU</code>: 1 vCPU is fine to start</li>
+<li><code>Memory</code>: 512–1024 MB to test the waters</li>
+<li><code>Network</code>: default <code>vmbr0</code> is fine</li>
+<li><code>Confirm</code> → <code>Finish</code></li>
+</ol>
+<h3 id="step-4-start-and-verify">Step 4: Start and Verify</h3>
+<ol>
+<li>Right-click the VM → <code>Start</code></li>
+<li>Open <code>Console</code> (noVNC)</li>
+<li>If you see the Debian boot screen or login prompt, you've succeeded — congratulations, your first VM is live.</li>
+</ol>
+<h2 id="common-troubleshooting">Common Troubleshooting</h2>
+<table>
+<thead>
+<tr>
+<th>Symptom</th>
+<th>What to Check</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td>Can't access web interface</td>
+<td>Check if port 8006 is reachable, confirm <code>pveproxy</code> is running</td>
+</tr>
+<tr>
+<td>VM won't start</td>
+<td>Is VT-x / AMD-V enabled in BIOS? Without it, VMs simply won't start</td>
+</tr>
+<tr>
+<td>Can't find image file</td>
+<td>Back to <code>local -> Content</code> — check if the download completed</td>
+</tr>
+<tr>
+<td>VM has no network</td>
+<td>Check that <code>vmbr0</code> is correctly bound to a physical NIC</td>
+</tr>
+</tbody>
+</table>
+<figure data-rehype-pretty-code-figure=""><pre style="background-color:#24292e;color:#e1e4e8" tabindex="0" data-language="bash" data-theme="github-dark"><code data-language="bash" data-theme="github-dark" style="display: grid;"><span data-line=""><span style="color:#6A737D"># Service status check (run this when something's wrong)</span></span>
+<span data-line=""><span style="color:#B392F0">systemctl</span><span style="color:#9ECBFF"> status</span><span style="color:#9ECBFF"> pveproxy</span></span></code></pre></figure>
+<h2 id="next-steps">Next Steps</h2>
+<p>Once your first VM is up, it's a good idea to build the mental map of the system. The next article covers the core concepts of VM / LXC / storage / network:
+👉 <a href="02-core-concepts">Core Concepts</a></p>5:["$","aside",null,{"className":"hidden lg:block","children":["$","$L8",null,{"html":"$9"}]}]
+6:["$","script","script-0",{"src":"/_next/static/chunks/2dddb3bc05093f69.js","async":true}]
+7:["$","$La",null,{"children":["$","$b",null,{"name":"Next.MetadataOutlet","children":"$@c"}]}]
+c:null

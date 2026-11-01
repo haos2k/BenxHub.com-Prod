@@ -1,0 +1,167 @@
+1:"$Sreact.fragment"
+2:I[14864,["/_next/static/chunks/7923a261b80bb6e1.js","/_next/static/chunks/e09b4358027e8033.js","/_next/static/chunks/2dddb3bc05093f69.js"],"default"]
+8:I[24801,["/_next/static/chunks/7923a261b80bb6e1.js","/_next/static/chunks/e09b4358027e8033.js","/_next/static/chunks/2dddb3bc05093f69.js"],"default"]
+a:I[50183,["/_next/static/chunks/5a5b5b13c22d14f7.js","/_next/static/chunks/a484d1d3dd4b55ab.js"],"OutletBoundary"]
+b:"$Sreact.suspense"
+3:T1b22,<p>An agent without tools is like an engineer with plenty of theory but no keyboard.<br>
+Can talk a lot, but cannot ship.</p>
+<h2 id="common-built-in-tools">Common built-in tools</h2>
+<p>Frequently used CrewAI tools include:</p>
+<ul>
+<li><code>SerperDevTool</code>: web search</li>
+<li><code>FileReadTool</code>: read files</li>
+<li><code>FileWriterTool</code>: write files</li>
+<li><code>ScrapeWebsiteTool</code>: scrape webpage content</li>
+</ul>
+<h2 id="attach-tools-to-an-agent">Attach tools to an agent</h2>
+<figure data-rehype-pretty-code-figure=""><pre style="background-color:#24292e;color:#e1e4e8" tabindex="0" data-language="python" data-theme="github-dark"><code data-language="python" data-theme="github-dark" style="display: grid;"><span data-line=""><span style="color:#F97583">from</span><span style="color:#E1E4E8"> crewai </span><span style="color:#F97583">import</span><span style="color:#E1E4E8"> Agent</span></span>
+<span data-line=""><span style="color:#F97583">from</span><span style="color:#E1E4E8"> crewai_tools </span><span style="color:#F97583">import</span><span style="color:#E1E4E8"> SerperDevTool</span></span>
+<span data-line=""> </span>
+<span data-line=""><span style="color:#E1E4E8">search_tool </span><span style="color:#F97583">=</span><span style="color:#E1E4E8"> SerperDevTool()</span></span>
+<span data-line=""> </span>
+<span data-line=""><span style="color:#E1E4E8">researcher </span><span style="color:#F97583">=</span><span style="color:#E1E4E8"> Agent(</span></span>
+<span data-line=""><span style="color:#FFAB70">    role</span><span style="color:#F97583">=</span><span style="color:#9ECBFF">"Researcher"</span><span style="color:#E1E4E8">,</span></span>
+<span data-line=""><span style="color:#FFAB70">    goal</span><span style="color:#F97583">=</span><span style="color:#9ECBFF">"Find trustworthy sources about the topic"</span><span style="color:#E1E4E8">,</span></span>
+<span data-line=""><span style="color:#FFAB70">    backstory</span><span style="color:#F97583">=</span><span style="color:#9ECBFF">"You validate facts before writing."</span><span style="color:#E1E4E8">,</span></span>
+<span data-line=""><span style="color:#FFAB70">    tools</span><span style="color:#F97583">=</span><span style="color:#E1E4E8">[search_tool],</span></span>
+<span data-line=""><span style="color:#FFAB70">    allow_delegation</span><span style="color:#F97583">=</span><span style="color:#79B8FF">False</span><span style="color:#E1E4E8">,</span></span>
+<span data-line=""><span style="color:#FFAB70">    verbose</span><span style="color:#F97583">=</span><span style="color:#79B8FF">True</span><span style="color:#E1E4E8">,</span></span>
+<span data-line=""><span style="color:#E1E4E8">)</span></span></code></pre></figure>
+<blockquote>
+<p>💡 You can reuse the same <code>search_tool</code> across agents. No need to recreate it every time (DRY).</p>
+</blockquote>
+<h2 id="minimal-custom-tool-template">Minimal custom tool template</h2>
+<figure data-rehype-pretty-code-figure=""><pre style="background-color:#24292e;color:#e1e4e8" tabindex="0" data-language="python" data-theme="github-dark"><code data-language="python" data-theme="github-dark" style="display: grid;"><span data-line=""><span style="color:#F97583">from</span><span style="color:#E1E4E8"> crewai.tools </span><span style="color:#F97583">import</span><span style="color:#E1E4E8"> BaseTool</span></span>
+<span data-line=""><span style="color:#F97583">from</span><span style="color:#E1E4E8"> pydantic </span><span style="color:#F97583">import</span><span style="color:#E1E4E8"> BaseModel, Field</span></span>
+<span data-line=""> </span>
+<span data-line=""><span style="color:#F97583">class</span><span style="color:#B392F0"> QueryInput</span><span style="color:#E1E4E8">(</span><span style="color:#B392F0">BaseModel</span><span style="color:#E1E4E8">):</span></span>
+<span data-line=""><span style="color:#E1E4E8">    keyword: </span><span style="color:#79B8FF">str</span><span style="color:#F97583"> =</span><span style="color:#E1E4E8"> Field(</span><span style="color:#FFAB70">description</span><span style="color:#F97583">=</span><span style="color:#9ECBFF">"Search keyword"</span><span style="color:#E1E4E8">)</span></span>
+<span data-line=""> </span>
+<span data-line=""><span style="color:#F97583">class</span><span style="color:#B392F0"> KeywordTool</span><span style="color:#E1E4E8">(</span><span style="color:#B392F0">BaseTool</span><span style="color:#E1E4E8">):</span></span>
+<span data-line=""><span style="color:#E1E4E8">    name: </span><span style="color:#79B8FF">str</span><span style="color:#F97583"> =</span><span style="color:#9ECBFF"> "Keyword Tool"</span></span>
+<span data-line=""><span style="color:#E1E4E8">    description: </span><span style="color:#79B8FF">str</span><span style="color:#F97583"> =</span><span style="color:#9ECBFF"> "Return a short explanation for a keyword."</span></span>
+<span data-line=""><span style="color:#E1E4E8">    args_schema: type[BaseModel] </span><span style="color:#F97583">=</span><span style="color:#E1E4E8"> QueryInput</span></span>
+<span data-line=""> </span>
+<span data-line=""><span style="color:#F97583">    def</span><span style="color:#B392F0"> _run</span><span style="color:#E1E4E8">(self, keyword: </span><span style="color:#79B8FF">str</span><span style="color:#E1E4E8">) -> </span><span style="color:#79B8FF">str</span><span style="color:#E1E4E8">:</span></span>
+<span data-line=""><span style="color:#F97583">        return</span><span style="color:#F97583"> f</span><span style="color:#9ECBFF">"Result for: </span><span style="color:#79B8FF">{</span><span style="color:#E1E4E8">keyword</span><span style="color:#79B8FF">}</span><span style="color:#9ECBFF">"</span></span></code></pre></figure>
+<h2 id="four-tool-design-rules">Four tool design rules</h2>
+<ol>
+<li><strong>Do one thing only</strong>: if it searches, do not also write files</li>
+<li><strong>Be explicit</strong>: <code>description</code> should clearly state purpose and input</li>
+<li><strong>Validate parameters</strong>: use Pydantic schema</li>
+<li><strong>Return stable format</strong>: easier for downstream tasks to parse</li>
+</ol>
+<h2 id="common-errors">Common errors</h2>
+<table>
+<thead>
+<tr>
+<th>Symptom</th>
+<th>Cause</th>
+<th>Fix</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td>Tool never called</td>
+<td>Task prompt does not explicitly require it</td>
+<td>Add explicit "use tool first" instruction in task</td>
+</tr>
+<tr>
+<td>Bad parameter values</td>
+<td>args schema is unclear</td>
+<td>Add <code>Field(description=...)</code></td>
+</tr>
+<tr>
+<td>Hard-to-use output</td>
+<td>Free-form text too scattered</td>
+<td>Return fixed sections or JSON string</td>
+</tr>
+</tbody>
+</table>
+<h2 id="next-step">Next step</h2>
+<p>After tools, the next focus is output consistency.<br>
+Next post shows how to lock format with Pydantic:<br>
+👉 <a href="05-structured-output-pydantic">Structured Output with Pydantic</a></p>0:{"buildId":"Yck3R4ooQxWkwGLT6is1X","rsc":["$","$1","c",{"children":[[["$","script",null,{"type":"application/ld+json","dangerouslySetInnerHTML":{"__html":"{\"@context\":\"https://schema.org\",\"@type\":\"Article\",\"headline\":\"CrewAI Tools Integration: Let Agents Search, Read, and Actually Do Work\",\"description\":\"Learn how to attach built-in and custom tools to agents, with practical design principles.\",\"url\":\"https://benxhub.com/en/blog/crewai/04-tools-integration\",\"mainEntityOfPage\":{\"@type\":\"WebPage\",\"@id\":\"https://benxhub.com/en/blog/crewai/04-tools-integration\"},\"datePublished\":\"2026-03-02T00:00:00.000Z\",\"dateModified\":\"2026-03-02T00:00:00.000Z\",\"keywords\":\"crewai, tools, serper, integration, python\",\"inLanguage\":\"en\",\"author\":{\"@type\":\"Person\",\"name\":\"BenX\",\"url\":\"https://benxhub.com\"},\"publisher\":{\"@type\":\"Organization\",\"name\":\"BenXHub Blog\",\"url\":\"https://benxhub.com\"}}"}}],["$","div",null,{"className":"mx-auto max-w-6xl px-4 py-12 sm:px-6","children":["$","div",null,{"className":"lg:grid lg:grid-cols-[1fr_240px] lg:gap-14","children":[["$","article",null,{"children":[["$","header",null,{"className":"mb-10","children":[["$","div",null,{"className":"mb-4 flex flex-wrap gap-2","children":[["$","$L2","crewai",{"href":"/en/tags/crewai","localeCookie":{"name":"NEXT_LOCALE","sameSite":"lax"},"className":"inline-flex items-center rounded-full px-2.5 py-0.5 text-xs font-medium transition-colors","style":{"background":"var(--color-code-bg)","color":"var(--color-accent)","border":"1px solid var(--color-border)"},"children":["#","crewai"]}],["$","$L2","tools",{"href":"/en/tags/tools","localeCookie":{"name":"NEXT_LOCALE","sameSite":"lax"},"className":"inline-flex items-center rounded-full px-2.5 py-0.5 text-xs font-medium transition-colors","style":{"background":"var(--color-code-bg)","color":"var(--color-accent)","border":"1px solid var(--color-border)"},"children":["#","tools"]}],["$","$L2","serper",{"href":"/en/tags/serper","localeCookie":{"name":"NEXT_LOCALE","sameSite":"lax"},"className":"inline-flex items-center rounded-full px-2.5 py-0.5 text-xs font-medium transition-colors","style":{"background":"var(--color-code-bg)","color":"var(--color-accent)","border":"1px solid var(--color-border)"},"children":["#","serper"]}],["$","$L2","integration",{"href":"/en/tags/integration","localeCookie":{"name":"NEXT_LOCALE","sameSite":"lax"},"className":"inline-flex items-center rounded-full px-2.5 py-0.5 text-xs font-medium transition-colors","style":{"background":"var(--color-code-bg)","color":"var(--color-accent)","border":"1px solid var(--color-border)"},"children":["#","integration"]}],["$","$L2","python",{"href":"/en/tags/python","localeCookie":{"name":"NEXT_LOCALE","sameSite":"lax"},"className":"inline-flex items-center rounded-full px-2.5 py-0.5 text-xs font-medium transition-colors","style":{"background":"var(--color-code-bg)","color":"var(--color-accent)","border":"1px solid var(--color-border)"},"children":["#","python"]}]]}],["$","h1",null,{"className":"mb-4 text-3xl leading-snug font-bold tracking-tight sm:text-4xl","style":{"color":"var(--color-text)"},"children":"CrewAI Tools Integration: Let Agents Search, Read, and Actually Do Work"}],["$","div",null,{"className":"flex flex-wrap items-center gap-3 text-sm","style":{"color":"var(--color-muted)"},"children":[["$","time",null,{"dateTime":"2026-03-02","children":"Mar 2, 2026"}],["$","span",null,{"aria-hidden":"true","children":"·"}],["$","span",null,{"children":"2 min read"}]]}],"$undefined",["$","div",null,{"className":"mt-6 border-b","style":{"borderColor":"var(--color-border)"}}]]}],["$","div",null,{"className":"prose","dangerouslySetInnerHTML":{"__html":"$3"}}],"$L4"]}],"$L5"]}]}]],["$L6"],"$L7"]}],"loading":null,"isPartial":false}
+4:["$","footer",null,{"className":"mt-14 border-t pt-8","style":{"borderColor":"var(--color-border)"},"children":[["$","div",null,{"className":"mb-8 flex flex-wrap gap-2","children":[["$","$L2","crewai",{"href":"/en/tags/crewai","localeCookie":{"name":"NEXT_LOCALE","sameSite":"lax"},"className":"inline-flex items-center rounded-full px-3 py-1 text-sm font-medium transition-colors","style":{"background":"var(--color-code-bg)","color":"var(--color-accent)","border":"1px solid var(--color-border)"},"children":["#","crewai"]}],["$","$L2","tools",{"href":"/en/tags/tools","localeCookie":{"name":"NEXT_LOCALE","sameSite":"lax"},"className":"inline-flex items-center rounded-full px-3 py-1 text-sm font-medium transition-colors","style":{"background":"var(--color-code-bg)","color":"var(--color-accent)","border":"1px solid var(--color-border)"},"children":["#","tools"]}],["$","$L2","serper",{"href":"/en/tags/serper","localeCookie":{"name":"NEXT_LOCALE","sameSite":"lax"},"className":"inline-flex items-center rounded-full px-3 py-1 text-sm font-medium transition-colors","style":{"background":"var(--color-code-bg)","color":"var(--color-accent)","border":"1px solid var(--color-border)"},"children":["#","serper"]}],["$","$L2","integration",{"href":"/en/tags/integration","localeCookie":{"name":"NEXT_LOCALE","sameSite":"lax"},"className":"inline-flex items-center rounded-full px-3 py-1 text-sm font-medium transition-colors","style":{"background":"var(--color-code-bg)","color":"var(--color-accent)","border":"1px solid var(--color-border)"},"children":["#","integration"]}],["$","$L2","python",{"href":"/en/tags/python","localeCookie":{"name":"NEXT_LOCALE","sameSite":"lax"},"className":"inline-flex items-center rounded-full px-3 py-1 text-sm font-medium transition-colors","style":{"background":"var(--color-code-bg)","color":"var(--color-accent)","border":"1px solid var(--color-border)"},"children":["#","python"]}]]}],["$","nav",null,{"aria-label":"Post navigation","className":"grid grid-cols-1 gap-4 sm:grid-cols-2","children":[["$","$L2",null,{"href":"/en/blog/crewai/03-crew-and-process","localeCookie":{"name":"NEXT_LOCALE","sameSite":"lax"},"className":"group rounded-lg border p-4 transition-colors hover:border-accent","style":{"borderColor":"var(--color-border)","background":"var(--color-surface)"},"children":[["$","p",null,{"className":"mb-1 text-xs","style":{"color":"var(--color-muted)"},"children":"← Newer"}],["$","p",null,{"className":"line-clamp-1 text-sm font-medium transition-colors group-hover:text-accent","style":{"color":"var(--color-text)"},"children":"CrewAI Crew and Process: When Should You Use Sequential?"}]]}],["$","$L2",null,{"href":"/en/blog/crewai/05-structured-output-pydantic","localeCookie":{"name":"NEXT_LOCALE","sameSite":"lax"},"className":"group rounded-lg border p-4 text-right transition-colors hover:border-accent","style":{"borderColor":"var(--color-border)","background":"var(--color-surface)"},"children":[["$","p",null,{"className":"mb-1 text-xs","style":{"color":"var(--color-muted)"},"children":"Older →"}],["$","p",null,{"className":"line-clamp-1 text-sm font-medium transition-colors group-hover:text-accent","style":{"color":"var(--color-text)"},"children":"CrewAI Structured Output: Stop Data Drift with Pydantic"}]]}]]}]]}]
+9:T1b22,<p>An agent without tools is like an engineer with plenty of theory but no keyboard.<br>
+Can talk a lot, but cannot ship.</p>
+<h2 id="common-built-in-tools">Common built-in tools</h2>
+<p>Frequently used CrewAI tools include:</p>
+<ul>
+<li><code>SerperDevTool</code>: web search</li>
+<li><code>FileReadTool</code>: read files</li>
+<li><code>FileWriterTool</code>: write files</li>
+<li><code>ScrapeWebsiteTool</code>: scrape webpage content</li>
+</ul>
+<h2 id="attach-tools-to-an-agent">Attach tools to an agent</h2>
+<figure data-rehype-pretty-code-figure=""><pre style="background-color:#24292e;color:#e1e4e8" tabindex="0" data-language="python" data-theme="github-dark"><code data-language="python" data-theme="github-dark" style="display: grid;"><span data-line=""><span style="color:#F97583">from</span><span style="color:#E1E4E8"> crewai </span><span style="color:#F97583">import</span><span style="color:#E1E4E8"> Agent</span></span>
+<span data-line=""><span style="color:#F97583">from</span><span style="color:#E1E4E8"> crewai_tools </span><span style="color:#F97583">import</span><span style="color:#E1E4E8"> SerperDevTool</span></span>
+<span data-line=""> </span>
+<span data-line=""><span style="color:#E1E4E8">search_tool </span><span style="color:#F97583">=</span><span style="color:#E1E4E8"> SerperDevTool()</span></span>
+<span data-line=""> </span>
+<span data-line=""><span style="color:#E1E4E8">researcher </span><span style="color:#F97583">=</span><span style="color:#E1E4E8"> Agent(</span></span>
+<span data-line=""><span style="color:#FFAB70">    role</span><span style="color:#F97583">=</span><span style="color:#9ECBFF">"Researcher"</span><span style="color:#E1E4E8">,</span></span>
+<span data-line=""><span style="color:#FFAB70">    goal</span><span style="color:#F97583">=</span><span style="color:#9ECBFF">"Find trustworthy sources about the topic"</span><span style="color:#E1E4E8">,</span></span>
+<span data-line=""><span style="color:#FFAB70">    backstory</span><span style="color:#F97583">=</span><span style="color:#9ECBFF">"You validate facts before writing."</span><span style="color:#E1E4E8">,</span></span>
+<span data-line=""><span style="color:#FFAB70">    tools</span><span style="color:#F97583">=</span><span style="color:#E1E4E8">[search_tool],</span></span>
+<span data-line=""><span style="color:#FFAB70">    allow_delegation</span><span style="color:#F97583">=</span><span style="color:#79B8FF">False</span><span style="color:#E1E4E8">,</span></span>
+<span data-line=""><span style="color:#FFAB70">    verbose</span><span style="color:#F97583">=</span><span style="color:#79B8FF">True</span><span style="color:#E1E4E8">,</span></span>
+<span data-line=""><span style="color:#E1E4E8">)</span></span></code></pre></figure>
+<blockquote>
+<p>💡 You can reuse the same <code>search_tool</code> across agents. No need to recreate it every time (DRY).</p>
+</blockquote>
+<h2 id="minimal-custom-tool-template">Minimal custom tool template</h2>
+<figure data-rehype-pretty-code-figure=""><pre style="background-color:#24292e;color:#e1e4e8" tabindex="0" data-language="python" data-theme="github-dark"><code data-language="python" data-theme="github-dark" style="display: grid;"><span data-line=""><span style="color:#F97583">from</span><span style="color:#E1E4E8"> crewai.tools </span><span style="color:#F97583">import</span><span style="color:#E1E4E8"> BaseTool</span></span>
+<span data-line=""><span style="color:#F97583">from</span><span style="color:#E1E4E8"> pydantic </span><span style="color:#F97583">import</span><span style="color:#E1E4E8"> BaseModel, Field</span></span>
+<span data-line=""> </span>
+<span data-line=""><span style="color:#F97583">class</span><span style="color:#B392F0"> QueryInput</span><span style="color:#E1E4E8">(</span><span style="color:#B392F0">BaseModel</span><span style="color:#E1E4E8">):</span></span>
+<span data-line=""><span style="color:#E1E4E8">    keyword: </span><span style="color:#79B8FF">str</span><span style="color:#F97583"> =</span><span style="color:#E1E4E8"> Field(</span><span style="color:#FFAB70">description</span><span style="color:#F97583">=</span><span style="color:#9ECBFF">"Search keyword"</span><span style="color:#E1E4E8">)</span></span>
+<span data-line=""> </span>
+<span data-line=""><span style="color:#F97583">class</span><span style="color:#B392F0"> KeywordTool</span><span style="color:#E1E4E8">(</span><span style="color:#B392F0">BaseTool</span><span style="color:#E1E4E8">):</span></span>
+<span data-line=""><span style="color:#E1E4E8">    name: </span><span style="color:#79B8FF">str</span><span style="color:#F97583"> =</span><span style="color:#9ECBFF"> "Keyword Tool"</span></span>
+<span data-line=""><span style="color:#E1E4E8">    description: </span><span style="color:#79B8FF">str</span><span style="color:#F97583"> =</span><span style="color:#9ECBFF"> "Return a short explanation for a keyword."</span></span>
+<span data-line=""><span style="color:#E1E4E8">    args_schema: type[BaseModel] </span><span style="color:#F97583">=</span><span style="color:#E1E4E8"> QueryInput</span></span>
+<span data-line=""> </span>
+<span data-line=""><span style="color:#F97583">    def</span><span style="color:#B392F0"> _run</span><span style="color:#E1E4E8">(self, keyword: </span><span style="color:#79B8FF">str</span><span style="color:#E1E4E8">) -> </span><span style="color:#79B8FF">str</span><span style="color:#E1E4E8">:</span></span>
+<span data-line=""><span style="color:#F97583">        return</span><span style="color:#F97583"> f</span><span style="color:#9ECBFF">"Result for: </span><span style="color:#79B8FF">{</span><span style="color:#E1E4E8">keyword</span><span style="color:#79B8FF">}</span><span style="color:#9ECBFF">"</span></span></code></pre></figure>
+<h2 id="four-tool-design-rules">Four tool design rules</h2>
+<ol>
+<li><strong>Do one thing only</strong>: if it searches, do not also write files</li>
+<li><strong>Be explicit</strong>: <code>description</code> should clearly state purpose and input</li>
+<li><strong>Validate parameters</strong>: use Pydantic schema</li>
+<li><strong>Return stable format</strong>: easier for downstream tasks to parse</li>
+</ol>
+<h2 id="common-errors">Common errors</h2>
+<table>
+<thead>
+<tr>
+<th>Symptom</th>
+<th>Cause</th>
+<th>Fix</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td>Tool never called</td>
+<td>Task prompt does not explicitly require it</td>
+<td>Add explicit "use tool first" instruction in task</td>
+</tr>
+<tr>
+<td>Bad parameter values</td>
+<td>args schema is unclear</td>
+<td>Add <code>Field(description=...)</code></td>
+</tr>
+<tr>
+<td>Hard-to-use output</td>
+<td>Free-form text too scattered</td>
+<td>Return fixed sections or JSON string</td>
+</tr>
+</tbody>
+</table>
+<h2 id="next-step">Next step</h2>
+<p>After tools, the next focus is output consistency.<br>
+Next post shows how to lock format with Pydantic:<br>
+👉 <a href="05-structured-output-pydantic">Structured Output with Pydantic</a></p>5:["$","aside",null,{"className":"hidden lg:block","children":["$","$L8",null,{"html":"$9"}]}]
+6:["$","script","script-0",{"src":"/_next/static/chunks/2dddb3bc05093f69.js","async":true}]
+7:["$","$La",null,{"children":["$","$b",null,{"name":"Next.MetadataOutlet","children":"$@c"}]}]
+c:null

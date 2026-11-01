@@ -1,0 +1,141 @@
+1:"$Sreact.fragment"
+2:I[14864,["/_next/static/chunks/7923a261b80bb6e1.js","/_next/static/chunks/e09b4358027e8033.js","/_next/static/chunks/2dddb3bc05093f69.js"],"default"]
+8:I[24801,["/_next/static/chunks/7923a261b80bb6e1.js","/_next/static/chunks/e09b4358027e8033.js","/_next/static/chunks/2dddb3bc05093f69.js"],"default"]
+a:I[50183,["/_next/static/chunks/5a5b5b13c22d14f7.js","/_next/static/chunks/a484d1d3dd4b55ab.js"],"OutletBoundary"]
+b:"$Sreact.suspense"
+3:T205c,<p><a href="06-cursor-cli-with-worktree">06-cursor-cli-with-worktree</a> couvre worktree + CLI <strong>manuel</strong> en parallèle ; ce billet se concentre sur l'<strong>utilisation avancée</strong> des <strong>worktrees créés automatiquement par Cursor</strong> (Agent parallèle / Apply) : comment enchaîner plusieurs tâches, choisir Merge ou Full Overwrite à l'Apply, gérer les conflits et utiliser <code>git worktree list</code> au quotidien. On laisse l’intro de côté et on passe à la pratique.</p>
+<h2 id="scénario-avancé-1--plusieurs-tâches-en-parallèle-revue-puis-apply">Scénario avancé 1 : Plusieurs tâches en parallèle, revue puis Apply</h2>
+<p>Une fonctionnalité peut être découpée en plusieurs « sous-tâches », chacune exécutée par un Agent dans son worktree ; vous n’appliquez que celles que vous voulez, pas tout d’un coup.</p>
+<p><strong>Exemple</strong> : Vous voulez faire « refactor utils », « ajouter des tests unitaires » et « générer la doc API » en même temps :</p>
+<ul>
+<li>Démarrez trois Agents en parallèle (ou un par un, chacun dans un worktree) avec des prompts différents</li>
+<li>À la fin vous avez trois résultats : peut-être que le « refactor » est bon, les « tests » à retoucher, les « docs » vous les jetez</li>
+<li>Appliquez uniquement la carte « refactor » ; laissez les autres sans Apply pour que seul le refactor soit fusionné dans main — les deux autres ne touchent pas au répertoire principal</li>
+</ul>
+<p><strong>Point avancé</strong> : Vous n’êtes pas obligé de tout commiter d’un coup ; vous pouvez « Apply par tâche, Apply par carte », et main ne reçoit que ce que vous avez accepté.</p>
+<h2 id="scénario-avancé-2--merge-ou-full-overwrite-à-lapply-">Scénario avancé 2 : Merge ou Full Overwrite à l’Apply ?</h2>
+<p>À l’Apply, Cursor tente de <strong>fusionner proprement</strong>. Si le même Best-of-N ou plusieurs Apply créent des conflits, il demandera :</p>
+<table>
+<thead>
+<tr>
+<th>Option</th>
+<th>Quand l’utiliser</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td><strong>Merge (UI de résolution de conflits)</strong></td>
+<td>Quand vous voulez garder une partie du contenu de main et n’apporter qu’une partie des changements du worktree, ou fusionner des changements de plusieurs worktrees « paragraphe par paragraphe »</td>
+</tr>
+<tr>
+<td><strong>Full Overwrite</strong></td>
+<td>Quand vous êtes sûr que le fichier du worktree doit gagner et que le fichier sur main doit être entièrement remplacé, ou quand les conflits sont trop nombreux et vous voulez que « cette carte » soit la seule source de vérité</td>
+</tr>
+</tbody>
+</table>
+<p>En pratique : <strong>une tâche, un Agent, peu de fichiers</strong> → le merge suffit souvent. <strong>Même requête lancée avec plusieurs modèles (Best-of-N) et vous appliquez une partie de la carte A et une partie de la B</strong> → les conflits sont probables ; alors soit vous n’appliquez qu’une carte, soit vous utilisez le merge et résolvez fichier par fichier. Évitez Full Overwrite sur le même ensemble de fichiers venant de plusieurs cartes — ils s’écraseront entre eux.</p>
+<h2 id="scénario-avancé-3--comportement-quand-main-a-des-changements-non-commités">Scénario avancé 3 : Comportement quand main a des changements non commités</h2>
+<p>Lors de la création d’un worktree, Cursor copie les <strong>changements suivis et les nouveaux fichiers du répertoire principal</strong> dans le worktree (les fichiers ignorés par Git ne le sont pas). Donc :</p>
+<ul>
+<li><strong>Vous modifiez quelque chose sur main sans commit</strong>, puis vous démarrez un Agent en worktree → l’Agent travaille par-dessus votre « état actuel » ; à l’Apply, vous fusionnez « vos changements non commités + changements de l’Agent »</li>
+<li>Si vous voulez que les tâches parallèles <strong>partent d’un main propre</strong>, faites <code>git stash</code> ou un commit avant, puis créez le worktree, pour ne pas mélanger « WIP + changements Agent » et avoir plus de conflits à l’Apply</li>
+</ul>
+<p>Vous pouvez aussi faire l’inverse : <strong>volontairement</strong> laisser du WIP sur main, créer un worktree pour des changements expérimentaux, puis utiliser le merge à l’Apply pour ne ramener que ce qui vous plaît ; laissez le reste dans le worktree sans Apply.</p>
+<h2 id="scénario-avancé-4--inspecter-et-nettoyer-avec-git-worktree-list">Scénario avancé 4 : Inspecter et nettoyer avec <code>git worktree list</code></h2>
+<p>Les worktrees créés par Cursor apparaissent dans <code>git worktree list</code> ; les chemins sont en général sous <code>.cursor/worktrees/&#x3C;repo>/&#x3C;id></code> :</p>
+<figure data-rehype-pretty-code-figure=""><pre style="background-color:#24292e;color:#e1e4e8" tabindex="0" data-language="bash" data-theme="github-dark"><code data-language="bash" data-theme="github-dark" style="display: grid;"><span data-line=""><span style="color:#B392F0">git</span><span style="color:#9ECBFF"> worktree</span><span style="color:#9ECBFF"> list</span></span></code></pre></figure>
+<p>Bonnes habitudes :</p>
+<ul>
+<li><strong>Après Apply et une fois main correct</strong>, Cursor gère le nombre automatiquement ; si la liste contient beaucoup de worktrees et que le disque est juste, regardez les réglages Cursor (ex. <code>cursor.worktreeMaxCount</code>, intervalle de nettoyage) ou fermez les fenêtres de projet inutilisées pour que les anciens worktrees soient nettoyés</li>
+<li><strong>En debug</strong> : la liste montre combien de « sandboxes » existent et sur quelle branche, pour ne pas confondre main et worktrees Agent</li>
+</ul>
+<p>Évitez d’exécuter <code>git worktree remove</code> à la main sur les chemins créés par Cursor sauf si vous êtes sûr que l’Agent est terminé ; sinon l’état interne de Cursor peut se désynchroniser.</p>
+<h2 id="scénario-avancé-5--quand-des-agents-parallèles-touchent-aux-mêmes-fichiers">Scénario avancé 5 : Quand des Agents parallèles touchent aux mêmes fichiers</h2>
+<p>Si vous lancez deux Agents, l’un modifiant <code>src/auth/</code> et l’autre <code>src/api/</code>, en général ils ne conflictuent pas — appliquez l’un puis l’autre (l’ordre importe peu ; le merge se résout souvent tout seul).</p>
+<p>Si <strong>les deux Agents modifient le même fichier</strong> (ex. tous les deux touchent <code>package.json</code> ou le même <code>config.ts</code>) :</p>
+<ul>
+<li>Appliquez le premier → main a ces changements</li>
+<li>Appliquez le second → vous entrez dans le flux de merge et pouvez avoir des conflits</li>
+<li>Utilisez l’UI de conflits de Cursor pour choisir « garder cette partie de main, cette partie du worktree », ou si vous voulez entièrement la version du second worktree, utilisez Full Overwrite</li>
+</ul>
+<p><strong>Stratégie</strong> : En planifiant des tâches parallèles, essayez de garder <strong>des ensembles de fichiers non chevauchants</strong> par Agent (ex. un répertoire frontend, un backend) ; vous aurez rarement à résoudre les conflits à la main.</p>
+<h2 id="résumé">Résumé</h2>
+<ul>
+<li><strong>Plusieurs tâches en parallèle</strong> : Découpez en sous-tâches par worktree, revoyez puis n’appliquez que les cartes voulues ; main ne reçoit que ce que vous acceptez</li>
+<li><strong>Choix à l’Apply</strong> : Utilisez <strong>Merge</strong> pour garder une partie de main ; utilisez <strong>Full Overwrite</strong> quand le fichier du worktree doit gagner ; évitez plusieurs Full Overwrite sur les mêmes fichiers venant de plusieurs cartes</li>
+<li><strong>État du répertoire principal</strong> : Les changements non commités sont copiés dans le worktree ; pour une base propre, stash/commit avant ; ou laissez du WIP exprès pour « worktree expérimental + merge sélectif »</li>
+<li><strong>Gestion</strong> : Utilisez <code>git worktree list</code> pour inspecter et vous aligner sur le nettoyage de Cursor ; gardez des ensembles de fichiers par tâche non chevauchants pour limiter les conflits</li>
+</ul>
+<blockquote>
+<p>Suivant : <a href="09-worktree-advanced">09-worktree-advanced</a> — Best-of-N multi-modèles, worktrees.json et nettoyage.</p>
+</blockquote>0:{"buildId":"Yck3R4ooQxWkwGLT6is1X","rsc":["$","$1","c",{"children":[[["$","script",null,{"type":"application/ld+json","dangerouslySetInnerHTML":{"__html":"{\"@context\":\"https://schema.org\",\"@type\":\"Article\",\"headline\":\"Worktree intégré Cursor : utilisation avancée\",\"description\":\"Stratégie de tâches en parallèle, quand choisir Merge vs Full Overwrite à l'Apply, gestion des conflits et gestion des worktrees au quotidien.\",\"url\":\"https://benxhub.com/fr/blog/cursor/cli/08-worktree-merge\",\"mainEntityOfPage\":{\"@type\":\"WebPage\",\"@id\":\"https://benxhub.com/fr/blog/cursor/cli/08-worktree-merge\"},\"datePublished\":\"2026-03-09T00:00:00.000Z\",\"dateModified\":\"2026-03-09T00:00:00.000Z\",\"keywords\":\"cursor, worktree, parallel-agent, apply, git\",\"inLanguage\":\"fr\",\"author\":{\"@type\":\"Person\",\"name\":\"BenX\",\"url\":\"https://benxhub.com\"},\"publisher\":{\"@type\":\"Organization\",\"name\":\"BenXHub Blog\",\"url\":\"https://benxhub.com\"}}"}}],["$","div",null,{"className":"mx-auto max-w-6xl px-4 py-12 sm:px-6","children":["$","div",null,{"className":"lg:grid lg:grid-cols-[1fr_240px] lg:gap-14","children":[["$","article",null,{"children":[["$","header",null,{"className":"mb-10","children":[["$","div",null,{"className":"mb-4 flex flex-wrap gap-2","children":[["$","$L2","cursor",{"href":"/fr/tags/cursor","localeCookie":{"name":"NEXT_LOCALE","sameSite":"lax"},"className":"inline-flex items-center rounded-full px-2.5 py-0.5 text-xs font-medium transition-colors","style":{"background":"var(--color-code-bg)","color":"var(--color-accent)","border":"1px solid var(--color-border)"},"children":["#","cursor"]}],["$","$L2","worktree",{"href":"/fr/tags/worktree","localeCookie":{"name":"NEXT_LOCALE","sameSite":"lax"},"className":"inline-flex items-center rounded-full px-2.5 py-0.5 text-xs font-medium transition-colors","style":{"background":"var(--color-code-bg)","color":"var(--color-accent)","border":"1px solid var(--color-border)"},"children":["#","worktree"]}],["$","$L2","parallel-agent",{"href":"/fr/tags/parallel-agent","localeCookie":{"name":"NEXT_LOCALE","sameSite":"lax"},"className":"inline-flex items-center rounded-full px-2.5 py-0.5 text-xs font-medium transition-colors","style":{"background":"var(--color-code-bg)","color":"var(--color-accent)","border":"1px solid var(--color-border)"},"children":["#","parallel-agent"]}],["$","$L2","apply",{"href":"/fr/tags/apply","localeCookie":{"name":"NEXT_LOCALE","sameSite":"lax"},"className":"inline-flex items-center rounded-full px-2.5 py-0.5 text-xs font-medium transition-colors","style":{"background":"var(--color-code-bg)","color":"var(--color-accent)","border":"1px solid var(--color-border)"},"children":["#","apply"]}],["$","$L2","git",{"href":"/fr/tags/git","localeCookie":{"name":"NEXT_LOCALE","sameSite":"lax"},"className":"inline-flex items-center rounded-full px-2.5 py-0.5 text-xs font-medium transition-colors","style":{"background":"var(--color-code-bg)","color":"var(--color-accent)","border":"1px solid var(--color-border)"},"children":["#","git"]}]]}],["$","h1",null,{"className":"mb-4 text-3xl leading-snug font-bold tracking-tight sm:text-4xl","style":{"color":"var(--color-text)"},"children":"Worktree intégré Cursor : utilisation avancée"}],["$","div",null,{"className":"flex flex-wrap items-center gap-3 text-sm","style":{"color":"var(--color-muted)"},"children":[["$","time",null,{"dateTime":"2026-03-09","children":"9 mars 2026"}],["$","span",null,{"aria-hidden":"true","children":"·"}],["$","span",null,{"children":"6 min read"}]]}],"$undefined",["$","div",null,{"className":"mt-6 border-b","style":{"borderColor":"var(--color-border)"}}]]}],["$","div",null,{"className":"prose","dangerouslySetInnerHTML":{"__html":"$3"}}],"$L4"]}],"$L5"]}]}]],["$L6"],"$L7"]}],"loading":null,"isPartial":false}
+4:["$","footer",null,{"className":"mt-14 border-t pt-8","style":{"borderColor":"var(--color-border)"},"children":[["$","div",null,{"className":"mb-8 flex flex-wrap gap-2","children":[["$","$L2","cursor",{"href":"/fr/tags/cursor","localeCookie":{"name":"NEXT_LOCALE","sameSite":"lax"},"className":"inline-flex items-center rounded-full px-3 py-1 text-sm font-medium transition-colors","style":{"background":"var(--color-code-bg)","color":"var(--color-accent)","border":"1px solid var(--color-border)"},"children":["#","cursor"]}],["$","$L2","worktree",{"href":"/fr/tags/worktree","localeCookie":{"name":"NEXT_LOCALE","sameSite":"lax"},"className":"inline-flex items-center rounded-full px-3 py-1 text-sm font-medium transition-colors","style":{"background":"var(--color-code-bg)","color":"var(--color-accent)","border":"1px solid var(--color-border)"},"children":["#","worktree"]}],["$","$L2","parallel-agent",{"href":"/fr/tags/parallel-agent","localeCookie":{"name":"NEXT_LOCALE","sameSite":"lax"},"className":"inline-flex items-center rounded-full px-3 py-1 text-sm font-medium transition-colors","style":{"background":"var(--color-code-bg)","color":"var(--color-accent)","border":"1px solid var(--color-border)"},"children":["#","parallel-agent"]}],["$","$L2","apply",{"href":"/fr/tags/apply","localeCookie":{"name":"NEXT_LOCALE","sameSite":"lax"},"className":"inline-flex items-center rounded-full px-3 py-1 text-sm font-medium transition-colors","style":{"background":"var(--color-code-bg)","color":"var(--color-accent)","border":"1px solid var(--color-border)"},"children":["#","apply"]}],["$","$L2","git",{"href":"/fr/tags/git","localeCookie":{"name":"NEXT_LOCALE","sameSite":"lax"},"className":"inline-flex items-center rounded-full px-3 py-1 text-sm font-medium transition-colors","style":{"background":"var(--color-code-bg)","color":"var(--color-accent)","border":"1px solid var(--color-border)"},"children":["#","git"]}]]}],["$","nav",null,{"aria-label":"Navigation des articles","className":"grid grid-cols-1 gap-4 sm:grid-cols-2","children":[["$","$L2",null,{"href":"/fr/blog/ai-trend/2026-03-09-ai-content-automation-workflow","localeCookie":{"name":"NEXT_LOCALE","sameSite":"lax"},"className":"group rounded-lg border p-4 transition-colors hover:border-accent","style":{"borderColor":"var(--color-border)","background":"var(--color-surface)"},"children":[["$","p",null,{"className":"mb-1 text-xs","style":{"color":"var(--color-muted)"},"children":"← Plus récent"}],["$","p",null,{"className":"line-clamp-1 text-sm font-medium transition-colors group-hover:text-accent","style":{"color":"var(--color-text)"},"children":"Production de contenu pilotée par l'IA : le vrai écart n'est pas la vitesse, mais la conception du workflow"}]]}],["$","$L2",null,{"href":"/fr/blog/cursor/cli/09-worktree-advanced","localeCookie":{"name":"NEXT_LOCALE","sameSite":"lax"},"className":"group rounded-lg border p-4 text-right transition-colors hover:border-accent","style":{"borderColor":"var(--color-border)","background":"var(--color-surface)"},"children":[["$","p",null,{"className":"mb-1 text-xs","style":{"color":"var(--color-muted)"},"children":"Plus ancien →"}],["$","p",null,{"className":"line-clamp-1 text-sm font-medium transition-colors group-hover:text-accent","style":{"color":"var(--color-text)"},"children":"Cursor Worktree avancé : Best-of-N et worktrees.json"}]]}]]}]]}]
+9:T205c,<p><a href="06-cursor-cli-with-worktree">06-cursor-cli-with-worktree</a> couvre worktree + CLI <strong>manuel</strong> en parallèle ; ce billet se concentre sur l'<strong>utilisation avancée</strong> des <strong>worktrees créés automatiquement par Cursor</strong> (Agent parallèle / Apply) : comment enchaîner plusieurs tâches, choisir Merge ou Full Overwrite à l'Apply, gérer les conflits et utiliser <code>git worktree list</code> au quotidien. On laisse l’intro de côté et on passe à la pratique.</p>
+<h2 id="scénario-avancé-1--plusieurs-tâches-en-parallèle-revue-puis-apply">Scénario avancé 1 : Plusieurs tâches en parallèle, revue puis Apply</h2>
+<p>Une fonctionnalité peut être découpée en plusieurs « sous-tâches », chacune exécutée par un Agent dans son worktree ; vous n’appliquez que celles que vous voulez, pas tout d’un coup.</p>
+<p><strong>Exemple</strong> : Vous voulez faire « refactor utils », « ajouter des tests unitaires » et « générer la doc API » en même temps :</p>
+<ul>
+<li>Démarrez trois Agents en parallèle (ou un par un, chacun dans un worktree) avec des prompts différents</li>
+<li>À la fin vous avez trois résultats : peut-être que le « refactor » est bon, les « tests » à retoucher, les « docs » vous les jetez</li>
+<li>Appliquez uniquement la carte « refactor » ; laissez les autres sans Apply pour que seul le refactor soit fusionné dans main — les deux autres ne touchent pas au répertoire principal</li>
+</ul>
+<p><strong>Point avancé</strong> : Vous n’êtes pas obligé de tout commiter d’un coup ; vous pouvez « Apply par tâche, Apply par carte », et main ne reçoit que ce que vous avez accepté.</p>
+<h2 id="scénario-avancé-2--merge-ou-full-overwrite-à-lapply-">Scénario avancé 2 : Merge ou Full Overwrite à l’Apply ?</h2>
+<p>À l’Apply, Cursor tente de <strong>fusionner proprement</strong>. Si le même Best-of-N ou plusieurs Apply créent des conflits, il demandera :</p>
+<table>
+<thead>
+<tr>
+<th>Option</th>
+<th>Quand l’utiliser</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td><strong>Merge (UI de résolution de conflits)</strong></td>
+<td>Quand vous voulez garder une partie du contenu de main et n’apporter qu’une partie des changements du worktree, ou fusionner des changements de plusieurs worktrees « paragraphe par paragraphe »</td>
+</tr>
+<tr>
+<td><strong>Full Overwrite</strong></td>
+<td>Quand vous êtes sûr que le fichier du worktree doit gagner et que le fichier sur main doit être entièrement remplacé, ou quand les conflits sont trop nombreux et vous voulez que « cette carte » soit la seule source de vérité</td>
+</tr>
+</tbody>
+</table>
+<p>En pratique : <strong>une tâche, un Agent, peu de fichiers</strong> → le merge suffit souvent. <strong>Même requête lancée avec plusieurs modèles (Best-of-N) et vous appliquez une partie de la carte A et une partie de la B</strong> → les conflits sont probables ; alors soit vous n’appliquez qu’une carte, soit vous utilisez le merge et résolvez fichier par fichier. Évitez Full Overwrite sur le même ensemble de fichiers venant de plusieurs cartes — ils s’écraseront entre eux.</p>
+<h2 id="scénario-avancé-3--comportement-quand-main-a-des-changements-non-commités">Scénario avancé 3 : Comportement quand main a des changements non commités</h2>
+<p>Lors de la création d’un worktree, Cursor copie les <strong>changements suivis et les nouveaux fichiers du répertoire principal</strong> dans le worktree (les fichiers ignorés par Git ne le sont pas). Donc :</p>
+<ul>
+<li><strong>Vous modifiez quelque chose sur main sans commit</strong>, puis vous démarrez un Agent en worktree → l’Agent travaille par-dessus votre « état actuel » ; à l’Apply, vous fusionnez « vos changements non commités + changements de l’Agent »</li>
+<li>Si vous voulez que les tâches parallèles <strong>partent d’un main propre</strong>, faites <code>git stash</code> ou un commit avant, puis créez le worktree, pour ne pas mélanger « WIP + changements Agent » et avoir plus de conflits à l’Apply</li>
+</ul>
+<p>Vous pouvez aussi faire l’inverse : <strong>volontairement</strong> laisser du WIP sur main, créer un worktree pour des changements expérimentaux, puis utiliser le merge à l’Apply pour ne ramener que ce qui vous plaît ; laissez le reste dans le worktree sans Apply.</p>
+<h2 id="scénario-avancé-4--inspecter-et-nettoyer-avec-git-worktree-list">Scénario avancé 4 : Inspecter et nettoyer avec <code>git worktree list</code></h2>
+<p>Les worktrees créés par Cursor apparaissent dans <code>git worktree list</code> ; les chemins sont en général sous <code>.cursor/worktrees/&#x3C;repo>/&#x3C;id></code> :</p>
+<figure data-rehype-pretty-code-figure=""><pre style="background-color:#24292e;color:#e1e4e8" tabindex="0" data-language="bash" data-theme="github-dark"><code data-language="bash" data-theme="github-dark" style="display: grid;"><span data-line=""><span style="color:#B392F0">git</span><span style="color:#9ECBFF"> worktree</span><span style="color:#9ECBFF"> list</span></span></code></pre></figure>
+<p>Bonnes habitudes :</p>
+<ul>
+<li><strong>Après Apply et une fois main correct</strong>, Cursor gère le nombre automatiquement ; si la liste contient beaucoup de worktrees et que le disque est juste, regardez les réglages Cursor (ex. <code>cursor.worktreeMaxCount</code>, intervalle de nettoyage) ou fermez les fenêtres de projet inutilisées pour que les anciens worktrees soient nettoyés</li>
+<li><strong>En debug</strong> : la liste montre combien de « sandboxes » existent et sur quelle branche, pour ne pas confondre main et worktrees Agent</li>
+</ul>
+<p>Évitez d’exécuter <code>git worktree remove</code> à la main sur les chemins créés par Cursor sauf si vous êtes sûr que l’Agent est terminé ; sinon l’état interne de Cursor peut se désynchroniser.</p>
+<h2 id="scénario-avancé-5--quand-des-agents-parallèles-touchent-aux-mêmes-fichiers">Scénario avancé 5 : Quand des Agents parallèles touchent aux mêmes fichiers</h2>
+<p>Si vous lancez deux Agents, l’un modifiant <code>src/auth/</code> et l’autre <code>src/api/</code>, en général ils ne conflictuent pas — appliquez l’un puis l’autre (l’ordre importe peu ; le merge se résout souvent tout seul).</p>
+<p>Si <strong>les deux Agents modifient le même fichier</strong> (ex. tous les deux touchent <code>package.json</code> ou le même <code>config.ts</code>) :</p>
+<ul>
+<li>Appliquez le premier → main a ces changements</li>
+<li>Appliquez le second → vous entrez dans le flux de merge et pouvez avoir des conflits</li>
+<li>Utilisez l’UI de conflits de Cursor pour choisir « garder cette partie de main, cette partie du worktree », ou si vous voulez entièrement la version du second worktree, utilisez Full Overwrite</li>
+</ul>
+<p><strong>Stratégie</strong> : En planifiant des tâches parallèles, essayez de garder <strong>des ensembles de fichiers non chevauchants</strong> par Agent (ex. un répertoire frontend, un backend) ; vous aurez rarement à résoudre les conflits à la main.</p>
+<h2 id="résumé">Résumé</h2>
+<ul>
+<li><strong>Plusieurs tâches en parallèle</strong> : Découpez en sous-tâches par worktree, revoyez puis n’appliquez que les cartes voulues ; main ne reçoit que ce que vous acceptez</li>
+<li><strong>Choix à l’Apply</strong> : Utilisez <strong>Merge</strong> pour garder une partie de main ; utilisez <strong>Full Overwrite</strong> quand le fichier du worktree doit gagner ; évitez plusieurs Full Overwrite sur les mêmes fichiers venant de plusieurs cartes</li>
+<li><strong>État du répertoire principal</strong> : Les changements non commités sont copiés dans le worktree ; pour une base propre, stash/commit avant ; ou laissez du WIP exprès pour « worktree expérimental + merge sélectif »</li>
+<li><strong>Gestion</strong> : Utilisez <code>git worktree list</code> pour inspecter et vous aligner sur le nettoyage de Cursor ; gardez des ensembles de fichiers par tâche non chevauchants pour limiter les conflits</li>
+</ul>
+<blockquote>
+<p>Suivant : <a href="09-worktree-advanced">09-worktree-advanced</a> — Best-of-N multi-modèles, worktrees.json et nettoyage.</p>
+</blockquote>5:["$","aside",null,{"className":"hidden lg:block","children":["$","$L8",null,{"html":"$9"}]}]
+6:["$","script","script-0",{"src":"/_next/static/chunks/2dddb3bc05093f69.js","async":true}]
+7:["$","$La",null,{"children":["$","$b",null,{"name":"Next.MetadataOutlet","children":"$@c"}]}]
+c:null

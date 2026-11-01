@@ -1,0 +1,113 @@
+1:"$Sreact.fragment"
+2:I[14864,["/_next/static/chunks/7923a261b80bb6e1.js","/_next/static/chunks/e09b4358027e8033.js","/_next/static/chunks/2dddb3bc05093f69.js"],"default"]
+8:I[24801,["/_next/static/chunks/7923a261b80bb6e1.js","/_next/static/chunks/e09b4358027e8033.js","/_next/static/chunks/2dddb3bc05093f69.js"],"default"]
+a:I[50183,["/_next/static/chunks/5a5b5b13c22d14f7.js","/_next/static/chunks/a484d1d3dd4b55ab.js"],"OutletBoundary"]
+b:"$Sreact.suspense"
+3:T1208,<p>إذا كنت تسمع "AI Agents" و"التعاون متعدد الوكلاء" باستمرار مؤخراً لكن عيناك تزوغان عند قراءة الوثائق، فهذه السلسلة مناسبة لك.<br>
+بجملة واحدة: <strong>CrewAI هو إطار عمل يتيح لأدوار ذكاء اصطناعي متعددة التعاون لتقسيم المهام المعقدة وإنجازها.</strong></p>
+<p>فكّر فيه كفريق مشروع صغير:</p>
+<ul>
+<li>باحث يجد المعلومات</li>
+<li>محلل ينظم النقاط الرئيسية</li>
+<li>محرر يصنع التقرير النهائي</li>
+</ul>
+<p>عندما يسير التدفق بسلاسة، يشعر الأمر وكأن لديك فريق محتوى لا يطلب أجراً إضافياً على العمل الإضافي (فواتير API لا تزال تصل، لكن هذا عادل).</p>
+<h2 id="ماذا-يمكن-لـ-crewai-فعله">ماذا يمكن لـ CrewAI فعله؟</h2>
+<p>تشمل حالات الاستخدام الشائعة:</p>
+<ul>
+<li>إنشاء تقارير بحثية تلقائياً</li>
+<li>إنشاء محتوى متعدد الخطوات (بحث → مسودة → صقل)</li>
+<li>أتمتة سير عمل دعم العملاء أو العمليات</li>
+<li>أسئلة وأجوبة المعرفة الداخلية ومعالجة الوثائق</li>
+</ul>
+<blockquote>
+<p>💡 القيمة الجوهرية ليست "وكيل خارق واحد"، بل "التعاون بين وكلاء متخصصين".</p>
+</blockquote>
+<h2 id="تعلم-ثلاثة-مصطلحات-أساسية-أولاً">تعلم ثلاثة مصطلحات أساسية أولاً</h2>
+<ul>
+<li><code>Agent</code>: الدور (من يفعل)</li>
+<li><code>Task</code>: المهمة (ما يُنجز)</li>
+<li><code>Crew</code>: الفريق (من يعمل معاً، وبأي ترتيب)</li>
+</ul>
+<p>لمعظم المشاريع، البداية بـ <code>Process.sequential</code> أكثر من كافية:<br>
+<strong>ينهي A أولاً، ثم يسلّم إلى B.</strong> هذا الأسلوب الأكثر استقراراً والأسهل في التصحيح.</p>
+<h2 id="كيف-تقرأ-هذه-المقالات-العشر">كيف تقرأ هذه المقالات العشر</h2>
+<ol>
+<li><a href="01-quick-start">البداية السريعة</a>: شغّل أول Crew في 10 دقائق</li>
+<li><a href="02-agents-and-tasks">الوكلاء والمهام</a>: كيف تقسم الأدوار والمهام</li>
+<li><a href="03-crew-and-process">Crew والعملية</a>: إعداد الفريق واستراتيجية العملية</li>
+<li><a href="04-tools-integration">دمج الأدوات</a>: دع الوكلاء يبحثون ويقرؤون الملفات</li>
+<li><a href="05-structured-output-pydantic">الإخراج المنظم مع Pydantic</a>: منع انجراف الإخراج</li>
+<li><a href="06-flow-basics">أساسيات Flow</a>: تنسيق أطقم متعددة</li>
+<li><a href="07-memory-and-knowledge">الذاكرة والمعرفة</a>: أوقف الوكلاء من أن يكونوا ناسين</li>
+<li><a href="08-debug-and-common-errors">التصحيح والأخطاء الشائعة</a>: اقرأ خريطة المخاطر أولاً</li>
+<li><a href="09-production-best-practices">أفضل ممارسات الإنتاج</a>: انتقل من العرض التجريبي إلى نظام قابل للصيانة</li>
+</ol>
+<h2 id="المتطلبات-الأساسية">المتطلبات الأساسية</h2>
+<ul>
+<li>Python 3.10+</li>
+<li>أداة بيئة مفضلة (<code>uv</code>، <code>venv</code>، أو <code>poetry</code>)</li>
+<li>مفتاح API لنموذج لغوي كبير (OpenAI، Anthropic، إلخ.)</li>
+</ul>
+<h2 id="عقلية-واحدة-قبل-البداية">عقلية واحدة قبل البداية</h2>
+<p>في الإصدار الأول، لا تتسابق نحو الحيل المعقدة. <strong>اجعل سير العمل قابلاً للتكرار أولاً.</strong><br>
+ابنِ عملية تُعيد نتائج مماثلة في كل تشغيل، ثم حسّن السرعة والتكلفة والدقة.<br>
+مثل مستوى التطور في لعبة: أنهِ المهمة الرئيسية أولاً، ثم احصل على المعدات الجانبية لاحقاً.</p>
+<h2 id="الخطوة-التالية">الخطوة التالية</h2>
+<p>انتقل إلى <a href="01-quick-start">البداية السريعة</a>. سنشغّل أول Crew ونحصل على نتائج مرئية في 10 دقائق.</p>0:{"buildId":"Yck3R4ooQxWkwGLT6is1X","rsc":["$","$1","c",{"children":[[["$","script",null,{"type":"application/ld+json","dangerouslySetInnerHTML":{"__html":"{\"@context\":\"https://schema.org\",\"@type\":\"Article\",\"headline\":\"نظرة عامة على سلسلة CrewAI: من الصفر إلى سير عمل متعدد الوكلاء جاهز للإنتاج\",\"description\":\"افهم أولاً ما يفعله CrewAI والمشاكل التي يحلها، ثم انتقل من الأساسيات إلى التطبيق الواقعي في 10 مقالات.\",\"url\":\"https://benxhub.com/ar/blog/crewai/00-overview\",\"mainEntityOfPage\":{\"@type\":\"WebPage\",\"@id\":\"https://benxhub.com/ar/blog/crewai/00-overview\"},\"datePublished\":\"2026-03-01T00:00:00.000Z\",\"dateModified\":\"2026-03-01T00:00:00.000Z\",\"keywords\":\"crewai, ai-agent, python, workflow, multi-agent\",\"inLanguage\":\"ar\",\"author\":{\"@type\":\"Person\",\"name\":\"BenX\",\"url\":\"https://benxhub.com\"},\"publisher\":{\"@type\":\"Organization\",\"name\":\"BenXHub Blog\",\"url\":\"https://benxhub.com\"}}"}}],["$","div",null,{"className":"mx-auto max-w-6xl px-4 py-12 sm:px-6","children":["$","div",null,{"className":"lg:grid lg:grid-cols-[1fr_240px] lg:gap-14","children":[["$","article",null,{"children":[["$","header",null,{"className":"mb-10","children":[["$","div",null,{"className":"mb-4 flex flex-wrap gap-2","children":[["$","$L2","crewai",{"href":"/ar/tags/crewai","localeCookie":{"name":"NEXT_LOCALE","sameSite":"lax"},"className":"inline-flex items-center rounded-full px-2.5 py-0.5 text-xs font-medium transition-colors","style":{"background":"var(--color-code-bg)","color":"var(--color-accent)","border":"1px solid var(--color-border)"},"children":["#","crewai"]}],["$","$L2","ai-agent",{"href":"/ar/tags/ai-agent","localeCookie":{"name":"NEXT_LOCALE","sameSite":"lax"},"className":"inline-flex items-center rounded-full px-2.5 py-0.5 text-xs font-medium transition-colors","style":{"background":"var(--color-code-bg)","color":"var(--color-accent)","border":"1px solid var(--color-border)"},"children":["#","ai-agent"]}],["$","$L2","python",{"href":"/ar/tags/python","localeCookie":{"name":"NEXT_LOCALE","sameSite":"lax"},"className":"inline-flex items-center rounded-full px-2.5 py-0.5 text-xs font-medium transition-colors","style":{"background":"var(--color-code-bg)","color":"var(--color-accent)","border":"1px solid var(--color-border)"},"children":["#","python"]}],["$","$L2","workflow",{"href":"/ar/tags/workflow","localeCookie":{"name":"NEXT_LOCALE","sameSite":"lax"},"className":"inline-flex items-center rounded-full px-2.5 py-0.5 text-xs font-medium transition-colors","style":{"background":"var(--color-code-bg)","color":"var(--color-accent)","border":"1px solid var(--color-border)"},"children":["#","workflow"]}],["$","$L2","multi-agent",{"href":"/ar/tags/multi-agent","localeCookie":{"name":"NEXT_LOCALE","sameSite":"lax"},"className":"inline-flex items-center rounded-full px-2.5 py-0.5 text-xs font-medium transition-colors","style":{"background":"var(--color-code-bg)","color":"var(--color-accent)","border":"1px solid var(--color-border)"},"children":["#","multi-agent"]}]]}],["$","h1",null,{"className":"mb-4 text-3xl leading-snug font-bold tracking-tight sm:text-4xl","style":{"color":"var(--color-text)"},"children":"نظرة عامة على سلسلة CrewAI: من الصفر إلى سير عمل متعدد الوكلاء جاهز للإنتاج"}],["$","div",null,{"className":"flex flex-wrap items-center gap-3 text-sm","style":{"color":"var(--color-muted)"},"children":[["$","time",null,{"dateTime":"2026-03-01","children":"1 3月 2026"}],["$","span",null,{"aria-hidden":"true","children":"·"}],["$","span",null,{"children":"2 min read"}]]}],"$undefined",["$","div",null,{"className":"mt-6 border-b","style":{"borderColor":"var(--color-border)"}}]]}],["$","div",null,{"className":"prose","dangerouslySetInnerHTML":{"__html":"$3"}}],"$L4"]}],"$L5"]}]}]],["$L6"],"$L7"]}],"loading":null,"isPartial":false}
+4:["$","footer",null,{"className":"mt-14 border-t pt-8","style":{"borderColor":"var(--color-border)"},"children":[["$","div",null,{"className":"mb-8 flex flex-wrap gap-2","children":[["$","$L2","crewai",{"href":"/ar/tags/crewai","localeCookie":{"name":"NEXT_LOCALE","sameSite":"lax"},"className":"inline-flex items-center rounded-full px-3 py-1 text-sm font-medium transition-colors","style":{"background":"var(--color-code-bg)","color":"var(--color-accent)","border":"1px solid var(--color-border)"},"children":["#","crewai"]}],["$","$L2","ai-agent",{"href":"/ar/tags/ai-agent","localeCookie":{"name":"NEXT_LOCALE","sameSite":"lax"},"className":"inline-flex items-center rounded-full px-3 py-1 text-sm font-medium transition-colors","style":{"background":"var(--color-code-bg)","color":"var(--color-accent)","border":"1px solid var(--color-border)"},"children":["#","ai-agent"]}],["$","$L2","python",{"href":"/ar/tags/python","localeCookie":{"name":"NEXT_LOCALE","sameSite":"lax"},"className":"inline-flex items-center rounded-full px-3 py-1 text-sm font-medium transition-colors","style":{"background":"var(--color-code-bg)","color":"var(--color-accent)","border":"1px solid var(--color-border)"},"children":["#","python"]}],["$","$L2","workflow",{"href":"/ar/tags/workflow","localeCookie":{"name":"NEXT_LOCALE","sameSite":"lax"},"className":"inline-flex items-center rounded-full px-3 py-1 text-sm font-medium transition-colors","style":{"background":"var(--color-code-bg)","color":"var(--color-accent)","border":"1px solid var(--color-border)"},"children":["#","workflow"]}],["$","$L2","multi-agent",{"href":"/ar/tags/multi-agent","localeCookie":{"name":"NEXT_LOCALE","sameSite":"lax"},"className":"inline-flex items-center rounded-full px-3 py-1 text-sm font-medium transition-colors","style":{"background":"var(--color-code-bg)","color":"var(--color-accent)","border":"1px solid var(--color-border)"},"children":["#","multi-agent"]}]]}],["$","nav",null,{"aria-label":"التنقل بين المقالات","className":"grid grid-cols-1 gap-4 sm:grid-cols-2","children":[["$","$L2",null,{"href":"/ar/blog/crewai/05-structured-output-pydantic","localeCookie":{"name":"NEXT_LOCALE","sameSite":"lax"},"className":"group rounded-lg border p-4 transition-colors hover:border-accent","style":{"borderColor":"var(--color-border)","background":"var(--color-surface)"},"children":[["$","p",null,{"className":"mb-1 text-xs","style":{"color":"var(--color-muted)"},"children":"→ الأحدث"}],["$","p",null,{"className":"line-clamp-1 text-sm font-medium transition-colors group-hover:text-accent","style":{"color":"var(--color-text)"},"children":"الإخراج المنظم في CrewAI: أوقف انجراف البيانات مع Pydantic"}]]}],["$","$L2",null,{"href":"/ar/blog/crewai/01-quick-start","localeCookie":{"name":"NEXT_LOCALE","sameSite":"lax"},"className":"group rounded-lg border p-4 text-right transition-colors hover:border-accent","style":{"borderColor":"var(--color-border)","background":"var(--color-surface)"},"children":[["$","p",null,{"className":"mb-1 text-xs","style":{"color":"var(--color-muted)"},"children":"الأقدم ←"}],["$","p",null,{"className":"line-clamp-1 text-sm font-medium transition-colors group-hover:text-accent","style":{"color":"var(--color-text)"},"children":"بداية سريعة مع CrewAI: ابنِ أول طاقم بحثي في 10 دقائق"}]]}]]}]]}]
+9:T1208,<p>إذا كنت تسمع "AI Agents" و"التعاون متعدد الوكلاء" باستمرار مؤخراً لكن عيناك تزوغان عند قراءة الوثائق، فهذه السلسلة مناسبة لك.<br>
+بجملة واحدة: <strong>CrewAI هو إطار عمل يتيح لأدوار ذكاء اصطناعي متعددة التعاون لتقسيم المهام المعقدة وإنجازها.</strong></p>
+<p>فكّر فيه كفريق مشروع صغير:</p>
+<ul>
+<li>باحث يجد المعلومات</li>
+<li>محلل ينظم النقاط الرئيسية</li>
+<li>محرر يصنع التقرير النهائي</li>
+</ul>
+<p>عندما يسير التدفق بسلاسة، يشعر الأمر وكأن لديك فريق محتوى لا يطلب أجراً إضافياً على العمل الإضافي (فواتير API لا تزال تصل، لكن هذا عادل).</p>
+<h2 id="ماذا-يمكن-لـ-crewai-فعله">ماذا يمكن لـ CrewAI فعله؟</h2>
+<p>تشمل حالات الاستخدام الشائعة:</p>
+<ul>
+<li>إنشاء تقارير بحثية تلقائياً</li>
+<li>إنشاء محتوى متعدد الخطوات (بحث → مسودة → صقل)</li>
+<li>أتمتة سير عمل دعم العملاء أو العمليات</li>
+<li>أسئلة وأجوبة المعرفة الداخلية ومعالجة الوثائق</li>
+</ul>
+<blockquote>
+<p>💡 القيمة الجوهرية ليست "وكيل خارق واحد"، بل "التعاون بين وكلاء متخصصين".</p>
+</blockquote>
+<h2 id="تعلم-ثلاثة-مصطلحات-أساسية-أولاً">تعلم ثلاثة مصطلحات أساسية أولاً</h2>
+<ul>
+<li><code>Agent</code>: الدور (من يفعل)</li>
+<li><code>Task</code>: المهمة (ما يُنجز)</li>
+<li><code>Crew</code>: الفريق (من يعمل معاً، وبأي ترتيب)</li>
+</ul>
+<p>لمعظم المشاريع، البداية بـ <code>Process.sequential</code> أكثر من كافية:<br>
+<strong>ينهي A أولاً، ثم يسلّم إلى B.</strong> هذا الأسلوب الأكثر استقراراً والأسهل في التصحيح.</p>
+<h2 id="كيف-تقرأ-هذه-المقالات-العشر">كيف تقرأ هذه المقالات العشر</h2>
+<ol>
+<li><a href="01-quick-start">البداية السريعة</a>: شغّل أول Crew في 10 دقائق</li>
+<li><a href="02-agents-and-tasks">الوكلاء والمهام</a>: كيف تقسم الأدوار والمهام</li>
+<li><a href="03-crew-and-process">Crew والعملية</a>: إعداد الفريق واستراتيجية العملية</li>
+<li><a href="04-tools-integration">دمج الأدوات</a>: دع الوكلاء يبحثون ويقرؤون الملفات</li>
+<li><a href="05-structured-output-pydantic">الإخراج المنظم مع Pydantic</a>: منع انجراف الإخراج</li>
+<li><a href="06-flow-basics">أساسيات Flow</a>: تنسيق أطقم متعددة</li>
+<li><a href="07-memory-and-knowledge">الذاكرة والمعرفة</a>: أوقف الوكلاء من أن يكونوا ناسين</li>
+<li><a href="08-debug-and-common-errors">التصحيح والأخطاء الشائعة</a>: اقرأ خريطة المخاطر أولاً</li>
+<li><a href="09-production-best-practices">أفضل ممارسات الإنتاج</a>: انتقل من العرض التجريبي إلى نظام قابل للصيانة</li>
+</ol>
+<h2 id="المتطلبات-الأساسية">المتطلبات الأساسية</h2>
+<ul>
+<li>Python 3.10+</li>
+<li>أداة بيئة مفضلة (<code>uv</code>، <code>venv</code>، أو <code>poetry</code>)</li>
+<li>مفتاح API لنموذج لغوي كبير (OpenAI، Anthropic، إلخ.)</li>
+</ul>
+<h2 id="عقلية-واحدة-قبل-البداية">عقلية واحدة قبل البداية</h2>
+<p>في الإصدار الأول، لا تتسابق نحو الحيل المعقدة. <strong>اجعل سير العمل قابلاً للتكرار أولاً.</strong><br>
+ابنِ عملية تُعيد نتائج مماثلة في كل تشغيل، ثم حسّن السرعة والتكلفة والدقة.<br>
+مثل مستوى التطور في لعبة: أنهِ المهمة الرئيسية أولاً، ثم احصل على المعدات الجانبية لاحقاً.</p>
+<h2 id="الخطوة-التالية">الخطوة التالية</h2>
+<p>انتقل إلى <a href="01-quick-start">البداية السريعة</a>. سنشغّل أول Crew ونحصل على نتائج مرئية في 10 دقائق.</p>5:["$","aside",null,{"className":"hidden lg:block","children":["$","$L8",null,{"html":"$9"}]}]
+6:["$","script","script-0",{"src":"/_next/static/chunks/2dddb3bc05093f69.js","async":true}]
+7:["$","$La",null,{"children":["$","$b",null,{"name":"Next.MetadataOutlet","children":"$@c"}]}]
+c:null

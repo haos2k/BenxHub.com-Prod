@@ -1,0 +1,305 @@
+1:"$Sreact.fragment"
+2:I[14864,["/_next/static/chunks/7923a261b80bb6e1.js","/_next/static/chunks/e09b4358027e8033.js","/_next/static/chunks/2dddb3bc05093f69.js"],"default"]
+8:I[24801,["/_next/static/chunks/7923a261b80bb6e1.js","/_next/static/chunks/e09b4358027e8033.js","/_next/static/chunks/2dddb3bc05093f69.js"],"default"]
+a:I[50183,["/_next/static/chunks/5a5b5b13c22d14f7.js","/_next/static/chunks/a484d1d3dd4b55ab.js"],"OutletBoundary"]
+b:"$Sreact.suspense"
+3:T43b4,<p>Écrivez un script shell qui fait que <code>cursor agent</code> corrige le code automatiquement, lance les tests, et s'ils échouent laisse l'IA corriger à nouveau — <strong>en répétant jusqu'à ce que tous les tests passent</strong>. Pas besoin de rester à appuyer sur O/N. Confiez la boucle à l'IA et allez faire autre chose — revenez quand le terminal affiche « tests passed ».</p>
+<h2 id="concept-central">Concept central</h2>
+<pre><code>while tests don't pass:
+    run tests → collect error output
+    feed error output to cursor agent
+    cursor agent fixes the code
+    run tests again
+</code></pre>
+<p>C'est une boucle « lancer les tests → échec → demander à l'IA de corriger → répéter » jusqu'au vert. Simple et direct, mais efficace.</p>
+<h2 id="étape-1--vérifier-les-prérequis">Étape 1 : Vérifier les prérequis</h2>
+<ul>
+<li><code>cursor</code> est installé et connecté (<code>cursor --version</code> pour vérifier)</li>
+<li>Le projet a une <strong>commande de test qui s'exécute dans le terminal</strong>, par exemple :
+<ul>
+<li><code>npm test</code></li>
+<li><code>pytest</code></li>
+<li><code>go test ./...</code></li>
+<li><code>cargo test</code></li>
+</ul>
+</li>
+<li>Les tests renvoient un code de sortie non nul en cas d'échec (c'est le cas par défaut pour presque tous les frameworks)</li>
+</ul>
+<h2 id="étape-2--le-script-le-plus-simple">Étape 2 : Le script le plus simple</h2>
+<p>Créez <code>debug-loop.sh</code> :</p>
+<figure data-rehype-pretty-code-figure=""><pre style="background-color:#24292e;color:#e1e4e8" tabindex="0" data-language="bash" data-theme="github-dark"><code data-language="bash" data-theme="github-dark" style="display: grid;"><span data-line=""><span style="color:#6A737D">#!/bin/bash</span></span>
+<span data-line=""> </span>
+<span data-line=""><span style="color:#E1E4E8">MAX_LOOPS</span><span style="color:#F97583">=</span><span style="color:#9ECBFF">10</span><span style="color:#6A737D">        # max iterations to prevent truly infinite loops</span></span>
+<span data-line=""><span style="color:#E1E4E8">TEST_CMD</span><span style="color:#F97583">=</span><span style="color:#9ECBFF">"npm test"</span><span style="color:#6A737D"> # replace with your test command</span></span>
+<span data-line=""><span style="color:#E1E4E8">loop</span><span style="color:#F97583">=</span><span style="color:#9ECBFF">0</span></span>
+<span data-line=""> </span>
+<span data-line=""><span style="color:#F97583">while</span><span style="color:#E1E4E8"> [ $loop </span><span style="color:#F97583">-lt</span><span style="color:#E1E4E8"> $MAX_LOOPS ]; </span><span style="color:#F97583">do</span></span>
+<span data-line=""><span style="color:#79B8FF">  echo</span><span style="color:#9ECBFF"> ""</span></span>
+<span data-line=""><span style="color:#79B8FF">  echo</span><span style="color:#9ECBFF"> "=== Loop $((</span><span style="color:#B392F0">loop</span><span style="color:#9ECBFF"> + </span><span style="color:#79B8FF">1</span><span style="color:#9ECBFF">)) ==="</span></span>
+<span data-line=""> </span>
+<span data-line=""><span style="color:#6A737D">  # run tests and capture stdout + stderr</span></span>
+<span data-line=""><span style="color:#E1E4E8">  TEST_OUTPUT</span><span style="color:#F97583">=</span><span style="color:#E1E4E8">$(</span><span style="color:#79B8FF">eval</span><span style="color:#9ECBFF"> "</span><span style="color:#E1E4E8">$TEST_CMD</span><span style="color:#9ECBFF">"</span><span style="color:#F97583"> 2>&#x26;1</span><span style="color:#E1E4E8">)</span></span>
+<span data-line=""><span style="color:#E1E4E8">  EXIT_CODE</span><span style="color:#F97583">=</span><span style="color:#79B8FF">$?</span></span>
+<span data-line=""> </span>
+<span data-line=""><span style="color:#F97583">  if</span><span style="color:#E1E4E8"> [ $EXIT_CODE </span><span style="color:#F97583">-eq</span><span style="color:#79B8FF"> 0</span><span style="color:#E1E4E8"> ]; </span><span style="color:#F97583">then</span></span>
+<span data-line=""><span style="color:#79B8FF">    echo</span><span style="color:#9ECBFF"> "✅ Tests passed! Completed in $((</span><span style="color:#B392F0">loop</span><span style="color:#9ECBFF"> + </span><span style="color:#79B8FF">1</span><span style="color:#9ECBFF">)) loop(s)."</span></span>
+<span data-line=""><span style="color:#79B8FF">    exit</span><span style="color:#79B8FF"> 0</span></span>
+<span data-line=""><span style="color:#F97583">  fi</span></span>
+<span data-line=""> </span>
+<span data-line=""><span style="color:#79B8FF">  echo</span><span style="color:#9ECBFF"> "❌ Tests failed, letting the AI fix..."</span></span>
+<span data-line=""><span style="color:#79B8FF">  echo</span><span style="color:#9ECBFF"> "</span><span style="color:#E1E4E8">$TEST_OUTPUT</span><span style="color:#9ECBFF">"</span><span style="color:#F97583"> |</span><span style="color:#B392F0"> tail</span><span style="color:#79B8FF"> -30</span><span style="color:#6A737D">  # print the last 30 lines for your reference</span></span>
+<span data-line=""> </span>
+<span data-line=""><span style="color:#6A737D">  # feed the error output to cursor agent</span></span>
+<span data-line=""><span style="color:#B392F0">  cursor</span><span style="color:#9ECBFF"> agent</span><span style="color:#9ECBFF"> "Tests failed with the following errors. Please fix the code to make the tests pass:</span></span>
+<span data-line=""> </span>
+<span data-line=""><span style="color:#E1E4E8">$TEST_OUTPUT</span><span style="color:#9ECBFF">"</span><span style="color:#79B8FF"> --model</span><span style="color:#9ECBFF"> gpt-codex-5.3-high</span><span style="color:#79B8FF"> --no-interactive</span></span>
+<span data-line=""> </span>
+<span data-line=""><span style="color:#E1E4E8">  loop</span><span style="color:#F97583">=</span><span style="color:#E1E4E8">$((</span><span style="color:#B392F0">loop</span><span style="color:#9ECBFF"> +</span><span style="color:#79B8FF"> 1</span><span style="color:#E1E4E8">))</span></span>
+<span data-line=""><span style="color:#F97583">done</span></span>
+<span data-line=""> </span>
+<span data-line=""><span style="color:#79B8FF">echo</span><span style="color:#9ECBFF"> "⚠️  Reached max loops (</span><span style="color:#E1E4E8">$MAX_LOOPS</span><span style="color:#9ECBFF">). Stopping. Please investigate manually."</span></span>
+<span data-line=""><span style="color:#79B8FF">exit</span><span style="color:#79B8FF"> 1</span></span></code></pre></figure>
+<h2 id="étape-3--lancer-le-script">Étape 3 : Lancer le script</h2>
+<figure data-rehype-pretty-code-figure=""><pre style="background-color:#24292e;color:#e1e4e8" tabindex="0" data-language="bash" data-theme="github-dark"><code data-language="bash" data-theme="github-dark" style="display: grid;"><span data-line=""><span style="color:#B392F0">chmod</span><span style="color:#9ECBFF"> +x</span><span style="color:#9ECBFF"> debug-loop.sh</span></span>
+<span data-line=""><span style="color:#B392F0">./debug-loop.sh</span></span></code></pre></figure>
+<p>Vous pouvez aller prendre un café, répondre aux messages et revenir quand vous voyez <code>✅ Tests passed!</code> dans le terminal. Si la limite MAX_LOOPS est atteinte sans succès, c'est le moment d'intervenir manuellement.</p>
+<h2 id="étape-4--adapter-à-votre-projet">Étape 4 : Adapter à votre projet</h2>
+<p><strong>Changez la commande de test</strong> (ligne 4) :</p>
+<figure data-rehype-pretty-code-figure=""><pre style="background-color:#24292e;color:#e1e4e8" tabindex="0" data-language="bash" data-theme="github-dark"><code data-language="bash" data-theme="github-dark" style="display: grid;"><span data-line=""><span style="color:#E1E4E8">TEST_CMD</span><span style="color:#F97583">=</span><span style="color:#9ECBFF">"pytest -x"</span><span style="color:#6A737D">          # Python, -x stops on first failure</span></span>
+<span data-line=""><span style="color:#E1E4E8">TEST_CMD</span><span style="color:#F97583">=</span><span style="color:#9ECBFF">"go test ./..."</span><span style="color:#6A737D">      # Go</span></span>
+<span data-line=""><span style="color:#E1E4E8">TEST_CMD</span><span style="color:#F97583">=</span><span style="color:#9ECBFF">"cargo test"</span><span style="color:#6A737D">         # Rust</span></span>
+<span data-line=""><span style="color:#E1E4E8">TEST_CMD</span><span style="color:#F97583">=</span><span style="color:#9ECBFF">"./vendor/bin/phpunit"</span><span style="color:#6A737D"> # PHP</span></span></code></pre></figure>
+<p><strong>Ajustez le nombre max de boucles</strong> :</p>
+<figure data-rehype-pretty-code-figure=""><pre style="background-color:#24292e;color:#e1e4e8" tabindex="0" data-language="bash" data-theme="github-dark"><code data-language="bash" data-theme="github-dark" style="display: grid;"><span data-line=""><span style="color:#E1E4E8">MAX_LOOPS</span><span style="color:#F97583">=</span><span style="color:#9ECBFF">5</span><span style="color:#6A737D">   # conservative, stop early if not improving</span></span>
+<span data-line=""><span style="color:#E1E4E8">MAX_LOOPS</span><span style="color:#F97583">=</span><span style="color:#9ECBFF">20</span><span style="color:#6A737D">  # more complex problems get more chances</span></span></code></pre></figure>
+<p><strong>Donnez plus de contexte à l'IA</strong> (dans la commande <code>cursor agent</code>) :</p>
+<figure data-rehype-pretty-code-figure=""><pre style="background-color:#24292e;color:#e1e4e8" tabindex="0" data-language="bash" data-theme="github-dark"><code data-language="bash" data-theme="github-dark" style="display: grid;"><span data-line=""><span style="color:#B392F0">cursor</span><span style="color:#9ECBFF"> agent</span><span style="color:#9ECBFF"> "Tests failed. Errors below.</span></span>
+<span data-line=""><span style="color:#9ECBFF">The test framework is Jest and the language is TypeScript.</span></span>
+<span data-line=""><span style="color:#9ECBFF">Do not modify test files — only change files under src/.</span></span>
+<span data-line=""> </span>
+<span data-line=""><span style="color:#9ECBFF">Error output:</span></span>
+<span data-line=""><span style="color:#E1E4E8">$TEST_OUTPUT</span><span style="color:#9ECBFF">"</span><span style="color:#79B8FF"> --model</span><span style="color:#9ECBFF"> gpt-codex-5.3-high</span><span style="color:#79B8FF"> --no-interactive</span></span></code></pre></figure>
+<h2 id="version-améliorée--garder-des-logs-par-boucle">Version améliorée : garder des logs par boucle</h2>
+<figure data-rehype-pretty-code-figure=""><pre style="background-color:#24292e;color:#e1e4e8" tabindex="0" data-language="bash" data-theme="github-dark"><code data-language="bash" data-theme="github-dark" style="display: grid;"><span data-line=""><span style="color:#6A737D">#!/bin/bash</span></span>
+<span data-line=""> </span>
+<span data-line=""><span style="color:#E1E4E8">MAX_LOOPS</span><span style="color:#F97583">=</span><span style="color:#9ECBFF">10</span></span>
+<span data-line=""><span style="color:#E1E4E8">TEST_CMD</span><span style="color:#F97583">=</span><span style="color:#9ECBFF">"npm test"</span></span>
+<span data-line=""><span style="color:#E1E4E8">LOG_DIR</span><span style="color:#F97583">=</span><span style="color:#9ECBFF">"debug-logs"</span></span>
+<span data-line=""><span style="color:#B392F0">mkdir</span><span style="color:#79B8FF"> -p</span><span style="color:#E1E4E8"> $LOG_DIR</span></span>
+<span data-line=""> </span>
+<span data-line=""><span style="color:#E1E4E8">loop</span><span style="color:#F97583">=</span><span style="color:#9ECBFF">0</span></span>
+<span data-line=""> </span>
+<span data-line=""><span style="color:#F97583">while</span><span style="color:#E1E4E8"> [ $loop </span><span style="color:#F97583">-lt</span><span style="color:#E1E4E8"> $MAX_LOOPS ]; </span><span style="color:#F97583">do</span></span>
+<span data-line=""><span style="color:#79B8FF">  echo</span><span style="color:#9ECBFF"> ""</span></span>
+<span data-line=""><span style="color:#79B8FF">  echo</span><span style="color:#9ECBFF"> "=== Loop $((</span><span style="color:#B392F0">loop</span><span style="color:#9ECBFF"> + </span><span style="color:#79B8FF">1</span><span style="color:#9ECBFF">)) ==="</span></span>
+<span data-line=""> </span>
+<span data-line=""><span style="color:#E1E4E8">  LOG_FILE</span><span style="color:#F97583">=</span><span style="color:#9ECBFF">"</span><span style="color:#E1E4E8">$LOG_DIR</span><span style="color:#9ECBFF">/loop-$((</span><span style="color:#B392F0">loop</span><span style="color:#9ECBFF"> + </span><span style="color:#79B8FF">1</span><span style="color:#9ECBFF">)).log"</span></span>
+<span data-line=""><span style="color:#E1E4E8">  TEST_OUTPUT</span><span style="color:#F97583">=</span><span style="color:#E1E4E8">$(</span><span style="color:#79B8FF">eval</span><span style="color:#9ECBFF"> "</span><span style="color:#E1E4E8">$TEST_CMD</span><span style="color:#9ECBFF">"</span><span style="color:#F97583"> 2>&#x26;1</span><span style="color:#F97583"> |</span><span style="color:#B392F0"> tee</span><span style="color:#9ECBFF"> "</span><span style="color:#E1E4E8">$LOG_FILE</span><span style="color:#9ECBFF">"</span><span style="color:#E1E4E8">)</span></span>
+<span data-line=""><span style="color:#E1E4E8">  EXIT_CODE</span><span style="color:#F97583">=</span><span style="color:#E1E4E8">${PIPESTATUS[0]}</span></span>
+<span data-line=""> </span>
+<span data-line=""><span style="color:#F97583">  if</span><span style="color:#E1E4E8"> [ $EXIT_CODE </span><span style="color:#F97583">-eq</span><span style="color:#79B8FF"> 0</span><span style="color:#E1E4E8"> ]; </span><span style="color:#F97583">then</span></span>
+<span data-line=""><span style="color:#79B8FF">    echo</span><span style="color:#9ECBFF"> "✅ Tests passed! Completed in $((</span><span style="color:#B392F0">loop</span><span style="color:#9ECBFF"> + </span><span style="color:#79B8FF">1</span><span style="color:#9ECBFF">)) loop(s)."</span></span>
+<span data-line=""><span style="color:#79B8FF">    exit</span><span style="color:#79B8FF"> 0</span></span>
+<span data-line=""><span style="color:#F97583">  fi</span></span>
+<span data-line=""> </span>
+<span data-line=""><span style="color:#79B8FF">  echo</span><span style="color:#9ECBFF"> "❌ Failed. Log saved to </span><span style="color:#E1E4E8">$LOG_FILE</span><span style="color:#9ECBFF">"</span></span>
+<span data-line=""> </span>
+<span data-line=""><span style="color:#B392F0">  cursor</span><span style="color:#9ECBFF"> agent</span><span style="color:#9ECBFF"> "Tests failed with the following errors. Please fix the code to make the tests pass:</span></span>
+<span data-line=""> </span>
+<span data-line=""><span style="color:#E1E4E8">$TEST_OUTPUT</span><span style="color:#9ECBFF">"</span><span style="color:#79B8FF"> --model</span><span style="color:#9ECBFF"> gpt-codex-5.3-high</span><span style="color:#79B8FF"> --no-interactive</span></span>
+<span data-line=""> </span>
+<span data-line=""><span style="color:#E1E4E8">  loop</span><span style="color:#F97583">=</span><span style="color:#E1E4E8">$((</span><span style="color:#B392F0">loop</span><span style="color:#9ECBFF"> +</span><span style="color:#79B8FF"> 1</span><span style="color:#E1E4E8">))</span></span>
+<span data-line=""><span style="color:#F97583">done</span></span>
+<span data-line=""> </span>
+<span data-line=""><span style="color:#79B8FF">echo</span><span style="color:#9ECBFF"> "⚠️  Reached max loops. Stopping. Check the logs in </span><span style="color:#E1E4E8">$LOG_DIR</span><span style="color:#9ECBFF">/."</span></span>
+<span data-line=""><span style="color:#79B8FF">exit</span><span style="color:#79B8FF"> 1</span></span></code></pre></figure>
+<p>Utile pour revoir « ce qui a échoué à quelle itération » après coup.</p>
+<h2 id="points-de-vigilance">Points de vigilance</h2>
+<table>
+<thead>
+<tr>
+<th>Risque</th>
+<th>Comment limiter</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td>L'IA casse plus de fichiers</td>
+<td>Faites un <code>git commit</code> avant pour figer l'état, <code>git checkout .</code> pour revenir en arrière si besoin</td>
+</tr>
+<tr>
+<td>Trop de boucles consomment le quota</td>
+<td>Fixez un <code>MAX_LOOPS</code> raisonnable (5–15 recommandé)</td>
+</tr>
+<tr>
+<td>L'IA modifie les fichiers de test</td>
+<td>Dites explicitement dans le prompt « do not modify test files »</td>
+</tr>
+<tr>
+<td>Échecs différents à chaque boucle</td>
+<td>Gardez les logs (version améliorée) pour analyser après</td>
+</tr>
+</tbody>
+</table>
+<h2 id="résumé">Résumé</h2>
+<ol>
+<li><strong>Structure du script</strong> : lancer les tests → échec → donner la sortie à l'IA → répéter jusqu'à succès ou limite</li>
+<li><strong>Paramètres clés</strong> : <code>TEST_CMD</code> (commande de test), <code>MAX_LOOPS</code> (nombre max d'itérations)</li>
+<li><strong>Soyez précis dans le prompt</strong> : indiquez le langage, restreignez les répertoires à modifier, ne pas toucher aux tests</li>
+<li><strong>Faites un <code>git commit</code> avant</strong> — facile de revenir en arrière si ça dérape, et l'esprit tranquille</li>
+</ol>
+<blockquote>
+<p>En complément de Worktree : lancez une boucle de debug sur des branches différentes en parallèle. Voir <a href="06-cursor-cli-with-worktree">06-cursor-cli-with-worktree</a>.</p>
+</blockquote>0:{"buildId":"Yck3R4ooQxWkwGLT6is1X","rsc":["$","$1","c",{"children":[[["$","script",null,{"type":"application/ld+json","dangerouslySetInnerHTML":{"__html":"{\"@context\":\"https://schema.org\",\"@type\":\"Article\",\"headline\":\"Boucle de debug infinie : laisser Cursor CLI corriger jusqu'à ce que les tests passent\",\"description\":\"Écrire un script shell qui fait corriger le code par cursor agent, lancer les tests, et si ça échoue laisser l'IA corriger encore — en répétant jusqu'à ce que tous les tests passent.\",\"url\":\"https://benxhub.com/fr/blog/cursor/cli/07-unlimit-loop-debug\",\"mainEntityOfPage\":{\"@type\":\"WebPage\",\"@id\":\"https://benxhub.com/fr/blog/cursor/cli/07-unlimit-loop-debug\"},\"datePublished\":\"2026-02-24T00:00:00.000Z\",\"dateModified\":\"2026-02-24T00:00:00.000Z\",\"keywords\":\"cursor, cli, debug, automation, testing\",\"inLanguage\":\"fr\",\"author\":{\"@type\":\"Person\",\"name\":\"BenX\",\"url\":\"https://benxhub.com\"},\"publisher\":{\"@type\":\"Organization\",\"name\":\"BenXHub Blog\",\"url\":\"https://benxhub.com\"}}"}}],["$","div",null,{"className":"mx-auto max-w-6xl px-4 py-12 sm:px-6","children":["$","div",null,{"className":"lg:grid lg:grid-cols-[1fr_240px] lg:gap-14","children":[["$","article",null,{"children":[["$","header",null,{"className":"mb-10","children":[["$","div",null,{"className":"mb-4 flex flex-wrap gap-2","children":[["$","$L2","cursor",{"href":"/fr/tags/cursor","localeCookie":{"name":"NEXT_LOCALE","sameSite":"lax"},"className":"inline-flex items-center rounded-full px-2.5 py-0.5 text-xs font-medium transition-colors","style":{"background":"var(--color-code-bg)","color":"var(--color-accent)","border":"1px solid var(--color-border)"},"children":["#","cursor"]}],["$","$L2","cli",{"href":"/fr/tags/cli","localeCookie":{"name":"NEXT_LOCALE","sameSite":"lax"},"className":"inline-flex items-center rounded-full px-2.5 py-0.5 text-xs font-medium transition-colors","style":{"background":"var(--color-code-bg)","color":"var(--color-accent)","border":"1px solid var(--color-border)"},"children":["#","cli"]}],["$","$L2","debug",{"href":"/fr/tags/debug","localeCookie":{"name":"NEXT_LOCALE","sameSite":"lax"},"className":"inline-flex items-center rounded-full px-2.5 py-0.5 text-xs font-medium transition-colors","style":{"background":"var(--color-code-bg)","color":"var(--color-accent)","border":"1px solid var(--color-border)"},"children":["#","debug"]}],["$","$L2","automation",{"href":"/fr/tags/automation","localeCookie":{"name":"NEXT_LOCALE","sameSite":"lax"},"className":"inline-flex items-center rounded-full px-2.5 py-0.5 text-xs font-medium transition-colors","style":{"background":"var(--color-code-bg)","color":"var(--color-accent)","border":"1px solid var(--color-border)"},"children":["#","automation"]}],["$","$L2","testing",{"href":"/fr/tags/testing","localeCookie":{"name":"NEXT_LOCALE","sameSite":"lax"},"className":"inline-flex items-center rounded-full px-2.5 py-0.5 text-xs font-medium transition-colors","style":{"background":"var(--color-code-bg)","color":"var(--color-accent)","border":"1px solid var(--color-border)"},"children":["#","testing"]}]]}],["$","h1",null,{"className":"mb-4 text-3xl leading-snug font-bold tracking-tight sm:text-4xl","style":{"color":"var(--color-text)"},"children":"Boucle de debug infinie : laisser Cursor CLI corriger jusqu'à ce que les tests passent"}],["$","div",null,{"className":"flex flex-wrap items-center gap-3 text-sm","style":{"color":"var(--color-muted)"},"children":[["$","time",null,{"dateTime":"2026-02-24","children":"24 févr. 2026"}],["$","span",null,{"aria-hidden":"true","children":"·"}],["$","span",null,{"children":"4 min read"}]]}],"$undefined",["$","div",null,{"className":"mt-6 border-b","style":{"borderColor":"var(--color-border)"}}]]}],["$","div",null,{"className":"prose","dangerouslySetInnerHTML":{"__html":"$3"}}],"$L4"]}],"$L5"]}]}]],["$L6"],"$L7"]}],"loading":null,"isPartial":false}
+4:["$","footer",null,{"className":"mt-14 border-t pt-8","style":{"borderColor":"var(--color-border)"},"children":[["$","div",null,{"className":"mb-8 flex flex-wrap gap-2","children":[["$","$L2","cursor",{"href":"/fr/tags/cursor","localeCookie":{"name":"NEXT_LOCALE","sameSite":"lax"},"className":"inline-flex items-center rounded-full px-3 py-1 text-sm font-medium transition-colors","style":{"background":"var(--color-code-bg)","color":"var(--color-accent)","border":"1px solid var(--color-border)"},"children":["#","cursor"]}],["$","$L2","cli",{"href":"/fr/tags/cli","localeCookie":{"name":"NEXT_LOCALE","sameSite":"lax"},"className":"inline-flex items-center rounded-full px-3 py-1 text-sm font-medium transition-colors","style":{"background":"var(--color-code-bg)","color":"var(--color-accent)","border":"1px solid var(--color-border)"},"children":["#","cli"]}],["$","$L2","debug",{"href":"/fr/tags/debug","localeCookie":{"name":"NEXT_LOCALE","sameSite":"lax"},"className":"inline-flex items-center rounded-full px-3 py-1 text-sm font-medium transition-colors","style":{"background":"var(--color-code-bg)","color":"var(--color-accent)","border":"1px solid var(--color-border)"},"children":["#","debug"]}],["$","$L2","automation",{"href":"/fr/tags/automation","localeCookie":{"name":"NEXT_LOCALE","sameSite":"lax"},"className":"inline-flex items-center rounded-full px-3 py-1 text-sm font-medium transition-colors","style":{"background":"var(--color-code-bg)","color":"var(--color-accent)","border":"1px solid var(--color-border)"},"children":["#","automation"]}],["$","$L2","testing",{"href":"/fr/tags/testing","localeCookie":{"name":"NEXT_LOCALE","sameSite":"lax"},"className":"inline-flex items-center rounded-full px-3 py-1 text-sm font-medium transition-colors","style":{"background":"var(--color-code-bg)","color":"var(--color-accent)","border":"1px solid var(--color-border)"},"children":["#","testing"]}]]}],["$","nav",null,{"aria-label":"Navigation des articles","className":"grid grid-cols-1 gap-4 sm:grid-cols-2","children":[["$","$L2",null,{"href":"/fr/blog/cursor/cli/06-cursor-cli-with-worktree","localeCookie":{"name":"NEXT_LOCALE","sameSite":"lax"},"className":"group rounded-lg border p-4 transition-colors hover:border-accent","style":{"borderColor":"var(--color-border)","background":"var(--color-surface)"},"children":[["$","p",null,{"className":"mb-1 text-xs","style":{"color":"var(--color-muted)"},"children":"← Plus récent"}],["$","p",null,{"className":"line-clamp-1 text-sm font-medium transition-colors group-hover:text-accent","style":{"color":"var(--color-text)"},"children":"Cursor CLI avec Git Worktree"}]]}],["$","$L2",null,{"href":"/fr/blog/pve/00-overview","localeCookie":{"name":"NEXT_LOCALE","sameSite":"lax"},"className":"group rounded-lg border p-4 text-right transition-colors hover:border-accent","style":{"borderColor":"var(--color-border)","background":"var(--color-surface)"},"children":[["$","p",null,{"className":"mb-1 text-xs","style":{"color":"var(--color-muted)"},"children":"Plus ancien →"}],["$","p",null,{"className":"line-clamp-1 text-sm font-medium transition-colors group-hover:text-accent","style":{"color":"var(--color-text)"},"children":"Vue d'ensemble de la série Proxmox VE : du débutant à l'avancé"}]]}]]}]]}]
+9:T43b4,<p>Écrivez un script shell qui fait que <code>cursor agent</code> corrige le code automatiquement, lance les tests, et s'ils échouent laisse l'IA corriger à nouveau — <strong>en répétant jusqu'à ce que tous les tests passent</strong>. Pas besoin de rester à appuyer sur O/N. Confiez la boucle à l'IA et allez faire autre chose — revenez quand le terminal affiche « tests passed ».</p>
+<h2 id="concept-central">Concept central</h2>
+<pre><code>while tests don't pass:
+    run tests → collect error output
+    feed error output to cursor agent
+    cursor agent fixes the code
+    run tests again
+</code></pre>
+<p>C'est une boucle « lancer les tests → échec → demander à l'IA de corriger → répéter » jusqu'au vert. Simple et direct, mais efficace.</p>
+<h2 id="étape-1--vérifier-les-prérequis">Étape 1 : Vérifier les prérequis</h2>
+<ul>
+<li><code>cursor</code> est installé et connecté (<code>cursor --version</code> pour vérifier)</li>
+<li>Le projet a une <strong>commande de test qui s'exécute dans le terminal</strong>, par exemple :
+<ul>
+<li><code>npm test</code></li>
+<li><code>pytest</code></li>
+<li><code>go test ./...</code></li>
+<li><code>cargo test</code></li>
+</ul>
+</li>
+<li>Les tests renvoient un code de sortie non nul en cas d'échec (c'est le cas par défaut pour presque tous les frameworks)</li>
+</ul>
+<h2 id="étape-2--le-script-le-plus-simple">Étape 2 : Le script le plus simple</h2>
+<p>Créez <code>debug-loop.sh</code> :</p>
+<figure data-rehype-pretty-code-figure=""><pre style="background-color:#24292e;color:#e1e4e8" tabindex="0" data-language="bash" data-theme="github-dark"><code data-language="bash" data-theme="github-dark" style="display: grid;"><span data-line=""><span style="color:#6A737D">#!/bin/bash</span></span>
+<span data-line=""> </span>
+<span data-line=""><span style="color:#E1E4E8">MAX_LOOPS</span><span style="color:#F97583">=</span><span style="color:#9ECBFF">10</span><span style="color:#6A737D">        # max iterations to prevent truly infinite loops</span></span>
+<span data-line=""><span style="color:#E1E4E8">TEST_CMD</span><span style="color:#F97583">=</span><span style="color:#9ECBFF">"npm test"</span><span style="color:#6A737D"> # replace with your test command</span></span>
+<span data-line=""><span style="color:#E1E4E8">loop</span><span style="color:#F97583">=</span><span style="color:#9ECBFF">0</span></span>
+<span data-line=""> </span>
+<span data-line=""><span style="color:#F97583">while</span><span style="color:#E1E4E8"> [ $loop </span><span style="color:#F97583">-lt</span><span style="color:#E1E4E8"> $MAX_LOOPS ]; </span><span style="color:#F97583">do</span></span>
+<span data-line=""><span style="color:#79B8FF">  echo</span><span style="color:#9ECBFF"> ""</span></span>
+<span data-line=""><span style="color:#79B8FF">  echo</span><span style="color:#9ECBFF"> "=== Loop $((</span><span style="color:#B392F0">loop</span><span style="color:#9ECBFF"> + </span><span style="color:#79B8FF">1</span><span style="color:#9ECBFF">)) ==="</span></span>
+<span data-line=""> </span>
+<span data-line=""><span style="color:#6A737D">  # run tests and capture stdout + stderr</span></span>
+<span data-line=""><span style="color:#E1E4E8">  TEST_OUTPUT</span><span style="color:#F97583">=</span><span style="color:#E1E4E8">$(</span><span style="color:#79B8FF">eval</span><span style="color:#9ECBFF"> "</span><span style="color:#E1E4E8">$TEST_CMD</span><span style="color:#9ECBFF">"</span><span style="color:#F97583"> 2>&#x26;1</span><span style="color:#E1E4E8">)</span></span>
+<span data-line=""><span style="color:#E1E4E8">  EXIT_CODE</span><span style="color:#F97583">=</span><span style="color:#79B8FF">$?</span></span>
+<span data-line=""> </span>
+<span data-line=""><span style="color:#F97583">  if</span><span style="color:#E1E4E8"> [ $EXIT_CODE </span><span style="color:#F97583">-eq</span><span style="color:#79B8FF"> 0</span><span style="color:#E1E4E8"> ]; </span><span style="color:#F97583">then</span></span>
+<span data-line=""><span style="color:#79B8FF">    echo</span><span style="color:#9ECBFF"> "✅ Tests passed! Completed in $((</span><span style="color:#B392F0">loop</span><span style="color:#9ECBFF"> + </span><span style="color:#79B8FF">1</span><span style="color:#9ECBFF">)) loop(s)."</span></span>
+<span data-line=""><span style="color:#79B8FF">    exit</span><span style="color:#79B8FF"> 0</span></span>
+<span data-line=""><span style="color:#F97583">  fi</span></span>
+<span data-line=""> </span>
+<span data-line=""><span style="color:#79B8FF">  echo</span><span style="color:#9ECBFF"> "❌ Tests failed, letting the AI fix..."</span></span>
+<span data-line=""><span style="color:#79B8FF">  echo</span><span style="color:#9ECBFF"> "</span><span style="color:#E1E4E8">$TEST_OUTPUT</span><span style="color:#9ECBFF">"</span><span style="color:#F97583"> |</span><span style="color:#B392F0"> tail</span><span style="color:#79B8FF"> -30</span><span style="color:#6A737D">  # print the last 30 lines for your reference</span></span>
+<span data-line=""> </span>
+<span data-line=""><span style="color:#6A737D">  # feed the error output to cursor agent</span></span>
+<span data-line=""><span style="color:#B392F0">  cursor</span><span style="color:#9ECBFF"> agent</span><span style="color:#9ECBFF"> "Tests failed with the following errors. Please fix the code to make the tests pass:</span></span>
+<span data-line=""> </span>
+<span data-line=""><span style="color:#E1E4E8">$TEST_OUTPUT</span><span style="color:#9ECBFF">"</span><span style="color:#79B8FF"> --model</span><span style="color:#9ECBFF"> gpt-codex-5.3-high</span><span style="color:#79B8FF"> --no-interactive</span></span>
+<span data-line=""> </span>
+<span data-line=""><span style="color:#E1E4E8">  loop</span><span style="color:#F97583">=</span><span style="color:#E1E4E8">$((</span><span style="color:#B392F0">loop</span><span style="color:#9ECBFF"> +</span><span style="color:#79B8FF"> 1</span><span style="color:#E1E4E8">))</span></span>
+<span data-line=""><span style="color:#F97583">done</span></span>
+<span data-line=""> </span>
+<span data-line=""><span style="color:#79B8FF">echo</span><span style="color:#9ECBFF"> "⚠️  Reached max loops (</span><span style="color:#E1E4E8">$MAX_LOOPS</span><span style="color:#9ECBFF">). Stopping. Please investigate manually."</span></span>
+<span data-line=""><span style="color:#79B8FF">exit</span><span style="color:#79B8FF"> 1</span></span></code></pre></figure>
+<h2 id="étape-3--lancer-le-script">Étape 3 : Lancer le script</h2>
+<figure data-rehype-pretty-code-figure=""><pre style="background-color:#24292e;color:#e1e4e8" tabindex="0" data-language="bash" data-theme="github-dark"><code data-language="bash" data-theme="github-dark" style="display: grid;"><span data-line=""><span style="color:#B392F0">chmod</span><span style="color:#9ECBFF"> +x</span><span style="color:#9ECBFF"> debug-loop.sh</span></span>
+<span data-line=""><span style="color:#B392F0">./debug-loop.sh</span></span></code></pre></figure>
+<p>Vous pouvez aller prendre un café, répondre aux messages et revenir quand vous voyez <code>✅ Tests passed!</code> dans le terminal. Si la limite MAX_LOOPS est atteinte sans succès, c'est le moment d'intervenir manuellement.</p>
+<h2 id="étape-4--adapter-à-votre-projet">Étape 4 : Adapter à votre projet</h2>
+<p><strong>Changez la commande de test</strong> (ligne 4) :</p>
+<figure data-rehype-pretty-code-figure=""><pre style="background-color:#24292e;color:#e1e4e8" tabindex="0" data-language="bash" data-theme="github-dark"><code data-language="bash" data-theme="github-dark" style="display: grid;"><span data-line=""><span style="color:#E1E4E8">TEST_CMD</span><span style="color:#F97583">=</span><span style="color:#9ECBFF">"pytest -x"</span><span style="color:#6A737D">          # Python, -x stops on first failure</span></span>
+<span data-line=""><span style="color:#E1E4E8">TEST_CMD</span><span style="color:#F97583">=</span><span style="color:#9ECBFF">"go test ./..."</span><span style="color:#6A737D">      # Go</span></span>
+<span data-line=""><span style="color:#E1E4E8">TEST_CMD</span><span style="color:#F97583">=</span><span style="color:#9ECBFF">"cargo test"</span><span style="color:#6A737D">         # Rust</span></span>
+<span data-line=""><span style="color:#E1E4E8">TEST_CMD</span><span style="color:#F97583">=</span><span style="color:#9ECBFF">"./vendor/bin/phpunit"</span><span style="color:#6A737D"> # PHP</span></span></code></pre></figure>
+<p><strong>Ajustez le nombre max de boucles</strong> :</p>
+<figure data-rehype-pretty-code-figure=""><pre style="background-color:#24292e;color:#e1e4e8" tabindex="0" data-language="bash" data-theme="github-dark"><code data-language="bash" data-theme="github-dark" style="display: grid;"><span data-line=""><span style="color:#E1E4E8">MAX_LOOPS</span><span style="color:#F97583">=</span><span style="color:#9ECBFF">5</span><span style="color:#6A737D">   # conservative, stop early if not improving</span></span>
+<span data-line=""><span style="color:#E1E4E8">MAX_LOOPS</span><span style="color:#F97583">=</span><span style="color:#9ECBFF">20</span><span style="color:#6A737D">  # more complex problems get more chances</span></span></code></pre></figure>
+<p><strong>Donnez plus de contexte à l'IA</strong> (dans la commande <code>cursor agent</code>) :</p>
+<figure data-rehype-pretty-code-figure=""><pre style="background-color:#24292e;color:#e1e4e8" tabindex="0" data-language="bash" data-theme="github-dark"><code data-language="bash" data-theme="github-dark" style="display: grid;"><span data-line=""><span style="color:#B392F0">cursor</span><span style="color:#9ECBFF"> agent</span><span style="color:#9ECBFF"> "Tests failed. Errors below.</span></span>
+<span data-line=""><span style="color:#9ECBFF">The test framework is Jest and the language is TypeScript.</span></span>
+<span data-line=""><span style="color:#9ECBFF">Do not modify test files — only change files under src/.</span></span>
+<span data-line=""> </span>
+<span data-line=""><span style="color:#9ECBFF">Error output:</span></span>
+<span data-line=""><span style="color:#E1E4E8">$TEST_OUTPUT</span><span style="color:#9ECBFF">"</span><span style="color:#79B8FF"> --model</span><span style="color:#9ECBFF"> gpt-codex-5.3-high</span><span style="color:#79B8FF"> --no-interactive</span></span></code></pre></figure>
+<h2 id="version-améliorée--garder-des-logs-par-boucle">Version améliorée : garder des logs par boucle</h2>
+<figure data-rehype-pretty-code-figure=""><pre style="background-color:#24292e;color:#e1e4e8" tabindex="0" data-language="bash" data-theme="github-dark"><code data-language="bash" data-theme="github-dark" style="display: grid;"><span data-line=""><span style="color:#6A737D">#!/bin/bash</span></span>
+<span data-line=""> </span>
+<span data-line=""><span style="color:#E1E4E8">MAX_LOOPS</span><span style="color:#F97583">=</span><span style="color:#9ECBFF">10</span></span>
+<span data-line=""><span style="color:#E1E4E8">TEST_CMD</span><span style="color:#F97583">=</span><span style="color:#9ECBFF">"npm test"</span></span>
+<span data-line=""><span style="color:#E1E4E8">LOG_DIR</span><span style="color:#F97583">=</span><span style="color:#9ECBFF">"debug-logs"</span></span>
+<span data-line=""><span style="color:#B392F0">mkdir</span><span style="color:#79B8FF"> -p</span><span style="color:#E1E4E8"> $LOG_DIR</span></span>
+<span data-line=""> </span>
+<span data-line=""><span style="color:#E1E4E8">loop</span><span style="color:#F97583">=</span><span style="color:#9ECBFF">0</span></span>
+<span data-line=""> </span>
+<span data-line=""><span style="color:#F97583">while</span><span style="color:#E1E4E8"> [ $loop </span><span style="color:#F97583">-lt</span><span style="color:#E1E4E8"> $MAX_LOOPS ]; </span><span style="color:#F97583">do</span></span>
+<span data-line=""><span style="color:#79B8FF">  echo</span><span style="color:#9ECBFF"> ""</span></span>
+<span data-line=""><span style="color:#79B8FF">  echo</span><span style="color:#9ECBFF"> "=== Loop $((</span><span style="color:#B392F0">loop</span><span style="color:#9ECBFF"> + </span><span style="color:#79B8FF">1</span><span style="color:#9ECBFF">)) ==="</span></span>
+<span data-line=""> </span>
+<span data-line=""><span style="color:#E1E4E8">  LOG_FILE</span><span style="color:#F97583">=</span><span style="color:#9ECBFF">"</span><span style="color:#E1E4E8">$LOG_DIR</span><span style="color:#9ECBFF">/loop-$((</span><span style="color:#B392F0">loop</span><span style="color:#9ECBFF"> + </span><span style="color:#79B8FF">1</span><span style="color:#9ECBFF">)).log"</span></span>
+<span data-line=""><span style="color:#E1E4E8">  TEST_OUTPUT</span><span style="color:#F97583">=</span><span style="color:#E1E4E8">$(</span><span style="color:#79B8FF">eval</span><span style="color:#9ECBFF"> "</span><span style="color:#E1E4E8">$TEST_CMD</span><span style="color:#9ECBFF">"</span><span style="color:#F97583"> 2>&#x26;1</span><span style="color:#F97583"> |</span><span style="color:#B392F0"> tee</span><span style="color:#9ECBFF"> "</span><span style="color:#E1E4E8">$LOG_FILE</span><span style="color:#9ECBFF">"</span><span style="color:#E1E4E8">)</span></span>
+<span data-line=""><span style="color:#E1E4E8">  EXIT_CODE</span><span style="color:#F97583">=</span><span style="color:#E1E4E8">${PIPESTATUS[0]}</span></span>
+<span data-line=""> </span>
+<span data-line=""><span style="color:#F97583">  if</span><span style="color:#E1E4E8"> [ $EXIT_CODE </span><span style="color:#F97583">-eq</span><span style="color:#79B8FF"> 0</span><span style="color:#E1E4E8"> ]; </span><span style="color:#F97583">then</span></span>
+<span data-line=""><span style="color:#79B8FF">    echo</span><span style="color:#9ECBFF"> "✅ Tests passed! Completed in $((</span><span style="color:#B392F0">loop</span><span style="color:#9ECBFF"> + </span><span style="color:#79B8FF">1</span><span style="color:#9ECBFF">)) loop(s)."</span></span>
+<span data-line=""><span style="color:#79B8FF">    exit</span><span style="color:#79B8FF"> 0</span></span>
+<span data-line=""><span style="color:#F97583">  fi</span></span>
+<span data-line=""> </span>
+<span data-line=""><span style="color:#79B8FF">  echo</span><span style="color:#9ECBFF"> "❌ Failed. Log saved to </span><span style="color:#E1E4E8">$LOG_FILE</span><span style="color:#9ECBFF">"</span></span>
+<span data-line=""> </span>
+<span data-line=""><span style="color:#B392F0">  cursor</span><span style="color:#9ECBFF"> agent</span><span style="color:#9ECBFF"> "Tests failed with the following errors. Please fix the code to make the tests pass:</span></span>
+<span data-line=""> </span>
+<span data-line=""><span style="color:#E1E4E8">$TEST_OUTPUT</span><span style="color:#9ECBFF">"</span><span style="color:#79B8FF"> --model</span><span style="color:#9ECBFF"> gpt-codex-5.3-high</span><span style="color:#79B8FF"> --no-interactive</span></span>
+<span data-line=""> </span>
+<span data-line=""><span style="color:#E1E4E8">  loop</span><span style="color:#F97583">=</span><span style="color:#E1E4E8">$((</span><span style="color:#B392F0">loop</span><span style="color:#9ECBFF"> +</span><span style="color:#79B8FF"> 1</span><span style="color:#E1E4E8">))</span></span>
+<span data-line=""><span style="color:#F97583">done</span></span>
+<span data-line=""> </span>
+<span data-line=""><span style="color:#79B8FF">echo</span><span style="color:#9ECBFF"> "⚠️  Reached max loops. Stopping. Check the logs in </span><span style="color:#E1E4E8">$LOG_DIR</span><span style="color:#9ECBFF">/."</span></span>
+<span data-line=""><span style="color:#79B8FF">exit</span><span style="color:#79B8FF"> 1</span></span></code></pre></figure>
+<p>Utile pour revoir « ce qui a échoué à quelle itération » après coup.</p>
+<h2 id="points-de-vigilance">Points de vigilance</h2>
+<table>
+<thead>
+<tr>
+<th>Risque</th>
+<th>Comment limiter</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td>L'IA casse plus de fichiers</td>
+<td>Faites un <code>git commit</code> avant pour figer l'état, <code>git checkout .</code> pour revenir en arrière si besoin</td>
+</tr>
+<tr>
+<td>Trop de boucles consomment le quota</td>
+<td>Fixez un <code>MAX_LOOPS</code> raisonnable (5–15 recommandé)</td>
+</tr>
+<tr>
+<td>L'IA modifie les fichiers de test</td>
+<td>Dites explicitement dans le prompt « do not modify test files »</td>
+</tr>
+<tr>
+<td>Échecs différents à chaque boucle</td>
+<td>Gardez les logs (version améliorée) pour analyser après</td>
+</tr>
+</tbody>
+</table>
+<h2 id="résumé">Résumé</h2>
+<ol>
+<li><strong>Structure du script</strong> : lancer les tests → échec → donner la sortie à l'IA → répéter jusqu'à succès ou limite</li>
+<li><strong>Paramètres clés</strong> : <code>TEST_CMD</code> (commande de test), <code>MAX_LOOPS</code> (nombre max d'itérations)</li>
+<li><strong>Soyez précis dans le prompt</strong> : indiquez le langage, restreignez les répertoires à modifier, ne pas toucher aux tests</li>
+<li><strong>Faites un <code>git commit</code> avant</strong> — facile de revenir en arrière si ça dérape, et l'esprit tranquille</li>
+</ol>
+<blockquote>
+<p>En complément de Worktree : lancez une boucle de debug sur des branches différentes en parallèle. Voir <a href="06-cursor-cli-with-worktree">06-cursor-cli-with-worktree</a>.</p>
+</blockquote>5:["$","aside",null,{"className":"hidden lg:block","children":["$","$L8",null,{"html":"$9"}]}]
+6:["$","script","script-0",{"src":"/_next/static/chunks/2dddb3bc05093f69.js","async":true}]
+7:["$","$La",null,{"children":["$","$b",null,{"name":"Next.MetadataOutlet","children":"$@c"}]}]
+c:null

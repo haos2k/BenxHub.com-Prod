@@ -1,0 +1,211 @@
+1:"$Sreact.fragment"
+2:I[14864,["/_next/static/chunks/7923a261b80bb6e1.js","/_next/static/chunks/e09b4358027e8033.js","/_next/static/chunks/2dddb3bc05093f69.js"],"default"]
+8:I[24801,["/_next/static/chunks/7923a261b80bb6e1.js","/_next/static/chunks/e09b4358027e8033.js","/_next/static/chunks/2dddb3bc05093f69.js"],"default"]
+a:I[50183,["/_next/static/chunks/5a5b5b13c22d14f7.js","/_next/static/chunks/a484d1d3dd4b55ab.js"],"OutletBoundary"]
+b:"$Sreact.suspense"
+3:T200c,<p><a href="04-non-interactive">04-non-interactive</a> covered <code>--no-interactive</code> so the Agent runs to completion without waiting for you. This post goes further: <strong>headless mode</strong> with <strong><code>-p</code> / <code>--print</code></strong> for “output to terminal only” runs, plus <strong><code>--force</code></strong> (or <code>--yolo</code>), so the Agent <strong>actually modifies files in your project</strong>—suitable for CI, batch JSDoc, auto lint fixes, and report generation.</p>
+<p>In short: <strong>no Cursor window, no key confirmations; a script invokes the CLI to change code, then the script continues.</strong></p>
+<h2 id="--print-non-interactive-output-to-terminal">--print: Non-interactive, output to terminal</h2>
+<figure data-rehype-pretty-code-figure=""><pre style="background-color:#24292e;color:#e1e4e8" tabindex="0" data-language="bash" data-theme="github-dark"><code data-language="bash" data-theme="github-dark" style="display: grid;"><span data-line=""><span style="color:#B392F0">cursor</span><span style="color:#9ECBFF"> agent</span><span style="color:#79B8FF"> -p</span><span style="color:#9ECBFF"> "What does this project do?"</span></span>
+<span data-line=""><span style="color:#6A737D"># or</span></span>
+<span data-line=""><span style="color:#B392F0">cursor</span><span style="color:#9ECBFF"> agent</span><span style="color:#79B8FF"> --print</span><span style="color:#9ECBFF"> "List all API endpoints under src/"</span></span></code></pre></figure>
+<ul>
+<li><strong>Without <code>--force</code></strong>: The Agent can read files, search the codebase, and return analysis, but <strong>won’t write to files</strong>—it only “suggests” or prints content in the output</li>
+<li>Good for: Q&#x26;A, analysis, writing reports to stdout, piping or parsing in scripts</li>
+</ul>
+<p>So <code>-p</code> by itself means “run to completion, output to terminal”; whether it changes files depends on whether you add <code>--force</code>.</p>
+<h2 id="--force-allow-direct-file-edits">--force: Allow direct file edits</h2>
+<p>With <code>--print</code> and <strong><code>--force</code></strong> (or <strong><code>--yolo</code></strong>), the Agent <strong>can create, edit, and delete files</strong> without asking Y/N:</p>
+<figure data-rehype-pretty-code-figure=""><pre style="background-color:#24292e;color:#e1e4e8" tabindex="0" data-language="bash" data-theme="github-dark"><code data-language="bash" data-theme="github-dark" style="display: grid;"><span data-line=""><span style="color:#B392F0">cursor</span><span style="color:#9ECBFF"> agent</span><span style="color:#79B8FF"> -p</span><span style="color:#79B8FF"> --force</span><span style="color:#9ECBFF"> "Refactor src/utils.js to ES6+ syntax"</span></span></code></pre></figure>
+<table>
+<thead>
+<tr>
+<th>Use case</th>
+<th>Example</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td>Single-file refactor</td>
+<td><code>agent -p --force "Refactor src/foo.ts to use async/await"</code></td>
+</tr>
+<tr>
+<td>Fix lint per config</td>
+<td><code>agent -p --force "Fix all auto-fixable errors per .eslintrc"</code></td>
+</tr>
+<tr>
+<td>Batch JSDoc</td>
+<td>See script example below</td>
+</tr>
+<tr>
+<td>Generate file in project</td>
+<td><code>agent -p --force "Generate CONTRIBUTING.md from README"</code></td>
+</tr>
+</tbody>
+</table>
+<blockquote>
+<p>⚠️ Before using <code>--force</code> in scripts, run on a single file or small scope first to confirm behavior, then scale to the whole repo.</p>
+</blockquote>
+<h2 id="script-example-batch-jsdoc">Script example: Batch JSDoc</h2>
+<figure data-rehype-pretty-code-figure=""><pre style="background-color:#24292e;color:#e1e4e8" tabindex="0" data-language="bash" data-theme="github-dark"><code data-language="bash" data-theme="github-dark" style="display: grid;"><span data-line=""><span style="color:#6A737D">#!/bin/bash</span></span>
+<span data-line=""><span style="color:#6A737D"># For each .js under src/, ask Agent to add JSDoc and write directly</span></span>
+<span data-line=""><span style="color:#B392F0">find</span><span style="color:#9ECBFF"> src/</span><span style="color:#79B8FF"> -name</span><span style="color:#9ECBFF"> "*.js"</span><span style="color:#F97583"> |</span><span style="color:#F97583"> while</span><span style="color:#79B8FF"> read</span><span style="color:#79B8FF"> -r</span><span style="color:#9ECBFF"> file</span><span style="color:#E1E4E8">; </span><span style="color:#F97583">do</span></span>
+<span data-line=""><span style="color:#79B8FF">  echo</span><span style="color:#9ECBFF"> "Processing </span><span style="color:#E1E4E8">$file</span><span style="color:#9ECBFF">..."</span></span>
+<span data-line=""><span style="color:#B392F0">  cursor</span><span style="color:#9ECBFF"> agent</span><span style="color:#79B8FF"> -p</span><span style="color:#79B8FF"> --force</span><span style="color:#9ECBFF"> "Add full JSDoc comments to </span><span style="color:#E1E4E8">$file</span><span style="color:#9ECBFF">, editing the file in place"</span></span>
+<span data-line=""><span style="color:#F97583">done</span></span></code></pre></figure>
+<p>Each file is read and written by the Agent, so run on a project copy or branch, or try one or two files first.</p>
+<h2 id="script-example-auto-code-review-and-write-report">Script example: Auto code review and write report</h2>
+<figure data-rehype-pretty-code-figure=""><pre style="background-color:#24292e;color:#e1e4e8" tabindex="0" data-language="bash" data-theme="github-dark"><code data-language="bash" data-theme="github-dark" style="display: grid;"><span data-line=""><span style="color:#6A737D">#!/bin/bash</span></span>
+<span data-line=""><span style="color:#B392F0">cursor</span><span style="color:#9ECBFF"> agent</span><span style="color:#79B8FF"> -p</span><span style="color:#79B8FF"> --force</span><span style="color:#79B8FF"> --output-format</span><span style="color:#9ECBFF"> text</span><span style="color:#79B8FF"> \</span></span>
+<span data-line=""><span style="color:#9ECBFF">  "Do a code review of recent changes: readability, potential bugs, security, best practices. Write conclusions and concrete suggestions to review.txt"</span></span></code></pre></figure>
+<p><code>--output-format text</code> keeps output plain text for writing to a file or piping to <code>grep</code>/scripts. The next post covers <code>json</code> and <code>stream-json</code>.</p>
+<h2 id="environment-api-key">Environment: API key</h2>
+<p>Headless mode often runs where there’s no Cursor window (e.g. CI, remote machine), so you need auth:</p>
+<ul>
+<li>Set env: <code>export CURSOR_API_KEY=your_key</code></li>
+<li>Or run <code>cursor auth login</code> in that environment first (if supported)</li>
+</ul>
+<p>Without it you’ll get errors and the Agent won’t run.</p>
+<h2 id="difference-from---no-interactive-brief">Difference from --no-interactive (brief)</h2>
+<table>
+<thead>
+<tr>
+<th>Mode</th>
+<th>Typical use</th>
+<th>Edits files?</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td><code>--no-interactive</code></td>
+<td>Run in terminal, watch output step by step, no key press</td>
+<td>Can edit, but may still ask (per settings)</td>
+</tr>
+<tr>
+<td><code>-p</code> / <code>--print</code></td>
+<td>Scripts, CI, fully non-interactive, output to stdout</td>
+<td>By default no</td>
+</tr>
+<tr>
+<td><code>-p --force</code></td>
+<td>Same, but allow Agent to edit files</td>
+<td>Yes, no prompt</td>
+</tr>
+</tbody>
+</table>
+<p>So: <strong>for scripts that “really change files,”</strong> use <code>-p --force</code>; for analysis or reports to the terminal only, <code>-p</code> is enough.</p>
+<h2 id="summary">Summary</h2>
+<ul>
+<li><strong><code>-p</code> / <code>--print</code></strong>: Non-interactive, output to terminal when done; by default no file edits</li>
+<li><strong><code>--force</code> / <code>--yolo</code></strong>: In print mode, allow the Agent to edit files; good for scripts and CI</li>
+<li>In scripts/CI, set <code>CURSOR_API_KEY</code> or complete login</li>
+<li>Try on a small scope before running on the whole repo</li>
+</ul>
+<blockquote>
+<p>Next: <a href="11-output-ci">11-output-ci</a> — Output formats text / json / stream-json and CI integration examples.</p>
+</blockquote>0:{"buildId":"Yck3R4ooQxWkwGLT6is1X","rsc":["$","$1","c",{"children":[[["$","script",null,{"type":"application/ld+json","dangerouslySetInnerHTML":{"__html":"{\"@context\":\"https://schema.org\",\"@type\":\"Article\",\"headline\":\"Cursor CLI Headless Mode: --print, --force, and Scripts That Edit Files\",\"description\":\"Use -p/--print for non-interactive runs; combine with --force so the Agent writes to disk. Ideal for scripts, batch jobs, and automation.\",\"url\":\"https://benxhub.com/en/blog/cursor/cli/10-headless-scripts\",\"mainEntityOfPage\":{\"@type\":\"WebPage\",\"@id\":\"https://benxhub.com/en/blog/cursor/cli/10-headless-scripts\"},\"datePublished\":\"2026-03-09T00:00:00.000Z\",\"dateModified\":\"2026-03-09T00:00:00.000Z\",\"keywords\":\"cursor, cli, headless, automation, scripts\",\"inLanguage\":\"en\",\"author\":{\"@type\":\"Person\",\"name\":\"BenX\",\"url\":\"https://benxhub.com\"},\"publisher\":{\"@type\":\"Organization\",\"name\":\"BenXHub Blog\",\"url\":\"https://benxhub.com\"}}"}}],["$","div",null,{"className":"mx-auto max-w-6xl px-4 py-12 sm:px-6","children":["$","div",null,{"className":"lg:grid lg:grid-cols-[1fr_240px] lg:gap-14","children":[["$","article",null,{"children":[["$","header",null,{"className":"mb-10","children":[["$","div",null,{"className":"mb-4 flex flex-wrap gap-2","children":[["$","$L2","cursor",{"href":"/en/tags/cursor","localeCookie":{"name":"NEXT_LOCALE","sameSite":"lax"},"className":"inline-flex items-center rounded-full px-2.5 py-0.5 text-xs font-medium transition-colors","style":{"background":"var(--color-code-bg)","color":"var(--color-accent)","border":"1px solid var(--color-border)"},"children":["#","cursor"]}],["$","$L2","cli",{"href":"/en/tags/cli","localeCookie":{"name":"NEXT_LOCALE","sameSite":"lax"},"className":"inline-flex items-center rounded-full px-2.5 py-0.5 text-xs font-medium transition-colors","style":{"background":"var(--color-code-bg)","color":"var(--color-accent)","border":"1px solid var(--color-border)"},"children":["#","cli"]}],["$","$L2","headless",{"href":"/en/tags/headless","localeCookie":{"name":"NEXT_LOCALE","sameSite":"lax"},"className":"inline-flex items-center rounded-full px-2.5 py-0.5 text-xs font-medium transition-colors","style":{"background":"var(--color-code-bg)","color":"var(--color-accent)","border":"1px solid var(--color-border)"},"children":["#","headless"]}],["$","$L2","automation",{"href":"/en/tags/automation","localeCookie":{"name":"NEXT_LOCALE","sameSite":"lax"},"className":"inline-flex items-center rounded-full px-2.5 py-0.5 text-xs font-medium transition-colors","style":{"background":"var(--color-code-bg)","color":"var(--color-accent)","border":"1px solid var(--color-border)"},"children":["#","automation"]}],["$","$L2","scripts",{"href":"/en/tags/scripts","localeCookie":{"name":"NEXT_LOCALE","sameSite":"lax"},"className":"inline-flex items-center rounded-full px-2.5 py-0.5 text-xs font-medium transition-colors","style":{"background":"var(--color-code-bg)","color":"var(--color-accent)","border":"1px solid var(--color-border)"},"children":["#","scripts"]}]]}],["$","h1",null,{"className":"mb-4 text-3xl leading-snug font-bold tracking-tight sm:text-4xl","style":{"color":"var(--color-text)"},"children":"Cursor CLI Headless Mode: --print, --force, and Scripts That Edit Files"}],["$","div",null,{"className":"flex flex-wrap items-center gap-3 text-sm","style":{"color":"var(--color-muted)"},"children":[["$","time",null,{"dateTime":"2026-03-09","children":"Mar 9, 2026"}],["$","span",null,{"aria-hidden":"true","children":"·"}],["$","span",null,{"children":"4 min read"}]]}],"$undefined",["$","div",null,{"className":"mt-6 border-b","style":{"borderColor":"var(--color-border)"}}]]}],["$","div",null,{"className":"prose","dangerouslySetInnerHTML":{"__html":"$3"}}],"$L4"]}],"$L5"]}]}]],["$L6"],"$L7"]}],"loading":null,"isPartial":false}
+4:["$","footer",null,{"className":"mt-14 border-t pt-8","style":{"borderColor":"var(--color-border)"},"children":[["$","div",null,{"className":"mb-8 flex flex-wrap gap-2","children":[["$","$L2","cursor",{"href":"/en/tags/cursor","localeCookie":{"name":"NEXT_LOCALE","sameSite":"lax"},"className":"inline-flex items-center rounded-full px-3 py-1 text-sm font-medium transition-colors","style":{"background":"var(--color-code-bg)","color":"var(--color-accent)","border":"1px solid var(--color-border)"},"children":["#","cursor"]}],["$","$L2","cli",{"href":"/en/tags/cli","localeCookie":{"name":"NEXT_LOCALE","sameSite":"lax"},"className":"inline-flex items-center rounded-full px-3 py-1 text-sm font-medium transition-colors","style":{"background":"var(--color-code-bg)","color":"var(--color-accent)","border":"1px solid var(--color-border)"},"children":["#","cli"]}],["$","$L2","headless",{"href":"/en/tags/headless","localeCookie":{"name":"NEXT_LOCALE","sameSite":"lax"},"className":"inline-flex items-center rounded-full px-3 py-1 text-sm font-medium transition-colors","style":{"background":"var(--color-code-bg)","color":"var(--color-accent)","border":"1px solid var(--color-border)"},"children":["#","headless"]}],["$","$L2","automation",{"href":"/en/tags/automation","localeCookie":{"name":"NEXT_LOCALE","sameSite":"lax"},"className":"inline-flex items-center rounded-full px-3 py-1 text-sm font-medium transition-colors","style":{"background":"var(--color-code-bg)","color":"var(--color-accent)","border":"1px solid var(--color-border)"},"children":["#","automation"]}],["$","$L2","scripts",{"href":"/en/tags/scripts","localeCookie":{"name":"NEXT_LOCALE","sameSite":"lax"},"className":"inline-flex items-center rounded-full px-3 py-1 text-sm font-medium transition-colors","style":{"background":"var(--color-code-bg)","color":"var(--color-accent)","border":"1px solid var(--color-border)"},"children":["#","scripts"]}]]}],["$","nav",null,{"aria-label":"Post navigation","className":"grid grid-cols-1 gap-4 sm:grid-cols-2","children":[["$","$L2",null,{"href":"/en/blog/cursor/cli/09-worktree-advanced","localeCookie":{"name":"NEXT_LOCALE","sameSite":"lax"},"className":"group rounded-lg border p-4 transition-colors hover:border-accent","style":{"borderColor":"var(--color-border)","background":"var(--color-surface)"},"children":[["$","p",null,{"className":"mb-1 text-xs","style":{"color":"var(--color-muted)"},"children":"← Newer"}],["$","p",null,{"className":"line-clamp-1 text-sm font-medium transition-colors group-hover:text-accent","style":{"color":"var(--color-text)"},"children":"Cursor Worktree Advanced: Best-of-N and worktrees.json"}]]}],["$","$L2",null,{"href":"/en/blog/cursor/cli/11-output-ci","localeCookie":{"name":"NEXT_LOCALE","sameSite":"lax"},"className":"group rounded-lg border p-4 text-right transition-colors hover:border-accent","style":{"borderColor":"var(--color-border)","background":"var(--color-surface)"},"children":[["$","p",null,{"className":"mb-1 text-xs","style":{"color":"var(--color-muted)"},"children":"Older →"}],["$","p",null,{"className":"line-clamp-1 text-sm font-medium transition-colors group-hover:text-accent","style":{"color":"var(--color-text)"},"children":"Cursor CLI Output Formats and CI Integration"}]]}]]}]]}]
+9:T200c,<p><a href="04-non-interactive">04-non-interactive</a> covered <code>--no-interactive</code> so the Agent runs to completion without waiting for you. This post goes further: <strong>headless mode</strong> with <strong><code>-p</code> / <code>--print</code></strong> for “output to terminal only” runs, plus <strong><code>--force</code></strong> (or <code>--yolo</code>), so the Agent <strong>actually modifies files in your project</strong>—suitable for CI, batch JSDoc, auto lint fixes, and report generation.</p>
+<p>In short: <strong>no Cursor window, no key confirmations; a script invokes the CLI to change code, then the script continues.</strong></p>
+<h2 id="--print-non-interactive-output-to-terminal">--print: Non-interactive, output to terminal</h2>
+<figure data-rehype-pretty-code-figure=""><pre style="background-color:#24292e;color:#e1e4e8" tabindex="0" data-language="bash" data-theme="github-dark"><code data-language="bash" data-theme="github-dark" style="display: grid;"><span data-line=""><span style="color:#B392F0">cursor</span><span style="color:#9ECBFF"> agent</span><span style="color:#79B8FF"> -p</span><span style="color:#9ECBFF"> "What does this project do?"</span></span>
+<span data-line=""><span style="color:#6A737D"># or</span></span>
+<span data-line=""><span style="color:#B392F0">cursor</span><span style="color:#9ECBFF"> agent</span><span style="color:#79B8FF"> --print</span><span style="color:#9ECBFF"> "List all API endpoints under src/"</span></span></code></pre></figure>
+<ul>
+<li><strong>Without <code>--force</code></strong>: The Agent can read files, search the codebase, and return analysis, but <strong>won’t write to files</strong>—it only “suggests” or prints content in the output</li>
+<li>Good for: Q&#x26;A, analysis, writing reports to stdout, piping or parsing in scripts</li>
+</ul>
+<p>So <code>-p</code> by itself means “run to completion, output to terminal”; whether it changes files depends on whether you add <code>--force</code>.</p>
+<h2 id="--force-allow-direct-file-edits">--force: Allow direct file edits</h2>
+<p>With <code>--print</code> and <strong><code>--force</code></strong> (or <strong><code>--yolo</code></strong>), the Agent <strong>can create, edit, and delete files</strong> without asking Y/N:</p>
+<figure data-rehype-pretty-code-figure=""><pre style="background-color:#24292e;color:#e1e4e8" tabindex="0" data-language="bash" data-theme="github-dark"><code data-language="bash" data-theme="github-dark" style="display: grid;"><span data-line=""><span style="color:#B392F0">cursor</span><span style="color:#9ECBFF"> agent</span><span style="color:#79B8FF"> -p</span><span style="color:#79B8FF"> --force</span><span style="color:#9ECBFF"> "Refactor src/utils.js to ES6+ syntax"</span></span></code></pre></figure>
+<table>
+<thead>
+<tr>
+<th>Use case</th>
+<th>Example</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td>Single-file refactor</td>
+<td><code>agent -p --force "Refactor src/foo.ts to use async/await"</code></td>
+</tr>
+<tr>
+<td>Fix lint per config</td>
+<td><code>agent -p --force "Fix all auto-fixable errors per .eslintrc"</code></td>
+</tr>
+<tr>
+<td>Batch JSDoc</td>
+<td>See script example below</td>
+</tr>
+<tr>
+<td>Generate file in project</td>
+<td><code>agent -p --force "Generate CONTRIBUTING.md from README"</code></td>
+</tr>
+</tbody>
+</table>
+<blockquote>
+<p>⚠️ Before using <code>--force</code> in scripts, run on a single file or small scope first to confirm behavior, then scale to the whole repo.</p>
+</blockquote>
+<h2 id="script-example-batch-jsdoc">Script example: Batch JSDoc</h2>
+<figure data-rehype-pretty-code-figure=""><pre style="background-color:#24292e;color:#e1e4e8" tabindex="0" data-language="bash" data-theme="github-dark"><code data-language="bash" data-theme="github-dark" style="display: grid;"><span data-line=""><span style="color:#6A737D">#!/bin/bash</span></span>
+<span data-line=""><span style="color:#6A737D"># For each .js under src/, ask Agent to add JSDoc and write directly</span></span>
+<span data-line=""><span style="color:#B392F0">find</span><span style="color:#9ECBFF"> src/</span><span style="color:#79B8FF"> -name</span><span style="color:#9ECBFF"> "*.js"</span><span style="color:#F97583"> |</span><span style="color:#F97583"> while</span><span style="color:#79B8FF"> read</span><span style="color:#79B8FF"> -r</span><span style="color:#9ECBFF"> file</span><span style="color:#E1E4E8">; </span><span style="color:#F97583">do</span></span>
+<span data-line=""><span style="color:#79B8FF">  echo</span><span style="color:#9ECBFF"> "Processing </span><span style="color:#E1E4E8">$file</span><span style="color:#9ECBFF">..."</span></span>
+<span data-line=""><span style="color:#B392F0">  cursor</span><span style="color:#9ECBFF"> agent</span><span style="color:#79B8FF"> -p</span><span style="color:#79B8FF"> --force</span><span style="color:#9ECBFF"> "Add full JSDoc comments to </span><span style="color:#E1E4E8">$file</span><span style="color:#9ECBFF">, editing the file in place"</span></span>
+<span data-line=""><span style="color:#F97583">done</span></span></code></pre></figure>
+<p>Each file is read and written by the Agent, so run on a project copy or branch, or try one or two files first.</p>
+<h2 id="script-example-auto-code-review-and-write-report">Script example: Auto code review and write report</h2>
+<figure data-rehype-pretty-code-figure=""><pre style="background-color:#24292e;color:#e1e4e8" tabindex="0" data-language="bash" data-theme="github-dark"><code data-language="bash" data-theme="github-dark" style="display: grid;"><span data-line=""><span style="color:#6A737D">#!/bin/bash</span></span>
+<span data-line=""><span style="color:#B392F0">cursor</span><span style="color:#9ECBFF"> agent</span><span style="color:#79B8FF"> -p</span><span style="color:#79B8FF"> --force</span><span style="color:#79B8FF"> --output-format</span><span style="color:#9ECBFF"> text</span><span style="color:#79B8FF"> \</span></span>
+<span data-line=""><span style="color:#9ECBFF">  "Do a code review of recent changes: readability, potential bugs, security, best practices. Write conclusions and concrete suggestions to review.txt"</span></span></code></pre></figure>
+<p><code>--output-format text</code> keeps output plain text for writing to a file or piping to <code>grep</code>/scripts. The next post covers <code>json</code> and <code>stream-json</code>.</p>
+<h2 id="environment-api-key">Environment: API key</h2>
+<p>Headless mode often runs where there’s no Cursor window (e.g. CI, remote machine), so you need auth:</p>
+<ul>
+<li>Set env: <code>export CURSOR_API_KEY=your_key</code></li>
+<li>Or run <code>cursor auth login</code> in that environment first (if supported)</li>
+</ul>
+<p>Without it you’ll get errors and the Agent won’t run.</p>
+<h2 id="difference-from---no-interactive-brief">Difference from --no-interactive (brief)</h2>
+<table>
+<thead>
+<tr>
+<th>Mode</th>
+<th>Typical use</th>
+<th>Edits files?</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td><code>--no-interactive</code></td>
+<td>Run in terminal, watch output step by step, no key press</td>
+<td>Can edit, but may still ask (per settings)</td>
+</tr>
+<tr>
+<td><code>-p</code> / <code>--print</code></td>
+<td>Scripts, CI, fully non-interactive, output to stdout</td>
+<td>By default no</td>
+</tr>
+<tr>
+<td><code>-p --force</code></td>
+<td>Same, but allow Agent to edit files</td>
+<td>Yes, no prompt</td>
+</tr>
+</tbody>
+</table>
+<p>So: <strong>for scripts that “really change files,”</strong> use <code>-p --force</code>; for analysis or reports to the terminal only, <code>-p</code> is enough.</p>
+<h2 id="summary">Summary</h2>
+<ul>
+<li><strong><code>-p</code> / <code>--print</code></strong>: Non-interactive, output to terminal when done; by default no file edits</li>
+<li><strong><code>--force</code> / <code>--yolo</code></strong>: In print mode, allow the Agent to edit files; good for scripts and CI</li>
+<li>In scripts/CI, set <code>CURSOR_API_KEY</code> or complete login</li>
+<li>Try on a small scope before running on the whole repo</li>
+</ul>
+<blockquote>
+<p>Next: <a href="11-output-ci">11-output-ci</a> — Output formats text / json / stream-json and CI integration examples.</p>
+</blockquote>5:["$","aside",null,{"className":"hidden lg:block","children":["$","$L8",null,{"html":"$9"}]}]
+6:["$","script","script-0",{"src":"/_next/static/chunks/2dddb3bc05093f69.js","async":true}]
+7:["$","$La",null,{"children":["$","$b",null,{"name":"Next.MetadataOutlet","children":"$@c"}]}]
+c:null

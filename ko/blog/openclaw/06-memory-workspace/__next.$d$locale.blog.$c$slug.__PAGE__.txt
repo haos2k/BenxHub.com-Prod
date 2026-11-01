@@ -1,0 +1,147 @@
+1:"$Sreact.fragment"
+2:I[14864,["/_next/static/chunks/7923a261b80bb6e1.js","/_next/static/chunks/e09b4358027e8033.js","/_next/static/chunks/2dddb3bc05093f69.js"],"default"]
+8:I[24801,["/_next/static/chunks/7923a261b80bb6e1.js","/_next/static/chunks/e09b4358027e8033.js","/_next/static/chunks/2dddb3bc05093f69.js"],"default"]
+a:I[50183,["/_next/static/chunks/5a5b5b13c22d14f7.js","/_next/static/chunks/a484d1d3dd4b55ab.js"],"OutletBoundary"]
+b:"$Sreact.suspense"
+3:Tf43,<p>AI 에게 한참 설명해 놓고 다음 대화에서 전부 잊어버린 모습을 보고 허탈했던 적, 있으시죠?</p>
+<p>이 글은 그 답답함을 줄이기 위해 준비했습니다.</p>
+<h2 id="이번-글에서-배울-것">이번 글에서 배울 것</h2>
+<ul>
+<li>Workspace 의 의미와 용도 이해하기</li>
+<li>Memory 가 어떻게 동작하는지 알기</li>
+<li>데이터가 어디에 저장되는지 파악하기</li>
+<li>한 줄 명령으로 전체 설정 백업하기</li>
+</ul>
+<hr>
+<h2 id="workspace-란">Workspace 란?</h2>
+<p>Workspace 는 <strong>비서만의 개인 사무실</strong> 입니다.</p>
+<ul>
+<li>비서가 읽는 파일, 쓰는 문서, 실행하는 스크립트는 이 폴더 안에서 이뤄집니다</li>
+<li>여러 Workspace 를 만들면 서로 다른 일을 깔끔하게 분리할 수 있습니다</li>
+</ul>
+<pre><code>~/.openclaw/workspace-main        ← 메인 비서의 사무실
+~/.openclaw/workspace-project-a   ← 프로젝트 A 의 사무실
+~/.openclaw/workspace-project-b   ← 프로젝트 B 의 사무실
+</code></pre>
+<p>이렇게 하면 "개인 일기 정리해 줘"와 "프로젝트 A 코드 작성해 줘"가 섞이지 않습니다.</p>
+<hr>
+<h2 id="memory-는-어떻게-동작할까">Memory 는 어떻게 동작할까?</h2>
+<p>OpenClaw 는 대화 중 중요한 정보를 <strong>Memory</strong> 로 저장해 두고 나중에 검색하거나 다시 참고할 수 있게 합니다.</p>
+<p>쉽게 말해, <strong>예전에 말한 내용을 비서가 기억할 수 있게 되는 것</strong> 입니다.</p>
+<blockquote>
+<p>⚠️ 자꾸 잊는 것처럼 느껴진다면 다음을 확인하세요:</p>
+<ul>
+<li>Memory 기능이 켜져 있는가? 의미 검색에는 OpenAI API key 가 필요할 수 있습니다</li>
+<li>오래된 Memory 가 정리, 압축, 길이 제한 처리되지 않았는가?</li>
+<li>새 세션을 열지 않았는가? 새 세션은 단기 문맥이 비어 있습니다</li>
+</ul>
+</blockquote>
+<hr>
+<h2 id="데이터는-어디에-저장될까">데이터는 어디에 저장될까?</h2>
+<table>
+<thead>
+<tr>
+<th>종류</th>
+<th>경로</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td>설정 파일</td>
+<td><code>~/.openclaw/openclaw.json</code></td>
+</tr>
+<tr>
+<td>Workspace</td>
+<td><code>~/.openclaw/workspace-&#x3C;name>/</code></td>
+</tr>
+<tr>
+<td>Session 과 Memory</td>
+<td><code>~/.openclaw/</code> 아래 하위 디렉터리</td>
+</tr>
+</tbody>
+</table>
+<hr>
+<h2 id="한-줄로-백업하기">한 줄로 백업하기</h2>
+<p>OpenClaw 의 중요한 자산은 대부분 <code>~/.openclaw</code> 아래에 있습니다. 정기적으로 백업해 두세요.</p>
+<figure data-rehype-pretty-code-figure=""><pre style="background-color:#24292e;color:#e1e4e8" tabindex="0" data-language="bash" data-theme="github-dark"><code data-language="bash" data-theme="github-dark" style="display: grid;"><span data-line=""><span style="color:#6A737D"># 백업 위치로 전체 복사</span></span>
+<span data-line=""><span style="color:#B392F0">cp</span><span style="color:#79B8FF"> -r</span><span style="color:#9ECBFF"> ~/.openclaw</span><span style="color:#9ECBFF"> ~/backup/openclaw-backup-</span><span style="color:#E1E4E8">$(</span><span style="color:#B392F0">date</span><span style="color:#9ECBFF"> +%Y%m%d</span><span style="color:#E1E4E8">)</span></span></code></pre></figure>
+<blockquote>
+<p>💡 새 컴퓨터로 옮길 때도 <code>~/.openclaw</code> 전체를 복사하면 온보딩을 다시 하지 않고 이어갈 수 있는 경우가 많습니다.</p>
+</blockquote>
+<hr>
+<h2 id="다음-글">다음 글</h2>
+<p>워크스페이스 기본은 끝났습니다. 이제 <strong>여러 비서에게 역할을 나누는 구조</strong> 로 넘어가 봅시다.</p>
+<p><a href="05-skills-intro">← 이전 글: Skills</a> | 👉 <a href="07-multi-agent-bindings">하나의 Gateway 뒤에서 여러 비서 돌리기: Bindings</a></p>0:{"buildId":"Yck3R4ooQxWkwGLT6is1X","rsc":["$","$1","c",{"children":[[["$","script",null,{"type":"application/ld+json","dangerouslySetInnerHTML":{"__html":"{\"@context\":\"https://schema.org\",\"@type\":\"Article\",\"headline\":\"비서의 뇌는 어디에 있을까? 메모리와 워크스페이스 이해하기\",\"description\":\"Workspace 구성, Memory 동작 방식, 데이터 저장 위치, 그리고 한 줄 백업 방법까지 설명합니다.\",\"url\":\"https://benxhub.com/ko/blog/openclaw/06-memory-workspace\",\"mainEntityOfPage\":{\"@type\":\"WebPage\",\"@id\":\"https://benxhub.com/ko/blog/openclaw/06-memory-workspace\"},\"datePublished\":\"2026-03-08T00:00:00.000Z\",\"dateModified\":\"2026-03-08T00:00:00.000Z\",\"keywords\":\"openclaw, memory, workspace, data\",\"inLanguage\":\"ko\",\"author\":{\"@type\":\"Person\",\"name\":\"BenX\",\"url\":\"https://benxhub.com\"},\"publisher\":{\"@type\":\"Organization\",\"name\":\"BenXHub Blog\",\"url\":\"https://benxhub.com\"}}"}}],["$","div",null,{"className":"mx-auto max-w-6xl px-4 py-12 sm:px-6","children":["$","div",null,{"className":"lg:grid lg:grid-cols-[1fr_240px] lg:gap-14","children":[["$","article",null,{"children":[["$","header",null,{"className":"mb-10","children":[["$","div",null,{"className":"mb-4 flex flex-wrap gap-2","children":[["$","$L2","openclaw",{"href":"/ko/tags/openclaw","localeCookie":{"name":"NEXT_LOCALE","sameSite":"lax"},"className":"inline-flex items-center rounded-full px-2.5 py-0.5 text-xs font-medium transition-colors","style":{"background":"var(--color-code-bg)","color":"var(--color-accent)","border":"1px solid var(--color-border)"},"children":["#","openclaw"]}],["$","$L2","memory",{"href":"/ko/tags/memory","localeCookie":{"name":"NEXT_LOCALE","sameSite":"lax"},"className":"inline-flex items-center rounded-full px-2.5 py-0.5 text-xs font-medium transition-colors","style":{"background":"var(--color-code-bg)","color":"var(--color-accent)","border":"1px solid var(--color-border)"},"children":["#","memory"]}],["$","$L2","workspace",{"href":"/ko/tags/workspace","localeCookie":{"name":"NEXT_LOCALE","sameSite":"lax"},"className":"inline-flex items-center rounded-full px-2.5 py-0.5 text-xs font-medium transition-colors","style":{"background":"var(--color-code-bg)","color":"var(--color-accent)","border":"1px solid var(--color-border)"},"children":["#","workspace"]}],["$","$L2","data",{"href":"/ko/tags/data","localeCookie":{"name":"NEXT_LOCALE","sameSite":"lax"},"className":"inline-flex items-center rounded-full px-2.5 py-0.5 text-xs font-medium transition-colors","style":{"background":"var(--color-code-bg)","color":"var(--color-accent)","border":"1px solid var(--color-border)"},"children":["#","data"]}]]}],["$","h1",null,{"className":"mb-4 text-3xl leading-snug font-bold tracking-tight sm:text-4xl","style":{"color":"var(--color-text)"},"children":"비서의 뇌는 어디에 있을까? 메모리와 워크스페이스 이해하기"}],["$","div",null,{"className":"flex flex-wrap items-center gap-3 text-sm","style":{"color":"var(--color-muted)"},"children":[["$","time",null,{"dateTime":"2026-03-08","children":"2026년 3월 8일"}],["$","span",null,{"aria-hidden":"true","children":"·"}],["$","span",null,{"children":"4 min read"}]]}],"$undefined",["$","div",null,{"className":"mt-6 border-b","style":{"borderColor":"var(--color-border)"}}]]}],["$","div",null,{"className":"prose","dangerouslySetInnerHTML":{"__html":"$3"}}],"$L4"]}],"$L5"]}]}]],["$L6"],"$L7"]}],"loading":null,"isPartial":false}
+4:["$","footer",null,{"className":"mt-14 border-t pt-8","style":{"borderColor":"var(--color-border)"},"children":[["$","div",null,{"className":"mb-8 flex flex-wrap gap-2","children":[["$","$L2","openclaw",{"href":"/ko/tags/openclaw","localeCookie":{"name":"NEXT_LOCALE","sameSite":"lax"},"className":"inline-flex items-center rounded-full px-3 py-1 text-sm font-medium transition-colors","style":{"background":"var(--color-code-bg)","color":"var(--color-accent)","border":"1px solid var(--color-border)"},"children":["#","openclaw"]}],["$","$L2","memory",{"href":"/ko/tags/memory","localeCookie":{"name":"NEXT_LOCALE","sameSite":"lax"},"className":"inline-flex items-center rounded-full px-3 py-1 text-sm font-medium transition-colors","style":{"background":"var(--color-code-bg)","color":"var(--color-accent)","border":"1px solid var(--color-border)"},"children":["#","memory"]}],["$","$L2","workspace",{"href":"/ko/tags/workspace","localeCookie":{"name":"NEXT_LOCALE","sameSite":"lax"},"className":"inline-flex items-center rounded-full px-3 py-1 text-sm font-medium transition-colors","style":{"background":"var(--color-code-bg)","color":"var(--color-accent)","border":"1px solid var(--color-border)"},"children":["#","workspace"]}],["$","$L2","data",{"href":"/ko/tags/data","localeCookie":{"name":"NEXT_LOCALE","sameSite":"lax"},"className":"inline-flex items-center rounded-full px-3 py-1 text-sm font-medium transition-colors","style":{"background":"var(--color-code-bg)","color":"var(--color-accent)","border":"1px solid var(--color-border)"},"children":["#","data"]}]]}],["$","nav",null,{"aria-label":"글 탐색","className":"grid grid-cols-1 gap-4 sm:grid-cols-2","children":[["$","$L2",null,{"href":"/ko/blog/openclaw/05-skills-intro","localeCookie":{"name":"NEXT_LOCALE","sameSite":"lax"},"className":"group rounded-lg border p-4 transition-colors hover:border-accent","style":{"borderColor":"var(--color-border)","background":"var(--color-surface)"},"children":[["$","p",null,{"className":"mb-1 text-xs","style":{"color":"var(--color-muted)"},"children":"← 최신 글"}],["$","p",null,{"className":"line-clamp-1 text-sm font-medium transition-colors group-hover:text-accent","style":{"color":"var(--color-text)"},"children":"비서에게 도구를 쥐여주자: Skills 로 말만 하는 존재에서 실행하는 존재로"}]]}],["$","$L2",null,{"href":"/ko/blog/openclaw/07-multi-agent-bindings","localeCookie":{"name":"NEXT_LOCALE","sameSite":"lax"},"className":"group rounded-lg border p-4 text-right transition-colors hover:border-accent","style":{"borderColor":"var(--color-border)","background":"var(--color-surface)"},"children":[["$","p",null,{"className":"mb-1 text-xs","style":{"color":"var(--color-muted)"},"children":"이전 글 →"}],["$","p",null,{"className":"line-clamp-1 text-sm font-medium transition-colors group-hover:text-accent","style":{"color":"var(--color-text)"},"children":"하나의 Gateway, 여러 비서: Bindings 로 올바른 메시지를 올바른 Agent 에게"}]]}]]}]]}]
+9:Tf43,<p>AI 에게 한참 설명해 놓고 다음 대화에서 전부 잊어버린 모습을 보고 허탈했던 적, 있으시죠?</p>
+<p>이 글은 그 답답함을 줄이기 위해 준비했습니다.</p>
+<h2 id="이번-글에서-배울-것">이번 글에서 배울 것</h2>
+<ul>
+<li>Workspace 의 의미와 용도 이해하기</li>
+<li>Memory 가 어떻게 동작하는지 알기</li>
+<li>데이터가 어디에 저장되는지 파악하기</li>
+<li>한 줄 명령으로 전체 설정 백업하기</li>
+</ul>
+<hr>
+<h2 id="workspace-란">Workspace 란?</h2>
+<p>Workspace 는 <strong>비서만의 개인 사무실</strong> 입니다.</p>
+<ul>
+<li>비서가 읽는 파일, 쓰는 문서, 실행하는 스크립트는 이 폴더 안에서 이뤄집니다</li>
+<li>여러 Workspace 를 만들면 서로 다른 일을 깔끔하게 분리할 수 있습니다</li>
+</ul>
+<pre><code>~/.openclaw/workspace-main        ← 메인 비서의 사무실
+~/.openclaw/workspace-project-a   ← 프로젝트 A 의 사무실
+~/.openclaw/workspace-project-b   ← 프로젝트 B 의 사무실
+</code></pre>
+<p>이렇게 하면 "개인 일기 정리해 줘"와 "프로젝트 A 코드 작성해 줘"가 섞이지 않습니다.</p>
+<hr>
+<h2 id="memory-는-어떻게-동작할까">Memory 는 어떻게 동작할까?</h2>
+<p>OpenClaw 는 대화 중 중요한 정보를 <strong>Memory</strong> 로 저장해 두고 나중에 검색하거나 다시 참고할 수 있게 합니다.</p>
+<p>쉽게 말해, <strong>예전에 말한 내용을 비서가 기억할 수 있게 되는 것</strong> 입니다.</p>
+<blockquote>
+<p>⚠️ 자꾸 잊는 것처럼 느껴진다면 다음을 확인하세요:</p>
+<ul>
+<li>Memory 기능이 켜져 있는가? 의미 검색에는 OpenAI API key 가 필요할 수 있습니다</li>
+<li>오래된 Memory 가 정리, 압축, 길이 제한 처리되지 않았는가?</li>
+<li>새 세션을 열지 않았는가? 새 세션은 단기 문맥이 비어 있습니다</li>
+</ul>
+</blockquote>
+<hr>
+<h2 id="데이터는-어디에-저장될까">데이터는 어디에 저장될까?</h2>
+<table>
+<thead>
+<tr>
+<th>종류</th>
+<th>경로</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td>설정 파일</td>
+<td><code>~/.openclaw/openclaw.json</code></td>
+</tr>
+<tr>
+<td>Workspace</td>
+<td><code>~/.openclaw/workspace-&#x3C;name>/</code></td>
+</tr>
+<tr>
+<td>Session 과 Memory</td>
+<td><code>~/.openclaw/</code> 아래 하위 디렉터리</td>
+</tr>
+</tbody>
+</table>
+<hr>
+<h2 id="한-줄로-백업하기">한 줄로 백업하기</h2>
+<p>OpenClaw 의 중요한 자산은 대부분 <code>~/.openclaw</code> 아래에 있습니다. 정기적으로 백업해 두세요.</p>
+<figure data-rehype-pretty-code-figure=""><pre style="background-color:#24292e;color:#e1e4e8" tabindex="0" data-language="bash" data-theme="github-dark"><code data-language="bash" data-theme="github-dark" style="display: grid;"><span data-line=""><span style="color:#6A737D"># 백업 위치로 전체 복사</span></span>
+<span data-line=""><span style="color:#B392F0">cp</span><span style="color:#79B8FF"> -r</span><span style="color:#9ECBFF"> ~/.openclaw</span><span style="color:#9ECBFF"> ~/backup/openclaw-backup-</span><span style="color:#E1E4E8">$(</span><span style="color:#B392F0">date</span><span style="color:#9ECBFF"> +%Y%m%d</span><span style="color:#E1E4E8">)</span></span></code></pre></figure>
+<blockquote>
+<p>💡 새 컴퓨터로 옮길 때도 <code>~/.openclaw</code> 전체를 복사하면 온보딩을 다시 하지 않고 이어갈 수 있는 경우가 많습니다.</p>
+</blockquote>
+<hr>
+<h2 id="다음-글">다음 글</h2>
+<p>워크스페이스 기본은 끝났습니다. 이제 <strong>여러 비서에게 역할을 나누는 구조</strong> 로 넘어가 봅시다.</p>
+<p><a href="05-skills-intro">← 이전 글: Skills</a> | 👉 <a href="07-multi-agent-bindings">하나의 Gateway 뒤에서 여러 비서 돌리기: Bindings</a></p>5:["$","aside",null,{"className":"hidden lg:block","children":["$","$L8",null,{"html":"$9"}]}]
+6:["$","script","script-0",{"src":"/_next/static/chunks/2dddb3bc05093f69.js","async":true}]
+7:["$","$La",null,{"children":["$","$b",null,{"name":"Next.MetadataOutlet","children":"$@c"}]}]
+c:null

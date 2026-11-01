@@ -1,0 +1,181 @@
+1:"$Sreact.fragment"
+2:I[14864,["/_next/static/chunks/7923a261b80bb6e1.js","/_next/static/chunks/e09b4358027e8033.js","/_next/static/chunks/2dddb3bc05093f69.js"],"default"]
+8:I[24801,["/_next/static/chunks/7923a261b80bb6e1.js","/_next/static/chunks/e09b4358027e8033.js","/_next/static/chunks/2dddb3bc05093f69.js"],"default"]
+a:I[50183,["/_next/static/chunks/5a5b5b13c22d14f7.js","/_next/static/chunks/a484d1d3dd4b55ab.js"],"OutletBoundary"]
+b:"$Sreact.suspense"
+3:T15e7,<p>La plupart des tutoriels perdent les gens à cette étape précise. L'objectif de celui-ci est simple : <strong>vous faire réussir du premier coup</strong>.</p>
+<h2 id="ce-que-vous-allez-apprendre">Ce que vous allez apprendre</h2>
+<ul>
+<li>Vérifier les prérequis avant l'installation</li>
+<li>Installer OpenClaw</li>
+<li>Terminer la configuration et créer votre premier assistant</li>
+<li>Ouvrir le tableau de bord avec succès</li>
+</ul>
+<hr>
+<h2 id="deux-points-à-vérifier-avant-dinstaller">Deux points à vérifier avant d'installer</h2>
+<p>Il ne faut pas grand-chose, mais ces deux points sont non négociables :</p>
+<p><strong>1. Node.js (version LTS)</strong></p>
+<figure data-rehype-pretty-code-figure=""><pre style="background-color:#24292e;color:#e1e4e8" tabindex="0" data-language="bash" data-theme="github-dark"><code data-language="bash" data-theme="github-dark" style="display: grid;"><span data-line=""><span style="color:#B392F0">node</span><span style="color:#79B8FF"> --version</span></span>
+<span data-line=""><span style="color:#6A737D"># Si vous voyez un numéro de version, c'est bon</span></span></code></pre></figure>
+<p><strong>2. Une clé API pour votre modèle IA</strong></p>
+<p>Pour utiliser des modèles cloud (Anthropic Claude, OpenAI, etc.), il vous faut une clé API. Pour rester entièrement hors ligne, vous pouvez utiliser un modèle local. Cette série suppose un modèle cloud par défaut.</p>
+<blockquote>
+<p>💡 Vous ne savez pas comment obtenir une clé API ? Cherchez « Anthropic API key » (ou équivalent) : en général c'est réglé en quelques minutes.</p>
+</blockquote>
+<hr>
+<h2 id="installer-openclaw">Installer OpenClaw</h2>
+<p>La doc officielle recommande <strong>l'installation via Git</strong>, plus simple à mettre à jour et à déboguer ensuite.</p>
+<p><strong>macOS / Linux</strong></p>
+<figure data-rehype-pretty-code-figure=""><pre style="background-color:#24292e;color:#e1e4e8" tabindex="0" data-language="bash" data-theme="github-dark"><code data-language="bash" data-theme="github-dark" style="display: grid;"><span data-line=""><span style="color:#6A737D"># Suivez les commandes Quick Start de docs.openclaw.ai</span></span>
+<span data-line=""><span style="color:#6A737D"># Dans la plupart des cas, c'est un script curl en une ligne</span></span></code></pre></figure>
+<p><strong>Windows</strong></p>
+<figure data-rehype-pretty-code-figure=""><pre style="background-color:#24292e;color:#e1e4e8" tabindex="0" data-language="bash" data-theme="github-dark"><code data-language="bash" data-theme="github-dark" style="display: grid;"><span data-line=""><span style="color:#6A737D"># Vérifiez d'abord que Git est installé et dans le PATH</span></span>
+<span data-line=""><span style="color:#B392F0">git</span><span style="color:#79B8FF"> --version</span></span>
+<span data-line=""> </span>
+<span data-line=""><span style="color:#6A737D"># Puis suivez le guide d'installation Windows sur docs.openclaw.ai</span></span></code></pre></figure>
+<blockquote>
+<p>⚠️ Bloqué sur « git introuvable » ou « openclaw non reconnu » ? Ajoutez Git au PATH système, redémarrez le terminal et réessayez.</p>
+</blockquote>
+<hr>
+<h2 id="premier-lancement--faites-éclore-votre-assistant">Premier lancement : faites éclore votre assistant</h2>
+<p>Après l'installation, lancez :</p>
+<figure data-rehype-pretty-code-figure=""><pre style="background-color:#24292e;color:#e1e4e8" tabindex="0" data-language="bash" data-theme="github-dark"><code data-language="bash" data-theme="github-dark" style="display: grid;"><span data-line=""><span style="color:#B392F0">openclaw</span><span style="color:#9ECBFF"> gateway</span></span></code></pre></figure>
+<p><strong>Le premier lancement ouvre l'assistant de configuration</strong>, qui pose quelques questions simples :</p>
+<ol>
+<li>Quel modèle IA voulez-vous utiliser ?</li>
+<li>Quelle est votre clé API ?</li>
+<li>Où doit vivre l'espace de travail ?</li>
+</ol>
+<p>Répondez et OpenClaw fera éclore votre premier assistant.</p>
+<blockquote>
+<p>💡 Bloqué longtemps sur « wake up my friend » ? Vérifiez la clé API, la connexion Internet et les messages d'erreur affichés dans le terminal.</p>
+</blockquote>
+<hr>
+<h2 id="que-obtenez-vous-après-la-configuration-">Que obtenez-vous après la configuration ?</h2>
+<ul>
+<li>Un <strong>token</strong> pour la connexion au tableau de bord</li>
+<li>Un fichier de config de base dans <code>~/.openclaw/openclaw.json</code></li>
+<li>Votre premier assistant IA, déjà en cours d'exécution</li>
+</ul>
+<hr>
+<h2 id="ouvrir-le-tableau-de-bord">Ouvrir le tableau de bord</h2>
+<p>Avec la passerelle toujours en cours d'exécution, ouvrez votre navigateur :</p>
+<pre><code>http://127.0.0.1:18789/
+</code></pre>
+<p><strong>Situations courantes</strong></p>
+<table>
+<thead>
+<tr>
+<th>Ce que vous voyez</th>
+<th>Que faire</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td><code>pairing required</code></td>
+<td>Exécutez <code>openclaw devices list</code>, puis <code>openclaw devices approve &#x3C;id></code></td>
+</tr>
+<tr>
+<td>Demande de token</td>
+<td>Collez le token obtenu lors de la configuration</td>
+</tr>
+<tr>
+<td>Pas de réponse</td>
+<td>Vérifiez que <code>openclaw gateway</code> tourne toujours</td>
+</tr>
+</tbody>
+</table>
+<hr>
+<h2 id="suite">Suite</h2>
+<p>Votre assistant est maintenant à la maison. Ensuite, nous rendrons le flux de connexion et l'interface du tableau de bord beaucoup moins mystérieux.</p>
+<p><a href="01-intro">← Précédent : Découvrir OpenClaw</a> | 👉 <a href="03-dashboard-auth">Plus de confusion avec le tableau de bord</a></p>0:{"buildId":"Yck3R4ooQxWkwGLT6is1X","rsc":["$","$1","c",{"children":[[["$","script",null,{"type":"application/ld+json","dangerouslySetInnerHTML":{"__html":"{\"@context\":\"https://schema.org\",\"@type\":\"Article\",\"headline\":\"Installer OpenClaw en 5 minutes : guide pour un premier lancement réussi\",\"description\":\"Installez OpenClaw de zéro, terminez l'assistant de configuration et ouvrez votre premier tableau de bord.\",\"url\":\"https://benxhub.com/fr/blog/openclaw/02-quick-install\",\"mainEntityOfPage\":{\"@type\":\"WebPage\",\"@id\":\"https://benxhub.com/fr/blog/openclaw/02-quick-install\"},\"datePublished\":\"2026-03-08T00:00:00.000Z\",\"dateModified\":\"2026-03-08T00:00:00.000Z\",\"keywords\":\"openclaw, installation, quick-start, setup\",\"inLanguage\":\"fr\",\"author\":{\"@type\":\"Person\",\"name\":\"BenX\",\"url\":\"https://benxhub.com\"},\"publisher\":{\"@type\":\"Organization\",\"name\":\"BenXHub Blog\",\"url\":\"https://benxhub.com\"}}"}}],["$","div",null,{"className":"mx-auto max-w-6xl px-4 py-12 sm:px-6","children":["$","div",null,{"className":"lg:grid lg:grid-cols-[1fr_240px] lg:gap-14","children":[["$","article",null,{"children":[["$","header",null,{"className":"mb-10","children":[["$","div",null,{"className":"mb-4 flex flex-wrap gap-2","children":[["$","$L2","openclaw",{"href":"/fr/tags/openclaw","localeCookie":{"name":"NEXT_LOCALE","sameSite":"lax"},"className":"inline-flex items-center rounded-full px-2.5 py-0.5 text-xs font-medium transition-colors","style":{"background":"var(--color-code-bg)","color":"var(--color-accent)","border":"1px solid var(--color-border)"},"children":["#","openclaw"]}],["$","$L2","installation",{"href":"/fr/tags/installation","localeCookie":{"name":"NEXT_LOCALE","sameSite":"lax"},"className":"inline-flex items-center rounded-full px-2.5 py-0.5 text-xs font-medium transition-colors","style":{"background":"var(--color-code-bg)","color":"var(--color-accent)","border":"1px solid var(--color-border)"},"children":["#","installation"]}],["$","$L2","quick-start",{"href":"/fr/tags/quick-start","localeCookie":{"name":"NEXT_LOCALE","sameSite":"lax"},"className":"inline-flex items-center rounded-full px-2.5 py-0.5 text-xs font-medium transition-colors","style":{"background":"var(--color-code-bg)","color":"var(--color-accent)","border":"1px solid var(--color-border)"},"children":["#","quick-start"]}],["$","$L2","setup",{"href":"/fr/tags/setup","localeCookie":{"name":"NEXT_LOCALE","sameSite":"lax"},"className":"inline-flex items-center rounded-full px-2.5 py-0.5 text-xs font-medium transition-colors","style":{"background":"var(--color-code-bg)","color":"var(--color-accent)","border":"1px solid var(--color-border)"},"children":["#","setup"]}]]}],["$","h1",null,{"className":"mb-4 text-3xl leading-snug font-bold tracking-tight sm:text-4xl","style":{"color":"var(--color-text)"},"children":"Installer OpenClaw en 5 minutes : guide pour un premier lancement réussi"}],["$","div",null,{"className":"flex flex-wrap items-center gap-3 text-sm","style":{"color":"var(--color-muted)"},"children":[["$","time",null,{"dateTime":"2026-03-08","children":"8 mars 2026"}],["$","span",null,{"aria-hidden":"true","children":"·"}],["$","span",null,{"children":"3 min read"}]]}],"$undefined",["$","div",null,{"className":"mt-6 border-b","style":{"borderColor":"var(--color-border)"}}]]}],["$","div",null,{"className":"prose","dangerouslySetInnerHTML":{"__html":"$3"}}],"$L4"]}],"$L5"]}]}]],["$L6"],"$L7"]}],"loading":null,"isPartial":false}
+4:["$","footer",null,{"className":"mt-14 border-t pt-8","style":{"borderColor":"var(--color-border)"},"children":[["$","div",null,{"className":"mb-8 flex flex-wrap gap-2","children":[["$","$L2","openclaw",{"href":"/fr/tags/openclaw","localeCookie":{"name":"NEXT_LOCALE","sameSite":"lax"},"className":"inline-flex items-center rounded-full px-3 py-1 text-sm font-medium transition-colors","style":{"background":"var(--color-code-bg)","color":"var(--color-accent)","border":"1px solid var(--color-border)"},"children":["#","openclaw"]}],["$","$L2","installation",{"href":"/fr/tags/installation","localeCookie":{"name":"NEXT_LOCALE","sameSite":"lax"},"className":"inline-flex items-center rounded-full px-3 py-1 text-sm font-medium transition-colors","style":{"background":"var(--color-code-bg)","color":"var(--color-accent)","border":"1px solid var(--color-border)"},"children":["#","installation"]}],["$","$L2","quick-start",{"href":"/fr/tags/quick-start","localeCookie":{"name":"NEXT_LOCALE","sameSite":"lax"},"className":"inline-flex items-center rounded-full px-3 py-1 text-sm font-medium transition-colors","style":{"background":"var(--color-code-bg)","color":"var(--color-accent)","border":"1px solid var(--color-border)"},"children":["#","quick-start"]}],["$","$L2","setup",{"href":"/fr/tags/setup","localeCookie":{"name":"NEXT_LOCALE","sameSite":"lax"},"className":"inline-flex items-center rounded-full px-3 py-1 text-sm font-medium transition-colors","style":{"background":"var(--color-code-bg)","color":"var(--color-accent)","border":"1px solid var(--color-border)"},"children":["#","setup"]}]]}],["$","nav",null,{"aria-label":"Navigation des articles","className":"grid grid-cols-1 gap-4 sm:grid-cols-2","children":[["$","$L2",null,{"href":"/fr/blog/openclaw/01-intro","localeCookie":{"name":"NEXT_LOCALE","sameSite":"lax"},"className":"group rounded-lg border p-4 transition-colors hover:border-accent","style":{"borderColor":"var(--color-border)","background":"var(--color-surface)"},"children":[["$","p",null,{"className":"mb-1 text-xs","style":{"color":"var(--color-muted)"},"children":"← Plus récent"}],["$","p",null,{"className":"line-clamp-1 text-sm font-medium transition-colors group-hover:text-accent","style":{"color":"var(--color-text)"},"children":"Série OpenClaw : Ramenez votre assistant IA à la maison"}]]}],["$","$L2",null,{"href":"/fr/blog/openclaw/03-dashboard-auth","localeCookie":{"name":"NEXT_LOCALE","sameSite":"lax"},"className":"group rounded-lg border p-4 text-right transition-colors hover:border-accent","style":{"borderColor":"var(--color-border)","background":"var(--color-surface)"},"children":[["$","p",null,{"className":"mb-1 text-xs","style":{"color":"var(--color-muted)"},"children":"Plus ancien →"}],["$","p",null,{"className":"line-clamp-1 text-sm font-medium transition-colors group-hover:text-accent","style":{"color":"var(--color-text)"},"children":"Le tableau de bord vous bloque ? Comprendre l'authentification OpenClaw en 3 minutes"}]]}]]}]]}]
+9:T15e7,<p>La plupart des tutoriels perdent les gens à cette étape précise. L'objectif de celui-ci est simple : <strong>vous faire réussir du premier coup</strong>.</p>
+<h2 id="ce-que-vous-allez-apprendre">Ce que vous allez apprendre</h2>
+<ul>
+<li>Vérifier les prérequis avant l'installation</li>
+<li>Installer OpenClaw</li>
+<li>Terminer la configuration et créer votre premier assistant</li>
+<li>Ouvrir le tableau de bord avec succès</li>
+</ul>
+<hr>
+<h2 id="deux-points-à-vérifier-avant-dinstaller">Deux points à vérifier avant d'installer</h2>
+<p>Il ne faut pas grand-chose, mais ces deux points sont non négociables :</p>
+<p><strong>1. Node.js (version LTS)</strong></p>
+<figure data-rehype-pretty-code-figure=""><pre style="background-color:#24292e;color:#e1e4e8" tabindex="0" data-language="bash" data-theme="github-dark"><code data-language="bash" data-theme="github-dark" style="display: grid;"><span data-line=""><span style="color:#B392F0">node</span><span style="color:#79B8FF"> --version</span></span>
+<span data-line=""><span style="color:#6A737D"># Si vous voyez un numéro de version, c'est bon</span></span></code></pre></figure>
+<p><strong>2. Une clé API pour votre modèle IA</strong></p>
+<p>Pour utiliser des modèles cloud (Anthropic Claude, OpenAI, etc.), il vous faut une clé API. Pour rester entièrement hors ligne, vous pouvez utiliser un modèle local. Cette série suppose un modèle cloud par défaut.</p>
+<blockquote>
+<p>💡 Vous ne savez pas comment obtenir une clé API ? Cherchez « Anthropic API key » (ou équivalent) : en général c'est réglé en quelques minutes.</p>
+</blockquote>
+<hr>
+<h2 id="installer-openclaw">Installer OpenClaw</h2>
+<p>La doc officielle recommande <strong>l'installation via Git</strong>, plus simple à mettre à jour et à déboguer ensuite.</p>
+<p><strong>macOS / Linux</strong></p>
+<figure data-rehype-pretty-code-figure=""><pre style="background-color:#24292e;color:#e1e4e8" tabindex="0" data-language="bash" data-theme="github-dark"><code data-language="bash" data-theme="github-dark" style="display: grid;"><span data-line=""><span style="color:#6A737D"># Suivez les commandes Quick Start de docs.openclaw.ai</span></span>
+<span data-line=""><span style="color:#6A737D"># Dans la plupart des cas, c'est un script curl en une ligne</span></span></code></pre></figure>
+<p><strong>Windows</strong></p>
+<figure data-rehype-pretty-code-figure=""><pre style="background-color:#24292e;color:#e1e4e8" tabindex="0" data-language="bash" data-theme="github-dark"><code data-language="bash" data-theme="github-dark" style="display: grid;"><span data-line=""><span style="color:#6A737D"># Vérifiez d'abord que Git est installé et dans le PATH</span></span>
+<span data-line=""><span style="color:#B392F0">git</span><span style="color:#79B8FF"> --version</span></span>
+<span data-line=""> </span>
+<span data-line=""><span style="color:#6A737D"># Puis suivez le guide d'installation Windows sur docs.openclaw.ai</span></span></code></pre></figure>
+<blockquote>
+<p>⚠️ Bloqué sur « git introuvable » ou « openclaw non reconnu » ? Ajoutez Git au PATH système, redémarrez le terminal et réessayez.</p>
+</blockquote>
+<hr>
+<h2 id="premier-lancement--faites-éclore-votre-assistant">Premier lancement : faites éclore votre assistant</h2>
+<p>Après l'installation, lancez :</p>
+<figure data-rehype-pretty-code-figure=""><pre style="background-color:#24292e;color:#e1e4e8" tabindex="0" data-language="bash" data-theme="github-dark"><code data-language="bash" data-theme="github-dark" style="display: grid;"><span data-line=""><span style="color:#B392F0">openclaw</span><span style="color:#9ECBFF"> gateway</span></span></code></pre></figure>
+<p><strong>Le premier lancement ouvre l'assistant de configuration</strong>, qui pose quelques questions simples :</p>
+<ol>
+<li>Quel modèle IA voulez-vous utiliser ?</li>
+<li>Quelle est votre clé API ?</li>
+<li>Où doit vivre l'espace de travail ?</li>
+</ol>
+<p>Répondez et OpenClaw fera éclore votre premier assistant.</p>
+<blockquote>
+<p>💡 Bloqué longtemps sur « wake up my friend » ? Vérifiez la clé API, la connexion Internet et les messages d'erreur affichés dans le terminal.</p>
+</blockquote>
+<hr>
+<h2 id="que-obtenez-vous-après-la-configuration-">Que obtenez-vous après la configuration ?</h2>
+<ul>
+<li>Un <strong>token</strong> pour la connexion au tableau de bord</li>
+<li>Un fichier de config de base dans <code>~/.openclaw/openclaw.json</code></li>
+<li>Votre premier assistant IA, déjà en cours d'exécution</li>
+</ul>
+<hr>
+<h2 id="ouvrir-le-tableau-de-bord">Ouvrir le tableau de bord</h2>
+<p>Avec la passerelle toujours en cours d'exécution, ouvrez votre navigateur :</p>
+<pre><code>http://127.0.0.1:18789/
+</code></pre>
+<p><strong>Situations courantes</strong></p>
+<table>
+<thead>
+<tr>
+<th>Ce que vous voyez</th>
+<th>Que faire</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td><code>pairing required</code></td>
+<td>Exécutez <code>openclaw devices list</code>, puis <code>openclaw devices approve &#x3C;id></code></td>
+</tr>
+<tr>
+<td>Demande de token</td>
+<td>Collez le token obtenu lors de la configuration</td>
+</tr>
+<tr>
+<td>Pas de réponse</td>
+<td>Vérifiez que <code>openclaw gateway</code> tourne toujours</td>
+</tr>
+</tbody>
+</table>
+<hr>
+<h2 id="suite">Suite</h2>
+<p>Votre assistant est maintenant à la maison. Ensuite, nous rendrons le flux de connexion et l'interface du tableau de bord beaucoup moins mystérieux.</p>
+<p><a href="01-intro">← Précédent : Découvrir OpenClaw</a> | 👉 <a href="03-dashboard-auth">Plus de confusion avec le tableau de bord</a></p>5:["$","aside",null,{"className":"hidden lg:block","children":["$","$L8",null,{"html":"$9"}]}]
+6:["$","script","script-0",{"src":"/_next/static/chunks/2dddb3bc05093f69.js","async":true}]
+7:["$","$La",null,{"children":["$","$b",null,{"name":"Next.MetadataOutlet","children":"$@c"}]}]
+c:null

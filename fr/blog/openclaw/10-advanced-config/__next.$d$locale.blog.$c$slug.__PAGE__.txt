@@ -1,0 +1,261 @@
+1:"$Sreact.fragment"
+2:I[14864,["/_next/static/chunks/7923a261b80bb6e1.js","/_next/static/chunks/e09b4358027e8033.js","/_next/static/chunks/2dddb3bc05093f69.js"],"default"]
+8:I[24801,["/_next/static/chunks/7923a261b80bb6e1.js","/_next/static/chunks/e09b4358027e8033.js","/_next/static/chunks/2dddb3bc05093f69.js"],"default"]
+a:I[50183,["/_next/static/chunks/5a5b5b13c22d14f7.js","/_next/static/chunks/a484d1d3dd4b55ab.js"],"OutletBoundary"]
+b:"$Sreact.suspense"
+3:T1fb4,<p>Si vous êtes arrivé jusqu'ici, vous avez déjà fait passer OpenClaw de zéro à fonctionnel. Bravo.</p>
+<p>Ce dernier article rassemble les habitudes qui rendent votre installation plus stable et plus facile à maintenir.</p>
+<h2 id="ce-que-vous-allez-apprendre">Ce que vous allez apprendre</h2>
+<ul>
+<li>Trouver le fichier de config et comprendre les deux modes d'édition</li>
+<li>Reconnaître la structure d'une config minimale fonctionnelle</li>
+<li>Stocker les clés API en sécurité avec les variables d'environnement</li>
+<li>Utiliser la commande de débogage la plus utile et lire les erreurs courantes</li>
+<li>Choisir la bonne piste de release</li>
+</ul>
+<hr>
+<h2 id="où-se-trouve-le-fichier-de-config-">Où se trouve le fichier de config ?</h2>
+<pre><code>~/.openclaw/openclaw.json
+</code></pre>
+<p>Le format est <strong>JSON5</strong> : commentaires et virgules finales autorisés. Bien plus agréable que du JSON brut.</p>
+<p>Vous pouvez l'éditer de deux façons :</p>
+<ul>
+<li><strong>Mode formulaire</strong> dans l'interface de contrôle pour une approche débutant</li>
+<li><strong>Raw JSON</strong> pour précision et rapidité</li>
+</ul>
+<p>Les deux modes éditent le même fichier et enregistrent au même chemin.</p>
+<hr>
+<h2 id="à-quoi-ressemble-une-config-minimale-fonctionnelle-">À quoi ressemble une config minimale fonctionnelle ?</h2>
+<figure data-rehype-pretty-code-figure=""><pre style="background-color:#24292e;color:#e1e4e8" tabindex="0" data-language="json5" data-theme="github-dark"><code data-language="json5" data-theme="github-dark" style="display: grid;"><span data-line=""><span style="color:#E1E4E8">{</span></span>
+<span data-line=""><span style="color:#9ECBFF">  "agents"</span><span style="color:#E1E4E8">: {</span></span>
+<span data-line=""><span style="color:#9ECBFF">    "list"</span><span style="color:#E1E4E8">: [</span></span>
+<span data-line=""><span style="color:#E1E4E8">      { </span><span style="color:#9ECBFF">"id"</span><span style="color:#E1E4E8">: </span><span style="color:#9ECBFF">"main"</span><span style="color:#E1E4E8">, </span><span style="color:#9ECBFF">"workspace"</span><span style="color:#E1E4E8">: </span><span style="color:#9ECBFF">"~/.openclaw/workspace-main"</span><span style="color:#E1E4E8">, </span><span style="color:#9ECBFF">"default"</span><span style="color:#E1E4E8">: </span><span style="color:#79B8FF">true</span><span style="color:#E1E4E8"> }</span></span>
+<span data-line=""><span style="color:#E1E4E8">    ]</span></span>
+<span data-line=""><span style="color:#E1E4E8">  },</span></span>
+<span data-line=""><span style="color:#9ECBFF">  "channels"</span><span style="color:#E1E4E8">: {</span></span>
+<span data-line=""><span style="color:#9ECBFF">    "telegram"</span><span style="color:#E1E4E8">: {</span></span>
+<span data-line=""><span style="color:#9ECBFF">      "enabled"</span><span style="color:#E1E4E8">: </span><span style="color:#79B8FF">true</span><span style="color:#E1E4E8">,</span></span>
+<span data-line=""><span style="color:#9ECBFF">      "botToken"</span><span style="color:#E1E4E8">: </span><span style="color:#9ECBFF">"votre token de bot"</span></span>
+<span data-line=""><span style="color:#E1E4E8">    }</span></span>
+<span data-line=""><span style="color:#E1E4E8">  },</span></span>
+<span data-line=""><span style="color:#9ECBFF">  "bindings"</span><span style="color:#E1E4E8">: [</span></span>
+<span data-line=""><span style="color:#E1E4E8">    { </span><span style="color:#9ECBFF">"agentId"</span><span style="color:#E1E4E8">: </span><span style="color:#9ECBFF">"main"</span><span style="color:#E1E4E8">, </span><span style="color:#9ECBFF">"match"</span><span style="color:#E1E4E8">: { </span><span style="color:#9ECBFF">"channel"</span><span style="color:#E1E4E8">: </span><span style="color:#9ECBFF">"telegram"</span><span style="color:#E1E4E8"> } }</span></span>
+<span data-line=""><span style="color:#E1E4E8">  ]</span></span>
+<span data-line=""><span style="color:#E1E4E8">}</span></span></code></pre></figure>
+<p>Faites d'abord fonctionner la version simple. Puis ajoutez les fonctionnalités progressivement.</p>
+<hr>
+<h2 id="la-bonne-façon-de-stocker-les-clés-api">La bonne façon de stocker les clés API</h2>
+<p><strong>Évitez d'enfouir les clés API en dur dans la config.</strong></p>
+<p>Les variables d'environnement sont plus sûres :</p>
+<figure data-rehype-pretty-code-figure=""><pre style="background-color:#24292e;color:#e1e4e8" tabindex="0" data-language="bash" data-theme="github-dark"><code data-language="bash" data-theme="github-dark" style="display: grid;"><span data-line=""><span style="color:#6A737D"># Mettez ça dans .env ou dans l'environnement système</span></span>
+<span data-line=""><span style="color:#E1E4E8">ANTHROPIC_API_KEY</span><span style="color:#F97583">=</span><span style="color:#9ECBFF">sk-ant-xxxxx</span></span></code></pre></figure>
+<blockquote>
+<p>⚠️ Si la Gateway tourne comme service système (ex. <code>systemd</code>), assurez-vous que le service charge votre <code>.env</code>. Sinon l'assistant peut échouer car il ne voit pas la clé API, avec des erreurs du type « Shell env off ».</p>
+</blockquote>
+<hr>
+<h2 id="loutil-de-débogage-universel">L'outil de débogage universel</h2>
+<p>Quand quelque chose ne va pas, commencez par :</p>
+<figure data-rehype-pretty-code-figure=""><pre style="background-color:#24292e;color:#e1e4e8" tabindex="0" data-language="bash" data-theme="github-dark"><code data-language="bash" data-theme="github-dark" style="display: grid;"><span data-line=""><span style="color:#B392F0">openclaw</span><span style="color:#9ECBFF"> logs</span><span style="color:#79B8FF"> --follow</span></span></code></pre></figure>
+<p>Les logs en temps réel répondent à un nombre surprenant de questions.</p>
+<p>Erreurs courantes :</p>
+<table>
+<thead>
+<tr>
+<th>Message d'erreur</th>
+<th>Cause probable</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td><code>HTTP 429</code></td>
+<td>Trop de requêtes API, limite de débit atteinte</td>
+</tr>
+<tr>
+<td><code>unauthorized</code></td>
+<td>Problème de token ou de <code>gateway.bind</code></td>
+</tr>
+<tr>
+<td><code>content tool_use input field required</code></td>
+<td>Problème de compatibilité modèle, consultez la doc</td>
+</tr>
+<tr>
+<td>Contexte tronqué</td>
+<td>Démarrez une nouvelle session ou compactez le contexte comme recommandé</td>
+</tr>
+</tbody>
+</table>
+<hr>
+<h2 id="quelle-piste-de-release-choisir-">Quelle piste de release choisir ?</h2>
+<table>
+<thead>
+<tr>
+<th>Piste</th>
+<th>Idéal pour</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td><strong>Stable</strong></td>
+<td>Usage quotidien, option la plus sûre par défaut</td>
+</tr>
+<tr>
+<td><strong>Beta</strong></td>
+<td>Tester de nouvelles fonctionnalités en acceptant quelques bugs</td>
+</tr>
+<tr>
+<td><strong>Dev</strong></td>
+<td>Développeurs qui veulent les derniers changements en premier</td>
+</tr>
+</tbody>
+</table>
+<blockquote>
+<p>💡 Avant une mise à jour majeure, sauvegardez <code>~/.openclaw</code> pour pouvoir revenir en arrière.</p>
+</blockquote>
+<hr>
+<h2 id="série-terminée--que-pouvez-vous-faire-maintenant-">Série terminée : que pouvez-vous faire maintenant ?</h2>
+<p>À travers ces articles, vous avez appris à :</p>
+<ol>
+<li>Comprendre l'idée centrale d'OpenClaw</li>
+<li>L'installer et le lancer pour la première fois</li>
+<li>Gérer l'authentification du tableau de bord</li>
+<li>Connecter Telegram et d'autres canaux</li>
+<li>Rendre l'assistant plus capable avec les Skills</li>
+<li>Gérer mémoire et espaces de travail</li>
+<li>Répartir le travail entre plusieurs assistants</li>
+<li>Déployer la Gateway sur un VPS</li>
+<li>Automatiser des tâches avec Cron</li>
+<li>Déboguer et configurer le système comme un pro</li>
+</ol>
+<p>Pour aller plus loin, la doc officielle sur <a href="https://docs.openclaw.ai">docs.openclaw.ai</a> reste la référence.</p>
+<p><strong>Votre assistant IA est prêt. Faites-le travailler pour vous.</strong></p>
+<p><a href="09-cron-automation">← Précédent : Planification et automatisation</a> | <a href="01-intro">Retour au premier article</a></p>0:{"buildId":"Yck3R4ooQxWkwGLT6is1X","rsc":["$","$1","c",{"children":[[["$","script",null,{"type":"application/ld+json","dangerouslySetInnerHTML":{"__html":"{\"@context\":\"https://schema.org\",\"@type\":\"Article\",\"headline\":\"Le système se comporte bizarrement ? Paramètres avancés et guide de débogage\",\"description\":\"Où se trouve la config, comment stocker les clés API en sécurité, quels outils de débogage utiliser, et comment interpréter les erreurs courantes.\",\"url\":\"https://benxhub.com/fr/blog/openclaw/10-advanced-config\",\"mainEntityOfPage\":{\"@type\":\"WebPage\",\"@id\":\"https://benxhub.com/fr/blog/openclaw/10-advanced-config\"},\"datePublished\":\"2026-03-08T00:00:00.000Z\",\"dateModified\":\"2026-03-08T00:00:00.000Z\",\"keywords\":\"openclaw, configuration, debugging, advanced\",\"inLanguage\":\"fr\",\"author\":{\"@type\":\"Person\",\"name\":\"BenX\",\"url\":\"https://benxhub.com\"},\"publisher\":{\"@type\":\"Organization\",\"name\":\"BenXHub Blog\",\"url\":\"https://benxhub.com\"}}"}}],["$","div",null,{"className":"mx-auto max-w-6xl px-4 py-12 sm:px-6","children":["$","div",null,{"className":"lg:grid lg:grid-cols-[1fr_240px] lg:gap-14","children":[["$","article",null,{"children":[["$","header",null,{"className":"mb-10","children":[["$","div",null,{"className":"mb-4 flex flex-wrap gap-2","children":[["$","$L2","openclaw",{"href":"/fr/tags/openclaw","localeCookie":{"name":"NEXT_LOCALE","sameSite":"lax"},"className":"inline-flex items-center rounded-full px-2.5 py-0.5 text-xs font-medium transition-colors","style":{"background":"var(--color-code-bg)","color":"var(--color-accent)","border":"1px solid var(--color-border)"},"children":["#","openclaw"]}],["$","$L2","configuration",{"href":"/fr/tags/configuration","localeCookie":{"name":"NEXT_LOCALE","sameSite":"lax"},"className":"inline-flex items-center rounded-full px-2.5 py-0.5 text-xs font-medium transition-colors","style":{"background":"var(--color-code-bg)","color":"var(--color-accent)","border":"1px solid var(--color-border)"},"children":["#","configuration"]}],["$","$L2","debugging",{"href":"/fr/tags/debugging","localeCookie":{"name":"NEXT_LOCALE","sameSite":"lax"},"className":"inline-flex items-center rounded-full px-2.5 py-0.5 text-xs font-medium transition-colors","style":{"background":"var(--color-code-bg)","color":"var(--color-accent)","border":"1px solid var(--color-border)"},"children":["#","debugging"]}],["$","$L2","advanced",{"href":"/fr/tags/advanced","localeCookie":{"name":"NEXT_LOCALE","sameSite":"lax"},"className":"inline-flex items-center rounded-full px-2.5 py-0.5 text-xs font-medium transition-colors","style":{"background":"var(--color-code-bg)","color":"var(--color-accent)","border":"1px solid var(--color-border)"},"children":["#","advanced"]}]]}],["$","h1",null,{"className":"mb-4 text-3xl leading-snug font-bold tracking-tight sm:text-4xl","style":{"color":"var(--color-text)"},"children":"Le système se comporte bizarrement ? Paramètres avancés et guide de débogage"}],["$","div",null,{"className":"flex flex-wrap items-center gap-3 text-sm","style":{"color":"var(--color-muted)"},"children":[["$","time",null,{"dateTime":"2026-03-08","children":"8 mars 2026"}],["$","span",null,{"aria-hidden":"true","children":"·"}],["$","span",null,{"children":"3 min read"}]]}],"$undefined",["$","div",null,{"className":"mt-6 border-b","style":{"borderColor":"var(--color-border)"}}]]}],["$","div",null,{"className":"prose","dangerouslySetInnerHTML":{"__html":"$3"}}],"$L4"]}],"$L5"]}]}]],["$L6"],"$L7"]}],"loading":null,"isPartial":false}
+4:["$","footer",null,{"className":"mt-14 border-t pt-8","style":{"borderColor":"var(--color-border)"},"children":[["$","div",null,{"className":"mb-8 flex flex-wrap gap-2","children":[["$","$L2","openclaw",{"href":"/fr/tags/openclaw","localeCookie":{"name":"NEXT_LOCALE","sameSite":"lax"},"className":"inline-flex items-center rounded-full px-3 py-1 text-sm font-medium transition-colors","style":{"background":"var(--color-code-bg)","color":"var(--color-accent)","border":"1px solid var(--color-border)"},"children":["#","openclaw"]}],["$","$L2","configuration",{"href":"/fr/tags/configuration","localeCookie":{"name":"NEXT_LOCALE","sameSite":"lax"},"className":"inline-flex items-center rounded-full px-3 py-1 text-sm font-medium transition-colors","style":{"background":"var(--color-code-bg)","color":"var(--color-accent)","border":"1px solid var(--color-border)"},"children":["#","configuration"]}],["$","$L2","debugging",{"href":"/fr/tags/debugging","localeCookie":{"name":"NEXT_LOCALE","sameSite":"lax"},"className":"inline-flex items-center rounded-full px-3 py-1 text-sm font-medium transition-colors","style":{"background":"var(--color-code-bg)","color":"var(--color-accent)","border":"1px solid var(--color-border)"},"children":["#","debugging"]}],["$","$L2","advanced",{"href":"/fr/tags/advanced","localeCookie":{"name":"NEXT_LOCALE","sameSite":"lax"},"className":"inline-flex items-center rounded-full px-3 py-1 text-sm font-medium transition-colors","style":{"background":"var(--color-code-bg)","color":"var(--color-accent)","border":"1px solid var(--color-border)"},"children":["#","advanced"]}]]}],["$","nav",null,{"aria-label":"Navigation des articles","className":"grid grid-cols-1 gap-4 sm:grid-cols-2","children":[["$","$L2",null,{"href":"/fr/blog/openclaw/09-cron-automation","localeCookie":{"name":"NEXT_LOCALE","sameSite":"lax"},"className":"group rounded-lg border p-4 transition-colors hover:border-accent","style":{"borderColor":"var(--color-border)","background":"var(--color-surface)"},"children":[["$","p",null,{"className":"mb-1 text-xs","style":{"color":"var(--color-muted)"},"children":"← Plus récent"}],["$","p",null,{"className":"line-clamp-1 text-sm font-medium transition-colors group-hover:text-accent","style":{"color":"var(--color-text)"},"children":"Laissez votre assistant travailler automatiquement : il vous aide même sans qu'on lui demande"}]]}],["$","$L2",null,{"href":"/fr/blog/openclaw/11-openclaw-web-ui-setup","localeCookie":{"name":"NEXT_LOCALE","sameSite":"lax"},"className":"group rounded-lg border p-4 text-right transition-colors hover:border-accent","style":{"borderColor":"var(--color-border)","background":"var(--color-surface)"},"children":[["$","p",null,{"className":"mb-1 text-xs","style":{"color":"var(--color-muted)"},"children":"Plus ancien →"}],["$","p",null,{"className":"line-clamp-1 text-sm font-medium transition-colors group-hover:text-accent","style":{"color":"var(--color-text)"},"children":"Pas besoin de fichier de config : configurez OpenClaw entièrement depuis l'interface web"}]]}]]}]]}]
+9:T1fb4,<p>Si vous êtes arrivé jusqu'ici, vous avez déjà fait passer OpenClaw de zéro à fonctionnel. Bravo.</p>
+<p>Ce dernier article rassemble les habitudes qui rendent votre installation plus stable et plus facile à maintenir.</p>
+<h2 id="ce-que-vous-allez-apprendre">Ce que vous allez apprendre</h2>
+<ul>
+<li>Trouver le fichier de config et comprendre les deux modes d'édition</li>
+<li>Reconnaître la structure d'une config minimale fonctionnelle</li>
+<li>Stocker les clés API en sécurité avec les variables d'environnement</li>
+<li>Utiliser la commande de débogage la plus utile et lire les erreurs courantes</li>
+<li>Choisir la bonne piste de release</li>
+</ul>
+<hr>
+<h2 id="où-se-trouve-le-fichier-de-config-">Où se trouve le fichier de config ?</h2>
+<pre><code>~/.openclaw/openclaw.json
+</code></pre>
+<p>Le format est <strong>JSON5</strong> : commentaires et virgules finales autorisés. Bien plus agréable que du JSON brut.</p>
+<p>Vous pouvez l'éditer de deux façons :</p>
+<ul>
+<li><strong>Mode formulaire</strong> dans l'interface de contrôle pour une approche débutant</li>
+<li><strong>Raw JSON</strong> pour précision et rapidité</li>
+</ul>
+<p>Les deux modes éditent le même fichier et enregistrent au même chemin.</p>
+<hr>
+<h2 id="à-quoi-ressemble-une-config-minimale-fonctionnelle-">À quoi ressemble une config minimale fonctionnelle ?</h2>
+<figure data-rehype-pretty-code-figure=""><pre style="background-color:#24292e;color:#e1e4e8" tabindex="0" data-language="json5" data-theme="github-dark"><code data-language="json5" data-theme="github-dark" style="display: grid;"><span data-line=""><span style="color:#E1E4E8">{</span></span>
+<span data-line=""><span style="color:#9ECBFF">  "agents"</span><span style="color:#E1E4E8">: {</span></span>
+<span data-line=""><span style="color:#9ECBFF">    "list"</span><span style="color:#E1E4E8">: [</span></span>
+<span data-line=""><span style="color:#E1E4E8">      { </span><span style="color:#9ECBFF">"id"</span><span style="color:#E1E4E8">: </span><span style="color:#9ECBFF">"main"</span><span style="color:#E1E4E8">, </span><span style="color:#9ECBFF">"workspace"</span><span style="color:#E1E4E8">: </span><span style="color:#9ECBFF">"~/.openclaw/workspace-main"</span><span style="color:#E1E4E8">, </span><span style="color:#9ECBFF">"default"</span><span style="color:#E1E4E8">: </span><span style="color:#79B8FF">true</span><span style="color:#E1E4E8"> }</span></span>
+<span data-line=""><span style="color:#E1E4E8">    ]</span></span>
+<span data-line=""><span style="color:#E1E4E8">  },</span></span>
+<span data-line=""><span style="color:#9ECBFF">  "channels"</span><span style="color:#E1E4E8">: {</span></span>
+<span data-line=""><span style="color:#9ECBFF">    "telegram"</span><span style="color:#E1E4E8">: {</span></span>
+<span data-line=""><span style="color:#9ECBFF">      "enabled"</span><span style="color:#E1E4E8">: </span><span style="color:#79B8FF">true</span><span style="color:#E1E4E8">,</span></span>
+<span data-line=""><span style="color:#9ECBFF">      "botToken"</span><span style="color:#E1E4E8">: </span><span style="color:#9ECBFF">"votre token de bot"</span></span>
+<span data-line=""><span style="color:#E1E4E8">    }</span></span>
+<span data-line=""><span style="color:#E1E4E8">  },</span></span>
+<span data-line=""><span style="color:#9ECBFF">  "bindings"</span><span style="color:#E1E4E8">: [</span></span>
+<span data-line=""><span style="color:#E1E4E8">    { </span><span style="color:#9ECBFF">"agentId"</span><span style="color:#E1E4E8">: </span><span style="color:#9ECBFF">"main"</span><span style="color:#E1E4E8">, </span><span style="color:#9ECBFF">"match"</span><span style="color:#E1E4E8">: { </span><span style="color:#9ECBFF">"channel"</span><span style="color:#E1E4E8">: </span><span style="color:#9ECBFF">"telegram"</span><span style="color:#E1E4E8"> } }</span></span>
+<span data-line=""><span style="color:#E1E4E8">  ]</span></span>
+<span data-line=""><span style="color:#E1E4E8">}</span></span></code></pre></figure>
+<p>Faites d'abord fonctionner la version simple. Puis ajoutez les fonctionnalités progressivement.</p>
+<hr>
+<h2 id="la-bonne-façon-de-stocker-les-clés-api">La bonne façon de stocker les clés API</h2>
+<p><strong>Évitez d'enfouir les clés API en dur dans la config.</strong></p>
+<p>Les variables d'environnement sont plus sûres :</p>
+<figure data-rehype-pretty-code-figure=""><pre style="background-color:#24292e;color:#e1e4e8" tabindex="0" data-language="bash" data-theme="github-dark"><code data-language="bash" data-theme="github-dark" style="display: grid;"><span data-line=""><span style="color:#6A737D"># Mettez ça dans .env ou dans l'environnement système</span></span>
+<span data-line=""><span style="color:#E1E4E8">ANTHROPIC_API_KEY</span><span style="color:#F97583">=</span><span style="color:#9ECBFF">sk-ant-xxxxx</span></span></code></pre></figure>
+<blockquote>
+<p>⚠️ Si la Gateway tourne comme service système (ex. <code>systemd</code>), assurez-vous que le service charge votre <code>.env</code>. Sinon l'assistant peut échouer car il ne voit pas la clé API, avec des erreurs du type « Shell env off ».</p>
+</blockquote>
+<hr>
+<h2 id="loutil-de-débogage-universel">L'outil de débogage universel</h2>
+<p>Quand quelque chose ne va pas, commencez par :</p>
+<figure data-rehype-pretty-code-figure=""><pre style="background-color:#24292e;color:#e1e4e8" tabindex="0" data-language="bash" data-theme="github-dark"><code data-language="bash" data-theme="github-dark" style="display: grid;"><span data-line=""><span style="color:#B392F0">openclaw</span><span style="color:#9ECBFF"> logs</span><span style="color:#79B8FF"> --follow</span></span></code></pre></figure>
+<p>Les logs en temps réel répondent à un nombre surprenant de questions.</p>
+<p>Erreurs courantes :</p>
+<table>
+<thead>
+<tr>
+<th>Message d'erreur</th>
+<th>Cause probable</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td><code>HTTP 429</code></td>
+<td>Trop de requêtes API, limite de débit atteinte</td>
+</tr>
+<tr>
+<td><code>unauthorized</code></td>
+<td>Problème de token ou de <code>gateway.bind</code></td>
+</tr>
+<tr>
+<td><code>content tool_use input field required</code></td>
+<td>Problème de compatibilité modèle, consultez la doc</td>
+</tr>
+<tr>
+<td>Contexte tronqué</td>
+<td>Démarrez une nouvelle session ou compactez le contexte comme recommandé</td>
+</tr>
+</tbody>
+</table>
+<hr>
+<h2 id="quelle-piste-de-release-choisir-">Quelle piste de release choisir ?</h2>
+<table>
+<thead>
+<tr>
+<th>Piste</th>
+<th>Idéal pour</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td><strong>Stable</strong></td>
+<td>Usage quotidien, option la plus sûre par défaut</td>
+</tr>
+<tr>
+<td><strong>Beta</strong></td>
+<td>Tester de nouvelles fonctionnalités en acceptant quelques bugs</td>
+</tr>
+<tr>
+<td><strong>Dev</strong></td>
+<td>Développeurs qui veulent les derniers changements en premier</td>
+</tr>
+</tbody>
+</table>
+<blockquote>
+<p>💡 Avant une mise à jour majeure, sauvegardez <code>~/.openclaw</code> pour pouvoir revenir en arrière.</p>
+</blockquote>
+<hr>
+<h2 id="série-terminée--que-pouvez-vous-faire-maintenant-">Série terminée : que pouvez-vous faire maintenant ?</h2>
+<p>À travers ces articles, vous avez appris à :</p>
+<ol>
+<li>Comprendre l'idée centrale d'OpenClaw</li>
+<li>L'installer et le lancer pour la première fois</li>
+<li>Gérer l'authentification du tableau de bord</li>
+<li>Connecter Telegram et d'autres canaux</li>
+<li>Rendre l'assistant plus capable avec les Skills</li>
+<li>Gérer mémoire et espaces de travail</li>
+<li>Répartir le travail entre plusieurs assistants</li>
+<li>Déployer la Gateway sur un VPS</li>
+<li>Automatiser des tâches avec Cron</li>
+<li>Déboguer et configurer le système comme un pro</li>
+</ol>
+<p>Pour aller plus loin, la doc officielle sur <a href="https://docs.openclaw.ai">docs.openclaw.ai</a> reste la référence.</p>
+<p><strong>Votre assistant IA est prêt. Faites-le travailler pour vous.</strong></p>
+<p><a href="09-cron-automation">← Précédent : Planification et automatisation</a> | <a href="01-intro">Retour au premier article</a></p>5:["$","aside",null,{"className":"hidden lg:block","children":["$","$L8",null,{"html":"$9"}]}]
+6:["$","script","script-0",{"src":"/_next/static/chunks/2dddb3bc05093f69.js","async":true}]
+7:["$","$La",null,{"children":["$","$b",null,{"name":"Next.MetadataOutlet","children":"$@c"}]}]
+c:null

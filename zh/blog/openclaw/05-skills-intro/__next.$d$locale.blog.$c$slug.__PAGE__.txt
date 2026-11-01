@@ -1,0 +1,129 @@
+1:"$Sreact.fragment"
+2:I[14864,["/_next/static/chunks/7923a261b80bb6e1.js","/_next/static/chunks/e09b4358027e8033.js","/_next/static/chunks/2dddb3bc05093f69.js"],"default"]
+8:I[24801,["/_next/static/chunks/7923a261b80bb6e1.js","/_next/static/chunks/e09b4358027e8033.js","/_next/static/chunks/2dddb3bc05093f69.js"],"default"]
+a:I[50183,["/_next/static/chunks/5a5b5b13c22d14f7.js","/_next/static/chunks/a484d1d3dd4b55ab.js"],"OutletBoundary"]
+b:"$Sreact.suspense"
+3:Te15,<p>一個只會聊天的助理，就像雇了個超聰明的員工，但不給他任何工具——白費了。</p>
+<p>**Skills（技能）**就是給助理裝上工具的方式。</p>
+<h2 id="本篇學習目標">本篇學習目標</h2>
+<ul>
+<li>理解 Skill 是什麼</li>
+<li>知道怎麼啟用內建技能</li>
+<li>學會新增自訂技能</li>
+<li>了解技能的優先順序與載入路徑</li>
+</ul>
+<hr>
+<h2 id="skill-是什麼">Skill 是什麼？</h2>
+<p>每個 Skill 就是一份「說明書」，通常叫做 <code>SKILL.md</code>，裡面寫著：</p>
+<ul>
+<li>這個技能能做什麼</li>
+<li>什麼情況下該用</li>
+<li>可以使用哪些工具和步驟</li>
+</ul>
+<p>你可以把它想成<strong>助理的工作手冊</strong>：有了瀏覽網頁的手冊，他就能上網查資料；有了讀寫檔案的手冊，他就能整理你的文件。</p>
+<hr>
+<h2 id="內建-vs-自訂">內建 vs 自訂</h2>
+<p>OpenClaw 自帶一些常用技能，社群也在持續貢獻新的。你可以：</p>
+<ul>
+<li><strong>直接用內建的</strong>：在儀表板的 Skills 區啟用就好</li>
+<li><strong>自己寫一個</strong>：只要一個 <code>SKILL.md</code> 文字檔</li>
+</ul>
+<hr>
+<h2 id="自訂-skill聰明的做法">自訂 Skill：聰明的做法</h2>
+<p>想改或新增技能，<strong>不要動 OpenClaw repo 裡的原始檔</strong>！一更新就被蓋掉了，你會哭的。</p>
+<p>正確做法——把你的版本放在這裡：</p>
+<pre><code>~/.openclaw/skills/&#x3C;技能名稱>/SKILL.md
+</code></pre>
+<p><strong>優先順序（先命中先贏）：</strong></p>
+<pre><code>你的 workspace/skills  →  ~/.openclaw/skills  →  內建  →  extraDirs
+</code></pre>
+<p>放在最前面的會優先被使用。</p>
+<hr>
+<h2 id="在儀表板管理-skills">在儀表板管理 Skills</h2>
+<p>打開 Control UI → <strong>Skills</strong> 標籤，你可以：</p>
+<ul>
+<li>查看所有可用技能</li>
+<li>一鍵啟用 / 停用</li>
+<li>設定需要 API key 的技能</li>
+<li>安裝社群技能</li>
+</ul>
+<p>改完設定後通常會熱重載，不用重開 Gateway。</p>
+<hr>
+<h2 id="用自訂資料夾載入">用自訂資料夾載入</h2>
+<p>如果你想把所有自訂技能集中管理在某個地方：</p>
+<figure data-rehype-pretty-code-figure=""><pre style="background-color:#24292e;color:#e1e4e8" tabindex="0" data-language="json5" data-theme="github-dark"><code data-language="json5" data-theme="github-dark" style="display: grid;"><span data-line=""><span style="color:#6A737D">// ~/.openclaw/openclaw.json</span></span>
+<span data-line=""><span style="color:#E1E4E8">{</span></span>
+<span data-line=""><span style="color:#9ECBFF">  "skills"</span><span style="color:#E1E4E8">: {</span></span>
+<span data-line=""><span style="color:#9ECBFF">    "load"</span><span style="color:#E1E4E8">: {</span></span>
+<span data-line=""><span style="color:#9ECBFF">      "extraDirs"</span><span style="color:#E1E4E8">: [</span><span style="color:#9ECBFF">"/你的自訂技能資料夾"</span><span style="color:#E1E4E8">]</span></span>
+<span data-line=""><span style="color:#E1E4E8">    }</span></span>
+<span data-line=""><span style="color:#E1E4E8">  }</span></span>
+<span data-line=""><span style="color:#E1E4E8">}</span></span></code></pre></figure>
+<hr>
+<h2 id="下一步">下一步</h2>
+<p>助理現在有工具了，接下來要給他一個屬於自己的「辦公室」——下一篇聊記憶與工作區。</p>
+<p><a href="04-channels-basics">← 上一篇：通道設定</a> | 👉 <a href="06-memory-workspace">助理的大腦在哪裡？記憶與工作區</a></p>0:{"buildId":"Yck3R4ooQxWkwGLT6is1X","rsc":["$","$1","c",{"children":[[["$","script",null,{"type":"application/ld+json","dangerouslySetInnerHTML":{"__html":"{\"@context\":\"https://schema.org\",\"@type\":\"Article\",\"headline\":\"助理開外掛！Skills 讓你的 AI 從「聊天機器」變「行動派」\",\"description\":\"什麼是 Skill？怎麼啟用內建技能、寫自訂技能、設定載入路徑。\",\"url\":\"https://benxhub.com/zh/blog/openclaw/05-skills-intro\",\"mainEntityOfPage\":{\"@type\":\"WebPage\",\"@id\":\"https://benxhub.com/zh/blog/openclaw/05-skills-intro\"},\"datePublished\":\"2026-03-08T00:00:00.000Z\",\"dateModified\":\"2026-03-08T00:00:00.000Z\",\"keywords\":\"openclaw, skills, customization, tools\",\"inLanguage\":\"zh\",\"author\":{\"@type\":\"Person\",\"name\":\"BenX\",\"url\":\"https://benxhub.com\"},\"publisher\":{\"@type\":\"Organization\",\"name\":\"BenXHub Blog\",\"url\":\"https://benxhub.com\"}}"}}],["$","div",null,{"className":"mx-auto max-w-6xl px-4 py-12 sm:px-6","children":["$","div",null,{"className":"lg:grid lg:grid-cols-[1fr_240px] lg:gap-14","children":[["$","article",null,{"children":[["$","header",null,{"className":"mb-10","children":[["$","div",null,{"className":"mb-4 flex flex-wrap gap-2","children":[["$","$L2","openclaw",{"href":"/zh/tags/openclaw","localeCookie":{"name":"NEXT_LOCALE","sameSite":"lax"},"className":"inline-flex items-center rounded-full px-2.5 py-0.5 text-xs font-medium transition-colors","style":{"background":"var(--color-code-bg)","color":"var(--color-accent)","border":"1px solid var(--color-border)"},"children":["#","openclaw"]}],["$","$L2","skills",{"href":"/zh/tags/skills","localeCookie":{"name":"NEXT_LOCALE","sameSite":"lax"},"className":"inline-flex items-center rounded-full px-2.5 py-0.5 text-xs font-medium transition-colors","style":{"background":"var(--color-code-bg)","color":"var(--color-accent)","border":"1px solid var(--color-border)"},"children":["#","skills"]}],["$","$L2","customization",{"href":"/zh/tags/customization","localeCookie":{"name":"NEXT_LOCALE","sameSite":"lax"},"className":"inline-flex items-center rounded-full px-2.5 py-0.5 text-xs font-medium transition-colors","style":{"background":"var(--color-code-bg)","color":"var(--color-accent)","border":"1px solid var(--color-border)"},"children":["#","customization"]}],["$","$L2","tools",{"href":"/zh/tags/tools","localeCookie":{"name":"NEXT_LOCALE","sameSite":"lax"},"className":"inline-flex items-center rounded-full px-2.5 py-0.5 text-xs font-medium transition-colors","style":{"background":"var(--color-code-bg)","color":"var(--color-accent)","border":"1px solid var(--color-border)"},"children":["#","tools"]}]]}],["$","h1",null,{"className":"mb-4 text-3xl leading-snug font-bold tracking-tight sm:text-4xl","style":{"color":"var(--color-text)"},"children":"助理開外掛！Skills 讓你的 AI 從「聊天機器」變「行動派」"}],["$","div",null,{"className":"flex flex-wrap items-center gap-3 text-sm","style":{"color":"var(--color-muted)"},"children":[["$","time",null,{"dateTime":"2026-03-08","children":"2026 年 3 月 8 日"}],["$","span",null,{"aria-hidden":"true","children":"·"}],["$","span",null,{"children":"3 min read"}]]}],"$undefined",["$","div",null,{"className":"mt-6 border-b","style":{"borderColor":"var(--color-border)"}}]]}],["$","div",null,{"className":"prose","dangerouslySetInnerHTML":{"__html":"$3"}}],"$L4"]}],"$L5"]}]}]],["$L6"],"$L7"]}],"loading":null,"isPartial":false}
+4:["$","footer",null,{"className":"mt-14 border-t pt-8","style":{"borderColor":"var(--color-border)"},"children":[["$","div",null,{"className":"mb-8 flex flex-wrap gap-2","children":[["$","$L2","openclaw",{"href":"/zh/tags/openclaw","localeCookie":{"name":"NEXT_LOCALE","sameSite":"lax"},"className":"inline-flex items-center rounded-full px-3 py-1 text-sm font-medium transition-colors","style":{"background":"var(--color-code-bg)","color":"var(--color-accent)","border":"1px solid var(--color-border)"},"children":["#","openclaw"]}],["$","$L2","skills",{"href":"/zh/tags/skills","localeCookie":{"name":"NEXT_LOCALE","sameSite":"lax"},"className":"inline-flex items-center rounded-full px-3 py-1 text-sm font-medium transition-colors","style":{"background":"var(--color-code-bg)","color":"var(--color-accent)","border":"1px solid var(--color-border)"},"children":["#","skills"]}],["$","$L2","customization",{"href":"/zh/tags/customization","localeCookie":{"name":"NEXT_LOCALE","sameSite":"lax"},"className":"inline-flex items-center rounded-full px-3 py-1 text-sm font-medium transition-colors","style":{"background":"var(--color-code-bg)","color":"var(--color-accent)","border":"1px solid var(--color-border)"},"children":["#","customization"]}],["$","$L2","tools",{"href":"/zh/tags/tools","localeCookie":{"name":"NEXT_LOCALE","sameSite":"lax"},"className":"inline-flex items-center rounded-full px-3 py-1 text-sm font-medium transition-colors","style":{"background":"var(--color-code-bg)","color":"var(--color-accent)","border":"1px solid var(--color-border)"},"children":["#","tools"]}]]}],["$","nav",null,{"aria-label":"文章導覽","className":"grid grid-cols-1 gap-4 sm:grid-cols-2","children":[["$","$L2",null,{"href":"/zh/blog/openclaw/04-channels-basics","localeCookie":{"name":"NEXT_LOCALE","sameSite":"lax"},"className":"group rounded-lg border p-4 transition-colors hover:border-accent","style":{"borderColor":"var(--color-border)","background":"var(--color-surface)"},"children":[["$","p",null,{"className":"mb-1 text-xs","style":{"color":"var(--color-muted)"},"children":"← 較新文章"}],["$","p",null,{"className":"line-clamp-1 text-sm font-medium transition-colors group-hover:text-accent","style":{"color":"var(--color-text)"},"children":"用 Telegram 叫助理幹活——Channel 設定完全圖解"}]]}],["$","$L2",null,{"href":"/zh/blog/openclaw/06-memory-workspace","localeCookie":{"name":"NEXT_LOCALE","sameSite":"lax"},"className":"group rounded-lg border p-4 text-right transition-colors hover:border-accent","style":{"borderColor":"var(--color-border)","background":"var(--color-surface)"},"children":[["$","p",null,{"className":"mb-1 text-xs","style":{"color":"var(--color-muted)"},"children":"較舊文章 →"}],["$","p",null,{"className":"line-clamp-1 text-sm font-medium transition-colors group-hover:text-accent","style":{"color":"var(--color-text)"},"children":"助理的大腦在哪裡？搞懂記憶與工作區，再也不怕助理失憶"}]]}]]}]]}]
+9:Te15,<p>一個只會聊天的助理，就像雇了個超聰明的員工，但不給他任何工具——白費了。</p>
+<p>**Skills（技能）**就是給助理裝上工具的方式。</p>
+<h2 id="本篇學習目標">本篇學習目標</h2>
+<ul>
+<li>理解 Skill 是什麼</li>
+<li>知道怎麼啟用內建技能</li>
+<li>學會新增自訂技能</li>
+<li>了解技能的優先順序與載入路徑</li>
+</ul>
+<hr>
+<h2 id="skill-是什麼">Skill 是什麼？</h2>
+<p>每個 Skill 就是一份「說明書」，通常叫做 <code>SKILL.md</code>，裡面寫著：</p>
+<ul>
+<li>這個技能能做什麼</li>
+<li>什麼情況下該用</li>
+<li>可以使用哪些工具和步驟</li>
+</ul>
+<p>你可以把它想成<strong>助理的工作手冊</strong>：有了瀏覽網頁的手冊，他就能上網查資料；有了讀寫檔案的手冊，他就能整理你的文件。</p>
+<hr>
+<h2 id="內建-vs-自訂">內建 vs 自訂</h2>
+<p>OpenClaw 自帶一些常用技能，社群也在持續貢獻新的。你可以：</p>
+<ul>
+<li><strong>直接用內建的</strong>：在儀表板的 Skills 區啟用就好</li>
+<li><strong>自己寫一個</strong>：只要一個 <code>SKILL.md</code> 文字檔</li>
+</ul>
+<hr>
+<h2 id="自訂-skill聰明的做法">自訂 Skill：聰明的做法</h2>
+<p>想改或新增技能，<strong>不要動 OpenClaw repo 裡的原始檔</strong>！一更新就被蓋掉了，你會哭的。</p>
+<p>正確做法——把你的版本放在這裡：</p>
+<pre><code>~/.openclaw/skills/&#x3C;技能名稱>/SKILL.md
+</code></pre>
+<p><strong>優先順序（先命中先贏）：</strong></p>
+<pre><code>你的 workspace/skills  →  ~/.openclaw/skills  →  內建  →  extraDirs
+</code></pre>
+<p>放在最前面的會優先被使用。</p>
+<hr>
+<h2 id="在儀表板管理-skills">在儀表板管理 Skills</h2>
+<p>打開 Control UI → <strong>Skills</strong> 標籤，你可以：</p>
+<ul>
+<li>查看所有可用技能</li>
+<li>一鍵啟用 / 停用</li>
+<li>設定需要 API key 的技能</li>
+<li>安裝社群技能</li>
+</ul>
+<p>改完設定後通常會熱重載，不用重開 Gateway。</p>
+<hr>
+<h2 id="用自訂資料夾載入">用自訂資料夾載入</h2>
+<p>如果你想把所有自訂技能集中管理在某個地方：</p>
+<figure data-rehype-pretty-code-figure=""><pre style="background-color:#24292e;color:#e1e4e8" tabindex="0" data-language="json5" data-theme="github-dark"><code data-language="json5" data-theme="github-dark" style="display: grid;"><span data-line=""><span style="color:#6A737D">// ~/.openclaw/openclaw.json</span></span>
+<span data-line=""><span style="color:#E1E4E8">{</span></span>
+<span data-line=""><span style="color:#9ECBFF">  "skills"</span><span style="color:#E1E4E8">: {</span></span>
+<span data-line=""><span style="color:#9ECBFF">    "load"</span><span style="color:#E1E4E8">: {</span></span>
+<span data-line=""><span style="color:#9ECBFF">      "extraDirs"</span><span style="color:#E1E4E8">: [</span><span style="color:#9ECBFF">"/你的自訂技能資料夾"</span><span style="color:#E1E4E8">]</span></span>
+<span data-line=""><span style="color:#E1E4E8">    }</span></span>
+<span data-line=""><span style="color:#E1E4E8">  }</span></span>
+<span data-line=""><span style="color:#E1E4E8">}</span></span></code></pre></figure>
+<hr>
+<h2 id="下一步">下一步</h2>
+<p>助理現在有工具了，接下來要給他一個屬於自己的「辦公室」——下一篇聊記憶與工作區。</p>
+<p><a href="04-channels-basics">← 上一篇：通道設定</a> | 👉 <a href="06-memory-workspace">助理的大腦在哪裡？記憶與工作區</a></p>5:["$","aside",null,{"className":"hidden lg:block","children":["$","$L8",null,{"html":"$9"}]}]
+6:["$","script","script-0",{"src":"/_next/static/chunks/2dddb3bc05093f69.js","async":true}]
+7:["$","$La",null,{"children":["$","$b",null,{"name":"Next.MetadataOutlet","children":"$@c"}]}]
+c:null

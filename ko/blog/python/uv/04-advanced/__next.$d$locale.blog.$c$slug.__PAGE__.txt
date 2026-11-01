@@ -1,0 +1,130 @@
+1:"$Sreact.fragment"
+2:I[14864,["/_next/static/chunks/7923a261b80bb6e1.js","/_next/static/chunks/e09b4358027e8033.js","/_next/static/chunks/2dddb3bc05093f69.js"],"default"]
+8:I[24801,["/_next/static/chunks/7923a261b80bb6e1.js","/_next/static/chunks/e09b4358027e8033.js","/_next/static/chunks/2dddb3bc05093f69.js"],"default"]
+a:I[50183,["/_next/static/chunks/5a5b5b13c22d14f7.js","/_next/static/chunks/a484d1d3dd4b55ab.js"],"OutletBoundary"]
+b:"$Sreact.suspense"
+:HL["/images/posts/uv-advanced.jpg","image"]
+3:T22c7,<p>요구 사항이 "돌기만 하면 돼"에서 "멀티 버전 테스트·기존 파이프라인 호환성·전역 도구 관리"로 바뀌어도 uv가 처리합니다. 이 글은 솔로 던전에서 레이드로 업그레이드입니다.</p>
+<h2 id="python-버전-관리">Python 버전 관리</h2>
+<p>uv에는 Python 다운로드와 관리 기능이 내장 — pyenv를 별도로 설치할 필요 없습니다.</p>
+<figure data-rehype-pretty-code-figure=""><pre style="background-color:#24292e;color:#e1e4e8" tabindex="0" data-language="bash" data-theme="github-dark"><code data-language="bash" data-theme="github-dark" style="display: grid;"><span data-line=""><span style="color:#6A737D"># 여러 버전 설치</span></span>
+<span data-line=""><span style="color:#B392F0">uv</span><span style="color:#9ECBFF"> python</span><span style="color:#9ECBFF"> install</span><span style="color:#79B8FF"> 3.10</span><span style="color:#79B8FF"> 3.11</span><span style="color:#79B8FF"> 3.12</span></span>
+<span data-line=""> </span>
+<span data-line=""><span style="color:#6A737D"># 프로젝트 버전 고정 (.python-version 생성)</span></span>
+<span data-line=""><span style="color:#B392F0">uv</span><span style="color:#9ECBFF"> python</span><span style="color:#9ECBFF"> pin</span><span style="color:#79B8FF"> 3.11</span></span>
+<span data-line=""> </span>
+<span data-line=""><span style="color:#6A737D"># 특정 버전으로 venv 생성</span></span>
+<span data-line=""><span style="color:#B392F0">uv</span><span style="color:#9ECBFF"> venv</span><span style="color:#79B8FF"> --python</span><span style="color:#79B8FF"> 3.12</span></span>
+<span data-line=""> </span>
+<span data-line=""><span style="color:#6A737D"># 특정 버전으로 실행</span></span>
+<span data-line=""><span style="color:#B392F0">uv</span><span style="color:#9ECBFF"> run</span><span style="color:#79B8FF"> --python</span><span style="color:#79B8FF"> 3.10</span><span style="color:#9ECBFF"> pytest</span></span></code></pre></figure>
+<p>버전을 처음 사용할 때는 자동으로 다운로드 — 이후에는 캐시에서 바로 사용합니다.</p>
+<h2 id="pip-호환-인터페이스">pip 호환 인터페이스</h2>
+<p>기존 CI·Docker·스크립트가 아직 <code>pip</code>을 사용하고 있나요? uv가 드롭인 대체제를 제공합니다:</p>
+<figure data-rehype-pretty-code-figure=""><pre style="background-color:#24292e;color:#e1e4e8" tabindex="0" data-language="bash" data-theme="github-dark"><code data-language="bash" data-theme="github-dark" style="display: grid;"><span data-line=""><span style="color:#6A737D"># pip install -r requirements.txt 와 동일</span></span>
+<span data-line=""><span style="color:#B392F0">uv</span><span style="color:#9ECBFF"> pip</span><span style="color:#9ECBFF"> install</span><span style="color:#79B8FF"> -r</span><span style="color:#9ECBFF"> requirements.txt</span></span>
+<span data-line=""> </span>
+<span data-line=""><span style="color:#6A737D"># requirements 컴파일 (크로스 플랫폼, 재현 가능)</span></span>
+<span data-line=""><span style="color:#B392F0">uv</span><span style="color:#9ECBFF"> pip</span><span style="color:#9ECBFF"> compile</span><span style="color:#9ECBFF"> requirements.in</span><span style="color:#79B8FF"> --universal</span><span style="color:#79B8FF"> -o</span><span style="color:#9ECBFF"> requirements.txt</span></span>
+<span data-line=""> </span>
+<span data-line=""><span style="color:#6A737D"># 환경 동기화 (잠금 파일에 엄격하게 따름)</span></span>
+<span data-line=""><span style="color:#B392F0">uv</span><span style="color:#9ECBFF"> pip</span><span style="color:#9ECBFF"> sync</span><span style="color:#9ECBFF"> requirements.txt</span></span>
+<span data-line=""> </span>
+<span data-line=""><span style="color:#6A737D"># venv 생성</span></span>
+<span data-line=""><span style="color:#B392F0">uv</span><span style="color:#9ECBFF"> venv</span></span></code></pre></figure>
+<p><code>uv pip</code>으로 전환하면 파라미터는 거의 동일하지만 속도가 한 차수 높아집니다 — 자전거에서 오토바이로 업그레이드하는 것처럼: 같은 길, 완전히 다른 경험. 큰 변경 없이 레거시 프로젝트를 업그레이드하고 싶다면? 먼저 <code>uv pip</code>으로만 바꿔도 무통으로 성능 향상됩니다.</p>
+<h2 id="전역-도구-설치-uv-tool">전역 도구 설치 (uv tool)</h2>
+<p>자주 쓰는 도구를 매번 <code>uvx</code>로 실행하고 싶지 않다면? 전역 설치:</p>
+<figure data-rehype-pretty-code-figure=""><pre style="background-color:#24292e;color:#e1e4e8" tabindex="0" data-language="bash" data-theme="github-dark"><code data-language="bash" data-theme="github-dark" style="display: grid;"><span data-line=""><span style="color:#B392F0">uv</span><span style="color:#9ECBFF"> tool</span><span style="color:#9ECBFF"> install</span><span style="color:#9ECBFF"> ruff</span></span>
+<span data-line=""><span style="color:#B392F0">uv</span><span style="color:#9ECBFF"> tool</span><span style="color:#9ECBFF"> install</span><span style="color:#9ECBFF"> httpie</span></span>
+<span data-line=""> </span>
+<span data-line=""><span style="color:#6A737D"># 이후 직접 호출 가능</span></span>
+<span data-line=""><span style="color:#B392F0">ruff</span><span style="color:#9ECBFF"> check</span><span style="color:#9ECBFF"> .</span></span>
+<span data-line=""><span style="color:#B392F0">http</span><span style="color:#9ECBFF"> https://httpbin.org/get</span></span></code></pre></figure>
+<p>개별 도구 또는 전체 업그레이드:</p>
+<figure data-rehype-pretty-code-figure=""><pre style="background-color:#24292e;color:#e1e4e8" tabindex="0" data-language="bash" data-theme="github-dark"><code data-language="bash" data-theme="github-dark" style="display: grid;"><span data-line=""><span style="color:#B392F0">uv</span><span style="color:#9ECBFF"> tool</span><span style="color:#9ECBFF"> upgrade</span><span style="color:#9ECBFF"> ruff</span></span>
+<span data-line=""><span style="color:#B392F0">uv</span><span style="color:#9ECBFF"> tool</span><span style="color:#9ECBFF"> upgrade</span><span style="color:#79B8FF"> --all</span></span></code></pre></figure>
+<blockquote>
+<p><code>uv tool install</code>은 독립 환경을 만들어 프로젝트 의존성과 충돌하지 않습니다. 프로젝트 내 버전 고정이 필요한 도구는 계속 <code>uv add --dev</code> 사용.</p>
+</blockquote>
+<h2 id="스크립트-잠금-파일과-shebang">스크립트 잠금 파일과 shebang</h2>
+<p>단일 스크립트도 재현 가능하게 하고 싶다면? 의존성을 잠글 수 있습니다:</p>
+<figure data-rehype-pretty-code-figure=""><pre style="background-color:#24292e;color:#e1e4e8" tabindex="0" data-language="bash" data-theme="github-dark"><code data-language="bash" data-theme="github-dark" style="display: grid;"><span data-line=""><span style="color:#B392F0">uv</span><span style="color:#9ECBFF"> lock</span><span style="color:#79B8FF"> --script</span><span style="color:#9ECBFF"> example.py</span></span></code></pre></figure>
+<p><code>example.py.lock</code>이 생성됩니다. <code>uv run example.py</code> 실행 시 이 잠금 파일을 사용합니다.</p>
+<p>또는 실행 파일로 만들기:</p>
+<figure data-rehype-pretty-code-figure=""><pre style="background-color:#24292e;color:#e1e4e8" tabindex="0" data-language="bash" data-theme="github-dark"><code data-language="bash" data-theme="github-dark" style="display: grid;"><span data-line=""><span style="color:#6A737D">#!/usr/bin/env -S uv run --script</span></span>
+<span data-line=""><span style="color:#6A737D"># /// script</span></span>
+<span data-line=""><span style="color:#6A737D"># dependencies = ["httpx"]</span></span>
+<span data-line=""><span style="color:#6A737D"># ///</span></span>
+<span data-line=""> </span>
+<span data-line=""><span style="color:#B392F0">import</span><span style="color:#9ECBFF"> httpx</span></span>
+<span data-line=""><span style="color:#79B8FF">print</span><span style="color:#E1E4E8">(</span><span style="color:#9ECBFF">httpx.get</span><span style="color:#E1E4E8">(</span><span style="color:#B392F0">"https://example.com"</span><span style="color:#E1E4E8">))</span></span></code></pre></figure>
+<figure data-rehype-pretty-code-figure=""><pre style="background-color:#24292e;color:#e1e4e8" tabindex="0" data-language="bash" data-theme="github-dark"><code data-language="bash" data-theme="github-dark" style="display: grid;"><span data-line=""><span style="color:#B392F0">chmod</span><span style="color:#9ECBFF"> +x</span><span style="color:#9ECBFF"> fetch</span></span>
+<span data-line=""><span style="color:#B392F0">./fetch</span></span></code></pre></figure>
+<h2 id="다음-단계">다음 단계</h2>
+<p>고급 기능을 갖췄다면 지침으로 위험을 줄이세요:
+👉 <a href="05-best-practices">베스트 프랙티스</a></p>0:{"buildId":"Yck3R4ooQxWkwGLT6is1X","rsc":["$","$1","c",{"children":[[["$","script",null,{"type":"application/ld+json","dangerouslySetInnerHTML":{"__html":"{\"@context\":\"https://schema.org\",\"@type\":\"Article\",\"headline\":\"Python uv 고급 실무: Python 버전·pip 인터페이스·도구 설치\",\"description\":\"단일 프로젝트에서 멀티 버전 테스트·레거시 파이프라인 호환·전역 도구 관리로 이동할 때 uv가 모두 처리합니다.\",\"url\":\"https://benxhub.com/ko/blog/python/uv/04-advanced\",\"mainEntityOfPage\":{\"@type\":\"WebPage\",\"@id\":\"https://benxhub.com/ko/blog/python/uv/04-advanced\"},\"datePublished\":\"2026-02-27T00:00:00.000Z\",\"dateModified\":\"2026-02-27T00:00:00.000Z\",\"keywords\":\"python, uv, python-version, pip, uv-tool\",\"inLanguage\":\"ko\",\"author\":{\"@type\":\"Person\",\"name\":\"BenX\",\"url\":\"https://benxhub.com\"},\"publisher\":{\"@type\":\"Organization\",\"name\":\"BenXHub Blog\",\"url\":\"https://benxhub.com\"},\"image\":\"https://benxhub.com/images/posts/uv-advanced.jpg\"}"}}],["$","div",null,{"className":"mx-auto max-w-6xl px-4 py-12 sm:px-6","children":["$","div",null,{"className":"lg:grid lg:grid-cols-[1fr_240px] lg:gap-14","children":[["$","article",null,{"children":[["$","header",null,{"className":"mb-10","children":[["$","div",null,{"className":"mb-4 flex flex-wrap gap-2","children":[["$","$L2","python",{"href":"/ko/tags/python","localeCookie":{"name":"NEXT_LOCALE","sameSite":"lax"},"className":"inline-flex items-center rounded-full px-2.5 py-0.5 text-xs font-medium transition-colors","style":{"background":"var(--color-code-bg)","color":"var(--color-accent)","border":"1px solid var(--color-border)"},"children":["#","python"]}],["$","$L2","uv",{"href":"/ko/tags/uv","localeCookie":{"name":"NEXT_LOCALE","sameSite":"lax"},"className":"inline-flex items-center rounded-full px-2.5 py-0.5 text-xs font-medium transition-colors","style":{"background":"var(--color-code-bg)","color":"var(--color-accent)","border":"1px solid var(--color-border)"},"children":["#","uv"]}],["$","$L2","python-version",{"href":"/ko/tags/python-version","localeCookie":{"name":"NEXT_LOCALE","sameSite":"lax"},"className":"inline-flex items-center rounded-full px-2.5 py-0.5 text-xs font-medium transition-colors","style":{"background":"var(--color-code-bg)","color":"var(--color-accent)","border":"1px solid var(--color-border)"},"children":["#","python-version"]}],["$","$L2","pip",{"href":"/ko/tags/pip","localeCookie":{"name":"NEXT_LOCALE","sameSite":"lax"},"className":"inline-flex items-center rounded-full px-2.5 py-0.5 text-xs font-medium transition-colors","style":{"background":"var(--color-code-bg)","color":"var(--color-accent)","border":"1px solid var(--color-border)"},"children":["#","pip"]}],["$","$L2","uv-tool",{"href":"/ko/tags/uv-tool","localeCookie":{"name":"NEXT_LOCALE","sameSite":"lax"},"className":"inline-flex items-center rounded-full px-2.5 py-0.5 text-xs font-medium transition-colors","style":{"background":"var(--color-code-bg)","color":"var(--color-accent)","border":"1px solid var(--color-border)"},"children":["#","uv-tool"]}]]}],["$","h1",null,{"className":"mb-4 text-3xl leading-snug font-bold tracking-tight sm:text-4xl","style":{"color":"var(--color-text)"},"children":"Python uv 고급 실무: Python 버전·pip 인터페이스·도구 설치"}],["$","div",null,{"className":"flex flex-wrap items-center gap-3 text-sm","style":{"color":"var(--color-muted)"},"children":[["$","time",null,{"dateTime":"2026-02-27","children":"2026년 2월 27일"}],["$","span",null,{"aria-hidden":"true","children":"·"}],["$","span",null,{"children":"4 min read"}]]}],["$","div",null,{"className":"mt-6 overflow-hidden rounded-lg","children":["$","img",null,{"src":"/images/posts/uv-advanced.jpg","alt":"Python uv 고급 실무: Python 버전·pip 인터페이스·도구 설치","className":"w-full h-auto"}]}],["$","div",null,{"className":"mt-6 border-b","style":{"borderColor":"var(--color-border)"}}]]}],["$","div",null,{"className":"prose","dangerouslySetInnerHTML":{"__html":"$3"}}],"$L4"]}],"$L5"]}]}]],["$L6"],"$L7"]}],"loading":null,"isPartial":false}
+4:["$","footer",null,{"className":"mt-14 border-t pt-8","style":{"borderColor":"var(--color-border)"},"children":[["$","div",null,{"className":"mb-8 flex flex-wrap gap-2","children":[["$","$L2","python",{"href":"/ko/tags/python","localeCookie":{"name":"NEXT_LOCALE","sameSite":"lax"},"className":"inline-flex items-center rounded-full px-3 py-1 text-sm font-medium transition-colors","style":{"background":"var(--color-code-bg)","color":"var(--color-accent)","border":"1px solid var(--color-border)"},"children":["#","python"]}],["$","$L2","uv",{"href":"/ko/tags/uv","localeCookie":{"name":"NEXT_LOCALE","sameSite":"lax"},"className":"inline-flex items-center rounded-full px-3 py-1 text-sm font-medium transition-colors","style":{"background":"var(--color-code-bg)","color":"var(--color-accent)","border":"1px solid var(--color-border)"},"children":["#","uv"]}],["$","$L2","python-version",{"href":"/ko/tags/python-version","localeCookie":{"name":"NEXT_LOCALE","sameSite":"lax"},"className":"inline-flex items-center rounded-full px-3 py-1 text-sm font-medium transition-colors","style":{"background":"var(--color-code-bg)","color":"var(--color-accent)","border":"1px solid var(--color-border)"},"children":["#","python-version"]}],["$","$L2","pip",{"href":"/ko/tags/pip","localeCookie":{"name":"NEXT_LOCALE","sameSite":"lax"},"className":"inline-flex items-center rounded-full px-3 py-1 text-sm font-medium transition-colors","style":{"background":"var(--color-code-bg)","color":"var(--color-accent)","border":"1px solid var(--color-border)"},"children":["#","pip"]}],["$","$L2","uv-tool",{"href":"/ko/tags/uv-tool","localeCookie":{"name":"NEXT_LOCALE","sameSite":"lax"},"className":"inline-flex items-center rounded-full px-3 py-1 text-sm font-medium transition-colors","style":{"background":"var(--color-code-bg)","color":"var(--color-accent)","border":"1px solid var(--color-border)"},"children":["#","uv-tool"]}]]}],["$","nav",null,{"aria-label":"글 탐색","className":"grid grid-cols-1 gap-4 sm:grid-cols-2","children":[["$","$L2",null,{"href":"/ko/blog/python/uv/03-common-patterns","localeCookie":{"name":"NEXT_LOCALE","sameSite":"lax"},"className":"group rounded-lg border p-4 transition-colors hover:border-accent","style":{"borderColor":"var(--color-border)","background":"var(--color-surface)"},"children":[["$","p",null,{"className":"mb-1 text-xs","style":{"color":"var(--color-muted)"},"children":"← 최신 글"}],["$","p",null,{"className":"line-clamp-1 text-sm font-medium transition-colors group-hover:text-accent","style":{"color":"var(--color-text)"},"children":"Python uv 일반적인 패턴: 의존성·uvx·스크립트 실행"}]]}],["$","$L2",null,{"href":"/ko/blog/python/uv/05-best-practices","localeCookie":{"name":"NEXT_LOCALE","sameSite":"lax"},"className":"group rounded-lg border p-4 text-right transition-colors hover:border-accent","style":{"borderColor":"var(--color-border)","background":"var(--color-surface)"},"children":[["$","p",null,{"className":"mb-1 text-xs","style":{"color":"var(--color-muted)"},"children":"이전 글 →"}],["$","p",null,{"className":"line-clamp-1 text-sm font-medium transition-colors group-hover:text-accent","style":{"color":"var(--color-text)"},"children":"Python uv 베스트 프랙티스: 안정성과 협업 체크리스트"}]]}]]}]]}]
+9:T22c7,<p>요구 사항이 "돌기만 하면 돼"에서 "멀티 버전 테스트·기존 파이프라인 호환성·전역 도구 관리"로 바뀌어도 uv가 처리합니다. 이 글은 솔로 던전에서 레이드로 업그레이드입니다.</p>
+<h2 id="python-버전-관리">Python 버전 관리</h2>
+<p>uv에는 Python 다운로드와 관리 기능이 내장 — pyenv를 별도로 설치할 필요 없습니다.</p>
+<figure data-rehype-pretty-code-figure=""><pre style="background-color:#24292e;color:#e1e4e8" tabindex="0" data-language="bash" data-theme="github-dark"><code data-language="bash" data-theme="github-dark" style="display: grid;"><span data-line=""><span style="color:#6A737D"># 여러 버전 설치</span></span>
+<span data-line=""><span style="color:#B392F0">uv</span><span style="color:#9ECBFF"> python</span><span style="color:#9ECBFF"> install</span><span style="color:#79B8FF"> 3.10</span><span style="color:#79B8FF"> 3.11</span><span style="color:#79B8FF"> 3.12</span></span>
+<span data-line=""> </span>
+<span data-line=""><span style="color:#6A737D"># 프로젝트 버전 고정 (.python-version 생성)</span></span>
+<span data-line=""><span style="color:#B392F0">uv</span><span style="color:#9ECBFF"> python</span><span style="color:#9ECBFF"> pin</span><span style="color:#79B8FF"> 3.11</span></span>
+<span data-line=""> </span>
+<span data-line=""><span style="color:#6A737D"># 특정 버전으로 venv 생성</span></span>
+<span data-line=""><span style="color:#B392F0">uv</span><span style="color:#9ECBFF"> venv</span><span style="color:#79B8FF"> --python</span><span style="color:#79B8FF"> 3.12</span></span>
+<span data-line=""> </span>
+<span data-line=""><span style="color:#6A737D"># 특정 버전으로 실행</span></span>
+<span data-line=""><span style="color:#B392F0">uv</span><span style="color:#9ECBFF"> run</span><span style="color:#79B8FF"> --python</span><span style="color:#79B8FF"> 3.10</span><span style="color:#9ECBFF"> pytest</span></span></code></pre></figure>
+<p>버전을 처음 사용할 때는 자동으로 다운로드 — 이후에는 캐시에서 바로 사용합니다.</p>
+<h2 id="pip-호환-인터페이스">pip 호환 인터페이스</h2>
+<p>기존 CI·Docker·스크립트가 아직 <code>pip</code>을 사용하고 있나요? uv가 드롭인 대체제를 제공합니다:</p>
+<figure data-rehype-pretty-code-figure=""><pre style="background-color:#24292e;color:#e1e4e8" tabindex="0" data-language="bash" data-theme="github-dark"><code data-language="bash" data-theme="github-dark" style="display: grid;"><span data-line=""><span style="color:#6A737D"># pip install -r requirements.txt 와 동일</span></span>
+<span data-line=""><span style="color:#B392F0">uv</span><span style="color:#9ECBFF"> pip</span><span style="color:#9ECBFF"> install</span><span style="color:#79B8FF"> -r</span><span style="color:#9ECBFF"> requirements.txt</span></span>
+<span data-line=""> </span>
+<span data-line=""><span style="color:#6A737D"># requirements 컴파일 (크로스 플랫폼, 재현 가능)</span></span>
+<span data-line=""><span style="color:#B392F0">uv</span><span style="color:#9ECBFF"> pip</span><span style="color:#9ECBFF"> compile</span><span style="color:#9ECBFF"> requirements.in</span><span style="color:#79B8FF"> --universal</span><span style="color:#79B8FF"> -o</span><span style="color:#9ECBFF"> requirements.txt</span></span>
+<span data-line=""> </span>
+<span data-line=""><span style="color:#6A737D"># 환경 동기화 (잠금 파일에 엄격하게 따름)</span></span>
+<span data-line=""><span style="color:#B392F0">uv</span><span style="color:#9ECBFF"> pip</span><span style="color:#9ECBFF"> sync</span><span style="color:#9ECBFF"> requirements.txt</span></span>
+<span data-line=""> </span>
+<span data-line=""><span style="color:#6A737D"># venv 생성</span></span>
+<span data-line=""><span style="color:#B392F0">uv</span><span style="color:#9ECBFF"> venv</span></span></code></pre></figure>
+<p><code>uv pip</code>으로 전환하면 파라미터는 거의 동일하지만 속도가 한 차수 높아집니다 — 자전거에서 오토바이로 업그레이드하는 것처럼: 같은 길, 완전히 다른 경험. 큰 변경 없이 레거시 프로젝트를 업그레이드하고 싶다면? 먼저 <code>uv pip</code>으로만 바꿔도 무통으로 성능 향상됩니다.</p>
+<h2 id="전역-도구-설치-uv-tool">전역 도구 설치 (uv tool)</h2>
+<p>자주 쓰는 도구를 매번 <code>uvx</code>로 실행하고 싶지 않다면? 전역 설치:</p>
+<figure data-rehype-pretty-code-figure=""><pre style="background-color:#24292e;color:#e1e4e8" tabindex="0" data-language="bash" data-theme="github-dark"><code data-language="bash" data-theme="github-dark" style="display: grid;"><span data-line=""><span style="color:#B392F0">uv</span><span style="color:#9ECBFF"> tool</span><span style="color:#9ECBFF"> install</span><span style="color:#9ECBFF"> ruff</span></span>
+<span data-line=""><span style="color:#B392F0">uv</span><span style="color:#9ECBFF"> tool</span><span style="color:#9ECBFF"> install</span><span style="color:#9ECBFF"> httpie</span></span>
+<span data-line=""> </span>
+<span data-line=""><span style="color:#6A737D"># 이후 직접 호출 가능</span></span>
+<span data-line=""><span style="color:#B392F0">ruff</span><span style="color:#9ECBFF"> check</span><span style="color:#9ECBFF"> .</span></span>
+<span data-line=""><span style="color:#B392F0">http</span><span style="color:#9ECBFF"> https://httpbin.org/get</span></span></code></pre></figure>
+<p>개별 도구 또는 전체 업그레이드:</p>
+<figure data-rehype-pretty-code-figure=""><pre style="background-color:#24292e;color:#e1e4e8" tabindex="0" data-language="bash" data-theme="github-dark"><code data-language="bash" data-theme="github-dark" style="display: grid;"><span data-line=""><span style="color:#B392F0">uv</span><span style="color:#9ECBFF"> tool</span><span style="color:#9ECBFF"> upgrade</span><span style="color:#9ECBFF"> ruff</span></span>
+<span data-line=""><span style="color:#B392F0">uv</span><span style="color:#9ECBFF"> tool</span><span style="color:#9ECBFF"> upgrade</span><span style="color:#79B8FF"> --all</span></span></code></pre></figure>
+<blockquote>
+<p><code>uv tool install</code>은 독립 환경을 만들어 프로젝트 의존성과 충돌하지 않습니다. 프로젝트 내 버전 고정이 필요한 도구는 계속 <code>uv add --dev</code> 사용.</p>
+</blockquote>
+<h2 id="스크립트-잠금-파일과-shebang">스크립트 잠금 파일과 shebang</h2>
+<p>단일 스크립트도 재현 가능하게 하고 싶다면? 의존성을 잠글 수 있습니다:</p>
+<figure data-rehype-pretty-code-figure=""><pre style="background-color:#24292e;color:#e1e4e8" tabindex="0" data-language="bash" data-theme="github-dark"><code data-language="bash" data-theme="github-dark" style="display: grid;"><span data-line=""><span style="color:#B392F0">uv</span><span style="color:#9ECBFF"> lock</span><span style="color:#79B8FF"> --script</span><span style="color:#9ECBFF"> example.py</span></span></code></pre></figure>
+<p><code>example.py.lock</code>이 생성됩니다. <code>uv run example.py</code> 실행 시 이 잠금 파일을 사용합니다.</p>
+<p>또는 실행 파일로 만들기:</p>
+<figure data-rehype-pretty-code-figure=""><pre style="background-color:#24292e;color:#e1e4e8" tabindex="0" data-language="bash" data-theme="github-dark"><code data-language="bash" data-theme="github-dark" style="display: grid;"><span data-line=""><span style="color:#6A737D">#!/usr/bin/env -S uv run --script</span></span>
+<span data-line=""><span style="color:#6A737D"># /// script</span></span>
+<span data-line=""><span style="color:#6A737D"># dependencies = ["httpx"]</span></span>
+<span data-line=""><span style="color:#6A737D"># ///</span></span>
+<span data-line=""> </span>
+<span data-line=""><span style="color:#B392F0">import</span><span style="color:#9ECBFF"> httpx</span></span>
+<span data-line=""><span style="color:#79B8FF">print</span><span style="color:#E1E4E8">(</span><span style="color:#9ECBFF">httpx.get</span><span style="color:#E1E4E8">(</span><span style="color:#B392F0">"https://example.com"</span><span style="color:#E1E4E8">))</span></span></code></pre></figure>
+<figure data-rehype-pretty-code-figure=""><pre style="background-color:#24292e;color:#e1e4e8" tabindex="0" data-language="bash" data-theme="github-dark"><code data-language="bash" data-theme="github-dark" style="display: grid;"><span data-line=""><span style="color:#B392F0">chmod</span><span style="color:#9ECBFF"> +x</span><span style="color:#9ECBFF"> fetch</span></span>
+<span data-line=""><span style="color:#B392F0">./fetch</span></span></code></pre></figure>
+<h2 id="다음-단계">다음 단계</h2>
+<p>고급 기능을 갖췄다면 지침으로 위험을 줄이세요:
+👉 <a href="05-best-practices">베스트 프랙티스</a></p>5:["$","aside",null,{"className":"hidden lg:block","children":["$","$L8",null,{"html":"$9"}]}]
+6:["$","script","script-0",{"src":"/_next/static/chunks/2dddb3bc05093f69.js","async":true}]
+7:["$","$La",null,{"children":["$","$b",null,{"name":"Next.MetadataOutlet","children":"$@c"}]}]
+c:null

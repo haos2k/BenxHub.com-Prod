@@ -1,0 +1,143 @@
+1:"$Sreact.fragment"
+2:I[14864,["/_next/static/chunks/7923a261b80bb6e1.js","/_next/static/chunks/e09b4358027e8033.js","/_next/static/chunks/2dddb3bc05093f69.js"],"default"]
+8:I[24801,["/_next/static/chunks/7923a261b80bb6e1.js","/_next/static/chunks/e09b4358027e8033.js","/_next/static/chunks/2dddb3bc05093f69.js"],"default"]
+a:I[50183,["/_next/static/chunks/5a5b5b13c22d14f7.js","/_next/static/chunks/a484d1d3dd4b55ab.js"],"OutletBoundary"]
+b:"$Sreact.suspense"
+3:T1161,<p>Three modes, one sentence to tell them apart: <strong>who can touch your code, and who can only talk</strong>. Once you get that, picking the right mode is easy.</p>
+<h2 id="one-sentence-comparison">One-Sentence Comparison</h2>
+<table>
+<thead>
+<tr>
+<th>Mode</th>
+<th>One Sentence</th>
+<th>Does it modify your files?</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td><strong>Agent</strong></td>
+<td>"Do" something for me</td>
+<td>✅ Yes</td>
+</tr>
+<tr>
+<td><strong>Plan</strong></td>
+<td>"Plan" how to do it first, then I'll decide</td>
+<td>Not yet — only after you approve</td>
+</tr>
+<tr>
+<td><strong>Ask</strong></td>
+<td>Just "ask" a question or look something up</td>
+<td>❌ No</td>
+</tr>
+</tbody>
+</table>
+<p>Think of them as three colleagues: Agent is the one who says "hand it to me, I'll just do it"; Plan is the one who says "let me write up a proposal for you to review first"; Ask is the one who says "I'll only answer, I won't touch the files" — pick the right person and save yourself half the trouble.</p>
+<h2 id="agent-mode-default">Agent Mode (Default)</h2>
+<p><strong>Use case</strong>: Have the AI directly edit code, add features, or refactor. You want results, not a discussion.</p>
+<figure data-rehype-pretty-code-figure=""><pre style="background-color:#24292e;color:#e1e4e8" tabindex="0" data-language="bash" data-theme="github-dark"><code data-language="bash" data-theme="github-dark" style="display: grid;"><span data-line=""><span style="color:#B392F0">cursor</span><span style="color:#9ECBFF"> agent</span><span style="color:#9ECBFF"> "Change login to use JWT"</span></span></code></pre></figure>
+<ul>
+<li>Reads files, edits files, may run commands</li>
+<li>You can accept or reject each step — you're in control</li>
+</ul>
+<h2 id="plan-mode">Plan Mode</h2>
+<p><strong>Use case</strong>: Not sure how to approach something, or worried about the AI making too many changes at once? See the plan before giving the go-ahead.</p>
+<figure data-rehype-pretty-code-figure=""><pre style="background-color:#24292e;color:#e1e4e8" tabindex="0" data-language="bash" data-theme="github-dark"><code data-language="bash" data-theme="github-dark" style="display: grid;"><span data-line=""><span style="color:#B392F0">cursor</span><span style="color:#9ECBFF"> agent</span><span style="color:#79B8FF"> --plan</span><span style="color:#9ECBFF"> "Refactor the entire API layer"</span></span></code></pre></figure>
+<ul>
+<li>The AI will ask a few questions and propose an approach</li>
+<li>It only acts after you agree — no surprises</li>
+</ul>
+<p><strong>When to use</strong>: For large changes, or whenever you want to "see it clearly before committing."</p>
+<h2 id="ask-mode-read-only">Ask Mode (Read-Only)</h2>
+<p><strong>Use case</strong>: You just want to ask "what does this code do" or "is there a better way to write this" — and you absolutely <strong>do not want any files changed</strong>.</p>
+<figure data-rehype-pretty-code-figure=""><pre style="background-color:#24292e;color:#e1e4e8" tabindex="0" data-language="bash" data-theme="github-dark"><code data-language="bash" data-theme="github-dark" style="display: grid;"><span data-line=""><span style="color:#B392F0">cursor</span><span style="color:#9ECBFF"> ask</span><span style="color:#9ECBFF"> "What is the logic in src/auth.ts?"</span></span></code></pre></figure>
+<ul>
+<li>Only reads, analyzes, and answers — never writes</li>
+<li>Great for CI, or environments where you only want to inspect, not modify</li>
+</ul>
+<h2 id="switching-modes-mid-conversation">Switching Modes Mid-Conversation</h2>
+<p>Already inside a <code>cursor agent</code> conversation? Use <strong>slash commands</strong> to switch instantly:</p>
+<ul>
+<li><code>/plan</code> → Switch to Plan mode (plan first, act later)</li>
+<li><code>/ask</code> → Switch to Ask mode (read-only, ask freely)</li>
+</ul>
+<p>No need to exit and restart — it's like switching gears on the fly.</p>
+<h2 id="summary">Summary</h2>
+<ul>
+<li><strong>Agent</strong>: gets things done, modifies files — use this when you want results</li>
+<li><strong>Plan</strong>: plans first, acts only after you approve — use this when you want safety</li>
+<li><strong>Ask</strong>: questions only, read-only — use this when you want answers without changes</li>
+</ul>
+<blockquote>
+<p>Next: <a href="04-non-interactive">04-non-interactive</a> — Non-interactive mode for scripts and CI, let the AI run unattended</p>
+</blockquote>0:{"buildId":"Yck3R4ooQxWkwGLT6is1X","rsc":["$","$1","c",{"children":[[["$","script",null,{"type":"application/ld+json","dangerouslySetInnerHTML":{"__html":"{\"@context\":\"https://schema.org\",\"@type\":\"Article\",\"headline\":\"Cursor CLI Three Modes: Agent / Plan / Ask\",\"description\":\"Agent modifies files, Plan drafts a plan before acting, Ask is read-only. One sentence to tell them apart — and learn to switch with slash commands mid-conversation.\",\"url\":\"https://benxhub.com/en/blog/cursor/cli/03-modes\",\"mainEntityOfPage\":{\"@type\":\"WebPage\",\"@id\":\"https://benxhub.com/en/blog/cursor/cli/03-modes\"},\"datePublished\":\"2026-02-24T00:00:00.000Z\",\"dateModified\":\"2026-02-24T00:00:00.000Z\",\"keywords\":\"cursor, cli, agent, plan, ask\",\"inLanguage\":\"en\",\"author\":{\"@type\":\"Person\",\"name\":\"BenX\",\"url\":\"https://benxhub.com\"},\"publisher\":{\"@type\":\"Organization\",\"name\":\"BenXHub Blog\",\"url\":\"https://benxhub.com\"}}"}}],["$","div",null,{"className":"mx-auto max-w-6xl px-4 py-12 sm:px-6","children":["$","div",null,{"className":"lg:grid lg:grid-cols-[1fr_240px] lg:gap-14","children":[["$","article",null,{"children":[["$","header",null,{"className":"mb-10","children":[["$","div",null,{"className":"mb-4 flex flex-wrap gap-2","children":[["$","$L2","cursor",{"href":"/en/tags/cursor","localeCookie":{"name":"NEXT_LOCALE","sameSite":"lax"},"className":"inline-flex items-center rounded-full px-2.5 py-0.5 text-xs font-medium transition-colors","style":{"background":"var(--color-code-bg)","color":"var(--color-accent)","border":"1px solid var(--color-border)"},"children":["#","cursor"]}],["$","$L2","cli",{"href":"/en/tags/cli","localeCookie":{"name":"NEXT_LOCALE","sameSite":"lax"},"className":"inline-flex items-center rounded-full px-2.5 py-0.5 text-xs font-medium transition-colors","style":{"background":"var(--color-code-bg)","color":"var(--color-accent)","border":"1px solid var(--color-border)"},"children":["#","cli"]}],["$","$L2","agent",{"href":"/en/tags/agent","localeCookie":{"name":"NEXT_LOCALE","sameSite":"lax"},"className":"inline-flex items-center rounded-full px-2.5 py-0.5 text-xs font-medium transition-colors","style":{"background":"var(--color-code-bg)","color":"var(--color-accent)","border":"1px solid var(--color-border)"},"children":["#","agent"]}],["$","$L2","plan",{"href":"/en/tags/plan","localeCookie":{"name":"NEXT_LOCALE","sameSite":"lax"},"className":"inline-flex items-center rounded-full px-2.5 py-0.5 text-xs font-medium transition-colors","style":{"background":"var(--color-code-bg)","color":"var(--color-accent)","border":"1px solid var(--color-border)"},"children":["#","plan"]}],["$","$L2","ask",{"href":"/en/tags/ask","localeCookie":{"name":"NEXT_LOCALE","sameSite":"lax"},"className":"inline-flex items-center rounded-full px-2.5 py-0.5 text-xs font-medium transition-colors","style":{"background":"var(--color-code-bg)","color":"var(--color-accent)","border":"1px solid var(--color-border)"},"children":["#","ask"]}]]}],["$","h1",null,{"className":"mb-4 text-3xl leading-snug font-bold tracking-tight sm:text-4xl","style":{"color":"var(--color-text)"},"children":"Cursor CLI Three Modes: Agent / Plan / Ask"}],["$","div",null,{"className":"flex flex-wrap items-center gap-3 text-sm","style":{"color":"var(--color-muted)"},"children":[["$","time",null,{"dateTime":"2026-02-24","children":"Feb 24, 2026"}],["$","span",null,{"aria-hidden":"true","children":"·"}],["$","span",null,{"children":"3 min read"}]]}],"$undefined",["$","div",null,{"className":"mt-6 border-b","style":{"borderColor":"var(--color-border)"}}]]}],["$","div",null,{"className":"prose","dangerouslySetInnerHTML":{"__html":"$3"}}],"$L4"]}],"$L5"]}]}]],["$L6"],"$L7"]}],"loading":null,"isPartial":false}
+4:["$","footer",null,{"className":"mt-14 border-t pt-8","style":{"borderColor":"var(--color-border)"},"children":[["$","div",null,{"className":"mb-8 flex flex-wrap gap-2","children":[["$","$L2","cursor",{"href":"/en/tags/cursor","localeCookie":{"name":"NEXT_LOCALE","sameSite":"lax"},"className":"inline-flex items-center rounded-full px-3 py-1 text-sm font-medium transition-colors","style":{"background":"var(--color-code-bg)","color":"var(--color-accent)","border":"1px solid var(--color-border)"},"children":["#","cursor"]}],["$","$L2","cli",{"href":"/en/tags/cli","localeCookie":{"name":"NEXT_LOCALE","sameSite":"lax"},"className":"inline-flex items-center rounded-full px-3 py-1 text-sm font-medium transition-colors","style":{"background":"var(--color-code-bg)","color":"var(--color-accent)","border":"1px solid var(--color-border)"},"children":["#","cli"]}],["$","$L2","agent",{"href":"/en/tags/agent","localeCookie":{"name":"NEXT_LOCALE","sameSite":"lax"},"className":"inline-flex items-center rounded-full px-3 py-1 text-sm font-medium transition-colors","style":{"background":"var(--color-code-bg)","color":"var(--color-accent)","border":"1px solid var(--color-border)"},"children":["#","agent"]}],["$","$L2","plan",{"href":"/en/tags/plan","localeCookie":{"name":"NEXT_LOCALE","sameSite":"lax"},"className":"inline-flex items-center rounded-full px-3 py-1 text-sm font-medium transition-colors","style":{"background":"var(--color-code-bg)","color":"var(--color-accent)","border":"1px solid var(--color-border)"},"children":["#","plan"]}],["$","$L2","ask",{"href":"/en/tags/ask","localeCookie":{"name":"NEXT_LOCALE","sameSite":"lax"},"className":"inline-flex items-center rounded-full px-3 py-1 text-sm font-medium transition-colors","style":{"background":"var(--color-code-bg)","color":"var(--color-accent)","border":"1px solid var(--color-border)"},"children":["#","ask"]}]]}],["$","nav",null,{"aria-label":"Post navigation","className":"grid grid-cols-1 gap-4 sm:grid-cols-2","children":[["$","$L2",null,{"href":"/en/blog/cursor/cli/02-basic-usage","localeCookie":{"name":"NEXT_LOCALE","sameSite":"lax"},"className":"group rounded-lg border p-4 transition-colors hover:border-accent","style":{"borderColor":"var(--color-border)","background":"var(--color-surface)"},"children":[["$","p",null,{"className":"mb-1 text-xs","style":{"color":"var(--color-muted)"},"children":"← Newer"}],["$","p",null,{"className":"line-clamp-1 text-sm font-medium transition-colors group-hover:text-accent","style":{"color":"var(--color-text)"},"children":"Cursor CLI Basic Usage"}]]}],["$","$L2",null,{"href":"/en/blog/cursor/cli/04-non-interactive","localeCookie":{"name":"NEXT_LOCALE","sameSite":"lax"},"className":"group rounded-lg border p-4 text-right transition-colors hover:border-accent","style":{"borderColor":"var(--color-border)","background":"var(--color-surface)"},"children":[["$","p",null,{"className":"mb-1 text-xs","style":{"color":"var(--color-muted)"},"children":"Older →"}],["$","p",null,{"className":"line-clamp-1 text-sm font-medium transition-colors group-hover:text-accent","style":{"color":"var(--color-text)"},"children":"Cursor CLI Non-Interactive Mode (Scripts & CI)"}]]}]]}]]}]
+9:T1161,<p>Three modes, one sentence to tell them apart: <strong>who can touch your code, and who can only talk</strong>. Once you get that, picking the right mode is easy.</p>
+<h2 id="one-sentence-comparison">One-Sentence Comparison</h2>
+<table>
+<thead>
+<tr>
+<th>Mode</th>
+<th>One Sentence</th>
+<th>Does it modify your files?</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td><strong>Agent</strong></td>
+<td>"Do" something for me</td>
+<td>✅ Yes</td>
+</tr>
+<tr>
+<td><strong>Plan</strong></td>
+<td>"Plan" how to do it first, then I'll decide</td>
+<td>Not yet — only after you approve</td>
+</tr>
+<tr>
+<td><strong>Ask</strong></td>
+<td>Just "ask" a question or look something up</td>
+<td>❌ No</td>
+</tr>
+</tbody>
+</table>
+<p>Think of them as three colleagues: Agent is the one who says "hand it to me, I'll just do it"; Plan is the one who says "let me write up a proposal for you to review first"; Ask is the one who says "I'll only answer, I won't touch the files" — pick the right person and save yourself half the trouble.</p>
+<h2 id="agent-mode-default">Agent Mode (Default)</h2>
+<p><strong>Use case</strong>: Have the AI directly edit code, add features, or refactor. You want results, not a discussion.</p>
+<figure data-rehype-pretty-code-figure=""><pre style="background-color:#24292e;color:#e1e4e8" tabindex="0" data-language="bash" data-theme="github-dark"><code data-language="bash" data-theme="github-dark" style="display: grid;"><span data-line=""><span style="color:#B392F0">cursor</span><span style="color:#9ECBFF"> agent</span><span style="color:#9ECBFF"> "Change login to use JWT"</span></span></code></pre></figure>
+<ul>
+<li>Reads files, edits files, may run commands</li>
+<li>You can accept or reject each step — you're in control</li>
+</ul>
+<h2 id="plan-mode">Plan Mode</h2>
+<p><strong>Use case</strong>: Not sure how to approach something, or worried about the AI making too many changes at once? See the plan before giving the go-ahead.</p>
+<figure data-rehype-pretty-code-figure=""><pre style="background-color:#24292e;color:#e1e4e8" tabindex="0" data-language="bash" data-theme="github-dark"><code data-language="bash" data-theme="github-dark" style="display: grid;"><span data-line=""><span style="color:#B392F0">cursor</span><span style="color:#9ECBFF"> agent</span><span style="color:#79B8FF"> --plan</span><span style="color:#9ECBFF"> "Refactor the entire API layer"</span></span></code></pre></figure>
+<ul>
+<li>The AI will ask a few questions and propose an approach</li>
+<li>It only acts after you agree — no surprises</li>
+</ul>
+<p><strong>When to use</strong>: For large changes, or whenever you want to "see it clearly before committing."</p>
+<h2 id="ask-mode-read-only">Ask Mode (Read-Only)</h2>
+<p><strong>Use case</strong>: You just want to ask "what does this code do" or "is there a better way to write this" — and you absolutely <strong>do not want any files changed</strong>.</p>
+<figure data-rehype-pretty-code-figure=""><pre style="background-color:#24292e;color:#e1e4e8" tabindex="0" data-language="bash" data-theme="github-dark"><code data-language="bash" data-theme="github-dark" style="display: grid;"><span data-line=""><span style="color:#B392F0">cursor</span><span style="color:#9ECBFF"> ask</span><span style="color:#9ECBFF"> "What is the logic in src/auth.ts?"</span></span></code></pre></figure>
+<ul>
+<li>Only reads, analyzes, and answers — never writes</li>
+<li>Great for CI, or environments where you only want to inspect, not modify</li>
+</ul>
+<h2 id="switching-modes-mid-conversation">Switching Modes Mid-Conversation</h2>
+<p>Already inside a <code>cursor agent</code> conversation? Use <strong>slash commands</strong> to switch instantly:</p>
+<ul>
+<li><code>/plan</code> → Switch to Plan mode (plan first, act later)</li>
+<li><code>/ask</code> → Switch to Ask mode (read-only, ask freely)</li>
+</ul>
+<p>No need to exit and restart — it's like switching gears on the fly.</p>
+<h2 id="summary">Summary</h2>
+<ul>
+<li><strong>Agent</strong>: gets things done, modifies files — use this when you want results</li>
+<li><strong>Plan</strong>: plans first, acts only after you approve — use this when you want safety</li>
+<li><strong>Ask</strong>: questions only, read-only — use this when you want answers without changes</li>
+</ul>
+<blockquote>
+<p>Next: <a href="04-non-interactive">04-non-interactive</a> — Non-interactive mode for scripts and CI, let the AI run unattended</p>
+</blockquote>5:["$","aside",null,{"className":"hidden lg:block","children":["$","$L8",null,{"html":"$9"}]}]
+6:["$","script","script-0",{"src":"/_next/static/chunks/2dddb3bc05093f69.js","async":true}]
+7:["$","$La",null,{"children":["$","$b",null,{"name":"Next.MetadataOutlet","children":"$@c"}]}]
+c:null

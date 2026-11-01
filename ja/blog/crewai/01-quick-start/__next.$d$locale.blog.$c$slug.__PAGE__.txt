@@ -1,0 +1,187 @@
+1:"$Sreact.fragment"
+2:I[14864,["/_next/static/chunks/7923a261b80bb6e1.js","/_next/static/chunks/e09b4358027e8033.js","/_next/static/chunks/2dddb3bc05093f69.js"],"default"]
+8:I[24801,["/_next/static/chunks/7923a261b80bb6e1.js","/_next/static/chunks/e09b4358027e8033.js","/_next/static/chunks/2dddb3bc05093f69.js"],"default"]
+a:I[50183,["/_next/static/chunks/5a5b5b13c22d14f7.js","/_next/static/chunks/a484d1d3dd4b55ab.js"],"OutletBoundary"]
+b:"$Sreact.suspense"
+3:T1ecf,<p>この回の目的はシンプルです。<strong>手順どおりに進めれば、最初の AI リサーチレポートを出力できます。</strong><br>
+最短ルートで進めます。</p>
+<h2 id="手順-1プロジェクト作成">手順 1：プロジェクト作成</h2>
+<figure data-rehype-pretty-code-figure=""><pre style="background-color:#24292e;color:#e1e4e8" tabindex="0" data-language="bash" data-theme="github-dark"><code data-language="bash" data-theme="github-dark" style="display: grid;"><span data-line=""><span style="color:#B392F0">crewai</span><span style="color:#9ECBFF"> create</span><span style="color:#9ECBFF"> crew</span><span style="color:#9ECBFF"> latest-ai-notes</span></span>
+<span data-line=""><span style="color:#79B8FF">cd</span><span style="color:#9ECBFF"> latest-ai-notes</span></span></code></pre></figure>
+<p>以下を含む基本構成が作成されます。</p>
+<ul>
+<li><code>src/latest_ai_notes/config/agents.yaml</code></li>
+<li><code>src/latest_ai_notes/config/tasks.yaml</code></li>
+<li><code>src/latest_ai_notes/crew.py</code></li>
+<li><code>src/latest_ai_notes/main.py</code></li>
+</ul>
+<h2 id="手順-2依存関係のインストール">手順 2：依存関係のインストール</h2>
+<figure data-rehype-pretty-code-figure=""><pre style="background-color:#24292e;color:#e1e4e8" tabindex="0" data-language="bash" data-theme="github-dark"><code data-language="bash" data-theme="github-dark" style="display: grid;"><span data-line=""><span style="color:#B392F0">crewai</span><span style="color:#9ECBFF"> install</span></span></code></pre></figure>
+<p>このコマンドはプロジェクト設定を読み取り、仮想環境の作成とパッケージ導入を自動で実行します。<br>
+長い <code>pip install</code> を手で並べる必要はありません。</p>
+<h2 id="手順-3agent-設定">手順 3：Agent 設定</h2>
+<p><code>agents.yaml</code> を編集:</p>
+<figure data-rehype-pretty-code-figure=""><pre style="background-color:#24292e;color:#e1e4e8" tabindex="0" data-language="yaml" data-theme="github-dark"><code data-language="yaml" data-theme="github-dark" style="display: grid;"><span data-line=""><span style="color:#85E89D">researcher</span><span style="color:#E1E4E8">:</span></span>
+<span data-line=""><span style="color:#85E89D">  role</span><span style="color:#E1E4E8">: </span><span style="color:#F97583">></span></span>
+<span data-line=""><span style="color:#9ECBFF">    {topic} Researcher</span></span>
+<span data-line=""><span style="color:#85E89D">  goal</span><span style="color:#E1E4E8">: </span><span style="color:#F97583">></span></span>
+<span data-line=""><span style="color:#9ECBFF">    Find useful and current information about {topic}</span></span>
+<span data-line=""><span style="color:#85E89D">  backstory</span><span style="color:#E1E4E8">: </span><span style="color:#F97583">></span></span>
+<span data-line=""><span style="color:#9ECBFF">    You are good at collecting reliable information and summarizing key points.</span></span>
+<span data-line=""> </span>
+<span data-line=""><span style="color:#85E89D">reporter</span><span style="color:#E1E4E8">:</span></span>
+<span data-line=""><span style="color:#85E89D">  role</span><span style="color:#E1E4E8">: </span><span style="color:#F97583">></span></span>
+<span data-line=""><span style="color:#9ECBFF">    {topic} Reporter</span></span>
+<span data-line=""><span style="color:#85E89D">  goal</span><span style="color:#E1E4E8">: </span><span style="color:#F97583">></span></span>
+<span data-line=""><span style="color:#9ECBFF">    Convert research notes into a readable markdown report</span></span>
+<span data-line=""><span style="color:#85E89D">  backstory</span><span style="color:#E1E4E8">: </span><span style="color:#F97583">></span></span>
+<span data-line=""><span style="color:#9ECBFF">    You explain technical topics with simple language and clear structure.</span></span></code></pre></figure>
+<h2 id="手順-4task-設定">手順 4：Task 設定</h2>
+<p><code>tasks.yaml</code> を編集:</p>
+<figure data-rehype-pretty-code-figure=""><pre style="background-color:#24292e;color:#e1e4e8" tabindex="0" data-language="yaml" data-theme="github-dark"><code data-language="yaml" data-theme="github-dark" style="display: grid;"><span data-line=""><span style="color:#85E89D">research_task</span><span style="color:#E1E4E8">:</span></span>
+<span data-line=""><span style="color:#85E89D">  description</span><span style="color:#E1E4E8">: </span><span style="color:#F97583">></span></span>
+<span data-line=""><span style="color:#9ECBFF">    Research {topic}. Focus on trends, tools, and practical examples in 2026.</span></span>
+<span data-line=""><span style="color:#85E89D">  expected_output</span><span style="color:#E1E4E8">: </span><span style="color:#F97583">></span></span>
+<span data-line=""><span style="color:#9ECBFF">    10 bullet points with short explanations.</span></span>
+<span data-line=""><span style="color:#85E89D">  agent</span><span style="color:#E1E4E8">: </span><span style="color:#9ECBFF">researcher</span></span>
+<span data-line=""> </span>
+<span data-line=""><span style="color:#85E89D">report_task</span><span style="color:#E1E4E8">:</span></span>
+<span data-line=""><span style="color:#85E89D">  description</span><span style="color:#E1E4E8">: </span><span style="color:#F97583">></span></span>
+<span data-line=""><span style="color:#9ECBFF">    Expand the research notes into a complete markdown article for beginners.</span></span>
+<span data-line=""><span style="color:#85E89D">  expected_output</span><span style="color:#E1E4E8">: </span><span style="color:#F97583">></span></span>
+<span data-line=""><span style="color:#9ECBFF">    A beginner-friendly markdown report with sections and conclusion.</span></span>
+<span data-line=""><span style="color:#85E89D">  agent</span><span style="color:#E1E4E8">: </span><span style="color:#9ECBFF">reporter</span></span>
+<span data-line=""><span style="color:#85E89D">  context</span><span style="color:#E1E4E8">:</span></span>
+<span data-line=""><span style="color:#E1E4E8">    - </span><span style="color:#9ECBFF">research_task</span></span>
+<span data-line=""><span style="color:#85E89D">  output_file</span><span style="color:#E1E4E8">: </span><span style="color:#9ECBFF">output/report.md</span></span></code></pre></figure>
+<blockquote>
+<p>💡 <code>context</code> は重要です。2 つ目のタスクが 1 つ目の結果を受け取ることを示します。</p>
+</blockquote>
+<h2 id="手順-5crew-実行">手順 5：Crew 実行</h2>
+<figure data-rehype-pretty-code-figure=""><pre style="background-color:#24292e;color:#e1e4e8" tabindex="0" data-language="bash" data-theme="github-dark"><code data-language="bash" data-theme="github-dark" style="display: grid;"><span data-line=""><span style="color:#B392F0">crewai</span><span style="color:#9ECBFF"> run</span></span></code></pre></figure>
+<p>成功すると <code>output/report.md</code> に結果が出ます。<br>
+初回実行で遅いのは普通です。モデル呼び出しは、寝起きの猫みたいに少し待ちます。</p>
+<h2 id="よくある問題">よくある問題</h2>
+<table>
+<thead>
+<tr>
+<th>問題</th>
+<th>原因候補</th>
+<th>解決策</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td><code>API key missing</code></td>
+<td>環境変数が未設定</td>
+<td><code>.env</code> に API キーを追加</td>
+</tr>
+<tr>
+<td><code>Module not found</code></td>
+<td>依存が不足</td>
+<td><code>crewai install</code> を再実行</td>
+</tr>
+<tr>
+<td>出力が安定しない</td>
+<td>タスク記述が曖昧</td>
+<td><code>expected_output</code> の形式要件を強化</td>
+</tr>
+</tbody>
+</table>
+<h2 id="次へ">次へ</h2>
+<p>最初のフローは動きました。<br>
+次は最重要の分割スキルです。<br>
+👉 <a href="02-agents-and-tasks">Agent と Task 入門</a></p>0:{"buildId":"Yck3R4ooQxWkwGLT6is1X","rsc":["$","$1","c",{"children":[[["$","script",null,{"type":"application/ld+json","dangerouslySetInnerHTML":{"__html":"{\"@context\":\"https://schema.org\",\"@type\":\"Article\",\"headline\":\"CrewAI クイックスタート：10 分で最初のリサーチ Crew を作る\",\"description\":\"インストールから実行まで、最初に動く CrewAI プロジェクトを完成させます。\",\"url\":\"https://benxhub.com/ja/blog/crewai/01-quick-start\",\"mainEntityOfPage\":{\"@type\":\"WebPage\",\"@id\":\"https://benxhub.com/ja/blog/crewai/01-quick-start\"},\"datePublished\":\"2026-03-01T00:00:00.000Z\",\"dateModified\":\"2026-03-01T00:00:00.000Z\",\"keywords\":\"crewai, quick-start, python, agent\",\"inLanguage\":\"ja\",\"author\":{\"@type\":\"Person\",\"name\":\"BenX\",\"url\":\"https://benxhub.com\"},\"publisher\":{\"@type\":\"Organization\",\"name\":\"BenXHub Blog\",\"url\":\"https://benxhub.com\"}}"}}],["$","div",null,{"className":"mx-auto max-w-6xl px-4 py-12 sm:px-6","children":["$","div",null,{"className":"lg:grid lg:grid-cols-[1fr_240px] lg:gap-14","children":[["$","article",null,{"children":[["$","header",null,{"className":"mb-10","children":[["$","div",null,{"className":"mb-4 flex flex-wrap gap-2","children":[["$","$L2","crewai",{"href":"/ja/tags/crewai","localeCookie":{"name":"NEXT_LOCALE","sameSite":"lax"},"className":"inline-flex items-center rounded-full px-2.5 py-0.5 text-xs font-medium transition-colors","style":{"background":"var(--color-code-bg)","color":"var(--color-accent)","border":"1px solid var(--color-border)"},"children":["#","crewai"]}],["$","$L2","quick-start",{"href":"/ja/tags/quick-start","localeCookie":{"name":"NEXT_LOCALE","sameSite":"lax"},"className":"inline-flex items-center rounded-full px-2.5 py-0.5 text-xs font-medium transition-colors","style":{"background":"var(--color-code-bg)","color":"var(--color-accent)","border":"1px solid var(--color-border)"},"children":["#","quick-start"]}],["$","$L2","python",{"href":"/ja/tags/python","localeCookie":{"name":"NEXT_LOCALE","sameSite":"lax"},"className":"inline-flex items-center rounded-full px-2.5 py-0.5 text-xs font-medium transition-colors","style":{"background":"var(--color-code-bg)","color":"var(--color-accent)","border":"1px solid var(--color-border)"},"children":["#","python"]}],["$","$L2","agent",{"href":"/ja/tags/agent","localeCookie":{"name":"NEXT_LOCALE","sameSite":"lax"},"className":"inline-flex items-center rounded-full px-2.5 py-0.5 text-xs font-medium transition-colors","style":{"background":"var(--color-code-bg)","color":"var(--color-accent)","border":"1px solid var(--color-border)"},"children":["#","agent"]}]]}],["$","h1",null,{"className":"mb-4 text-3xl leading-snug font-bold tracking-tight sm:text-4xl","style":{"color":"var(--color-text)"},"children":"CrewAI クイックスタート：10 分で最初のリサーチ Crew を作る"}],["$","div",null,{"className":"flex flex-wrap items-center gap-3 text-sm","style":{"color":"var(--color-muted)"},"children":[["$","time",null,{"dateTime":"2026-03-01","children":"2026年3月1日"}],["$","span",null,{"aria-hidden":"true","children":"·"}],["$","span",null,{"children":"3 min read"}]]}],"$undefined",["$","div",null,{"className":"mt-6 border-b","style":{"borderColor":"var(--color-border)"}}]]}],["$","div",null,{"className":"prose","dangerouslySetInnerHTML":{"__html":"$3"}}],"$L4"]}],"$L5"]}]}]],["$L6"],"$L7"]}],"loading":null,"isPartial":false}
+4:["$","footer",null,{"className":"mt-14 border-t pt-8","style":{"borderColor":"var(--color-border)"},"children":[["$","div",null,{"className":"mb-8 flex flex-wrap gap-2","children":[["$","$L2","crewai",{"href":"/ja/tags/crewai","localeCookie":{"name":"NEXT_LOCALE","sameSite":"lax"},"className":"inline-flex items-center rounded-full px-3 py-1 text-sm font-medium transition-colors","style":{"background":"var(--color-code-bg)","color":"var(--color-accent)","border":"1px solid var(--color-border)"},"children":["#","crewai"]}],["$","$L2","quick-start",{"href":"/ja/tags/quick-start","localeCookie":{"name":"NEXT_LOCALE","sameSite":"lax"},"className":"inline-flex items-center rounded-full px-3 py-1 text-sm font-medium transition-colors","style":{"background":"var(--color-code-bg)","color":"var(--color-accent)","border":"1px solid var(--color-border)"},"children":["#","quick-start"]}],["$","$L2","python",{"href":"/ja/tags/python","localeCookie":{"name":"NEXT_LOCALE","sameSite":"lax"},"className":"inline-flex items-center rounded-full px-3 py-1 text-sm font-medium transition-colors","style":{"background":"var(--color-code-bg)","color":"var(--color-accent)","border":"1px solid var(--color-border)"},"children":["#","python"]}],["$","$L2","agent",{"href":"/ja/tags/agent","localeCookie":{"name":"NEXT_LOCALE","sameSite":"lax"},"className":"inline-flex items-center rounded-full px-3 py-1 text-sm font-medium transition-colors","style":{"background":"var(--color-code-bg)","color":"var(--color-accent)","border":"1px solid var(--color-border)"},"children":["#","agent"]}]]}],["$","nav",null,{"aria-label":"記事ナビゲーション","className":"grid grid-cols-1 gap-4 sm:grid-cols-2","children":[["$","$L2",null,{"href":"/ja/blog/crewai/00-overview","localeCookie":{"name":"NEXT_LOCALE","sameSite":"lax"},"className":"group rounded-lg border p-4 transition-colors hover:border-accent","style":{"borderColor":"var(--color-border)","background":"var(--color-surface)"},"children":[["$","p",null,{"className":"mb-1 text-xs","style":{"color":"var(--color-muted)"},"children":"← 新しい記事"}],["$","p",null,{"className":"line-clamp-1 text-sm font-medium transition-colors group-hover:text-accent","style":{"color":"var(--color-text)"},"children":"CrewAI チュートリアル総覧：ゼロから本番運用できるマルチエージェントワークフローへ"}]]}],["$","$L2",null,{"href":"/ja/blog/crewai/02-agents-and-tasks","localeCookie":{"name":"NEXT_LOCALE","sameSite":"lax"},"className":"group rounded-lg border p-4 text-right transition-colors hover:border-accent","style":{"borderColor":"var(--color-border)","background":"var(--color-surface)"},"children":[["$","p",null,{"className":"mb-1 text-xs","style":{"color":"var(--color-muted)"},"children":"古い記事 →"}],["$","p",null,{"className":"line-clamp-1 text-sm font-medium transition-colors group-hover:text-accent","style":{"color":"var(--color-text)"},"children":"CrewAI Agent と Task 入門：役割分担を崩壊させない分け方"}]]}]]}]]}]
+9:T1ecf,<p>この回の目的はシンプルです。<strong>手順どおりに進めれば、最初の AI リサーチレポートを出力できます。</strong><br>
+最短ルートで進めます。</p>
+<h2 id="手順-1プロジェクト作成">手順 1：プロジェクト作成</h2>
+<figure data-rehype-pretty-code-figure=""><pre style="background-color:#24292e;color:#e1e4e8" tabindex="0" data-language="bash" data-theme="github-dark"><code data-language="bash" data-theme="github-dark" style="display: grid;"><span data-line=""><span style="color:#B392F0">crewai</span><span style="color:#9ECBFF"> create</span><span style="color:#9ECBFF"> crew</span><span style="color:#9ECBFF"> latest-ai-notes</span></span>
+<span data-line=""><span style="color:#79B8FF">cd</span><span style="color:#9ECBFF"> latest-ai-notes</span></span></code></pre></figure>
+<p>以下を含む基本構成が作成されます。</p>
+<ul>
+<li><code>src/latest_ai_notes/config/agents.yaml</code></li>
+<li><code>src/latest_ai_notes/config/tasks.yaml</code></li>
+<li><code>src/latest_ai_notes/crew.py</code></li>
+<li><code>src/latest_ai_notes/main.py</code></li>
+</ul>
+<h2 id="手順-2依存関係のインストール">手順 2：依存関係のインストール</h2>
+<figure data-rehype-pretty-code-figure=""><pre style="background-color:#24292e;color:#e1e4e8" tabindex="0" data-language="bash" data-theme="github-dark"><code data-language="bash" data-theme="github-dark" style="display: grid;"><span data-line=""><span style="color:#B392F0">crewai</span><span style="color:#9ECBFF"> install</span></span></code></pre></figure>
+<p>このコマンドはプロジェクト設定を読み取り、仮想環境の作成とパッケージ導入を自動で実行します。<br>
+長い <code>pip install</code> を手で並べる必要はありません。</p>
+<h2 id="手順-3agent-設定">手順 3：Agent 設定</h2>
+<p><code>agents.yaml</code> を編集:</p>
+<figure data-rehype-pretty-code-figure=""><pre style="background-color:#24292e;color:#e1e4e8" tabindex="0" data-language="yaml" data-theme="github-dark"><code data-language="yaml" data-theme="github-dark" style="display: grid;"><span data-line=""><span style="color:#85E89D">researcher</span><span style="color:#E1E4E8">:</span></span>
+<span data-line=""><span style="color:#85E89D">  role</span><span style="color:#E1E4E8">: </span><span style="color:#F97583">></span></span>
+<span data-line=""><span style="color:#9ECBFF">    {topic} Researcher</span></span>
+<span data-line=""><span style="color:#85E89D">  goal</span><span style="color:#E1E4E8">: </span><span style="color:#F97583">></span></span>
+<span data-line=""><span style="color:#9ECBFF">    Find useful and current information about {topic}</span></span>
+<span data-line=""><span style="color:#85E89D">  backstory</span><span style="color:#E1E4E8">: </span><span style="color:#F97583">></span></span>
+<span data-line=""><span style="color:#9ECBFF">    You are good at collecting reliable information and summarizing key points.</span></span>
+<span data-line=""> </span>
+<span data-line=""><span style="color:#85E89D">reporter</span><span style="color:#E1E4E8">:</span></span>
+<span data-line=""><span style="color:#85E89D">  role</span><span style="color:#E1E4E8">: </span><span style="color:#F97583">></span></span>
+<span data-line=""><span style="color:#9ECBFF">    {topic} Reporter</span></span>
+<span data-line=""><span style="color:#85E89D">  goal</span><span style="color:#E1E4E8">: </span><span style="color:#F97583">></span></span>
+<span data-line=""><span style="color:#9ECBFF">    Convert research notes into a readable markdown report</span></span>
+<span data-line=""><span style="color:#85E89D">  backstory</span><span style="color:#E1E4E8">: </span><span style="color:#F97583">></span></span>
+<span data-line=""><span style="color:#9ECBFF">    You explain technical topics with simple language and clear structure.</span></span></code></pre></figure>
+<h2 id="手順-4task-設定">手順 4：Task 設定</h2>
+<p><code>tasks.yaml</code> を編集:</p>
+<figure data-rehype-pretty-code-figure=""><pre style="background-color:#24292e;color:#e1e4e8" tabindex="0" data-language="yaml" data-theme="github-dark"><code data-language="yaml" data-theme="github-dark" style="display: grid;"><span data-line=""><span style="color:#85E89D">research_task</span><span style="color:#E1E4E8">:</span></span>
+<span data-line=""><span style="color:#85E89D">  description</span><span style="color:#E1E4E8">: </span><span style="color:#F97583">></span></span>
+<span data-line=""><span style="color:#9ECBFF">    Research {topic}. Focus on trends, tools, and practical examples in 2026.</span></span>
+<span data-line=""><span style="color:#85E89D">  expected_output</span><span style="color:#E1E4E8">: </span><span style="color:#F97583">></span></span>
+<span data-line=""><span style="color:#9ECBFF">    10 bullet points with short explanations.</span></span>
+<span data-line=""><span style="color:#85E89D">  agent</span><span style="color:#E1E4E8">: </span><span style="color:#9ECBFF">researcher</span></span>
+<span data-line=""> </span>
+<span data-line=""><span style="color:#85E89D">report_task</span><span style="color:#E1E4E8">:</span></span>
+<span data-line=""><span style="color:#85E89D">  description</span><span style="color:#E1E4E8">: </span><span style="color:#F97583">></span></span>
+<span data-line=""><span style="color:#9ECBFF">    Expand the research notes into a complete markdown article for beginners.</span></span>
+<span data-line=""><span style="color:#85E89D">  expected_output</span><span style="color:#E1E4E8">: </span><span style="color:#F97583">></span></span>
+<span data-line=""><span style="color:#9ECBFF">    A beginner-friendly markdown report with sections and conclusion.</span></span>
+<span data-line=""><span style="color:#85E89D">  agent</span><span style="color:#E1E4E8">: </span><span style="color:#9ECBFF">reporter</span></span>
+<span data-line=""><span style="color:#85E89D">  context</span><span style="color:#E1E4E8">:</span></span>
+<span data-line=""><span style="color:#E1E4E8">    - </span><span style="color:#9ECBFF">research_task</span></span>
+<span data-line=""><span style="color:#85E89D">  output_file</span><span style="color:#E1E4E8">: </span><span style="color:#9ECBFF">output/report.md</span></span></code></pre></figure>
+<blockquote>
+<p>💡 <code>context</code> は重要です。2 つ目のタスクが 1 つ目の結果を受け取ることを示します。</p>
+</blockquote>
+<h2 id="手順-5crew-実行">手順 5：Crew 実行</h2>
+<figure data-rehype-pretty-code-figure=""><pre style="background-color:#24292e;color:#e1e4e8" tabindex="0" data-language="bash" data-theme="github-dark"><code data-language="bash" data-theme="github-dark" style="display: grid;"><span data-line=""><span style="color:#B392F0">crewai</span><span style="color:#9ECBFF"> run</span></span></code></pre></figure>
+<p>成功すると <code>output/report.md</code> に結果が出ます。<br>
+初回実行で遅いのは普通です。モデル呼び出しは、寝起きの猫みたいに少し待ちます。</p>
+<h2 id="よくある問題">よくある問題</h2>
+<table>
+<thead>
+<tr>
+<th>問題</th>
+<th>原因候補</th>
+<th>解決策</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td><code>API key missing</code></td>
+<td>環境変数が未設定</td>
+<td><code>.env</code> に API キーを追加</td>
+</tr>
+<tr>
+<td><code>Module not found</code></td>
+<td>依存が不足</td>
+<td><code>crewai install</code> を再実行</td>
+</tr>
+<tr>
+<td>出力が安定しない</td>
+<td>タスク記述が曖昧</td>
+<td><code>expected_output</code> の形式要件を強化</td>
+</tr>
+</tbody>
+</table>
+<h2 id="次へ">次へ</h2>
+<p>最初のフローは動きました。<br>
+次は最重要の分割スキルです。<br>
+👉 <a href="02-agents-and-tasks">Agent と Task 入門</a></p>5:["$","aside",null,{"className":"hidden lg:block","children":["$","$L8",null,{"html":"$9"}]}]
+6:["$","script","script-0",{"src":"/_next/static/chunks/2dddb3bc05093f69.js","async":true}]
+7:["$","$La",null,{"children":["$","$b",null,{"name":"Next.MetadataOutlet","children":"$@c"}]}]
+c:null

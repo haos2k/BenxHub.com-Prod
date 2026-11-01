@@ -1,0 +1,291 @@
+1:"$Sreact.fragment"
+2:I[14864,["/_next/static/chunks/7923a261b80bb6e1.js","/_next/static/chunks/e09b4358027e8033.js","/_next/static/chunks/2dddb3bc05093f69.js"],"default"]
+8:I[24801,["/_next/static/chunks/7923a261b80bb6e1.js","/_next/static/chunks/e09b4358027e8033.js","/_next/static/chunks/2dddb3bc05093f69.js"],"default"]
+a:I[50183,["/_next/static/chunks/5a5b5b13c22d14f7.js","/_next/static/chunks/a484d1d3dd4b55ab.js"],"OutletBoundary"]
+b:"$Sreact.suspense"
+3:T398f,<p>裝 PVE 的過程比裝 Windows 簡單得多——畢竟它不會問你要不要登入微軟帳號、要不要 Cortana、要不要把 Edge 設成預設瀏覽器。整個安裝流程大概 10 分鐘，比泡麵還快。</p>
+<h2 id="第一步下載-iso-並製作-usb-開機碟">第一步：下載 ISO 並製作 USB 開機碟</h2>
+<p>去 <a href="https://www.proxmox.com/en/downloads/proxmox-virtual-environment/iso">Proxmox 官網下載頁</a> 抓最新的 ISO（安裝步驟也可以參考 <a href="https://pve.proxmox.com/wiki/Installation">Proxmox 官方安裝指南</a>）。目前最新是 PVE 9.1，大小約 1.2 GB。</p>
+<figure data-rehype-pretty-code-figure=""><pre style="background-color:#24292e;color:#e1e4e8" tabindex="0" data-language="bash" data-theme="github-dark"><code data-language="bash" data-theme="github-dark" style="display: grid;"><span data-line=""><span style="color:#6A737D"># Linux / macOS：用 dd 燒錄到 USB</span></span>
+<span data-line=""><span style="color:#6A737D"># 注意：/dev/sdX 換成你的 USB 裝置，搞錯會把別的磁碟洗掉</span></span>
+<span data-line=""><span style="color:#B392F0">dd</span><span style="color:#9ECBFF"> bs=1M</span><span style="color:#9ECBFF"> conv=fdatasync</span><span style="color:#9ECBFF"> if=./proxmox-ve_9.1-1.iso</span><span style="color:#9ECBFF"> of=/dev/sdX</span></span>
+<span data-line=""> </span>
+<span data-line=""><span style="color:#6A737D"># 不確定 USB 是哪個裝置？</span></span>
+<span data-line=""><span style="color:#B392F0">lsblk</span></span></code></pre></figure>
+<p>Windows 的話用 <a href="https://rufus.ie">Rufus</a> 或 <a href="https://etcher.balena.io">balenaEtcher</a>，選 ISO、選 USB、按下去，完事。</p>
+<blockquote>
+<p>這邊要強調三次：<strong>dd 會無條件覆蓋目標磁碟</strong>。拿錯磁碟你就準備哭了。寫入前多確認一次 <code>lsblk</code> 的輸出，看看大小跟你的 USB 碟吻不吻合。</p>
+</blockquote>
+<h2 id="第二步安裝-pve">第二步：安裝 PVE</h2>
+<p>把 USB 插上去，設定 BIOS 從 USB 開機，然後你會看到 Proxmox 的安裝畫面。</p>
+<p>安裝過程中要注意的幾個重點：</p>
+<ol>
+<li><strong>選目標磁碟</strong>：安裝程式會覆蓋整顆磁碟。如果你有多顆磁碟，可以在這邊選 ZFS RAID-1 mirror（兩顆碟互為鏡像），壞一顆不會死。關於 ZFS 和其他儲存方案的細節，後面會在<a href="05-storage">儲存系統指南</a>詳談。</li>
+<li><strong>國家/時區/鍵盤</strong>：台灣選 Taiwan、Asia/Taipei、鍵盤 US。</li>
+<li><strong>密碼與 Email</strong>：設一個你記得住的 root 密碼。Email 是拿來收系統通知的，隨便填也行（但建議填真的）。</li>
+<li><strong>網路設定</strong>：給 PVE 一個固定 IP。這台機器以後要用 Web 介面管，IP 一直跳會很煩。網路架構的進階設定可以參考<a href="06-networking">網路管理篇</a>。</li>
+</ol>
+<figure data-rehype-pretty-code-figure=""><pre style="background-color:#24292e;color:#e1e4e8" tabindex="0" data-language="bash" data-theme="github-dark"><code data-language="bash" data-theme="github-dark" style="display: grid;"><span data-line=""><span style="color:#6A737D"># 安裝完之後，從另一台電腦的瀏覽器打開：</span></span>
+<span data-line=""><span style="color:#6A737D"># https://你設定的IP:8006</span></span>
+<span data-line=""><span style="color:#6A737D"># 帳號：root</span></span>
+<span data-line=""><span style="color:#6A737D"># 密碼：你剛剛設定的那個</span></span></code></pre></figure>
+<blockquote>
+<p>瀏覽器會跳出 SSL 憑證警告，這是正常的——PVE 用的是自簽憑證。點「進階」->「繼續前往」就好。每次看到這個警告都要點一次，習慣就好。</p>
+</blockquote>
+<h2 id="第三步安裝後的初始設定">第三步：安裝後的初始設定</h2>
+<p>進到 Web 介面之後，先做這些事：</p>
+<figure data-rehype-pretty-code-figure=""><pre style="background-color:#24292e;color:#e1e4e8" tabindex="0" data-language="bash" data-theme="github-dark"><code data-language="bash" data-theme="github-dark" style="display: grid;"><span data-line=""><span style="color:#6A737D"># SSH 進 PVE 主機後執行</span></span>
+<span data-line=""> </span>
+<span data-line=""><span style="color:#6A737D"># 1. 切換到社群軟體源（不然 apt update 會報錯）</span></span>
+<span data-line=""><span style="color:#B392F0">mv</span><span style="color:#9ECBFF"> /etc/apt/sources.list.d/pve-enterprise.list</span><span style="color:#79B8FF"> \</span></span>
+<span data-line=""><span style="color:#9ECBFF">   /etc/apt/sources.list.d/pve-enterprise.list.disabled</span></span>
+<span data-line=""> </span>
+<span data-line=""><span style="color:#79B8FF">echo</span><span style="color:#9ECBFF"> "deb http://download.proxmox.com/debian/pve bookworm pve-no-subscription"</span><span style="color:#F97583"> ></span><span style="color:#79B8FF"> \</span></span>
+<span data-line=""><span style="color:#9ECBFF">  /etc/apt/sources.list.d/pve-no-subscription.list</span></span>
+<span data-line=""> </span>
+<span data-line=""><span style="color:#6A737D"># 2. 更新系統</span></span>
+<span data-line=""><span style="color:#B392F0">apt</span><span style="color:#9ECBFF"> update</span><span style="color:#E1E4E8"> &#x26;&#x26; </span><span style="color:#B392F0">apt</span><span style="color:#9ECBFF"> full-upgrade</span><span style="color:#79B8FF"> -y</span></span>
+<span data-line=""> </span>
+<span data-line=""><span style="color:#6A737D"># 3. 裝一些你會用到的工具</span></span>
+<span data-line=""><span style="color:#B392F0">apt</span><span style="color:#9ECBFF"> install</span><span style="color:#79B8FF"> -y</span><span style="color:#9ECBFF"> vim</span><span style="color:#9ECBFF"> htop</span><span style="color:#9ECBFF"> curl</span><span style="color:#9ECBFF"> wget</span></span>
+<span data-line=""> </span>
+<span data-line=""><span style="color:#6A737D"># 4. 設定時區（如果安裝時沒設好）</span></span>
+<span data-line=""><span style="color:#B392F0">timedatectl</span><span style="color:#9ECBFF"> set-timezone</span><span style="color:#9ECBFF"> Asia/Taipei</span></span></code></pre></figure>
+<h2 id="第四步下載-vm-映像檔">第四步：下載 VM 映像檔</h2>
+<p>要建 VM，你得先有一個作業系統的安裝映像。直接從 PVE 的 Web 介面下載最方便：</p>
+<ol>
+<li>左側面板 -> 你的節點 -> <code>local (pve)</code> 儲存</li>
+<li>點 <code>ISO Images</code> 標籤</li>
+<li>點 <code>Download from URL</code></li>
+<li>貼上你要裝的 OS 的 ISO 連結</li>
+</ol>
+<p>常用的幾個：</p>
+<ul>
+<li><strong>Debian 12</strong>：<code>https://cdimage.debian.org/debian-cd/current/amd64/iso-cd/debian-12.9.0-amd64-netinst.iso</code></li>
+<li><strong>Ubuntu Server 24.04</strong>：<code>https://releases.ubuntu.com/24.04/ubuntu-24.04-live-server-amd64.iso</code></li>
+</ul>
+<p>或者用 CLI 下載：</p>
+<figure data-rehype-pretty-code-figure=""><pre style="background-color:#24292e;color:#e1e4e8" tabindex="0" data-language="bash" data-theme="github-dark"><code data-language="bash" data-theme="github-dark" style="display: grid;"><span data-line=""><span style="color:#6A737D"># 直接把 ISO 下載到 PVE 的 ISO 儲存位置</span></span>
+<span data-line=""><span style="color:#79B8FF">cd</span><span style="color:#9ECBFF"> /var/lib/vz/template/iso/</span></span>
+<span data-line=""><span style="color:#B392F0">wget</span><span style="color:#9ECBFF"> https://cdimage.debian.org/debian-cd/current/amd64/iso-cd/debian-12.9.0-amd64-netinst.iso</span></span></code></pre></figure>
+<h2 id="第五步建立你的第一台-vm">第五步：建立你的第一台 VM</h2>
+<p>好戲來了。這就像在組裝一台電腦，只不過所有零件都是虛擬的，裝錯了不會冒煙。</p>
+<p><strong>在 Web 介面操作：</strong></p>
+<ol>
+<li>右上角點 <code>Create VM</code></li>
+<li><strong>General</strong>：VM ID 保持預設或自己編號，Name 填個好記的名字（例如 <code>debian-test</code>）</li>
+<li><strong>OS</strong>：選剛才下載的 ISO，Guest OS type 選 Linux</li>
+<li><strong>System</strong>：Machine 選 <code>q35</code>，BIOS 用 <code>OVMF (UEFI)</code> 或預設的 SeaBIOS 都行</li>
+<li><strong>Disks</strong>：Bus 選 <code>VirtIO Block</code> 或 <code>SCSI</code>，大小 20-32 GB 夠測試用</li>
+<li><strong>CPU</strong>：1-2 核心，Type 選 <code>host</code>（效能最好）</li>
+<li><strong>Memory</strong>：1024-2048 MB</li>
+<li><strong>Network</strong>：Model 選 <code>VirtIO</code>，Bridge 用預設的 <code>vmbr0</code></li>
+<li><strong>Confirm</strong> -> <code>Finish</code></li>
+</ol>
+<p>然後選中你的新 VM，點 <code>Start</code>，再開 <code>Console</code> 就能看到 OS 安裝畫面了。</p>
+<blockquote>
+<p>為什麼磁碟和網卡都建議選 VirtIO？因為效能差距很大。VirtIO 是專門為虛擬化設計的半虛擬化驅動，比模擬傳統硬體快很多。Linux 系統內建支援，Windows 的話需要另外裝 <a href="https://pve.proxmox.com/wiki/Windows_VirtIO_Drivers">VirtIO 驅動</a>。更多 VM 效能調校技巧請看 <a href="03-vm-management">VM 管理完全指南</a>。</p>
+</blockquote>
+<p><strong>用 CLI 建也可以：</strong></p>
+<figure data-rehype-pretty-code-figure=""><pre style="background-color:#24292e;color:#e1e4e8" tabindex="0" data-language="bash" data-theme="github-dark"><code data-language="bash" data-theme="github-dark" style="display: grid;"><span data-line=""><span style="color:#6A737D"># 建立 VM（ID 100、2 核、2GB RAM、32GB 磁碟）</span></span>
+<span data-line=""><span style="color:#B392F0">qm</span><span style="color:#9ECBFF"> create</span><span style="color:#79B8FF"> 100</span><span style="color:#79B8FF"> --name</span><span style="color:#9ECBFF"> debian-test</span><span style="color:#79B8FF"> --memory</span><span style="color:#79B8FF"> 2048</span><span style="color:#79B8FF"> --cores</span><span style="color:#79B8FF"> 2</span><span style="color:#79B8FF"> \</span></span>
+<span data-line=""><span style="color:#79B8FF">  --net0</span><span style="color:#9ECBFF"> virtio,bridge=vmbr0</span><span style="color:#79B8FF"> --scsihw</span><span style="color:#9ECBFF"> virtio-scsi-single</span><span style="color:#79B8FF"> \</span></span>
+<span data-line=""><span style="color:#79B8FF">  --scsi0</span><span style="color:#9ECBFF"> local-lvm:32</span><span style="color:#79B8FF"> --cdrom</span><span style="color:#9ECBFF"> local:iso/debian-12.9.0-amd64-netinst.iso</span><span style="color:#79B8FF"> \</span></span>
+<span data-line=""><span style="color:#79B8FF">  --boot</span><span style="color:#9ECBFF"> order=scsi0</span><span style="color:#79B8FF">\;</span><span style="color:#9ECBFF">ide2</span></span>
+<span data-line=""> </span>
+<span data-line=""><span style="color:#6A737D"># 啟動</span></span>
+<span data-line=""><span style="color:#B392F0">qm</span><span style="color:#9ECBFF"> start</span><span style="color:#79B8FF"> 100</span></span></code></pre></figure>
+<h2 id="常見問題排查">常見問題排查</h2>
+<table>
+<thead>
+<tr>
+<th>狀況</th>
+<th>怎麼處理</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td>瀏覽器打不開 Web 介面</td>
+<td>確認 IP 對不對、8006 port 有沒有通，跑 <code>systemctl status pveproxy</code></td>
+</tr>
+<tr>
+<td>VM 啟動失敗</td>
+<td>BIOS 裡 VT-x / AMD-V 開了沒？跑 <code>dmesg | grep -i kvm</code> 看看</td>
+</tr>
+<tr>
+<td>ISO 下載卡住</td>
+<td>檢查 PVE 主機能不能上網，<code>ping 8.8.8.8</code> 試試</td>
+</tr>
+<tr>
+<td>VM 裝完 OS 但網路不通</td>
+<td>確認 <code>vmbr0</code> 有綁到實體網卡：<code>cat /etc/network/interfaces</code></td>
+</tr>
+<tr>
+<td>Console 畫面全黑</td>
+<td>等一下，有些 OS 開機就是慢。或者換 noVNC/SPICE 試試</td>
+</tr>
+</tbody>
+</table>
+<figure data-rehype-pretty-code-figure=""><pre style="background-color:#24292e;color:#e1e4e8" tabindex="0" data-language="bash" data-theme="github-dark"><code data-language="bash" data-theme="github-dark" style="display: grid;"><span data-line=""><span style="color:#6A737D"># 萬用除錯指令組合</span></span>
+<span data-line=""><span style="color:#B392F0">systemctl</span><span style="color:#9ECBFF"> status</span><span style="color:#9ECBFF"> pveproxy</span><span style="color:#6A737D">    # Web 介面服務狀態</span></span>
+<span data-line=""><span style="color:#B392F0">journalctl</span><span style="color:#79B8FF"> -xe</span><span style="color:#6A737D">               # 系統日誌（看最新的錯誤）</span></span>
+<span data-line=""><span style="color:#B392F0">qm</span><span style="color:#9ECBFF"> status</span><span style="color:#79B8FF"> 100</span><span style="color:#6A737D">                # 查看 VM 狀態</span></span></code></pre></figure>
+<h2 id="恭喜你有了第一台-vm">恭喜，你有了第一台 VM</h2>
+<p>如果你成功看到 OS 的安裝畫面或登入提示，那你已經完成了 PVE 最重要的第一步。就像學做菜，第一道蛋炒飯成功了，後面的佛跳牆也只是步驟多一點而已。</p>
+<h2 id="常見問題">常見問題</h2>
+<h3 id="q-pve-安裝需要多久會不會很複雜">Q: PVE 安裝需要多久？會不會很複雜？</h3>
+<p>整個安裝流程大約 10 分鐘，比裝 Windows 簡單。只要設定目標磁碟、密碼和網路 IP，其他保持預設就好。安裝完從瀏覽器開啟 Web 介面就能開始用。</p>
+<h3 id="q-pve-可以跟其他作業系統雙開嗎">Q: PVE 可以跟其他作業系統雙開嗎？</h3>
+<p>不建議。PVE 會佔用整顆磁碟，它本身就是一個完整的作業系統。如果想保留原本的系統，建議用另一顆磁碟安裝，或先用 Mini PC 單獨跑 PVE。</p>
+<h3 id="q-第一台-vm-建議裝什麼作業系統">Q: 第一台 VM 建議裝什麼作業系統？</h3>
+<p>建議從 Debian 12 或 Ubuntu Server 24.04 開始。這兩個對 VirtIO 驅動的支援最好，社群資源也最多。如果只是想輕量測試，也可以先建一個 <a href="04-lxc-containers">LXC 容器</a>更快。</p>
+<h3 id="q-web-介面出現-ssl-憑證警告怎麼辦">Q: Web 介面出現 SSL 憑證警告怎麼辦？</h3>
+<p>這是正常現象，PVE 預設使用自簽憑證。點瀏覽器的「進階」再選「繼續前往」即可。如果想消除警告，可以之後設定 Let's Encrypt 或自己的 CA 憑證。</p>
+<h2 id="下一步">下一步</h2>
+<p>VM 建起來了，但裡面的 CPU、記憶體、磁碟怎麼調效能最好？快照、備份、範本又是什麼？下一篇來拆解：
+-> <a href="03-vm-management">VM 管理完全指南</a></p>0:{"buildId":"Yck3R4ooQxWkwGLT6is1X","rsc":["$","$1","c",{"children":[[["$","script",null,{"type":"application/ld+json","dangerouslySetInnerHTML":{"__html":"{\"@context\":\"https://schema.org\",\"@type\":\"Article\",\"headline\":\"安裝 Proxmox VE 與建立第一台虛擬機\",\"description\":\"Proxmox 安裝教學：從下載 ISO、燒錄 USB 到建立第一台 VM，手把手帶你完成 PVE 安裝，十分鐘搞定。\",\"url\":\"https://benxhub.com/zh/blog/pve/02-install-first-vm\",\"mainEntityOfPage\":{\"@type\":\"WebPage\",\"@id\":\"https://benxhub.com/zh/blog/pve/02-install-first-vm\"},\"datePublished\":\"2026-04-25T00:00:00.000Z\",\"dateModified\":\"2026-04-25T00:00:00.000Z\",\"keywords\":\"proxmox, installation, kvm, virtual-machine\",\"inLanguage\":\"zh\",\"author\":{\"@type\":\"Person\",\"name\":\"BenX\",\"url\":\"https://benxhub.com\"},\"publisher\":{\"@type\":\"Organization\",\"name\":\"BenXHub Blog\",\"url\":\"https://benxhub.com\"}}"}}],["$","div",null,{"className":"mx-auto max-w-6xl px-4 py-12 sm:px-6","children":["$","div",null,{"className":"lg:grid lg:grid-cols-[1fr_240px] lg:gap-14","children":[["$","article",null,{"children":[["$","header",null,{"className":"mb-10","children":[["$","div",null,{"className":"mb-4 flex flex-wrap gap-2","children":[["$","$L2","proxmox",{"href":"/zh/tags/proxmox","localeCookie":{"name":"NEXT_LOCALE","sameSite":"lax"},"className":"inline-flex items-center rounded-full px-2.5 py-0.5 text-xs font-medium transition-colors","style":{"background":"var(--color-code-bg)","color":"var(--color-accent)","border":"1px solid var(--color-border)"},"children":["#","proxmox"]}],["$","$L2","installation",{"href":"/zh/tags/installation","localeCookie":{"name":"NEXT_LOCALE","sameSite":"lax"},"className":"inline-flex items-center rounded-full px-2.5 py-0.5 text-xs font-medium transition-colors","style":{"background":"var(--color-code-bg)","color":"var(--color-accent)","border":"1px solid var(--color-border)"},"children":["#","installation"]}],["$","$L2","kvm",{"href":"/zh/tags/kvm","localeCookie":{"name":"NEXT_LOCALE","sameSite":"lax"},"className":"inline-flex items-center rounded-full px-2.5 py-0.5 text-xs font-medium transition-colors","style":{"background":"var(--color-code-bg)","color":"var(--color-accent)","border":"1px solid var(--color-border)"},"children":["#","kvm"]}],["$","$L2","virtual-machine",{"href":"/zh/tags/virtual-machine","localeCookie":{"name":"NEXT_LOCALE","sameSite":"lax"},"className":"inline-flex items-center rounded-full px-2.5 py-0.5 text-xs font-medium transition-colors","style":{"background":"var(--color-code-bg)","color":"var(--color-accent)","border":"1px solid var(--color-border)"},"children":["#","virtual-machine"]}]]}],["$","h1",null,{"className":"mb-4 text-3xl leading-snug font-bold tracking-tight sm:text-4xl","style":{"color":"var(--color-text)"},"children":"安裝 Proxmox VE 與建立第一台虛擬機"}],["$","div",null,{"className":"flex flex-wrap items-center gap-3 text-sm","style":{"color":"var(--color-muted)"},"children":[["$","time",null,{"dateTime":"2026-04-25","children":"2026 年 4 月 25 日"}],["$","span",null,{"aria-hidden":"true","children":"·"}],["$","span",null,{"children":"9 min read"}]]}],"$undefined",["$","div",null,{"className":"mt-6 border-b","style":{"borderColor":"var(--color-border)"}}]]}],["$","div",null,{"className":"prose","dangerouslySetInnerHTML":{"__html":"$3"}}],"$L4"]}],"$L5"]}]}]],["$L6"],"$L7"]}],"loading":null,"isPartial":false}
+4:["$","footer",null,{"className":"mt-14 border-t pt-8","style":{"borderColor":"var(--color-border)"},"children":[["$","div",null,{"className":"mb-8 flex flex-wrap gap-2","children":[["$","$L2","proxmox",{"href":"/zh/tags/proxmox","localeCookie":{"name":"NEXT_LOCALE","sameSite":"lax"},"className":"inline-flex items-center rounded-full px-3 py-1 text-sm font-medium transition-colors","style":{"background":"var(--color-code-bg)","color":"var(--color-accent)","border":"1px solid var(--color-border)"},"children":["#","proxmox"]}],["$","$L2","installation",{"href":"/zh/tags/installation","localeCookie":{"name":"NEXT_LOCALE","sameSite":"lax"},"className":"inline-flex items-center rounded-full px-3 py-1 text-sm font-medium transition-colors","style":{"background":"var(--color-code-bg)","color":"var(--color-accent)","border":"1px solid var(--color-border)"},"children":["#","installation"]}],["$","$L2","kvm",{"href":"/zh/tags/kvm","localeCookie":{"name":"NEXT_LOCALE","sameSite":"lax"},"className":"inline-flex items-center rounded-full px-3 py-1 text-sm font-medium transition-colors","style":{"background":"var(--color-code-bg)","color":"var(--color-accent)","border":"1px solid var(--color-border)"},"children":["#","kvm"]}],["$","$L2","virtual-machine",{"href":"/zh/tags/virtual-machine","localeCookie":{"name":"NEXT_LOCALE","sameSite":"lax"},"className":"inline-flex items-center rounded-full px-3 py-1 text-sm font-medium transition-colors","style":{"background":"var(--color-code-bg)","color":"var(--color-accent)","border":"1px solid var(--color-border)"},"children":["#","virtual-machine"]}]]}],["$","nav",null,{"aria-label":"文章導覽","className":"grid grid-cols-1 gap-4 sm:grid-cols-2","children":[["$","$L2",null,{"href":"/zh/blog/pve/03-vm-management","localeCookie":{"name":"NEXT_LOCALE","sameSite":"lax"},"className":"group rounded-lg border p-4 transition-colors hover:border-accent","style":{"borderColor":"var(--color-border)","background":"var(--color-surface)"},"children":[["$","p",null,{"className":"mb-1 text-xs","style":{"color":"var(--color-muted)"},"children":"← 較新文章"}],["$","p",null,{"className":"line-clamp-1 text-sm font-medium transition-colors group-hover:text-accent","style":{"color":"var(--color-text)"},"children":"PVE 虛擬機管理：從設定到效能調校"}]]}],["$","$L2",null,{"href":"/zh/blog/pve/01-hardware-guide","localeCookie":{"name":"NEXT_LOCALE","sameSite":"lax"},"className":"group rounded-lg border p-4 text-right transition-colors hover:border-accent","style":{"borderColor":"var(--color-border)","background":"var(--color-surface)"},"children":[["$","p",null,{"className":"mb-1 text-xs","style":{"color":"var(--color-muted)"},"children":"較舊文章 →"}],["$","p",null,{"className":"line-clamp-1 text-sm font-medium transition-colors group-hover:text-accent","style":{"color":"var(--color-text)"},"children":"PVE 硬體選購指南：從 Mini PC 到機架式伺服器"}]]}]]}]]}]
+9:T398f,<p>裝 PVE 的過程比裝 Windows 簡單得多——畢竟它不會問你要不要登入微軟帳號、要不要 Cortana、要不要把 Edge 設成預設瀏覽器。整個安裝流程大概 10 分鐘，比泡麵還快。</p>
+<h2 id="第一步下載-iso-並製作-usb-開機碟">第一步：下載 ISO 並製作 USB 開機碟</h2>
+<p>去 <a href="https://www.proxmox.com/en/downloads/proxmox-virtual-environment/iso">Proxmox 官網下載頁</a> 抓最新的 ISO（安裝步驟也可以參考 <a href="https://pve.proxmox.com/wiki/Installation">Proxmox 官方安裝指南</a>）。目前最新是 PVE 9.1，大小約 1.2 GB。</p>
+<figure data-rehype-pretty-code-figure=""><pre style="background-color:#24292e;color:#e1e4e8" tabindex="0" data-language="bash" data-theme="github-dark"><code data-language="bash" data-theme="github-dark" style="display: grid;"><span data-line=""><span style="color:#6A737D"># Linux / macOS：用 dd 燒錄到 USB</span></span>
+<span data-line=""><span style="color:#6A737D"># 注意：/dev/sdX 換成你的 USB 裝置，搞錯會把別的磁碟洗掉</span></span>
+<span data-line=""><span style="color:#B392F0">dd</span><span style="color:#9ECBFF"> bs=1M</span><span style="color:#9ECBFF"> conv=fdatasync</span><span style="color:#9ECBFF"> if=./proxmox-ve_9.1-1.iso</span><span style="color:#9ECBFF"> of=/dev/sdX</span></span>
+<span data-line=""> </span>
+<span data-line=""><span style="color:#6A737D"># 不確定 USB 是哪個裝置？</span></span>
+<span data-line=""><span style="color:#B392F0">lsblk</span></span></code></pre></figure>
+<p>Windows 的話用 <a href="https://rufus.ie">Rufus</a> 或 <a href="https://etcher.balena.io">balenaEtcher</a>，選 ISO、選 USB、按下去，完事。</p>
+<blockquote>
+<p>這邊要強調三次：<strong>dd 會無條件覆蓋目標磁碟</strong>。拿錯磁碟你就準備哭了。寫入前多確認一次 <code>lsblk</code> 的輸出，看看大小跟你的 USB 碟吻不吻合。</p>
+</blockquote>
+<h2 id="第二步安裝-pve">第二步：安裝 PVE</h2>
+<p>把 USB 插上去，設定 BIOS 從 USB 開機，然後你會看到 Proxmox 的安裝畫面。</p>
+<p>安裝過程中要注意的幾個重點：</p>
+<ol>
+<li><strong>選目標磁碟</strong>：安裝程式會覆蓋整顆磁碟。如果你有多顆磁碟，可以在這邊選 ZFS RAID-1 mirror（兩顆碟互為鏡像），壞一顆不會死。關於 ZFS 和其他儲存方案的細節，後面會在<a href="05-storage">儲存系統指南</a>詳談。</li>
+<li><strong>國家/時區/鍵盤</strong>：台灣選 Taiwan、Asia/Taipei、鍵盤 US。</li>
+<li><strong>密碼與 Email</strong>：設一個你記得住的 root 密碼。Email 是拿來收系統通知的，隨便填也行（但建議填真的）。</li>
+<li><strong>網路設定</strong>：給 PVE 一個固定 IP。這台機器以後要用 Web 介面管，IP 一直跳會很煩。網路架構的進階設定可以參考<a href="06-networking">網路管理篇</a>。</li>
+</ol>
+<figure data-rehype-pretty-code-figure=""><pre style="background-color:#24292e;color:#e1e4e8" tabindex="0" data-language="bash" data-theme="github-dark"><code data-language="bash" data-theme="github-dark" style="display: grid;"><span data-line=""><span style="color:#6A737D"># 安裝完之後，從另一台電腦的瀏覽器打開：</span></span>
+<span data-line=""><span style="color:#6A737D"># https://你設定的IP:8006</span></span>
+<span data-line=""><span style="color:#6A737D"># 帳號：root</span></span>
+<span data-line=""><span style="color:#6A737D"># 密碼：你剛剛設定的那個</span></span></code></pre></figure>
+<blockquote>
+<p>瀏覽器會跳出 SSL 憑證警告，這是正常的——PVE 用的是自簽憑證。點「進階」->「繼續前往」就好。每次看到這個警告都要點一次，習慣就好。</p>
+</blockquote>
+<h2 id="第三步安裝後的初始設定">第三步：安裝後的初始設定</h2>
+<p>進到 Web 介面之後，先做這些事：</p>
+<figure data-rehype-pretty-code-figure=""><pre style="background-color:#24292e;color:#e1e4e8" tabindex="0" data-language="bash" data-theme="github-dark"><code data-language="bash" data-theme="github-dark" style="display: grid;"><span data-line=""><span style="color:#6A737D"># SSH 進 PVE 主機後執行</span></span>
+<span data-line=""> </span>
+<span data-line=""><span style="color:#6A737D"># 1. 切換到社群軟體源（不然 apt update 會報錯）</span></span>
+<span data-line=""><span style="color:#B392F0">mv</span><span style="color:#9ECBFF"> /etc/apt/sources.list.d/pve-enterprise.list</span><span style="color:#79B8FF"> \</span></span>
+<span data-line=""><span style="color:#9ECBFF">   /etc/apt/sources.list.d/pve-enterprise.list.disabled</span></span>
+<span data-line=""> </span>
+<span data-line=""><span style="color:#79B8FF">echo</span><span style="color:#9ECBFF"> "deb http://download.proxmox.com/debian/pve bookworm pve-no-subscription"</span><span style="color:#F97583"> ></span><span style="color:#79B8FF"> \</span></span>
+<span data-line=""><span style="color:#9ECBFF">  /etc/apt/sources.list.d/pve-no-subscription.list</span></span>
+<span data-line=""> </span>
+<span data-line=""><span style="color:#6A737D"># 2. 更新系統</span></span>
+<span data-line=""><span style="color:#B392F0">apt</span><span style="color:#9ECBFF"> update</span><span style="color:#E1E4E8"> &#x26;&#x26; </span><span style="color:#B392F0">apt</span><span style="color:#9ECBFF"> full-upgrade</span><span style="color:#79B8FF"> -y</span></span>
+<span data-line=""> </span>
+<span data-line=""><span style="color:#6A737D"># 3. 裝一些你會用到的工具</span></span>
+<span data-line=""><span style="color:#B392F0">apt</span><span style="color:#9ECBFF"> install</span><span style="color:#79B8FF"> -y</span><span style="color:#9ECBFF"> vim</span><span style="color:#9ECBFF"> htop</span><span style="color:#9ECBFF"> curl</span><span style="color:#9ECBFF"> wget</span></span>
+<span data-line=""> </span>
+<span data-line=""><span style="color:#6A737D"># 4. 設定時區（如果安裝時沒設好）</span></span>
+<span data-line=""><span style="color:#B392F0">timedatectl</span><span style="color:#9ECBFF"> set-timezone</span><span style="color:#9ECBFF"> Asia/Taipei</span></span></code></pre></figure>
+<h2 id="第四步下載-vm-映像檔">第四步：下載 VM 映像檔</h2>
+<p>要建 VM，你得先有一個作業系統的安裝映像。直接從 PVE 的 Web 介面下載最方便：</p>
+<ol>
+<li>左側面板 -> 你的節點 -> <code>local (pve)</code> 儲存</li>
+<li>點 <code>ISO Images</code> 標籤</li>
+<li>點 <code>Download from URL</code></li>
+<li>貼上你要裝的 OS 的 ISO 連結</li>
+</ol>
+<p>常用的幾個：</p>
+<ul>
+<li><strong>Debian 12</strong>：<code>https://cdimage.debian.org/debian-cd/current/amd64/iso-cd/debian-12.9.0-amd64-netinst.iso</code></li>
+<li><strong>Ubuntu Server 24.04</strong>：<code>https://releases.ubuntu.com/24.04/ubuntu-24.04-live-server-amd64.iso</code></li>
+</ul>
+<p>或者用 CLI 下載：</p>
+<figure data-rehype-pretty-code-figure=""><pre style="background-color:#24292e;color:#e1e4e8" tabindex="0" data-language="bash" data-theme="github-dark"><code data-language="bash" data-theme="github-dark" style="display: grid;"><span data-line=""><span style="color:#6A737D"># 直接把 ISO 下載到 PVE 的 ISO 儲存位置</span></span>
+<span data-line=""><span style="color:#79B8FF">cd</span><span style="color:#9ECBFF"> /var/lib/vz/template/iso/</span></span>
+<span data-line=""><span style="color:#B392F0">wget</span><span style="color:#9ECBFF"> https://cdimage.debian.org/debian-cd/current/amd64/iso-cd/debian-12.9.0-amd64-netinst.iso</span></span></code></pre></figure>
+<h2 id="第五步建立你的第一台-vm">第五步：建立你的第一台 VM</h2>
+<p>好戲來了。這就像在組裝一台電腦，只不過所有零件都是虛擬的，裝錯了不會冒煙。</p>
+<p><strong>在 Web 介面操作：</strong></p>
+<ol>
+<li>右上角點 <code>Create VM</code></li>
+<li><strong>General</strong>：VM ID 保持預設或自己編號，Name 填個好記的名字（例如 <code>debian-test</code>）</li>
+<li><strong>OS</strong>：選剛才下載的 ISO，Guest OS type 選 Linux</li>
+<li><strong>System</strong>：Machine 選 <code>q35</code>，BIOS 用 <code>OVMF (UEFI)</code> 或預設的 SeaBIOS 都行</li>
+<li><strong>Disks</strong>：Bus 選 <code>VirtIO Block</code> 或 <code>SCSI</code>，大小 20-32 GB 夠測試用</li>
+<li><strong>CPU</strong>：1-2 核心，Type 選 <code>host</code>（效能最好）</li>
+<li><strong>Memory</strong>：1024-2048 MB</li>
+<li><strong>Network</strong>：Model 選 <code>VirtIO</code>，Bridge 用預設的 <code>vmbr0</code></li>
+<li><strong>Confirm</strong> -> <code>Finish</code></li>
+</ol>
+<p>然後選中你的新 VM，點 <code>Start</code>，再開 <code>Console</code> 就能看到 OS 安裝畫面了。</p>
+<blockquote>
+<p>為什麼磁碟和網卡都建議選 VirtIO？因為效能差距很大。VirtIO 是專門為虛擬化設計的半虛擬化驅動，比模擬傳統硬體快很多。Linux 系統內建支援，Windows 的話需要另外裝 <a href="https://pve.proxmox.com/wiki/Windows_VirtIO_Drivers">VirtIO 驅動</a>。更多 VM 效能調校技巧請看 <a href="03-vm-management">VM 管理完全指南</a>。</p>
+</blockquote>
+<p><strong>用 CLI 建也可以：</strong></p>
+<figure data-rehype-pretty-code-figure=""><pre style="background-color:#24292e;color:#e1e4e8" tabindex="0" data-language="bash" data-theme="github-dark"><code data-language="bash" data-theme="github-dark" style="display: grid;"><span data-line=""><span style="color:#6A737D"># 建立 VM（ID 100、2 核、2GB RAM、32GB 磁碟）</span></span>
+<span data-line=""><span style="color:#B392F0">qm</span><span style="color:#9ECBFF"> create</span><span style="color:#79B8FF"> 100</span><span style="color:#79B8FF"> --name</span><span style="color:#9ECBFF"> debian-test</span><span style="color:#79B8FF"> --memory</span><span style="color:#79B8FF"> 2048</span><span style="color:#79B8FF"> --cores</span><span style="color:#79B8FF"> 2</span><span style="color:#79B8FF"> \</span></span>
+<span data-line=""><span style="color:#79B8FF">  --net0</span><span style="color:#9ECBFF"> virtio,bridge=vmbr0</span><span style="color:#79B8FF"> --scsihw</span><span style="color:#9ECBFF"> virtio-scsi-single</span><span style="color:#79B8FF"> \</span></span>
+<span data-line=""><span style="color:#79B8FF">  --scsi0</span><span style="color:#9ECBFF"> local-lvm:32</span><span style="color:#79B8FF"> --cdrom</span><span style="color:#9ECBFF"> local:iso/debian-12.9.0-amd64-netinst.iso</span><span style="color:#79B8FF"> \</span></span>
+<span data-line=""><span style="color:#79B8FF">  --boot</span><span style="color:#9ECBFF"> order=scsi0</span><span style="color:#79B8FF">\;</span><span style="color:#9ECBFF">ide2</span></span>
+<span data-line=""> </span>
+<span data-line=""><span style="color:#6A737D"># 啟動</span></span>
+<span data-line=""><span style="color:#B392F0">qm</span><span style="color:#9ECBFF"> start</span><span style="color:#79B8FF"> 100</span></span></code></pre></figure>
+<h2 id="常見問題排查">常見問題排查</h2>
+<table>
+<thead>
+<tr>
+<th>狀況</th>
+<th>怎麼處理</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td>瀏覽器打不開 Web 介面</td>
+<td>確認 IP 對不對、8006 port 有沒有通，跑 <code>systemctl status pveproxy</code></td>
+</tr>
+<tr>
+<td>VM 啟動失敗</td>
+<td>BIOS 裡 VT-x / AMD-V 開了沒？跑 <code>dmesg | grep -i kvm</code> 看看</td>
+</tr>
+<tr>
+<td>ISO 下載卡住</td>
+<td>檢查 PVE 主機能不能上網，<code>ping 8.8.8.8</code> 試試</td>
+</tr>
+<tr>
+<td>VM 裝完 OS 但網路不通</td>
+<td>確認 <code>vmbr0</code> 有綁到實體網卡：<code>cat /etc/network/interfaces</code></td>
+</tr>
+<tr>
+<td>Console 畫面全黑</td>
+<td>等一下，有些 OS 開機就是慢。或者換 noVNC/SPICE 試試</td>
+</tr>
+</tbody>
+</table>
+<figure data-rehype-pretty-code-figure=""><pre style="background-color:#24292e;color:#e1e4e8" tabindex="0" data-language="bash" data-theme="github-dark"><code data-language="bash" data-theme="github-dark" style="display: grid;"><span data-line=""><span style="color:#6A737D"># 萬用除錯指令組合</span></span>
+<span data-line=""><span style="color:#B392F0">systemctl</span><span style="color:#9ECBFF"> status</span><span style="color:#9ECBFF"> pveproxy</span><span style="color:#6A737D">    # Web 介面服務狀態</span></span>
+<span data-line=""><span style="color:#B392F0">journalctl</span><span style="color:#79B8FF"> -xe</span><span style="color:#6A737D">               # 系統日誌（看最新的錯誤）</span></span>
+<span data-line=""><span style="color:#B392F0">qm</span><span style="color:#9ECBFF"> status</span><span style="color:#79B8FF"> 100</span><span style="color:#6A737D">                # 查看 VM 狀態</span></span></code></pre></figure>
+<h2 id="恭喜你有了第一台-vm">恭喜，你有了第一台 VM</h2>
+<p>如果你成功看到 OS 的安裝畫面或登入提示，那你已經完成了 PVE 最重要的第一步。就像學做菜，第一道蛋炒飯成功了，後面的佛跳牆也只是步驟多一點而已。</p>
+<h2 id="常見問題">常見問題</h2>
+<h3 id="q-pve-安裝需要多久會不會很複雜">Q: PVE 安裝需要多久？會不會很複雜？</h3>
+<p>整個安裝流程大約 10 分鐘，比裝 Windows 簡單。只要設定目標磁碟、密碼和網路 IP，其他保持預設就好。安裝完從瀏覽器開啟 Web 介面就能開始用。</p>
+<h3 id="q-pve-可以跟其他作業系統雙開嗎">Q: PVE 可以跟其他作業系統雙開嗎？</h3>
+<p>不建議。PVE 會佔用整顆磁碟，它本身就是一個完整的作業系統。如果想保留原本的系統，建議用另一顆磁碟安裝，或先用 Mini PC 單獨跑 PVE。</p>
+<h3 id="q-第一台-vm-建議裝什麼作業系統">Q: 第一台 VM 建議裝什麼作業系統？</h3>
+<p>建議從 Debian 12 或 Ubuntu Server 24.04 開始。這兩個對 VirtIO 驅動的支援最好，社群資源也最多。如果只是想輕量測試，也可以先建一個 <a href="04-lxc-containers">LXC 容器</a>更快。</p>
+<h3 id="q-web-介面出現-ssl-憑證警告怎麼辦">Q: Web 介面出現 SSL 憑證警告怎麼辦？</h3>
+<p>這是正常現象，PVE 預設使用自簽憑證。點瀏覽器的「進階」再選「繼續前往」即可。如果想消除警告，可以之後設定 Let's Encrypt 或自己的 CA 憑證。</p>
+<h2 id="下一步">下一步</h2>
+<p>VM 建起來了，但裡面的 CPU、記憶體、磁碟怎麼調效能最好？快照、備份、範本又是什麼？下一篇來拆解：
+-> <a href="03-vm-management">VM 管理完全指南</a></p>5:["$","aside",null,{"className":"hidden lg:block","children":["$","$L8",null,{"html":"$9"}]}]
+6:["$","script","script-0",{"src":"/_next/static/chunks/2dddb3bc05093f69.js","async":true}]
+7:["$","$La",null,{"children":["$","$b",null,{"name":"Next.MetadataOutlet","children":"$@c"}]}]
+c:null

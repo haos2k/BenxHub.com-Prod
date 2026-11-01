@@ -1,0 +1,116 @@
+1:"$Sreact.fragment"
+2:I[14864,["/_next/static/chunks/7923a261b80bb6e1.js","/_next/static/chunks/e09b4358027e8033.js","/_next/static/chunks/2dddb3bc05093f69.js"],"default"]
+8:I[24801,["/_next/static/chunks/7923a261b80bb6e1.js","/_next/static/chunks/e09b4358027e8033.js","/_next/static/chunks/2dddb3bc05093f69.js"],"default"]
+a:I[50183,["/_next/static/chunks/5a5b5b13c22d14f7.js","/_next/static/chunks/a484d1d3dd4b55ab.js"],"OutletBoundary"]
+b:"$Sreact.suspense"
+:HL["/images/posts/cursor-cli-modes.png","image"]
+3:Tee0,<p>三種模式其實就一件事：<strong>誰能動你的 code、誰只能動嘴</strong>。搞清楚這個，選模式不會再選擇困難。</p>
+<h2 id="一張表分清楚">一張表分清楚</h2>
+<table>
+<thead>
+<tr>
+<th>模式</th>
+<th>一句話</th>
+<th>會不會改你的檔案？</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td><strong>Agent</strong></td>
+<td>幫我「做」一件事</td>
+<td>✅ 會，直接動手</td>
+</tr>
+<tr>
+<td><strong>Plan</strong></td>
+<td>先「規劃」怎麼做，再決定要不要執行</td>
+<td>先不動，你點頭才動</td>
+</tr>
+<tr>
+<td><strong>Ask</strong></td>
+<td>只「問」問題、查資料</td>
+<td>❌ 不會</td>
+</tr>
+</tbody>
+</table>
+<p>想像成三個同事：Agent 是那個「交給我我直接改」的、Plan 是「我先寫方案給你審」的、Ask 是「我只回答不改檔」的——選對人，省事一半。</p>
+<h2 id="agent-模式預設">Agent 模式（預設）</h2>
+<p>你要的是結果，不是討論會：</p>
+<figure data-rehype-pretty-code-figure=""><pre style="background-color:#24292e;color:#e1e4e8" tabindex="0" data-language="bash" data-theme="github-dark"><code data-language="bash" data-theme="github-dark" style="display: grid;"><span data-line=""><span style="color:#B392F0">cursor</span><span style="color:#9ECBFF"> agent</span><span style="color:#9ECBFF"> "把登入改成用 JWT"</span></span></code></pre></figure>
+<p>AI 會讀檔案、改檔案、可能執行指令。每一步你可以接受或拒絕，控制權在你。大多數情況這個模式就夠了。</p>
+<h2 id="plan-模式先看計畫再放行">Plan 模式：先看計畫再放行</h2>
+<p>不確定怎麼做、或怕 AI 一次改太大？先讓它出計畫：</p>
+<figure data-rehype-pretty-code-figure=""><pre style="background-color:#24292e;color:#e1e4e8" tabindex="0" data-language="bash" data-theme="github-dark"><code data-language="bash" data-theme="github-dark" style="display: grid;"><span data-line=""><span style="color:#B392F0">cursor</span><span style="color:#9ECBFF"> agent</span><span style="color:#79B8FF"> --plan</span><span style="color:#9ECBFF"> "重構整個 API 層"</span></span></code></pre></figure>
+<p>AI 會先問幾個問題、提出做法，你同意後才真的動手——不會給你驚喜，也不會給你驚嚇。適合大改動，或那種「我想先看清楚再 commit」的場合。</p>
+<h2 id="ask-模式只問不改">Ask 模式：只問不改</h2>
+<p>只想看懂這段 code，死都不要讓 AI 碰任何檔案：</p>
+<figure data-rehype-pretty-code-figure=""><pre style="background-color:#24292e;color:#e1e4e8" tabindex="0" data-language="bash" data-theme="github-dark"><code data-language="bash" data-theme="github-dark" style="display: grid;"><span data-line=""><span style="color:#B392F0">cursor</span><span style="color:#9ECBFF"> ask</span><span style="color:#9ECBFF"> "src/auth.ts 的邏輯是什麼？"</span></span></code></pre></figure>
+<p>只會讀取、分析、回答，不會寫入。適合 CI 環境，或那種「這台機器我只敢看不敢改」的情境——你懂的。</p>
+<h2 id="在對話裡切換模式">在對話裡切換模式</h2>
+<p>已經開著 <code>cursor agent</code> 對話了？不用跳出去重打，直接用 slash 指令：</p>
+<ul>
+<li><code>/plan</code> → 切到 Plan 模式，先規劃再說</li>
+<li><code>/ask</code> → 切到 Ask 模式，唯讀放心問</li>
+</ul>
+<p>就像切換人格一樣順。</p>
+<hr>
+<p>大原則就三字：<strong>要做用 Agent、要看用 Ask、怕搞爛用 Plan</strong>。用熟之後會發現 Ask + Agent 交替是最順的工作流——先問清楚再交辦。</p>
+<blockquote>
+<p>下一步：<a href="04-non-interactive">04-non-interactive</a> — 不用人盯著按鍵，給腳本和 CI 用的非互動模式。</p>
+</blockquote>0:{"buildId":"Yck3R4ooQxWkwGLT6is1X","rsc":["$","$1","c",{"children":[[["$","script",null,{"type":"application/ld+json","dangerouslySetInnerHTML":{"__html":"{\"@context\":\"https://schema.org\",\"@type\":\"Article\",\"headline\":\"Cursor CLI 三種模式：Agent、Plan、Ask 怎麼選\",\"description\":\"Agent 直接動 code、Plan 先出計畫你點頭再動、Ask 只回答不寫入。一句話分清三種模式，在對話裡用 /plan /ask 秒切。\",\"url\":\"https://benxhub.com/zh/blog/cursor/cli/03-modes\",\"mainEntityOfPage\":{\"@type\":\"WebPage\",\"@id\":\"https://benxhub.com/zh/blog/cursor/cli/03-modes\"},\"datePublished\":\"2026-02-24T00:00:00.000Z\",\"dateModified\":\"2026-02-24T00:00:00.000Z\",\"keywords\":\"cursor, cli, agent, plan, ask\",\"inLanguage\":\"zh\",\"author\":{\"@type\":\"Person\",\"name\":\"BenX\",\"url\":\"https://benxhub.com\"},\"publisher\":{\"@type\":\"Organization\",\"name\":\"BenXHub Blog\",\"url\":\"https://benxhub.com\"},\"image\":\"https://benxhub.com/images/posts/cursor-cli-modes.png\"}"}}],["$","div",null,{"className":"mx-auto max-w-6xl px-4 py-12 sm:px-6","children":["$","div",null,{"className":"lg:grid lg:grid-cols-[1fr_240px] lg:gap-14","children":[["$","article",null,{"children":[["$","header",null,{"className":"mb-10","children":[["$","div",null,{"className":"mb-4 flex flex-wrap gap-2","children":[["$","$L2","cursor",{"href":"/zh/tags/cursor","localeCookie":{"name":"NEXT_LOCALE","sameSite":"lax"},"className":"inline-flex items-center rounded-full px-2.5 py-0.5 text-xs font-medium transition-colors","style":{"background":"var(--color-code-bg)","color":"var(--color-accent)","border":"1px solid var(--color-border)"},"children":["#","cursor"]}],["$","$L2","cli",{"href":"/zh/tags/cli","localeCookie":{"name":"NEXT_LOCALE","sameSite":"lax"},"className":"inline-flex items-center rounded-full px-2.5 py-0.5 text-xs font-medium transition-colors","style":{"background":"var(--color-code-bg)","color":"var(--color-accent)","border":"1px solid var(--color-border)"},"children":["#","cli"]}],["$","$L2","agent",{"href":"/zh/tags/agent","localeCookie":{"name":"NEXT_LOCALE","sameSite":"lax"},"className":"inline-flex items-center rounded-full px-2.5 py-0.5 text-xs font-medium transition-colors","style":{"background":"var(--color-code-bg)","color":"var(--color-accent)","border":"1px solid var(--color-border)"},"children":["#","agent"]}],["$","$L2","plan",{"href":"/zh/tags/plan","localeCookie":{"name":"NEXT_LOCALE","sameSite":"lax"},"className":"inline-flex items-center rounded-full px-2.5 py-0.5 text-xs font-medium transition-colors","style":{"background":"var(--color-code-bg)","color":"var(--color-accent)","border":"1px solid var(--color-border)"},"children":["#","plan"]}],["$","$L2","ask",{"href":"/zh/tags/ask","localeCookie":{"name":"NEXT_LOCALE","sameSite":"lax"},"className":"inline-flex items-center rounded-full px-2.5 py-0.5 text-xs font-medium transition-colors","style":{"background":"var(--color-code-bg)","color":"var(--color-accent)","border":"1px solid var(--color-border)"},"children":["#","ask"]}]]}],["$","h1",null,{"className":"mb-4 text-3xl leading-snug font-bold tracking-tight sm:text-4xl","style":{"color":"var(--color-text)"},"children":"Cursor CLI 三種模式：Agent、Plan、Ask 怎麼選"}],["$","div",null,{"className":"flex flex-wrap items-center gap-3 text-sm","style":{"color":"var(--color-muted)"},"children":[["$","time",null,{"dateTime":"2026-02-24","children":"2026 年 2 月 24 日"}],["$","span",null,{"aria-hidden":"true","children":"·"}],["$","span",null,{"children":"3 min read"}]]}],["$","div",null,{"className":"mt-6 overflow-hidden rounded-lg","children":["$","img",null,{"src":"/images/posts/cursor-cli-modes.png","alt":"Cursor CLI 三種模式：Agent、Plan、Ask 怎麼選","className":"w-full h-auto"}]}],["$","div",null,{"className":"mt-6 border-b","style":{"borderColor":"var(--color-border)"}}]]}],["$","div",null,{"className":"prose","dangerouslySetInnerHTML":{"__html":"$3"}}],"$L4"]}],"$L5"]}]}]],["$L6"],"$L7"]}],"loading":null,"isPartial":false}
+4:["$","footer",null,{"className":"mt-14 border-t pt-8","style":{"borderColor":"var(--color-border)"},"children":[["$","div",null,{"className":"mb-8 flex flex-wrap gap-2","children":[["$","$L2","cursor",{"href":"/zh/tags/cursor","localeCookie":{"name":"NEXT_LOCALE","sameSite":"lax"},"className":"inline-flex items-center rounded-full px-3 py-1 text-sm font-medium transition-colors","style":{"background":"var(--color-code-bg)","color":"var(--color-accent)","border":"1px solid var(--color-border)"},"children":["#","cursor"]}],["$","$L2","cli",{"href":"/zh/tags/cli","localeCookie":{"name":"NEXT_LOCALE","sameSite":"lax"},"className":"inline-flex items-center rounded-full px-3 py-1 text-sm font-medium transition-colors","style":{"background":"var(--color-code-bg)","color":"var(--color-accent)","border":"1px solid var(--color-border)"},"children":["#","cli"]}],["$","$L2","agent",{"href":"/zh/tags/agent","localeCookie":{"name":"NEXT_LOCALE","sameSite":"lax"},"className":"inline-flex items-center rounded-full px-3 py-1 text-sm font-medium transition-colors","style":{"background":"var(--color-code-bg)","color":"var(--color-accent)","border":"1px solid var(--color-border)"},"children":["#","agent"]}],["$","$L2","plan",{"href":"/zh/tags/plan","localeCookie":{"name":"NEXT_LOCALE","sameSite":"lax"},"className":"inline-flex items-center rounded-full px-3 py-1 text-sm font-medium transition-colors","style":{"background":"var(--color-code-bg)","color":"var(--color-accent)","border":"1px solid var(--color-border)"},"children":["#","plan"]}],["$","$L2","ask",{"href":"/zh/tags/ask","localeCookie":{"name":"NEXT_LOCALE","sameSite":"lax"},"className":"inline-flex items-center rounded-full px-3 py-1 text-sm font-medium transition-colors","style":{"background":"var(--color-code-bg)","color":"var(--color-accent)","border":"1px solid var(--color-border)"},"children":["#","ask"]}]]}],["$","nav",null,{"aria-label":"文章導覽","className":"grid grid-cols-1 gap-4 sm:grid-cols-2","children":[["$","$L2",null,{"href":"/zh/blog/cursor/cli/02-basic-usage","localeCookie":{"name":"NEXT_LOCALE","sameSite":"lax"},"className":"group rounded-lg border p-4 transition-colors hover:border-accent","style":{"borderColor":"var(--color-border)","background":"var(--color-surface)"},"children":[["$","p",null,{"className":"mb-1 text-xs","style":{"color":"var(--color-muted)"},"children":"← 較新文章"}],["$","p",null,{"className":"line-clamp-1 text-sm font-medium transition-colors group-hover:text-accent","style":{"color":"var(--color-text)"},"children":"Cursor CLI 基本指令：cursor agent 怎麼用"}]]}],["$","$L2",null,{"href":"/zh/blog/cursor/cli/04-non-interactive","localeCookie":{"name":"NEXT_LOCALE","sameSite":"lax"},"className":"group rounded-lg border p-4 text-right transition-colors hover:border-accent","style":{"borderColor":"var(--color-border)","background":"var(--color-surface)"},"children":[["$","p",null,{"className":"mb-1 text-xs","style":{"color":"var(--color-muted)"},"children":"較舊文章 →"}],["$","p",null,{"className":"line-clamp-1 text-sm font-medium transition-colors group-hover:text-accent","style":{"color":"var(--color-text)"},"children":"Cursor CLI 非互動模式：讓 AI 在腳本和 CI 裡自己跑"}]]}]]}]]}]
+9:Tee0,<p>三種模式其實就一件事：<strong>誰能動你的 code、誰只能動嘴</strong>。搞清楚這個，選模式不會再選擇困難。</p>
+<h2 id="一張表分清楚">一張表分清楚</h2>
+<table>
+<thead>
+<tr>
+<th>模式</th>
+<th>一句話</th>
+<th>會不會改你的檔案？</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td><strong>Agent</strong></td>
+<td>幫我「做」一件事</td>
+<td>✅ 會，直接動手</td>
+</tr>
+<tr>
+<td><strong>Plan</strong></td>
+<td>先「規劃」怎麼做，再決定要不要執行</td>
+<td>先不動，你點頭才動</td>
+</tr>
+<tr>
+<td><strong>Ask</strong></td>
+<td>只「問」問題、查資料</td>
+<td>❌ 不會</td>
+</tr>
+</tbody>
+</table>
+<p>想像成三個同事：Agent 是那個「交給我我直接改」的、Plan 是「我先寫方案給你審」的、Ask 是「我只回答不改檔」的——選對人，省事一半。</p>
+<h2 id="agent-模式預設">Agent 模式（預設）</h2>
+<p>你要的是結果，不是討論會：</p>
+<figure data-rehype-pretty-code-figure=""><pre style="background-color:#24292e;color:#e1e4e8" tabindex="0" data-language="bash" data-theme="github-dark"><code data-language="bash" data-theme="github-dark" style="display: grid;"><span data-line=""><span style="color:#B392F0">cursor</span><span style="color:#9ECBFF"> agent</span><span style="color:#9ECBFF"> "把登入改成用 JWT"</span></span></code></pre></figure>
+<p>AI 會讀檔案、改檔案、可能執行指令。每一步你可以接受或拒絕，控制權在你。大多數情況這個模式就夠了。</p>
+<h2 id="plan-模式先看計畫再放行">Plan 模式：先看計畫再放行</h2>
+<p>不確定怎麼做、或怕 AI 一次改太大？先讓它出計畫：</p>
+<figure data-rehype-pretty-code-figure=""><pre style="background-color:#24292e;color:#e1e4e8" tabindex="0" data-language="bash" data-theme="github-dark"><code data-language="bash" data-theme="github-dark" style="display: grid;"><span data-line=""><span style="color:#B392F0">cursor</span><span style="color:#9ECBFF"> agent</span><span style="color:#79B8FF"> --plan</span><span style="color:#9ECBFF"> "重構整個 API 層"</span></span></code></pre></figure>
+<p>AI 會先問幾個問題、提出做法，你同意後才真的動手——不會給你驚喜，也不會給你驚嚇。適合大改動，或那種「我想先看清楚再 commit」的場合。</p>
+<h2 id="ask-模式只問不改">Ask 模式：只問不改</h2>
+<p>只想看懂這段 code，死都不要讓 AI 碰任何檔案：</p>
+<figure data-rehype-pretty-code-figure=""><pre style="background-color:#24292e;color:#e1e4e8" tabindex="0" data-language="bash" data-theme="github-dark"><code data-language="bash" data-theme="github-dark" style="display: grid;"><span data-line=""><span style="color:#B392F0">cursor</span><span style="color:#9ECBFF"> ask</span><span style="color:#9ECBFF"> "src/auth.ts 的邏輯是什麼？"</span></span></code></pre></figure>
+<p>只會讀取、分析、回答，不會寫入。適合 CI 環境，或那種「這台機器我只敢看不敢改」的情境——你懂的。</p>
+<h2 id="在對話裡切換模式">在對話裡切換模式</h2>
+<p>已經開著 <code>cursor agent</code> 對話了？不用跳出去重打，直接用 slash 指令：</p>
+<ul>
+<li><code>/plan</code> → 切到 Plan 模式，先規劃再說</li>
+<li><code>/ask</code> → 切到 Ask 模式，唯讀放心問</li>
+</ul>
+<p>就像切換人格一樣順。</p>
+<hr>
+<p>大原則就三字：<strong>要做用 Agent、要看用 Ask、怕搞爛用 Plan</strong>。用熟之後會發現 Ask + Agent 交替是最順的工作流——先問清楚再交辦。</p>
+<blockquote>
+<p>下一步：<a href="04-non-interactive">04-non-interactive</a> — 不用人盯著按鍵，給腳本和 CI 用的非互動模式。</p>
+</blockquote>5:["$","aside",null,{"className":"hidden lg:block","children":["$","$L8",null,{"html":"$9"}]}]
+6:["$","script","script-0",{"src":"/_next/static/chunks/2dddb3bc05093f69.js","async":true}]
+7:["$","$La",null,{"children":["$","$b",null,{"name":"Next.MetadataOutlet","children":"$@c"}]}]
+c:null

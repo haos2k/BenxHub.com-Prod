@@ -1,0 +1,159 @@
+1:"$Sreact.fragment"
+2:I[14864,["/_next/static/chunks/7923a261b80bb6e1.js","/_next/static/chunks/e09b4358027e8033.js","/_next/static/chunks/2dddb3bc05093f69.js"],"default"]
+8:I[24801,["/_next/static/chunks/7923a261b80bb6e1.js","/_next/static/chunks/e09b4358027e8033.js","/_next/static/chunks/2dddb3bc05093f69.js"],"default"]
+a:I[50183,["/_next/static/chunks/5a5b5b13c22d14f7.js","/_next/static/chunks/a484d1d3dd4b55ab.js"],"OutletBoundary"]
+b:"$Sreact.suspense"
+3:T2aee,<p>沒有工具的 Agent，就像一個會講很多理論但手邊沒鍵盤的工程師——能聊，但做不出東西。</p>
+<p>Agent 預設只能靠模型自身的訓練資料回答問題，沒辦法查 Google、讀你的資料庫、存取你的 API。Tools 就是讓 Agent 有手腳的機制——給它什麼工具，它就能做什麼事。</p>
+<h2 id="你最常用到的內建-tool">你最常用到的內建 Tool</h2>
+<p>CrewAI 的 <code>crewai-tools</code> 套件內建了幾個最常用的工具，拿到就能用：</p>
+<ul>
+<li><strong><code>SerperDevTool</code></strong>：呼叫 Serper API 做 Google 搜尋，需要 Serper API Key</li>
+<li><strong><code>FileReadTool</code></strong>：讀取本機檔案內容</li>
+<li><strong><code>FileWriterTool</code></strong>：把結果寫到本機檔案</li>
+<li><strong><code>ScrapeWebsiteTool</code></strong>：讀取指定 URL 的網頁內容</li>
+</ul>
+<p>這四個工具組合起來，基本上能覆蓋大多數「研究 + 輸出」類型的任務。</p>
+<h2 id="把-tool-掛到-agent">把 Tool 掛到 Agent</h2>
+<figure data-rehype-pretty-code-figure=""><pre style="background-color:#24292e;color:#e1e4e8" tabindex="0" data-language="python" data-theme="github-dark"><code data-language="python" data-theme="github-dark" style="display: grid;"><span data-line=""><span style="color:#F97583">from</span><span style="color:#E1E4E8"> crewai </span><span style="color:#F97583">import</span><span style="color:#E1E4E8"> Agent</span></span>
+<span data-line=""><span style="color:#F97583">from</span><span style="color:#E1E4E8"> crewai_tools </span><span style="color:#F97583">import</span><span style="color:#E1E4E8"> SerperDevTool</span></span>
+<span data-line=""> </span>
+<span data-line=""><span style="color:#E1E4E8">search_tool </span><span style="color:#F97583">=</span><span style="color:#E1E4E8"> SerperDevTool()</span></span>
+<span data-line=""> </span>
+<span data-line=""><span style="color:#E1E4E8">researcher </span><span style="color:#F97583">=</span><span style="color:#E1E4E8"> Agent(</span></span>
+<span data-line=""><span style="color:#FFAB70">    role</span><span style="color:#F97583">=</span><span style="color:#9ECBFF">"Researcher"</span><span style="color:#E1E4E8">,</span></span>
+<span data-line=""><span style="color:#FFAB70">    goal</span><span style="color:#F97583">=</span><span style="color:#9ECBFF">"Find trustworthy and current sources about the topic"</span><span style="color:#E1E4E8">,</span></span>
+<span data-line=""><span style="color:#FFAB70">    backstory</span><span style="color:#F97583">=</span><span style="color:#9ECBFF">"You always verify facts before writing anything down."</span><span style="color:#E1E4E8">,</span></span>
+<span data-line=""><span style="color:#FFAB70">    tools</span><span style="color:#F97583">=</span><span style="color:#E1E4E8">[search_tool],</span></span>
+<span data-line=""><span style="color:#FFAB70">    allow_delegation</span><span style="color:#F97583">=</span><span style="color:#79B8FF">False</span><span style="color:#E1E4E8">,</span></span>
+<span data-line=""><span style="color:#FFAB70">    verbose</span><span style="color:#F97583">=</span><span style="color:#79B8FF">True</span><span style="color:#E1E4E8">,</span></span>
+<span data-line=""><span style="color:#E1E4E8">)</span></span></code></pre></figure>
+<p>注意 <code>search_tool</code> 只建立一次，可以傳給多個 Agent——不用每個 Agent 各自建一個實例，節省資源也符合 DRY 原則。</p>
+<p>工具是在 Agent 層級設定的，不是在 Task 層級。但你可以在 Task 的 description 裡明確要求 Agent 使用工具，這會讓模型更確定應該呼叫它。</p>
+<h2 id="為什麼-tool-有時候沒被呼叫">為什麼 Tool 有時候沒被呼叫？</h2>
+<p>這是新手最常遇到的困惑——明明掛了工具，但 Agent 自己回答了，根本沒去查。</p>
+<p>原因通常是：Task 的描述沒有明確要求使用工具，模型認為它已經知道答案，就不會去呼叫了。</p>
+<p>解法很直接，在 Task 的 description 裡加一行：</p>
+<figure data-rehype-pretty-code-figure=""><pre style="background-color:#24292e;color:#e1e4e8" tabindex="0" data-language="yaml" data-theme="github-dark"><code data-language="yaml" data-theme="github-dark" style="display: grid;"><span data-line=""><span style="color:#85E89D">research_task</span><span style="color:#E1E4E8">:</span></span>
+<span data-line=""><span style="color:#85E89D">  description</span><span style="color:#E1E4E8">: </span><span style="color:#F97583">></span></span>
+<span data-line=""><span style="color:#9ECBFF">    Use the search tool to find the latest information about {topic}.</span></span>
+<span data-line=""><span style="color:#9ECBFF">    Do NOT rely on your own knowledge — always search first.</span></span>
+<span data-line=""><span style="color:#9ECBFF">    Focus on articles and updates from 2026.</span></span>
+<span data-line=""><span style="color:#85E89D">  expected_output</span><span style="color:#E1E4E8">: </span><span style="color:#F97583">></span></span>
+<span data-line=""><span style="color:#9ECBFF">    10 bullet points with title, summary, and source URL.</span></span>
+<span data-line=""><span style="color:#85E89D">  agent</span><span style="color:#E1E4E8">: </span><span style="color:#9ECBFF">researcher</span></span></code></pre></figure>
+<p>「Use the search tool」和「Do NOT rely on your own knowledge」這兩句話加了之後，工具呼叫率會明顯提升。</p>
+<h2 id="自訂-tool當內建工具不夠用">自訂 Tool：當內建工具不夠用</h2>
+<p>如果你需要對接自己的 API 或資料庫，就要自己寫 Tool。框架很固定，按著寫就好：</p>
+<figure data-rehype-pretty-code-figure=""><pre style="background-color:#24292e;color:#e1e4e8" tabindex="0" data-language="python" data-theme="github-dark"><code data-language="python" data-theme="github-dark" style="display: grid;"><span data-line=""><span style="color:#F97583">from</span><span style="color:#E1E4E8"> crewai.tools </span><span style="color:#F97583">import</span><span style="color:#E1E4E8"> BaseTool</span></span>
+<span data-line=""><span style="color:#F97583">from</span><span style="color:#E1E4E8"> pydantic </span><span style="color:#F97583">import</span><span style="color:#E1E4E8"> BaseModel, Field</span></span>
+<span data-line=""> </span>
+<span data-line=""><span style="color:#F97583">class</span><span style="color:#B392F0"> ProductQueryInput</span><span style="color:#E1E4E8">(</span><span style="color:#B392F0">BaseModel</span><span style="color:#E1E4E8">):</span></span>
+<span data-line=""><span style="color:#E1E4E8">    product_id: </span><span style="color:#79B8FF">str</span><span style="color:#F97583"> =</span><span style="color:#E1E4E8"> Field(</span><span style="color:#FFAB70">description</span><span style="color:#F97583">=</span><span style="color:#9ECBFF">"The product ID to look up"</span><span style="color:#E1E4E8">)</span></span>
+<span data-line=""> </span>
+<span data-line=""><span style="color:#F97583">class</span><span style="color:#B392F0"> ProductLookupTool</span><span style="color:#E1E4E8">(</span><span style="color:#B392F0">BaseTool</span><span style="color:#E1E4E8">):</span></span>
+<span data-line=""><span style="color:#E1E4E8">    name: </span><span style="color:#79B8FF">str</span><span style="color:#F97583"> =</span><span style="color:#9ECBFF"> "Product Lookup Tool"</span></span>
+<span data-line=""><span style="color:#E1E4E8">    description: </span><span style="color:#79B8FF">str</span><span style="color:#F97583"> =</span><span style="color:#E1E4E8"> (</span></span>
+<span data-line=""><span style="color:#9ECBFF">        "Look up product details by product ID. "</span></span>
+<span data-line=""><span style="color:#9ECBFF">        "Use this when you need accurate product information from the database."</span></span>
+<span data-line=""><span style="color:#E1E4E8">    )</span></span>
+<span data-line=""><span style="color:#E1E4E8">    args_schema: type[BaseModel] </span><span style="color:#F97583">=</span><span style="color:#E1E4E8"> ProductQueryInput</span></span>
+<span data-line=""> </span>
+<span data-line=""><span style="color:#F97583">    def</span><span style="color:#B392F0"> _run</span><span style="color:#E1E4E8">(self, product_id: </span><span style="color:#79B8FF">str</span><span style="color:#E1E4E8">) -> </span><span style="color:#79B8FF">str</span><span style="color:#E1E4E8">:</span></span>
+<span data-line=""><span style="color:#6A737D">        # 這裡呼叫你的資料庫或 API</span></span>
+<span data-line=""><span style="color:#F97583">        return</span><span style="color:#F97583"> f</span><span style="color:#9ECBFF">"Product </span><span style="color:#79B8FF">{</span><span style="color:#E1E4E8">product_id</span><span style="color:#79B8FF">}</span><span style="color:#9ECBFF">: Name=Example, Price=100, Stock=50"</span></span></code></pre></figure>
+<p><code>description</code> 這個欄位模型會讀到，用來判斷什麼情況下應該呼叫這個工具。寫清楚「什麼時候用、輸入是什麼、輸出是什麼」，模型才知道怎麼用它。</p>
+<h2 id="設計-tool-的-4-個原則">設計 Tool 的 4 個原則</h2>
+<p><strong>只做一件事</strong>：查資料的 Tool 就只查，不要順便寫檔案。責任單一，測試和除錯才容易。</p>
+<p><strong>description 要說清楚用途</strong>：不是給工程師看的，是給模型看的。用自然語言說明「何時用、輸入是什麼格式、輸出是什麼」。</p>
+<p><strong>參數用 Pydantic 管理</strong>：<code>args_schema</code> 不只是讓程式碼漂亮，它讓模型知道參數的型別和用途，傳錯參數的機率大幅降低。</p>
+<p><strong>回傳格式要穩定</strong>：下游任務要解析你的輸出，如果回傳格式每次不一樣，後面的 Task 會很難處理。固定用結構化字串或 JSON 格式。</p>
+<h2 id="常見問題">常見問題</h2>
+<p><strong>Q：<code>SerperDevTool</code> 需要什麼設定？</strong><br>
+需要 Serper API Key，在 <code>.env</code> 裡設定 <code>SERPER_API_KEY=你的key</code>。Serper 有免費額度，測試用夠了。</p>
+<p><strong>Q：Tool 可以有 async 的版本嗎？</strong><br>
+可以，實作 <code>_arun</code> 方法就好。對於需要同時呼叫多個外部 API 的情境，async Tool 可以明顯縮短執行時間。</p>
+<p><strong>Q：一個 Agent 可以掛多少個 Tool？</strong><br>
+沒有硬性限制，但工具太多反而會讓模型不知道該用哪個。建議一個 Agent 掛 2-4 個功能相關的工具就好，不要把所有工具都掛給同一個 Agent。</p>
+<h2 id="下一步">下一步</h2>
+<p>工具接上去之後，下一個問題是：<strong>Agent 的輸出怎麼保持一致？</strong> 不用 Pydantic 的話，格式每次都在飄。<br>
+👉 <a href="05-structured-output-pydantic">結構化輸出 Pydantic</a></p>0:{"buildId":"Yck3R4ooQxWkwGLT6is1X","rsc":["$","$1","c",{"children":[[["$","script",null,{"type":"application/ld+json","dangerouslySetInnerHTML":{"__html":"{\"@context\":\"https://schema.org\",\"@type\":\"Article\",\"headline\":\"CrewAI Tools 整合：讓 Agent 真的能查資料、讀檔案、做事\",\"description\":\"學會為 CrewAI Agent 掛上工具，包含內建 Tool 使用與自訂 Tool 設計，讓 Agent 不再只靠記憶回答。\",\"url\":\"https://benxhub.com/zh/blog/crewai/04-tools-integration\",\"mainEntityOfPage\":{\"@type\":\"WebPage\",\"@id\":\"https://benxhub.com/zh/blog/crewai/04-tools-integration\"},\"datePublished\":\"2026-03-02T00:00:00.000Z\",\"dateModified\":\"2026-03-02T00:00:00.000Z\",\"keywords\":\"crewai, tools, serper, integration, python\",\"inLanguage\":\"zh\",\"author\":{\"@type\":\"Person\",\"name\":\"BenX\",\"url\":\"https://benxhub.com\"},\"publisher\":{\"@type\":\"Organization\",\"name\":\"BenXHub Blog\",\"url\":\"https://benxhub.com\"}}"}}],["$","div",null,{"className":"mx-auto max-w-6xl px-4 py-12 sm:px-6","children":["$","div",null,{"className":"lg:grid lg:grid-cols-[1fr_240px] lg:gap-14","children":[["$","article",null,{"children":[["$","header",null,{"className":"mb-10","children":[["$","div",null,{"className":"mb-4 flex flex-wrap gap-2","children":[["$","$L2","crewai",{"href":"/zh/tags/crewai","localeCookie":{"name":"NEXT_LOCALE","sameSite":"lax"},"className":"inline-flex items-center rounded-full px-2.5 py-0.5 text-xs font-medium transition-colors","style":{"background":"var(--color-code-bg)","color":"var(--color-accent)","border":"1px solid var(--color-border)"},"children":["#","crewai"]}],["$","$L2","tools",{"href":"/zh/tags/tools","localeCookie":{"name":"NEXT_LOCALE","sameSite":"lax"},"className":"inline-flex items-center rounded-full px-2.5 py-0.5 text-xs font-medium transition-colors","style":{"background":"var(--color-code-bg)","color":"var(--color-accent)","border":"1px solid var(--color-border)"},"children":["#","tools"]}],["$","$L2","serper",{"href":"/zh/tags/serper","localeCookie":{"name":"NEXT_LOCALE","sameSite":"lax"},"className":"inline-flex items-center rounded-full px-2.5 py-0.5 text-xs font-medium transition-colors","style":{"background":"var(--color-code-bg)","color":"var(--color-accent)","border":"1px solid var(--color-border)"},"children":["#","serper"]}],["$","$L2","integration",{"href":"/zh/tags/integration","localeCookie":{"name":"NEXT_LOCALE","sameSite":"lax"},"className":"inline-flex items-center rounded-full px-2.5 py-0.5 text-xs font-medium transition-colors","style":{"background":"var(--color-code-bg)","color":"var(--color-accent)","border":"1px solid var(--color-border)"},"children":["#","integration"]}],["$","$L2","python",{"href":"/zh/tags/python","localeCookie":{"name":"NEXT_LOCALE","sameSite":"lax"},"className":"inline-flex items-center rounded-full px-2.5 py-0.5 text-xs font-medium transition-colors","style":{"background":"var(--color-code-bg)","color":"var(--color-accent)","border":"1px solid var(--color-border)"},"children":["#","python"]}]]}],["$","h1",null,{"className":"mb-4 text-3xl leading-snug font-bold tracking-tight sm:text-4xl","style":{"color":"var(--color-text)"},"children":"CrewAI Tools 整合：讓 Agent 真的能查資料、讀檔案、做事"}],["$","div",null,{"className":"flex flex-wrap items-center gap-3 text-sm","style":{"color":"var(--color-muted)"},"children":[["$","time",null,{"dateTime":"2026-03-02","children":"2026 年 3 月 2 日"}],["$","span",null,{"aria-hidden":"true","children":"·"}],["$","span",null,{"children":"6 min read"}]]}],"$undefined",["$","div",null,{"className":"mt-6 border-b","style":{"borderColor":"var(--color-border)"}}]]}],["$","div",null,{"className":"prose","dangerouslySetInnerHTML":{"__html":"$3"}}],"$L4"]}],"$L5"]}]}]],["$L6"],"$L7"]}],"loading":null,"isPartial":false}
+4:["$","footer",null,{"className":"mt-14 border-t pt-8","style":{"borderColor":"var(--color-border)"},"children":[["$","div",null,{"className":"mb-8 flex flex-wrap gap-2","children":[["$","$L2","crewai",{"href":"/zh/tags/crewai","localeCookie":{"name":"NEXT_LOCALE","sameSite":"lax"},"className":"inline-flex items-center rounded-full px-3 py-1 text-sm font-medium transition-colors","style":{"background":"var(--color-code-bg)","color":"var(--color-accent)","border":"1px solid var(--color-border)"},"children":["#","crewai"]}],["$","$L2","tools",{"href":"/zh/tags/tools","localeCookie":{"name":"NEXT_LOCALE","sameSite":"lax"},"className":"inline-flex items-center rounded-full px-3 py-1 text-sm font-medium transition-colors","style":{"background":"var(--color-code-bg)","color":"var(--color-accent)","border":"1px solid var(--color-border)"},"children":["#","tools"]}],["$","$L2","serper",{"href":"/zh/tags/serper","localeCookie":{"name":"NEXT_LOCALE","sameSite":"lax"},"className":"inline-flex items-center rounded-full px-3 py-1 text-sm font-medium transition-colors","style":{"background":"var(--color-code-bg)","color":"var(--color-accent)","border":"1px solid var(--color-border)"},"children":["#","serper"]}],["$","$L2","integration",{"href":"/zh/tags/integration","localeCookie":{"name":"NEXT_LOCALE","sameSite":"lax"},"className":"inline-flex items-center rounded-full px-3 py-1 text-sm font-medium transition-colors","style":{"background":"var(--color-code-bg)","color":"var(--color-accent)","border":"1px solid var(--color-border)"},"children":["#","integration"]}],["$","$L2","python",{"href":"/zh/tags/python","localeCookie":{"name":"NEXT_LOCALE","sameSite":"lax"},"className":"inline-flex items-center rounded-full px-3 py-1 text-sm font-medium transition-colors","style":{"background":"var(--color-code-bg)","color":"var(--color-accent)","border":"1px solid var(--color-border)"},"children":["#","python"]}]]}],["$","nav",null,{"aria-label":"文章導覽","className":"grid grid-cols-1 gap-4 sm:grid-cols-2","children":[["$","$L2",null,{"href":"/zh/blog/crewai/03-crew-and-process","localeCookie":{"name":"NEXT_LOCALE","sameSite":"lax"},"className":"group rounded-lg border p-4 transition-colors hover:border-accent","style":{"borderColor":"var(--color-border)","background":"var(--color-surface)"},"children":[["$","p",null,{"className":"mb-1 text-xs","style":{"color":"var(--color-muted)"},"children":"← 較新文章"}],["$","p",null,{"className":"line-clamp-1 text-sm font-medium transition-colors group-hover:text-accent","style":{"color":"var(--color-text)"},"children":"CrewAI Crew 與 Process：為什麼新手應該先用 Sequential"}]]}],["$","$L2",null,{"href":"/zh/blog/crewai/05-structured-output-pydantic","localeCookie":{"name":"NEXT_LOCALE","sameSite":"lax"},"className":"group rounded-lg border p-4 text-right transition-colors hover:border-accent","style":{"borderColor":"var(--color-border)","background":"var(--color-surface)"},"children":[["$","p",null,{"className":"mb-1 text-xs","style":{"color":"var(--color-muted)"},"children":"較舊文章 →"}],["$","p",null,{"className":"line-clamp-1 text-sm font-medium transition-colors group-hover:text-accent","style":{"color":"var(--color-text)"},"children":"CrewAI 結構化輸出：用 Pydantic 讓 Agent 不再亂回答"}]]}]]}]]}]
+9:T2aee,<p>沒有工具的 Agent，就像一個會講很多理論但手邊沒鍵盤的工程師——能聊，但做不出東西。</p>
+<p>Agent 預設只能靠模型自身的訓練資料回答問題，沒辦法查 Google、讀你的資料庫、存取你的 API。Tools 就是讓 Agent 有手腳的機制——給它什麼工具，它就能做什麼事。</p>
+<h2 id="你最常用到的內建-tool">你最常用到的內建 Tool</h2>
+<p>CrewAI 的 <code>crewai-tools</code> 套件內建了幾個最常用的工具，拿到就能用：</p>
+<ul>
+<li><strong><code>SerperDevTool</code></strong>：呼叫 Serper API 做 Google 搜尋，需要 Serper API Key</li>
+<li><strong><code>FileReadTool</code></strong>：讀取本機檔案內容</li>
+<li><strong><code>FileWriterTool</code></strong>：把結果寫到本機檔案</li>
+<li><strong><code>ScrapeWebsiteTool</code></strong>：讀取指定 URL 的網頁內容</li>
+</ul>
+<p>這四個工具組合起來，基本上能覆蓋大多數「研究 + 輸出」類型的任務。</p>
+<h2 id="把-tool-掛到-agent">把 Tool 掛到 Agent</h2>
+<figure data-rehype-pretty-code-figure=""><pre style="background-color:#24292e;color:#e1e4e8" tabindex="0" data-language="python" data-theme="github-dark"><code data-language="python" data-theme="github-dark" style="display: grid;"><span data-line=""><span style="color:#F97583">from</span><span style="color:#E1E4E8"> crewai </span><span style="color:#F97583">import</span><span style="color:#E1E4E8"> Agent</span></span>
+<span data-line=""><span style="color:#F97583">from</span><span style="color:#E1E4E8"> crewai_tools </span><span style="color:#F97583">import</span><span style="color:#E1E4E8"> SerperDevTool</span></span>
+<span data-line=""> </span>
+<span data-line=""><span style="color:#E1E4E8">search_tool </span><span style="color:#F97583">=</span><span style="color:#E1E4E8"> SerperDevTool()</span></span>
+<span data-line=""> </span>
+<span data-line=""><span style="color:#E1E4E8">researcher </span><span style="color:#F97583">=</span><span style="color:#E1E4E8"> Agent(</span></span>
+<span data-line=""><span style="color:#FFAB70">    role</span><span style="color:#F97583">=</span><span style="color:#9ECBFF">"Researcher"</span><span style="color:#E1E4E8">,</span></span>
+<span data-line=""><span style="color:#FFAB70">    goal</span><span style="color:#F97583">=</span><span style="color:#9ECBFF">"Find trustworthy and current sources about the topic"</span><span style="color:#E1E4E8">,</span></span>
+<span data-line=""><span style="color:#FFAB70">    backstory</span><span style="color:#F97583">=</span><span style="color:#9ECBFF">"You always verify facts before writing anything down."</span><span style="color:#E1E4E8">,</span></span>
+<span data-line=""><span style="color:#FFAB70">    tools</span><span style="color:#F97583">=</span><span style="color:#E1E4E8">[search_tool],</span></span>
+<span data-line=""><span style="color:#FFAB70">    allow_delegation</span><span style="color:#F97583">=</span><span style="color:#79B8FF">False</span><span style="color:#E1E4E8">,</span></span>
+<span data-line=""><span style="color:#FFAB70">    verbose</span><span style="color:#F97583">=</span><span style="color:#79B8FF">True</span><span style="color:#E1E4E8">,</span></span>
+<span data-line=""><span style="color:#E1E4E8">)</span></span></code></pre></figure>
+<p>注意 <code>search_tool</code> 只建立一次，可以傳給多個 Agent——不用每個 Agent 各自建一個實例，節省資源也符合 DRY 原則。</p>
+<p>工具是在 Agent 層級設定的，不是在 Task 層級。但你可以在 Task 的 description 裡明確要求 Agent 使用工具，這會讓模型更確定應該呼叫它。</p>
+<h2 id="為什麼-tool-有時候沒被呼叫">為什麼 Tool 有時候沒被呼叫？</h2>
+<p>這是新手最常遇到的困惑——明明掛了工具，但 Agent 自己回答了，根本沒去查。</p>
+<p>原因通常是：Task 的描述沒有明確要求使用工具，模型認為它已經知道答案，就不會去呼叫了。</p>
+<p>解法很直接，在 Task 的 description 裡加一行：</p>
+<figure data-rehype-pretty-code-figure=""><pre style="background-color:#24292e;color:#e1e4e8" tabindex="0" data-language="yaml" data-theme="github-dark"><code data-language="yaml" data-theme="github-dark" style="display: grid;"><span data-line=""><span style="color:#85E89D">research_task</span><span style="color:#E1E4E8">:</span></span>
+<span data-line=""><span style="color:#85E89D">  description</span><span style="color:#E1E4E8">: </span><span style="color:#F97583">></span></span>
+<span data-line=""><span style="color:#9ECBFF">    Use the search tool to find the latest information about {topic}.</span></span>
+<span data-line=""><span style="color:#9ECBFF">    Do NOT rely on your own knowledge — always search first.</span></span>
+<span data-line=""><span style="color:#9ECBFF">    Focus on articles and updates from 2026.</span></span>
+<span data-line=""><span style="color:#85E89D">  expected_output</span><span style="color:#E1E4E8">: </span><span style="color:#F97583">></span></span>
+<span data-line=""><span style="color:#9ECBFF">    10 bullet points with title, summary, and source URL.</span></span>
+<span data-line=""><span style="color:#85E89D">  agent</span><span style="color:#E1E4E8">: </span><span style="color:#9ECBFF">researcher</span></span></code></pre></figure>
+<p>「Use the search tool」和「Do NOT rely on your own knowledge」這兩句話加了之後，工具呼叫率會明顯提升。</p>
+<h2 id="自訂-tool當內建工具不夠用">自訂 Tool：當內建工具不夠用</h2>
+<p>如果你需要對接自己的 API 或資料庫，就要自己寫 Tool。框架很固定，按著寫就好：</p>
+<figure data-rehype-pretty-code-figure=""><pre style="background-color:#24292e;color:#e1e4e8" tabindex="0" data-language="python" data-theme="github-dark"><code data-language="python" data-theme="github-dark" style="display: grid;"><span data-line=""><span style="color:#F97583">from</span><span style="color:#E1E4E8"> crewai.tools </span><span style="color:#F97583">import</span><span style="color:#E1E4E8"> BaseTool</span></span>
+<span data-line=""><span style="color:#F97583">from</span><span style="color:#E1E4E8"> pydantic </span><span style="color:#F97583">import</span><span style="color:#E1E4E8"> BaseModel, Field</span></span>
+<span data-line=""> </span>
+<span data-line=""><span style="color:#F97583">class</span><span style="color:#B392F0"> ProductQueryInput</span><span style="color:#E1E4E8">(</span><span style="color:#B392F0">BaseModel</span><span style="color:#E1E4E8">):</span></span>
+<span data-line=""><span style="color:#E1E4E8">    product_id: </span><span style="color:#79B8FF">str</span><span style="color:#F97583"> =</span><span style="color:#E1E4E8"> Field(</span><span style="color:#FFAB70">description</span><span style="color:#F97583">=</span><span style="color:#9ECBFF">"The product ID to look up"</span><span style="color:#E1E4E8">)</span></span>
+<span data-line=""> </span>
+<span data-line=""><span style="color:#F97583">class</span><span style="color:#B392F0"> ProductLookupTool</span><span style="color:#E1E4E8">(</span><span style="color:#B392F0">BaseTool</span><span style="color:#E1E4E8">):</span></span>
+<span data-line=""><span style="color:#E1E4E8">    name: </span><span style="color:#79B8FF">str</span><span style="color:#F97583"> =</span><span style="color:#9ECBFF"> "Product Lookup Tool"</span></span>
+<span data-line=""><span style="color:#E1E4E8">    description: </span><span style="color:#79B8FF">str</span><span style="color:#F97583"> =</span><span style="color:#E1E4E8"> (</span></span>
+<span data-line=""><span style="color:#9ECBFF">        "Look up product details by product ID. "</span></span>
+<span data-line=""><span style="color:#9ECBFF">        "Use this when you need accurate product information from the database."</span></span>
+<span data-line=""><span style="color:#E1E4E8">    )</span></span>
+<span data-line=""><span style="color:#E1E4E8">    args_schema: type[BaseModel] </span><span style="color:#F97583">=</span><span style="color:#E1E4E8"> ProductQueryInput</span></span>
+<span data-line=""> </span>
+<span data-line=""><span style="color:#F97583">    def</span><span style="color:#B392F0"> _run</span><span style="color:#E1E4E8">(self, product_id: </span><span style="color:#79B8FF">str</span><span style="color:#E1E4E8">) -> </span><span style="color:#79B8FF">str</span><span style="color:#E1E4E8">:</span></span>
+<span data-line=""><span style="color:#6A737D">        # 這裡呼叫你的資料庫或 API</span></span>
+<span data-line=""><span style="color:#F97583">        return</span><span style="color:#F97583"> f</span><span style="color:#9ECBFF">"Product </span><span style="color:#79B8FF">{</span><span style="color:#E1E4E8">product_id</span><span style="color:#79B8FF">}</span><span style="color:#9ECBFF">: Name=Example, Price=100, Stock=50"</span></span></code></pre></figure>
+<p><code>description</code> 這個欄位模型會讀到，用來判斷什麼情況下應該呼叫這個工具。寫清楚「什麼時候用、輸入是什麼、輸出是什麼」，模型才知道怎麼用它。</p>
+<h2 id="設計-tool-的-4-個原則">設計 Tool 的 4 個原則</h2>
+<p><strong>只做一件事</strong>：查資料的 Tool 就只查，不要順便寫檔案。責任單一，測試和除錯才容易。</p>
+<p><strong>description 要說清楚用途</strong>：不是給工程師看的，是給模型看的。用自然語言說明「何時用、輸入是什麼格式、輸出是什麼」。</p>
+<p><strong>參數用 Pydantic 管理</strong>：<code>args_schema</code> 不只是讓程式碼漂亮，它讓模型知道參數的型別和用途，傳錯參數的機率大幅降低。</p>
+<p><strong>回傳格式要穩定</strong>：下游任務要解析你的輸出，如果回傳格式每次不一樣，後面的 Task 會很難處理。固定用結構化字串或 JSON 格式。</p>
+<h2 id="常見問題">常見問題</h2>
+<p><strong>Q：<code>SerperDevTool</code> 需要什麼設定？</strong><br>
+需要 Serper API Key，在 <code>.env</code> 裡設定 <code>SERPER_API_KEY=你的key</code>。Serper 有免費額度，測試用夠了。</p>
+<p><strong>Q：Tool 可以有 async 的版本嗎？</strong><br>
+可以，實作 <code>_arun</code> 方法就好。對於需要同時呼叫多個外部 API 的情境，async Tool 可以明顯縮短執行時間。</p>
+<p><strong>Q：一個 Agent 可以掛多少個 Tool？</strong><br>
+沒有硬性限制，但工具太多反而會讓模型不知道該用哪個。建議一個 Agent 掛 2-4 個功能相關的工具就好，不要把所有工具都掛給同一個 Agent。</p>
+<h2 id="下一步">下一步</h2>
+<p>工具接上去之後，下一個問題是：<strong>Agent 的輸出怎麼保持一致？</strong> 不用 Pydantic 的話，格式每次都在飄。<br>
+👉 <a href="05-structured-output-pydantic">結構化輸出 Pydantic</a></p>5:["$","aside",null,{"className":"hidden lg:block","children":["$","$L8",null,{"html":"$9"}]}]
+6:["$","script","script-0",{"src":"/_next/static/chunks/2dddb3bc05093f69.js","async":true}]
+7:["$","$La",null,{"children":["$","$b",null,{"name":"Next.MetadataOutlet","children":"$@c"}]}]
+c:null

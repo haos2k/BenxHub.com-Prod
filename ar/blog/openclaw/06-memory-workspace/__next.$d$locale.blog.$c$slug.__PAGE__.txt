@@ -1,0 +1,147 @@
+1:"$Sreact.fragment"
+2:I[14864,["/_next/static/chunks/7923a261b80bb6e1.js","/_next/static/chunks/e09b4358027e8033.js","/_next/static/chunks/2dddb3bc05093f69.js"],"default"]
+8:I[24801,["/_next/static/chunks/7923a261b80bb6e1.js","/_next/static/chunks/e09b4358027e8033.js","/_next/static/chunks/2dddb3bc05093f69.js"],"default"]
+a:I[50183,["/_next/static/chunks/5a5b5b13c22d14f7.js","/_next/static/chunks/a484d1d3dd4b55ab.js"],"OutletBoundary"]
+b:"$Sreact.suspense"
+3:T124a,<p>هل مررت بتلك اللحظة المؤلمة حيث أمضيت نصف محادثة في تعليم الذكاء الاصطناعي شيئاً، فقط لينساه كل شيء في المرة القادمة؟</p>
+<p>هذه المقالة موجودة لحل هذا الإحباط.</p>
+<h2 id="ما-الذي-ستتعلمه">ما الذي ستتعلمه</h2>
+<ul>
+<li>فهم ما هي مساحة العمل ولماذا تهم</li>
+<li>تعلم كيف تعمل الذاكرة</li>
+<li>معرفة أين تُخزَّن بياناتك</li>
+<li>الاحتفاظ بنسخة احتياطية من جميع إعداداتك بأمر واحد</li>
+</ul>
+<hr>
+<h2 id="ما-هي-مساحة-العمل">ما هي مساحة العمل؟</h2>
+<p>فكّر في مساحة العمل كـ<strong>مكتب المساعد الخاص</strong>:</p>
+<ul>
+<li>الملفات التي يقرأها، والوثائق التي يكتبها، والسكريبتات التي يشغلها تحدث كلها داخل ذلك المجلد</li>
+<li>يمكنك إنشاء مساحات عمل متعددة حتى تبقى الوظائف المختلفة منفصلة</li>
+</ul>
+<pre><code>~/.openclaw/workspace-main        ← مكتب مساعدك الرئيسي
+~/.openclaw/workspace-project-a   ← مكتب المشروع أ
+~/.openclaw/workspace-project-b   ← مكتب المشروع ب
+</code></pre>
+<p>بهذه الطريقة، "رتّب يوميتي الشخصية" و"اكتب كوداً للمشروع أ" لا يختلطان.</p>
+<hr>
+<h2 id="كيف-تعمل-الذاكرة">كيف تعمل الذاكرة؟</h2>
+<p>يخزن OpenClaw أجزاءً مهمة من المحادثة كـ<strong>ذاكرة</strong>، حتى يتمكن المساعد من البحث فيها وإعادة استخدامها لاحقاً.</p>
+<p>بكلمات بسيطة: <strong>مساعدك يتذكر ما أخبرته به من قبل</strong>.</p>
+<blockquote>
+<p>⚠️ إذا شعرت بأنه ناسٍ، تحقق من هذه النقاط:</p>
+<ul>
+<li>هل الذاكرة مفعّلة؟ قد يتطلب البحث الدلالي مفتاح OpenAI API</li>
+<li>هل تمت إزالة ذاكرة قديمة، أو ضغطها، أو تحديدها بطول معين؟</li>
+<li>هل بدأت جلسة جديدة تماماً؟ الجلسات الجديدة تبدأ بسياق قصير المدى فارغ</li>
+</ul>
+</blockquote>
+<hr>
+<h2 id="أين-تُخزَّن-البيانات">أين تُخزَّن البيانات؟</h2>
+<table>
+<thead>
+<tr>
+<th>النوع</th>
+<th>المسار</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td>ملف الإعداد</td>
+<td><code>~/.openclaw/openclaw.json</code></td>
+</tr>
+<tr>
+<td>مساحات العمل</td>
+<td><code>~/.openclaw/workspace-&#x3C;name>/</code></td>
+</tr>
+<tr>
+<td>الجلسات والذاكرة</td>
+<td>أدلة فرعية تحت <code>~/.openclaw/</code></td>
+</tr>
+</tbody>
+</table>
+<hr>
+<h2 id="نسخة-احتياطية-بأمر-واحد">نسخة احتياطية بأمر واحد</h2>
+<p>معظم حياتك في OpenClaw تعيش تحت <code>~/.openclaw</code>. احتفظ بنسخة احتياطية منتظمة:</p>
+<figure data-rehype-pretty-code-figure=""><pre style="background-color:#24292e;color:#e1e4e8" tabindex="0" data-language="bash" data-theme="github-dark"><code data-language="bash" data-theme="github-dark" style="display: grid;"><span data-line=""><span style="color:#6A737D"># نسخ كل شيء إلى موقع احتياطي</span></span>
+<span data-line=""><span style="color:#B392F0">cp</span><span style="color:#79B8FF"> -r</span><span style="color:#9ECBFF"> ~/.openclaw</span><span style="color:#9ECBFF"> ~/backup/openclaw-backup-</span><span style="color:#E1E4E8">$(</span><span style="color:#B392F0">date</span><span style="color:#9ECBFF"> +%Y%m%d</span><span style="color:#E1E4E8">)</span></span></code></pre></figure>
+<blockquote>
+<p>💡 تنتقل إلى حاسوب جديد؟ انسخ مجلد <code>~/.openclaw</code> بالكامل وغالباً يمكنك المتابعة بدون إعادة تشغيل معالج الإعداد.</p>
+</blockquote>
+<hr>
+<h2 id="الخطوة-التالية">الخطوة التالية</h2>
+<p>أساسيات مساحة العمل جاهزة. بعد ذلك ننتقل إلى الجزء الممتع: <strong>مساعدون متعددون بأدوار مختلفة</strong>، موجَّهون حسب المجموعات والبوتات وحالات الاستخدام.</p>
+<p><a href="05-skills-intro">← السابق: المهارات</a> | 👉 <a href="07-multi-agent-bindings">تشغيل مساعدين متعددين خلف Gateway واحد باستخدام Bindings</a></p>0:{"buildId":"Yck3R4ooQxWkwGLT6is1X","rsc":["$","$1","c",{"children":[[["$","script",null,{"type":"application/ld+json","dangerouslySetInnerHTML":{"__html":"{\"@context\":\"https://schema.org\",\"@type\":\"Article\",\"headline\":\"أين دماغ مساعدك؟ افهم الذاكرة ومساحات العمل\",\"description\":\"كيف تُنظَّم مساحات العمل، كيف تعمل الذاكرة، أين تُخزَّن البيانات، وكيف تحتفظ بنسخة احتياطية من كل شيء بأمر واحد.\",\"url\":\"https://benxhub.com/ar/blog/openclaw/06-memory-workspace\",\"mainEntityOfPage\":{\"@type\":\"WebPage\",\"@id\":\"https://benxhub.com/ar/blog/openclaw/06-memory-workspace\"},\"datePublished\":\"2026-03-08T00:00:00.000Z\",\"dateModified\":\"2026-03-08T00:00:00.000Z\",\"keywords\":\"openclaw, memory, workspace, data\",\"inLanguage\":\"ar\",\"author\":{\"@type\":\"Person\",\"name\":\"BenX\",\"url\":\"https://benxhub.com\"},\"publisher\":{\"@type\":\"Organization\",\"name\":\"BenXHub Blog\",\"url\":\"https://benxhub.com\"}}"}}],["$","div",null,{"className":"mx-auto max-w-6xl px-4 py-12 sm:px-6","children":["$","div",null,{"className":"lg:grid lg:grid-cols-[1fr_240px] lg:gap-14","children":[["$","article",null,{"children":[["$","header",null,{"className":"mb-10","children":[["$","div",null,{"className":"mb-4 flex flex-wrap gap-2","children":[["$","$L2","openclaw",{"href":"/ar/tags/openclaw","localeCookie":{"name":"NEXT_LOCALE","sameSite":"lax"},"className":"inline-flex items-center rounded-full px-2.5 py-0.5 text-xs font-medium transition-colors","style":{"background":"var(--color-code-bg)","color":"var(--color-accent)","border":"1px solid var(--color-border)"},"children":["#","openclaw"]}],["$","$L2","memory",{"href":"/ar/tags/memory","localeCookie":{"name":"NEXT_LOCALE","sameSite":"lax"},"className":"inline-flex items-center rounded-full px-2.5 py-0.5 text-xs font-medium transition-colors","style":{"background":"var(--color-code-bg)","color":"var(--color-accent)","border":"1px solid var(--color-border)"},"children":["#","memory"]}],["$","$L2","workspace",{"href":"/ar/tags/workspace","localeCookie":{"name":"NEXT_LOCALE","sameSite":"lax"},"className":"inline-flex items-center rounded-full px-2.5 py-0.5 text-xs font-medium transition-colors","style":{"background":"var(--color-code-bg)","color":"var(--color-accent)","border":"1px solid var(--color-border)"},"children":["#","workspace"]}],["$","$L2","data",{"href":"/ar/tags/data","localeCookie":{"name":"NEXT_LOCALE","sameSite":"lax"},"className":"inline-flex items-center rounded-full px-2.5 py-0.5 text-xs font-medium transition-colors","style":{"background":"var(--color-code-bg)","color":"var(--color-accent)","border":"1px solid var(--color-border)"},"children":["#","data"]}]]}],["$","h1",null,{"className":"mb-4 text-3xl leading-snug font-bold tracking-tight sm:text-4xl","style":{"color":"var(--color-text)"},"children":"أين دماغ مساعدك؟ افهم الذاكرة ومساحات العمل"}],["$","div",null,{"className":"flex flex-wrap items-center gap-3 text-sm","style":{"color":"var(--color-muted)"},"children":[["$","time",null,{"dateTime":"2026-03-08","children":"8 3月 2026"}],["$","span",null,{"aria-hidden":"true","children":"·"}],["$","span",null,{"children":"2 min read"}]]}],"$undefined",["$","div",null,{"className":"mt-6 border-b","style":{"borderColor":"var(--color-border)"}}]]}],["$","div",null,{"className":"prose","dangerouslySetInnerHTML":{"__html":"$3"}}],"$L4"]}],"$L5"]}]}]],["$L6"],"$L7"]}],"loading":null,"isPartial":false}
+4:["$","footer",null,{"className":"mt-14 border-t pt-8","style":{"borderColor":"var(--color-border)"},"children":[["$","div",null,{"className":"mb-8 flex flex-wrap gap-2","children":[["$","$L2","openclaw",{"href":"/ar/tags/openclaw","localeCookie":{"name":"NEXT_LOCALE","sameSite":"lax"},"className":"inline-flex items-center rounded-full px-3 py-1 text-sm font-medium transition-colors","style":{"background":"var(--color-code-bg)","color":"var(--color-accent)","border":"1px solid var(--color-border)"},"children":["#","openclaw"]}],["$","$L2","memory",{"href":"/ar/tags/memory","localeCookie":{"name":"NEXT_LOCALE","sameSite":"lax"},"className":"inline-flex items-center rounded-full px-3 py-1 text-sm font-medium transition-colors","style":{"background":"var(--color-code-bg)","color":"var(--color-accent)","border":"1px solid var(--color-border)"},"children":["#","memory"]}],["$","$L2","workspace",{"href":"/ar/tags/workspace","localeCookie":{"name":"NEXT_LOCALE","sameSite":"lax"},"className":"inline-flex items-center rounded-full px-3 py-1 text-sm font-medium transition-colors","style":{"background":"var(--color-code-bg)","color":"var(--color-accent)","border":"1px solid var(--color-border)"},"children":["#","workspace"]}],["$","$L2","data",{"href":"/ar/tags/data","localeCookie":{"name":"NEXT_LOCALE","sameSite":"lax"},"className":"inline-flex items-center rounded-full px-3 py-1 text-sm font-medium transition-colors","style":{"background":"var(--color-code-bg)","color":"var(--color-accent)","border":"1px solid var(--color-border)"},"children":["#","data"]}]]}],["$","nav",null,{"aria-label":"التنقل بين المقالات","className":"grid grid-cols-1 gap-4 sm:grid-cols-2","children":[["$","$L2",null,{"href":"/ar/blog/openclaw/05-skills-intro","localeCookie":{"name":"NEXT_LOCALE","sameSite":"lax"},"className":"group rounded-lg border p-4 transition-colors hover:border-accent","style":{"borderColor":"var(--color-border)","background":"var(--color-surface)"},"children":[["$","p",null,{"className":"mb-1 text-xs","style":{"color":"var(--color-muted)"},"children":"→ الأحدث"}],["$","p",null,{"className":"line-clamp-1 text-sm font-medium transition-colors group-hover:text-accent","style":{"color":"var(--color-text)"},"children":"أعطِ مساعدك قدرات خارقة: المهارات تحوّله من متحدث إلى فاعل"}]]}],["$","$L2",null,{"href":"/ar/blog/openclaw/07-multi-agent-bindings","localeCookie":{"name":"NEXT_LOCALE","sameSite":"lax"},"className":"group rounded-lg border p-4 text-right transition-colors hover:border-accent","style":{"borderColor":"var(--color-border)","background":"var(--color-surface)"},"children":[["$","p",null,{"className":"mb-1 text-xs","style":{"color":"var(--color-muted)"},"children":"الأقدم ←"}],["$","p",null,{"className":"line-clamp-1 text-sm font-medium transition-colors group-hover:text-accent","style":{"color":"var(--color-text)"},"children":"Gateway واحد، مساعدون متعددون: استخدم Bindings لتوجيه الرسالة الصحيحة إلى الوكيل الصحيح"}]]}]]}]]}]
+9:T124a,<p>هل مررت بتلك اللحظة المؤلمة حيث أمضيت نصف محادثة في تعليم الذكاء الاصطناعي شيئاً، فقط لينساه كل شيء في المرة القادمة؟</p>
+<p>هذه المقالة موجودة لحل هذا الإحباط.</p>
+<h2 id="ما-الذي-ستتعلمه">ما الذي ستتعلمه</h2>
+<ul>
+<li>فهم ما هي مساحة العمل ولماذا تهم</li>
+<li>تعلم كيف تعمل الذاكرة</li>
+<li>معرفة أين تُخزَّن بياناتك</li>
+<li>الاحتفاظ بنسخة احتياطية من جميع إعداداتك بأمر واحد</li>
+</ul>
+<hr>
+<h2 id="ما-هي-مساحة-العمل">ما هي مساحة العمل؟</h2>
+<p>فكّر في مساحة العمل كـ<strong>مكتب المساعد الخاص</strong>:</p>
+<ul>
+<li>الملفات التي يقرأها، والوثائق التي يكتبها، والسكريبتات التي يشغلها تحدث كلها داخل ذلك المجلد</li>
+<li>يمكنك إنشاء مساحات عمل متعددة حتى تبقى الوظائف المختلفة منفصلة</li>
+</ul>
+<pre><code>~/.openclaw/workspace-main        ← مكتب مساعدك الرئيسي
+~/.openclaw/workspace-project-a   ← مكتب المشروع أ
+~/.openclaw/workspace-project-b   ← مكتب المشروع ب
+</code></pre>
+<p>بهذه الطريقة، "رتّب يوميتي الشخصية" و"اكتب كوداً للمشروع أ" لا يختلطان.</p>
+<hr>
+<h2 id="كيف-تعمل-الذاكرة">كيف تعمل الذاكرة؟</h2>
+<p>يخزن OpenClaw أجزاءً مهمة من المحادثة كـ<strong>ذاكرة</strong>، حتى يتمكن المساعد من البحث فيها وإعادة استخدامها لاحقاً.</p>
+<p>بكلمات بسيطة: <strong>مساعدك يتذكر ما أخبرته به من قبل</strong>.</p>
+<blockquote>
+<p>⚠️ إذا شعرت بأنه ناسٍ، تحقق من هذه النقاط:</p>
+<ul>
+<li>هل الذاكرة مفعّلة؟ قد يتطلب البحث الدلالي مفتاح OpenAI API</li>
+<li>هل تمت إزالة ذاكرة قديمة، أو ضغطها، أو تحديدها بطول معين؟</li>
+<li>هل بدأت جلسة جديدة تماماً؟ الجلسات الجديدة تبدأ بسياق قصير المدى فارغ</li>
+</ul>
+</blockquote>
+<hr>
+<h2 id="أين-تُخزَّن-البيانات">أين تُخزَّن البيانات؟</h2>
+<table>
+<thead>
+<tr>
+<th>النوع</th>
+<th>المسار</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td>ملف الإعداد</td>
+<td><code>~/.openclaw/openclaw.json</code></td>
+</tr>
+<tr>
+<td>مساحات العمل</td>
+<td><code>~/.openclaw/workspace-&#x3C;name>/</code></td>
+</tr>
+<tr>
+<td>الجلسات والذاكرة</td>
+<td>أدلة فرعية تحت <code>~/.openclaw/</code></td>
+</tr>
+</tbody>
+</table>
+<hr>
+<h2 id="نسخة-احتياطية-بأمر-واحد">نسخة احتياطية بأمر واحد</h2>
+<p>معظم حياتك في OpenClaw تعيش تحت <code>~/.openclaw</code>. احتفظ بنسخة احتياطية منتظمة:</p>
+<figure data-rehype-pretty-code-figure=""><pre style="background-color:#24292e;color:#e1e4e8" tabindex="0" data-language="bash" data-theme="github-dark"><code data-language="bash" data-theme="github-dark" style="display: grid;"><span data-line=""><span style="color:#6A737D"># نسخ كل شيء إلى موقع احتياطي</span></span>
+<span data-line=""><span style="color:#B392F0">cp</span><span style="color:#79B8FF"> -r</span><span style="color:#9ECBFF"> ~/.openclaw</span><span style="color:#9ECBFF"> ~/backup/openclaw-backup-</span><span style="color:#E1E4E8">$(</span><span style="color:#B392F0">date</span><span style="color:#9ECBFF"> +%Y%m%d</span><span style="color:#E1E4E8">)</span></span></code></pre></figure>
+<blockquote>
+<p>💡 تنتقل إلى حاسوب جديد؟ انسخ مجلد <code>~/.openclaw</code> بالكامل وغالباً يمكنك المتابعة بدون إعادة تشغيل معالج الإعداد.</p>
+</blockquote>
+<hr>
+<h2 id="الخطوة-التالية">الخطوة التالية</h2>
+<p>أساسيات مساحة العمل جاهزة. بعد ذلك ننتقل إلى الجزء الممتع: <strong>مساعدون متعددون بأدوار مختلفة</strong>، موجَّهون حسب المجموعات والبوتات وحالات الاستخدام.</p>
+<p><a href="05-skills-intro">← السابق: المهارات</a> | 👉 <a href="07-multi-agent-bindings">تشغيل مساعدين متعددين خلف Gateway واحد باستخدام Bindings</a></p>5:["$","aside",null,{"className":"hidden lg:block","children":["$","$L8",null,{"html":"$9"}]}]
+6:["$","script","script-0",{"src":"/_next/static/chunks/2dddb3bc05093f69.js","async":true}]
+7:["$","$La",null,{"children":["$","$b",null,{"name":"Next.MetadataOutlet","children":"$@c"}]}]
+c:null

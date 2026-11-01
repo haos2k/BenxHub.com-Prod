@@ -1,0 +1,87 @@
+1:"$Sreact.fragment"
+2:I[14864,["/_next/static/chunks/7923a261b80bb6e1.js","/_next/static/chunks/e09b4358027e8033.js","/_next/static/chunks/2dddb3bc05093f69.js"],"default"]
+8:I[24801,["/_next/static/chunks/7923a261b80bb6e1.js","/_next/static/chunks/e09b4358027e8033.js","/_next/static/chunks/2dddb3bc05093f69.js"],"default"]
+a:I[50183,["/_next/static/chunks/5a5b5b13c22d14f7.js","/_next/static/chunks/a484d1d3dd4b55ab.js"],"OutletBoundary"]
+b:"$Sreact.suspense"
+3:Td76,<p><code>Crew</code> は、誰を先に動かし誰に引き継ぐかを決める監督のような存在です。<br>
+<code>Process</code> はタスク進行のテンポを決める脚本です。</p>
+<h2 id="結論を先に">結論を先に</h2>
+<p><strong>初心者プロジェクトの 9 割は <code>Process.sequential</code> から始めるべきです。</strong><br>
+理由は単純で、予測しやすく、デバッグしやすく、障害調査がしやすいからです。</p>
+<h2 id="最小の-crew-例">最小の Crew 例</h2>
+<figure data-rehype-pretty-code-figure=""><pre style="background-color:#24292e;color:#e1e4e8" tabindex="0" data-language="python" data-theme="github-dark"><code data-language="python" data-theme="github-dark" style="display: grid;"><span data-line=""><span style="color:#F97583">from</span><span style="color:#E1E4E8"> crewai </span><span style="color:#F97583">import</span><span style="color:#E1E4E8"> Crew, Process</span></span>
+<span data-line=""> </span>
+<span data-line=""><span style="color:#F97583">def</span><span style="color:#B392F0"> build_crew</span><span style="color:#E1E4E8">(agents, tasks) -> Crew:</span></span>
+<span data-line=""><span style="color:#F97583">    return</span><span style="color:#E1E4E8"> Crew(</span></span>
+<span data-line=""><span style="color:#FFAB70">        agents</span><span style="color:#F97583">=</span><span style="color:#E1E4E8">agents,</span></span>
+<span data-line=""><span style="color:#FFAB70">        tasks</span><span style="color:#F97583">=</span><span style="color:#E1E4E8">tasks,</span></span>
+<span data-line=""><span style="color:#FFAB70">        process</span><span style="color:#F97583">=</span><span style="color:#E1E4E8">Process.sequential,</span></span>
+<span data-line=""><span style="color:#FFAB70">        verbose</span><span style="color:#F97583">=</span><span style="color:#79B8FF">True</span><span style="color:#E1E4E8">,</span></span>
+<span data-line=""><span style="color:#E1E4E8">    )</span></span></code></pre></figure>
+<p>地味に見えますが重要です。<br>
+「タスクを順番に 1 つずつ実行する」とシステムに明示しています。</p>
+<h2 id="sequential-の利点">Sequential の利点</h2>
+<ul>
+<li>依存関係が明確</li>
+<li>出力が再現しやすい</li>
+<li>エラー箇所の特定が速い</li>
+<li>コスト管理しやすい</li>
+</ul>
+<p>最初は通常難易度で本編を進める感覚が正解です。</p>
+<h2 id="hierarchical-を検討するのはいつ">Hierarchical を検討するのはいつ？</h2>
+<p>次の条件が揃ってから:</p>
+<ul>
+<li>タスク数が多く、動的に変化する</li>
+<li>マネージャー Agent に自動配分させたい</li>
+<li>監視とコスト管理の仕組みが既に安定している</li>
+</ul>
+<p>まだ <code>expected_output</code> を調整している段階なら、無理に hierarchical に行かなくて大丈夫です。</p>
+<h2 id="実務アドバイスcrew-組み立てをテスト可能にする">実務アドバイス：Crew 組み立てをテスト可能にする</h2>
+<p>Crew 構築ロジックは関数やクラス 1 箇所に集約しましょう。<br>
+モデル変更、process 切替、callback 追加が保守しやすくなります。</p>
+<h2 id="次へ">次へ</h2>
+<p>フローを決めたら、次は Agent に「手足」を持たせます。<br>
+👉 <a href="04-tools-integration">Tools 連携</a></p>0:{"buildId":"Yck3R4ooQxWkwGLT6is1X","rsc":["$","$1","c",{"children":[[["$","script",null,{"type":"application/ld+json","dangerouslySetInnerHTML":{"__html":"{\"@context\":\"https://schema.org\",\"@type\":\"Article\",\"headline\":\"CrewAI Crew と Process：Sequential を使うべきタイミング\",\"description\":\"Crew の組み立て方とフロー選択を理解し、まずは安定した sequential で運用可能な形を作る。\",\"url\":\"https://benxhub.com/ja/blog/crewai/03-crew-and-process\",\"mainEntityOfPage\":{\"@type\":\"WebPage\",\"@id\":\"https://benxhub.com/ja/blog/crewai/03-crew-and-process\"},\"datePublished\":\"2026-03-02T00:00:00.000Z\",\"dateModified\":\"2026-03-02T00:00:00.000Z\",\"keywords\":\"crewai, crew, process, sequential, workflow\",\"inLanguage\":\"ja\",\"author\":{\"@type\":\"Person\",\"name\":\"BenX\",\"url\":\"https://benxhub.com\"},\"publisher\":{\"@type\":\"Organization\",\"name\":\"BenXHub Blog\",\"url\":\"https://benxhub.com\"}}"}}],["$","div",null,{"className":"mx-auto max-w-6xl px-4 py-12 sm:px-6","children":["$","div",null,{"className":"lg:grid lg:grid-cols-[1fr_240px] lg:gap-14","children":[["$","article",null,{"children":[["$","header",null,{"className":"mb-10","children":[["$","div",null,{"className":"mb-4 flex flex-wrap gap-2","children":[["$","$L2","crewai",{"href":"/ja/tags/crewai","localeCookie":{"name":"NEXT_LOCALE","sameSite":"lax"},"className":"inline-flex items-center rounded-full px-2.5 py-0.5 text-xs font-medium transition-colors","style":{"background":"var(--color-code-bg)","color":"var(--color-accent)","border":"1px solid var(--color-border)"},"children":["#","crewai"]}],["$","$L2","crew",{"href":"/ja/tags/crew","localeCookie":{"name":"NEXT_LOCALE","sameSite":"lax"},"className":"inline-flex items-center rounded-full px-2.5 py-0.5 text-xs font-medium transition-colors","style":{"background":"var(--color-code-bg)","color":"var(--color-accent)","border":"1px solid var(--color-border)"},"children":["#","crew"]}],["$","$L2","process",{"href":"/ja/tags/process","localeCookie":{"name":"NEXT_LOCALE","sameSite":"lax"},"className":"inline-flex items-center rounded-full px-2.5 py-0.5 text-xs font-medium transition-colors","style":{"background":"var(--color-code-bg)","color":"var(--color-accent)","border":"1px solid var(--color-border)"},"children":["#","process"]}],["$","$L2","sequential",{"href":"/ja/tags/sequential","localeCookie":{"name":"NEXT_LOCALE","sameSite":"lax"},"className":"inline-flex items-center rounded-full px-2.5 py-0.5 text-xs font-medium transition-colors","style":{"background":"var(--color-code-bg)","color":"var(--color-accent)","border":"1px solid var(--color-border)"},"children":["#","sequential"]}],["$","$L2","workflow",{"href":"/ja/tags/workflow","localeCookie":{"name":"NEXT_LOCALE","sameSite":"lax"},"className":"inline-flex items-center rounded-full px-2.5 py-0.5 text-xs font-medium transition-colors","style":{"background":"var(--color-code-bg)","color":"var(--color-accent)","border":"1px solid var(--color-border)"},"children":["#","workflow"]}]]}],["$","h1",null,{"className":"mb-4 text-3xl leading-snug font-bold tracking-tight sm:text-4xl","style":{"color":"var(--color-text)"},"children":"CrewAI Crew と Process：Sequential を使うべきタイミング"}],["$","div",null,{"className":"flex flex-wrap items-center gap-3 text-sm","style":{"color":"var(--color-muted)"},"children":[["$","time",null,{"dateTime":"2026-03-02","children":"2026年3月2日"}],["$","span",null,{"aria-hidden":"true","children":"·"}],["$","span",null,{"children":"2 min read"}]]}],"$undefined",["$","div",null,{"className":"mt-6 border-b","style":{"borderColor":"var(--color-border)"}}]]}],["$","div",null,{"className":"prose","dangerouslySetInnerHTML":{"__html":"$3"}}],"$L4"]}],"$L5"]}]}]],["$L6"],"$L7"]}],"loading":null,"isPartial":false}
+4:["$","footer",null,{"className":"mt-14 border-t pt-8","style":{"borderColor":"var(--color-border)"},"children":[["$","div",null,{"className":"mb-8 flex flex-wrap gap-2","children":[["$","$L2","crewai",{"href":"/ja/tags/crewai","localeCookie":{"name":"NEXT_LOCALE","sameSite":"lax"},"className":"inline-flex items-center rounded-full px-3 py-1 text-sm font-medium transition-colors","style":{"background":"var(--color-code-bg)","color":"var(--color-accent)","border":"1px solid var(--color-border)"},"children":["#","crewai"]}],["$","$L2","crew",{"href":"/ja/tags/crew","localeCookie":{"name":"NEXT_LOCALE","sameSite":"lax"},"className":"inline-flex items-center rounded-full px-3 py-1 text-sm font-medium transition-colors","style":{"background":"var(--color-code-bg)","color":"var(--color-accent)","border":"1px solid var(--color-border)"},"children":["#","crew"]}],["$","$L2","process",{"href":"/ja/tags/process","localeCookie":{"name":"NEXT_LOCALE","sameSite":"lax"},"className":"inline-flex items-center rounded-full px-3 py-1 text-sm font-medium transition-colors","style":{"background":"var(--color-code-bg)","color":"var(--color-accent)","border":"1px solid var(--color-border)"},"children":["#","process"]}],["$","$L2","sequential",{"href":"/ja/tags/sequential","localeCookie":{"name":"NEXT_LOCALE","sameSite":"lax"},"className":"inline-flex items-center rounded-full px-3 py-1 text-sm font-medium transition-colors","style":{"background":"var(--color-code-bg)","color":"var(--color-accent)","border":"1px solid var(--color-border)"},"children":["#","sequential"]}],["$","$L2","workflow",{"href":"/ja/tags/workflow","localeCookie":{"name":"NEXT_LOCALE","sameSite":"lax"},"className":"inline-flex items-center rounded-full px-3 py-1 text-sm font-medium transition-colors","style":{"background":"var(--color-code-bg)","color":"var(--color-accent)","border":"1px solid var(--color-border)"},"children":["#","workflow"]}]]}],["$","nav",null,{"aria-label":"記事ナビゲーション","className":"grid grid-cols-1 gap-4 sm:grid-cols-2","children":[["$","$L2",null,{"href":"/ja/blog/crewai/07-memory-and-knowledge","localeCookie":{"name":"NEXT_LOCALE","sameSite":"lax"},"className":"group rounded-lg border p-4 transition-colors hover:border-accent","style":{"borderColor":"var(--color-border)","background":"var(--color-surface)"},"children":[["$","p",null,{"className":"mb-1 text-xs","style":{"color":"var(--color-muted)"},"children":"← 新しい記事"}],["$","p",null,{"className":"line-clamp-1 text-sm font-medium transition-colors group-hover:text-accent","style":{"color":"var(--color-text)"},"children":"CrewAI Memory と Knowledge：Agent に毎回ゼロから学習させない"}]]}],["$","$L2",null,{"href":"/ja/blog/crewai/04-tools-integration","localeCookie":{"name":"NEXT_LOCALE","sameSite":"lax"},"className":"group rounded-lg border p-4 text-right transition-colors hover:border-accent","style":{"borderColor":"var(--color-border)","background":"var(--color-surface)"},"children":[["$","p",null,{"className":"mb-1 text-xs","style":{"color":"var(--color-muted)"},"children":"古い記事 →"}],["$","p",null,{"className":"line-clamp-1 text-sm font-medium transition-colors group-hover:text-accent","style":{"color":"var(--color-text)"},"children":"CrewAI Tools 連携：Agent を「調べる・読む・実行する」状態にする"}]]}]]}]]}]
+9:Td76,<p><code>Crew</code> は、誰を先に動かし誰に引き継ぐかを決める監督のような存在です。<br>
+<code>Process</code> はタスク進行のテンポを決める脚本です。</p>
+<h2 id="結論を先に">結論を先に</h2>
+<p><strong>初心者プロジェクトの 9 割は <code>Process.sequential</code> から始めるべきです。</strong><br>
+理由は単純で、予測しやすく、デバッグしやすく、障害調査がしやすいからです。</p>
+<h2 id="最小の-crew-例">最小の Crew 例</h2>
+<figure data-rehype-pretty-code-figure=""><pre style="background-color:#24292e;color:#e1e4e8" tabindex="0" data-language="python" data-theme="github-dark"><code data-language="python" data-theme="github-dark" style="display: grid;"><span data-line=""><span style="color:#F97583">from</span><span style="color:#E1E4E8"> crewai </span><span style="color:#F97583">import</span><span style="color:#E1E4E8"> Crew, Process</span></span>
+<span data-line=""> </span>
+<span data-line=""><span style="color:#F97583">def</span><span style="color:#B392F0"> build_crew</span><span style="color:#E1E4E8">(agents, tasks) -> Crew:</span></span>
+<span data-line=""><span style="color:#F97583">    return</span><span style="color:#E1E4E8"> Crew(</span></span>
+<span data-line=""><span style="color:#FFAB70">        agents</span><span style="color:#F97583">=</span><span style="color:#E1E4E8">agents,</span></span>
+<span data-line=""><span style="color:#FFAB70">        tasks</span><span style="color:#F97583">=</span><span style="color:#E1E4E8">tasks,</span></span>
+<span data-line=""><span style="color:#FFAB70">        process</span><span style="color:#F97583">=</span><span style="color:#E1E4E8">Process.sequential,</span></span>
+<span data-line=""><span style="color:#FFAB70">        verbose</span><span style="color:#F97583">=</span><span style="color:#79B8FF">True</span><span style="color:#E1E4E8">,</span></span>
+<span data-line=""><span style="color:#E1E4E8">    )</span></span></code></pre></figure>
+<p>地味に見えますが重要です。<br>
+「タスクを順番に 1 つずつ実行する」とシステムに明示しています。</p>
+<h2 id="sequential-の利点">Sequential の利点</h2>
+<ul>
+<li>依存関係が明確</li>
+<li>出力が再現しやすい</li>
+<li>エラー箇所の特定が速い</li>
+<li>コスト管理しやすい</li>
+</ul>
+<p>最初は通常難易度で本編を進める感覚が正解です。</p>
+<h2 id="hierarchical-を検討するのはいつ">Hierarchical を検討するのはいつ？</h2>
+<p>次の条件が揃ってから:</p>
+<ul>
+<li>タスク数が多く、動的に変化する</li>
+<li>マネージャー Agent に自動配分させたい</li>
+<li>監視とコスト管理の仕組みが既に安定している</li>
+</ul>
+<p>まだ <code>expected_output</code> を調整している段階なら、無理に hierarchical に行かなくて大丈夫です。</p>
+<h2 id="実務アドバイスcrew-組み立てをテスト可能にする">実務アドバイス：Crew 組み立てをテスト可能にする</h2>
+<p>Crew 構築ロジックは関数やクラス 1 箇所に集約しましょう。<br>
+モデル変更、process 切替、callback 追加が保守しやすくなります。</p>
+<h2 id="次へ">次へ</h2>
+<p>フローを決めたら、次は Agent に「手足」を持たせます。<br>
+👉 <a href="04-tools-integration">Tools 連携</a></p>5:["$","aside",null,{"className":"hidden lg:block","children":["$","$L8",null,{"html":"$9"}]}]
+6:["$","script","script-0",{"src":"/_next/static/chunks/2dddb3bc05093f69.js","async":true}]
+7:["$","$La",null,{"children":["$","$b",null,{"name":"Next.MetadataOutlet","children":"$@c"}]}]
+c:null

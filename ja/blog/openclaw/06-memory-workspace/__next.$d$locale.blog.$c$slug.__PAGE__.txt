@@ -1,0 +1,147 @@
+1:"$Sreact.fragment"
+2:I[14864,["/_next/static/chunks/7923a261b80bb6e1.js","/_next/static/chunks/e09b4358027e8033.js","/_next/static/chunks/2dddb3bc05093f69.js"],"default"]
+8:I[24801,["/_next/static/chunks/7923a261b80bb6e1.js","/_next/static/chunks/e09b4358027e8033.js","/_next/static/chunks/2dddb3bc05093f69.js"],"default"]
+a:I[50183,["/_next/static/chunks/5a5b5b13c22d14f7.js","/_next/static/chunks/a484d1d3dd4b55ab.js"],"OutletBoundary"]
+b:"$Sreact.suspense"
+3:Tf24,<p>AI にあれこれ教えたのに、次の会話では全部忘れていてがっかりしたことはありませんか。</p>
+<p>この記事は、そのもやもやを減らすためのものです。</p>
+<h2 id="このページで学べること">このページで学べること</h2>
+<ul>
+<li>Workspace の意味と役割</li>
+<li>Memory がどう働くか</li>
+<li>データ保存先</li>
+<li>設定一式を 1 コマンドでバックアップする方法</li>
+</ul>
+<hr>
+<h2 id="workspace-とは">Workspace とは？</h2>
+<p>Workspace は <strong>アシスタント専用の仕事部屋</strong> です。</p>
+<ul>
+<li>読むファイル、書く文書、実行するスクリプトはそのフォルダ内で扱われます</li>
+<li>複数の Workspace を作れば、仕事をきれいに分離できます</li>
+</ul>
+<pre><code>~/.openclaw/workspace-main        ← メインアシスタントの部屋
+~/.openclaw/workspace-project-a   ← プロジェクト A の部屋
+~/.openclaw/workspace-project-b   ← プロジェクト B の部屋
+</code></pre>
+<p>これで「個人の日記を整理して」と「プロジェクト A のコードを書いて」が混ざりません。</p>
+<hr>
+<h2 id="memory-はどう動く">Memory はどう動く？</h2>
+<p>OpenClaw は会話の重要な情報を <strong>Memory</strong> として保存し、あとから検索・参照できるようにします。</p>
+<p>つまり、<strong>前に伝えたことを覚えていられる</strong> ということです。</p>
+<blockquote>
+<p>⚠️ すぐ忘れるように感じるときは次を確認:</p>
+<ul>
+<li>Memory が有効か。意味検索には OpenAI API key が必要な場合があります</li>
+<li>古い Memory が整理、圧縮、削除されていないか</li>
+<li>新しいセッションを開いていないか。新規セッションは短期文脈が空です</li>
+</ul>
+</blockquote>
+<hr>
+<h2 id="データはどこにある">データはどこにある？</h2>
+<table>
+<thead>
+<tr>
+<th>種類</th>
+<th>パス</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td>設定ファイル</td>
+<td><code>~/.openclaw/openclaw.json</code></td>
+</tr>
+<tr>
+<td>Workspace</td>
+<td><code>~/.openclaw/workspace-&#x3C;name>/</code></td>
+</tr>
+<tr>
+<td>Session と Memory</td>
+<td><code>~/.openclaw/</code> 配下の各ディレクトリ</td>
+</tr>
+</tbody>
+</table>
+<hr>
+<h2 id="1-コマンドでバックアップ">1 コマンドでバックアップ</h2>
+<p>OpenClaw の大事なものはたいてい <code>~/.openclaw</code> にあります。定期的にバックアップしましょう。</p>
+<figure data-rehype-pretty-code-figure=""><pre style="background-color:#24292e;color:#e1e4e8" tabindex="0" data-language="bash" data-theme="github-dark"><code data-language="bash" data-theme="github-dark" style="display: grid;"><span data-line=""><span style="color:#6A737D"># バックアップ先へまとめてコピー</span></span>
+<span data-line=""><span style="color:#B392F0">cp</span><span style="color:#79B8FF"> -r</span><span style="color:#9ECBFF"> ~/.openclaw</span><span style="color:#9ECBFF"> ~/backup/openclaw-backup-</span><span style="color:#E1E4E8">$(</span><span style="color:#B392F0">date</span><span style="color:#9ECBFF"> +%Y%m%d</span><span style="color:#E1E4E8">)</span></span></code></pre></figure>
+<blockquote>
+<p>💡 新しい PC に移行するときも、<code>~/.openclaw</code> を丸ごとコピーすれば、そのまま続けられることが多いです。</p>
+</blockquote>
+<hr>
+<h2 id="次へ">次へ</h2>
+<p>Workspace の基本が分かったので、次は <strong>複数のアシスタントを役割ごとに使い分ける</strong> 構成へ進みます。</p>
+<p><a href="05-skills-intro">← 前の記事: Skills</a> | 👉 <a href="07-multi-agent-bindings">1 つの Gateway で複数アシスタントを動かす Bindings</a></p>0:{"buildId":"Yck3R4ooQxWkwGLT6is1X","rsc":["$","$1","c",{"children":[[["$","script",null,{"type":"application/ld+json","dangerouslySetInnerHTML":{"__html":"{\"@context\":\"https://schema.org\",\"@type\":\"Article\",\"headline\":\"アシスタントの脳はどこにある？ メモリとワークスペースを理解しよう\",\"description\":\"Workspace の構成、Memory の仕組み、データ保存先、そして 1 コマンドでのバックアップ方法を解説します。\",\"url\":\"https://benxhub.com/ja/blog/openclaw/06-memory-workspace\",\"mainEntityOfPage\":{\"@type\":\"WebPage\",\"@id\":\"https://benxhub.com/ja/blog/openclaw/06-memory-workspace\"},\"datePublished\":\"2026-03-08T00:00:00.000Z\",\"dateModified\":\"2026-03-08T00:00:00.000Z\",\"keywords\":\"openclaw, memory, workspace, data\",\"inLanguage\":\"ja\",\"author\":{\"@type\":\"Person\",\"name\":\"BenX\",\"url\":\"https://benxhub.com\"},\"publisher\":{\"@type\":\"Organization\",\"name\":\"BenXHub Blog\",\"url\":\"https://benxhub.com\"}}"}}],["$","div",null,{"className":"mx-auto max-w-6xl px-4 py-12 sm:px-6","children":["$","div",null,{"className":"lg:grid lg:grid-cols-[1fr_240px] lg:gap-14","children":[["$","article",null,{"children":[["$","header",null,{"className":"mb-10","children":[["$","div",null,{"className":"mb-4 flex flex-wrap gap-2","children":[["$","$L2","openclaw",{"href":"/ja/tags/openclaw","localeCookie":{"name":"NEXT_LOCALE","sameSite":"lax"},"className":"inline-flex items-center rounded-full px-2.5 py-0.5 text-xs font-medium transition-colors","style":{"background":"var(--color-code-bg)","color":"var(--color-accent)","border":"1px solid var(--color-border)"},"children":["#","openclaw"]}],["$","$L2","memory",{"href":"/ja/tags/memory","localeCookie":{"name":"NEXT_LOCALE","sameSite":"lax"},"className":"inline-flex items-center rounded-full px-2.5 py-0.5 text-xs font-medium transition-colors","style":{"background":"var(--color-code-bg)","color":"var(--color-accent)","border":"1px solid var(--color-border)"},"children":["#","memory"]}],["$","$L2","workspace",{"href":"/ja/tags/workspace","localeCookie":{"name":"NEXT_LOCALE","sameSite":"lax"},"className":"inline-flex items-center rounded-full px-2.5 py-0.5 text-xs font-medium transition-colors","style":{"background":"var(--color-code-bg)","color":"var(--color-accent)","border":"1px solid var(--color-border)"},"children":["#","workspace"]}],["$","$L2","data",{"href":"/ja/tags/data","localeCookie":{"name":"NEXT_LOCALE","sameSite":"lax"},"className":"inline-flex items-center rounded-full px-2.5 py-0.5 text-xs font-medium transition-colors","style":{"background":"var(--color-code-bg)","color":"var(--color-accent)","border":"1px solid var(--color-border)"},"children":["#","data"]}]]}],["$","h1",null,{"className":"mb-4 text-3xl leading-snug font-bold tracking-tight sm:text-4xl","style":{"color":"var(--color-text)"},"children":"アシスタントの脳はどこにある？ メモリとワークスペースを理解しよう"}],["$","div",null,{"className":"flex flex-wrap items-center gap-3 text-sm","style":{"color":"var(--color-muted)"},"children":[["$","time",null,{"dateTime":"2026-03-08","children":"2026年3月8日"}],["$","span",null,{"aria-hidden":"true","children":"·"}],["$","span",null,{"children":"3 min read"}]]}],"$undefined",["$","div",null,{"className":"mt-6 border-b","style":{"borderColor":"var(--color-border)"}}]]}],["$","div",null,{"className":"prose","dangerouslySetInnerHTML":{"__html":"$3"}}],"$L4"]}],"$L5"]}]}]],["$L6"],"$L7"]}],"loading":null,"isPartial":false}
+4:["$","footer",null,{"className":"mt-14 border-t pt-8","style":{"borderColor":"var(--color-border)"},"children":[["$","div",null,{"className":"mb-8 flex flex-wrap gap-2","children":[["$","$L2","openclaw",{"href":"/ja/tags/openclaw","localeCookie":{"name":"NEXT_LOCALE","sameSite":"lax"},"className":"inline-flex items-center rounded-full px-3 py-1 text-sm font-medium transition-colors","style":{"background":"var(--color-code-bg)","color":"var(--color-accent)","border":"1px solid var(--color-border)"},"children":["#","openclaw"]}],["$","$L2","memory",{"href":"/ja/tags/memory","localeCookie":{"name":"NEXT_LOCALE","sameSite":"lax"},"className":"inline-flex items-center rounded-full px-3 py-1 text-sm font-medium transition-colors","style":{"background":"var(--color-code-bg)","color":"var(--color-accent)","border":"1px solid var(--color-border)"},"children":["#","memory"]}],["$","$L2","workspace",{"href":"/ja/tags/workspace","localeCookie":{"name":"NEXT_LOCALE","sameSite":"lax"},"className":"inline-flex items-center rounded-full px-3 py-1 text-sm font-medium transition-colors","style":{"background":"var(--color-code-bg)","color":"var(--color-accent)","border":"1px solid var(--color-border)"},"children":["#","workspace"]}],["$","$L2","data",{"href":"/ja/tags/data","localeCookie":{"name":"NEXT_LOCALE","sameSite":"lax"},"className":"inline-flex items-center rounded-full px-3 py-1 text-sm font-medium transition-colors","style":{"background":"var(--color-code-bg)","color":"var(--color-accent)","border":"1px solid var(--color-border)"},"children":["#","data"]}]]}],["$","nav",null,{"aria-label":"記事ナビゲーション","className":"grid grid-cols-1 gap-4 sm:grid-cols-2","children":[["$","$L2",null,{"href":"/ja/blog/openclaw/05-skills-intro","localeCookie":{"name":"NEXT_LOCALE","sameSite":"lax"},"className":"group rounded-lg border p-4 transition-colors hover:border-accent","style":{"borderColor":"var(--color-border)","background":"var(--color-surface)"},"children":[["$","p",null,{"className":"mb-1 text-xs","style":{"color":"var(--color-muted)"},"children":"← 新しい記事"}],["$","p",null,{"className":"line-clamp-1 text-sm font-medium transition-colors group-hover:text-accent","style":{"color":"var(--color-text)"},"children":"アシスタントに道具を持たせよう: Skills で話すだけの存在から実行役へ"}]]}],["$","$L2",null,{"href":"/ja/blog/openclaw/07-multi-agent-bindings","localeCookie":{"name":"NEXT_LOCALE","sameSite":"lax"},"className":"group rounded-lg border p-4 text-right transition-colors hover:border-accent","style":{"borderColor":"var(--color-border)","background":"var(--color-surface)"},"children":[["$","p",null,{"className":"mb-1 text-xs","style":{"color":"var(--color-muted)"},"children":"古い記事 →"}],["$","p",null,{"className":"line-clamp-1 text-sm font-medium transition-colors group-hover:text-accent","style":{"color":"var(--color-text)"},"children":"1 つの Gateway で複数アシスタント: Bindings で正しいメッセージを正しい Agent へ"}]]}]]}]]}]
+9:Tf24,<p>AI にあれこれ教えたのに、次の会話では全部忘れていてがっかりしたことはありませんか。</p>
+<p>この記事は、そのもやもやを減らすためのものです。</p>
+<h2 id="このページで学べること">このページで学べること</h2>
+<ul>
+<li>Workspace の意味と役割</li>
+<li>Memory がどう働くか</li>
+<li>データ保存先</li>
+<li>設定一式を 1 コマンドでバックアップする方法</li>
+</ul>
+<hr>
+<h2 id="workspace-とは">Workspace とは？</h2>
+<p>Workspace は <strong>アシスタント専用の仕事部屋</strong> です。</p>
+<ul>
+<li>読むファイル、書く文書、実行するスクリプトはそのフォルダ内で扱われます</li>
+<li>複数の Workspace を作れば、仕事をきれいに分離できます</li>
+</ul>
+<pre><code>~/.openclaw/workspace-main        ← メインアシスタントの部屋
+~/.openclaw/workspace-project-a   ← プロジェクト A の部屋
+~/.openclaw/workspace-project-b   ← プロジェクト B の部屋
+</code></pre>
+<p>これで「個人の日記を整理して」と「プロジェクト A のコードを書いて」が混ざりません。</p>
+<hr>
+<h2 id="memory-はどう動く">Memory はどう動く？</h2>
+<p>OpenClaw は会話の重要な情報を <strong>Memory</strong> として保存し、あとから検索・参照できるようにします。</p>
+<p>つまり、<strong>前に伝えたことを覚えていられる</strong> ということです。</p>
+<blockquote>
+<p>⚠️ すぐ忘れるように感じるときは次を確認:</p>
+<ul>
+<li>Memory が有効か。意味検索には OpenAI API key が必要な場合があります</li>
+<li>古い Memory が整理、圧縮、削除されていないか</li>
+<li>新しいセッションを開いていないか。新規セッションは短期文脈が空です</li>
+</ul>
+</blockquote>
+<hr>
+<h2 id="データはどこにある">データはどこにある？</h2>
+<table>
+<thead>
+<tr>
+<th>種類</th>
+<th>パス</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td>設定ファイル</td>
+<td><code>~/.openclaw/openclaw.json</code></td>
+</tr>
+<tr>
+<td>Workspace</td>
+<td><code>~/.openclaw/workspace-&#x3C;name>/</code></td>
+</tr>
+<tr>
+<td>Session と Memory</td>
+<td><code>~/.openclaw/</code> 配下の各ディレクトリ</td>
+</tr>
+</tbody>
+</table>
+<hr>
+<h2 id="1-コマンドでバックアップ">1 コマンドでバックアップ</h2>
+<p>OpenClaw の大事なものはたいてい <code>~/.openclaw</code> にあります。定期的にバックアップしましょう。</p>
+<figure data-rehype-pretty-code-figure=""><pre style="background-color:#24292e;color:#e1e4e8" tabindex="0" data-language="bash" data-theme="github-dark"><code data-language="bash" data-theme="github-dark" style="display: grid;"><span data-line=""><span style="color:#6A737D"># バックアップ先へまとめてコピー</span></span>
+<span data-line=""><span style="color:#B392F0">cp</span><span style="color:#79B8FF"> -r</span><span style="color:#9ECBFF"> ~/.openclaw</span><span style="color:#9ECBFF"> ~/backup/openclaw-backup-</span><span style="color:#E1E4E8">$(</span><span style="color:#B392F0">date</span><span style="color:#9ECBFF"> +%Y%m%d</span><span style="color:#E1E4E8">)</span></span></code></pre></figure>
+<blockquote>
+<p>💡 新しい PC に移行するときも、<code>~/.openclaw</code> を丸ごとコピーすれば、そのまま続けられることが多いです。</p>
+</blockquote>
+<hr>
+<h2 id="次へ">次へ</h2>
+<p>Workspace の基本が分かったので、次は <strong>複数のアシスタントを役割ごとに使い分ける</strong> 構成へ進みます。</p>
+<p><a href="05-skills-intro">← 前の記事: Skills</a> | 👉 <a href="07-multi-agent-bindings">1 つの Gateway で複数アシスタントを動かす Bindings</a></p>5:["$","aside",null,{"className":"hidden lg:block","children":["$","$L8",null,{"html":"$9"}]}]
+6:["$","script","script-0",{"src":"/_next/static/chunks/2dddb3bc05093f69.js","async":true}]
+7:["$","$La",null,{"children":["$","$b",null,{"name":"Next.MetadataOutlet","children":"$@c"}]}]
+c:null

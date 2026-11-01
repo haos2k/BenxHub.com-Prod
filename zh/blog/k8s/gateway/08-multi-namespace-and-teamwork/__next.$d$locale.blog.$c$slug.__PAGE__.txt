@@ -1,0 +1,295 @@
+1:"$Sreact.fragment"
+2:I[14864,["/_next/static/chunks/7923a261b80bb6e1.js","/_next/static/chunks/e09b4358027e8033.js","/_next/static/chunks/2dddb3bc05093f69.js"],"default"]
+c:I[24801,["/_next/static/chunks/7923a261b80bb6e1.js","/_next/static/chunks/e09b4358027e8033.js","/_next/static/chunks/2dddb3bc05093f69.js"],"default"]
+e:I[50183,["/_next/static/chunks/5a5b5b13c22d14f7.js","/_next/static/chunks/a484d1d3dd4b55ab.js"],"OutletBoundary"]
+f:"$Sreact.suspense"
+0:{"buildId":"Yck3R4ooQxWkwGLT6is1X","rsc":["$","$1","c",{"children":[[["$","script",null,{"type":"application/ld+json","dangerouslySetInnerHTML":{"__html":"{\"@context\":\"https://schema.org\",\"@type\":\"Article\",\"headline\":\"Envoy Gateway 多 Namespace 與團隊分工：allowedRoutes、ReferenceGrant、跨團隊怎麼管\",\"description\":\"搞懂 Gateway API 的多租戶思維，整理 listener 掛載權限、跨 namespace 引用與平台團隊／應用團隊的常見分工方式。\",\"url\":\"https://benxhub.com/zh/blog/k8s/gateway/08-multi-namespace-and-teamwork\",\"mainEntityOfPage\":{\"@type\":\"WebPage\",\"@id\":\"https://benxhub.com/zh/blog/k8s/gateway/08-multi-namespace-and-teamwork\"},\"datePublished\":\"2026-03-10T00:00:00.000Z\",\"dateModified\":\"2026-03-10T00:00:00.000Z\",\"keywords\":\"kubernetes, envoy-gateway, gateway-api, referencegrant, allowedroutes, multi-tenant\",\"inLanguage\":\"zh\",\"author\":{\"@type\":\"Person\",\"name\":\"BenX\",\"url\":\"https://benxhub.com\"},\"publisher\":{\"@type\":\"Organization\",\"name\":\"BenXHub Blog\",\"url\":\"https://benxhub.com\"}}"}}],["$","div",null,{"className":"mx-auto max-w-6xl px-4 py-12 sm:px-6","children":["$","div",null,{"className":"lg:grid lg:grid-cols-[1fr_240px] lg:gap-14","children":[["$","article",null,{"children":[["$","header",null,{"className":"mb-10","children":[["$","div",null,{"className":"mb-4 flex flex-wrap gap-2","children":[["$","$L2","kubernetes",{"href":"/zh/tags/kubernetes","localeCookie":{"name":"NEXT_LOCALE","sameSite":"lax"},"className":"inline-flex items-center rounded-full px-2.5 py-0.5 text-xs font-medium transition-colors","style":{"background":"var(--color-code-bg)","color":"var(--color-accent)","border":"1px solid var(--color-border)"},"children":["#","kubernetes"]}],["$","$L2","envoy-gateway",{"href":"/zh/tags/envoy-gateway","localeCookie":{"name":"NEXT_LOCALE","sameSite":"lax"},"className":"inline-flex items-center rounded-full px-2.5 py-0.5 text-xs font-medium transition-colors","style":{"background":"var(--color-code-bg)","color":"var(--color-accent)","border":"1px solid var(--color-border)"},"children":["#","envoy-gateway"]}],["$","$L2","gateway-api",{"href":"/zh/tags/gateway-api","localeCookie":{"name":"NEXT_LOCALE","sameSite":"lax"},"className":"inline-flex items-center rounded-full px-2.5 py-0.5 text-xs font-medium transition-colors","style":{"background":"var(--color-code-bg)","color":"var(--color-accent)","border":"1px solid var(--color-border)"},"children":["#","gateway-api"]}],["$","$L2","referencegrant",{"href":"/zh/tags/referencegrant","localeCookie":{"name":"NEXT_LOCALE","sameSite":"lax"},"className":"inline-flex items-center rounded-full px-2.5 py-0.5 text-xs font-medium transition-colors","style":{"background":"var(--color-code-bg)","color":"var(--color-accent)","border":"1px solid var(--color-border)"},"children":["#","referencegrant"]}],["$","$L2","allowedroutes",{"href":"/zh/tags/allowedroutes","localeCookie":{"name":"NEXT_LOCALE","sameSite":"lax"},"className":"inline-flex items-center rounded-full px-2.5 py-0.5 text-xs font-medium transition-colors","style":{"background":"var(--color-code-bg)","color":"var(--color-accent)","border":"1px solid var(--color-border)"},"children":["#","allowedroutes"]}],["$","$L2","multi-tenant",{"href":"/zh/tags/multi-tenant","localeCookie":{"name":"NEXT_LOCALE","sameSite":"lax"},"className":"inline-flex items-center rounded-full px-2.5 py-0.5 text-xs font-medium transition-colors","style":{"background":"var(--color-code-bg)","color":"var(--color-accent)","border":"1px solid var(--color-border)"},"children":["#","multi-tenant"]}]]}],["$","h1",null,{"className":"mb-4 text-3xl leading-snug font-bold tracking-tight sm:text-4xl","style":{"color":"var(--color-text)"},"children":"Envoy Gateway 多 Namespace 與團隊分工：allowedRoutes、ReferenceGrant、跨團隊怎麼管"}],["$","div",null,{"className":"flex flex-wrap items-center gap-3 text-sm","style":{"color":"var(--color-muted)"},"children":[["$","time",null,{"dateTime":"2026-03-10","children":"2026 年 3 月 10 日"}],"$L3","$L4"]}],"$undefined","$L5"]}],"$L6","$L7"]}],"$L8"]}]}]],["$L9"],"$La"]}],"loading":null,"isPartial":false}
+3:["$","span",null,{"aria-hidden":"true","children":"·"}]
+4:["$","span",null,{"children":"6 min read"}]
+5:["$","div",null,{"className":"mt-6 border-b","style":{"borderColor":"var(--color-border)"}}]
+b:T3562,<p>Gateway API 很大的價值，不只是 YAML 比較漂亮，而是它終於把一件老問題講清楚：</p>
+<p><strong>入口層誰負責？路由誰能改？跨 namespace 到底能不能互相引用？</strong></p>
+<p>以前很多 Ingress 場景的痛點，就是所有事情都揉在一起。<br>
+平台團隊怕你亂開洞，應用團隊又覺得每改一條 path 都要提單，最後大家一起在 YAML 裡互相折磨。</p>
+<p>Gateway API 比較像是直接說：</p>
+<ul>
+<li>平台入口可以獨立治理</li>
+<li>Route 可以分給應用團隊管理</li>
+<li>跨 namespace 行為要明確授權</li>
+</ul>
+<p>這篇就是把這套分工邏輯一次講懂。</p>
+<h2 id="先記這個原則附掛跟引用是兩件不同的事">先記這個原則：附掛跟引用，是兩件不同的事</h2>
+<p>這是最容易搞混的地方。</p>
+<h3 id="route-附掛到-gateway--listener">Route 附掛到 Gateway / Listener</h3>
+<p>這件事主要看：</p>
+<ul>
+<li>Route 的 <code>parentRefs</code></li>
+<li>Listener 的 <code>allowedRoutes</code></li>
+</ul>
+<p>也就是說，route 能不能掛上某個 listener，不是靠 <code>ReferenceGrant</code>，而是看 listener 願不願意收你。</p>
+<h3 id="跨-namespace-引用其他資源">跨 namespace 引用其他資源</h3>
+<p>這件事才常需要 <code>ReferenceGrant</code>。<br>
+例如：</p>
+<ul>
+<li><code>Gateway</code> 想引用別的 namespace 裡的 <code>Secret</code></li>
+<li><code>HTTPRoute</code> 想引用別的 namespace 裡的 <code>Service</code></li>
+</ul>
+<p>這時候就不是「能不能附掛」的問題，而是「目標 namespace 有沒有正式授權你引用它的資源」。</p>
+<p>很多人把這兩件事混成一團，然後就開始懷疑人生。其實規則沒有很玄，只是角色不同。</p>
+<h2 id="allowedroutes先決定誰可以掛上來"><code>allowedRoutes</code>：先決定誰可以掛上來</h2>
+<p>最保守的 listener 長這樣：</p>
+<figure data-rehype-pretty-code-figure=""><pre style="background-color:#24292e;color:#e1e4e8" tabindex="0" data-language="yaml" data-theme="github-dark"><code data-language="yaml" data-theme="github-dark" style="display: grid;"><span data-line=""><span style="color:#85E89D">apiVersion</span><span style="color:#E1E4E8">: </span><span style="color:#9ECBFF">gateway.networking.k8s.io/v1</span></span>
+<span data-line=""><span style="color:#85E89D">kind</span><span style="color:#E1E4E8">: </span><span style="color:#9ECBFF">Gateway</span></span>
+<span data-line=""><span style="color:#85E89D">metadata</span><span style="color:#E1E4E8">:</span></span>
+<span data-line=""><span style="color:#85E89D">  name</span><span style="color:#E1E4E8">: </span><span style="color:#9ECBFF">shared-gateway</span></span>
+<span data-line=""><span style="color:#85E89D">  namespace</span><span style="color:#E1E4E8">: </span><span style="color:#9ECBFF">infra</span></span>
+<span data-line=""><span style="color:#85E89D">spec</span><span style="color:#E1E4E8">:</span></span>
+<span data-line=""><span style="color:#85E89D">  gatewayClassName</span><span style="color:#E1E4E8">: </span><span style="color:#9ECBFF">eg</span></span>
+<span data-line=""><span style="color:#85E89D">  listeners</span><span style="color:#E1E4E8">:</span></span>
+<span data-line=""><span style="color:#E1E4E8">    - </span><span style="color:#85E89D">name</span><span style="color:#E1E4E8">: </span><span style="color:#9ECBFF">https</span></span>
+<span data-line=""><span style="color:#85E89D">      protocol</span><span style="color:#E1E4E8">: </span><span style="color:#9ECBFF">HTTPS</span></span>
+<span data-line=""><span style="color:#85E89D">      port</span><span style="color:#E1E4E8">: </span><span style="color:#79B8FF">443</span></span>
+<span data-line=""><span style="color:#85E89D">      allowedRoutes</span><span style="color:#E1E4E8">:</span></span>
+<span data-line=""><span style="color:#85E89D">        namespaces</span><span style="color:#E1E4E8">:</span></span>
+<span data-line=""><span style="color:#85E89D">          from</span><span style="color:#E1E4E8">: </span><span style="color:#9ECBFF">Same</span></span></code></pre></figure>
+<p>這表示只有 <code>infra</code> namespace 裡的 route 可以掛到這個 listener。</p>
+<p>如果你想讓特定團隊 namespace 能附掛，可以用 <code>Selector</code>：</p>
+<figure data-rehype-pretty-code-figure=""><pre style="background-color:#24292e;color:#e1e4e8" tabindex="0" data-language="yaml" data-theme="github-dark"><code data-language="yaml" data-theme="github-dark" style="display: grid;"><span data-line=""><span style="color:#85E89D">allowedRoutes</span><span style="color:#E1E4E8">:</span></span>
+<span data-line=""><span style="color:#85E89D">  namespaces</span><span style="color:#E1E4E8">:</span></span>
+<span data-line=""><span style="color:#85E89D">    from</span><span style="color:#E1E4E8">: </span><span style="color:#9ECBFF">Selector</span></span>
+<span data-line=""><span style="color:#85E89D">    selector</span><span style="color:#E1E4E8">:</span></span>
+<span data-line=""><span style="color:#85E89D">      matchLabels</span><span style="color:#E1E4E8">:</span></span>
+<span data-line=""><span style="color:#85E89D">        shared-gateway-access</span><span style="color:#E1E4E8">: </span><span style="color:#9ECBFF">"true"</span></span></code></pre></figure>
+<p>這種做法很適合平台團隊。<br>
+你不需要把入口完全鎖死，也不用直接開成 <code>from: All</code> 全場自由進出。你可以只讓貼上特定 label 的 namespace 有資格附掛。</p>
+<blockquote>
+<p>💡 <code>allowedRoutes</code> 是 listener 級別，不是整個 Gateway 一刀切。這代表你可以讓不同 listener 有不同開放策略。</p>
+</blockquote>
+<h2 id="referencegrant目標-namespace-說了算"><code>ReferenceGrant</code>：目標 namespace 說了算</h2>
+<p>如果 route 或 gateway 要引用別的 namespace 裡的資源，就要看目標 namespace 願不願意授權。</p>
+<p>例如應用團隊的 <code>HTTPRoute</code> 想把流量送到共享 namespace 裡的 backend：</p>
+<figure data-rehype-pretty-code-figure=""><pre style="background-color:#24292e;color:#e1e4e8" tabindex="0" data-language="yaml" data-theme="github-dark"><code data-language="yaml" data-theme="github-dark" style="display: grid;"><span data-line=""><span style="color:#85E89D">apiVersion</span><span style="color:#E1E4E8">: </span><span style="color:#9ECBFF">gateway.networking.k8s.io/v1</span></span>
+<span data-line=""><span style="color:#85E89D">kind</span><span style="color:#E1E4E8">: </span><span style="color:#9ECBFF">HTTPRoute</span></span>
+<span data-line=""><span style="color:#85E89D">metadata</span><span style="color:#E1E4E8">:</span></span>
+<span data-line=""><span style="color:#85E89D">  name</span><span style="color:#E1E4E8">: </span><span style="color:#9ECBFF">app-route</span></span>
+<span data-line=""><span style="color:#85E89D">  namespace</span><span style="color:#E1E4E8">: </span><span style="color:#9ECBFF">team-a</span></span>
+<span data-line=""><span style="color:#85E89D">spec</span><span style="color:#E1E4E8">:</span></span>
+<span data-line=""><span style="color:#85E89D">  parentRefs</span><span style="color:#E1E4E8">:</span></span>
+<span data-line=""><span style="color:#E1E4E8">    - </span><span style="color:#85E89D">name</span><span style="color:#E1E4E8">: </span><span style="color:#9ECBFF">shared-gateway</span></span>
+<span data-line=""><span style="color:#85E89D">      namespace</span><span style="color:#E1E4E8">: </span><span style="color:#9ECBFF">infra</span></span>
+<span data-line=""><span style="color:#85E89D">      sectionName</span><span style="color:#E1E4E8">: </span><span style="color:#9ECBFF">https</span></span>
+<span data-line=""><span style="color:#85E89D">  rules</span><span style="color:#E1E4E8">:</span></span>
+<span data-line=""><span style="color:#E1E4E8">    - </span><span style="color:#85E89D">backendRefs</span><span style="color:#E1E4E8">:</span></span>
+<span data-line=""><span style="color:#E1E4E8">        - </span><span style="color:#85E89D">name</span><span style="color:#E1E4E8">: </span><span style="color:#9ECBFF">shared-api</span></span>
+<span data-line=""><span style="color:#85E89D">          namespace</span><span style="color:#E1E4E8">: </span><span style="color:#9ECBFF">shared-services</span></span>
+<span data-line=""><span style="color:#85E89D">          port</span><span style="color:#E1E4E8">: </span><span style="color:#79B8FF">8080</span></span></code></pre></figure>
+<p>這時 <code>shared-services</code> namespace 要建立 <code>ReferenceGrant</code>：</p>
+<figure data-rehype-pretty-code-figure=""><pre style="background-color:#24292e;color:#e1e4e8" tabindex="0" data-language="yaml" data-theme="github-dark"><code data-language="yaml" data-theme="github-dark" style="display: grid;"><span data-line=""><span style="color:#85E89D">apiVersion</span><span style="color:#E1E4E8">: </span><span style="color:#9ECBFF">gateway.networking.k8s.io/v1beta1</span></span>
+<span data-line=""><span style="color:#85E89D">kind</span><span style="color:#E1E4E8">: </span><span style="color:#9ECBFF">ReferenceGrant</span></span>
+<span data-line=""><span style="color:#85E89D">metadata</span><span style="color:#E1E4E8">:</span></span>
+<span data-line=""><span style="color:#85E89D">  name</span><span style="color:#E1E4E8">: </span><span style="color:#9ECBFF">allow-team-a-route</span></span>
+<span data-line=""><span style="color:#85E89D">  namespace</span><span style="color:#E1E4E8">: </span><span style="color:#9ECBFF">shared-services</span></span>
+<span data-line=""><span style="color:#85E89D">spec</span><span style="color:#E1E4E8">:</span></span>
+<span data-line=""><span style="color:#85E89D">  from</span><span style="color:#E1E4E8">:</span></span>
+<span data-line=""><span style="color:#E1E4E8">    - </span><span style="color:#85E89D">group</span><span style="color:#E1E4E8">: </span><span style="color:#9ECBFF">gateway.networking.k8s.io</span></span>
+<span data-line=""><span style="color:#85E89D">      kind</span><span style="color:#E1E4E8">: </span><span style="color:#9ECBFF">HTTPRoute</span></span>
+<span data-line=""><span style="color:#85E89D">      namespace</span><span style="color:#E1E4E8">: </span><span style="color:#9ECBFF">team-a</span></span>
+<span data-line=""><span style="color:#85E89D">  to</span><span style="color:#E1E4E8">:</span></span>
+<span data-line=""><span style="color:#E1E4E8">    - </span><span style="color:#85E89D">group</span><span style="color:#E1E4E8">: </span><span style="color:#9ECBFF">""</span></span>
+<span data-line=""><span style="color:#85E89D">      kind</span><span style="color:#E1E4E8">: </span><span style="color:#9ECBFF">Service</span></span></code></pre></figure>
+<p>翻成人話就是：</p>
+<ul>
+<li><code>team-a</code> 的 <code>HTTPRoute</code></li>
+<li>可以引用 <code>shared-services</code> 裡的 <code>Service</code></li>
+</ul>
+<p>注意這個授權是 <strong>目標 namespace 自己開</strong>。<br>
+不是來源 namespace 想用就能自己宣告，這點設計得其實很合理，因為資源的主人應該有決定權。</p>
+<h2 id="平台團隊與應用團隊常見怎麼分">平台團隊與應用團隊，常見怎麼分</h2>
+<p>最常見的分工模型大概長這樣：</p>
+<h3 id="平台團隊負責">平台團隊負責</h3>
+<ul>
+<li><code>GatewayClass</code></li>
+<li><code>Gateway</code></li>
+<li><code>Listener</code></li>
+<li>TLS 憑證管理</li>
+<li><code>allowedRoutes</code> 政策</li>
+</ul>
+<h3 id="應用團隊負責">應用團隊負責</h3>
+<ul>
+<li>自己 namespace 裡的 <code>HTTPRoute</code> / <code>GRPCRoute</code></li>
+<li>backend service</li>
+<li>路由規則調整</li>
+</ul>
+<p>這種分法的好處很明顯：</p>
+<ul>
+<li>平台團隊守住入口暴露面與安全邊界</li>
+<li>應用團隊還是能快速調整自己的流量規則</li>
+<li>不需要每次改 path 都碰整個共享 Gateway</li>
+</ul>
+<p>如果你把所有權限都丟給同一群人，當然也不是不能跑。<br>
+只是團隊一大，這種模式通常會演變成「誰都能改，所以誰改壞了也很難查」。</p>
+<h2 id="實戰建議怎麼避免多租戶場景翻車">實戰建議：怎麼避免多租戶場景翻車</h2>
+<p>幾個非常實用的習慣：</p>
+<ul>
+<li>共享 Gateway 預設先用 <code>allowedRoutes.namespaces.from: Selector</code></li>
+<li>namespace label 規則要固定，不要今天 <code>team-a</code> 明天 <code>allow-gw</code></li>
+<li>跨 namespace backend/Secret 引用一律走 <code>ReferenceGrant</code></li>
+<li>route 命名要能看出團隊或服務，例如 <code>team-a-api-route</code></li>
+<li>共享 listener 盡量搭配 <code>sectionName</code>，避免 route 掛錯入口</li>
+</ul>
+<p>還有一個心法很值得記：</p>
+<p><strong>能在入口邊界先限制，就不要把規矩全丟給文件靠大家自律。</strong></p>
+<p>工程世界裡，制度比口頭約定可靠很多。這句話聽起來像長輩，但真的很有用。</p>
+<h2 id="一句話總結">一句話總結</h2>
+<p>在 Gateway API 裡，<code>allowedRoutes</code> 是「誰能進門」，<code>ReferenceGrant</code> 是「進門後能不能拿別人的東西」。<br>
+把這兩件事分清楚，多 namespace 與多團隊場景就會順很多。</p>
+<h2 id="下一步">下一步</h2>
+<p>分工和權限搞定後，最後一塊就是：<br>
+<strong>設定沒生效時，到底該看哪個 status、哪個 condition、哪個指令？</strong></p>
+<p>下一篇來講除錯與狀態判讀：
+👉 <a href="09-debugging-and-status">狀態與除錯手冊</a></p>6:["$","div",null,{"className":"prose","dangerouslySetInnerHTML":{"__html":"$b"}}]
+7:["$","footer",null,{"className":"mt-14 border-t pt-8","style":{"borderColor":"var(--color-border)"},"children":[["$","div",null,{"className":"mb-8 flex flex-wrap gap-2","children":[["$","$L2","kubernetes",{"href":"/zh/tags/kubernetes","localeCookie":{"name":"NEXT_LOCALE","sameSite":"lax"},"className":"inline-flex items-center rounded-full px-3 py-1 text-sm font-medium transition-colors","style":{"background":"var(--color-code-bg)","color":"var(--color-accent)","border":"1px solid var(--color-border)"},"children":["#","kubernetes"]}],["$","$L2","envoy-gateway",{"href":"/zh/tags/envoy-gateway","localeCookie":{"name":"NEXT_LOCALE","sameSite":"lax"},"className":"inline-flex items-center rounded-full px-3 py-1 text-sm font-medium transition-colors","style":{"background":"var(--color-code-bg)","color":"var(--color-accent)","border":"1px solid var(--color-border)"},"children":["#","envoy-gateway"]}],["$","$L2","gateway-api",{"href":"/zh/tags/gateway-api","localeCookie":{"name":"NEXT_LOCALE","sameSite":"lax"},"className":"inline-flex items-center rounded-full px-3 py-1 text-sm font-medium transition-colors","style":{"background":"var(--color-code-bg)","color":"var(--color-accent)","border":"1px solid var(--color-border)"},"children":["#","gateway-api"]}],["$","$L2","referencegrant",{"href":"/zh/tags/referencegrant","localeCookie":{"name":"NEXT_LOCALE","sameSite":"lax"},"className":"inline-flex items-center rounded-full px-3 py-1 text-sm font-medium transition-colors","style":{"background":"var(--color-code-bg)","color":"var(--color-accent)","border":"1px solid var(--color-border)"},"children":["#","referencegrant"]}],["$","$L2","allowedroutes",{"href":"/zh/tags/allowedroutes","localeCookie":{"name":"NEXT_LOCALE","sameSite":"lax"},"className":"inline-flex items-center rounded-full px-3 py-1 text-sm font-medium transition-colors","style":{"background":"var(--color-code-bg)","color":"var(--color-accent)","border":"1px solid var(--color-border)"},"children":["#","allowedroutes"]}],["$","$L2","multi-tenant",{"href":"/zh/tags/multi-tenant","localeCookie":{"name":"NEXT_LOCALE","sameSite":"lax"},"className":"inline-flex items-center rounded-full px-3 py-1 text-sm font-medium transition-colors","style":{"background":"var(--color-code-bg)","color":"var(--color-accent)","border":"1px solid var(--color-border)"},"children":["#","multi-tenant"]}]]}],["$","nav",null,{"aria-label":"文章導覽","className":"grid grid-cols-1 gap-4 sm:grid-cols-2","children":[["$","$L2",null,{"href":"/zh/blog/k8s/gateway/07-listener-design","localeCookie":{"name":"NEXT_LOCALE","sameSite":"lax"},"className":"group rounded-lg border p-4 transition-colors hover:border-accent","style":{"borderColor":"var(--color-border)","background":"var(--color-surface)"},"children":[["$","p",null,{"className":"mb-1 text-xs","style":{"color":"var(--color-muted)"},"children":"← 較新文章"}],["$","p",null,{"className":"line-clamp-1 text-sm font-medium transition-colors group-hover:text-accent","style":{"color":"var(--color-text)"},"children":"Envoy Gateway Listener 設計指南：多 Port、多 Hostname、多入口怎麼拆"}]]}],["$","$L2",null,{"href":"/zh/blog/k8s/gateway/09-debugging-and-status","localeCookie":{"name":"NEXT_LOCALE","sameSite":"lax"},"className":"group rounded-lg border p-4 text-right transition-colors hover:border-accent","style":{"borderColor":"var(--color-border)","background":"var(--color-surface)"},"children":[["$","p",null,{"className":"mb-1 text-xs","style":{"color":"var(--color-muted)"},"children":"較舊文章 →"}],["$","p",null,{"className":"line-clamp-1 text-sm font-medium transition-colors group-hover:text-accent","style":{"color":"var(--color-text)"},"children":"Envoy Gateway 狀態與除錯手冊：Accepted、ResolvedRefs、Programmed 到底在說什麼"}]]}]]}]]}]
+d:T3562,<p>Gateway API 很大的價值，不只是 YAML 比較漂亮，而是它終於把一件老問題講清楚：</p>
+<p><strong>入口層誰負責？路由誰能改？跨 namespace 到底能不能互相引用？</strong></p>
+<p>以前很多 Ingress 場景的痛點，就是所有事情都揉在一起。<br>
+平台團隊怕你亂開洞，應用團隊又覺得每改一條 path 都要提單，最後大家一起在 YAML 裡互相折磨。</p>
+<p>Gateway API 比較像是直接說：</p>
+<ul>
+<li>平台入口可以獨立治理</li>
+<li>Route 可以分給應用團隊管理</li>
+<li>跨 namespace 行為要明確授權</li>
+</ul>
+<p>這篇就是把這套分工邏輯一次講懂。</p>
+<h2 id="先記這個原則附掛跟引用是兩件不同的事">先記這個原則：附掛跟引用，是兩件不同的事</h2>
+<p>這是最容易搞混的地方。</p>
+<h3 id="route-附掛到-gateway--listener">Route 附掛到 Gateway / Listener</h3>
+<p>這件事主要看：</p>
+<ul>
+<li>Route 的 <code>parentRefs</code></li>
+<li>Listener 的 <code>allowedRoutes</code></li>
+</ul>
+<p>也就是說，route 能不能掛上某個 listener，不是靠 <code>ReferenceGrant</code>，而是看 listener 願不願意收你。</p>
+<h3 id="跨-namespace-引用其他資源">跨 namespace 引用其他資源</h3>
+<p>這件事才常需要 <code>ReferenceGrant</code>。<br>
+例如：</p>
+<ul>
+<li><code>Gateway</code> 想引用別的 namespace 裡的 <code>Secret</code></li>
+<li><code>HTTPRoute</code> 想引用別的 namespace 裡的 <code>Service</code></li>
+</ul>
+<p>這時候就不是「能不能附掛」的問題，而是「目標 namespace 有沒有正式授權你引用它的資源」。</p>
+<p>很多人把這兩件事混成一團，然後就開始懷疑人生。其實規則沒有很玄，只是角色不同。</p>
+<h2 id="allowedroutes先決定誰可以掛上來"><code>allowedRoutes</code>：先決定誰可以掛上來</h2>
+<p>最保守的 listener 長這樣：</p>
+<figure data-rehype-pretty-code-figure=""><pre style="background-color:#24292e;color:#e1e4e8" tabindex="0" data-language="yaml" data-theme="github-dark"><code data-language="yaml" data-theme="github-dark" style="display: grid;"><span data-line=""><span style="color:#85E89D">apiVersion</span><span style="color:#E1E4E8">: </span><span style="color:#9ECBFF">gateway.networking.k8s.io/v1</span></span>
+<span data-line=""><span style="color:#85E89D">kind</span><span style="color:#E1E4E8">: </span><span style="color:#9ECBFF">Gateway</span></span>
+<span data-line=""><span style="color:#85E89D">metadata</span><span style="color:#E1E4E8">:</span></span>
+<span data-line=""><span style="color:#85E89D">  name</span><span style="color:#E1E4E8">: </span><span style="color:#9ECBFF">shared-gateway</span></span>
+<span data-line=""><span style="color:#85E89D">  namespace</span><span style="color:#E1E4E8">: </span><span style="color:#9ECBFF">infra</span></span>
+<span data-line=""><span style="color:#85E89D">spec</span><span style="color:#E1E4E8">:</span></span>
+<span data-line=""><span style="color:#85E89D">  gatewayClassName</span><span style="color:#E1E4E8">: </span><span style="color:#9ECBFF">eg</span></span>
+<span data-line=""><span style="color:#85E89D">  listeners</span><span style="color:#E1E4E8">:</span></span>
+<span data-line=""><span style="color:#E1E4E8">    - </span><span style="color:#85E89D">name</span><span style="color:#E1E4E8">: </span><span style="color:#9ECBFF">https</span></span>
+<span data-line=""><span style="color:#85E89D">      protocol</span><span style="color:#E1E4E8">: </span><span style="color:#9ECBFF">HTTPS</span></span>
+<span data-line=""><span style="color:#85E89D">      port</span><span style="color:#E1E4E8">: </span><span style="color:#79B8FF">443</span></span>
+<span data-line=""><span style="color:#85E89D">      allowedRoutes</span><span style="color:#E1E4E8">:</span></span>
+<span data-line=""><span style="color:#85E89D">        namespaces</span><span style="color:#E1E4E8">:</span></span>
+<span data-line=""><span style="color:#85E89D">          from</span><span style="color:#E1E4E8">: </span><span style="color:#9ECBFF">Same</span></span></code></pre></figure>
+<p>這表示只有 <code>infra</code> namespace 裡的 route 可以掛到這個 listener。</p>
+<p>如果你想讓特定團隊 namespace 能附掛，可以用 <code>Selector</code>：</p>
+<figure data-rehype-pretty-code-figure=""><pre style="background-color:#24292e;color:#e1e4e8" tabindex="0" data-language="yaml" data-theme="github-dark"><code data-language="yaml" data-theme="github-dark" style="display: grid;"><span data-line=""><span style="color:#85E89D">allowedRoutes</span><span style="color:#E1E4E8">:</span></span>
+<span data-line=""><span style="color:#85E89D">  namespaces</span><span style="color:#E1E4E8">:</span></span>
+<span data-line=""><span style="color:#85E89D">    from</span><span style="color:#E1E4E8">: </span><span style="color:#9ECBFF">Selector</span></span>
+<span data-line=""><span style="color:#85E89D">    selector</span><span style="color:#E1E4E8">:</span></span>
+<span data-line=""><span style="color:#85E89D">      matchLabels</span><span style="color:#E1E4E8">:</span></span>
+<span data-line=""><span style="color:#85E89D">        shared-gateway-access</span><span style="color:#E1E4E8">: </span><span style="color:#9ECBFF">"true"</span></span></code></pre></figure>
+<p>這種做法很適合平台團隊。<br>
+你不需要把入口完全鎖死，也不用直接開成 <code>from: All</code> 全場自由進出。你可以只讓貼上特定 label 的 namespace 有資格附掛。</p>
+<blockquote>
+<p>💡 <code>allowedRoutes</code> 是 listener 級別，不是整個 Gateway 一刀切。這代表你可以讓不同 listener 有不同開放策略。</p>
+</blockquote>
+<h2 id="referencegrant目標-namespace-說了算"><code>ReferenceGrant</code>：目標 namespace 說了算</h2>
+<p>如果 route 或 gateway 要引用別的 namespace 裡的資源，就要看目標 namespace 願不願意授權。</p>
+<p>例如應用團隊的 <code>HTTPRoute</code> 想把流量送到共享 namespace 裡的 backend：</p>
+<figure data-rehype-pretty-code-figure=""><pre style="background-color:#24292e;color:#e1e4e8" tabindex="0" data-language="yaml" data-theme="github-dark"><code data-language="yaml" data-theme="github-dark" style="display: grid;"><span data-line=""><span style="color:#85E89D">apiVersion</span><span style="color:#E1E4E8">: </span><span style="color:#9ECBFF">gateway.networking.k8s.io/v1</span></span>
+<span data-line=""><span style="color:#85E89D">kind</span><span style="color:#E1E4E8">: </span><span style="color:#9ECBFF">HTTPRoute</span></span>
+<span data-line=""><span style="color:#85E89D">metadata</span><span style="color:#E1E4E8">:</span></span>
+<span data-line=""><span style="color:#85E89D">  name</span><span style="color:#E1E4E8">: </span><span style="color:#9ECBFF">app-route</span></span>
+<span data-line=""><span style="color:#85E89D">  namespace</span><span style="color:#E1E4E8">: </span><span style="color:#9ECBFF">team-a</span></span>
+<span data-line=""><span style="color:#85E89D">spec</span><span style="color:#E1E4E8">:</span></span>
+<span data-line=""><span style="color:#85E89D">  parentRefs</span><span style="color:#E1E4E8">:</span></span>
+<span data-line=""><span style="color:#E1E4E8">    - </span><span style="color:#85E89D">name</span><span style="color:#E1E4E8">: </span><span style="color:#9ECBFF">shared-gateway</span></span>
+<span data-line=""><span style="color:#85E89D">      namespace</span><span style="color:#E1E4E8">: </span><span style="color:#9ECBFF">infra</span></span>
+<span data-line=""><span style="color:#85E89D">      sectionName</span><span style="color:#E1E4E8">: </span><span style="color:#9ECBFF">https</span></span>
+<span data-line=""><span style="color:#85E89D">  rules</span><span style="color:#E1E4E8">:</span></span>
+<span data-line=""><span style="color:#E1E4E8">    - </span><span style="color:#85E89D">backendRefs</span><span style="color:#E1E4E8">:</span></span>
+<span data-line=""><span style="color:#E1E4E8">        - </span><span style="color:#85E89D">name</span><span style="color:#E1E4E8">: </span><span style="color:#9ECBFF">shared-api</span></span>
+<span data-line=""><span style="color:#85E89D">          namespace</span><span style="color:#E1E4E8">: </span><span style="color:#9ECBFF">shared-services</span></span>
+<span data-line=""><span style="color:#85E89D">          port</span><span style="color:#E1E4E8">: </span><span style="color:#79B8FF">8080</span></span></code></pre></figure>
+<p>這時 <code>shared-services</code> namespace 要建立 <code>ReferenceGrant</code>：</p>
+<figure data-rehype-pretty-code-figure=""><pre style="background-color:#24292e;color:#e1e4e8" tabindex="0" data-language="yaml" data-theme="github-dark"><code data-language="yaml" data-theme="github-dark" style="display: grid;"><span data-line=""><span style="color:#85E89D">apiVersion</span><span style="color:#E1E4E8">: </span><span style="color:#9ECBFF">gateway.networking.k8s.io/v1beta1</span></span>
+<span data-line=""><span style="color:#85E89D">kind</span><span style="color:#E1E4E8">: </span><span style="color:#9ECBFF">ReferenceGrant</span></span>
+<span data-line=""><span style="color:#85E89D">metadata</span><span style="color:#E1E4E8">:</span></span>
+<span data-line=""><span style="color:#85E89D">  name</span><span style="color:#E1E4E8">: </span><span style="color:#9ECBFF">allow-team-a-route</span></span>
+<span data-line=""><span style="color:#85E89D">  namespace</span><span style="color:#E1E4E8">: </span><span style="color:#9ECBFF">shared-services</span></span>
+<span data-line=""><span style="color:#85E89D">spec</span><span style="color:#E1E4E8">:</span></span>
+<span data-line=""><span style="color:#85E89D">  from</span><span style="color:#E1E4E8">:</span></span>
+<span data-line=""><span style="color:#E1E4E8">    - </span><span style="color:#85E89D">group</span><span style="color:#E1E4E8">: </span><span style="color:#9ECBFF">gateway.networking.k8s.io</span></span>
+<span data-line=""><span style="color:#85E89D">      kind</span><span style="color:#E1E4E8">: </span><span style="color:#9ECBFF">HTTPRoute</span></span>
+<span data-line=""><span style="color:#85E89D">      namespace</span><span style="color:#E1E4E8">: </span><span style="color:#9ECBFF">team-a</span></span>
+<span data-line=""><span style="color:#85E89D">  to</span><span style="color:#E1E4E8">:</span></span>
+<span data-line=""><span style="color:#E1E4E8">    - </span><span style="color:#85E89D">group</span><span style="color:#E1E4E8">: </span><span style="color:#9ECBFF">""</span></span>
+<span data-line=""><span style="color:#85E89D">      kind</span><span style="color:#E1E4E8">: </span><span style="color:#9ECBFF">Service</span></span></code></pre></figure>
+<p>翻成人話就是：</p>
+<ul>
+<li><code>team-a</code> 的 <code>HTTPRoute</code></li>
+<li>可以引用 <code>shared-services</code> 裡的 <code>Service</code></li>
+</ul>
+<p>注意這個授權是 <strong>目標 namespace 自己開</strong>。<br>
+不是來源 namespace 想用就能自己宣告，這點設計得其實很合理，因為資源的主人應該有決定權。</p>
+<h2 id="平台團隊與應用團隊常見怎麼分">平台團隊與應用團隊，常見怎麼分</h2>
+<p>最常見的分工模型大概長這樣：</p>
+<h3 id="平台團隊負責">平台團隊負責</h3>
+<ul>
+<li><code>GatewayClass</code></li>
+<li><code>Gateway</code></li>
+<li><code>Listener</code></li>
+<li>TLS 憑證管理</li>
+<li><code>allowedRoutes</code> 政策</li>
+</ul>
+<h3 id="應用團隊負責">應用團隊負責</h3>
+<ul>
+<li>自己 namespace 裡的 <code>HTTPRoute</code> / <code>GRPCRoute</code></li>
+<li>backend service</li>
+<li>路由規則調整</li>
+</ul>
+<p>這種分法的好處很明顯：</p>
+<ul>
+<li>平台團隊守住入口暴露面與安全邊界</li>
+<li>應用團隊還是能快速調整自己的流量規則</li>
+<li>不需要每次改 path 都碰整個共享 Gateway</li>
+</ul>
+<p>如果你把所有權限都丟給同一群人，當然也不是不能跑。<br>
+只是團隊一大，這種模式通常會演變成「誰都能改，所以誰改壞了也很難查」。</p>
+<h2 id="實戰建議怎麼避免多租戶場景翻車">實戰建議：怎麼避免多租戶場景翻車</h2>
+<p>幾個非常實用的習慣：</p>
+<ul>
+<li>共享 Gateway 預設先用 <code>allowedRoutes.namespaces.from: Selector</code></li>
+<li>namespace label 規則要固定，不要今天 <code>team-a</code> 明天 <code>allow-gw</code></li>
+<li>跨 namespace backend/Secret 引用一律走 <code>ReferenceGrant</code></li>
+<li>route 命名要能看出團隊或服務，例如 <code>team-a-api-route</code></li>
+<li>共享 listener 盡量搭配 <code>sectionName</code>，避免 route 掛錯入口</li>
+</ul>
+<p>還有一個心法很值得記：</p>
+<p><strong>能在入口邊界先限制，就不要把規矩全丟給文件靠大家自律。</strong></p>
+<p>工程世界裡，制度比口頭約定可靠很多。這句話聽起來像長輩，但真的很有用。</p>
+<h2 id="一句話總結">一句話總結</h2>
+<p>在 Gateway API 裡，<code>allowedRoutes</code> 是「誰能進門」，<code>ReferenceGrant</code> 是「進門後能不能拿別人的東西」。<br>
+把這兩件事分清楚，多 namespace 與多團隊場景就會順很多。</p>
+<h2 id="下一步">下一步</h2>
+<p>分工和權限搞定後，最後一塊就是：<br>
+<strong>設定沒生效時，到底該看哪個 status、哪個 condition、哪個指令？</strong></p>
+<p>下一篇來講除錯與狀態判讀：
+👉 <a href="09-debugging-and-status">狀態與除錯手冊</a></p>8:["$","aside",null,{"className":"hidden lg:block","children":["$","$Lc",null,{"html":"$d"}]}]
+9:["$","script","script-0",{"src":"/_next/static/chunks/2dddb3bc05093f69.js","async":true}]
+a:["$","$Le",null,{"children":["$","$f",null,{"name":"Next.MetadataOutlet","children":"$@10"}]}]
+10:null

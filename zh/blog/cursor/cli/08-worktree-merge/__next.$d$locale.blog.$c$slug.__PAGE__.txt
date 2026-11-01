@@ -1,0 +1,128 @@
+1:"$Sreact.fragment"
+2:I[14864,["/_next/static/chunks/7923a261b80bb6e1.js","/_next/static/chunks/e09b4358027e8033.js","/_next/static/chunks/2dddb3bc05093f69.js"],"default"]
+8:I[24801,["/_next/static/chunks/7923a261b80bb6e1.js","/_next/static/chunks/e09b4358027e8033.js","/_next/static/chunks/2dddb3bc05093f69.js"],"default"]
+a:I[50183,["/_next/static/chunks/5a5b5b13c22d14f7.js","/_next/static/chunks/a484d1d3dd4b55ab.js"],"OutletBoundary"]
+b:"$Sreact.suspense"
+:HL["/images/posts/cursor-cli-worktree-merge.png","image"]
+3:T14ee,<p><a href="06-cursor-cli-with-worktree">06-cursor-cli-with-worktree</a> 講的是手動建 worktree 搭配 CLI 並行；這篇講的是 <strong>Cursor 自動建立的 worktree</strong>——也就是你在 Cursor IDE 裡開並行 Agent 或 Best-of-N 時，Cursor 在背後幫你建的那些沙盒。</p>
+<p>重點放在實戰：多任務怎麼排、Apply 時選哪個選項、衝突怎麼收、以及日常怎麼管理。</p>
+<h2 id="多任務並行拆開跑驗收後挑著-apply">多任務並行：拆開跑、驗收後挑著 Apply</h2>
+<p>同一個需求可以拆成多個子任務，各自開一個 Agent 在獨立 worktree 跑，最後只 Apply 你滿意的那幾個。</p>
+<p><strong>例子</strong>：你想同時做「重構 utils」「補單元測試」「產 API 文件」：</p>
+<ul>
+<li>開三個並行 Agent，各自給不同 prompt</li>
+<li>跑完後有三個結果——也許「重構」很滿意、「測試」要微調、「文件」直接丟掉</li>
+<li>只對「重構」那張卡片按 <strong>Apply</strong>，其他不動</li>
+</ul>
+<p>主目錄只收你驗收過的，沒通過的就讓 worktree 靜靜待著，不會影響主分支。</p>
+<h2 id="apply-時merge-vs-full-overwrite-怎麼選">Apply 時：Merge vs Full Overwrite 怎麼選</h2>
+<p>Apply 時 Cursor 會嘗試乾淨合併；若有衝突會問你：</p>
+<table>
+<thead>
+<tr>
+<th>選項</th>
+<th>什麼時候用</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td><strong>Merge（衝突解決 UI）</strong></td>
+<td>想保留主分支部分內容，或多個 worktree 的改動要「挑段落合併」</td>
+</tr>
+<tr>
+<td><strong>Full Overwrite</strong></td>
+<td>確定以 worktree 的內容為準，整檔替換；或衝突太多直接以這張卡為唯一真相</td>
+</tr>
+</tbody>
+</table>
+<p>實務上：<strong>單一任務、單一 Agent、改的檔案少</strong> → 直接 merge 多半沒問題。若同一份需求跑了多個模型（Best-of-N），想從 A 卡 Apply 一部分、再從 B 卡 Apply 另一部分——這時容易衝突，最好只選一張卡 Apply，或用 merge 逐檔手動選。不要對同一批檔案混用多張 Full Overwrite，會互相蓋掉。</p>
+<h2 id="主目錄有未提交變更時">主目錄有未提交變更時</h2>
+<p>Cursor 建立 worktree 時，會把主目錄<strong>已追蹤的變更與新檔</strong>帶進去（.gitignore 的不帶）。這表示：</p>
+<ul>
+<li>主目錄有 WIP → 開 worktree Agent → Agent 在你「當前狀態」的基礎上改 → Apply 時要處理「你的未提交變更 + Agent 改動」的合併</li>
+</ul>
+<p>想讓並行任務從乾淨的 main 出發，先 <code>git stash</code> 或 commit 再開 worktree，避免「半成品 + Agent 改動」混在一起。</p>
+<p>反過來說，這個特性也可以刻意利用：留一點 WIP 在主目錄，開 worktree 做實驗，Apply 時用 merge 只把實驗裡滿意的部分帶回來。</p>
+<h2 id="用-git-worktree-list-做日常管理">用 git worktree list 做日常管理</h2>
+<p>Cursor 建的 worktree 路徑通常在 <code>.cursor/worktrees/&#x3C;repo>/&#x3C;id></code>，可以用 git 指令查：</p>
+<figure data-rehype-pretty-code-figure=""><pre style="background-color:#24292e;color:#e1e4e8" tabindex="0" data-language="bash" data-theme="github-dark"><code data-language="bash" data-theme="github-dark" style="display: grid;"><span data-line=""><span style="color:#B392F0">git</span><span style="color:#9ECBFF"> worktree</span><span style="color:#9ECBFF"> list</span></span></code></pre></figure>
+<p>Apply 完、確認主分支沒問題後，Cursor 會自動管理數量。如果列表裡 worktree 很多、磁碟吃緊，可以查 Cursor 設定（如 <code>cursor.worktreeMaxCount</code>、清理間隔），或關掉不用的 Cursor 專案視窗讓舊 worktree 被清掉。</p>
+<p>除錯時用這個指令查一下，就知道目前有幾個沙盒在、對應哪個 branch，不會搞混主目錄和 Agent 的目錄。</p>
+<p>不建議手動 <code>git worktree remove</code> Cursor 建的路徑，除非你確定那個 Agent 已不用——否則可能跟 Cursor 內部狀態不一致。</p>
+<h2 id="兩個-agent-改到同一個檔案怎麼辦">兩個 Agent 改到同一個檔案怎麼辦</h2>
+<p>若你同時開兩個 Agent，一個改 <code>src/auth/</code>、一個改 <code>src/api/</code>，通常不會衝突，各自 Apply 即可。</p>
+<p>但若兩個 Agent 都動到同一個檔案（例如都改 <code>package.json</code> 或同一個 <code>config.ts</code>）：</p>
+<ul>
+<li>先 Apply 第一個 → 主目錄有變更</li>
+<li>再 Apply 第二個 → 進入合併流程，可能出現衝突</li>
+<li>用衝突解決 UI 手動選「留哪一段」，或第二個 worktree 的版本你要整份採用，選 Full Overwrite</li>
+</ul>
+<p><strong>最省事的策略</strong>：規劃並行任務時，讓每個 Agent 動的<strong>檔案集合不重疊</strong>——一個負責前端目錄、一個負責後端目錄——Apply 時幾乎不需要手動解衝突。</p>
+<hr>
+<p>並行任務的核心原則是<strong>拆清楚</strong>：任務拆清楚、每個 Agent 改的範圍拆清楚、Apply 的時機拆清楚。拆得越清楚，合回去越順。</p>
+<blockquote>
+<p>下一步：<a href="09-worktree-advanced">09-worktree-advanced</a> — Best-of-N 多模型比較、worktrees.json 自動安裝依賴。</p>
+</blockquote>0:{"buildId":"Yck3R4ooQxWkwGLT6is1X","rsc":["$","$1","c",{"children":[[["$","script",null,{"type":"application/ld+json","dangerouslySetInnerHTML":{"__html":"{\"@context\":\"https://schema.org\",\"@type\":\"Article\",\"headline\":\"Cursor 內建 Worktree 進階應用：多任務並行與 Apply 策略\",\"description\":\"多任務並行、Apply 時 Merge 與 Full Overwrite 怎麼選、主目錄有未提交變更時的行為，以及 git worktree list 日常管理。\",\"url\":\"https://benxhub.com/zh/blog/cursor/cli/08-worktree-merge\",\"mainEntityOfPage\":{\"@type\":\"WebPage\",\"@id\":\"https://benxhub.com/zh/blog/cursor/cli/08-worktree-merge\"},\"datePublished\":\"2026-03-09T00:00:00.000Z\",\"dateModified\":\"2026-03-09T00:00:00.000Z\",\"keywords\":\"cursor, worktree, parallel-agent, apply, git\",\"inLanguage\":\"zh\",\"author\":{\"@type\":\"Person\",\"name\":\"BenX\",\"url\":\"https://benxhub.com\"},\"publisher\":{\"@type\":\"Organization\",\"name\":\"BenXHub Blog\",\"url\":\"https://benxhub.com\"},\"image\":\"https://benxhub.com/images/posts/cursor-cli-worktree-merge.png\"}"}}],["$","div",null,{"className":"mx-auto max-w-6xl px-4 py-12 sm:px-6","children":["$","div",null,{"className":"lg:grid lg:grid-cols-[1fr_240px] lg:gap-14","children":[["$","article",null,{"children":[["$","header",null,{"className":"mb-10","children":[["$","div",null,{"className":"mb-4 flex flex-wrap gap-2","children":[["$","$L2","cursor",{"href":"/zh/tags/cursor","localeCookie":{"name":"NEXT_LOCALE","sameSite":"lax"},"className":"inline-flex items-center rounded-full px-2.5 py-0.5 text-xs font-medium transition-colors","style":{"background":"var(--color-code-bg)","color":"var(--color-accent)","border":"1px solid var(--color-border)"},"children":["#","cursor"]}],["$","$L2","worktree",{"href":"/zh/tags/worktree","localeCookie":{"name":"NEXT_LOCALE","sameSite":"lax"},"className":"inline-flex items-center rounded-full px-2.5 py-0.5 text-xs font-medium transition-colors","style":{"background":"var(--color-code-bg)","color":"var(--color-accent)","border":"1px solid var(--color-border)"},"children":["#","worktree"]}],["$","$L2","parallel-agent",{"href":"/zh/tags/parallel-agent","localeCookie":{"name":"NEXT_LOCALE","sameSite":"lax"},"className":"inline-flex items-center rounded-full px-2.5 py-0.5 text-xs font-medium transition-colors","style":{"background":"var(--color-code-bg)","color":"var(--color-accent)","border":"1px solid var(--color-border)"},"children":["#","parallel-agent"]}],["$","$L2","apply",{"href":"/zh/tags/apply","localeCookie":{"name":"NEXT_LOCALE","sameSite":"lax"},"className":"inline-flex items-center rounded-full px-2.5 py-0.5 text-xs font-medium transition-colors","style":{"background":"var(--color-code-bg)","color":"var(--color-accent)","border":"1px solid var(--color-border)"},"children":["#","apply"]}],["$","$L2","git",{"href":"/zh/tags/git","localeCookie":{"name":"NEXT_LOCALE","sameSite":"lax"},"className":"inline-flex items-center rounded-full px-2.5 py-0.5 text-xs font-medium transition-colors","style":{"background":"var(--color-code-bg)","color":"var(--color-accent)","border":"1px solid var(--color-border)"},"children":["#","git"]}]]}],["$","h1",null,{"className":"mb-4 text-3xl leading-snug font-bold tracking-tight sm:text-4xl","style":{"color":"var(--color-text)"},"children":"Cursor 內建 Worktree 進階應用：多任務並行與 Apply 策略"}],["$","div",null,{"className":"flex flex-wrap items-center gap-3 text-sm","style":{"color":"var(--color-muted)"},"children":[["$","time",null,{"dateTime":"2026-03-09","children":"2026 年 3 月 9 日"}],["$","span",null,{"aria-hidden":"true","children":"·"}],["$","span",null,{"children":"5 min read"}]]}],["$","div",null,{"className":"mt-6 overflow-hidden rounded-lg","children":["$","img",null,{"src":"/images/posts/cursor-cli-worktree-merge.png","alt":"Cursor 內建 Worktree 進階應用：多任務並行與 Apply 策略","className":"w-full h-auto"}]}],["$","div",null,{"className":"mt-6 border-b","style":{"borderColor":"var(--color-border)"}}]]}],["$","div",null,{"className":"prose","dangerouslySetInnerHTML":{"__html":"$3"}}],"$L4"]}],"$L5"]}]}]],["$L6"],"$L7"]}],"loading":null,"isPartial":false}
+4:["$","footer",null,{"className":"mt-14 border-t pt-8","style":{"borderColor":"var(--color-border)"},"children":[["$","div",null,{"className":"mb-8 flex flex-wrap gap-2","children":[["$","$L2","cursor",{"href":"/zh/tags/cursor","localeCookie":{"name":"NEXT_LOCALE","sameSite":"lax"},"className":"inline-flex items-center rounded-full px-3 py-1 text-sm font-medium transition-colors","style":{"background":"var(--color-code-bg)","color":"var(--color-accent)","border":"1px solid var(--color-border)"},"children":["#","cursor"]}],["$","$L2","worktree",{"href":"/zh/tags/worktree","localeCookie":{"name":"NEXT_LOCALE","sameSite":"lax"},"className":"inline-flex items-center rounded-full px-3 py-1 text-sm font-medium transition-colors","style":{"background":"var(--color-code-bg)","color":"var(--color-accent)","border":"1px solid var(--color-border)"},"children":["#","worktree"]}],["$","$L2","parallel-agent",{"href":"/zh/tags/parallel-agent","localeCookie":{"name":"NEXT_LOCALE","sameSite":"lax"},"className":"inline-flex items-center rounded-full px-3 py-1 text-sm font-medium transition-colors","style":{"background":"var(--color-code-bg)","color":"var(--color-accent)","border":"1px solid var(--color-border)"},"children":["#","parallel-agent"]}],["$","$L2","apply",{"href":"/zh/tags/apply","localeCookie":{"name":"NEXT_LOCALE","sameSite":"lax"},"className":"inline-flex items-center rounded-full px-3 py-1 text-sm font-medium transition-colors","style":{"background":"var(--color-code-bg)","color":"var(--color-accent)","border":"1px solid var(--color-border)"},"children":["#","apply"]}],["$","$L2","git",{"href":"/zh/tags/git","localeCookie":{"name":"NEXT_LOCALE","sameSite":"lax"},"className":"inline-flex items-center rounded-full px-3 py-1 text-sm font-medium transition-colors","style":{"background":"var(--color-code-bg)","color":"var(--color-accent)","border":"1px solid var(--color-border)"},"children":["#","git"]}]]}],["$","nav",null,{"aria-label":"文章導覽","className":"grid grid-cols-1 gap-4 sm:grid-cols-2","children":[["$","$L2",null,{"href":"/zh/blog/ai-trend/2026-03-09-ai-content-automation-workflow","localeCookie":{"name":"NEXT_LOCALE","sameSite":"lax"},"className":"group rounded-lg border p-4 transition-colors hover:border-accent","style":{"borderColor":"var(--color-border)","background":"var(--color-surface)"},"children":[["$","p",null,{"className":"mb-1 text-xs","style":{"color":"var(--color-muted)"},"children":"← 較新文章"}],["$","p",null,{"className":"line-clamp-1 text-sm font-medium transition-colors group-hover:text-accent","style":{"color":"var(--color-text)"},"children":"AI 內容自動化：真正拉開差距的不是速度，是你的工作流設計"}]]}],["$","$L2",null,{"href":"/zh/blog/cursor/cli/09-worktree-advanced","localeCookie":{"name":"NEXT_LOCALE","sameSite":"lax"},"className":"group rounded-lg border p-4 text-right transition-colors hover:border-accent","style":{"borderColor":"var(--color-border)","background":"var(--color-surface)"},"children":[["$","p",null,{"className":"mb-1 text-xs","style":{"color":"var(--color-muted)"},"children":"較舊文章 →"}],["$","p",null,{"className":"line-clamp-1 text-sm font-medium transition-colors group-hover:text-accent","style":{"color":"var(--color-text)"},"children":"Cursor Best-of-N 與 worktrees.json：多模型比較與自動環境設定"}]]}]]}]]}]
+9:T14ee,<p><a href="06-cursor-cli-with-worktree">06-cursor-cli-with-worktree</a> 講的是手動建 worktree 搭配 CLI 並行；這篇講的是 <strong>Cursor 自動建立的 worktree</strong>——也就是你在 Cursor IDE 裡開並行 Agent 或 Best-of-N 時，Cursor 在背後幫你建的那些沙盒。</p>
+<p>重點放在實戰：多任務怎麼排、Apply 時選哪個選項、衝突怎麼收、以及日常怎麼管理。</p>
+<h2 id="多任務並行拆開跑驗收後挑著-apply">多任務並行：拆開跑、驗收後挑著 Apply</h2>
+<p>同一個需求可以拆成多個子任務，各自開一個 Agent 在獨立 worktree 跑，最後只 Apply 你滿意的那幾個。</p>
+<p><strong>例子</strong>：你想同時做「重構 utils」「補單元測試」「產 API 文件」：</p>
+<ul>
+<li>開三個並行 Agent，各自給不同 prompt</li>
+<li>跑完後有三個結果——也許「重構」很滿意、「測試」要微調、「文件」直接丟掉</li>
+<li>只對「重構」那張卡片按 <strong>Apply</strong>，其他不動</li>
+</ul>
+<p>主目錄只收你驗收過的，沒通過的就讓 worktree 靜靜待著，不會影響主分支。</p>
+<h2 id="apply-時merge-vs-full-overwrite-怎麼選">Apply 時：Merge vs Full Overwrite 怎麼選</h2>
+<p>Apply 時 Cursor 會嘗試乾淨合併；若有衝突會問你：</p>
+<table>
+<thead>
+<tr>
+<th>選項</th>
+<th>什麼時候用</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td><strong>Merge（衝突解決 UI）</strong></td>
+<td>想保留主分支部分內容，或多個 worktree 的改動要「挑段落合併」</td>
+</tr>
+<tr>
+<td><strong>Full Overwrite</strong></td>
+<td>確定以 worktree 的內容為準，整檔替換；或衝突太多直接以這張卡為唯一真相</td>
+</tr>
+</tbody>
+</table>
+<p>實務上：<strong>單一任務、單一 Agent、改的檔案少</strong> → 直接 merge 多半沒問題。若同一份需求跑了多個模型（Best-of-N），想從 A 卡 Apply 一部分、再從 B 卡 Apply 另一部分——這時容易衝突，最好只選一張卡 Apply，或用 merge 逐檔手動選。不要對同一批檔案混用多張 Full Overwrite，會互相蓋掉。</p>
+<h2 id="主目錄有未提交變更時">主目錄有未提交變更時</h2>
+<p>Cursor 建立 worktree 時，會把主目錄<strong>已追蹤的變更與新檔</strong>帶進去（.gitignore 的不帶）。這表示：</p>
+<ul>
+<li>主目錄有 WIP → 開 worktree Agent → Agent 在你「當前狀態」的基礎上改 → Apply 時要處理「你的未提交變更 + Agent 改動」的合併</li>
+</ul>
+<p>想讓並行任務從乾淨的 main 出發，先 <code>git stash</code> 或 commit 再開 worktree，避免「半成品 + Agent 改動」混在一起。</p>
+<p>反過來說，這個特性也可以刻意利用：留一點 WIP 在主目錄，開 worktree 做實驗，Apply 時用 merge 只把實驗裡滿意的部分帶回來。</p>
+<h2 id="用-git-worktree-list-做日常管理">用 git worktree list 做日常管理</h2>
+<p>Cursor 建的 worktree 路徑通常在 <code>.cursor/worktrees/&#x3C;repo>/&#x3C;id></code>，可以用 git 指令查：</p>
+<figure data-rehype-pretty-code-figure=""><pre style="background-color:#24292e;color:#e1e4e8" tabindex="0" data-language="bash" data-theme="github-dark"><code data-language="bash" data-theme="github-dark" style="display: grid;"><span data-line=""><span style="color:#B392F0">git</span><span style="color:#9ECBFF"> worktree</span><span style="color:#9ECBFF"> list</span></span></code></pre></figure>
+<p>Apply 完、確認主分支沒問題後，Cursor 會自動管理數量。如果列表裡 worktree 很多、磁碟吃緊，可以查 Cursor 設定（如 <code>cursor.worktreeMaxCount</code>、清理間隔），或關掉不用的 Cursor 專案視窗讓舊 worktree 被清掉。</p>
+<p>除錯時用這個指令查一下，就知道目前有幾個沙盒在、對應哪個 branch，不會搞混主目錄和 Agent 的目錄。</p>
+<p>不建議手動 <code>git worktree remove</code> Cursor 建的路徑，除非你確定那個 Agent 已不用——否則可能跟 Cursor 內部狀態不一致。</p>
+<h2 id="兩個-agent-改到同一個檔案怎麼辦">兩個 Agent 改到同一個檔案怎麼辦</h2>
+<p>若你同時開兩個 Agent，一個改 <code>src/auth/</code>、一個改 <code>src/api/</code>，通常不會衝突，各自 Apply 即可。</p>
+<p>但若兩個 Agent 都動到同一個檔案（例如都改 <code>package.json</code> 或同一個 <code>config.ts</code>）：</p>
+<ul>
+<li>先 Apply 第一個 → 主目錄有變更</li>
+<li>再 Apply 第二個 → 進入合併流程，可能出現衝突</li>
+<li>用衝突解決 UI 手動選「留哪一段」，或第二個 worktree 的版本你要整份採用，選 Full Overwrite</li>
+</ul>
+<p><strong>最省事的策略</strong>：規劃並行任務時，讓每個 Agent 動的<strong>檔案集合不重疊</strong>——一個負責前端目錄、一個負責後端目錄——Apply 時幾乎不需要手動解衝突。</p>
+<hr>
+<p>並行任務的核心原則是<strong>拆清楚</strong>：任務拆清楚、每個 Agent 改的範圍拆清楚、Apply 的時機拆清楚。拆得越清楚，合回去越順。</p>
+<blockquote>
+<p>下一步：<a href="09-worktree-advanced">09-worktree-advanced</a> — Best-of-N 多模型比較、worktrees.json 自動安裝依賴。</p>
+</blockquote>5:["$","aside",null,{"className":"hidden lg:block","children":["$","$L8",null,{"html":"$9"}]}]
+6:["$","script","script-0",{"src":"/_next/static/chunks/2dddb3bc05093f69.js","async":true}]
+7:["$","$La",null,{"children":["$","$b",null,{"name":"Next.MetadataOutlet","children":"$@c"}]}]
+c:null

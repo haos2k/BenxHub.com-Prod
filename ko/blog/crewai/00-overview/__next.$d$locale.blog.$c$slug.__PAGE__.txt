@@ -1,0 +1,113 @@
+1:"$Sreact.fragment"
+2:I[14864,["/_next/static/chunks/7923a261b80bb6e1.js","/_next/static/chunks/e09b4358027e8033.js","/_next/static/chunks/2dddb3bc05093f69.js"],"default"]
+8:I[24801,["/_next/static/chunks/7923a261b80bb6e1.js","/_next/static/chunks/e09b4358027e8033.js","/_next/static/chunks/2dddb3bc05093f69.js"],"default"]
+a:I[50183,["/_next/static/chunks/5a5b5b13c22d14f7.js","/_next/static/chunks/a484d1d3dd4b55ab.js"],"OutletBoundary"]
+b:"$Sreact.suspense"
+3:Tce0,<p>요즘 "AI Agent", "멀티 에이전트 협업"이라는 말을 자주 듣지만 문서를 보면 멍해진다면, 이 시리즈가 딱 맞습니다.<br>
+한 줄 요약: <strong>CrewAI는 여러 AI 역할이 분업/협업해서 복잡한 작업을 나눠 끝내게 해주는 프레임워크입니다.</strong></p>
+<p>작은 프로젝트 팀처럼 생각하면 쉽습니다.</p>
+<ul>
+<li>리서처는 자료 조사</li>
+<li>분석가는 핵심 정리</li>
+<li>에디터는 최종 보고서 작성</li>
+</ul>
+<p>흐름이 잘 맞으면 야근수당 안 받는 콘텐츠 팀을 둔 느낌입니다(물론 API 비용은 솔직하게 나옵니다).</p>
+<h2 id="crewai로-할-수-있는-것">CrewAI로 할 수 있는 것</h2>
+<p>대표적인 활용:</p>
+<ul>
+<li>연구 보고서 자동 생성</li>
+<li>다단계 콘텐츠 생성(리서치 -> 초안 -> 다듬기)</li>
+<li>고객지원/운영 프로세스 자동화</li>
+<li>사내 지식 Q&#x26;A 및 문서 처리</li>
+</ul>
+<blockquote>
+<p>💡 핵심 가치는 "초강력 단일 Agent"가 아니라 "전문 Agent들의 협업"입니다.</p>
+</blockquote>
+<h2 id="먼저-이해할-3가지-핵심-용어">먼저 이해할 3가지 핵심 용어</h2>
+<ul>
+<li><code>Agent</code>: 역할(누가 하는가)</li>
+<li><code>Task</code>: 작업(무엇을 하는가)</li>
+<li><code>Crew</code>: 팀(누가 어떤 순서로 함께 하는가)</li>
+</ul>
+<p>대부분 프로젝트는 <code>Process.sequential</code>로 시작하면 충분합니다.<br>
+<strong>A가 끝내고 B에게 넘긴다.</strong> 가장 안정적이고 디버깅하기 좋은 시작점입니다.</p>
+<h2 id="이-10편-읽는-순서">이 10편 읽는 순서</h2>
+<ol>
+<li><a href="01-quick-start">빠른 시작</a>: 10분 안에 첫 Crew 실행</li>
+<li><a href="02-agents-and-tasks">Agent와 Task 입문</a>: 역할/작업 분리 방법</li>
+<li><a href="03-crew-and-process">Crew와 Process</a>: 팀 구성과 흐름 전략</li>
+<li><a href="04-tools-integration">Tools 연동</a>: Agent에 검색/파일 읽기 능력 부여</li>
+<li><a href="05-structured-output-pydantic">구조화 출력 Pydantic</a>: 출력 흔들림 방지</li>
+<li><a href="06-flow-basics">Flow 입문</a>: 여러 Crew 조율</li>
+<li><a href="07-memory-and-knowledge">Memory와 Knowledge</a>: 금붕어 기억력 탈출</li>
+<li><a href="08-debug-and-common-errors">디버깅과 자주 나는 오류</a>: 먼저 보는 지뢰 지도</li>
+<li><a href="09-production-best-practices">프로덕션 베스트 프랙티스</a>: 데모에서 운영으로</li>
+</ol>
+<h2 id="사전-준비">사전 준비</h2>
+<ul>
+<li>Python 3.10+</li>
+<li>익숙한 환경 도구(<code>uv</code>, <code>venv</code>, <code>poetry</code> 등)</li>
+<li>LLM API Key(OpenAI, Anthropic 등)</li>
+</ul>
+<h2 id="시작-전에-한-가지-마인드셋">시작 전에 한 가지 마인드셋</h2>
+<p>첫 버전에서는 화려함보다 <strong>재현 가능한 흐름</strong>이 먼저입니다.<br>
+매번 비슷한 결과가 나오게 만든 뒤, 속도/비용/정확도를 최적화하세요.<br>
+게임으로 치면 메인 퀘스트 먼저 깨고 장비 파밍은 나중입니다.</p>
+<h2 id="다음-단계">다음 단계</h2>
+<p>바로 <a href="01-quick-start">빠른 시작</a>으로 가서 첫 Crew를 10분 안에 돌려봅시다.</p>0:{"buildId":"Yck3R4ooQxWkwGLT6is1X","rsc":["$","$1","c",{"children":[[["$","script",null,{"type":"application/ld+json","dangerouslySetInnerHTML":{"__html":"{\"@context\":\"https://schema.org\",\"@type\":\"Article\",\"headline\":\"CrewAI 튜토리얼 시리즈 개요: 0에서 운영 가능한 멀티 에이전트 워크플로까지\",\"description\":\"먼저 CrewAI가 무엇을 해결하는지 이해하고, 10편으로 입문부터 실전까지 한 번에 가봅니다.\",\"url\":\"https://benxhub.com/ko/blog/crewai/00-overview\",\"mainEntityOfPage\":{\"@type\":\"WebPage\",\"@id\":\"https://benxhub.com/ko/blog/crewai/00-overview\"},\"datePublished\":\"2026-03-01T00:00:00.000Z\",\"dateModified\":\"2026-03-01T00:00:00.000Z\",\"keywords\":\"crewai, ai-agent, python, workflow, multi-agent\",\"inLanguage\":\"ko\",\"author\":{\"@type\":\"Person\",\"name\":\"BenX\",\"url\":\"https://benxhub.com\"},\"publisher\":{\"@type\":\"Organization\",\"name\":\"BenXHub Blog\",\"url\":\"https://benxhub.com\"}}"}}],["$","div",null,{"className":"mx-auto max-w-6xl px-4 py-12 sm:px-6","children":["$","div",null,{"className":"lg:grid lg:grid-cols-[1fr_240px] lg:gap-14","children":[["$","article",null,{"children":[["$","header",null,{"className":"mb-10","children":[["$","div",null,{"className":"mb-4 flex flex-wrap gap-2","children":[["$","$L2","crewai",{"href":"/ko/tags/crewai","localeCookie":{"name":"NEXT_LOCALE","sameSite":"lax"},"className":"inline-flex items-center rounded-full px-2.5 py-0.5 text-xs font-medium transition-colors","style":{"background":"var(--color-code-bg)","color":"var(--color-accent)","border":"1px solid var(--color-border)"},"children":["#","crewai"]}],["$","$L2","ai-agent",{"href":"/ko/tags/ai-agent","localeCookie":{"name":"NEXT_LOCALE","sameSite":"lax"},"className":"inline-flex items-center rounded-full px-2.5 py-0.5 text-xs font-medium transition-colors","style":{"background":"var(--color-code-bg)","color":"var(--color-accent)","border":"1px solid var(--color-border)"},"children":["#","ai-agent"]}],["$","$L2","python",{"href":"/ko/tags/python","localeCookie":{"name":"NEXT_LOCALE","sameSite":"lax"},"className":"inline-flex items-center rounded-full px-2.5 py-0.5 text-xs font-medium transition-colors","style":{"background":"var(--color-code-bg)","color":"var(--color-accent)","border":"1px solid var(--color-border)"},"children":["#","python"]}],["$","$L2","workflow",{"href":"/ko/tags/workflow","localeCookie":{"name":"NEXT_LOCALE","sameSite":"lax"},"className":"inline-flex items-center rounded-full px-2.5 py-0.5 text-xs font-medium transition-colors","style":{"background":"var(--color-code-bg)","color":"var(--color-accent)","border":"1px solid var(--color-border)"},"children":["#","workflow"]}],["$","$L2","multi-agent",{"href":"/ko/tags/multi-agent","localeCookie":{"name":"NEXT_LOCALE","sameSite":"lax"},"className":"inline-flex items-center rounded-full px-2.5 py-0.5 text-xs font-medium transition-colors","style":{"background":"var(--color-code-bg)","color":"var(--color-accent)","border":"1px solid var(--color-border)"},"children":["#","multi-agent"]}]]}],["$","h1",null,{"className":"mb-4 text-3xl leading-snug font-bold tracking-tight sm:text-4xl","style":{"color":"var(--color-text)"},"children":"CrewAI 튜토리얼 시리즈 개요: 0에서 운영 가능한 멀티 에이전트 워크플로까지"}],["$","div",null,{"className":"flex flex-wrap items-center gap-3 text-sm","style":{"color":"var(--color-muted)"},"children":[["$","time",null,{"dateTime":"2026-03-01","children":"2026년 3월 1일"}],["$","span",null,{"aria-hidden":"true","children":"·"}],["$","span",null,{"children":"4 min read"}]]}],"$undefined",["$","div",null,{"className":"mt-6 border-b","style":{"borderColor":"var(--color-border)"}}]]}],["$","div",null,{"className":"prose","dangerouslySetInnerHTML":{"__html":"$3"}}],"$L4"]}],"$L5"]}]}]],["$L6"],"$L7"]}],"loading":null,"isPartial":false}
+4:["$","footer",null,{"className":"mt-14 border-t pt-8","style":{"borderColor":"var(--color-border)"},"children":[["$","div",null,{"className":"mb-8 flex flex-wrap gap-2","children":[["$","$L2","crewai",{"href":"/ko/tags/crewai","localeCookie":{"name":"NEXT_LOCALE","sameSite":"lax"},"className":"inline-flex items-center rounded-full px-3 py-1 text-sm font-medium transition-colors","style":{"background":"var(--color-code-bg)","color":"var(--color-accent)","border":"1px solid var(--color-border)"},"children":["#","crewai"]}],["$","$L2","ai-agent",{"href":"/ko/tags/ai-agent","localeCookie":{"name":"NEXT_LOCALE","sameSite":"lax"},"className":"inline-flex items-center rounded-full px-3 py-1 text-sm font-medium transition-colors","style":{"background":"var(--color-code-bg)","color":"var(--color-accent)","border":"1px solid var(--color-border)"},"children":["#","ai-agent"]}],["$","$L2","python",{"href":"/ko/tags/python","localeCookie":{"name":"NEXT_LOCALE","sameSite":"lax"},"className":"inline-flex items-center rounded-full px-3 py-1 text-sm font-medium transition-colors","style":{"background":"var(--color-code-bg)","color":"var(--color-accent)","border":"1px solid var(--color-border)"},"children":["#","python"]}],["$","$L2","workflow",{"href":"/ko/tags/workflow","localeCookie":{"name":"NEXT_LOCALE","sameSite":"lax"},"className":"inline-flex items-center rounded-full px-3 py-1 text-sm font-medium transition-colors","style":{"background":"var(--color-code-bg)","color":"var(--color-accent)","border":"1px solid var(--color-border)"},"children":["#","workflow"]}],["$","$L2","multi-agent",{"href":"/ko/tags/multi-agent","localeCookie":{"name":"NEXT_LOCALE","sameSite":"lax"},"className":"inline-flex items-center rounded-full px-3 py-1 text-sm font-medium transition-colors","style":{"background":"var(--color-code-bg)","color":"var(--color-accent)","border":"1px solid var(--color-border)"},"children":["#","multi-agent"]}]]}],["$","nav",null,{"aria-label":"글 탐색","className":"grid grid-cols-1 gap-4 sm:grid-cols-2","children":[["$","$L2",null,{"href":"/ko/blog/crewai/05-structured-output-pydantic","localeCookie":{"name":"NEXT_LOCALE","sameSite":"lax"},"className":"group rounded-lg border p-4 transition-colors hover:border-accent","style":{"borderColor":"var(--color-border)","background":"var(--color-surface)"},"children":[["$","p",null,{"className":"mb-1 text-xs","style":{"color":"var(--color-muted)"},"children":"← 최신 글"}],["$","p",null,{"className":"line-clamp-1 text-sm font-medium transition-colors group-hover:text-accent","style":{"color":"var(--color-text)"},"children":"CrewAI 구조화 출력: Pydantic으로 데이터 흔들림 막기"}]]}],["$","$L2",null,{"href":"/ko/blog/crewai/01-quick-start","localeCookie":{"name":"NEXT_LOCALE","sameSite":"lax"},"className":"group rounded-lg border p-4 text-right transition-colors hover:border-accent","style":{"borderColor":"var(--color-border)","background":"var(--color-surface)"},"children":[["$","p",null,{"className":"mb-1 text-xs","style":{"color":"var(--color-muted)"},"children":"이전 글 →"}],["$","p",null,{"className":"line-clamp-1 text-sm font-medium transition-colors group-hover:text-accent","style":{"color":"var(--color-text)"},"children":"CrewAI 빠른 시작: 10분 만에 첫 리서치 Crew 만들기"}]]}]]}]]}]
+9:Tce0,<p>요즘 "AI Agent", "멀티 에이전트 협업"이라는 말을 자주 듣지만 문서를 보면 멍해진다면, 이 시리즈가 딱 맞습니다.<br>
+한 줄 요약: <strong>CrewAI는 여러 AI 역할이 분업/협업해서 복잡한 작업을 나눠 끝내게 해주는 프레임워크입니다.</strong></p>
+<p>작은 프로젝트 팀처럼 생각하면 쉽습니다.</p>
+<ul>
+<li>리서처는 자료 조사</li>
+<li>분석가는 핵심 정리</li>
+<li>에디터는 최종 보고서 작성</li>
+</ul>
+<p>흐름이 잘 맞으면 야근수당 안 받는 콘텐츠 팀을 둔 느낌입니다(물론 API 비용은 솔직하게 나옵니다).</p>
+<h2 id="crewai로-할-수-있는-것">CrewAI로 할 수 있는 것</h2>
+<p>대표적인 활용:</p>
+<ul>
+<li>연구 보고서 자동 생성</li>
+<li>다단계 콘텐츠 생성(리서치 -> 초안 -> 다듬기)</li>
+<li>고객지원/운영 프로세스 자동화</li>
+<li>사내 지식 Q&#x26;A 및 문서 처리</li>
+</ul>
+<blockquote>
+<p>💡 핵심 가치는 "초강력 단일 Agent"가 아니라 "전문 Agent들의 협업"입니다.</p>
+</blockquote>
+<h2 id="먼저-이해할-3가지-핵심-용어">먼저 이해할 3가지 핵심 용어</h2>
+<ul>
+<li><code>Agent</code>: 역할(누가 하는가)</li>
+<li><code>Task</code>: 작업(무엇을 하는가)</li>
+<li><code>Crew</code>: 팀(누가 어떤 순서로 함께 하는가)</li>
+</ul>
+<p>대부분 프로젝트는 <code>Process.sequential</code>로 시작하면 충분합니다.<br>
+<strong>A가 끝내고 B에게 넘긴다.</strong> 가장 안정적이고 디버깅하기 좋은 시작점입니다.</p>
+<h2 id="이-10편-읽는-순서">이 10편 읽는 순서</h2>
+<ol>
+<li><a href="01-quick-start">빠른 시작</a>: 10분 안에 첫 Crew 실행</li>
+<li><a href="02-agents-and-tasks">Agent와 Task 입문</a>: 역할/작업 분리 방법</li>
+<li><a href="03-crew-and-process">Crew와 Process</a>: 팀 구성과 흐름 전략</li>
+<li><a href="04-tools-integration">Tools 연동</a>: Agent에 검색/파일 읽기 능력 부여</li>
+<li><a href="05-structured-output-pydantic">구조화 출력 Pydantic</a>: 출력 흔들림 방지</li>
+<li><a href="06-flow-basics">Flow 입문</a>: 여러 Crew 조율</li>
+<li><a href="07-memory-and-knowledge">Memory와 Knowledge</a>: 금붕어 기억력 탈출</li>
+<li><a href="08-debug-and-common-errors">디버깅과 자주 나는 오류</a>: 먼저 보는 지뢰 지도</li>
+<li><a href="09-production-best-practices">프로덕션 베스트 프랙티스</a>: 데모에서 운영으로</li>
+</ol>
+<h2 id="사전-준비">사전 준비</h2>
+<ul>
+<li>Python 3.10+</li>
+<li>익숙한 환경 도구(<code>uv</code>, <code>venv</code>, <code>poetry</code> 등)</li>
+<li>LLM API Key(OpenAI, Anthropic 등)</li>
+</ul>
+<h2 id="시작-전에-한-가지-마인드셋">시작 전에 한 가지 마인드셋</h2>
+<p>첫 버전에서는 화려함보다 <strong>재현 가능한 흐름</strong>이 먼저입니다.<br>
+매번 비슷한 결과가 나오게 만든 뒤, 속도/비용/정확도를 최적화하세요.<br>
+게임으로 치면 메인 퀘스트 먼저 깨고 장비 파밍은 나중입니다.</p>
+<h2 id="다음-단계">다음 단계</h2>
+<p>바로 <a href="01-quick-start">빠른 시작</a>으로 가서 첫 Crew를 10분 안에 돌려봅시다.</p>5:["$","aside",null,{"className":"hidden lg:block","children":["$","$L8",null,{"html":"$9"}]}]
+6:["$","script","script-0",{"src":"/_next/static/chunks/2dddb3bc05093f69.js","async":true}]
+7:["$","$La",null,{"children":["$","$b",null,{"name":"Next.MetadataOutlet","children":"$@c"}]}]
+c:null

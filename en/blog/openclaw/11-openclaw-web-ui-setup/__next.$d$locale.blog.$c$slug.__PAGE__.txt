@@ -1,0 +1,379 @@
+1:"$Sreact.fragment"
+2:I[14864,["/_next/static/chunks/7923a261b80bb6e1.js","/_next/static/chunks/e09b4358027e8033.js","/_next/static/chunks/2dddb3bc05093f69.js"],"default"]
+8:I[24801,["/_next/static/chunks/7923a261b80bb6e1.js","/_next/static/chunks/e09b4358027e8033.js","/_next/static/chunks/2dddb3bc05093f69.js"],"default"]
+a:I[50183,["/_next/static/chunks/5a5b5b13c22d14f7.js","/_next/static/chunks/a484d1d3dd4b55ab.js"],"OutletBoundary"]
+b:"$Sreact.suspense"
+3:T3ef9,<p>Too many tutorials tell you to edit JSON on day one, and then wonder why beginners run away. This article shows the better news: <strong>there is a UI you can click</strong>.</p>
+<h2 id="what-youll-learn">What You'll Learn</h2>
+<ul>
+<li>Open the Web UI and finish authentication</li>
+<li>Understand form mode vs Raw JSON mode</li>
+<li>Configure multi-workspace routing from the UI</li>
+<li>Know where the main features live</li>
+</ul>
+<hr>
+<h2 id="open-the-web-ui">Open the Web UI</h2>
+<p><strong>Step 1: make sure the Gateway is running</strong></p>
+<figure data-rehype-pretty-code-figure=""><pre style="background-color:#24292e;color:#e1e4e8" tabindex="0" data-language="bash" data-theme="github-dark"><code data-language="bash" data-theme="github-dark" style="display: grid;"><span data-line=""><span style="color:#B392F0">openclaw</span><span style="color:#9ECBFF"> gateway</span></span></code></pre></figure>
+<p><strong>Step 2: open your browser</strong></p>
+<pre><code>http://127.0.0.1:18789/
+</code></pre>
+<p>If you configured <code>basePath</code>, for example <code>/openclaw</code>:</p>
+<pre><code>http://127.0.0.1:18789/openclaw
+</code></pre>
+<p><strong>Step 3: handle authentication</strong></p>
+<table>
+<thead>
+<tr>
+<th>What you see</th>
+<th>Fix</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td><code>pairing required</code></td>
+<td>Run <code>openclaw devices list</code>, then <code>openclaw devices approve &#x3C;requestId></code></td>
+</tr>
+<tr>
+<td>Token prompt</td>
+<td>Paste the onboarding token</td>
+</tr>
+</tbody>
+</table>
+<blockquote>
+<p>💡 You can change the UI language in the <strong>Access</strong> section.</p>
+</blockquote>
+<hr>
+<h2 id="two-ways-to-edit-config-form-mode-vs-raw-json">Two Ways to Edit Config: Form Mode vs Raw JSON</h2>
+<p>Go to the <strong>Config</strong> page and you will see two editing styles:</p>
+<p><strong>Form mode</strong>: visually structured fields, ideal for beginners or small changes.</p>
+<p><strong>Raw JSON mode</strong>: direct config editing, best for advanced users or large edits.</p>
+<p>Both modes edit the same file: <code>~/.openclaw/openclaw.json</code>.</p>
+<hr>
+<h2 id="most-common-setup-different-telegram-groups-use-different-assistants">Most Common Setup: Different Telegram Groups Use Different Assistants</h2>
+<h3 id="scenario-a-same-bot-different-groups-different-workspaces">Scenario A: Same bot, different groups, different workspaces</h3>
+<p>Switch to Raw JSON and add this shape:</p>
+<figure data-rehype-pretty-code-figure=""><pre style="background-color:#24292e;color:#e1e4e8" tabindex="0" data-language="json5" data-theme="github-dark"><code data-language="json5" data-theme="github-dark" style="display: grid;"><span data-line=""><span style="color:#E1E4E8">{</span></span>
+<span data-line=""><span style="color:#9ECBFF">  "agents"</span><span style="color:#E1E4E8">: {</span></span>
+<span data-line=""><span style="color:#9ECBFF">    "list"</span><span style="color:#E1E4E8">: [</span></span>
+<span data-line=""><span style="color:#E1E4E8">      { </span><span style="color:#9ECBFF">"id"</span><span style="color:#E1E4E8">: </span><span style="color:#9ECBFF">"main"</span><span style="color:#E1E4E8">,      </span><span style="color:#9ECBFF">"name"</span><span style="color:#E1E4E8">: </span><span style="color:#9ECBFF">"Main"</span><span style="color:#E1E4E8">,      </span><span style="color:#9ECBFF">"workspace"</span><span style="color:#E1E4E8">: </span><span style="color:#9ECBFF">"~/.openclaw/workspace-main"</span><span style="color:#E1E4E8">,      </span><span style="color:#9ECBFF">"default"</span><span style="color:#E1E4E8">: </span><span style="color:#79B8FF">true</span><span style="color:#E1E4E8"> },</span></span>
+<span data-line=""><span style="color:#E1E4E8">      { </span><span style="color:#9ECBFF">"id"</span><span style="color:#E1E4E8">: </span><span style="color:#9ECBFF">"project-a"</span><span style="color:#E1E4E8">, </span><span style="color:#9ECBFF">"name"</span><span style="color:#E1E4E8">: </span><span style="color:#9ECBFF">"Project A"</span><span style="color:#E1E4E8">, </span><span style="color:#9ECBFF">"workspace"</span><span style="color:#E1E4E8">: </span><span style="color:#9ECBFF">"~/.openclaw/workspace-project-a"</span><span style="color:#E1E4E8"> },</span></span>
+<span data-line=""><span style="color:#E1E4E8">      { </span><span style="color:#9ECBFF">"id"</span><span style="color:#E1E4E8">: </span><span style="color:#9ECBFF">"project-b"</span><span style="color:#E1E4E8">, </span><span style="color:#9ECBFF">"name"</span><span style="color:#E1E4E8">: </span><span style="color:#9ECBFF">"Project B"</span><span style="color:#E1E4E8">, </span><span style="color:#9ECBFF">"workspace"</span><span style="color:#E1E4E8">: </span><span style="color:#9ECBFF">"~/.openclaw/workspace-project-b"</span><span style="color:#E1E4E8"> }</span></span>
+<span data-line=""><span style="color:#E1E4E8">    ]</span></span>
+<span data-line=""><span style="color:#E1E4E8">  },</span></span>
+<span data-line=""><span style="color:#9ECBFF">  "bindings"</span><span style="color:#E1E4E8">: [</span></span>
+<span data-line=""><span style="color:#E1E4E8">    { </span><span style="color:#9ECBFF">"agentId"</span><span style="color:#E1E4E8">: </span><span style="color:#9ECBFF">"project-a"</span><span style="color:#E1E4E8">, </span><span style="color:#9ECBFF">"match"</span><span style="color:#E1E4E8">: { </span><span style="color:#9ECBFF">"channel"</span><span style="color:#E1E4E8">: </span><span style="color:#9ECBFF">"telegram"</span><span style="color:#E1E4E8">, </span><span style="color:#9ECBFF">"peer"</span><span style="color:#E1E4E8">: { </span><span style="color:#9ECBFF">"kind"</span><span style="color:#E1E4E8">: </span><span style="color:#9ECBFF">"group"</span><span style="color:#E1E4E8">, </span><span style="color:#9ECBFF">"id"</span><span style="color:#E1E4E8">: </span><span style="color:#9ECBFF">"-1001234567890"</span><span style="color:#E1E4E8"> } } },</span></span>
+<span data-line=""><span style="color:#E1E4E8">    { </span><span style="color:#9ECBFF">"agentId"</span><span style="color:#E1E4E8">: </span><span style="color:#9ECBFF">"project-b"</span><span style="color:#E1E4E8">, </span><span style="color:#9ECBFF">"match"</span><span style="color:#E1E4E8">: { </span><span style="color:#9ECBFF">"channel"</span><span style="color:#E1E4E8">: </span><span style="color:#9ECBFF">"telegram"</span><span style="color:#E1E4E8">, </span><span style="color:#9ECBFF">"peer"</span><span style="color:#E1E4E8">: { </span><span style="color:#9ECBFF">"kind"</span><span style="color:#E1E4E8">: </span><span style="color:#9ECBFF">"group"</span><span style="color:#E1E4E8">, </span><span style="color:#9ECBFF">"id"</span><span style="color:#E1E4E8">: </span><span style="color:#9ECBFF">"-1009876543210"</span><span style="color:#E1E4E8"> } } },</span></span>
+<span data-line=""><span style="color:#E1E4E8">    { </span><span style="color:#9ECBFF">"agentId"</span><span style="color:#E1E4E8">: </span><span style="color:#9ECBFF">"main"</span><span style="color:#E1E4E8">,      </span><span style="color:#9ECBFF">"match"</span><span style="color:#E1E4E8">: { </span><span style="color:#9ECBFF">"channel"</span><span style="color:#E1E4E8">: </span><span style="color:#9ECBFF">"telegram"</span><span style="color:#E1E4E8"> } }</span></span>
+<span data-line=""><span style="color:#E1E4E8">  ],</span></span>
+<span data-line=""><span style="color:#9ECBFF">  "channels"</span><span style="color:#E1E4E8">: {</span></span>
+<span data-line=""><span style="color:#9ECBFF">    "telegram"</span><span style="color:#E1E4E8">: {</span></span>
+<span data-line=""><span style="color:#9ECBFF">      "enabled"</span><span style="color:#E1E4E8">: </span><span style="color:#79B8FF">true</span><span style="color:#E1E4E8">,</span></span>
+<span data-line=""><span style="color:#9ECBFF">      "botToken"</span><span style="color:#E1E4E8">: </span><span style="color:#9ECBFF">"your bot token"</span><span style="color:#E1E4E8">,</span></span>
+<span data-line=""><span style="color:#9ECBFF">      "dmPolicy"</span><span style="color:#E1E4E8">: </span><span style="color:#9ECBFF">"pairing"</span><span style="color:#E1E4E8">,</span></span>
+<span data-line=""><span style="color:#9ECBFF">      "groups"</span><span style="color:#E1E4E8">: { </span><span style="color:#9ECBFF">"*"</span><span style="color:#E1E4E8">: { </span><span style="color:#9ECBFF">"requireMention"</span><span style="color:#E1E4E8">: </span><span style="color:#79B8FF">true</span><span style="color:#E1E4E8"> } }</span></span>
+<span data-line=""><span style="color:#E1E4E8">    }</span></span>
+<span data-line=""><span style="color:#E1E4E8">  }</span></span>
+<span data-line=""><span style="color:#E1E4E8">}</span></span></code></pre></figure>
+<p><strong>How do you find the group ID?</strong></p>
+<ul>
+<li>Method 1: send a message in the group and run <code>openclaw logs --follow</code>, then inspect <code>chat.id</code></li>
+<li>Method 2: forward any message to <a href="https://t.me/userinfobot">@userinfobot</a></li>
+</ul>
+<hr>
+<h3 id="scenario-b-different-bot-accounts-different-workspaces">Scenario B: Different bot accounts, different workspaces</h3>
+<figure data-rehype-pretty-code-figure=""><pre style="background-color:#24292e;color:#e1e4e8" tabindex="0" data-language="json5" data-theme="github-dark"><code data-language="json5" data-theme="github-dark" style="display: grid;"><span data-line=""><span style="color:#E1E4E8">{</span></span>
+<span data-line=""><span style="color:#9ECBFF">  "agents"</span><span style="color:#E1E4E8">: {</span></span>
+<span data-line=""><span style="color:#9ECBFF">    "list"</span><span style="color:#E1E4E8">: [</span></span>
+<span data-line=""><span style="color:#E1E4E8">      { </span><span style="color:#9ECBFF">"id"</span><span style="color:#E1E4E8">: </span><span style="color:#9ECBFF">"main"</span><span style="color:#E1E4E8">,   </span><span style="color:#9ECBFF">"workspace"</span><span style="color:#E1E4E8">: </span><span style="color:#9ECBFF">"~/.openclaw/workspace-main"</span><span style="color:#E1E4E8"> },</span></span>
+<span data-line=""><span style="color:#E1E4E8">      { </span><span style="color:#9ECBFF">"id"</span><span style="color:#E1E4E8">: </span><span style="color:#9ECBFF">"alerts"</span><span style="color:#E1E4E8">, </span><span style="color:#9ECBFF">"workspace"</span><span style="color:#E1E4E8">: </span><span style="color:#9ECBFF">"~/.openclaw/workspace-alerts"</span><span style="color:#E1E4E8"> }</span></span>
+<span data-line=""><span style="color:#E1E4E8">    ]</span></span>
+<span data-line=""><span style="color:#E1E4E8">  },</span></span>
+<span data-line=""><span style="color:#9ECBFF">  "bindings"</span><span style="color:#E1E4E8">: [</span></span>
+<span data-line=""><span style="color:#E1E4E8">    { </span><span style="color:#9ECBFF">"agentId"</span><span style="color:#E1E4E8">: </span><span style="color:#9ECBFF">"main"</span><span style="color:#E1E4E8">,   </span><span style="color:#9ECBFF">"match"</span><span style="color:#E1E4E8">: { </span><span style="color:#9ECBFF">"channel"</span><span style="color:#E1E4E8">: </span><span style="color:#9ECBFF">"telegram"</span><span style="color:#E1E4E8">, </span><span style="color:#9ECBFF">"accountId"</span><span style="color:#E1E4E8">: </span><span style="color:#9ECBFF">"default"</span><span style="color:#E1E4E8"> } },</span></span>
+<span data-line=""><span style="color:#E1E4E8">    { </span><span style="color:#9ECBFF">"agentId"</span><span style="color:#E1E4E8">: </span><span style="color:#9ECBFF">"alerts"</span><span style="color:#E1E4E8">, </span><span style="color:#9ECBFF">"match"</span><span style="color:#E1E4E8">: { </span><span style="color:#9ECBFF">"channel"</span><span style="color:#E1E4E8">: </span><span style="color:#9ECBFF">"telegram"</span><span style="color:#E1E4E8">, </span><span style="color:#9ECBFF">"accountId"</span><span style="color:#E1E4E8">: </span><span style="color:#9ECBFF">"alerts"</span><span style="color:#E1E4E8"> } }</span></span>
+<span data-line=""><span style="color:#E1E4E8">  ],</span></span>
+<span data-line=""><span style="color:#9ECBFF">  "channels"</span><span style="color:#E1E4E8">: {</span></span>
+<span data-line=""><span style="color:#9ECBFF">    "telegram"</span><span style="color:#E1E4E8">: {</span></span>
+<span data-line=""><span style="color:#9ECBFF">      "accounts"</span><span style="color:#E1E4E8">: {</span></span>
+<span data-line=""><span style="color:#9ECBFF">        "default"</span><span style="color:#E1E4E8">: { </span><span style="color:#9ECBFF">"botToken"</span><span style="color:#E1E4E8">: </span><span style="color:#9ECBFF">"123456:ABC..."</span><span style="color:#E1E4E8">, </span><span style="color:#9ECBFF">"dmPolicy"</span><span style="color:#E1E4E8">: </span><span style="color:#9ECBFF">"pairing"</span><span style="color:#E1E4E8"> },</span></span>
+<span data-line=""><span style="color:#9ECBFF">        "alerts"</span><span style="color:#E1E4E8">:  { </span><span style="color:#9ECBFF">"botToken"</span><span style="color:#E1E4E8">: </span><span style="color:#9ECBFF">"987654:XYZ..."</span><span style="color:#E1E4E8">, </span><span style="color:#9ECBFF">"dmPolicy"</span><span style="color:#E1E4E8">: </span><span style="color:#9ECBFF">"allowlist"</span><span style="color:#E1E4E8">, </span><span style="color:#9ECBFF">"allowFrom"</span><span style="color:#E1E4E8">: [</span><span style="color:#9ECBFF">"tg:123456789"</span><span style="color:#E1E4E8">] }</span></span>
+<span data-line=""><span style="color:#E1E4E8">      }</span></span>
+<span data-line=""><span style="color:#E1E4E8">    }</span></span>
+<span data-line=""><span style="color:#E1E4E8">  }</span></span>
+<span data-line=""><span style="color:#E1E4E8">}</span></span></code></pre></figure>
+<hr>
+<h2 id="do-not-forget-to-save">Do Not Forget to Save</h2>
+<p>Click <strong>Save / Apply</strong>. OpenClaw will:</p>
+<ol>
+<li>Validate the config</li>
+<li>Apply it, usually with hot reload</li>
+</ol>
+<blockquote>
+<p>⚠️ If you get a <code>baseHash</code> conflict, someone or something changed the config in another place. Reload the config and try again.</p>
+</blockquote>
+<hr>
+<h2 id="what-else-can-the-web-ui-do">What Else Can the Web UI Do?</h2>
+<table>
+<thead>
+<tr>
+<th>Section</th>
+<th>What it does</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td><strong>Chat</strong></td>
+<td>Talk to the assistant directly in the browser</td>
+</tr>
+<tr>
+<td><strong>Sessions</strong></td>
+<td>Review and manage sessions</td>
+</tr>
+<tr>
+<td><strong>Cron</strong></td>
+<td>Add, edit, or run scheduled jobs</td>
+</tr>
+<tr>
+<td><strong>Skills</strong></td>
+<td>Enable, disable, and install skills</td>
+</tr>
+<tr>
+<td><strong>Channels</strong></td>
+<td>Inspect channel status</td>
+</tr>
+<tr>
+<td><strong>Debug / Logs</strong></td>
+<td>View logs and run manual RPC actions</td>
+</tr>
+</tbody>
+</table>
+<hr>
+<h2 id="quick-reference">Quick Reference</h2>
+<table>
+<thead>
+<tr>
+<th>I want to...</th>
+<th>Where to look in the Web UI</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td>Route different Telegram groups to different workspaces</td>
+<td>Config → Raw JSON → <code>agents</code> + <code>bindings</code></td>
+</tr>
+<tr>
+<td>Route different bot accounts to different workspaces</td>
+<td>Config → <code>channels.telegram.accounts</code> + <code>bindings</code></td>
+</tr>
+<tr>
+<td>Change the bot token</td>
+<td>Config → <code>channels.telegram.botToken</code></td>
+</tr>
+<tr>
+<td>Manage schedules</td>
+<td>Cron tab</td>
+</tr>
+<tr>
+<td>View live logs</td>
+<td>Debug / Logs tab</td>
+</tr>
+</tbody>
+</table>
+<p>The key idea to remember is this: <strong>workspace routing is always decided by <code>agents</code> plus <code>bindings</code></strong>. The Web UI just gives you a friendlier way to edit it.</p>
+<hr>
+<h2 id="related-reading">Related Reading</h2>
+<ul>
+<li><a href="07-multi-agent-bindings">Multi-agent Bindings</a></li>
+<li><a href="06-memory-workspace">Memory and workspace</a></li>
+<li><a href="12-openclaw-workspace-telegram-setup">Full Workspace x Telegram setup guide</a></li>
+</ul>0:{"buildId":"Yck3R4ooQxWkwGLT6is1X","rsc":["$","$1","c",{"children":[[["$","script",null,{"type":"application/ld+json","dangerouslySetInnerHTML":{"__html":"{\"@context\":\"https://schema.org\",\"@type\":\"Article\",\"headline\":\"No Config File Needed: Set Up OpenClaw Entirely from the Web UI\",\"description\":\"How the Web UI works, the difference between form mode and Raw JSON, and complete routing examples for multiple workspaces.\",\"url\":\"https://benxhub.com/en/blog/openclaw/11-openclaw-web-ui-setup\",\"mainEntityOfPage\":{\"@type\":\"WebPage\",\"@id\":\"https://benxhub.com/en/blog/openclaw/11-openclaw-web-ui-setup\"},\"datePublished\":\"2026-03-08T00:00:00.000Z\",\"dateModified\":\"2026-03-08T00:00:00.000Z\",\"keywords\":\"openclaw, web-ui, configuration, setup, bindings\",\"inLanguage\":\"en\",\"author\":{\"@type\":\"Person\",\"name\":\"BenX\",\"url\":\"https://benxhub.com\"},\"publisher\":{\"@type\":\"Organization\",\"name\":\"BenXHub Blog\",\"url\":\"https://benxhub.com\"}}"}}],["$","div",null,{"className":"mx-auto max-w-6xl px-4 py-12 sm:px-6","children":["$","div",null,{"className":"lg:grid lg:grid-cols-[1fr_240px] lg:gap-14","children":[["$","article",null,{"children":[["$","header",null,{"className":"mb-10","children":[["$","div",null,{"className":"mb-4 flex flex-wrap gap-2","children":[["$","$L2","openclaw",{"href":"/en/tags/openclaw","localeCookie":{"name":"NEXT_LOCALE","sameSite":"lax"},"className":"inline-flex items-center rounded-full px-2.5 py-0.5 text-xs font-medium transition-colors","style":{"background":"var(--color-code-bg)","color":"var(--color-accent)","border":"1px solid var(--color-border)"},"children":["#","openclaw"]}],["$","$L2","web-ui",{"href":"/en/tags/web-ui","localeCookie":{"name":"NEXT_LOCALE","sameSite":"lax"},"className":"inline-flex items-center rounded-full px-2.5 py-0.5 text-xs font-medium transition-colors","style":{"background":"var(--color-code-bg)","color":"var(--color-accent)","border":"1px solid var(--color-border)"},"children":["#","web-ui"]}],["$","$L2","configuration",{"href":"/en/tags/configuration","localeCookie":{"name":"NEXT_LOCALE","sameSite":"lax"},"className":"inline-flex items-center rounded-full px-2.5 py-0.5 text-xs font-medium transition-colors","style":{"background":"var(--color-code-bg)","color":"var(--color-accent)","border":"1px solid var(--color-border)"},"children":["#","configuration"]}],["$","$L2","setup",{"href":"/en/tags/setup","localeCookie":{"name":"NEXT_LOCALE","sameSite":"lax"},"className":"inline-flex items-center rounded-full px-2.5 py-0.5 text-xs font-medium transition-colors","style":{"background":"var(--color-code-bg)","color":"var(--color-accent)","border":"1px solid var(--color-border)"},"children":["#","setup"]}],["$","$L2","bindings",{"href":"/en/tags/bindings","localeCookie":{"name":"NEXT_LOCALE","sameSite":"lax"},"className":"inline-flex items-center rounded-full px-2.5 py-0.5 text-xs font-medium transition-colors","style":{"background":"var(--color-code-bg)","color":"var(--color-accent)","border":"1px solid var(--color-border)"},"children":["#","bindings"]}]]}],["$","h1",null,{"className":"mb-4 text-3xl leading-snug font-bold tracking-tight sm:text-4xl","style":{"color":"var(--color-text)"},"children":"No Config File Needed: Set Up OpenClaw Entirely from the Web UI"}],["$","div",null,{"className":"flex flex-wrap items-center gap-3 text-sm","style":{"color":"var(--color-muted)"},"children":[["$","time",null,{"dateTime":"2026-03-08","children":"Mar 8, 2026"}],["$","span",null,{"aria-hidden":"true","children":"·"}],["$","span",null,{"children":"4 min read"}]]}],"$undefined",["$","div",null,{"className":"mt-6 border-b","style":{"borderColor":"var(--color-border)"}}]]}],["$","div",null,{"className":"prose","dangerouslySetInnerHTML":{"__html":"$3"}}],"$L4"]}],"$L5"]}]}]],["$L6"],"$L7"]}],"loading":null,"isPartial":false}
+4:["$","footer",null,{"className":"mt-14 border-t pt-8","style":{"borderColor":"var(--color-border)"},"children":[["$","div",null,{"className":"mb-8 flex flex-wrap gap-2","children":[["$","$L2","openclaw",{"href":"/en/tags/openclaw","localeCookie":{"name":"NEXT_LOCALE","sameSite":"lax"},"className":"inline-flex items-center rounded-full px-3 py-1 text-sm font-medium transition-colors","style":{"background":"var(--color-code-bg)","color":"var(--color-accent)","border":"1px solid var(--color-border)"},"children":["#","openclaw"]}],["$","$L2","web-ui",{"href":"/en/tags/web-ui","localeCookie":{"name":"NEXT_LOCALE","sameSite":"lax"},"className":"inline-flex items-center rounded-full px-3 py-1 text-sm font-medium transition-colors","style":{"background":"var(--color-code-bg)","color":"var(--color-accent)","border":"1px solid var(--color-border)"},"children":["#","web-ui"]}],["$","$L2","configuration",{"href":"/en/tags/configuration","localeCookie":{"name":"NEXT_LOCALE","sameSite":"lax"},"className":"inline-flex items-center rounded-full px-3 py-1 text-sm font-medium transition-colors","style":{"background":"var(--color-code-bg)","color":"var(--color-accent)","border":"1px solid var(--color-border)"},"children":["#","configuration"]}],["$","$L2","setup",{"href":"/en/tags/setup","localeCookie":{"name":"NEXT_LOCALE","sameSite":"lax"},"className":"inline-flex items-center rounded-full px-3 py-1 text-sm font-medium transition-colors","style":{"background":"var(--color-code-bg)","color":"var(--color-accent)","border":"1px solid var(--color-border)"},"children":["#","setup"]}],["$","$L2","bindings",{"href":"/en/tags/bindings","localeCookie":{"name":"NEXT_LOCALE","sameSite":"lax"},"className":"inline-flex items-center rounded-full px-3 py-1 text-sm font-medium transition-colors","style":{"background":"var(--color-code-bg)","color":"var(--color-accent)","border":"1px solid var(--color-border)"},"children":["#","bindings"]}]]}],["$","nav",null,{"aria-label":"Post navigation","className":"grid grid-cols-1 gap-4 sm:grid-cols-2","children":[["$","$L2",null,{"href":"/en/blog/openclaw/10-advanced-config","localeCookie":{"name":"NEXT_LOCALE","sameSite":"lax"},"className":"group rounded-lg border p-4 transition-colors hover:border-accent","style":{"borderColor":"var(--color-border)","background":"var(--color-surface)"},"children":[["$","p",null,{"className":"mb-1 text-xs","style":{"color":"var(--color-muted)"},"children":"← Newer"}],["$","p",null,{"className":"line-clamp-1 text-sm font-medium transition-colors group-hover:text-accent","style":{"color":"var(--color-text)"},"children":"System Acting Weird? Advanced Settings and Debugging Guide"}]]}],["$","$L2",null,{"href":"/en/blog/openclaw/12-openclaw-workspace-telegram-setup","localeCookie":{"name":"NEXT_LOCALE","sameSite":"lax"},"className":"group rounded-lg border p-4 text-right transition-colors hover:border-accent","style":{"borderColor":"var(--color-border)","background":"var(--color-surface)"},"children":[["$","p",null,{"className":"mb-1 text-xs","style":{"color":"var(--color-muted)"},"children":"Older →"}],["$","p",null,{"className":"line-clamp-1 text-sm font-medium transition-colors group-hover:text-accent","style":{"color":"var(--color-text)"},"children":"One Bot, Many Tasks: Full Workspace x Telegram Setup Guide"}]]}]]}]]}]
+9:T3ef9,<p>Too many tutorials tell you to edit JSON on day one, and then wonder why beginners run away. This article shows the better news: <strong>there is a UI you can click</strong>.</p>
+<h2 id="what-youll-learn">What You'll Learn</h2>
+<ul>
+<li>Open the Web UI and finish authentication</li>
+<li>Understand form mode vs Raw JSON mode</li>
+<li>Configure multi-workspace routing from the UI</li>
+<li>Know where the main features live</li>
+</ul>
+<hr>
+<h2 id="open-the-web-ui">Open the Web UI</h2>
+<p><strong>Step 1: make sure the Gateway is running</strong></p>
+<figure data-rehype-pretty-code-figure=""><pre style="background-color:#24292e;color:#e1e4e8" tabindex="0" data-language="bash" data-theme="github-dark"><code data-language="bash" data-theme="github-dark" style="display: grid;"><span data-line=""><span style="color:#B392F0">openclaw</span><span style="color:#9ECBFF"> gateway</span></span></code></pre></figure>
+<p><strong>Step 2: open your browser</strong></p>
+<pre><code>http://127.0.0.1:18789/
+</code></pre>
+<p>If you configured <code>basePath</code>, for example <code>/openclaw</code>:</p>
+<pre><code>http://127.0.0.1:18789/openclaw
+</code></pre>
+<p><strong>Step 3: handle authentication</strong></p>
+<table>
+<thead>
+<tr>
+<th>What you see</th>
+<th>Fix</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td><code>pairing required</code></td>
+<td>Run <code>openclaw devices list</code>, then <code>openclaw devices approve &#x3C;requestId></code></td>
+</tr>
+<tr>
+<td>Token prompt</td>
+<td>Paste the onboarding token</td>
+</tr>
+</tbody>
+</table>
+<blockquote>
+<p>💡 You can change the UI language in the <strong>Access</strong> section.</p>
+</blockquote>
+<hr>
+<h2 id="two-ways-to-edit-config-form-mode-vs-raw-json">Two Ways to Edit Config: Form Mode vs Raw JSON</h2>
+<p>Go to the <strong>Config</strong> page and you will see two editing styles:</p>
+<p><strong>Form mode</strong>: visually structured fields, ideal for beginners or small changes.</p>
+<p><strong>Raw JSON mode</strong>: direct config editing, best for advanced users or large edits.</p>
+<p>Both modes edit the same file: <code>~/.openclaw/openclaw.json</code>.</p>
+<hr>
+<h2 id="most-common-setup-different-telegram-groups-use-different-assistants">Most Common Setup: Different Telegram Groups Use Different Assistants</h2>
+<h3 id="scenario-a-same-bot-different-groups-different-workspaces">Scenario A: Same bot, different groups, different workspaces</h3>
+<p>Switch to Raw JSON and add this shape:</p>
+<figure data-rehype-pretty-code-figure=""><pre style="background-color:#24292e;color:#e1e4e8" tabindex="0" data-language="json5" data-theme="github-dark"><code data-language="json5" data-theme="github-dark" style="display: grid;"><span data-line=""><span style="color:#E1E4E8">{</span></span>
+<span data-line=""><span style="color:#9ECBFF">  "agents"</span><span style="color:#E1E4E8">: {</span></span>
+<span data-line=""><span style="color:#9ECBFF">    "list"</span><span style="color:#E1E4E8">: [</span></span>
+<span data-line=""><span style="color:#E1E4E8">      { </span><span style="color:#9ECBFF">"id"</span><span style="color:#E1E4E8">: </span><span style="color:#9ECBFF">"main"</span><span style="color:#E1E4E8">,      </span><span style="color:#9ECBFF">"name"</span><span style="color:#E1E4E8">: </span><span style="color:#9ECBFF">"Main"</span><span style="color:#E1E4E8">,      </span><span style="color:#9ECBFF">"workspace"</span><span style="color:#E1E4E8">: </span><span style="color:#9ECBFF">"~/.openclaw/workspace-main"</span><span style="color:#E1E4E8">,      </span><span style="color:#9ECBFF">"default"</span><span style="color:#E1E4E8">: </span><span style="color:#79B8FF">true</span><span style="color:#E1E4E8"> },</span></span>
+<span data-line=""><span style="color:#E1E4E8">      { </span><span style="color:#9ECBFF">"id"</span><span style="color:#E1E4E8">: </span><span style="color:#9ECBFF">"project-a"</span><span style="color:#E1E4E8">, </span><span style="color:#9ECBFF">"name"</span><span style="color:#E1E4E8">: </span><span style="color:#9ECBFF">"Project A"</span><span style="color:#E1E4E8">, </span><span style="color:#9ECBFF">"workspace"</span><span style="color:#E1E4E8">: </span><span style="color:#9ECBFF">"~/.openclaw/workspace-project-a"</span><span style="color:#E1E4E8"> },</span></span>
+<span data-line=""><span style="color:#E1E4E8">      { </span><span style="color:#9ECBFF">"id"</span><span style="color:#E1E4E8">: </span><span style="color:#9ECBFF">"project-b"</span><span style="color:#E1E4E8">, </span><span style="color:#9ECBFF">"name"</span><span style="color:#E1E4E8">: </span><span style="color:#9ECBFF">"Project B"</span><span style="color:#E1E4E8">, </span><span style="color:#9ECBFF">"workspace"</span><span style="color:#E1E4E8">: </span><span style="color:#9ECBFF">"~/.openclaw/workspace-project-b"</span><span style="color:#E1E4E8"> }</span></span>
+<span data-line=""><span style="color:#E1E4E8">    ]</span></span>
+<span data-line=""><span style="color:#E1E4E8">  },</span></span>
+<span data-line=""><span style="color:#9ECBFF">  "bindings"</span><span style="color:#E1E4E8">: [</span></span>
+<span data-line=""><span style="color:#E1E4E8">    { </span><span style="color:#9ECBFF">"agentId"</span><span style="color:#E1E4E8">: </span><span style="color:#9ECBFF">"project-a"</span><span style="color:#E1E4E8">, </span><span style="color:#9ECBFF">"match"</span><span style="color:#E1E4E8">: { </span><span style="color:#9ECBFF">"channel"</span><span style="color:#E1E4E8">: </span><span style="color:#9ECBFF">"telegram"</span><span style="color:#E1E4E8">, </span><span style="color:#9ECBFF">"peer"</span><span style="color:#E1E4E8">: { </span><span style="color:#9ECBFF">"kind"</span><span style="color:#E1E4E8">: </span><span style="color:#9ECBFF">"group"</span><span style="color:#E1E4E8">, </span><span style="color:#9ECBFF">"id"</span><span style="color:#E1E4E8">: </span><span style="color:#9ECBFF">"-1001234567890"</span><span style="color:#E1E4E8"> } } },</span></span>
+<span data-line=""><span style="color:#E1E4E8">    { </span><span style="color:#9ECBFF">"agentId"</span><span style="color:#E1E4E8">: </span><span style="color:#9ECBFF">"project-b"</span><span style="color:#E1E4E8">, </span><span style="color:#9ECBFF">"match"</span><span style="color:#E1E4E8">: { </span><span style="color:#9ECBFF">"channel"</span><span style="color:#E1E4E8">: </span><span style="color:#9ECBFF">"telegram"</span><span style="color:#E1E4E8">, </span><span style="color:#9ECBFF">"peer"</span><span style="color:#E1E4E8">: { </span><span style="color:#9ECBFF">"kind"</span><span style="color:#E1E4E8">: </span><span style="color:#9ECBFF">"group"</span><span style="color:#E1E4E8">, </span><span style="color:#9ECBFF">"id"</span><span style="color:#E1E4E8">: </span><span style="color:#9ECBFF">"-1009876543210"</span><span style="color:#E1E4E8"> } } },</span></span>
+<span data-line=""><span style="color:#E1E4E8">    { </span><span style="color:#9ECBFF">"agentId"</span><span style="color:#E1E4E8">: </span><span style="color:#9ECBFF">"main"</span><span style="color:#E1E4E8">,      </span><span style="color:#9ECBFF">"match"</span><span style="color:#E1E4E8">: { </span><span style="color:#9ECBFF">"channel"</span><span style="color:#E1E4E8">: </span><span style="color:#9ECBFF">"telegram"</span><span style="color:#E1E4E8"> } }</span></span>
+<span data-line=""><span style="color:#E1E4E8">  ],</span></span>
+<span data-line=""><span style="color:#9ECBFF">  "channels"</span><span style="color:#E1E4E8">: {</span></span>
+<span data-line=""><span style="color:#9ECBFF">    "telegram"</span><span style="color:#E1E4E8">: {</span></span>
+<span data-line=""><span style="color:#9ECBFF">      "enabled"</span><span style="color:#E1E4E8">: </span><span style="color:#79B8FF">true</span><span style="color:#E1E4E8">,</span></span>
+<span data-line=""><span style="color:#9ECBFF">      "botToken"</span><span style="color:#E1E4E8">: </span><span style="color:#9ECBFF">"your bot token"</span><span style="color:#E1E4E8">,</span></span>
+<span data-line=""><span style="color:#9ECBFF">      "dmPolicy"</span><span style="color:#E1E4E8">: </span><span style="color:#9ECBFF">"pairing"</span><span style="color:#E1E4E8">,</span></span>
+<span data-line=""><span style="color:#9ECBFF">      "groups"</span><span style="color:#E1E4E8">: { </span><span style="color:#9ECBFF">"*"</span><span style="color:#E1E4E8">: { </span><span style="color:#9ECBFF">"requireMention"</span><span style="color:#E1E4E8">: </span><span style="color:#79B8FF">true</span><span style="color:#E1E4E8"> } }</span></span>
+<span data-line=""><span style="color:#E1E4E8">    }</span></span>
+<span data-line=""><span style="color:#E1E4E8">  }</span></span>
+<span data-line=""><span style="color:#E1E4E8">}</span></span></code></pre></figure>
+<p><strong>How do you find the group ID?</strong></p>
+<ul>
+<li>Method 1: send a message in the group and run <code>openclaw logs --follow</code>, then inspect <code>chat.id</code></li>
+<li>Method 2: forward any message to <a href="https://t.me/userinfobot">@userinfobot</a></li>
+</ul>
+<hr>
+<h3 id="scenario-b-different-bot-accounts-different-workspaces">Scenario B: Different bot accounts, different workspaces</h3>
+<figure data-rehype-pretty-code-figure=""><pre style="background-color:#24292e;color:#e1e4e8" tabindex="0" data-language="json5" data-theme="github-dark"><code data-language="json5" data-theme="github-dark" style="display: grid;"><span data-line=""><span style="color:#E1E4E8">{</span></span>
+<span data-line=""><span style="color:#9ECBFF">  "agents"</span><span style="color:#E1E4E8">: {</span></span>
+<span data-line=""><span style="color:#9ECBFF">    "list"</span><span style="color:#E1E4E8">: [</span></span>
+<span data-line=""><span style="color:#E1E4E8">      { </span><span style="color:#9ECBFF">"id"</span><span style="color:#E1E4E8">: </span><span style="color:#9ECBFF">"main"</span><span style="color:#E1E4E8">,   </span><span style="color:#9ECBFF">"workspace"</span><span style="color:#E1E4E8">: </span><span style="color:#9ECBFF">"~/.openclaw/workspace-main"</span><span style="color:#E1E4E8"> },</span></span>
+<span data-line=""><span style="color:#E1E4E8">      { </span><span style="color:#9ECBFF">"id"</span><span style="color:#E1E4E8">: </span><span style="color:#9ECBFF">"alerts"</span><span style="color:#E1E4E8">, </span><span style="color:#9ECBFF">"workspace"</span><span style="color:#E1E4E8">: </span><span style="color:#9ECBFF">"~/.openclaw/workspace-alerts"</span><span style="color:#E1E4E8"> }</span></span>
+<span data-line=""><span style="color:#E1E4E8">    ]</span></span>
+<span data-line=""><span style="color:#E1E4E8">  },</span></span>
+<span data-line=""><span style="color:#9ECBFF">  "bindings"</span><span style="color:#E1E4E8">: [</span></span>
+<span data-line=""><span style="color:#E1E4E8">    { </span><span style="color:#9ECBFF">"agentId"</span><span style="color:#E1E4E8">: </span><span style="color:#9ECBFF">"main"</span><span style="color:#E1E4E8">,   </span><span style="color:#9ECBFF">"match"</span><span style="color:#E1E4E8">: { </span><span style="color:#9ECBFF">"channel"</span><span style="color:#E1E4E8">: </span><span style="color:#9ECBFF">"telegram"</span><span style="color:#E1E4E8">, </span><span style="color:#9ECBFF">"accountId"</span><span style="color:#E1E4E8">: </span><span style="color:#9ECBFF">"default"</span><span style="color:#E1E4E8"> } },</span></span>
+<span data-line=""><span style="color:#E1E4E8">    { </span><span style="color:#9ECBFF">"agentId"</span><span style="color:#E1E4E8">: </span><span style="color:#9ECBFF">"alerts"</span><span style="color:#E1E4E8">, </span><span style="color:#9ECBFF">"match"</span><span style="color:#E1E4E8">: { </span><span style="color:#9ECBFF">"channel"</span><span style="color:#E1E4E8">: </span><span style="color:#9ECBFF">"telegram"</span><span style="color:#E1E4E8">, </span><span style="color:#9ECBFF">"accountId"</span><span style="color:#E1E4E8">: </span><span style="color:#9ECBFF">"alerts"</span><span style="color:#E1E4E8"> } }</span></span>
+<span data-line=""><span style="color:#E1E4E8">  ],</span></span>
+<span data-line=""><span style="color:#9ECBFF">  "channels"</span><span style="color:#E1E4E8">: {</span></span>
+<span data-line=""><span style="color:#9ECBFF">    "telegram"</span><span style="color:#E1E4E8">: {</span></span>
+<span data-line=""><span style="color:#9ECBFF">      "accounts"</span><span style="color:#E1E4E8">: {</span></span>
+<span data-line=""><span style="color:#9ECBFF">        "default"</span><span style="color:#E1E4E8">: { </span><span style="color:#9ECBFF">"botToken"</span><span style="color:#E1E4E8">: </span><span style="color:#9ECBFF">"123456:ABC..."</span><span style="color:#E1E4E8">, </span><span style="color:#9ECBFF">"dmPolicy"</span><span style="color:#E1E4E8">: </span><span style="color:#9ECBFF">"pairing"</span><span style="color:#E1E4E8"> },</span></span>
+<span data-line=""><span style="color:#9ECBFF">        "alerts"</span><span style="color:#E1E4E8">:  { </span><span style="color:#9ECBFF">"botToken"</span><span style="color:#E1E4E8">: </span><span style="color:#9ECBFF">"987654:XYZ..."</span><span style="color:#E1E4E8">, </span><span style="color:#9ECBFF">"dmPolicy"</span><span style="color:#E1E4E8">: </span><span style="color:#9ECBFF">"allowlist"</span><span style="color:#E1E4E8">, </span><span style="color:#9ECBFF">"allowFrom"</span><span style="color:#E1E4E8">: [</span><span style="color:#9ECBFF">"tg:123456789"</span><span style="color:#E1E4E8">] }</span></span>
+<span data-line=""><span style="color:#E1E4E8">      }</span></span>
+<span data-line=""><span style="color:#E1E4E8">    }</span></span>
+<span data-line=""><span style="color:#E1E4E8">  }</span></span>
+<span data-line=""><span style="color:#E1E4E8">}</span></span></code></pre></figure>
+<hr>
+<h2 id="do-not-forget-to-save">Do Not Forget to Save</h2>
+<p>Click <strong>Save / Apply</strong>. OpenClaw will:</p>
+<ol>
+<li>Validate the config</li>
+<li>Apply it, usually with hot reload</li>
+</ol>
+<blockquote>
+<p>⚠️ If you get a <code>baseHash</code> conflict, someone or something changed the config in another place. Reload the config and try again.</p>
+</blockquote>
+<hr>
+<h2 id="what-else-can-the-web-ui-do">What Else Can the Web UI Do?</h2>
+<table>
+<thead>
+<tr>
+<th>Section</th>
+<th>What it does</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td><strong>Chat</strong></td>
+<td>Talk to the assistant directly in the browser</td>
+</tr>
+<tr>
+<td><strong>Sessions</strong></td>
+<td>Review and manage sessions</td>
+</tr>
+<tr>
+<td><strong>Cron</strong></td>
+<td>Add, edit, or run scheduled jobs</td>
+</tr>
+<tr>
+<td><strong>Skills</strong></td>
+<td>Enable, disable, and install skills</td>
+</tr>
+<tr>
+<td><strong>Channels</strong></td>
+<td>Inspect channel status</td>
+</tr>
+<tr>
+<td><strong>Debug / Logs</strong></td>
+<td>View logs and run manual RPC actions</td>
+</tr>
+</tbody>
+</table>
+<hr>
+<h2 id="quick-reference">Quick Reference</h2>
+<table>
+<thead>
+<tr>
+<th>I want to...</th>
+<th>Where to look in the Web UI</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td>Route different Telegram groups to different workspaces</td>
+<td>Config → Raw JSON → <code>agents</code> + <code>bindings</code></td>
+</tr>
+<tr>
+<td>Route different bot accounts to different workspaces</td>
+<td>Config → <code>channels.telegram.accounts</code> + <code>bindings</code></td>
+</tr>
+<tr>
+<td>Change the bot token</td>
+<td>Config → <code>channels.telegram.botToken</code></td>
+</tr>
+<tr>
+<td>Manage schedules</td>
+<td>Cron tab</td>
+</tr>
+<tr>
+<td>View live logs</td>
+<td>Debug / Logs tab</td>
+</tr>
+</tbody>
+</table>
+<p>The key idea to remember is this: <strong>workspace routing is always decided by <code>agents</code> plus <code>bindings</code></strong>. The Web UI just gives you a friendlier way to edit it.</p>
+<hr>
+<h2 id="related-reading">Related Reading</h2>
+<ul>
+<li><a href="07-multi-agent-bindings">Multi-agent Bindings</a></li>
+<li><a href="06-memory-workspace">Memory and workspace</a></li>
+<li><a href="12-openclaw-workspace-telegram-setup">Full Workspace x Telegram setup guide</a></li>
+</ul>5:["$","aside",null,{"className":"hidden lg:block","children":["$","$L8",null,{"html":"$9"}]}]
+6:["$","script","script-0",{"src":"/_next/static/chunks/2dddb3bc05093f69.js","async":true}]
+7:["$","$La",null,{"children":["$","$b",null,{"name":"Next.MetadataOutlet","children":"$@c"}]}]
+c:null

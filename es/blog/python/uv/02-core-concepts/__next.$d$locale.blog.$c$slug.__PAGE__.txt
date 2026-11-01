@@ -1,0 +1,84 @@
+1:"$Sreact.fragment"
+2:I[14864,["/_next/static/chunks/7923a261b80bb6e1.js","/_next/static/chunks/e09b4358027e8033.js","/_next/static/chunks/2dddb3bc05093f69.js"],"default"]
+8:I[24801,["/_next/static/chunks/7923a261b80bb6e1.js","/_next/static/chunks/e09b4358027e8033.js","/_next/static/chunks/2dddb3bc05093f69.js"],"default"]
+a:I[50183,["/_next/static/chunks/5a5b5b13c22d14f7.js","/_next/static/chunks/a484d1d3dd4b55ab.js"],"OutletBoundary"]
+b:"$Sreact.suspense"
+:HL["/images/posts/uv-core-concepts.jpg","image"]
+3:T1043,<p>Antes de lanzar comandos al azar, domina estos cuatro conceptos: dependencias, lockfile y venv.</p>
+<h2 id="concepto-1-pyprojecttoml-es-la-identidad-del-proyecto">Concepto 1: <code>pyproject.toml</code> es la identidad del proyecto</h2>
+<p>Aquí vive metadata y dependencias.</p>
+<figure data-rehype-pretty-code-figure=""><pre style="background-color:#24292e;color:#e1e4e8" tabindex="0" data-language="toml" data-theme="github-dark"><code data-language="toml" data-theme="github-dark" style="display: grid;"><span data-line=""><span style="color:#E1E4E8">[</span><span style="color:#B392F0">project</span><span style="color:#E1E4E8">]</span></span>
+<span data-line=""><span style="color:#E1E4E8">name = </span><span style="color:#9ECBFF">"my-app"</span></span>
+<span data-line=""><span style="color:#E1E4E8">version = </span><span style="color:#9ECBFF">"0.1.0"</span></span>
+<span data-line=""><span style="color:#E1E4E8">requires-python = </span><span style="color:#9ECBFF">">=3.12"</span></span>
+<span data-line=""><span style="color:#E1E4E8">dependencies = [</span></span>
+<span data-line=""><span style="color:#9ECBFF">    "requests>=2.31"</span><span style="color:#E1E4E8">,</span></span>
+<span data-line=""><span style="color:#E1E4E8">]</span></span></code></pre></figure>
+<ul>
+<li>Edición manual: modificar archivo directo</li>
+<li>Flujo recomendado: <code>uv add</code> / <code>uv remove</code></li>
+</ul>
+<h2 id="concepto-2-uvlock-es-la-foto-exacta-de-dependencias">Concepto 2: <code>uv.lock</code> es la foto exacta de dependencias</h2>
+<p><code>pyproject.toml</code> define intención; <code>uv.lock</code> fija lo realmente instalado.</p>
+<ul>
+<li>Se debe commitear</li>
+<li>Garantiza reproducibilidad entre dev, CI y producción</li>
+</ul>
+<figure data-rehype-pretty-code-figure=""><pre style="background-color:#24292e;color:#e1e4e8" tabindex="0" data-language="bash" data-theme="github-dark"><code data-language="bash" data-theme="github-dark" style="display: grid;"><span data-line=""><span style="color:#B392F0">uv</span><span style="color:#9ECBFF"> lock</span><span style="color:#79B8FF"> --upgrade-package</span><span style="color:#9ECBFF"> requests</span></span></code></pre></figure>
+<h2 id="concepto-3-venv-es-sandbox-local">Concepto 3: <code>.venv</code> es sandbox local</h2>
+<p>uv crea <code>.venv</code> en raíz del proyecto.</p>
+<ul>
+<li><code>uv run</code> lo usa automáticamente</li>
+<li><code>.venv</code> no se commitea</li>
+</ul>
+<figure data-rehype-pretty-code-figure=""><pre style="background-color:#24292e;color:#e1e4e8" tabindex="0" data-language="bash" data-theme="github-dark"><code data-language="bash" data-theme="github-dark" style="display: grid;"><span data-line=""><span style="color:#B392F0">uv</span><span style="color:#9ECBFF"> sync</span></span>
+<span data-line=""><span style="color:#79B8FF">source</span><span style="color:#9ECBFF"> .venv/bin/activate</span></span></code></pre></figure>
+<h2 id="concepto-4-uv-run-es-el-punto-de-entrada-estándar">Concepto 4: <code>uv run</code> es el punto de entrada estándar</h2>
+<p><code>uv run</code> valida lockfile, sincroniza entorno y ejecuta en contexto correcto.</p>
+<figure data-rehype-pretty-code-figure=""><pre style="background-color:#24292e;color:#e1e4e8" tabindex="0" data-language="bash" data-theme="github-dark"><code data-language="bash" data-theme="github-dark" style="display: grid;"><span data-line=""><span style="color:#B392F0">uv</span><span style="color:#9ECBFF"> run</span><span style="color:#9ECBFF"> python</span><span style="color:#9ECBFF"> main.py</span></span>
+<span data-line=""><span style="color:#B392F0">uv</span><span style="color:#9ECBFF"> run</span><span style="color:#9ECBFF"> pytest</span></span>
+<span data-line=""><span style="color:#B392F0">uv</span><span style="color:#9ECBFF"> run</span><span style="color:#9ECBFF"> flask</span><span style="color:#9ECBFF"> run</span><span style="color:#79B8FF"> -p</span><span style="color:#79B8FF"> 3000</span></span></code></pre></figure>
+<h2 id="siguiente-paso">Siguiente paso</h2>
+<p>Con base lista, pasa a patrones de uso diario:
+👉 <a href="03-common-patterns">Common Patterns</a></p>0:{"buildId":"Yck3R4ooQxWkwGLT6is1X","rsc":["$","$1","c",{"children":[[["$","script",null,{"type":"application/ld+json","dangerouslySetInnerHTML":{"__html":"{\"@context\":\"https://schema.org\",\"@type\":\"Article\",\"headline\":\"Conceptos clave de Python uv: pyproject.toml, lockfile y entornos virtuales\",\"description\":\"Entiende los cuatro conceptos clave de uv para operar día a día sin sorpresas.\",\"url\":\"https://benxhub.com/es/blog/python/uv/02-core-concepts\",\"mainEntityOfPage\":{\"@type\":\"WebPage\",\"@id\":\"https://benxhub.com/es/blog/python/uv/02-core-concepts\"},\"datePublished\":\"2026-02-27T00:00:00.000Z\",\"dateModified\":\"2026-02-27T00:00:00.000Z\",\"keywords\":\"python, uv, pyproject, lockfile, venv\",\"inLanguage\":\"es\",\"author\":{\"@type\":\"Person\",\"name\":\"BenX\",\"url\":\"https://benxhub.com\"},\"publisher\":{\"@type\":\"Organization\",\"name\":\"BenXHub Blog\",\"url\":\"https://benxhub.com\"},\"image\":\"https://benxhub.com/images/posts/uv-core-concepts.jpg\"}"}}],["$","div",null,{"className":"mx-auto max-w-6xl px-4 py-12 sm:px-6","children":["$","div",null,{"className":"lg:grid lg:grid-cols-[1fr_240px] lg:gap-14","children":[["$","article",null,{"children":[["$","header",null,{"className":"mb-10","children":[["$","div",null,{"className":"mb-4 flex flex-wrap gap-2","children":[["$","$L2","python",{"href":"/es/tags/python","localeCookie":{"name":"NEXT_LOCALE","sameSite":"lax"},"className":"inline-flex items-center rounded-full px-2.5 py-0.5 text-xs font-medium transition-colors","style":{"background":"var(--color-code-bg)","color":"var(--color-accent)","border":"1px solid var(--color-border)"},"children":["#","python"]}],["$","$L2","uv",{"href":"/es/tags/uv","localeCookie":{"name":"NEXT_LOCALE","sameSite":"lax"},"className":"inline-flex items-center rounded-full px-2.5 py-0.5 text-xs font-medium transition-colors","style":{"background":"var(--color-code-bg)","color":"var(--color-accent)","border":"1px solid var(--color-border)"},"children":["#","uv"]}],["$","$L2","pyproject",{"href":"/es/tags/pyproject","localeCookie":{"name":"NEXT_LOCALE","sameSite":"lax"},"className":"inline-flex items-center rounded-full px-2.5 py-0.5 text-xs font-medium transition-colors","style":{"background":"var(--color-code-bg)","color":"var(--color-accent)","border":"1px solid var(--color-border)"},"children":["#","pyproject"]}],["$","$L2","lockfile",{"href":"/es/tags/lockfile","localeCookie":{"name":"NEXT_LOCALE","sameSite":"lax"},"className":"inline-flex items-center rounded-full px-2.5 py-0.5 text-xs font-medium transition-colors","style":{"background":"var(--color-code-bg)","color":"var(--color-accent)","border":"1px solid var(--color-border)"},"children":["#","lockfile"]}],["$","$L2","venv",{"href":"/es/tags/venv","localeCookie":{"name":"NEXT_LOCALE","sameSite":"lax"},"className":"inline-flex items-center rounded-full px-2.5 py-0.5 text-xs font-medium transition-colors","style":{"background":"var(--color-code-bg)","color":"var(--color-accent)","border":"1px solid var(--color-border)"},"children":["#","venv"]}]]}],["$","h1",null,{"className":"mb-4 text-3xl leading-snug font-bold tracking-tight sm:text-4xl","style":{"color":"var(--color-text)"},"children":"Conceptos clave de Python uv: pyproject.toml, lockfile y entornos virtuales"}],["$","div",null,{"className":"flex flex-wrap items-center gap-3 text-sm","style":{"color":"var(--color-muted)"},"children":[["$","time",null,{"dateTime":"2026-02-27","children":"27 2月 2026"}],["$","span",null,{"aria-hidden":"true","children":"·"}],["$","span",null,{"children":"1 min read"}]]}],["$","div",null,{"className":"mt-6 overflow-hidden rounded-lg","children":["$","img",null,{"src":"/images/posts/uv-core-concepts.jpg","alt":"Conceptos clave de Python uv: pyproject.toml, lockfile y entornos virtuales","className":"w-full h-auto"}]}],["$","div",null,{"className":"mt-6 border-b","style":{"borderColor":"var(--color-border)"}}]]}],["$","div",null,{"className":"prose","dangerouslySetInnerHTML":{"__html":"$3"}}],"$L4"]}],"$L5"]}]}]],["$L6"],"$L7"]}],"loading":null,"isPartial":false}
+4:["$","footer",null,{"className":"mt-14 border-t pt-8","style":{"borderColor":"var(--color-border)"},"children":[["$","div",null,{"className":"mb-8 flex flex-wrap gap-2","children":[["$","$L2","python",{"href":"/es/tags/python","localeCookie":{"name":"NEXT_LOCALE","sameSite":"lax"},"className":"inline-flex items-center rounded-full px-3 py-1 text-sm font-medium transition-colors","style":{"background":"var(--color-code-bg)","color":"var(--color-accent)","border":"1px solid var(--color-border)"},"children":["#","python"]}],["$","$L2","uv",{"href":"/es/tags/uv","localeCookie":{"name":"NEXT_LOCALE","sameSite":"lax"},"className":"inline-flex items-center rounded-full px-3 py-1 text-sm font-medium transition-colors","style":{"background":"var(--color-code-bg)","color":"var(--color-accent)","border":"1px solid var(--color-border)"},"children":["#","uv"]}],["$","$L2","pyproject",{"href":"/es/tags/pyproject","localeCookie":{"name":"NEXT_LOCALE","sameSite":"lax"},"className":"inline-flex items-center rounded-full px-3 py-1 text-sm font-medium transition-colors","style":{"background":"var(--color-code-bg)","color":"var(--color-accent)","border":"1px solid var(--color-border)"},"children":["#","pyproject"]}],["$","$L2","lockfile",{"href":"/es/tags/lockfile","localeCookie":{"name":"NEXT_LOCALE","sameSite":"lax"},"className":"inline-flex items-center rounded-full px-3 py-1 text-sm font-medium transition-colors","style":{"background":"var(--color-code-bg)","color":"var(--color-accent)","border":"1px solid var(--color-border)"},"children":["#","lockfile"]}],["$","$L2","venv",{"href":"/es/tags/venv","localeCookie":{"name":"NEXT_LOCALE","sameSite":"lax"},"className":"inline-flex items-center rounded-full px-3 py-1 text-sm font-medium transition-colors","style":{"background":"var(--color-code-bg)","color":"var(--color-accent)","border":"1px solid var(--color-border)"},"children":["#","venv"]}]]}],["$","nav",null,{"aria-label":"Navegación de artículos","className":"grid grid-cols-1 gap-4 sm:grid-cols-2","children":[["$","$L2",null,{"href":"/es/blog/python/uv/01-quick-start","localeCookie":{"name":"NEXT_LOCALE","sameSite":"lax"},"className":"group rounded-lg border p-4 transition-colors hover:border-accent","style":{"borderColor":"var(--color-border)","background":"var(--color-surface)"},"children":[["$","p",null,{"className":"mb-1 text-xs","style":{"color":"var(--color-muted)"},"children":"← Artículo más reciente"}],["$","p",null,{"className":"line-clamp-1 text-sm font-medium transition-colors group-hover:text-accent","style":{"color":"var(--color-text)"},"children":"Python uv inicio rápido: crea tu primer proyecto"}]]}],["$","$L2",null,{"href":"/es/blog/python/uv/03-common-patterns","localeCookie":{"name":"NEXT_LOCALE","sameSite":"lax"},"className":"group rounded-lg border p-4 text-right transition-colors hover:border-accent","style":{"borderColor":"var(--color-border)","background":"var(--color-surface)"},"children":[["$","p",null,{"className":"mb-1 text-xs","style":{"color":"var(--color-muted)"},"children":"Artículo más antiguo →"}],["$","p",null,{"className":"line-clamp-1 text-sm font-medium transition-colors group-hover:text-accent","style":{"color":"var(--color-text)"},"children":"Patrones comunes en Python uv: dependencias, uvx y ejecución de scripts"}]]}]]}]]}]
+9:T1043,<p>Antes de lanzar comandos al azar, domina estos cuatro conceptos: dependencias, lockfile y venv.</p>
+<h2 id="concepto-1-pyprojecttoml-es-la-identidad-del-proyecto">Concepto 1: <code>pyproject.toml</code> es la identidad del proyecto</h2>
+<p>Aquí vive metadata y dependencias.</p>
+<figure data-rehype-pretty-code-figure=""><pre style="background-color:#24292e;color:#e1e4e8" tabindex="0" data-language="toml" data-theme="github-dark"><code data-language="toml" data-theme="github-dark" style="display: grid;"><span data-line=""><span style="color:#E1E4E8">[</span><span style="color:#B392F0">project</span><span style="color:#E1E4E8">]</span></span>
+<span data-line=""><span style="color:#E1E4E8">name = </span><span style="color:#9ECBFF">"my-app"</span></span>
+<span data-line=""><span style="color:#E1E4E8">version = </span><span style="color:#9ECBFF">"0.1.0"</span></span>
+<span data-line=""><span style="color:#E1E4E8">requires-python = </span><span style="color:#9ECBFF">">=3.12"</span></span>
+<span data-line=""><span style="color:#E1E4E8">dependencies = [</span></span>
+<span data-line=""><span style="color:#9ECBFF">    "requests>=2.31"</span><span style="color:#E1E4E8">,</span></span>
+<span data-line=""><span style="color:#E1E4E8">]</span></span></code></pre></figure>
+<ul>
+<li>Edición manual: modificar archivo directo</li>
+<li>Flujo recomendado: <code>uv add</code> / <code>uv remove</code></li>
+</ul>
+<h2 id="concepto-2-uvlock-es-la-foto-exacta-de-dependencias">Concepto 2: <code>uv.lock</code> es la foto exacta de dependencias</h2>
+<p><code>pyproject.toml</code> define intención; <code>uv.lock</code> fija lo realmente instalado.</p>
+<ul>
+<li>Se debe commitear</li>
+<li>Garantiza reproducibilidad entre dev, CI y producción</li>
+</ul>
+<figure data-rehype-pretty-code-figure=""><pre style="background-color:#24292e;color:#e1e4e8" tabindex="0" data-language="bash" data-theme="github-dark"><code data-language="bash" data-theme="github-dark" style="display: grid;"><span data-line=""><span style="color:#B392F0">uv</span><span style="color:#9ECBFF"> lock</span><span style="color:#79B8FF"> --upgrade-package</span><span style="color:#9ECBFF"> requests</span></span></code></pre></figure>
+<h2 id="concepto-3-venv-es-sandbox-local">Concepto 3: <code>.venv</code> es sandbox local</h2>
+<p>uv crea <code>.venv</code> en raíz del proyecto.</p>
+<ul>
+<li><code>uv run</code> lo usa automáticamente</li>
+<li><code>.venv</code> no se commitea</li>
+</ul>
+<figure data-rehype-pretty-code-figure=""><pre style="background-color:#24292e;color:#e1e4e8" tabindex="0" data-language="bash" data-theme="github-dark"><code data-language="bash" data-theme="github-dark" style="display: grid;"><span data-line=""><span style="color:#B392F0">uv</span><span style="color:#9ECBFF"> sync</span></span>
+<span data-line=""><span style="color:#79B8FF">source</span><span style="color:#9ECBFF"> .venv/bin/activate</span></span></code></pre></figure>
+<h2 id="concepto-4-uv-run-es-el-punto-de-entrada-estándar">Concepto 4: <code>uv run</code> es el punto de entrada estándar</h2>
+<p><code>uv run</code> valida lockfile, sincroniza entorno y ejecuta en contexto correcto.</p>
+<figure data-rehype-pretty-code-figure=""><pre style="background-color:#24292e;color:#e1e4e8" tabindex="0" data-language="bash" data-theme="github-dark"><code data-language="bash" data-theme="github-dark" style="display: grid;"><span data-line=""><span style="color:#B392F0">uv</span><span style="color:#9ECBFF"> run</span><span style="color:#9ECBFF"> python</span><span style="color:#9ECBFF"> main.py</span></span>
+<span data-line=""><span style="color:#B392F0">uv</span><span style="color:#9ECBFF"> run</span><span style="color:#9ECBFF"> pytest</span></span>
+<span data-line=""><span style="color:#B392F0">uv</span><span style="color:#9ECBFF"> run</span><span style="color:#9ECBFF"> flask</span><span style="color:#9ECBFF"> run</span><span style="color:#79B8FF"> -p</span><span style="color:#79B8FF"> 3000</span></span></code></pre></figure>
+<h2 id="siguiente-paso">Siguiente paso</h2>
+<p>Con base lista, pasa a patrones de uso diario:
+👉 <a href="03-common-patterns">Common Patterns</a></p>5:["$","aside",null,{"className":"hidden lg:block","children":["$","$L8",null,{"html":"$9"}]}]
+6:["$","script","script-0",{"src":"/_next/static/chunks/2dddb3bc05093f69.js","async":true}]
+7:["$","$La",null,{"children":["$","$b",null,{"name":"Next.MetadataOutlet","children":"$@c"}]}]
+c:null

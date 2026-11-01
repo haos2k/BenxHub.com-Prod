@@ -1,0 +1,115 @@
+1:"$Sreact.fragment"
+2:I[26795,["/_next/static/chunks/5a5b5b13c22d14f7.js","/_next/static/chunks/a484d1d3dd4b55ab.js"],"default"]
+3:I[73489,["/_next/static/chunks/5a5b5b13c22d14f7.js","/_next/static/chunks/a484d1d3dd4b55ab.js"],"default"]
+6:I[50183,["/_next/static/chunks/5a5b5b13c22d14f7.js","/_next/static/chunks/a484d1d3dd4b55ab.js"],"OutletBoundary"]
+7:"$Sreact.suspense"
+9:I[50183,["/_next/static/chunks/5a5b5b13c22d14f7.js","/_next/static/chunks/a484d1d3dd4b55ab.js"],"ViewportBoundary"]
+b:I[50183,["/_next/static/chunks/5a5b5b13c22d14f7.js","/_next/static/chunks/a484d1d3dd4b55ab.js"],"MetadataBoundary"]
+d:I[63847,[],"default"]
+:HL["/_next/static/chunks/446a7883c02a95fe.css","style"]
+:HL["/_next/static/media/797e433ab948586e-s.p.29207c2f.woff2","font",{"crossOrigin":"","type":"font/woff2"}]
+:HL["/_next/static/media/caa3a2e1cccd8315-s.p.3b6cae6d.woff2","font",{"crossOrigin":"","type":"font/woff2"}]
+0:{"P":null,"b":"Yck3R4ooQxWkwGLT6is1X","c":["","ko","blog","cursor","cli","05-tips"],"q":"","i":false,"f":[[["",{"children":[["locale","ko","d"],{"children":["blog",{"children":[["slug","cursor/cli/05-tips","c"],{"children":["__PAGE__",{}]}]}]}]},"$undefined","$undefined",true],[["$","$1","c",{"children":[null,["$","html",null,{"children":["$","body",null,{"children":["$","$L2",null,{"parallelRouterKey":"children","error":"$undefined","errorStyles":"$undefined","errorScripts":"$undefined","template":["$","$L3",null,{}],"templateStyles":"$undefined","templateScripts":"$undefined","notFound":[[["$","title",null,{"children":"404: This page could not be found."}],["$","div",null,{"style":{"fontFamily":"system-ui,\"Segoe UI\",Roboto,Helvetica,Arial,sans-serif,\"Apple Color Emoji\",\"Segoe UI Emoji\"","height":"100vh","textAlign":"center","display":"flex","flexDirection":"column","alignItems":"center","justifyContent":"center"},"children":["$","div",null,{"children":[["$","style",null,{"dangerouslySetInnerHTML":{"__html":"body{color:#000;background:#fff;margin:0}.next-error-h1{border-right:1px solid rgba(0,0,0,.3)}@media (prefers-color-scheme:dark){body{color:#fff;background:#000}.next-error-h1{border-right:1px solid rgba(255,255,255,.3)}}"}}],["$","h1",null,{"className":"next-error-h1","style":{"display":"inline-block","margin":"0 20px 0 0","padding":"0 23px 0 0","fontSize":24,"fontWeight":500,"verticalAlign":"top","lineHeight":"49px"},"children":404}],["$","div",null,{"style":{"display":"inline-block"},"children":["$","h2",null,{"style":{"fontSize":14,"fontWeight":400,"lineHeight":"49px","margin":0},"children":"This page could not be found."}]}]]}]}]],[]],"forbidden":"$undefined","unauthorized":"$undefined"}]}]}]]}],{"children":[["$","$1","c",{"children":[[["$","link","0",{"rel":"stylesheet","href":"/_next/static/chunks/446a7883c02a95fe.css","precedence":"next","crossOrigin":"$undefined","nonce":"$undefined"}],["$","script","script-0",{"src":"/_next/static/chunks/7923a261b80bb6e1.js","async":true,"nonce":"$undefined"}],["$","script","script-1",{"src":"/_next/static/chunks/e09b4358027e8033.js","async":true,"nonce":"$undefined"}]],"$L4"]}],{"children":[["$","$1","c",{"children":[null,["$","$L2",null,{"parallelRouterKey":"children","error":"$undefined","errorStyles":"$undefined","errorScripts":"$undefined","template":["$","$L3",null,{}],"templateStyles":"$undefined","templateScripts":"$undefined","notFound":"$undefined","forbidden":"$undefined","unauthorized":"$undefined"}]]}],{"children":[["$","$1","c",{"children":[null,["$","$L2",null,{"parallelRouterKey":"children","error":"$undefined","errorStyles":"$undefined","errorScripts":"$undefined","template":["$","$L3",null,{}],"templateStyles":"$undefined","templateScripts":"$undefined","notFound":"$undefined","forbidden":"$undefined","unauthorized":"$undefined"}]]}],{"children":[["$","$1","c",{"children":["$L5",[["$","script","script-0",{"src":"/_next/static/chunks/2dddb3bc05093f69.js","async":true,"nonce":"$undefined"}]],["$","$L6",null,{"children":["$","$7",null,{"name":"Next.MetadataOutlet","children":"$@8"}]}]]}],{},null,false,false]},null,false,false]},null,false,false]},null,false,false]},null,false,false],["$","$1","h",{"children":[null,["$","$L9",null,{"children":"$La"}],["$","div",null,{"hidden":true,"children":["$","$Lb",null,{"children":["$","$7",null,{"name":"Next.Metadata","children":"$Lc"}]}]}],["$","meta",null,{"name":"next-size-adjust","content":""}]]}],false]],"m":"$undefined","G":["$d",[]],"S":true}
+4:["$","div",null,{"lang":"ko","dir":"ltr","className":"geist_a71539c9-module__T19VSG__variable geist_mono_8d43a2aa-module__8Li5zG__variable flex min-h-screen flex-col antialiased","children":[["$","script",null,{"type":"application/ld+json","dangerouslySetInnerHTML":{"__html":"[{\"@context\":\"https://schema.org\",\"@type\":\"WebSite\",\"name\":\"BenXHub Blog\",\"url\":\"https://benxhub.com/ko\",\"inLanguage\":\"ko\",\"publisher\":{\"@type\":\"Organization\",\"name\":\"BenXHub Blog\",\"url\":\"https://benxhub.com\"},\"potentialAction\":{\"@type\":\"SearchAction\",\"target\":{\"@type\":\"EntryPoint\",\"urlTemplate\":\"https://benxhub.com/ko/search?q={search_term_string}\"},\"query-input\":\"required name=search_term_string\"}},{\"@context\":\"https://schema.org\",\"@type\":\"Person\",\"name\":\"BenX\",\"url\":\"https://benxhub.com\",\"sameAs\":[\"https://github.com/benzhub\"]}]"}}],"$Le"]}]
+f:I[33343,["/_next/static/chunks/7923a261b80bb6e1.js","/_next/static/chunks/e09b4358027e8033.js"],"default"]
+10:I[26817,["/_next/static/chunks/7923a261b80bb6e1.js","/_next/static/chunks/e09b4358027e8033.js"],"default"]
+11:I[6197,["/_next/static/chunks/7923a261b80bb6e1.js","/_next/static/chunks/e09b4358027e8033.js"],"default"]
+13:I[40018,["/_next/static/chunks/7923a261b80bb6e1.js","/_next/static/chunks/e09b4358027e8033.js"],"default"]
+e:["$","$Lf",null,{"formats":"$undefined","locale":"ko","messages":{"common":{"siteName":"BenXHub Blog","siteDescription":"BenX의 기술 블로그 — Web 개발, 아키텍처, 엔지니어링 실천을 공유합니다."},"nav":{"home":"홈","tags":"태그","about":"소개","searchLabel":"글 검색"},"hero":{"subtitle":"Web 개발, 아키텍처, 엔지니어링 실천에 관한 기술 노트","cta":"글 보기"},"posts":{"title":"글 목록","count":"총 {total}개의 글","empty":"아직 글이 없습니다. 기대해 주세요!","newerPost":"← 최신 글","olderPost":"이전 글 →","navLabel":"글 탐색"},"pagination":{"prev":"이전","next":"다음","page":"{current} / {total} 페이지","label":"글 목록 페이지네이션","pageTitle":"페이지 {num}","pageDescription":"BenX의 기술 블로그 — 글 목록."},"search":{"title":"글 검색","description":"제목, 설명, 태그로 BenXHub Blog의 모든 글을 실시간 검색합니다.","subtitle":"제목, 설명 또는 태그로 검색","placeholder":"제목, 설명 또는 태그로 검색…","found":"{count}개의 관련 글을 찾았습니다","notFound":"\"{query}\"에 관한 글을 찾을 수 없습니다","emptyTitle":"결과를 찾을 수 없습니다","emptyHint":"다른 키워드를 시도하거나","allPosts":"모든 글 보기","totalCount":"총 {count}개의 글 — 키워드를 입력하여 검색"},"tags":{"title":"모든 태그","description":"태그별로 글을 탐색합니다.","count":"총 {count}개의 태그","empty":"아직 태그가 없습니다. 기대해 주세요!","allTags":"모든 태그","postCount":"글 {count}개","otherTags":"다른 태그","tagTitle":"#{tag} 글","tagDescription":"\"{tag}\" 태그의 모든 글 목록."},"about":{"title":"소개","description":"BenXHub Blog와 이 사이트에 대해.","subtitle":"BenXHub Blog와 이 사이트에 대해","siteTitle":"이 사이트에 대해","siteContent":"BenXHub Blog는 BenX의 기술 블로그로, Web 개발, 아키텍처, 엔지니어링 실천을 공유합니다.","authorTitle":"자기소개","authorContent":"코딩과 지식 공유를 좋아합니다. 겪은 문제와 해결책을 기록하는 것을 즐깁니다. 사이드바 또는 푸터 링크로 편하게 연락하세요.","linksTitle":"링크"},"sidebar":{"label":"사이드바","authorBio":"코딩과 공유를 좋아하며, Web 개발, 아키텍처, DevOps에 집중합니다.","searchPlaceholder":"글 검색…","seriesTitle":"시리즈","articleCount":"{count}개"},"toc":{"title":"목차","label":"목차"},"notFound":{"message":"이 페이지는 존재하지 않습니다. 링크가 유효하지 않거나 URL이 잘못되었을 수 있습니다.","backHome":"홈으로 돌아가기"},"localeSwitcher":{"label":"언어 변경"}},"now":"$undefined","timeZone":"UTC","children":[["$","$L10",null,{}],["$","$L11",null,{}],["$","main",null,{"className":"flex-1 pt-16","children":["$","$L2",null,{"parallelRouterKey":"children","error":"$undefined","errorStyles":"$undefined","errorScripts":"$undefined","template":["$","$L3",null,{}],"templateStyles":"$undefined","templateScripts":"$undefined","notFound":["$L12",[]],"forbidden":"$undefined","unauthorized":"$undefined"}]}],["$","$L13",null,{}]]}]
+12:["$","div",null,{"className":"mx-auto max-w-2xl px-4 py-20 text-center sm:px-6","children":[["$","h1",null,{"className":"mb-3 text-4xl font-bold tracking-tight","style":{"color":"var(--color-text)"},"children":"404"}],["$","p",null,{"className":"mb-8 text-lg","style":{"color":"var(--color-muted)"},"children":"이 페이지는 존재하지 않습니다. 링크가 유효하지 않거나 URL이 잘못되었을 수 있습니다."}],"$L14"]}]
+a:[["$","meta","0",{"charSet":"utf-8"}],["$","meta","1",{"name":"viewport","content":"width=device-width, initial-scale=1"}]]
+15:I[14864,["/_next/static/chunks/7923a261b80bb6e1.js","/_next/static/chunks/e09b4358027e8033.js","/_next/static/chunks/2dddb3bc05093f69.js"],"default"]
+14:["$","$L15",null,{"ref":"$undefined","href":"/ko","locale":"$undefined","localeCookie":{"name":"NEXT_LOCALE","sameSite":"lax"},"className":"inline-flex items-center rounded-lg border px-4 py-2.5 text-sm font-medium transition-colors hover:border-accent","style":{"borderColor":"var(--color-border)","color":"var(--color-accent)","background":"var(--color-surface)"},"children":"홈으로 돌아가기"}]
+1a:Te0c,<p>실용적인 팁과 자주 나오는 질문에 대한 답 — "어디까지 했지?" "왜 안 써지지?"를 한 번에 해결.</p>
+<h2 id="팁">팁</h2>
+<h3 id="1-이전-대화-다시-이어하기">1. 이전 대화 다시 이어하기</h3>
+<p>중간에 닫아버렸는데 이어서 하고 싶다면. 처음부터 다시 할 필요 없습니다:</p>
+<figure data-rehype-pretty-code-figure=""><pre style="background-color:#24292e;color:#e1e4e8" tabindex="0" data-language="bash" data-theme="github-dark"><code data-language="bash" data-theme="github-dark" style="display: grid;"><span data-line=""><span style="color:#B392F0">cursor</span><span style="color:#9ECBFF"> agent</span><span style="color:#79B8FF"> --resume</span></span></code></pre></figure>
+<p>가장 최근 대화가 컨텍스트와 함께 로드됩니다 — 일시 정지한 동영상의 "다시 보기"를 누르는 것과 같습니다.</p>
+<h3 id="2-명령-실행-전에-확인받기">2. 명령 실행 전에 확인받기</h3>
+<p>Agent가 <code>npm install</code>이나 <code>git</code> 같은 명령을 실행하려 할 수 있습니다.</p>
+<ul>
+<li><strong>대화형 모드</strong>: 그 전에 물어봅니다</li>
+<li>조심하고 싶다면 대화에서 "어떤 명령이든 실행하기 전에 나한테 물어봐"라고 하면 됩니다</li>
+</ul>
+<p>"그거 언제 실행했지?" 하는 순간을 줄일 수 있습니다.</p>
+<h3 id="3-cli와-ide-함께-쓰기">3. CLI와 IDE 함께 쓰기</h3>
+<p>CLI와 Cursor 창은 <strong>동시에 사용할 수 있습니다</strong> — 둘 중 하나만이 아닙니다:</p>
+<ul>
+<li>창은 메인 개발·파일 트리 탐색·Tab 자동완성에</li>
+<li>CLI는 작은 작업·검색·자동화에</li>
+</ul>
+<p>메인 전투는 창, 소규모 작업은 CLI — 역할 분담입니다.</p>
+<h2 id="faq">FAQ</h2>
+<p><strong>Q: <code>cursor: command not found</code>가 나와요.</strong>
+A: 설치 후 터미널을 다시 켜거나, <code>source ~/.zshrc</code>(또는 <code>~/.bashrc</code>)를 실행하세요. 설치 경로가 <code>PATH</code>에 들어 있는지 확인하세요. "설치했는데 못 찾는다"는 거의 항상 PATH 문제입니다.</p>
+<p><strong>Q: CLI는 유료인가요?</strong>
+A: 네. CLI를 쓰려면 Cursor 구독이 필요하고, IDE와 같은 구독입니다.</p>
+<p><strong>Q: 서버나 Docker에서 쓸 수 있나요?</strong>
+A: 네. 조건은 설치 스크립트를 실행할 수 있고, Cursor에 로그인(또는 토큰 설정)할 수 있어야 합니다. 네트워크와 인증에 유의 — 제한된 네트워크에서는 Cursor 클라우드에 도달하지 못할 수 있습니다.</p>
+<p><strong>Q: Cursor 창의 Agent와 같은 건가요?</strong>
+A: 내부 능력은 같습니다. 차이는 CLI는 터미널 인터페이스이고, 비대화형 모드와 스크립트·CI 연동을 지원한다는 점입니다. 같은 AI, 다른 인터페이스입니다.</p>
+<h2 id="요약">요약</h2>
+<ul>
+<li><strong>대화 재개</strong>: <code>cursor agent --resume</code></li>
+<li><strong>명령 확인</strong>: "어떤 명령이든 실행 전에 확인해 달라"고 요청 가능</li>
+<li><strong>CLI와 IDE</strong>: 동시 사용 가능, 둘 중 하나만이 아님</li>
+<li><strong>막혔을 때</strong>: <code>cursor --help</code>와 공식 문서 확인 — 대부분 알려진 해결책이 있음</li>
+</ul>
+<blockquote>
+<p>다음: <a href="06-cursor-cli-with-worktree">06-cursor-cli-with-worktree</a> — Worktree와 CLI로 병렬 개발. 또는 <a href="00-overview">00-overview</a>에서 코스 맵 확인.</p>
+</blockquote>5:[["$","script",null,{"type":"application/ld+json","dangerouslySetInnerHTML":{"__html":"{\"@context\":\"https://schema.org\",\"@type\":\"Article\",\"headline\":\"Cursor CLI 팁과 FAQ\",\"description\":\"--resume으로 대화 재개, 명령 실행 전 확인, CLI와 IDE 함께 쓰기, command not found·요금·서버 사용 FAQ.\",\"url\":\"https://benxhub.com/ko/blog/cursor/cli/05-tips\",\"mainEntityOfPage\":{\"@type\":\"WebPage\",\"@id\":\"https://benxhub.com/ko/blog/cursor/cli/05-tips\"},\"datePublished\":\"2026-02-24T00:00:00.000Z\",\"dateModified\":\"2026-02-24T00:00:00.000Z\",\"keywords\":\"cursor, cli, tips, faq\",\"inLanguage\":\"ko\",\"author\":{\"@type\":\"Person\",\"name\":\"BenX\",\"url\":\"https://benxhub.com\"},\"publisher\":{\"@type\":\"Organization\",\"name\":\"BenXHub Blog\",\"url\":\"https://benxhub.com\"}}"}}],["$","div",null,{"className":"mx-auto max-w-6xl px-4 py-12 sm:px-6","children":["$","div",null,{"className":"lg:grid lg:grid-cols-[1fr_240px] lg:gap-14","children":[["$","article",null,{"children":[["$","header",null,{"className":"mb-10","children":[["$","div",null,{"className":"mb-4 flex flex-wrap gap-2","children":["$L16","$L17","$L18","$L19"]}],["$","h1",null,{"className":"mb-4 text-3xl leading-snug font-bold tracking-tight sm:text-4xl","style":{"color":"var(--color-text)"},"children":"Cursor CLI 팁과 FAQ"}],["$","div",null,{"className":"flex flex-wrap items-center gap-3 text-sm","style":{"color":"var(--color-muted)"},"children":[["$","time",null,{"dateTime":"2026-02-24","children":"2026년 2월 24일"}],["$","span",null,{"aria-hidden":"true","children":"·"}],["$","span",null,{"children":"4 min read"}]]}],"$undefined",["$","div",null,{"className":"mt-6 border-b","style":{"borderColor":"var(--color-border)"}}]]}],["$","div",null,{"className":"prose","dangerouslySetInnerHTML":{"__html":"$1a"}}],"$L1b"]}],"$L1c"]}]}]]
+23:I[24801,["/_next/static/chunks/7923a261b80bb6e1.js","/_next/static/chunks/e09b4358027e8033.js","/_next/static/chunks/2dddb3bc05093f69.js"],"default"]
+1b:["$","footer",null,{"className":"mt-14 border-t pt-8","style":{"borderColor":"var(--color-border)"},"children":[["$","div",null,{"className":"mb-8 flex flex-wrap gap-2","children":["$L1d","$L1e","$L1f","$L20"]}],["$","nav",null,{"aria-label":"글 탐색","className":"grid grid-cols-1 gap-4 sm:grid-cols-2","children":["$L21","$L22"]}]]}]
+24:Te0c,<p>실용적인 팁과 자주 나오는 질문에 대한 답 — "어디까지 했지?" "왜 안 써지지?"를 한 번에 해결.</p>
+<h2 id="팁">팁</h2>
+<h3 id="1-이전-대화-다시-이어하기">1. 이전 대화 다시 이어하기</h3>
+<p>중간에 닫아버렸는데 이어서 하고 싶다면. 처음부터 다시 할 필요 없습니다:</p>
+<figure data-rehype-pretty-code-figure=""><pre style="background-color:#24292e;color:#e1e4e8" tabindex="0" data-language="bash" data-theme="github-dark"><code data-language="bash" data-theme="github-dark" style="display: grid;"><span data-line=""><span style="color:#B392F0">cursor</span><span style="color:#9ECBFF"> agent</span><span style="color:#79B8FF"> --resume</span></span></code></pre></figure>
+<p>가장 최근 대화가 컨텍스트와 함께 로드됩니다 — 일시 정지한 동영상의 "다시 보기"를 누르는 것과 같습니다.</p>
+<h3 id="2-명령-실행-전에-확인받기">2. 명령 실행 전에 확인받기</h3>
+<p>Agent가 <code>npm install</code>이나 <code>git</code> 같은 명령을 실행하려 할 수 있습니다.</p>
+<ul>
+<li><strong>대화형 모드</strong>: 그 전에 물어봅니다</li>
+<li>조심하고 싶다면 대화에서 "어떤 명령이든 실행하기 전에 나한테 물어봐"라고 하면 됩니다</li>
+</ul>
+<p>"그거 언제 실행했지?" 하는 순간을 줄일 수 있습니다.</p>
+<h3 id="3-cli와-ide-함께-쓰기">3. CLI와 IDE 함께 쓰기</h3>
+<p>CLI와 Cursor 창은 <strong>동시에 사용할 수 있습니다</strong> — 둘 중 하나만이 아닙니다:</p>
+<ul>
+<li>창은 메인 개발·파일 트리 탐색·Tab 자동완성에</li>
+<li>CLI는 작은 작업·검색·자동화에</li>
+</ul>
+<p>메인 전투는 창, 소규모 작업은 CLI — 역할 분담입니다.</p>
+<h2 id="faq">FAQ</h2>
+<p><strong>Q: <code>cursor: command not found</code>가 나와요.</strong>
+A: 설치 후 터미널을 다시 켜거나, <code>source ~/.zshrc</code>(또는 <code>~/.bashrc</code>)를 실행하세요. 설치 경로가 <code>PATH</code>에 들어 있는지 확인하세요. "설치했는데 못 찾는다"는 거의 항상 PATH 문제입니다.</p>
+<p><strong>Q: CLI는 유료인가요?</strong>
+A: 네. CLI를 쓰려면 Cursor 구독이 필요하고, IDE와 같은 구독입니다.</p>
+<p><strong>Q: 서버나 Docker에서 쓸 수 있나요?</strong>
+A: 네. 조건은 설치 스크립트를 실행할 수 있고, Cursor에 로그인(또는 토큰 설정)할 수 있어야 합니다. 네트워크와 인증에 유의 — 제한된 네트워크에서는 Cursor 클라우드에 도달하지 못할 수 있습니다.</p>
+<p><strong>Q: Cursor 창의 Agent와 같은 건가요?</strong>
+A: 내부 능력은 같습니다. 차이는 CLI는 터미널 인터페이스이고, 비대화형 모드와 스크립트·CI 연동을 지원한다는 점입니다. 같은 AI, 다른 인터페이스입니다.</p>
+<h2 id="요약">요약</h2>
+<ul>
+<li><strong>대화 재개</strong>: <code>cursor agent --resume</code></li>
+<li><strong>명령 확인</strong>: "어떤 명령이든 실행 전에 확인해 달라"고 요청 가능</li>
+<li><strong>CLI와 IDE</strong>: 동시 사용 가능, 둘 중 하나만이 아님</li>
+<li><strong>막혔을 때</strong>: <code>cursor --help</code>와 공식 문서 확인 — 대부분 알려진 해결책이 있음</li>
+</ul>
+<blockquote>
+<p>다음: <a href="06-cursor-cli-with-worktree">06-cursor-cli-with-worktree</a> — Worktree와 CLI로 병렬 개발. 또는 <a href="00-overview">00-overview</a>에서 코스 맵 확인.</p>
+</blockquote>1c:["$","aside",null,{"className":"hidden lg:block","children":["$","$L23",null,{"html":"$24"}]}]
+16:["$","$L15","cursor",{"ref":"$undefined","href":"/ko/tags/cursor","locale":"$undefined","localeCookie":"$14:props:localeCookie","className":"inline-flex items-center rounded-full px-2.5 py-0.5 text-xs font-medium transition-colors","style":{"background":"var(--color-code-bg)","color":"var(--color-accent)","border":"1px solid var(--color-border)"},"children":["#","cursor"]}]
+17:["$","$L15","cli",{"ref":"$undefined","href":"/ko/tags/cli","locale":"$undefined","localeCookie":"$14:props:localeCookie","className":"inline-flex items-center rounded-full px-2.5 py-0.5 text-xs font-medium transition-colors","style":{"background":"var(--color-code-bg)","color":"var(--color-accent)","border":"1px solid var(--color-border)"},"children":["#","cli"]}]
+18:["$","$L15","tips",{"ref":"$undefined","href":"/ko/tags/tips","locale":"$undefined","localeCookie":"$14:props:localeCookie","className":"inline-flex items-center rounded-full px-2.5 py-0.5 text-xs font-medium transition-colors","style":{"background":"var(--color-code-bg)","color":"var(--color-accent)","border":"1px solid var(--color-border)"},"children":["#","tips"]}]
+19:["$","$L15","faq",{"ref":"$undefined","href":"/ko/tags/faq","locale":"$undefined","localeCookie":"$14:props:localeCookie","className":"inline-flex items-center rounded-full px-2.5 py-0.5 text-xs font-medium transition-colors","style":{"background":"var(--color-code-bg)","color":"var(--color-accent)","border":"1px solid var(--color-border)"},"children":["#","faq"]}]
+1d:["$","$L15","cursor",{"ref":"$undefined","href":"/ko/tags/cursor","locale":"$undefined","localeCookie":"$14:props:localeCookie","className":"inline-flex items-center rounded-full px-3 py-1 text-sm font-medium transition-colors","style":{"background":"var(--color-code-bg)","color":"var(--color-accent)","border":"1px solid var(--color-border)"},"children":["#","cursor"]}]
+1e:["$","$L15","cli",{"ref":"$undefined","href":"/ko/tags/cli","locale":"$undefined","localeCookie":"$14:props:localeCookie","className":"inline-flex items-center rounded-full px-3 py-1 text-sm font-medium transition-colors","style":{"background":"var(--color-code-bg)","color":"var(--color-accent)","border":"1px solid var(--color-border)"},"children":["#","cli"]}]
+1f:["$","$L15","tips",{"ref":"$undefined","href":"/ko/tags/tips","locale":"$undefined","localeCookie":"$14:props:localeCookie","className":"inline-flex items-center rounded-full px-3 py-1 text-sm font-medium transition-colors","style":{"background":"var(--color-code-bg)","color":"var(--color-accent)","border":"1px solid var(--color-border)"},"children":["#","tips"]}]
+20:["$","$L15","faq",{"ref":"$undefined","href":"/ko/tags/faq","locale":"$undefined","localeCookie":"$14:props:localeCookie","className":"inline-flex items-center rounded-full px-3 py-1 text-sm font-medium transition-colors","style":{"background":"var(--color-code-bg)","color":"var(--color-accent)","border":"1px solid var(--color-border)"},"children":["#","faq"]}]
+21:["$","$L15",null,{"ref":"$undefined","href":"/ko/blog/cursor/cli/04-non-interactive","locale":"$undefined","localeCookie":"$14:props:localeCookie","className":"group rounded-lg border p-4 transition-colors hover:border-accent","style":{"borderColor":"var(--color-border)","background":"var(--color-surface)"},"children":[["$","p",null,{"className":"mb-1 text-xs","style":{"color":"var(--color-muted)"},"children":"← 최신 글"}],["$","p",null,{"className":"line-clamp-1 text-sm font-medium transition-colors group-hover:text-accent","style":{"color":"var(--color-text)"},"children":"Cursor CLI 비대화형 모드(스크립트·CI)"}]]}]
+22:["$","$L15",null,{"ref":"$undefined","href":"/ko/blog/cursor/cli/06-cursor-cli-with-worktree","locale":"$undefined","localeCookie":"$14:props:localeCookie","className":"group rounded-lg border p-4 text-right transition-colors hover:border-accent","style":{"borderColor":"var(--color-border)","background":"var(--color-surface)"},"children":[["$","p",null,{"className":"mb-1 text-xs","style":{"color":"var(--color-muted)"},"children":"이전 글 →"}],["$","p",null,{"className":"line-clamp-1 text-sm font-medium transition-colors group-hover:text-accent","style":{"color":"var(--color-text)"},"children":"Cursor CLI와 Git Worktree"}]]}]
+25:I[92204,["/_next/static/chunks/5a5b5b13c22d14f7.js","/_next/static/chunks/a484d1d3dd4b55ab.js"],"IconMark"]
+8:null
+c:[["$","title","0",{"children":"Cursor CLI 팁과 FAQ | BenXHub Blog"}],["$","meta","1",{"name":"description","content":"--resume으로 대화 재개, 명령 실행 전 확인, CLI와 IDE 함께 쓰기, command not found·요금·서버 사용 FAQ."}],["$","meta","2",{"property":"og:title","content":"Cursor CLI 팁과 FAQ"}],["$","meta","3",{"property":"og:description","content":"--resume으로 대화 재개, 명령 실행 전 확인, CLI와 IDE 함께 쓰기, command not found·요금·서버 사용 FAQ."}],["$","meta","4",{"property":"og:url","content":"https://benxhub.com/ko/blog/cursor/cli/05-tips"}],["$","meta","5",{"property":"og:type","content":"article"}],["$","meta","6",{"property":"article:published_time","content":"2026-02-24T00:00:00.000Z"}],["$","meta","7",{"property":"article:tag","content":"cursor"}],["$","meta","8",{"property":"article:tag","content":"cli"}],["$","meta","9",{"property":"article:tag","content":"tips"}],["$","meta","10",{"property":"article:tag","content":"faq"}],["$","meta","11",{"name":"twitter:card","content":"summary_large_image"}],["$","meta","12",{"name":"twitter:title","content":"Cursor CLI 팁과 FAQ"}],["$","meta","13",{"name":"twitter:description","content":"--resume으로 대화 재개, 명령 실행 전 확인, CLI와 IDE 함께 쓰기, command not found·요금·서버 사용 FAQ."}],["$","link","14",{"rel":"icon","href":"/favicon.ico?favicon.0b3bf435.ico","sizes":"256x256","type":"image/x-icon"}],["$","$L25","15",{}]]

@@ -1,0 +1,128 @@
+1:"$Sreact.fragment"
+2:I[14864,["/_next/static/chunks/7923a261b80bb6e1.js","/_next/static/chunks/e09b4358027e8033.js","/_next/static/chunks/2dddb3bc05093f69.js"],"default"]
+8:I[24801,["/_next/static/chunks/7923a261b80bb6e1.js","/_next/static/chunks/e09b4358027e8033.js","/_next/static/chunks/2dddb3bc05093f69.js"],"default"]
+a:I[50183,["/_next/static/chunks/5a5b5b13c22d14f7.js","/_next/static/chunks/a484d1d3dd4b55ab.js"],"OutletBoundary"]
+b:"$Sreact.suspense"
+:HL["/images/posts/uv-quick-start.jpg","image"]
+3:T1762,<p>يسلك هذا الدليل أقصر طريق للحصول على <strong>مشروع Python عامل</strong> — أول بيئة قابلة للاستخدام مع uv.</p>
+<h2 id="المتطلبات-الأساسية">المتطلبات الأساسية</h2>
+<ul>
+<li>uv مثبّت (انظر أمر التثبيت في <a href="00-overview">النظرة العامة</a>)</li>
+<li>المحطة الطرفية تستطيع تشغيل أمر <code>uv</code></li>
+</ul>
+<h2 id="مثال-بسيط-إنشاء-أول-مشروع">مثال بسيط: إنشاء أول مشروع</h2>
+<h3 id="الخطوة-1-التحقق-من-تثبيت-uv">الخطوة 1: التحقق من تثبيت uv</h3>
+<figure data-rehype-pretty-code-figure=""><pre style="background-color:#24292e;color:#e1e4e8" tabindex="0" data-language="bash" data-theme="github-dark"><code data-language="bash" data-theme="github-dark" style="display: grid;"><span data-line=""><span style="color:#B392F0">uv</span><span style="color:#79B8FF"> --version</span></span></code></pre></figure>
+<p>إذا ظهر رقم إصدار، أنت جاهز. إذا لم يظهر، شغّل سكريبت التثبيت مجدداً وأعد تشغيل محطتك.</p>
+<h3 id="الخطوة-2-تهيئة-المشروع">الخطوة 2: تهيئة المشروع</h3>
+<figure data-rehype-pretty-code-figure=""><pre style="background-color:#24292e;color:#e1e4e8" tabindex="0" data-language="bash" data-theme="github-dark"><code data-language="bash" data-theme="github-dark" style="display: grid;"><span data-line=""><span style="color:#B392F0">uv</span><span style="color:#9ECBFF"> init</span><span style="color:#9ECBFF"> my-app</span></span>
+<span data-line=""><span style="color:#79B8FF">cd</span><span style="color:#9ECBFF"> my-app</span></span></code></pre></figure>
+<p>ينشئ uv تلقائياً <code>pyproject.toml</code> و<code>.python-version</code> و<code>main.py</code> و<code>README.md</code>. الهيكل يبدو تقريباً كالتالي:</p>
+<pre><code>my-app/
+├── .gitignore
+├── .python-version
+├── README.md
+├── main.py
+└── pyproject.toml
+</code></pre>
+<h3 id="الخطوة-3-تشغيل-البرنامج-الافتراضي">الخطوة 3: تشغيل البرنامج الافتراضي</h3>
+<figure data-rehype-pretty-code-figure=""><pre style="background-color:#24292e;color:#e1e4e8" tabindex="0" data-language="bash" data-theme="github-dark"><code data-language="bash" data-theme="github-dark" style="display: grid;"><span data-line=""><span style="color:#B392F0">uv</span><span style="color:#9ECBFF"> run</span><span style="color:#9ECBFF"> main.py</span></span></code></pre></figure>
+<p>سترى <code>Hello from my-app!</code> — تهانينا، أول مشروع لك حي!</p>
+<h3 id="الخطوة-4-إضافة-تبعية-وتشغيلها">الخطوة 4: إضافة تبعية وتشغيلها</h3>
+<figure data-rehype-pretty-code-figure=""><pre style="background-color:#24292e;color:#e1e4e8" tabindex="0" data-language="bash" data-theme="github-dark"><code data-language="bash" data-theme="github-dark" style="display: grid;"><span data-line=""><span style="color:#B392F0">uv</span><span style="color:#9ECBFF"> add</span><span style="color:#9ECBFF"> requests</span></span></code></pre></figure>
+<p>ثم حدّث <code>main.py</code> لتجربتها:</p>
+<figure data-rehype-pretty-code-figure=""><pre style="background-color:#24292e;color:#e1e4e8" tabindex="0" data-language="python" data-theme="github-dark"><code data-language="python" data-theme="github-dark" style="display: grid;"><span data-line=""><span style="color:#F97583">import</span><span style="color:#E1E4E8"> requests</span></span>
+<span data-line=""><span style="color:#E1E4E8">r </span><span style="color:#F97583">=</span><span style="color:#E1E4E8"> requests.get(</span><span style="color:#9ECBFF">"https://httpbin.org/get"</span><span style="color:#E1E4E8">)</span></span>
+<span data-line=""><span style="color:#79B8FF">print</span><span style="color:#E1E4E8">(r.status_code)</span></span></code></pre></figure>
+<p>شغّله:</p>
+<figure data-rehype-pretty-code-figure=""><pre style="background-color:#24292e;color:#e1e4e8" tabindex="0" data-language="bash" data-theme="github-dark"><code data-language="bash" data-theme="github-dark" style="display: grid;"><span data-line=""><span style="color:#B392F0">uv</span><span style="color:#9ECBFF"> run</span><span style="color:#9ECBFF"> main.py</span></span></code></pre></figure>
+<p>إذا رأيت <code>200</code>، التبعية ثُبِّتت بشكل صحيح في البيئة الافتراضية — بدون <code>pip install</code> يدوي، بدون <code>source .venv/bin/activate</code>. ذلك الشعور بالسهولة هو فرحة uv.</p>
+<h2 id="استكشاف-الأخطاء-الشائعة">استكشاف الأخطاء الشائعة</h2>
+<table>
+<thead>
+<tr>
+<th>العَرَض</th>
+<th>ما يجب التحقق منه</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td><code>uv: command not found</code></td>
+<td>PATH غير مضبوط — أعد تشغيل المحطة أو شغّل <code>source ...</code> كما أرشد المثبّت</td>
+</tr>
+<tr>
+<td><code>Permission denied</code></td>
+<td>مشكلة أذونات مع مسار التثبيت — تأكد من أن <code>~/.local/bin</code> قابل للكتابة</td>
+</tr>
+<tr>
+<td>تثبيت التبعيات بطيء</td>
+<td>المرة الأولى ستنزّل؛ التشغيلات التالية تستخدم الذاكرة المؤقتة؛ تحقق من الوكيل إذا كانت الشبكة بطيئة</td>
+</tr>
+</tbody>
+</table>
+<h2 id="الخطوات-التالية">الخطوات التالية</h2>
+<p>بمجرد تشغيل المشروع، من الجيد فهم ما تفعله pyproject.toml وuv.lock. المقالة التالية تغطي هذه المفاهيم الجوهرية:<br>
+👉 <a href="02-core-concepts">المفاهيم الجوهرية</a></p>0:{"buildId":"Yck3R4ooQxWkwGLT6is1X","rsc":["$","$1","c",{"children":[[["$","script",null,{"type":"application/ld+json","dangerouslySetInnerHTML":{"__html":"{\"@context\":\"https://schema.org\",\"@type\":\"Article\",\"headline\":\"البداية السريعة مع Python uv: ابنِ أول مشروع\",\"description\":\"انطلاقاً من التحقق من التثبيت، مرّ عبر تهيئة المشروع وإضافة التبعيات وتشغيل أول برنامج.\",\"url\":\"https://benxhub.com/ar/blog/python/uv/01-quick-start\",\"mainEntityOfPage\":{\"@type\":\"WebPage\",\"@id\":\"https://benxhub.com/ar/blog/python/uv/01-quick-start\"},\"datePublished\":\"2026-02-27T00:00:00.000Z\",\"dateModified\":\"2026-02-27T00:00:00.000Z\",\"keywords\":\"python, uv, quick-start, package-manager\",\"inLanguage\":\"ar\",\"author\":{\"@type\":\"Person\",\"name\":\"BenX\",\"url\":\"https://benxhub.com\"},\"publisher\":{\"@type\":\"Organization\",\"name\":\"BenXHub Blog\",\"url\":\"https://benxhub.com\"},\"image\":\"https://benxhub.com/images/posts/uv-quick-start.jpg\"}"}}],["$","div",null,{"className":"mx-auto max-w-6xl px-4 py-12 sm:px-6","children":["$","div",null,{"className":"lg:grid lg:grid-cols-[1fr_240px] lg:gap-14","children":[["$","article",null,{"children":[["$","header",null,{"className":"mb-10","children":[["$","div",null,{"className":"mb-4 flex flex-wrap gap-2","children":[["$","$L2","python",{"href":"/ar/tags/python","localeCookie":{"name":"NEXT_LOCALE","sameSite":"lax"},"className":"inline-flex items-center rounded-full px-2.5 py-0.5 text-xs font-medium transition-colors","style":{"background":"var(--color-code-bg)","color":"var(--color-accent)","border":"1px solid var(--color-border)"},"children":["#","python"]}],["$","$L2","uv",{"href":"/ar/tags/uv","localeCookie":{"name":"NEXT_LOCALE","sameSite":"lax"},"className":"inline-flex items-center rounded-full px-2.5 py-0.5 text-xs font-medium transition-colors","style":{"background":"var(--color-code-bg)","color":"var(--color-accent)","border":"1px solid var(--color-border)"},"children":["#","uv"]}],["$","$L2","quick-start",{"href":"/ar/tags/quick-start","localeCookie":{"name":"NEXT_LOCALE","sameSite":"lax"},"className":"inline-flex items-center rounded-full px-2.5 py-0.5 text-xs font-medium transition-colors","style":{"background":"var(--color-code-bg)","color":"var(--color-accent)","border":"1px solid var(--color-border)"},"children":["#","quick-start"]}],["$","$L2","package-manager",{"href":"/ar/tags/package-manager","localeCookie":{"name":"NEXT_LOCALE","sameSite":"lax"},"className":"inline-flex items-center rounded-full px-2.5 py-0.5 text-xs font-medium transition-colors","style":{"background":"var(--color-code-bg)","color":"var(--color-accent)","border":"1px solid var(--color-border)"},"children":["#","package-manager"]}]]}],["$","h1",null,{"className":"mb-4 text-3xl leading-snug font-bold tracking-tight sm:text-4xl","style":{"color":"var(--color-text)"},"children":"البداية السريعة مع Python uv: ابنِ أول مشروع"}],["$","div",null,{"className":"flex flex-wrap items-center gap-3 text-sm","style":{"color":"var(--color-muted)"},"children":[["$","time",null,{"dateTime":"2026-02-27","children":"27 2月 2026"}],["$","span",null,{"aria-hidden":"true","children":"·"}],["$","span",null,{"children":"2 min read"}]]}],["$","div",null,{"className":"mt-6 overflow-hidden rounded-lg","children":["$","img",null,{"src":"/images/posts/uv-quick-start.jpg","alt":"البداية السريعة مع Python uv: ابنِ أول مشروع","className":"w-full h-auto"}]}],["$","div",null,{"className":"mt-6 border-b","style":{"borderColor":"var(--color-border)"}}]]}],["$","div",null,{"className":"prose","dangerouslySetInnerHTML":{"__html":"$3"}}],"$L4"]}],"$L5"]}]}]],["$L6"],"$L7"]}],"loading":null,"isPartial":false}
+4:["$","footer",null,{"className":"mt-14 border-t pt-8","style":{"borderColor":"var(--color-border)"},"children":[["$","div",null,{"className":"mb-8 flex flex-wrap gap-2","children":[["$","$L2","python",{"href":"/ar/tags/python","localeCookie":{"name":"NEXT_LOCALE","sameSite":"lax"},"className":"inline-flex items-center rounded-full px-3 py-1 text-sm font-medium transition-colors","style":{"background":"var(--color-code-bg)","color":"var(--color-accent)","border":"1px solid var(--color-border)"},"children":["#","python"]}],["$","$L2","uv",{"href":"/ar/tags/uv","localeCookie":{"name":"NEXT_LOCALE","sameSite":"lax"},"className":"inline-flex items-center rounded-full px-3 py-1 text-sm font-medium transition-colors","style":{"background":"var(--color-code-bg)","color":"var(--color-accent)","border":"1px solid var(--color-border)"},"children":["#","uv"]}],["$","$L2","quick-start",{"href":"/ar/tags/quick-start","localeCookie":{"name":"NEXT_LOCALE","sameSite":"lax"},"className":"inline-flex items-center rounded-full px-3 py-1 text-sm font-medium transition-colors","style":{"background":"var(--color-code-bg)","color":"var(--color-accent)","border":"1px solid var(--color-border)"},"children":["#","quick-start"]}],["$","$L2","package-manager",{"href":"/ar/tags/package-manager","localeCookie":{"name":"NEXT_LOCALE","sameSite":"lax"},"className":"inline-flex items-center rounded-full px-3 py-1 text-sm font-medium transition-colors","style":{"background":"var(--color-code-bg)","color":"var(--color-accent)","border":"1px solid var(--color-border)"},"children":["#","package-manager"]}]]}],["$","nav",null,{"aria-label":"التنقل بين المقالات","className":"grid grid-cols-1 gap-4 sm:grid-cols-2","children":[["$","$L2",null,{"href":"/ar/blog/python/uv/00-overview","localeCookie":{"name":"NEXT_LOCALE","sameSite":"lax"},"className":"group rounded-lg border p-4 transition-colors hover:border-accent","style":{"borderColor":"var(--color-border)","background":"var(--color-surface)"},"children":[["$","p",null,{"className":"mb-1 text-xs","style":{"color":"var(--color-muted)"},"children":"→ الأحدث"}],["$","p",null,{"className":"line-clamp-1 text-sm font-medium transition-colors group-hover:text-accent","style":{"color":"var(--color-text)"},"children":"نظرة عامة على سلسلة Python uv: بديل pip أسرع بـ 100 مرة"}]]}],["$","$L2",null,{"href":"/ar/blog/python/uv/02-core-concepts","localeCookie":{"name":"NEXT_LOCALE","sameSite":"lax"},"className":"group rounded-lg border p-4 text-right transition-colors hover:border-accent","style":{"borderColor":"var(--color-border)","background":"var(--color-surface)"},"children":[["$","p",null,{"className":"mb-1 text-xs","style":{"color":"var(--color-muted)"},"children":"الأقدم ←"}],["$","p",null,{"className":"line-clamp-1 text-sm font-medium transition-colors group-hover:text-accent","style":{"color":"var(--color-text)"},"children":"المفاهيم الجوهرية لـ Python uv: pyproject.toml وLockfile والبيئات الافتراضية"}]]}]]}]]}]
+9:T1762,<p>يسلك هذا الدليل أقصر طريق للحصول على <strong>مشروع Python عامل</strong> — أول بيئة قابلة للاستخدام مع uv.</p>
+<h2 id="المتطلبات-الأساسية">المتطلبات الأساسية</h2>
+<ul>
+<li>uv مثبّت (انظر أمر التثبيت في <a href="00-overview">النظرة العامة</a>)</li>
+<li>المحطة الطرفية تستطيع تشغيل أمر <code>uv</code></li>
+</ul>
+<h2 id="مثال-بسيط-إنشاء-أول-مشروع">مثال بسيط: إنشاء أول مشروع</h2>
+<h3 id="الخطوة-1-التحقق-من-تثبيت-uv">الخطوة 1: التحقق من تثبيت uv</h3>
+<figure data-rehype-pretty-code-figure=""><pre style="background-color:#24292e;color:#e1e4e8" tabindex="0" data-language="bash" data-theme="github-dark"><code data-language="bash" data-theme="github-dark" style="display: grid;"><span data-line=""><span style="color:#B392F0">uv</span><span style="color:#79B8FF"> --version</span></span></code></pre></figure>
+<p>إذا ظهر رقم إصدار، أنت جاهز. إذا لم يظهر، شغّل سكريبت التثبيت مجدداً وأعد تشغيل محطتك.</p>
+<h3 id="الخطوة-2-تهيئة-المشروع">الخطوة 2: تهيئة المشروع</h3>
+<figure data-rehype-pretty-code-figure=""><pre style="background-color:#24292e;color:#e1e4e8" tabindex="0" data-language="bash" data-theme="github-dark"><code data-language="bash" data-theme="github-dark" style="display: grid;"><span data-line=""><span style="color:#B392F0">uv</span><span style="color:#9ECBFF"> init</span><span style="color:#9ECBFF"> my-app</span></span>
+<span data-line=""><span style="color:#79B8FF">cd</span><span style="color:#9ECBFF"> my-app</span></span></code></pre></figure>
+<p>ينشئ uv تلقائياً <code>pyproject.toml</code> و<code>.python-version</code> و<code>main.py</code> و<code>README.md</code>. الهيكل يبدو تقريباً كالتالي:</p>
+<pre><code>my-app/
+├── .gitignore
+├── .python-version
+├── README.md
+├── main.py
+└── pyproject.toml
+</code></pre>
+<h3 id="الخطوة-3-تشغيل-البرنامج-الافتراضي">الخطوة 3: تشغيل البرنامج الافتراضي</h3>
+<figure data-rehype-pretty-code-figure=""><pre style="background-color:#24292e;color:#e1e4e8" tabindex="0" data-language="bash" data-theme="github-dark"><code data-language="bash" data-theme="github-dark" style="display: grid;"><span data-line=""><span style="color:#B392F0">uv</span><span style="color:#9ECBFF"> run</span><span style="color:#9ECBFF"> main.py</span></span></code></pre></figure>
+<p>سترى <code>Hello from my-app!</code> — تهانينا، أول مشروع لك حي!</p>
+<h3 id="الخطوة-4-إضافة-تبعية-وتشغيلها">الخطوة 4: إضافة تبعية وتشغيلها</h3>
+<figure data-rehype-pretty-code-figure=""><pre style="background-color:#24292e;color:#e1e4e8" tabindex="0" data-language="bash" data-theme="github-dark"><code data-language="bash" data-theme="github-dark" style="display: grid;"><span data-line=""><span style="color:#B392F0">uv</span><span style="color:#9ECBFF"> add</span><span style="color:#9ECBFF"> requests</span></span></code></pre></figure>
+<p>ثم حدّث <code>main.py</code> لتجربتها:</p>
+<figure data-rehype-pretty-code-figure=""><pre style="background-color:#24292e;color:#e1e4e8" tabindex="0" data-language="python" data-theme="github-dark"><code data-language="python" data-theme="github-dark" style="display: grid;"><span data-line=""><span style="color:#F97583">import</span><span style="color:#E1E4E8"> requests</span></span>
+<span data-line=""><span style="color:#E1E4E8">r </span><span style="color:#F97583">=</span><span style="color:#E1E4E8"> requests.get(</span><span style="color:#9ECBFF">"https://httpbin.org/get"</span><span style="color:#E1E4E8">)</span></span>
+<span data-line=""><span style="color:#79B8FF">print</span><span style="color:#E1E4E8">(r.status_code)</span></span></code></pre></figure>
+<p>شغّله:</p>
+<figure data-rehype-pretty-code-figure=""><pre style="background-color:#24292e;color:#e1e4e8" tabindex="0" data-language="bash" data-theme="github-dark"><code data-language="bash" data-theme="github-dark" style="display: grid;"><span data-line=""><span style="color:#B392F0">uv</span><span style="color:#9ECBFF"> run</span><span style="color:#9ECBFF"> main.py</span></span></code></pre></figure>
+<p>إذا رأيت <code>200</code>، التبعية ثُبِّتت بشكل صحيح في البيئة الافتراضية — بدون <code>pip install</code> يدوي، بدون <code>source .venv/bin/activate</code>. ذلك الشعور بالسهولة هو فرحة uv.</p>
+<h2 id="استكشاف-الأخطاء-الشائعة">استكشاف الأخطاء الشائعة</h2>
+<table>
+<thead>
+<tr>
+<th>العَرَض</th>
+<th>ما يجب التحقق منه</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td><code>uv: command not found</code></td>
+<td>PATH غير مضبوط — أعد تشغيل المحطة أو شغّل <code>source ...</code> كما أرشد المثبّت</td>
+</tr>
+<tr>
+<td><code>Permission denied</code></td>
+<td>مشكلة أذونات مع مسار التثبيت — تأكد من أن <code>~/.local/bin</code> قابل للكتابة</td>
+</tr>
+<tr>
+<td>تثبيت التبعيات بطيء</td>
+<td>المرة الأولى ستنزّل؛ التشغيلات التالية تستخدم الذاكرة المؤقتة؛ تحقق من الوكيل إذا كانت الشبكة بطيئة</td>
+</tr>
+</tbody>
+</table>
+<h2 id="الخطوات-التالية">الخطوات التالية</h2>
+<p>بمجرد تشغيل المشروع، من الجيد فهم ما تفعله pyproject.toml وuv.lock. المقالة التالية تغطي هذه المفاهيم الجوهرية:<br>
+👉 <a href="02-core-concepts">المفاهيم الجوهرية</a></p>5:["$","aside",null,{"className":"hidden lg:block","children":["$","$L8",null,{"html":"$9"}]}]
+6:["$","script","script-0",{"src":"/_next/static/chunks/2dddb3bc05093f69.js","async":true}]
+7:["$","$La",null,{"children":["$","$b",null,{"name":"Next.MetadataOutlet","children":"$@c"}]}]
+c:null

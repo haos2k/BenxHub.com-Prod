@@ -1,0 +1,437 @@
+1:"$Sreact.fragment"
+2:I[14864,["/_next/static/chunks/7923a261b80bb6e1.js","/_next/static/chunks/e09b4358027e8033.js","/_next/static/chunks/2dddb3bc05093f69.js"],"default"]
+8:I[24801,["/_next/static/chunks/7923a261b80bb6e1.js","/_next/static/chunks/e09b4358027e8033.js","/_next/static/chunks/2dddb3bc05093f69.js"],"default"]
+a:I[50183,["/_next/static/chunks/5a5b5b13c22d14f7.js","/_next/static/chunks/a484d1d3dd4b55ab.js"],"OutletBoundary"]
+b:"$Sreact.suspense"
+3:T287a,<p>存儲這件事就像租房子——地點選錯，後面搬家、裝潢、通勤全部跟著痛苦。PVE 存儲方案多到像自助餐，每種都有自己的強項跟限制，挑對了省心省力，挑錯了後面遷移會讓你想翻桌。如果你還在猶豫要不要用 PVE，可以先看看 <a href="00-what-is-pve">PVE 是什麼、跟其他平台差在哪</a>。</p>
+<h2 id="存儲類型大亂鬥">存儲類型大亂鬥</h2>
+<p>PVE 共支援 11 種存儲後端，直接看比較表最快：</p>
+<table>
+<thead>
+<tr>
+<th>存儲類型</th>
+<th align="center">共享</th>
+<th align="center">快照</th>
+<th align="center">Clone</th>
+<th>適合放什麼</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td><strong>ZFS（本地）</strong></td>
+<td align="center">✗</td>
+<td align="center">✓</td>
+<td align="center">✓</td>
+<td>VM 磁碟、容器</td>
+</tr>
+<tr>
+<td><strong>LVM</strong></td>
+<td align="center">✗</td>
+<td align="center">✗</td>
+<td align="center">✗</td>
+<td>VM 磁碟、容器</td>
+</tr>
+<tr>
+<td><strong>LVM-thin</strong></td>
+<td align="center">✗</td>
+<td align="center">✓</td>
+<td align="center">✓</td>
+<td>VM 磁碟、容器</td>
+</tr>
+<tr>
+<td><strong>Directory</strong></td>
+<td align="center">✗</td>
+<td align="center">△</td>
+<td align="center">✗</td>
+<td>ISO、備份、什麼都能塞</td>
+</tr>
+<tr>
+<td><strong>NFS</strong></td>
+<td align="center">✓</td>
+<td align="center">△</td>
+<td align="center">✗</td>
+<td>ISO、備份、VM 磁碟</td>
+</tr>
+<tr>
+<td><strong>CIFS/SMB</strong></td>
+<td align="center">✓</td>
+<td align="center">△</td>
+<td align="center">✗</td>
+<td>ISO、備份、混合環境</td>
+</tr>
+<tr>
+<td><strong>Ceph RBD</strong></td>
+<td align="center">✓</td>
+<td align="center">✓</td>
+<td align="center">✓</td>
+<td>VM 磁碟、容器</td>
+</tr>
+<tr>
+<td><strong>CephFS</strong></td>
+<td align="center">✓</td>
+<td align="center">✓</td>
+<td align="center">✓</td>
+<td>全部都行</td>
+</tr>
+<tr>
+<td><strong>iSCSI</strong></td>
+<td align="center">✓</td>
+<td align="center">✗</td>
+<td align="center">✗</td>
+<td>VM 磁碟</td>
+</tr>
+<tr>
+<td><strong>ZFS over iSCSI</strong></td>
+<td align="center">✓</td>
+<td align="center">✓</td>
+<td align="center">✗</td>
+<td>VM 磁碟</td>
+</tr>
+<tr>
+<td><strong>GlusterFS</strong></td>
+<td align="center">✓</td>
+<td align="center">△</td>
+<td align="center">✗</td>
+<td>VM 磁碟</td>
+</tr>
+</tbody>
+</table>
+<blockquote>
+<p>△ 表示用 qcow2 格式時才支援快照。選格式的時候記得考慮進去，不然到時候才發現不能快照，心態會炸。</p>
+</blockquote>
+<h2 id="content-types存儲裡能放什麼">Content Types：存儲裡能放什麼</h2>
+<p>不是每種存儲都能放所有類型的內容，PVE 用六種標籤來分類：</p>
+<table>
+<thead>
+<tr>
+<th>類型</th>
+<th>白話翻譯</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td><code>images</code></td>
+<td>VM 的虛擬硬碟（raw、qcow2、vmdk）</td>
+</tr>
+<tr>
+<td><code>rootdir</code></td>
+<td>LXC 容器的根目錄</td>
+</tr>
+<tr>
+<td><code>iso</code></td>
+<td>作業系統安裝光碟映像</td>
+</tr>
+<tr>
+<td><code>vztmpl</code></td>
+<td>容器模板</td>
+</tr>
+<tr>
+<td><code>backup</code></td>
+<td>vzdump 備份檔</td>
+</tr>
+<tr>
+<td><code>snippets</code></td>
+<td>Cloud-init、Hook script 等小東西</td>
+</tr>
+</tbody>
+</table>
+<p>Directory 和 NFS 比較萬用，什麼都能放；LVM 系列就只能放磁碟映像和容器。規劃存儲前先想清楚你要放什麼，就像搬家前先量傢俱尺寸。</p>
+<h2 id="zfs存儲界的瑞士刀">ZFS：存儲界的瑞士刀</h2>
+<p>ZFS 是 PVE 社群最推的本地存儲方案，功能多到有點誇張：</p>
+<ul>
+<li><strong>Copy-on-Write（CoW）</strong>：寫入新資料不會覆蓋舊的，像用鉛筆寫字但永遠有橡皮擦備著</li>
+<li><strong>內建校驗與自我修復</strong>：每筆資料都有 checksum，壞了能自己補回來</li>
+<li><strong>壓縮</strong>：開 LZ4 壓縮幾乎不影響效能，空間直接省一截</li>
+<li><strong>快照超快</strong>：因為 CoW 的設計，打快照幾乎零成本</li>
+</ul>
+<figure data-rehype-pretty-code-figure=""><pre style="background-color:#24292e;color:#e1e4e8" tabindex="0" data-language="bash" data-theme="github-dark"><code data-language="bash" data-theme="github-dark" style="display: grid;"><span data-line=""><span style="color:#6A737D"># 建立兩碟鏡像（Mirror）— Homelab 首選</span></span>
+<span data-line=""><span style="color:#B392F0">zpool</span><span style="color:#9ECBFF"> create</span><span style="color:#9ECBFF"> rpool</span><span style="color:#9ECBFF"> mirror</span><span style="color:#9ECBFF"> /dev/sda</span><span style="color:#9ECBFF"> /dev/sdb</span></span>
+<span data-line=""> </span>
+<span data-line=""><span style="color:#6A737D"># 三碟以上可以走 RAID-Z1（類似 RAID 5）</span></span>
+<span data-line=""><span style="color:#B392F0">zpool</span><span style="color:#9ECBFF"> create</span><span style="color:#9ECBFF"> tank</span><span style="color:#9ECBFF"> raidz1</span><span style="color:#9ECBFF"> /dev/sda</span><span style="color:#9ECBFF"> /dev/sdb</span><span style="color:#9ECBFF"> /dev/sdc</span></span>
+<span data-line=""> </span>
+<span data-line=""><span style="color:#6A737D"># 開壓縮，省空間不費力</span></span>
+<span data-line=""><span style="color:#B392F0">zfs</span><span style="color:#9ECBFF"> set</span><span style="color:#9ECBFF"> compression=lz4</span><span style="color:#9ECBFF"> rpool/data</span></span>
+<span data-line=""> </span>
+<span data-line=""><span style="color:#6A737D"># 看狀態</span></span>
+<span data-line=""><span style="color:#B392F0">zpool</span><span style="color:#9ECBFF"> status</span></span></code></pre></figure>
+<blockquote>
+<p>ZFS 很吃記憶體——ARC 快取預設吃可用記憶體的一半。經驗法則是每 TB 存儲至少配 1 GB RAM。記憶體不夠的話，ZFS 會跑得像週一早上的你。硬體怎麼配可以參考 <a href="01-hardware-guide">硬體選購指南</a>。</p>
+</blockquote>
+<p>更多 ZFS 進階玩法（像是跨節點的分散式存儲），可以看看 <a href="10-ceph-storage">Ceph 超融合存儲</a>。</p>
+<h2 id="lvm-vs-lvm-thin">LVM vs LVM-thin</h2>
+<p>PVE 預設安裝會幫你建好 <code>local-lvm</code>，用的就是 LVM-thin：</p>
+<ul>
+<li><strong>LVM</strong>：傳統款，分配多少就佔多少，老實但笨重，而且不支援快照</li>
+<li><strong>LVM-thin</strong>：精簡配置，分配 100G 但實際用 20G 就只佔 20G，支援快照和 Clone</li>
+</ul>
+<p>預算有限、不想碰 ZFS 的話，LVM-thin 是最省事的選擇。就像租套房——不是最豪華但什麼都有。</p>
+<h2 id="nfscifs你家-nas-的好朋友">NFS/CIFS：你家 NAS 的好朋友</h2>
+<p>家裡已經有台 Synology 或 TrueNAS？直接掛 NFS 上來就好：</p>
+<figure data-rehype-pretty-code-figure=""><pre style="background-color:#24292e;color:#e1e4e8" tabindex="0" data-language="bash" data-theme="github-dark"><code data-language="bash" data-theme="github-dark" style="display: grid;"><span data-line=""><span style="color:#6A737D"># 掛 NFS 存儲</span></span>
+<span data-line=""><span style="color:#B392F0">pvesm</span><span style="color:#9ECBFF"> add</span><span style="color:#9ECBFF"> nfs</span><span style="color:#9ECBFF"> nas-backup</span><span style="color:#79B8FF"> --server</span><span style="color:#79B8FF"> 192.168.1.50</span><span style="color:#79B8FF"> \</span></span>
+<span data-line=""><span style="color:#79B8FF">  --export</span><span style="color:#9ECBFF"> /volume1/pve-backup</span><span style="color:#79B8FF"> --content</span><span style="color:#9ECBFF"> backup,iso</span></span></code></pre></figure>
+<p>NFS 和 CIFS 最大的優勢是<strong>共享</strong>——多節點叢集都能存取，Live Migration 才跑得動。CIFS 適合家裡有 Windows NAS 的混合環境。</p>
+<h2 id="場景選型速查">場景選型速查</h2>
+<table>
+<thead>
+<tr>
+<th>你的狀況</th>
+<th>推薦</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td>單節點 Homelab，兩碟</td>
+<td>ZFS Mirror</td>
+</tr>
+<tr>
+<td>預算極有限，一碟打天下</td>
+<td>LVM-thin</td>
+</tr>
+<tr>
+<td>多節點需要共享存儲</td>
+<td>Ceph RBD / NFS</td>
+</tr>
+<tr>
+<td>已有 NAS，想放備份和 ISO</td>
+<td>NFS</td>
+</tr>
+<tr>
+<td>三節點以上，追求極致</td>
+<td>Ceph 超融合</td>
+</tr>
+</tbody>
+</table>
+<p>存儲選對了，後面做<a href="07-backup-restore">備份</a>、跑 HA、搞遷移都會順很多。選錯了也不是世界末日，只是搬遷的時候會多流一些汗。</p>
+<p>想深入了解各類存儲後端的完整參數，推薦直接看 <a href="https://pve.proxmox.com/pve-docs/chapter-pvesm.html">Proxmox VE 存儲官方文件</a>。ZFS 的部分也可以參考 <a href="https://openzfs.github.io/openzfs-docs/">OpenZFS 官方文件</a>，以及 Proxmox Wiki 上的 <a href="https://pve.proxmox.com/wiki/ZFS_on_Linux">ZFS on Linux 頁面</a>。</p>
+<h2 id="常見問題">常見問題</h2>
+<h3 id="q-pve-存儲選-zfs-還是-lvm-thin">Q: PVE 存儲選 ZFS 還是 LVM-thin？</h3>
+<p>如果你有兩碟以上且記憶體充足，選 ZFS Mirror，能獲得資料校驗、壓縮和快照功能。只有一碟或記憶體吃緊，LVM-thin 是最務實的選擇，快照和精簡配置都有。</p>
+<h3 id="q-proxmox-zfs-需要多少記憶體">Q: Proxmox ZFS 需要多少記憶體？</h3>
+<p>經驗法則是每 TB 存儲配 1 GB RAM 給 ARC 快取。例如 4TB 的 ZFS Pool 建議至少 4GB 額外記憶體，否則效能會明顯下降。</p>
+<h3 id="q-pve-儲存類型哪種支援共享">Q: PVE 儲存類型哪種支援共享？</h3>
+<p>NFS、CIFS、Ceph RBD、CephFS、iSCSI 和 GlusterFS 都支援多節點共享存取。本地的 ZFS、LVM、LVM-thin 和 Directory 則不支援共享，僅限單節點使用。</p>
+<h3 id="q-lvm-thin-空間滿了怎麼辦">Q: LVM-thin 空間滿了怎麼辦？</h3>
+<p>LVM-thin 超配（over-provision）時，實際使用量超過物理空間會導致 I/O 錯誤。務必透過 <code>lvs</code> 監控使用率，建議設定告警在 80% 時通知，並及時擴充或清理不用的磁碟映像。</p>
+<h2 id="下一步">下一步</h2>
+<p>磁碟搞定了，接著處理網路——VM 怎麼上網、怎麼隔離、Bonding 要不要做：
+👉 <a href="06-networking">網路管理</a></p>0:{"buildId":"Yck3R4ooQxWkwGLT6is1X","rsc":["$","$1","c",{"children":[[["$","script",null,{"type":"application/ld+json","dangerouslySetInnerHTML":{"__html":"{\"@context\":\"https://schema.org\",\"@type\":\"Article\",\"headline\":\"Proxmox VE 存儲全攻略：磁碟該放哪才對？\",\"description\":\"PVE 存儲怎麼選？ZFS、LVM-thin、NFS、Ceph 完整比較，一次搞懂 Proxmox 儲存類型與最佳配置方案。\",\"url\":\"https://benxhub.com/zh/blog/pve/05-storage\",\"mainEntityOfPage\":{\"@type\":\"WebPage\",\"@id\":\"https://benxhub.com/zh/blog/pve/05-storage\"},\"datePublished\":\"2026-04-28T00:00:00.000Z\",\"dateModified\":\"2026-04-28T00:00:00.000Z\",\"keywords\":\"proxmox, storage, zfs, lvm, nfs\",\"inLanguage\":\"zh\",\"author\":{\"@type\":\"Person\",\"name\":\"BenX\",\"url\":\"https://benxhub.com\"},\"publisher\":{\"@type\":\"Organization\",\"name\":\"BenXHub Blog\",\"url\":\"https://benxhub.com\"}}"}}],["$","div",null,{"className":"mx-auto max-w-6xl px-4 py-12 sm:px-6","children":["$","div",null,{"className":"lg:grid lg:grid-cols-[1fr_240px] lg:gap-14","children":[["$","article",null,{"children":[["$","header",null,{"className":"mb-10","children":[["$","div",null,{"className":"mb-4 flex flex-wrap gap-2","children":[["$","$L2","proxmox",{"href":"/zh/tags/proxmox","localeCookie":{"name":"NEXT_LOCALE","sameSite":"lax"},"className":"inline-flex items-center rounded-full px-2.5 py-0.5 text-xs font-medium transition-colors","style":{"background":"var(--color-code-bg)","color":"var(--color-accent)","border":"1px solid var(--color-border)"},"children":["#","proxmox"]}],["$","$L2","storage",{"href":"/zh/tags/storage","localeCookie":{"name":"NEXT_LOCALE","sameSite":"lax"},"className":"inline-flex items-center rounded-full px-2.5 py-0.5 text-xs font-medium transition-colors","style":{"background":"var(--color-code-bg)","color":"var(--color-accent)","border":"1px solid var(--color-border)"},"children":["#","storage"]}],["$","$L2","zfs",{"href":"/zh/tags/zfs","localeCookie":{"name":"NEXT_LOCALE","sameSite":"lax"},"className":"inline-flex items-center rounded-full px-2.5 py-0.5 text-xs font-medium transition-colors","style":{"background":"var(--color-code-bg)","color":"var(--color-accent)","border":"1px solid var(--color-border)"},"children":["#","zfs"]}],["$","$L2","lvm",{"href":"/zh/tags/lvm","localeCookie":{"name":"NEXT_LOCALE","sameSite":"lax"},"className":"inline-flex items-center rounded-full px-2.5 py-0.5 text-xs font-medium transition-colors","style":{"background":"var(--color-code-bg)","color":"var(--color-accent)","border":"1px solid var(--color-border)"},"children":["#","lvm"]}],["$","$L2","nfs",{"href":"/zh/tags/nfs","localeCookie":{"name":"NEXT_LOCALE","sameSite":"lax"},"className":"inline-flex items-center rounded-full px-2.5 py-0.5 text-xs font-medium transition-colors","style":{"background":"var(--color-code-bg)","color":"var(--color-accent)","border":"1px solid var(--color-border)"},"children":["#","nfs"]}]]}],["$","h1",null,{"className":"mb-4 text-3xl leading-snug font-bold tracking-tight sm:text-4xl","style":{"color":"var(--color-text)"},"children":"Proxmox VE 存儲全攻略：磁碟該放哪才對？"}],["$","div",null,{"className":"flex flex-wrap items-center gap-3 text-sm","style":{"color":"var(--color-muted)"},"children":[["$","time",null,{"dateTime":"2026-04-28","children":"2026 年 4 月 28 日"}],["$","span",null,{"aria-hidden":"true","children":"·"}],["$","span",null,{"children":"7 min read"}]]}],"$undefined",["$","div",null,{"className":"mt-6 border-b","style":{"borderColor":"var(--color-border)"}}]]}],["$","div",null,{"className":"prose","dangerouslySetInnerHTML":{"__html":"$3"}}],"$L4"]}],"$L5"]}]}]],["$L6"],"$L7"]}],"loading":null,"isPartial":false}
+4:["$","footer",null,{"className":"mt-14 border-t pt-8","style":{"borderColor":"var(--color-border)"},"children":[["$","div",null,{"className":"mb-8 flex flex-wrap gap-2","children":[["$","$L2","proxmox",{"href":"/zh/tags/proxmox","localeCookie":{"name":"NEXT_LOCALE","sameSite":"lax"},"className":"inline-flex items-center rounded-full px-3 py-1 text-sm font-medium transition-colors","style":{"background":"var(--color-code-bg)","color":"var(--color-accent)","border":"1px solid var(--color-border)"},"children":["#","proxmox"]}],["$","$L2","storage",{"href":"/zh/tags/storage","localeCookie":{"name":"NEXT_LOCALE","sameSite":"lax"},"className":"inline-flex items-center rounded-full px-3 py-1 text-sm font-medium transition-colors","style":{"background":"var(--color-code-bg)","color":"var(--color-accent)","border":"1px solid var(--color-border)"},"children":["#","storage"]}],["$","$L2","zfs",{"href":"/zh/tags/zfs","localeCookie":{"name":"NEXT_LOCALE","sameSite":"lax"},"className":"inline-flex items-center rounded-full px-3 py-1 text-sm font-medium transition-colors","style":{"background":"var(--color-code-bg)","color":"var(--color-accent)","border":"1px solid var(--color-border)"},"children":["#","zfs"]}],["$","$L2","lvm",{"href":"/zh/tags/lvm","localeCookie":{"name":"NEXT_LOCALE","sameSite":"lax"},"className":"inline-flex items-center rounded-full px-3 py-1 text-sm font-medium transition-colors","style":{"background":"var(--color-code-bg)","color":"var(--color-accent)","border":"1px solid var(--color-border)"},"children":["#","lvm"]}],["$","$L2","nfs",{"href":"/zh/tags/nfs","localeCookie":{"name":"NEXT_LOCALE","sameSite":"lax"},"className":"inline-flex items-center rounded-full px-3 py-1 text-sm font-medium transition-colors","style":{"background":"var(--color-code-bg)","color":"var(--color-accent)","border":"1px solid var(--color-border)"},"children":["#","nfs"]}]]}],["$","nav",null,{"aria-label":"文章導覽","className":"grid grid-cols-1 gap-4 sm:grid-cols-2","children":[["$","$L2",null,{"href":"/zh/blog/pve/06-networking","localeCookie":{"name":"NEXT_LOCALE","sameSite":"lax"},"className":"group rounded-lg border p-4 transition-colors hover:border-accent","style":{"borderColor":"var(--color-border)","background":"var(--color-surface)"},"children":[["$","p",null,{"className":"mb-1 text-xs","style":{"color":"var(--color-muted)"},"children":"← 較新文章"}],["$","p",null,{"className":"line-clamp-1 text-sm font-medium transition-colors group-hover:text-accent","style":{"color":"var(--color-text)"},"children":"Proxmox VE 網路管理：Bridge、Bond 與 VLAN"}]]}],["$","$L2",null,{"href":"/zh/blog/pve/04-lxc-containers","localeCookie":{"name":"NEXT_LOCALE","sameSite":"lax"},"className":"group rounded-lg border p-4 text-right transition-colors hover:border-accent","style":{"borderColor":"var(--color-border)","background":"var(--color-surface)"},"children":[["$","p",null,{"className":"mb-1 text-xs","style":{"color":"var(--color-muted)"},"children":"較舊文章 →"}],["$","p",null,{"className":"line-clamp-1 text-sm font-medium transition-colors group-hover:text-accent","style":{"color":"var(--color-text)"},"children":"LXC 容器：比 VM 輕量十倍的秘密武器"}]]}]]}]]}]
+9:T287a,<p>存儲這件事就像租房子——地點選錯，後面搬家、裝潢、通勤全部跟著痛苦。PVE 存儲方案多到像自助餐，每種都有自己的強項跟限制，挑對了省心省力，挑錯了後面遷移會讓你想翻桌。如果你還在猶豫要不要用 PVE，可以先看看 <a href="00-what-is-pve">PVE 是什麼、跟其他平台差在哪</a>。</p>
+<h2 id="存儲類型大亂鬥">存儲類型大亂鬥</h2>
+<p>PVE 共支援 11 種存儲後端，直接看比較表最快：</p>
+<table>
+<thead>
+<tr>
+<th>存儲類型</th>
+<th align="center">共享</th>
+<th align="center">快照</th>
+<th align="center">Clone</th>
+<th>適合放什麼</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td><strong>ZFS（本地）</strong></td>
+<td align="center">✗</td>
+<td align="center">✓</td>
+<td align="center">✓</td>
+<td>VM 磁碟、容器</td>
+</tr>
+<tr>
+<td><strong>LVM</strong></td>
+<td align="center">✗</td>
+<td align="center">✗</td>
+<td align="center">✗</td>
+<td>VM 磁碟、容器</td>
+</tr>
+<tr>
+<td><strong>LVM-thin</strong></td>
+<td align="center">✗</td>
+<td align="center">✓</td>
+<td align="center">✓</td>
+<td>VM 磁碟、容器</td>
+</tr>
+<tr>
+<td><strong>Directory</strong></td>
+<td align="center">✗</td>
+<td align="center">△</td>
+<td align="center">✗</td>
+<td>ISO、備份、什麼都能塞</td>
+</tr>
+<tr>
+<td><strong>NFS</strong></td>
+<td align="center">✓</td>
+<td align="center">△</td>
+<td align="center">✗</td>
+<td>ISO、備份、VM 磁碟</td>
+</tr>
+<tr>
+<td><strong>CIFS/SMB</strong></td>
+<td align="center">✓</td>
+<td align="center">△</td>
+<td align="center">✗</td>
+<td>ISO、備份、混合環境</td>
+</tr>
+<tr>
+<td><strong>Ceph RBD</strong></td>
+<td align="center">✓</td>
+<td align="center">✓</td>
+<td align="center">✓</td>
+<td>VM 磁碟、容器</td>
+</tr>
+<tr>
+<td><strong>CephFS</strong></td>
+<td align="center">✓</td>
+<td align="center">✓</td>
+<td align="center">✓</td>
+<td>全部都行</td>
+</tr>
+<tr>
+<td><strong>iSCSI</strong></td>
+<td align="center">✓</td>
+<td align="center">✗</td>
+<td align="center">✗</td>
+<td>VM 磁碟</td>
+</tr>
+<tr>
+<td><strong>ZFS over iSCSI</strong></td>
+<td align="center">✓</td>
+<td align="center">✓</td>
+<td align="center">✗</td>
+<td>VM 磁碟</td>
+</tr>
+<tr>
+<td><strong>GlusterFS</strong></td>
+<td align="center">✓</td>
+<td align="center">△</td>
+<td align="center">✗</td>
+<td>VM 磁碟</td>
+</tr>
+</tbody>
+</table>
+<blockquote>
+<p>△ 表示用 qcow2 格式時才支援快照。選格式的時候記得考慮進去，不然到時候才發現不能快照，心態會炸。</p>
+</blockquote>
+<h2 id="content-types存儲裡能放什麼">Content Types：存儲裡能放什麼</h2>
+<p>不是每種存儲都能放所有類型的內容，PVE 用六種標籤來分類：</p>
+<table>
+<thead>
+<tr>
+<th>類型</th>
+<th>白話翻譯</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td><code>images</code></td>
+<td>VM 的虛擬硬碟（raw、qcow2、vmdk）</td>
+</tr>
+<tr>
+<td><code>rootdir</code></td>
+<td>LXC 容器的根目錄</td>
+</tr>
+<tr>
+<td><code>iso</code></td>
+<td>作業系統安裝光碟映像</td>
+</tr>
+<tr>
+<td><code>vztmpl</code></td>
+<td>容器模板</td>
+</tr>
+<tr>
+<td><code>backup</code></td>
+<td>vzdump 備份檔</td>
+</tr>
+<tr>
+<td><code>snippets</code></td>
+<td>Cloud-init、Hook script 等小東西</td>
+</tr>
+</tbody>
+</table>
+<p>Directory 和 NFS 比較萬用，什麼都能放；LVM 系列就只能放磁碟映像和容器。規劃存儲前先想清楚你要放什麼，就像搬家前先量傢俱尺寸。</p>
+<h2 id="zfs存儲界的瑞士刀">ZFS：存儲界的瑞士刀</h2>
+<p>ZFS 是 PVE 社群最推的本地存儲方案，功能多到有點誇張：</p>
+<ul>
+<li><strong>Copy-on-Write（CoW）</strong>：寫入新資料不會覆蓋舊的，像用鉛筆寫字但永遠有橡皮擦備著</li>
+<li><strong>內建校驗與自我修復</strong>：每筆資料都有 checksum，壞了能自己補回來</li>
+<li><strong>壓縮</strong>：開 LZ4 壓縮幾乎不影響效能，空間直接省一截</li>
+<li><strong>快照超快</strong>：因為 CoW 的設計，打快照幾乎零成本</li>
+</ul>
+<figure data-rehype-pretty-code-figure=""><pre style="background-color:#24292e;color:#e1e4e8" tabindex="0" data-language="bash" data-theme="github-dark"><code data-language="bash" data-theme="github-dark" style="display: grid;"><span data-line=""><span style="color:#6A737D"># 建立兩碟鏡像（Mirror）— Homelab 首選</span></span>
+<span data-line=""><span style="color:#B392F0">zpool</span><span style="color:#9ECBFF"> create</span><span style="color:#9ECBFF"> rpool</span><span style="color:#9ECBFF"> mirror</span><span style="color:#9ECBFF"> /dev/sda</span><span style="color:#9ECBFF"> /dev/sdb</span></span>
+<span data-line=""> </span>
+<span data-line=""><span style="color:#6A737D"># 三碟以上可以走 RAID-Z1（類似 RAID 5）</span></span>
+<span data-line=""><span style="color:#B392F0">zpool</span><span style="color:#9ECBFF"> create</span><span style="color:#9ECBFF"> tank</span><span style="color:#9ECBFF"> raidz1</span><span style="color:#9ECBFF"> /dev/sda</span><span style="color:#9ECBFF"> /dev/sdb</span><span style="color:#9ECBFF"> /dev/sdc</span></span>
+<span data-line=""> </span>
+<span data-line=""><span style="color:#6A737D"># 開壓縮，省空間不費力</span></span>
+<span data-line=""><span style="color:#B392F0">zfs</span><span style="color:#9ECBFF"> set</span><span style="color:#9ECBFF"> compression=lz4</span><span style="color:#9ECBFF"> rpool/data</span></span>
+<span data-line=""> </span>
+<span data-line=""><span style="color:#6A737D"># 看狀態</span></span>
+<span data-line=""><span style="color:#B392F0">zpool</span><span style="color:#9ECBFF"> status</span></span></code></pre></figure>
+<blockquote>
+<p>ZFS 很吃記憶體——ARC 快取預設吃可用記憶體的一半。經驗法則是每 TB 存儲至少配 1 GB RAM。記憶體不夠的話，ZFS 會跑得像週一早上的你。硬體怎麼配可以參考 <a href="01-hardware-guide">硬體選購指南</a>。</p>
+</blockquote>
+<p>更多 ZFS 進階玩法（像是跨節點的分散式存儲），可以看看 <a href="10-ceph-storage">Ceph 超融合存儲</a>。</p>
+<h2 id="lvm-vs-lvm-thin">LVM vs LVM-thin</h2>
+<p>PVE 預設安裝會幫你建好 <code>local-lvm</code>，用的就是 LVM-thin：</p>
+<ul>
+<li><strong>LVM</strong>：傳統款，分配多少就佔多少，老實但笨重，而且不支援快照</li>
+<li><strong>LVM-thin</strong>：精簡配置，分配 100G 但實際用 20G 就只佔 20G，支援快照和 Clone</li>
+</ul>
+<p>預算有限、不想碰 ZFS 的話，LVM-thin 是最省事的選擇。就像租套房——不是最豪華但什麼都有。</p>
+<h2 id="nfscifs你家-nas-的好朋友">NFS/CIFS：你家 NAS 的好朋友</h2>
+<p>家裡已經有台 Synology 或 TrueNAS？直接掛 NFS 上來就好：</p>
+<figure data-rehype-pretty-code-figure=""><pre style="background-color:#24292e;color:#e1e4e8" tabindex="0" data-language="bash" data-theme="github-dark"><code data-language="bash" data-theme="github-dark" style="display: grid;"><span data-line=""><span style="color:#6A737D"># 掛 NFS 存儲</span></span>
+<span data-line=""><span style="color:#B392F0">pvesm</span><span style="color:#9ECBFF"> add</span><span style="color:#9ECBFF"> nfs</span><span style="color:#9ECBFF"> nas-backup</span><span style="color:#79B8FF"> --server</span><span style="color:#79B8FF"> 192.168.1.50</span><span style="color:#79B8FF"> \</span></span>
+<span data-line=""><span style="color:#79B8FF">  --export</span><span style="color:#9ECBFF"> /volume1/pve-backup</span><span style="color:#79B8FF"> --content</span><span style="color:#9ECBFF"> backup,iso</span></span></code></pre></figure>
+<p>NFS 和 CIFS 最大的優勢是<strong>共享</strong>——多節點叢集都能存取，Live Migration 才跑得動。CIFS 適合家裡有 Windows NAS 的混合環境。</p>
+<h2 id="場景選型速查">場景選型速查</h2>
+<table>
+<thead>
+<tr>
+<th>你的狀況</th>
+<th>推薦</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td>單節點 Homelab，兩碟</td>
+<td>ZFS Mirror</td>
+</tr>
+<tr>
+<td>預算極有限，一碟打天下</td>
+<td>LVM-thin</td>
+</tr>
+<tr>
+<td>多節點需要共享存儲</td>
+<td>Ceph RBD / NFS</td>
+</tr>
+<tr>
+<td>已有 NAS，想放備份和 ISO</td>
+<td>NFS</td>
+</tr>
+<tr>
+<td>三節點以上，追求極致</td>
+<td>Ceph 超融合</td>
+</tr>
+</tbody>
+</table>
+<p>存儲選對了，後面做<a href="07-backup-restore">備份</a>、跑 HA、搞遷移都會順很多。選錯了也不是世界末日，只是搬遷的時候會多流一些汗。</p>
+<p>想深入了解各類存儲後端的完整參數，推薦直接看 <a href="https://pve.proxmox.com/pve-docs/chapter-pvesm.html">Proxmox VE 存儲官方文件</a>。ZFS 的部分也可以參考 <a href="https://openzfs.github.io/openzfs-docs/">OpenZFS 官方文件</a>，以及 Proxmox Wiki 上的 <a href="https://pve.proxmox.com/wiki/ZFS_on_Linux">ZFS on Linux 頁面</a>。</p>
+<h2 id="常見問題">常見問題</h2>
+<h3 id="q-pve-存儲選-zfs-還是-lvm-thin">Q: PVE 存儲選 ZFS 還是 LVM-thin？</h3>
+<p>如果你有兩碟以上且記憶體充足，選 ZFS Mirror，能獲得資料校驗、壓縮和快照功能。只有一碟或記憶體吃緊，LVM-thin 是最務實的選擇，快照和精簡配置都有。</p>
+<h3 id="q-proxmox-zfs-需要多少記憶體">Q: Proxmox ZFS 需要多少記憶體？</h3>
+<p>經驗法則是每 TB 存儲配 1 GB RAM 給 ARC 快取。例如 4TB 的 ZFS Pool 建議至少 4GB 額外記憶體，否則效能會明顯下降。</p>
+<h3 id="q-pve-儲存類型哪種支援共享">Q: PVE 儲存類型哪種支援共享？</h3>
+<p>NFS、CIFS、Ceph RBD、CephFS、iSCSI 和 GlusterFS 都支援多節點共享存取。本地的 ZFS、LVM、LVM-thin 和 Directory 則不支援共享，僅限單節點使用。</p>
+<h3 id="q-lvm-thin-空間滿了怎麼辦">Q: LVM-thin 空間滿了怎麼辦？</h3>
+<p>LVM-thin 超配（over-provision）時，實際使用量超過物理空間會導致 I/O 錯誤。務必透過 <code>lvs</code> 監控使用率，建議設定告警在 80% 時通知，並及時擴充或清理不用的磁碟映像。</p>
+<h2 id="下一步">下一步</h2>
+<p>磁碟搞定了，接著處理網路——VM 怎麼上網、怎麼隔離、Bonding 要不要做：
+👉 <a href="06-networking">網路管理</a></p>5:["$","aside",null,{"className":"hidden lg:block","children":["$","$L8",null,{"html":"$9"}]}]
+6:["$","script","script-0",{"src":"/_next/static/chunks/2dddb3bc05093f69.js","async":true}]
+7:["$","$La",null,{"children":["$","$b",null,{"name":"Next.MetadataOutlet","children":"$@c"}]}]
+c:null

@@ -1,0 +1,171 @@
+1:"$Sreact.fragment"
+2:I[26795,["/_next/static/chunks/5a5b5b13c22d14f7.js","/_next/static/chunks/a484d1d3dd4b55ab.js"],"default"]
+3:I[73489,["/_next/static/chunks/5a5b5b13c22d14f7.js","/_next/static/chunks/a484d1d3dd4b55ab.js"],"default"]
+6:I[50183,["/_next/static/chunks/5a5b5b13c22d14f7.js","/_next/static/chunks/a484d1d3dd4b55ab.js"],"OutletBoundary"]
+7:"$Sreact.suspense"
+9:I[50183,["/_next/static/chunks/5a5b5b13c22d14f7.js","/_next/static/chunks/a484d1d3dd4b55ab.js"],"ViewportBoundary"]
+b:I[50183,["/_next/static/chunks/5a5b5b13c22d14f7.js","/_next/static/chunks/a484d1d3dd4b55ab.js"],"MetadataBoundary"]
+d:I[63847,[],"default"]
+:HL["/_next/static/chunks/446a7883c02a95fe.css","style"]
+:HL["/_next/static/media/797e433ab948586e-s.p.29207c2f.woff2","font",{"crossOrigin":"","type":"font/woff2"}]
+:HL["/_next/static/media/caa3a2e1cccd8315-s.p.3b6cae6d.woff2","font",{"crossOrigin":"","type":"font/woff2"}]
+0:{"P":null,"b":"Yck3R4ooQxWkwGLT6is1X","c":["","ar","blog","cursor","cli","08-worktree-merge"],"q":"","i":false,"f":[[["",{"children":[["locale","ar","d"],{"children":["blog",{"children":[["slug","cursor/cli/08-worktree-merge","c"],{"children":["__PAGE__",{}]}]}]}]},"$undefined","$undefined",true],[["$","$1","c",{"children":[null,["$","html",null,{"children":["$","body",null,{"children":["$","$L2",null,{"parallelRouterKey":"children","error":"$undefined","errorStyles":"$undefined","errorScripts":"$undefined","template":["$","$L3",null,{}],"templateStyles":"$undefined","templateScripts":"$undefined","notFound":[[["$","title",null,{"children":"404: This page could not be found."}],["$","div",null,{"style":{"fontFamily":"system-ui,\"Segoe UI\",Roboto,Helvetica,Arial,sans-serif,\"Apple Color Emoji\",\"Segoe UI Emoji\"","height":"100vh","textAlign":"center","display":"flex","flexDirection":"column","alignItems":"center","justifyContent":"center"},"children":["$","div",null,{"children":[["$","style",null,{"dangerouslySetInnerHTML":{"__html":"body{color:#000;background:#fff;margin:0}.next-error-h1{border-right:1px solid rgba(0,0,0,.3)}@media (prefers-color-scheme:dark){body{color:#fff;background:#000}.next-error-h1{border-right:1px solid rgba(255,255,255,.3)}}"}}],["$","h1",null,{"className":"next-error-h1","style":{"display":"inline-block","margin":"0 20px 0 0","padding":"0 23px 0 0","fontSize":24,"fontWeight":500,"verticalAlign":"top","lineHeight":"49px"},"children":404}],["$","div",null,{"style":{"display":"inline-block"},"children":["$","h2",null,{"style":{"fontSize":14,"fontWeight":400,"lineHeight":"49px","margin":0},"children":"This page could not be found."}]}]]}]}]],[]],"forbidden":"$undefined","unauthorized":"$undefined"}]}]}]]}],{"children":[["$","$1","c",{"children":[[["$","link","0",{"rel":"stylesheet","href":"/_next/static/chunks/446a7883c02a95fe.css","precedence":"next","crossOrigin":"$undefined","nonce":"$undefined"}],["$","script","script-0",{"src":"/_next/static/chunks/7923a261b80bb6e1.js","async":true,"nonce":"$undefined"}],["$","script","script-1",{"src":"/_next/static/chunks/e09b4358027e8033.js","async":true,"nonce":"$undefined"}]],"$L4"]}],{"children":[["$","$1","c",{"children":[null,["$","$L2",null,{"parallelRouterKey":"children","error":"$undefined","errorStyles":"$undefined","errorScripts":"$undefined","template":["$","$L3",null,{}],"templateStyles":"$undefined","templateScripts":"$undefined","notFound":"$undefined","forbidden":"$undefined","unauthorized":"$undefined"}]]}],{"children":[["$","$1","c",{"children":[null,["$","$L2",null,{"parallelRouterKey":"children","error":"$undefined","errorStyles":"$undefined","errorScripts":"$undefined","template":["$","$L3",null,{}],"templateStyles":"$undefined","templateScripts":"$undefined","notFound":"$undefined","forbidden":"$undefined","unauthorized":"$undefined"}]]}],{"children":[["$","$1","c",{"children":["$L5",[["$","script","script-0",{"src":"/_next/static/chunks/2dddb3bc05093f69.js","async":true,"nonce":"$undefined"}]],["$","$L6",null,{"children":["$","$7",null,{"name":"Next.MetadataOutlet","children":"$@8"}]}]]}],{},null,false,false]},null,false,false]},null,false,false]},null,false,false]},null,false,false],["$","$1","h",{"children":[null,["$","$L9",null,{"children":"$La"}],["$","div",null,{"hidden":true,"children":["$","$Lb",null,{"children":["$","$7",null,{"name":"Next.Metadata","children":"$Lc"}]}]}],["$","meta",null,{"name":"next-size-adjust","content":""}]]}],false]],"m":"$undefined","G":["$d",[]],"S":true}
+4:["$","div",null,{"lang":"ar","dir":"rtl","className":"geist_a71539c9-module__T19VSG__variable geist_mono_8d43a2aa-module__8Li5zG__variable flex min-h-screen flex-col antialiased","children":[["$","script",null,{"type":"application/ld+json","dangerouslySetInnerHTML":{"__html":"[{\"@context\":\"https://schema.org\",\"@type\":\"WebSite\",\"name\":\"BenXHub Blog\",\"url\":\"https://benxhub.com/ar\",\"inLanguage\":\"ar\",\"publisher\":{\"@type\":\"Organization\",\"name\":\"BenXHub Blog\",\"url\":\"https://benxhub.com\"},\"potentialAction\":{\"@type\":\"SearchAction\",\"target\":{\"@type\":\"EntryPoint\",\"urlTemplate\":\"https://benxhub.com/ar/search?q={search_term_string}\"},\"query-input\":\"required name=search_term_string\"}},{\"@context\":\"https://schema.org\",\"@type\":\"Person\",\"name\":\"BenX\",\"url\":\"https://benxhub.com\",\"sameAs\":[\"https://github.com/benzhub\"]}]"}}],"$Le"]}]
+f:I[33343,["/_next/static/chunks/7923a261b80bb6e1.js","/_next/static/chunks/e09b4358027e8033.js"],"default"]
+10:I[26817,["/_next/static/chunks/7923a261b80bb6e1.js","/_next/static/chunks/e09b4358027e8033.js"],"default"]
+11:I[6197,["/_next/static/chunks/7923a261b80bb6e1.js","/_next/static/chunks/e09b4358027e8033.js"],"default"]
+13:I[40018,["/_next/static/chunks/7923a261b80bb6e1.js","/_next/static/chunks/e09b4358027e8033.js"],"default"]
+e:["$","$Lf",null,{"formats":"$undefined","locale":"ar","messages":{"common":{"siteName":"BenXHub Blog","siteDescription":"مدونة بن إكس التقنية — أشارك فيها تطوير الويب، وتصميم المعمارية، وممارسات الهندسة البرمجية."},"nav":{"home":"الرئيسية","tags":"الوسوم","about":"حول","searchLabel":"البحث في المقالات"},"hero":{"subtitle":"ملاحظات تقنية حول تطوير الويب، وتصميم المعمارية، وممارسات الهندسة البرمجية","cta":"تصفح المقالات"},"posts":{"title":"المقالات","count":"إجمالي {total} مقالة","empty":"لا توجد مقالات بعد، ترقبوا المزيد!","newerPost":"→ الأحدث","olderPost":"الأقدم ←","navLabel":"التنقل بين المقالات"},"pagination":{"prev":"السابق","next":"التالي","page":"الصفحة {current} من {total}","label":"ترقيم صفحات المقالات","pageTitle":"الصفحة {num}","pageDescription":"BenXHub Blog — قائمة المقالات."},"search":{"title":"البحث في المقالات","description":"ابحث في جميع مقالات BenXHub Blog حسب العنوان أو الوصف أو الوسوم.","subtitle":"البحث حسب العنوان أو الوصف أو الوسوم","placeholder":"ابحث في المقالات بالعنوان أو الوصف أو الوسوم…","found":"تم العثور على {count} مقالة","notFound":"لم يتم العثور على مقالات لـ \"{query}\"","emptyTitle":"لا توجد نتائج","emptyHint":"جرب كلمات مفتاحية مختلفة، أو تصفح","allPosts":"جميع المقالات","totalCount":"إجمالي {count} مقالة — اكتب للبحث"},"tags":{"title":"جميع الوسوم","description":"تصفح جميع المقالات حسب الوسم.","count":"إجمالي {count} وسم","empty":"لا توجد وسوم بعد، ترقبوا المزيد!","allTags":"جميع الوسوم","postCount":"{count} مقالة","otherTags":"وسوم أخرى","tagTitle":"مقالات الوسم #{tag}","tagDescription":"جميع المقالات المصنفة بـ \"{tag}\"."},"about":{"title":"حول","description":"حول BenXHub Blog وهذا الموقع.","subtitle":"حول BenXHub Blog وهذا الموقع","siteTitle":"حول هذا الموقع","siteContent":"BenXHub Blog هي مدونة بن إكس التقنية، أشارك فيها تطوير الويب، وتصميم المعمارية، وممارسات الهندسة البرمجية.","authorTitle":"حول المؤلف","authorContent":"أستمتع بالبرمجة ومشاركة المعرفة. أحب توثيق المشكلات التي واجهتها وحلولها. لا تتردد في التواصل عبر الروابط في الشريط الجانبي أو التذييل.","linksTitle":"الروابط"},"sidebar":{"label":"الشريط الجانبي","authorBio":"أستمتع بالبرمجة والمشاركة — متخصص في تطوير الويب، والمعمارية، وDevOps.","searchPlaceholder":"البحث في المقالات…","seriesTitle":"السلاسل","articleCount":"{count} مقالة"},"toc":{"title":"المحتويات","label":"جدول المحتويات"},"notFound":{"message":"هذه الصفحة غير موجودة. قد يكون الرابط معطلاً أو عنوان URL غير صحيح.","backHome":"العودة إلى الرئيسية"},"localeSwitcher":{"label":"تغيير اللغة"}},"now":"$undefined","timeZone":"UTC","children":[["$","$L10",null,{}],["$","$L11",null,{}],["$","main",null,{"className":"flex-1 pt-16","children":["$","$L2",null,{"parallelRouterKey":"children","error":"$undefined","errorStyles":"$undefined","errorScripts":"$undefined","template":["$","$L3",null,{}],"templateStyles":"$undefined","templateScripts":"$undefined","notFound":["$L12",[]],"forbidden":"$undefined","unauthorized":"$undefined"}]}],["$","$L13",null,{}]]}]
+12:["$","div",null,{"className":"mx-auto max-w-2xl px-4 py-20 text-center sm:px-6","children":[["$","h1",null,{"className":"mb-3 text-4xl font-bold tracking-tight","style":{"color":"var(--color-text)"},"children":"404"}],["$","p",null,{"className":"mb-8 text-lg","style":{"color":"var(--color-muted)"},"children":"هذه الصفحة غير موجودة. قد يكون الرابط معطلاً أو عنوان URL غير صحيح."}],"$L14"]}]
+a:[["$","meta","0",{"charSet":"utf-8"}],["$","meta","1",{"name":"viewport","content":"width=device-width, initial-scale=1"}]]
+15:I[14864,["/_next/static/chunks/7923a261b80bb6e1.js","/_next/static/chunks/e09b4358027e8033.js","/_next/static/chunks/2dddb3bc05093f69.js"],"default"]
+14:["$","$L15",null,{"ref":"$undefined","href":"/ar","locale":"$undefined","localeCookie":{"name":"NEXT_LOCALE","sameSite":"lax"},"className":"inline-flex items-center rounded-lg border px-4 py-2.5 text-sm font-medium transition-colors hover:border-accent","style":{"borderColor":"var(--color-border)","color":"var(--color-accent)","background":"var(--color-surface)"},"children":"العودة إلى الرئيسية"}]
+1b:T259b,<p><a href="06-cursor-cli-with-worktree">06-cursor-cli-with-worktree</a> يغطي <strong>يدوياً</strong> worktree + CLI بالتوازي؛ هذا المنشور يركز على <strong>الاستخدام المتقدّم</strong> لـ <strong>worktrees التي ينشئها Cursor تلقائياً</strong> (Agent متوازي / Apply): كيفية إدراج مهام متعددة، هل ندمج أم نستبدل بالكامل عند Apply، حل التعارضات، واستخدام <code>git worktree list</code> للإدارة اليومية. نترك المفاهيم التمهيدية وننتقل مباشرة للممارسة.</p>
+<h2 id="سيناريو-متقدّم-1-مهام-متعددة-بالتوازي-مراجعة-ثم-apply">سيناريو متقدّم 1: مهام متعددة بالتوازي، مراجعة ثم Apply</h2>
+<p>ميزة واحدة يمكن تقسيمها إلى عدة "مهام فرعية"، كل واحدة يشغّلها Agent في worktree خاص؛ أنت تطبّق فقط ما تريده، وليس الكل دفعة واحدة.</p>
+<p><strong>مثال</strong>: تريد تنفيذ "إعادة هيكلة utils"، "إضافة اختبارات وحدة"، و"توليد وثائق API" في الوقت نفسه:</p>
+<ul>
+<li>شغّل ثلاثة Agents متوازيين (أو شغّلهم واحداً تلو الآخر، كل واحد في worktree) بتعليمات مختلفة</li>
+<li>عند الانتهاء لديك ثلاث نتائج: ربما "إعادة الهيكلة" ممتازة، "الاختبارات" تحتاج تعديلاً، "الوثائق" تتجاهلها</li>
+<li>طبّق فقط بطاقة "إعادة الهيكلة"؛ اترك الباقي دون تطبيق بحيث فقط إعادة الهيكلة تندمج في main — الاثنتان الأخريان لا تلمسان المجلد الرئيسي</li>
+</ul>
+<p><strong>نقطة متقدّمة</strong>: لا تحتاج أن تلتزم بكل شيء دفعة واحدة؛ يمكنك "Apply حسب المهمة، Apply حسب البطاقة"، وmain يحصل فقط على ما قبلته.</p>
+<h2 id="سيناريو-متقدّم-2-merge-أم-full-overwrite-عند-apply">سيناريو متقدّم 2: Merge أم Full Overwrite عند Apply؟</h2>
+<p>عند Apply، يحاول Cursor <strong>الدمج بسلاسة</strong>. إن تسبّب Best-of-N نفسه أو عدة Apply في تعارضات، سيسأل:</p>
+<table>
+<thead>
+<tr>
+<th>الخيار</th>
+<th>متى تستخدمه</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td><strong>Merge (واجهة حل التعارضات)</strong></td>
+<td>عندما تريد الإبقاء على جزء من محتوى main وإدخال جزء فقط من تغييرات worktree، أو عند دمج تغييرات من عدة worktrees "فقرة بفقرة"</td>
+</tr>
+<tr>
+<td><strong>Full Overwrite</strong></td>
+<td>عندما تكون متأكداً أن ملف worktree يجب أن يربح وأن يُستبدل ملف main بالكامل، أو عندما تكون التعارضات كثيرة وتريد أن تكون "هذه البطاقة" المصدر الوحيد للحقيقة</td>
+</tr>
+</tbody>
+</table>
+<p>عملياً: <strong>مهمة واحدة، Agent واحد، ملفات قليلة</strong> → الدمج عادة ينجح. <strong>نفس الطلب يُشغّل بنماذج متعددة (Best-of-N)، وتطبّق جزءاً من البطاقة A وجزءاً من البطاقة B</strong> → التعارضات محتملة؛ إما طبّق بطاقة واحدة فقط، أو استخدم الدمج وحلّ ملفاً بملف. تجنّب Full Overwrite على نفس مجموعة الملفات من بطاقات متعددة — سيتستبدل بعضها بعضاً.</p>
+<h2 id="سيناريو-متقدّم-3-السلوك-عندما-يكون-لـ-main-تغييرات-غير-ملتزمة">سيناريو متقدّم 3: السلوك عندما يكون لـ main تغييرات غير ملتزمة</h2>
+<p>عند إنشاء worktree، يجلب Cursor <strong>التغييرات المتتبعة والملفات الجديدة من المجلد الرئيسي</strong> إلى worktree (الملفات المُهملة في Git لا تُجلب). إذن:</p>
+<ul>
+<li><strong>غيّر شيئاً على main دون commit</strong>، ثم شغّل Agent في worktree → الـ Agent يعمل فوق "حالتك الحالية"؛ عند Apply للخلف، تدمج "تغييراتك غير الملتزمة + تغييرات الـ Agent"</li>
+<li>إذا أردت أن تبدأ المهام المتوازية <strong>من main نظيف</strong>، شغّل <code>git stash</code> أو commit أولاً، ثم أنشئ worktree، حتى لا تخلط "WIP + تغييرات الـ Agent" وتحصل على تعارضات أكثر عند Apply</li>
+</ul>
+<p>يمكنك استخدام ذلك عكسياً: <strong>عن قصد</strong> اترك بعض WIP على main، أنشئ worktree لتغييرات تجريبية، ثم استخدم الدمج عند Apply لإدخال الأجزاء التي تعجبك فقط؛ اترك الباقي في worktree ولا تطبّق.</p>
+<h2 id="سيناريو-متقدّم-4-الفحص-والتنظيف-بـ-git-worktree-list">سيناريو متقدّم 4: الفحص والتنظيف بـ <code>git worktree list</code></h2>
+<p>worktrees التي ينشئها Cursor تظهر في <code>git worktree list</code>؛ المسارات عادة تحت <code>.cursor/worktrees/&#x3C;repo>/&#x3C;id></code>:</p>
+<figure data-rehype-pretty-code-figure=""><pre style="background-color:#24292e;color:#e1e4e8" tabindex="0" data-language="bash" data-theme="github-dark"><code data-language="bash" data-theme="github-dark" style="display: grid;"><span data-line=""><span style="color:#B392F0">git</span><span style="color:#9ECBFF"> worktree</span><span style="color:#9ECBFF"> list</span></span></code></pre></figure>
+<p>عادات جيدة:</p>
+<ul>
+<li><strong>بعد Apply وعندما يبدو main جيداً</strong>، Cursor يدير العدد تلقائياً؛ إن كانت القائمة تحتوي worktrees كثيرة والقرص ضيق، راجع إعدادات Cursor (مثلاً <code>cursor.worktreeMaxCount</code>، فاصل التنظيف) أو أغلق نوافذ مشاريع Cursor غير المستخدمة لتنظيف worktrees القديمة</li>
+<li><strong>عند التصحيح</strong>: القائمة تظهر كم "ساندبوكس" موجود وعلى أي فرع كل واحد، حتى لا تخلط بين main وworktrees الـ Agent</li>
+</ul>
+<p>تجنّب تشغيل <code>git worktree remove</code> يدوياً على مسارات أنشأها Cursor إلا إذا كنت متأكداً أن الـ Agent انتهى؛ وإلا قد يختلّ الحالة الداخلية لـ Cursor.</p>
+<h2 id="سيناريو-متقدّم-5-عندما-يلمس-agents-متوازيون-نفس-الملفات">سيناريو متقدّم 5: عندما يلمس Agents متوازيون نفس الملفات</h2>
+<p>إن شغّلت Agentين، واحد يغيّر <code>src/auth/</code> والآخر <code>src/api/</code>، عادة لا يتعارضان — طبّق واحداً ثم الآخر (الترتيب لا يهم كثيراً؛ الدمج يحل تلقائياً غالباً).</p>
+<p>إن <strong>كلا الـ Agentين يعدّلان نفس الملف</strong> (مثلاً كلاهما يغيّر <code>package.json</code> أو نفس <code>config.ts</code>):</p>
+<ul>
+<li>طبّق الأول → main يصبح لديه تلك التغييرات</li>
+<li>طبّق الثاني → تدخل تدفق الدمج وقد ترى تعارضات</li>
+<li>استخدم واجهة تعارضات Cursor لاختيار "أبقِ هذا الجزء من main، هذا من worktree"، أو إن أردت نسخة worktree الثانية بالكامل فاستخدم Full Overwrite</li>
+</ul>
+<p><strong>استراتيجية</strong>: عند تخطيط مهام متوازية، حاول أن تبقي <strong>مجموعات الملفات غير متداخلة</strong> لكل Agent (مثلاً مجلد frontend واحد، مجلد backend واحد)；حينها نادراً ما تحتاج حل التعارضات يدوياً.</p>
+<h2 id="ملخص">ملخص</h2>
+<ul>
+<li><strong>مهام متعددة بالتوازي</strong>: قسّم إلى مهام فرعية في worktree، راجع، ثم طبّق فقط البطاقات التي تريد؛ main يحصل فقط على ما قبلته</li>
+<li><strong>اختيار Apply</strong>: استخدم <strong>Merge</strong> للإبقاء على جزء من محتوى main؛ استخدم <strong>Full Overwrite</strong> عندما يفوز ملف worktree؛ تجنّب Full Overwrite متكرر على نفس الملفات من بطاقات متعددة</li>
+<li><strong>حالة المجلد الرئيسي</strong>: التغييرات غير الملتزمة تُجلب إلى worktree؛ لخط أساس نظيف، stash/commit أولاً؛ أو اترك WIP عمداً من أجل "worktree تجريبي + دمج انتقائي"</li>
+<li><strong>الإدارة</strong>: استخدم <code>git worktree list</code> للفحص والتناسق مع تنظيف Cursor؛ أبقِ مجموعات الملفات لكل مهمة غير متداخلة لتقليل التعارضات</li>
+</ul>
+<blockquote>
+<p>التالي: <a href="09-worktree-advanced">09-worktree-advanced</a> — مقارنة Best-of-N متعددة النماذج، إعداد worktrees.json، والتنظيف.</p>
+</blockquote>5:[["$","script",null,{"type":"application/ld+json","dangerouslySetInnerHTML":{"__html":"{\"@context\":\"https://schema.org\",\"@type\":\"Article\",\"headline\":\"Worktree المدمج في Cursor: استخدام متقدّم\",\"description\":\"استراتيجية المهام المتوازية، متى تختار Merge مقابل Full Overwrite عند Apply، التعامل مع التعارضات، وإدارة worktree في الممارسة.\",\"url\":\"https://benxhub.com/ar/blog/cursor/cli/08-worktree-merge\",\"mainEntityOfPage\":{\"@type\":\"WebPage\",\"@id\":\"https://benxhub.com/ar/blog/cursor/cli/08-worktree-merge\"},\"datePublished\":\"2026-03-09T00:00:00.000Z\",\"dateModified\":\"2026-03-09T00:00:00.000Z\",\"keywords\":\"cursor, worktree, parallel-agent, apply, git\",\"inLanguage\":\"ar\",\"author\":{\"@type\":\"Person\",\"name\":\"BenX\",\"url\":\"https://benxhub.com\"},\"publisher\":{\"@type\":\"Organization\",\"name\":\"BenXHub Blog\",\"url\":\"https://benxhub.com\"}}"}}],["$","div",null,{"className":"mx-auto max-w-6xl px-4 py-12 sm:px-6","children":["$","div",null,{"className":"lg:grid lg:grid-cols-[1fr_240px] lg:gap-14","children":[["$","article",null,{"children":[["$","header",null,{"className":"mb-10","children":[["$","div",null,{"className":"mb-4 flex flex-wrap gap-2","children":["$L16","$L17","$L18","$L19","$L1a"]}],["$","h1",null,{"className":"mb-4 text-3xl leading-snug font-bold tracking-tight sm:text-4xl","style":{"color":"var(--color-text)"},"children":"Worktree المدمج في Cursor: استخدام متقدّم"}],["$","div",null,{"className":"flex flex-wrap items-center gap-3 text-sm","style":{"color":"var(--color-muted)"},"children":[["$","time",null,{"dateTime":"2026-03-09","children":"9 3月 2026"}],["$","span",null,{"aria-hidden":"true","children":"·"}],["$","span",null,{"children":"4 min read"}]]}],"$undefined",["$","div",null,{"className":"mt-6 border-b","style":{"borderColor":"var(--color-border)"}}]]}],["$","div",null,{"className":"prose","dangerouslySetInnerHTML":{"__html":"$1b"}}],"$L1c"]}],"$L1d"]}]}]]
+25:I[24801,["/_next/static/chunks/7923a261b80bb6e1.js","/_next/static/chunks/e09b4358027e8033.js","/_next/static/chunks/2dddb3bc05093f69.js"],"default"]
+1c:["$","footer",null,{"className":"mt-14 border-t pt-8","style":{"borderColor":"var(--color-border)"},"children":[["$","div",null,{"className":"mb-8 flex flex-wrap gap-2","children":["$L1e","$L1f","$L20","$L21","$L22"]}],["$","nav",null,{"aria-label":"التنقل بين المقالات","className":"grid grid-cols-1 gap-4 sm:grid-cols-2","children":["$L23","$L24"]}]]}]
+26:T259b,<p><a href="06-cursor-cli-with-worktree">06-cursor-cli-with-worktree</a> يغطي <strong>يدوياً</strong> worktree + CLI بالتوازي؛ هذا المنشور يركز على <strong>الاستخدام المتقدّم</strong> لـ <strong>worktrees التي ينشئها Cursor تلقائياً</strong> (Agent متوازي / Apply): كيفية إدراج مهام متعددة، هل ندمج أم نستبدل بالكامل عند Apply، حل التعارضات، واستخدام <code>git worktree list</code> للإدارة اليومية. نترك المفاهيم التمهيدية وننتقل مباشرة للممارسة.</p>
+<h2 id="سيناريو-متقدّم-1-مهام-متعددة-بالتوازي-مراجعة-ثم-apply">سيناريو متقدّم 1: مهام متعددة بالتوازي، مراجعة ثم Apply</h2>
+<p>ميزة واحدة يمكن تقسيمها إلى عدة "مهام فرعية"، كل واحدة يشغّلها Agent في worktree خاص؛ أنت تطبّق فقط ما تريده، وليس الكل دفعة واحدة.</p>
+<p><strong>مثال</strong>: تريد تنفيذ "إعادة هيكلة utils"، "إضافة اختبارات وحدة"، و"توليد وثائق API" في الوقت نفسه:</p>
+<ul>
+<li>شغّل ثلاثة Agents متوازيين (أو شغّلهم واحداً تلو الآخر، كل واحد في worktree) بتعليمات مختلفة</li>
+<li>عند الانتهاء لديك ثلاث نتائج: ربما "إعادة الهيكلة" ممتازة، "الاختبارات" تحتاج تعديلاً، "الوثائق" تتجاهلها</li>
+<li>طبّق فقط بطاقة "إعادة الهيكلة"؛ اترك الباقي دون تطبيق بحيث فقط إعادة الهيكلة تندمج في main — الاثنتان الأخريان لا تلمسان المجلد الرئيسي</li>
+</ul>
+<p><strong>نقطة متقدّمة</strong>: لا تحتاج أن تلتزم بكل شيء دفعة واحدة؛ يمكنك "Apply حسب المهمة، Apply حسب البطاقة"، وmain يحصل فقط على ما قبلته.</p>
+<h2 id="سيناريو-متقدّم-2-merge-أم-full-overwrite-عند-apply">سيناريو متقدّم 2: Merge أم Full Overwrite عند Apply؟</h2>
+<p>عند Apply، يحاول Cursor <strong>الدمج بسلاسة</strong>. إن تسبّب Best-of-N نفسه أو عدة Apply في تعارضات، سيسأل:</p>
+<table>
+<thead>
+<tr>
+<th>الخيار</th>
+<th>متى تستخدمه</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td><strong>Merge (واجهة حل التعارضات)</strong></td>
+<td>عندما تريد الإبقاء على جزء من محتوى main وإدخال جزء فقط من تغييرات worktree، أو عند دمج تغييرات من عدة worktrees "فقرة بفقرة"</td>
+</tr>
+<tr>
+<td><strong>Full Overwrite</strong></td>
+<td>عندما تكون متأكداً أن ملف worktree يجب أن يربح وأن يُستبدل ملف main بالكامل، أو عندما تكون التعارضات كثيرة وتريد أن تكون "هذه البطاقة" المصدر الوحيد للحقيقة</td>
+</tr>
+</tbody>
+</table>
+<p>عملياً: <strong>مهمة واحدة، Agent واحد، ملفات قليلة</strong> → الدمج عادة ينجح. <strong>نفس الطلب يُشغّل بنماذج متعددة (Best-of-N)، وتطبّق جزءاً من البطاقة A وجزءاً من البطاقة B</strong> → التعارضات محتملة؛ إما طبّق بطاقة واحدة فقط، أو استخدم الدمج وحلّ ملفاً بملف. تجنّب Full Overwrite على نفس مجموعة الملفات من بطاقات متعددة — سيتستبدل بعضها بعضاً.</p>
+<h2 id="سيناريو-متقدّم-3-السلوك-عندما-يكون-لـ-main-تغييرات-غير-ملتزمة">سيناريو متقدّم 3: السلوك عندما يكون لـ main تغييرات غير ملتزمة</h2>
+<p>عند إنشاء worktree، يجلب Cursor <strong>التغييرات المتتبعة والملفات الجديدة من المجلد الرئيسي</strong> إلى worktree (الملفات المُهملة في Git لا تُجلب). إذن:</p>
+<ul>
+<li><strong>غيّر شيئاً على main دون commit</strong>، ثم شغّل Agent في worktree → الـ Agent يعمل فوق "حالتك الحالية"؛ عند Apply للخلف، تدمج "تغييراتك غير الملتزمة + تغييرات الـ Agent"</li>
+<li>إذا أردت أن تبدأ المهام المتوازية <strong>من main نظيف</strong>، شغّل <code>git stash</code> أو commit أولاً، ثم أنشئ worktree، حتى لا تخلط "WIP + تغييرات الـ Agent" وتحصل على تعارضات أكثر عند Apply</li>
+</ul>
+<p>يمكنك استخدام ذلك عكسياً: <strong>عن قصد</strong> اترك بعض WIP على main، أنشئ worktree لتغييرات تجريبية، ثم استخدم الدمج عند Apply لإدخال الأجزاء التي تعجبك فقط؛ اترك الباقي في worktree ولا تطبّق.</p>
+<h2 id="سيناريو-متقدّم-4-الفحص-والتنظيف-بـ-git-worktree-list">سيناريو متقدّم 4: الفحص والتنظيف بـ <code>git worktree list</code></h2>
+<p>worktrees التي ينشئها Cursor تظهر في <code>git worktree list</code>؛ المسارات عادة تحت <code>.cursor/worktrees/&#x3C;repo>/&#x3C;id></code>:</p>
+<figure data-rehype-pretty-code-figure=""><pre style="background-color:#24292e;color:#e1e4e8" tabindex="0" data-language="bash" data-theme="github-dark"><code data-language="bash" data-theme="github-dark" style="display: grid;"><span data-line=""><span style="color:#B392F0">git</span><span style="color:#9ECBFF"> worktree</span><span style="color:#9ECBFF"> list</span></span></code></pre></figure>
+<p>عادات جيدة:</p>
+<ul>
+<li><strong>بعد Apply وعندما يبدو main جيداً</strong>، Cursor يدير العدد تلقائياً؛ إن كانت القائمة تحتوي worktrees كثيرة والقرص ضيق، راجع إعدادات Cursor (مثلاً <code>cursor.worktreeMaxCount</code>، فاصل التنظيف) أو أغلق نوافذ مشاريع Cursor غير المستخدمة لتنظيف worktrees القديمة</li>
+<li><strong>عند التصحيح</strong>: القائمة تظهر كم "ساندبوكس" موجود وعلى أي فرع كل واحد، حتى لا تخلط بين main وworktrees الـ Agent</li>
+</ul>
+<p>تجنّب تشغيل <code>git worktree remove</code> يدوياً على مسارات أنشأها Cursor إلا إذا كنت متأكداً أن الـ Agent انتهى؛ وإلا قد يختلّ الحالة الداخلية لـ Cursor.</p>
+<h2 id="سيناريو-متقدّم-5-عندما-يلمس-agents-متوازيون-نفس-الملفات">سيناريو متقدّم 5: عندما يلمس Agents متوازيون نفس الملفات</h2>
+<p>إن شغّلت Agentين، واحد يغيّر <code>src/auth/</code> والآخر <code>src/api/</code>، عادة لا يتعارضان — طبّق واحداً ثم الآخر (الترتيب لا يهم كثيراً؛ الدمج يحل تلقائياً غالباً).</p>
+<p>إن <strong>كلا الـ Agentين يعدّلان نفس الملف</strong> (مثلاً كلاهما يغيّر <code>package.json</code> أو نفس <code>config.ts</code>):</p>
+<ul>
+<li>طبّق الأول → main يصبح لديه تلك التغييرات</li>
+<li>طبّق الثاني → تدخل تدفق الدمج وقد ترى تعارضات</li>
+<li>استخدم واجهة تعارضات Cursor لاختيار "أبقِ هذا الجزء من main، هذا من worktree"، أو إن أردت نسخة worktree الثانية بالكامل فاستخدم Full Overwrite</li>
+</ul>
+<p><strong>استراتيجية</strong>: عند تخطيط مهام متوازية، حاول أن تبقي <strong>مجموعات الملفات غير متداخلة</strong> لكل Agent (مثلاً مجلد frontend واحد، مجلد backend واحد)；حينها نادراً ما تحتاج حل التعارضات يدوياً.</p>
+<h2 id="ملخص">ملخص</h2>
+<ul>
+<li><strong>مهام متعددة بالتوازي</strong>: قسّم إلى مهام فرعية في worktree، راجع، ثم طبّق فقط البطاقات التي تريد؛ main يحصل فقط على ما قبلته</li>
+<li><strong>اختيار Apply</strong>: استخدم <strong>Merge</strong> للإبقاء على جزء من محتوى main؛ استخدم <strong>Full Overwrite</strong> عندما يفوز ملف worktree؛ تجنّب Full Overwrite متكرر على نفس الملفات من بطاقات متعددة</li>
+<li><strong>حالة المجلد الرئيسي</strong>: التغييرات غير الملتزمة تُجلب إلى worktree؛ لخط أساس نظيف، stash/commit أولاً؛ أو اترك WIP عمداً من أجل "worktree تجريبي + دمج انتقائي"</li>
+<li><strong>الإدارة</strong>: استخدم <code>git worktree list</code> للفحص والتناسق مع تنظيف Cursor؛ أبقِ مجموعات الملفات لكل مهمة غير متداخلة لتقليل التعارضات</li>
+</ul>
+<blockquote>
+<p>التالي: <a href="09-worktree-advanced">09-worktree-advanced</a> — مقارنة Best-of-N متعددة النماذج، إعداد worktrees.json، والتنظيف.</p>
+</blockquote>1d:["$","aside",null,{"className":"hidden lg:block","children":["$","$L25",null,{"html":"$26"}]}]
+16:["$","$L15","cursor",{"ref":"$undefined","href":"/ar/tags/cursor","locale":"$undefined","localeCookie":"$14:props:localeCookie","className":"inline-flex items-center rounded-full px-2.5 py-0.5 text-xs font-medium transition-colors","style":{"background":"var(--color-code-bg)","color":"var(--color-accent)","border":"1px solid var(--color-border)"},"children":["#","cursor"]}]
+17:["$","$L15","worktree",{"ref":"$undefined","href":"/ar/tags/worktree","locale":"$undefined","localeCookie":"$14:props:localeCookie","className":"inline-flex items-center rounded-full px-2.5 py-0.5 text-xs font-medium transition-colors","style":{"background":"var(--color-code-bg)","color":"var(--color-accent)","border":"1px solid var(--color-border)"},"children":["#","worktree"]}]
+18:["$","$L15","parallel-agent",{"ref":"$undefined","href":"/ar/tags/parallel-agent","locale":"$undefined","localeCookie":"$14:props:localeCookie","className":"inline-flex items-center rounded-full px-2.5 py-0.5 text-xs font-medium transition-colors","style":{"background":"var(--color-code-bg)","color":"var(--color-accent)","border":"1px solid var(--color-border)"},"children":["#","parallel-agent"]}]
+19:["$","$L15","apply",{"ref":"$undefined","href":"/ar/tags/apply","locale":"$undefined","localeCookie":"$14:props:localeCookie","className":"inline-flex items-center rounded-full px-2.5 py-0.5 text-xs font-medium transition-colors","style":{"background":"var(--color-code-bg)","color":"var(--color-accent)","border":"1px solid var(--color-border)"},"children":["#","apply"]}]
+1a:["$","$L15","git",{"ref":"$undefined","href":"/ar/tags/git","locale":"$undefined","localeCookie":"$14:props:localeCookie","className":"inline-flex items-center rounded-full px-2.5 py-0.5 text-xs font-medium transition-colors","style":{"background":"var(--color-code-bg)","color":"var(--color-accent)","border":"1px solid var(--color-border)"},"children":["#","git"]}]
+1e:["$","$L15","cursor",{"ref":"$undefined","href":"/ar/tags/cursor","locale":"$undefined","localeCookie":"$14:props:localeCookie","className":"inline-flex items-center rounded-full px-3 py-1 text-sm font-medium transition-colors","style":{"background":"var(--color-code-bg)","color":"var(--color-accent)","border":"1px solid var(--color-border)"},"children":["#","cursor"]}]
+1f:["$","$L15","worktree",{"ref":"$undefined","href":"/ar/tags/worktree","locale":"$undefined","localeCookie":"$14:props:localeCookie","className":"inline-flex items-center rounded-full px-3 py-1 text-sm font-medium transition-colors","style":{"background":"var(--color-code-bg)","color":"var(--color-accent)","border":"1px solid var(--color-border)"},"children":["#","worktree"]}]
+20:["$","$L15","parallel-agent",{"ref":"$undefined","href":"/ar/tags/parallel-agent","locale":"$undefined","localeCookie":"$14:props:localeCookie","className":"inline-flex items-center rounded-full px-3 py-1 text-sm font-medium transition-colors","style":{"background":"var(--color-code-bg)","color":"var(--color-accent)","border":"1px solid var(--color-border)"},"children":["#","parallel-agent"]}]
+21:["$","$L15","apply",{"ref":"$undefined","href":"/ar/tags/apply","locale":"$undefined","localeCookie":"$14:props:localeCookie","className":"inline-flex items-center rounded-full px-3 py-1 text-sm font-medium transition-colors","style":{"background":"var(--color-code-bg)","color":"var(--color-accent)","border":"1px solid var(--color-border)"},"children":["#","apply"]}]
+22:["$","$L15","git",{"ref":"$undefined","href":"/ar/tags/git","locale":"$undefined","localeCookie":"$14:props:localeCookie","className":"inline-flex items-center rounded-full px-3 py-1 text-sm font-medium transition-colors","style":{"background":"var(--color-code-bg)","color":"var(--color-accent)","border":"1px solid var(--color-border)"},"children":["#","git"]}]
+23:["$","$L15",null,{"ref":"$undefined","href":"/ar/blog/ai-trend/2026-03-09-ai-content-automation-workflow","locale":"$undefined","localeCookie":"$14:props:localeCookie","className":"group rounded-lg border p-4 transition-colors hover:border-accent","style":{"borderColor":"var(--color-border)","background":"var(--color-surface)"},"children":[["$","p",null,{"className":"mb-1 text-xs","style":{"color":"var(--color-muted)"},"children":"→ الأحدث"}],["$","p",null,{"className":"line-clamp-1 text-sm font-medium transition-colors group-hover:text-accent","style":{"color":"var(--color-text)"},"children":"إنتاج المحتوى بالذكاء الاصطناعي: الفجوة الحقيقية ليست السرعة، بل تصميم سير العمل"}]]}]
+24:["$","$L15",null,{"ref":"$undefined","href":"/ar/blog/cursor/cli/09-worktree-advanced","locale":"$undefined","localeCookie":"$14:props:localeCookie","className":"group rounded-lg border p-4 text-right transition-colors hover:border-accent","style":{"borderColor":"var(--color-border)","background":"var(--color-surface)"},"children":[["$","p",null,{"className":"mb-1 text-xs","style":{"color":"var(--color-muted)"},"children":"الأقدم ←"}],["$","p",null,{"className":"line-clamp-1 text-sm font-medium transition-colors group-hover:text-accent","style":{"color":"var(--color-text)"},"children":"Cursor Worktree متقدّم: Best-of-N و worktrees.json"}]]}]
+27:I[92204,["/_next/static/chunks/5a5b5b13c22d14f7.js","/_next/static/chunks/a484d1d3dd4b55ab.js"],"IconMark"]
+8:null
+c:[["$","title","0",{"children":"Worktree المدمج في Cursor: استخدام متقدّم | BenXHub Blog"}],["$","meta","1",{"name":"description","content":"استراتيجية المهام المتوازية، متى تختار Merge مقابل Full Overwrite عند Apply، التعامل مع التعارضات، وإدارة worktree في الممارسة."}],["$","meta","2",{"property":"og:title","content":"Worktree المدمج في Cursor: استخدام متقدّم"}],["$","meta","3",{"property":"og:description","content":"استراتيجية المهام المتوازية، متى تختار Merge مقابل Full Overwrite عند Apply، التعامل مع التعارضات، وإدارة worktree في الممارسة."}],["$","meta","4",{"property":"og:url","content":"https://benxhub.com/ar/blog/cursor/cli/08-worktree-merge"}],["$","meta","5",{"property":"og:type","content":"article"}],["$","meta","6",{"property":"article:published_time","content":"2026-03-09T00:00:00.000Z"}],["$","meta","7",{"property":"article:tag","content":"cursor"}],["$","meta","8",{"property":"article:tag","content":"worktree"}],["$","meta","9",{"property":"article:tag","content":"parallel-agent"}],["$","meta","10",{"property":"article:tag","content":"apply"}],["$","meta","11",{"property":"article:tag","content":"git"}],["$","meta","12",{"name":"twitter:card","content":"summary_large_image"}],["$","meta","13",{"name":"twitter:title","content":"Worktree المدمج في Cursor: استخدام متقدّم"}],["$","meta","14",{"name":"twitter:description","content":"استراتيجية المهام المتوازية، متى تختار Merge مقابل Full Overwrite عند Apply، التعامل مع التعارضات، وإدارة worktree في الممارسة."}],["$","link","15",{"rel":"icon","href":"/favicon.ico?favicon.0b3bf435.ico","sizes":"256x256","type":"image/x-icon"}],["$","$L27","16",{}]]

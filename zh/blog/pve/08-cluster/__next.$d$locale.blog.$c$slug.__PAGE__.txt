@@ -1,0 +1,309 @@
+1:"$Sreact.fragment"
+2:I[14864,["/_next/static/chunks/7923a261b80bb6e1.js","/_next/static/chunks/e09b4358027e8033.js","/_next/static/chunks/2dddb3bc05093f69.js"],"default"]
+8:I[24801,["/_next/static/chunks/7923a261b80bb6e1.js","/_next/static/chunks/e09b4358027e8033.js","/_next/static/chunks/2dddb3bc05093f69.js"],"default"]
+a:I[50183,["/_next/static/chunks/5a5b5b13c22d14f7.js","/_next/static/chunks/a484d1d3dd4b55ab.js"],"OutletBoundary"]
+b:"$Sreact.suspense"
+3:T2c7a,<p>一台 PVE 跑得好好的，為什麼要組叢集？因為單機就像獨居——什麼事都自己扛，生病了沒人幫忙頂班。PVE 叢集就是找室友合租，大家分擔家務，誰有事其他人可以接手。當然，室友之間也需要溝通協調，不然會吵架。如果你只有一台主機，可以先從 <a href="02-install-first-vm">安裝與建立首台 VM</a> 開始玩起。</p>
+<h2 id="叢集長什麼樣">叢集長什麼樣</h2>
+<pre><code>┌──────────┐    ┌──────────┐    ┌──────────┐
+│  Node 1  │◄──►│  Node 2  │◄──►│  Node 3  │
+│ corosync │    │ corosync │    │ corosync │
+│  pmxcfs  │    │  pmxcfs  │    │  pmxcfs  │
+└──────────┘    └──────────┘    └──────────┘
+       └────────────┼────────────┘
+              Cluster Ring
+</code></pre>
+<p>兩個核心元件撐起整個叢集：</p>
+<ul>
+<li><strong>Corosync</strong>：負責節點之間的心跳偵測與訊息傳遞，像室友之間的群組聊天——誰沒回訊息就知道出事了</li>
+<li><strong>pmxcfs</strong>：叢集檔案系統，掛載在 <code>/etc/pve</code>，所有節點的設定檔即時同步。你在 Node 1 改了 VM 設定，Node 2 和 Node 3 馬上看到</li>
+</ul>
+<h2 id="quorum投票決定誰說了算">Quorum：投票決定誰說了算</h2>
+<p>Quorum（仲裁）是叢集的民主機制——過半數節點同意才能繼續運作。這是為了防止「腦裂」（Split-brain）：網路斷了，兩邊都以為自己是老大，搶著操作同一台 VM，資料就毀了。</p>
+<p>公式很簡單：<strong>Quorum = 總票數 / 2 + 1</strong></p>
+<table>
+<thead>
+<tr>
+<th align="center">節點數</th>
+<th align="center">需要票數</th>
+<th align="center">可容忍掛幾台</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td align="center">2</td>
+<td align="center">2</td>
+<td align="center">0（完蛋）</td>
+</tr>
+<tr>
+<td align="center">3</td>
+<td align="center">2</td>
+<td align="center">1</td>
+</tr>
+<tr>
+<td align="center">4</td>
+<td align="center">3</td>
+<td align="center">1</td>
+</tr>
+<tr>
+<td align="center">5</td>
+<td align="center">3</td>
+<td align="center">2</td>
+</tr>
+</tbody>
+</table>
+<p>看出來了嗎？<strong>偶數節點很尷尬</strong>——4 台跟 3 台能容忍的故障數一樣，多一台沒賺到。所以叢集建議用奇數：3 台或 5 台。</p>
+<blockquote>
+<p>2 台節點的叢集天生有 Quorum 問題：掛一台就過不了半數，整個叢集卡住。解法是加一個 <strong>QDevice</strong>——不需要是高規機器，一台輕量 Linux 或 LXC 容器就行，它只負責投票不跑 VM。就像打籃球三對三，找一個人來當裁判就夠了。</p>
+</blockquote>
+<h2 id="建叢集其實不難">建叢集：其實不難</h2>
+<figure data-rehype-pretty-code-figure=""><pre style="background-color:#24292e;color:#e1e4e8" tabindex="0" data-language="bash" data-theme="github-dark"><code data-language="bash" data-theme="github-dark" style="display: grid;"><span data-line=""><span style="color:#6A737D"># 第一台節點建立叢集</span></span>
+<span data-line=""><span style="color:#B392F0">pvecm</span><span style="color:#9ECBFF"> create</span><span style="color:#9ECBFF"> my-cluster</span></span>
+<span data-line=""> </span>
+<span data-line=""><span style="color:#6A737D"># 其他節點加入（輸入第一台的 IP）</span></span>
+<span data-line=""><span style="color:#B392F0">pvecm</span><span style="color:#9ECBFF"> add</span><span style="color:#79B8FF"> 192.168.1.100</span></span>
+<span data-line=""> </span>
+<span data-line=""><span style="color:#6A737D"># 看叢集狀態</span></span>
+<span data-line=""><span style="color:#B392F0">pvecm</span><span style="color:#9ECBFF"> status</span></span>
+<span data-line=""> </span>
+<span data-line=""><span style="color:#6A737D"># 列出所有節點</span></span>
+<span data-line=""><span style="color:#B392F0">pvecm</span><span style="color:#9ECBFF"> nodes</span></span></code></pre></figure>
+<p>加入叢集之前先確認幾件事，不然後面會各種靈異現象：</p>
+<ul>
+<li>每台節點的<strong>主機名稱必須唯一</strong></li>
+<li><strong>DNS 正確解析</strong>（每台節點都能 resolve 其他節點的 hostname）</li>
+<li><strong>時間同步</strong>（NTP 設好，時間差太多 Corosync 會翻臉）</li>
+<li>網路互通，延遲夠低</li>
+</ul>
+<blockquote>
+<p>叢集建好之後<strong>不能改叢集名稱</strong>，主機名稱也盡量別動。這不是改 Wi-Fi 密碼那麼隨便的事。</p>
+</blockquote>
+<h2 id="移除節點">移除節點</h2>
+<p>要把某台節點踢出叢集，步驟要對：</p>
+<figure data-rehype-pretty-code-figure=""><pre style="background-color:#24292e;color:#e1e4e8" tabindex="0" data-language="bash" data-theme="github-dark"><code data-language="bash" data-theme="github-dark" style="display: grid;"><span data-line=""><span style="color:#6A737D"># 先把那台節點上的 VM 全部遷走</span></span>
+<span data-line=""> </span>
+<span data-line=""><span style="color:#6A737D"># 在要移除的節點上停止服務</span></span>
+<span data-line=""><span style="color:#B392F0">systemctl</span><span style="color:#9ECBFF"> stop</span><span style="color:#9ECBFF"> pve-cluster</span><span style="color:#9ECBFF"> corosync</span></span>
+<span data-line=""> </span>
+<span data-line=""><span style="color:#6A737D"># 在叢集裡任一台其他節點上執行移除</span></span>
+<span data-line=""><span style="color:#B392F0">pvecm</span><span style="color:#9ECBFF"> delnode</span><span style="color:#F97583"> &#x3C;</span><span style="color:#9ECBFF">node-nam</span><span style="color:#E1E4E8">e</span><span style="color:#F97583">></span></span></code></pre></figure>
+<p>先遷 VM 再移除節點，就像搬家要先把傢俱搬走再退租。如果直接退租，東西還在裡面就尷尬了。</p>
+<h2 id="corosync-網路建議獨立拉一條">Corosync 網路：建議獨立拉一條</h2>
+<p>Corosync 的心跳封包對延遲很敏感。如果跟業務流量、存儲流量擠在同一條網路上，塞車的時候 Corosync 收不到心跳，就會誤判節點掛了，然後觸發不必要的故障轉移。</p>
+<p>建議做法：</p>
+<ul>
+<li>用獨立的網段給 Corosync（例如 <code>10.10.10.0/24</code>）</li>
+<li>設定多條 Corosync Link 做冗餘</li>
+<li>不需要 10G，1G 夠用，但延遲要低</li>
+</ul>
+<p>網路怎麼規劃、Bridge 怎麼分流，可以回頭看 <a href="06-networking">網路管理</a>。存儲網路的規劃（尤其是跑 Ceph）則參考 <a href="10-ceph-storage">Ceph 超融合存儲</a>。</p>
+<figure data-rehype-pretty-code-figure=""><pre style="background-color:#24292e;color:#e1e4e8" tabindex="0" data-language="bash" data-theme="github-dark"><code data-language="bash" data-theme="github-dark" style="display: grid;"><span data-line=""><span style="color:#6A737D"># 查看目前 Corosync 設定</span></span>
+<span data-line=""><span style="color:#B392F0">cat</span><span style="color:#9ECBFF"> /etc/pve/corosync.conf</span></span></code></pre></figure>
+<h2 id="叢集限制與注意事項">叢集限制與注意事項</h2>
+<ul>
+<li>最多 <strong>32 個節點</strong>——不夠的話，你可能需要的是 Kubernetes 而不是 PVE</li>
+<li>所有節點要在同一個網段，或者透過 VPN 連接</li>
+<li>加入叢集後節點是「終身制」的——要離開得走正式流程，不能直接拔網線跑路</li>
+<li>跨叢集遷移 VM 不支援，得靠 PDM（Proxmox Datacenter Manager）</li>
+</ul>
+<h2 id="常見問題速查">常見問題速查</h2>
+<table>
+<thead>
+<tr>
+<th>症狀</th>
+<th>通常原因</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td>節點顯示離線但其實活著</td>
+<td>Corosync 網路不通或延遲太高</td>
+</tr>
+<tr>
+<td>叢集操作全部卡住</td>
+<td>Quorum 丟失，過半數節點掛了</td>
+</tr>
+<tr>
+<td>加入叢集失敗</td>
+<td>DNS 沒設好、時間沒同步、SSH key 有問題</td>
+</tr>
+<tr>
+<td>Web GUI 看不到其他節點的 VM</td>
+<td>pmxcfs 同步出問題，檢查 Corosync 狀態</td>
+</tr>
+</tbody>
+</table>
+<figure data-rehype-pretty-code-figure=""><pre style="background-color:#24292e;color:#e1e4e8" tabindex="0" data-language="bash" data-theme="github-dark"><code data-language="bash" data-theme="github-dark" style="display: grid;"><span data-line=""><span style="color:#6A737D"># 排查起手式</span></span>
+<span data-line=""><span style="color:#B392F0">pvecm</span><span style="color:#9ECBFF"> status</span><span style="color:#6A737D">        # 看叢集整體狀態</span></span>
+<span data-line=""><span style="color:#B392F0">pvecm</span><span style="color:#9ECBFF"> expected</span><span style="color:#79B8FF"> 1</span><span style="color:#6A737D">    # 緊急狀況：強制單節點取得 Quorum（慎用！）</span></span>
+<span data-line=""><span style="color:#B392F0">journalctl</span><span style="color:#79B8FF"> -u</span><span style="color:#9ECBFF"> corosync</span><span style="color:#79B8FF"> -f</span><span style="color:#6A737D">  # 看 Corosync 即時日誌</span></span></code></pre></figure>
+<blockquote>
+<p><code>pvecm expected 1</code> 是急救用的，等於跳過投票機制強行讓單節點運作。用完記得把叢集修好，不然你的「民主制度」就只是裝飾品。</p>
+</blockquote>
+<p>更詳細的叢集管理參數，可以參考 <a href="https://pve.proxmox.com/pve-docs/chapter-pvecm.html">Proxmox VE Cluster Manager 官方文件</a>。Corosync 的底層機制可以看 <a href="https://corosync.github.io/corosync/">Corosync 官方網站</a>，QDevice 的設定參考 <a href="https://pve.proxmox.com/wiki/Cluster_Manager">Proxmox Wiki 的 Cluster Manager 頁面</a>。</p>
+<h2 id="常見問題">常見問題</h2>
+<h3 id="q-pve-叢集最少需要幾台節點">Q: PVE 叢集最少需要幾台節點？</h3>
+<p>技術上 2 台就能組叢集，但 2 台有 Quorum 問題——掛一台整個叢集就卡住。建議最少 3 台，或者 2 台加一個 QDevice（輕量 Linux 機器當投票裁判）。</p>
+<h3 id="q-proxmox-cluster-節點可以跨網段嗎">Q: Proxmox Cluster 節點可以跨網段嗎？</h3>
+<p>可以，但 Corosync 需要節點之間網路互通且低延遲。跨網段通常透過 VPN 連接，但延遲太高會導致心跳偵測誤判。同一個區域網路內組叢集是最穩的做法。</p>
+<h3 id="q-pvecm-加入叢集失敗怎麼排查">Q: pvecm 加入叢集失敗怎麼排查？</h3>
+<p>最常見的三個原因：DNS 沒正確解析各節點 hostname、NTP 時間沒同步（差太多 Corosync 會拒絕）、SSH key 驗證失敗。依序檢查這三項通常能解決問題。</p>
+<h3 id="q-叢集節點可以跑不同版本的-pve-嗎">Q: 叢集節點可以跑不同版本的 PVE 嗎？</h3>
+<p>短期升級過渡期可以混版本運行，但不建議長期這樣。所有節點應盡快統一到相同的 PVE 版本，避免 API 不相容或功能異常。升級時建議逐台滾動更新。</p>
+<h2 id="下一步">下一步</h2>
+<p>叢集組好了，接下來才是重頭戲——高可用性。讓 VM 在節點掛掉時自動轉移到其他機器上繼續跑：
+👉 <a href="09-high-availability">高可用性</a></p>0:{"buildId":"Yck3R4ooQxWkwGLT6is1X","rsc":["$","$1","c",{"children":[[["$","script",null,{"type":"application/ld+json","dangerouslySetInnerHTML":{"__html":"{\"@context\":\"https://schema.org\",\"@type\":\"Article\",\"headline\":\"Proxmox VE 叢集管理：多台主機組隊打副本\",\"description\":\"PVE 叢集建置教學：pvecm 建立 Proxmox Cluster、Corosync 心跳設定、Quorum 投票機制與常見踩坑全解析。\",\"url\":\"https://benxhub.com/zh/blog/pve/08-cluster\",\"mainEntityOfPage\":{\"@type\":\"WebPage\",\"@id\":\"https://benxhub.com/zh/blog/pve/08-cluster\"},\"datePublished\":\"2026-05-01T00:00:00.000Z\",\"dateModified\":\"2026-05-01T00:00:00.000Z\",\"keywords\":\"proxmox, cluster, corosync, quorum\",\"inLanguage\":\"zh\",\"author\":{\"@type\":\"Person\",\"name\":\"BenX\",\"url\":\"https://benxhub.com\"},\"publisher\":{\"@type\":\"Organization\",\"name\":\"BenXHub Blog\",\"url\":\"https://benxhub.com\"}}"}}],["$","div",null,{"className":"mx-auto max-w-6xl px-4 py-12 sm:px-6","children":["$","div",null,{"className":"lg:grid lg:grid-cols-[1fr_240px] lg:gap-14","children":[["$","article",null,{"children":[["$","header",null,{"className":"mb-10","children":[["$","div",null,{"className":"mb-4 flex flex-wrap gap-2","children":[["$","$L2","proxmox",{"href":"/zh/tags/proxmox","localeCookie":{"name":"NEXT_LOCALE","sameSite":"lax"},"className":"inline-flex items-center rounded-full px-2.5 py-0.5 text-xs font-medium transition-colors","style":{"background":"var(--color-code-bg)","color":"var(--color-accent)","border":"1px solid var(--color-border)"},"children":["#","proxmox"]}],["$","$L2","cluster",{"href":"/zh/tags/cluster","localeCookie":{"name":"NEXT_LOCALE","sameSite":"lax"},"className":"inline-flex items-center rounded-full px-2.5 py-0.5 text-xs font-medium transition-colors","style":{"background":"var(--color-code-bg)","color":"var(--color-accent)","border":"1px solid var(--color-border)"},"children":["#","cluster"]}],["$","$L2","corosync",{"href":"/zh/tags/corosync","localeCookie":{"name":"NEXT_LOCALE","sameSite":"lax"},"className":"inline-flex items-center rounded-full px-2.5 py-0.5 text-xs font-medium transition-colors","style":{"background":"var(--color-code-bg)","color":"var(--color-accent)","border":"1px solid var(--color-border)"},"children":["#","corosync"]}],["$","$L2","quorum",{"href":"/zh/tags/quorum","localeCookie":{"name":"NEXT_LOCALE","sameSite":"lax"},"className":"inline-flex items-center rounded-full px-2.5 py-0.5 text-xs font-medium transition-colors","style":{"background":"var(--color-code-bg)","color":"var(--color-accent)","border":"1px solid var(--color-border)"},"children":["#","quorum"]}]]}],["$","h1",null,{"className":"mb-4 text-3xl leading-snug font-bold tracking-tight sm:text-4xl","style":{"color":"var(--color-text)"},"children":"Proxmox VE 叢集管理：多台主機組隊打副本"}],["$","div",null,{"className":"flex flex-wrap items-center gap-3 text-sm","style":{"color":"var(--color-muted)"},"children":[["$","time",null,{"dateTime":"2026-05-01","children":"2026 年 5 月 1 日"}],["$","span",null,{"aria-hidden":"true","children":"·"}],["$","span",null,{"children":"8 min read"}]]}],"$undefined",["$","div",null,{"className":"mt-6 border-b","style":{"borderColor":"var(--color-border)"}}]]}],["$","div",null,{"className":"prose","dangerouslySetInnerHTML":{"__html":"$3"}}],"$L4"]}],"$L5"]}]}]],["$L6"],"$L7"]}],"loading":null,"isPartial":false}
+4:["$","footer",null,{"className":"mt-14 border-t pt-8","style":{"borderColor":"var(--color-border)"},"children":[["$","div",null,{"className":"mb-8 flex flex-wrap gap-2","children":[["$","$L2","proxmox",{"href":"/zh/tags/proxmox","localeCookie":{"name":"NEXT_LOCALE","sameSite":"lax"},"className":"inline-flex items-center rounded-full px-3 py-1 text-sm font-medium transition-colors","style":{"background":"var(--color-code-bg)","color":"var(--color-accent)","border":"1px solid var(--color-border)"},"children":["#","proxmox"]}],["$","$L2","cluster",{"href":"/zh/tags/cluster","localeCookie":{"name":"NEXT_LOCALE","sameSite":"lax"},"className":"inline-flex items-center rounded-full px-3 py-1 text-sm font-medium transition-colors","style":{"background":"var(--color-code-bg)","color":"var(--color-accent)","border":"1px solid var(--color-border)"},"children":["#","cluster"]}],["$","$L2","corosync",{"href":"/zh/tags/corosync","localeCookie":{"name":"NEXT_LOCALE","sameSite":"lax"},"className":"inline-flex items-center rounded-full px-3 py-1 text-sm font-medium transition-colors","style":{"background":"var(--color-code-bg)","color":"var(--color-accent)","border":"1px solid var(--color-border)"},"children":["#","corosync"]}],["$","$L2","quorum",{"href":"/zh/tags/quorum","localeCookie":{"name":"NEXT_LOCALE","sameSite":"lax"},"className":"inline-flex items-center rounded-full px-3 py-1 text-sm font-medium transition-colors","style":{"background":"var(--color-code-bg)","color":"var(--color-accent)","border":"1px solid var(--color-border)"},"children":["#","quorum"]}]]}],["$","nav",null,{"aria-label":"文章導覽","className":"grid grid-cols-1 gap-4 sm:grid-cols-2","children":[["$","$L2",null,{"href":"/zh/blog/pve/09-high-availability","localeCookie":{"name":"NEXT_LOCALE","sameSite":"lax"},"className":"group rounded-lg border p-4 transition-colors hover:border-accent","style":{"borderColor":"var(--color-border)","background":"var(--color-surface)"},"children":[["$","p",null,{"className":"mb-1 text-xs","style":{"color":"var(--color-muted)"},"children":"← 較新文章"}],["$","p",null,{"className":"line-clamp-1 text-sm font-medium transition-colors group-hover:text-accent","style":{"color":"var(--color-text)"},"children":"Proxmox VE 高可用性：讓 VM 自己找活路"}]]}],["$","$L2",null,{"href":"/zh/blog/pve/07-backup-restore","localeCookie":{"name":"NEXT_LOCALE","sameSite":"lax"},"className":"group rounded-lg border p-4 text-right transition-colors hover:border-accent","style":{"borderColor":"var(--color-border)","background":"var(--color-surface)"},"children":[["$","p",null,{"className":"mb-1 text-xs","style":{"color":"var(--color-muted)"},"children":"較舊文章 →"}],["$","p",null,{"className":"line-clamp-1 text-sm font-medium transition-colors group-hover:text-accent","style":{"color":"var(--color-text)"},"children":"Proxmox VE 備份與還原：你的後悔藥指南"}]]}]]}]]}]
+9:T2c7a,<p>一台 PVE 跑得好好的，為什麼要組叢集？因為單機就像獨居——什麼事都自己扛，生病了沒人幫忙頂班。PVE 叢集就是找室友合租，大家分擔家務，誰有事其他人可以接手。當然，室友之間也需要溝通協調，不然會吵架。如果你只有一台主機，可以先從 <a href="02-install-first-vm">安裝與建立首台 VM</a> 開始玩起。</p>
+<h2 id="叢集長什麼樣">叢集長什麼樣</h2>
+<pre><code>┌──────────┐    ┌──────────┐    ┌──────────┐
+│  Node 1  │◄──►│  Node 2  │◄──►│  Node 3  │
+│ corosync │    │ corosync │    │ corosync │
+│  pmxcfs  │    │  pmxcfs  │    │  pmxcfs  │
+└──────────┘    └──────────┘    └──────────┘
+       └────────────┼────────────┘
+              Cluster Ring
+</code></pre>
+<p>兩個核心元件撐起整個叢集：</p>
+<ul>
+<li><strong>Corosync</strong>：負責節點之間的心跳偵測與訊息傳遞，像室友之間的群組聊天——誰沒回訊息就知道出事了</li>
+<li><strong>pmxcfs</strong>：叢集檔案系統，掛載在 <code>/etc/pve</code>，所有節點的設定檔即時同步。你在 Node 1 改了 VM 設定，Node 2 和 Node 3 馬上看到</li>
+</ul>
+<h2 id="quorum投票決定誰說了算">Quorum：投票決定誰說了算</h2>
+<p>Quorum（仲裁）是叢集的民主機制——過半數節點同意才能繼續運作。這是為了防止「腦裂」（Split-brain）：網路斷了，兩邊都以為自己是老大，搶著操作同一台 VM，資料就毀了。</p>
+<p>公式很簡單：<strong>Quorum = 總票數 / 2 + 1</strong></p>
+<table>
+<thead>
+<tr>
+<th align="center">節點數</th>
+<th align="center">需要票數</th>
+<th align="center">可容忍掛幾台</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td align="center">2</td>
+<td align="center">2</td>
+<td align="center">0（完蛋）</td>
+</tr>
+<tr>
+<td align="center">3</td>
+<td align="center">2</td>
+<td align="center">1</td>
+</tr>
+<tr>
+<td align="center">4</td>
+<td align="center">3</td>
+<td align="center">1</td>
+</tr>
+<tr>
+<td align="center">5</td>
+<td align="center">3</td>
+<td align="center">2</td>
+</tr>
+</tbody>
+</table>
+<p>看出來了嗎？<strong>偶數節點很尷尬</strong>——4 台跟 3 台能容忍的故障數一樣，多一台沒賺到。所以叢集建議用奇數：3 台或 5 台。</p>
+<blockquote>
+<p>2 台節點的叢集天生有 Quorum 問題：掛一台就過不了半數，整個叢集卡住。解法是加一個 <strong>QDevice</strong>——不需要是高規機器，一台輕量 Linux 或 LXC 容器就行，它只負責投票不跑 VM。就像打籃球三對三，找一個人來當裁判就夠了。</p>
+</blockquote>
+<h2 id="建叢集其實不難">建叢集：其實不難</h2>
+<figure data-rehype-pretty-code-figure=""><pre style="background-color:#24292e;color:#e1e4e8" tabindex="0" data-language="bash" data-theme="github-dark"><code data-language="bash" data-theme="github-dark" style="display: grid;"><span data-line=""><span style="color:#6A737D"># 第一台節點建立叢集</span></span>
+<span data-line=""><span style="color:#B392F0">pvecm</span><span style="color:#9ECBFF"> create</span><span style="color:#9ECBFF"> my-cluster</span></span>
+<span data-line=""> </span>
+<span data-line=""><span style="color:#6A737D"># 其他節點加入（輸入第一台的 IP）</span></span>
+<span data-line=""><span style="color:#B392F0">pvecm</span><span style="color:#9ECBFF"> add</span><span style="color:#79B8FF"> 192.168.1.100</span></span>
+<span data-line=""> </span>
+<span data-line=""><span style="color:#6A737D"># 看叢集狀態</span></span>
+<span data-line=""><span style="color:#B392F0">pvecm</span><span style="color:#9ECBFF"> status</span></span>
+<span data-line=""> </span>
+<span data-line=""><span style="color:#6A737D"># 列出所有節點</span></span>
+<span data-line=""><span style="color:#B392F0">pvecm</span><span style="color:#9ECBFF"> nodes</span></span></code></pre></figure>
+<p>加入叢集之前先確認幾件事，不然後面會各種靈異現象：</p>
+<ul>
+<li>每台節點的<strong>主機名稱必須唯一</strong></li>
+<li><strong>DNS 正確解析</strong>（每台節點都能 resolve 其他節點的 hostname）</li>
+<li><strong>時間同步</strong>（NTP 設好，時間差太多 Corosync 會翻臉）</li>
+<li>網路互通，延遲夠低</li>
+</ul>
+<blockquote>
+<p>叢集建好之後<strong>不能改叢集名稱</strong>，主機名稱也盡量別動。這不是改 Wi-Fi 密碼那麼隨便的事。</p>
+</blockquote>
+<h2 id="移除節點">移除節點</h2>
+<p>要把某台節點踢出叢集，步驟要對：</p>
+<figure data-rehype-pretty-code-figure=""><pre style="background-color:#24292e;color:#e1e4e8" tabindex="0" data-language="bash" data-theme="github-dark"><code data-language="bash" data-theme="github-dark" style="display: grid;"><span data-line=""><span style="color:#6A737D"># 先把那台節點上的 VM 全部遷走</span></span>
+<span data-line=""> </span>
+<span data-line=""><span style="color:#6A737D"># 在要移除的節點上停止服務</span></span>
+<span data-line=""><span style="color:#B392F0">systemctl</span><span style="color:#9ECBFF"> stop</span><span style="color:#9ECBFF"> pve-cluster</span><span style="color:#9ECBFF"> corosync</span></span>
+<span data-line=""> </span>
+<span data-line=""><span style="color:#6A737D"># 在叢集裡任一台其他節點上執行移除</span></span>
+<span data-line=""><span style="color:#B392F0">pvecm</span><span style="color:#9ECBFF"> delnode</span><span style="color:#F97583"> &#x3C;</span><span style="color:#9ECBFF">node-nam</span><span style="color:#E1E4E8">e</span><span style="color:#F97583">></span></span></code></pre></figure>
+<p>先遷 VM 再移除節點，就像搬家要先把傢俱搬走再退租。如果直接退租，東西還在裡面就尷尬了。</p>
+<h2 id="corosync-網路建議獨立拉一條">Corosync 網路：建議獨立拉一條</h2>
+<p>Corosync 的心跳封包對延遲很敏感。如果跟業務流量、存儲流量擠在同一條網路上，塞車的時候 Corosync 收不到心跳，就會誤判節點掛了，然後觸發不必要的故障轉移。</p>
+<p>建議做法：</p>
+<ul>
+<li>用獨立的網段給 Corosync（例如 <code>10.10.10.0/24</code>）</li>
+<li>設定多條 Corosync Link 做冗餘</li>
+<li>不需要 10G，1G 夠用，但延遲要低</li>
+</ul>
+<p>網路怎麼規劃、Bridge 怎麼分流，可以回頭看 <a href="06-networking">網路管理</a>。存儲網路的規劃（尤其是跑 Ceph）則參考 <a href="10-ceph-storage">Ceph 超融合存儲</a>。</p>
+<figure data-rehype-pretty-code-figure=""><pre style="background-color:#24292e;color:#e1e4e8" tabindex="0" data-language="bash" data-theme="github-dark"><code data-language="bash" data-theme="github-dark" style="display: grid;"><span data-line=""><span style="color:#6A737D"># 查看目前 Corosync 設定</span></span>
+<span data-line=""><span style="color:#B392F0">cat</span><span style="color:#9ECBFF"> /etc/pve/corosync.conf</span></span></code></pre></figure>
+<h2 id="叢集限制與注意事項">叢集限制與注意事項</h2>
+<ul>
+<li>最多 <strong>32 個節點</strong>——不夠的話，你可能需要的是 Kubernetes 而不是 PVE</li>
+<li>所有節點要在同一個網段，或者透過 VPN 連接</li>
+<li>加入叢集後節點是「終身制」的——要離開得走正式流程，不能直接拔網線跑路</li>
+<li>跨叢集遷移 VM 不支援，得靠 PDM（Proxmox Datacenter Manager）</li>
+</ul>
+<h2 id="常見問題速查">常見問題速查</h2>
+<table>
+<thead>
+<tr>
+<th>症狀</th>
+<th>通常原因</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td>節點顯示離線但其實活著</td>
+<td>Corosync 網路不通或延遲太高</td>
+</tr>
+<tr>
+<td>叢集操作全部卡住</td>
+<td>Quorum 丟失，過半數節點掛了</td>
+</tr>
+<tr>
+<td>加入叢集失敗</td>
+<td>DNS 沒設好、時間沒同步、SSH key 有問題</td>
+</tr>
+<tr>
+<td>Web GUI 看不到其他節點的 VM</td>
+<td>pmxcfs 同步出問題，檢查 Corosync 狀態</td>
+</tr>
+</tbody>
+</table>
+<figure data-rehype-pretty-code-figure=""><pre style="background-color:#24292e;color:#e1e4e8" tabindex="0" data-language="bash" data-theme="github-dark"><code data-language="bash" data-theme="github-dark" style="display: grid;"><span data-line=""><span style="color:#6A737D"># 排查起手式</span></span>
+<span data-line=""><span style="color:#B392F0">pvecm</span><span style="color:#9ECBFF"> status</span><span style="color:#6A737D">        # 看叢集整體狀態</span></span>
+<span data-line=""><span style="color:#B392F0">pvecm</span><span style="color:#9ECBFF"> expected</span><span style="color:#79B8FF"> 1</span><span style="color:#6A737D">    # 緊急狀況：強制單節點取得 Quorum（慎用！）</span></span>
+<span data-line=""><span style="color:#B392F0">journalctl</span><span style="color:#79B8FF"> -u</span><span style="color:#9ECBFF"> corosync</span><span style="color:#79B8FF"> -f</span><span style="color:#6A737D">  # 看 Corosync 即時日誌</span></span></code></pre></figure>
+<blockquote>
+<p><code>pvecm expected 1</code> 是急救用的，等於跳過投票機制強行讓單節點運作。用完記得把叢集修好，不然你的「民主制度」就只是裝飾品。</p>
+</blockquote>
+<p>更詳細的叢集管理參數，可以參考 <a href="https://pve.proxmox.com/pve-docs/chapter-pvecm.html">Proxmox VE Cluster Manager 官方文件</a>。Corosync 的底層機制可以看 <a href="https://corosync.github.io/corosync/">Corosync 官方網站</a>，QDevice 的設定參考 <a href="https://pve.proxmox.com/wiki/Cluster_Manager">Proxmox Wiki 的 Cluster Manager 頁面</a>。</p>
+<h2 id="常見問題">常見問題</h2>
+<h3 id="q-pve-叢集最少需要幾台節點">Q: PVE 叢集最少需要幾台節點？</h3>
+<p>技術上 2 台就能組叢集，但 2 台有 Quorum 問題——掛一台整個叢集就卡住。建議最少 3 台，或者 2 台加一個 QDevice（輕量 Linux 機器當投票裁判）。</p>
+<h3 id="q-proxmox-cluster-節點可以跨網段嗎">Q: Proxmox Cluster 節點可以跨網段嗎？</h3>
+<p>可以，但 Corosync 需要節點之間網路互通且低延遲。跨網段通常透過 VPN 連接，但延遲太高會導致心跳偵測誤判。同一個區域網路內組叢集是最穩的做法。</p>
+<h3 id="q-pvecm-加入叢集失敗怎麼排查">Q: pvecm 加入叢集失敗怎麼排查？</h3>
+<p>最常見的三個原因：DNS 沒正確解析各節點 hostname、NTP 時間沒同步（差太多 Corosync 會拒絕）、SSH key 驗證失敗。依序檢查這三項通常能解決問題。</p>
+<h3 id="q-叢集節點可以跑不同版本的-pve-嗎">Q: 叢集節點可以跑不同版本的 PVE 嗎？</h3>
+<p>短期升級過渡期可以混版本運行，但不建議長期這樣。所有節點應盡快統一到相同的 PVE 版本，避免 API 不相容或功能異常。升級時建議逐台滾動更新。</p>
+<h2 id="下一步">下一步</h2>
+<p>叢集組好了，接下來才是重頭戲——高可用性。讓 VM 在節點掛掉時自動轉移到其他機器上繼續跑：
+👉 <a href="09-high-availability">高可用性</a></p>5:["$","aside",null,{"className":"hidden lg:block","children":["$","$L8",null,{"html":"$9"}]}]
+6:["$","script","script-0",{"src":"/_next/static/chunks/2dddb3bc05093f69.js","async":true}]
+7:["$","$La",null,{"children":["$","$b",null,{"name":"Next.MetadataOutlet","children":"$@c"}]}]
+c:null

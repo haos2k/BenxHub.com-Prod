@@ -1,0 +1,366 @@
+1:"$Sreact.fragment"
+2:I[14864,["/_next/static/chunks/7923a261b80bb6e1.js","/_next/static/chunks/e09b4358027e8033.js","/_next/static/chunks/2dddb3bc05093f69.js"],"default"]
+b:I[24801,["/_next/static/chunks/7923a261b80bb6e1.js","/_next/static/chunks/e09b4358027e8033.js","/_next/static/chunks/2dddb3bc05093f69.js"],"default"]
+d:I[50183,["/_next/static/chunks/5a5b5b13c22d14f7.js","/_next/static/chunks/a484d1d3dd4b55ab.js"],"OutletBoundary"]
+e:"$Sreact.suspense"
+0:{"buildId":"Yck3R4ooQxWkwGLT6is1X","rsc":["$","$1","c",{"children":[[["$","script",null,{"type":"application/ld+json","dangerouslySetInnerHTML":{"__html":"{\"@context\":\"https://schema.org\",\"@type\":\"Article\",\"headline\":\"Envoy Gateway Route Type Cheatsheet: HTTPRoute, GRPCRoute, TCPRoute, or TLSRoute?\",\"description\":\"A quick-reference cheatsheet for choosing the right Route type — with minimal YAML examples, a decision flowchart, and common pitfalls.\",\"url\":\"https://benxhub.com/en/blog/k8s/gateway/06-route-types-cheatsheet\",\"mainEntityOfPage\":{\"@type\":\"WebPage\",\"@id\":\"https://benxhub.com/en/blog/k8s/gateway/06-route-types-cheatsheet\"},\"datePublished\":\"2026-03-10T00:00:00.000Z\",\"dateModified\":\"2026-03-10T00:00:00.000Z\",\"keywords\":\"kubernetes, envoy-gateway, gateway-api, httproute, grpcroute, tcproute, tlsroute\",\"inLanguage\":\"en\",\"author\":{\"@type\":\"Person\",\"name\":\"BenX\",\"url\":\"https://benxhub.com\"},\"publisher\":{\"@type\":\"Organization\",\"name\":\"BenXHub Blog\",\"url\":\"https://benxhub.com\"}}"}}],["$","div",null,{"className":"mx-auto max-w-6xl px-4 py-12 sm:px-6","children":["$","div",null,{"className":"lg:grid lg:grid-cols-[1fr_240px] lg:gap-14","children":[["$","article",null,{"children":[["$","header",null,{"className":"mb-10","children":[["$","div",null,{"className":"mb-4 flex flex-wrap gap-2","children":[["$","$L2","kubernetes",{"href":"/en/tags/kubernetes","localeCookie":{"name":"NEXT_LOCALE","sameSite":"lax"},"className":"inline-flex items-center rounded-full px-2.5 py-0.5 text-xs font-medium transition-colors","style":{"background":"var(--color-code-bg)","color":"var(--color-accent)","border":"1px solid var(--color-border)"},"children":["#","kubernetes"]}],["$","$L2","envoy-gateway",{"href":"/en/tags/envoy-gateway","localeCookie":{"name":"NEXT_LOCALE","sameSite":"lax"},"className":"inline-flex items-center rounded-full px-2.5 py-0.5 text-xs font-medium transition-colors","style":{"background":"var(--color-code-bg)","color":"var(--color-accent)","border":"1px solid var(--color-border)"},"children":["#","envoy-gateway"]}],["$","$L2","gateway-api",{"href":"/en/tags/gateway-api","localeCookie":{"name":"NEXT_LOCALE","sameSite":"lax"},"className":"inline-flex items-center rounded-full px-2.5 py-0.5 text-xs font-medium transition-colors","style":{"background":"var(--color-code-bg)","color":"var(--color-accent)","border":"1px solid var(--color-border)"},"children":["#","gateway-api"]}],["$","$L2","httproute",{"href":"/en/tags/httproute","localeCookie":{"name":"NEXT_LOCALE","sameSite":"lax"},"className":"inline-flex items-center rounded-full px-2.5 py-0.5 text-xs font-medium transition-colors","style":{"background":"var(--color-code-bg)","color":"var(--color-accent)","border":"1px solid var(--color-border)"},"children":["#","httproute"]}],["$","$L2","grpcroute",{"href":"/en/tags/grpcroute","localeCookie":{"name":"NEXT_LOCALE","sameSite":"lax"},"className":"inline-flex items-center rounded-full px-2.5 py-0.5 text-xs font-medium transition-colors","style":{"background":"var(--color-code-bg)","color":"var(--color-accent)","border":"1px solid var(--color-border)"},"children":["#","grpcroute"]}],["$","$L2","tcproute",{"href":"/en/tags/tcproute","localeCookie":{"name":"NEXT_LOCALE","sameSite":"lax"},"className":"inline-flex items-center rounded-full px-2.5 py-0.5 text-xs font-medium transition-colors","style":{"background":"var(--color-code-bg)","color":"var(--color-accent)","border":"1px solid var(--color-border)"},"children":["#","tcproute"]}],["$","$L2","tlsroute",{"href":"/en/tags/tlsroute","localeCookie":{"name":"NEXT_LOCALE","sameSite":"lax"},"className":"inline-flex items-center rounded-full px-2.5 py-0.5 text-xs font-medium transition-colors","style":{"background":"var(--color-code-bg)","color":"var(--color-accent)","border":"1px solid var(--color-border)"},"children":["#","tlsroute"]}]]}],["$","h1",null,{"className":"mb-4 text-3xl leading-snug font-bold tracking-tight sm:text-4xl","style":{"color":"var(--color-text)"},"children":"Envoy Gateway Route Type Cheatsheet: HTTPRoute, GRPCRoute, TCPRoute, or TLSRoute?"}],"$L3","$undefined","$L4"]}],"$L5","$L6"]}],"$L7"]}]}]],["$L8"],"$L9"]}],"loading":null,"isPartial":false}
+3:["$","div",null,{"className":"flex flex-wrap items-center gap-3 text-sm","style":{"color":"var(--color-muted)"},"children":[["$","time",null,{"dateTime":"2026-03-10","children":"Mar 10, 2026"}],["$","span",null,{"aria-hidden":"true","children":"·"}],["$","span",null,{"children":"5 min read"}]]}]
+4:["$","div",null,{"className":"mt-6 border-b","style":{"borderColor":"var(--color-border)"}}]
+a:T411e,<p>If you've read the previous posts, the question that's most likely blocking you now isn't "I don't understand Gateway API" — it's:</p>
+<p><strong>"Okay but which one do I actually write — <code>HTTPRoute</code>, <code>GRPCRoute</code>, <code>TCPRoute</code>, or <code>TLSRoute</code>?"</strong></p>
+<p>This post exists specifically to untangle that. Keep it as a pocket reference. When a new service comes up, consult this first — it'll save you from writing YAML blindly and getting a lesson from condition statuses.</p>
+<h2 id="the-conclusion-first-four-route-types-four-purposes">The Conclusion First: Four Route Types, Four Purposes</h2>
+<table>
+<thead>
+<tr>
+<th>Route Type</th>
+<th>Traffic Layer</th>
+<th>What It Inspects</th>
+<th>Best For</th>
+<th>Not For</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td><code>HTTPRoute</code></td>
+<td>L7 HTTP/HTTPS</td>
+<td>host, path, header, query, method</td>
+<td>Websites, REST APIs, general web traffic</td>
+<td>Raw TCP, TLS passthrough</td>
+</tr>
+<tr>
+<td><code>GRPCRoute</code></td>
+<td>L7 gRPC</td>
+<td>hostname, service, method, header</td>
+<td>gRPC service/method routing</td>
+<td>General REST APIs, raw TCP</td>
+</tr>
+<tr>
+<td><code>TCPRoute</code></td>
+<td>L4 TCP</td>
+<td>Listener and connection-level info</td>
+<td>Databases, custom TCP protocols, non-HTTP services</td>
+<td>Scenarios needing path/header inspection</td>
+</tr>
+<tr>
+<td><code>TLSRoute</code></td>
+<td>L4/L5 TLS</td>
+<td>TLS SNI hostname</td>
+<td>TLS passthrough, preserving end-to-end encryption</td>
+<td>Needing to inspect HTTP details after decryption</td>
+</tr>
+</tbody>
+</table>
+<p>If you want an ultra-short version:</p>
+<ul>
+<li>Inspect <code>path</code> or <code>header</code> → <code>HTTPRoute</code></li>
+<li>Inspect gRPC <code>service/method</code> → <code>GRPCRoute</code></li>
+<li>Just forwarding TCP connections → <code>TCPRoute</code></li>
+<li>No TLS termination, SNI routing only → <code>TLSRoute</code></li>
+</ul>
+<h2 id="three-step-decision-stop-guessing">Three-Step Decision: Stop Guessing</h2>
+<p>Use this order:</p>
+<ol>
+<li>Will the Gateway parse HTTP semantics from this traffic?</li>
+<li>If yes, is it regular HTTP/REST, or gRPC?</li>
+<li>If no, is it raw TCP, or TLS passthrough?</li>
+</ol>
+<p>Mapped out:</p>
+<ul>
+<li>Has HTTP path/header/method to inspect → <code>HTTPRoute</code></li>
+<li>Has gRPC service/method to inspect → <code>GRPCRoute</code></li>
+<li>No L7 rules, just TCP forwarding → <code>TCPRoute</code></li>
+<li>Want TLS preserved to the backend → <code>TLSRoute</code></li>
+</ul>
+<p>This decision matters a lot. Many people instinctively write <code>HTTPRoute</code> first, then realize halfway through that they're dealing with database traffic. The entire YAML enters "what am I even doing" mode.</p>
+<h2 id="minimal-yaml-examples-recognize-each-at-a-glance">Minimal YAML Examples: Recognize Each at a Glance</h2>
+<p>Here are the shortest, most recognizable versions of each.</p>
+<h3 id="httproute"><code>HTTPRoute</code></h3>
+<figure data-rehype-pretty-code-figure=""><pre style="background-color:#24292e;color:#e1e4e8" tabindex="0" data-language="yaml" data-theme="github-dark"><code data-language="yaml" data-theme="github-dark" style="display: grid;"><span data-line=""><span style="color:#85E89D">apiVersion</span><span style="color:#E1E4E8">: </span><span style="color:#9ECBFF">gateway.networking.k8s.io/v1</span></span>
+<span data-line=""><span style="color:#85E89D">kind</span><span style="color:#E1E4E8">: </span><span style="color:#9ECBFF">HTTPRoute</span></span>
+<span data-line=""><span style="color:#85E89D">metadata</span><span style="color:#E1E4E8">:</span></span>
+<span data-line=""><span style="color:#85E89D">  name</span><span style="color:#E1E4E8">: </span><span style="color:#9ECBFF">web-route</span></span>
+<span data-line=""><span style="color:#85E89D">spec</span><span style="color:#E1E4E8">:</span></span>
+<span data-line=""><span style="color:#85E89D">  parentRefs</span><span style="color:#E1E4E8">:</span></span>
+<span data-line=""><span style="color:#E1E4E8">    - </span><span style="color:#85E89D">name</span><span style="color:#E1E4E8">: </span><span style="color:#9ECBFF">eg</span></span>
+<span data-line=""><span style="color:#85E89D">      sectionName</span><span style="color:#E1E4E8">: </span><span style="color:#9ECBFF">http</span></span>
+<span data-line=""><span style="color:#85E89D">  hostnames</span><span style="color:#E1E4E8">:</span></span>
+<span data-line=""><span style="color:#E1E4E8">    - </span><span style="color:#9ECBFF">"app.example.com"</span></span>
+<span data-line=""><span style="color:#85E89D">  rules</span><span style="color:#E1E4E8">:</span></span>
+<span data-line=""><span style="color:#E1E4E8">    - </span><span style="color:#85E89D">matches</span><span style="color:#E1E4E8">:</span></span>
+<span data-line=""><span style="color:#E1E4E8">        - </span><span style="color:#85E89D">path</span><span style="color:#E1E4E8">:</span></span>
+<span data-line=""><span style="color:#85E89D">            type</span><span style="color:#E1E4E8">: </span><span style="color:#9ECBFF">PathPrefix</span></span>
+<span data-line=""><span style="color:#85E89D">            value</span><span style="color:#E1E4E8">: </span><span style="color:#9ECBFF">/api</span></span>
+<span data-line=""><span style="color:#85E89D">      backendRefs</span><span style="color:#E1E4E8">:</span></span>
+<span data-line=""><span style="color:#E1E4E8">        - </span><span style="color:#85E89D">name</span><span style="color:#E1E4E8">: </span><span style="color:#9ECBFF">api-service</span></span>
+<span data-line=""><span style="color:#85E89D">          port</span><span style="color:#E1E4E8">: </span><span style="color:#79B8FF">8080</span></span></code></pre></figure>
+<p>If you see <code>path</code>, <code>hostnames</code>, and <code>backendRefs</code> — it's this one.</p>
+<h3 id="grpcroute"><code>GRPCRoute</code></h3>
+<figure data-rehype-pretty-code-figure=""><pre style="background-color:#24292e;color:#e1e4e8" tabindex="0" data-language="yaml" data-theme="github-dark"><code data-language="yaml" data-theme="github-dark" style="display: grid;"><span data-line=""><span style="color:#85E89D">apiVersion</span><span style="color:#E1E4E8">: </span><span style="color:#9ECBFF">gateway.networking.k8s.io/v1</span></span>
+<span data-line=""><span style="color:#85E89D">kind</span><span style="color:#E1E4E8">: </span><span style="color:#9ECBFF">GRPCRoute</span></span>
+<span data-line=""><span style="color:#85E89D">metadata</span><span style="color:#E1E4E8">:</span></span>
+<span data-line=""><span style="color:#85E89D">  name</span><span style="color:#E1E4E8">: </span><span style="color:#9ECBFF">user-grpc</span></span>
+<span data-line=""><span style="color:#85E89D">spec</span><span style="color:#E1E4E8">:</span></span>
+<span data-line=""><span style="color:#85E89D">  parentRefs</span><span style="color:#E1E4E8">:</span></span>
+<span data-line=""><span style="color:#E1E4E8">    - </span><span style="color:#85E89D">name</span><span style="color:#E1E4E8">: </span><span style="color:#9ECBFF">eg</span></span>
+<span data-line=""><span style="color:#85E89D">      sectionName</span><span style="color:#E1E4E8">: </span><span style="color:#9ECBFF">grpc</span></span>
+<span data-line=""><span style="color:#85E89D">  hostnames</span><span style="color:#E1E4E8">:</span></span>
+<span data-line=""><span style="color:#E1E4E8">    - </span><span style="color:#9ECBFF">"grpc.example.com"</span></span>
+<span data-line=""><span style="color:#85E89D">  rules</span><span style="color:#E1E4E8">:</span></span>
+<span data-line=""><span style="color:#E1E4E8">    - </span><span style="color:#85E89D">matches</span><span style="color:#E1E4E8">:</span></span>
+<span data-line=""><span style="color:#E1E4E8">        - </span><span style="color:#85E89D">method</span><span style="color:#E1E4E8">:</span></span>
+<span data-line=""><span style="color:#85E89D">            service</span><span style="color:#E1E4E8">: </span><span style="color:#9ECBFF">com.example.User</span></span>
+<span data-line=""><span style="color:#85E89D">            method</span><span style="color:#E1E4E8">: </span><span style="color:#9ECBFF">Login</span></span>
+<span data-line=""><span style="color:#85E89D">      backendRefs</span><span style="color:#E1E4E8">:</span></span>
+<span data-line=""><span style="color:#E1E4E8">        - </span><span style="color:#85E89D">name</span><span style="color:#E1E4E8">: </span><span style="color:#9ECBFF">user-grpc-service</span></span>
+<span data-line=""><span style="color:#85E89D">          port</span><span style="color:#E1E4E8">: </span><span style="color:#79B8FF">50051</span></span></code></pre></figure>
+<p>If you see <code>method.service</code> and <code>method.method</code> — you're matching gRPC semantics, not regular HTTP.</p>
+<h3 id="tcproute"><code>TCPRoute</code></h3>
+<figure data-rehype-pretty-code-figure=""><pre style="background-color:#24292e;color:#e1e4e8" tabindex="0" data-language="yaml" data-theme="github-dark"><code data-language="yaml" data-theme="github-dark" style="display: grid;"><span data-line=""><span style="color:#85E89D">apiVersion</span><span style="color:#E1E4E8">: </span><span style="color:#9ECBFF">gateway.networking.k8s.io/v1alpha2</span></span>
+<span data-line=""><span style="color:#85E89D">kind</span><span style="color:#E1E4E8">: </span><span style="color:#9ECBFF">TCPRoute</span></span>
+<span data-line=""><span style="color:#85E89D">metadata</span><span style="color:#E1E4E8">:</span></span>
+<span data-line=""><span style="color:#85E89D">  name</span><span style="color:#E1E4E8">: </span><span style="color:#9ECBFF">postgres-route</span></span>
+<span data-line=""><span style="color:#85E89D">spec</span><span style="color:#E1E4E8">:</span></span>
+<span data-line=""><span style="color:#85E89D">  parentRefs</span><span style="color:#E1E4E8">:</span></span>
+<span data-line=""><span style="color:#E1E4E8">    - </span><span style="color:#85E89D">name</span><span style="color:#E1E4E8">: </span><span style="color:#9ECBFF">eg</span></span>
+<span data-line=""><span style="color:#85E89D">      sectionName</span><span style="color:#E1E4E8">: </span><span style="color:#9ECBFF">postgres</span></span>
+<span data-line=""><span style="color:#85E89D">  rules</span><span style="color:#E1E4E8">:</span></span>
+<span data-line=""><span style="color:#E1E4E8">    - </span><span style="color:#85E89D">backendRefs</span><span style="color:#E1E4E8">:</span></span>
+<span data-line=""><span style="color:#E1E4E8">        - </span><span style="color:#85E89D">name</span><span style="color:#E1E4E8">: </span><span style="color:#9ECBFF">postgres</span></span>
+<span data-line=""><span style="color:#85E89D">          port</span><span style="color:#E1E4E8">: </span><span style="color:#79B8FF">5432</span></span></code></pre></figure>
+<p><code>TCPRoute</code> has almost no path/header concepts — because it doesn't look at those.
+It's closer to: "TCP connections arriving at this listener go to this backend."</p>
+<h3 id="tlsroute"><code>TLSRoute</code></h3>
+<figure data-rehype-pretty-code-figure=""><pre style="background-color:#24292e;color:#e1e4e8" tabindex="0" data-language="yaml" data-theme="github-dark"><code data-language="yaml" data-theme="github-dark" style="display: grid;"><span data-line=""><span style="color:#85E89D">apiVersion</span><span style="color:#E1E4E8">: </span><span style="color:#9ECBFF">gateway.networking.k8s.io/v1alpha2</span></span>
+<span data-line=""><span style="color:#85E89D">kind</span><span style="color:#E1E4E8">: </span><span style="color:#9ECBFF">TLSRoute</span></span>
+<span data-line=""><span style="color:#85E89D">metadata</span><span style="color:#E1E4E8">:</span></span>
+<span data-line=""><span style="color:#85E89D">  name</span><span style="color:#E1E4E8">: </span><span style="color:#9ECBFF">passthrough-route</span></span>
+<span data-line=""><span style="color:#85E89D">spec</span><span style="color:#E1E4E8">:</span></span>
+<span data-line=""><span style="color:#85E89D">  parentRefs</span><span style="color:#E1E4E8">:</span></span>
+<span data-line=""><span style="color:#E1E4E8">    - </span><span style="color:#85E89D">name</span><span style="color:#E1E4E8">: </span><span style="color:#9ECBFF">eg</span></span>
+<span data-line=""><span style="color:#85E89D">      sectionName</span><span style="color:#E1E4E8">: </span><span style="color:#9ECBFF">tls</span></span>
+<span data-line=""><span style="color:#85E89D">  hostnames</span><span style="color:#E1E4E8">:</span></span>
+<span data-line=""><span style="color:#E1E4E8">    - </span><span style="color:#9ECBFF">"db.example.com"</span></span>
+<span data-line=""><span style="color:#85E89D">  rules</span><span style="color:#E1E4E8">:</span></span>
+<span data-line=""><span style="color:#E1E4E8">    - </span><span style="color:#85E89D">backendRefs</span><span style="color:#E1E4E8">:</span></span>
+<span data-line=""><span style="color:#E1E4E8">        - </span><span style="color:#85E89D">name</span><span style="color:#E1E4E8">: </span><span style="color:#9ECBFF">db-service</span></span>
+<span data-line=""><span style="color:#85E89D">          port</span><span style="color:#E1E4E8">: </span><span style="color:#79B8FF">5432</span></span></code></pre></figure>
+<p>It's typically paired with a <code>protocol: TLS</code> listener. The focus isn't decryption — it's SNI-based routing.</p>
+<blockquote>
+<p>💡 <code>TCPRoute</code> and <code>TLSRoute</code> often live in the experimental channel across Gateway API versions. Verify the CRD version installed in your cluster before applying.</p>
+</blockquote>
+<h2 id="four-common-pitfalls">Four Common Pitfalls</h2>
+<h3 id="1-grpc-doesnt-necessarily-require-grpcroute">1. gRPC Doesn't Necessarily Require <code>GRPCRoute</code></h3>
+<p>If you just need gRPC traffic to flow, some implementations may support it via <code>HTTPRoute</code> since gRPC runs over HTTP/2.
+But if you want to match on gRPC service/method semantics, <code>GRPCRoute</code> is the more correct and readable choice.</p>
+<h3 id="2-tlsroute-is-not-https-but-advanced">2. <code>TLSRoute</code> Is Not "HTTPS but Advanced"</h3>
+<p>This is the most common misconception.</p>
+<ul>
+<li><code>HTTPS listener + HTTPRoute</code>: Gateway terminates TLS, then applies HTTP rules</li>
+<li><code>TLS listener + TLSRoute</code>: Gateway does NOT terminate TLS, routes based on SNI only</li>
+</ul>
+<p>One decrypts and plays at L7. The other keeps traffic encrypted and does passthrough. Completely different worlds.</p>
+<h3 id="3-tcproute-cannot-see-pathheader">3. <code>TCPRoute</code> Cannot See Path/Header</h3>
+<p>If your requirement is:</p>
+<ul>
+<li><code>/api</code> goes to A</li>
+<li><code>/admin</code> goes to B</li>
+</ul>
+<p>That's not <code>TCPRoute</code>'s job.
+<code>TCPRoute</code> doesn't understand HTTP details. Forcing those requirements into it is just setting yourself up for frustration.</p>
+<h3 id="4-parentrefssectionname-is-important">4. <code>parentRefs.sectionName</code> Is Important</h3>
+<p>When a Gateway has multiple listeners, use <code>sectionName</code>:</p>
+<figure data-rehype-pretty-code-figure=""><pre style="background-color:#24292e;color:#e1e4e8" tabindex="0" data-language="yaml" data-theme="github-dark"><code data-language="yaml" data-theme="github-dark" style="display: grid;"><span data-line=""><span style="color:#85E89D">parentRefs</span><span style="color:#E1E4E8">:</span></span>
+<span data-line=""><span style="color:#E1E4E8">  - </span><span style="color:#85E89D">name</span><span style="color:#E1E4E8">: </span><span style="color:#9ECBFF">eg</span></span>
+<span data-line=""><span style="color:#85E89D">    sectionName</span><span style="color:#E1E4E8">: </span><span style="color:#9ECBFF">https</span></span></code></pre></figure>
+<p>This ensures your route attaches precisely to the listener you intend.
+Without it, you might think you're booking a VIP room and end up in the wrong hall entirely.</p>
+<h2 id="one-line-summary">One-Line Summary</h2>
+<p>First identify what you're working with: <strong>HTTP, gRPC, TCP, or TLS passthrough</strong> — then pick the right route type.
+Get the route right and 80% of your YAML flows naturally. Get it wrong and you're trapped in a battle with condition statuses.</p>
+<h2 id="next-step">Next Step</h2>
+<p>Once you understand route types, the next common sticking point is:
+<strong>When the same Gateway has many listeners, how do you structure them without creating chaos?</strong></p>
+<p>Next post covers multi-listener design:
+👉 <a href="07-listener-design">Listener Design Guide</a></p>5:["$","div",null,{"className":"prose","dangerouslySetInnerHTML":{"__html":"$a"}}]
+6:["$","footer",null,{"className":"mt-14 border-t pt-8","style":{"borderColor":"var(--color-border)"},"children":[["$","div",null,{"className":"mb-8 flex flex-wrap gap-2","children":[["$","$L2","kubernetes",{"href":"/en/tags/kubernetes","localeCookie":{"name":"NEXT_LOCALE","sameSite":"lax"},"className":"inline-flex items-center rounded-full px-3 py-1 text-sm font-medium transition-colors","style":{"background":"var(--color-code-bg)","color":"var(--color-accent)","border":"1px solid var(--color-border)"},"children":["#","kubernetes"]}],["$","$L2","envoy-gateway",{"href":"/en/tags/envoy-gateway","localeCookie":{"name":"NEXT_LOCALE","sameSite":"lax"},"className":"inline-flex items-center rounded-full px-3 py-1 text-sm font-medium transition-colors","style":{"background":"var(--color-code-bg)","color":"var(--color-accent)","border":"1px solid var(--color-border)"},"children":["#","envoy-gateway"]}],["$","$L2","gateway-api",{"href":"/en/tags/gateway-api","localeCookie":{"name":"NEXT_LOCALE","sameSite":"lax"},"className":"inline-flex items-center rounded-full px-3 py-1 text-sm font-medium transition-colors","style":{"background":"var(--color-code-bg)","color":"var(--color-accent)","border":"1px solid var(--color-border)"},"children":["#","gateway-api"]}],["$","$L2","httproute",{"href":"/en/tags/httproute","localeCookie":{"name":"NEXT_LOCALE","sameSite":"lax"},"className":"inline-flex items-center rounded-full px-3 py-1 text-sm font-medium transition-colors","style":{"background":"var(--color-code-bg)","color":"var(--color-accent)","border":"1px solid var(--color-border)"},"children":["#","httproute"]}],["$","$L2","grpcroute",{"href":"/en/tags/grpcroute","localeCookie":{"name":"NEXT_LOCALE","sameSite":"lax"},"className":"inline-flex items-center rounded-full px-3 py-1 text-sm font-medium transition-colors","style":{"background":"var(--color-code-bg)","color":"var(--color-accent)","border":"1px solid var(--color-border)"},"children":["#","grpcroute"]}],["$","$L2","tcproute",{"href":"/en/tags/tcproute","localeCookie":{"name":"NEXT_LOCALE","sameSite":"lax"},"className":"inline-flex items-center rounded-full px-3 py-1 text-sm font-medium transition-colors","style":{"background":"var(--color-code-bg)","color":"var(--color-accent)","border":"1px solid var(--color-border)"},"children":["#","tcproute"]}],["$","$L2","tlsroute",{"href":"/en/tags/tlsroute","localeCookie":{"name":"NEXT_LOCALE","sameSite":"lax"},"className":"inline-flex items-center rounded-full px-3 py-1 text-sm font-medium transition-colors","style":{"background":"var(--color-code-bg)","color":"var(--color-accent)","border":"1px solid var(--color-border)"},"children":["#","tlsroute"]}]]}],["$","nav",null,{"aria-label":"Post navigation","className":"grid grid-cols-1 gap-4 sm:grid-cols-2","children":[["$","$L2",null,{"href":"/en/blog/k8s/gateway/05-best-practices","localeCookie":{"name":"NEXT_LOCALE","sameSite":"lax"},"className":"group rounded-lg border p-4 transition-colors hover:border-accent","style":{"borderColor":"var(--color-border)","background":"var(--color-surface)"},"children":[["$","p",null,{"className":"mb-1 text-xs","style":{"color":"var(--color-muted)"},"children":"← Newer"}],["$","p",null,{"className":"line-clamp-1 text-sm font-medium transition-colors group-hover:text-accent","style":{"color":"var(--color-text)"},"children":"Envoy Gateway Best Practices: Do Future-You a Favor Before Going to Production"}]]}],["$","$L2",null,{"href":"/en/blog/k8s/gateway/07-listener-design","localeCookie":{"name":"NEXT_LOCALE","sameSite":"lax"},"className":"group rounded-lg border p-4 text-right transition-colors hover:border-accent","style":{"borderColor":"var(--color-border)","background":"var(--color-surface)"},"children":[["$","p",null,{"className":"mb-1 text-xs","style":{"color":"var(--color-muted)"},"children":"Older →"}],["$","p",null,{"className":"line-clamp-1 text-sm font-medium transition-colors group-hover:text-accent","style":{"color":"var(--color-text)"},"children":"Envoy Gateway Listener Design Guide: Multi-Port, Multi-Hostname, Multi-Ingress Patterns"}]]}]]}]]}]
+c:T411e,<p>If you've read the previous posts, the question that's most likely blocking you now isn't "I don't understand Gateway API" — it's:</p>
+<p><strong>"Okay but which one do I actually write — <code>HTTPRoute</code>, <code>GRPCRoute</code>, <code>TCPRoute</code>, or <code>TLSRoute</code>?"</strong></p>
+<p>This post exists specifically to untangle that. Keep it as a pocket reference. When a new service comes up, consult this first — it'll save you from writing YAML blindly and getting a lesson from condition statuses.</p>
+<h2 id="the-conclusion-first-four-route-types-four-purposes">The Conclusion First: Four Route Types, Four Purposes</h2>
+<table>
+<thead>
+<tr>
+<th>Route Type</th>
+<th>Traffic Layer</th>
+<th>What It Inspects</th>
+<th>Best For</th>
+<th>Not For</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td><code>HTTPRoute</code></td>
+<td>L7 HTTP/HTTPS</td>
+<td>host, path, header, query, method</td>
+<td>Websites, REST APIs, general web traffic</td>
+<td>Raw TCP, TLS passthrough</td>
+</tr>
+<tr>
+<td><code>GRPCRoute</code></td>
+<td>L7 gRPC</td>
+<td>hostname, service, method, header</td>
+<td>gRPC service/method routing</td>
+<td>General REST APIs, raw TCP</td>
+</tr>
+<tr>
+<td><code>TCPRoute</code></td>
+<td>L4 TCP</td>
+<td>Listener and connection-level info</td>
+<td>Databases, custom TCP protocols, non-HTTP services</td>
+<td>Scenarios needing path/header inspection</td>
+</tr>
+<tr>
+<td><code>TLSRoute</code></td>
+<td>L4/L5 TLS</td>
+<td>TLS SNI hostname</td>
+<td>TLS passthrough, preserving end-to-end encryption</td>
+<td>Needing to inspect HTTP details after decryption</td>
+</tr>
+</tbody>
+</table>
+<p>If you want an ultra-short version:</p>
+<ul>
+<li>Inspect <code>path</code> or <code>header</code> → <code>HTTPRoute</code></li>
+<li>Inspect gRPC <code>service/method</code> → <code>GRPCRoute</code></li>
+<li>Just forwarding TCP connections → <code>TCPRoute</code></li>
+<li>No TLS termination, SNI routing only → <code>TLSRoute</code></li>
+</ul>
+<h2 id="three-step-decision-stop-guessing">Three-Step Decision: Stop Guessing</h2>
+<p>Use this order:</p>
+<ol>
+<li>Will the Gateway parse HTTP semantics from this traffic?</li>
+<li>If yes, is it regular HTTP/REST, or gRPC?</li>
+<li>If no, is it raw TCP, or TLS passthrough?</li>
+</ol>
+<p>Mapped out:</p>
+<ul>
+<li>Has HTTP path/header/method to inspect → <code>HTTPRoute</code></li>
+<li>Has gRPC service/method to inspect → <code>GRPCRoute</code></li>
+<li>No L7 rules, just TCP forwarding → <code>TCPRoute</code></li>
+<li>Want TLS preserved to the backend → <code>TLSRoute</code></li>
+</ul>
+<p>This decision matters a lot. Many people instinctively write <code>HTTPRoute</code> first, then realize halfway through that they're dealing with database traffic. The entire YAML enters "what am I even doing" mode.</p>
+<h2 id="minimal-yaml-examples-recognize-each-at-a-glance">Minimal YAML Examples: Recognize Each at a Glance</h2>
+<p>Here are the shortest, most recognizable versions of each.</p>
+<h3 id="httproute"><code>HTTPRoute</code></h3>
+<figure data-rehype-pretty-code-figure=""><pre style="background-color:#24292e;color:#e1e4e8" tabindex="0" data-language="yaml" data-theme="github-dark"><code data-language="yaml" data-theme="github-dark" style="display: grid;"><span data-line=""><span style="color:#85E89D">apiVersion</span><span style="color:#E1E4E8">: </span><span style="color:#9ECBFF">gateway.networking.k8s.io/v1</span></span>
+<span data-line=""><span style="color:#85E89D">kind</span><span style="color:#E1E4E8">: </span><span style="color:#9ECBFF">HTTPRoute</span></span>
+<span data-line=""><span style="color:#85E89D">metadata</span><span style="color:#E1E4E8">:</span></span>
+<span data-line=""><span style="color:#85E89D">  name</span><span style="color:#E1E4E8">: </span><span style="color:#9ECBFF">web-route</span></span>
+<span data-line=""><span style="color:#85E89D">spec</span><span style="color:#E1E4E8">:</span></span>
+<span data-line=""><span style="color:#85E89D">  parentRefs</span><span style="color:#E1E4E8">:</span></span>
+<span data-line=""><span style="color:#E1E4E8">    - </span><span style="color:#85E89D">name</span><span style="color:#E1E4E8">: </span><span style="color:#9ECBFF">eg</span></span>
+<span data-line=""><span style="color:#85E89D">      sectionName</span><span style="color:#E1E4E8">: </span><span style="color:#9ECBFF">http</span></span>
+<span data-line=""><span style="color:#85E89D">  hostnames</span><span style="color:#E1E4E8">:</span></span>
+<span data-line=""><span style="color:#E1E4E8">    - </span><span style="color:#9ECBFF">"app.example.com"</span></span>
+<span data-line=""><span style="color:#85E89D">  rules</span><span style="color:#E1E4E8">:</span></span>
+<span data-line=""><span style="color:#E1E4E8">    - </span><span style="color:#85E89D">matches</span><span style="color:#E1E4E8">:</span></span>
+<span data-line=""><span style="color:#E1E4E8">        - </span><span style="color:#85E89D">path</span><span style="color:#E1E4E8">:</span></span>
+<span data-line=""><span style="color:#85E89D">            type</span><span style="color:#E1E4E8">: </span><span style="color:#9ECBFF">PathPrefix</span></span>
+<span data-line=""><span style="color:#85E89D">            value</span><span style="color:#E1E4E8">: </span><span style="color:#9ECBFF">/api</span></span>
+<span data-line=""><span style="color:#85E89D">      backendRefs</span><span style="color:#E1E4E8">:</span></span>
+<span data-line=""><span style="color:#E1E4E8">        - </span><span style="color:#85E89D">name</span><span style="color:#E1E4E8">: </span><span style="color:#9ECBFF">api-service</span></span>
+<span data-line=""><span style="color:#85E89D">          port</span><span style="color:#E1E4E8">: </span><span style="color:#79B8FF">8080</span></span></code></pre></figure>
+<p>If you see <code>path</code>, <code>hostnames</code>, and <code>backendRefs</code> — it's this one.</p>
+<h3 id="grpcroute"><code>GRPCRoute</code></h3>
+<figure data-rehype-pretty-code-figure=""><pre style="background-color:#24292e;color:#e1e4e8" tabindex="0" data-language="yaml" data-theme="github-dark"><code data-language="yaml" data-theme="github-dark" style="display: grid;"><span data-line=""><span style="color:#85E89D">apiVersion</span><span style="color:#E1E4E8">: </span><span style="color:#9ECBFF">gateway.networking.k8s.io/v1</span></span>
+<span data-line=""><span style="color:#85E89D">kind</span><span style="color:#E1E4E8">: </span><span style="color:#9ECBFF">GRPCRoute</span></span>
+<span data-line=""><span style="color:#85E89D">metadata</span><span style="color:#E1E4E8">:</span></span>
+<span data-line=""><span style="color:#85E89D">  name</span><span style="color:#E1E4E8">: </span><span style="color:#9ECBFF">user-grpc</span></span>
+<span data-line=""><span style="color:#85E89D">spec</span><span style="color:#E1E4E8">:</span></span>
+<span data-line=""><span style="color:#85E89D">  parentRefs</span><span style="color:#E1E4E8">:</span></span>
+<span data-line=""><span style="color:#E1E4E8">    - </span><span style="color:#85E89D">name</span><span style="color:#E1E4E8">: </span><span style="color:#9ECBFF">eg</span></span>
+<span data-line=""><span style="color:#85E89D">      sectionName</span><span style="color:#E1E4E8">: </span><span style="color:#9ECBFF">grpc</span></span>
+<span data-line=""><span style="color:#85E89D">  hostnames</span><span style="color:#E1E4E8">:</span></span>
+<span data-line=""><span style="color:#E1E4E8">    - </span><span style="color:#9ECBFF">"grpc.example.com"</span></span>
+<span data-line=""><span style="color:#85E89D">  rules</span><span style="color:#E1E4E8">:</span></span>
+<span data-line=""><span style="color:#E1E4E8">    - </span><span style="color:#85E89D">matches</span><span style="color:#E1E4E8">:</span></span>
+<span data-line=""><span style="color:#E1E4E8">        - </span><span style="color:#85E89D">method</span><span style="color:#E1E4E8">:</span></span>
+<span data-line=""><span style="color:#85E89D">            service</span><span style="color:#E1E4E8">: </span><span style="color:#9ECBFF">com.example.User</span></span>
+<span data-line=""><span style="color:#85E89D">            method</span><span style="color:#E1E4E8">: </span><span style="color:#9ECBFF">Login</span></span>
+<span data-line=""><span style="color:#85E89D">      backendRefs</span><span style="color:#E1E4E8">:</span></span>
+<span data-line=""><span style="color:#E1E4E8">        - </span><span style="color:#85E89D">name</span><span style="color:#E1E4E8">: </span><span style="color:#9ECBFF">user-grpc-service</span></span>
+<span data-line=""><span style="color:#85E89D">          port</span><span style="color:#E1E4E8">: </span><span style="color:#79B8FF">50051</span></span></code></pre></figure>
+<p>If you see <code>method.service</code> and <code>method.method</code> — you're matching gRPC semantics, not regular HTTP.</p>
+<h3 id="tcproute"><code>TCPRoute</code></h3>
+<figure data-rehype-pretty-code-figure=""><pre style="background-color:#24292e;color:#e1e4e8" tabindex="0" data-language="yaml" data-theme="github-dark"><code data-language="yaml" data-theme="github-dark" style="display: grid;"><span data-line=""><span style="color:#85E89D">apiVersion</span><span style="color:#E1E4E8">: </span><span style="color:#9ECBFF">gateway.networking.k8s.io/v1alpha2</span></span>
+<span data-line=""><span style="color:#85E89D">kind</span><span style="color:#E1E4E8">: </span><span style="color:#9ECBFF">TCPRoute</span></span>
+<span data-line=""><span style="color:#85E89D">metadata</span><span style="color:#E1E4E8">:</span></span>
+<span data-line=""><span style="color:#85E89D">  name</span><span style="color:#E1E4E8">: </span><span style="color:#9ECBFF">postgres-route</span></span>
+<span data-line=""><span style="color:#85E89D">spec</span><span style="color:#E1E4E8">:</span></span>
+<span data-line=""><span style="color:#85E89D">  parentRefs</span><span style="color:#E1E4E8">:</span></span>
+<span data-line=""><span style="color:#E1E4E8">    - </span><span style="color:#85E89D">name</span><span style="color:#E1E4E8">: </span><span style="color:#9ECBFF">eg</span></span>
+<span data-line=""><span style="color:#85E89D">      sectionName</span><span style="color:#E1E4E8">: </span><span style="color:#9ECBFF">postgres</span></span>
+<span data-line=""><span style="color:#85E89D">  rules</span><span style="color:#E1E4E8">:</span></span>
+<span data-line=""><span style="color:#E1E4E8">    - </span><span style="color:#85E89D">backendRefs</span><span style="color:#E1E4E8">:</span></span>
+<span data-line=""><span style="color:#E1E4E8">        - </span><span style="color:#85E89D">name</span><span style="color:#E1E4E8">: </span><span style="color:#9ECBFF">postgres</span></span>
+<span data-line=""><span style="color:#85E89D">          port</span><span style="color:#E1E4E8">: </span><span style="color:#79B8FF">5432</span></span></code></pre></figure>
+<p><code>TCPRoute</code> has almost no path/header concepts — because it doesn't look at those.
+It's closer to: "TCP connections arriving at this listener go to this backend."</p>
+<h3 id="tlsroute"><code>TLSRoute</code></h3>
+<figure data-rehype-pretty-code-figure=""><pre style="background-color:#24292e;color:#e1e4e8" tabindex="0" data-language="yaml" data-theme="github-dark"><code data-language="yaml" data-theme="github-dark" style="display: grid;"><span data-line=""><span style="color:#85E89D">apiVersion</span><span style="color:#E1E4E8">: </span><span style="color:#9ECBFF">gateway.networking.k8s.io/v1alpha2</span></span>
+<span data-line=""><span style="color:#85E89D">kind</span><span style="color:#E1E4E8">: </span><span style="color:#9ECBFF">TLSRoute</span></span>
+<span data-line=""><span style="color:#85E89D">metadata</span><span style="color:#E1E4E8">:</span></span>
+<span data-line=""><span style="color:#85E89D">  name</span><span style="color:#E1E4E8">: </span><span style="color:#9ECBFF">passthrough-route</span></span>
+<span data-line=""><span style="color:#85E89D">spec</span><span style="color:#E1E4E8">:</span></span>
+<span data-line=""><span style="color:#85E89D">  parentRefs</span><span style="color:#E1E4E8">:</span></span>
+<span data-line=""><span style="color:#E1E4E8">    - </span><span style="color:#85E89D">name</span><span style="color:#E1E4E8">: </span><span style="color:#9ECBFF">eg</span></span>
+<span data-line=""><span style="color:#85E89D">      sectionName</span><span style="color:#E1E4E8">: </span><span style="color:#9ECBFF">tls</span></span>
+<span data-line=""><span style="color:#85E89D">  hostnames</span><span style="color:#E1E4E8">:</span></span>
+<span data-line=""><span style="color:#E1E4E8">    - </span><span style="color:#9ECBFF">"db.example.com"</span></span>
+<span data-line=""><span style="color:#85E89D">  rules</span><span style="color:#E1E4E8">:</span></span>
+<span data-line=""><span style="color:#E1E4E8">    - </span><span style="color:#85E89D">backendRefs</span><span style="color:#E1E4E8">:</span></span>
+<span data-line=""><span style="color:#E1E4E8">        - </span><span style="color:#85E89D">name</span><span style="color:#E1E4E8">: </span><span style="color:#9ECBFF">db-service</span></span>
+<span data-line=""><span style="color:#85E89D">          port</span><span style="color:#E1E4E8">: </span><span style="color:#79B8FF">5432</span></span></code></pre></figure>
+<p>It's typically paired with a <code>protocol: TLS</code> listener. The focus isn't decryption — it's SNI-based routing.</p>
+<blockquote>
+<p>💡 <code>TCPRoute</code> and <code>TLSRoute</code> often live in the experimental channel across Gateway API versions. Verify the CRD version installed in your cluster before applying.</p>
+</blockquote>
+<h2 id="four-common-pitfalls">Four Common Pitfalls</h2>
+<h3 id="1-grpc-doesnt-necessarily-require-grpcroute">1. gRPC Doesn't Necessarily Require <code>GRPCRoute</code></h3>
+<p>If you just need gRPC traffic to flow, some implementations may support it via <code>HTTPRoute</code> since gRPC runs over HTTP/2.
+But if you want to match on gRPC service/method semantics, <code>GRPCRoute</code> is the more correct and readable choice.</p>
+<h3 id="2-tlsroute-is-not-https-but-advanced">2. <code>TLSRoute</code> Is Not "HTTPS but Advanced"</h3>
+<p>This is the most common misconception.</p>
+<ul>
+<li><code>HTTPS listener + HTTPRoute</code>: Gateway terminates TLS, then applies HTTP rules</li>
+<li><code>TLS listener + TLSRoute</code>: Gateway does NOT terminate TLS, routes based on SNI only</li>
+</ul>
+<p>One decrypts and plays at L7. The other keeps traffic encrypted and does passthrough. Completely different worlds.</p>
+<h3 id="3-tcproute-cannot-see-pathheader">3. <code>TCPRoute</code> Cannot See Path/Header</h3>
+<p>If your requirement is:</p>
+<ul>
+<li><code>/api</code> goes to A</li>
+<li><code>/admin</code> goes to B</li>
+</ul>
+<p>That's not <code>TCPRoute</code>'s job.
+<code>TCPRoute</code> doesn't understand HTTP details. Forcing those requirements into it is just setting yourself up for frustration.</p>
+<h3 id="4-parentrefssectionname-is-important">4. <code>parentRefs.sectionName</code> Is Important</h3>
+<p>When a Gateway has multiple listeners, use <code>sectionName</code>:</p>
+<figure data-rehype-pretty-code-figure=""><pre style="background-color:#24292e;color:#e1e4e8" tabindex="0" data-language="yaml" data-theme="github-dark"><code data-language="yaml" data-theme="github-dark" style="display: grid;"><span data-line=""><span style="color:#85E89D">parentRefs</span><span style="color:#E1E4E8">:</span></span>
+<span data-line=""><span style="color:#E1E4E8">  - </span><span style="color:#85E89D">name</span><span style="color:#E1E4E8">: </span><span style="color:#9ECBFF">eg</span></span>
+<span data-line=""><span style="color:#85E89D">    sectionName</span><span style="color:#E1E4E8">: </span><span style="color:#9ECBFF">https</span></span></code></pre></figure>
+<p>This ensures your route attaches precisely to the listener you intend.
+Without it, you might think you're booking a VIP room and end up in the wrong hall entirely.</p>
+<h2 id="one-line-summary">One-Line Summary</h2>
+<p>First identify what you're working with: <strong>HTTP, gRPC, TCP, or TLS passthrough</strong> — then pick the right route type.
+Get the route right and 80% of your YAML flows naturally. Get it wrong and you're trapped in a battle with condition statuses.</p>
+<h2 id="next-step">Next Step</h2>
+<p>Once you understand route types, the next common sticking point is:
+<strong>When the same Gateway has many listeners, how do you structure them without creating chaos?</strong></p>
+<p>Next post covers multi-listener design:
+👉 <a href="07-listener-design">Listener Design Guide</a></p>7:["$","aside",null,{"className":"hidden lg:block","children":["$","$Lb",null,{"html":"$c"}]}]
+8:["$","script","script-0",{"src":"/_next/static/chunks/2dddb3bc05093f69.js","async":true}]
+9:["$","$Ld",null,{"children":["$","$e",null,{"name":"Next.MetadataOutlet","children":"$@f"}]}]
+f:null

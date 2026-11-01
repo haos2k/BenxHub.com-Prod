@@ -1,0 +1,122 @@
+1:"$Sreact.fragment"
+2:I[14864,["/_next/static/chunks/7923a261b80bb6e1.js","/_next/static/chunks/e09b4358027e8033.js","/_next/static/chunks/2dddb3bc05093f69.js"],"default"]
+8:I[24801,["/_next/static/chunks/7923a261b80bb6e1.js","/_next/static/chunks/e09b4358027e8033.js","/_next/static/chunks/2dddb3bc05093f69.js"],"default"]
+a:I[50183,["/_next/static/chunks/5a5b5b13c22d14f7.js","/_next/static/chunks/a484d1d3dd4b55ab.js"],"OutletBoundary"]
+b:"$Sreact.suspense"
+:HL["/images/posts/uv-common-patterns.jpg","image"]
+3:T22ce,<p>這篇聚焦在<strong>日常開發最常做的五件事</strong>，直接給你可落地的操作範本。練熟這幾招，八成情境都能應付——剩下兩成留給進階篇。</p>
+<h2 id="模式一依賴新增與移除">模式一：依賴新增與移除</h2>
+<figure data-rehype-pretty-code-figure=""><pre style="background-color:#24292e;color:#e1e4e8" tabindex="0" data-language="bash" data-theme="github-dark"><code data-language="bash" data-theme="github-dark" style="display: grid;"><span data-line=""><span style="color:#6A737D"># 新增依賴</span></span>
+<span data-line=""><span style="color:#B392F0">uv</span><span style="color:#9ECBFF"> add</span><span style="color:#9ECBFF"> requests</span></span>
+<span data-line=""><span style="color:#B392F0">uv</span><span style="color:#9ECBFF"> add</span><span style="color:#9ECBFF"> "requests>=2.31,&#x3C;3"</span><span style="color:#6A737D">   # 版本約束</span></span>
+<span data-line=""> </span>
+<span data-line=""><span style="color:#6A737D"># 開發依賴（測試、lint、型別檢查）</span></span>
+<span data-line=""><span style="color:#B392F0">uv</span><span style="color:#9ECBFF"> add</span><span style="color:#79B8FF"> --dev</span><span style="color:#9ECBFF"> pytest</span><span style="color:#9ECBFF"> ruff</span><span style="color:#9ECBFF"> mypy</span></span>
+<span data-line=""> </span>
+<span data-line=""><span style="color:#6A737D"># 移除</span></span>
+<span data-line=""><span style="color:#B392F0">uv</span><span style="color:#9ECBFF"> remove</span><span style="color:#9ECBFF"> requests</span></span></code></pre></figure>
+<p><code>uv add</code> 會同時更新 <code>pyproject.toml</code>、<code>uv.lock</code> 和 <code>.venv</code>，一鍵到位。</p>
+<h2 id="模式二uv-run-執行專案內指令">模式二：uv run 執行專案內指令</h2>
+<p>專案內的腳本、CLI、測試，一律用 <code>uv run</code>：</p>
+<figure data-rehype-pretty-code-figure=""><pre style="background-color:#24292e;color:#e1e4e8" tabindex="0" data-language="bash" data-theme="github-dark"><code data-language="bash" data-theme="github-dark" style="display: grid;"><span data-line=""><span style="color:#B392F0">uv</span><span style="color:#9ECBFF"> run</span><span style="color:#9ECBFF"> python</span><span style="color:#9ECBFF"> main.py</span></span>
+<span data-line=""><span style="color:#B392F0">uv</span><span style="color:#9ECBFF"> run</span><span style="color:#9ECBFF"> pytest</span></span>
+<span data-line=""><span style="color:#B392F0">uv</span><span style="color:#9ECBFF"> run</span><span style="color:#9ECBFF"> ruff</span><span style="color:#9ECBFF"> check</span><span style="color:#9ECBFF"> .</span></span>
+<span data-line=""><span style="color:#B392F0">uv</span><span style="color:#9ECBFF"> run</span><span style="color:#9ECBFF"> mypy</span><span style="color:#9ECBFF"> src/</span></span></code></pre></figure>
+<p>不用 activate，也不用擔心用錯 Python。</p>
+<h2 id="模式三uvx-執行獨立-cli-工具">模式三：uvx 執行獨立 CLI 工具</h2>
+<p>想臨時跑個工具、不想裝進專案？用 <code>uvx</code>（等同 <code>uv tool run</code>）：</p>
+<figure data-rehype-pretty-code-figure=""><pre style="background-color:#24292e;color:#e1e4e8" tabindex="0" data-language="bash" data-theme="github-dark"><code data-language="bash" data-theme="github-dark" style="display: grid;"><span data-line=""><span style="color:#6A737D"># 隨叫隨用，用完即棄</span></span>
+<span data-line=""><span style="color:#B392F0">uvx</span><span style="color:#9ECBFF"> ruff</span><span style="color:#9ECBFF"> check</span><span style="color:#9ECBFF"> .</span></span>
+<span data-line=""><span style="color:#B392F0">uvx</span><span style="color:#9ECBFF"> pycowsay</span><span style="color:#9ECBFF"> "hello uv"</span></span>
+<span data-line=""> </span>
+<span data-line=""><span style="color:#6A737D"># 指定版本</span></span>
+<span data-line=""><span style="color:#B392F0">uvx</span><span style="color:#9ECBFF"> ruff@0.5.0</span><span style="color:#9ECBFF"> check</span></span>
+<span data-line=""> </span>
+<span data-line=""><span style="color:#6A737D"># 套件名跟指令不同時</span></span>
+<span data-line=""><span style="color:#B392F0">uvx</span><span style="color:#79B8FF"> --from</span><span style="color:#9ECBFF"> httpie</span><span style="color:#9ECBFF"> http</span><span style="color:#9ECBFF"> https://httpbin.org/get</span></span></code></pre></figure>
+<p>uvx 會建一個暫時的環境來跑，不污染專案——像試吃不用買整包，吃完拍拍屁股走人，超適合「我就試一下」的場景。</p>
+<h2 id="模式四腳本內聯依賴pep-723">模式四：腳本內聯依賴（PEP 723）</h2>
+<p>單一腳本、懶得建專案？用 inline script metadata：</p>
+<figure data-rehype-pretty-code-figure=""><pre style="background-color:#24292e;color:#e1e4e8" tabindex="0" data-language="python" data-theme="github-dark"><code data-language="python" data-theme="github-dark" style="display: grid;"><span data-line=""><span style="color:#6A737D"># /// script</span></span>
+<span data-line=""><span style="color:#6A737D"># dependencies = ["requests", "rich"]</span></span>
+<span data-line=""><span style="color:#6A737D"># ///</span></span>
+<span data-line=""> </span>
+<span data-line=""><span style="color:#F97583">import</span><span style="color:#E1E4E8"> requests</span></span>
+<span data-line=""><span style="color:#F97583">from</span><span style="color:#E1E4E8"> rich.pretty </span><span style="color:#F97583">import</span><span style="color:#E1E4E8"> pprint</span></span>
+<span data-line=""> </span>
+<span data-line=""><span style="color:#E1E4E8">r </span><span style="color:#F97583">=</span><span style="color:#E1E4E8"> requests.get(</span><span style="color:#9ECBFF">"https://api.github.com/zen"</span><span style="color:#E1E4E8">)</span></span>
+<span data-line=""><span style="color:#E1E4E8">pprint(r.text)</span></span></code></pre></figure>
+<figure data-rehype-pretty-code-figure=""><pre style="background-color:#24292e;color:#e1e4e8" tabindex="0" data-language="bash" data-theme="github-dark"><code data-language="bash" data-theme="github-dark" style="display: grid;"><span data-line=""><span style="color:#B392F0">uv</span><span style="color:#9ECBFF"> add</span><span style="color:#79B8FF"> --script</span><span style="color:#9ECBFF"> fetch.py</span><span style="color:#9ECBFF"> requests</span><span style="color:#9ECBFF"> rich</span></span>
+<span data-line=""><span style="color:#B392F0">uv</span><span style="color:#9ECBFF"> run</span><span style="color:#9ECBFF"> fetch.py</span></span></code></pre></figure>
+<p>或一行搞定：</p>
+<figure data-rehype-pretty-code-figure=""><pre style="background-color:#24292e;color:#e1e4e8" tabindex="0" data-language="bash" data-theme="github-dark"><code data-language="bash" data-theme="github-dark" style="display: grid;"><span data-line=""><span style="color:#B392F0">uv</span><span style="color:#9ECBFF"> run</span><span style="color:#79B8FF"> --with</span><span style="color:#9ECBFF"> requests</span><span style="color:#79B8FF"> --with</span><span style="color:#9ECBFF"> rich</span><span style="color:#9ECBFF"> fetch.py</span></span></code></pre></figure>
+<h2 id="模式五從-requirementstxt-遷移">模式五：從 requirements.txt 遷移</h2>
+<p>既有專案有 <code>requirements.txt</code>？直接吃進去：</p>
+<figure data-rehype-pretty-code-figure=""><pre style="background-color:#24292e;color:#e1e4e8" tabindex="0" data-language="bash" data-theme="github-dark"><code data-language="bash" data-theme="github-dark" style="display: grid;"><span data-line=""><span style="color:#B392F0">uv</span><span style="color:#9ECBFF"> add</span><span style="color:#79B8FF"> -r</span><span style="color:#9ECBFF"> requirements.txt</span></span></code></pre></figure>
+<p>或編譯成 lockfile 再同步：</p>
+<figure data-rehype-pretty-code-figure=""><pre style="background-color:#24292e;color:#e1e4e8" tabindex="0" data-language="bash" data-theme="github-dark"><code data-language="bash" data-theme="github-dark" style="display: grid;"><span data-line=""><span style="color:#B392F0">uv</span><span style="color:#9ECBFF"> pip</span><span style="color:#9ECBFF"> compile</span><span style="color:#9ECBFF"> requirements.in</span><span style="color:#79B8FF"> -o</span><span style="color:#9ECBFF"> requirements.txt</span></span>
+<span data-line=""><span style="color:#B392F0">uv</span><span style="color:#9ECBFF"> pip</span><span style="color:#9ECBFF"> sync</span><span style="color:#9ECBFF"> requirements.txt</span></span></code></pre></figure>
+<p>遷移完記得把 <code>pyproject.toml</code> 當主源，<code>requirements.txt</code> 可以當匯出用。</p>
+<h2 id="下一步">下一步</h2>
+<p>日常模式練完，要玩 Python 版本切換、pip 介面或 monorepo 的話：<br>
+👉 <a href="04-advanced">進階用法</a></p>0:{"buildId":"Yck3R4ooQxWkwGLT6is1X","rsc":["$","$1","c",{"children":[[["$","script",null,{"type":"application/ld+json","dangerouslySetInnerHTML":{"__html":"{\"@context\":\"https://schema.org\",\"@type\":\"Article\",\"headline\":\"Python uv 常見操作模式：依賴、uvx 與腳本執行\",\"description\":\"整理 uv 日常最常用的五種操作模式，讓你快速建立可維運的標準流程。\",\"url\":\"https://benxhub.com/zh/blog/python/uv/03-common-patterns\",\"mainEntityOfPage\":{\"@type\":\"WebPage\",\"@id\":\"https://benxhub.com/zh/blog/python/uv/03-common-patterns\"},\"datePublished\":\"2026-02-27T00:00:00.000Z\",\"dateModified\":\"2026-02-27T00:00:00.000Z\",\"keywords\":\"python, uv, dependencies, uvx, scripts\",\"inLanguage\":\"zh\",\"author\":{\"@type\":\"Person\",\"name\":\"BenX\",\"url\":\"https://benxhub.com\"},\"publisher\":{\"@type\":\"Organization\",\"name\":\"BenXHub Blog\",\"url\":\"https://benxhub.com\"},\"image\":\"https://benxhub.com/images/posts/uv-common-patterns.jpg\"}"}}],["$","div",null,{"className":"mx-auto max-w-6xl px-4 py-12 sm:px-6","children":["$","div",null,{"className":"lg:grid lg:grid-cols-[1fr_240px] lg:gap-14","children":[["$","article",null,{"children":[["$","header",null,{"className":"mb-10","children":[["$","div",null,{"className":"mb-4 flex flex-wrap gap-2","children":[["$","$L2","python",{"href":"/zh/tags/python","localeCookie":{"name":"NEXT_LOCALE","sameSite":"lax"},"className":"inline-flex items-center rounded-full px-2.5 py-0.5 text-xs font-medium transition-colors","style":{"background":"var(--color-code-bg)","color":"var(--color-accent)","border":"1px solid var(--color-border)"},"children":["#","python"]}],["$","$L2","uv",{"href":"/zh/tags/uv","localeCookie":{"name":"NEXT_LOCALE","sameSite":"lax"},"className":"inline-flex items-center rounded-full px-2.5 py-0.5 text-xs font-medium transition-colors","style":{"background":"var(--color-code-bg)","color":"var(--color-accent)","border":"1px solid var(--color-border)"},"children":["#","uv"]}],["$","$L2","dependencies",{"href":"/zh/tags/dependencies","localeCookie":{"name":"NEXT_LOCALE","sameSite":"lax"},"className":"inline-flex items-center rounded-full px-2.5 py-0.5 text-xs font-medium transition-colors","style":{"background":"var(--color-code-bg)","color":"var(--color-accent)","border":"1px solid var(--color-border)"},"children":["#","dependencies"]}],["$","$L2","uvx",{"href":"/zh/tags/uvx","localeCookie":{"name":"NEXT_LOCALE","sameSite":"lax"},"className":"inline-flex items-center rounded-full px-2.5 py-0.5 text-xs font-medium transition-colors","style":{"background":"var(--color-code-bg)","color":"var(--color-accent)","border":"1px solid var(--color-border)"},"children":["#","uvx"]}],["$","$L2","scripts",{"href":"/zh/tags/scripts","localeCookie":{"name":"NEXT_LOCALE","sameSite":"lax"},"className":"inline-flex items-center rounded-full px-2.5 py-0.5 text-xs font-medium transition-colors","style":{"background":"var(--color-code-bg)","color":"var(--color-accent)","border":"1px solid var(--color-border)"},"children":["#","scripts"]}]]}],["$","h1",null,{"className":"mb-4 text-3xl leading-snug font-bold tracking-tight sm:text-4xl","style":{"color":"var(--color-text)"},"children":"Python uv 常見操作模式：依賴、uvx 與腳本執行"}],["$","div",null,{"className":"flex flex-wrap items-center gap-3 text-sm","style":{"color":"var(--color-muted)"},"children":[["$","time",null,{"dateTime":"2026-02-27","children":"2026 年 2 月 27 日"}],["$","span",null,{"aria-hidden":"true","children":"·"}],["$","span",null,{"children":"3 min read"}]]}],["$","div",null,{"className":"mt-6 overflow-hidden rounded-lg","children":["$","img",null,{"src":"/images/posts/uv-common-patterns.jpg","alt":"Python uv 常見操作模式：依賴、uvx 與腳本執行","className":"w-full h-auto"}]}],["$","div",null,{"className":"mt-6 border-b","style":{"borderColor":"var(--color-border)"}}]]}],["$","div",null,{"className":"prose","dangerouslySetInnerHTML":{"__html":"$3"}}],"$L4"]}],"$L5"]}]}]],["$L6"],"$L7"]}],"loading":null,"isPartial":false}
+4:["$","footer",null,{"className":"mt-14 border-t pt-8","style":{"borderColor":"var(--color-border)"},"children":[["$","div",null,{"className":"mb-8 flex flex-wrap gap-2","children":[["$","$L2","python",{"href":"/zh/tags/python","localeCookie":{"name":"NEXT_LOCALE","sameSite":"lax"},"className":"inline-flex items-center rounded-full px-3 py-1 text-sm font-medium transition-colors","style":{"background":"var(--color-code-bg)","color":"var(--color-accent)","border":"1px solid var(--color-border)"},"children":["#","python"]}],["$","$L2","uv",{"href":"/zh/tags/uv","localeCookie":{"name":"NEXT_LOCALE","sameSite":"lax"},"className":"inline-flex items-center rounded-full px-3 py-1 text-sm font-medium transition-colors","style":{"background":"var(--color-code-bg)","color":"var(--color-accent)","border":"1px solid var(--color-border)"},"children":["#","uv"]}],["$","$L2","dependencies",{"href":"/zh/tags/dependencies","localeCookie":{"name":"NEXT_LOCALE","sameSite":"lax"},"className":"inline-flex items-center rounded-full px-3 py-1 text-sm font-medium transition-colors","style":{"background":"var(--color-code-bg)","color":"var(--color-accent)","border":"1px solid var(--color-border)"},"children":["#","dependencies"]}],["$","$L2","uvx",{"href":"/zh/tags/uvx","localeCookie":{"name":"NEXT_LOCALE","sameSite":"lax"},"className":"inline-flex items-center rounded-full px-3 py-1 text-sm font-medium transition-colors","style":{"background":"var(--color-code-bg)","color":"var(--color-accent)","border":"1px solid var(--color-border)"},"children":["#","uvx"]}],["$","$L2","scripts",{"href":"/zh/tags/scripts","localeCookie":{"name":"NEXT_LOCALE","sameSite":"lax"},"className":"inline-flex items-center rounded-full px-3 py-1 text-sm font-medium transition-colors","style":{"background":"var(--color-code-bg)","color":"var(--color-accent)","border":"1px solid var(--color-border)"},"children":["#","scripts"]}]]}],["$","nav",null,{"aria-label":"文章導覽","className":"grid grid-cols-1 gap-4 sm:grid-cols-2","children":[["$","$L2",null,{"href":"/zh/blog/python/uv/02-core-concepts","localeCookie":{"name":"NEXT_LOCALE","sameSite":"lax"},"className":"group rounded-lg border p-4 transition-colors hover:border-accent","style":{"borderColor":"var(--color-border)","background":"var(--color-surface)"},"children":[["$","p",null,{"className":"mb-1 text-xs","style":{"color":"var(--color-muted)"},"children":"← 較新文章"}],["$","p",null,{"className":"line-clamp-1 text-sm font-medium transition-colors group-hover:text-accent","style":{"color":"var(--color-text)"},"children":"Python uv 核心概念：pyproject.toml、lockfile 與虛擬環境"}]]}],["$","$L2",null,{"href":"/zh/blog/python/uv/04-advanced","localeCookie":{"name":"NEXT_LOCALE","sameSite":"lax"},"className":"group rounded-lg border p-4 text-right transition-colors hover:border-accent","style":{"borderColor":"var(--color-border)","background":"var(--color-surface)"},"children":[["$","p",null,{"className":"mb-1 text-xs","style":{"color":"var(--color-muted)"},"children":"較舊文章 →"}],["$","p",null,{"className":"line-clamp-1 text-sm font-medium transition-colors group-hover:text-accent","style":{"color":"var(--color-text)"},"children":"Python uv 進階實務：Python 版本、pip 介面與工具安裝"}]]}]]}]]}]
+9:T22ce,<p>這篇聚焦在<strong>日常開發最常做的五件事</strong>，直接給你可落地的操作範本。練熟這幾招，八成情境都能應付——剩下兩成留給進階篇。</p>
+<h2 id="模式一依賴新增與移除">模式一：依賴新增與移除</h2>
+<figure data-rehype-pretty-code-figure=""><pre style="background-color:#24292e;color:#e1e4e8" tabindex="0" data-language="bash" data-theme="github-dark"><code data-language="bash" data-theme="github-dark" style="display: grid;"><span data-line=""><span style="color:#6A737D"># 新增依賴</span></span>
+<span data-line=""><span style="color:#B392F0">uv</span><span style="color:#9ECBFF"> add</span><span style="color:#9ECBFF"> requests</span></span>
+<span data-line=""><span style="color:#B392F0">uv</span><span style="color:#9ECBFF"> add</span><span style="color:#9ECBFF"> "requests>=2.31,&#x3C;3"</span><span style="color:#6A737D">   # 版本約束</span></span>
+<span data-line=""> </span>
+<span data-line=""><span style="color:#6A737D"># 開發依賴（測試、lint、型別檢查）</span></span>
+<span data-line=""><span style="color:#B392F0">uv</span><span style="color:#9ECBFF"> add</span><span style="color:#79B8FF"> --dev</span><span style="color:#9ECBFF"> pytest</span><span style="color:#9ECBFF"> ruff</span><span style="color:#9ECBFF"> mypy</span></span>
+<span data-line=""> </span>
+<span data-line=""><span style="color:#6A737D"># 移除</span></span>
+<span data-line=""><span style="color:#B392F0">uv</span><span style="color:#9ECBFF"> remove</span><span style="color:#9ECBFF"> requests</span></span></code></pre></figure>
+<p><code>uv add</code> 會同時更新 <code>pyproject.toml</code>、<code>uv.lock</code> 和 <code>.venv</code>，一鍵到位。</p>
+<h2 id="模式二uv-run-執行專案內指令">模式二：uv run 執行專案內指令</h2>
+<p>專案內的腳本、CLI、測試，一律用 <code>uv run</code>：</p>
+<figure data-rehype-pretty-code-figure=""><pre style="background-color:#24292e;color:#e1e4e8" tabindex="0" data-language="bash" data-theme="github-dark"><code data-language="bash" data-theme="github-dark" style="display: grid;"><span data-line=""><span style="color:#B392F0">uv</span><span style="color:#9ECBFF"> run</span><span style="color:#9ECBFF"> python</span><span style="color:#9ECBFF"> main.py</span></span>
+<span data-line=""><span style="color:#B392F0">uv</span><span style="color:#9ECBFF"> run</span><span style="color:#9ECBFF"> pytest</span></span>
+<span data-line=""><span style="color:#B392F0">uv</span><span style="color:#9ECBFF"> run</span><span style="color:#9ECBFF"> ruff</span><span style="color:#9ECBFF"> check</span><span style="color:#9ECBFF"> .</span></span>
+<span data-line=""><span style="color:#B392F0">uv</span><span style="color:#9ECBFF"> run</span><span style="color:#9ECBFF"> mypy</span><span style="color:#9ECBFF"> src/</span></span></code></pre></figure>
+<p>不用 activate，也不用擔心用錯 Python。</p>
+<h2 id="模式三uvx-執行獨立-cli-工具">模式三：uvx 執行獨立 CLI 工具</h2>
+<p>想臨時跑個工具、不想裝進專案？用 <code>uvx</code>（等同 <code>uv tool run</code>）：</p>
+<figure data-rehype-pretty-code-figure=""><pre style="background-color:#24292e;color:#e1e4e8" tabindex="0" data-language="bash" data-theme="github-dark"><code data-language="bash" data-theme="github-dark" style="display: grid;"><span data-line=""><span style="color:#6A737D"># 隨叫隨用，用完即棄</span></span>
+<span data-line=""><span style="color:#B392F0">uvx</span><span style="color:#9ECBFF"> ruff</span><span style="color:#9ECBFF"> check</span><span style="color:#9ECBFF"> .</span></span>
+<span data-line=""><span style="color:#B392F0">uvx</span><span style="color:#9ECBFF"> pycowsay</span><span style="color:#9ECBFF"> "hello uv"</span></span>
+<span data-line=""> </span>
+<span data-line=""><span style="color:#6A737D"># 指定版本</span></span>
+<span data-line=""><span style="color:#B392F0">uvx</span><span style="color:#9ECBFF"> ruff@0.5.0</span><span style="color:#9ECBFF"> check</span></span>
+<span data-line=""> </span>
+<span data-line=""><span style="color:#6A737D"># 套件名跟指令不同時</span></span>
+<span data-line=""><span style="color:#B392F0">uvx</span><span style="color:#79B8FF"> --from</span><span style="color:#9ECBFF"> httpie</span><span style="color:#9ECBFF"> http</span><span style="color:#9ECBFF"> https://httpbin.org/get</span></span></code></pre></figure>
+<p>uvx 會建一個暫時的環境來跑，不污染專案——像試吃不用買整包，吃完拍拍屁股走人，超適合「我就試一下」的場景。</p>
+<h2 id="模式四腳本內聯依賴pep-723">模式四：腳本內聯依賴（PEP 723）</h2>
+<p>單一腳本、懶得建專案？用 inline script metadata：</p>
+<figure data-rehype-pretty-code-figure=""><pre style="background-color:#24292e;color:#e1e4e8" tabindex="0" data-language="python" data-theme="github-dark"><code data-language="python" data-theme="github-dark" style="display: grid;"><span data-line=""><span style="color:#6A737D"># /// script</span></span>
+<span data-line=""><span style="color:#6A737D"># dependencies = ["requests", "rich"]</span></span>
+<span data-line=""><span style="color:#6A737D"># ///</span></span>
+<span data-line=""> </span>
+<span data-line=""><span style="color:#F97583">import</span><span style="color:#E1E4E8"> requests</span></span>
+<span data-line=""><span style="color:#F97583">from</span><span style="color:#E1E4E8"> rich.pretty </span><span style="color:#F97583">import</span><span style="color:#E1E4E8"> pprint</span></span>
+<span data-line=""> </span>
+<span data-line=""><span style="color:#E1E4E8">r </span><span style="color:#F97583">=</span><span style="color:#E1E4E8"> requests.get(</span><span style="color:#9ECBFF">"https://api.github.com/zen"</span><span style="color:#E1E4E8">)</span></span>
+<span data-line=""><span style="color:#E1E4E8">pprint(r.text)</span></span></code></pre></figure>
+<figure data-rehype-pretty-code-figure=""><pre style="background-color:#24292e;color:#e1e4e8" tabindex="0" data-language="bash" data-theme="github-dark"><code data-language="bash" data-theme="github-dark" style="display: grid;"><span data-line=""><span style="color:#B392F0">uv</span><span style="color:#9ECBFF"> add</span><span style="color:#79B8FF"> --script</span><span style="color:#9ECBFF"> fetch.py</span><span style="color:#9ECBFF"> requests</span><span style="color:#9ECBFF"> rich</span></span>
+<span data-line=""><span style="color:#B392F0">uv</span><span style="color:#9ECBFF"> run</span><span style="color:#9ECBFF"> fetch.py</span></span></code></pre></figure>
+<p>或一行搞定：</p>
+<figure data-rehype-pretty-code-figure=""><pre style="background-color:#24292e;color:#e1e4e8" tabindex="0" data-language="bash" data-theme="github-dark"><code data-language="bash" data-theme="github-dark" style="display: grid;"><span data-line=""><span style="color:#B392F0">uv</span><span style="color:#9ECBFF"> run</span><span style="color:#79B8FF"> --with</span><span style="color:#9ECBFF"> requests</span><span style="color:#79B8FF"> --with</span><span style="color:#9ECBFF"> rich</span><span style="color:#9ECBFF"> fetch.py</span></span></code></pre></figure>
+<h2 id="模式五從-requirementstxt-遷移">模式五：從 requirements.txt 遷移</h2>
+<p>既有專案有 <code>requirements.txt</code>？直接吃進去：</p>
+<figure data-rehype-pretty-code-figure=""><pre style="background-color:#24292e;color:#e1e4e8" tabindex="0" data-language="bash" data-theme="github-dark"><code data-language="bash" data-theme="github-dark" style="display: grid;"><span data-line=""><span style="color:#B392F0">uv</span><span style="color:#9ECBFF"> add</span><span style="color:#79B8FF"> -r</span><span style="color:#9ECBFF"> requirements.txt</span></span></code></pre></figure>
+<p>或編譯成 lockfile 再同步：</p>
+<figure data-rehype-pretty-code-figure=""><pre style="background-color:#24292e;color:#e1e4e8" tabindex="0" data-language="bash" data-theme="github-dark"><code data-language="bash" data-theme="github-dark" style="display: grid;"><span data-line=""><span style="color:#B392F0">uv</span><span style="color:#9ECBFF"> pip</span><span style="color:#9ECBFF"> compile</span><span style="color:#9ECBFF"> requirements.in</span><span style="color:#79B8FF"> -o</span><span style="color:#9ECBFF"> requirements.txt</span></span>
+<span data-line=""><span style="color:#B392F0">uv</span><span style="color:#9ECBFF"> pip</span><span style="color:#9ECBFF"> sync</span><span style="color:#9ECBFF"> requirements.txt</span></span></code></pre></figure>
+<p>遷移完記得把 <code>pyproject.toml</code> 當主源，<code>requirements.txt</code> 可以當匯出用。</p>
+<h2 id="下一步">下一步</h2>
+<p>日常模式練完，要玩 Python 版本切換、pip 介面或 monorepo 的話：<br>
+👉 <a href="04-advanced">進階用法</a></p>5:["$","aside",null,{"className":"hidden lg:block","children":["$","$L8",null,{"html":"$9"}]}]
+6:["$","script","script-0",{"src":"/_next/static/chunks/2dddb3bc05093f69.js","async":true}]
+7:["$","$La",null,{"children":["$","$b",null,{"name":"Next.MetadataOutlet","children":"$@c"}]}]
+c:null

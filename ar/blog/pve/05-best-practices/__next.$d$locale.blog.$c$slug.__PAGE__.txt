@@ -1,0 +1,78 @@
+1:"$Sreact.fragment"
+2:I[14864,["/_next/static/chunks/7923a261b80bb6e1.js","/_next/static/chunks/e09b4358027e8033.js","/_next/static/chunks/2dddb3bc05093f69.js"],"default"]
+8:I[24801,["/_next/static/chunks/7923a261b80bb6e1.js","/_next/static/chunks/e09b4358027e8033.js","/_next/static/chunks/2dddb3bc05093f69.js"],"default"]
+a:I[50183,["/_next/static/chunks/5a5b5b13c22d14f7.js","/_next/static/chunks/a484d1d3dd4b55ab.js"],"OutletBoundary"]
+b:"$Sreact.suspense"
+:HL["/images/posts/pve-best-practices.jpg","image"]
+3:T1938,<p>في الممارسة العملية، الأنظمة تميل إلى الكسر ليس بسبب "ميزات غير كافية" بل بسبب <strong>العملية والعادات</strong>. يمكن استخدام قائمة التحقق هذه كإرشادات يومية — كل مخاطرة يُتجنَّبها هي مرة أخرى تغادر العمل في وقتها.</p>
+<h2 id="الممارسات-الموصى-بها">الممارسات الموصى بها</h2>
+<h3 id="1-النسخ-الاحتياطي-يجب-أن-يقترن-بتدريبات-الاستعادة">1) النسخ الاحتياطي يجب أن يقترن بتدريبات الاستعادة</h3>
+<p>امتلاك ملف نسخ احتياطي لا يعني أنك تستطيع الاستعادة منه فعلاً. <strong>اختبر الاستعادة دورياً</strong> — تحقق من الإقلاع وصحة الخدمات. نسخة احتياطية لم تختبرها قط مثل حذاء جديد لم تجربه: تكتشف أنه يؤلم فقط في المعركة.</p>
+<h3 id="2-لقطة-قبل-التغييرات-الكبيرة">2) لقطة قبل التغييرات الكبيرة</h3>
+<p>قبل تحديث الحزم أو تغيير الشبكة أو لمس الأجهزة، خذ لقطة أولاً. إذا سارت الأمور بشكل خاطئ، تراجع وتخطّ حلزون إعادة التثبيت.</p>
+<figure data-rehype-pretty-code-figure=""><pre style="background-color:#24292e;color:#e1e4e8" tabindex="0" data-language="bash" data-theme="github-dark"><code data-language="bash" data-theme="github-dark" style="display: grid;"><span data-line=""><span style="color:#B392F0">qm</span><span style="color:#9ECBFF"> snapshot</span><span style="color:#79B8FF"> 100</span><span style="color:#9ECBFF"> before-maintenance</span></span></code></pre></figure>
+<h3 id="3-خطّط-لاستراتيجية-التحديث-والاشتراك">3) خطّط لاستراتيجية التحديث والاشتراك</h3>
+<p>لبيئات الإنتاج: اعرف أي بيئة تحصل على التحديث أولاً وأيها يحصل عليه لاحقاً. افهم اشتراكك ومصادر الحزم — لا تضف مستودعات طرف ثالث عشوائياً.</p>
+<figure data-rehype-pretty-code-figure=""><pre style="background-color:#24292e;color:#e1e4e8" tabindex="0" data-language="bash" data-theme="github-dark"><code data-language="bash" data-theme="github-dark" style="display: grid;"><span data-line=""><span style="color:#6A737D"># التحقق من حالة الاشتراك</span></span>
+<span data-line=""><span style="color:#B392F0">pvesubscription</span><span style="color:#9ECBFF"> get</span></span></code></pre></figure>
+<h3 id="4-تجزئة-الشبكة-والحد-الأدنى-من-التعرض">4) تجزئة الشبكة والحد الأدنى من التعرض</h3>
+<p>حركة الإدارة والتخزين والأعمال: <strong>افصل عند الإمكان</strong> لتجنب التداخل المتبادل والانتشار الجانبي.</p>
+<h3 id="5-الوصول-المبني-على-الأدوار-وخط-أساسي-للجدار-الناري">5) الوصول المبني على الأدوار وخط أساسي للجدار الناري</h3>
+<p>لا تجعل الجميع يشاركون حساب <code>root</code> واحداً. أنشئ حسابات مبنية على الأدوار، فعّل المصادقة الثنائية حيثما أمكن، وافتح فقط المنافذ الضرورية في الجدار الناري.</p>
+<h2 id="المخاطر-الشائعة">المخاطر الشائعة</h2>
+<h3 id="المخطر-1-طبقة-raid-للأجهزة-فوق-zfsceph">المخطر 1: طبقة RAID للأجهزة فوق ZFS/Ceph</h3>
+<p>ZFS وCeph يحتاجان <strong>إدارة الأقراص مباشرةً</strong>. إضافة طبقة RAID للأجهزة فوقهما يُخفّض قدرتيهما الخارقتين إلى النصف — تعاني كل من حماية البيانات وإمكانية الرؤية.</p>
+<h3 id="المخطر-2-توقع-ha-من-عقدة-واحدة">المخطر 2: توقع HA من عقدة واحدة</h3>
+<p>HA يتطلب عقداً متعددة يمكنها التولي عن بعضها. مع جهاز واحد فقط، لا تحلم بالتوفر العالي — ذلك "نقطة فشل واحدة في انتظار أن تحدث."</p>
+<h3 id="المخطر-3-حذف-الصورة-الأساسية-للاستنساخ-المرتبط">المخطر 3: حذف الصورة الأساسية للاستنساخ المرتبط</h3>
+<p>الاستنساخات المرتبطة تعتمد على قرصها الأصلي. احذف الأصل وجميع الآلات الافتراضية المرتبطة تحته تكسر — مثل سحب الكتلة السفلية من برج.</p>
+<h3 id="المخطر-4-لا-مراقبة-للسعة">المخطر 4: لا مراقبة للسعة</h3>
+<p>عندما يمتلئ <code>local-lvm</code> أو تخزين النسخ الاحتياطي، تفشل الكتابات وتنكسر المهام. <strong>راقب مبكراً، نظّف مبكراً</strong> — لا تنتظر تنبيهاً في الساعة 2 صباحاً قبل النهوض لمكافحة الحريق.</p>
+<h3 id="المخطر-5-كلمات-مرور-ضعيفة-وأذونات-مفرطة">المخطر 5: كلمات مرور ضعيفة وأذونات مفرطة</h3>
+<p>إذا كانت واجهة الإدارة مكشوفة على الإنترنت، فكلمات المرور الضعيفة والأذونات المفتوحة دعوة مفتوحة. غيّر ما يحتاج تغييراً، قيّد ما يحتاج تقييداً.</p>
+<hr>
+<p>اتباع قائمة التحقق هذه لن يضمن صفر إخفاقات، لكنها ستوفر عليك الكثير من الالتفافات غير الضرورية. تحقق من الوثائق والمنتديات الرسمية عند الشك — معظم المخاطر قد تعثّر بها آخرون من قبل.</p>
+<h2 id="قراءة-إضافية">قراءة إضافية</h2>
+<ul>
+<li><a href="https://pve.proxmox.com/pve-docs/pve-admin-guide.html">دليل إدارة Proxmox VE الرسمي</a></li>
+<li><a href="https://pve.proxmox.com/wiki/Main_Page">ويكي Proxmox VE الرسمي</a></li>
+<li><a href="https://forum.proxmox.com/">منتدى Proxmox الرسمي</a></li>
+</ul>0:{"buildId":"Yck3R4ooQxWkwGLT6is1X","rsc":["$","$1","c",{"children":[[["$","script",null,{"type":"application/ld+json","dangerouslySetInnerHTML":{"__html":"{\"@context\":\"https://schema.org\",\"@type\":\"Article\",\"headline\":\"أفضل ممارسات Proxmox VE: قائمة تحقق الاستقرار والأمان\",\"description\":\"مجموعة من الممارسات الموصى بها والمخاطر الشائعة لتشغيل PVE طويل الأمد، لمساعدة تقليل معدلات الفشل والمخاطر التشغيلية.\",\"url\":\"https://benxhub.com/ar/blog/pve/05-best-practices\",\"mainEntityOfPage\":{\"@type\":\"WebPage\",\"@id\":\"https://benxhub.com/ar/blog/pve/05-best-practices\"},\"datePublished\":\"2026-02-24T00:00:00.000Z\",\"dateModified\":\"2026-02-24T00:00:00.000Z\",\"keywords\":\"proxmox, best-practices, security, operations\",\"inLanguage\":\"ar\",\"author\":{\"@type\":\"Person\",\"name\":\"BenX\",\"url\":\"https://benxhub.com\"},\"publisher\":{\"@type\":\"Organization\",\"name\":\"BenXHub Blog\",\"url\":\"https://benxhub.com\"},\"image\":\"https://benxhub.com/images/posts/pve-best-practices.jpg\"}"}}],["$","div",null,{"className":"mx-auto max-w-6xl px-4 py-12 sm:px-6","children":["$","div",null,{"className":"lg:grid lg:grid-cols-[1fr_240px] lg:gap-14","children":[["$","article",null,{"children":[["$","header",null,{"className":"mb-10","children":[["$","div",null,{"className":"mb-4 flex flex-wrap gap-2","children":[["$","$L2","proxmox",{"href":"/ar/tags/proxmox","localeCookie":{"name":"NEXT_LOCALE","sameSite":"lax"},"className":"inline-flex items-center rounded-full px-2.5 py-0.5 text-xs font-medium transition-colors","style":{"background":"var(--color-code-bg)","color":"var(--color-accent)","border":"1px solid var(--color-border)"},"children":["#","proxmox"]}],["$","$L2","best-practices",{"href":"/ar/tags/best-practices","localeCookie":{"name":"NEXT_LOCALE","sameSite":"lax"},"className":"inline-flex items-center rounded-full px-2.5 py-0.5 text-xs font-medium transition-colors","style":{"background":"var(--color-code-bg)","color":"var(--color-accent)","border":"1px solid var(--color-border)"},"children":["#","best-practices"]}],["$","$L2","security",{"href":"/ar/tags/security","localeCookie":{"name":"NEXT_LOCALE","sameSite":"lax"},"className":"inline-flex items-center rounded-full px-2.5 py-0.5 text-xs font-medium transition-colors","style":{"background":"var(--color-code-bg)","color":"var(--color-accent)","border":"1px solid var(--color-border)"},"children":["#","security"]}],["$","$L2","operations",{"href":"/ar/tags/operations","localeCookie":{"name":"NEXT_LOCALE","sameSite":"lax"},"className":"inline-flex items-center rounded-full px-2.5 py-0.5 text-xs font-medium transition-colors","style":{"background":"var(--color-code-bg)","color":"var(--color-accent)","border":"1px solid var(--color-border)"},"children":["#","operations"]}]]}],["$","h1",null,{"className":"mb-4 text-3xl leading-snug font-bold tracking-tight sm:text-4xl","style":{"color":"var(--color-text)"},"children":"أفضل ممارسات Proxmox VE: قائمة تحقق الاستقرار والأمان"}],["$","div",null,{"className":"flex flex-wrap items-center gap-3 text-sm","style":{"color":"var(--color-muted)"},"children":[["$","time",null,{"dateTime":"2026-02-24","children":"24 2月 2026"}],["$","span",null,{"aria-hidden":"true","children":"·"}],["$","span",null,{"children":"3 min read"}]]}],["$","div",null,{"className":"mt-6 overflow-hidden rounded-lg","children":["$","img",null,{"src":"/images/posts/pve-best-practices.jpg","alt":"أفضل ممارسات Proxmox VE: قائمة تحقق الاستقرار والأمان","className":"w-full h-auto"}]}],["$","div",null,{"className":"mt-6 border-b","style":{"borderColor":"var(--color-border)"}}]]}],["$","div",null,{"className":"prose","dangerouslySetInnerHTML":{"__html":"$3"}}],"$L4"]}],"$L5"]}]}]],["$L6"],"$L7"]}],"loading":null,"isPartial":false}
+4:["$","footer",null,{"className":"mt-14 border-t pt-8","style":{"borderColor":"var(--color-border)"},"children":[["$","div",null,{"className":"mb-8 flex flex-wrap gap-2","children":[["$","$L2","proxmox",{"href":"/ar/tags/proxmox","localeCookie":{"name":"NEXT_LOCALE","sameSite":"lax"},"className":"inline-flex items-center rounded-full px-3 py-1 text-sm font-medium transition-colors","style":{"background":"var(--color-code-bg)","color":"var(--color-accent)","border":"1px solid var(--color-border)"},"children":["#","proxmox"]}],["$","$L2","best-practices",{"href":"/ar/tags/best-practices","localeCookie":{"name":"NEXT_LOCALE","sameSite":"lax"},"className":"inline-flex items-center rounded-full px-3 py-1 text-sm font-medium transition-colors","style":{"background":"var(--color-code-bg)","color":"var(--color-accent)","border":"1px solid var(--color-border)"},"children":["#","best-practices"]}],["$","$L2","security",{"href":"/ar/tags/security","localeCookie":{"name":"NEXT_LOCALE","sameSite":"lax"},"className":"inline-flex items-center rounded-full px-3 py-1 text-sm font-medium transition-colors","style":{"background":"var(--color-code-bg)","color":"var(--color-accent)","border":"1px solid var(--color-border)"},"children":["#","security"]}],["$","$L2","operations",{"href":"/ar/tags/operations","localeCookie":{"name":"NEXT_LOCALE","sameSite":"lax"},"className":"inline-flex items-center rounded-full px-3 py-1 text-sm font-medium transition-colors","style":{"background":"var(--color-code-bg)","color":"var(--color-accent)","border":"1px solid var(--color-border)"},"children":["#","operations"]}]]}],["$","nav",null,{"aria-label":"التنقل بين المقالات","className":"grid grid-cols-1 gap-4 sm:grid-cols-2","children":[["$","$L2",null,{"href":"/ar/blog/pve/04-advanced","localeCookie":{"name":"NEXT_LOCALE","sameSite":"lax"},"className":"group rounded-lg border p-4 transition-colors hover:border-accent","style":{"borderColor":"var(--color-border)","background":"var(--color-surface)"},"children":[["$","p",null,{"className":"mb-1 text-xs","style":{"color":"var(--color-muted)"},"children":"→ الأحدث"}],["$","p",null,{"className":"line-clamp-1 text-sm font-medium transition-colors group-hover:text-accent","style":{"color":"var(--color-text)"},"children":"Proxmox VE متقدم: التجميع وHA وCeph وAPI"}]]}],["$","div",null,{}]]}]]}]
+9:T1938,<p>في الممارسة العملية، الأنظمة تميل إلى الكسر ليس بسبب "ميزات غير كافية" بل بسبب <strong>العملية والعادات</strong>. يمكن استخدام قائمة التحقق هذه كإرشادات يومية — كل مخاطرة يُتجنَّبها هي مرة أخرى تغادر العمل في وقتها.</p>
+<h2 id="الممارسات-الموصى-بها">الممارسات الموصى بها</h2>
+<h3 id="1-النسخ-الاحتياطي-يجب-أن-يقترن-بتدريبات-الاستعادة">1) النسخ الاحتياطي يجب أن يقترن بتدريبات الاستعادة</h3>
+<p>امتلاك ملف نسخ احتياطي لا يعني أنك تستطيع الاستعادة منه فعلاً. <strong>اختبر الاستعادة دورياً</strong> — تحقق من الإقلاع وصحة الخدمات. نسخة احتياطية لم تختبرها قط مثل حذاء جديد لم تجربه: تكتشف أنه يؤلم فقط في المعركة.</p>
+<h3 id="2-لقطة-قبل-التغييرات-الكبيرة">2) لقطة قبل التغييرات الكبيرة</h3>
+<p>قبل تحديث الحزم أو تغيير الشبكة أو لمس الأجهزة، خذ لقطة أولاً. إذا سارت الأمور بشكل خاطئ، تراجع وتخطّ حلزون إعادة التثبيت.</p>
+<figure data-rehype-pretty-code-figure=""><pre style="background-color:#24292e;color:#e1e4e8" tabindex="0" data-language="bash" data-theme="github-dark"><code data-language="bash" data-theme="github-dark" style="display: grid;"><span data-line=""><span style="color:#B392F0">qm</span><span style="color:#9ECBFF"> snapshot</span><span style="color:#79B8FF"> 100</span><span style="color:#9ECBFF"> before-maintenance</span></span></code></pre></figure>
+<h3 id="3-خطّط-لاستراتيجية-التحديث-والاشتراك">3) خطّط لاستراتيجية التحديث والاشتراك</h3>
+<p>لبيئات الإنتاج: اعرف أي بيئة تحصل على التحديث أولاً وأيها يحصل عليه لاحقاً. افهم اشتراكك ومصادر الحزم — لا تضف مستودعات طرف ثالث عشوائياً.</p>
+<figure data-rehype-pretty-code-figure=""><pre style="background-color:#24292e;color:#e1e4e8" tabindex="0" data-language="bash" data-theme="github-dark"><code data-language="bash" data-theme="github-dark" style="display: grid;"><span data-line=""><span style="color:#6A737D"># التحقق من حالة الاشتراك</span></span>
+<span data-line=""><span style="color:#B392F0">pvesubscription</span><span style="color:#9ECBFF"> get</span></span></code></pre></figure>
+<h3 id="4-تجزئة-الشبكة-والحد-الأدنى-من-التعرض">4) تجزئة الشبكة والحد الأدنى من التعرض</h3>
+<p>حركة الإدارة والتخزين والأعمال: <strong>افصل عند الإمكان</strong> لتجنب التداخل المتبادل والانتشار الجانبي.</p>
+<h3 id="5-الوصول-المبني-على-الأدوار-وخط-أساسي-للجدار-الناري">5) الوصول المبني على الأدوار وخط أساسي للجدار الناري</h3>
+<p>لا تجعل الجميع يشاركون حساب <code>root</code> واحداً. أنشئ حسابات مبنية على الأدوار، فعّل المصادقة الثنائية حيثما أمكن، وافتح فقط المنافذ الضرورية في الجدار الناري.</p>
+<h2 id="المخاطر-الشائعة">المخاطر الشائعة</h2>
+<h3 id="المخطر-1-طبقة-raid-للأجهزة-فوق-zfsceph">المخطر 1: طبقة RAID للأجهزة فوق ZFS/Ceph</h3>
+<p>ZFS وCeph يحتاجان <strong>إدارة الأقراص مباشرةً</strong>. إضافة طبقة RAID للأجهزة فوقهما يُخفّض قدرتيهما الخارقتين إلى النصف — تعاني كل من حماية البيانات وإمكانية الرؤية.</p>
+<h3 id="المخطر-2-توقع-ha-من-عقدة-واحدة">المخطر 2: توقع HA من عقدة واحدة</h3>
+<p>HA يتطلب عقداً متعددة يمكنها التولي عن بعضها. مع جهاز واحد فقط، لا تحلم بالتوفر العالي — ذلك "نقطة فشل واحدة في انتظار أن تحدث."</p>
+<h3 id="المخطر-3-حذف-الصورة-الأساسية-للاستنساخ-المرتبط">المخطر 3: حذف الصورة الأساسية للاستنساخ المرتبط</h3>
+<p>الاستنساخات المرتبطة تعتمد على قرصها الأصلي. احذف الأصل وجميع الآلات الافتراضية المرتبطة تحته تكسر — مثل سحب الكتلة السفلية من برج.</p>
+<h3 id="المخطر-4-لا-مراقبة-للسعة">المخطر 4: لا مراقبة للسعة</h3>
+<p>عندما يمتلئ <code>local-lvm</code> أو تخزين النسخ الاحتياطي، تفشل الكتابات وتنكسر المهام. <strong>راقب مبكراً، نظّف مبكراً</strong> — لا تنتظر تنبيهاً في الساعة 2 صباحاً قبل النهوض لمكافحة الحريق.</p>
+<h3 id="المخطر-5-كلمات-مرور-ضعيفة-وأذونات-مفرطة">المخطر 5: كلمات مرور ضعيفة وأذونات مفرطة</h3>
+<p>إذا كانت واجهة الإدارة مكشوفة على الإنترنت، فكلمات المرور الضعيفة والأذونات المفتوحة دعوة مفتوحة. غيّر ما يحتاج تغييراً، قيّد ما يحتاج تقييداً.</p>
+<hr>
+<p>اتباع قائمة التحقق هذه لن يضمن صفر إخفاقات، لكنها ستوفر عليك الكثير من الالتفافات غير الضرورية. تحقق من الوثائق والمنتديات الرسمية عند الشك — معظم المخاطر قد تعثّر بها آخرون من قبل.</p>
+<h2 id="قراءة-إضافية">قراءة إضافية</h2>
+<ul>
+<li><a href="https://pve.proxmox.com/pve-docs/pve-admin-guide.html">دليل إدارة Proxmox VE الرسمي</a></li>
+<li><a href="https://pve.proxmox.com/wiki/Main_Page">ويكي Proxmox VE الرسمي</a></li>
+<li><a href="https://forum.proxmox.com/">منتدى Proxmox الرسمي</a></li>
+</ul>5:["$","aside",null,{"className":"hidden lg:block","children":["$","$L8",null,{"html":"$9"}]}]
+6:["$","script","script-0",{"src":"/_next/static/chunks/2dddb3bc05093f69.js","async":true}]
+7:["$","$La",null,{"children":["$","$b",null,{"name":"Next.MetadataOutlet","children":"$@c"}]}]
+c:null

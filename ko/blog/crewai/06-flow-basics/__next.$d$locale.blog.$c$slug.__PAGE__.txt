@@ -1,0 +1,111 @@
+1:"$Sreact.fragment"
+2:I[14864,["/_next/static/chunks/7923a261b80bb6e1.js","/_next/static/chunks/e09b4358027e8033.js","/_next/static/chunks/2dddb3bc05093f69.js"],"default"]
+8:I[24801,["/_next/static/chunks/7923a261b80bb6e1.js","/_next/static/chunks/e09b4358027e8033.js","/_next/static/chunks/2dddb3bc05093f69.js"],"default"]
+a:I[50183,["/_next/static/chunks/5a5b5b13c22d14f7.js","/_next/static/chunks/a484d1d3dd4b55ab.js"],"OutletBoundary"]
+b:"$Sreact.suspense"
+3:T16a4,<p>흐름이 "리서치 -> 작성 -> 검토 -> 발행"으로 커지면 단일 Crew만으로는 부족합니다.<br>
+<code>Flow</code>는 여러 Crew 실행 순서를 조율하는 관제탑입니다.</p>
+<h2 id="flow가-해결하는-문제">Flow가 해결하는 문제</h2>
+<ul>
+<li>다단계 상태 관리</li>
+<li>조건 분기(통과 시 발행, 실패 시 재시도)</li>
+<li>가시성과 유지보수성 향상</li>
+</ul>
+<h2 id="최소-flow-예시">최소 Flow 예시</h2>
+<figure data-rehype-pretty-code-figure=""><pre style="background-color:#24292e;color:#e1e4e8" tabindex="0" data-language="python" data-theme="github-dark"><code data-language="python" data-theme="github-dark" style="display: grid;"><span data-line=""><span style="color:#F97583">from</span><span style="color:#E1E4E8"> pydantic </span><span style="color:#F97583">import</span><span style="color:#E1E4E8"> BaseModel</span></span>
+<span data-line=""><span style="color:#F97583">from</span><span style="color:#E1E4E8"> crewai.flow.flow </span><span style="color:#F97583">import</span><span style="color:#E1E4E8"> Flow, start, listen, router</span></span>
+<span data-line=""> </span>
+<span data-line=""><span style="color:#F97583">class</span><span style="color:#B392F0"> BlogState</span><span style="color:#E1E4E8">(</span><span style="color:#B392F0">BaseModel</span><span style="color:#E1E4E8">):</span></span>
+<span data-line=""><span style="color:#E1E4E8">    topic: </span><span style="color:#79B8FF">str</span><span style="color:#F97583"> =</span><span style="color:#9ECBFF"> ""</span></span>
+<span data-line=""><span style="color:#E1E4E8">    draft: </span><span style="color:#79B8FF">str</span><span style="color:#F97583"> =</span><span style="color:#9ECBFF"> ""</span></span>
+<span data-line=""><span style="color:#E1E4E8">    word_count: </span><span style="color:#79B8FF">int</span><span style="color:#F97583"> =</span><span style="color:#79B8FF"> 0</span></span>
+<span data-line=""> </span>
+<span data-line=""><span style="color:#F97583">class</span><span style="color:#B392F0"> BlogFlow</span><span style="color:#E1E4E8">(Flow[BlogState]):</span></span>
+<span data-line=""><span style="color:#B392F0">    @start</span><span style="color:#E1E4E8">()</span></span>
+<span data-line=""><span style="color:#F97583">    def</span><span style="color:#B392F0"> init_topic</span><span style="color:#E1E4E8">(self) -> </span><span style="color:#79B8FF">str</span><span style="color:#E1E4E8">:</span></span>
+<span data-line=""><span style="color:#79B8FF">        self</span><span style="color:#E1E4E8">.state.topic </span><span style="color:#F97583">=</span><span style="color:#9ECBFF"> "CrewAI for beginners"</span></span>
+<span data-line=""><span style="color:#F97583">        return</span><span style="color:#79B8FF"> self</span><span style="color:#E1E4E8">.state.topic</span></span>
+<span data-line=""> </span>
+<span data-line=""><span style="color:#B392F0">    @listen</span><span style="color:#E1E4E8">(init_topic)</span></span>
+<span data-line=""><span style="color:#F97583">    def</span><span style="color:#B392F0"> write_draft</span><span style="color:#E1E4E8">(self, topic: </span><span style="color:#79B8FF">str</span><span style="color:#E1E4E8">) -> </span><span style="color:#79B8FF">str</span><span style="color:#E1E4E8">:</span></span>
+<span data-line=""><span style="color:#E1E4E8">        result </span><span style="color:#F97583">=</span><span style="color:#9ECBFF"> "draft content..."</span></span>
+<span data-line=""><span style="color:#79B8FF">        self</span><span style="color:#E1E4E8">.state.draft </span><span style="color:#F97583">=</span><span style="color:#E1E4E8"> result</span></span>
+<span data-line=""><span style="color:#79B8FF">        self</span><span style="color:#E1E4E8">.state.word_count </span><span style="color:#F97583">=</span><span style="color:#79B8FF"> len</span><span style="color:#E1E4E8">(result.split())</span></span>
+<span data-line=""><span style="color:#F97583">        return</span><span style="color:#E1E4E8"> result</span></span>
+<span data-line=""> </span>
+<span data-line=""><span style="color:#B392F0">    @router</span><span style="color:#E1E4E8">(write_draft)</span></span>
+<span data-line=""><span style="color:#F97583">    def</span><span style="color:#B392F0"> quality_gate</span><span style="color:#E1E4E8">(self) -> </span><span style="color:#79B8FF">str</span><span style="color:#E1E4E8">:</span></span>
+<span data-line=""><span style="color:#F97583">        return</span><span style="color:#9ECBFF"> "ok"</span><span style="color:#F97583"> if</span><span style="color:#79B8FF"> self</span><span style="color:#E1E4E8">.state.word_count </span><span style="color:#F97583">></span><span style="color:#79B8FF"> 100</span><span style="color:#F97583"> else</span><span style="color:#9ECBFF"> "retry"</span></span></code></pre></figure>
+<h2 id="flow-설계-팁">Flow 설계 팁</h2>
+<ol>
+<li><code>@listen</code> 메서드 하나는 한 가지 일만</li>
+<li>분기 로직은 <code>@router</code>에 모으기</li>
+<li>상태는 <code>BaseModel</code>로 타입 명시, 맨 dict 지양</li>
+</ol>
+<p>이렇게 해두면 6개월 뒤에 다시 봐도 고고학이 되지 않습니다.</p>
+<h2 id="언제-flow를-써야-하나">언제 Flow를 써야 하나</h2>
+<ul>
+<li>작업 단계가 3개 초과</li>
+<li>분기 조건이 명확</li>
+<li>여러 Crew 협업이 필요</li>
+</ul>
+<p>단순히 "리서치 + 보고서 작성"이라면 단일 Crew로 충분합니다.</p>
+<h2 id="다음-단계">다음 단계</h2>
+<p>흐름이 돌아가면 가장 많이 묻는 질문이 나옵니다. "Agent가 문맥을 기억하나요?"<br>
+다음 글에서 메모리와 지식 소스를 다룹니다.<br>
+👉 <a href="07-memory-and-knowledge">Memory와 Knowledge</a></p>0:{"buildId":"Yck3R4ooQxWkwGLT6is1X","rsc":["$","$1","c",{"children":[[["$","script",null,{"type":"application/ld+json","dangerouslySetInnerHTML":{"__html":"{\"@context\":\"https://schema.org\",\"@type\":\"Article\",\"headline\":\"CrewAI Flow 입문: 여러 Crew를 제어 가능한 흐름으로 연결하기\",\"description\":\"Flow로 다단계 작업과 조건 분기를 관리해 실제 업무에 가까운 워크플로를 만듭니다.\",\"url\":\"https://benxhub.com/ko/blog/crewai/06-flow-basics\",\"mainEntityOfPage\":{\"@type\":\"WebPage\",\"@id\":\"https://benxhub.com/ko/blog/crewai/06-flow-basics\"},\"datePublished\":\"2026-03-03T00:00:00.000Z\",\"dateModified\":\"2026-03-03T00:00:00.000Z\",\"keywords\":\"crewai, flow, workflow, state-machine, python\",\"inLanguage\":\"ko\",\"author\":{\"@type\":\"Person\",\"name\":\"BenX\",\"url\":\"https://benxhub.com\"},\"publisher\":{\"@type\":\"Organization\",\"name\":\"BenXHub Blog\",\"url\":\"https://benxhub.com\"}}"}}],["$","div",null,{"className":"mx-auto max-w-6xl px-4 py-12 sm:px-6","children":["$","div",null,{"className":"lg:grid lg:grid-cols-[1fr_240px] lg:gap-14","children":[["$","article",null,{"children":[["$","header",null,{"className":"mb-10","children":[["$","div",null,{"className":"mb-4 flex flex-wrap gap-2","children":[["$","$L2","crewai",{"href":"/ko/tags/crewai","localeCookie":{"name":"NEXT_LOCALE","sameSite":"lax"},"className":"inline-flex items-center rounded-full px-2.5 py-0.5 text-xs font-medium transition-colors","style":{"background":"var(--color-code-bg)","color":"var(--color-accent)","border":"1px solid var(--color-border)"},"children":["#","crewai"]}],["$","$L2","flow",{"href":"/ko/tags/flow","localeCookie":{"name":"NEXT_LOCALE","sameSite":"lax"},"className":"inline-flex items-center rounded-full px-2.5 py-0.5 text-xs font-medium transition-colors","style":{"background":"var(--color-code-bg)","color":"var(--color-accent)","border":"1px solid var(--color-border)"},"children":["#","flow"]}],["$","$L2","workflow",{"href":"/ko/tags/workflow","localeCookie":{"name":"NEXT_LOCALE","sameSite":"lax"},"className":"inline-flex items-center rounded-full px-2.5 py-0.5 text-xs font-medium transition-colors","style":{"background":"var(--color-code-bg)","color":"var(--color-accent)","border":"1px solid var(--color-border)"},"children":["#","workflow"]}],["$","$L2","state-machine",{"href":"/ko/tags/state-machine","localeCookie":{"name":"NEXT_LOCALE","sameSite":"lax"},"className":"inline-flex items-center rounded-full px-2.5 py-0.5 text-xs font-medium transition-colors","style":{"background":"var(--color-code-bg)","color":"var(--color-accent)","border":"1px solid var(--color-border)"},"children":["#","state-machine"]}],["$","$L2","python",{"href":"/ko/tags/python","localeCookie":{"name":"NEXT_LOCALE","sameSite":"lax"},"className":"inline-flex items-center rounded-full px-2.5 py-0.5 text-xs font-medium transition-colors","style":{"background":"var(--color-code-bg)","color":"var(--color-accent)","border":"1px solid var(--color-border)"},"children":["#","python"]}]]}],["$","h1",null,{"className":"mb-4 text-3xl leading-snug font-bold tracking-tight sm:text-4xl","style":{"color":"var(--color-text)"},"children":"CrewAI Flow 입문: 여러 Crew를 제어 가능한 흐름으로 연결하기"}],["$","div",null,{"className":"flex flex-wrap items-center gap-3 text-sm","style":{"color":"var(--color-muted)"},"children":[["$","time",null,{"dateTime":"2026-03-03","children":"2026년 3월 3일"}],["$","span",null,{"aria-hidden":"true","children":"·"}],["$","span",null,{"children":"2 min read"}]]}],"$undefined",["$","div",null,{"className":"mt-6 border-b","style":{"borderColor":"var(--color-border)"}}]]}],["$","div",null,{"className":"prose","dangerouslySetInnerHTML":{"__html":"$3"}}],"$L4"]}],"$L5"]}]}]],["$L6"],"$L7"]}],"loading":null,"isPartial":false}
+4:["$","footer",null,{"className":"mt-14 border-t pt-8","style":{"borderColor":"var(--color-border)"},"children":[["$","div",null,{"className":"mb-8 flex flex-wrap gap-2","children":[["$","$L2","crewai",{"href":"/ko/tags/crewai","localeCookie":{"name":"NEXT_LOCALE","sameSite":"lax"},"className":"inline-flex items-center rounded-full px-3 py-1 text-sm font-medium transition-colors","style":{"background":"var(--color-code-bg)","color":"var(--color-accent)","border":"1px solid var(--color-border)"},"children":["#","crewai"]}],["$","$L2","flow",{"href":"/ko/tags/flow","localeCookie":{"name":"NEXT_LOCALE","sameSite":"lax"},"className":"inline-flex items-center rounded-full px-3 py-1 text-sm font-medium transition-colors","style":{"background":"var(--color-code-bg)","color":"var(--color-accent)","border":"1px solid var(--color-border)"},"children":["#","flow"]}],["$","$L2","workflow",{"href":"/ko/tags/workflow","localeCookie":{"name":"NEXT_LOCALE","sameSite":"lax"},"className":"inline-flex items-center rounded-full px-3 py-1 text-sm font-medium transition-colors","style":{"background":"var(--color-code-bg)","color":"var(--color-accent)","border":"1px solid var(--color-border)"},"children":["#","workflow"]}],["$","$L2","state-machine",{"href":"/ko/tags/state-machine","localeCookie":{"name":"NEXT_LOCALE","sameSite":"lax"},"className":"inline-flex items-center rounded-full px-3 py-1 text-sm font-medium transition-colors","style":{"background":"var(--color-code-bg)","color":"var(--color-accent)","border":"1px solid var(--color-border)"},"children":["#","state-machine"]}],["$","$L2","python",{"href":"/ko/tags/python","localeCookie":{"name":"NEXT_LOCALE","sameSite":"lax"},"className":"inline-flex items-center rounded-full px-3 py-1 text-sm font-medium transition-colors","style":{"background":"var(--color-code-bg)","color":"var(--color-accent)","border":"1px solid var(--color-border)"},"children":["#","python"]}]]}],["$","nav",null,{"aria-label":"글 탐색","className":"grid grid-cols-1 gap-4 sm:grid-cols-2","children":[["$","$L2",null,{"href":"/ko/blog/crewai/09-production-best-practices","localeCookie":{"name":"NEXT_LOCALE","sameSite":"lax"},"className":"group rounded-lg border p-4 transition-colors hover:border-accent","style":{"borderColor":"var(--color-border)","background":"var(--color-surface)"},"children":[["$","p",null,{"className":"mb-1 text-xs","style":{"color":"var(--color-muted)"},"children":"← 최신 글"}],["$","p",null,{"className":"line-clamp-1 text-sm font-medium transition-colors group-hover:text-accent","style":{"color":"var(--color-text)"},"children":"CrewAI 프로덕션 베스트 프랙티스: Demo에서 운영 가능한 시스템으로"}]]}],["$","$L2",null,{"href":"/ko/blog/crewai/07-memory-and-knowledge","localeCookie":{"name":"NEXT_LOCALE","sameSite":"lax"},"className":"group rounded-lg border p-4 text-right transition-colors hover:border-accent","style":{"borderColor":"var(--color-border)","background":"var(--color-surface)"},"children":[["$","p",null,{"className":"mb-1 text-xs","style":{"color":"var(--color-muted)"},"children":"이전 글 →"}],["$","p",null,{"className":"line-clamp-1 text-sm font-medium transition-colors group-hover:text-accent","style":{"color":"var(--color-text)"},"children":"CrewAI Memory와 Knowledge: Agent가 매번 처음부터 다시 배우지 않게"}]]}]]}]]}]
+9:T16a4,<p>흐름이 "리서치 -> 작성 -> 검토 -> 발행"으로 커지면 단일 Crew만으로는 부족합니다.<br>
+<code>Flow</code>는 여러 Crew 실행 순서를 조율하는 관제탑입니다.</p>
+<h2 id="flow가-해결하는-문제">Flow가 해결하는 문제</h2>
+<ul>
+<li>다단계 상태 관리</li>
+<li>조건 분기(통과 시 발행, 실패 시 재시도)</li>
+<li>가시성과 유지보수성 향상</li>
+</ul>
+<h2 id="최소-flow-예시">최소 Flow 예시</h2>
+<figure data-rehype-pretty-code-figure=""><pre style="background-color:#24292e;color:#e1e4e8" tabindex="0" data-language="python" data-theme="github-dark"><code data-language="python" data-theme="github-dark" style="display: grid;"><span data-line=""><span style="color:#F97583">from</span><span style="color:#E1E4E8"> pydantic </span><span style="color:#F97583">import</span><span style="color:#E1E4E8"> BaseModel</span></span>
+<span data-line=""><span style="color:#F97583">from</span><span style="color:#E1E4E8"> crewai.flow.flow </span><span style="color:#F97583">import</span><span style="color:#E1E4E8"> Flow, start, listen, router</span></span>
+<span data-line=""> </span>
+<span data-line=""><span style="color:#F97583">class</span><span style="color:#B392F0"> BlogState</span><span style="color:#E1E4E8">(</span><span style="color:#B392F0">BaseModel</span><span style="color:#E1E4E8">):</span></span>
+<span data-line=""><span style="color:#E1E4E8">    topic: </span><span style="color:#79B8FF">str</span><span style="color:#F97583"> =</span><span style="color:#9ECBFF"> ""</span></span>
+<span data-line=""><span style="color:#E1E4E8">    draft: </span><span style="color:#79B8FF">str</span><span style="color:#F97583"> =</span><span style="color:#9ECBFF"> ""</span></span>
+<span data-line=""><span style="color:#E1E4E8">    word_count: </span><span style="color:#79B8FF">int</span><span style="color:#F97583"> =</span><span style="color:#79B8FF"> 0</span></span>
+<span data-line=""> </span>
+<span data-line=""><span style="color:#F97583">class</span><span style="color:#B392F0"> BlogFlow</span><span style="color:#E1E4E8">(Flow[BlogState]):</span></span>
+<span data-line=""><span style="color:#B392F0">    @start</span><span style="color:#E1E4E8">()</span></span>
+<span data-line=""><span style="color:#F97583">    def</span><span style="color:#B392F0"> init_topic</span><span style="color:#E1E4E8">(self) -> </span><span style="color:#79B8FF">str</span><span style="color:#E1E4E8">:</span></span>
+<span data-line=""><span style="color:#79B8FF">        self</span><span style="color:#E1E4E8">.state.topic </span><span style="color:#F97583">=</span><span style="color:#9ECBFF"> "CrewAI for beginners"</span></span>
+<span data-line=""><span style="color:#F97583">        return</span><span style="color:#79B8FF"> self</span><span style="color:#E1E4E8">.state.topic</span></span>
+<span data-line=""> </span>
+<span data-line=""><span style="color:#B392F0">    @listen</span><span style="color:#E1E4E8">(init_topic)</span></span>
+<span data-line=""><span style="color:#F97583">    def</span><span style="color:#B392F0"> write_draft</span><span style="color:#E1E4E8">(self, topic: </span><span style="color:#79B8FF">str</span><span style="color:#E1E4E8">) -> </span><span style="color:#79B8FF">str</span><span style="color:#E1E4E8">:</span></span>
+<span data-line=""><span style="color:#E1E4E8">        result </span><span style="color:#F97583">=</span><span style="color:#9ECBFF"> "draft content..."</span></span>
+<span data-line=""><span style="color:#79B8FF">        self</span><span style="color:#E1E4E8">.state.draft </span><span style="color:#F97583">=</span><span style="color:#E1E4E8"> result</span></span>
+<span data-line=""><span style="color:#79B8FF">        self</span><span style="color:#E1E4E8">.state.word_count </span><span style="color:#F97583">=</span><span style="color:#79B8FF"> len</span><span style="color:#E1E4E8">(result.split())</span></span>
+<span data-line=""><span style="color:#F97583">        return</span><span style="color:#E1E4E8"> result</span></span>
+<span data-line=""> </span>
+<span data-line=""><span style="color:#B392F0">    @router</span><span style="color:#E1E4E8">(write_draft)</span></span>
+<span data-line=""><span style="color:#F97583">    def</span><span style="color:#B392F0"> quality_gate</span><span style="color:#E1E4E8">(self) -> </span><span style="color:#79B8FF">str</span><span style="color:#E1E4E8">:</span></span>
+<span data-line=""><span style="color:#F97583">        return</span><span style="color:#9ECBFF"> "ok"</span><span style="color:#F97583"> if</span><span style="color:#79B8FF"> self</span><span style="color:#E1E4E8">.state.word_count </span><span style="color:#F97583">></span><span style="color:#79B8FF"> 100</span><span style="color:#F97583"> else</span><span style="color:#9ECBFF"> "retry"</span></span></code></pre></figure>
+<h2 id="flow-설계-팁">Flow 설계 팁</h2>
+<ol>
+<li><code>@listen</code> 메서드 하나는 한 가지 일만</li>
+<li>분기 로직은 <code>@router</code>에 모으기</li>
+<li>상태는 <code>BaseModel</code>로 타입 명시, 맨 dict 지양</li>
+</ol>
+<p>이렇게 해두면 6개월 뒤에 다시 봐도 고고학이 되지 않습니다.</p>
+<h2 id="언제-flow를-써야-하나">언제 Flow를 써야 하나</h2>
+<ul>
+<li>작업 단계가 3개 초과</li>
+<li>분기 조건이 명확</li>
+<li>여러 Crew 협업이 필요</li>
+</ul>
+<p>단순히 "리서치 + 보고서 작성"이라면 단일 Crew로 충분합니다.</p>
+<h2 id="다음-단계">다음 단계</h2>
+<p>흐름이 돌아가면 가장 많이 묻는 질문이 나옵니다. "Agent가 문맥을 기억하나요?"<br>
+다음 글에서 메모리와 지식 소스를 다룹니다.<br>
+👉 <a href="07-memory-and-knowledge">Memory와 Knowledge</a></p>5:["$","aside",null,{"className":"hidden lg:block","children":["$","$L8",null,{"html":"$9"}]}]
+6:["$","script","script-0",{"src":"/_next/static/chunks/2dddb3bc05093f69.js","async":true}]
+7:["$","$La",null,{"children":["$","$b",null,{"name":"Next.MetadataOutlet","children":"$@c"}]}]
+c:null

@@ -1,0 +1,298 @@
+1:"$Sreact.fragment"
+2:I[14864,["/_next/static/chunks/7923a261b80bb6e1.js","/_next/static/chunks/e09b4358027e8033.js","/_next/static/chunks/2dddb3bc05093f69.js"],"default"]
+9:I[24801,["/_next/static/chunks/7923a261b80bb6e1.js","/_next/static/chunks/e09b4358027e8033.js","/_next/static/chunks/2dddb3bc05093f69.js"],"default"]
+b:I[50183,["/_next/static/chunks/5a5b5b13c22d14f7.js","/_next/static/chunks/a484d1d3dd4b55ab.js"],"OutletBoundary"]
+c:"$Sreact.suspense"
+0:{"buildId":"Yck3R4ooQxWkwGLT6is1X","rsc":["$","$1","c",{"children":[[["$","script",null,{"type":"application/ld+json","dangerouslySetInnerHTML":{"__html":"{\"@context\":\"https://schema.org\",\"@type\":\"Article\",\"headline\":\"Envoy Gateway Listener 設計指南：多 Port、多 Hostname、多入口怎麼拆\",\"description\":\"把 Listener 當成流量入口合約來設計，搞懂 sectionName、allowedRoutes、多 listener 拆法與常見結構。\",\"url\":\"https://benxhub.com/zh/blog/k8s/gateway/07-listener-design\",\"mainEntityOfPage\":{\"@type\":\"WebPage\",\"@id\":\"https://benxhub.com/zh/blog/k8s/gateway/07-listener-design\"},\"datePublished\":\"2026-03-10T00:00:00.000Z\",\"dateModified\":\"2026-03-10T00:00:00.000Z\",\"keywords\":\"kubernetes, envoy-gateway, gateway-api, listener, gateway, httproute\",\"inLanguage\":\"zh\",\"author\":{\"@type\":\"Person\",\"name\":\"BenX\",\"url\":\"https://benxhub.com\"},\"publisher\":{\"@type\":\"Organization\",\"name\":\"BenXHub Blog\",\"url\":\"https://benxhub.com\"}}"}}],["$","div",null,{"className":"mx-auto max-w-6xl px-4 py-12 sm:px-6","children":["$","div",null,{"className":"lg:grid lg:grid-cols-[1fr_240px] lg:gap-14","children":[["$","article",null,{"children":[["$","header",null,{"className":"mb-10","children":[["$","div",null,{"className":"mb-4 flex flex-wrap gap-2","children":[["$","$L2","kubernetes",{"href":"/zh/tags/kubernetes","localeCookie":{"name":"NEXT_LOCALE","sameSite":"lax"},"className":"inline-flex items-center rounded-full px-2.5 py-0.5 text-xs font-medium transition-colors","style":{"background":"var(--color-code-bg)","color":"var(--color-accent)","border":"1px solid var(--color-border)"},"children":["#","kubernetes"]}],["$","$L2","envoy-gateway",{"href":"/zh/tags/envoy-gateway","localeCookie":{"name":"NEXT_LOCALE","sameSite":"lax"},"className":"inline-flex items-center rounded-full px-2.5 py-0.5 text-xs font-medium transition-colors","style":{"background":"var(--color-code-bg)","color":"var(--color-accent)","border":"1px solid var(--color-border)"},"children":["#","envoy-gateway"]}],["$","$L2","gateway-api",{"href":"/zh/tags/gateway-api","localeCookie":{"name":"NEXT_LOCALE","sameSite":"lax"},"className":"inline-flex items-center rounded-full px-2.5 py-0.5 text-xs font-medium transition-colors","style":{"background":"var(--color-code-bg)","color":"var(--color-accent)","border":"1px solid var(--color-border)"},"children":["#","gateway-api"]}],["$","$L2","listener",{"href":"/zh/tags/listener","localeCookie":{"name":"NEXT_LOCALE","sameSite":"lax"},"className":"inline-flex items-center rounded-full px-2.5 py-0.5 text-xs font-medium transition-colors","style":{"background":"var(--color-code-bg)","color":"var(--color-accent)","border":"1px solid var(--color-border)"},"children":["#","listener"]}],["$","$L2","gateway",{"href":"/zh/tags/gateway","localeCookie":{"name":"NEXT_LOCALE","sameSite":"lax"},"className":"inline-flex items-center rounded-full px-2.5 py-0.5 text-xs font-medium transition-colors","style":{"background":"var(--color-code-bg)","color":"var(--color-accent)","border":"1px solid var(--color-border)"},"children":["#","gateway"]}],["$","$L2","httproute",{"href":"/zh/tags/httproute","localeCookie":{"name":"NEXT_LOCALE","sameSite":"lax"},"className":"inline-flex items-center rounded-full px-2.5 py-0.5 text-xs font-medium transition-colors","style":{"background":"var(--color-code-bg)","color":"var(--color-accent)","border":"1px solid var(--color-border)"},"children":["#","httproute"]}]]}],["$","h1",null,{"className":"mb-4 text-3xl leading-snug font-bold tracking-tight sm:text-4xl","style":{"color":"var(--color-text)"},"children":"Envoy Gateway Listener 設計指南：多 Port、多 Hostname、多入口怎麼拆"}],["$","div",null,{"className":"flex flex-wrap items-center gap-3 text-sm","style":{"color":"var(--color-muted)"},"children":[["$","time",null,{"dateTime":"2026-03-10","children":"2026 年 3 月 10 日"}],["$","span",null,{"aria-hidden":"true","children":"·"}],["$","span",null,{"children":"6 min read"}]]}],"$undefined",["$","div",null,{"className":"mt-6 border-b","style":{"borderColor":"var(--color-border)"}}]]}],"$L3","$L4"]}],"$L5"]}]}]],["$L6"],"$L7"]}],"loading":null,"isPartial":false}
+8:T37cc,<p>很多人學 Gateway API 時，<code>Listener</code> 只停留在「喔，就是 <code>port: 80</code> 那個欄位」。<br>
+但實戰裡，<code>Listener</code> 根本不是小配角，它比較像你整個入口層的交通管制中心。</p>
+<p>一個 listener 不只是開一個 port，它其實在定義：</p>
+<ul>
+<li>接哪種協定</li>
+<li>接哪個 hostname</li>
+<li>要不要做 TLS</li>
+<li>允許哪類 route 附掛</li>
+</ul>
+<p>也就是說，<strong>listener 其實是一份入口合約</strong>。你合約切得清楚，後面的 route、團隊分工、除錯成本就會跟著一起變乾淨。</p>
+<h2 id="先建立正確觀念一個-listener--一個入口插槽">先建立正確觀念：一個 Listener = 一個入口插槽</h2>
+<p>例如這個 Gateway：</p>
+<figure data-rehype-pretty-code-figure=""><pre style="background-color:#24292e;color:#e1e4e8" tabindex="0" data-language="yaml" data-theme="github-dark"><code data-language="yaml" data-theme="github-dark" style="display: grid;"><span data-line=""><span style="color:#85E89D">apiVersion</span><span style="color:#E1E4E8">: </span><span style="color:#9ECBFF">gateway.networking.k8s.io/v1</span></span>
+<span data-line=""><span style="color:#85E89D">kind</span><span style="color:#E1E4E8">: </span><span style="color:#9ECBFF">Gateway</span></span>
+<span data-line=""><span style="color:#85E89D">metadata</span><span style="color:#E1E4E8">:</span></span>
+<span data-line=""><span style="color:#85E89D">  name</span><span style="color:#E1E4E8">: </span><span style="color:#9ECBFF">eg</span></span>
+<span data-line=""><span style="color:#85E89D">spec</span><span style="color:#E1E4E8">:</span></span>
+<span data-line=""><span style="color:#85E89D">  gatewayClassName</span><span style="color:#E1E4E8">: </span><span style="color:#9ECBFF">eg</span></span>
+<span data-line=""><span style="color:#85E89D">  listeners</span><span style="color:#E1E4E8">:</span></span>
+<span data-line=""><span style="color:#E1E4E8">    - </span><span style="color:#85E89D">name</span><span style="color:#E1E4E8">: </span><span style="color:#9ECBFF">http</span></span>
+<span data-line=""><span style="color:#85E89D">      protocol</span><span style="color:#E1E4E8">: </span><span style="color:#9ECBFF">HTTP</span></span>
+<span data-line=""><span style="color:#85E89D">      port</span><span style="color:#E1E4E8">: </span><span style="color:#79B8FF">80</span></span>
+<span data-line=""><span style="color:#E1E4E8">    - </span><span style="color:#85E89D">name</span><span style="color:#E1E4E8">: </span><span style="color:#9ECBFF">https</span></span>
+<span data-line=""><span style="color:#85E89D">      protocol</span><span style="color:#E1E4E8">: </span><span style="color:#9ECBFF">HTTPS</span></span>
+<span data-line=""><span style="color:#85E89D">      port</span><span style="color:#E1E4E8">: </span><span style="color:#79B8FF">443</span></span>
+<span data-line=""><span style="color:#85E89D">      hostname</span><span style="color:#E1E4E8">: </span><span style="color:#9ECBFF">app.example.com</span></span>
+<span data-line=""><span style="color:#85E89D">      tls</span><span style="color:#E1E4E8">:</span></span>
+<span data-line=""><span style="color:#85E89D">        mode</span><span style="color:#E1E4E8">: </span><span style="color:#9ECBFF">Terminate</span></span>
+<span data-line=""><span style="color:#85E89D">        certificateRefs</span><span style="color:#E1E4E8">:</span></span>
+<span data-line=""><span style="color:#E1E4E8">          - </span><span style="color:#85E89D">name</span><span style="color:#E1E4E8">: </span><span style="color:#9ECBFF">app-cert</span></span>
+<span data-line=""><span style="color:#E1E4E8">    - </span><span style="color:#85E89D">name</span><span style="color:#E1E4E8">: </span><span style="color:#9ECBFF">grpc</span></span>
+<span data-line=""><span style="color:#85E89D">      protocol</span><span style="color:#E1E4E8">: </span><span style="color:#9ECBFF">HTTPS</span></span>
+<span data-line=""><span style="color:#85E89D">      port</span><span style="color:#E1E4E8">: </span><span style="color:#79B8FF">8443</span></span>
+<span data-line=""><span style="color:#85E89D">      hostname</span><span style="color:#E1E4E8">: </span><span style="color:#9ECBFF">grpc.example.com</span></span>
+<span data-line=""><span style="color:#85E89D">      tls</span><span style="color:#E1E4E8">:</span></span>
+<span data-line=""><span style="color:#85E89D">        mode</span><span style="color:#E1E4E8">: </span><span style="color:#9ECBFF">Terminate</span></span>
+<span data-line=""><span style="color:#85E89D">        certificateRefs</span><span style="color:#E1E4E8">:</span></span>
+<span data-line=""><span style="color:#E1E4E8">          - </span><span style="color:#85E89D">name</span><span style="color:#E1E4E8">: </span><span style="color:#9ECBFF">grpc-cert</span></span></code></pre></figure>
+<p>這不是「一個 Gateway 開三個洞」而已，實際上更像：</p>
+<ul>
+<li><code>http</code> listener：給明文 HTTP</li>
+<li><code>https</code> listener：給 <code>app.example.com</code></li>
+<li><code>grpc</code> listener：給 gRPC 服務專用入口</li>
+</ul>
+<p>當你這樣想，很多設計判斷會瞬間清楚。<br>
+你不是在拼 YAML，而是在設計入口邊界。</p>
+<h2 id="三種最常見的拆法">三種最常見的拆法</h2>
+<h3 id="拆法-1按協定拆">拆法 1：按協定拆</h3>
+<p>這是最直覺的做法：</p>
+<ul>
+<li>HTTP 一個 listener</li>
+<li>HTTPS 一個 listener</li>
+<li>gRPC 一個 listener</li>
+<li>TCP/TLS passthrough 另外拆</li>
+</ul>
+<p>優點是責任清楚。<br>
+尤其 gRPC 和一般 Web API 雖然都可能走 HTTP/2，但服務模型不同，拆開後 route 比較不會打架。</p>
+<h3 id="拆法-2按-hostname-拆">拆法 2：按 hostname 拆</h3>
+<p>如果你有多個網域，常見做法是每個主要 hostname 各自一個 listener：</p>
+<figure data-rehype-pretty-code-figure=""><pre style="background-color:#24292e;color:#e1e4e8" tabindex="0" data-language="yaml" data-theme="github-dark"><code data-language="yaml" data-theme="github-dark" style="display: grid;"><span data-line=""><span style="color:#85E89D">listeners</span><span style="color:#E1E4E8">:</span></span>
+<span data-line=""><span style="color:#E1E4E8">  - </span><span style="color:#85E89D">name</span><span style="color:#E1E4E8">: </span><span style="color:#9ECBFF">app</span></span>
+<span data-line=""><span style="color:#85E89D">    hostname</span><span style="color:#E1E4E8">: </span><span style="color:#9ECBFF">app.example.com</span></span>
+<span data-line=""><span style="color:#85E89D">    protocol</span><span style="color:#E1E4E8">: </span><span style="color:#9ECBFF">HTTPS</span></span>
+<span data-line=""><span style="color:#85E89D">    port</span><span style="color:#E1E4E8">: </span><span style="color:#79B8FF">443</span></span>
+<span data-line=""><span style="color:#E1E4E8">  - </span><span style="color:#85E89D">name</span><span style="color:#E1E4E8">: </span><span style="color:#9ECBFF">admin</span></span>
+<span data-line=""><span style="color:#85E89D">    hostname</span><span style="color:#E1E4E8">: </span><span style="color:#9ECBFF">admin.example.com</span></span>
+<span data-line=""><span style="color:#85E89D">    protocol</span><span style="color:#E1E4E8">: </span><span style="color:#9ECBFF">HTTPS</span></span>
+<span data-line=""><span style="color:#85E89D">    port</span><span style="color:#E1E4E8">: </span><span style="color:#79B8FF">443</span></span></code></pre></figure>
+<p>這種方式很適合：</p>
+<ul>
+<li>主站和後台要分開治理</li>
+<li>不同 hostname 用不同憑證</li>
+<li>想把 route 附掛範圍切乾淨</li>
+</ul>
+<h3 id="拆法-3按團隊或環境責任拆">拆法 3：按團隊或環境責任拆</h3>
+<p>如果你是多人協作，listener 也可以當治理邊界：</p>
+<ul>
+<li><code>public-api</code> 給外部產品流量</li>
+<li><code>internal-api</code> 給內部系統</li>
+<li><code>partner-api</code> 給合作夥伴</li>
+</ul>
+<p>這時 listener 的價值就不只是技術設定，而是權限與責任邊界。<br>
+這種拆法在中大型團隊超有感，因為它可以減少「一個入口 everyone 都能亂掛」的災難。</p>
+<h2 id="sectionname-與-allowedroutes兩個超關鍵欄位"><code>sectionName</code> 與 <code>allowedRoutes</code>：兩個超關鍵欄位</h2>
+<p>Route 要掛到哪個 listener，通常靠 <code>parentRefs.sectionName</code>：</p>
+<figure data-rehype-pretty-code-figure=""><pre style="background-color:#24292e;color:#e1e4e8" tabindex="0" data-language="yaml" data-theme="github-dark"><code data-language="yaml" data-theme="github-dark" style="display: grid;"><span data-line=""><span style="color:#85E89D">apiVersion</span><span style="color:#E1E4E8">: </span><span style="color:#9ECBFF">gateway.networking.k8s.io/v1</span></span>
+<span data-line=""><span style="color:#85E89D">kind</span><span style="color:#E1E4E8">: </span><span style="color:#9ECBFF">HTTPRoute</span></span>
+<span data-line=""><span style="color:#85E89D">metadata</span><span style="color:#E1E4E8">:</span></span>
+<span data-line=""><span style="color:#85E89D">  name</span><span style="color:#E1E4E8">: </span><span style="color:#9ECBFF">app-route</span></span>
+<span data-line=""><span style="color:#85E89D">spec</span><span style="color:#E1E4E8">:</span></span>
+<span data-line=""><span style="color:#85E89D">  parentRefs</span><span style="color:#E1E4E8">:</span></span>
+<span data-line=""><span style="color:#E1E4E8">    - </span><span style="color:#85E89D">name</span><span style="color:#E1E4E8">: </span><span style="color:#9ECBFF">eg</span></span>
+<span data-line=""><span style="color:#85E89D">      sectionName</span><span style="color:#E1E4E8">: </span><span style="color:#9ECBFF">https</span></span>
+<span data-line=""><span style="color:#85E89D">  hostnames</span><span style="color:#E1E4E8">:</span></span>
+<span data-line=""><span style="color:#E1E4E8">    - </span><span style="color:#9ECBFF">"app.example.com"</span></span>
+<span data-line=""><span style="color:#85E89D">  rules</span><span style="color:#E1E4E8">:</span></span>
+<span data-line=""><span style="color:#E1E4E8">    - </span><span style="color:#85E89D">backendRefs</span><span style="color:#E1E4E8">:</span></span>
+<span data-line=""><span style="color:#E1E4E8">        - </span><span style="color:#85E89D">name</span><span style="color:#E1E4E8">: </span><span style="color:#9ECBFF">app-service</span></span>
+<span data-line=""><span style="color:#85E89D">          port</span><span style="color:#E1E4E8">: </span><span style="color:#79B8FF">8080</span></span></code></pre></figure>
+<p>這代表這條 route 只會去找 <code>https</code> 這個 listener。<br>
+如果你不指定，系統會根據規則去找可附掛的 listener，但多 listener 場景下，明確指定通常比較不容易出事。</p>
+<p>另一個很重要的是 <code>allowedRoutes</code>：</p>
+<figure data-rehype-pretty-code-figure=""><pre style="background-color:#24292e;color:#e1e4e8" tabindex="0" data-language="yaml" data-theme="github-dark"><code data-language="yaml" data-theme="github-dark" style="display: grid;"><span data-line=""><span style="color:#85E89D">listeners</span><span style="color:#E1E4E8">:</span></span>
+<span data-line=""><span style="color:#E1E4E8">  - </span><span style="color:#85E89D">name</span><span style="color:#E1E4E8">: </span><span style="color:#9ECBFF">public</span></span>
+<span data-line=""><span style="color:#85E89D">    protocol</span><span style="color:#E1E4E8">: </span><span style="color:#9ECBFF">HTTPS</span></span>
+<span data-line=""><span style="color:#85E89D">    port</span><span style="color:#E1E4E8">: </span><span style="color:#79B8FF">443</span></span>
+<span data-line=""><span style="color:#85E89D">    allowedRoutes</span><span style="color:#E1E4E8">:</span></span>
+<span data-line=""><span style="color:#85E89D">      namespaces</span><span style="color:#E1E4E8">:</span></span>
+<span data-line=""><span style="color:#85E89D">        from</span><span style="color:#E1E4E8">: </span><span style="color:#9ECBFF">Same</span></span></code></pre></figure>
+<p>這代表只有跟 <code>Gateway</code> 同 namespace 的 route 才能附掛。<br>
+常見值有：</p>
+<ul>
+<li><code>Same</code>：只允許同 namespace</li>
+<li><code>All</code>：所有 namespace 都能來掛</li>
+<li><code>Selector</code>：只允許符合 label selector 的 namespace</li>
+</ul>
+<p>如果你的平台邊界想清楚，這個欄位真的超香。<br>
+它等於在 listener 層就先決定「誰可以來接這個入口」。</p>
+<h2 id="實戰建議怎麼拆比較不會後悔">實戰建議：怎麼拆比較不會後悔</h2>
+<p>先給你一句很實用的原則：</p>
+<p><strong>一個 listener 只承擔一種清楚責任。</strong></p>
+<p>例如：</p>
+<ul>
+<li>一個 listener 只服務一組主要 hostname</li>
+<li>一個 listener 只負責一種主要協定</li>
+<li>一個 listener 只開放給一種 route 類型或一群固定 namespace</li>
+</ul>
+<p>不要把所有流量都塞進一個萬能 listener，再期待後面 route 自己長出秩序。<br>
+那種設計一開始看起來省事，三個月後通常會像家裡抽屜裡那包不知道哪來的線材，什麼都在、什麼都亂。</p>
+<p>幾個具體建議：</p>
+<ul>
+<li>listener 名稱要有語意，像 <code>https-public</code>、<code>grpc-internal</code></li>
+<li>多 listener 場景盡量搭配 <code>sectionName</code></li>
+<li>重要 hostname 不要全混在同一個 listener</li>
+<li>預設先收斂 <code>allowedRoutes</code>，不要一開始就 <code>from: All</code></li>
+</ul>
+<h2 id="一句話總結">一句話總結</h2>
+<p>把 <code>Listener</code> 當成入口合約，不要當成單純 port 設定。<br>
+你把 listener 切得乾淨，route 才會掛得準，團隊分工才會自然，除錯時也比較不會像在迷宮裡追貓。</p>
+<h2 id="下一步">下一步</h2>
+<p>Listener 設計完，下一個問題通常就是：<br>
+<strong>不同 namespace、不同團隊，到底誰能掛 route、誰能引用誰？</strong></p>
+<p>下一篇來講跨 namespace 與權限分工：
+👉 <a href="08-multi-namespace-and-teamwork">多 Namespace 與團隊分工</a></p>3:["$","div",null,{"className":"prose","dangerouslySetInnerHTML":{"__html":"$8"}}]
+4:["$","footer",null,{"className":"mt-14 border-t pt-8","style":{"borderColor":"var(--color-border)"},"children":[["$","div",null,{"className":"mb-8 flex flex-wrap gap-2","children":[["$","$L2","kubernetes",{"href":"/zh/tags/kubernetes","localeCookie":{"name":"NEXT_LOCALE","sameSite":"lax"},"className":"inline-flex items-center rounded-full px-3 py-1 text-sm font-medium transition-colors","style":{"background":"var(--color-code-bg)","color":"var(--color-accent)","border":"1px solid var(--color-border)"},"children":["#","kubernetes"]}],["$","$L2","envoy-gateway",{"href":"/zh/tags/envoy-gateway","localeCookie":{"name":"NEXT_LOCALE","sameSite":"lax"},"className":"inline-flex items-center rounded-full px-3 py-1 text-sm font-medium transition-colors","style":{"background":"var(--color-code-bg)","color":"var(--color-accent)","border":"1px solid var(--color-border)"},"children":["#","envoy-gateway"]}],["$","$L2","gateway-api",{"href":"/zh/tags/gateway-api","localeCookie":{"name":"NEXT_LOCALE","sameSite":"lax"},"className":"inline-flex items-center rounded-full px-3 py-1 text-sm font-medium transition-colors","style":{"background":"var(--color-code-bg)","color":"var(--color-accent)","border":"1px solid var(--color-border)"},"children":["#","gateway-api"]}],["$","$L2","listener",{"href":"/zh/tags/listener","localeCookie":{"name":"NEXT_LOCALE","sameSite":"lax"},"className":"inline-flex items-center rounded-full px-3 py-1 text-sm font-medium transition-colors","style":{"background":"var(--color-code-bg)","color":"var(--color-accent)","border":"1px solid var(--color-border)"},"children":["#","listener"]}],["$","$L2","gateway",{"href":"/zh/tags/gateway","localeCookie":{"name":"NEXT_LOCALE","sameSite":"lax"},"className":"inline-flex items-center rounded-full px-3 py-1 text-sm font-medium transition-colors","style":{"background":"var(--color-code-bg)","color":"var(--color-accent)","border":"1px solid var(--color-border)"},"children":["#","gateway"]}],["$","$L2","httproute",{"href":"/zh/tags/httproute","localeCookie":{"name":"NEXT_LOCALE","sameSite":"lax"},"className":"inline-flex items-center rounded-full px-3 py-1 text-sm font-medium transition-colors","style":{"background":"var(--color-code-bg)","color":"var(--color-accent)","border":"1px solid var(--color-border)"},"children":["#","httproute"]}]]}],["$","nav",null,{"aria-label":"文章導覽","className":"grid grid-cols-1 gap-4 sm:grid-cols-2","children":[["$","$L2",null,{"href":"/zh/blog/k8s/gateway/06-route-types-cheatsheet","localeCookie":{"name":"NEXT_LOCALE","sameSite":"lax"},"className":"group rounded-lg border p-4 transition-colors hover:border-accent","style":{"borderColor":"var(--color-border)","background":"var(--color-surface)"},"children":[["$","p",null,{"className":"mb-1 text-xs","style":{"color":"var(--color-muted)"},"children":"← 較新文章"}],["$","p",null,{"className":"line-clamp-1 text-sm font-medium transition-colors group-hover:text-accent","style":{"color":"var(--color-text)"},"children":"Envoy Gateway Route 類型速查表：HTTPRoute、GRPCRoute、TCPRoute、TLSRoute 怎麼選"}]]}],["$","$L2",null,{"href":"/zh/blog/k8s/gateway/08-multi-namespace-and-teamwork","localeCookie":{"name":"NEXT_LOCALE","sameSite":"lax"},"className":"group rounded-lg border p-4 text-right transition-colors hover:border-accent","style":{"borderColor":"var(--color-border)","background":"var(--color-surface)"},"children":[["$","p",null,{"className":"mb-1 text-xs","style":{"color":"var(--color-muted)"},"children":"較舊文章 →"}],["$","p",null,{"className":"line-clamp-1 text-sm font-medium transition-colors group-hover:text-accent","style":{"color":"var(--color-text)"},"children":"Envoy Gateway 多 Namespace 與團隊分工：allowedRoutes、ReferenceGrant、跨團隊怎麼管"}]]}]]}]]}]
+a:T37cc,<p>很多人學 Gateway API 時，<code>Listener</code> 只停留在「喔，就是 <code>port: 80</code> 那個欄位」。<br>
+但實戰裡，<code>Listener</code> 根本不是小配角，它比較像你整個入口層的交通管制中心。</p>
+<p>一個 listener 不只是開一個 port，它其實在定義：</p>
+<ul>
+<li>接哪種協定</li>
+<li>接哪個 hostname</li>
+<li>要不要做 TLS</li>
+<li>允許哪類 route 附掛</li>
+</ul>
+<p>也就是說，<strong>listener 其實是一份入口合約</strong>。你合約切得清楚，後面的 route、團隊分工、除錯成本就會跟著一起變乾淨。</p>
+<h2 id="先建立正確觀念一個-listener--一個入口插槽">先建立正確觀念：一個 Listener = 一個入口插槽</h2>
+<p>例如這個 Gateway：</p>
+<figure data-rehype-pretty-code-figure=""><pre style="background-color:#24292e;color:#e1e4e8" tabindex="0" data-language="yaml" data-theme="github-dark"><code data-language="yaml" data-theme="github-dark" style="display: grid;"><span data-line=""><span style="color:#85E89D">apiVersion</span><span style="color:#E1E4E8">: </span><span style="color:#9ECBFF">gateway.networking.k8s.io/v1</span></span>
+<span data-line=""><span style="color:#85E89D">kind</span><span style="color:#E1E4E8">: </span><span style="color:#9ECBFF">Gateway</span></span>
+<span data-line=""><span style="color:#85E89D">metadata</span><span style="color:#E1E4E8">:</span></span>
+<span data-line=""><span style="color:#85E89D">  name</span><span style="color:#E1E4E8">: </span><span style="color:#9ECBFF">eg</span></span>
+<span data-line=""><span style="color:#85E89D">spec</span><span style="color:#E1E4E8">:</span></span>
+<span data-line=""><span style="color:#85E89D">  gatewayClassName</span><span style="color:#E1E4E8">: </span><span style="color:#9ECBFF">eg</span></span>
+<span data-line=""><span style="color:#85E89D">  listeners</span><span style="color:#E1E4E8">:</span></span>
+<span data-line=""><span style="color:#E1E4E8">    - </span><span style="color:#85E89D">name</span><span style="color:#E1E4E8">: </span><span style="color:#9ECBFF">http</span></span>
+<span data-line=""><span style="color:#85E89D">      protocol</span><span style="color:#E1E4E8">: </span><span style="color:#9ECBFF">HTTP</span></span>
+<span data-line=""><span style="color:#85E89D">      port</span><span style="color:#E1E4E8">: </span><span style="color:#79B8FF">80</span></span>
+<span data-line=""><span style="color:#E1E4E8">    - </span><span style="color:#85E89D">name</span><span style="color:#E1E4E8">: </span><span style="color:#9ECBFF">https</span></span>
+<span data-line=""><span style="color:#85E89D">      protocol</span><span style="color:#E1E4E8">: </span><span style="color:#9ECBFF">HTTPS</span></span>
+<span data-line=""><span style="color:#85E89D">      port</span><span style="color:#E1E4E8">: </span><span style="color:#79B8FF">443</span></span>
+<span data-line=""><span style="color:#85E89D">      hostname</span><span style="color:#E1E4E8">: </span><span style="color:#9ECBFF">app.example.com</span></span>
+<span data-line=""><span style="color:#85E89D">      tls</span><span style="color:#E1E4E8">:</span></span>
+<span data-line=""><span style="color:#85E89D">        mode</span><span style="color:#E1E4E8">: </span><span style="color:#9ECBFF">Terminate</span></span>
+<span data-line=""><span style="color:#85E89D">        certificateRefs</span><span style="color:#E1E4E8">:</span></span>
+<span data-line=""><span style="color:#E1E4E8">          - </span><span style="color:#85E89D">name</span><span style="color:#E1E4E8">: </span><span style="color:#9ECBFF">app-cert</span></span>
+<span data-line=""><span style="color:#E1E4E8">    - </span><span style="color:#85E89D">name</span><span style="color:#E1E4E8">: </span><span style="color:#9ECBFF">grpc</span></span>
+<span data-line=""><span style="color:#85E89D">      protocol</span><span style="color:#E1E4E8">: </span><span style="color:#9ECBFF">HTTPS</span></span>
+<span data-line=""><span style="color:#85E89D">      port</span><span style="color:#E1E4E8">: </span><span style="color:#79B8FF">8443</span></span>
+<span data-line=""><span style="color:#85E89D">      hostname</span><span style="color:#E1E4E8">: </span><span style="color:#9ECBFF">grpc.example.com</span></span>
+<span data-line=""><span style="color:#85E89D">      tls</span><span style="color:#E1E4E8">:</span></span>
+<span data-line=""><span style="color:#85E89D">        mode</span><span style="color:#E1E4E8">: </span><span style="color:#9ECBFF">Terminate</span></span>
+<span data-line=""><span style="color:#85E89D">        certificateRefs</span><span style="color:#E1E4E8">:</span></span>
+<span data-line=""><span style="color:#E1E4E8">          - </span><span style="color:#85E89D">name</span><span style="color:#E1E4E8">: </span><span style="color:#9ECBFF">grpc-cert</span></span></code></pre></figure>
+<p>這不是「一個 Gateway 開三個洞」而已，實際上更像：</p>
+<ul>
+<li><code>http</code> listener：給明文 HTTP</li>
+<li><code>https</code> listener：給 <code>app.example.com</code></li>
+<li><code>grpc</code> listener：給 gRPC 服務專用入口</li>
+</ul>
+<p>當你這樣想，很多設計判斷會瞬間清楚。<br>
+你不是在拼 YAML，而是在設計入口邊界。</p>
+<h2 id="三種最常見的拆法">三種最常見的拆法</h2>
+<h3 id="拆法-1按協定拆">拆法 1：按協定拆</h3>
+<p>這是最直覺的做法：</p>
+<ul>
+<li>HTTP 一個 listener</li>
+<li>HTTPS 一個 listener</li>
+<li>gRPC 一個 listener</li>
+<li>TCP/TLS passthrough 另外拆</li>
+</ul>
+<p>優點是責任清楚。<br>
+尤其 gRPC 和一般 Web API 雖然都可能走 HTTP/2，但服務模型不同，拆開後 route 比較不會打架。</p>
+<h3 id="拆法-2按-hostname-拆">拆法 2：按 hostname 拆</h3>
+<p>如果你有多個網域，常見做法是每個主要 hostname 各自一個 listener：</p>
+<figure data-rehype-pretty-code-figure=""><pre style="background-color:#24292e;color:#e1e4e8" tabindex="0" data-language="yaml" data-theme="github-dark"><code data-language="yaml" data-theme="github-dark" style="display: grid;"><span data-line=""><span style="color:#85E89D">listeners</span><span style="color:#E1E4E8">:</span></span>
+<span data-line=""><span style="color:#E1E4E8">  - </span><span style="color:#85E89D">name</span><span style="color:#E1E4E8">: </span><span style="color:#9ECBFF">app</span></span>
+<span data-line=""><span style="color:#85E89D">    hostname</span><span style="color:#E1E4E8">: </span><span style="color:#9ECBFF">app.example.com</span></span>
+<span data-line=""><span style="color:#85E89D">    protocol</span><span style="color:#E1E4E8">: </span><span style="color:#9ECBFF">HTTPS</span></span>
+<span data-line=""><span style="color:#85E89D">    port</span><span style="color:#E1E4E8">: </span><span style="color:#79B8FF">443</span></span>
+<span data-line=""><span style="color:#E1E4E8">  - </span><span style="color:#85E89D">name</span><span style="color:#E1E4E8">: </span><span style="color:#9ECBFF">admin</span></span>
+<span data-line=""><span style="color:#85E89D">    hostname</span><span style="color:#E1E4E8">: </span><span style="color:#9ECBFF">admin.example.com</span></span>
+<span data-line=""><span style="color:#85E89D">    protocol</span><span style="color:#E1E4E8">: </span><span style="color:#9ECBFF">HTTPS</span></span>
+<span data-line=""><span style="color:#85E89D">    port</span><span style="color:#E1E4E8">: </span><span style="color:#79B8FF">443</span></span></code></pre></figure>
+<p>這種方式很適合：</p>
+<ul>
+<li>主站和後台要分開治理</li>
+<li>不同 hostname 用不同憑證</li>
+<li>想把 route 附掛範圍切乾淨</li>
+</ul>
+<h3 id="拆法-3按團隊或環境責任拆">拆法 3：按團隊或環境責任拆</h3>
+<p>如果你是多人協作，listener 也可以當治理邊界：</p>
+<ul>
+<li><code>public-api</code> 給外部產品流量</li>
+<li><code>internal-api</code> 給內部系統</li>
+<li><code>partner-api</code> 給合作夥伴</li>
+</ul>
+<p>這時 listener 的價值就不只是技術設定，而是權限與責任邊界。<br>
+這種拆法在中大型團隊超有感，因為它可以減少「一個入口 everyone 都能亂掛」的災難。</p>
+<h2 id="sectionname-與-allowedroutes兩個超關鍵欄位"><code>sectionName</code> 與 <code>allowedRoutes</code>：兩個超關鍵欄位</h2>
+<p>Route 要掛到哪個 listener，通常靠 <code>parentRefs.sectionName</code>：</p>
+<figure data-rehype-pretty-code-figure=""><pre style="background-color:#24292e;color:#e1e4e8" tabindex="0" data-language="yaml" data-theme="github-dark"><code data-language="yaml" data-theme="github-dark" style="display: grid;"><span data-line=""><span style="color:#85E89D">apiVersion</span><span style="color:#E1E4E8">: </span><span style="color:#9ECBFF">gateway.networking.k8s.io/v1</span></span>
+<span data-line=""><span style="color:#85E89D">kind</span><span style="color:#E1E4E8">: </span><span style="color:#9ECBFF">HTTPRoute</span></span>
+<span data-line=""><span style="color:#85E89D">metadata</span><span style="color:#E1E4E8">:</span></span>
+<span data-line=""><span style="color:#85E89D">  name</span><span style="color:#E1E4E8">: </span><span style="color:#9ECBFF">app-route</span></span>
+<span data-line=""><span style="color:#85E89D">spec</span><span style="color:#E1E4E8">:</span></span>
+<span data-line=""><span style="color:#85E89D">  parentRefs</span><span style="color:#E1E4E8">:</span></span>
+<span data-line=""><span style="color:#E1E4E8">    - </span><span style="color:#85E89D">name</span><span style="color:#E1E4E8">: </span><span style="color:#9ECBFF">eg</span></span>
+<span data-line=""><span style="color:#85E89D">      sectionName</span><span style="color:#E1E4E8">: </span><span style="color:#9ECBFF">https</span></span>
+<span data-line=""><span style="color:#85E89D">  hostnames</span><span style="color:#E1E4E8">:</span></span>
+<span data-line=""><span style="color:#E1E4E8">    - </span><span style="color:#9ECBFF">"app.example.com"</span></span>
+<span data-line=""><span style="color:#85E89D">  rules</span><span style="color:#E1E4E8">:</span></span>
+<span data-line=""><span style="color:#E1E4E8">    - </span><span style="color:#85E89D">backendRefs</span><span style="color:#E1E4E8">:</span></span>
+<span data-line=""><span style="color:#E1E4E8">        - </span><span style="color:#85E89D">name</span><span style="color:#E1E4E8">: </span><span style="color:#9ECBFF">app-service</span></span>
+<span data-line=""><span style="color:#85E89D">          port</span><span style="color:#E1E4E8">: </span><span style="color:#79B8FF">8080</span></span></code></pre></figure>
+<p>這代表這條 route 只會去找 <code>https</code> 這個 listener。<br>
+如果你不指定，系統會根據規則去找可附掛的 listener，但多 listener 場景下，明確指定通常比較不容易出事。</p>
+<p>另一個很重要的是 <code>allowedRoutes</code>：</p>
+<figure data-rehype-pretty-code-figure=""><pre style="background-color:#24292e;color:#e1e4e8" tabindex="0" data-language="yaml" data-theme="github-dark"><code data-language="yaml" data-theme="github-dark" style="display: grid;"><span data-line=""><span style="color:#85E89D">listeners</span><span style="color:#E1E4E8">:</span></span>
+<span data-line=""><span style="color:#E1E4E8">  - </span><span style="color:#85E89D">name</span><span style="color:#E1E4E8">: </span><span style="color:#9ECBFF">public</span></span>
+<span data-line=""><span style="color:#85E89D">    protocol</span><span style="color:#E1E4E8">: </span><span style="color:#9ECBFF">HTTPS</span></span>
+<span data-line=""><span style="color:#85E89D">    port</span><span style="color:#E1E4E8">: </span><span style="color:#79B8FF">443</span></span>
+<span data-line=""><span style="color:#85E89D">    allowedRoutes</span><span style="color:#E1E4E8">:</span></span>
+<span data-line=""><span style="color:#85E89D">      namespaces</span><span style="color:#E1E4E8">:</span></span>
+<span data-line=""><span style="color:#85E89D">        from</span><span style="color:#E1E4E8">: </span><span style="color:#9ECBFF">Same</span></span></code></pre></figure>
+<p>這代表只有跟 <code>Gateway</code> 同 namespace 的 route 才能附掛。<br>
+常見值有：</p>
+<ul>
+<li><code>Same</code>：只允許同 namespace</li>
+<li><code>All</code>：所有 namespace 都能來掛</li>
+<li><code>Selector</code>：只允許符合 label selector 的 namespace</li>
+</ul>
+<p>如果你的平台邊界想清楚，這個欄位真的超香。<br>
+它等於在 listener 層就先決定「誰可以來接這個入口」。</p>
+<h2 id="實戰建議怎麼拆比較不會後悔">實戰建議：怎麼拆比較不會後悔</h2>
+<p>先給你一句很實用的原則：</p>
+<p><strong>一個 listener 只承擔一種清楚責任。</strong></p>
+<p>例如：</p>
+<ul>
+<li>一個 listener 只服務一組主要 hostname</li>
+<li>一個 listener 只負責一種主要協定</li>
+<li>一個 listener 只開放給一種 route 類型或一群固定 namespace</li>
+</ul>
+<p>不要把所有流量都塞進一個萬能 listener，再期待後面 route 自己長出秩序。<br>
+那種設計一開始看起來省事，三個月後通常會像家裡抽屜裡那包不知道哪來的線材，什麼都在、什麼都亂。</p>
+<p>幾個具體建議：</p>
+<ul>
+<li>listener 名稱要有語意，像 <code>https-public</code>、<code>grpc-internal</code></li>
+<li>多 listener 場景盡量搭配 <code>sectionName</code></li>
+<li>重要 hostname 不要全混在同一個 listener</li>
+<li>預設先收斂 <code>allowedRoutes</code>，不要一開始就 <code>from: All</code></li>
+</ul>
+<h2 id="一句話總結">一句話總結</h2>
+<p>把 <code>Listener</code> 當成入口合約，不要當成單純 port 設定。<br>
+你把 listener 切得乾淨，route 才會掛得準，團隊分工才會自然，除錯時也比較不會像在迷宮裡追貓。</p>
+<h2 id="下一步">下一步</h2>
+<p>Listener 設計完，下一個問題通常就是：<br>
+<strong>不同 namespace、不同團隊，到底誰能掛 route、誰能引用誰？</strong></p>
+<p>下一篇來講跨 namespace 與權限分工：
+👉 <a href="08-multi-namespace-and-teamwork">多 Namespace 與團隊分工</a></p>5:["$","aside",null,{"className":"hidden lg:block","children":["$","$L9",null,{"html":"$a"}]}]
+6:["$","script","script-0",{"src":"/_next/static/chunks/2dddb3bc05093f69.js","async":true}]
+7:["$","$Lb",null,{"children":["$","$c",null,{"name":"Next.MetadataOutlet","children":"$@d"}]}]
+d:null

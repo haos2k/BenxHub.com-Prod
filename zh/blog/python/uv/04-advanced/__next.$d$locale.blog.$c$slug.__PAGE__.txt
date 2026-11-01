@@ -1,0 +1,130 @@
+1:"$Sreact.fragment"
+2:I[14864,["/_next/static/chunks/7923a261b80bb6e1.js","/_next/static/chunks/e09b4358027e8033.js","/_next/static/chunks/2dddb3bc05093f69.js"],"default"]
+8:I[24801,["/_next/static/chunks/7923a261b80bb6e1.js","/_next/static/chunks/e09b4358027e8033.js","/_next/static/chunks/2dddb3bc05093f69.js"],"default"]
+a:I[50183,["/_next/static/chunks/5a5b5b13c22d14f7.js","/_next/static/chunks/a484d1d3dd4b55ab.js"],"OutletBoundary"]
+b:"$Sreact.suspense"
+:HL["/images/posts/uv-advanced.jpg","image"]
+3:T202d,<p>當需求從「能跑就好」變成「多版本測試、既有 pipeline 相容、全域工具管理」，uv 一樣扛得住。這篇就是帶你從單刷副本升級到組隊打王。</p>
+<h2 id="python-版本管理">Python 版本管理</h2>
+<p>uv 內建 Python 下載與管理，不用再裝 pyenv。</p>
+<figure data-rehype-pretty-code-figure=""><pre style="background-color:#24292e;color:#e1e4e8" tabindex="0" data-language="bash" data-theme="github-dark"><code data-language="bash" data-theme="github-dark" style="display: grid;"><span data-line=""><span style="color:#6A737D"># 安裝多個版本</span></span>
+<span data-line=""><span style="color:#B392F0">uv</span><span style="color:#9ECBFF"> python</span><span style="color:#9ECBFF"> install</span><span style="color:#79B8FF"> 3.10</span><span style="color:#79B8FF"> 3.11</span><span style="color:#79B8FF"> 3.12</span></span>
+<span data-line=""> </span>
+<span data-line=""><span style="color:#6A737D"># 專案固定版本（產生 .python-version）</span></span>
+<span data-line=""><span style="color:#B392F0">uv</span><span style="color:#9ECBFF"> python</span><span style="color:#9ECBFF"> pin</span><span style="color:#79B8FF"> 3.11</span></span>
+<span data-line=""> </span>
+<span data-line=""><span style="color:#6A737D"># 指定版本建 venv</span></span>
+<span data-line=""><span style="color:#B392F0">uv</span><span style="color:#9ECBFF"> venv</span><span style="color:#79B8FF"> --python</span><span style="color:#79B8FF"> 3.12</span></span>
+<span data-line=""> </span>
+<span data-line=""><span style="color:#6A737D"># 執行時指定版本</span></span>
+<span data-line=""><span style="color:#B392F0">uv</span><span style="color:#9ECBFF"> run</span><span style="color:#79B8FF"> --python</span><span style="color:#79B8FF"> 3.10</span><span style="color:#9ECBFF"> pytest</span></span></code></pre></figure>
+<p>第一次用某版本會自動下載，之後直接用。</p>
+<h2 id="pip-相容介面">pip 相容介面</h2>
+<p>既有 CI、Docker、script 還在用 <code>pip</code>？uv 提供 drop-in 替代：</p>
+<figure data-rehype-pretty-code-figure=""><pre style="background-color:#24292e;color:#e1e4e8" tabindex="0" data-language="bash" data-theme="github-dark"><code data-language="bash" data-theme="github-dark" style="display: grid;"><span data-line=""><span style="color:#6A737D"># 等同 pip install -r requirements.txt</span></span>
+<span data-line=""><span style="color:#B392F0">uv</span><span style="color:#9ECBFF"> pip</span><span style="color:#9ECBFF"> install</span><span style="color:#79B8FF"> -r</span><span style="color:#9ECBFF"> requirements.txt</span></span>
+<span data-line=""> </span>
+<span data-line=""><span style="color:#6A737D"># 編譯 requirements（跨平台、可重現）</span></span>
+<span data-line=""><span style="color:#B392F0">uv</span><span style="color:#9ECBFF"> pip</span><span style="color:#9ECBFF"> compile</span><span style="color:#9ECBFF"> requirements.in</span><span style="color:#79B8FF"> --universal</span><span style="color:#79B8FF"> -o</span><span style="color:#9ECBFF"> requirements.txt</span></span>
+<span data-line=""> </span>
+<span data-line=""><span style="color:#6A737D"># 同步環境（嚴格依 lockfile）</span></span>
+<span data-line=""><span style="color:#B392F0">uv</span><span style="color:#9ECBFF"> pip</span><span style="color:#9ECBFF"> sync</span><span style="color:#9ECBFF"> requirements.txt</span></span>
+<span data-line=""> </span>
+<span data-line=""><span style="color:#6A737D"># 建 venv</span></span>
+<span data-line=""><span style="color:#B392F0">uv</span><span style="color:#9ECBFF"> venv</span></span></code></pre></figure>
+<p>換成 <code>uv pip</code> 後，指令參數幾乎一樣，但速度差一個數量級——就像從腳踏車換成摩托車，路一樣，體驗不一樣。老專案想升級又怕大改？先換 <code>uv pip</code>，無痛起飛。</p>
+<h2 id="全域工具安裝uv-tool">全域工具安裝（uv tool）</h2>
+<p>常用工具不想每次都 <code>uvx</code>？裝成全域：</p>
+<figure data-rehype-pretty-code-figure=""><pre style="background-color:#24292e;color:#e1e4e8" tabindex="0" data-language="bash" data-theme="github-dark"><code data-language="bash" data-theme="github-dark" style="display: grid;"><span data-line=""><span style="color:#B392F0">uv</span><span style="color:#9ECBFF"> tool</span><span style="color:#9ECBFF"> install</span><span style="color:#9ECBFF"> ruff</span></span>
+<span data-line=""><span style="color:#B392F0">uv</span><span style="color:#9ECBFF"> tool</span><span style="color:#9ECBFF"> install</span><span style="color:#9ECBFF"> httpie</span></span>
+<span data-line=""> </span>
+<span data-line=""><span style="color:#6A737D"># 之後直接呼叫</span></span>
+<span data-line=""><span style="color:#B392F0">ruff</span><span style="color:#9ECBFF"> check</span><span style="color:#9ECBFF"> .</span></span>
+<span data-line=""><span style="color:#B392F0">http</span><span style="color:#9ECBFF"> https://httpbin.org/get</span></span></code></pre></figure>
+<p>升級單一工具或全部：</p>
+<figure data-rehype-pretty-code-figure=""><pre style="background-color:#24292e;color:#e1e4e8" tabindex="0" data-language="bash" data-theme="github-dark"><code data-language="bash" data-theme="github-dark" style="display: grid;"><span data-line=""><span style="color:#B392F0">uv</span><span style="color:#9ECBFF"> tool</span><span style="color:#9ECBFF"> upgrade</span><span style="color:#9ECBFF"> ruff</span></span>
+<span data-line=""><span style="color:#B392F0">uv</span><span style="color:#9ECBFF"> tool</span><span style="color:#9ECBFF"> upgrade</span><span style="color:#79B8FF"> --all</span></span></code></pre></figure>
+<blockquote>
+<p><code>uv tool install</code> 裝的是獨立環境，不會跟專案依賴打架。要專案內固定版本，還是用 <code>uv add --dev</code>。</p>
+</blockquote>
+<h2 id="腳本-lockfile-與-shebang">腳本 lockfile 與 shebang</h2>
+<p>單一腳本也要可重現？可以鎖依賴：</p>
+<figure data-rehype-pretty-code-figure=""><pre style="background-color:#24292e;color:#e1e4e8" tabindex="0" data-language="bash" data-theme="github-dark"><code data-language="bash" data-theme="github-dark" style="display: grid;"><span data-line=""><span style="color:#B392F0">uv</span><span style="color:#9ECBFF"> lock</span><span style="color:#79B8FF"> --script</span><span style="color:#9ECBFF"> example.py</span></span></code></pre></figure>
+<p>會產生 <code>example.py.lock</code>，之後 <code>uv run example.py</code> 會用這份 lockfile。</p>
+<p>或做成可執行檔：</p>
+<figure data-rehype-pretty-code-figure=""><pre style="background-color:#24292e;color:#e1e4e8" tabindex="0" data-language="bash" data-theme="github-dark"><code data-language="bash" data-theme="github-dark" style="display: grid;"><span data-line=""><span style="color:#6A737D">#!/usr/bin/env -S uv run --script</span></span>
+<span data-line=""><span style="color:#6A737D"># /// script</span></span>
+<span data-line=""><span style="color:#6A737D"># dependencies = ["httpx"]</span></span>
+<span data-line=""><span style="color:#6A737D"># ///</span></span>
+<span data-line=""> </span>
+<span data-line=""><span style="color:#B392F0">import</span><span style="color:#9ECBFF"> httpx</span></span>
+<span data-line=""><span style="color:#79B8FF">print</span><span style="color:#E1E4E8">(</span><span style="color:#9ECBFF">httpx.get</span><span style="color:#E1E4E8">(</span><span style="color:#B392F0">"https://example.com"</span><span style="color:#E1E4E8">))</span></span></code></pre></figure>
+<figure data-rehype-pretty-code-figure=""><pre style="background-color:#24292e;color:#e1e4e8" tabindex="0" data-language="bash" data-theme="github-dark"><code data-language="bash" data-theme="github-dark" style="display: grid;"><span data-line=""><span style="color:#B392F0">chmod</span><span style="color:#9ECBFF"> +x</span><span style="color:#9ECBFF"> fetch</span></span>
+<span data-line=""><span style="color:#B392F0">./fetch</span></span></code></pre></figure>
+<h2 id="下一步">下一步</h2>
+<p>進階能力點滿後，用一套維運規範收斂風險，少踩雷：<br>
+👉 <a href="05-best-practices">最佳實踐</a></p>0:{"buildId":"Yck3R4ooQxWkwGLT6is1X","rsc":["$","$1","c",{"children":[[["$","script",null,{"type":"application/ld+json","dangerouslySetInnerHTML":{"__html":"{\"@context\":\"https://schema.org\",\"@type\":\"Article\",\"headline\":\"Python uv 進階實務：Python 版本、pip 介面與工具安裝\",\"description\":\"當你從單專案走向多版本、多環境，這篇帶你掌握版本切換、pip 相容與工具管理的關鍵。\",\"url\":\"https://benxhub.com/zh/blog/python/uv/04-advanced\",\"mainEntityOfPage\":{\"@type\":\"WebPage\",\"@id\":\"https://benxhub.com/zh/blog/python/uv/04-advanced\"},\"datePublished\":\"2026-02-27T00:00:00.000Z\",\"dateModified\":\"2026-02-27T00:00:00.000Z\",\"keywords\":\"python, uv, python-version, pip, uv-tool\",\"inLanguage\":\"zh\",\"author\":{\"@type\":\"Person\",\"name\":\"BenX\",\"url\":\"https://benxhub.com\"},\"publisher\":{\"@type\":\"Organization\",\"name\":\"BenXHub Blog\",\"url\":\"https://benxhub.com\"},\"image\":\"https://benxhub.com/images/posts/uv-advanced.jpg\"}"}}],["$","div",null,{"className":"mx-auto max-w-6xl px-4 py-12 sm:px-6","children":["$","div",null,{"className":"lg:grid lg:grid-cols-[1fr_240px] lg:gap-14","children":[["$","article",null,{"children":[["$","header",null,{"className":"mb-10","children":[["$","div",null,{"className":"mb-4 flex flex-wrap gap-2","children":[["$","$L2","python",{"href":"/zh/tags/python","localeCookie":{"name":"NEXT_LOCALE","sameSite":"lax"},"className":"inline-flex items-center rounded-full px-2.5 py-0.5 text-xs font-medium transition-colors","style":{"background":"var(--color-code-bg)","color":"var(--color-accent)","border":"1px solid var(--color-border)"},"children":["#","python"]}],["$","$L2","uv",{"href":"/zh/tags/uv","localeCookie":{"name":"NEXT_LOCALE","sameSite":"lax"},"className":"inline-flex items-center rounded-full px-2.5 py-0.5 text-xs font-medium transition-colors","style":{"background":"var(--color-code-bg)","color":"var(--color-accent)","border":"1px solid var(--color-border)"},"children":["#","uv"]}],["$","$L2","python-version",{"href":"/zh/tags/python-version","localeCookie":{"name":"NEXT_LOCALE","sameSite":"lax"},"className":"inline-flex items-center rounded-full px-2.5 py-0.5 text-xs font-medium transition-colors","style":{"background":"var(--color-code-bg)","color":"var(--color-accent)","border":"1px solid var(--color-border)"},"children":["#","python-version"]}],["$","$L2","pip",{"href":"/zh/tags/pip","localeCookie":{"name":"NEXT_LOCALE","sameSite":"lax"},"className":"inline-flex items-center rounded-full px-2.5 py-0.5 text-xs font-medium transition-colors","style":{"background":"var(--color-code-bg)","color":"var(--color-accent)","border":"1px solid var(--color-border)"},"children":["#","pip"]}],["$","$L2","uv-tool",{"href":"/zh/tags/uv-tool","localeCookie":{"name":"NEXT_LOCALE","sameSite":"lax"},"className":"inline-flex items-center rounded-full px-2.5 py-0.5 text-xs font-medium transition-colors","style":{"background":"var(--color-code-bg)","color":"var(--color-accent)","border":"1px solid var(--color-border)"},"children":["#","uv-tool"]}]]}],["$","h1",null,{"className":"mb-4 text-3xl leading-snug font-bold tracking-tight sm:text-4xl","style":{"color":"var(--color-text)"},"children":"Python uv 進階實務：Python 版本、pip 介面與工具安裝"}],["$","div",null,{"className":"flex flex-wrap items-center gap-3 text-sm","style":{"color":"var(--color-muted)"},"children":[["$","time",null,{"dateTime":"2026-02-27","children":"2026 年 2 月 27 日"}],["$","span",null,{"aria-hidden":"true","children":"·"}],["$","span",null,{"children":"3 min read"}]]}],["$","div",null,{"className":"mt-6 overflow-hidden rounded-lg","children":["$","img",null,{"src":"/images/posts/uv-advanced.jpg","alt":"Python uv 進階實務：Python 版本、pip 介面與工具安裝","className":"w-full h-auto"}]}],["$","div",null,{"className":"mt-6 border-b","style":{"borderColor":"var(--color-border)"}}]]}],["$","div",null,{"className":"prose","dangerouslySetInnerHTML":{"__html":"$3"}}],"$L4"]}],"$L5"]}]}]],["$L6"],"$L7"]}],"loading":null,"isPartial":false}
+4:["$","footer",null,{"className":"mt-14 border-t pt-8","style":{"borderColor":"var(--color-border)"},"children":[["$","div",null,{"className":"mb-8 flex flex-wrap gap-2","children":[["$","$L2","python",{"href":"/zh/tags/python","localeCookie":{"name":"NEXT_LOCALE","sameSite":"lax"},"className":"inline-flex items-center rounded-full px-3 py-1 text-sm font-medium transition-colors","style":{"background":"var(--color-code-bg)","color":"var(--color-accent)","border":"1px solid var(--color-border)"},"children":["#","python"]}],["$","$L2","uv",{"href":"/zh/tags/uv","localeCookie":{"name":"NEXT_LOCALE","sameSite":"lax"},"className":"inline-flex items-center rounded-full px-3 py-1 text-sm font-medium transition-colors","style":{"background":"var(--color-code-bg)","color":"var(--color-accent)","border":"1px solid var(--color-border)"},"children":["#","uv"]}],["$","$L2","python-version",{"href":"/zh/tags/python-version","localeCookie":{"name":"NEXT_LOCALE","sameSite":"lax"},"className":"inline-flex items-center rounded-full px-3 py-1 text-sm font-medium transition-colors","style":{"background":"var(--color-code-bg)","color":"var(--color-accent)","border":"1px solid var(--color-border)"},"children":["#","python-version"]}],["$","$L2","pip",{"href":"/zh/tags/pip","localeCookie":{"name":"NEXT_LOCALE","sameSite":"lax"},"className":"inline-flex items-center rounded-full px-3 py-1 text-sm font-medium transition-colors","style":{"background":"var(--color-code-bg)","color":"var(--color-accent)","border":"1px solid var(--color-border)"},"children":["#","pip"]}],["$","$L2","uv-tool",{"href":"/zh/tags/uv-tool","localeCookie":{"name":"NEXT_LOCALE","sameSite":"lax"},"className":"inline-flex items-center rounded-full px-3 py-1 text-sm font-medium transition-colors","style":{"background":"var(--color-code-bg)","color":"var(--color-accent)","border":"1px solid var(--color-border)"},"children":["#","uv-tool"]}]]}],["$","nav",null,{"aria-label":"文章導覽","className":"grid grid-cols-1 gap-4 sm:grid-cols-2","children":[["$","$L2",null,{"href":"/zh/blog/python/uv/03-common-patterns","localeCookie":{"name":"NEXT_LOCALE","sameSite":"lax"},"className":"group rounded-lg border p-4 transition-colors hover:border-accent","style":{"borderColor":"var(--color-border)","background":"var(--color-surface)"},"children":[["$","p",null,{"className":"mb-1 text-xs","style":{"color":"var(--color-muted)"},"children":"← 較新文章"}],["$","p",null,{"className":"line-clamp-1 text-sm font-medium transition-colors group-hover:text-accent","style":{"color":"var(--color-text)"},"children":"Python uv 常見操作模式：依賴、uvx 與腳本執行"}]]}],["$","$L2",null,{"href":"/zh/blog/python/uv/05-best-practices","localeCookie":{"name":"NEXT_LOCALE","sameSite":"lax"},"className":"group rounded-lg border p-4 text-right transition-colors hover:border-accent","style":{"borderColor":"var(--color-border)","background":"var(--color-surface)"},"children":[["$","p",null,{"className":"mb-1 text-xs","style":{"color":"var(--color-muted)"},"children":"較舊文章 →"}],["$","p",null,{"className":"line-clamp-1 text-sm font-medium transition-colors group-hover:text-accent","style":{"color":"var(--color-text)"},"children":"Python uv 最佳實踐：穩定性與協作清單"}]]}]]}]]}]
+9:T202d,<p>當需求從「能跑就好」變成「多版本測試、既有 pipeline 相容、全域工具管理」，uv 一樣扛得住。這篇就是帶你從單刷副本升級到組隊打王。</p>
+<h2 id="python-版本管理">Python 版本管理</h2>
+<p>uv 內建 Python 下載與管理，不用再裝 pyenv。</p>
+<figure data-rehype-pretty-code-figure=""><pre style="background-color:#24292e;color:#e1e4e8" tabindex="0" data-language="bash" data-theme="github-dark"><code data-language="bash" data-theme="github-dark" style="display: grid;"><span data-line=""><span style="color:#6A737D"># 安裝多個版本</span></span>
+<span data-line=""><span style="color:#B392F0">uv</span><span style="color:#9ECBFF"> python</span><span style="color:#9ECBFF"> install</span><span style="color:#79B8FF"> 3.10</span><span style="color:#79B8FF"> 3.11</span><span style="color:#79B8FF"> 3.12</span></span>
+<span data-line=""> </span>
+<span data-line=""><span style="color:#6A737D"># 專案固定版本（產生 .python-version）</span></span>
+<span data-line=""><span style="color:#B392F0">uv</span><span style="color:#9ECBFF"> python</span><span style="color:#9ECBFF"> pin</span><span style="color:#79B8FF"> 3.11</span></span>
+<span data-line=""> </span>
+<span data-line=""><span style="color:#6A737D"># 指定版本建 venv</span></span>
+<span data-line=""><span style="color:#B392F0">uv</span><span style="color:#9ECBFF"> venv</span><span style="color:#79B8FF"> --python</span><span style="color:#79B8FF"> 3.12</span></span>
+<span data-line=""> </span>
+<span data-line=""><span style="color:#6A737D"># 執行時指定版本</span></span>
+<span data-line=""><span style="color:#B392F0">uv</span><span style="color:#9ECBFF"> run</span><span style="color:#79B8FF"> --python</span><span style="color:#79B8FF"> 3.10</span><span style="color:#9ECBFF"> pytest</span></span></code></pre></figure>
+<p>第一次用某版本會自動下載，之後直接用。</p>
+<h2 id="pip-相容介面">pip 相容介面</h2>
+<p>既有 CI、Docker、script 還在用 <code>pip</code>？uv 提供 drop-in 替代：</p>
+<figure data-rehype-pretty-code-figure=""><pre style="background-color:#24292e;color:#e1e4e8" tabindex="0" data-language="bash" data-theme="github-dark"><code data-language="bash" data-theme="github-dark" style="display: grid;"><span data-line=""><span style="color:#6A737D"># 等同 pip install -r requirements.txt</span></span>
+<span data-line=""><span style="color:#B392F0">uv</span><span style="color:#9ECBFF"> pip</span><span style="color:#9ECBFF"> install</span><span style="color:#79B8FF"> -r</span><span style="color:#9ECBFF"> requirements.txt</span></span>
+<span data-line=""> </span>
+<span data-line=""><span style="color:#6A737D"># 編譯 requirements（跨平台、可重現）</span></span>
+<span data-line=""><span style="color:#B392F0">uv</span><span style="color:#9ECBFF"> pip</span><span style="color:#9ECBFF"> compile</span><span style="color:#9ECBFF"> requirements.in</span><span style="color:#79B8FF"> --universal</span><span style="color:#79B8FF"> -o</span><span style="color:#9ECBFF"> requirements.txt</span></span>
+<span data-line=""> </span>
+<span data-line=""><span style="color:#6A737D"># 同步環境（嚴格依 lockfile）</span></span>
+<span data-line=""><span style="color:#B392F0">uv</span><span style="color:#9ECBFF"> pip</span><span style="color:#9ECBFF"> sync</span><span style="color:#9ECBFF"> requirements.txt</span></span>
+<span data-line=""> </span>
+<span data-line=""><span style="color:#6A737D"># 建 venv</span></span>
+<span data-line=""><span style="color:#B392F0">uv</span><span style="color:#9ECBFF"> venv</span></span></code></pre></figure>
+<p>換成 <code>uv pip</code> 後，指令參數幾乎一樣，但速度差一個數量級——就像從腳踏車換成摩托車，路一樣，體驗不一樣。老專案想升級又怕大改？先換 <code>uv pip</code>，無痛起飛。</p>
+<h2 id="全域工具安裝uv-tool">全域工具安裝（uv tool）</h2>
+<p>常用工具不想每次都 <code>uvx</code>？裝成全域：</p>
+<figure data-rehype-pretty-code-figure=""><pre style="background-color:#24292e;color:#e1e4e8" tabindex="0" data-language="bash" data-theme="github-dark"><code data-language="bash" data-theme="github-dark" style="display: grid;"><span data-line=""><span style="color:#B392F0">uv</span><span style="color:#9ECBFF"> tool</span><span style="color:#9ECBFF"> install</span><span style="color:#9ECBFF"> ruff</span></span>
+<span data-line=""><span style="color:#B392F0">uv</span><span style="color:#9ECBFF"> tool</span><span style="color:#9ECBFF"> install</span><span style="color:#9ECBFF"> httpie</span></span>
+<span data-line=""> </span>
+<span data-line=""><span style="color:#6A737D"># 之後直接呼叫</span></span>
+<span data-line=""><span style="color:#B392F0">ruff</span><span style="color:#9ECBFF"> check</span><span style="color:#9ECBFF"> .</span></span>
+<span data-line=""><span style="color:#B392F0">http</span><span style="color:#9ECBFF"> https://httpbin.org/get</span></span></code></pre></figure>
+<p>升級單一工具或全部：</p>
+<figure data-rehype-pretty-code-figure=""><pre style="background-color:#24292e;color:#e1e4e8" tabindex="0" data-language="bash" data-theme="github-dark"><code data-language="bash" data-theme="github-dark" style="display: grid;"><span data-line=""><span style="color:#B392F0">uv</span><span style="color:#9ECBFF"> tool</span><span style="color:#9ECBFF"> upgrade</span><span style="color:#9ECBFF"> ruff</span></span>
+<span data-line=""><span style="color:#B392F0">uv</span><span style="color:#9ECBFF"> tool</span><span style="color:#9ECBFF"> upgrade</span><span style="color:#79B8FF"> --all</span></span></code></pre></figure>
+<blockquote>
+<p><code>uv tool install</code> 裝的是獨立環境，不會跟專案依賴打架。要專案內固定版本，還是用 <code>uv add --dev</code>。</p>
+</blockquote>
+<h2 id="腳本-lockfile-與-shebang">腳本 lockfile 與 shebang</h2>
+<p>單一腳本也要可重現？可以鎖依賴：</p>
+<figure data-rehype-pretty-code-figure=""><pre style="background-color:#24292e;color:#e1e4e8" tabindex="0" data-language="bash" data-theme="github-dark"><code data-language="bash" data-theme="github-dark" style="display: grid;"><span data-line=""><span style="color:#B392F0">uv</span><span style="color:#9ECBFF"> lock</span><span style="color:#79B8FF"> --script</span><span style="color:#9ECBFF"> example.py</span></span></code></pre></figure>
+<p>會產生 <code>example.py.lock</code>，之後 <code>uv run example.py</code> 會用這份 lockfile。</p>
+<p>或做成可執行檔：</p>
+<figure data-rehype-pretty-code-figure=""><pre style="background-color:#24292e;color:#e1e4e8" tabindex="0" data-language="bash" data-theme="github-dark"><code data-language="bash" data-theme="github-dark" style="display: grid;"><span data-line=""><span style="color:#6A737D">#!/usr/bin/env -S uv run --script</span></span>
+<span data-line=""><span style="color:#6A737D"># /// script</span></span>
+<span data-line=""><span style="color:#6A737D"># dependencies = ["httpx"]</span></span>
+<span data-line=""><span style="color:#6A737D"># ///</span></span>
+<span data-line=""> </span>
+<span data-line=""><span style="color:#B392F0">import</span><span style="color:#9ECBFF"> httpx</span></span>
+<span data-line=""><span style="color:#79B8FF">print</span><span style="color:#E1E4E8">(</span><span style="color:#9ECBFF">httpx.get</span><span style="color:#E1E4E8">(</span><span style="color:#B392F0">"https://example.com"</span><span style="color:#E1E4E8">))</span></span></code></pre></figure>
+<figure data-rehype-pretty-code-figure=""><pre style="background-color:#24292e;color:#e1e4e8" tabindex="0" data-language="bash" data-theme="github-dark"><code data-language="bash" data-theme="github-dark" style="display: grid;"><span data-line=""><span style="color:#B392F0">chmod</span><span style="color:#9ECBFF"> +x</span><span style="color:#9ECBFF"> fetch</span></span>
+<span data-line=""><span style="color:#B392F0">./fetch</span></span></code></pre></figure>
+<h2 id="下一步">下一步</h2>
+<p>進階能力點滿後，用一套維運規範收斂風險，少踩雷：<br>
+👉 <a href="05-best-practices">最佳實踐</a></p>5:["$","aside",null,{"className":"hidden lg:block","children":["$","$L8",null,{"html":"$9"}]}]
+6:["$","script","script-0",{"src":"/_next/static/chunks/2dddb3bc05093f69.js","async":true}]
+7:["$","$La",null,{"children":["$","$b",null,{"name":"Next.MetadataOutlet","children":"$@c"}]}]
+c:null

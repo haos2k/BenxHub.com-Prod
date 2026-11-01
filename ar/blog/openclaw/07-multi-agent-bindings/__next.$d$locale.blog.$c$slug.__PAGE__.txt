@@ -1,0 +1,185 @@
+1:"$Sreact.fragment"
+2:I[14864,["/_next/static/chunks/7923a261b80bb6e1.js","/_next/static/chunks/e09b4358027e8033.js","/_next/static/chunks/2dddb3bc05093f69.js"],"default"]
+8:I[24801,["/_next/static/chunks/7923a261b80bb6e1.js","/_next/static/chunks/e09b4358027e8033.js","/_next/static/chunks/2dddb3bc05093f69.js"],"default"]
+a:I[50183,["/_next/static/chunks/5a5b5b13c22d14f7.js","/_next/static/chunks/a484d1d3dd4b55ab.js"],"OutletBoundary"]
+b:"$Sreact.suspense"
+3:T30f0,<p>إذا كانت مجموعة عملك ودردشتك الشخصية تتحدثان إلى نفس المساعد تماماً، فالأمور قد تتشابك بسرعة.</p>
+<p><strong>وكلاء متعددون بالإضافة إلى Bindings</strong> يحلان هذه المشكلة: كل سيناريو يحصل على المساعد الذي ينتمي إليه حقاً.</p>
+<h2 id="ما-الذي-ستتعلمه">ما الذي ستتعلمه</h2>
+<ul>
+<li>معرفة متى يكون استخدام وكلاء متعددين منطقياً</li>
+<li>تعريف عدة وكلاء في الإعداد</li>
+<li>توجيه الرسائل بقواعد Bindings</li>
+<li>إيجاد معرّف مجموعة Telegram الخاصة بك</li>
+</ul>
+<hr>
+<h2 id="لماذا-تستخدم-وكلاء-متعددين">لماذا تستخدم وكلاء متعددين؟</h2>
+<table>
+<thead>
+<tr>
+<th>السيناريو</th>
+<th>الحاجة</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td>مجموعة العمل مقابل الدردشة الشخصية</td>
+<td>مساحات عمل منفصلة، بيانات منفصلة</td>
+</tr>
+<tr>
+<td>ردود سريعة مقابل تحليل عميق</td>
+<td>نماذج مختلفة</td>
+</tr>
+<tr>
+<td>مشاريع مستقلة متعددة</td>
+<td>مساحة عمل واحدة لكل مشروع</td>
+</tr>
+</tbody>
+</table>
+<hr>
+<h2 id="كيف-تضبطه">كيف تضبطه؟</h2>
+<h3 id="الخطوة-1-عرّف-مساعديك-في-agentslist">الخطوة 1: عرّف مساعديك في <code>agents.list</code></h3>
+<figure data-rehype-pretty-code-figure=""><pre style="background-color:#24292e;color:#e1e4e8" tabindex="0" data-language="json5" data-theme="github-dark"><code data-language="json5" data-theme="github-dark" style="display: grid;"><span data-line=""><span style="color:#E1E4E8">{</span></span>
+<span data-line=""><span style="color:#9ECBFF">  "agents"</span><span style="color:#E1E4E8">: {</span></span>
+<span data-line=""><span style="color:#9ECBFF">    "list"</span><span style="color:#E1E4E8">: [</span></span>
+<span data-line=""><span style="color:#E1E4E8">      { </span><span style="color:#9ECBFF">"id"</span><span style="color:#E1E4E8">: </span><span style="color:#9ECBFF">"main"</span><span style="color:#E1E4E8">,      </span><span style="color:#9ECBFF">"name"</span><span style="color:#E1E4E8">: </span><span style="color:#9ECBFF">"المساعد الرئيسي"</span><span style="color:#E1E4E8">, </span><span style="color:#9ECBFF">"workspace"</span><span style="color:#E1E4E8">: </span><span style="color:#9ECBFF">"~/.openclaw/workspace-main"</span><span style="color:#E1E4E8">, </span><span style="color:#9ECBFF">"default"</span><span style="color:#E1E4E8">: </span><span style="color:#79B8FF">true</span><span style="color:#E1E4E8"> },</span></span>
+<span data-line=""><span style="color:#E1E4E8">      { </span><span style="color:#9ECBFF">"id"</span><span style="color:#E1E4E8">: </span><span style="color:#9ECBFF">"project-a"</span><span style="color:#E1E4E8">, </span><span style="color:#9ECBFF">"name"</span><span style="color:#E1E4E8">: </span><span style="color:#9ECBFF">"المشروع أ"</span><span style="color:#E1E4E8">,      </span><span style="color:#9ECBFF">"workspace"</span><span style="color:#E1E4E8">: </span><span style="color:#9ECBFF">"~/.openclaw/workspace-project-a"</span><span style="color:#E1E4E8"> },</span></span>
+<span data-line=""><span style="color:#E1E4E8">      { </span><span style="color:#9ECBFF">"id"</span><span style="color:#E1E4E8">: </span><span style="color:#9ECBFF">"project-b"</span><span style="color:#E1E4E8">, </span><span style="color:#9ECBFF">"name"</span><span style="color:#E1E4E8">: </span><span style="color:#9ECBFF">"المشروع ب"</span><span style="color:#E1E4E8">,      </span><span style="color:#9ECBFF">"workspace"</span><span style="color:#E1E4E8">: </span><span style="color:#9ECBFF">"~/.openclaw/workspace-project-b"</span><span style="color:#E1E4E8"> }</span></span>
+<span data-line=""><span style="color:#E1E4E8">    ]</span></span>
+<span data-line=""><span style="color:#E1E4E8">  }</span></span>
+<span data-line=""><span style="color:#E1E4E8">}</span></span></code></pre></figure>
+<h3 id="الخطوة-2-أضف-قواعد-التوجيه-في-bindings">الخطوة 2: أضف قواعد التوجيه في <code>bindings</code></h3>
+<p>فكّر فيها كموظف استقبال:</p>
+<p>"رسائل من المجموعة أ تذهب إلى المساعد أ. رسائل من المجموعة ب تذهب إلى المساعد ب. كل شيء آخر يذهب إلى الافتراضي."</p>
+<figure data-rehype-pretty-code-figure=""><pre style="background-color:#24292e;color:#e1e4e8" tabindex="0" data-language="json5" data-theme="github-dark"><code data-language="json5" data-theme="github-dark" style="display: grid;"><span data-line=""><span style="color:#E1E4E8">{</span></span>
+<span data-line=""><span style="color:#9ECBFF">  "bindings"</span><span style="color:#E1E4E8">: [</span></span>
+<span data-line=""><span style="color:#E1E4E8">    { </span><span style="color:#9ECBFF">"agentId"</span><span style="color:#E1E4E8">: </span><span style="color:#9ECBFF">"project-a"</span><span style="color:#E1E4E8">, </span><span style="color:#9ECBFF">"match"</span><span style="color:#E1E4E8">: { </span><span style="color:#9ECBFF">"channel"</span><span style="color:#E1E4E8">: </span><span style="color:#9ECBFF">"telegram"</span><span style="color:#E1E4E8">, </span><span style="color:#9ECBFF">"peer"</span><span style="color:#E1E4E8">: { </span><span style="color:#9ECBFF">"kind"</span><span style="color:#E1E4E8">: </span><span style="color:#9ECBFF">"group"</span><span style="color:#E1E4E8">, </span><span style="color:#9ECBFF">"id"</span><span style="color:#E1E4E8">: </span><span style="color:#9ECBFF">"-1001234567890"</span><span style="color:#E1E4E8"> } } },</span></span>
+<span data-line=""><span style="color:#E1E4E8">    { </span><span style="color:#9ECBFF">"agentId"</span><span style="color:#E1E4E8">: </span><span style="color:#9ECBFF">"project-b"</span><span style="color:#E1E4E8">, </span><span style="color:#9ECBFF">"match"</span><span style="color:#E1E4E8">: { </span><span style="color:#9ECBFF">"channel"</span><span style="color:#E1E4E8">: </span><span style="color:#9ECBFF">"telegram"</span><span style="color:#E1E4E8">, </span><span style="color:#9ECBFF">"peer"</span><span style="color:#E1E4E8">: { </span><span style="color:#9ECBFF">"kind"</span><span style="color:#E1E4E8">: </span><span style="color:#9ECBFF">"group"</span><span style="color:#E1E4E8">, </span><span style="color:#9ECBFF">"id"</span><span style="color:#E1E4E8">: </span><span style="color:#9ECBFF">"-1009876543210"</span><span style="color:#E1E4E8"> } } },</span></span>
+<span data-line=""><span style="color:#E1E4E8">    { </span><span style="color:#9ECBFF">"agentId"</span><span style="color:#E1E4E8">: </span><span style="color:#9ECBFF">"main"</span><span style="color:#E1E4E8">,      </span><span style="color:#9ECBFF">"match"</span><span style="color:#E1E4E8">: { </span><span style="color:#9ECBFF">"channel"</span><span style="color:#E1E4E8">: </span><span style="color:#9ECBFF">"telegram"</span><span style="color:#E1E4E8"> } }</span></span>
+<span data-line=""><span style="color:#E1E4E8">  ]</span></span>
+<span data-line=""><span style="color:#E1E4E8">}</span></span></code></pre></figure>
+<blockquote>
+<p>⚠️ <strong>ترتيب Binding مهم جداً.</strong> القواعد الأكثر تحديداً يجب أن تأتي أولاً. المطابقة هي "أول تطابق يفوز".</p>
+</blockquote>
+<hr>
+<h2 id="كيف-تجد-معرّف-المجموعة">كيف تجد معرّف المجموعة؟</h2>
+<p>الطريقة 1: أرسل أي رسالة في المجموعة، ثم شغّل:</p>
+<figure data-rehype-pretty-code-figure=""><pre style="background-color:#24292e;color:#e1e4e8" tabindex="0" data-language="bash" data-theme="github-dark"><code data-language="bash" data-theme="github-dark" style="display: grid;"><span data-line=""><span style="color:#B392F0">openclaw</span><span style="color:#9ECBFF"> logs</span><span style="color:#79B8FF"> --follow</span></span>
+<span data-line=""><span style="color:#6A737D"># ابحث عن chat.id في السجلات، عادةً رقم سالب مثل -1001234567890</span></span></code></pre></figure>
+<p>الطريقة 2: أعد توجيه أي رسالة من تلك المجموعة إلى <a href="https://t.me/userinfobot">@userinfobot</a>.</p>
+<hr>
+<h2 id="متقدم-حسابات-بوت-مختلفة-لمساعدين-مختلفين">متقدم: حسابات بوت مختلفة لمساعدين مختلفين</h2>
+<p>إذا كان لديك رموز بوت متعددة:</p>
+<figure data-rehype-pretty-code-figure=""><pre style="background-color:#24292e;color:#e1e4e8" tabindex="0" data-language="json5" data-theme="github-dark"><code data-language="json5" data-theme="github-dark" style="display: grid;"><span data-line=""><span style="color:#E1E4E8">{</span></span>
+<span data-line=""><span style="color:#9ECBFF">  "channels"</span><span style="color:#E1E4E8">: {</span></span>
+<span data-line=""><span style="color:#9ECBFF">    "telegram"</span><span style="color:#E1E4E8">: {</span></span>
+<span data-line=""><span style="color:#9ECBFF">      "accounts"</span><span style="color:#E1E4E8">: {</span></span>
+<span data-line=""><span style="color:#9ECBFF">        "default"</span><span style="color:#E1E4E8">: { </span><span style="color:#9ECBFF">"botToken"</span><span style="color:#E1E4E8">: </span><span style="color:#9ECBFF">"رمز البوت أ"</span><span style="color:#E1E4E8"> },</span></span>
+<span data-line=""><span style="color:#9ECBFF">        "alerts"</span><span style="color:#E1E4E8">:  { </span><span style="color:#9ECBFF">"botToken"</span><span style="color:#E1E4E8">: </span><span style="color:#9ECBFF">"رمز البوت ب"</span><span style="color:#E1E4E8"> }</span></span>
+<span data-line=""><span style="color:#E1E4E8">      }</span></span>
+<span data-line=""><span style="color:#E1E4E8">    }</span></span>
+<span data-line=""><span style="color:#E1E4E8">  },</span></span>
+<span data-line=""><span style="color:#9ECBFF">  "bindings"</span><span style="color:#E1E4E8">: [</span></span>
+<span data-line=""><span style="color:#E1E4E8">    { </span><span style="color:#9ECBFF">"agentId"</span><span style="color:#E1E4E8">: </span><span style="color:#9ECBFF">"main"</span><span style="color:#E1E4E8">,   </span><span style="color:#9ECBFF">"match"</span><span style="color:#E1E4E8">: { </span><span style="color:#9ECBFF">"channel"</span><span style="color:#E1E4E8">: </span><span style="color:#9ECBFF">"telegram"</span><span style="color:#E1E4E8">, </span><span style="color:#9ECBFF">"accountId"</span><span style="color:#E1E4E8">: </span><span style="color:#9ECBFF">"default"</span><span style="color:#E1E4E8"> } },</span></span>
+<span data-line=""><span style="color:#E1E4E8">    { </span><span style="color:#9ECBFF">"agentId"</span><span style="color:#E1E4E8">: </span><span style="color:#9ECBFF">"alerts"</span><span style="color:#E1E4E8">, </span><span style="color:#9ECBFF">"match"</span><span style="color:#E1E4E8">: { </span><span style="color:#9ECBFF">"channel"</span><span style="color:#E1E4E8">: </span><span style="color:#9ECBFF">"telegram"</span><span style="color:#E1E4E8">, </span><span style="color:#9ECBFF">"accountId"</span><span style="color:#E1E4E8">: </span><span style="color:#9ECBFF">"alerts"</span><span style="color:#E1E4E8"> } }</span></span>
+<span data-line=""><span style="color:#E1E4E8">  ]</span></span>
+<span data-line=""><span style="color:#E1E4E8">}</span></span></code></pre></figure>
+<hr>
+<h2 id="احفظ-بعد-التعديل">احفظ بعد التعديل</h2>
+<p>بعد تحديث Config، انقر <strong>Save / Apply</strong>. إذا رأيت تعارض <code>baseHash</code>، تم تغيير الإعداد في مكان آخر. أعد تحميل الإعداد وطبّق تعديلك مجدداً.</p>
+<hr>
+<h2 id="الخطوة-التالية">الخطوة التالية</h2>
+<p>الآن لديك مساعدون متعددون. بعد ذلك، ننقل أحدهم إلى <strong>VPS</strong> حتى يبقى متصلاً 24 ساعة في اليوم.</p>
+<p><a href="06-memory-workspace">← السابق: الذاكرة ومساحة العمل</a> | 👉 <a href="08-remote-gateway-nodes">انقل مساعدك إلى VPS للوصول عن بُعد</a></p>0:{"buildId":"Yck3R4ooQxWkwGLT6is1X","rsc":["$","$1","c",{"children":[[["$","script",null,{"type":"application/ld+json","dangerouslySetInnerHTML":{"__html":"{\"@context\":\"https://schema.org\",\"@type\":\"Article\",\"headline\":\"Gateway واحد، مساعدون متعددون: استخدم Bindings لتوجيه الرسالة الصحيحة إلى الوكيل الصحيح\",\"description\":\"عرّف وكلاء متعددين ووجّه الرسائل باستخدام Bindings حتى تتمكن مجموعات Telegram المختلفة من التعامل مع مساحات عمل مختلفة.\",\"url\":\"https://benxhub.com/ar/blog/openclaw/07-multi-agent-bindings\",\"mainEntityOfPage\":{\"@type\":\"WebPage\",\"@id\":\"https://benxhub.com/ar/blog/openclaw/07-multi-agent-bindings\"},\"datePublished\":\"2026-03-08T00:00:00.000Z\",\"dateModified\":\"2026-03-08T00:00:00.000Z\",\"keywords\":\"openclaw, multi-agent, bindings, routing, telegram\",\"inLanguage\":\"ar\",\"author\":{\"@type\":\"Person\",\"name\":\"BenX\",\"url\":\"https://benxhub.com\"},\"publisher\":{\"@type\":\"Organization\",\"name\":\"BenXHub Blog\",\"url\":\"https://benxhub.com\"}}"}}],["$","div",null,{"className":"mx-auto max-w-6xl px-4 py-12 sm:px-6","children":["$","div",null,{"className":"lg:grid lg:grid-cols-[1fr_240px] lg:gap-14","children":[["$","article",null,{"children":[["$","header",null,{"className":"mb-10","children":[["$","div",null,{"className":"mb-4 flex flex-wrap gap-2","children":[["$","$L2","openclaw",{"href":"/ar/tags/openclaw","localeCookie":{"name":"NEXT_LOCALE","sameSite":"lax"},"className":"inline-flex items-center rounded-full px-2.5 py-0.5 text-xs font-medium transition-colors","style":{"background":"var(--color-code-bg)","color":"var(--color-accent)","border":"1px solid var(--color-border)"},"children":["#","openclaw"]}],["$","$L2","multi-agent",{"href":"/ar/tags/multi-agent","localeCookie":{"name":"NEXT_LOCALE","sameSite":"lax"},"className":"inline-flex items-center rounded-full px-2.5 py-0.5 text-xs font-medium transition-colors","style":{"background":"var(--color-code-bg)","color":"var(--color-accent)","border":"1px solid var(--color-border)"},"children":["#","multi-agent"]}],["$","$L2","bindings",{"href":"/ar/tags/bindings","localeCookie":{"name":"NEXT_LOCALE","sameSite":"lax"},"className":"inline-flex items-center rounded-full px-2.5 py-0.5 text-xs font-medium transition-colors","style":{"background":"var(--color-code-bg)","color":"var(--color-accent)","border":"1px solid var(--color-border)"},"children":["#","bindings"]}],["$","$L2","routing",{"href":"/ar/tags/routing","localeCookie":{"name":"NEXT_LOCALE","sameSite":"lax"},"className":"inline-flex items-center rounded-full px-2.5 py-0.5 text-xs font-medium transition-colors","style":{"background":"var(--color-code-bg)","color":"var(--color-accent)","border":"1px solid var(--color-border)"},"children":["#","routing"]}],["$","$L2","telegram",{"href":"/ar/tags/telegram","localeCookie":{"name":"NEXT_LOCALE","sameSite":"lax"},"className":"inline-flex items-center rounded-full px-2.5 py-0.5 text-xs font-medium transition-colors","style":{"background":"var(--color-code-bg)","color":"var(--color-accent)","border":"1px solid var(--color-border)"},"children":["#","telegram"]}]]}],["$","h1",null,{"className":"mb-4 text-3xl leading-snug font-bold tracking-tight sm:text-4xl","style":{"color":"var(--color-text)"},"children":"Gateway واحد، مساعدون متعددون: استخدم Bindings لتوجيه الرسالة الصحيحة إلى الوكيل الصحيح"}],["$","div",null,{"className":"flex flex-wrap items-center gap-3 text-sm","style":{"color":"var(--color-muted)"},"children":[["$","time",null,{"dateTime":"2026-03-08","children":"8 3月 2026"}],["$","span",null,{"aria-hidden":"true","children":"·"}],["$","span",null,{"children":"3 min read"}]]}],"$undefined",["$","div",null,{"className":"mt-6 border-b","style":{"borderColor":"var(--color-border)"}}]]}],["$","div",null,{"className":"prose","dangerouslySetInnerHTML":{"__html":"$3"}}],"$L4"]}],"$L5"]}]}]],["$L6"],"$L7"]}],"loading":null,"isPartial":false}
+4:["$","footer",null,{"className":"mt-14 border-t pt-8","style":{"borderColor":"var(--color-border)"},"children":[["$","div",null,{"className":"mb-8 flex flex-wrap gap-2","children":[["$","$L2","openclaw",{"href":"/ar/tags/openclaw","localeCookie":{"name":"NEXT_LOCALE","sameSite":"lax"},"className":"inline-flex items-center rounded-full px-3 py-1 text-sm font-medium transition-colors","style":{"background":"var(--color-code-bg)","color":"var(--color-accent)","border":"1px solid var(--color-border)"},"children":["#","openclaw"]}],["$","$L2","multi-agent",{"href":"/ar/tags/multi-agent","localeCookie":{"name":"NEXT_LOCALE","sameSite":"lax"},"className":"inline-flex items-center rounded-full px-3 py-1 text-sm font-medium transition-colors","style":{"background":"var(--color-code-bg)","color":"var(--color-accent)","border":"1px solid var(--color-border)"},"children":["#","multi-agent"]}],["$","$L2","bindings",{"href":"/ar/tags/bindings","localeCookie":{"name":"NEXT_LOCALE","sameSite":"lax"},"className":"inline-flex items-center rounded-full px-3 py-1 text-sm font-medium transition-colors","style":{"background":"var(--color-code-bg)","color":"var(--color-accent)","border":"1px solid var(--color-border)"},"children":["#","bindings"]}],["$","$L2","routing",{"href":"/ar/tags/routing","localeCookie":{"name":"NEXT_LOCALE","sameSite":"lax"},"className":"inline-flex items-center rounded-full px-3 py-1 text-sm font-medium transition-colors","style":{"background":"var(--color-code-bg)","color":"var(--color-accent)","border":"1px solid var(--color-border)"},"children":["#","routing"]}],["$","$L2","telegram",{"href":"/ar/tags/telegram","localeCookie":{"name":"NEXT_LOCALE","sameSite":"lax"},"className":"inline-flex items-center rounded-full px-3 py-1 text-sm font-medium transition-colors","style":{"background":"var(--color-code-bg)","color":"var(--color-accent)","border":"1px solid var(--color-border)"},"children":["#","telegram"]}]]}],["$","nav",null,{"aria-label":"التنقل بين المقالات","className":"grid grid-cols-1 gap-4 sm:grid-cols-2","children":[["$","$L2",null,{"href":"/ar/blog/openclaw/06-memory-workspace","localeCookie":{"name":"NEXT_LOCALE","sameSite":"lax"},"className":"group rounded-lg border p-4 transition-colors hover:border-accent","style":{"borderColor":"var(--color-border)","background":"var(--color-surface)"},"children":[["$","p",null,{"className":"mb-1 text-xs","style":{"color":"var(--color-muted)"},"children":"→ الأحدث"}],["$","p",null,{"className":"line-clamp-1 text-sm font-medium transition-colors group-hover:text-accent","style":{"color":"var(--color-text)"},"children":"أين دماغ مساعدك؟ افهم الذاكرة ومساحات العمل"}]]}],["$","$L2",null,{"href":"/ar/blog/openclaw/08-remote-gateway-nodes","localeCookie":{"name":"NEXT_LOCALE","sameSite":"lax"},"className":"group rounded-lg border p-4 text-right transition-colors hover:border-accent","style":{"borderColor":"var(--color-border)","background":"var(--color-surface)"},"children":[["$","p",null,{"className":"mb-1 text-xs","style":{"color":"var(--color-muted)"},"children":"الأقدم ←"}],["$","p",null,{"className":"line-clamp-1 text-sm font-medium transition-colors group-hover:text-accent","style":{"color":"var(--color-text)"},"children":"مساعدك يختفي عندما ينام لابتوبك؟ انقل Gateway إلى VPS"}]]}]]}]]}]
+9:T30f0,<p>إذا كانت مجموعة عملك ودردشتك الشخصية تتحدثان إلى نفس المساعد تماماً، فالأمور قد تتشابك بسرعة.</p>
+<p><strong>وكلاء متعددون بالإضافة إلى Bindings</strong> يحلان هذه المشكلة: كل سيناريو يحصل على المساعد الذي ينتمي إليه حقاً.</p>
+<h2 id="ما-الذي-ستتعلمه">ما الذي ستتعلمه</h2>
+<ul>
+<li>معرفة متى يكون استخدام وكلاء متعددين منطقياً</li>
+<li>تعريف عدة وكلاء في الإعداد</li>
+<li>توجيه الرسائل بقواعد Bindings</li>
+<li>إيجاد معرّف مجموعة Telegram الخاصة بك</li>
+</ul>
+<hr>
+<h2 id="لماذا-تستخدم-وكلاء-متعددين">لماذا تستخدم وكلاء متعددين؟</h2>
+<table>
+<thead>
+<tr>
+<th>السيناريو</th>
+<th>الحاجة</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td>مجموعة العمل مقابل الدردشة الشخصية</td>
+<td>مساحات عمل منفصلة، بيانات منفصلة</td>
+</tr>
+<tr>
+<td>ردود سريعة مقابل تحليل عميق</td>
+<td>نماذج مختلفة</td>
+</tr>
+<tr>
+<td>مشاريع مستقلة متعددة</td>
+<td>مساحة عمل واحدة لكل مشروع</td>
+</tr>
+</tbody>
+</table>
+<hr>
+<h2 id="كيف-تضبطه">كيف تضبطه؟</h2>
+<h3 id="الخطوة-1-عرّف-مساعديك-في-agentslist">الخطوة 1: عرّف مساعديك في <code>agents.list</code></h3>
+<figure data-rehype-pretty-code-figure=""><pre style="background-color:#24292e;color:#e1e4e8" tabindex="0" data-language="json5" data-theme="github-dark"><code data-language="json5" data-theme="github-dark" style="display: grid;"><span data-line=""><span style="color:#E1E4E8">{</span></span>
+<span data-line=""><span style="color:#9ECBFF">  "agents"</span><span style="color:#E1E4E8">: {</span></span>
+<span data-line=""><span style="color:#9ECBFF">    "list"</span><span style="color:#E1E4E8">: [</span></span>
+<span data-line=""><span style="color:#E1E4E8">      { </span><span style="color:#9ECBFF">"id"</span><span style="color:#E1E4E8">: </span><span style="color:#9ECBFF">"main"</span><span style="color:#E1E4E8">,      </span><span style="color:#9ECBFF">"name"</span><span style="color:#E1E4E8">: </span><span style="color:#9ECBFF">"المساعد الرئيسي"</span><span style="color:#E1E4E8">, </span><span style="color:#9ECBFF">"workspace"</span><span style="color:#E1E4E8">: </span><span style="color:#9ECBFF">"~/.openclaw/workspace-main"</span><span style="color:#E1E4E8">, </span><span style="color:#9ECBFF">"default"</span><span style="color:#E1E4E8">: </span><span style="color:#79B8FF">true</span><span style="color:#E1E4E8"> },</span></span>
+<span data-line=""><span style="color:#E1E4E8">      { </span><span style="color:#9ECBFF">"id"</span><span style="color:#E1E4E8">: </span><span style="color:#9ECBFF">"project-a"</span><span style="color:#E1E4E8">, </span><span style="color:#9ECBFF">"name"</span><span style="color:#E1E4E8">: </span><span style="color:#9ECBFF">"المشروع أ"</span><span style="color:#E1E4E8">,      </span><span style="color:#9ECBFF">"workspace"</span><span style="color:#E1E4E8">: </span><span style="color:#9ECBFF">"~/.openclaw/workspace-project-a"</span><span style="color:#E1E4E8"> },</span></span>
+<span data-line=""><span style="color:#E1E4E8">      { </span><span style="color:#9ECBFF">"id"</span><span style="color:#E1E4E8">: </span><span style="color:#9ECBFF">"project-b"</span><span style="color:#E1E4E8">, </span><span style="color:#9ECBFF">"name"</span><span style="color:#E1E4E8">: </span><span style="color:#9ECBFF">"المشروع ب"</span><span style="color:#E1E4E8">,      </span><span style="color:#9ECBFF">"workspace"</span><span style="color:#E1E4E8">: </span><span style="color:#9ECBFF">"~/.openclaw/workspace-project-b"</span><span style="color:#E1E4E8"> }</span></span>
+<span data-line=""><span style="color:#E1E4E8">    ]</span></span>
+<span data-line=""><span style="color:#E1E4E8">  }</span></span>
+<span data-line=""><span style="color:#E1E4E8">}</span></span></code></pre></figure>
+<h3 id="الخطوة-2-أضف-قواعد-التوجيه-في-bindings">الخطوة 2: أضف قواعد التوجيه في <code>bindings</code></h3>
+<p>فكّر فيها كموظف استقبال:</p>
+<p>"رسائل من المجموعة أ تذهب إلى المساعد أ. رسائل من المجموعة ب تذهب إلى المساعد ب. كل شيء آخر يذهب إلى الافتراضي."</p>
+<figure data-rehype-pretty-code-figure=""><pre style="background-color:#24292e;color:#e1e4e8" tabindex="0" data-language="json5" data-theme="github-dark"><code data-language="json5" data-theme="github-dark" style="display: grid;"><span data-line=""><span style="color:#E1E4E8">{</span></span>
+<span data-line=""><span style="color:#9ECBFF">  "bindings"</span><span style="color:#E1E4E8">: [</span></span>
+<span data-line=""><span style="color:#E1E4E8">    { </span><span style="color:#9ECBFF">"agentId"</span><span style="color:#E1E4E8">: </span><span style="color:#9ECBFF">"project-a"</span><span style="color:#E1E4E8">, </span><span style="color:#9ECBFF">"match"</span><span style="color:#E1E4E8">: { </span><span style="color:#9ECBFF">"channel"</span><span style="color:#E1E4E8">: </span><span style="color:#9ECBFF">"telegram"</span><span style="color:#E1E4E8">, </span><span style="color:#9ECBFF">"peer"</span><span style="color:#E1E4E8">: { </span><span style="color:#9ECBFF">"kind"</span><span style="color:#E1E4E8">: </span><span style="color:#9ECBFF">"group"</span><span style="color:#E1E4E8">, </span><span style="color:#9ECBFF">"id"</span><span style="color:#E1E4E8">: </span><span style="color:#9ECBFF">"-1001234567890"</span><span style="color:#E1E4E8"> } } },</span></span>
+<span data-line=""><span style="color:#E1E4E8">    { </span><span style="color:#9ECBFF">"agentId"</span><span style="color:#E1E4E8">: </span><span style="color:#9ECBFF">"project-b"</span><span style="color:#E1E4E8">, </span><span style="color:#9ECBFF">"match"</span><span style="color:#E1E4E8">: { </span><span style="color:#9ECBFF">"channel"</span><span style="color:#E1E4E8">: </span><span style="color:#9ECBFF">"telegram"</span><span style="color:#E1E4E8">, </span><span style="color:#9ECBFF">"peer"</span><span style="color:#E1E4E8">: { </span><span style="color:#9ECBFF">"kind"</span><span style="color:#E1E4E8">: </span><span style="color:#9ECBFF">"group"</span><span style="color:#E1E4E8">, </span><span style="color:#9ECBFF">"id"</span><span style="color:#E1E4E8">: </span><span style="color:#9ECBFF">"-1009876543210"</span><span style="color:#E1E4E8"> } } },</span></span>
+<span data-line=""><span style="color:#E1E4E8">    { </span><span style="color:#9ECBFF">"agentId"</span><span style="color:#E1E4E8">: </span><span style="color:#9ECBFF">"main"</span><span style="color:#E1E4E8">,      </span><span style="color:#9ECBFF">"match"</span><span style="color:#E1E4E8">: { </span><span style="color:#9ECBFF">"channel"</span><span style="color:#E1E4E8">: </span><span style="color:#9ECBFF">"telegram"</span><span style="color:#E1E4E8"> } }</span></span>
+<span data-line=""><span style="color:#E1E4E8">  ]</span></span>
+<span data-line=""><span style="color:#E1E4E8">}</span></span></code></pre></figure>
+<blockquote>
+<p>⚠️ <strong>ترتيب Binding مهم جداً.</strong> القواعد الأكثر تحديداً يجب أن تأتي أولاً. المطابقة هي "أول تطابق يفوز".</p>
+</blockquote>
+<hr>
+<h2 id="كيف-تجد-معرّف-المجموعة">كيف تجد معرّف المجموعة؟</h2>
+<p>الطريقة 1: أرسل أي رسالة في المجموعة، ثم شغّل:</p>
+<figure data-rehype-pretty-code-figure=""><pre style="background-color:#24292e;color:#e1e4e8" tabindex="0" data-language="bash" data-theme="github-dark"><code data-language="bash" data-theme="github-dark" style="display: grid;"><span data-line=""><span style="color:#B392F0">openclaw</span><span style="color:#9ECBFF"> logs</span><span style="color:#79B8FF"> --follow</span></span>
+<span data-line=""><span style="color:#6A737D"># ابحث عن chat.id في السجلات، عادةً رقم سالب مثل -1001234567890</span></span></code></pre></figure>
+<p>الطريقة 2: أعد توجيه أي رسالة من تلك المجموعة إلى <a href="https://t.me/userinfobot">@userinfobot</a>.</p>
+<hr>
+<h2 id="متقدم-حسابات-بوت-مختلفة-لمساعدين-مختلفين">متقدم: حسابات بوت مختلفة لمساعدين مختلفين</h2>
+<p>إذا كان لديك رموز بوت متعددة:</p>
+<figure data-rehype-pretty-code-figure=""><pre style="background-color:#24292e;color:#e1e4e8" tabindex="0" data-language="json5" data-theme="github-dark"><code data-language="json5" data-theme="github-dark" style="display: grid;"><span data-line=""><span style="color:#E1E4E8">{</span></span>
+<span data-line=""><span style="color:#9ECBFF">  "channels"</span><span style="color:#E1E4E8">: {</span></span>
+<span data-line=""><span style="color:#9ECBFF">    "telegram"</span><span style="color:#E1E4E8">: {</span></span>
+<span data-line=""><span style="color:#9ECBFF">      "accounts"</span><span style="color:#E1E4E8">: {</span></span>
+<span data-line=""><span style="color:#9ECBFF">        "default"</span><span style="color:#E1E4E8">: { </span><span style="color:#9ECBFF">"botToken"</span><span style="color:#E1E4E8">: </span><span style="color:#9ECBFF">"رمز البوت أ"</span><span style="color:#E1E4E8"> },</span></span>
+<span data-line=""><span style="color:#9ECBFF">        "alerts"</span><span style="color:#E1E4E8">:  { </span><span style="color:#9ECBFF">"botToken"</span><span style="color:#E1E4E8">: </span><span style="color:#9ECBFF">"رمز البوت ب"</span><span style="color:#E1E4E8"> }</span></span>
+<span data-line=""><span style="color:#E1E4E8">      }</span></span>
+<span data-line=""><span style="color:#E1E4E8">    }</span></span>
+<span data-line=""><span style="color:#E1E4E8">  },</span></span>
+<span data-line=""><span style="color:#9ECBFF">  "bindings"</span><span style="color:#E1E4E8">: [</span></span>
+<span data-line=""><span style="color:#E1E4E8">    { </span><span style="color:#9ECBFF">"agentId"</span><span style="color:#E1E4E8">: </span><span style="color:#9ECBFF">"main"</span><span style="color:#E1E4E8">,   </span><span style="color:#9ECBFF">"match"</span><span style="color:#E1E4E8">: { </span><span style="color:#9ECBFF">"channel"</span><span style="color:#E1E4E8">: </span><span style="color:#9ECBFF">"telegram"</span><span style="color:#E1E4E8">, </span><span style="color:#9ECBFF">"accountId"</span><span style="color:#E1E4E8">: </span><span style="color:#9ECBFF">"default"</span><span style="color:#E1E4E8"> } },</span></span>
+<span data-line=""><span style="color:#E1E4E8">    { </span><span style="color:#9ECBFF">"agentId"</span><span style="color:#E1E4E8">: </span><span style="color:#9ECBFF">"alerts"</span><span style="color:#E1E4E8">, </span><span style="color:#9ECBFF">"match"</span><span style="color:#E1E4E8">: { </span><span style="color:#9ECBFF">"channel"</span><span style="color:#E1E4E8">: </span><span style="color:#9ECBFF">"telegram"</span><span style="color:#E1E4E8">, </span><span style="color:#9ECBFF">"accountId"</span><span style="color:#E1E4E8">: </span><span style="color:#9ECBFF">"alerts"</span><span style="color:#E1E4E8"> } }</span></span>
+<span data-line=""><span style="color:#E1E4E8">  ]</span></span>
+<span data-line=""><span style="color:#E1E4E8">}</span></span></code></pre></figure>
+<hr>
+<h2 id="احفظ-بعد-التعديل">احفظ بعد التعديل</h2>
+<p>بعد تحديث Config، انقر <strong>Save / Apply</strong>. إذا رأيت تعارض <code>baseHash</code>، تم تغيير الإعداد في مكان آخر. أعد تحميل الإعداد وطبّق تعديلك مجدداً.</p>
+<hr>
+<h2 id="الخطوة-التالية">الخطوة التالية</h2>
+<p>الآن لديك مساعدون متعددون. بعد ذلك، ننقل أحدهم إلى <strong>VPS</strong> حتى يبقى متصلاً 24 ساعة في اليوم.</p>
+<p><a href="06-memory-workspace">← السابق: الذاكرة ومساحة العمل</a> | 👉 <a href="08-remote-gateway-nodes">انقل مساعدك إلى VPS للوصول عن بُعد</a></p>5:["$","aside",null,{"className":"hidden lg:block","children":["$","$L8",null,{"html":"$9"}]}]
+6:["$","script","script-0",{"src":"/_next/static/chunks/2dddb3bc05093f69.js","async":true}]
+7:["$","$La",null,{"children":["$","$b",null,{"name":"Next.MetadataOutlet","children":"$@c"}]}]
+c:null

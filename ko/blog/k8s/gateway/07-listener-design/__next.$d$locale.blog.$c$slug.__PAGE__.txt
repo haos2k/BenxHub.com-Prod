@@ -1,0 +1,298 @@
+1:"$Sreact.fragment"
+2:I[14864,["/_next/static/chunks/7923a261b80bb6e1.js","/_next/static/chunks/e09b4358027e8033.js","/_next/static/chunks/2dddb3bc05093f69.js"],"default"]
+9:I[24801,["/_next/static/chunks/7923a261b80bb6e1.js","/_next/static/chunks/e09b4358027e8033.js","/_next/static/chunks/2dddb3bc05093f69.js"],"default"]
+b:I[50183,["/_next/static/chunks/5a5b5b13c22d14f7.js","/_next/static/chunks/a484d1d3dd4b55ab.js"],"OutletBoundary"]
+c:"$Sreact.suspense"
+0:{"buildId":"Yck3R4ooQxWkwGLT6is1X","rsc":["$","$1","c",{"children":[[["$","script",null,{"type":"application/ld+json","dangerouslySetInnerHTML":{"__html":"{\"@context\":\"https://schema.org\",\"@type\":\"Article\",\"headline\":\"Envoy Gateway Listener 설계 가이드: 멀티 포트, 멀티 호스트네임, 멀티 인그레스 패턴\",\"description\":\"Listener를 ingress 계약으로 다룹니다. sectionName, allowedRoutes, 멀티 listener 패턴, 자주 쓰이는 구조적 접근을 이해합니다.\",\"url\":\"https://benxhub.com/ko/blog/k8s/gateway/07-listener-design\",\"mainEntityOfPage\":{\"@type\":\"WebPage\",\"@id\":\"https://benxhub.com/ko/blog/k8s/gateway/07-listener-design\"},\"datePublished\":\"2026-03-10T00:00:00.000Z\",\"dateModified\":\"2026-03-10T00:00:00.000Z\",\"keywords\":\"kubernetes, envoy-gateway, gateway-api, listener, gateway, httproute\",\"inLanguage\":\"ko\",\"author\":{\"@type\":\"Person\",\"name\":\"BenX\",\"url\":\"https://benxhub.com\"},\"publisher\":{\"@type\":\"Organization\",\"name\":\"BenXHub Blog\",\"url\":\"https://benxhub.com\"}}"}}],["$","div",null,{"className":"mx-auto max-w-6xl px-4 py-12 sm:px-6","children":["$","div",null,{"className":"lg:grid lg:grid-cols-[1fr_240px] lg:gap-14","children":[["$","article",null,{"children":[["$","header",null,{"className":"mb-10","children":[["$","div",null,{"className":"mb-4 flex flex-wrap gap-2","children":[["$","$L2","kubernetes",{"href":"/ko/tags/kubernetes","localeCookie":{"name":"NEXT_LOCALE","sameSite":"lax"},"className":"inline-flex items-center rounded-full px-2.5 py-0.5 text-xs font-medium transition-colors","style":{"background":"var(--color-code-bg)","color":"var(--color-accent)","border":"1px solid var(--color-border)"},"children":["#","kubernetes"]}],["$","$L2","envoy-gateway",{"href":"/ko/tags/envoy-gateway","localeCookie":{"name":"NEXT_LOCALE","sameSite":"lax"},"className":"inline-flex items-center rounded-full px-2.5 py-0.5 text-xs font-medium transition-colors","style":{"background":"var(--color-code-bg)","color":"var(--color-accent)","border":"1px solid var(--color-border)"},"children":["#","envoy-gateway"]}],["$","$L2","gateway-api",{"href":"/ko/tags/gateway-api","localeCookie":{"name":"NEXT_LOCALE","sameSite":"lax"},"className":"inline-flex items-center rounded-full px-2.5 py-0.5 text-xs font-medium transition-colors","style":{"background":"var(--color-code-bg)","color":"var(--color-accent)","border":"1px solid var(--color-border)"},"children":["#","gateway-api"]}],["$","$L2","listener",{"href":"/ko/tags/listener","localeCookie":{"name":"NEXT_LOCALE","sameSite":"lax"},"className":"inline-flex items-center rounded-full px-2.5 py-0.5 text-xs font-medium transition-colors","style":{"background":"var(--color-code-bg)","color":"var(--color-accent)","border":"1px solid var(--color-border)"},"children":["#","listener"]}],["$","$L2","gateway",{"href":"/ko/tags/gateway","localeCookie":{"name":"NEXT_LOCALE","sameSite":"lax"},"className":"inline-flex items-center rounded-full px-2.5 py-0.5 text-xs font-medium transition-colors","style":{"background":"var(--color-code-bg)","color":"var(--color-accent)","border":"1px solid var(--color-border)"},"children":["#","gateway"]}],["$","$L2","httproute",{"href":"/ko/tags/httproute","localeCookie":{"name":"NEXT_LOCALE","sameSite":"lax"},"className":"inline-flex items-center rounded-full px-2.5 py-0.5 text-xs font-medium transition-colors","style":{"background":"var(--color-code-bg)","color":"var(--color-accent)","border":"1px solid var(--color-border)"},"children":["#","httproute"]}]]}],["$","h1",null,{"className":"mb-4 text-3xl leading-snug font-bold tracking-tight sm:text-4xl","style":{"color":"var(--color-text)"},"children":"Envoy Gateway Listener 설계 가이드: 멀티 포트, 멀티 호스트네임, 멀티 인그레스 패턴"}],["$","div",null,{"className":"flex flex-wrap items-center gap-3 text-sm","style":{"color":"var(--color-muted)"},"children":[["$","time",null,{"dateTime":"2026-03-10","children":"2026년 3월 10일"}],["$","span",null,{"aria-hidden":"true","children":"·"}],["$","span",null,{"children":"8 min read"}]]}],"$undefined",["$","div",null,{"className":"mt-6 border-b","style":{"borderColor":"var(--color-border)"}}]]}],"$L3","$L4"]}],"$L5"]}]}]],["$L6"],"$L7"]}],"loading":null,"isPartial":false}
+8:T3da2,<p>Gateway API를 배우는 많은 사람들은 <code>Listener</code>를 "아, 그냥 <code>port: 80</code> 필드 아닌가요" 정도로 생각합니다.
+하지만 실제 배포 환경에서 <code>Listener</code>는 결코 조연이 아닙니다. 오히려 ingress 계층 전체의 트래픽 관제 센터에 가깝습니다.</p>
+<p>listener는 단순히 포트를 여는 것이 아닙니다. 다음을 정의합니다:</p>
+<ul>
+<li>어떤 프로토콜을 받을지</li>
+<li>어떤 hostname을 받을지</li>
+<li>TLS를 수행할지 여부</li>
+<li>어떤 route 타입이 attach 가능한지</li>
+</ul>
+<p>즉 <strong>listener는 ingress 계약입니다</strong>. 계약을 깔끔하게 쓰면, 그 아래의 route, 팀 소유권, 디버깅 복잡도도 함께 정리됩니다.</p>
+<h2 id="올바른-사고-모델-세우기-listener-하나--ingress-슬롯-하나">올바른 사고 모델 세우기: Listener 하나 = Ingress 슬롯 하나</h2>
+<p>다음 Gateway를 보겠습니다:</p>
+<figure data-rehype-pretty-code-figure=""><pre style="background-color:#24292e;color:#e1e4e8" tabindex="0" data-language="yaml" data-theme="github-dark"><code data-language="yaml" data-theme="github-dark" style="display: grid;"><span data-line=""><span style="color:#85E89D">apiVersion</span><span style="color:#E1E4E8">: </span><span style="color:#9ECBFF">gateway.networking.k8s.io/v1</span></span>
+<span data-line=""><span style="color:#85E89D">kind</span><span style="color:#E1E4E8">: </span><span style="color:#9ECBFF">Gateway</span></span>
+<span data-line=""><span style="color:#85E89D">metadata</span><span style="color:#E1E4E8">:</span></span>
+<span data-line=""><span style="color:#85E89D">  name</span><span style="color:#E1E4E8">: </span><span style="color:#9ECBFF">eg</span></span>
+<span data-line=""><span style="color:#85E89D">spec</span><span style="color:#E1E4E8">:</span></span>
+<span data-line=""><span style="color:#85E89D">  gatewayClassName</span><span style="color:#E1E4E8">: </span><span style="color:#9ECBFF">eg</span></span>
+<span data-line=""><span style="color:#85E89D">  listeners</span><span style="color:#E1E4E8">:</span></span>
+<span data-line=""><span style="color:#E1E4E8">    - </span><span style="color:#85E89D">name</span><span style="color:#E1E4E8">: </span><span style="color:#9ECBFF">http</span></span>
+<span data-line=""><span style="color:#85E89D">      protocol</span><span style="color:#E1E4E8">: </span><span style="color:#9ECBFF">HTTP</span></span>
+<span data-line=""><span style="color:#85E89D">      port</span><span style="color:#E1E4E8">: </span><span style="color:#79B8FF">80</span></span>
+<span data-line=""><span style="color:#E1E4E8">    - </span><span style="color:#85E89D">name</span><span style="color:#E1E4E8">: </span><span style="color:#9ECBFF">https</span></span>
+<span data-line=""><span style="color:#85E89D">      protocol</span><span style="color:#E1E4E8">: </span><span style="color:#9ECBFF">HTTPS</span></span>
+<span data-line=""><span style="color:#85E89D">      port</span><span style="color:#E1E4E8">: </span><span style="color:#79B8FF">443</span></span>
+<span data-line=""><span style="color:#85E89D">      hostname</span><span style="color:#E1E4E8">: </span><span style="color:#9ECBFF">app.example.com</span></span>
+<span data-line=""><span style="color:#85E89D">      tls</span><span style="color:#E1E4E8">:</span></span>
+<span data-line=""><span style="color:#85E89D">        mode</span><span style="color:#E1E4E8">: </span><span style="color:#9ECBFF">Terminate</span></span>
+<span data-line=""><span style="color:#85E89D">        certificateRefs</span><span style="color:#E1E4E8">:</span></span>
+<span data-line=""><span style="color:#E1E4E8">          - </span><span style="color:#85E89D">name</span><span style="color:#E1E4E8">: </span><span style="color:#9ECBFF">app-cert</span></span>
+<span data-line=""><span style="color:#E1E4E8">    - </span><span style="color:#85E89D">name</span><span style="color:#E1E4E8">: </span><span style="color:#9ECBFF">grpc</span></span>
+<span data-line=""><span style="color:#85E89D">      protocol</span><span style="color:#E1E4E8">: </span><span style="color:#9ECBFF">HTTPS</span></span>
+<span data-line=""><span style="color:#85E89D">      port</span><span style="color:#E1E4E8">: </span><span style="color:#79B8FF">8443</span></span>
+<span data-line=""><span style="color:#85E89D">      hostname</span><span style="color:#E1E4E8">: </span><span style="color:#9ECBFF">grpc.example.com</span></span>
+<span data-line=""><span style="color:#85E89D">      tls</span><span style="color:#E1E4E8">:</span></span>
+<span data-line=""><span style="color:#85E89D">        mode</span><span style="color:#E1E4E8">: </span><span style="color:#9ECBFF">Terminate</span></span>
+<span data-line=""><span style="color:#85E89D">        certificateRefs</span><span style="color:#E1E4E8">:</span></span>
+<span data-line=""><span style="color:#E1E4E8">          - </span><span style="color:#85E89D">name</span><span style="color:#E1E4E8">: </span><span style="color:#9ECBFF">grpc-cert</span></span></code></pre></figure>
+<p>이걸 단순히 "구멍 세 개 뚫린 Gateway 하나"로 보지 마세요. 오히려 이렇게 보는 편이 맞습니다:</p>
+<ul>
+<li><code>http</code> listener: 평문 HTTP용</li>
+<li><code>https</code> listener: <code>app.example.com</code>용</li>
+<li><code>grpc</code> listener: gRPC 서비스를 위한 전용 ingress 슬롯</li>
+</ul>
+<p>이렇게 생각하기 시작하면 많은 설계 판단이 바로 명확해집니다.
+여러분은 YAML을 조립하는 것이 아니라, ingress 경계를 설계하고 있는 것입니다.</p>
+<h2 id="자주-쓰는-세-가지-분리-패턴">자주 쓰는 세 가지 분리 패턴</h2>
+<h3 id="패턴-1-프로토콜-기준-분리">패턴 1: 프로토콜 기준 분리</h3>
+<p>가장 직관적인 접근입니다:</p>
+<ul>
+<li>HTTP는 하나의 listener</li>
+<li>HTTPS는 하나의 listener</li>
+<li>gRPC는 하나의 listener</li>
+<li>TCP/TLS passthrough는 별도로 분리</li>
+</ul>
+<p>이 방식은 책임이 명확합니다.
+gRPC와 일반 웹 API가 둘 다 HTTP/2 위에서 돌아간다 해도 서비스 모델은 다릅니다. 분리해 두면 route끼리 서로 간섭하는 일을 줄일 수 있습니다.</p>
+<h3 id="패턴-2-hostname-기준-분리">패턴 2: Hostname 기준 분리</h3>
+<p>도메인이 여러 개라면, 대표 hostname마다 listener 하나씩 두는 패턴이 흔합니다:</p>
+<figure data-rehype-pretty-code-figure=""><pre style="background-color:#24292e;color:#e1e4e8" tabindex="0" data-language="yaml" data-theme="github-dark"><code data-language="yaml" data-theme="github-dark" style="display: grid;"><span data-line=""><span style="color:#85E89D">listeners</span><span style="color:#E1E4E8">:</span></span>
+<span data-line=""><span style="color:#E1E4E8">  - </span><span style="color:#85E89D">name</span><span style="color:#E1E4E8">: </span><span style="color:#9ECBFF">app</span></span>
+<span data-line=""><span style="color:#85E89D">    hostname</span><span style="color:#E1E4E8">: </span><span style="color:#9ECBFF">app.example.com</span></span>
+<span data-line=""><span style="color:#85E89D">    protocol</span><span style="color:#E1E4E8">: </span><span style="color:#9ECBFF">HTTPS</span></span>
+<span data-line=""><span style="color:#85E89D">    port</span><span style="color:#E1E4E8">: </span><span style="color:#79B8FF">443</span></span>
+<span data-line=""><span style="color:#E1E4E8">  - </span><span style="color:#85E89D">name</span><span style="color:#E1E4E8">: </span><span style="color:#9ECBFF">admin</span></span>
+<span data-line=""><span style="color:#85E89D">    hostname</span><span style="color:#E1E4E8">: </span><span style="color:#9ECBFF">admin.example.com</span></span>
+<span data-line=""><span style="color:#85E89D">    protocol</span><span style="color:#E1E4E8">: </span><span style="color:#9ECBFF">HTTPS</span></span>
+<span data-line=""><span style="color:#85E89D">    port</span><span style="color:#E1E4E8">: </span><span style="color:#79B8FF">443</span></span></code></pre></figure>
+<p>이 방식은 다음에 잘 맞습니다:</p>
+<ul>
+<li>public과 admin 거버넌스를 분리할 때</li>
+<li>서로 다른 hostname에 서로 다른 인증서가 필요할 때</li>
+<li>route attach 경계를 깔끔하게 유지하고 싶을 때</li>
+</ul>
+<h3 id="패턴-3-팀-또는-환경-책임-기준-분리">패턴 3: 팀 또는 환경 책임 기준 분리</h3>
+<p>여러 팀이 함께 쓰는 환경이라면, listener는 거버넌스 경계 역할을 할 수 있습니다:</p>
+<ul>
+<li>외부 제품 트래픽용 <code>public-api</code></li>
+<li>내부 시스템용 <code>internal-api</code></li>
+<li>파트너 연동용 <code>partner-api</code></li>
+</ul>
+<p>여기서 listener의 가치는 단순 기술 설정을 넘어, 권한과 책임의 경계가 됩니다.
+이 패턴은 중대형 팀에서 특히 차이를 만듭니다. "누구나 아무 route나 붙일 수 있는 ingress 하나"라는 재난을 줄여주기 때문입니다.</p>
+<h2 id="sectionname과-allowedroutes-가장-중요한-두-필드"><code>sectionName</code>과 <code>allowedRoutes</code>: 가장 중요한 두 필드</h2>
+<p>route는 <code>parentRefs.sectionName</code>을 통해 특정 listener에 attach합니다:</p>
+<figure data-rehype-pretty-code-figure=""><pre style="background-color:#24292e;color:#e1e4e8" tabindex="0" data-language="yaml" data-theme="github-dark"><code data-language="yaml" data-theme="github-dark" style="display: grid;"><span data-line=""><span style="color:#85E89D">apiVersion</span><span style="color:#E1E4E8">: </span><span style="color:#9ECBFF">gateway.networking.k8s.io/v1</span></span>
+<span data-line=""><span style="color:#85E89D">kind</span><span style="color:#E1E4E8">: </span><span style="color:#9ECBFF">HTTPRoute</span></span>
+<span data-line=""><span style="color:#85E89D">metadata</span><span style="color:#E1E4E8">:</span></span>
+<span data-line=""><span style="color:#85E89D">  name</span><span style="color:#E1E4E8">: </span><span style="color:#9ECBFF">app-route</span></span>
+<span data-line=""><span style="color:#85E89D">spec</span><span style="color:#E1E4E8">:</span></span>
+<span data-line=""><span style="color:#85E89D">  parentRefs</span><span style="color:#E1E4E8">:</span></span>
+<span data-line=""><span style="color:#E1E4E8">    - </span><span style="color:#85E89D">name</span><span style="color:#E1E4E8">: </span><span style="color:#9ECBFF">eg</span></span>
+<span data-line=""><span style="color:#85E89D">      sectionName</span><span style="color:#E1E4E8">: </span><span style="color:#9ECBFF">https</span></span>
+<span data-line=""><span style="color:#85E89D">  hostnames</span><span style="color:#E1E4E8">:</span></span>
+<span data-line=""><span style="color:#E1E4E8">    - </span><span style="color:#9ECBFF">"app.example.com"</span></span>
+<span data-line=""><span style="color:#85E89D">  rules</span><span style="color:#E1E4E8">:</span></span>
+<span data-line=""><span style="color:#E1E4E8">    - </span><span style="color:#85E89D">backendRefs</span><span style="color:#E1E4E8">:</span></span>
+<span data-line=""><span style="color:#E1E4E8">        - </span><span style="color:#85E89D">name</span><span style="color:#E1E4E8">: </span><span style="color:#9ECBFF">app-service</span></span>
+<span data-line=""><span style="color:#85E89D">          port</span><span style="color:#E1E4E8">: </span><span style="color:#79B8FF">8080</span></span></code></pre></figure>
+<p>이 route는 <code>https</code> listener만 찾습니다.
+<code>sectionName</code>을 지정하지 않아도 시스템은 attach 가능한 listener를 찾는 규칙을 적용하지만, 멀티 listener 환경에서는 명시적으로 써두는 편이 거의 항상 더 안전합니다.</p>
+<p>또 하나의 핵심 필드는 <code>allowedRoutes</code>입니다:</p>
+<figure data-rehype-pretty-code-figure=""><pre style="background-color:#24292e;color:#e1e4e8" tabindex="0" data-language="yaml" data-theme="github-dark"><code data-language="yaml" data-theme="github-dark" style="display: grid;"><span data-line=""><span style="color:#85E89D">listeners</span><span style="color:#E1E4E8">:</span></span>
+<span data-line=""><span style="color:#E1E4E8">  - </span><span style="color:#85E89D">name</span><span style="color:#E1E4E8">: </span><span style="color:#9ECBFF">public</span></span>
+<span data-line=""><span style="color:#85E89D">    protocol</span><span style="color:#E1E4E8">: </span><span style="color:#9ECBFF">HTTPS</span></span>
+<span data-line=""><span style="color:#85E89D">    port</span><span style="color:#E1E4E8">: </span><span style="color:#79B8FF">443</span></span>
+<span data-line=""><span style="color:#85E89D">    allowedRoutes</span><span style="color:#E1E4E8">:</span></span>
+<span data-line=""><span style="color:#85E89D">      namespaces</span><span style="color:#E1E4E8">:</span></span>
+<span data-line=""><span style="color:#85E89D">        from</span><span style="color:#E1E4E8">: </span><span style="color:#9ECBFF">Same</span></span></code></pre></figure>
+<p>이 뜻은 <code>Gateway</code>와 같은 네임스페이스에 있는 route만 이 listener에 attach할 수 있다는 것입니다.
+흔한 값은 다음과 같습니다:</p>
+<ul>
+<li><code>Same</code>: 같은 네임스페이스만</li>
+<li><code>All</code>: 어떤 네임스페이스든 허용</li>
+<li><code>Selector</code>: label selector에 맞는 네임스페이스만 허용</li>
+</ul>
+<p>플랫폼 경계를 의도적으로 만들고 싶다면 이 필드는 매우 강력합니다.
+리스너 수준에서 "누가 이 ingress에 붙을 수 있는지"를 결정하니까요.</p>
+<h2 id="실전-조언-후회-없는-listener-구조-짜기">실전 조언: 후회 없는 Listener 구조 짜기</h2>
+<p>아주 유용한 원칙 하나:</p>
+<p><strong>각 listener는 하나의 명확한 책임만 가져야 합니다.</strong></p>
+<p>예를 들면:</p>
+<ul>
+<li>하나의 listener는 하나의 주요 hostname 그룹을 담당</li>
+<li>하나의 listener는 하나의 주요 프로토콜 타입을 담당</li>
+<li>하나의 listener는 하나의 route 타입 또는 고정된 네임스페이스 집합만 허용</li>
+</ul>
+<p>모든 트래픽을 만능 listener 하나에 욱여넣고, downstream route가 알아서 정리해 주길 기대하지 마세요.
+처음에는 효율적으로 보여도, 세 달 뒤에는 집집마다 하나씩 생기는 미스터리 케이블 서랍처럼 됩니다. 다 들어 있는데 아무것도 찾을 수 없죠.</p>
+<p>구체적인 제안:</p>
+<ul>
+<li>Listener 이름은 의미 있게 짓기: <code>https-public</code>, <code>grpc-internal</code></li>
+<li>멀티 listener 환경에서는 항상 <code>sectionName</code>과 짝지어 쓰기</li>
+<li>중요한 hostname을 하나의 listener에 마구 섞지 않기</li>
+<li><code>allowedRoutes</code>는 먼저 제한적으로 시작하기. 처음부터 <code>from: All</code>로 열지 않기</li>
+</ul>
+<h2 id="한-줄-요약">한 줄 요약</h2>
+<p><code>Listener</code>를 단순한 포트 설정이 아니라 ingress 계약으로 다루세요.
+listener 경계가 깔끔하면 route는 정확히 attach되고, 팀은 자연스럽게 각자 영역을 소유하며, 디버깅도 미로 속 고양이 쫓기처럼 느껴지지 않습니다.</p>
+<h2 id="다음-단계">다음 단계</h2>
+<p>listener 설계가 정리됐다면, 다음으로 흔한 질문은 이것입니다:
+<strong>서로 다른 네임스페이스와 팀 사이에서, 누가 route를 attach할 수 있고 누가 무엇을 참조할 수 있을까?</strong></p>
+<p>다음 글에서는 네임스페이스 간 패턴과 소유권을 다룹니다:
+👉 <a href="08-multi-namespace-and-teamwork">멀티 네임스페이스와 팀 협업</a></p>3:["$","div",null,{"className":"prose","dangerouslySetInnerHTML":{"__html":"$8"}}]
+4:["$","footer",null,{"className":"mt-14 border-t pt-8","style":{"borderColor":"var(--color-border)"},"children":[["$","div",null,{"className":"mb-8 flex flex-wrap gap-2","children":[["$","$L2","kubernetes",{"href":"/ko/tags/kubernetes","localeCookie":{"name":"NEXT_LOCALE","sameSite":"lax"},"className":"inline-flex items-center rounded-full px-3 py-1 text-sm font-medium transition-colors","style":{"background":"var(--color-code-bg)","color":"var(--color-accent)","border":"1px solid var(--color-border)"},"children":["#","kubernetes"]}],["$","$L2","envoy-gateway",{"href":"/ko/tags/envoy-gateway","localeCookie":{"name":"NEXT_LOCALE","sameSite":"lax"},"className":"inline-flex items-center rounded-full px-3 py-1 text-sm font-medium transition-colors","style":{"background":"var(--color-code-bg)","color":"var(--color-accent)","border":"1px solid var(--color-border)"},"children":["#","envoy-gateway"]}],["$","$L2","gateway-api",{"href":"/ko/tags/gateway-api","localeCookie":{"name":"NEXT_LOCALE","sameSite":"lax"},"className":"inline-flex items-center rounded-full px-3 py-1 text-sm font-medium transition-colors","style":{"background":"var(--color-code-bg)","color":"var(--color-accent)","border":"1px solid var(--color-border)"},"children":["#","gateway-api"]}],["$","$L2","listener",{"href":"/ko/tags/listener","localeCookie":{"name":"NEXT_LOCALE","sameSite":"lax"},"className":"inline-flex items-center rounded-full px-3 py-1 text-sm font-medium transition-colors","style":{"background":"var(--color-code-bg)","color":"var(--color-accent)","border":"1px solid var(--color-border)"},"children":["#","listener"]}],["$","$L2","gateway",{"href":"/ko/tags/gateway","localeCookie":{"name":"NEXT_LOCALE","sameSite":"lax"},"className":"inline-flex items-center rounded-full px-3 py-1 text-sm font-medium transition-colors","style":{"background":"var(--color-code-bg)","color":"var(--color-accent)","border":"1px solid var(--color-border)"},"children":["#","gateway"]}],["$","$L2","httproute",{"href":"/ko/tags/httproute","localeCookie":{"name":"NEXT_LOCALE","sameSite":"lax"},"className":"inline-flex items-center rounded-full px-3 py-1 text-sm font-medium transition-colors","style":{"background":"var(--color-code-bg)","color":"var(--color-accent)","border":"1px solid var(--color-border)"},"children":["#","httproute"]}]]}],["$","nav",null,{"aria-label":"글 탐색","className":"grid grid-cols-1 gap-4 sm:grid-cols-2","children":[["$","$L2",null,{"href":"/ko/blog/k8s/gateway/06-route-types-cheatsheet","localeCookie":{"name":"NEXT_LOCALE","sameSite":"lax"},"className":"group rounded-lg border p-4 transition-colors hover:border-accent","style":{"borderColor":"var(--color-border)","background":"var(--color-surface)"},"children":[["$","p",null,{"className":"mb-1 text-xs","style":{"color":"var(--color-muted)"},"children":"← 최신 글"}],["$","p",null,{"className":"line-clamp-1 text-sm font-medium transition-colors group-hover:text-accent","style":{"color":"var(--color-text)"},"children":"Envoy Gateway Route 타입 치트시트: HTTPRoute, GRPCRoute, TCPRoute, 아니면 TLSRoute?"}]]}],["$","$L2",null,{"href":"/ko/blog/k8s/gateway/08-multi-namespace-and-teamwork","localeCookie":{"name":"NEXT_LOCALE","sameSite":"lax"},"className":"group rounded-lg border p-4 text-right transition-colors hover:border-accent","style":{"borderColor":"var(--color-border)","background":"var(--color-surface)"},"children":[["$","p",null,{"className":"mb-1 text-xs","style":{"color":"var(--color-muted)"},"children":"이전 글 →"}],["$","p",null,{"className":"line-clamp-1 text-sm font-medium transition-colors group-hover:text-accent","style":{"color":"var(--color-text)"},"children":"Envoy Gateway 멀티 네임스페이스와 팀 소유권: allowedRoutes, ReferenceGrant, 그리고 팀 간 거버넌스"}]]}]]}]]}]
+a:T3da2,<p>Gateway API를 배우는 많은 사람들은 <code>Listener</code>를 "아, 그냥 <code>port: 80</code> 필드 아닌가요" 정도로 생각합니다.
+하지만 실제 배포 환경에서 <code>Listener</code>는 결코 조연이 아닙니다. 오히려 ingress 계층 전체의 트래픽 관제 센터에 가깝습니다.</p>
+<p>listener는 단순히 포트를 여는 것이 아닙니다. 다음을 정의합니다:</p>
+<ul>
+<li>어떤 프로토콜을 받을지</li>
+<li>어떤 hostname을 받을지</li>
+<li>TLS를 수행할지 여부</li>
+<li>어떤 route 타입이 attach 가능한지</li>
+</ul>
+<p>즉 <strong>listener는 ingress 계약입니다</strong>. 계약을 깔끔하게 쓰면, 그 아래의 route, 팀 소유권, 디버깅 복잡도도 함께 정리됩니다.</p>
+<h2 id="올바른-사고-모델-세우기-listener-하나--ingress-슬롯-하나">올바른 사고 모델 세우기: Listener 하나 = Ingress 슬롯 하나</h2>
+<p>다음 Gateway를 보겠습니다:</p>
+<figure data-rehype-pretty-code-figure=""><pre style="background-color:#24292e;color:#e1e4e8" tabindex="0" data-language="yaml" data-theme="github-dark"><code data-language="yaml" data-theme="github-dark" style="display: grid;"><span data-line=""><span style="color:#85E89D">apiVersion</span><span style="color:#E1E4E8">: </span><span style="color:#9ECBFF">gateway.networking.k8s.io/v1</span></span>
+<span data-line=""><span style="color:#85E89D">kind</span><span style="color:#E1E4E8">: </span><span style="color:#9ECBFF">Gateway</span></span>
+<span data-line=""><span style="color:#85E89D">metadata</span><span style="color:#E1E4E8">:</span></span>
+<span data-line=""><span style="color:#85E89D">  name</span><span style="color:#E1E4E8">: </span><span style="color:#9ECBFF">eg</span></span>
+<span data-line=""><span style="color:#85E89D">spec</span><span style="color:#E1E4E8">:</span></span>
+<span data-line=""><span style="color:#85E89D">  gatewayClassName</span><span style="color:#E1E4E8">: </span><span style="color:#9ECBFF">eg</span></span>
+<span data-line=""><span style="color:#85E89D">  listeners</span><span style="color:#E1E4E8">:</span></span>
+<span data-line=""><span style="color:#E1E4E8">    - </span><span style="color:#85E89D">name</span><span style="color:#E1E4E8">: </span><span style="color:#9ECBFF">http</span></span>
+<span data-line=""><span style="color:#85E89D">      protocol</span><span style="color:#E1E4E8">: </span><span style="color:#9ECBFF">HTTP</span></span>
+<span data-line=""><span style="color:#85E89D">      port</span><span style="color:#E1E4E8">: </span><span style="color:#79B8FF">80</span></span>
+<span data-line=""><span style="color:#E1E4E8">    - </span><span style="color:#85E89D">name</span><span style="color:#E1E4E8">: </span><span style="color:#9ECBFF">https</span></span>
+<span data-line=""><span style="color:#85E89D">      protocol</span><span style="color:#E1E4E8">: </span><span style="color:#9ECBFF">HTTPS</span></span>
+<span data-line=""><span style="color:#85E89D">      port</span><span style="color:#E1E4E8">: </span><span style="color:#79B8FF">443</span></span>
+<span data-line=""><span style="color:#85E89D">      hostname</span><span style="color:#E1E4E8">: </span><span style="color:#9ECBFF">app.example.com</span></span>
+<span data-line=""><span style="color:#85E89D">      tls</span><span style="color:#E1E4E8">:</span></span>
+<span data-line=""><span style="color:#85E89D">        mode</span><span style="color:#E1E4E8">: </span><span style="color:#9ECBFF">Terminate</span></span>
+<span data-line=""><span style="color:#85E89D">        certificateRefs</span><span style="color:#E1E4E8">:</span></span>
+<span data-line=""><span style="color:#E1E4E8">          - </span><span style="color:#85E89D">name</span><span style="color:#E1E4E8">: </span><span style="color:#9ECBFF">app-cert</span></span>
+<span data-line=""><span style="color:#E1E4E8">    - </span><span style="color:#85E89D">name</span><span style="color:#E1E4E8">: </span><span style="color:#9ECBFF">grpc</span></span>
+<span data-line=""><span style="color:#85E89D">      protocol</span><span style="color:#E1E4E8">: </span><span style="color:#9ECBFF">HTTPS</span></span>
+<span data-line=""><span style="color:#85E89D">      port</span><span style="color:#E1E4E8">: </span><span style="color:#79B8FF">8443</span></span>
+<span data-line=""><span style="color:#85E89D">      hostname</span><span style="color:#E1E4E8">: </span><span style="color:#9ECBFF">grpc.example.com</span></span>
+<span data-line=""><span style="color:#85E89D">      tls</span><span style="color:#E1E4E8">:</span></span>
+<span data-line=""><span style="color:#85E89D">        mode</span><span style="color:#E1E4E8">: </span><span style="color:#9ECBFF">Terminate</span></span>
+<span data-line=""><span style="color:#85E89D">        certificateRefs</span><span style="color:#E1E4E8">:</span></span>
+<span data-line=""><span style="color:#E1E4E8">          - </span><span style="color:#85E89D">name</span><span style="color:#E1E4E8">: </span><span style="color:#9ECBFF">grpc-cert</span></span></code></pre></figure>
+<p>이걸 단순히 "구멍 세 개 뚫린 Gateway 하나"로 보지 마세요. 오히려 이렇게 보는 편이 맞습니다:</p>
+<ul>
+<li><code>http</code> listener: 평문 HTTP용</li>
+<li><code>https</code> listener: <code>app.example.com</code>용</li>
+<li><code>grpc</code> listener: gRPC 서비스를 위한 전용 ingress 슬롯</li>
+</ul>
+<p>이렇게 생각하기 시작하면 많은 설계 판단이 바로 명확해집니다.
+여러분은 YAML을 조립하는 것이 아니라, ingress 경계를 설계하고 있는 것입니다.</p>
+<h2 id="자주-쓰는-세-가지-분리-패턴">자주 쓰는 세 가지 분리 패턴</h2>
+<h3 id="패턴-1-프로토콜-기준-분리">패턴 1: 프로토콜 기준 분리</h3>
+<p>가장 직관적인 접근입니다:</p>
+<ul>
+<li>HTTP는 하나의 listener</li>
+<li>HTTPS는 하나의 listener</li>
+<li>gRPC는 하나의 listener</li>
+<li>TCP/TLS passthrough는 별도로 분리</li>
+</ul>
+<p>이 방식은 책임이 명확합니다.
+gRPC와 일반 웹 API가 둘 다 HTTP/2 위에서 돌아간다 해도 서비스 모델은 다릅니다. 분리해 두면 route끼리 서로 간섭하는 일을 줄일 수 있습니다.</p>
+<h3 id="패턴-2-hostname-기준-분리">패턴 2: Hostname 기준 분리</h3>
+<p>도메인이 여러 개라면, 대표 hostname마다 listener 하나씩 두는 패턴이 흔합니다:</p>
+<figure data-rehype-pretty-code-figure=""><pre style="background-color:#24292e;color:#e1e4e8" tabindex="0" data-language="yaml" data-theme="github-dark"><code data-language="yaml" data-theme="github-dark" style="display: grid;"><span data-line=""><span style="color:#85E89D">listeners</span><span style="color:#E1E4E8">:</span></span>
+<span data-line=""><span style="color:#E1E4E8">  - </span><span style="color:#85E89D">name</span><span style="color:#E1E4E8">: </span><span style="color:#9ECBFF">app</span></span>
+<span data-line=""><span style="color:#85E89D">    hostname</span><span style="color:#E1E4E8">: </span><span style="color:#9ECBFF">app.example.com</span></span>
+<span data-line=""><span style="color:#85E89D">    protocol</span><span style="color:#E1E4E8">: </span><span style="color:#9ECBFF">HTTPS</span></span>
+<span data-line=""><span style="color:#85E89D">    port</span><span style="color:#E1E4E8">: </span><span style="color:#79B8FF">443</span></span>
+<span data-line=""><span style="color:#E1E4E8">  - </span><span style="color:#85E89D">name</span><span style="color:#E1E4E8">: </span><span style="color:#9ECBFF">admin</span></span>
+<span data-line=""><span style="color:#85E89D">    hostname</span><span style="color:#E1E4E8">: </span><span style="color:#9ECBFF">admin.example.com</span></span>
+<span data-line=""><span style="color:#85E89D">    protocol</span><span style="color:#E1E4E8">: </span><span style="color:#9ECBFF">HTTPS</span></span>
+<span data-line=""><span style="color:#85E89D">    port</span><span style="color:#E1E4E8">: </span><span style="color:#79B8FF">443</span></span></code></pre></figure>
+<p>이 방식은 다음에 잘 맞습니다:</p>
+<ul>
+<li>public과 admin 거버넌스를 분리할 때</li>
+<li>서로 다른 hostname에 서로 다른 인증서가 필요할 때</li>
+<li>route attach 경계를 깔끔하게 유지하고 싶을 때</li>
+</ul>
+<h3 id="패턴-3-팀-또는-환경-책임-기준-분리">패턴 3: 팀 또는 환경 책임 기준 분리</h3>
+<p>여러 팀이 함께 쓰는 환경이라면, listener는 거버넌스 경계 역할을 할 수 있습니다:</p>
+<ul>
+<li>외부 제품 트래픽용 <code>public-api</code></li>
+<li>내부 시스템용 <code>internal-api</code></li>
+<li>파트너 연동용 <code>partner-api</code></li>
+</ul>
+<p>여기서 listener의 가치는 단순 기술 설정을 넘어, 권한과 책임의 경계가 됩니다.
+이 패턴은 중대형 팀에서 특히 차이를 만듭니다. "누구나 아무 route나 붙일 수 있는 ingress 하나"라는 재난을 줄여주기 때문입니다.</p>
+<h2 id="sectionname과-allowedroutes-가장-중요한-두-필드"><code>sectionName</code>과 <code>allowedRoutes</code>: 가장 중요한 두 필드</h2>
+<p>route는 <code>parentRefs.sectionName</code>을 통해 특정 listener에 attach합니다:</p>
+<figure data-rehype-pretty-code-figure=""><pre style="background-color:#24292e;color:#e1e4e8" tabindex="0" data-language="yaml" data-theme="github-dark"><code data-language="yaml" data-theme="github-dark" style="display: grid;"><span data-line=""><span style="color:#85E89D">apiVersion</span><span style="color:#E1E4E8">: </span><span style="color:#9ECBFF">gateway.networking.k8s.io/v1</span></span>
+<span data-line=""><span style="color:#85E89D">kind</span><span style="color:#E1E4E8">: </span><span style="color:#9ECBFF">HTTPRoute</span></span>
+<span data-line=""><span style="color:#85E89D">metadata</span><span style="color:#E1E4E8">:</span></span>
+<span data-line=""><span style="color:#85E89D">  name</span><span style="color:#E1E4E8">: </span><span style="color:#9ECBFF">app-route</span></span>
+<span data-line=""><span style="color:#85E89D">spec</span><span style="color:#E1E4E8">:</span></span>
+<span data-line=""><span style="color:#85E89D">  parentRefs</span><span style="color:#E1E4E8">:</span></span>
+<span data-line=""><span style="color:#E1E4E8">    - </span><span style="color:#85E89D">name</span><span style="color:#E1E4E8">: </span><span style="color:#9ECBFF">eg</span></span>
+<span data-line=""><span style="color:#85E89D">      sectionName</span><span style="color:#E1E4E8">: </span><span style="color:#9ECBFF">https</span></span>
+<span data-line=""><span style="color:#85E89D">  hostnames</span><span style="color:#E1E4E8">:</span></span>
+<span data-line=""><span style="color:#E1E4E8">    - </span><span style="color:#9ECBFF">"app.example.com"</span></span>
+<span data-line=""><span style="color:#85E89D">  rules</span><span style="color:#E1E4E8">:</span></span>
+<span data-line=""><span style="color:#E1E4E8">    - </span><span style="color:#85E89D">backendRefs</span><span style="color:#E1E4E8">:</span></span>
+<span data-line=""><span style="color:#E1E4E8">        - </span><span style="color:#85E89D">name</span><span style="color:#E1E4E8">: </span><span style="color:#9ECBFF">app-service</span></span>
+<span data-line=""><span style="color:#85E89D">          port</span><span style="color:#E1E4E8">: </span><span style="color:#79B8FF">8080</span></span></code></pre></figure>
+<p>이 route는 <code>https</code> listener만 찾습니다.
+<code>sectionName</code>을 지정하지 않아도 시스템은 attach 가능한 listener를 찾는 규칙을 적용하지만, 멀티 listener 환경에서는 명시적으로 써두는 편이 거의 항상 더 안전합니다.</p>
+<p>또 하나의 핵심 필드는 <code>allowedRoutes</code>입니다:</p>
+<figure data-rehype-pretty-code-figure=""><pre style="background-color:#24292e;color:#e1e4e8" tabindex="0" data-language="yaml" data-theme="github-dark"><code data-language="yaml" data-theme="github-dark" style="display: grid;"><span data-line=""><span style="color:#85E89D">listeners</span><span style="color:#E1E4E8">:</span></span>
+<span data-line=""><span style="color:#E1E4E8">  - </span><span style="color:#85E89D">name</span><span style="color:#E1E4E8">: </span><span style="color:#9ECBFF">public</span></span>
+<span data-line=""><span style="color:#85E89D">    protocol</span><span style="color:#E1E4E8">: </span><span style="color:#9ECBFF">HTTPS</span></span>
+<span data-line=""><span style="color:#85E89D">    port</span><span style="color:#E1E4E8">: </span><span style="color:#79B8FF">443</span></span>
+<span data-line=""><span style="color:#85E89D">    allowedRoutes</span><span style="color:#E1E4E8">:</span></span>
+<span data-line=""><span style="color:#85E89D">      namespaces</span><span style="color:#E1E4E8">:</span></span>
+<span data-line=""><span style="color:#85E89D">        from</span><span style="color:#E1E4E8">: </span><span style="color:#9ECBFF">Same</span></span></code></pre></figure>
+<p>이 뜻은 <code>Gateway</code>와 같은 네임스페이스에 있는 route만 이 listener에 attach할 수 있다는 것입니다.
+흔한 값은 다음과 같습니다:</p>
+<ul>
+<li><code>Same</code>: 같은 네임스페이스만</li>
+<li><code>All</code>: 어떤 네임스페이스든 허용</li>
+<li><code>Selector</code>: label selector에 맞는 네임스페이스만 허용</li>
+</ul>
+<p>플랫폼 경계를 의도적으로 만들고 싶다면 이 필드는 매우 강력합니다.
+리스너 수준에서 "누가 이 ingress에 붙을 수 있는지"를 결정하니까요.</p>
+<h2 id="실전-조언-후회-없는-listener-구조-짜기">실전 조언: 후회 없는 Listener 구조 짜기</h2>
+<p>아주 유용한 원칙 하나:</p>
+<p><strong>각 listener는 하나의 명확한 책임만 가져야 합니다.</strong></p>
+<p>예를 들면:</p>
+<ul>
+<li>하나의 listener는 하나의 주요 hostname 그룹을 담당</li>
+<li>하나의 listener는 하나의 주요 프로토콜 타입을 담당</li>
+<li>하나의 listener는 하나의 route 타입 또는 고정된 네임스페이스 집합만 허용</li>
+</ul>
+<p>모든 트래픽을 만능 listener 하나에 욱여넣고, downstream route가 알아서 정리해 주길 기대하지 마세요.
+처음에는 효율적으로 보여도, 세 달 뒤에는 집집마다 하나씩 생기는 미스터리 케이블 서랍처럼 됩니다. 다 들어 있는데 아무것도 찾을 수 없죠.</p>
+<p>구체적인 제안:</p>
+<ul>
+<li>Listener 이름은 의미 있게 짓기: <code>https-public</code>, <code>grpc-internal</code></li>
+<li>멀티 listener 환경에서는 항상 <code>sectionName</code>과 짝지어 쓰기</li>
+<li>중요한 hostname을 하나의 listener에 마구 섞지 않기</li>
+<li><code>allowedRoutes</code>는 먼저 제한적으로 시작하기. 처음부터 <code>from: All</code>로 열지 않기</li>
+</ul>
+<h2 id="한-줄-요약">한 줄 요약</h2>
+<p><code>Listener</code>를 단순한 포트 설정이 아니라 ingress 계약으로 다루세요.
+listener 경계가 깔끔하면 route는 정확히 attach되고, 팀은 자연스럽게 각자 영역을 소유하며, 디버깅도 미로 속 고양이 쫓기처럼 느껴지지 않습니다.</p>
+<h2 id="다음-단계">다음 단계</h2>
+<p>listener 설계가 정리됐다면, 다음으로 흔한 질문은 이것입니다:
+<strong>서로 다른 네임스페이스와 팀 사이에서, 누가 route를 attach할 수 있고 누가 무엇을 참조할 수 있을까?</strong></p>
+<p>다음 글에서는 네임스페이스 간 패턴과 소유권을 다룹니다:
+👉 <a href="08-multi-namespace-and-teamwork">멀티 네임스페이스와 팀 협업</a></p>5:["$","aside",null,{"className":"hidden lg:block","children":["$","$L9",null,{"html":"$a"}]}]
+6:["$","script","script-0",{"src":"/_next/static/chunks/2dddb3bc05093f69.js","async":true}]
+7:["$","$Lb",null,{"children":["$","$c",null,{"name":"Next.MetadataOutlet","children":"$@d"}]}]
+d:null

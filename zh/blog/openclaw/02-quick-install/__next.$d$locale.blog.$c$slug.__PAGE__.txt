@@ -1,0 +1,181 @@
+1:"$Sreact.fragment"
+2:I[14864,["/_next/static/chunks/7923a261b80bb6e1.js","/_next/static/chunks/e09b4358027e8033.js","/_next/static/chunks/2dddb3bc05093f69.js"],"default"]
+8:I[24801,["/_next/static/chunks/7923a261b80bb6e1.js","/_next/static/chunks/e09b4358027e8033.js","/_next/static/chunks/2dddb3bc05093f69.js"],"default"]
+a:I[50183,["/_next/static/chunks/5a5b5b13c22d14f7.js","/_next/static/chunks/a484d1d3dd4b55ab.js"],"OutletBoundary"]
+b:"$Sreact.suspense"
+3:T134d,<p>大多數教學在這一步就讓你放棄了。這篇的目標：<strong>讓你第一次就成功。</strong></p>
+<h2 id="本篇學習目標">本篇學習目標</h2>
+<ul>
+<li>確認安裝前的必要條件</li>
+<li>完成 OpenClaw 安裝</li>
+<li>跑完 Onboarding 精靈，產生第一個助理</li>
+<li>成功打開儀表板</li>
+</ul>
+<hr>
+<h2 id="裝之前先確認這兩件事">裝之前先確認這兩件事</h2>
+<p>不需要很多東西，但這兩樣缺一不可：</p>
+<p><strong>1. Node.js（LTS 版本）</strong></p>
+<figure data-rehype-pretty-code-figure=""><pre style="background-color:#24292e;color:#e1e4e8" tabindex="0" data-language="bash" data-theme="github-dark"><code data-language="bash" data-theme="github-dark" style="display: grid;"><span data-line=""><span style="color:#B392F0">node</span><span style="color:#79B8FF"> --version</span></span>
+<span data-line=""><span style="color:#6A737D"># 確認有印出版本號就對了</span></span></code></pre></figure>
+<p><strong>2. AI 模型的 API Key</strong></p>
+<p>用雲端模型（Anthropic Claude、OpenAI 等）需要 API key；想完全離線也可以，用本地模型就好。這個系列預設你用雲端模型。</p>
+<blockquote>
+<p>💡 不知道怎麼取得 API key？搜尋「Anthropic API key 申請」，通常 5 分鐘內搞定。</p>
+</blockquote>
+<hr>
+<h2 id="安裝-openclaw">安裝 OpenClaw</h2>
+<p>官方推薦用 <strong>git 安裝方式</strong>（方便之後更新和除錯）：</p>
+<p><strong>macOS / Linux：</strong></p>
+<figure data-rehype-pretty-code-figure=""><pre style="background-color:#24292e;color:#e1e4e8" tabindex="0" data-language="bash" data-theme="github-dark"><code data-language="bash" data-theme="github-dark" style="display: grid;"><span data-line=""><span style="color:#6A737D"># 依官方 docs.openclaw.ai 的 Quick Start 指令安裝</span></span>
+<span data-line=""><span style="color:#6A737D"># 通常是一行 curl 腳本搞定</span></span></code></pre></figure>
+<p><strong>Windows：</strong></p>
+<figure data-rehype-pretty-code-figure=""><pre style="background-color:#24292e;color:#e1e4e8" tabindex="0" data-language="bash" data-theme="github-dark"><code data-language="bash" data-theme="github-dark" style="display: grid;"><span data-line=""><span style="color:#6A737D"># 先確認已安裝 Git 且加入 PATH</span></span>
+<span data-line=""><span style="color:#B392F0">git</span><span style="color:#79B8FF"> --version</span></span>
+<span data-line=""> </span>
+<span data-line=""><span style="color:#6A737D"># 再依 docs.openclaw.ai 的 Windows 說明安裝</span></span></code></pre></figure>
+<blockquote>
+<p>⚠️ 卡在「git not found」或「openclaw 無法辨識」？把 Git 加入系統 PATH，重開終端機再試一次。</p>
+</blockquote>
+<hr>
+<h2 id="第一次啟動孵化助理">第一次啟動：孵化助理</h2>
+<p>安裝完後，執行：</p>
+<figure data-rehype-pretty-code-figure=""><pre style="background-color:#24292e;color:#e1e4e8" tabindex="0" data-language="bash" data-theme="github-dark"><code data-language="bash" data-theme="github-dark" style="display: grid;"><span data-line=""><span style="color:#B392F0">openclaw</span><span style="color:#9ECBFF"> gateway</span></span></code></pre></figure>
+<p><strong>第一次執行會進入 Onboarding 精靈</strong>，它會問你幾個問題：</p>
+<ol>
+<li>用哪個 AI 模型？</li>
+<li>API key 是什麼？</li>
+<li>工作區要放在哪裡？</li>
+</ol>
+<p>依畫面填完，它會幫你孵化出第一個助理。</p>
+<blockquote>
+<p>💡 卡在「wake up my friend」很久沒反應？先確認 API key 正確、網路正常，再看終端機有沒有錯誤訊息。</p>
+</blockquote>
+<hr>
+<h2 id="onboarding-完成後你會得到什麼">Onboarding 完成後你會得到什麼？</h2>
+<ul>
+<li>一個 <strong>Token</strong>（之後登入儀表板要用）</li>
+<li>基本設定檔：<code>~/.openclaw/openclaw.json</code></li>
+<li>你的第一個 AI 助理，已經在運作了！</li>
+</ul>
+<hr>
+<h2 id="打開儀表板">打開儀表板</h2>
+<p>Gateway 還在跑的情況下，打開瀏覽器：</p>
+<pre><code>http://127.0.0.1:18789/
+</code></pre>
+<p><strong>常見狀況處理：</strong></p>
+<table>
+<thead>
+<tr>
+<th>畫面顯示</th>
+<th>解法</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td>pairing required</td>
+<td>在終端機跑 <code>openclaw devices list</code> 再 <code>openclaw devices approve &#x3C;id></code></td>
+</tr>
+<tr>
+<td>要求輸入 Token</td>
+<td>貼上 Onboarding 給你的那個 token</td>
+</tr>
+<tr>
+<td>沒有回應</td>
+<td>確認 <code>openclaw gateway</code> 還在跑</td>
+</tr>
+</tbody>
+</table>
+<hr>
+<h2 id="下一步">下一步</h2>
+<p>你的助理現在在家了。下一篇，我們來搞定<strong>登入和介面</strong>，讓你看懂每個按鈕在幹嘛。</p>
+<p><a href="01-intro">← 上一篇：認識 OpenClaw</a> | 👉 <a href="03-dashboard-auth">儀表板不再是黑盒子</a></p>0:{"buildId":"Yck3R4ooQxWkwGLT6is1X","rsc":["$","$1","c",{"children":[[["$","script",null,{"type":"application/ld+json","dangerouslySetInnerHTML":{"__html":"{\"@context\":\"https://schema.org\",\"@type\":\"Article\",\"headline\":\"5 分鐘裝起來！OpenClaw 安裝與首次啟動完全不卡關\",\"description\":\"從零開始安裝 OpenClaw，跑完 Onboarding 精靈，打開第一個儀表板。\",\"url\":\"https://benxhub.com/zh/blog/openclaw/02-quick-install\",\"mainEntityOfPage\":{\"@type\":\"WebPage\",\"@id\":\"https://benxhub.com/zh/blog/openclaw/02-quick-install\"},\"datePublished\":\"2026-03-08T00:00:00.000Z\",\"dateModified\":\"2026-03-08T00:00:00.000Z\",\"keywords\":\"openclaw, installation, quick-start, setup\",\"inLanguage\":\"zh\",\"author\":{\"@type\":\"Person\",\"name\":\"BenX\",\"url\":\"https://benxhub.com\"},\"publisher\":{\"@type\":\"Organization\",\"name\":\"BenXHub Blog\",\"url\":\"https://benxhub.com\"}}"}}],["$","div",null,{"className":"mx-auto max-w-6xl px-4 py-12 sm:px-6","children":["$","div",null,{"className":"lg:grid lg:grid-cols-[1fr_240px] lg:gap-14","children":[["$","article",null,{"children":[["$","header",null,{"className":"mb-10","children":[["$","div",null,{"className":"mb-4 flex flex-wrap gap-2","children":[["$","$L2","openclaw",{"href":"/zh/tags/openclaw","localeCookie":{"name":"NEXT_LOCALE","sameSite":"lax"},"className":"inline-flex items-center rounded-full px-2.5 py-0.5 text-xs font-medium transition-colors","style":{"background":"var(--color-code-bg)","color":"var(--color-accent)","border":"1px solid var(--color-border)"},"children":["#","openclaw"]}],["$","$L2","installation",{"href":"/zh/tags/installation","localeCookie":{"name":"NEXT_LOCALE","sameSite":"lax"},"className":"inline-flex items-center rounded-full px-2.5 py-0.5 text-xs font-medium transition-colors","style":{"background":"var(--color-code-bg)","color":"var(--color-accent)","border":"1px solid var(--color-border)"},"children":["#","installation"]}],["$","$L2","quick-start",{"href":"/zh/tags/quick-start","localeCookie":{"name":"NEXT_LOCALE","sameSite":"lax"},"className":"inline-flex items-center rounded-full px-2.5 py-0.5 text-xs font-medium transition-colors","style":{"background":"var(--color-code-bg)","color":"var(--color-accent)","border":"1px solid var(--color-border)"},"children":["#","quick-start"]}],["$","$L2","setup",{"href":"/zh/tags/setup","localeCookie":{"name":"NEXT_LOCALE","sameSite":"lax"},"className":"inline-flex items-center rounded-full px-2.5 py-0.5 text-xs font-medium transition-colors","style":{"background":"var(--color-code-bg)","color":"var(--color-accent)","border":"1px solid var(--color-border)"},"children":["#","setup"]}]]}],["$","h1",null,{"className":"mb-4 text-3xl leading-snug font-bold tracking-tight sm:text-4xl","style":{"color":"var(--color-text)"},"children":"5 分鐘裝起來！OpenClaw 安裝與首次啟動完全不卡關"}],["$","div",null,{"className":"flex flex-wrap items-center gap-3 text-sm","style":{"color":"var(--color-muted)"},"children":[["$","time",null,{"dateTime":"2026-03-08","children":"2026 年 3 月 8 日"}],["$","span",null,{"aria-hidden":"true","children":"·"}],["$","span",null,{"children":"3 min read"}]]}],"$undefined",["$","div",null,{"className":"mt-6 border-b","style":{"borderColor":"var(--color-border)"}}]]}],["$","div",null,{"className":"prose","dangerouslySetInnerHTML":{"__html":"$3"}}],"$L4"]}],"$L5"]}]}]],["$L6"],"$L7"]}],"loading":null,"isPartial":false}
+4:["$","footer",null,{"className":"mt-14 border-t pt-8","style":{"borderColor":"var(--color-border)"},"children":[["$","div",null,{"className":"mb-8 flex flex-wrap gap-2","children":[["$","$L2","openclaw",{"href":"/zh/tags/openclaw","localeCookie":{"name":"NEXT_LOCALE","sameSite":"lax"},"className":"inline-flex items-center rounded-full px-3 py-1 text-sm font-medium transition-colors","style":{"background":"var(--color-code-bg)","color":"var(--color-accent)","border":"1px solid var(--color-border)"},"children":["#","openclaw"]}],["$","$L2","installation",{"href":"/zh/tags/installation","localeCookie":{"name":"NEXT_LOCALE","sameSite":"lax"},"className":"inline-flex items-center rounded-full px-3 py-1 text-sm font-medium transition-colors","style":{"background":"var(--color-code-bg)","color":"var(--color-accent)","border":"1px solid var(--color-border)"},"children":["#","installation"]}],["$","$L2","quick-start",{"href":"/zh/tags/quick-start","localeCookie":{"name":"NEXT_LOCALE","sameSite":"lax"},"className":"inline-flex items-center rounded-full px-3 py-1 text-sm font-medium transition-colors","style":{"background":"var(--color-code-bg)","color":"var(--color-accent)","border":"1px solid var(--color-border)"},"children":["#","quick-start"]}],["$","$L2","setup",{"href":"/zh/tags/setup","localeCookie":{"name":"NEXT_LOCALE","sameSite":"lax"},"className":"inline-flex items-center rounded-full px-3 py-1 text-sm font-medium transition-colors","style":{"background":"var(--color-code-bg)","color":"var(--color-accent)","border":"1px solid var(--color-border)"},"children":["#","setup"]}]]}],["$","nav",null,{"aria-label":"文章導覽","className":"grid grid-cols-1 gap-4 sm:grid-cols-2","children":[["$","$L2",null,{"href":"/zh/blog/openclaw/01-intro","localeCookie":{"name":"NEXT_LOCALE","sameSite":"lax"},"className":"group rounded-lg border p-4 transition-colors hover:border-accent","style":{"borderColor":"var(--color-border)","background":"var(--color-surface)"},"children":[["$","p",null,{"className":"mb-1 text-xs","style":{"color":"var(--color-muted)"},"children":"← 較新文章"}],["$","p",null,{"className":"line-clamp-1 text-sm font-medium transition-colors group-hover:text-accent","style":{"color":"var(--color-text)"},"children":"OpenClaw 教學系列：讓 AI 助理住進你家"}]]}],["$","$L2",null,{"href":"/zh/blog/openclaw/03-dashboard-auth","localeCookie":{"name":"NEXT_LOCALE","sameSite":"lax"},"className":"group rounded-lg border p-4 text-right transition-colors hover:border-accent","style":{"borderColor":"var(--color-border)","background":"var(--color-surface)"},"children":[["$","p",null,{"className":"mb-1 text-xs","style":{"color":"var(--color-muted)"},"children":"較舊文章 →"}],["$","p",null,{"className":"line-clamp-1 text-sm font-medium transition-colors group-hover:text-accent","style":{"color":"var(--color-text)"},"children":"儀表板老是卡關？三分鐘搞懂 OpenClaw 認證"}]]}]]}]]}]
+9:T134d,<p>大多數教學在這一步就讓你放棄了。這篇的目標：<strong>讓你第一次就成功。</strong></p>
+<h2 id="本篇學習目標">本篇學習目標</h2>
+<ul>
+<li>確認安裝前的必要條件</li>
+<li>完成 OpenClaw 安裝</li>
+<li>跑完 Onboarding 精靈，產生第一個助理</li>
+<li>成功打開儀表板</li>
+</ul>
+<hr>
+<h2 id="裝之前先確認這兩件事">裝之前先確認這兩件事</h2>
+<p>不需要很多東西，但這兩樣缺一不可：</p>
+<p><strong>1. Node.js（LTS 版本）</strong></p>
+<figure data-rehype-pretty-code-figure=""><pre style="background-color:#24292e;color:#e1e4e8" tabindex="0" data-language="bash" data-theme="github-dark"><code data-language="bash" data-theme="github-dark" style="display: grid;"><span data-line=""><span style="color:#B392F0">node</span><span style="color:#79B8FF"> --version</span></span>
+<span data-line=""><span style="color:#6A737D"># 確認有印出版本號就對了</span></span></code></pre></figure>
+<p><strong>2. AI 模型的 API Key</strong></p>
+<p>用雲端模型（Anthropic Claude、OpenAI 等）需要 API key；想完全離線也可以，用本地模型就好。這個系列預設你用雲端模型。</p>
+<blockquote>
+<p>💡 不知道怎麼取得 API key？搜尋「Anthropic API key 申請」，通常 5 分鐘內搞定。</p>
+</blockquote>
+<hr>
+<h2 id="安裝-openclaw">安裝 OpenClaw</h2>
+<p>官方推薦用 <strong>git 安裝方式</strong>（方便之後更新和除錯）：</p>
+<p><strong>macOS / Linux：</strong></p>
+<figure data-rehype-pretty-code-figure=""><pre style="background-color:#24292e;color:#e1e4e8" tabindex="0" data-language="bash" data-theme="github-dark"><code data-language="bash" data-theme="github-dark" style="display: grid;"><span data-line=""><span style="color:#6A737D"># 依官方 docs.openclaw.ai 的 Quick Start 指令安裝</span></span>
+<span data-line=""><span style="color:#6A737D"># 通常是一行 curl 腳本搞定</span></span></code></pre></figure>
+<p><strong>Windows：</strong></p>
+<figure data-rehype-pretty-code-figure=""><pre style="background-color:#24292e;color:#e1e4e8" tabindex="0" data-language="bash" data-theme="github-dark"><code data-language="bash" data-theme="github-dark" style="display: grid;"><span data-line=""><span style="color:#6A737D"># 先確認已安裝 Git 且加入 PATH</span></span>
+<span data-line=""><span style="color:#B392F0">git</span><span style="color:#79B8FF"> --version</span></span>
+<span data-line=""> </span>
+<span data-line=""><span style="color:#6A737D"># 再依 docs.openclaw.ai 的 Windows 說明安裝</span></span></code></pre></figure>
+<blockquote>
+<p>⚠️ 卡在「git not found」或「openclaw 無法辨識」？把 Git 加入系統 PATH，重開終端機再試一次。</p>
+</blockquote>
+<hr>
+<h2 id="第一次啟動孵化助理">第一次啟動：孵化助理</h2>
+<p>安裝完後，執行：</p>
+<figure data-rehype-pretty-code-figure=""><pre style="background-color:#24292e;color:#e1e4e8" tabindex="0" data-language="bash" data-theme="github-dark"><code data-language="bash" data-theme="github-dark" style="display: grid;"><span data-line=""><span style="color:#B392F0">openclaw</span><span style="color:#9ECBFF"> gateway</span></span></code></pre></figure>
+<p><strong>第一次執行會進入 Onboarding 精靈</strong>，它會問你幾個問題：</p>
+<ol>
+<li>用哪個 AI 模型？</li>
+<li>API key 是什麼？</li>
+<li>工作區要放在哪裡？</li>
+</ol>
+<p>依畫面填完，它會幫你孵化出第一個助理。</p>
+<blockquote>
+<p>💡 卡在「wake up my friend」很久沒反應？先確認 API key 正確、網路正常，再看終端機有沒有錯誤訊息。</p>
+</blockquote>
+<hr>
+<h2 id="onboarding-完成後你會得到什麼">Onboarding 完成後你會得到什麼？</h2>
+<ul>
+<li>一個 <strong>Token</strong>（之後登入儀表板要用）</li>
+<li>基本設定檔：<code>~/.openclaw/openclaw.json</code></li>
+<li>你的第一個 AI 助理，已經在運作了！</li>
+</ul>
+<hr>
+<h2 id="打開儀表板">打開儀表板</h2>
+<p>Gateway 還在跑的情況下，打開瀏覽器：</p>
+<pre><code>http://127.0.0.1:18789/
+</code></pre>
+<p><strong>常見狀況處理：</strong></p>
+<table>
+<thead>
+<tr>
+<th>畫面顯示</th>
+<th>解法</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td>pairing required</td>
+<td>在終端機跑 <code>openclaw devices list</code> 再 <code>openclaw devices approve &#x3C;id></code></td>
+</tr>
+<tr>
+<td>要求輸入 Token</td>
+<td>貼上 Onboarding 給你的那個 token</td>
+</tr>
+<tr>
+<td>沒有回應</td>
+<td>確認 <code>openclaw gateway</code> 還在跑</td>
+</tr>
+</tbody>
+</table>
+<hr>
+<h2 id="下一步">下一步</h2>
+<p>你的助理現在在家了。下一篇，我們來搞定<strong>登入和介面</strong>，讓你看懂每個按鈕在幹嘛。</p>
+<p><a href="01-intro">← 上一篇：認識 OpenClaw</a> | 👉 <a href="03-dashboard-auth">儀表板不再是黑盒子</a></p>5:["$","aside",null,{"className":"hidden lg:block","children":["$","$L8",null,{"html":"$9"}]}]
+6:["$","script","script-0",{"src":"/_next/static/chunks/2dddb3bc05093f69.js","async":true}]
+7:["$","$La",null,{"children":["$","$b",null,{"name":"Next.MetadataOutlet","children":"$@c"}]}]
+c:null

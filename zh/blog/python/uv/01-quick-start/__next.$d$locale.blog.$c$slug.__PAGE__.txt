@@ -1,0 +1,128 @@
+1:"$Sreact.fragment"
+2:I[14864,["/_next/static/chunks/7923a261b80bb6e1.js","/_next/static/chunks/e09b4358027e8033.js","/_next/static/chunks/2dddb3bc05093f69.js"],"default"]
+8:I[24801,["/_next/static/chunks/7923a261b80bb6e1.js","/_next/static/chunks/e09b4358027e8033.js","/_next/static/chunks/2dddb3bc05093f69.js"],"default"]
+a:I[50183,["/_next/static/chunks/5a5b5b13c22d14f7.js","/_next/static/chunks/a484d1d3dd4b55ab.js"],"OutletBoundary"]
+b:"$Sreact.suspense"
+:HL["/images/posts/uv-quick-start.jpg","image"]
+3:T13e5,<p>這篇用最短路徑，幫你完成一個<strong>能跑的 Python 專案</strong>——建立你在 uv 的第一個可用環境。就像養第一隻小水獺：先讓牠能吃能睡，進階撸水獺技巧之後再說。</p>
+<h2 id="前置條件">前置條件</h2>
+<ul>
+<li>已安裝 uv（見 <a href="00-overview">總覽</a> 的安裝指令）</li>
+<li>終端機能執行 <code>uv</code> 指令</li>
+</ul>
+<h2 id="最小範例建立第一支專案">最小範例：建立第一支專案</h2>
+<h3 id="步驟-1驗證-uv-已安裝">步驟 1：驗證 uv 已安裝</h3>
+<figure data-rehype-pretty-code-figure=""><pre style="background-color:#24292e;color:#e1e4e8" tabindex="0" data-language="bash" data-theme="github-dark"><code data-language="bash" data-theme="github-dark" style="display: grid;"><span data-line=""><span style="color:#B392F0">uv</span><span style="color:#79B8FF"> --version</span></span></code></pre></figure>
+<p>有版本號就代表裝好了。沒有？回去跑安裝腳本，然後重開 terminal。</p>
+<h3 id="步驟-2初始化專案">步驟 2：初始化專案</h3>
+<figure data-rehype-pretty-code-figure=""><pre style="background-color:#24292e;color:#e1e4e8" tabindex="0" data-language="bash" data-theme="github-dark"><code data-language="bash" data-theme="github-dark" style="display: grid;"><span data-line=""><span style="color:#B392F0">uv</span><span style="color:#9ECBFF"> init</span><span style="color:#9ECBFF"> my-app</span></span>
+<span data-line=""><span style="color:#79B8FF">cd</span><span style="color:#9ECBFF"> my-app</span></span></code></pre></figure>
+<p>uv 會自動建立 <code>pyproject.toml</code>、<code>.python-version</code>、<code>main.py</code>、<code>README.md</code>。結構大概長這樣：</p>
+<pre><code>my-app/
+├── .gitignore
+├── .python-version
+├── README.md
+├── main.py
+└── pyproject.toml
+</code></pre>
+<h3 id="步驟-3執行預設程式">步驟 3：執行預設程式</h3>
+<figure data-rehype-pretty-code-figure=""><pre style="background-color:#24292e;color:#e1e4e8" tabindex="0" data-language="bash" data-theme="github-dark"><code data-language="bash" data-theme="github-dark" style="display: grid;"><span data-line=""><span style="color:#B392F0">uv</span><span style="color:#9ECBFF"> run</span><span style="color:#9ECBFF"> main.py</span></span></code></pre></figure>
+<p>會看到 <code>Hello from my-app!</code>——恭喜，第一個專案誕生。</p>
+<h3 id="步驟-4加依賴並執行">步驟 4：加依賴並執行</h3>
+<figure data-rehype-pretty-code-figure=""><pre style="background-color:#24292e;color:#e1e4e8" tabindex="0" data-language="bash" data-theme="github-dark"><code data-language="bash" data-theme="github-dark" style="display: grid;"><span data-line=""><span style="color:#B392F0">uv</span><span style="color:#9ECBFF"> add</span><span style="color:#9ECBFF"> requests</span></span></code></pre></figure>
+<p>接著改一下 <code>main.py</code>，加幾行試試：</p>
+<figure data-rehype-pretty-code-figure=""><pre style="background-color:#24292e;color:#e1e4e8" tabindex="0" data-language="python" data-theme="github-dark"><code data-language="python" data-theme="github-dark" style="display: grid;"><span data-line=""><span style="color:#F97583">import</span><span style="color:#E1E4E8"> requests</span></span>
+<span data-line=""><span style="color:#E1E4E8">r </span><span style="color:#F97583">=</span><span style="color:#E1E4E8"> requests.get(</span><span style="color:#9ECBFF">"https://httpbin.org/get"</span><span style="color:#E1E4E8">)</span></span>
+<span data-line=""><span style="color:#79B8FF">print</span><span style="color:#E1E4E8">(r.status_code)</span></span></code></pre></figure>
+<p>再執行：</p>
+<figure data-rehype-pretty-code-figure=""><pre style="background-color:#24292e;color:#e1e4e8" tabindex="0" data-language="bash" data-theme="github-dark"><code data-language="bash" data-theme="github-dark" style="display: grid;"><span data-line=""><span style="color:#B392F0">uv</span><span style="color:#9ECBFF"> run</span><span style="color:#9ECBFF"> main.py</span></span></code></pre></figure>
+<p>看到 <code>200</code> 就代表依賴有正確裝進虛擬環境——不用手動 <code>pip install</code>，也不用 <code>source .venv/bin/activate</code>，這種無腦感就是 uv 的快樂泉源。</p>
+<h2 id="常見問題排查">常見問題排查</h2>
+<table>
+<thead>
+<tr>
+<th>現象</th>
+<th>排查方向</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td><code>uv: command not found</code></td>
+<td>PATH 沒設好，重開 terminal 或照 installer 輸出執行 <code>source ...</code></td>
+</tr>
+<tr>
+<td><code>Permission denied</code></td>
+<td>安裝路徑權限問題，確認 <code>~/.local/bin</code> 可寫</td>
+</tr>
+<tr>
+<td>依賴裝很慢</td>
+<td>第一次會下載，之後有快取；網路異常時可檢查 proxy</td>
+</tr>
+</tbody>
+</table>
+<h2 id="下一步">下一步</h2>
+<p>專案能跑之後，建議先搞懂 pyproject.toml 跟 uv.lock 在幹嘛，下一篇會講這些核心概念：<br>
+👉 <a href="02-core-concepts">核心概念</a></p>0:{"buildId":"Yck3R4ooQxWkwGLT6is1X","rsc":["$","$1","c",{"children":[[["$","script",null,{"type":"application/ld+json","dangerouslySetInnerHTML":{"__html":"{\"@context\":\"https://schema.org\",\"@type\":\"Article\",\"headline\":\"Python uv 快速上手：建立第一個專案\",\"description\":\"從安裝驗證開始，帶你完成專案初始化、依賴安裝與執行驗證。\",\"url\":\"https://benxhub.com/zh/blog/python/uv/01-quick-start\",\"mainEntityOfPage\":{\"@type\":\"WebPage\",\"@id\":\"https://benxhub.com/zh/blog/python/uv/01-quick-start\"},\"datePublished\":\"2026-02-27T00:00:00.000Z\",\"dateModified\":\"2026-02-27T00:00:00.000Z\",\"keywords\":\"python, uv, quick-start, package-manager\",\"inLanguage\":\"zh\",\"author\":{\"@type\":\"Person\",\"name\":\"BenX\",\"url\":\"https://benxhub.com\"},\"publisher\":{\"@type\":\"Organization\",\"name\":\"BenXHub Blog\",\"url\":\"https://benxhub.com\"},\"image\":\"https://benxhub.com/images/posts/uv-quick-start.jpg\"}"}}],["$","div",null,{"className":"mx-auto max-w-6xl px-4 py-12 sm:px-6","children":["$","div",null,{"className":"lg:grid lg:grid-cols-[1fr_240px] lg:gap-14","children":[["$","article",null,{"children":[["$","header",null,{"className":"mb-10","children":[["$","div",null,{"className":"mb-4 flex flex-wrap gap-2","children":[["$","$L2","python",{"href":"/zh/tags/python","localeCookie":{"name":"NEXT_LOCALE","sameSite":"lax"},"className":"inline-flex items-center rounded-full px-2.5 py-0.5 text-xs font-medium transition-colors","style":{"background":"var(--color-code-bg)","color":"var(--color-accent)","border":"1px solid var(--color-border)"},"children":["#","python"]}],["$","$L2","uv",{"href":"/zh/tags/uv","localeCookie":{"name":"NEXT_LOCALE","sameSite":"lax"},"className":"inline-flex items-center rounded-full px-2.5 py-0.5 text-xs font-medium transition-colors","style":{"background":"var(--color-code-bg)","color":"var(--color-accent)","border":"1px solid var(--color-border)"},"children":["#","uv"]}],["$","$L2","quick-start",{"href":"/zh/tags/quick-start","localeCookie":{"name":"NEXT_LOCALE","sameSite":"lax"},"className":"inline-flex items-center rounded-full px-2.5 py-0.5 text-xs font-medium transition-colors","style":{"background":"var(--color-code-bg)","color":"var(--color-accent)","border":"1px solid var(--color-border)"},"children":["#","quick-start"]}],["$","$L2","package-manager",{"href":"/zh/tags/package-manager","localeCookie":{"name":"NEXT_LOCALE","sameSite":"lax"},"className":"inline-flex items-center rounded-full px-2.5 py-0.5 text-xs font-medium transition-colors","style":{"background":"var(--color-code-bg)","color":"var(--color-accent)","border":"1px solid var(--color-border)"},"children":["#","package-manager"]}]]}],["$","h1",null,{"className":"mb-4 text-3xl leading-snug font-bold tracking-tight sm:text-4xl","style":{"color":"var(--color-text)"},"children":"Python uv 快速上手：建立第一個專案"}],["$","div",null,{"className":"flex flex-wrap items-center gap-3 text-sm","style":{"color":"var(--color-muted)"},"children":[["$","time",null,{"dateTime":"2026-02-27","children":"2026 年 2 月 27 日"}],["$","span",null,{"aria-hidden":"true","children":"·"}],["$","span",null,{"children":"3 min read"}]]}],["$","div",null,{"className":"mt-6 overflow-hidden rounded-lg","children":["$","img",null,{"src":"/images/posts/uv-quick-start.jpg","alt":"Python uv 快速上手：建立第一個專案","className":"w-full h-auto"}]}],["$","div",null,{"className":"mt-6 border-b","style":{"borderColor":"var(--color-border)"}}]]}],["$","div",null,{"className":"prose","dangerouslySetInnerHTML":{"__html":"$3"}}],"$L4"]}],"$L5"]}]}]],["$L6"],"$L7"]}],"loading":null,"isPartial":false}
+4:["$","footer",null,{"className":"mt-14 border-t pt-8","style":{"borderColor":"var(--color-border)"},"children":[["$","div",null,{"className":"mb-8 flex flex-wrap gap-2","children":[["$","$L2","python",{"href":"/zh/tags/python","localeCookie":{"name":"NEXT_LOCALE","sameSite":"lax"},"className":"inline-flex items-center rounded-full px-3 py-1 text-sm font-medium transition-colors","style":{"background":"var(--color-code-bg)","color":"var(--color-accent)","border":"1px solid var(--color-border)"},"children":["#","python"]}],["$","$L2","uv",{"href":"/zh/tags/uv","localeCookie":{"name":"NEXT_LOCALE","sameSite":"lax"},"className":"inline-flex items-center rounded-full px-3 py-1 text-sm font-medium transition-colors","style":{"background":"var(--color-code-bg)","color":"var(--color-accent)","border":"1px solid var(--color-border)"},"children":["#","uv"]}],["$","$L2","quick-start",{"href":"/zh/tags/quick-start","localeCookie":{"name":"NEXT_LOCALE","sameSite":"lax"},"className":"inline-flex items-center rounded-full px-3 py-1 text-sm font-medium transition-colors","style":{"background":"var(--color-code-bg)","color":"var(--color-accent)","border":"1px solid var(--color-border)"},"children":["#","quick-start"]}],["$","$L2","package-manager",{"href":"/zh/tags/package-manager","localeCookie":{"name":"NEXT_LOCALE","sameSite":"lax"},"className":"inline-flex items-center rounded-full px-3 py-1 text-sm font-medium transition-colors","style":{"background":"var(--color-code-bg)","color":"var(--color-accent)","border":"1px solid var(--color-border)"},"children":["#","package-manager"]}]]}],["$","nav",null,{"aria-label":"文章導覽","className":"grid grid-cols-1 gap-4 sm:grid-cols-2","children":[["$","$L2",null,{"href":"/zh/blog/python/uv/00-overview","localeCookie":{"name":"NEXT_LOCALE","sameSite":"lax"},"className":"group rounded-lg border p-4 transition-colors hover:border-accent","style":{"borderColor":"var(--color-border)","background":"var(--color-surface)"},"children":[["$","p",null,{"className":"mb-1 text-xs","style":{"color":"var(--color-muted)"},"children":"← 較新文章"}],["$","p",null,{"className":"line-clamp-1 text-sm font-medium transition-colors group-hover:text-accent","style":{"color":"var(--color-text)"},"children":"Python uv 系列總覽：pip 的 100 倍速接班人"}]]}],["$","$L2",null,{"href":"/zh/blog/python/uv/02-core-concepts","localeCookie":{"name":"NEXT_LOCALE","sameSite":"lax"},"className":"group rounded-lg border p-4 text-right transition-colors hover:border-accent","style":{"borderColor":"var(--color-border)","background":"var(--color-surface)"},"children":[["$","p",null,{"className":"mb-1 text-xs","style":{"color":"var(--color-muted)"},"children":"較舊文章 →"}],["$","p",null,{"className":"line-clamp-1 text-sm font-medium transition-colors group-hover:text-accent","style":{"color":"var(--color-text)"},"children":"Python uv 核心概念：pyproject.toml、lockfile 與虛擬環境"}]]}]]}]]}]
+9:T13e5,<p>這篇用最短路徑，幫你完成一個<strong>能跑的 Python 專案</strong>——建立你在 uv 的第一個可用環境。就像養第一隻小水獺：先讓牠能吃能睡，進階撸水獺技巧之後再說。</p>
+<h2 id="前置條件">前置條件</h2>
+<ul>
+<li>已安裝 uv（見 <a href="00-overview">總覽</a> 的安裝指令）</li>
+<li>終端機能執行 <code>uv</code> 指令</li>
+</ul>
+<h2 id="最小範例建立第一支專案">最小範例：建立第一支專案</h2>
+<h3 id="步驟-1驗證-uv-已安裝">步驟 1：驗證 uv 已安裝</h3>
+<figure data-rehype-pretty-code-figure=""><pre style="background-color:#24292e;color:#e1e4e8" tabindex="0" data-language="bash" data-theme="github-dark"><code data-language="bash" data-theme="github-dark" style="display: grid;"><span data-line=""><span style="color:#B392F0">uv</span><span style="color:#79B8FF"> --version</span></span></code></pre></figure>
+<p>有版本號就代表裝好了。沒有？回去跑安裝腳本，然後重開 terminal。</p>
+<h3 id="步驟-2初始化專案">步驟 2：初始化專案</h3>
+<figure data-rehype-pretty-code-figure=""><pre style="background-color:#24292e;color:#e1e4e8" tabindex="0" data-language="bash" data-theme="github-dark"><code data-language="bash" data-theme="github-dark" style="display: grid;"><span data-line=""><span style="color:#B392F0">uv</span><span style="color:#9ECBFF"> init</span><span style="color:#9ECBFF"> my-app</span></span>
+<span data-line=""><span style="color:#79B8FF">cd</span><span style="color:#9ECBFF"> my-app</span></span></code></pre></figure>
+<p>uv 會自動建立 <code>pyproject.toml</code>、<code>.python-version</code>、<code>main.py</code>、<code>README.md</code>。結構大概長這樣：</p>
+<pre><code>my-app/
+├── .gitignore
+├── .python-version
+├── README.md
+├── main.py
+└── pyproject.toml
+</code></pre>
+<h3 id="步驟-3執行預設程式">步驟 3：執行預設程式</h3>
+<figure data-rehype-pretty-code-figure=""><pre style="background-color:#24292e;color:#e1e4e8" tabindex="0" data-language="bash" data-theme="github-dark"><code data-language="bash" data-theme="github-dark" style="display: grid;"><span data-line=""><span style="color:#B392F0">uv</span><span style="color:#9ECBFF"> run</span><span style="color:#9ECBFF"> main.py</span></span></code></pre></figure>
+<p>會看到 <code>Hello from my-app!</code>——恭喜，第一個專案誕生。</p>
+<h3 id="步驟-4加依賴並執行">步驟 4：加依賴並執行</h3>
+<figure data-rehype-pretty-code-figure=""><pre style="background-color:#24292e;color:#e1e4e8" tabindex="0" data-language="bash" data-theme="github-dark"><code data-language="bash" data-theme="github-dark" style="display: grid;"><span data-line=""><span style="color:#B392F0">uv</span><span style="color:#9ECBFF"> add</span><span style="color:#9ECBFF"> requests</span></span></code></pre></figure>
+<p>接著改一下 <code>main.py</code>，加幾行試試：</p>
+<figure data-rehype-pretty-code-figure=""><pre style="background-color:#24292e;color:#e1e4e8" tabindex="0" data-language="python" data-theme="github-dark"><code data-language="python" data-theme="github-dark" style="display: grid;"><span data-line=""><span style="color:#F97583">import</span><span style="color:#E1E4E8"> requests</span></span>
+<span data-line=""><span style="color:#E1E4E8">r </span><span style="color:#F97583">=</span><span style="color:#E1E4E8"> requests.get(</span><span style="color:#9ECBFF">"https://httpbin.org/get"</span><span style="color:#E1E4E8">)</span></span>
+<span data-line=""><span style="color:#79B8FF">print</span><span style="color:#E1E4E8">(r.status_code)</span></span></code></pre></figure>
+<p>再執行：</p>
+<figure data-rehype-pretty-code-figure=""><pre style="background-color:#24292e;color:#e1e4e8" tabindex="0" data-language="bash" data-theme="github-dark"><code data-language="bash" data-theme="github-dark" style="display: grid;"><span data-line=""><span style="color:#B392F0">uv</span><span style="color:#9ECBFF"> run</span><span style="color:#9ECBFF"> main.py</span></span></code></pre></figure>
+<p>看到 <code>200</code> 就代表依賴有正確裝進虛擬環境——不用手動 <code>pip install</code>，也不用 <code>source .venv/bin/activate</code>，這種無腦感就是 uv 的快樂泉源。</p>
+<h2 id="常見問題排查">常見問題排查</h2>
+<table>
+<thead>
+<tr>
+<th>現象</th>
+<th>排查方向</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td><code>uv: command not found</code></td>
+<td>PATH 沒設好，重開 terminal 或照 installer 輸出執行 <code>source ...</code></td>
+</tr>
+<tr>
+<td><code>Permission denied</code></td>
+<td>安裝路徑權限問題，確認 <code>~/.local/bin</code> 可寫</td>
+</tr>
+<tr>
+<td>依賴裝很慢</td>
+<td>第一次會下載，之後有快取；網路異常時可檢查 proxy</td>
+</tr>
+</tbody>
+</table>
+<h2 id="下一步">下一步</h2>
+<p>專案能跑之後，建議先搞懂 pyproject.toml 跟 uv.lock 在幹嘛，下一篇會講這些核心概念：<br>
+👉 <a href="02-core-concepts">核心概念</a></p>5:["$","aside",null,{"className":"hidden lg:block","children":["$","$L8",null,{"html":"$9"}]}]
+6:["$","script","script-0",{"src":"/_next/static/chunks/2dddb3bc05093f69.js","async":true}]
+7:["$","$La",null,{"children":["$","$b",null,{"name":"Next.MetadataOutlet","children":"$@c"}]}]
+c:null

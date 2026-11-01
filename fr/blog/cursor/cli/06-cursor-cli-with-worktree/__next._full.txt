@@ -1,0 +1,175 @@
+1:"$Sreact.fragment"
+2:I[26795,["/_next/static/chunks/5a5b5b13c22d14f7.js","/_next/static/chunks/a484d1d3dd4b55ab.js"],"default"]
+3:I[73489,["/_next/static/chunks/5a5b5b13c22d14f7.js","/_next/static/chunks/a484d1d3dd4b55ab.js"],"default"]
+6:I[50183,["/_next/static/chunks/5a5b5b13c22d14f7.js","/_next/static/chunks/a484d1d3dd4b55ab.js"],"OutletBoundary"]
+7:"$Sreact.suspense"
+9:I[50183,["/_next/static/chunks/5a5b5b13c22d14f7.js","/_next/static/chunks/a484d1d3dd4b55ab.js"],"ViewportBoundary"]
+b:I[50183,["/_next/static/chunks/5a5b5b13c22d14f7.js","/_next/static/chunks/a484d1d3dd4b55ab.js"],"MetadataBoundary"]
+d:I[63847,[],"default"]
+:HL["/_next/static/chunks/446a7883c02a95fe.css","style"]
+:HL["/_next/static/media/797e433ab948586e-s.p.29207c2f.woff2","font",{"crossOrigin":"","type":"font/woff2"}]
+:HL["/_next/static/media/caa3a2e1cccd8315-s.p.3b6cae6d.woff2","font",{"crossOrigin":"","type":"font/woff2"}]
+0:{"P":null,"b":"Yck3R4ooQxWkwGLT6is1X","c":["","fr","blog","cursor","cli","06-cursor-cli-with-worktree"],"q":"","i":false,"f":[[["",{"children":[["locale","fr","d"],{"children":["blog",{"children":[["slug","cursor/cli/06-cursor-cli-with-worktree","c"],{"children":["__PAGE__",{}]}]}]}]},"$undefined","$undefined",true],[["$","$1","c",{"children":[null,["$","html",null,{"children":["$","body",null,{"children":["$","$L2",null,{"parallelRouterKey":"children","error":"$undefined","errorStyles":"$undefined","errorScripts":"$undefined","template":["$","$L3",null,{}],"templateStyles":"$undefined","templateScripts":"$undefined","notFound":[[["$","title",null,{"children":"404: This page could not be found."}],["$","div",null,{"style":{"fontFamily":"system-ui,\"Segoe UI\",Roboto,Helvetica,Arial,sans-serif,\"Apple Color Emoji\",\"Segoe UI Emoji\"","height":"100vh","textAlign":"center","display":"flex","flexDirection":"column","alignItems":"center","justifyContent":"center"},"children":["$","div",null,{"children":[["$","style",null,{"dangerouslySetInnerHTML":{"__html":"body{color:#000;background:#fff;margin:0}.next-error-h1{border-right:1px solid rgba(0,0,0,.3)}@media (prefers-color-scheme:dark){body{color:#fff;background:#000}.next-error-h1{border-right:1px solid rgba(255,255,255,.3)}}"}}],["$","h1",null,{"className":"next-error-h1","style":{"display":"inline-block","margin":"0 20px 0 0","padding":"0 23px 0 0","fontSize":24,"fontWeight":500,"verticalAlign":"top","lineHeight":"49px"},"children":404}],["$","div",null,{"style":{"display":"inline-block"},"children":["$","h2",null,{"style":{"fontSize":14,"fontWeight":400,"lineHeight":"49px","margin":0},"children":"This page could not be found."}]}]]}]}]],[]],"forbidden":"$undefined","unauthorized":"$undefined"}]}]}]]}],{"children":[["$","$1","c",{"children":[[["$","link","0",{"rel":"stylesheet","href":"/_next/static/chunks/446a7883c02a95fe.css","precedence":"next","crossOrigin":"$undefined","nonce":"$undefined"}],["$","script","script-0",{"src":"/_next/static/chunks/7923a261b80bb6e1.js","async":true,"nonce":"$undefined"}],["$","script","script-1",{"src":"/_next/static/chunks/e09b4358027e8033.js","async":true,"nonce":"$undefined"}]],"$L4"]}],{"children":[["$","$1","c",{"children":[null,["$","$L2",null,{"parallelRouterKey":"children","error":"$undefined","errorStyles":"$undefined","errorScripts":"$undefined","template":["$","$L3",null,{}],"templateStyles":"$undefined","templateScripts":"$undefined","notFound":"$undefined","forbidden":"$undefined","unauthorized":"$undefined"}]]}],{"children":[["$","$1","c",{"children":[null,["$","$L2",null,{"parallelRouterKey":"children","error":"$undefined","errorStyles":"$undefined","errorScripts":"$undefined","template":["$","$L3",null,{}],"templateStyles":"$undefined","templateScripts":"$undefined","notFound":"$undefined","forbidden":"$undefined","unauthorized":"$undefined"}]]}],{"children":[["$","$1","c",{"children":["$L5",[["$","script","script-0",{"src":"/_next/static/chunks/2dddb3bc05093f69.js","async":true,"nonce":"$undefined"}]],["$","$L6",null,{"children":["$","$7",null,{"name":"Next.MetadataOutlet","children":"$@8"}]}]]}],{},null,false,false]},null,false,false]},null,false,false]},null,false,false]},null,false,false],["$","$1","h",{"children":[null,["$","$L9",null,{"children":"$La"}],["$","div",null,{"hidden":true,"children":["$","$Lb",null,{"children":["$","$7",null,{"name":"Next.Metadata","children":"$Lc"}]}]}],["$","meta",null,{"name":"next-size-adjust","content":""}]]}],false]],"m":"$undefined","G":["$d",[]],"S":true}
+4:["$","div",null,{"lang":"fr","dir":"ltr","className":"geist_a71539c9-module__T19VSG__variable geist_mono_8d43a2aa-module__8Li5zG__variable flex min-h-screen flex-col antialiased","children":[["$","script",null,{"type":"application/ld+json","dangerouslySetInnerHTML":{"__html":"[{\"@context\":\"https://schema.org\",\"@type\":\"WebSite\",\"name\":\"BenXHub Blog\",\"url\":\"https://benxhub.com/fr\",\"inLanguage\":\"fr\",\"publisher\":{\"@type\":\"Organization\",\"name\":\"BenXHub Blog\",\"url\":\"https://benxhub.com\"},\"potentialAction\":{\"@type\":\"SearchAction\",\"target\":{\"@type\":\"EntryPoint\",\"urlTemplate\":\"https://benxhub.com/fr/search?q={search_term_string}\"},\"query-input\":\"required name=search_term_string\"}},{\"@context\":\"https://schema.org\",\"@type\":\"Person\",\"name\":\"BenX\",\"url\":\"https://benxhub.com\",\"sameAs\":[\"https://github.com/benzhub\"]}]"}}],"$Le"]}]
+f:I[33343,["/_next/static/chunks/7923a261b80bb6e1.js","/_next/static/chunks/e09b4358027e8033.js"],"default"]
+10:I[26817,["/_next/static/chunks/7923a261b80bb6e1.js","/_next/static/chunks/e09b4358027e8033.js"],"default"]
+11:I[6197,["/_next/static/chunks/7923a261b80bb6e1.js","/_next/static/chunks/e09b4358027e8033.js"],"default"]
+13:I[40018,["/_next/static/chunks/7923a261b80bb6e1.js","/_next/static/chunks/e09b4358027e8033.js"],"default"]
+e:["$","$Lf",null,{"formats":"$undefined","locale":"fr","messages":{"common":{"siteName":"BenXHub Blog","siteDescription":"Blog tech de BenX — développement Web, architecture et pratiques d'ingénierie."},"nav":{"home":"Accueil","tags":"Tags","about":"À propos","searchLabel":"Rechercher des articles"},"hero":{"subtitle":"Notes tech sur le développement Web, l'architecture et les pratiques d'ingénierie","cta":"Parcourir les articles"},"posts":{"title":"Articles","count":"{total} articles au total","empty":"Pas encore d'articles, restez à l'écoute !","newerPost":"← Plus récent","olderPost":"Plus ancien →","navLabel":"Navigation des articles"},"pagination":{"prev":"Précédent","next":"Suivant","page":"Page {current} sur {total}","label":"Pagination de la liste des articles","pageTitle":"Page {num}","pageDescription":"Blog tech de BenX — liste des articles."},"search":{"title":"Rechercher des articles","description":"Rechercher tous les articles du blog BenXHub par titre, description ou tags.","subtitle":"Rechercher par titre, description ou tags","placeholder":"Rechercher par titre, description ou tags…","found":"{count} articles trouvés","notFound":"Aucun article pour « {query} »","emptyTitle":"Aucun résultat","emptyHint":"Essayez d'autres mots-clés ou parcourez","allPosts":"tous les articles","totalCount":"{count} articles au total — tapez pour rechercher"},"tags":{"title":"Tous les tags","description":"Parcourir tous les articles par tag.","count":"{count} tags au total","empty":"Pas encore de tags, restez à l'écoute !","allTags":"Tous les tags","postCount":"{count} articles","otherTags":"Autres tags","tagTitle":"Articles avec le tag #{tag}","tagDescription":"Tous les articles avec le tag « {tag} »."},"about":{"title":"À propos","description":"À propos du blog BenXHub et de ce site.","subtitle":"À propos du blog BenXHub et de ce site","siteTitle":"À propos de ce site","siteContent":"BenXHub Blog est le blog tech de BenX : développement Web, architecture et pratiques d'ingénierie.","authorTitle":"À propos de moi","authorContent":"J'aime coder et partager. Je documente les problèmes rencontrés et leurs solutions. N'hésitez pas à me contacter via les liens dans la barre latérale ou le pied de page.","linksTitle":"Liens"},"sidebar":{"label":"Barre latérale","authorBio":"Passionné de code et de partage — développement Web, architecture et DevOps.","searchPlaceholder":"Rechercher des articles…","seriesTitle":"Séries","articleCount":"{count} articles"},"toc":{"title":"Sommaire","label":"Table des matières"},"notFound":{"message":"Cette page n'existe pas. Le lien est peut-être cassé ou l'URL incorrecte.","backHome":"Retour à l'accueil"},"localeSwitcher":{"label":"Changer de langue"}},"now":"$undefined","timeZone":"UTC","children":[["$","$L10",null,{}],["$","$L11",null,{}],["$","main",null,{"className":"flex-1 pt-16","children":["$","$L2",null,{"parallelRouterKey":"children","error":"$undefined","errorStyles":"$undefined","errorScripts":"$undefined","template":["$","$L3",null,{}],"templateStyles":"$undefined","templateScripts":"$undefined","notFound":["$L12",[]],"forbidden":"$undefined","unauthorized":"$undefined"}]}],["$","$L13",null,{}]]}]
+12:["$","div",null,{"className":"mx-auto max-w-2xl px-4 py-20 text-center sm:px-6","children":[["$","h1",null,{"className":"mb-3 text-4xl font-bold tracking-tight","style":{"color":"var(--color-text)"},"children":"404"}],["$","p",null,{"className":"mb-8 text-lg","style":{"color":"var(--color-muted)"},"children":"Cette page n'existe pas. Le lien est peut-être cassé ou l'URL incorrecte."}],"$L14"]}]
+a:[["$","meta","0",{"charSet":"utf-8"}],["$","meta","1",{"name":"viewport","content":"width=device-width, initial-scale=1"}]]
+15:I[14864,["/_next/static/chunks/7923a261b80bb6e1.js","/_next/static/chunks/e09b4358027e8033.js","/_next/static/chunks/2dddb3bc05093f69.js"],"default"]
+14:["$","$L15",null,{"ref":"$undefined","href":"/fr","locale":"$undefined","localeCookie":{"name":"NEXT_LOCALE","sameSite":"lax"},"className":"inline-flex items-center rounded-lg border px-4 py-2.5 text-sm font-medium transition-colors hover:border-accent","style":{"borderColor":"var(--color-border)","color":"var(--color-accent)","background":"var(--color-surface)"},"children":"Retour à l'accueil"}]
+1a:T1fd6,<p><strong>Worktree</strong> permet d'avoir plusieurs répertoires (chacun sur une branche différente) pour le même dépôt. <strong>Cursor CLI</strong> agit sur le répertoire où elle est lancée. Combinez les deux et vous avez plusieurs terminaux qui exécutent des Agents CLI en parallèle sur des branches différentes — sans plusieurs fenêtres Cursor, du multitâche pur au clavier.</p>
+<h2 id="pourquoi-les-combiner-">Pourquoi les combiner ?</h2>
+<table>
+<thead>
+<tr>
+<th>Approche</th>
+<th>Comment</th>
+<th>Idéal pour</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td>Worktree + plusieurs <strong>fenêtres</strong> Cursor</td>
+<td>Une fenêtre par worktree</td>
+<td>Utilisateurs IDE qui veulent l'arborescence et l'aperçu</td>
+</tr>
+<tr>
+<td>Worktree + <strong>CLI</strong></td>
+<td>Plusieurs terminaux, chacun en <code>cd</code> dans un worktree, lancer <code>cursor agent</code></td>
+<td>Utilisateurs clavier-first ou environnements serveur/SSH</td>
+</tr>
+</tbody>
+</table>
+<p>Point commun : chaque worktree est un répertoire indépendant → chacun a son contexte → développement parallèle sans se marcher sur les pieds. Comme avoir plusieurs clones qui travaillent sur des branches différentes en même temps.</p>
+<h2 id="utilisation-de-base--un-terminal-par-worktree">Utilisation de base : un terminal par worktree</h2>
+<p>En supposant que vous avez déjà créé vos worktrees :</p>
+<pre><code>~/projects/
+├── my-app/                  ← main
+├── my-app--feature-auth/    ← feature/auth
+└── my-app--feature-payment/  ← feature/payment
+</code></pre>
+<p><strong>Terminal 1</strong> (sur auth) :</p>
+<figure data-rehype-pretty-code-figure=""><pre style="background-color:#24292e;color:#e1e4e8" tabindex="0" data-language="bash" data-theme="github-dark"><code data-language="bash" data-theme="github-dark" style="display: grid;"><span data-line=""><span style="color:#79B8FF">cd</span><span style="color:#9ECBFF"> ~/projects/my-app--feature-auth</span></span>
+<span data-line=""><span style="color:#B392F0">cursor</span><span style="color:#9ECBFF"> agent</span><span style="color:#9ECBFF"> "Implement JWT login"</span></span></code></pre></figure>
+<p><strong>Terminal 2</strong> (sur payment) :</p>
+<figure data-rehype-pretty-code-figure=""><pre style="background-color:#24292e;color:#e1e4e8" tabindex="0" data-language="bash" data-theme="github-dark"><code data-language="bash" data-theme="github-dark" style="display: grid;"><span data-line=""><span style="color:#79B8FF">cd</span><span style="color:#9ECBFF"> ~/projects/my-app--feature-payment</span></span>
+<span data-line=""><span style="color:#B392F0">cursor</span><span style="color:#9ECBFF"> agent</span><span style="color:#9ECBFF"> "Add Stripe checkout flow"</span></span></code></pre></figure>
+<p>La CLI prend par défaut le <strong>répertoire de travail courant</strong> comme contexte, donc les deux terminaux ne modifient que leur worktree respectif. C'est « deux Agents CLI en parallèle » — pas besoin d'ouvrir deux fenêtres Cursor, moins de ressources et pas de changement de contexte.</p>
+<h2 id="sans-changer-de-répertoire----path-pour-cibler-un-worktree">Sans changer de répertoire : <code>--path</code> pour cibler un worktree</h2>
+<p>Vous êtes dans le répertoire principal mais voulez que la CLI travaille sur un worktree précis :</p>
+<figure data-rehype-pretty-code-figure=""><pre style="background-color:#24292e;color:#e1e4e8" tabindex="0" data-language="bash" data-theme="github-dark"><code data-language="bash" data-theme="github-dark" style="display: grid;"><span data-line=""><span style="color:#79B8FF">cd</span><span style="color:#9ECBFF"> ~/projects/my-app</span></span>
+<span data-line=""><span style="color:#B392F0">cursor</span><span style="color:#9ECBFF"> agent</span><span style="color:#9ECBFF"> "Add unit tests for feature/auth"</span><span style="color:#79B8FF"> --path</span><span style="color:#9ECBFF"> ../my-app--feature-auth</span></span></code></pre></figure>
+<p><code>--path</code> indique sur quel répertoire travailler — le chemin du worktree. Utile pour traiter un worktree à la fois ou quand le chemin est fixe dans un script.</p>
+<h2 id="non-interactif--worktree-scripts--traitements-par-lot">Non interactif + Worktree (scripts / traitements par lot)</h2>
+<p>Exécuter le même type de tâche sur plusieurs worktrees à la suite (ex. ajouter un README partout, corriger le lint partout) :</p>
+<figure data-rehype-pretty-code-figure=""><pre style="background-color:#24292e;color:#e1e4e8" tabindex="0" data-language="bash" data-theme="github-dark"><code data-language="bash" data-theme="github-dark" style="display: grid;"><span data-line=""><span style="color:#6A737D"># Exemple : "fix lint" sur les deux worktrees</span></span>
+<span data-line=""><span style="color:#B392F0">cursor</span><span style="color:#9ECBFF"> agent</span><span style="color:#9ECBFF"> "Fix all auto-fixable errors per .eslintrc"</span><span style="color:#79B8FF"> --path</span><span style="color:#9ECBFF"> ../my-app--feature-auth</span><span style="color:#79B8FF"> --no-interactive</span></span>
+<span data-line=""><span style="color:#B392F0">cursor</span><span style="color:#9ECBFF"> agent</span><span style="color:#9ECBFF"> "Fix all auto-fixable errors per .eslintrc"</span><span style="color:#79B8FF"> --path</span><span style="color:#9ECBFF"> ../my-app--feature-payment</span><span style="color:#79B8FF"> --no-interactive</span></span></code></pre></figure>
+<p>Ou avec une boucle (adaptez les chemins à votre setup) :</p>
+<figure data-rehype-pretty-code-figure=""><pre style="background-color:#24292e;color:#e1e4e8" tabindex="0" data-language="bash" data-theme="github-dark"><code data-language="bash" data-theme="github-dark" style="display: grid;"><span data-line=""><span style="color:#F97583">for</span><span style="color:#E1E4E8"> dir </span><span style="color:#F97583">in</span><span style="color:#9ECBFF"> ../my-app--feature-auth</span><span style="color:#9ECBFF"> ../my-app--feature-payment</span><span style="color:#E1E4E8">; </span><span style="color:#F97583">do</span></span>
+<span data-line=""><span style="color:#B392F0">  cursor</span><span style="color:#9ECBFF"> agent</span><span style="color:#9ECBFF"> "Fix linter errors"</span><span style="color:#79B8FF"> --path</span><span style="color:#9ECBFF"> "</span><span style="color:#E1E4E8">$dir</span><span style="color:#9ECBFF">"</span><span style="color:#79B8FF"> --no-interactive</span></span>
+<span data-line=""><span style="color:#F97583">done</span></span></code></pre></figure>
+<p>Une instruction, plusieurs branches nettoyées d'un coup — pratique pour un dernier passage avant les PR.</p>
+<h2 id="lien-avec--worktree--plusieurs-fenêtres-">Lien avec « Worktree + plusieurs fenêtres »</h2>
+<ul>
+<li><strong>Plusieurs fenêtres</strong> : chaque fenêtre Cursor ouvre un worktree, avec l'Agent, le Chat et la complétion Tab de l'IDE.</li>
+<li><strong>CLI + Worktree</strong> : terminal + <code>cursor agent</code> — même idée « un répertoire, un contexte », il suffit d'ouvrir plus de terminaux pour paralléliser.</li>
+</ul>
+<p>Vous pouvez aussi mixer : développement principal dans la fenêtre, et CLI sur le serveur pour de petits correctifs sur une autre branche.</p>
+<h2 id="résumé">Résumé</h2>
+<ul>
+<li><strong>Worktree</strong> = plusieurs répertoires, plusieurs branches ; <strong>CLI</strong> = agit sur le répertoire courant ou <code>--path</code> → couple naturel.</li>
+<li><strong>Parallèle</strong> : ouvrez plusieurs terminaux, chacun en <code>cd</code> dans un worktree différent, puis lancez <code>cursor agent</code>.</li>
+<li><strong>Un seul terminal</strong> : utilisez <code>--path &#x3C;worktree-path></code> pour cibler le worktree voulu.</li>
+<li><strong>Scripts / lots</strong> : <code>--path</code> + <code>--no-interactive</code> pour la même tâche sur plusieurs worktrees.</li>
+</ul>
+<blockquote>
+<p>Suivant : <a href="07-unlimit-loop-debug">07-unlimit-loop-debug</a> — Laisser la CLI boucler et corriger le code jusqu'à ce que les tests passent (vous pouvez aller prendre un café).</p>
+</blockquote>5:[["$","script",null,{"type":"application/ld+json","dangerouslySetInnerHTML":{"__html":"{\"@context\":\"https://schema.org\",\"@type\":\"Article\",\"headline\":\"Cursor CLI avec Git Worktree\",\"description\":\"Worktree donne plusieurs répertoires pour le même dépôt ; la CLI agit sur le répertoire où elle est exécutée. Ensemble : travail parallèle sur plusieurs branches avec plusieurs terminaux.\",\"url\":\"https://benxhub.com/fr/blog/cursor/cli/06-cursor-cli-with-worktree\",\"mainEntityOfPage\":{\"@type\":\"WebPage\",\"@id\":\"https://benxhub.com/fr/blog/cursor/cli/06-cursor-cli-with-worktree\"},\"datePublished\":\"2026-02-24T00:00:00.000Z\",\"dateModified\":\"2026-02-24T00:00:00.000Z\",\"keywords\":\"cursor, cli, git, worktree\",\"inLanguage\":\"fr\",\"author\":{\"@type\":\"Person\",\"name\":\"BenX\",\"url\":\"https://benxhub.com\"},\"publisher\":{\"@type\":\"Organization\",\"name\":\"BenXHub Blog\",\"url\":\"https://benxhub.com\"}}"}}],["$","div",null,{"className":"mx-auto max-w-6xl px-4 py-12 sm:px-6","children":["$","div",null,{"className":"lg:grid lg:grid-cols-[1fr_240px] lg:gap-14","children":[["$","article",null,{"children":[["$","header",null,{"className":"mb-10","children":[["$","div",null,{"className":"mb-4 flex flex-wrap gap-2","children":["$L16","$L17","$L18","$L19"]}],["$","h1",null,{"className":"mb-4 text-3xl leading-snug font-bold tracking-tight sm:text-4xl","style":{"color":"var(--color-text)"},"children":"Cursor CLI avec Git Worktree"}],["$","div",null,{"className":"flex flex-wrap items-center gap-3 text-sm","style":{"color":"var(--color-muted)"},"children":[["$","time",null,{"dateTime":"2026-02-24","children":"24 févr. 2026"}],["$","span",null,{"aria-hidden":"true","children":"·"}],["$","span",null,{"children":"4 min read"}]]}],"$undefined",["$","div",null,{"className":"mt-6 border-b","style":{"borderColor":"var(--color-border)"}}]]}],["$","div",null,{"className":"prose","dangerouslySetInnerHTML":{"__html":"$1a"}}],"$L1b"]}],"$L1c"]}]}]]
+23:I[24801,["/_next/static/chunks/7923a261b80bb6e1.js","/_next/static/chunks/e09b4358027e8033.js","/_next/static/chunks/2dddb3bc05093f69.js"],"default"]
+1b:["$","footer",null,{"className":"mt-14 border-t pt-8","style":{"borderColor":"var(--color-border)"},"children":[["$","div",null,{"className":"mb-8 flex flex-wrap gap-2","children":["$L1d","$L1e","$L1f","$L20"]}],["$","nav",null,{"aria-label":"Navigation des articles","className":"grid grid-cols-1 gap-4 sm:grid-cols-2","children":["$L21","$L22"]}]]}]
+24:T1fd6,<p><strong>Worktree</strong> permet d'avoir plusieurs répertoires (chacun sur une branche différente) pour le même dépôt. <strong>Cursor CLI</strong> agit sur le répertoire où elle est lancée. Combinez les deux et vous avez plusieurs terminaux qui exécutent des Agents CLI en parallèle sur des branches différentes — sans plusieurs fenêtres Cursor, du multitâche pur au clavier.</p>
+<h2 id="pourquoi-les-combiner-">Pourquoi les combiner ?</h2>
+<table>
+<thead>
+<tr>
+<th>Approche</th>
+<th>Comment</th>
+<th>Idéal pour</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td>Worktree + plusieurs <strong>fenêtres</strong> Cursor</td>
+<td>Une fenêtre par worktree</td>
+<td>Utilisateurs IDE qui veulent l'arborescence et l'aperçu</td>
+</tr>
+<tr>
+<td>Worktree + <strong>CLI</strong></td>
+<td>Plusieurs terminaux, chacun en <code>cd</code> dans un worktree, lancer <code>cursor agent</code></td>
+<td>Utilisateurs clavier-first ou environnements serveur/SSH</td>
+</tr>
+</tbody>
+</table>
+<p>Point commun : chaque worktree est un répertoire indépendant → chacun a son contexte → développement parallèle sans se marcher sur les pieds. Comme avoir plusieurs clones qui travaillent sur des branches différentes en même temps.</p>
+<h2 id="utilisation-de-base--un-terminal-par-worktree">Utilisation de base : un terminal par worktree</h2>
+<p>En supposant que vous avez déjà créé vos worktrees :</p>
+<pre><code>~/projects/
+├── my-app/                  ← main
+├── my-app--feature-auth/    ← feature/auth
+└── my-app--feature-payment/  ← feature/payment
+</code></pre>
+<p><strong>Terminal 1</strong> (sur auth) :</p>
+<figure data-rehype-pretty-code-figure=""><pre style="background-color:#24292e;color:#e1e4e8" tabindex="0" data-language="bash" data-theme="github-dark"><code data-language="bash" data-theme="github-dark" style="display: grid;"><span data-line=""><span style="color:#79B8FF">cd</span><span style="color:#9ECBFF"> ~/projects/my-app--feature-auth</span></span>
+<span data-line=""><span style="color:#B392F0">cursor</span><span style="color:#9ECBFF"> agent</span><span style="color:#9ECBFF"> "Implement JWT login"</span></span></code></pre></figure>
+<p><strong>Terminal 2</strong> (sur payment) :</p>
+<figure data-rehype-pretty-code-figure=""><pre style="background-color:#24292e;color:#e1e4e8" tabindex="0" data-language="bash" data-theme="github-dark"><code data-language="bash" data-theme="github-dark" style="display: grid;"><span data-line=""><span style="color:#79B8FF">cd</span><span style="color:#9ECBFF"> ~/projects/my-app--feature-payment</span></span>
+<span data-line=""><span style="color:#B392F0">cursor</span><span style="color:#9ECBFF"> agent</span><span style="color:#9ECBFF"> "Add Stripe checkout flow"</span></span></code></pre></figure>
+<p>La CLI prend par défaut le <strong>répertoire de travail courant</strong> comme contexte, donc les deux terminaux ne modifient que leur worktree respectif. C'est « deux Agents CLI en parallèle » — pas besoin d'ouvrir deux fenêtres Cursor, moins de ressources et pas de changement de contexte.</p>
+<h2 id="sans-changer-de-répertoire----path-pour-cibler-un-worktree">Sans changer de répertoire : <code>--path</code> pour cibler un worktree</h2>
+<p>Vous êtes dans le répertoire principal mais voulez que la CLI travaille sur un worktree précis :</p>
+<figure data-rehype-pretty-code-figure=""><pre style="background-color:#24292e;color:#e1e4e8" tabindex="0" data-language="bash" data-theme="github-dark"><code data-language="bash" data-theme="github-dark" style="display: grid;"><span data-line=""><span style="color:#79B8FF">cd</span><span style="color:#9ECBFF"> ~/projects/my-app</span></span>
+<span data-line=""><span style="color:#B392F0">cursor</span><span style="color:#9ECBFF"> agent</span><span style="color:#9ECBFF"> "Add unit tests for feature/auth"</span><span style="color:#79B8FF"> --path</span><span style="color:#9ECBFF"> ../my-app--feature-auth</span></span></code></pre></figure>
+<p><code>--path</code> indique sur quel répertoire travailler — le chemin du worktree. Utile pour traiter un worktree à la fois ou quand le chemin est fixe dans un script.</p>
+<h2 id="non-interactif--worktree-scripts--traitements-par-lot">Non interactif + Worktree (scripts / traitements par lot)</h2>
+<p>Exécuter le même type de tâche sur plusieurs worktrees à la suite (ex. ajouter un README partout, corriger le lint partout) :</p>
+<figure data-rehype-pretty-code-figure=""><pre style="background-color:#24292e;color:#e1e4e8" tabindex="0" data-language="bash" data-theme="github-dark"><code data-language="bash" data-theme="github-dark" style="display: grid;"><span data-line=""><span style="color:#6A737D"># Exemple : "fix lint" sur les deux worktrees</span></span>
+<span data-line=""><span style="color:#B392F0">cursor</span><span style="color:#9ECBFF"> agent</span><span style="color:#9ECBFF"> "Fix all auto-fixable errors per .eslintrc"</span><span style="color:#79B8FF"> --path</span><span style="color:#9ECBFF"> ../my-app--feature-auth</span><span style="color:#79B8FF"> --no-interactive</span></span>
+<span data-line=""><span style="color:#B392F0">cursor</span><span style="color:#9ECBFF"> agent</span><span style="color:#9ECBFF"> "Fix all auto-fixable errors per .eslintrc"</span><span style="color:#79B8FF"> --path</span><span style="color:#9ECBFF"> ../my-app--feature-payment</span><span style="color:#79B8FF"> --no-interactive</span></span></code></pre></figure>
+<p>Ou avec une boucle (adaptez les chemins à votre setup) :</p>
+<figure data-rehype-pretty-code-figure=""><pre style="background-color:#24292e;color:#e1e4e8" tabindex="0" data-language="bash" data-theme="github-dark"><code data-language="bash" data-theme="github-dark" style="display: grid;"><span data-line=""><span style="color:#F97583">for</span><span style="color:#E1E4E8"> dir </span><span style="color:#F97583">in</span><span style="color:#9ECBFF"> ../my-app--feature-auth</span><span style="color:#9ECBFF"> ../my-app--feature-payment</span><span style="color:#E1E4E8">; </span><span style="color:#F97583">do</span></span>
+<span data-line=""><span style="color:#B392F0">  cursor</span><span style="color:#9ECBFF"> agent</span><span style="color:#9ECBFF"> "Fix linter errors"</span><span style="color:#79B8FF"> --path</span><span style="color:#9ECBFF"> "</span><span style="color:#E1E4E8">$dir</span><span style="color:#9ECBFF">"</span><span style="color:#79B8FF"> --no-interactive</span></span>
+<span data-line=""><span style="color:#F97583">done</span></span></code></pre></figure>
+<p>Une instruction, plusieurs branches nettoyées d'un coup — pratique pour un dernier passage avant les PR.</p>
+<h2 id="lien-avec--worktree--plusieurs-fenêtres-">Lien avec « Worktree + plusieurs fenêtres »</h2>
+<ul>
+<li><strong>Plusieurs fenêtres</strong> : chaque fenêtre Cursor ouvre un worktree, avec l'Agent, le Chat et la complétion Tab de l'IDE.</li>
+<li><strong>CLI + Worktree</strong> : terminal + <code>cursor agent</code> — même idée « un répertoire, un contexte », il suffit d'ouvrir plus de terminaux pour paralléliser.</li>
+</ul>
+<p>Vous pouvez aussi mixer : développement principal dans la fenêtre, et CLI sur le serveur pour de petits correctifs sur une autre branche.</p>
+<h2 id="résumé">Résumé</h2>
+<ul>
+<li><strong>Worktree</strong> = plusieurs répertoires, plusieurs branches ; <strong>CLI</strong> = agit sur le répertoire courant ou <code>--path</code> → couple naturel.</li>
+<li><strong>Parallèle</strong> : ouvrez plusieurs terminaux, chacun en <code>cd</code> dans un worktree différent, puis lancez <code>cursor agent</code>.</li>
+<li><strong>Un seul terminal</strong> : utilisez <code>--path &#x3C;worktree-path></code> pour cibler le worktree voulu.</li>
+<li><strong>Scripts / lots</strong> : <code>--path</code> + <code>--no-interactive</code> pour la même tâche sur plusieurs worktrees.</li>
+</ul>
+<blockquote>
+<p>Suivant : <a href="07-unlimit-loop-debug">07-unlimit-loop-debug</a> — Laisser la CLI boucler et corriger le code jusqu'à ce que les tests passent (vous pouvez aller prendre un café).</p>
+</blockquote>1c:["$","aside",null,{"className":"hidden lg:block","children":["$","$L23",null,{"html":"$24"}]}]
+16:["$","$L15","cursor",{"ref":"$undefined","href":"/fr/tags/cursor","locale":"$undefined","localeCookie":"$14:props:localeCookie","className":"inline-flex items-center rounded-full px-2.5 py-0.5 text-xs font-medium transition-colors","style":{"background":"var(--color-code-bg)","color":"var(--color-accent)","border":"1px solid var(--color-border)"},"children":["#","cursor"]}]
+17:["$","$L15","cli",{"ref":"$undefined","href":"/fr/tags/cli","locale":"$undefined","localeCookie":"$14:props:localeCookie","className":"inline-flex items-center rounded-full px-2.5 py-0.5 text-xs font-medium transition-colors","style":{"background":"var(--color-code-bg)","color":"var(--color-accent)","border":"1px solid var(--color-border)"},"children":["#","cli"]}]
+18:["$","$L15","git",{"ref":"$undefined","href":"/fr/tags/git","locale":"$undefined","localeCookie":"$14:props:localeCookie","className":"inline-flex items-center rounded-full px-2.5 py-0.5 text-xs font-medium transition-colors","style":{"background":"var(--color-code-bg)","color":"var(--color-accent)","border":"1px solid var(--color-border)"},"children":["#","git"]}]
+19:["$","$L15","worktree",{"ref":"$undefined","href":"/fr/tags/worktree","locale":"$undefined","localeCookie":"$14:props:localeCookie","className":"inline-flex items-center rounded-full px-2.5 py-0.5 text-xs font-medium transition-colors","style":{"background":"var(--color-code-bg)","color":"var(--color-accent)","border":"1px solid var(--color-border)"},"children":["#","worktree"]}]
+1d:["$","$L15","cursor",{"ref":"$undefined","href":"/fr/tags/cursor","locale":"$undefined","localeCookie":"$14:props:localeCookie","className":"inline-flex items-center rounded-full px-3 py-1 text-sm font-medium transition-colors","style":{"background":"var(--color-code-bg)","color":"var(--color-accent)","border":"1px solid var(--color-border)"},"children":["#","cursor"]}]
+1e:["$","$L15","cli",{"ref":"$undefined","href":"/fr/tags/cli","locale":"$undefined","localeCookie":"$14:props:localeCookie","className":"inline-flex items-center rounded-full px-3 py-1 text-sm font-medium transition-colors","style":{"background":"var(--color-code-bg)","color":"var(--color-accent)","border":"1px solid var(--color-border)"},"children":["#","cli"]}]
+1f:["$","$L15","git",{"ref":"$undefined","href":"/fr/tags/git","locale":"$undefined","localeCookie":"$14:props:localeCookie","className":"inline-flex items-center rounded-full px-3 py-1 text-sm font-medium transition-colors","style":{"background":"var(--color-code-bg)","color":"var(--color-accent)","border":"1px solid var(--color-border)"},"children":["#","git"]}]
+20:["$","$L15","worktree",{"ref":"$undefined","href":"/fr/tags/worktree","locale":"$undefined","localeCookie":"$14:props:localeCookie","className":"inline-flex items-center rounded-full px-3 py-1 text-sm font-medium transition-colors","style":{"background":"var(--color-code-bg)","color":"var(--color-accent)","border":"1px solid var(--color-border)"},"children":["#","worktree"]}]
+21:["$","$L15",null,{"ref":"$undefined","href":"/fr/blog/cursor/cli/05-tips","locale":"$undefined","localeCookie":"$14:props:localeCookie","className":"group rounded-lg border p-4 transition-colors hover:border-accent","style":{"borderColor":"var(--color-border)","background":"var(--color-surface)"},"children":[["$","p",null,{"className":"mb-1 text-xs","style":{"color":"var(--color-muted)"},"children":"← Plus récent"}],["$","p",null,{"className":"line-clamp-1 text-sm font-medium transition-colors group-hover:text-accent","style":{"color":"var(--color-text)"},"children":"Cursor CLI conseils et FAQ"}]]}]
+22:["$","$L15",null,{"ref":"$undefined","href":"/fr/blog/cursor/cli/07-unlimit-loop-debug","locale":"$undefined","localeCookie":"$14:props:localeCookie","className":"group rounded-lg border p-4 text-right transition-colors hover:border-accent","style":{"borderColor":"var(--color-border)","background":"var(--color-surface)"},"children":[["$","p",null,{"className":"mb-1 text-xs","style":{"color":"var(--color-muted)"},"children":"Plus ancien →"}],["$","p",null,{"className":"line-clamp-1 text-sm font-medium transition-colors group-hover:text-accent","style":{"color":"var(--color-text)"},"children":"Boucle de debug infinie : laisser Cursor CLI corriger jusqu'à ce que les tests passent"}]]}]
+25:I[92204,["/_next/static/chunks/5a5b5b13c22d14f7.js","/_next/static/chunks/a484d1d3dd4b55ab.js"],"IconMark"]
+8:null
+c:[["$","title","0",{"children":"Cursor CLI avec Git Worktree | BenXHub Blog"}],["$","meta","1",{"name":"description","content":"Worktree donne plusieurs répertoires pour le même dépôt ; la CLI agit sur le répertoire où elle est exécutée. Ensemble : travail parallèle sur plusieurs branches avec plusieurs terminaux."}],["$","meta","2",{"property":"og:title","content":"Cursor CLI avec Git Worktree"}],["$","meta","3",{"property":"og:description","content":"Worktree donne plusieurs répertoires pour le même dépôt ; la CLI agit sur le répertoire où elle est exécutée. Ensemble : travail parallèle sur plusieurs branches avec plusieurs terminaux."}],["$","meta","4",{"property":"og:url","content":"https://benxhub.com/fr/blog/cursor/cli/06-cursor-cli-with-worktree"}],["$","meta","5",{"property":"og:type","content":"article"}],["$","meta","6",{"property":"article:published_time","content":"2026-02-24T00:00:00.000Z"}],["$","meta","7",{"property":"article:tag","content":"cursor"}],["$","meta","8",{"property":"article:tag","content":"cli"}],["$","meta","9",{"property":"article:tag","content":"git"}],["$","meta","10",{"property":"article:tag","content":"worktree"}],["$","meta","11",{"name":"twitter:card","content":"summary_large_image"}],["$","meta","12",{"name":"twitter:title","content":"Cursor CLI avec Git Worktree"}],["$","meta","13",{"name":"twitter:description","content":"Worktree donne plusieurs répertoires pour le même dépôt ; la CLI agit sur le répertoire où elle est exécutée. Ensemble : travail parallèle sur plusieurs branches avec plusieurs terminaux."}],["$","link","14",{"rel":"icon","href":"/favicon.ico?favicon.0b3bf435.ico","sizes":"256x256","type":"image/x-icon"}],["$","$L25","15",{}]]

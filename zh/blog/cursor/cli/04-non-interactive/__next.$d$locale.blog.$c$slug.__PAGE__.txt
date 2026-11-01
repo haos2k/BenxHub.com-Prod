@@ -1,0 +1,110 @@
+1:"$Sreact.fragment"
+2:I[14864,["/_next/static/chunks/7923a261b80bb6e1.js","/_next/static/chunks/e09b4358027e8033.js","/_next/static/chunks/2dddb3bc05093f69.js"],"default"]
+8:I[24801,["/_next/static/chunks/7923a261b80bb6e1.js","/_next/static/chunks/e09b4358027e8033.js","/_next/static/chunks/2dddb3bc05093f69.js"],"default"]
+a:I[50183,["/_next/static/chunks/5a5b5b13c22d14f7.js","/_next/static/chunks/a484d1d3dd4b55ab.js"],"OutletBoundary"]
+b:"$Sreact.suspense"
+:HL["/images/posts/cursor-cli-non-interactive.png","image"]
+3:T11a5,<p>互動模式是「AI 問你、你按 Y/N」，適合開發時邊確認邊做。但如果你想把 Cursor CLI 放進 CI 或寫成腳本定期跑——沒有人在旁邊按鍵，這套流程就卡住了。</p>
+<p><strong>非互動模式</strong>解決的就是這件事：給一個指令，AI 自己跑完，不等人。</p>
+<h2 id="加上---no-interactive">加上 --no-interactive</h2>
+<figure data-rehype-pretty-code-figure=""><pre style="background-color:#24292e;color:#e1e4e8" tabindex="0" data-language="bash" data-theme="github-dark"><code data-language="bash" data-theme="github-dark" style="display: grid;"><span data-line=""><span style="color:#B392F0">cursor</span><span style="color:#9ECBFF"> agent</span><span style="color:#9ECBFF"> "幫專案加上 .editorconfig"</span><span style="color:#79B8FF"> --no-interactive</span></span></code></pre></figure>
+<p>簡寫也可以：<code>-n</code>。AI 會直接執行，不會停下來問你，跑完就結束。</p>
+<p>這個模式適合的任務有共同特徵——<strong>結果可預期、可重複跑</strong>，例如加 <code>.editorconfig</code>、修 lint、照規範整理格式之類的事，不適合那種「還沒想清楚要做什麼」的需求。</p>
+<h2 id="放進腳本裡">放進腳本裡</h2>
+<figure data-rehype-pretty-code-figure=""><pre style="background-color:#24292e;color:#e1e4e8" tabindex="0" data-language="bash" data-theme="github-dark"><code data-language="bash" data-theme="github-dark" style="display: grid;"><span data-line=""><span style="color:#6A737D">#!/bin/bash</span></span>
+<span data-line=""><span style="color:#79B8FF">cd</span><span style="color:#9ECBFF"> /path/to/project</span></span>
+<span data-line=""><span style="color:#B392F0">cursor</span><span style="color:#9ECBFF"> agent</span><span style="color:#9ECBFF"> "依照 CONTRIBUTING.md 跑 linter 並修復"</span><span style="color:#79B8FF"> --no-interactive</span></span></code></pre></figure>
+<p>CI 環境要特別注意：機器上要有 Cursor 授權，先跑過 <code>cursor auth login</code> 或設好 token，不然 AI 沒辦法上工——這個被忘掉的機率蠻高的。</p>
+<h2 id="指定模型可選">指定模型（可選）</h2>
+<p>想固定用某個模型跑：</p>
+<figure data-rehype-pretty-code-figure=""><pre style="background-color:#24292e;color:#e1e4e8" tabindex="0" data-language="bash" data-theme="github-dark"><code data-language="bash" data-theme="github-dark" style="display: grid;"><span data-line=""><span style="color:#B392F0">cursor</span><span style="color:#9ECBFF"> agent</span><span style="color:#9ECBFF"> "重寫這段註解"</span><span style="color:#79B8FF"> --model</span><span style="color:#9ECBFF"> claude-3-5-sonnet</span><span style="color:#79B8FF"> --no-interactive</span></span></code></pre></figure>
+<p>實際可用的模型名稱以官方文件為準，別自己猜型號。</p>
+<h2 id="長任務交給雲端跑-c">長任務交給雲端跑：-c</h2>
+<p>任務很重、不想佔著終端機等它跑完：</p>
+<figure data-rehype-pretty-code-figure=""><pre style="background-color:#24292e;color:#e1e4e8" tabindex="0" data-language="bash" data-theme="github-dark"><code data-language="bash" data-theme="github-dark" style="display: grid;"><span data-line=""><span style="color:#B392F0">cursor</span><span style="color:#9ECBFF"> agent</span><span style="color:#9ECBFF"> "分析整個 repo 並產出架構文件"</span><span style="color:#79B8FF"> -c</span></span></code></pre></figure>
+<p><code>-c</code> 會把這輪對話交給雲端 Agent 繼續執行——你可以關掉終端機去做別的事，之後用 <code>--resume</code> 接回來看結果。等於「背景執行」，差在是 AI 在背景幫你做事，不是你的 shell process。</p>
+<hr>
+<table>
+<thead>
+<tr>
+<th>模式</th>
+<th>參數</th>
+<th>適合</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td>非互動（本地）</td>
+<td><code>--no-interactive</code> / <code>-n</code></td>
+<td>腳本、CI、結果可預期的任務</td>
+</tr>
+<tr>
+<td>指定模型</td>
+<td><code>--model 模型名</code></td>
+<td>需要特定模型品質的任務</td>
+</tr>
+<tr>
+<td>雲端背景執行</td>
+<td><code>-c</code></td>
+<td>長時間任務、關機也能繼續</td>
+</tr>
+</tbody>
+</table>
+<p>腳本寫好之前先手動跑一次確認行為，別直接就扔進 CI——這個教訓最好不要親身學到。</p>
+<blockquote>
+<p>下一步：<a href="05-tips">05-tips</a> — 幾個實用技巧加上大家最常問的問題，少踩幾個雷。</p>
+</blockquote>0:{"buildId":"Yck3R4ooQxWkwGLT6is1X","rsc":["$","$1","c",{"children":[[["$","script",null,{"type":"application/ld+json","dangerouslySetInnerHTML":{"__html":"{\"@context\":\"https://schema.org\",\"@type\":\"Article\",\"headline\":\"Cursor CLI 非互動模式：讓 AI 在腳本和 CI 裡自己跑\",\"description\":\"加上 --no-interactive 讓 cursor agent 一鍵跑完不等人按鍵，適合腳本與 CI；--model 指定模型，-c 交給雲端背景執行。\",\"url\":\"https://benxhub.com/zh/blog/cursor/cli/04-non-interactive\",\"mainEntityOfPage\":{\"@type\":\"WebPage\",\"@id\":\"https://benxhub.com/zh/blog/cursor/cli/04-non-interactive\"},\"datePublished\":\"2026-02-24T00:00:00.000Z\",\"dateModified\":\"2026-02-24T00:00:00.000Z\",\"keywords\":\"cursor, cli, automation, ci\",\"inLanguage\":\"zh\",\"author\":{\"@type\":\"Person\",\"name\":\"BenX\",\"url\":\"https://benxhub.com\"},\"publisher\":{\"@type\":\"Organization\",\"name\":\"BenXHub Blog\",\"url\":\"https://benxhub.com\"},\"image\":\"https://benxhub.com/images/posts/cursor-cli-non-interactive.png\"}"}}],["$","div",null,{"className":"mx-auto max-w-6xl px-4 py-12 sm:px-6","children":["$","div",null,{"className":"lg:grid lg:grid-cols-[1fr_240px] lg:gap-14","children":[["$","article",null,{"children":[["$","header",null,{"className":"mb-10","children":[["$","div",null,{"className":"mb-4 flex flex-wrap gap-2","children":[["$","$L2","cursor",{"href":"/zh/tags/cursor","localeCookie":{"name":"NEXT_LOCALE","sameSite":"lax"},"className":"inline-flex items-center rounded-full px-2.5 py-0.5 text-xs font-medium transition-colors","style":{"background":"var(--color-code-bg)","color":"var(--color-accent)","border":"1px solid var(--color-border)"},"children":["#","cursor"]}],["$","$L2","cli",{"href":"/zh/tags/cli","localeCookie":{"name":"NEXT_LOCALE","sameSite":"lax"},"className":"inline-flex items-center rounded-full px-2.5 py-0.5 text-xs font-medium transition-colors","style":{"background":"var(--color-code-bg)","color":"var(--color-accent)","border":"1px solid var(--color-border)"},"children":["#","cli"]}],["$","$L2","automation",{"href":"/zh/tags/automation","localeCookie":{"name":"NEXT_LOCALE","sameSite":"lax"},"className":"inline-flex items-center rounded-full px-2.5 py-0.5 text-xs font-medium transition-colors","style":{"background":"var(--color-code-bg)","color":"var(--color-accent)","border":"1px solid var(--color-border)"},"children":["#","automation"]}],["$","$L2","ci",{"href":"/zh/tags/ci","localeCookie":{"name":"NEXT_LOCALE","sameSite":"lax"},"className":"inline-flex items-center rounded-full px-2.5 py-0.5 text-xs font-medium transition-colors","style":{"background":"var(--color-code-bg)","color":"var(--color-accent)","border":"1px solid var(--color-border)"},"children":["#","ci"]}]]}],["$","h1",null,{"className":"mb-4 text-3xl leading-snug font-bold tracking-tight sm:text-4xl","style":{"color":"var(--color-text)"},"children":"Cursor CLI 非互動模式：讓 AI 在腳本和 CI 裡自己跑"}],["$","div",null,{"className":"flex flex-wrap items-center gap-3 text-sm","style":{"color":"var(--color-muted)"},"children":[["$","time",null,{"dateTime":"2026-02-24","children":"2026 年 2 月 24 日"}],["$","span",null,{"aria-hidden":"true","children":"·"}],["$","span",null,{"children":"3 min read"}]]}],["$","div",null,{"className":"mt-6 overflow-hidden rounded-lg","children":["$","img",null,{"src":"/images/posts/cursor-cli-non-interactive.png","alt":"Cursor CLI 非互動模式：讓 AI 在腳本和 CI 裡自己跑","className":"w-full h-auto"}]}],["$","div",null,{"className":"mt-6 border-b","style":{"borderColor":"var(--color-border)"}}]]}],["$","div",null,{"className":"prose","dangerouslySetInnerHTML":{"__html":"$3"}}],"$L4"]}],"$L5"]}]}]],["$L6"],"$L7"]}],"loading":null,"isPartial":false}
+4:["$","footer",null,{"className":"mt-14 border-t pt-8","style":{"borderColor":"var(--color-border)"},"children":[["$","div",null,{"className":"mb-8 flex flex-wrap gap-2","children":[["$","$L2","cursor",{"href":"/zh/tags/cursor","localeCookie":{"name":"NEXT_LOCALE","sameSite":"lax"},"className":"inline-flex items-center rounded-full px-3 py-1 text-sm font-medium transition-colors","style":{"background":"var(--color-code-bg)","color":"var(--color-accent)","border":"1px solid var(--color-border)"},"children":["#","cursor"]}],["$","$L2","cli",{"href":"/zh/tags/cli","localeCookie":{"name":"NEXT_LOCALE","sameSite":"lax"},"className":"inline-flex items-center rounded-full px-3 py-1 text-sm font-medium transition-colors","style":{"background":"var(--color-code-bg)","color":"var(--color-accent)","border":"1px solid var(--color-border)"},"children":["#","cli"]}],["$","$L2","automation",{"href":"/zh/tags/automation","localeCookie":{"name":"NEXT_LOCALE","sameSite":"lax"},"className":"inline-flex items-center rounded-full px-3 py-1 text-sm font-medium transition-colors","style":{"background":"var(--color-code-bg)","color":"var(--color-accent)","border":"1px solid var(--color-border)"},"children":["#","automation"]}],["$","$L2","ci",{"href":"/zh/tags/ci","localeCookie":{"name":"NEXT_LOCALE","sameSite":"lax"},"className":"inline-flex items-center rounded-full px-3 py-1 text-sm font-medium transition-colors","style":{"background":"var(--color-code-bg)","color":"var(--color-accent)","border":"1px solid var(--color-border)"},"children":["#","ci"]}]]}],["$","nav",null,{"aria-label":"文章導覽","className":"grid grid-cols-1 gap-4 sm:grid-cols-2","children":[["$","$L2",null,{"href":"/zh/blog/cursor/cli/03-modes","localeCookie":{"name":"NEXT_LOCALE","sameSite":"lax"},"className":"group rounded-lg border p-4 transition-colors hover:border-accent","style":{"borderColor":"var(--color-border)","background":"var(--color-surface)"},"children":[["$","p",null,{"className":"mb-1 text-xs","style":{"color":"var(--color-muted)"},"children":"← 較新文章"}],["$","p",null,{"className":"line-clamp-1 text-sm font-medium transition-colors group-hover:text-accent","style":{"color":"var(--color-text)"},"children":"Cursor CLI 三種模式：Agent、Plan、Ask 怎麼選"}]]}],["$","$L2",null,{"href":"/zh/blog/cursor/cli/05-tips","localeCookie":{"name":"NEXT_LOCALE","sameSite":"lax"},"className":"group rounded-lg border p-4 text-right transition-colors hover:border-accent","style":{"borderColor":"var(--color-border)","background":"var(--color-surface)"},"children":[["$","p",null,{"className":"mb-1 text-xs","style":{"color":"var(--color-muted)"},"children":"較舊文章 →"}],["$","p",null,{"className":"line-clamp-1 text-sm font-medium transition-colors group-hover:text-accent","style":{"color":"var(--color-text)"},"children":"Cursor CLI 實用技巧與常見問題 FAQ"}]]}]]}]]}]
+9:T11a5,<p>互動模式是「AI 問你、你按 Y/N」，適合開發時邊確認邊做。但如果你想把 Cursor CLI 放進 CI 或寫成腳本定期跑——沒有人在旁邊按鍵，這套流程就卡住了。</p>
+<p><strong>非互動模式</strong>解決的就是這件事：給一個指令，AI 自己跑完，不等人。</p>
+<h2 id="加上---no-interactive">加上 --no-interactive</h2>
+<figure data-rehype-pretty-code-figure=""><pre style="background-color:#24292e;color:#e1e4e8" tabindex="0" data-language="bash" data-theme="github-dark"><code data-language="bash" data-theme="github-dark" style="display: grid;"><span data-line=""><span style="color:#B392F0">cursor</span><span style="color:#9ECBFF"> agent</span><span style="color:#9ECBFF"> "幫專案加上 .editorconfig"</span><span style="color:#79B8FF"> --no-interactive</span></span></code></pre></figure>
+<p>簡寫也可以：<code>-n</code>。AI 會直接執行，不會停下來問你，跑完就結束。</p>
+<p>這個模式適合的任務有共同特徵——<strong>結果可預期、可重複跑</strong>，例如加 <code>.editorconfig</code>、修 lint、照規範整理格式之類的事，不適合那種「還沒想清楚要做什麼」的需求。</p>
+<h2 id="放進腳本裡">放進腳本裡</h2>
+<figure data-rehype-pretty-code-figure=""><pre style="background-color:#24292e;color:#e1e4e8" tabindex="0" data-language="bash" data-theme="github-dark"><code data-language="bash" data-theme="github-dark" style="display: grid;"><span data-line=""><span style="color:#6A737D">#!/bin/bash</span></span>
+<span data-line=""><span style="color:#79B8FF">cd</span><span style="color:#9ECBFF"> /path/to/project</span></span>
+<span data-line=""><span style="color:#B392F0">cursor</span><span style="color:#9ECBFF"> agent</span><span style="color:#9ECBFF"> "依照 CONTRIBUTING.md 跑 linter 並修復"</span><span style="color:#79B8FF"> --no-interactive</span></span></code></pre></figure>
+<p>CI 環境要特別注意：機器上要有 Cursor 授權，先跑過 <code>cursor auth login</code> 或設好 token，不然 AI 沒辦法上工——這個被忘掉的機率蠻高的。</p>
+<h2 id="指定模型可選">指定模型（可選）</h2>
+<p>想固定用某個模型跑：</p>
+<figure data-rehype-pretty-code-figure=""><pre style="background-color:#24292e;color:#e1e4e8" tabindex="0" data-language="bash" data-theme="github-dark"><code data-language="bash" data-theme="github-dark" style="display: grid;"><span data-line=""><span style="color:#B392F0">cursor</span><span style="color:#9ECBFF"> agent</span><span style="color:#9ECBFF"> "重寫這段註解"</span><span style="color:#79B8FF"> --model</span><span style="color:#9ECBFF"> claude-3-5-sonnet</span><span style="color:#79B8FF"> --no-interactive</span></span></code></pre></figure>
+<p>實際可用的模型名稱以官方文件為準，別自己猜型號。</p>
+<h2 id="長任務交給雲端跑-c">長任務交給雲端跑：-c</h2>
+<p>任務很重、不想佔著終端機等它跑完：</p>
+<figure data-rehype-pretty-code-figure=""><pre style="background-color:#24292e;color:#e1e4e8" tabindex="0" data-language="bash" data-theme="github-dark"><code data-language="bash" data-theme="github-dark" style="display: grid;"><span data-line=""><span style="color:#B392F0">cursor</span><span style="color:#9ECBFF"> agent</span><span style="color:#9ECBFF"> "分析整個 repo 並產出架構文件"</span><span style="color:#79B8FF"> -c</span></span></code></pre></figure>
+<p><code>-c</code> 會把這輪對話交給雲端 Agent 繼續執行——你可以關掉終端機去做別的事，之後用 <code>--resume</code> 接回來看結果。等於「背景執行」，差在是 AI 在背景幫你做事，不是你的 shell process。</p>
+<hr>
+<table>
+<thead>
+<tr>
+<th>模式</th>
+<th>參數</th>
+<th>適合</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td>非互動（本地）</td>
+<td><code>--no-interactive</code> / <code>-n</code></td>
+<td>腳本、CI、結果可預期的任務</td>
+</tr>
+<tr>
+<td>指定模型</td>
+<td><code>--model 模型名</code></td>
+<td>需要特定模型品質的任務</td>
+</tr>
+<tr>
+<td>雲端背景執行</td>
+<td><code>-c</code></td>
+<td>長時間任務、關機也能繼續</td>
+</tr>
+</tbody>
+</table>
+<p>腳本寫好之前先手動跑一次確認行為，別直接就扔進 CI——這個教訓最好不要親身學到。</p>
+<blockquote>
+<p>下一步：<a href="05-tips">05-tips</a> — 幾個實用技巧加上大家最常問的問題，少踩幾個雷。</p>
+</blockquote>5:["$","aside",null,{"className":"hidden lg:block","children":["$","$L8",null,{"html":"$9"}]}]
+6:["$","script","script-0",{"src":"/_next/static/chunks/2dddb3bc05093f69.js","async":true}]
+7:["$","$La",null,{"children":["$","$b",null,{"name":"Next.MetadataOutlet","children":"$@c"}]}]
+c:null

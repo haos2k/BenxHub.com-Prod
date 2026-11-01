@@ -1,0 +1,186 @@
+1:"$Sreact.fragment"
+2:I[14864,["/_next/static/chunks/7923a261b80bb6e1.js","/_next/static/chunks/e09b4358027e8033.js","/_next/static/chunks/2dddb3bc05093f69.js"],"default"]
+8:I[24801,["/_next/static/chunks/7923a261b80bb6e1.js","/_next/static/chunks/e09b4358027e8033.js","/_next/static/chunks/2dddb3bc05093f69.js"],"default"]
+a:I[50183,["/_next/static/chunks/5a5b5b13c22d14f7.js","/_next/static/chunks/a484d1d3dd4b55ab.js"],"OutletBoundary"]
+b:"$Sreact.suspense"
+:HL["/images/posts/cursor-cli-headless.png","image"]
+3:T1dba,<p><a href="04-non-interactive">04-non-interactive</a> 講了 <code>--no-interactive</code> 讓 Agent 跑完不等人。但如果你想要的是<strong>腳本裡叫 AI 直接改你的檔案、改完腳本繼續跑</strong>——那要再多加兩個 flag：<code>-p</code>（<code>--print</code>）和 <code>--force</code>。</p>
+<p>不開 Cursor 視窗、不按鍵確認，一行指令，AI 改完，腳本繼續——這就是無頭模式（Headless）在做的事。</p>
+<h2 id="-p----print輸出到終端預設不改檔">-p / --print：輸出到終端，預設不改檔</h2>
+<figure data-rehype-pretty-code-figure=""><pre style="background-color:#24292e;color:#e1e4e8" tabindex="0" data-language="bash" data-theme="github-dark"><code data-language="bash" data-theme="github-dark" style="display: grid;"><span data-line=""><span style="color:#B392F0">cursor</span><span style="color:#9ECBFF"> agent</span><span style="color:#79B8FF"> -p</span><span style="color:#9ECBFF"> "這個專案在做什麼？"</span></span>
+<span data-line=""><span style="color:#B392F0">cursor</span><span style="color:#9ECBFF"> agent</span><span style="color:#79B8FF"> --print</span><span style="color:#9ECBFF"> "列出 src/ 下所有 API 端點"</span></span></code></pre></figure>
+<p><code>-p</code> 的意思是：跑完就結束、結果印到終端，<strong>不加 <code>--force</code> 就不會寫入任何檔案</strong>。只有讀取、分析、輸出。</p>
+<p>適合問答、產報告到 stdout、或給 pipe 和後續腳本解析。</p>
+<h2 id="--force加了才會真的動檔案">--force：加了才會真的動檔案</h2>
+<p>在 <code>-p</code> 底下加 <code>--force</code>（或 <code>--yolo</code>，效果一樣），Agent 就<strong>可以真的寫入、修改、刪除檔案</strong>，完全不問你 Y/N：</p>
+<figure data-rehype-pretty-code-figure=""><pre style="background-color:#24292e;color:#e1e4e8" tabindex="0" data-language="bash" data-theme="github-dark"><code data-language="bash" data-theme="github-dark" style="display: grid;"><span data-line=""><span style="color:#B392F0">cursor</span><span style="color:#9ECBFF"> agent</span><span style="color:#79B8FF"> -p</span><span style="color:#79B8FF"> --force</span><span style="color:#9ECBFF"> "把 src/utils.js 重構成 ES6+ 語法"</span></span></code></pre></figure>
+<table>
+<thead>
+<tr>
+<th>情境</th>
+<th>指令範例</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td>單檔重構</td>
+<td><code>agent -p --force "重構 src/foo.ts 用 async/await"</code></td>
+</tr>
+<tr>
+<td>依規範修 lint</td>
+<td><code>agent -p --force "依 .eslintrc 修復所有可自動修復的錯誤"</code></td>
+</tr>
+<tr>
+<td>批次加 JSDoc</td>
+<td>見下方腳本範例</td>
+</tr>
+<tr>
+<td>產出檔案到專案</td>
+<td><code>agent -p --force "根據 README 產出 CONTRIBUTING.md"</code></td>
+</tr>
+</tbody>
+</table>
+<blockquote>
+<p>在腳本裡用 <code>--force</code> 前，先在單一檔案或小範圍試跑，確認行為再放大到整個 repo。</p>
+</blockquote>
+<h2 id="腳本範例批次加-jsdoc">腳本範例：批次加 JSDoc</h2>
+<figure data-rehype-pretty-code-figure=""><pre style="background-color:#24292e;color:#e1e4e8" tabindex="0" data-language="bash" data-theme="github-dark"><code data-language="bash" data-theme="github-dark" style="display: grid;"><span data-line=""><span style="color:#6A737D">#!/bin/bash</span></span>
+<span data-line=""><span style="color:#B392F0">find</span><span style="color:#9ECBFF"> src/</span><span style="color:#79B8FF"> -name</span><span style="color:#9ECBFF"> "*.js"</span><span style="color:#F97583"> |</span><span style="color:#F97583"> while</span><span style="color:#79B8FF"> read</span><span style="color:#79B8FF"> -r</span><span style="color:#9ECBFF"> file</span><span style="color:#E1E4E8">; </span><span style="color:#F97583">do</span></span>
+<span data-line=""><span style="color:#79B8FF">  echo</span><span style="color:#9ECBFF"> "Processing </span><span style="color:#E1E4E8">$file</span><span style="color:#9ECBFF">..."</span></span>
+<span data-line=""><span style="color:#B392F0">  cursor</span><span style="color:#9ECBFF"> agent</span><span style="color:#79B8FF"> -p</span><span style="color:#79B8FF"> --force</span><span style="color:#9ECBFF"> "為 </span><span style="color:#E1E4E8">$file</span><span style="color:#9ECBFF"> 加上完整的 JSDoc 註解，直接修改該檔"</span></span>
+<span data-line=""><span style="color:#F97583">done</span></span></code></pre></figure>
+<p>每一個 <code>.js</code> 都會被 Agent 讀寫。適合在專案副本或獨立 branch 上跑，或先對一兩個檔試跑再全批。</p>
+<h2 id="腳本範例自動-code-review-並寫報告">腳本範例：自動 code review 並寫報告</h2>
+<figure data-rehype-pretty-code-figure=""><pre style="background-color:#24292e;color:#e1e4e8" tabindex="0" data-language="bash" data-theme="github-dark"><code data-language="bash" data-theme="github-dark" style="display: grid;"><span data-line=""><span style="color:#6A737D">#!/bin/bash</span></span>
+<span data-line=""><span style="color:#B392F0">cursor</span><span style="color:#9ECBFF"> agent</span><span style="color:#79B8FF"> -p</span><span style="color:#79B8FF"> --force</span><span style="color:#79B8FF"> --output-format</span><span style="color:#9ECBFF"> text</span><span style="color:#79B8FF"> \</span></span>
+<span data-line=""><span style="color:#9ECBFF">  "針對最近變更做 code review，重點：可讀性、潛在 bug、安全性、最佳實踐。把結論與具體建議寫入 review.txt"</span></span></code></pre></figure>
+<p><code>--output-format text</code> 讓輸出是純文字，方便直接寫進檔案或用 <code>grep</code> 處理。下一篇會講 <code>json</code>、<code>stream-json</code> 的用法。</p>
+<h2 id="ci-環境記得設好-api-key">CI 環境記得設好 API Key</h2>
+<p>無頭模式通常在沒有 Cursor 視窗的環境跑——CI 機器、遠端伺服器——這些地方要設好授權：</p>
+<figure data-rehype-pretty-code-figure=""><pre style="background-color:#24292e;color:#e1e4e8" tabindex="0" data-language="bash" data-theme="github-dark"><code data-language="bash" data-theme="github-dark" style="display: grid;"><span data-line=""><span style="color:#F97583">export</span><span style="color:#E1E4E8"> CURSOR_API_KEY</span><span style="color:#F97583">=</span><span style="color:#E1E4E8">你的金鑰</span></span></code></pre></figure>
+<p>或先在那台機器跑過 <code>cursor auth login</code>（若支援）。沒設好直接跑，Agent 上不了工，腳本就在那邊卡著。</p>
+<h2 id="三種模式的差異">三種模式的差異</h2>
+<table>
+<thead>
+<tr>
+<th>模式</th>
+<th>典型用法</th>
+<th>會不會改檔</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td><code>--no-interactive</code></td>
+<td>終端機裡跑、可以看輸出，但不用按鍵</td>
+<td>依設定，可能會問</td>
+</tr>
+<tr>
+<td><code>-p</code> / <code>--print</code></td>
+<td>腳本、CI、完全非互動，輸出到 stdout</td>
+<td>預設不改檔</td>
+</tr>
+<tr>
+<td><code>-p --force</code></td>
+<td>同上，但允許 Agent 直接改檔</td>
+<td>會改，不問</td>
+</tr>
+</tbody>
+</table>
+<p>要腳本「真的改檔案」用 <code>-p --force</code>；只要分析或輸出報告到終端，<code>-p</code> 就夠了。</p>
+<hr>
+<p><code>--print</code> 是容器，<code>--force</code> 才是鑰匙。記住這個分工，腳本裡的 AI 自動化就沒什麼黑魔法。</p>
+<blockquote>
+<p>下一步：<a href="11-output-ci">11-output-ci</a> — text / json / stream-json 三種輸出格式與 CI 整合。</p>
+</blockquote>0:{"buildId":"Yck3R4ooQxWkwGLT6is1X","rsc":["$","$1","c",{"children":[[["$","script",null,{"type":"application/ld+json","dangerouslySetInnerHTML":{"__html":"{\"@context\":\"https://schema.org\",\"@type\":\"Article\",\"headline\":\"Cursor CLI --print 與 --force：腳本裡真的改檔案的做法\",\"description\":\"用 -p/--print 非互動跑完任務輸出到終端，加上 --force 讓 Agent 直接改寫檔案。適合 CI、批次加 JSDoc、自動 code review。\",\"url\":\"https://benxhub.com/zh/blog/cursor/cli/10-headless-scripts\",\"mainEntityOfPage\":{\"@type\":\"WebPage\",\"@id\":\"https://benxhub.com/zh/blog/cursor/cli/10-headless-scripts\"},\"datePublished\":\"2026-03-09T00:00:00.000Z\",\"dateModified\":\"2026-03-09T00:00:00.000Z\",\"keywords\":\"cursor, cli, headless, automation, scripts\",\"inLanguage\":\"zh\",\"author\":{\"@type\":\"Person\",\"name\":\"BenX\",\"url\":\"https://benxhub.com\"},\"publisher\":{\"@type\":\"Organization\",\"name\":\"BenXHub Blog\",\"url\":\"https://benxhub.com\"},\"image\":\"https://benxhub.com/images/posts/cursor-cli-headless.png\"}"}}],["$","div",null,{"className":"mx-auto max-w-6xl px-4 py-12 sm:px-6","children":["$","div",null,{"className":"lg:grid lg:grid-cols-[1fr_240px] lg:gap-14","children":[["$","article",null,{"children":[["$","header",null,{"className":"mb-10","children":[["$","div",null,{"className":"mb-4 flex flex-wrap gap-2","children":[["$","$L2","cursor",{"href":"/zh/tags/cursor","localeCookie":{"name":"NEXT_LOCALE","sameSite":"lax"},"className":"inline-flex items-center rounded-full px-2.5 py-0.5 text-xs font-medium transition-colors","style":{"background":"var(--color-code-bg)","color":"var(--color-accent)","border":"1px solid var(--color-border)"},"children":["#","cursor"]}],["$","$L2","cli",{"href":"/zh/tags/cli","localeCookie":{"name":"NEXT_LOCALE","sameSite":"lax"},"className":"inline-flex items-center rounded-full px-2.5 py-0.5 text-xs font-medium transition-colors","style":{"background":"var(--color-code-bg)","color":"var(--color-accent)","border":"1px solid var(--color-border)"},"children":["#","cli"]}],["$","$L2","headless",{"href":"/zh/tags/headless","localeCookie":{"name":"NEXT_LOCALE","sameSite":"lax"},"className":"inline-flex items-center rounded-full px-2.5 py-0.5 text-xs font-medium transition-colors","style":{"background":"var(--color-code-bg)","color":"var(--color-accent)","border":"1px solid var(--color-border)"},"children":["#","headless"]}],["$","$L2","automation",{"href":"/zh/tags/automation","localeCookie":{"name":"NEXT_LOCALE","sameSite":"lax"},"className":"inline-flex items-center rounded-full px-2.5 py-0.5 text-xs font-medium transition-colors","style":{"background":"var(--color-code-bg)","color":"var(--color-accent)","border":"1px solid var(--color-border)"},"children":["#","automation"]}],["$","$L2","scripts",{"href":"/zh/tags/scripts","localeCookie":{"name":"NEXT_LOCALE","sameSite":"lax"},"className":"inline-flex items-center rounded-full px-2.5 py-0.5 text-xs font-medium transition-colors","style":{"background":"var(--color-code-bg)","color":"var(--color-accent)","border":"1px solid var(--color-border)"},"children":["#","scripts"]}]]}],["$","h1",null,{"className":"mb-4 text-3xl leading-snug font-bold tracking-tight sm:text-4xl","style":{"color":"var(--color-text)"},"children":"Cursor CLI --print 與 --force：腳本裡真的改檔案的做法"}],["$","div",null,{"className":"flex flex-wrap items-center gap-3 text-sm","style":{"color":"var(--color-muted)"},"children":[["$","time",null,{"dateTime":"2026-03-09","children":"2026 年 3 月 9 日"}],["$","span",null,{"aria-hidden":"true","children":"·"}],["$","span",null,{"children":"4 min read"}]]}],["$","div",null,{"className":"mt-6 overflow-hidden rounded-lg","children":["$","img",null,{"src":"/images/posts/cursor-cli-headless.png","alt":"Cursor CLI --print 與 --force：腳本裡真的改檔案的做法","className":"w-full h-auto"}]}],["$","div",null,{"className":"mt-6 border-b","style":{"borderColor":"var(--color-border)"}}]]}],["$","div",null,{"className":"prose","dangerouslySetInnerHTML":{"__html":"$3"}}],"$L4"]}],"$L5"]}]}]],["$L6"],"$L7"]}],"loading":null,"isPartial":false}
+4:["$","footer",null,{"className":"mt-14 border-t pt-8","style":{"borderColor":"var(--color-border)"},"children":[["$","div",null,{"className":"mb-8 flex flex-wrap gap-2","children":[["$","$L2","cursor",{"href":"/zh/tags/cursor","localeCookie":{"name":"NEXT_LOCALE","sameSite":"lax"},"className":"inline-flex items-center rounded-full px-3 py-1 text-sm font-medium transition-colors","style":{"background":"var(--color-code-bg)","color":"var(--color-accent)","border":"1px solid var(--color-border)"},"children":["#","cursor"]}],["$","$L2","cli",{"href":"/zh/tags/cli","localeCookie":{"name":"NEXT_LOCALE","sameSite":"lax"},"className":"inline-flex items-center rounded-full px-3 py-1 text-sm font-medium transition-colors","style":{"background":"var(--color-code-bg)","color":"var(--color-accent)","border":"1px solid var(--color-border)"},"children":["#","cli"]}],["$","$L2","headless",{"href":"/zh/tags/headless","localeCookie":{"name":"NEXT_LOCALE","sameSite":"lax"},"className":"inline-flex items-center rounded-full px-3 py-1 text-sm font-medium transition-colors","style":{"background":"var(--color-code-bg)","color":"var(--color-accent)","border":"1px solid var(--color-border)"},"children":["#","headless"]}],["$","$L2","automation",{"href":"/zh/tags/automation","localeCookie":{"name":"NEXT_LOCALE","sameSite":"lax"},"className":"inline-flex items-center rounded-full px-3 py-1 text-sm font-medium transition-colors","style":{"background":"var(--color-code-bg)","color":"var(--color-accent)","border":"1px solid var(--color-border)"},"children":["#","automation"]}],["$","$L2","scripts",{"href":"/zh/tags/scripts","localeCookie":{"name":"NEXT_LOCALE","sameSite":"lax"},"className":"inline-flex items-center rounded-full px-3 py-1 text-sm font-medium transition-colors","style":{"background":"var(--color-code-bg)","color":"var(--color-accent)","border":"1px solid var(--color-border)"},"children":["#","scripts"]}]]}],["$","nav",null,{"aria-label":"文章導覽","className":"grid grid-cols-1 gap-4 sm:grid-cols-2","children":[["$","$L2",null,{"href":"/zh/blog/cursor/cli/09-worktree-advanced","localeCookie":{"name":"NEXT_LOCALE","sameSite":"lax"},"className":"group rounded-lg border p-4 transition-colors hover:border-accent","style":{"borderColor":"var(--color-border)","background":"var(--color-surface)"},"children":[["$","p",null,{"className":"mb-1 text-xs","style":{"color":"var(--color-muted)"},"children":"← 較新文章"}],["$","p",null,{"className":"line-clamp-1 text-sm font-medium transition-colors group-hover:text-accent","style":{"color":"var(--color-text)"},"children":"Cursor Best-of-N 與 worktrees.json：多模型比較與自動環境設定"}]]}],["$","$L2",null,{"href":"/zh/blog/cursor/cli/11-output-ci","localeCookie":{"name":"NEXT_LOCALE","sameSite":"lax"},"className":"group rounded-lg border p-4 text-right transition-colors hover:border-accent","style":{"borderColor":"var(--color-border)","background":"var(--color-surface)"},"children":[["$","p",null,{"className":"mb-1 text-xs","style":{"color":"var(--color-muted)"},"children":"較舊文章 →"}],["$","p",null,{"className":"line-clamp-1 text-sm font-medium transition-colors group-hover:text-accent","style":{"color":"var(--color-text)"},"children":"Cursor CLI 輸出格式與 CI 整合：text、json、stream-json 怎麼選"}]]}]]}]]}]
+9:T1dba,<p><a href="04-non-interactive">04-non-interactive</a> 講了 <code>--no-interactive</code> 讓 Agent 跑完不等人。但如果你想要的是<strong>腳本裡叫 AI 直接改你的檔案、改完腳本繼續跑</strong>——那要再多加兩個 flag：<code>-p</code>（<code>--print</code>）和 <code>--force</code>。</p>
+<p>不開 Cursor 視窗、不按鍵確認，一行指令，AI 改完，腳本繼續——這就是無頭模式（Headless）在做的事。</p>
+<h2 id="-p----print輸出到終端預設不改檔">-p / --print：輸出到終端，預設不改檔</h2>
+<figure data-rehype-pretty-code-figure=""><pre style="background-color:#24292e;color:#e1e4e8" tabindex="0" data-language="bash" data-theme="github-dark"><code data-language="bash" data-theme="github-dark" style="display: grid;"><span data-line=""><span style="color:#B392F0">cursor</span><span style="color:#9ECBFF"> agent</span><span style="color:#79B8FF"> -p</span><span style="color:#9ECBFF"> "這個專案在做什麼？"</span></span>
+<span data-line=""><span style="color:#B392F0">cursor</span><span style="color:#9ECBFF"> agent</span><span style="color:#79B8FF"> --print</span><span style="color:#9ECBFF"> "列出 src/ 下所有 API 端點"</span></span></code></pre></figure>
+<p><code>-p</code> 的意思是：跑完就結束、結果印到終端，<strong>不加 <code>--force</code> 就不會寫入任何檔案</strong>。只有讀取、分析、輸出。</p>
+<p>適合問答、產報告到 stdout、或給 pipe 和後續腳本解析。</p>
+<h2 id="--force加了才會真的動檔案">--force：加了才會真的動檔案</h2>
+<p>在 <code>-p</code> 底下加 <code>--force</code>（或 <code>--yolo</code>，效果一樣），Agent 就<strong>可以真的寫入、修改、刪除檔案</strong>，完全不問你 Y/N：</p>
+<figure data-rehype-pretty-code-figure=""><pre style="background-color:#24292e;color:#e1e4e8" tabindex="0" data-language="bash" data-theme="github-dark"><code data-language="bash" data-theme="github-dark" style="display: grid;"><span data-line=""><span style="color:#B392F0">cursor</span><span style="color:#9ECBFF"> agent</span><span style="color:#79B8FF"> -p</span><span style="color:#79B8FF"> --force</span><span style="color:#9ECBFF"> "把 src/utils.js 重構成 ES6+ 語法"</span></span></code></pre></figure>
+<table>
+<thead>
+<tr>
+<th>情境</th>
+<th>指令範例</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td>單檔重構</td>
+<td><code>agent -p --force "重構 src/foo.ts 用 async/await"</code></td>
+</tr>
+<tr>
+<td>依規範修 lint</td>
+<td><code>agent -p --force "依 .eslintrc 修復所有可自動修復的錯誤"</code></td>
+</tr>
+<tr>
+<td>批次加 JSDoc</td>
+<td>見下方腳本範例</td>
+</tr>
+<tr>
+<td>產出檔案到專案</td>
+<td><code>agent -p --force "根據 README 產出 CONTRIBUTING.md"</code></td>
+</tr>
+</tbody>
+</table>
+<blockquote>
+<p>在腳本裡用 <code>--force</code> 前，先在單一檔案或小範圍試跑，確認行為再放大到整個 repo。</p>
+</blockquote>
+<h2 id="腳本範例批次加-jsdoc">腳本範例：批次加 JSDoc</h2>
+<figure data-rehype-pretty-code-figure=""><pre style="background-color:#24292e;color:#e1e4e8" tabindex="0" data-language="bash" data-theme="github-dark"><code data-language="bash" data-theme="github-dark" style="display: grid;"><span data-line=""><span style="color:#6A737D">#!/bin/bash</span></span>
+<span data-line=""><span style="color:#B392F0">find</span><span style="color:#9ECBFF"> src/</span><span style="color:#79B8FF"> -name</span><span style="color:#9ECBFF"> "*.js"</span><span style="color:#F97583"> |</span><span style="color:#F97583"> while</span><span style="color:#79B8FF"> read</span><span style="color:#79B8FF"> -r</span><span style="color:#9ECBFF"> file</span><span style="color:#E1E4E8">; </span><span style="color:#F97583">do</span></span>
+<span data-line=""><span style="color:#79B8FF">  echo</span><span style="color:#9ECBFF"> "Processing </span><span style="color:#E1E4E8">$file</span><span style="color:#9ECBFF">..."</span></span>
+<span data-line=""><span style="color:#B392F0">  cursor</span><span style="color:#9ECBFF"> agent</span><span style="color:#79B8FF"> -p</span><span style="color:#79B8FF"> --force</span><span style="color:#9ECBFF"> "為 </span><span style="color:#E1E4E8">$file</span><span style="color:#9ECBFF"> 加上完整的 JSDoc 註解，直接修改該檔"</span></span>
+<span data-line=""><span style="color:#F97583">done</span></span></code></pre></figure>
+<p>每一個 <code>.js</code> 都會被 Agent 讀寫。適合在專案副本或獨立 branch 上跑，或先對一兩個檔試跑再全批。</p>
+<h2 id="腳本範例自動-code-review-並寫報告">腳本範例：自動 code review 並寫報告</h2>
+<figure data-rehype-pretty-code-figure=""><pre style="background-color:#24292e;color:#e1e4e8" tabindex="0" data-language="bash" data-theme="github-dark"><code data-language="bash" data-theme="github-dark" style="display: grid;"><span data-line=""><span style="color:#6A737D">#!/bin/bash</span></span>
+<span data-line=""><span style="color:#B392F0">cursor</span><span style="color:#9ECBFF"> agent</span><span style="color:#79B8FF"> -p</span><span style="color:#79B8FF"> --force</span><span style="color:#79B8FF"> --output-format</span><span style="color:#9ECBFF"> text</span><span style="color:#79B8FF"> \</span></span>
+<span data-line=""><span style="color:#9ECBFF">  "針對最近變更做 code review，重點：可讀性、潛在 bug、安全性、最佳實踐。把結論與具體建議寫入 review.txt"</span></span></code></pre></figure>
+<p><code>--output-format text</code> 讓輸出是純文字，方便直接寫進檔案或用 <code>grep</code> 處理。下一篇會講 <code>json</code>、<code>stream-json</code> 的用法。</p>
+<h2 id="ci-環境記得設好-api-key">CI 環境記得設好 API Key</h2>
+<p>無頭模式通常在沒有 Cursor 視窗的環境跑——CI 機器、遠端伺服器——這些地方要設好授權：</p>
+<figure data-rehype-pretty-code-figure=""><pre style="background-color:#24292e;color:#e1e4e8" tabindex="0" data-language="bash" data-theme="github-dark"><code data-language="bash" data-theme="github-dark" style="display: grid;"><span data-line=""><span style="color:#F97583">export</span><span style="color:#E1E4E8"> CURSOR_API_KEY</span><span style="color:#F97583">=</span><span style="color:#E1E4E8">你的金鑰</span></span></code></pre></figure>
+<p>或先在那台機器跑過 <code>cursor auth login</code>（若支援）。沒設好直接跑，Agent 上不了工，腳本就在那邊卡著。</p>
+<h2 id="三種模式的差異">三種模式的差異</h2>
+<table>
+<thead>
+<tr>
+<th>模式</th>
+<th>典型用法</th>
+<th>會不會改檔</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td><code>--no-interactive</code></td>
+<td>終端機裡跑、可以看輸出，但不用按鍵</td>
+<td>依設定，可能會問</td>
+</tr>
+<tr>
+<td><code>-p</code> / <code>--print</code></td>
+<td>腳本、CI、完全非互動，輸出到 stdout</td>
+<td>預設不改檔</td>
+</tr>
+<tr>
+<td><code>-p --force</code></td>
+<td>同上，但允許 Agent 直接改檔</td>
+<td>會改，不問</td>
+</tr>
+</tbody>
+</table>
+<p>要腳本「真的改檔案」用 <code>-p --force</code>；只要分析或輸出報告到終端，<code>-p</code> 就夠了。</p>
+<hr>
+<p><code>--print</code> 是容器，<code>--force</code> 才是鑰匙。記住這個分工，腳本裡的 AI 自動化就沒什麼黑魔法。</p>
+<blockquote>
+<p>下一步：<a href="11-output-ci">11-output-ci</a> — text / json / stream-json 三種輸出格式與 CI 整合。</p>
+</blockquote>5:["$","aside",null,{"className":"hidden lg:block","children":["$","$L8",null,{"html":"$9"}]}]
+6:["$","script","script-0",{"src":"/_next/static/chunks/2dddb3bc05093f69.js","async":true}]
+7:["$","$La",null,{"children":["$","$b",null,{"name":"Next.MetadataOutlet","children":"$@c"}]}]
+c:null

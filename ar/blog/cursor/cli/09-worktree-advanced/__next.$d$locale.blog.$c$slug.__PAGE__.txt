@@ -1,0 +1,281 @@
+1:"$Sreact.fragment"
+2:I[14864,["/_next/static/chunks/7923a261b80bb6e1.js","/_next/static/chunks/e09b4358027e8033.js","/_next/static/chunks/2dddb3bc05093f69.js"],"default"]
+8:I[24801,["/_next/static/chunks/7923a261b80bb6e1.js","/_next/static/chunks/e09b4358027e8033.js","/_next/static/chunks/2dddb3bc05093f69.js"],"default"]
+a:I[50183,["/_next/static/chunks/5a5b5b13c22d14f7.js","/_next/static/chunks/a484d1d3dd4b55ab.js"],"OutletBoundary"]
+b:"$Sreact.suspense"
+3:T30bc,<p>المنشور السابق <a href="08-worktree-merge">08-worktree-merge</a> غطى worktree التلقائي في Cursor وApply. هذا يتعمق في أمرين: <strong>Best-of-N</strong> (نفس الـ prompt، نماذج متعددة بالتوازي، ثم اختر واحداً لتطبيقه) و<strong>worktrees.json</strong> (تثبيت تلقائي للتبعيات، تشغيل migrations، نسخ <code>.env</code> عند إنشاء worktree).</p>
+<h2 id="best-of-n-prompt-واحد-نماذج-متعددة-دفعة-واحدة">Best-of-N: prompt واحد، نماذج متعددة دفعة واحدة</h2>
+<p><strong>Best-of-N</strong> يعني: ترسل مهمة واحدة، Cursor يشغّل <strong>نماذج متعددة</strong> في worktrees منفصلة، وتحصل على "بطاقات" متعددة كل واحدة بتغييرات نموذج واحد — <strong>اختر واحدة واضغط Apply</strong>.</p>
+<h3 id="متى-تستخدم-best-of-n">متى تستخدم Best-of-N؟</h3>
+<table>
+<thead>
+<tr>
+<th>الحالة</th>
+<th>لماذا يساعد</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td>غير متأكد أي نموذج يناسب كودك أكثر</td>
+<td>شغّل مرة واحدة، قارن المخرجات، معيار صغير</td>
+</tr>
+<tr>
+<td>مشكلة صعبة، قلق من أن يفوّت نموذج واحد حالات حدية</td>
+<td>نماذج مختلفة، مقاربات مختلفة، تغطية أوضح</td>
+</tr>
+<tr>
+<td>مقارنة جودة الكود</td>
+<td>نفس الطلب، أسلوب وهيكل مختلفان جنباً إلى جنب</td>
+</tr>
+<tr>
+<td>المهمة صعبة، تريد نجاح "المحاولة الأولى" أعلى</td>
+<td>نماذج متعددة كل واحد يجرب مرة، طبّق الأفضل</td>
+</tr>
+</tbody>
+</table>
+<p>باختصار: <strong>نماذج متعددة تنفّذ نفس المهمة، أنت تختار واحداً</strong> — خاصة للمهام الصعبة أو عندما تهتم بالجودة.</p>
+<h3 id="كيف-تستخدمه">كيف تستخدمه</h3>
+<p>في Cursor، عند بدء Agent اختر "نماذج متعددة" أو خيار Best-of-N (حسب الواجهة الحالية). بعد إرسال الـ prompt سترى بطاقات متعددة؛ انتقل بينها للمقارنة ثم <strong>Apply</strong> التي تريدها على main.</p>
+<p>إن طبّقت أكثر من بطاقة من نفس تشغيل Best-of-N (مثلاً Apply A ثم B)، قد يسأل Cursor: <strong>دمج مع حل تعارضات</strong>، أو <strong>Full Overwrite</strong> (استبدال الملف بالكامل).</p>
+<h2 id="worktreesjson-تجهيز-البيئة-عند-إنشاء-worktree">worktrees.json: تجهيز البيئة عند إنشاء worktree</h2>
+<p>عند إنشاء Cursor لـ worktree، ينسخ <strong>الملفات المتتبعة</strong> من المجلد الرئيسي افتراضياً، لكنه لا يثبت التبعيات ولا ينسخ <code>.env</code> ولا يشغّل migrations قاعدة البيانات.<br>
+مع <strong><code>.cursor/worktrees.json</code></strong> يمكنك تحديد <strong>أوامر تُشغّل بعد إنشاء كل worktree جديد</strong>، مثل <code>npm ci</code>، <code>cp .env</code>، <code>npm run db:migrate</code>.</p>
+<h3 id="أين-يكون-الإعداد">أين يكون الإعداد؟</h3>
+<p>Cursor يبحث بالترتيب:</p>
+<ol>
+<li>جذر المشروع: <code>.cursor/worktrees.json</code></li>
+<li>مسار الـ worktree</li>
+</ol>
+<p>عادة ضعه في <strong>جذر المشروع</strong>: <code>.cursor/worktrees.json</code>.</p>
+<h3 id="ثلاثة-مفاتيح-إعداد">ثلاثة مفاتيح إعداد</h3>
+<table>
+<thead>
+<tr>
+<th>المفتاح</th>
+<th>الوصف</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td><code>setup-worktree</code></td>
+<td>عام؛ يُستخدم على كل الأنظمة إذا لم يُضبط مفتاح خاص بنظام</td>
+</tr>
+<tr>
+<td><code>setup-worktree-windows</code></td>
+<td>Windows فقط؛ يتجاوز <code>setup-worktree</code></td>
+</tr>
+<tr>
+<td><code>setup-worktree-unix</code></td>
+<td>macOS / Linux فقط؛ يتجاوز <code>setup-worktree</code></td>
+</tr>
+</tbody>
+</table>
+<p>كل مفتاح يمكن أن يكون:</p>
+<ul>
+<li><strong>سلسلة</strong>: مسار لسكربت (نسبي إلى المجلد الذي يحتوي <code>.cursor/worktrees.json</code>)</li>
+<li><strong>مصفوفة</strong>: قائمة أوامر shell، تُنفَّذ بالترتيب</li>
+</ul>
+<h3 id="مثال-مشروع-node">مثال: مشروع Node</h3>
+<figure data-rehype-pretty-code-figure=""><pre style="background-color:#24292e;color:#e1e4e8" tabindex="0" data-language="json" data-theme="github-dark"><code data-language="json" data-theme="github-dark" style="display: grid;"><span data-line=""><span style="color:#E1E4E8">{</span></span>
+<span data-line=""><span style="color:#79B8FF">  "setup-worktree"</span><span style="color:#E1E4E8">: [</span></span>
+<span data-line=""><span style="color:#9ECBFF">    "npm ci"</span><span style="color:#E1E4E8">,</span></span>
+<span data-line=""><span style="color:#9ECBFF">    "cp $ROOT_WORKTREE_PATH/.env .env"</span></span>
+<span data-line=""><span style="color:#E1E4E8">  ]</span></span>
+<span data-line=""><span style="color:#E1E4E8">}</span></span></code></pre></figure>
+<p><code>$ROOT_WORKTREE_PATH</code> يوفّره Cursor ويشير إلى <strong>المجلد الرئيسي للعمل</strong>، مثلاً لنسخ <code>.env</code>.<br>
+على Windows قد تحتاج <code>copy</code> أو PowerShell؛ يمكنك التقسيم حسب النظام:</p>
+<figure data-rehype-pretty-code-figure=""><pre style="background-color:#24292e;color:#e1e4e8" tabindex="0" data-language="json" data-theme="github-dark"><code data-language="json" data-theme="github-dark" style="display: grid;"><span data-line=""><span style="color:#E1E4E8">{</span></span>
+<span data-line=""><span style="color:#79B8FF">  "setup-worktree-unix"</span><span style="color:#E1E4E8">: [</span></span>
+<span data-line=""><span style="color:#9ECBFF">    "npm ci"</span><span style="color:#E1E4E8">,</span></span>
+<span data-line=""><span style="color:#9ECBFF">    "cp $ROOT_WORKTREE_PATH/.env .env"</span></span>
+<span data-line=""><span style="color:#E1E4E8">  ],</span></span>
+<span data-line=""><span style="color:#79B8FF">  "setup-worktree-windows"</span><span style="color:#E1E4E8">: [</span></span>
+<span data-line=""><span style="color:#9ECBFF">    "npm ci"</span><span style="color:#E1E4E8">,</span></span>
+<span data-line=""><span style="color:#9ECBFF">    "copy %ROOT_WORKTREE_PATH%</span><span style="color:#79B8FF">\\</span><span style="color:#9ECBFF">.env .env"</span></span>
+<span data-line=""><span style="color:#E1E4E8">  ]</span></span>
+<span data-line=""><span style="color:#E1E4E8">}</span></span></code></pre></figure>
+<h3 id="مثال-تشغيل-migrations-قاعدة-البيانات">مثال: تشغيل migrations قاعدة البيانات</h3>
+<figure data-rehype-pretty-code-figure=""><pre style="background-color:#24292e;color:#e1e4e8" tabindex="0" data-language="json" data-theme="github-dark"><code data-language="json" data-theme="github-dark" style="display: grid;"><span data-line=""><span style="color:#E1E4E8">{</span></span>
+<span data-line=""><span style="color:#79B8FF">  "setup-worktree"</span><span style="color:#E1E4E8">: [</span></span>
+<span data-line=""><span style="color:#9ECBFF">    "npm ci"</span><span style="color:#E1E4E8">,</span></span>
+<span data-line=""><span style="color:#9ECBFF">    "cp $ROOT_WORKTREE_PATH/.env .env"</span><span style="color:#E1E4E8">,</span></span>
+<span data-line=""><span style="color:#9ECBFF">    "npm run db:migrate"</span></span>
+<span data-line=""><span style="color:#E1E4E8">  ]</span></span>
+<span data-line=""><span style="color:#E1E4E8">}</span></span></code></pre></figure>
+<h3 id="أكثر-تعقيداً-استخدام-ملفات-سكربت">أكثر تعقيداً: استخدام ملفات سكربت</h3>
+<p>لأوامر أو منطق كثير، استخدم سكربتاً وأشر إليه في <code>worktrees.json</code>:</p>
+<figure data-rehype-pretty-code-figure=""><pre style="background-color:#24292e;color:#e1e4e8" tabindex="0" data-language="json" data-theme="github-dark"><code data-language="json" data-theme="github-dark" style="display: grid;"><span data-line=""><span style="color:#E1E4E8">{</span></span>
+<span data-line=""><span style="color:#79B8FF">  "setup-worktree-unix"</span><span style="color:#E1E4E8">: </span><span style="color:#9ECBFF">"setup-worktree-unix.sh"</span><span style="color:#E1E4E8">,</span></span>
+<span data-line=""><span style="color:#79B8FF">  "setup-worktree-windows"</span><span style="color:#E1E4E8">: </span><span style="color:#9ECBFF">"setup-worktree-windows.ps1"</span><span style="color:#E1E4E8">,</span></span>
+<span data-line=""><span style="color:#79B8FF">  "setup-worktree"</span><span style="color:#E1E4E8">: [</span><span style="color:#9ECBFF">"echo 'Using generic fallback'"</span><span style="color:#E1E4E8">]</span></span>
+<span data-line=""><span style="color:#E1E4E8">}</span></span></code></pre></figure>
+<p>ضع السكربتات تحت <code>.cursor/</code>، مثلاً <code>.cursor/setup-worktree-unix.sh</code>، مع <code>npm ci</code>، نسخ <code>.env</code>، <code>chmod</code>، migrations، إلخ.<br>
+على Windows استخدم <code>.ps1</code> وفي السكربت استخدم <code>$env:ROOT_WORKTREE_PATH</code> لمسار المجلد الرئيسي.</p>
+<blockquote>
+<p>نصيحة: تجنّب ربط التبعيات بـ symlink في worktree — قد يتعارض مع worktree الرئيسي؛ استخدم <code>npm ci</code>، <code>pnpm</code>، <code>bun</code>، <code>uv</code>، إلخ للتثبيت من جديد.</p>
+</blockquote>
+<h2 id="تنظيف-worktree-والحدود">تنظيف worktree والحدود</h2>
+<p>Cursor يدير عدد worktrees حتى لا ينفد القرص:</p>
+<ul>
+<li>كل workspace له <strong>عدد أقصى من worktrees</strong> (مثلاً 20)</li>
+<li>عند تجاوز الحد، <strong>الأقل استخداماً مؤخراً</strong> يُزال</li>
+<li>التنظيف <strong>لكل workspace</strong>؛ المستودعات المختلفة لا تؤثر على بعضها</li>
+</ul>
+<p>للضبط (إن كانت نسخة Cursor تدعمه)، ابحث عن إعدادات مثل:</p>
+<ul>
+<li><code>cursor.worktreeMaxCount</code>: أقصى worktrees للاحتفاظ بها</li>
+<li><code>cursor.worktreeCleanupIntervalHours</code>: كم مرة تشغّل التنظيف</li>
+</ul>
+<p>أسماء المفاتيح الدقيقة تعتمد على إعدادات Cursor الحالية.</p>
+<h2 id="تصحيح-إعداد-worktree">تصحيح إعداد worktree</h2>
+<p>إنه بعد إنشاء worktree لم تُثبَّت التبعيات أو لم تُشغَّل migrations، افتح لوحة <strong>Output</strong> في Cursor، اختر <strong>"Worktrees Setup"</strong> من القائمة المنسدلة، وراجع الأوامر والأخطاء التي نُفّذت عند الإنشاء — يساعد في تصحيح <code>worktrees.json</code> أو مشاكل السكربتات.</p>
+<h2 id="ملخص">ملخص</h2>
+<ul>
+<li><strong>Best-of-N</strong>: نفس الـ prompt، نماذج متعددة بالتوازي في worktrees منفصلة؛ قارن وطبّق بطاقة واحدة؛ جيد للمعايير والمهام الصعبة والجودة</li>
+<li><strong>worktrees.json</strong>: في <code>.cursor/worktrees.json</code> استخدم <code>setup-worktree</code> / <code>setup-worktree-windows</code> / <code>setup-worktree-unix</code> لتشغيل أوامر أو سكربتات بعد الإنشاء</li>
+<li>استخدم <code>$ROOT_WORKTREE_PATH</code> (Unix) أو <code>%ROOT_WORKTREE_PATH%</code> / <code>$env:ROOT_WORKTREE_PATH</code> (Windows) لنسخ <code>.env</code> إلخ من main</li>
+<li>worktrees لها حد وتنظيف تلقائي؛ التصحيح عبر Output → Worktrees Setup</li>
+</ul>
+<blockquote>
+<p>التالي: <a href="10-headless-scripts">10-headless-scripts</a> — الوضع Headless مع <code>--print</code> و<code>--force</code> وسكربتات تعدّل الملفات فعلياً.</p>
+</blockquote>0:{"buildId":"Yck3R4ooQxWkwGLT6is1X","rsc":["$","$1","c",{"children":[[["$","script",null,{"type":"application/ld+json","dangerouslySetInnerHTML":{"__html":"{\"@context\":\"https://schema.org\",\"@type\":\"Article\",\"headline\":\"Cursor Worktree متقدّم: Best-of-N و worktrees.json\",\"description\":\"شغّل نفس الـ prompt بعدة نماذج واختر أفضل نتيجة؛ خصّص الإعداد والهجرة بـ worktrees.json وإعدادات تنظيف worktree.\",\"url\":\"https://benxhub.com/ar/blog/cursor/cli/09-worktree-advanced\",\"mainEntityOfPage\":{\"@type\":\"WebPage\",\"@id\":\"https://benxhub.com/ar/blog/cursor/cli/09-worktree-advanced\"},\"datePublished\":\"2026-03-09T00:00:00.000Z\",\"dateModified\":\"2026-03-09T00:00:00.000Z\",\"keywords\":\"cursor, worktree, best-of-n, worktrees.json, automation\",\"inLanguage\":\"ar\",\"author\":{\"@type\":\"Person\",\"name\":\"BenX\",\"url\":\"https://benxhub.com\"},\"publisher\":{\"@type\":\"Organization\",\"name\":\"BenXHub Blog\",\"url\":\"https://benxhub.com\"}}"}}],["$","div",null,{"className":"mx-auto max-w-6xl px-4 py-12 sm:px-6","children":["$","div",null,{"className":"lg:grid lg:grid-cols-[1fr_240px] lg:gap-14","children":[["$","article",null,{"children":[["$","header",null,{"className":"mb-10","children":[["$","div",null,{"className":"mb-4 flex flex-wrap gap-2","children":[["$","$L2","cursor",{"href":"/ar/tags/cursor","localeCookie":{"name":"NEXT_LOCALE","sameSite":"lax"},"className":"inline-flex items-center rounded-full px-2.5 py-0.5 text-xs font-medium transition-colors","style":{"background":"var(--color-code-bg)","color":"var(--color-accent)","border":"1px solid var(--color-border)"},"children":["#","cursor"]}],["$","$L2","worktree",{"href":"/ar/tags/worktree","localeCookie":{"name":"NEXT_LOCALE","sameSite":"lax"},"className":"inline-flex items-center rounded-full px-2.5 py-0.5 text-xs font-medium transition-colors","style":{"background":"var(--color-code-bg)","color":"var(--color-accent)","border":"1px solid var(--color-border)"},"children":["#","worktree"]}],["$","$L2","best-of-n",{"href":"/ar/tags/best-of-n","localeCookie":{"name":"NEXT_LOCALE","sameSite":"lax"},"className":"inline-flex items-center rounded-full px-2.5 py-0.5 text-xs font-medium transition-colors","style":{"background":"var(--color-code-bg)","color":"var(--color-accent)","border":"1px solid var(--color-border)"},"children":["#","best-of-n"]}],["$","$L2","worktrees.json",{"href":"/ar/tags/worktrees.json","localeCookie":{"name":"NEXT_LOCALE","sameSite":"lax"},"className":"inline-flex items-center rounded-full px-2.5 py-0.5 text-xs font-medium transition-colors","style":{"background":"var(--color-code-bg)","color":"var(--color-accent)","border":"1px solid var(--color-border)"},"children":["#","worktrees.json"]}],["$","$L2","automation",{"href":"/ar/tags/automation","localeCookie":{"name":"NEXT_LOCALE","sameSite":"lax"},"className":"inline-flex items-center rounded-full px-2.5 py-0.5 text-xs font-medium transition-colors","style":{"background":"var(--color-code-bg)","color":"var(--color-accent)","border":"1px solid var(--color-border)"},"children":["#","automation"]}]]}],["$","h1",null,{"className":"mb-4 text-3xl leading-snug font-bold tracking-tight sm:text-4xl","style":{"color":"var(--color-text)"},"children":"Cursor Worktree متقدّم: Best-of-N و worktrees.json"}],["$","div",null,{"className":"flex flex-wrap items-center gap-3 text-sm","style":{"color":"var(--color-muted)"},"children":[["$","time",null,{"dateTime":"2026-03-09","children":"9 3月 2026"}],["$","span",null,{"aria-hidden":"true","children":"·"}],["$","span",null,{"children":"4 min read"}]]}],"$undefined",["$","div",null,{"className":"mt-6 border-b","style":{"borderColor":"var(--color-border)"}}]]}],["$","div",null,{"className":"prose","dangerouslySetInnerHTML":{"__html":"$3"}}],"$L4"]}],"$L5"]}]}]],["$L6"],"$L7"]}],"loading":null,"isPartial":false}
+4:["$","footer",null,{"className":"mt-14 border-t pt-8","style":{"borderColor":"var(--color-border)"},"children":[["$","div",null,{"className":"mb-8 flex flex-wrap gap-2","children":[["$","$L2","cursor",{"href":"/ar/tags/cursor","localeCookie":{"name":"NEXT_LOCALE","sameSite":"lax"},"className":"inline-flex items-center rounded-full px-3 py-1 text-sm font-medium transition-colors","style":{"background":"var(--color-code-bg)","color":"var(--color-accent)","border":"1px solid var(--color-border)"},"children":["#","cursor"]}],["$","$L2","worktree",{"href":"/ar/tags/worktree","localeCookie":{"name":"NEXT_LOCALE","sameSite":"lax"},"className":"inline-flex items-center rounded-full px-3 py-1 text-sm font-medium transition-colors","style":{"background":"var(--color-code-bg)","color":"var(--color-accent)","border":"1px solid var(--color-border)"},"children":["#","worktree"]}],["$","$L2","best-of-n",{"href":"/ar/tags/best-of-n","localeCookie":{"name":"NEXT_LOCALE","sameSite":"lax"},"className":"inline-flex items-center rounded-full px-3 py-1 text-sm font-medium transition-colors","style":{"background":"var(--color-code-bg)","color":"var(--color-accent)","border":"1px solid var(--color-border)"},"children":["#","best-of-n"]}],["$","$L2","worktrees.json",{"href":"/ar/tags/worktrees.json","localeCookie":{"name":"NEXT_LOCALE","sameSite":"lax"},"className":"inline-flex items-center rounded-full px-3 py-1 text-sm font-medium transition-colors","style":{"background":"var(--color-code-bg)","color":"var(--color-accent)","border":"1px solid var(--color-border)"},"children":["#","worktrees.json"]}],["$","$L2","automation",{"href":"/ar/tags/automation","localeCookie":{"name":"NEXT_LOCALE","sameSite":"lax"},"className":"inline-flex items-center rounded-full px-3 py-1 text-sm font-medium transition-colors","style":{"background":"var(--color-code-bg)","color":"var(--color-accent)","border":"1px solid var(--color-border)"},"children":["#","automation"]}]]}],["$","nav",null,{"aria-label":"التنقل بين المقالات","className":"grid grid-cols-1 gap-4 sm:grid-cols-2","children":[["$","$L2",null,{"href":"/ar/blog/cursor/cli/08-worktree-merge","localeCookie":{"name":"NEXT_LOCALE","sameSite":"lax"},"className":"group rounded-lg border p-4 transition-colors hover:border-accent","style":{"borderColor":"var(--color-border)","background":"var(--color-surface)"},"children":[["$","p",null,{"className":"mb-1 text-xs","style":{"color":"var(--color-muted)"},"children":"→ الأحدث"}],["$","p",null,{"className":"line-clamp-1 text-sm font-medium transition-colors group-hover:text-accent","style":{"color":"var(--color-text)"},"children":"Worktree المدمج في Cursor: استخدام متقدّم"}]]}],["$","$L2",null,{"href":"/ar/blog/cursor/cli/10-headless-scripts","localeCookie":{"name":"NEXT_LOCALE","sameSite":"lax"},"className":"group rounded-lg border p-4 text-right transition-colors hover:border-accent","style":{"borderColor":"var(--color-border)","background":"var(--color-surface)"},"children":[["$","p",null,{"className":"mb-1 text-xs","style":{"color":"var(--color-muted)"},"children":"الأقدم ←"}],["$","p",null,{"className":"line-clamp-1 text-sm font-medium transition-colors group-hover:text-accent","style":{"color":"var(--color-text)"},"children":"وضع Cursor CLI Headless: --print و --force وسكربتات تعدّل الملفات"}]]}]]}]]}]
+9:T30bc,<p>المنشور السابق <a href="08-worktree-merge">08-worktree-merge</a> غطى worktree التلقائي في Cursor وApply. هذا يتعمق في أمرين: <strong>Best-of-N</strong> (نفس الـ prompt، نماذج متعددة بالتوازي، ثم اختر واحداً لتطبيقه) و<strong>worktrees.json</strong> (تثبيت تلقائي للتبعيات، تشغيل migrations، نسخ <code>.env</code> عند إنشاء worktree).</p>
+<h2 id="best-of-n-prompt-واحد-نماذج-متعددة-دفعة-واحدة">Best-of-N: prompt واحد، نماذج متعددة دفعة واحدة</h2>
+<p><strong>Best-of-N</strong> يعني: ترسل مهمة واحدة، Cursor يشغّل <strong>نماذج متعددة</strong> في worktrees منفصلة، وتحصل على "بطاقات" متعددة كل واحدة بتغييرات نموذج واحد — <strong>اختر واحدة واضغط Apply</strong>.</p>
+<h3 id="متى-تستخدم-best-of-n">متى تستخدم Best-of-N؟</h3>
+<table>
+<thead>
+<tr>
+<th>الحالة</th>
+<th>لماذا يساعد</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td>غير متأكد أي نموذج يناسب كودك أكثر</td>
+<td>شغّل مرة واحدة، قارن المخرجات، معيار صغير</td>
+</tr>
+<tr>
+<td>مشكلة صعبة، قلق من أن يفوّت نموذج واحد حالات حدية</td>
+<td>نماذج مختلفة، مقاربات مختلفة، تغطية أوضح</td>
+</tr>
+<tr>
+<td>مقارنة جودة الكود</td>
+<td>نفس الطلب، أسلوب وهيكل مختلفان جنباً إلى جنب</td>
+</tr>
+<tr>
+<td>المهمة صعبة، تريد نجاح "المحاولة الأولى" أعلى</td>
+<td>نماذج متعددة كل واحد يجرب مرة، طبّق الأفضل</td>
+</tr>
+</tbody>
+</table>
+<p>باختصار: <strong>نماذج متعددة تنفّذ نفس المهمة، أنت تختار واحداً</strong> — خاصة للمهام الصعبة أو عندما تهتم بالجودة.</p>
+<h3 id="كيف-تستخدمه">كيف تستخدمه</h3>
+<p>في Cursor، عند بدء Agent اختر "نماذج متعددة" أو خيار Best-of-N (حسب الواجهة الحالية). بعد إرسال الـ prompt سترى بطاقات متعددة؛ انتقل بينها للمقارنة ثم <strong>Apply</strong> التي تريدها على main.</p>
+<p>إن طبّقت أكثر من بطاقة من نفس تشغيل Best-of-N (مثلاً Apply A ثم B)، قد يسأل Cursor: <strong>دمج مع حل تعارضات</strong>، أو <strong>Full Overwrite</strong> (استبدال الملف بالكامل).</p>
+<h2 id="worktreesjson-تجهيز-البيئة-عند-إنشاء-worktree">worktrees.json: تجهيز البيئة عند إنشاء worktree</h2>
+<p>عند إنشاء Cursor لـ worktree، ينسخ <strong>الملفات المتتبعة</strong> من المجلد الرئيسي افتراضياً، لكنه لا يثبت التبعيات ولا ينسخ <code>.env</code> ولا يشغّل migrations قاعدة البيانات.<br>
+مع <strong><code>.cursor/worktrees.json</code></strong> يمكنك تحديد <strong>أوامر تُشغّل بعد إنشاء كل worktree جديد</strong>، مثل <code>npm ci</code>، <code>cp .env</code>، <code>npm run db:migrate</code>.</p>
+<h3 id="أين-يكون-الإعداد">أين يكون الإعداد؟</h3>
+<p>Cursor يبحث بالترتيب:</p>
+<ol>
+<li>جذر المشروع: <code>.cursor/worktrees.json</code></li>
+<li>مسار الـ worktree</li>
+</ol>
+<p>عادة ضعه في <strong>جذر المشروع</strong>: <code>.cursor/worktrees.json</code>.</p>
+<h3 id="ثلاثة-مفاتيح-إعداد">ثلاثة مفاتيح إعداد</h3>
+<table>
+<thead>
+<tr>
+<th>المفتاح</th>
+<th>الوصف</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td><code>setup-worktree</code></td>
+<td>عام؛ يُستخدم على كل الأنظمة إذا لم يُضبط مفتاح خاص بنظام</td>
+</tr>
+<tr>
+<td><code>setup-worktree-windows</code></td>
+<td>Windows فقط؛ يتجاوز <code>setup-worktree</code></td>
+</tr>
+<tr>
+<td><code>setup-worktree-unix</code></td>
+<td>macOS / Linux فقط؛ يتجاوز <code>setup-worktree</code></td>
+</tr>
+</tbody>
+</table>
+<p>كل مفتاح يمكن أن يكون:</p>
+<ul>
+<li><strong>سلسلة</strong>: مسار لسكربت (نسبي إلى المجلد الذي يحتوي <code>.cursor/worktrees.json</code>)</li>
+<li><strong>مصفوفة</strong>: قائمة أوامر shell، تُنفَّذ بالترتيب</li>
+</ul>
+<h3 id="مثال-مشروع-node">مثال: مشروع Node</h3>
+<figure data-rehype-pretty-code-figure=""><pre style="background-color:#24292e;color:#e1e4e8" tabindex="0" data-language="json" data-theme="github-dark"><code data-language="json" data-theme="github-dark" style="display: grid;"><span data-line=""><span style="color:#E1E4E8">{</span></span>
+<span data-line=""><span style="color:#79B8FF">  "setup-worktree"</span><span style="color:#E1E4E8">: [</span></span>
+<span data-line=""><span style="color:#9ECBFF">    "npm ci"</span><span style="color:#E1E4E8">,</span></span>
+<span data-line=""><span style="color:#9ECBFF">    "cp $ROOT_WORKTREE_PATH/.env .env"</span></span>
+<span data-line=""><span style="color:#E1E4E8">  ]</span></span>
+<span data-line=""><span style="color:#E1E4E8">}</span></span></code></pre></figure>
+<p><code>$ROOT_WORKTREE_PATH</code> يوفّره Cursor ويشير إلى <strong>المجلد الرئيسي للعمل</strong>، مثلاً لنسخ <code>.env</code>.<br>
+على Windows قد تحتاج <code>copy</code> أو PowerShell؛ يمكنك التقسيم حسب النظام:</p>
+<figure data-rehype-pretty-code-figure=""><pre style="background-color:#24292e;color:#e1e4e8" tabindex="0" data-language="json" data-theme="github-dark"><code data-language="json" data-theme="github-dark" style="display: grid;"><span data-line=""><span style="color:#E1E4E8">{</span></span>
+<span data-line=""><span style="color:#79B8FF">  "setup-worktree-unix"</span><span style="color:#E1E4E8">: [</span></span>
+<span data-line=""><span style="color:#9ECBFF">    "npm ci"</span><span style="color:#E1E4E8">,</span></span>
+<span data-line=""><span style="color:#9ECBFF">    "cp $ROOT_WORKTREE_PATH/.env .env"</span></span>
+<span data-line=""><span style="color:#E1E4E8">  ],</span></span>
+<span data-line=""><span style="color:#79B8FF">  "setup-worktree-windows"</span><span style="color:#E1E4E8">: [</span></span>
+<span data-line=""><span style="color:#9ECBFF">    "npm ci"</span><span style="color:#E1E4E8">,</span></span>
+<span data-line=""><span style="color:#9ECBFF">    "copy %ROOT_WORKTREE_PATH%</span><span style="color:#79B8FF">\\</span><span style="color:#9ECBFF">.env .env"</span></span>
+<span data-line=""><span style="color:#E1E4E8">  ]</span></span>
+<span data-line=""><span style="color:#E1E4E8">}</span></span></code></pre></figure>
+<h3 id="مثال-تشغيل-migrations-قاعدة-البيانات">مثال: تشغيل migrations قاعدة البيانات</h3>
+<figure data-rehype-pretty-code-figure=""><pre style="background-color:#24292e;color:#e1e4e8" tabindex="0" data-language="json" data-theme="github-dark"><code data-language="json" data-theme="github-dark" style="display: grid;"><span data-line=""><span style="color:#E1E4E8">{</span></span>
+<span data-line=""><span style="color:#79B8FF">  "setup-worktree"</span><span style="color:#E1E4E8">: [</span></span>
+<span data-line=""><span style="color:#9ECBFF">    "npm ci"</span><span style="color:#E1E4E8">,</span></span>
+<span data-line=""><span style="color:#9ECBFF">    "cp $ROOT_WORKTREE_PATH/.env .env"</span><span style="color:#E1E4E8">,</span></span>
+<span data-line=""><span style="color:#9ECBFF">    "npm run db:migrate"</span></span>
+<span data-line=""><span style="color:#E1E4E8">  ]</span></span>
+<span data-line=""><span style="color:#E1E4E8">}</span></span></code></pre></figure>
+<h3 id="أكثر-تعقيداً-استخدام-ملفات-سكربت">أكثر تعقيداً: استخدام ملفات سكربت</h3>
+<p>لأوامر أو منطق كثير، استخدم سكربتاً وأشر إليه في <code>worktrees.json</code>:</p>
+<figure data-rehype-pretty-code-figure=""><pre style="background-color:#24292e;color:#e1e4e8" tabindex="0" data-language="json" data-theme="github-dark"><code data-language="json" data-theme="github-dark" style="display: grid;"><span data-line=""><span style="color:#E1E4E8">{</span></span>
+<span data-line=""><span style="color:#79B8FF">  "setup-worktree-unix"</span><span style="color:#E1E4E8">: </span><span style="color:#9ECBFF">"setup-worktree-unix.sh"</span><span style="color:#E1E4E8">,</span></span>
+<span data-line=""><span style="color:#79B8FF">  "setup-worktree-windows"</span><span style="color:#E1E4E8">: </span><span style="color:#9ECBFF">"setup-worktree-windows.ps1"</span><span style="color:#E1E4E8">,</span></span>
+<span data-line=""><span style="color:#79B8FF">  "setup-worktree"</span><span style="color:#E1E4E8">: [</span><span style="color:#9ECBFF">"echo 'Using generic fallback'"</span><span style="color:#E1E4E8">]</span></span>
+<span data-line=""><span style="color:#E1E4E8">}</span></span></code></pre></figure>
+<p>ضع السكربتات تحت <code>.cursor/</code>، مثلاً <code>.cursor/setup-worktree-unix.sh</code>، مع <code>npm ci</code>، نسخ <code>.env</code>، <code>chmod</code>، migrations، إلخ.<br>
+على Windows استخدم <code>.ps1</code> وفي السكربت استخدم <code>$env:ROOT_WORKTREE_PATH</code> لمسار المجلد الرئيسي.</p>
+<blockquote>
+<p>نصيحة: تجنّب ربط التبعيات بـ symlink في worktree — قد يتعارض مع worktree الرئيسي؛ استخدم <code>npm ci</code>، <code>pnpm</code>، <code>bun</code>، <code>uv</code>، إلخ للتثبيت من جديد.</p>
+</blockquote>
+<h2 id="تنظيف-worktree-والحدود">تنظيف worktree والحدود</h2>
+<p>Cursor يدير عدد worktrees حتى لا ينفد القرص:</p>
+<ul>
+<li>كل workspace له <strong>عدد أقصى من worktrees</strong> (مثلاً 20)</li>
+<li>عند تجاوز الحد، <strong>الأقل استخداماً مؤخراً</strong> يُزال</li>
+<li>التنظيف <strong>لكل workspace</strong>؛ المستودعات المختلفة لا تؤثر على بعضها</li>
+</ul>
+<p>للضبط (إن كانت نسخة Cursor تدعمه)، ابحث عن إعدادات مثل:</p>
+<ul>
+<li><code>cursor.worktreeMaxCount</code>: أقصى worktrees للاحتفاظ بها</li>
+<li><code>cursor.worktreeCleanupIntervalHours</code>: كم مرة تشغّل التنظيف</li>
+</ul>
+<p>أسماء المفاتيح الدقيقة تعتمد على إعدادات Cursor الحالية.</p>
+<h2 id="تصحيح-إعداد-worktree">تصحيح إعداد worktree</h2>
+<p>إنه بعد إنشاء worktree لم تُثبَّت التبعيات أو لم تُشغَّل migrations، افتح لوحة <strong>Output</strong> في Cursor، اختر <strong>"Worktrees Setup"</strong> من القائمة المنسدلة، وراجع الأوامر والأخطاء التي نُفّذت عند الإنشاء — يساعد في تصحيح <code>worktrees.json</code> أو مشاكل السكربتات.</p>
+<h2 id="ملخص">ملخص</h2>
+<ul>
+<li><strong>Best-of-N</strong>: نفس الـ prompt، نماذج متعددة بالتوازي في worktrees منفصلة؛ قارن وطبّق بطاقة واحدة؛ جيد للمعايير والمهام الصعبة والجودة</li>
+<li><strong>worktrees.json</strong>: في <code>.cursor/worktrees.json</code> استخدم <code>setup-worktree</code> / <code>setup-worktree-windows</code> / <code>setup-worktree-unix</code> لتشغيل أوامر أو سكربتات بعد الإنشاء</li>
+<li>استخدم <code>$ROOT_WORKTREE_PATH</code> (Unix) أو <code>%ROOT_WORKTREE_PATH%</code> / <code>$env:ROOT_WORKTREE_PATH</code> (Windows) لنسخ <code>.env</code> إلخ من main</li>
+<li>worktrees لها حد وتنظيف تلقائي؛ التصحيح عبر Output → Worktrees Setup</li>
+</ul>
+<blockquote>
+<p>التالي: <a href="10-headless-scripts">10-headless-scripts</a> — الوضع Headless مع <code>--print</code> و<code>--force</code> وسكربتات تعدّل الملفات فعلياً.</p>
+</blockquote>5:["$","aside",null,{"className":"hidden lg:block","children":["$","$L8",null,{"html":"$9"}]}]
+6:["$","script","script-0",{"src":"/_next/static/chunks/2dddb3bc05093f69.js","async":true}]
+7:["$","$La",null,{"children":["$","$b",null,{"name":"Next.MetadataOutlet","children":"$@c"}]}]
+c:null

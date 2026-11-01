@@ -1,0 +1,154 @@
+1:"$Sreact.fragment"
+2:I[14864,["/_next/static/chunks/7923a261b80bb6e1.js","/_next/static/chunks/e09b4358027e8033.js","/_next/static/chunks/2dddb3bc05093f69.js"],"default"]
+8:I[24801,["/_next/static/chunks/7923a261b80bb6e1.js","/_next/static/chunks/e09b4358027e8033.js","/_next/static/chunks/2dddb3bc05093f69.js"],"default"]
+a:I[50183,["/_next/static/chunks/5a5b5b13c22d14f7.js","/_next/static/chunks/a484d1d3dd4b55ab.js"],"OutletBoundary"]
+b:"$Sreact.suspense"
+:HL["/images/posts/pve-quick-start.jpg","image"]
+3:T11d1,<p>Ce guide emprunte le chemin le plus court pour vous donner <strong>une machine virtuelle Debian bootable</strong> — votre premier environnement fonctionnel sous PVE. Comme adopter un premier animal : assurez-vous d'abord qu'il peut manger et dormir ; les techniques avancées viendront plus tard.</p>
+<h2 id="prérequis">Prérequis</h2>
+<ul>
+<li>CPU 64 bits avec <strong>Intel VT-x</strong> ou <strong>AMD-V</strong> activé (sans cela, les VM refuseront de démarrer)</li>
+<li>Minimum 2 Go de RAM (8 Go+ recommandé — sinon ça ressemblera à un PC de 2010)</li>
+<li>Au moins une carte réseau fonctionnelle</li>
+<li>Un hôte ou serveur pouvant démarrer depuis une clé USB</li>
+</ul>
+<h2 id="exemple-minimal--créer-votre-première-machine-virtuelle">Exemple minimal : créer votre première machine virtuelle</h2>
+<h3 id="étape-1--connexion-à-linterface-web">Étape 1 : Connexion à l'interface web</h3>
+<p>Après l'installation, ouvrez <code>https://&#x3C;IP-PVE>:8006</code> et connectez-vous avec <code>root</code> et le mot de passe défini lors de l'installation. Votre navigateur peut avertir sur le certificat — il est auto-signé, cliquez sur « Avancé » → « Continuer quand même ». La vie en homelab.</p>
+<h3 id="étape-2--télécharger-limage-système">Étape 2 : Télécharger l'image système</h3>
+<ol>
+<li>Sélectionnez le stockage <code>local</code> sous votre nœud dans le panneau de gauche</li>
+<li>Allez dans <code>Contenu</code>, cliquez sur <code>Télécharger depuis une URL</code></li>
+<li>Saisissez :
+<ul>
+<li>URL : <code>https://cloud.debian.org/images/cloud/bookworm/latest/debian-12-generic-amd64.qcow2</code></li>
+<li>Nom du fichier : <code>debian-12-cloud.qcow2</code></li>
+</ul>
+</li>
+<li>Cliquez sur <code>Interroger l'URL</code> puis lancez le téléchargement (allez prendre un café)</li>
+</ol>
+<h3 id="étape-3--créer-la-machine-virtuelle">Étape 3 : Créer la machine virtuelle</h3>
+<ol>
+<li>Cliquez sur <code>Créer une VM</code> en haut à droite</li>
+<li><code>Général</code> : définissez le nom sur <code>test-vm</code> (ou ce que vous voulez)</li>
+<li><code>OS</code> : pour une image cloud vous pouvez ignorer la configuration du disque</li>
+<li><code>Disques</code> : sélectionnez <strong>Utiliser une image disque existante</strong>, choisissez le <code>debian-12-cloud.qcow2</code> que vous venez de télécharger</li>
+<li><code>CPU</code> : 1 vCPU suffit pour commencer</li>
+<li><code>Mémoire</code> : 512–1024 Mo pour tester</li>
+<li><code>Réseau</code> : le <code>vmbr0</code> par défaut convient</li>
+<li><code>Confirmer</code> → <code>Terminer</code></li>
+</ol>
+<h3 id="étape-4--démarrer-et-vérifier">Étape 4 : Démarrer et vérifier</h3>
+<ol>
+<li>Clic droit sur la VM → <code>Démarrer</code></li>
+<li>Ouvrez la <code>Console</code> (noVNC)</li>
+<li>Si vous voyez l'écran de démarrage Debian ou l'invite de connexion, c'est réussi — félicitations, votre première VM est en ligne.</li>
+</ol>
+<h2 id="dépannage-courant">Dépannage courant</h2>
+<table>
+<thead>
+<tr>
+<th>Symptôme</th>
+<th>À vérifier</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td>Impossible d'accéder à l'interface web</td>
+<td>Vérifiez que le port 8006 est accessible, confirmez que <code>pveproxy</code> tourne</td>
+</tr>
+<tr>
+<td>La VM ne démarre pas</td>
+<td>VT-x / AMD-V est-il activé dans le BIOS ? Sans cela, les VM ne démarreront tout simplement pas</td>
+</tr>
+<tr>
+<td>Fichier image introuvable</td>
+<td>Retournez dans <code>local -> Contenu</code> — vérifiez que le téléchargement est terminé</td>
+</tr>
+<tr>
+<td>La VM n'a pas de réseau</td>
+<td>Vérifiez que <code>vmbr0</code> est bien lié à une NIC physique</td>
+</tr>
+</tbody>
+</table>
+<figure data-rehype-pretty-code-figure=""><pre style="background-color:#24292e;color:#e1e4e8" tabindex="0" data-language="bash" data-theme="github-dark"><code data-language="bash" data-theme="github-dark" style="display: grid;"><span data-line=""><span style="color:#6A737D"># Vérification du statut du service (à exécuter quand quelque chose ne va pas)</span></span>
+<span data-line=""><span style="color:#B392F0">systemctl</span><span style="color:#9ECBFF"> status</span><span style="color:#9ECBFF"> pveproxy</span></span></code></pre></figure>
+<h2 id="prochaines-étapes">Prochaines étapes</h2>
+<p>Une fois votre première VM en ligne, il est bon de construire la carte mentale du système. L'article suivant couvre les concepts fondamentaux VM / LXC / stockage / réseau :
+👉 <a href="02-core-concepts">Concepts fondamentaux</a></p>0:{"buildId":"Yck3R4ooQxWkwGLT6is1X","rsc":["$","$1","c",{"children":[[["$","script",null,{"type":"application/ld+json","dangerouslySetInnerHTML":{"__html":"{\"@context\":\"https://schema.org\",\"@type\":\"Article\",\"headline\":\"Proxmox VE Démarrage rapide : créer votre première VM\",\"description\":\"À partir de votre première connexion après installation : télécharger une image, créer une VM et vérifier qu'elle démarre.\",\"url\":\"https://benxhub.com/fr/blog/pve/01-quick-start\",\"mainEntityOfPage\":{\"@type\":\"WebPage\",\"@id\":\"https://benxhub.com/fr/blog/pve/01-quick-start\"},\"datePublished\":\"2026-02-24T00:00:00.000Z\",\"dateModified\":\"2026-02-24T00:00:00.000Z\",\"keywords\":\"proxmox, démarrage-rapide, kvm\",\"inLanguage\":\"fr\",\"author\":{\"@type\":\"Person\",\"name\":\"BenX\",\"url\":\"https://benxhub.com\"},\"publisher\":{\"@type\":\"Organization\",\"name\":\"BenXHub Blog\",\"url\":\"https://benxhub.com\"},\"image\":\"https://benxhub.com/images/posts/pve-quick-start.jpg\"}"}}],["$","div",null,{"className":"mx-auto max-w-6xl px-4 py-12 sm:px-6","children":["$","div",null,{"className":"lg:grid lg:grid-cols-[1fr_240px] lg:gap-14","children":[["$","article",null,{"children":[["$","header",null,{"className":"mb-10","children":[["$","div",null,{"className":"mb-4 flex flex-wrap gap-2","children":[["$","$L2","proxmox",{"href":"/fr/tags/proxmox","localeCookie":{"name":"NEXT_LOCALE","sameSite":"lax"},"className":"inline-flex items-center rounded-full px-2.5 py-0.5 text-xs font-medium transition-colors","style":{"background":"var(--color-code-bg)","color":"var(--color-accent)","border":"1px solid var(--color-border)"},"children":["#","proxmox"]}],["$","$L2","démarrage-rapide",{"href":"/fr/tags/démarrage-rapide","localeCookie":{"name":"NEXT_LOCALE","sameSite":"lax"},"className":"inline-flex items-center rounded-full px-2.5 py-0.5 text-xs font-medium transition-colors","style":{"background":"var(--color-code-bg)","color":"var(--color-accent)","border":"1px solid var(--color-border)"},"children":["#","démarrage-rapide"]}],["$","$L2","kvm",{"href":"/fr/tags/kvm","localeCookie":{"name":"NEXT_LOCALE","sameSite":"lax"},"className":"inline-flex items-center rounded-full px-2.5 py-0.5 text-xs font-medium transition-colors","style":{"background":"var(--color-code-bg)","color":"var(--color-accent)","border":"1px solid var(--color-border)"},"children":["#","kvm"]}]]}],["$","h1",null,{"className":"mb-4 text-3xl leading-snug font-bold tracking-tight sm:text-4xl","style":{"color":"var(--color-text)"},"children":"Proxmox VE Démarrage rapide : créer votre première VM"}],["$","div",null,{"className":"flex flex-wrap items-center gap-3 text-sm","style":{"color":"var(--color-muted)"},"children":[["$","time",null,{"dateTime":"2026-02-24","children":"24 févr. 2026"}],["$","span",null,{"aria-hidden":"true","children":"·"}],["$","span",null,{"children":"3 min read"}]]}],["$","div",null,{"className":"mt-6 overflow-hidden rounded-lg","children":["$","img",null,{"src":"/images/posts/pve-quick-start.jpg","alt":"Proxmox VE Démarrage rapide : créer votre première VM","className":"w-full h-auto"}]}],["$","div",null,{"className":"mt-6 border-b","style":{"borderColor":"var(--color-border)"}}]]}],["$","div",null,{"className":"prose","dangerouslySetInnerHTML":{"__html":"$3"}}],"$L4"]}],"$L5"]}]}]],["$L6"],"$L7"]}],"loading":null,"isPartial":false}
+4:["$","footer",null,{"className":"mt-14 border-t pt-8","style":{"borderColor":"var(--color-border)"},"children":[["$","div",null,{"className":"mb-8 flex flex-wrap gap-2","children":[["$","$L2","proxmox",{"href":"/fr/tags/proxmox","localeCookie":{"name":"NEXT_LOCALE","sameSite":"lax"},"className":"inline-flex items-center rounded-full px-3 py-1 text-sm font-medium transition-colors","style":{"background":"var(--color-code-bg)","color":"var(--color-accent)","border":"1px solid var(--color-border)"},"children":["#","proxmox"]}],["$","$L2","démarrage-rapide",{"href":"/fr/tags/démarrage-rapide","localeCookie":{"name":"NEXT_LOCALE","sameSite":"lax"},"className":"inline-flex items-center rounded-full px-3 py-1 text-sm font-medium transition-colors","style":{"background":"var(--color-code-bg)","color":"var(--color-accent)","border":"1px solid var(--color-border)"},"children":["#","démarrage-rapide"]}],["$","$L2","kvm",{"href":"/fr/tags/kvm","localeCookie":{"name":"NEXT_LOCALE","sameSite":"lax"},"className":"inline-flex items-center rounded-full px-3 py-1 text-sm font-medium transition-colors","style":{"background":"var(--color-code-bg)","color":"var(--color-accent)","border":"1px solid var(--color-border)"},"children":["#","kvm"]}]]}],["$","nav",null,{"aria-label":"Navigation des articles","className":"grid grid-cols-1 gap-4 sm:grid-cols-2","children":[["$","$L2",null,{"href":"/fr/blog/pve/00-overview","localeCookie":{"name":"NEXT_LOCALE","sameSite":"lax"},"className":"group rounded-lg border p-4 transition-colors hover:border-accent","style":{"borderColor":"var(--color-border)","background":"var(--color-surface)"},"children":[["$","p",null,{"className":"mb-1 text-xs","style":{"color":"var(--color-muted)"},"children":"← Plus récent"}],["$","p",null,{"className":"line-clamp-1 text-sm font-medium transition-colors group-hover:text-accent","style":{"color":"var(--color-text)"},"children":"Vue d'ensemble de la série Proxmox VE : du débutant à l'avancé"}]]}],["$","$L2",null,{"href":"/fr/blog/pve/02-core-concepts","localeCookie":{"name":"NEXT_LOCALE","sameSite":"lax"},"className":"group rounded-lg border p-4 text-right transition-colors hover:border-accent","style":{"borderColor":"var(--color-border)","background":"var(--color-surface)"},"children":[["$","p",null,{"className":"mb-1 text-xs","style":{"color":"var(--color-muted)"},"children":"Plus ancien →"}],["$","p",null,{"className":"line-clamp-1 text-sm font-medium transition-colors group-hover:text-accent","style":{"color":"var(--color-text)"},"children":"Proxmox VE Concepts fondamentaux : VM, LXC, stockage et réseau"}]]}]]}]]}]
+9:T11d1,<p>Ce guide emprunte le chemin le plus court pour vous donner <strong>une machine virtuelle Debian bootable</strong> — votre premier environnement fonctionnel sous PVE. Comme adopter un premier animal : assurez-vous d'abord qu'il peut manger et dormir ; les techniques avancées viendront plus tard.</p>
+<h2 id="prérequis">Prérequis</h2>
+<ul>
+<li>CPU 64 bits avec <strong>Intel VT-x</strong> ou <strong>AMD-V</strong> activé (sans cela, les VM refuseront de démarrer)</li>
+<li>Minimum 2 Go de RAM (8 Go+ recommandé — sinon ça ressemblera à un PC de 2010)</li>
+<li>Au moins une carte réseau fonctionnelle</li>
+<li>Un hôte ou serveur pouvant démarrer depuis une clé USB</li>
+</ul>
+<h2 id="exemple-minimal--créer-votre-première-machine-virtuelle">Exemple minimal : créer votre première machine virtuelle</h2>
+<h3 id="étape-1--connexion-à-linterface-web">Étape 1 : Connexion à l'interface web</h3>
+<p>Après l'installation, ouvrez <code>https://&#x3C;IP-PVE>:8006</code> et connectez-vous avec <code>root</code> et le mot de passe défini lors de l'installation. Votre navigateur peut avertir sur le certificat — il est auto-signé, cliquez sur « Avancé » → « Continuer quand même ». La vie en homelab.</p>
+<h3 id="étape-2--télécharger-limage-système">Étape 2 : Télécharger l'image système</h3>
+<ol>
+<li>Sélectionnez le stockage <code>local</code> sous votre nœud dans le panneau de gauche</li>
+<li>Allez dans <code>Contenu</code>, cliquez sur <code>Télécharger depuis une URL</code></li>
+<li>Saisissez :
+<ul>
+<li>URL : <code>https://cloud.debian.org/images/cloud/bookworm/latest/debian-12-generic-amd64.qcow2</code></li>
+<li>Nom du fichier : <code>debian-12-cloud.qcow2</code></li>
+</ul>
+</li>
+<li>Cliquez sur <code>Interroger l'URL</code> puis lancez le téléchargement (allez prendre un café)</li>
+</ol>
+<h3 id="étape-3--créer-la-machine-virtuelle">Étape 3 : Créer la machine virtuelle</h3>
+<ol>
+<li>Cliquez sur <code>Créer une VM</code> en haut à droite</li>
+<li><code>Général</code> : définissez le nom sur <code>test-vm</code> (ou ce que vous voulez)</li>
+<li><code>OS</code> : pour une image cloud vous pouvez ignorer la configuration du disque</li>
+<li><code>Disques</code> : sélectionnez <strong>Utiliser une image disque existante</strong>, choisissez le <code>debian-12-cloud.qcow2</code> que vous venez de télécharger</li>
+<li><code>CPU</code> : 1 vCPU suffit pour commencer</li>
+<li><code>Mémoire</code> : 512–1024 Mo pour tester</li>
+<li><code>Réseau</code> : le <code>vmbr0</code> par défaut convient</li>
+<li><code>Confirmer</code> → <code>Terminer</code></li>
+</ol>
+<h3 id="étape-4--démarrer-et-vérifier">Étape 4 : Démarrer et vérifier</h3>
+<ol>
+<li>Clic droit sur la VM → <code>Démarrer</code></li>
+<li>Ouvrez la <code>Console</code> (noVNC)</li>
+<li>Si vous voyez l'écran de démarrage Debian ou l'invite de connexion, c'est réussi — félicitations, votre première VM est en ligne.</li>
+</ol>
+<h2 id="dépannage-courant">Dépannage courant</h2>
+<table>
+<thead>
+<tr>
+<th>Symptôme</th>
+<th>À vérifier</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td>Impossible d'accéder à l'interface web</td>
+<td>Vérifiez que le port 8006 est accessible, confirmez que <code>pveproxy</code> tourne</td>
+</tr>
+<tr>
+<td>La VM ne démarre pas</td>
+<td>VT-x / AMD-V est-il activé dans le BIOS ? Sans cela, les VM ne démarreront tout simplement pas</td>
+</tr>
+<tr>
+<td>Fichier image introuvable</td>
+<td>Retournez dans <code>local -> Contenu</code> — vérifiez que le téléchargement est terminé</td>
+</tr>
+<tr>
+<td>La VM n'a pas de réseau</td>
+<td>Vérifiez que <code>vmbr0</code> est bien lié à une NIC physique</td>
+</tr>
+</tbody>
+</table>
+<figure data-rehype-pretty-code-figure=""><pre style="background-color:#24292e;color:#e1e4e8" tabindex="0" data-language="bash" data-theme="github-dark"><code data-language="bash" data-theme="github-dark" style="display: grid;"><span data-line=""><span style="color:#6A737D"># Vérification du statut du service (à exécuter quand quelque chose ne va pas)</span></span>
+<span data-line=""><span style="color:#B392F0">systemctl</span><span style="color:#9ECBFF"> status</span><span style="color:#9ECBFF"> pveproxy</span></span></code></pre></figure>
+<h2 id="prochaines-étapes">Prochaines étapes</h2>
+<p>Une fois votre première VM en ligne, il est bon de construire la carte mentale du système. L'article suivant couvre les concepts fondamentaux VM / LXC / stockage / réseau :
+👉 <a href="02-core-concepts">Concepts fondamentaux</a></p>5:["$","aside",null,{"className":"hidden lg:block","children":["$","$L8",null,{"html":"$9"}]}]
+6:["$","script","script-0",{"src":"/_next/static/chunks/2dddb3bc05093f69.js","async":true}]
+7:["$","$La",null,{"children":["$","$b",null,{"name":"Next.MetadataOutlet","children":"$@c"}]}]
+c:null

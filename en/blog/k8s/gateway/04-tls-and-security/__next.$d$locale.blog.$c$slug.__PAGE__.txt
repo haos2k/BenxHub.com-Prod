@@ -1,0 +1,412 @@
+1:"$Sreact.fragment"
+2:I[14864,["/_next/static/chunks/7923a261b80bb6e1.js","/_next/static/chunks/e09b4358027e8033.js","/_next/static/chunks/2dddb3bc05093f69.js"],"default"]
+b:I[24801,["/_next/static/chunks/7923a261b80bb6e1.js","/_next/static/chunks/e09b4358027e8033.js","/_next/static/chunks/2dddb3bc05093f69.js"],"default"]
+d:I[50183,["/_next/static/chunks/5a5b5b13c22d14f7.js","/_next/static/chunks/a484d1d3dd4b55ab.js"],"OutletBoundary"]
+e:"$Sreact.suspense"
+0:{"buildId":"Yck3R4ooQxWkwGLT6is1X","rsc":["$","$1","c",{"children":[[["$","script",null,{"type":"application/ld+json","dangerouslySetInnerHTML":{"__html":"{\"@context\":\"https://schema.org\",\"@type\":\"Article\",\"headline\":\"Envoy Gateway TLS and Security: Set Up HTTPS and Stop Your API from Running Naked\",\"description\":\"Understand HTTPS listeners, certificateRefs, TLS termination, TLSRoute, and the basics of cross-namespace certificate references in Envoy Gateway.\",\"url\":\"https://benxhub.com/en/blog/k8s/gateway/04-tls-and-security\",\"mainEntityOfPage\":{\"@type\":\"WebPage\",\"@id\":\"https://benxhub.com/en/blog/k8s/gateway/04-tls-and-security\"},\"datePublished\":\"2026-03-10T00:00:00.000Z\",\"dateModified\":\"2026-03-10T00:00:00.000Z\",\"keywords\":\"kubernetes, envoy-gateway, gateway-api, tls, https, security\",\"inLanguage\":\"en\",\"author\":{\"@type\":\"Person\",\"name\":\"BenX\",\"url\":\"https://benxhub.com\"},\"publisher\":{\"@type\":\"Organization\",\"name\":\"BenXHub Blog\",\"url\":\"https://benxhub.com\"}}"}}],["$","div",null,{"className":"mx-auto max-w-6xl px-4 py-12 sm:px-6","children":["$","div",null,{"className":"lg:grid lg:grid-cols-[1fr_240px] lg:gap-14","children":[["$","article",null,{"children":[["$","header",null,{"className":"mb-10","children":[["$","div",null,{"className":"mb-4 flex flex-wrap gap-2","children":[["$","$L2","kubernetes",{"href":"/en/tags/kubernetes","localeCookie":{"name":"NEXT_LOCALE","sameSite":"lax"},"className":"inline-flex items-center rounded-full px-2.5 py-0.5 text-xs font-medium transition-colors","style":{"background":"var(--color-code-bg)","color":"var(--color-accent)","border":"1px solid var(--color-border)"},"children":["#","kubernetes"]}],["$","$L2","envoy-gateway",{"href":"/en/tags/envoy-gateway","localeCookie":{"name":"NEXT_LOCALE","sameSite":"lax"},"className":"inline-flex items-center rounded-full px-2.5 py-0.5 text-xs font-medium transition-colors","style":{"background":"var(--color-code-bg)","color":"var(--color-accent)","border":"1px solid var(--color-border)"},"children":["#","envoy-gateway"]}],["$","$L2","gateway-api",{"href":"/en/tags/gateway-api","localeCookie":{"name":"NEXT_LOCALE","sameSite":"lax"},"className":"inline-flex items-center rounded-full px-2.5 py-0.5 text-xs font-medium transition-colors","style":{"background":"var(--color-code-bg)","color":"var(--color-accent)","border":"1px solid var(--color-border)"},"children":["#","gateway-api"]}],["$","$L2","tls",{"href":"/en/tags/tls","localeCookie":{"name":"NEXT_LOCALE","sameSite":"lax"},"className":"inline-flex items-center rounded-full px-2.5 py-0.5 text-xs font-medium transition-colors","style":{"background":"var(--color-code-bg)","color":"var(--color-accent)","border":"1px solid var(--color-border)"},"children":["#","tls"]}],["$","$L2","https",{"href":"/en/tags/https","localeCookie":{"name":"NEXT_LOCALE","sameSite":"lax"},"className":"inline-flex items-center rounded-full px-2.5 py-0.5 text-xs font-medium transition-colors","style":{"background":"var(--color-code-bg)","color":"var(--color-accent)","border":"1px solid var(--color-border)"},"children":["#","https"]}],["$","$L2","security",{"href":"/en/tags/security","localeCookie":{"name":"NEXT_LOCALE","sameSite":"lax"},"className":"inline-flex items-center rounded-full px-2.5 py-0.5 text-xs font-medium transition-colors","style":{"background":"var(--color-code-bg)","color":"var(--color-accent)","border":"1px solid var(--color-border)"},"children":["#","security"]}]]}],["$","h1",null,{"className":"mb-4 text-3xl leading-snug font-bold tracking-tight sm:text-4xl","style":{"color":"var(--color-text)"},"children":"Envoy Gateway TLS and Security: Set Up HTTPS and Stop Your API from Running Naked"}],["$","div",null,{"className":"flex flex-wrap items-center gap-3 text-sm","style":{"color":"var(--color-muted)"},"children":[["$","time",null,{"dateTime":"2026-03-10","children":"Mar 10, 2026"}],["$","span",null,{"aria-hidden":"true","children":"·"}],"$L3"]}],"$undefined","$L4"]}],"$L5","$L6"]}],"$L7"]}]}]],["$L8"],"$L9"]}],"loading":null,"isPartial":false}
+3:["$","span",null,{"children":"5 min read"}]
+4:["$","div",null,{"className":"mt-6 border-b","style":{"borderColor":"var(--color-border)"}}]
+a:T5e11,<p>Getting HTTP working is just the warmup. Unless your service lives in the Stone Age, production almost certainly needs HTTPS. This post covers the TLS fundamentals for Envoy Gateway so your APIs stop running in the clear.</p>
+<h2 id="how-tls-works-in-gateway">How TLS Works in Gateway</h2>
+<p>The most common approach: <strong>terminate TLS at the Gateway listener.</strong></p>
+<p>Meaning:</p>
+<ul>
+<li>The client connects via HTTPS</li>
+<li>The Gateway handles the handshake and certificate</li>
+<li>Traffic is then forwarded to your Service unencrypted internally</li>
+</ul>
+<p>A basic HTTPS listener looks like this:</p>
+<figure data-rehype-pretty-code-figure=""><pre style="background-color:#24292e;color:#e1e4e8" tabindex="0" data-language="yaml" data-theme="github-dark"><code data-language="yaml" data-theme="github-dark" style="display: grid;"><span data-line=""><span style="color:#85E89D">apiVersion</span><span style="color:#E1E4E8">: </span><span style="color:#9ECBFF">gateway.networking.k8s.io/v1</span></span>
+<span data-line=""><span style="color:#85E89D">kind</span><span style="color:#E1E4E8">: </span><span style="color:#9ECBFF">Gateway</span></span>
+<span data-line=""><span style="color:#85E89D">metadata</span><span style="color:#E1E4E8">:</span></span>
+<span data-line=""><span style="color:#85E89D">  name</span><span style="color:#E1E4E8">: </span><span style="color:#9ECBFF">eg</span></span>
+<span data-line=""><span style="color:#85E89D">spec</span><span style="color:#E1E4E8">:</span></span>
+<span data-line=""><span style="color:#85E89D">  gatewayClassName</span><span style="color:#E1E4E8">: </span><span style="color:#9ECBFF">eg</span></span>
+<span data-line=""><span style="color:#85E89D">  listeners</span><span style="color:#E1E4E8">:</span></span>
+<span data-line=""><span style="color:#E1E4E8">    - </span><span style="color:#85E89D">name</span><span style="color:#E1E4E8">: </span><span style="color:#9ECBFF">http</span></span>
+<span data-line=""><span style="color:#85E89D">      protocol</span><span style="color:#E1E4E8">: </span><span style="color:#9ECBFF">HTTP</span></span>
+<span data-line=""><span style="color:#85E89D">      port</span><span style="color:#E1E4E8">: </span><span style="color:#79B8FF">80</span></span>
+<span data-line=""><span style="color:#E1E4E8">    - </span><span style="color:#85E89D">name</span><span style="color:#E1E4E8">: </span><span style="color:#9ECBFF">https</span></span>
+<span data-line=""><span style="color:#85E89D">      protocol</span><span style="color:#E1E4E8">: </span><span style="color:#9ECBFF">HTTPS</span></span>
+<span data-line=""><span style="color:#85E89D">      port</span><span style="color:#E1E4E8">: </span><span style="color:#79B8FF">443</span></span>
+<span data-line=""><span style="color:#85E89D">      tls</span><span style="color:#E1E4E8">:</span></span>
+<span data-line=""><span style="color:#85E89D">        mode</span><span style="color:#E1E4E8">: </span><span style="color:#9ECBFF">Terminate</span></span>
+<span data-line=""><span style="color:#85E89D">        certificateRefs</span><span style="color:#E1E4E8">:</span></span>
+<span data-line=""><span style="color:#E1E4E8">          - </span><span style="color:#85E89D">kind</span><span style="color:#E1E4E8">: </span><span style="color:#9ECBFF">Secret</span></span>
+<span data-line=""><span style="color:#85E89D">            group</span><span style="color:#E1E4E8">: </span><span style="color:#9ECBFF">""</span></span>
+<span data-line=""><span style="color:#85E89D">            name</span><span style="color:#E1E4E8">: </span><span style="color:#9ECBFF">example-cert</span></span></code></pre></figure>
+<p>Two things matter here:</p>
+<ul>
+<li><code>protocol: HTTPS</code></li>
+<li><code>tls.mode: Terminate</code></li>
+</ul>
+<p>This means: TLS ends here, and the Gateway handles the certificate.</p>
+<h2 id="https--httproute-vs-tlsroute-whats-the-difference"><code>HTTPS + HTTPRoute</code> vs <code>TLSRoute</code>: What's the Difference</h2>
+<p>This is important, because many people see <code>TLSRoute</code> and immediately ask:</p>
+<p>"Isn't an HTTPS listener already enough? Why do we need a separate <code>TLSRoute</code>?"</p>
+<p>The difference is <strong>whether the Gateway terminates TLS</strong>:</p>
+<table>
+<thead>
+<tr>
+<th>Scenario</th>
+<th>Common Combination</th>
+<th>Description</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td>Gateway terminates TLS, then applies HTTP rules</td>
+<td><code>HTTPS listener + HTTPRoute</code></td>
+<td>Most common website/API scenario</td>
+</tr>
+<tr>
+<td>Gateway doesn't decrypt — routes encrypted traffic based on SNI only</td>
+<td><code>TLS listener + TLSRoute</code></td>
+<td>TLS passthrough scenario</td>
+</tr>
+</tbody>
+</table>
+<p>In other words:</p>
+<ul>
+<li>If you want to inspect <code>path</code>, <code>header</code>, <code>method</code> at the Gateway, you need to terminate TLS first, then use <code>HTTPRoute</code></li>
+<li>If you want to preserve end-to-end encryption and not decrypt at the Gateway, <code>TLSRoute</code> is the right path</li>
+</ul>
+<p>Neither approach is "more advanced" — the point is knowing what you want: "terminate TLS and do L7 routing," or "keep encryption intact and do SNI-based routing."</p>
+<h2 id="prepare-the-certificate-secret">Prepare the Certificate Secret</h2>
+<p>For test environments, a self-signed certificate works. The official examples use exactly this:</p>
+<figure data-rehype-pretty-code-figure=""><pre style="background-color:#24292e;color:#e1e4e8" tabindex="0" data-language="bash" data-theme="github-dark"><code data-language="bash" data-theme="github-dark" style="display: grid;"><span data-line=""><span style="color:#B392F0">openssl</span><span style="color:#9ECBFF"> req</span><span style="color:#79B8FF"> -x509</span><span style="color:#79B8FF"> -sha256</span><span style="color:#79B8FF"> -nodes</span><span style="color:#79B8FF"> -days</span><span style="color:#79B8FF"> 365</span><span style="color:#79B8FF"> -newkey</span><span style="color:#9ECBFF"> rsa:2048</span><span style="color:#79B8FF"> \</span></span>
+<span data-line=""><span style="color:#79B8FF">  -subj</span><span style="color:#9ECBFF"> '/O=example Inc./CN=example.com'</span><span style="color:#79B8FF"> \</span></span>
+<span data-line=""><span style="color:#79B8FF">  -keyout</span><span style="color:#9ECBFF"> example.com.key</span><span style="color:#79B8FF"> \</span></span>
+<span data-line=""><span style="color:#79B8FF">  -out</span><span style="color:#9ECBFF"> example.com.crt</span></span>
+<span data-line=""> </span>
+<span data-line=""><span style="color:#B392F0">openssl</span><span style="color:#9ECBFF"> req</span><span style="color:#79B8FF"> -out</span><span style="color:#9ECBFF"> www.example.com.csr</span><span style="color:#79B8FF"> -newkey</span><span style="color:#9ECBFF"> rsa:2048</span><span style="color:#79B8FF"> -nodes</span><span style="color:#79B8FF"> \</span></span>
+<span data-line=""><span style="color:#79B8FF">  -keyout</span><span style="color:#9ECBFF"> www.example.com.key</span><span style="color:#79B8FF"> \</span></span>
+<span data-line=""><span style="color:#79B8FF">  -subj</span><span style="color:#9ECBFF"> "/CN=www.example.com/O=example organization"</span></span>
+<span data-line=""> </span>
+<span data-line=""><span style="color:#B392F0">openssl</span><span style="color:#9ECBFF"> x509</span><span style="color:#79B8FF"> -req</span><span style="color:#79B8FF"> -days</span><span style="color:#79B8FF"> 365</span><span style="color:#79B8FF"> -CA</span><span style="color:#9ECBFF"> example.com.crt</span><span style="color:#79B8FF"> -CAkey</span><span style="color:#9ECBFF"> example.com.key</span><span style="color:#79B8FF"> \</span></span>
+<span data-line=""><span style="color:#79B8FF">  -set_serial</span><span style="color:#79B8FF"> 0</span><span style="color:#79B8FF"> -in</span><span style="color:#9ECBFF"> www.example.com.csr</span><span style="color:#79B8FF"> -out</span><span style="color:#9ECBFF"> www.example.com.crt</span></span></code></pre></figure>
+<p>Store the cert/key as a Kubernetes Secret:</p>
+<figure data-rehype-pretty-code-figure=""><pre style="background-color:#24292e;color:#e1e4e8" tabindex="0" data-language="bash" data-theme="github-dark"><code data-language="bash" data-theme="github-dark" style="display: grid;"><span data-line=""><span style="color:#B392F0">kubectl</span><span style="color:#9ECBFF"> create</span><span style="color:#9ECBFF"> secret</span><span style="color:#9ECBFF"> tls</span><span style="color:#9ECBFF"> example-cert</span><span style="color:#79B8FF"> \</span></span>
+<span data-line=""><span style="color:#79B8FF">  --key=www.example.com.key</span><span style="color:#79B8FF"> \</span></span>
+<span data-line=""><span style="color:#79B8FF">  --cert=www.example.com.crt</span></span></code></pre></figure>
+<p>The <code>Gateway</code> can then reference this Secret via <code>certificateRefs</code>.</p>
+<blockquote>
+<p>⚠️ Self-signed certs are for testing only. In production, use cert-manager or your existing certificate management workflow. Don't carry the demo setup directly into production — that's like surviving on instant noodles: fine occasionally, not sustainable long-term.</p>
+</blockquote>
+<h2 id="add-an-https-listener-to-an-existing-gateway">Add an HTTPS Listener to an Existing Gateway</h2>
+<p>If you already have a <code>eg</code> Gateway from the previous post, you can patch it directly:</p>
+<figure data-rehype-pretty-code-figure=""><pre style="background-color:#24292e;color:#e1e4e8" tabindex="0" data-language="bash" data-theme="github-dark"><code data-language="bash" data-theme="github-dark" style="display: grid;"><span data-line=""><span style="color:#B392F0">kubectl</span><span style="color:#9ECBFF"> patch</span><span style="color:#9ECBFF"> gateway</span><span style="color:#9ECBFF"> eg</span><span style="color:#79B8FF"> --type=json</span><span style="color:#79B8FF"> --patch</span><span style="color:#9ECBFF"> '</span></span>
+<span data-line=""><span style="color:#9ECBFF">  - op: add</span></span>
+<span data-line=""><span style="color:#9ECBFF">    path: /spec/listeners/-</span></span>
+<span data-line=""><span style="color:#9ECBFF">    value:</span></span>
+<span data-line=""><span style="color:#9ECBFF">      name: https</span></span>
+<span data-line=""><span style="color:#9ECBFF">      protocol: HTTPS</span></span>
+<span data-line=""><span style="color:#9ECBFF">      port: 443</span></span>
+<span data-line=""><span style="color:#9ECBFF">      tls:</span></span>
+<span data-line=""><span style="color:#9ECBFF">        mode: Terminate</span></span>
+<span data-line=""><span style="color:#9ECBFF">        certificateRefs:</span></span>
+<span data-line=""><span style="color:#9ECBFF">        - kind: Secret</span></span>
+<span data-line=""><span style="color:#9ECBFF">          group: ""</span></span>
+<span data-line=""><span style="color:#9ECBFF">          name: example-cert</span></span>
+<span data-line=""><span style="color:#9ECBFF">'</span></span></code></pre></figure>
+<p>Verify the status:</p>
+<figure data-rehype-pretty-code-figure=""><pre style="background-color:#24292e;color:#e1e4e8" tabindex="0" data-language="bash" data-theme="github-dark"><code data-language="bash" data-theme="github-dark" style="display: grid;"><span data-line=""><span style="color:#B392F0">kubectl</span><span style="color:#9ECBFF"> get</span><span style="color:#9ECBFF"> gateway/eg</span><span style="color:#79B8FF"> -o</span><span style="color:#9ECBFF"> yaml</span></span></code></pre></figure>
+<p>If the listener looks healthy, test HTTPS:</p>
+<figure data-rehype-pretty-code-figure=""><pre style="background-color:#24292e;color:#e1e4e8" tabindex="0" data-language="bash" data-theme="github-dark"><code data-language="bash" data-theme="github-dark" style="display: grid;"><span data-line=""><span style="color:#B392F0">curl</span><span style="color:#79B8FF"> -v</span><span style="color:#79B8FF"> -HHost:www.example.com</span><span style="color:#79B8FF"> \</span></span>
+<span data-line=""><span style="color:#79B8FF">  --resolve</span><span style="color:#9ECBFF"> "www.example.com:443:${</span><span style="color:#E1E4E8">GATEWAY_HOST</span><span style="color:#9ECBFF">}"</span><span style="color:#79B8FF"> \</span></span>
+<span data-line=""><span style="color:#79B8FF">  --cacert</span><span style="color:#9ECBFF"> example.com.crt</span><span style="color:#79B8FF"> \</span></span>
+<span data-line=""><span style="color:#9ECBFF">  https://www.example.com/get</span></span></code></pre></figure>
+<p>This command is great for local validation, especially when DNS isn't wired up yet.</p>
+<h2 id="one-gateway-multiple-https-domains">One Gateway, Multiple HTTPS Domains</h2>
+<p>If you have multiple domains, add multiple HTTPS listeners to the same Gateway.
+For example, adding <code>foo.example.com</code>:</p>
+<figure data-rehype-pretty-code-figure=""><pre style="background-color:#24292e;color:#e1e4e8" tabindex="0" data-language="yaml" data-theme="github-dark"><code data-language="yaml" data-theme="github-dark" style="display: grid;"><span data-line=""><span style="color:#85E89D">listeners</span><span style="color:#E1E4E8">:</span></span>
+<span data-line=""><span style="color:#E1E4E8">  - </span><span style="color:#85E89D">name</span><span style="color:#E1E4E8">: </span><span style="color:#9ECBFF">https-main</span></span>
+<span data-line=""><span style="color:#85E89D">    protocol</span><span style="color:#E1E4E8">: </span><span style="color:#9ECBFF">HTTPS</span></span>
+<span data-line=""><span style="color:#85E89D">    port</span><span style="color:#E1E4E8">: </span><span style="color:#79B8FF">443</span></span>
+<span data-line=""><span style="color:#85E89D">    hostname</span><span style="color:#E1E4E8">: </span><span style="color:#9ECBFF">www.example.com</span></span>
+<span data-line=""><span style="color:#85E89D">    tls</span><span style="color:#E1E4E8">:</span></span>
+<span data-line=""><span style="color:#85E89D">      mode</span><span style="color:#E1E4E8">: </span><span style="color:#9ECBFF">Terminate</span></span>
+<span data-line=""><span style="color:#85E89D">      certificateRefs</span><span style="color:#E1E4E8">:</span></span>
+<span data-line=""><span style="color:#E1E4E8">        - </span><span style="color:#85E89D">name</span><span style="color:#E1E4E8">: </span><span style="color:#9ECBFF">example-cert</span></span>
+<span data-line=""><span style="color:#E1E4E8">  - </span><span style="color:#85E89D">name</span><span style="color:#E1E4E8">: </span><span style="color:#9ECBFF">https-foo</span></span>
+<span data-line=""><span style="color:#85E89D">    protocol</span><span style="color:#E1E4E8">: </span><span style="color:#9ECBFF">HTTPS</span></span>
+<span data-line=""><span style="color:#85E89D">    port</span><span style="color:#E1E4E8">: </span><span style="color:#79B8FF">443</span></span>
+<span data-line=""><span style="color:#85E89D">    hostname</span><span style="color:#E1E4E8">: </span><span style="color:#9ECBFF">foo.example.com</span></span>
+<span data-line=""><span style="color:#85E89D">    tls</span><span style="color:#E1E4E8">:</span></span>
+<span data-line=""><span style="color:#85E89D">      mode</span><span style="color:#E1E4E8">: </span><span style="color:#9ECBFF">Terminate</span></span>
+<span data-line=""><span style="color:#85E89D">      certificateRefs</span><span style="color:#E1E4E8">:</span></span>
+<span data-line=""><span style="color:#E1E4E8">        - </span><span style="color:#85E89D">name</span><span style="color:#E1E4E8">: </span><span style="color:#9ECBFF">foo-cert</span></span></code></pre></figure>
+<p>Don't forget to update the corresponding <code>HTTPRoute</code> with the right hostname — otherwise the listener might be listening, but the route doesn't know where to send the traffic.</p>
+<h2 id="mental-model-for-tlsroute">Mental Model for <code>TLSRoute</code></h2>
+<p>For TLS passthrough, think of <code>TLSRoute</code> like this:</p>
+<blockquote>
+<p>💡 The <code>apiVersion</code> for <code>TLSRoute</code> may differ depending on which version of Gateway API CRDs you've installed. The example below is for conceptual illustration — check your cluster's installed version before applying.</p>
+</blockquote>
+<figure data-rehype-pretty-code-figure=""><pre style="background-color:#24292e;color:#e1e4e8" tabindex="0" data-language="yaml" data-theme="github-dark"><code data-language="yaml" data-theme="github-dark" style="display: grid;"><span data-line=""><span style="color:#85E89D">apiVersion</span><span style="color:#E1E4E8">: </span><span style="color:#9ECBFF">gateway.networking.k8s.io/v1</span></span>
+<span data-line=""><span style="color:#85E89D">kind</span><span style="color:#E1E4E8">: </span><span style="color:#9ECBFF">Gateway</span></span>
+<span data-line=""><span style="color:#85E89D">metadata</span><span style="color:#E1E4E8">:</span></span>
+<span data-line=""><span style="color:#85E89D">  name</span><span style="color:#E1E4E8">: </span><span style="color:#9ECBFF">eg-tls</span></span>
+<span data-line=""><span style="color:#85E89D">spec</span><span style="color:#E1E4E8">:</span></span>
+<span data-line=""><span style="color:#85E89D">  gatewayClassName</span><span style="color:#E1E4E8">: </span><span style="color:#9ECBFF">eg</span></span>
+<span data-line=""><span style="color:#85E89D">  listeners</span><span style="color:#E1E4E8">:</span></span>
+<span data-line=""><span style="color:#E1E4E8">    - </span><span style="color:#85E89D">name</span><span style="color:#E1E4E8">: </span><span style="color:#9ECBFF">tls</span></span>
+<span data-line=""><span style="color:#85E89D">      protocol</span><span style="color:#E1E4E8">: </span><span style="color:#9ECBFF">TLS</span></span>
+<span data-line=""><span style="color:#85E89D">      port</span><span style="color:#E1E4E8">: </span><span style="color:#79B8FF">443</span></span>
+<span data-line=""><span style="color:#B392F0">---</span></span>
+<span data-line=""><span style="color:#85E89D">apiVersion</span><span style="color:#E1E4E8">: </span><span style="color:#9ECBFF">gateway.networking.k8s.io/v1alpha2</span></span>
+<span data-line=""><span style="color:#85E89D">kind</span><span style="color:#E1E4E8">: </span><span style="color:#9ECBFF">TLSRoute</span></span>
+<span data-line=""><span style="color:#85E89D">metadata</span><span style="color:#E1E4E8">:</span></span>
+<span data-line=""><span style="color:#85E89D">  name</span><span style="color:#E1E4E8">: </span><span style="color:#9ECBFF">passthrough-route</span></span>
+<span data-line=""><span style="color:#85E89D">spec</span><span style="color:#E1E4E8">:</span></span>
+<span data-line=""><span style="color:#85E89D">  parentRefs</span><span style="color:#E1E4E8">:</span></span>
+<span data-line=""><span style="color:#E1E4E8">    - </span><span style="color:#85E89D">name</span><span style="color:#E1E4E8">: </span><span style="color:#9ECBFF">eg-tls</span></span>
+<span data-line=""><span style="color:#85E89D">  hostnames</span><span style="color:#E1E4E8">:</span></span>
+<span data-line=""><span style="color:#E1E4E8">    - </span><span style="color:#9ECBFF">"db.example.com"</span></span>
+<span data-line=""><span style="color:#85E89D">  rules</span><span style="color:#E1E4E8">:</span></span>
+<span data-line=""><span style="color:#E1E4E8">    - </span><span style="color:#85E89D">backendRefs</span><span style="color:#E1E4E8">:</span></span>
+<span data-line=""><span style="color:#E1E4E8">        - </span><span style="color:#85E89D">name</span><span style="color:#E1E4E8">: </span><span style="color:#9ECBFF">db-service</span></span>
+<span data-line=""><span style="color:#85E89D">          port</span><span style="color:#E1E4E8">: </span><span style="color:#79B8FF">5432</span></span></code></pre></figure>
+<p>Common use cases for this pattern:</p>
+<ul>
+<li>Routing based only on SNI hostname</li>
+<li>Preserving encryption all the way to the backend</li>
+<li>No HTTP path/header parsing at the Gateway</li>
+</ul>
+<p>So the biggest difference between <code>TLSRoute</code> and <code>HTTPRoute</code> isn't just the name — they're operating at entirely different traffic layers.</p>
+<h2 id="cross-namespace-certificate-references">Cross-Namespace Certificate References</h2>
+<p>The official docs highlight a useful capability:
+<strong>A Gateway can reference certificate Secrets from other namespaces — but it requires a <code>ReferenceGrant</code>.</strong></p>
+<p>For example, if the platform team stores certificates centrally in <code>envoy-gateway-system</code>, but the application Gateway is in <code>default</code>, you can't just reference across namespace boundaries without explicit authorization.</p>
+<p>Example:</p>
+<figure data-rehype-pretty-code-figure=""><pre style="background-color:#24292e;color:#e1e4e8" tabindex="0" data-language="yaml" data-theme="github-dark"><code data-language="yaml" data-theme="github-dark" style="display: grid;"><span data-line=""><span style="color:#85E89D">apiVersion</span><span style="color:#E1E4E8">: </span><span style="color:#9ECBFF">gateway.networking.k8s.io/v1beta1</span></span>
+<span data-line=""><span style="color:#85E89D">kind</span><span style="color:#E1E4E8">: </span><span style="color:#9ECBFF">ReferenceGrant</span></span>
+<span data-line=""><span style="color:#85E89D">metadata</span><span style="color:#E1E4E8">:</span></span>
+<span data-line=""><span style="color:#85E89D">  name</span><span style="color:#E1E4E8">: </span><span style="color:#9ECBFF">allow-default-to-read-cert</span></span>
+<span data-line=""><span style="color:#85E89D">  namespace</span><span style="color:#E1E4E8">: </span><span style="color:#9ECBFF">envoy-gateway-system</span></span>
+<span data-line=""><span style="color:#85E89D">spec</span><span style="color:#E1E4E8">:</span></span>
+<span data-line=""><span style="color:#85E89D">  from</span><span style="color:#E1E4E8">:</span></span>
+<span data-line=""><span style="color:#E1E4E8">    - </span><span style="color:#85E89D">group</span><span style="color:#E1E4E8">: </span><span style="color:#9ECBFF">gateway.networking.k8s.io</span></span>
+<span data-line=""><span style="color:#85E89D">      kind</span><span style="color:#E1E4E8">: </span><span style="color:#9ECBFF">Gateway</span></span>
+<span data-line=""><span style="color:#85E89D">      namespace</span><span style="color:#E1E4E8">: </span><span style="color:#9ECBFF">default</span></span>
+<span data-line=""><span style="color:#85E89D">  to</span><span style="color:#E1E4E8">:</span></span>
+<span data-line=""><span style="color:#E1E4E8">    - </span><span style="color:#85E89D">group</span><span style="color:#E1E4E8">: </span><span style="color:#9ECBFF">""</span></span>
+<span data-line=""><span style="color:#85E89D">      kind</span><span style="color:#E1E4E8">: </span><span style="color:#9ECBFF">Secret</span></span></code></pre></figure>
+<p>This means:</p>
+<ul>
+<li>A <code>Gateway</code> in the <code>default</code> namespace</li>
+<li>Is authorized to reference <code>Secret</code> resources in <code>envoy-gateway-system</code></li>
+</ul>
+<p>Without a <code>ReferenceGrant</code>, this cross-namespace reference is treated as invalid. It's a protection mechanism — not Gateway API being unnecessarily strict.</p>
+<h2 id="one-line-summary">One-Line Summary</h2>
+<p>Envoy Gateway TLS really isn't as mysterious as it sounds: prepare the certificate Secret, configure the HTTPS listener, confirm your route and hostname align — and that's basically it.</p>
+<blockquote>
+<p>💡 The most common beginner mistake isn't that TLS is hard — it's that three things aren't aligned: <code>hostname</code>, <code>certificateRefs</code>, and <code>HTTPRoute hostnames</code>. If any one of them is off, traffic starts misbehaving.</p>
+</blockquote>
+<h2 id="next-step">Next Step</h2>
+<p>Now that you've covered installation, concepts, routing, and TLS, the next post consolidates this into a set of practices that are less likely to blow up in production:
+👉 <a href="05-best-practices">Best Practices</a></p>5:["$","div",null,{"className":"prose","dangerouslySetInnerHTML":{"__html":"$a"}}]
+6:["$","footer",null,{"className":"mt-14 border-t pt-8","style":{"borderColor":"var(--color-border)"},"children":[["$","div",null,{"className":"mb-8 flex flex-wrap gap-2","children":[["$","$L2","kubernetes",{"href":"/en/tags/kubernetes","localeCookie":{"name":"NEXT_LOCALE","sameSite":"lax"},"className":"inline-flex items-center rounded-full px-3 py-1 text-sm font-medium transition-colors","style":{"background":"var(--color-code-bg)","color":"var(--color-accent)","border":"1px solid var(--color-border)"},"children":["#","kubernetes"]}],["$","$L2","envoy-gateway",{"href":"/en/tags/envoy-gateway","localeCookie":{"name":"NEXT_LOCALE","sameSite":"lax"},"className":"inline-flex items-center rounded-full px-3 py-1 text-sm font-medium transition-colors","style":{"background":"var(--color-code-bg)","color":"var(--color-accent)","border":"1px solid var(--color-border)"},"children":["#","envoy-gateway"]}],["$","$L2","gateway-api",{"href":"/en/tags/gateway-api","localeCookie":{"name":"NEXT_LOCALE","sameSite":"lax"},"className":"inline-flex items-center rounded-full px-3 py-1 text-sm font-medium transition-colors","style":{"background":"var(--color-code-bg)","color":"var(--color-accent)","border":"1px solid var(--color-border)"},"children":["#","gateway-api"]}],["$","$L2","tls",{"href":"/en/tags/tls","localeCookie":{"name":"NEXT_LOCALE","sameSite":"lax"},"className":"inline-flex items-center rounded-full px-3 py-1 text-sm font-medium transition-colors","style":{"background":"var(--color-code-bg)","color":"var(--color-accent)","border":"1px solid var(--color-border)"},"children":["#","tls"]}],["$","$L2","https",{"href":"/en/tags/https","localeCookie":{"name":"NEXT_LOCALE","sameSite":"lax"},"className":"inline-flex items-center rounded-full px-3 py-1 text-sm font-medium transition-colors","style":{"background":"var(--color-code-bg)","color":"var(--color-accent)","border":"1px solid var(--color-border)"},"children":["#","https"]}],["$","$L2","security",{"href":"/en/tags/security","localeCookie":{"name":"NEXT_LOCALE","sameSite":"lax"},"className":"inline-flex items-center rounded-full px-3 py-1 text-sm font-medium transition-colors","style":{"background":"var(--color-code-bg)","color":"var(--color-accent)","border":"1px solid var(--color-border)"},"children":["#","security"]}]]}],["$","nav",null,{"aria-label":"Post navigation","className":"grid grid-cols-1 gap-4 sm:grid-cols-2","children":[["$","$L2",null,{"href":"/en/blog/k8s/gateway/03-http-routing","localeCookie":{"name":"NEXT_LOCALE","sameSite":"lax"},"className":"group rounded-lg border p-4 transition-colors hover:border-accent","style":{"borderColor":"var(--color-border)","background":"var(--color-surface)"},"children":[["$","p",null,{"className":"mb-1 text-xs","style":{"color":"var(--color-muted)"},"children":"← Newer"}],["$","p",null,{"className":"line-clamp-1 text-sm font-medium transition-colors group-hover:text-accent","style":{"color":"var(--color-text)"},"children":"Envoy Gateway HTTP Routing in Practice: Host, Path, Header, and Traffic Splitting"}]]}],["$","$L2",null,{"href":"/en/blog/k8s/gateway/05-best-practices","localeCookie":{"name":"NEXT_LOCALE","sameSite":"lax"},"className":"group rounded-lg border p-4 text-right transition-colors hover:border-accent","style":{"borderColor":"var(--color-border)","background":"var(--color-surface)"},"children":[["$","p",null,{"className":"mb-1 text-xs","style":{"color":"var(--color-muted)"},"children":"Older →"}],["$","p",null,{"className":"line-clamp-1 text-sm font-medium transition-colors group-hover:text-accent","style":{"color":"var(--color-text)"},"children":"Envoy Gateway Best Practices: Do Future-You a Favor Before Going to Production"}]]}]]}]]}]
+c:T5e11,<p>Getting HTTP working is just the warmup. Unless your service lives in the Stone Age, production almost certainly needs HTTPS. This post covers the TLS fundamentals for Envoy Gateway so your APIs stop running in the clear.</p>
+<h2 id="how-tls-works-in-gateway">How TLS Works in Gateway</h2>
+<p>The most common approach: <strong>terminate TLS at the Gateway listener.</strong></p>
+<p>Meaning:</p>
+<ul>
+<li>The client connects via HTTPS</li>
+<li>The Gateway handles the handshake and certificate</li>
+<li>Traffic is then forwarded to your Service unencrypted internally</li>
+</ul>
+<p>A basic HTTPS listener looks like this:</p>
+<figure data-rehype-pretty-code-figure=""><pre style="background-color:#24292e;color:#e1e4e8" tabindex="0" data-language="yaml" data-theme="github-dark"><code data-language="yaml" data-theme="github-dark" style="display: grid;"><span data-line=""><span style="color:#85E89D">apiVersion</span><span style="color:#E1E4E8">: </span><span style="color:#9ECBFF">gateway.networking.k8s.io/v1</span></span>
+<span data-line=""><span style="color:#85E89D">kind</span><span style="color:#E1E4E8">: </span><span style="color:#9ECBFF">Gateway</span></span>
+<span data-line=""><span style="color:#85E89D">metadata</span><span style="color:#E1E4E8">:</span></span>
+<span data-line=""><span style="color:#85E89D">  name</span><span style="color:#E1E4E8">: </span><span style="color:#9ECBFF">eg</span></span>
+<span data-line=""><span style="color:#85E89D">spec</span><span style="color:#E1E4E8">:</span></span>
+<span data-line=""><span style="color:#85E89D">  gatewayClassName</span><span style="color:#E1E4E8">: </span><span style="color:#9ECBFF">eg</span></span>
+<span data-line=""><span style="color:#85E89D">  listeners</span><span style="color:#E1E4E8">:</span></span>
+<span data-line=""><span style="color:#E1E4E8">    - </span><span style="color:#85E89D">name</span><span style="color:#E1E4E8">: </span><span style="color:#9ECBFF">http</span></span>
+<span data-line=""><span style="color:#85E89D">      protocol</span><span style="color:#E1E4E8">: </span><span style="color:#9ECBFF">HTTP</span></span>
+<span data-line=""><span style="color:#85E89D">      port</span><span style="color:#E1E4E8">: </span><span style="color:#79B8FF">80</span></span>
+<span data-line=""><span style="color:#E1E4E8">    - </span><span style="color:#85E89D">name</span><span style="color:#E1E4E8">: </span><span style="color:#9ECBFF">https</span></span>
+<span data-line=""><span style="color:#85E89D">      protocol</span><span style="color:#E1E4E8">: </span><span style="color:#9ECBFF">HTTPS</span></span>
+<span data-line=""><span style="color:#85E89D">      port</span><span style="color:#E1E4E8">: </span><span style="color:#79B8FF">443</span></span>
+<span data-line=""><span style="color:#85E89D">      tls</span><span style="color:#E1E4E8">:</span></span>
+<span data-line=""><span style="color:#85E89D">        mode</span><span style="color:#E1E4E8">: </span><span style="color:#9ECBFF">Terminate</span></span>
+<span data-line=""><span style="color:#85E89D">        certificateRefs</span><span style="color:#E1E4E8">:</span></span>
+<span data-line=""><span style="color:#E1E4E8">          - </span><span style="color:#85E89D">kind</span><span style="color:#E1E4E8">: </span><span style="color:#9ECBFF">Secret</span></span>
+<span data-line=""><span style="color:#85E89D">            group</span><span style="color:#E1E4E8">: </span><span style="color:#9ECBFF">""</span></span>
+<span data-line=""><span style="color:#85E89D">            name</span><span style="color:#E1E4E8">: </span><span style="color:#9ECBFF">example-cert</span></span></code></pre></figure>
+<p>Two things matter here:</p>
+<ul>
+<li><code>protocol: HTTPS</code></li>
+<li><code>tls.mode: Terminate</code></li>
+</ul>
+<p>This means: TLS ends here, and the Gateway handles the certificate.</p>
+<h2 id="https--httproute-vs-tlsroute-whats-the-difference"><code>HTTPS + HTTPRoute</code> vs <code>TLSRoute</code>: What's the Difference</h2>
+<p>This is important, because many people see <code>TLSRoute</code> and immediately ask:</p>
+<p>"Isn't an HTTPS listener already enough? Why do we need a separate <code>TLSRoute</code>?"</p>
+<p>The difference is <strong>whether the Gateway terminates TLS</strong>:</p>
+<table>
+<thead>
+<tr>
+<th>Scenario</th>
+<th>Common Combination</th>
+<th>Description</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td>Gateway terminates TLS, then applies HTTP rules</td>
+<td><code>HTTPS listener + HTTPRoute</code></td>
+<td>Most common website/API scenario</td>
+</tr>
+<tr>
+<td>Gateway doesn't decrypt — routes encrypted traffic based on SNI only</td>
+<td><code>TLS listener + TLSRoute</code></td>
+<td>TLS passthrough scenario</td>
+</tr>
+</tbody>
+</table>
+<p>In other words:</p>
+<ul>
+<li>If you want to inspect <code>path</code>, <code>header</code>, <code>method</code> at the Gateway, you need to terminate TLS first, then use <code>HTTPRoute</code></li>
+<li>If you want to preserve end-to-end encryption and not decrypt at the Gateway, <code>TLSRoute</code> is the right path</li>
+</ul>
+<p>Neither approach is "more advanced" — the point is knowing what you want: "terminate TLS and do L7 routing," or "keep encryption intact and do SNI-based routing."</p>
+<h2 id="prepare-the-certificate-secret">Prepare the Certificate Secret</h2>
+<p>For test environments, a self-signed certificate works. The official examples use exactly this:</p>
+<figure data-rehype-pretty-code-figure=""><pre style="background-color:#24292e;color:#e1e4e8" tabindex="0" data-language="bash" data-theme="github-dark"><code data-language="bash" data-theme="github-dark" style="display: grid;"><span data-line=""><span style="color:#B392F0">openssl</span><span style="color:#9ECBFF"> req</span><span style="color:#79B8FF"> -x509</span><span style="color:#79B8FF"> -sha256</span><span style="color:#79B8FF"> -nodes</span><span style="color:#79B8FF"> -days</span><span style="color:#79B8FF"> 365</span><span style="color:#79B8FF"> -newkey</span><span style="color:#9ECBFF"> rsa:2048</span><span style="color:#79B8FF"> \</span></span>
+<span data-line=""><span style="color:#79B8FF">  -subj</span><span style="color:#9ECBFF"> '/O=example Inc./CN=example.com'</span><span style="color:#79B8FF"> \</span></span>
+<span data-line=""><span style="color:#79B8FF">  -keyout</span><span style="color:#9ECBFF"> example.com.key</span><span style="color:#79B8FF"> \</span></span>
+<span data-line=""><span style="color:#79B8FF">  -out</span><span style="color:#9ECBFF"> example.com.crt</span></span>
+<span data-line=""> </span>
+<span data-line=""><span style="color:#B392F0">openssl</span><span style="color:#9ECBFF"> req</span><span style="color:#79B8FF"> -out</span><span style="color:#9ECBFF"> www.example.com.csr</span><span style="color:#79B8FF"> -newkey</span><span style="color:#9ECBFF"> rsa:2048</span><span style="color:#79B8FF"> -nodes</span><span style="color:#79B8FF"> \</span></span>
+<span data-line=""><span style="color:#79B8FF">  -keyout</span><span style="color:#9ECBFF"> www.example.com.key</span><span style="color:#79B8FF"> \</span></span>
+<span data-line=""><span style="color:#79B8FF">  -subj</span><span style="color:#9ECBFF"> "/CN=www.example.com/O=example organization"</span></span>
+<span data-line=""> </span>
+<span data-line=""><span style="color:#B392F0">openssl</span><span style="color:#9ECBFF"> x509</span><span style="color:#79B8FF"> -req</span><span style="color:#79B8FF"> -days</span><span style="color:#79B8FF"> 365</span><span style="color:#79B8FF"> -CA</span><span style="color:#9ECBFF"> example.com.crt</span><span style="color:#79B8FF"> -CAkey</span><span style="color:#9ECBFF"> example.com.key</span><span style="color:#79B8FF"> \</span></span>
+<span data-line=""><span style="color:#79B8FF">  -set_serial</span><span style="color:#79B8FF"> 0</span><span style="color:#79B8FF"> -in</span><span style="color:#9ECBFF"> www.example.com.csr</span><span style="color:#79B8FF"> -out</span><span style="color:#9ECBFF"> www.example.com.crt</span></span></code></pre></figure>
+<p>Store the cert/key as a Kubernetes Secret:</p>
+<figure data-rehype-pretty-code-figure=""><pre style="background-color:#24292e;color:#e1e4e8" tabindex="0" data-language="bash" data-theme="github-dark"><code data-language="bash" data-theme="github-dark" style="display: grid;"><span data-line=""><span style="color:#B392F0">kubectl</span><span style="color:#9ECBFF"> create</span><span style="color:#9ECBFF"> secret</span><span style="color:#9ECBFF"> tls</span><span style="color:#9ECBFF"> example-cert</span><span style="color:#79B8FF"> \</span></span>
+<span data-line=""><span style="color:#79B8FF">  --key=www.example.com.key</span><span style="color:#79B8FF"> \</span></span>
+<span data-line=""><span style="color:#79B8FF">  --cert=www.example.com.crt</span></span></code></pre></figure>
+<p>The <code>Gateway</code> can then reference this Secret via <code>certificateRefs</code>.</p>
+<blockquote>
+<p>⚠️ Self-signed certs are for testing only. In production, use cert-manager or your existing certificate management workflow. Don't carry the demo setup directly into production — that's like surviving on instant noodles: fine occasionally, not sustainable long-term.</p>
+</blockquote>
+<h2 id="add-an-https-listener-to-an-existing-gateway">Add an HTTPS Listener to an Existing Gateway</h2>
+<p>If you already have a <code>eg</code> Gateway from the previous post, you can patch it directly:</p>
+<figure data-rehype-pretty-code-figure=""><pre style="background-color:#24292e;color:#e1e4e8" tabindex="0" data-language="bash" data-theme="github-dark"><code data-language="bash" data-theme="github-dark" style="display: grid;"><span data-line=""><span style="color:#B392F0">kubectl</span><span style="color:#9ECBFF"> patch</span><span style="color:#9ECBFF"> gateway</span><span style="color:#9ECBFF"> eg</span><span style="color:#79B8FF"> --type=json</span><span style="color:#79B8FF"> --patch</span><span style="color:#9ECBFF"> '</span></span>
+<span data-line=""><span style="color:#9ECBFF">  - op: add</span></span>
+<span data-line=""><span style="color:#9ECBFF">    path: /spec/listeners/-</span></span>
+<span data-line=""><span style="color:#9ECBFF">    value:</span></span>
+<span data-line=""><span style="color:#9ECBFF">      name: https</span></span>
+<span data-line=""><span style="color:#9ECBFF">      protocol: HTTPS</span></span>
+<span data-line=""><span style="color:#9ECBFF">      port: 443</span></span>
+<span data-line=""><span style="color:#9ECBFF">      tls:</span></span>
+<span data-line=""><span style="color:#9ECBFF">        mode: Terminate</span></span>
+<span data-line=""><span style="color:#9ECBFF">        certificateRefs:</span></span>
+<span data-line=""><span style="color:#9ECBFF">        - kind: Secret</span></span>
+<span data-line=""><span style="color:#9ECBFF">          group: ""</span></span>
+<span data-line=""><span style="color:#9ECBFF">          name: example-cert</span></span>
+<span data-line=""><span style="color:#9ECBFF">'</span></span></code></pre></figure>
+<p>Verify the status:</p>
+<figure data-rehype-pretty-code-figure=""><pre style="background-color:#24292e;color:#e1e4e8" tabindex="0" data-language="bash" data-theme="github-dark"><code data-language="bash" data-theme="github-dark" style="display: grid;"><span data-line=""><span style="color:#B392F0">kubectl</span><span style="color:#9ECBFF"> get</span><span style="color:#9ECBFF"> gateway/eg</span><span style="color:#79B8FF"> -o</span><span style="color:#9ECBFF"> yaml</span></span></code></pre></figure>
+<p>If the listener looks healthy, test HTTPS:</p>
+<figure data-rehype-pretty-code-figure=""><pre style="background-color:#24292e;color:#e1e4e8" tabindex="0" data-language="bash" data-theme="github-dark"><code data-language="bash" data-theme="github-dark" style="display: grid;"><span data-line=""><span style="color:#B392F0">curl</span><span style="color:#79B8FF"> -v</span><span style="color:#79B8FF"> -HHost:www.example.com</span><span style="color:#79B8FF"> \</span></span>
+<span data-line=""><span style="color:#79B8FF">  --resolve</span><span style="color:#9ECBFF"> "www.example.com:443:${</span><span style="color:#E1E4E8">GATEWAY_HOST</span><span style="color:#9ECBFF">}"</span><span style="color:#79B8FF"> \</span></span>
+<span data-line=""><span style="color:#79B8FF">  --cacert</span><span style="color:#9ECBFF"> example.com.crt</span><span style="color:#79B8FF"> \</span></span>
+<span data-line=""><span style="color:#9ECBFF">  https://www.example.com/get</span></span></code></pre></figure>
+<p>This command is great for local validation, especially when DNS isn't wired up yet.</p>
+<h2 id="one-gateway-multiple-https-domains">One Gateway, Multiple HTTPS Domains</h2>
+<p>If you have multiple domains, add multiple HTTPS listeners to the same Gateway.
+For example, adding <code>foo.example.com</code>:</p>
+<figure data-rehype-pretty-code-figure=""><pre style="background-color:#24292e;color:#e1e4e8" tabindex="0" data-language="yaml" data-theme="github-dark"><code data-language="yaml" data-theme="github-dark" style="display: grid;"><span data-line=""><span style="color:#85E89D">listeners</span><span style="color:#E1E4E8">:</span></span>
+<span data-line=""><span style="color:#E1E4E8">  - </span><span style="color:#85E89D">name</span><span style="color:#E1E4E8">: </span><span style="color:#9ECBFF">https-main</span></span>
+<span data-line=""><span style="color:#85E89D">    protocol</span><span style="color:#E1E4E8">: </span><span style="color:#9ECBFF">HTTPS</span></span>
+<span data-line=""><span style="color:#85E89D">    port</span><span style="color:#E1E4E8">: </span><span style="color:#79B8FF">443</span></span>
+<span data-line=""><span style="color:#85E89D">    hostname</span><span style="color:#E1E4E8">: </span><span style="color:#9ECBFF">www.example.com</span></span>
+<span data-line=""><span style="color:#85E89D">    tls</span><span style="color:#E1E4E8">:</span></span>
+<span data-line=""><span style="color:#85E89D">      mode</span><span style="color:#E1E4E8">: </span><span style="color:#9ECBFF">Terminate</span></span>
+<span data-line=""><span style="color:#85E89D">      certificateRefs</span><span style="color:#E1E4E8">:</span></span>
+<span data-line=""><span style="color:#E1E4E8">        - </span><span style="color:#85E89D">name</span><span style="color:#E1E4E8">: </span><span style="color:#9ECBFF">example-cert</span></span>
+<span data-line=""><span style="color:#E1E4E8">  - </span><span style="color:#85E89D">name</span><span style="color:#E1E4E8">: </span><span style="color:#9ECBFF">https-foo</span></span>
+<span data-line=""><span style="color:#85E89D">    protocol</span><span style="color:#E1E4E8">: </span><span style="color:#9ECBFF">HTTPS</span></span>
+<span data-line=""><span style="color:#85E89D">    port</span><span style="color:#E1E4E8">: </span><span style="color:#79B8FF">443</span></span>
+<span data-line=""><span style="color:#85E89D">    hostname</span><span style="color:#E1E4E8">: </span><span style="color:#9ECBFF">foo.example.com</span></span>
+<span data-line=""><span style="color:#85E89D">    tls</span><span style="color:#E1E4E8">:</span></span>
+<span data-line=""><span style="color:#85E89D">      mode</span><span style="color:#E1E4E8">: </span><span style="color:#9ECBFF">Terminate</span></span>
+<span data-line=""><span style="color:#85E89D">      certificateRefs</span><span style="color:#E1E4E8">:</span></span>
+<span data-line=""><span style="color:#E1E4E8">        - </span><span style="color:#85E89D">name</span><span style="color:#E1E4E8">: </span><span style="color:#9ECBFF">foo-cert</span></span></code></pre></figure>
+<p>Don't forget to update the corresponding <code>HTTPRoute</code> with the right hostname — otherwise the listener might be listening, but the route doesn't know where to send the traffic.</p>
+<h2 id="mental-model-for-tlsroute">Mental Model for <code>TLSRoute</code></h2>
+<p>For TLS passthrough, think of <code>TLSRoute</code> like this:</p>
+<blockquote>
+<p>💡 The <code>apiVersion</code> for <code>TLSRoute</code> may differ depending on which version of Gateway API CRDs you've installed. The example below is for conceptual illustration — check your cluster's installed version before applying.</p>
+</blockquote>
+<figure data-rehype-pretty-code-figure=""><pre style="background-color:#24292e;color:#e1e4e8" tabindex="0" data-language="yaml" data-theme="github-dark"><code data-language="yaml" data-theme="github-dark" style="display: grid;"><span data-line=""><span style="color:#85E89D">apiVersion</span><span style="color:#E1E4E8">: </span><span style="color:#9ECBFF">gateway.networking.k8s.io/v1</span></span>
+<span data-line=""><span style="color:#85E89D">kind</span><span style="color:#E1E4E8">: </span><span style="color:#9ECBFF">Gateway</span></span>
+<span data-line=""><span style="color:#85E89D">metadata</span><span style="color:#E1E4E8">:</span></span>
+<span data-line=""><span style="color:#85E89D">  name</span><span style="color:#E1E4E8">: </span><span style="color:#9ECBFF">eg-tls</span></span>
+<span data-line=""><span style="color:#85E89D">spec</span><span style="color:#E1E4E8">:</span></span>
+<span data-line=""><span style="color:#85E89D">  gatewayClassName</span><span style="color:#E1E4E8">: </span><span style="color:#9ECBFF">eg</span></span>
+<span data-line=""><span style="color:#85E89D">  listeners</span><span style="color:#E1E4E8">:</span></span>
+<span data-line=""><span style="color:#E1E4E8">    - </span><span style="color:#85E89D">name</span><span style="color:#E1E4E8">: </span><span style="color:#9ECBFF">tls</span></span>
+<span data-line=""><span style="color:#85E89D">      protocol</span><span style="color:#E1E4E8">: </span><span style="color:#9ECBFF">TLS</span></span>
+<span data-line=""><span style="color:#85E89D">      port</span><span style="color:#E1E4E8">: </span><span style="color:#79B8FF">443</span></span>
+<span data-line=""><span style="color:#B392F0">---</span></span>
+<span data-line=""><span style="color:#85E89D">apiVersion</span><span style="color:#E1E4E8">: </span><span style="color:#9ECBFF">gateway.networking.k8s.io/v1alpha2</span></span>
+<span data-line=""><span style="color:#85E89D">kind</span><span style="color:#E1E4E8">: </span><span style="color:#9ECBFF">TLSRoute</span></span>
+<span data-line=""><span style="color:#85E89D">metadata</span><span style="color:#E1E4E8">:</span></span>
+<span data-line=""><span style="color:#85E89D">  name</span><span style="color:#E1E4E8">: </span><span style="color:#9ECBFF">passthrough-route</span></span>
+<span data-line=""><span style="color:#85E89D">spec</span><span style="color:#E1E4E8">:</span></span>
+<span data-line=""><span style="color:#85E89D">  parentRefs</span><span style="color:#E1E4E8">:</span></span>
+<span data-line=""><span style="color:#E1E4E8">    - </span><span style="color:#85E89D">name</span><span style="color:#E1E4E8">: </span><span style="color:#9ECBFF">eg-tls</span></span>
+<span data-line=""><span style="color:#85E89D">  hostnames</span><span style="color:#E1E4E8">:</span></span>
+<span data-line=""><span style="color:#E1E4E8">    - </span><span style="color:#9ECBFF">"db.example.com"</span></span>
+<span data-line=""><span style="color:#85E89D">  rules</span><span style="color:#E1E4E8">:</span></span>
+<span data-line=""><span style="color:#E1E4E8">    - </span><span style="color:#85E89D">backendRefs</span><span style="color:#E1E4E8">:</span></span>
+<span data-line=""><span style="color:#E1E4E8">        - </span><span style="color:#85E89D">name</span><span style="color:#E1E4E8">: </span><span style="color:#9ECBFF">db-service</span></span>
+<span data-line=""><span style="color:#85E89D">          port</span><span style="color:#E1E4E8">: </span><span style="color:#79B8FF">5432</span></span></code></pre></figure>
+<p>Common use cases for this pattern:</p>
+<ul>
+<li>Routing based only on SNI hostname</li>
+<li>Preserving encryption all the way to the backend</li>
+<li>No HTTP path/header parsing at the Gateway</li>
+</ul>
+<p>So the biggest difference between <code>TLSRoute</code> and <code>HTTPRoute</code> isn't just the name — they're operating at entirely different traffic layers.</p>
+<h2 id="cross-namespace-certificate-references">Cross-Namespace Certificate References</h2>
+<p>The official docs highlight a useful capability:
+<strong>A Gateway can reference certificate Secrets from other namespaces — but it requires a <code>ReferenceGrant</code>.</strong></p>
+<p>For example, if the platform team stores certificates centrally in <code>envoy-gateway-system</code>, but the application Gateway is in <code>default</code>, you can't just reference across namespace boundaries without explicit authorization.</p>
+<p>Example:</p>
+<figure data-rehype-pretty-code-figure=""><pre style="background-color:#24292e;color:#e1e4e8" tabindex="0" data-language="yaml" data-theme="github-dark"><code data-language="yaml" data-theme="github-dark" style="display: grid;"><span data-line=""><span style="color:#85E89D">apiVersion</span><span style="color:#E1E4E8">: </span><span style="color:#9ECBFF">gateway.networking.k8s.io/v1beta1</span></span>
+<span data-line=""><span style="color:#85E89D">kind</span><span style="color:#E1E4E8">: </span><span style="color:#9ECBFF">ReferenceGrant</span></span>
+<span data-line=""><span style="color:#85E89D">metadata</span><span style="color:#E1E4E8">:</span></span>
+<span data-line=""><span style="color:#85E89D">  name</span><span style="color:#E1E4E8">: </span><span style="color:#9ECBFF">allow-default-to-read-cert</span></span>
+<span data-line=""><span style="color:#85E89D">  namespace</span><span style="color:#E1E4E8">: </span><span style="color:#9ECBFF">envoy-gateway-system</span></span>
+<span data-line=""><span style="color:#85E89D">spec</span><span style="color:#E1E4E8">:</span></span>
+<span data-line=""><span style="color:#85E89D">  from</span><span style="color:#E1E4E8">:</span></span>
+<span data-line=""><span style="color:#E1E4E8">    - </span><span style="color:#85E89D">group</span><span style="color:#E1E4E8">: </span><span style="color:#9ECBFF">gateway.networking.k8s.io</span></span>
+<span data-line=""><span style="color:#85E89D">      kind</span><span style="color:#E1E4E8">: </span><span style="color:#9ECBFF">Gateway</span></span>
+<span data-line=""><span style="color:#85E89D">      namespace</span><span style="color:#E1E4E8">: </span><span style="color:#9ECBFF">default</span></span>
+<span data-line=""><span style="color:#85E89D">  to</span><span style="color:#E1E4E8">:</span></span>
+<span data-line=""><span style="color:#E1E4E8">    - </span><span style="color:#85E89D">group</span><span style="color:#E1E4E8">: </span><span style="color:#9ECBFF">""</span></span>
+<span data-line=""><span style="color:#85E89D">      kind</span><span style="color:#E1E4E8">: </span><span style="color:#9ECBFF">Secret</span></span></code></pre></figure>
+<p>This means:</p>
+<ul>
+<li>A <code>Gateway</code> in the <code>default</code> namespace</li>
+<li>Is authorized to reference <code>Secret</code> resources in <code>envoy-gateway-system</code></li>
+</ul>
+<p>Without a <code>ReferenceGrant</code>, this cross-namespace reference is treated as invalid. It's a protection mechanism — not Gateway API being unnecessarily strict.</p>
+<h2 id="one-line-summary">One-Line Summary</h2>
+<p>Envoy Gateway TLS really isn't as mysterious as it sounds: prepare the certificate Secret, configure the HTTPS listener, confirm your route and hostname align — and that's basically it.</p>
+<blockquote>
+<p>💡 The most common beginner mistake isn't that TLS is hard — it's that three things aren't aligned: <code>hostname</code>, <code>certificateRefs</code>, and <code>HTTPRoute hostnames</code>. If any one of them is off, traffic starts misbehaving.</p>
+</blockquote>
+<h2 id="next-step">Next Step</h2>
+<p>Now that you've covered installation, concepts, routing, and TLS, the next post consolidates this into a set of practices that are less likely to blow up in production:
+👉 <a href="05-best-practices">Best Practices</a></p>7:["$","aside",null,{"className":"hidden lg:block","children":["$","$Lb",null,{"html":"$c"}]}]
+8:["$","script","script-0",{"src":"/_next/static/chunks/2dddb3bc05093f69.js","async":true}]
+9:["$","$Ld",null,{"children":["$","$e",null,{"name":"Next.MetadataOutlet","children":"$@f"}]}]
+f:null

@@ -1,0 +1,301 @@
+1:"$Sreact.fragment"
+2:I[14864,["/_next/static/chunks/7923a261b80bb6e1.js","/_next/static/chunks/e09b4358027e8033.js","/_next/static/chunks/2dddb3bc05093f69.js"],"default"]
+c:I[24801,["/_next/static/chunks/7923a261b80bb6e1.js","/_next/static/chunks/e09b4358027e8033.js","/_next/static/chunks/2dddb3bc05093f69.js"],"default"]
+e:I[50183,["/_next/static/chunks/5a5b5b13c22d14f7.js","/_next/static/chunks/a484d1d3dd4b55ab.js"],"OutletBoundary"]
+f:"$Sreact.suspense"
+0:{"buildId":"Yck3R4ooQxWkwGLT6is1X","rsc":["$","$1","c",{"children":[[["$","script",null,{"type":"application/ld+json","dangerouslySetInnerHTML":{"__html":"{\"@context\":\"https://schema.org\",\"@type\":\"Article\",\"headline\":\"Envoy Gateway Listener Design Guide: Multi-Port, Multi-Hostname, Multi-Ingress Patterns\",\"description\":\"Treat Listeners as ingress contracts — understand sectionName, allowedRoutes, multi-listener patterns, and common structural approaches.\",\"url\":\"https://benxhub.com/en/blog/k8s/gateway/07-listener-design\",\"mainEntityOfPage\":{\"@type\":\"WebPage\",\"@id\":\"https://benxhub.com/en/blog/k8s/gateway/07-listener-design\"},\"datePublished\":\"2026-03-10T00:00:00.000Z\",\"dateModified\":\"2026-03-10T00:00:00.000Z\",\"keywords\":\"kubernetes, envoy-gateway, gateway-api, listener, gateway, httproute\",\"inLanguage\":\"en\",\"author\":{\"@type\":\"Person\",\"name\":\"BenX\",\"url\":\"https://benxhub.com\"},\"publisher\":{\"@type\":\"Organization\",\"name\":\"BenXHub Blog\",\"url\":\"https://benxhub.com\"}}"}}],["$","div",null,{"className":"mx-auto max-w-6xl px-4 py-12 sm:px-6","children":["$","div",null,{"className":"lg:grid lg:grid-cols-[1fr_240px] lg:gap-14","children":[["$","article",null,{"children":[["$","header",null,{"className":"mb-10","children":[["$","div",null,{"className":"mb-4 flex flex-wrap gap-2","children":[["$","$L2","kubernetes",{"href":"/en/tags/kubernetes","localeCookie":{"name":"NEXT_LOCALE","sameSite":"lax"},"className":"inline-flex items-center rounded-full px-2.5 py-0.5 text-xs font-medium transition-colors","style":{"background":"var(--color-code-bg)","color":"var(--color-accent)","border":"1px solid var(--color-border)"},"children":["#","kubernetes"]}],["$","$L2","envoy-gateway",{"href":"/en/tags/envoy-gateway","localeCookie":{"name":"NEXT_LOCALE","sameSite":"lax"},"className":"inline-flex items-center rounded-full px-2.5 py-0.5 text-xs font-medium transition-colors","style":{"background":"var(--color-code-bg)","color":"var(--color-accent)","border":"1px solid var(--color-border)"},"children":["#","envoy-gateway"]}],["$","$L2","gateway-api",{"href":"/en/tags/gateway-api","localeCookie":{"name":"NEXT_LOCALE","sameSite":"lax"},"className":"inline-flex items-center rounded-full px-2.5 py-0.5 text-xs font-medium transition-colors","style":{"background":"var(--color-code-bg)","color":"var(--color-accent)","border":"1px solid var(--color-border)"},"children":["#","gateway-api"]}],["$","$L2","listener",{"href":"/en/tags/listener","localeCookie":{"name":"NEXT_LOCALE","sameSite":"lax"},"className":"inline-flex items-center rounded-full px-2.5 py-0.5 text-xs font-medium transition-colors","style":{"background":"var(--color-code-bg)","color":"var(--color-accent)","border":"1px solid var(--color-border)"},"children":["#","listener"]}],["$","$L2","gateway",{"href":"/en/tags/gateway","localeCookie":{"name":"NEXT_LOCALE","sameSite":"lax"},"className":"inline-flex items-center rounded-full px-2.5 py-0.5 text-xs font-medium transition-colors","style":{"background":"var(--color-code-bg)","color":"var(--color-accent)","border":"1px solid var(--color-border)"},"children":["#","gateway"]}],["$","$L2","httproute",{"href":"/en/tags/httproute","localeCookie":{"name":"NEXT_LOCALE","sameSite":"lax"},"className":"inline-flex items-center rounded-full px-2.5 py-0.5 text-xs font-medium transition-colors","style":{"background":"var(--color-code-bg)","color":"var(--color-accent)","border":"1px solid var(--color-border)"},"children":["#","httproute"]}]]}],["$","h1",null,{"className":"mb-4 text-3xl leading-snug font-bold tracking-tight sm:text-4xl","style":{"color":"var(--color-text)"},"children":"Envoy Gateway Listener Design Guide: Multi-Port, Multi-Hostname, Multi-Ingress Patterns"}],["$","div",null,{"className":"flex flex-wrap items-center gap-3 text-sm","style":{"color":"var(--color-muted)"},"children":[["$","time",null,{"dateTime":"2026-03-10","children":"Mar 10, 2026"}],"$L3","$L4"]}],"$undefined","$L5"]}],"$L6","$L7"]}],"$L8"]}]}]],["$L9"],"$La"]}],"loading":null,"isPartial":false}
+3:["$","span",null,{"aria-hidden":"true","children":"·"}]
+4:["$","span",null,{"children":"4 min read"}]
+5:["$","div",null,{"className":"mt-6 border-b","style":{"borderColor":"var(--color-border)"}}]
+b:T39bd,<p>Many people learning Gateway API treat <code>Listener</code> as "oh, it's just the <code>port: 80</code> field."
+But in real deployments, <code>Listener</code> is far from a bit player — it's more like the traffic control center for your entire ingress layer.</p>
+<p>A listener isn't just opening a port. It defines:</p>
+<ul>
+<li>Which protocol to accept</li>
+<li>Which hostname to accept</li>
+<li>Whether to perform TLS</li>
+<li>Which route types are allowed to attach</li>
+</ul>
+<p>In other words, <strong>a listener is an ingress contract</strong>. Write clean contracts, and the downstream routes, team ownership, and debugging complexity all get cleaner by association.</p>
+<h2 id="build-the-right-mental-model-one-listener--one-ingress-slot">Build the Right Mental Model: One Listener = One Ingress Slot</h2>
+<p>Take this Gateway:</p>
+<figure data-rehype-pretty-code-figure=""><pre style="background-color:#24292e;color:#e1e4e8" tabindex="0" data-language="yaml" data-theme="github-dark"><code data-language="yaml" data-theme="github-dark" style="display: grid;"><span data-line=""><span style="color:#85E89D">apiVersion</span><span style="color:#E1E4E8">: </span><span style="color:#9ECBFF">gateway.networking.k8s.io/v1</span></span>
+<span data-line=""><span style="color:#85E89D">kind</span><span style="color:#E1E4E8">: </span><span style="color:#9ECBFF">Gateway</span></span>
+<span data-line=""><span style="color:#85E89D">metadata</span><span style="color:#E1E4E8">:</span></span>
+<span data-line=""><span style="color:#85E89D">  name</span><span style="color:#E1E4E8">: </span><span style="color:#9ECBFF">eg</span></span>
+<span data-line=""><span style="color:#85E89D">spec</span><span style="color:#E1E4E8">:</span></span>
+<span data-line=""><span style="color:#85E89D">  gatewayClassName</span><span style="color:#E1E4E8">: </span><span style="color:#9ECBFF">eg</span></span>
+<span data-line=""><span style="color:#85E89D">  listeners</span><span style="color:#E1E4E8">:</span></span>
+<span data-line=""><span style="color:#E1E4E8">    - </span><span style="color:#85E89D">name</span><span style="color:#E1E4E8">: </span><span style="color:#9ECBFF">http</span></span>
+<span data-line=""><span style="color:#85E89D">      protocol</span><span style="color:#E1E4E8">: </span><span style="color:#9ECBFF">HTTP</span></span>
+<span data-line=""><span style="color:#85E89D">      port</span><span style="color:#E1E4E8">: </span><span style="color:#79B8FF">80</span></span>
+<span data-line=""><span style="color:#E1E4E8">    - </span><span style="color:#85E89D">name</span><span style="color:#E1E4E8">: </span><span style="color:#9ECBFF">https</span></span>
+<span data-line=""><span style="color:#85E89D">      protocol</span><span style="color:#E1E4E8">: </span><span style="color:#9ECBFF">HTTPS</span></span>
+<span data-line=""><span style="color:#85E89D">      port</span><span style="color:#E1E4E8">: </span><span style="color:#79B8FF">443</span></span>
+<span data-line=""><span style="color:#85E89D">      hostname</span><span style="color:#E1E4E8">: </span><span style="color:#9ECBFF">app.example.com</span></span>
+<span data-line=""><span style="color:#85E89D">      tls</span><span style="color:#E1E4E8">:</span></span>
+<span data-line=""><span style="color:#85E89D">        mode</span><span style="color:#E1E4E8">: </span><span style="color:#9ECBFF">Terminate</span></span>
+<span data-line=""><span style="color:#85E89D">        certificateRefs</span><span style="color:#E1E4E8">:</span></span>
+<span data-line=""><span style="color:#E1E4E8">          - </span><span style="color:#85E89D">name</span><span style="color:#E1E4E8">: </span><span style="color:#9ECBFF">app-cert</span></span>
+<span data-line=""><span style="color:#E1E4E8">    - </span><span style="color:#85E89D">name</span><span style="color:#E1E4E8">: </span><span style="color:#9ECBFF">grpc</span></span>
+<span data-line=""><span style="color:#85E89D">      protocol</span><span style="color:#E1E4E8">: </span><span style="color:#9ECBFF">HTTPS</span></span>
+<span data-line=""><span style="color:#85E89D">      port</span><span style="color:#E1E4E8">: </span><span style="color:#79B8FF">8443</span></span>
+<span data-line=""><span style="color:#85E89D">      hostname</span><span style="color:#E1E4E8">: </span><span style="color:#9ECBFF">grpc.example.com</span></span>
+<span data-line=""><span style="color:#85E89D">      tls</span><span style="color:#E1E4E8">:</span></span>
+<span data-line=""><span style="color:#85E89D">        mode</span><span style="color:#E1E4E8">: </span><span style="color:#9ECBFF">Terminate</span></span>
+<span data-line=""><span style="color:#85E89D">        certificateRefs</span><span style="color:#E1E4E8">:</span></span>
+<span data-line=""><span style="color:#E1E4E8">          - </span><span style="color:#85E89D">name</span><span style="color:#E1E4E8">: </span><span style="color:#9ECBFF">grpc-cert</span></span></code></pre></figure>
+<p>This isn't just "one Gateway with three holes." Think of it as:</p>
+<ul>
+<li><code>http</code> listener: for plaintext HTTP</li>
+<li><code>https</code> listener: for <code>app.example.com</code></li>
+<li><code>grpc</code> listener: a dedicated ingress slot for gRPC services</li>
+</ul>
+<p>Once you think this way, many design decisions become immediately clear.
+You're not assembling YAML — you're designing ingress boundaries.</p>
+<h2 id="three-common-splitting-patterns">Three Common Splitting Patterns</h2>
+<h3 id="pattern-1-split-by-protocol">Pattern 1: Split by Protocol</h3>
+<p>The most intuitive approach:</p>
+<ul>
+<li>HTTP on one listener</li>
+<li>HTTPS on one listener</li>
+<li>gRPC on one listener</li>
+<li>TCP/TLS passthrough split separately</li>
+</ul>
+<p>This gives clear responsibility.
+Even though gRPC and general web APIs might both run over HTTP/2, their service models differ. Keeping them separate prevents routes from interfering with each other.</p>
+<h3 id="pattern-2-split-by-hostname">Pattern 2: Split by Hostname</h3>
+<p>If you have multiple domains, a common pattern is one listener per primary hostname:</p>
+<figure data-rehype-pretty-code-figure=""><pre style="background-color:#24292e;color:#e1e4e8" tabindex="0" data-language="yaml" data-theme="github-dark"><code data-language="yaml" data-theme="github-dark" style="display: grid;"><span data-line=""><span style="color:#85E89D">listeners</span><span style="color:#E1E4E8">:</span></span>
+<span data-line=""><span style="color:#E1E4E8">  - </span><span style="color:#85E89D">name</span><span style="color:#E1E4E8">: </span><span style="color:#9ECBFF">app</span></span>
+<span data-line=""><span style="color:#85E89D">    hostname</span><span style="color:#E1E4E8">: </span><span style="color:#9ECBFF">app.example.com</span></span>
+<span data-line=""><span style="color:#85E89D">    protocol</span><span style="color:#E1E4E8">: </span><span style="color:#9ECBFF">HTTPS</span></span>
+<span data-line=""><span style="color:#85E89D">    port</span><span style="color:#E1E4E8">: </span><span style="color:#79B8FF">443</span></span>
+<span data-line=""><span style="color:#E1E4E8">  - </span><span style="color:#85E89D">name</span><span style="color:#E1E4E8">: </span><span style="color:#9ECBFF">admin</span></span>
+<span data-line=""><span style="color:#85E89D">    hostname</span><span style="color:#E1E4E8">: </span><span style="color:#9ECBFF">admin.example.com</span></span>
+<span data-line=""><span style="color:#85E89D">    protocol</span><span style="color:#E1E4E8">: </span><span style="color:#9ECBFF">HTTPS</span></span>
+<span data-line=""><span style="color:#85E89D">    port</span><span style="color:#E1E4E8">: </span><span style="color:#79B8FF">443</span></span></code></pre></figure>
+<p>This works well for:</p>
+<ul>
+<li>Separating public and admin governance</li>
+<li>Different hostnames needing different certificates</li>
+<li>Keeping route attachment boundaries clean</li>
+</ul>
+<h3 id="pattern-3-split-by-team-or-environment-responsibility">Pattern 3: Split by Team or Environment Responsibility</h3>
+<p>For multi-team setups, listeners can serve as governance boundaries:</p>
+<ul>
+<li><code>public-api</code> for external product traffic</li>
+<li><code>internal-api</code> for internal systems</li>
+<li><code>partner-api</code> for partner integrations</li>
+</ul>
+<p>Here, the listener's value goes beyond being technical config — it becomes a permissions and responsibility boundary.
+This pattern makes a real difference in mid-to-large teams, because it reduces the disaster of "one ingress where everyone can attach whatever they want."</p>
+<h2 id="sectionname-and-allowedroutes-two-critical-fields"><code>sectionName</code> and <code>allowedRoutes</code>: Two Critical Fields</h2>
+<p>A route attaches to a specific listener via <code>parentRefs.sectionName</code>:</p>
+<figure data-rehype-pretty-code-figure=""><pre style="background-color:#24292e;color:#e1e4e8" tabindex="0" data-language="yaml" data-theme="github-dark"><code data-language="yaml" data-theme="github-dark" style="display: grid;"><span data-line=""><span style="color:#85E89D">apiVersion</span><span style="color:#E1E4E8">: </span><span style="color:#9ECBFF">gateway.networking.k8s.io/v1</span></span>
+<span data-line=""><span style="color:#85E89D">kind</span><span style="color:#E1E4E8">: </span><span style="color:#9ECBFF">HTTPRoute</span></span>
+<span data-line=""><span style="color:#85E89D">metadata</span><span style="color:#E1E4E8">:</span></span>
+<span data-line=""><span style="color:#85E89D">  name</span><span style="color:#E1E4E8">: </span><span style="color:#9ECBFF">app-route</span></span>
+<span data-line=""><span style="color:#85E89D">spec</span><span style="color:#E1E4E8">:</span></span>
+<span data-line=""><span style="color:#85E89D">  parentRefs</span><span style="color:#E1E4E8">:</span></span>
+<span data-line=""><span style="color:#E1E4E8">    - </span><span style="color:#85E89D">name</span><span style="color:#E1E4E8">: </span><span style="color:#9ECBFF">eg</span></span>
+<span data-line=""><span style="color:#85E89D">      sectionName</span><span style="color:#E1E4E8">: </span><span style="color:#9ECBFF">https</span></span>
+<span data-line=""><span style="color:#85E89D">  hostnames</span><span style="color:#E1E4E8">:</span></span>
+<span data-line=""><span style="color:#E1E4E8">    - </span><span style="color:#9ECBFF">"app.example.com"</span></span>
+<span data-line=""><span style="color:#85E89D">  rules</span><span style="color:#E1E4E8">:</span></span>
+<span data-line=""><span style="color:#E1E4E8">    - </span><span style="color:#85E89D">backendRefs</span><span style="color:#E1E4E8">:</span></span>
+<span data-line=""><span style="color:#E1E4E8">        - </span><span style="color:#85E89D">name</span><span style="color:#E1E4E8">: </span><span style="color:#9ECBFF">app-service</span></span>
+<span data-line=""><span style="color:#85E89D">          port</span><span style="color:#E1E4E8">: </span><span style="color:#79B8FF">8080</span></span></code></pre></figure>
+<p>This route will only look for the <code>https</code> listener.
+Without specifying <code>sectionName</code>, the system applies rules to find attachable listeners — but in multi-listener setups, being explicit is almost always safer.</p>
+<p>The other critical field is <code>allowedRoutes</code>:</p>
+<figure data-rehype-pretty-code-figure=""><pre style="background-color:#24292e;color:#e1e4e8" tabindex="0" data-language="yaml" data-theme="github-dark"><code data-language="yaml" data-theme="github-dark" style="display: grid;"><span data-line=""><span style="color:#85E89D">listeners</span><span style="color:#E1E4E8">:</span></span>
+<span data-line=""><span style="color:#E1E4E8">  - </span><span style="color:#85E89D">name</span><span style="color:#E1E4E8">: </span><span style="color:#9ECBFF">public</span></span>
+<span data-line=""><span style="color:#85E89D">    protocol</span><span style="color:#E1E4E8">: </span><span style="color:#9ECBFF">HTTPS</span></span>
+<span data-line=""><span style="color:#85E89D">    port</span><span style="color:#E1E4E8">: </span><span style="color:#79B8FF">443</span></span>
+<span data-line=""><span style="color:#85E89D">    allowedRoutes</span><span style="color:#E1E4E8">:</span></span>
+<span data-line=""><span style="color:#85E89D">      namespaces</span><span style="color:#E1E4E8">:</span></span>
+<span data-line=""><span style="color:#85E89D">        from</span><span style="color:#E1E4E8">: </span><span style="color:#9ECBFF">Same</span></span></code></pre></figure>
+<p>This means only routes in the same namespace as the <code>Gateway</code> can attach.
+Common values:</p>
+<ul>
+<li><code>Same</code>: Only the same namespace</li>
+<li><code>All</code>: Any namespace</li>
+<li><code>Selector</code>: Only namespaces matching a label selector</li>
+</ul>
+<p>If you want to be deliberate about platform boundaries, this field is very powerful.
+It decides "who can attach to this ingress" at the listener level itself.</p>
+<h2 id="practical-advice-how-to-structure-listeners-without-regrets">Practical Advice: How to Structure Listeners Without Regrets</h2>
+<p>One very useful principle:</p>
+<p><strong>Each listener carries one clearly-defined responsibility.</strong></p>
+<p>For example:</p>
+<ul>
+<li>One listener serves one primary hostname group</li>
+<li>One listener handles one primary protocol type</li>
+<li>One listener is open to one route type or a fixed set of namespaces</li>
+</ul>
+<p>Don't pack all traffic into one all-purpose listener and hope routes self-organize downstream.
+That pattern looks efficient at first, but three months later it looks like the mystery cable drawer that accumulates in every house — everything is in there, nothing is findable.</p>
+<p>Specific suggestions:</p>
+<ul>
+<li>Listener names should be semantic: <code>https-public</code>, <code>grpc-internal</code></li>
+<li>In multi-listener setups, always pair with <code>sectionName</code></li>
+<li>Don't mix important hostnames into a single listener</li>
+<li>Default to restricting <code>allowedRoutes</code> first — don't start with <code>from: All</code></li>
+</ul>
+<h2 id="one-line-summary">One-Line Summary</h2>
+<p>Treat <code>Listener</code> as an ingress contract, not just a port setting.
+Clean listener boundaries mean routes attach correctly, teams own their areas naturally, and debugging feels less like chasing a cat through a maze.</p>
+<h2 id="next-step">Next Step</h2>
+<p>Once listener design is settled, the next common question is:
+<strong>Across different namespaces and teams, who can attach routes, and who can reference what?</strong></p>
+<p>Next post covers cross-namespace patterns and ownership:
+👉 <a href="08-multi-namespace-and-teamwork">Multi-Namespace and Team Ownership</a></p>6:["$","div",null,{"className":"prose","dangerouslySetInnerHTML":{"__html":"$b"}}]
+7:["$","footer",null,{"className":"mt-14 border-t pt-8","style":{"borderColor":"var(--color-border)"},"children":[["$","div",null,{"className":"mb-8 flex flex-wrap gap-2","children":[["$","$L2","kubernetes",{"href":"/en/tags/kubernetes","localeCookie":{"name":"NEXT_LOCALE","sameSite":"lax"},"className":"inline-flex items-center rounded-full px-3 py-1 text-sm font-medium transition-colors","style":{"background":"var(--color-code-bg)","color":"var(--color-accent)","border":"1px solid var(--color-border)"},"children":["#","kubernetes"]}],["$","$L2","envoy-gateway",{"href":"/en/tags/envoy-gateway","localeCookie":{"name":"NEXT_LOCALE","sameSite":"lax"},"className":"inline-flex items-center rounded-full px-3 py-1 text-sm font-medium transition-colors","style":{"background":"var(--color-code-bg)","color":"var(--color-accent)","border":"1px solid var(--color-border)"},"children":["#","envoy-gateway"]}],["$","$L2","gateway-api",{"href":"/en/tags/gateway-api","localeCookie":{"name":"NEXT_LOCALE","sameSite":"lax"},"className":"inline-flex items-center rounded-full px-3 py-1 text-sm font-medium transition-colors","style":{"background":"var(--color-code-bg)","color":"var(--color-accent)","border":"1px solid var(--color-border)"},"children":["#","gateway-api"]}],["$","$L2","listener",{"href":"/en/tags/listener","localeCookie":{"name":"NEXT_LOCALE","sameSite":"lax"},"className":"inline-flex items-center rounded-full px-3 py-1 text-sm font-medium transition-colors","style":{"background":"var(--color-code-bg)","color":"var(--color-accent)","border":"1px solid var(--color-border)"},"children":["#","listener"]}],["$","$L2","gateway",{"href":"/en/tags/gateway","localeCookie":{"name":"NEXT_LOCALE","sameSite":"lax"},"className":"inline-flex items-center rounded-full px-3 py-1 text-sm font-medium transition-colors","style":{"background":"var(--color-code-bg)","color":"var(--color-accent)","border":"1px solid var(--color-border)"},"children":["#","gateway"]}],["$","$L2","httproute",{"href":"/en/tags/httproute","localeCookie":{"name":"NEXT_LOCALE","sameSite":"lax"},"className":"inline-flex items-center rounded-full px-3 py-1 text-sm font-medium transition-colors","style":{"background":"var(--color-code-bg)","color":"var(--color-accent)","border":"1px solid var(--color-border)"},"children":["#","httproute"]}]]}],["$","nav",null,{"aria-label":"Post navigation","className":"grid grid-cols-1 gap-4 sm:grid-cols-2","children":[["$","$L2",null,{"href":"/en/blog/k8s/gateway/06-route-types-cheatsheet","localeCookie":{"name":"NEXT_LOCALE","sameSite":"lax"},"className":"group rounded-lg border p-4 transition-colors hover:border-accent","style":{"borderColor":"var(--color-border)","background":"var(--color-surface)"},"children":[["$","p",null,{"className":"mb-1 text-xs","style":{"color":"var(--color-muted)"},"children":"← Newer"}],["$","p",null,{"className":"line-clamp-1 text-sm font-medium transition-colors group-hover:text-accent","style":{"color":"var(--color-text)"},"children":"Envoy Gateway Route Type Cheatsheet: HTTPRoute, GRPCRoute, TCPRoute, or TLSRoute?"}]]}],["$","$L2",null,{"href":"/en/blog/k8s/gateway/08-multi-namespace-and-teamwork","localeCookie":{"name":"NEXT_LOCALE","sameSite":"lax"},"className":"group rounded-lg border p-4 text-right transition-colors hover:border-accent","style":{"borderColor":"var(--color-border)","background":"var(--color-surface)"},"children":[["$","p",null,{"className":"mb-1 text-xs","style":{"color":"var(--color-muted)"},"children":"Older →"}],["$","p",null,{"className":"line-clamp-1 text-sm font-medium transition-colors group-hover:text-accent","style":{"color":"var(--color-text)"},"children":"Envoy Gateway Multi-Namespace and Team Ownership: allowedRoutes, ReferenceGrant, and Cross-Team Governance"}]]}]]}]]}]
+d:T39bd,<p>Many people learning Gateway API treat <code>Listener</code> as "oh, it's just the <code>port: 80</code> field."
+But in real deployments, <code>Listener</code> is far from a bit player — it's more like the traffic control center for your entire ingress layer.</p>
+<p>A listener isn't just opening a port. It defines:</p>
+<ul>
+<li>Which protocol to accept</li>
+<li>Which hostname to accept</li>
+<li>Whether to perform TLS</li>
+<li>Which route types are allowed to attach</li>
+</ul>
+<p>In other words, <strong>a listener is an ingress contract</strong>. Write clean contracts, and the downstream routes, team ownership, and debugging complexity all get cleaner by association.</p>
+<h2 id="build-the-right-mental-model-one-listener--one-ingress-slot">Build the Right Mental Model: One Listener = One Ingress Slot</h2>
+<p>Take this Gateway:</p>
+<figure data-rehype-pretty-code-figure=""><pre style="background-color:#24292e;color:#e1e4e8" tabindex="0" data-language="yaml" data-theme="github-dark"><code data-language="yaml" data-theme="github-dark" style="display: grid;"><span data-line=""><span style="color:#85E89D">apiVersion</span><span style="color:#E1E4E8">: </span><span style="color:#9ECBFF">gateway.networking.k8s.io/v1</span></span>
+<span data-line=""><span style="color:#85E89D">kind</span><span style="color:#E1E4E8">: </span><span style="color:#9ECBFF">Gateway</span></span>
+<span data-line=""><span style="color:#85E89D">metadata</span><span style="color:#E1E4E8">:</span></span>
+<span data-line=""><span style="color:#85E89D">  name</span><span style="color:#E1E4E8">: </span><span style="color:#9ECBFF">eg</span></span>
+<span data-line=""><span style="color:#85E89D">spec</span><span style="color:#E1E4E8">:</span></span>
+<span data-line=""><span style="color:#85E89D">  gatewayClassName</span><span style="color:#E1E4E8">: </span><span style="color:#9ECBFF">eg</span></span>
+<span data-line=""><span style="color:#85E89D">  listeners</span><span style="color:#E1E4E8">:</span></span>
+<span data-line=""><span style="color:#E1E4E8">    - </span><span style="color:#85E89D">name</span><span style="color:#E1E4E8">: </span><span style="color:#9ECBFF">http</span></span>
+<span data-line=""><span style="color:#85E89D">      protocol</span><span style="color:#E1E4E8">: </span><span style="color:#9ECBFF">HTTP</span></span>
+<span data-line=""><span style="color:#85E89D">      port</span><span style="color:#E1E4E8">: </span><span style="color:#79B8FF">80</span></span>
+<span data-line=""><span style="color:#E1E4E8">    - </span><span style="color:#85E89D">name</span><span style="color:#E1E4E8">: </span><span style="color:#9ECBFF">https</span></span>
+<span data-line=""><span style="color:#85E89D">      protocol</span><span style="color:#E1E4E8">: </span><span style="color:#9ECBFF">HTTPS</span></span>
+<span data-line=""><span style="color:#85E89D">      port</span><span style="color:#E1E4E8">: </span><span style="color:#79B8FF">443</span></span>
+<span data-line=""><span style="color:#85E89D">      hostname</span><span style="color:#E1E4E8">: </span><span style="color:#9ECBFF">app.example.com</span></span>
+<span data-line=""><span style="color:#85E89D">      tls</span><span style="color:#E1E4E8">:</span></span>
+<span data-line=""><span style="color:#85E89D">        mode</span><span style="color:#E1E4E8">: </span><span style="color:#9ECBFF">Terminate</span></span>
+<span data-line=""><span style="color:#85E89D">        certificateRefs</span><span style="color:#E1E4E8">:</span></span>
+<span data-line=""><span style="color:#E1E4E8">          - </span><span style="color:#85E89D">name</span><span style="color:#E1E4E8">: </span><span style="color:#9ECBFF">app-cert</span></span>
+<span data-line=""><span style="color:#E1E4E8">    - </span><span style="color:#85E89D">name</span><span style="color:#E1E4E8">: </span><span style="color:#9ECBFF">grpc</span></span>
+<span data-line=""><span style="color:#85E89D">      protocol</span><span style="color:#E1E4E8">: </span><span style="color:#9ECBFF">HTTPS</span></span>
+<span data-line=""><span style="color:#85E89D">      port</span><span style="color:#E1E4E8">: </span><span style="color:#79B8FF">8443</span></span>
+<span data-line=""><span style="color:#85E89D">      hostname</span><span style="color:#E1E4E8">: </span><span style="color:#9ECBFF">grpc.example.com</span></span>
+<span data-line=""><span style="color:#85E89D">      tls</span><span style="color:#E1E4E8">:</span></span>
+<span data-line=""><span style="color:#85E89D">        mode</span><span style="color:#E1E4E8">: </span><span style="color:#9ECBFF">Terminate</span></span>
+<span data-line=""><span style="color:#85E89D">        certificateRefs</span><span style="color:#E1E4E8">:</span></span>
+<span data-line=""><span style="color:#E1E4E8">          - </span><span style="color:#85E89D">name</span><span style="color:#E1E4E8">: </span><span style="color:#9ECBFF">grpc-cert</span></span></code></pre></figure>
+<p>This isn't just "one Gateway with three holes." Think of it as:</p>
+<ul>
+<li><code>http</code> listener: for plaintext HTTP</li>
+<li><code>https</code> listener: for <code>app.example.com</code></li>
+<li><code>grpc</code> listener: a dedicated ingress slot for gRPC services</li>
+</ul>
+<p>Once you think this way, many design decisions become immediately clear.
+You're not assembling YAML — you're designing ingress boundaries.</p>
+<h2 id="three-common-splitting-patterns">Three Common Splitting Patterns</h2>
+<h3 id="pattern-1-split-by-protocol">Pattern 1: Split by Protocol</h3>
+<p>The most intuitive approach:</p>
+<ul>
+<li>HTTP on one listener</li>
+<li>HTTPS on one listener</li>
+<li>gRPC on one listener</li>
+<li>TCP/TLS passthrough split separately</li>
+</ul>
+<p>This gives clear responsibility.
+Even though gRPC and general web APIs might both run over HTTP/2, their service models differ. Keeping them separate prevents routes from interfering with each other.</p>
+<h3 id="pattern-2-split-by-hostname">Pattern 2: Split by Hostname</h3>
+<p>If you have multiple domains, a common pattern is one listener per primary hostname:</p>
+<figure data-rehype-pretty-code-figure=""><pre style="background-color:#24292e;color:#e1e4e8" tabindex="0" data-language="yaml" data-theme="github-dark"><code data-language="yaml" data-theme="github-dark" style="display: grid;"><span data-line=""><span style="color:#85E89D">listeners</span><span style="color:#E1E4E8">:</span></span>
+<span data-line=""><span style="color:#E1E4E8">  - </span><span style="color:#85E89D">name</span><span style="color:#E1E4E8">: </span><span style="color:#9ECBFF">app</span></span>
+<span data-line=""><span style="color:#85E89D">    hostname</span><span style="color:#E1E4E8">: </span><span style="color:#9ECBFF">app.example.com</span></span>
+<span data-line=""><span style="color:#85E89D">    protocol</span><span style="color:#E1E4E8">: </span><span style="color:#9ECBFF">HTTPS</span></span>
+<span data-line=""><span style="color:#85E89D">    port</span><span style="color:#E1E4E8">: </span><span style="color:#79B8FF">443</span></span>
+<span data-line=""><span style="color:#E1E4E8">  - </span><span style="color:#85E89D">name</span><span style="color:#E1E4E8">: </span><span style="color:#9ECBFF">admin</span></span>
+<span data-line=""><span style="color:#85E89D">    hostname</span><span style="color:#E1E4E8">: </span><span style="color:#9ECBFF">admin.example.com</span></span>
+<span data-line=""><span style="color:#85E89D">    protocol</span><span style="color:#E1E4E8">: </span><span style="color:#9ECBFF">HTTPS</span></span>
+<span data-line=""><span style="color:#85E89D">    port</span><span style="color:#E1E4E8">: </span><span style="color:#79B8FF">443</span></span></code></pre></figure>
+<p>This works well for:</p>
+<ul>
+<li>Separating public and admin governance</li>
+<li>Different hostnames needing different certificates</li>
+<li>Keeping route attachment boundaries clean</li>
+</ul>
+<h3 id="pattern-3-split-by-team-or-environment-responsibility">Pattern 3: Split by Team or Environment Responsibility</h3>
+<p>For multi-team setups, listeners can serve as governance boundaries:</p>
+<ul>
+<li><code>public-api</code> for external product traffic</li>
+<li><code>internal-api</code> for internal systems</li>
+<li><code>partner-api</code> for partner integrations</li>
+</ul>
+<p>Here, the listener's value goes beyond being technical config — it becomes a permissions and responsibility boundary.
+This pattern makes a real difference in mid-to-large teams, because it reduces the disaster of "one ingress where everyone can attach whatever they want."</p>
+<h2 id="sectionname-and-allowedroutes-two-critical-fields"><code>sectionName</code> and <code>allowedRoutes</code>: Two Critical Fields</h2>
+<p>A route attaches to a specific listener via <code>parentRefs.sectionName</code>:</p>
+<figure data-rehype-pretty-code-figure=""><pre style="background-color:#24292e;color:#e1e4e8" tabindex="0" data-language="yaml" data-theme="github-dark"><code data-language="yaml" data-theme="github-dark" style="display: grid;"><span data-line=""><span style="color:#85E89D">apiVersion</span><span style="color:#E1E4E8">: </span><span style="color:#9ECBFF">gateway.networking.k8s.io/v1</span></span>
+<span data-line=""><span style="color:#85E89D">kind</span><span style="color:#E1E4E8">: </span><span style="color:#9ECBFF">HTTPRoute</span></span>
+<span data-line=""><span style="color:#85E89D">metadata</span><span style="color:#E1E4E8">:</span></span>
+<span data-line=""><span style="color:#85E89D">  name</span><span style="color:#E1E4E8">: </span><span style="color:#9ECBFF">app-route</span></span>
+<span data-line=""><span style="color:#85E89D">spec</span><span style="color:#E1E4E8">:</span></span>
+<span data-line=""><span style="color:#85E89D">  parentRefs</span><span style="color:#E1E4E8">:</span></span>
+<span data-line=""><span style="color:#E1E4E8">    - </span><span style="color:#85E89D">name</span><span style="color:#E1E4E8">: </span><span style="color:#9ECBFF">eg</span></span>
+<span data-line=""><span style="color:#85E89D">      sectionName</span><span style="color:#E1E4E8">: </span><span style="color:#9ECBFF">https</span></span>
+<span data-line=""><span style="color:#85E89D">  hostnames</span><span style="color:#E1E4E8">:</span></span>
+<span data-line=""><span style="color:#E1E4E8">    - </span><span style="color:#9ECBFF">"app.example.com"</span></span>
+<span data-line=""><span style="color:#85E89D">  rules</span><span style="color:#E1E4E8">:</span></span>
+<span data-line=""><span style="color:#E1E4E8">    - </span><span style="color:#85E89D">backendRefs</span><span style="color:#E1E4E8">:</span></span>
+<span data-line=""><span style="color:#E1E4E8">        - </span><span style="color:#85E89D">name</span><span style="color:#E1E4E8">: </span><span style="color:#9ECBFF">app-service</span></span>
+<span data-line=""><span style="color:#85E89D">          port</span><span style="color:#E1E4E8">: </span><span style="color:#79B8FF">8080</span></span></code></pre></figure>
+<p>This route will only look for the <code>https</code> listener.
+Without specifying <code>sectionName</code>, the system applies rules to find attachable listeners — but in multi-listener setups, being explicit is almost always safer.</p>
+<p>The other critical field is <code>allowedRoutes</code>:</p>
+<figure data-rehype-pretty-code-figure=""><pre style="background-color:#24292e;color:#e1e4e8" tabindex="0" data-language="yaml" data-theme="github-dark"><code data-language="yaml" data-theme="github-dark" style="display: grid;"><span data-line=""><span style="color:#85E89D">listeners</span><span style="color:#E1E4E8">:</span></span>
+<span data-line=""><span style="color:#E1E4E8">  - </span><span style="color:#85E89D">name</span><span style="color:#E1E4E8">: </span><span style="color:#9ECBFF">public</span></span>
+<span data-line=""><span style="color:#85E89D">    protocol</span><span style="color:#E1E4E8">: </span><span style="color:#9ECBFF">HTTPS</span></span>
+<span data-line=""><span style="color:#85E89D">    port</span><span style="color:#E1E4E8">: </span><span style="color:#79B8FF">443</span></span>
+<span data-line=""><span style="color:#85E89D">    allowedRoutes</span><span style="color:#E1E4E8">:</span></span>
+<span data-line=""><span style="color:#85E89D">      namespaces</span><span style="color:#E1E4E8">:</span></span>
+<span data-line=""><span style="color:#85E89D">        from</span><span style="color:#E1E4E8">: </span><span style="color:#9ECBFF">Same</span></span></code></pre></figure>
+<p>This means only routes in the same namespace as the <code>Gateway</code> can attach.
+Common values:</p>
+<ul>
+<li><code>Same</code>: Only the same namespace</li>
+<li><code>All</code>: Any namespace</li>
+<li><code>Selector</code>: Only namespaces matching a label selector</li>
+</ul>
+<p>If you want to be deliberate about platform boundaries, this field is very powerful.
+It decides "who can attach to this ingress" at the listener level itself.</p>
+<h2 id="practical-advice-how-to-structure-listeners-without-regrets">Practical Advice: How to Structure Listeners Without Regrets</h2>
+<p>One very useful principle:</p>
+<p><strong>Each listener carries one clearly-defined responsibility.</strong></p>
+<p>For example:</p>
+<ul>
+<li>One listener serves one primary hostname group</li>
+<li>One listener handles one primary protocol type</li>
+<li>One listener is open to one route type or a fixed set of namespaces</li>
+</ul>
+<p>Don't pack all traffic into one all-purpose listener and hope routes self-organize downstream.
+That pattern looks efficient at first, but three months later it looks like the mystery cable drawer that accumulates in every house — everything is in there, nothing is findable.</p>
+<p>Specific suggestions:</p>
+<ul>
+<li>Listener names should be semantic: <code>https-public</code>, <code>grpc-internal</code></li>
+<li>In multi-listener setups, always pair with <code>sectionName</code></li>
+<li>Don't mix important hostnames into a single listener</li>
+<li>Default to restricting <code>allowedRoutes</code> first — don't start with <code>from: All</code></li>
+</ul>
+<h2 id="one-line-summary">One-Line Summary</h2>
+<p>Treat <code>Listener</code> as an ingress contract, not just a port setting.
+Clean listener boundaries mean routes attach correctly, teams own their areas naturally, and debugging feels less like chasing a cat through a maze.</p>
+<h2 id="next-step">Next Step</h2>
+<p>Once listener design is settled, the next common question is:
+<strong>Across different namespaces and teams, who can attach routes, and who can reference what?</strong></p>
+<p>Next post covers cross-namespace patterns and ownership:
+👉 <a href="08-multi-namespace-and-teamwork">Multi-Namespace and Team Ownership</a></p>8:["$","aside",null,{"className":"hidden lg:block","children":["$","$Lc",null,{"html":"$d"}]}]
+9:["$","script","script-0",{"src":"/_next/static/chunks/2dddb3bc05093f69.js","async":true}]
+a:["$","$Le",null,{"children":["$","$f",null,{"name":"Next.MetadataOutlet","children":"$@10"}]}]
+10:null

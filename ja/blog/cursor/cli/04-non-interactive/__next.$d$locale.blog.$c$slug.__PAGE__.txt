@@ -1,0 +1,85 @@
+1:"$Sreact.fragment"
+2:I[14864,["/_next/static/chunks/7923a261b80bb6e1.js","/_next/static/chunks/e09b4358027e8033.js","/_next/static/chunks/2dddb3bc05093f69.js"],"default"]
+8:I[24801,["/_next/static/chunks/7923a261b80bb6e1.js","/_next/static/chunks/e09b4358027e8033.js","/_next/static/chunks/2dddb3bc05093f69.js"],"default"]
+a:I[50183,["/_next/static/chunks/5a5b5b13c22d14f7.js","/_next/static/chunks/a484d1d3dd4b55ab.js"],"OutletBoundary"]
+b:"$Sreact.suspense"
+3:T12b4,<p><strong>対話モード</strong>: AI が質問し、Y/N でステップごとに確認 — ペアプログラミングのようなもの。
+<strong>非対話モード</strong>: 指示を一つ渡すと最後まで実行し、<strong>誰もキーを押す必要がない</strong>。スクリプトや CI パイプライン向け — AI に任せておいて別のことをしていればよい。</p>
+<h2 id="基本の使い方">基本の使い方</h2>
+<p><code>--no-interactive</code>（短縮形 <code>-n</code>）を付けます：</p>
+<figure data-rehype-pretty-code-figure=""><pre style="background-color:#24292e;color:#e1e4e8" tabindex="0" data-language="bash" data-theme="github-dark"><code data-language="bash" data-theme="github-dark" style="display: grid;"><span data-line=""><span style="color:#B392F0">cursor</span><span style="color:#9ECBFF"> agent</span><span style="color:#9ECBFF"> "Add a .editorconfig to the project"</span><span style="color:#79B8FF"> --no-interactive</span></span></code></pre></figure>
+<ul>
+<li>AI が入力待ちをせずにそのまま実行する</li>
+<li>向いているのは：予測可能で繰り返しのタスク（コメント追加、lint 修正、規約に合わせたフォーマットなど）</li>
+</ul>
+<h2 id="スクリプトでの利用">スクリプトでの利用</h2>
+<figure data-rehype-pretty-code-figure=""><pre style="background-color:#24292e;color:#e1e4e8" tabindex="0" data-language="bash" data-theme="github-dark"><code data-language="bash" data-theme="github-dark" style="display: grid;"><span data-line=""><span style="color:#6A737D">#!/bin/bash</span></span>
+<span data-line=""><span style="color:#79B8FF">cd</span><span style="color:#9ECBFF"> /path/to/project</span></span>
+<span data-line=""><span style="color:#B392F0">cursor</span><span style="color:#9ECBFF"> agent</span><span style="color:#9ECBFF"> "Run the linter and fix issues per CONTRIBUTING.md"</span><span style="color:#79B8FF"> --no-interactive</span></span></code></pre></figure>
+<ul>
+<li>自動コード整理、簡単なリファクタ、コメント追加などに使える</li>
+<li>注意：CI 環境では Cursor アカウントの認証が必要（先に <code>cursor auth login</code> を実行するかトークンを使用）— ないと AI は動かない</li>
+</ul>
+<h2 id="モデル指定任意">モデル指定（任意）</h2>
+<p>特定のモデルで実行したい場合：</p>
+<figure data-rehype-pretty-code-figure=""><pre style="background-color:#24292e;color:#e1e4e8" tabindex="0" data-language="bash" data-theme="github-dark"><code data-language="bash" data-theme="github-dark" style="display: grid;"><span data-line=""><span style="color:#B392F0">cursor</span><span style="color:#9ECBFF"> agent</span><span style="color:#9ECBFF"> "Rewrite this comment"</span><span style="color:#79B8FF"> --model</span><span style="color:#9ECBFF"> claude-3-5-sonnet</span><span style="color:#79B8FF"> --no-interactive</span></span></code></pre></figure>
+<p>利用可能なモデル名は公式ドキュメントを確認 — モデル ID をでっち上げないこと。</p>
+<h2 id="クラウドで実行-c">クラウドで実行（-c）</h2>
+<p>重いタスクでターミナルを占有したくない場合は <code>-c</code> でクラウドに任せられます：</p>
+<figure data-rehype-pretty-code-figure=""><pre style="background-color:#24292e;color:#e1e4e8" tabindex="0" data-language="bash" data-theme="github-dark"><code data-language="bash" data-theme="github-dark" style="display: grid;"><span data-line=""><span style="color:#B392F0">cursor</span><span style="color:#9ECBFF"> agent</span><span style="color:#9ECBFF"> "Analyze the entire repo and generate an architecture document"</span><span style="color:#79B8FF"> -c</span></span></code></pre></figure>
+<ul>
+<li><code>-c</code> は会話をクラウドの Agent に引き継ぐ</li>
+<li>ターミナルを閉じてよい — 後から同じ会話に再接続できる。「バックグラウンド実行」のようなものだが、AI があなたの代わりにバックグラウンドで作業するイメージ</li>
+</ul>
+<h2 id="まとめ">まとめ</h2>
+<ul>
+<li><strong>非対話</strong>: <code>--no-interactive</code> または <code>-n</code> を付けると、誰もキーを押さなくてよい</li>
+<li><strong>スクリプト/CI</strong>: 同じコマンド — 環境で Cursor にログインできるようにしておくこと</li>
+<li><strong>モデル指定</strong>: <code>--model model-name</code></li>
+<li><strong>長時間タスク</strong>: <code>-c</code> でクラウドに任せる。終了しても処理は続く</li>
+</ul>
+<blockquote>
+<p>次: <a href="05-tips">05-tips</a> — よくある落とし穴を避けるヒントと FAQ</p>
+</blockquote>0:{"buildId":"Yck3R4ooQxWkwGLT6is1X","rsc":["$","$1","c",{"children":[[["$","script",null,{"type":"application/ld+json","dangerouslySetInnerHTML":{"__html":"{\"@context\":\"https://schema.org\",\"@type\":\"Article\",\"headline\":\"Cursor CLI 非対話モード（スクリプト・CI）\",\"description\":\"--no-interactive で AI が入力待ちせず最後まで実行。スクリプト・CI に最適。オプションで --model や -c でクラウド実行。\",\"url\":\"https://benxhub.com/ja/blog/cursor/cli/04-non-interactive\",\"mainEntityOfPage\":{\"@type\":\"WebPage\",\"@id\":\"https://benxhub.com/ja/blog/cursor/cli/04-non-interactive\"},\"datePublished\":\"2026-02-24T00:00:00.000Z\",\"dateModified\":\"2026-02-24T00:00:00.000Z\",\"keywords\":\"cursor, cli, automation, ci\",\"inLanguage\":\"ja\",\"author\":{\"@type\":\"Person\",\"name\":\"BenX\",\"url\":\"https://benxhub.com\"},\"publisher\":{\"@type\":\"Organization\",\"name\":\"BenXHub Blog\",\"url\":\"https://benxhub.com\"}}"}}],["$","div",null,{"className":"mx-auto max-w-6xl px-4 py-12 sm:px-6","children":["$","div",null,{"className":"lg:grid lg:grid-cols-[1fr_240px] lg:gap-14","children":[["$","article",null,{"children":[["$","header",null,{"className":"mb-10","children":[["$","div",null,{"className":"mb-4 flex flex-wrap gap-2","children":[["$","$L2","cursor",{"href":"/ja/tags/cursor","localeCookie":{"name":"NEXT_LOCALE","sameSite":"lax"},"className":"inline-flex items-center rounded-full px-2.5 py-0.5 text-xs font-medium transition-colors","style":{"background":"var(--color-code-bg)","color":"var(--color-accent)","border":"1px solid var(--color-border)"},"children":["#","cursor"]}],["$","$L2","cli",{"href":"/ja/tags/cli","localeCookie":{"name":"NEXT_LOCALE","sameSite":"lax"},"className":"inline-flex items-center rounded-full px-2.5 py-0.5 text-xs font-medium transition-colors","style":{"background":"var(--color-code-bg)","color":"var(--color-accent)","border":"1px solid var(--color-border)"},"children":["#","cli"]}],["$","$L2","automation",{"href":"/ja/tags/automation","localeCookie":{"name":"NEXT_LOCALE","sameSite":"lax"},"className":"inline-flex items-center rounded-full px-2.5 py-0.5 text-xs font-medium transition-colors","style":{"background":"var(--color-code-bg)","color":"var(--color-accent)","border":"1px solid var(--color-border)"},"children":["#","automation"]}],["$","$L2","ci",{"href":"/ja/tags/ci","localeCookie":{"name":"NEXT_LOCALE","sameSite":"lax"},"className":"inline-flex items-center rounded-full px-2.5 py-0.5 text-xs font-medium transition-colors","style":{"background":"var(--color-code-bg)","color":"var(--color-accent)","border":"1px solid var(--color-border)"},"children":["#","ci"]}]]}],["$","h1",null,{"className":"mb-4 text-3xl leading-snug font-bold tracking-tight sm:text-4xl","style":{"color":"var(--color-text)"},"children":"Cursor CLI 非対話モード（スクリプト・CI）"}],["$","div",null,{"className":"flex flex-wrap items-center gap-3 text-sm","style":{"color":"var(--color-muted)"},"children":[["$","time",null,{"dateTime":"2026-02-24","children":"2026年2月24日"}],["$","span",null,{"aria-hidden":"true","children":"·"}],["$","span",null,{"children":"3 min read"}]]}],"$undefined",["$","div",null,{"className":"mt-6 border-b","style":{"borderColor":"var(--color-border)"}}]]}],["$","div",null,{"className":"prose","dangerouslySetInnerHTML":{"__html":"$3"}}],"$L4"]}],"$L5"]}]}]],["$L6"],"$L7"]}],"loading":null,"isPartial":false}
+4:["$","footer",null,{"className":"mt-14 border-t pt-8","style":{"borderColor":"var(--color-border)"},"children":[["$","div",null,{"className":"mb-8 flex flex-wrap gap-2","children":[["$","$L2","cursor",{"href":"/ja/tags/cursor","localeCookie":{"name":"NEXT_LOCALE","sameSite":"lax"},"className":"inline-flex items-center rounded-full px-3 py-1 text-sm font-medium transition-colors","style":{"background":"var(--color-code-bg)","color":"var(--color-accent)","border":"1px solid var(--color-border)"},"children":["#","cursor"]}],["$","$L2","cli",{"href":"/ja/tags/cli","localeCookie":{"name":"NEXT_LOCALE","sameSite":"lax"},"className":"inline-flex items-center rounded-full px-3 py-1 text-sm font-medium transition-colors","style":{"background":"var(--color-code-bg)","color":"var(--color-accent)","border":"1px solid var(--color-border)"},"children":["#","cli"]}],["$","$L2","automation",{"href":"/ja/tags/automation","localeCookie":{"name":"NEXT_LOCALE","sameSite":"lax"},"className":"inline-flex items-center rounded-full px-3 py-1 text-sm font-medium transition-colors","style":{"background":"var(--color-code-bg)","color":"var(--color-accent)","border":"1px solid var(--color-border)"},"children":["#","automation"]}],["$","$L2","ci",{"href":"/ja/tags/ci","localeCookie":{"name":"NEXT_LOCALE","sameSite":"lax"},"className":"inline-flex items-center rounded-full px-3 py-1 text-sm font-medium transition-colors","style":{"background":"var(--color-code-bg)","color":"var(--color-accent)","border":"1px solid var(--color-border)"},"children":["#","ci"]}]]}],["$","nav",null,{"aria-label":"記事ナビゲーション","className":"grid grid-cols-1 gap-4 sm:grid-cols-2","children":[["$","$L2",null,{"href":"/ja/blog/cursor/cli/03-modes","localeCookie":{"name":"NEXT_LOCALE","sameSite":"lax"},"className":"group rounded-lg border p-4 transition-colors hover:border-accent","style":{"borderColor":"var(--color-border)","background":"var(--color-surface)"},"children":[["$","p",null,{"className":"mb-1 text-xs","style":{"color":"var(--color-muted)"},"children":"← 新しい記事"}],["$","p",null,{"className":"line-clamp-1 text-sm font-medium transition-colors group-hover:text-accent","style":{"color":"var(--color-text)"},"children":"Cursor CLI の3モード: Agent / Plan / Ask"}]]}],["$","$L2",null,{"href":"/ja/blog/cursor/cli/05-tips","localeCookie":{"name":"NEXT_LOCALE","sameSite":"lax"},"className":"group rounded-lg border p-4 text-right transition-colors hover:border-accent","style":{"borderColor":"var(--color-border)","background":"var(--color-surface)"},"children":[["$","p",null,{"className":"mb-1 text-xs","style":{"color":"var(--color-muted)"},"children":"古い記事 →"}],["$","p",null,{"className":"line-clamp-1 text-sm font-medium transition-colors group-hover:text-accent","style":{"color":"var(--color-text)"},"children":"Cursor CLI ヒントとFAQ"}]]}]]}]]}]
+9:T12b4,<p><strong>対話モード</strong>: AI が質問し、Y/N でステップごとに確認 — ペアプログラミングのようなもの。
+<strong>非対話モード</strong>: 指示を一つ渡すと最後まで実行し、<strong>誰もキーを押す必要がない</strong>。スクリプトや CI パイプライン向け — AI に任せておいて別のことをしていればよい。</p>
+<h2 id="基本の使い方">基本の使い方</h2>
+<p><code>--no-interactive</code>（短縮形 <code>-n</code>）を付けます：</p>
+<figure data-rehype-pretty-code-figure=""><pre style="background-color:#24292e;color:#e1e4e8" tabindex="0" data-language="bash" data-theme="github-dark"><code data-language="bash" data-theme="github-dark" style="display: grid;"><span data-line=""><span style="color:#B392F0">cursor</span><span style="color:#9ECBFF"> agent</span><span style="color:#9ECBFF"> "Add a .editorconfig to the project"</span><span style="color:#79B8FF"> --no-interactive</span></span></code></pre></figure>
+<ul>
+<li>AI が入力待ちをせずにそのまま実行する</li>
+<li>向いているのは：予測可能で繰り返しのタスク（コメント追加、lint 修正、規約に合わせたフォーマットなど）</li>
+</ul>
+<h2 id="スクリプトでの利用">スクリプトでの利用</h2>
+<figure data-rehype-pretty-code-figure=""><pre style="background-color:#24292e;color:#e1e4e8" tabindex="0" data-language="bash" data-theme="github-dark"><code data-language="bash" data-theme="github-dark" style="display: grid;"><span data-line=""><span style="color:#6A737D">#!/bin/bash</span></span>
+<span data-line=""><span style="color:#79B8FF">cd</span><span style="color:#9ECBFF"> /path/to/project</span></span>
+<span data-line=""><span style="color:#B392F0">cursor</span><span style="color:#9ECBFF"> agent</span><span style="color:#9ECBFF"> "Run the linter and fix issues per CONTRIBUTING.md"</span><span style="color:#79B8FF"> --no-interactive</span></span></code></pre></figure>
+<ul>
+<li>自動コード整理、簡単なリファクタ、コメント追加などに使える</li>
+<li>注意：CI 環境では Cursor アカウントの認証が必要（先に <code>cursor auth login</code> を実行するかトークンを使用）— ないと AI は動かない</li>
+</ul>
+<h2 id="モデル指定任意">モデル指定（任意）</h2>
+<p>特定のモデルで実行したい場合：</p>
+<figure data-rehype-pretty-code-figure=""><pre style="background-color:#24292e;color:#e1e4e8" tabindex="0" data-language="bash" data-theme="github-dark"><code data-language="bash" data-theme="github-dark" style="display: grid;"><span data-line=""><span style="color:#B392F0">cursor</span><span style="color:#9ECBFF"> agent</span><span style="color:#9ECBFF"> "Rewrite this comment"</span><span style="color:#79B8FF"> --model</span><span style="color:#9ECBFF"> claude-3-5-sonnet</span><span style="color:#79B8FF"> --no-interactive</span></span></code></pre></figure>
+<p>利用可能なモデル名は公式ドキュメントを確認 — モデル ID をでっち上げないこと。</p>
+<h2 id="クラウドで実行-c">クラウドで実行（-c）</h2>
+<p>重いタスクでターミナルを占有したくない場合は <code>-c</code> でクラウドに任せられます：</p>
+<figure data-rehype-pretty-code-figure=""><pre style="background-color:#24292e;color:#e1e4e8" tabindex="0" data-language="bash" data-theme="github-dark"><code data-language="bash" data-theme="github-dark" style="display: grid;"><span data-line=""><span style="color:#B392F0">cursor</span><span style="color:#9ECBFF"> agent</span><span style="color:#9ECBFF"> "Analyze the entire repo and generate an architecture document"</span><span style="color:#79B8FF"> -c</span></span></code></pre></figure>
+<ul>
+<li><code>-c</code> は会話をクラウドの Agent に引き継ぐ</li>
+<li>ターミナルを閉じてよい — 後から同じ会話に再接続できる。「バックグラウンド実行」のようなものだが、AI があなたの代わりにバックグラウンドで作業するイメージ</li>
+</ul>
+<h2 id="まとめ">まとめ</h2>
+<ul>
+<li><strong>非対話</strong>: <code>--no-interactive</code> または <code>-n</code> を付けると、誰もキーを押さなくてよい</li>
+<li><strong>スクリプト/CI</strong>: 同じコマンド — 環境で Cursor にログインできるようにしておくこと</li>
+<li><strong>モデル指定</strong>: <code>--model model-name</code></li>
+<li><strong>長時間タスク</strong>: <code>-c</code> でクラウドに任せる。終了しても処理は続く</li>
+</ul>
+<blockquote>
+<p>次: <a href="05-tips">05-tips</a> — よくある落とし穴を避けるヒントと FAQ</p>
+</blockquote>5:["$","aside",null,{"className":"hidden lg:block","children":["$","$L8",null,{"html":"$9"}]}]
+6:["$","script","script-0",{"src":"/_next/static/chunks/2dddb3bc05093f69.js","async":true}]
+7:["$","$La",null,{"children":["$","$b",null,{"name":"Next.MetadataOutlet","children":"$@c"}]}]
+c:null

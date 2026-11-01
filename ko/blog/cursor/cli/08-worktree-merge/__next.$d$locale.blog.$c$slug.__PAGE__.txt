@@ -1,0 +1,141 @@
+1:"$Sreact.fragment"
+2:I[14864,["/_next/static/chunks/7923a261b80bb6e1.js","/_next/static/chunks/e09b4358027e8033.js","/_next/static/chunks/2dddb3bc05093f69.js"],"default"]
+8:I[24801,["/_next/static/chunks/7923a261b80bb6e1.js","/_next/static/chunks/e09b4358027e8033.js","/_next/static/chunks/2dddb3bc05093f69.js"],"default"]
+a:I[50183,["/_next/static/chunks/5a5b5b13c22d14f7.js","/_next/static/chunks/a484d1d3dd4b55ab.js"],"OutletBoundary"]
+b:"$Sreact.suspense"
+3:T1d7e,<p><a href="06-cursor-cli-with-worktree">06-cursor-cli-with-worktree</a>는 <strong>수동</strong> worktree + CLI 병렬 사용을 다뤘습니다. 이번 글은 <strong>Cursor가 자동 생성하는 worktree</strong>(병렬 Agent / Apply)의 <strong>고급 사용</strong>에 초점을 둡니다: 여러 태스크 넣기, Apply에서 Merge와 Full Overwrite 선택, 충돌 해결, <code>git worktree list</code>로 일상 관리. 입문은 생략하고 실무로 직행합니다.</p>
+<h2 id="고급-시나리오-1-여러-태스크-병렬--검토-후-apply">고급 시나리오 1: 여러 태스크 병렬 → 검토 후 Apply</h2>
+<p>한 기능을 여러 "서브태스크"로 나누고, 각각 Agent가 자기 worktree에서 실행. Apply는 원하는 것만 하고, 한 번에 전부가 아님.</p>
+<p><strong>예</strong>: "utils 리팩터", "유닛 테스트 추가", "API 문서 생성"을 동시에 하고 싶을 때:</p>
+<ul>
+<li>서로 다른 프롬프트로 병렬 Agent 3개 시작(또는 하나씩, 각각 worktree에서)</li>
+<li>끝나면 결과 3개: "리팩터"는 괜찮고, "테스트"는 손보고, "문서"는 버린다</li>
+<li>"리팩터" 카드만 Apply; 나머지는 Apply 안 하면 main에 머지되는 건 리팩터뿐 — 나머지 둘은 메인 디렉터리를 건드리지 않음</li>
+</ul>
+<p><strong>고급 포인트</strong>: 한 번에 전부 커밋할 필요 없음. "태스크별·카드별 Apply"가 가능하고, main에는 승인한 것만 들어감.</p>
+<h2 id="고급-시나리오-2-apply에서-merge-vs-full-overwrite">고급 시나리오 2: Apply에서 Merge vs Full Overwrite</h2>
+<p>Apply 시 Cursor는 <strong>깔끔하게 머지</strong>하려 합니다. 같은 Best-of-N이나 여러 번 Apply로 충돌이 나면 선택을 묻습니다:</p>
+<table>
+<thead>
+<tr>
+<th>옵션</th>
+<th>언제 쓸지</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td><strong>Merge(충돌 해결 UI)</strong></td>
+<td>main 내용 일부는 남기고 worktree 변경 일부만 가져오고 싶을 때, 또는 여러 worktree 변경을 "문단 단위"로 머지할 때</td>
+</tr>
+<tr>
+<td><strong>Full Overwrite</strong></td>
+<td>worktree 파일을 채택하고 main 파일을 통째로 바꿔도 될 때, 또는 충돌이 너무 많아 "이 카드"를 유일한 기준으로 하고 싶을 때</td>
+</tr>
+</tbody>
+</table>
+<p>실무에서는: <strong>단일 태스크·단일 Agent·소수 파일</strong> → Merge로 충분한 경우가 많음. <strong>같은 요청을 여러 모델(Best-of-N)로 돌리고 카드 A 일부 + 카드 B 일부를 Apply</strong> → 충돌 가능성 큼; 그럴 땐 카드 한 장만 Apply하거나 Merge로 파일 단위 해결. 여러 카드에서 같은 파일 집합에 Full Overwrite를 반복하는 건 피하기 — 서로 덮어씀.</p>
+<h2 id="고급-시나리오-3-main에-미커밋-변경이-있을-때-동작">고급 시나리오 3: main에 미커밋 변경이 있을 때 동작</h2>
+<p>worktree 생성 시 Cursor는 <strong>메인 디렉터리의 추적된 변경과 새 파일</strong>을 worktree로 가져갑니다(Git에서 무시되는 파일은 안 가져감). 따라서:</p>
+<ul>
+<li><strong>main에서 뭔가 바꾸고 커밋 안 한</strong> 상태에서 worktree Agent 시작 → Agent는 "현재 상태" 위에서 작업; Apply하면 "미커밋 변경 + Agent 변경"을 머지하게 됨</li>
+<li>병렬 태스크를 <strong>깨끗한 main에서</strong> 시작하려면 먼저 <code>git stash</code> 또는 commit 후 worktree 생성해서 "WIP + Agent 변경"이 섞여 Apply에서 충돌 난무하는 걸 막기</li>
+</ul>
+<p>반대로 쓸 수도 있음: <strong>의도적으로</strong> main에 WIP를 남겨 두고, 실험용 worktree를 만들고, Apply에서는 Merge로 마음에 드는 부분만 가져오기; 나머지는 worktree에 두고 Apply 안 함.</p>
+<h2 id="고급-시나리오-4-git-worktree-list로-확인정리">고급 시나리오 4: <code>git worktree list</code>로 확인·정리</h2>
+<p>Cursor가 만든 worktree는 <code>git worktree list</code>에 나옵니다. 경로는 보통 <code>.cursor/worktrees/&#x3C;repo>/&#x3C;id></code> 아래:</p>
+<figure data-rehype-pretty-code-figure=""><pre style="background-color:#24292e;color:#e1e4e8" tabindex="0" data-language="bash" data-theme="github-dark"><code data-language="bash" data-theme="github-dark" style="display: grid;"><span data-line=""><span style="color:#B392F0">git</span><span style="color:#9ECBFF"> worktree</span><span style="color:#9ECBFF"> list</span></span></code></pre></figure>
+<p>습관으로 두면 좋은 것:</p>
+<ul>
+<li><strong>Apply 후 main이 괜찮아 보이면</strong> Cursor가 개수를 자동 관리; 목록에 worktree가 많고 디스크가 빡빡하면 Cursor 설정(예: <code>cursor.worktreeMaxCount</code>, 정리 간격)을 보거나, 쓰지 않는 Cursor 프로젝트 창을 닫아 오래된 worktree가 정리되게 하기</li>
+<li><strong>디버깅 시</strong>: 목록으로 "샌드박스"가 몇 개인지, 각 worktree가 어느 브랜치인지 알 수 있어 main과 Agent worktree를 혼동하지 않음</li>
+</ul>
+<p>Cursor가 만든 경로에 대해서는 해당 Agent가 끝났다고 확실할 때가 아니면 <code>git worktree remove</code>를 수동으로 실행하지 않는 게 좋음. 그렇지 않으면 Cursor 내부 상태가 어긋날 수 있음.</p>
+<h2 id="고급-시나리오-5-병렬-agent가-같은-파일을-건드릴-때">고급 시나리오 5: 병렬 Agent가 같은 파일을 건드릴 때</h2>
+<p>Agent 두 개를, 하나는 <code>src/auth/</code>, 다른 하나는 <code>src/api/</code>를 수정하도록 돌리면 보통 충돌하지 않음 — 하나 Apply한 다음 다른 하나(순서는 크게 상관없음; Merge로 자동 해결되는 경우가 많음).</p>
+<p><strong>두 Agent가 같은 파일을 수정</strong>한 경우(예: 둘 다 <code>package.json</code>이나 같은 <code>config.ts</code> 수정):</p>
+<ul>
+<li>첫 번째 Apply → main에 그 변경이 들어감</li>
+<li>두 번째 Apply → 머지 플로우에 들어가고 충돌이 나올 수 있음</li>
+<li>Cursor 충돌 UI에서 "main의 이 부분, worktree의 이 부분"을 선택하거나, 두 번째 worktree 버전을 통째로 쓰려면 Full Overwrite</li>
+</ul>
+<p><strong>전략</strong>: 병렬 태스크를 설계할 때 <strong>Agent별로 파일 집합이 겹치지 않게</strong> 하기(예: 하나는 frontend 디렉터리, 하나는 backend); 그러면 손으로 충돌 해결할 일이 거의 없음.</p>
+<h2 id="요약">요약</h2>
+<ul>
+<li><strong>여러 태스크 병렬</strong>: worktree로 서브태스크 나누고, 검토한 뒤 원하는 카드만 Apply; main에는 승인한 것만 들어감</li>
+<li><strong>Apply 선택</strong>: main 일부를 남기려면 <strong>Merge</strong>; worktree 파일을 채택하려면 <strong>Full Overwrite</strong>; 여러 카드에서 같은 파일에 대한 Full Overwrite 중복은 피하기</li>
+<li><strong>메인 디렉터리 상태</strong>: 미커밋 변경은 worktree로 들어감; 깨끗한 베이스로 하려면 먼저 stash/commit; 또는 의도적으로 WIP를 남겨 "실험용 worktree + 선택적 Merge"에 활용</li>
+<li><strong>관리</strong>: <code>git worktree list</code>로 확인하고 Cursor 정리와 맞추기; 태스크별 파일 집합을 겹치지 않게 하면 충돌이 줄어듦</li>
+</ul>
+<blockquote>
+<p>다음: <a href="09-worktree-advanced">09-worktree-advanced</a> — Best-of-N 다중 모델 비교, worktrees.json, 정리 설정.</p>
+</blockquote>0:{"buildId":"Yck3R4ooQxWkwGLT6is1X","rsc":["$","$1","c",{"children":[[["$","script",null,{"type":"application/ld+json","dangerouslySetInnerHTML":{"__html":"{\"@context\":\"https://schema.org\",\"@type\":\"Article\",\"headline\":\"Cursor 내장 Worktree: 고급 사용\",\"description\":\"병렬 태스크 전략, Apply 시 Merge vs Full Overwrite 선택, 충돌 처리, worktree 관리 실무.\",\"url\":\"https://benxhub.com/ko/blog/cursor/cli/08-worktree-merge\",\"mainEntityOfPage\":{\"@type\":\"WebPage\",\"@id\":\"https://benxhub.com/ko/blog/cursor/cli/08-worktree-merge\"},\"datePublished\":\"2026-03-09T00:00:00.000Z\",\"dateModified\":\"2026-03-09T00:00:00.000Z\",\"keywords\":\"cursor, worktree, parallel-agent, apply, git\",\"inLanguage\":\"ko\",\"author\":{\"@type\":\"Person\",\"name\":\"BenX\",\"url\":\"https://benxhub.com\"},\"publisher\":{\"@type\":\"Organization\",\"name\":\"BenXHub Blog\",\"url\":\"https://benxhub.com\"}}"}}],["$","div",null,{"className":"mx-auto max-w-6xl px-4 py-12 sm:px-6","children":["$","div",null,{"className":"lg:grid lg:grid-cols-[1fr_240px] lg:gap-14","children":[["$","article",null,{"children":[["$","header",null,{"className":"mb-10","children":[["$","div",null,{"className":"mb-4 flex flex-wrap gap-2","children":[["$","$L2","cursor",{"href":"/ko/tags/cursor","localeCookie":{"name":"NEXT_LOCALE","sameSite":"lax"},"className":"inline-flex items-center rounded-full px-2.5 py-0.5 text-xs font-medium transition-colors","style":{"background":"var(--color-code-bg)","color":"var(--color-accent)","border":"1px solid var(--color-border)"},"children":["#","cursor"]}],["$","$L2","worktree",{"href":"/ko/tags/worktree","localeCookie":{"name":"NEXT_LOCALE","sameSite":"lax"},"className":"inline-flex items-center rounded-full px-2.5 py-0.5 text-xs font-medium transition-colors","style":{"background":"var(--color-code-bg)","color":"var(--color-accent)","border":"1px solid var(--color-border)"},"children":["#","worktree"]}],["$","$L2","parallel-agent",{"href":"/ko/tags/parallel-agent","localeCookie":{"name":"NEXT_LOCALE","sameSite":"lax"},"className":"inline-flex items-center rounded-full px-2.5 py-0.5 text-xs font-medium transition-colors","style":{"background":"var(--color-code-bg)","color":"var(--color-accent)","border":"1px solid var(--color-border)"},"children":["#","parallel-agent"]}],["$","$L2","apply",{"href":"/ko/tags/apply","localeCookie":{"name":"NEXT_LOCALE","sameSite":"lax"},"className":"inline-flex items-center rounded-full px-2.5 py-0.5 text-xs font-medium transition-colors","style":{"background":"var(--color-code-bg)","color":"var(--color-accent)","border":"1px solid var(--color-border)"},"children":["#","apply"]}],["$","$L2","git",{"href":"/ko/tags/git","localeCookie":{"name":"NEXT_LOCALE","sameSite":"lax"},"className":"inline-flex items-center rounded-full px-2.5 py-0.5 text-xs font-medium transition-colors","style":{"background":"var(--color-code-bg)","color":"var(--color-accent)","border":"1px solid var(--color-border)"},"children":["#","git"]}]]}],["$","h1",null,{"className":"mb-4 text-3xl leading-snug font-bold tracking-tight sm:text-4xl","style":{"color":"var(--color-text)"},"children":"Cursor 내장 Worktree: 고급 사용"}],["$","div",null,{"className":"flex flex-wrap items-center gap-3 text-sm","style":{"color":"var(--color-muted)"},"children":[["$","time",null,{"dateTime":"2026-03-09","children":"2026년 3월 9일"}],["$","span",null,{"aria-hidden":"true","children":"·"}],["$","span",null,{"children":"8 min read"}]]}],"$undefined",["$","div",null,{"className":"mt-6 border-b","style":{"borderColor":"var(--color-border)"}}]]}],["$","div",null,{"className":"prose","dangerouslySetInnerHTML":{"__html":"$3"}}],"$L4"]}],"$L5"]}]}]],["$L6"],"$L7"]}],"loading":null,"isPartial":false}
+4:["$","footer",null,{"className":"mt-14 border-t pt-8","style":{"borderColor":"var(--color-border)"},"children":[["$","div",null,{"className":"mb-8 flex flex-wrap gap-2","children":[["$","$L2","cursor",{"href":"/ko/tags/cursor","localeCookie":{"name":"NEXT_LOCALE","sameSite":"lax"},"className":"inline-flex items-center rounded-full px-3 py-1 text-sm font-medium transition-colors","style":{"background":"var(--color-code-bg)","color":"var(--color-accent)","border":"1px solid var(--color-border)"},"children":["#","cursor"]}],["$","$L2","worktree",{"href":"/ko/tags/worktree","localeCookie":{"name":"NEXT_LOCALE","sameSite":"lax"},"className":"inline-flex items-center rounded-full px-3 py-1 text-sm font-medium transition-colors","style":{"background":"var(--color-code-bg)","color":"var(--color-accent)","border":"1px solid var(--color-border)"},"children":["#","worktree"]}],["$","$L2","parallel-agent",{"href":"/ko/tags/parallel-agent","localeCookie":{"name":"NEXT_LOCALE","sameSite":"lax"},"className":"inline-flex items-center rounded-full px-3 py-1 text-sm font-medium transition-colors","style":{"background":"var(--color-code-bg)","color":"var(--color-accent)","border":"1px solid var(--color-border)"},"children":["#","parallel-agent"]}],["$","$L2","apply",{"href":"/ko/tags/apply","localeCookie":{"name":"NEXT_LOCALE","sameSite":"lax"},"className":"inline-flex items-center rounded-full px-3 py-1 text-sm font-medium transition-colors","style":{"background":"var(--color-code-bg)","color":"var(--color-accent)","border":"1px solid var(--color-border)"},"children":["#","apply"]}],["$","$L2","git",{"href":"/ko/tags/git","localeCookie":{"name":"NEXT_LOCALE","sameSite":"lax"},"className":"inline-flex items-center rounded-full px-3 py-1 text-sm font-medium transition-colors","style":{"background":"var(--color-code-bg)","color":"var(--color-accent)","border":"1px solid var(--color-border)"},"children":["#","git"]}]]}],["$","nav",null,{"aria-label":"글 탐색","className":"grid grid-cols-1 gap-4 sm:grid-cols-2","children":[["$","$L2",null,{"href":"/ko/blog/ai-trend/2026-03-09-ai-content-automation-workflow","localeCookie":{"name":"NEXT_LOCALE","sameSite":"lax"},"className":"group rounded-lg border p-4 transition-colors hover:border-accent","style":{"borderColor":"var(--color-border)","background":"var(--color-surface)"},"children":[["$","p",null,{"className":"mb-1 text-xs","style":{"color":"var(--color-muted)"},"children":"← 최신 글"}],["$","p",null,{"className":"line-clamp-1 text-sm font-medium transition-colors group-hover:text-accent","style":{"color":"var(--color-text)"},"children":"AI 기반 콘텐츠 제작: 진짜 격차는 속도가 아니라 워크플로 설계다"}]]}],["$","$L2",null,{"href":"/ko/blog/cursor/cli/09-worktree-advanced","localeCookie":{"name":"NEXT_LOCALE","sameSite":"lax"},"className":"group rounded-lg border p-4 text-right transition-colors hover:border-accent","style":{"borderColor":"var(--color-border)","background":"var(--color-surface)"},"children":[["$","p",null,{"className":"mb-1 text-xs","style":{"color":"var(--color-muted)"},"children":"이전 글 →"}],["$","p",null,{"className":"line-clamp-1 text-sm font-medium transition-colors group-hover:text-accent","style":{"color":"var(--color-text)"},"children":"Cursor Worktree 고급: Best-of-N과 worktrees.json"}]]}]]}]]}]
+9:T1d7e,<p><a href="06-cursor-cli-with-worktree">06-cursor-cli-with-worktree</a>는 <strong>수동</strong> worktree + CLI 병렬 사용을 다뤘습니다. 이번 글은 <strong>Cursor가 자동 생성하는 worktree</strong>(병렬 Agent / Apply)의 <strong>고급 사용</strong>에 초점을 둡니다: 여러 태스크 넣기, Apply에서 Merge와 Full Overwrite 선택, 충돌 해결, <code>git worktree list</code>로 일상 관리. 입문은 생략하고 실무로 직행합니다.</p>
+<h2 id="고급-시나리오-1-여러-태스크-병렬--검토-후-apply">고급 시나리오 1: 여러 태스크 병렬 → 검토 후 Apply</h2>
+<p>한 기능을 여러 "서브태스크"로 나누고, 각각 Agent가 자기 worktree에서 실행. Apply는 원하는 것만 하고, 한 번에 전부가 아님.</p>
+<p><strong>예</strong>: "utils 리팩터", "유닛 테스트 추가", "API 문서 생성"을 동시에 하고 싶을 때:</p>
+<ul>
+<li>서로 다른 프롬프트로 병렬 Agent 3개 시작(또는 하나씩, 각각 worktree에서)</li>
+<li>끝나면 결과 3개: "리팩터"는 괜찮고, "테스트"는 손보고, "문서"는 버린다</li>
+<li>"리팩터" 카드만 Apply; 나머지는 Apply 안 하면 main에 머지되는 건 리팩터뿐 — 나머지 둘은 메인 디렉터리를 건드리지 않음</li>
+</ul>
+<p><strong>고급 포인트</strong>: 한 번에 전부 커밋할 필요 없음. "태스크별·카드별 Apply"가 가능하고, main에는 승인한 것만 들어감.</p>
+<h2 id="고급-시나리오-2-apply에서-merge-vs-full-overwrite">고급 시나리오 2: Apply에서 Merge vs Full Overwrite</h2>
+<p>Apply 시 Cursor는 <strong>깔끔하게 머지</strong>하려 합니다. 같은 Best-of-N이나 여러 번 Apply로 충돌이 나면 선택을 묻습니다:</p>
+<table>
+<thead>
+<tr>
+<th>옵션</th>
+<th>언제 쓸지</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td><strong>Merge(충돌 해결 UI)</strong></td>
+<td>main 내용 일부는 남기고 worktree 변경 일부만 가져오고 싶을 때, 또는 여러 worktree 변경을 "문단 단위"로 머지할 때</td>
+</tr>
+<tr>
+<td><strong>Full Overwrite</strong></td>
+<td>worktree 파일을 채택하고 main 파일을 통째로 바꿔도 될 때, 또는 충돌이 너무 많아 "이 카드"를 유일한 기준으로 하고 싶을 때</td>
+</tr>
+</tbody>
+</table>
+<p>실무에서는: <strong>단일 태스크·단일 Agent·소수 파일</strong> → Merge로 충분한 경우가 많음. <strong>같은 요청을 여러 모델(Best-of-N)로 돌리고 카드 A 일부 + 카드 B 일부를 Apply</strong> → 충돌 가능성 큼; 그럴 땐 카드 한 장만 Apply하거나 Merge로 파일 단위 해결. 여러 카드에서 같은 파일 집합에 Full Overwrite를 반복하는 건 피하기 — 서로 덮어씀.</p>
+<h2 id="고급-시나리오-3-main에-미커밋-변경이-있을-때-동작">고급 시나리오 3: main에 미커밋 변경이 있을 때 동작</h2>
+<p>worktree 생성 시 Cursor는 <strong>메인 디렉터리의 추적된 변경과 새 파일</strong>을 worktree로 가져갑니다(Git에서 무시되는 파일은 안 가져감). 따라서:</p>
+<ul>
+<li><strong>main에서 뭔가 바꾸고 커밋 안 한</strong> 상태에서 worktree Agent 시작 → Agent는 "현재 상태" 위에서 작업; Apply하면 "미커밋 변경 + Agent 변경"을 머지하게 됨</li>
+<li>병렬 태스크를 <strong>깨끗한 main에서</strong> 시작하려면 먼저 <code>git stash</code> 또는 commit 후 worktree 생성해서 "WIP + Agent 변경"이 섞여 Apply에서 충돌 난무하는 걸 막기</li>
+</ul>
+<p>반대로 쓸 수도 있음: <strong>의도적으로</strong> main에 WIP를 남겨 두고, 실험용 worktree를 만들고, Apply에서는 Merge로 마음에 드는 부분만 가져오기; 나머지는 worktree에 두고 Apply 안 함.</p>
+<h2 id="고급-시나리오-4-git-worktree-list로-확인정리">고급 시나리오 4: <code>git worktree list</code>로 확인·정리</h2>
+<p>Cursor가 만든 worktree는 <code>git worktree list</code>에 나옵니다. 경로는 보통 <code>.cursor/worktrees/&#x3C;repo>/&#x3C;id></code> 아래:</p>
+<figure data-rehype-pretty-code-figure=""><pre style="background-color:#24292e;color:#e1e4e8" tabindex="0" data-language="bash" data-theme="github-dark"><code data-language="bash" data-theme="github-dark" style="display: grid;"><span data-line=""><span style="color:#B392F0">git</span><span style="color:#9ECBFF"> worktree</span><span style="color:#9ECBFF"> list</span></span></code></pre></figure>
+<p>습관으로 두면 좋은 것:</p>
+<ul>
+<li><strong>Apply 후 main이 괜찮아 보이면</strong> Cursor가 개수를 자동 관리; 목록에 worktree가 많고 디스크가 빡빡하면 Cursor 설정(예: <code>cursor.worktreeMaxCount</code>, 정리 간격)을 보거나, 쓰지 않는 Cursor 프로젝트 창을 닫아 오래된 worktree가 정리되게 하기</li>
+<li><strong>디버깅 시</strong>: 목록으로 "샌드박스"가 몇 개인지, 각 worktree가 어느 브랜치인지 알 수 있어 main과 Agent worktree를 혼동하지 않음</li>
+</ul>
+<p>Cursor가 만든 경로에 대해서는 해당 Agent가 끝났다고 확실할 때가 아니면 <code>git worktree remove</code>를 수동으로 실행하지 않는 게 좋음. 그렇지 않으면 Cursor 내부 상태가 어긋날 수 있음.</p>
+<h2 id="고급-시나리오-5-병렬-agent가-같은-파일을-건드릴-때">고급 시나리오 5: 병렬 Agent가 같은 파일을 건드릴 때</h2>
+<p>Agent 두 개를, 하나는 <code>src/auth/</code>, 다른 하나는 <code>src/api/</code>를 수정하도록 돌리면 보통 충돌하지 않음 — 하나 Apply한 다음 다른 하나(순서는 크게 상관없음; Merge로 자동 해결되는 경우가 많음).</p>
+<p><strong>두 Agent가 같은 파일을 수정</strong>한 경우(예: 둘 다 <code>package.json</code>이나 같은 <code>config.ts</code> 수정):</p>
+<ul>
+<li>첫 번째 Apply → main에 그 변경이 들어감</li>
+<li>두 번째 Apply → 머지 플로우에 들어가고 충돌이 나올 수 있음</li>
+<li>Cursor 충돌 UI에서 "main의 이 부분, worktree의 이 부분"을 선택하거나, 두 번째 worktree 버전을 통째로 쓰려면 Full Overwrite</li>
+</ul>
+<p><strong>전략</strong>: 병렬 태스크를 설계할 때 <strong>Agent별로 파일 집합이 겹치지 않게</strong> 하기(예: 하나는 frontend 디렉터리, 하나는 backend); 그러면 손으로 충돌 해결할 일이 거의 없음.</p>
+<h2 id="요약">요약</h2>
+<ul>
+<li><strong>여러 태스크 병렬</strong>: worktree로 서브태스크 나누고, 검토한 뒤 원하는 카드만 Apply; main에는 승인한 것만 들어감</li>
+<li><strong>Apply 선택</strong>: main 일부를 남기려면 <strong>Merge</strong>; worktree 파일을 채택하려면 <strong>Full Overwrite</strong>; 여러 카드에서 같은 파일에 대한 Full Overwrite 중복은 피하기</li>
+<li><strong>메인 디렉터리 상태</strong>: 미커밋 변경은 worktree로 들어감; 깨끗한 베이스로 하려면 먼저 stash/commit; 또는 의도적으로 WIP를 남겨 "실험용 worktree + 선택적 Merge"에 활용</li>
+<li><strong>관리</strong>: <code>git worktree list</code>로 확인하고 Cursor 정리와 맞추기; 태스크별 파일 집합을 겹치지 않게 하면 충돌이 줄어듦</li>
+</ul>
+<blockquote>
+<p>다음: <a href="09-worktree-advanced">09-worktree-advanced</a> — Best-of-N 다중 모델 비교, worktrees.json, 정리 설정.</p>
+</blockquote>5:["$","aside",null,{"className":"hidden lg:block","children":["$","$L8",null,{"html":"$9"}]}]
+6:["$","script","script-0",{"src":"/_next/static/chunks/2dddb3bc05093f69.js","async":true}]
+7:["$","$La",null,{"children":["$","$b",null,{"name":"Next.MetadataOutlet","children":"$@c"}]}]
+c:null

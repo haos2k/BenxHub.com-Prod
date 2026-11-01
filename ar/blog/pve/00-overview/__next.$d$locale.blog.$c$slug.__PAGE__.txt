@@ -1,0 +1,78 @@
+1:"$Sreact.fragment"
+2:I[14864,["/_next/static/chunks/7923a261b80bb6e1.js","/_next/static/chunks/e09b4358027e8033.js","/_next/static/chunks/2dddb3bc05093f69.js"],"default"]
+8:I[24801,["/_next/static/chunks/7923a261b80bb6e1.js","/_next/static/chunks/e09b4358027e8033.js","/_next/static/chunks/2dddb3bc05093f69.js"],"default"]
+a:I[50183,["/_next/static/chunks/5a5b5b13c22d14f7.js","/_next/static/chunks/a484d1d3dd4b55ab.js"],"OutletBoundary"]
+b:"$Sreact.suspense"
+:HL["/images/posts/pve-overview.jpg","image"]
+3:T125b,<p>Proxmox VE (Proxmox Virtual Environment) هو منصة افتراضية مفتوحة المصدر مبنية على Debian تدمج <strong>الآلات الافتراضية KVM</strong> و<strong>حاويات LXC</strong>، مع إدارة ويب والتجميع والنسخ الاحتياطي والتوفر العالي. باختصار: <strong>أفضل صديق مفتوح المصدر لـ VMware — بدون رسوم ترخيص.</strong></p>
+<p>مقارنةً بـ VMware ESXi وHyper-V، مزايا PVE هي الشفافية مفتوحة المصدر، تكلفة الترخيص المنخفضة (صفر في الواقع)، والدعم الأصيل لحلول التخزين المتقدمة مثل ZFS وCeph. مناسب بشكل خاص للـ homelabs والشركات الصغيرة والمتوسطة — مفيد في رف خادمك المنزلي ومركز بيانات شركتك على حد سواء.</p>
+<h2 id="حالات-الاستخدام">حالات الاستخدام</h2>
+<ul>
+<li><strong>NAS المستضاف ذاتياً، homelab، بيئات الاختبار</strong>: الخيار الأول للتجريب المنزلي — إذا كسرته، فقط أعد التثبيت</li>
+<li><strong>افتراضية الشركات الصغيرة والمتوسطة والسحابة الخاصة</strong>: لا منافسة على حصص السحابة مع كبار المزودين — أدر أجهزتك بنفسك</li>
+<li><strong>أعباء العمل الإنتاجية التي تحتاج نسخ احتياطية وترحيل وHA</strong>: للنشر الإنتاجي الجاد — PVE يستطيع التعامل معه</li>
+<li><strong>غير موصى به</strong>: سيناريوهات تشغيل حاوية خفيفة واحدة — فقط استخدم Docker مباشرةً لذلك</li>
+</ul>
+<h2 id="خريطة-التعلم">خريطة التعلم</h2>
+<ol>
+<li><a href="01-quick-start">البداية السريعة</a>: التثبيت وإنشاء أول آلة افتراضية (أول تجربة مع PVE)</li>
+<li><a href="02-core-concepts">المفاهيم الجوهرية</a>: الآلات الافتراضية وLXC والتخزين والشبكة والتجميع — ابنِ النموذج الذهني أولاً</li>
+<li><a href="03-common-patterns">الأنماط الشائعة</a>: النسخ الاحتياطي والاستنساخ والترحيل واللقطات — العمليات اليومية الأساسية</li>
+<li><a href="04-advanced">متقدم</a>: HA وCeph وأتمتة API — تقديم متعدد الأعقدة والأتمتة</li>
+<li><a href="05-best-practices">أفضل الممارسات</a>: تجنب المخاطر والإرشادات التشغيلية — ألم أقل، وقت أكثر توفيراً</li>
+</ol>
+<h2 id="نقطة-دخول-التثبيت">نقطة دخول التثبيت</h2>
+<figure data-rehype-pretty-code-figure=""><pre style="background-color:#24292e;color:#e1e4e8" tabindex="0" data-language="bash" data-theme="github-dark"><code data-language="bash" data-theme="github-dark" style="display: grid;"><span data-line=""><span style="color:#6A737D"># 1) تنزيل ISO</span></span>
+<span data-line=""><span style="color:#6A737D"># https://www.proxmox.com/en/downloads/proxmox-virtual-environment/iso</span></span>
+<span data-line=""> </span>
+<span data-line=""><span style="color:#6A737D"># 2) إنشاء USB قابل للإقلاع (مثال Linux)</span></span>
+<span data-line=""><span style="color:#B392F0">dd</span><span style="color:#9ECBFF"> bs=1M</span><span style="color:#9ECBFF"> conv=fdatasync</span><span style="color:#9ECBFF"> if=./proxmox-ve_</span><span style="color:#79B8FF">*</span><span style="color:#9ECBFF">.iso</span><span style="color:#9ECBFF"> of=/dev/sdX</span></span>
+<span data-line=""> </span>
+<span data-line=""><span style="color:#6A737D"># 3) الإقلاع من USB واتباع معالج التثبيت</span></span>
+<span data-line=""><span style="color:#6A737D"># 4) بعد التثبيت، افتح https://&#x3C;PVE-IP>:8006</span></span></code></pre></figure>
+<blockquote>
+<p>⚠️ المثبّت سيُـ<strong>فرّغ</strong> القرص المستهدف — احتفظ بنسخة احتياطية من جميع البيانات المهمة أولاً. لا تستخدم قرصاً يحتوي صوراً ثمينة؛ ستندم.</p>
+</blockquote>
+<h2 id="قراءة-إضافية">قراءة إضافية</h2>
+<ul>
+<li><a href="https://pve.proxmox.com/pve-docs/pve-admin-guide.html">دليل إدارة Proxmox VE الرسمي</a></li>
+<li><a href="https://pve.proxmox.com/wiki/Main_Page">ويكي Proxmox VE الرسمي</a></li>
+</ul>0:{"buildId":"Yck3R4ooQxWkwGLT6is1X","rsc":["$","$1","c",{"children":[[["$","script",null,{"type":"application/ld+json","dangerouslySetInnerHTML":{"__html":"{\"@context\":\"https://schema.org\",\"@type\":\"Article\",\"headline\":\"نظرة عامة على سلسلة Proxmox VE: من المبتدئ إلى المتقدم\",\"description\":\"مقدمة سريعة لدور Proxmox VE وحالات استخدامه ومسار التعلم — مقدمة للسلسلة بأكملها.\",\"url\":\"https://benxhub.com/ar/blog/pve/00-overview\",\"mainEntityOfPage\":{\"@type\":\"WebPage\",\"@id\":\"https://benxhub.com/ar/blog/pve/00-overview\"},\"datePublished\":\"2026-02-24T00:00:00.000Z\",\"dateModified\":\"2026-02-24T00:00:00.000Z\",\"keywords\":\"proxmox, virtualization, homelab\",\"inLanguage\":\"ar\",\"author\":{\"@type\":\"Person\",\"name\":\"BenX\",\"url\":\"https://benxhub.com\"},\"publisher\":{\"@type\":\"Organization\",\"name\":\"BenXHub Blog\",\"url\":\"https://benxhub.com\"},\"image\":\"https://benxhub.com/images/posts/pve-overview.jpg\"}"}}],["$","div",null,{"className":"mx-auto max-w-6xl px-4 py-12 sm:px-6","children":["$","div",null,{"className":"lg:grid lg:grid-cols-[1fr_240px] lg:gap-14","children":[["$","article",null,{"children":[["$","header",null,{"className":"mb-10","children":[["$","div",null,{"className":"mb-4 flex flex-wrap gap-2","children":[["$","$L2","proxmox",{"href":"/ar/tags/proxmox","localeCookie":{"name":"NEXT_LOCALE","sameSite":"lax"},"className":"inline-flex items-center rounded-full px-2.5 py-0.5 text-xs font-medium transition-colors","style":{"background":"var(--color-code-bg)","color":"var(--color-accent)","border":"1px solid var(--color-border)"},"children":["#","proxmox"]}],["$","$L2","virtualization",{"href":"/ar/tags/virtualization","localeCookie":{"name":"NEXT_LOCALE","sameSite":"lax"},"className":"inline-flex items-center rounded-full px-2.5 py-0.5 text-xs font-medium transition-colors","style":{"background":"var(--color-code-bg)","color":"var(--color-accent)","border":"1px solid var(--color-border)"},"children":["#","virtualization"]}],["$","$L2","homelab",{"href":"/ar/tags/homelab","localeCookie":{"name":"NEXT_LOCALE","sameSite":"lax"},"className":"inline-flex items-center rounded-full px-2.5 py-0.5 text-xs font-medium transition-colors","style":{"background":"var(--color-code-bg)","color":"var(--color-accent)","border":"1px solid var(--color-border)"},"children":["#","homelab"]}]]}],["$","h1",null,{"className":"mb-4 text-3xl leading-snug font-bold tracking-tight sm:text-4xl","style":{"color":"var(--color-text)"},"children":"نظرة عامة على سلسلة Proxmox VE: من المبتدئ إلى المتقدم"}],["$","div",null,{"className":"flex flex-wrap items-center gap-3 text-sm","style":{"color":"var(--color-muted)"},"children":[["$","time",null,{"dateTime":"2026-02-24","children":"24 2月 2026"}],["$","span",null,{"aria-hidden":"true","children":"·"}],["$","span",null,{"children":"2 min read"}]]}],["$","div",null,{"className":"mt-6 overflow-hidden rounded-lg","children":["$","img",null,{"src":"/images/posts/pve-overview.jpg","alt":"نظرة عامة على سلسلة Proxmox VE: من المبتدئ إلى المتقدم","className":"w-full h-auto"}]}],["$","div",null,{"className":"mt-6 border-b","style":{"borderColor":"var(--color-border)"}}]]}],["$","div",null,{"className":"prose","dangerouslySetInnerHTML":{"__html":"$3"}}],"$L4"]}],"$L5"]}]}]],["$L6"],"$L7"]}],"loading":null,"isPartial":false}
+4:["$","footer",null,{"className":"mt-14 border-t pt-8","style":{"borderColor":"var(--color-border)"},"children":[["$","div",null,{"className":"mb-8 flex flex-wrap gap-2","children":[["$","$L2","proxmox",{"href":"/ar/tags/proxmox","localeCookie":{"name":"NEXT_LOCALE","sameSite":"lax"},"className":"inline-flex items-center rounded-full px-3 py-1 text-sm font-medium transition-colors","style":{"background":"var(--color-code-bg)","color":"var(--color-accent)","border":"1px solid var(--color-border)"},"children":["#","proxmox"]}],["$","$L2","virtualization",{"href":"/ar/tags/virtualization","localeCookie":{"name":"NEXT_LOCALE","sameSite":"lax"},"className":"inline-flex items-center rounded-full px-3 py-1 text-sm font-medium transition-colors","style":{"background":"var(--color-code-bg)","color":"var(--color-accent)","border":"1px solid var(--color-border)"},"children":["#","virtualization"]}],["$","$L2","homelab",{"href":"/ar/tags/homelab","localeCookie":{"name":"NEXT_LOCALE","sameSite":"lax"},"className":"inline-flex items-center rounded-full px-3 py-1 text-sm font-medium transition-colors","style":{"background":"var(--color-code-bg)","color":"var(--color-accent)","border":"1px solid var(--color-border)"},"children":["#","homelab"]}]]}],["$","nav",null,{"aria-label":"التنقل بين المقالات","className":"grid grid-cols-1 gap-4 sm:grid-cols-2","children":[["$","$L2",null,{"href":"/ar/blog/cursor/cli/07-unlimit-loop-debug","localeCookie":{"name":"NEXT_LOCALE","sameSite":"lax"},"className":"group rounded-lg border p-4 transition-colors hover:border-accent","style":{"borderColor":"var(--color-border)","background":"var(--color-surface)"},"children":[["$","p",null,{"className":"mb-1 text-xs","style":{"color":"var(--color-muted)"},"children":"→ الأحدث"}],["$","p",null,{"className":"line-clamp-1 text-sm font-medium transition-colors group-hover:text-accent","style":{"color":"var(--color-text)"},"children":"حلقة التصحيح اللانهائية: دع Cursor CLI يصلح حتى تمر الاختبارات"}]]}],["$","$L2",null,{"href":"/ar/blog/pve/01-quick-start","localeCookie":{"name":"NEXT_LOCALE","sameSite":"lax"},"className":"group rounded-lg border p-4 text-right transition-colors hover:border-accent","style":{"borderColor":"var(--color-border)","background":"var(--color-surface)"},"children":[["$","p",null,{"className":"mb-1 text-xs","style":{"color":"var(--color-muted)"},"children":"الأقدم ←"}],["$","p",null,{"className":"line-clamp-1 text-sm font-medium transition-colors group-hover:text-accent","style":{"color":"var(--color-text)"},"children":"البداية السريعة مع Proxmox VE: إنشاء أول آلة افتراضية"}]]}]]}]]}]
+9:T125b,<p>Proxmox VE (Proxmox Virtual Environment) هو منصة افتراضية مفتوحة المصدر مبنية على Debian تدمج <strong>الآلات الافتراضية KVM</strong> و<strong>حاويات LXC</strong>، مع إدارة ويب والتجميع والنسخ الاحتياطي والتوفر العالي. باختصار: <strong>أفضل صديق مفتوح المصدر لـ VMware — بدون رسوم ترخيص.</strong></p>
+<p>مقارنةً بـ VMware ESXi وHyper-V، مزايا PVE هي الشفافية مفتوحة المصدر، تكلفة الترخيص المنخفضة (صفر في الواقع)، والدعم الأصيل لحلول التخزين المتقدمة مثل ZFS وCeph. مناسب بشكل خاص للـ homelabs والشركات الصغيرة والمتوسطة — مفيد في رف خادمك المنزلي ومركز بيانات شركتك على حد سواء.</p>
+<h2 id="حالات-الاستخدام">حالات الاستخدام</h2>
+<ul>
+<li><strong>NAS المستضاف ذاتياً، homelab، بيئات الاختبار</strong>: الخيار الأول للتجريب المنزلي — إذا كسرته، فقط أعد التثبيت</li>
+<li><strong>افتراضية الشركات الصغيرة والمتوسطة والسحابة الخاصة</strong>: لا منافسة على حصص السحابة مع كبار المزودين — أدر أجهزتك بنفسك</li>
+<li><strong>أعباء العمل الإنتاجية التي تحتاج نسخ احتياطية وترحيل وHA</strong>: للنشر الإنتاجي الجاد — PVE يستطيع التعامل معه</li>
+<li><strong>غير موصى به</strong>: سيناريوهات تشغيل حاوية خفيفة واحدة — فقط استخدم Docker مباشرةً لذلك</li>
+</ul>
+<h2 id="خريطة-التعلم">خريطة التعلم</h2>
+<ol>
+<li><a href="01-quick-start">البداية السريعة</a>: التثبيت وإنشاء أول آلة افتراضية (أول تجربة مع PVE)</li>
+<li><a href="02-core-concepts">المفاهيم الجوهرية</a>: الآلات الافتراضية وLXC والتخزين والشبكة والتجميع — ابنِ النموذج الذهني أولاً</li>
+<li><a href="03-common-patterns">الأنماط الشائعة</a>: النسخ الاحتياطي والاستنساخ والترحيل واللقطات — العمليات اليومية الأساسية</li>
+<li><a href="04-advanced">متقدم</a>: HA وCeph وأتمتة API — تقديم متعدد الأعقدة والأتمتة</li>
+<li><a href="05-best-practices">أفضل الممارسات</a>: تجنب المخاطر والإرشادات التشغيلية — ألم أقل، وقت أكثر توفيراً</li>
+</ol>
+<h2 id="نقطة-دخول-التثبيت">نقطة دخول التثبيت</h2>
+<figure data-rehype-pretty-code-figure=""><pre style="background-color:#24292e;color:#e1e4e8" tabindex="0" data-language="bash" data-theme="github-dark"><code data-language="bash" data-theme="github-dark" style="display: grid;"><span data-line=""><span style="color:#6A737D"># 1) تنزيل ISO</span></span>
+<span data-line=""><span style="color:#6A737D"># https://www.proxmox.com/en/downloads/proxmox-virtual-environment/iso</span></span>
+<span data-line=""> </span>
+<span data-line=""><span style="color:#6A737D"># 2) إنشاء USB قابل للإقلاع (مثال Linux)</span></span>
+<span data-line=""><span style="color:#B392F0">dd</span><span style="color:#9ECBFF"> bs=1M</span><span style="color:#9ECBFF"> conv=fdatasync</span><span style="color:#9ECBFF"> if=./proxmox-ve_</span><span style="color:#79B8FF">*</span><span style="color:#9ECBFF">.iso</span><span style="color:#9ECBFF"> of=/dev/sdX</span></span>
+<span data-line=""> </span>
+<span data-line=""><span style="color:#6A737D"># 3) الإقلاع من USB واتباع معالج التثبيت</span></span>
+<span data-line=""><span style="color:#6A737D"># 4) بعد التثبيت، افتح https://&#x3C;PVE-IP>:8006</span></span></code></pre></figure>
+<blockquote>
+<p>⚠️ المثبّت سيُـ<strong>فرّغ</strong> القرص المستهدف — احتفظ بنسخة احتياطية من جميع البيانات المهمة أولاً. لا تستخدم قرصاً يحتوي صوراً ثمينة؛ ستندم.</p>
+</blockquote>
+<h2 id="قراءة-إضافية">قراءة إضافية</h2>
+<ul>
+<li><a href="https://pve.proxmox.com/pve-docs/pve-admin-guide.html">دليل إدارة Proxmox VE الرسمي</a></li>
+<li><a href="https://pve.proxmox.com/wiki/Main_Page">ويكي Proxmox VE الرسمي</a></li>
+</ul>5:["$","aside",null,{"className":"hidden lg:block","children":["$","$L8",null,{"html":"$9"}]}]
+6:["$","script","script-0",{"src":"/_next/static/chunks/2dddb3bc05093f69.js","async":true}]
+7:["$","$La",null,{"children":["$","$b",null,{"name":"Next.MetadataOutlet","children":"$@c"}]}]
+c:null

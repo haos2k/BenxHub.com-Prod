@@ -1,0 +1,147 @@
+1:"$Sreact.fragment"
+2:I[14864,["/_next/static/chunks/7923a261b80bb6e1.js","/_next/static/chunks/e09b4358027e8033.js","/_next/static/chunks/2dddb3bc05093f69.js"],"default"]
+8:I[24801,["/_next/static/chunks/7923a261b80bb6e1.js","/_next/static/chunks/e09b4358027e8033.js","/_next/static/chunks/2dddb3bc05093f69.js"],"default"]
+a:I[50183,["/_next/static/chunks/5a5b5b13c22d14f7.js","/_next/static/chunks/a484d1d3dd4b55ab.js"],"OutletBoundary"]
+b:"$Sreact.suspense"
+3:Td9b,<p>Tu asistente no debería apagarse solo porque tu portátil decidió echarse una siesta.</p>
+<p>Este artículo te enseña a mover el Gateway a la nube para que el asistente siga disponible todo el día.</p>
+<h2 id="qué-vas-a-aprender">Qué vas a aprender</h2>
+<ul>
+<li>Dónde puede correr un Gateway</li>
+<li>Cómo hacer un despliegue básico en VPS</li>
+<li>Cómo funciona la autenticación remota</li>
+<li>Cómo usar Tailscale para una red privada segura</li>
+<li>Cuál es la diferencia entre Gateway y Node</li>
+</ul>
+<hr>
+<h2 id="dónde-puede-vivir-el-gateway">¿Dónde puede vivir el Gateway?</h2>
+<table>
+<thead>
+<tr>
+<th>Ubicación</th>
+<th>Ideal para</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td>Computadora local</td>
+<td>Pruebas personales y uso ocasional</td>
+</tr>
+<tr>
+<td>VPS / servidor en la nube</td>
+<td>Disponibilidad 24/7</td>
+</tr>
+<tr>
+<td>NAS de casa / PC vieja</td>
+<td>Siempre encendido sin pagar un VPS</td>
+</tr>
+</tbody>
+</table>
+<hr>
+<h2 id="cómo-es-la-instalación-en-un-vps">¿Cómo es la instalación en un VPS?</h2>
+<p>Entra por SSH a tu VPS, preferiblemente Ubuntu o Debian, y sigue los pasos de instalación Linux en <a href="https://docs.openclaw.ai">docs.openclaw.ai</a>. Es casi igual que instalarlo en local, solo que ocurre en otra máquina.</p>
+<hr>
+<h2 id="lo-básico-de-la-autenticación-remota">Lo básico de la autenticación remota</h2>
+<p>Cuando el Gateway está en un VPS, OpenClaw necesita confirmar que eres un usuario autorizado:</p>
+<ul>
+<li>Debes usar token o pairing de dispositivo</li>
+<li>Si ves <code>unauthorized</code>, revisa <code>gateway.bind</code> y confirma que el token es correcto</li>
+</ul>
+<hr>
+<h2 id="tailscale-es-la-opción-más-limpia">Tailscale es la opción más limpia</h2>
+<p><strong>Tailscale</strong> hace que tu móvil, tu computadora y tu VPS se sientan como si estuvieran en la misma red privada:</p>
+<ol>
+<li>Instala Tailscale tanto en el VPS como en tu computadora</li>
+<li>Configura <code>gateway.bind: tailnet</code></li>
+<li>Conéctate al Gateway a través de Tailscale desde cualquier dispositivo</li>
+</ol>
+<blockquote>
+<p>💡 Tailscale también puede dar HTTPS con Serve, normalmente más seguro que abrir un puerto sin más.</p>
+</blockquote>
+<hr>
+<h2 id="qué-es-un-node">¿Qué es un Node?</h2>
+<p>Aquí viene lo interesante: <strong>Gateway y Node pueden vivir en máquinas distintas</strong>.</p>
+<ul>
+<li><strong>Gateway</strong>: corre en el VPS y gestiona conversaciones, memoria, Telegram y toda la parte de "cerebro"</li>
+<li><strong>Node</strong>: corre en tu computadora de casa y pone las "manos": control del navegador, acceso a archivos locales y acciones sobre la pantalla</li>
+</ul>
+<p>Ejemplo real: estás fuera de casa, le escribes al asistente por Telegram y le pides abrir el navegador del PC de casa para consultar una web. El Gateway envía la tarea al Node y luego te devuelve el resultado.</p>
+<p><strong>¿Y en qué se diferencia de SSH?</strong></p>
+<p>Con SSH entras tú y escribes los comandos. Con un Node, <strong>el asistente lo hace por ti</strong>, integrado con Skills, workspaces y conversaciones.</p>
+<hr>
+<h2 id="siguiente-paso">Siguiente paso</h2>
+<p>Cuando el Gateway vive en un VPS, tu asistente queda siempre disponible. Ahora toca dejarlo <strong>trabajando solo</strong> con scheduling.</p>
+<p><a href="07-multi-agent-bindings">← Anterior: Bindings multiagente</a> | 👉 <a href="09-cron-automation">Haz que el asistente trabaje solo con Cron</a></p>0:{"buildId":"Yck3R4ooQxWkwGLT6is1X","rsc":["$","$1","c",{"children":[[["$","script",null,{"type":"application/ld+json","dangerouslySetInnerHTML":{"__html":"{\"@context\":\"https://schema.org\",\"@type\":\"Article\",\"headline\":\"¿Tu asistente desaparece cuando duermes el portátil? Mueve el Gateway a un VPS\",\"description\":\"Despliega OpenClaw Gateway en un VPS, conéctate de forma segura con Tailscale y entiende cómo se reparten el trabajo Gateway y Node.\",\"url\":\"https://benxhub.com/es/blog/openclaw/08-remote-gateway-nodes\",\"mainEntityOfPage\":{\"@type\":\"WebPage\",\"@id\":\"https://benxhub.com/es/blog/openclaw/08-remote-gateway-nodes\"},\"datePublished\":\"2026-03-08T00:00:00.000Z\",\"dateModified\":\"2026-03-08T00:00:00.000Z\",\"keywords\":\"openclaw, vps, deployment, remote, tailscale\",\"inLanguage\":\"es\",\"author\":{\"@type\":\"Person\",\"name\":\"BenX\",\"url\":\"https://benxhub.com\"},\"publisher\":{\"@type\":\"Organization\",\"name\":\"BenXHub Blog\",\"url\":\"https://benxhub.com\"}}"}}],["$","div",null,{"className":"mx-auto max-w-6xl px-4 py-12 sm:px-6","children":["$","div",null,{"className":"lg:grid lg:grid-cols-[1fr_240px] lg:gap-14","children":[["$","article",null,{"children":[["$","header",null,{"className":"mb-10","children":[["$","div",null,{"className":"mb-4 flex flex-wrap gap-2","children":[["$","$L2","openclaw",{"href":"/es/tags/openclaw","localeCookie":{"name":"NEXT_LOCALE","sameSite":"lax"},"className":"inline-flex items-center rounded-full px-2.5 py-0.5 text-xs font-medium transition-colors","style":{"background":"var(--color-code-bg)","color":"var(--color-accent)","border":"1px solid var(--color-border)"},"children":["#","openclaw"]}],["$","$L2","vps",{"href":"/es/tags/vps","localeCookie":{"name":"NEXT_LOCALE","sameSite":"lax"},"className":"inline-flex items-center rounded-full px-2.5 py-0.5 text-xs font-medium transition-colors","style":{"background":"var(--color-code-bg)","color":"var(--color-accent)","border":"1px solid var(--color-border)"},"children":["#","vps"]}],["$","$L2","deployment",{"href":"/es/tags/deployment","localeCookie":{"name":"NEXT_LOCALE","sameSite":"lax"},"className":"inline-flex items-center rounded-full px-2.5 py-0.5 text-xs font-medium transition-colors","style":{"background":"var(--color-code-bg)","color":"var(--color-accent)","border":"1px solid var(--color-border)"},"children":["#","deployment"]}],["$","$L2","remote",{"href":"/es/tags/remote","localeCookie":{"name":"NEXT_LOCALE","sameSite":"lax"},"className":"inline-flex items-center rounded-full px-2.5 py-0.5 text-xs font-medium transition-colors","style":{"background":"var(--color-code-bg)","color":"var(--color-accent)","border":"1px solid var(--color-border)"},"children":["#","remote"]}],["$","$L2","tailscale",{"href":"/es/tags/tailscale","localeCookie":{"name":"NEXT_LOCALE","sameSite":"lax"},"className":"inline-flex items-center rounded-full px-2.5 py-0.5 text-xs font-medium transition-colors","style":{"background":"var(--color-code-bg)","color":"var(--color-accent)","border":"1px solid var(--color-border)"},"children":["#","tailscale"]}]]}],["$","h1",null,{"className":"mb-4 text-3xl leading-snug font-bold tracking-tight sm:text-4xl","style":{"color":"var(--color-text)"},"children":"¿Tu asistente desaparece cuando duermes el portátil? Mueve el Gateway a un VPS"}],["$","div",null,{"className":"flex flex-wrap items-center gap-3 text-sm","style":{"color":"var(--color-muted)"},"children":[["$","time",null,{"dateTime":"2026-03-08","children":"8 3月 2026"}],["$","span",null,{"aria-hidden":"true","children":"·"}],["$","span",null,{"children":"3 min read"}]]}],"$undefined",["$","div",null,{"className":"mt-6 border-b","style":{"borderColor":"var(--color-border)"}}]]}],["$","div",null,{"className":"prose","dangerouslySetInnerHTML":{"__html":"$3"}}],"$L4"]}],"$L5"]}]}]],["$L6"],"$L7"]}],"loading":null,"isPartial":false}
+4:["$","footer",null,{"className":"mt-14 border-t pt-8","style":{"borderColor":"var(--color-border)"},"children":[["$","div",null,{"className":"mb-8 flex flex-wrap gap-2","children":[["$","$L2","openclaw",{"href":"/es/tags/openclaw","localeCookie":{"name":"NEXT_LOCALE","sameSite":"lax"},"className":"inline-flex items-center rounded-full px-3 py-1 text-sm font-medium transition-colors","style":{"background":"var(--color-code-bg)","color":"var(--color-accent)","border":"1px solid var(--color-border)"},"children":["#","openclaw"]}],["$","$L2","vps",{"href":"/es/tags/vps","localeCookie":{"name":"NEXT_LOCALE","sameSite":"lax"},"className":"inline-flex items-center rounded-full px-3 py-1 text-sm font-medium transition-colors","style":{"background":"var(--color-code-bg)","color":"var(--color-accent)","border":"1px solid var(--color-border)"},"children":["#","vps"]}],["$","$L2","deployment",{"href":"/es/tags/deployment","localeCookie":{"name":"NEXT_LOCALE","sameSite":"lax"},"className":"inline-flex items-center rounded-full px-3 py-1 text-sm font-medium transition-colors","style":{"background":"var(--color-code-bg)","color":"var(--color-accent)","border":"1px solid var(--color-border)"},"children":["#","deployment"]}],["$","$L2","remote",{"href":"/es/tags/remote","localeCookie":{"name":"NEXT_LOCALE","sameSite":"lax"},"className":"inline-flex items-center rounded-full px-3 py-1 text-sm font-medium transition-colors","style":{"background":"var(--color-code-bg)","color":"var(--color-accent)","border":"1px solid var(--color-border)"},"children":["#","remote"]}],["$","$L2","tailscale",{"href":"/es/tags/tailscale","localeCookie":{"name":"NEXT_LOCALE","sameSite":"lax"},"className":"inline-flex items-center rounded-full px-3 py-1 text-sm font-medium transition-colors","style":{"background":"var(--color-code-bg)","color":"var(--color-accent)","border":"1px solid var(--color-border)"},"children":["#","tailscale"]}]]}],["$","nav",null,{"aria-label":"Navegación de artículos","className":"grid grid-cols-1 gap-4 sm:grid-cols-2","children":[["$","$L2",null,{"href":"/es/blog/openclaw/07-multi-agent-bindings","localeCookie":{"name":"NEXT_LOCALE","sameSite":"lax"},"className":"group rounded-lg border p-4 transition-colors hover:border-accent","style":{"borderColor":"var(--color-border)","background":"var(--color-surface)"},"children":[["$","p",null,{"className":"mb-1 text-xs","style":{"color":"var(--color-muted)"},"children":"← Artículo más reciente"}],["$","p",null,{"className":"line-clamp-1 text-sm font-medium transition-colors group-hover:text-accent","style":{"color":"var(--color-text)"},"children":"Un Gateway, varios asistentes: usa Bindings para llevar cada mensaje al agente correcto"}]]}],["$","$L2",null,{"href":"/es/blog/openclaw/09-cron-automation","localeCookie":{"name":"NEXT_LOCALE","sameSite":"lax"},"className":"group rounded-lg border p-4 text-right transition-colors hover:border-accent","style":{"borderColor":"var(--color-border)","background":"var(--color-surface)"},"children":[["$","p",null,{"className":"mb-1 text-xs","style":{"color":"var(--color-muted)"},"children":"Artículo más antiguo →"}],["$","p",null,{"className":"line-clamp-1 text-sm font-medium transition-colors group-hover:text-accent","style":{"color":"var(--color-text)"},"children":"Haz que tu asistente trabaje solo: te ayuda incluso cuando no se lo pides"}]]}]]}]]}]
+9:Td9b,<p>Tu asistente no debería apagarse solo porque tu portátil decidió echarse una siesta.</p>
+<p>Este artículo te enseña a mover el Gateway a la nube para que el asistente siga disponible todo el día.</p>
+<h2 id="qué-vas-a-aprender">Qué vas a aprender</h2>
+<ul>
+<li>Dónde puede correr un Gateway</li>
+<li>Cómo hacer un despliegue básico en VPS</li>
+<li>Cómo funciona la autenticación remota</li>
+<li>Cómo usar Tailscale para una red privada segura</li>
+<li>Cuál es la diferencia entre Gateway y Node</li>
+</ul>
+<hr>
+<h2 id="dónde-puede-vivir-el-gateway">¿Dónde puede vivir el Gateway?</h2>
+<table>
+<thead>
+<tr>
+<th>Ubicación</th>
+<th>Ideal para</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td>Computadora local</td>
+<td>Pruebas personales y uso ocasional</td>
+</tr>
+<tr>
+<td>VPS / servidor en la nube</td>
+<td>Disponibilidad 24/7</td>
+</tr>
+<tr>
+<td>NAS de casa / PC vieja</td>
+<td>Siempre encendido sin pagar un VPS</td>
+</tr>
+</tbody>
+</table>
+<hr>
+<h2 id="cómo-es-la-instalación-en-un-vps">¿Cómo es la instalación en un VPS?</h2>
+<p>Entra por SSH a tu VPS, preferiblemente Ubuntu o Debian, y sigue los pasos de instalación Linux en <a href="https://docs.openclaw.ai">docs.openclaw.ai</a>. Es casi igual que instalarlo en local, solo que ocurre en otra máquina.</p>
+<hr>
+<h2 id="lo-básico-de-la-autenticación-remota">Lo básico de la autenticación remota</h2>
+<p>Cuando el Gateway está en un VPS, OpenClaw necesita confirmar que eres un usuario autorizado:</p>
+<ul>
+<li>Debes usar token o pairing de dispositivo</li>
+<li>Si ves <code>unauthorized</code>, revisa <code>gateway.bind</code> y confirma que el token es correcto</li>
+</ul>
+<hr>
+<h2 id="tailscale-es-la-opción-más-limpia">Tailscale es la opción más limpia</h2>
+<p><strong>Tailscale</strong> hace que tu móvil, tu computadora y tu VPS se sientan como si estuvieran en la misma red privada:</p>
+<ol>
+<li>Instala Tailscale tanto en el VPS como en tu computadora</li>
+<li>Configura <code>gateway.bind: tailnet</code></li>
+<li>Conéctate al Gateway a través de Tailscale desde cualquier dispositivo</li>
+</ol>
+<blockquote>
+<p>💡 Tailscale también puede dar HTTPS con Serve, normalmente más seguro que abrir un puerto sin más.</p>
+</blockquote>
+<hr>
+<h2 id="qué-es-un-node">¿Qué es un Node?</h2>
+<p>Aquí viene lo interesante: <strong>Gateway y Node pueden vivir en máquinas distintas</strong>.</p>
+<ul>
+<li><strong>Gateway</strong>: corre en el VPS y gestiona conversaciones, memoria, Telegram y toda la parte de "cerebro"</li>
+<li><strong>Node</strong>: corre en tu computadora de casa y pone las "manos": control del navegador, acceso a archivos locales y acciones sobre la pantalla</li>
+</ul>
+<p>Ejemplo real: estás fuera de casa, le escribes al asistente por Telegram y le pides abrir el navegador del PC de casa para consultar una web. El Gateway envía la tarea al Node y luego te devuelve el resultado.</p>
+<p><strong>¿Y en qué se diferencia de SSH?</strong></p>
+<p>Con SSH entras tú y escribes los comandos. Con un Node, <strong>el asistente lo hace por ti</strong>, integrado con Skills, workspaces y conversaciones.</p>
+<hr>
+<h2 id="siguiente-paso">Siguiente paso</h2>
+<p>Cuando el Gateway vive en un VPS, tu asistente queda siempre disponible. Ahora toca dejarlo <strong>trabajando solo</strong> con scheduling.</p>
+<p><a href="07-multi-agent-bindings">← Anterior: Bindings multiagente</a> | 👉 <a href="09-cron-automation">Haz que el asistente trabaje solo con Cron</a></p>5:["$","aside",null,{"className":"hidden lg:block","children":["$","$L8",null,{"html":"$9"}]}]
+6:["$","script","script-0",{"src":"/_next/static/chunks/2dddb3bc05093f69.js","async":true}]
+7:["$","$La",null,{"children":["$","$b",null,{"name":"Next.MetadataOutlet","children":"$@c"}]}]
+c:null

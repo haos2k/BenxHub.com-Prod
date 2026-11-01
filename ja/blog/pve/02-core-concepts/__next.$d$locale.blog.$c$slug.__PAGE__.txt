@@ -1,0 +1,128 @@
+1:"$Sreact.fragment"
+2:I[14864,["/_next/static/chunks/7923a261b80bb6e1.js","/_next/static/chunks/e09b4358027e8033.js","/_next/static/chunks/2dddb3bc05093f69.js"],"default"]
+8:I[24801,["/_next/static/chunks/7923a261b80bb6e1.js","/_next/static/chunks/e09b4358027e8033.js","/_next/static/chunks/2dddb3bc05093f69.js"],"default"]
+a:I[50183,["/_next/static/chunks/5a5b5b13c22d14f7.js","/_next/static/chunks/a484d1d3dd4b55ab.js"],"OutletBoundary"]
+b:"$Sreact.suspense"
+:HL["/images/posts/pve-core-concepts.jpg","image"]
+3:T1a13,<p>ボタンをクリックする前に、これら 4 つのコンセプトを頭に入れてください：「VM か LXC か、ディスクはどこに置くか、ネットワークをどう接続するか」が明確になります。ゲームをプレイする前にスキルの説明を読むようなもの — 読まないと何度も無駄死にします。</p>
+<h2 id="コンセプト-1vm-と-lxc-の違い">コンセプト 1：VM と LXC の違い</h2>
+<table>
+<thead>
+<tr>
+<th>種類</th>
+<th>技術</th>
+<th>特性</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td><strong>VM</strong></td>
+<td>KVM/QEMU</td>
+<td>フル OS、高い分離性、Windows/Linux 両方動作</td>
+</tr>
+<tr>
+<td><strong>LXC</strong></td>
+<td>Linux コンテナ</td>
+<td>軽量・高速起動・高密度、ただし <strong>Linux のみ</strong></td>
+</tr>
+</tbody>
+</table>
+<p><strong>一言で判断</strong>：完全な分離が必要か Windows を動かしたい → VM；リソースを節約したくサービスが Linux → LXC。間違えるとビーチサンダルで登山するようなもの — 不可能ではないけど苦労します。</p>
+<figure data-rehype-pretty-code-figure=""><pre style="background-color:#24292e;color:#e1e4e8" tabindex="0" data-language="bash" data-theme="github-dark"><code data-language="bash" data-theme="github-dark" style="display: grid;"><span data-line=""><span style="color:#6A737D"># VM を作成（例）</span></span>
+<span data-line=""><span style="color:#B392F0">qm</span><span style="color:#9ECBFF"> create</span><span style="color:#79B8FF"> 100</span><span style="color:#79B8FF"> --name</span><span style="color:#9ECBFF"> my-vm</span><span style="color:#79B8FF"> --memory</span><span style="color:#79B8FF"> 1024</span><span style="color:#79B8FF"> --cores</span><span style="color:#79B8FF"> 2</span></span>
+<span data-line=""> </span>
+<span data-line=""><span style="color:#6A737D"># LXC コンテナを作成（例）</span></span>
+<span data-line=""><span style="color:#B392F0">pct</span><span style="color:#9ECBFF"> create</span><span style="color:#79B8FF"> 200</span><span style="color:#9ECBFF"> local:vztmpl/debian-12-standard_12.2-1_amd64.tar.zst</span><span style="color:#79B8FF"> --hostname</span><span style="color:#9ECBFF"> my-ct</span><span style="color:#79B8FF"> --memory</span><span style="color:#79B8FF"> 512</span></span></code></pre></figure>
+<h2 id="コンセプト-2ストレージの選択が今後を決める">コンセプト 2：ストレージの選択が今後を決める</h2>
+<p>ストレージを間違えると、後で HA や移行で詰まります。よくある種類：</p>
+<ul>
+<li><strong>local</strong>：シングルノードのディレクトリ型、入門に最適</li>
+<li><strong>local-lvm</strong>：ローカル LVM、スナップショットとクローンに便利</li>
+<li><strong>NFS/CIFS</strong>：共有ネットワークストレージ、クロスノード対応</li>
+<li><strong>ZFS/Ceph</strong>：複製と高可用性のための高度なソリューション</li>
+</ul>
+<figure data-rehype-pretty-code-figure=""><pre style="background-color:#24292e;color:#e1e4e8" tabindex="0" data-language="bash" data-theme="github-dark"><code data-language="bash" data-theme="github-dark" style="display: grid;"><span data-line=""><span style="color:#6A737D"># 現在のストレージ状態を確認</span></span>
+<span data-line=""><span style="color:#B392F0">pvesm</span><span style="color:#9ECBFF"> status</span></span>
+<span data-line=""><span style="color:#B392F0">pvesm</span><span style="color:#9ECBFF"> list</span><span style="color:#9ECBFF"> local</span></span></code></pre></figure>
+<blockquote>
+<p>ライブマイグレーションや HA をする場合、ディスクは通常<strong>共有ストレージ</strong>上にある必要があります — そうでないと VM を移動できません。まるで引っ越ししようとしたが家具が他人の家に鍵かけて保管されているようなもの。</p>
+</blockquote>
+<h2 id="コンセプト-3ネットワークモデルvmbr0">コンセプト 3：ネットワークモデル（vmbr0）</h2>
+<p>PVE はデフォルトでブリッジネットワークを使用します：<code>vmbr0</code> が物理 NIC にブリッジされ、VM が物理スイッチに直接接続されているように見えます。簡単に言えば：<strong>1本の仮想ケーブル、全員が外向きの NIC を共有します。</strong></p>
+<figure data-rehype-pretty-code-figure=""><pre style="background-color:#24292e;color:#e1e4e8" tabindex="0" data-language="text" data-theme="github-dark"><code data-language="text" data-theme="github-dark" style="display: grid;"><span data-line=""><span>[物理 NIC] --> [vmbr0] --> [VM1] [VM2] [VM3]</span></span></code></pre></figure>
+<figure data-rehype-pretty-code-figure=""><pre style="background-color:#24292e;color:#e1e4e8" tabindex="0" data-language="bash" data-theme="github-dark"><code data-language="bash" data-theme="github-dark" style="display: grid;"><span data-line=""><span style="color:#6A737D"># 現在のネットワーク設定を確認</span></span>
+<span data-line=""><span style="color:#B392F0">cat</span><span style="color:#9ECBFF"> /etc/network/interfaces</span></span></code></pre></figure>
+<h2 id="コンセプト-4ノードとクラスター">コンセプト 4：ノードとクラスター</h2>
+<ul>
+<li><strong>シングルノード</strong>：1台のマシンですべてを処理、スタートアップとホームラボに適している</li>
+<li><strong>クラスター</strong>：複数のホストをまとめて管理、移行と HA をサポート — パーティーを組んでダンジョンに挑戦するようなもの</li>
+</ul>
+<figure data-rehype-pretty-code-figure=""><pre style="background-color:#24292e;color:#e1e4e8" tabindex="0" data-language="text" data-theme="github-dark"><code data-language="text" data-theme="github-dark" style="display: grid;"><span data-line=""><span>[Node1] &#x3C;--> [Node2] &#x3C;--> [Node3]</span></span>
+<span data-line=""><span>   \\_______ shared config (pmxcfs) _______//</span></span></code></pre></figure>
+<p>重要な一言：管理プレーンが統一され、リソースがスケジュール可能で、障害を引き継げる。このコンセプトを先に理解していれば、上級編がずっと分かりやすくなります。</p>
+<h2 id="次のステップ">次のステップ</h2>
+<p>コアコンセプトを消化したら、高頻度の操作へ：バックアップ・クローン・移行・スナップショット。
+👉 <a href="03-common-patterns">よくあるパターン</a></p>0:{"buildId":"Yck3R4ooQxWkwGLT6is1X","rsc":["$","$1","c",{"children":[[["$","script",null,{"type":"application/ld+json","dangerouslySetInnerHTML":{"__html":"{\"@context\":\"https://schema.org\",\"@type\":\"Article\",\"headline\":\"Proxmox VE コアコンセプト：VM・LXC・ストレージ・ネットワーク\",\"description\":\"PVE の 4 つのコアコンセプトを理解し、その後の操作と運用に必要な基礎知識を構築します。\",\"url\":\"https://benxhub.com/ja/blog/pve/02-core-concepts\",\"mainEntityOfPage\":{\"@type\":\"WebPage\",\"@id\":\"https://benxhub.com/ja/blog/pve/02-core-concepts\"},\"datePublished\":\"2026-02-24T00:00:00.000Z\",\"dateModified\":\"2026-02-24T00:00:00.000Z\",\"keywords\":\"proxmox, kvm, lxc, storage, network\",\"inLanguage\":\"ja\",\"author\":{\"@type\":\"Person\",\"name\":\"BenX\",\"url\":\"https://benxhub.com\"},\"publisher\":{\"@type\":\"Organization\",\"name\":\"BenXHub Blog\",\"url\":\"https://benxhub.com\"},\"image\":\"https://benxhub.com/images/posts/pve-core-concepts.jpg\"}"}}],["$","div",null,{"className":"mx-auto max-w-6xl px-4 py-12 sm:px-6","children":["$","div",null,{"className":"lg:grid lg:grid-cols-[1fr_240px] lg:gap-14","children":[["$","article",null,{"children":[["$","header",null,{"className":"mb-10","children":[["$","div",null,{"className":"mb-4 flex flex-wrap gap-2","children":[["$","$L2","proxmox",{"href":"/ja/tags/proxmox","localeCookie":{"name":"NEXT_LOCALE","sameSite":"lax"},"className":"inline-flex items-center rounded-full px-2.5 py-0.5 text-xs font-medium transition-colors","style":{"background":"var(--color-code-bg)","color":"var(--color-accent)","border":"1px solid var(--color-border)"},"children":["#","proxmox"]}],["$","$L2","kvm",{"href":"/ja/tags/kvm","localeCookie":{"name":"NEXT_LOCALE","sameSite":"lax"},"className":"inline-flex items-center rounded-full px-2.5 py-0.5 text-xs font-medium transition-colors","style":{"background":"var(--color-code-bg)","color":"var(--color-accent)","border":"1px solid var(--color-border)"},"children":["#","kvm"]}],["$","$L2","lxc",{"href":"/ja/tags/lxc","localeCookie":{"name":"NEXT_LOCALE","sameSite":"lax"},"className":"inline-flex items-center rounded-full px-2.5 py-0.5 text-xs font-medium transition-colors","style":{"background":"var(--color-code-bg)","color":"var(--color-accent)","border":"1px solid var(--color-border)"},"children":["#","lxc"]}],["$","$L2","storage",{"href":"/ja/tags/storage","localeCookie":{"name":"NEXT_LOCALE","sameSite":"lax"},"className":"inline-flex items-center rounded-full px-2.5 py-0.5 text-xs font-medium transition-colors","style":{"background":"var(--color-code-bg)","color":"var(--color-accent)","border":"1px solid var(--color-border)"},"children":["#","storage"]}],["$","$L2","network",{"href":"/ja/tags/network","localeCookie":{"name":"NEXT_LOCALE","sameSite":"lax"},"className":"inline-flex items-center rounded-full px-2.5 py-0.5 text-xs font-medium transition-colors","style":{"background":"var(--color-code-bg)","color":"var(--color-accent)","border":"1px solid var(--color-border)"},"children":["#","network"]}]]}],["$","h1",null,{"className":"mb-4 text-3xl leading-snug font-bold tracking-tight sm:text-4xl","style":{"color":"var(--color-text)"},"children":"Proxmox VE コアコンセプト：VM・LXC・ストレージ・ネットワーク"}],["$","div",null,{"className":"flex flex-wrap items-center gap-3 text-sm","style":{"color":"var(--color-muted)"},"children":[["$","time",null,{"dateTime":"2026-02-24","children":"2026年2月24日"}],["$","span",null,{"aria-hidden":"true","children":"·"}],["$","span",null,{"children":"4 min read"}]]}],["$","div",null,{"className":"mt-6 overflow-hidden rounded-lg","children":["$","img",null,{"src":"/images/posts/pve-core-concepts.jpg","alt":"Proxmox VE コアコンセプト：VM・LXC・ストレージ・ネットワーク","className":"w-full h-auto"}]}],["$","div",null,{"className":"mt-6 border-b","style":{"borderColor":"var(--color-border)"}}]]}],["$","div",null,{"className":"prose","dangerouslySetInnerHTML":{"__html":"$3"}}],"$L4"]}],"$L5"]}]}]],["$L6"],"$L7"]}],"loading":null,"isPartial":false}
+4:["$","footer",null,{"className":"mt-14 border-t pt-8","style":{"borderColor":"var(--color-border)"},"children":[["$","div",null,{"className":"mb-8 flex flex-wrap gap-2","children":[["$","$L2","proxmox",{"href":"/ja/tags/proxmox","localeCookie":{"name":"NEXT_LOCALE","sameSite":"lax"},"className":"inline-flex items-center rounded-full px-3 py-1 text-sm font-medium transition-colors","style":{"background":"var(--color-code-bg)","color":"var(--color-accent)","border":"1px solid var(--color-border)"},"children":["#","proxmox"]}],["$","$L2","kvm",{"href":"/ja/tags/kvm","localeCookie":{"name":"NEXT_LOCALE","sameSite":"lax"},"className":"inline-flex items-center rounded-full px-3 py-1 text-sm font-medium transition-colors","style":{"background":"var(--color-code-bg)","color":"var(--color-accent)","border":"1px solid var(--color-border)"},"children":["#","kvm"]}],["$","$L2","lxc",{"href":"/ja/tags/lxc","localeCookie":{"name":"NEXT_LOCALE","sameSite":"lax"},"className":"inline-flex items-center rounded-full px-3 py-1 text-sm font-medium transition-colors","style":{"background":"var(--color-code-bg)","color":"var(--color-accent)","border":"1px solid var(--color-border)"},"children":["#","lxc"]}],["$","$L2","storage",{"href":"/ja/tags/storage","localeCookie":{"name":"NEXT_LOCALE","sameSite":"lax"},"className":"inline-flex items-center rounded-full px-3 py-1 text-sm font-medium transition-colors","style":{"background":"var(--color-code-bg)","color":"var(--color-accent)","border":"1px solid var(--color-border)"},"children":["#","storage"]}],["$","$L2","network",{"href":"/ja/tags/network","localeCookie":{"name":"NEXT_LOCALE","sameSite":"lax"},"className":"inline-flex items-center rounded-full px-3 py-1 text-sm font-medium transition-colors","style":{"background":"var(--color-code-bg)","color":"var(--color-accent)","border":"1px solid var(--color-border)"},"children":["#","network"]}]]}],["$","nav",null,{"aria-label":"記事ナビゲーション","className":"grid grid-cols-1 gap-4 sm:grid-cols-2","children":[["$","$L2",null,{"href":"/ja/blog/pve/01-quick-start","localeCookie":{"name":"NEXT_LOCALE","sameSite":"lax"},"className":"group rounded-lg border p-4 transition-colors hover:border-accent","style":{"borderColor":"var(--color-border)","background":"var(--color-surface)"},"children":[["$","p",null,{"className":"mb-1 text-xs","style":{"color":"var(--color-muted)"},"children":"← 新しい記事"}],["$","p",null,{"className":"line-clamp-1 text-sm font-medium transition-colors group-hover:text-accent","style":{"color":"var(--color-text)"},"children":"Proxmox VE クイックスタート：最初の VM を作成する"}]]}],["$","$L2",null,{"href":"/ja/blog/pve/03-common-patterns","localeCookie":{"name":"NEXT_LOCALE","sameSite":"lax"},"className":"group rounded-lg border p-4 text-right transition-colors hover:border-accent","style":{"borderColor":"var(--color-border)","background":"var(--color-surface)"},"children":[["$","p",null,{"className":"mb-1 text-xs","style":{"color":"var(--color-muted)"},"children":"古い記事 →"}],["$","p",null,{"className":"line-clamp-1 text-sm font-medium transition-colors group-hover:text-accent","style":{"color":"var(--color-text)"},"children":"Proxmox VE よくあるパターン：バックアップ・クローン・移行"}]]}]]}]]}]
+9:T1a13,<p>ボタンをクリックする前に、これら 4 つのコンセプトを頭に入れてください：「VM か LXC か、ディスクはどこに置くか、ネットワークをどう接続するか」が明確になります。ゲームをプレイする前にスキルの説明を読むようなもの — 読まないと何度も無駄死にします。</p>
+<h2 id="コンセプト-1vm-と-lxc-の違い">コンセプト 1：VM と LXC の違い</h2>
+<table>
+<thead>
+<tr>
+<th>種類</th>
+<th>技術</th>
+<th>特性</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td><strong>VM</strong></td>
+<td>KVM/QEMU</td>
+<td>フル OS、高い分離性、Windows/Linux 両方動作</td>
+</tr>
+<tr>
+<td><strong>LXC</strong></td>
+<td>Linux コンテナ</td>
+<td>軽量・高速起動・高密度、ただし <strong>Linux のみ</strong></td>
+</tr>
+</tbody>
+</table>
+<p><strong>一言で判断</strong>：完全な分離が必要か Windows を動かしたい → VM；リソースを節約したくサービスが Linux → LXC。間違えるとビーチサンダルで登山するようなもの — 不可能ではないけど苦労します。</p>
+<figure data-rehype-pretty-code-figure=""><pre style="background-color:#24292e;color:#e1e4e8" tabindex="0" data-language="bash" data-theme="github-dark"><code data-language="bash" data-theme="github-dark" style="display: grid;"><span data-line=""><span style="color:#6A737D"># VM を作成（例）</span></span>
+<span data-line=""><span style="color:#B392F0">qm</span><span style="color:#9ECBFF"> create</span><span style="color:#79B8FF"> 100</span><span style="color:#79B8FF"> --name</span><span style="color:#9ECBFF"> my-vm</span><span style="color:#79B8FF"> --memory</span><span style="color:#79B8FF"> 1024</span><span style="color:#79B8FF"> --cores</span><span style="color:#79B8FF"> 2</span></span>
+<span data-line=""> </span>
+<span data-line=""><span style="color:#6A737D"># LXC コンテナを作成（例）</span></span>
+<span data-line=""><span style="color:#B392F0">pct</span><span style="color:#9ECBFF"> create</span><span style="color:#79B8FF"> 200</span><span style="color:#9ECBFF"> local:vztmpl/debian-12-standard_12.2-1_amd64.tar.zst</span><span style="color:#79B8FF"> --hostname</span><span style="color:#9ECBFF"> my-ct</span><span style="color:#79B8FF"> --memory</span><span style="color:#79B8FF"> 512</span></span></code></pre></figure>
+<h2 id="コンセプト-2ストレージの選択が今後を決める">コンセプト 2：ストレージの選択が今後を決める</h2>
+<p>ストレージを間違えると、後で HA や移行で詰まります。よくある種類：</p>
+<ul>
+<li><strong>local</strong>：シングルノードのディレクトリ型、入門に最適</li>
+<li><strong>local-lvm</strong>：ローカル LVM、スナップショットとクローンに便利</li>
+<li><strong>NFS/CIFS</strong>：共有ネットワークストレージ、クロスノード対応</li>
+<li><strong>ZFS/Ceph</strong>：複製と高可用性のための高度なソリューション</li>
+</ul>
+<figure data-rehype-pretty-code-figure=""><pre style="background-color:#24292e;color:#e1e4e8" tabindex="0" data-language="bash" data-theme="github-dark"><code data-language="bash" data-theme="github-dark" style="display: grid;"><span data-line=""><span style="color:#6A737D"># 現在のストレージ状態を確認</span></span>
+<span data-line=""><span style="color:#B392F0">pvesm</span><span style="color:#9ECBFF"> status</span></span>
+<span data-line=""><span style="color:#B392F0">pvesm</span><span style="color:#9ECBFF"> list</span><span style="color:#9ECBFF"> local</span></span></code></pre></figure>
+<blockquote>
+<p>ライブマイグレーションや HA をする場合、ディスクは通常<strong>共有ストレージ</strong>上にある必要があります — そうでないと VM を移動できません。まるで引っ越ししようとしたが家具が他人の家に鍵かけて保管されているようなもの。</p>
+</blockquote>
+<h2 id="コンセプト-3ネットワークモデルvmbr0">コンセプト 3：ネットワークモデル（vmbr0）</h2>
+<p>PVE はデフォルトでブリッジネットワークを使用します：<code>vmbr0</code> が物理 NIC にブリッジされ、VM が物理スイッチに直接接続されているように見えます。簡単に言えば：<strong>1本の仮想ケーブル、全員が外向きの NIC を共有します。</strong></p>
+<figure data-rehype-pretty-code-figure=""><pre style="background-color:#24292e;color:#e1e4e8" tabindex="0" data-language="text" data-theme="github-dark"><code data-language="text" data-theme="github-dark" style="display: grid;"><span data-line=""><span>[物理 NIC] --> [vmbr0] --> [VM1] [VM2] [VM3]</span></span></code></pre></figure>
+<figure data-rehype-pretty-code-figure=""><pre style="background-color:#24292e;color:#e1e4e8" tabindex="0" data-language="bash" data-theme="github-dark"><code data-language="bash" data-theme="github-dark" style="display: grid;"><span data-line=""><span style="color:#6A737D"># 現在のネットワーク設定を確認</span></span>
+<span data-line=""><span style="color:#B392F0">cat</span><span style="color:#9ECBFF"> /etc/network/interfaces</span></span></code></pre></figure>
+<h2 id="コンセプト-4ノードとクラスター">コンセプト 4：ノードとクラスター</h2>
+<ul>
+<li><strong>シングルノード</strong>：1台のマシンですべてを処理、スタートアップとホームラボに適している</li>
+<li><strong>クラスター</strong>：複数のホストをまとめて管理、移行と HA をサポート — パーティーを組んでダンジョンに挑戦するようなもの</li>
+</ul>
+<figure data-rehype-pretty-code-figure=""><pre style="background-color:#24292e;color:#e1e4e8" tabindex="0" data-language="text" data-theme="github-dark"><code data-language="text" data-theme="github-dark" style="display: grid;"><span data-line=""><span>[Node1] &#x3C;--> [Node2] &#x3C;--> [Node3]</span></span>
+<span data-line=""><span>   \\_______ shared config (pmxcfs) _______//</span></span></code></pre></figure>
+<p>重要な一言：管理プレーンが統一され、リソースがスケジュール可能で、障害を引き継げる。このコンセプトを先に理解していれば、上級編がずっと分かりやすくなります。</p>
+<h2 id="次のステップ">次のステップ</h2>
+<p>コアコンセプトを消化したら、高頻度の操作へ：バックアップ・クローン・移行・スナップショット。
+👉 <a href="03-common-patterns">よくあるパターン</a></p>5:["$","aside",null,{"className":"hidden lg:block","children":["$","$L8",null,{"html":"$9"}]}]
+6:["$","script","script-0",{"src":"/_next/static/chunks/2dddb3bc05093f69.js","async":true}]
+7:["$","$La",null,{"children":["$","$b",null,{"name":"Next.MetadataOutlet","children":"$@c"}]}]
+c:null

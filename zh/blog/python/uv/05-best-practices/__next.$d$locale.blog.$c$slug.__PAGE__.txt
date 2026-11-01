@@ -1,0 +1,86 @@
+1:"$Sreact.fragment"
+2:I[14864,["/_next/static/chunks/7923a261b80bb6e1.js","/_next/static/chunks/e09b4358027e8033.js","/_next/static/chunks/2dddb3bc05093f69.js"],"default"]
+8:I[24801,["/_next/static/chunks/7923a261b80bb6e1.js","/_next/static/chunks/e09b4358027e8033.js","/_next/static/chunks/2dddb3bc05093f69.js"],"default"]
+a:I[50183,["/_next/static/chunks/5a5b5b13c22d14f7.js","/_next/static/chunks/a484d1d3dd4b55ab.js"],"OutletBoundary"]
+b:"$Sreact.suspense"
+:HL["/images/posts/uv-best-practices.jpg","image"]
+3:T1205,<p>進到實際維運後，搞掛環境的往往不是「uv 不夠強」，而是<strong>流程跟習慣</strong>。下面這份清單可以直接當日常準則用——少踩一次雷，就多一次準時下班。</p>
+<h2 id="推薦做法">推薦做法</h2>
+<h3 id="1-uvlock-一定要-commit">1) uv.lock 一定要 commit</h3>
+<p>lockfile 是重現性的基礎。不 commit 等於每人、每台機器、每次 CI 可能裝出不同依賴，重現 bug 會地獄難度。沒 lockfile 的專案，就像沒試穿過的新鞋，上戰場才知道磨腳。</p>
+<h3 id="2-venv-不要-commit">2) .venv 不要 commit</h3>
+<p>虛擬環境是本地產物，應該在 <code>.gitignore</code>。uv 會自動把 <code>.venv</code> 加進專案 ignore，確認一下就好。</p>
+<h3 id="3-依賴能鎖就鎖">3) 依賴能鎖就鎖</h3>
+<p><code>pyproject.toml</code> 裡避免裸寫 <code>requests</code>，盡量寫 <code>requests>=2.31,&#x3C;3</code> 或更精確。<code>uv add</code> 預設會加合理約束，手動改時別放太寬。</p>
+<h3 id="4-ci-用-uv-sync-或-uv-pip-sync">4) CI 用 uv sync 或 uv pip sync</h3>
+<figure data-rehype-pretty-code-figure=""><pre style="background-color:#24292e;color:#e1e4e8" tabindex="0" data-language="yaml" data-theme="github-dark"><code data-language="yaml" data-theme="github-dark" style="display: grid;"><span data-line=""><span style="color:#6A737D"># GitHub Actions 範例</span></span>
+<span data-line=""><span style="color:#E1E4E8">- </span><span style="color:#85E89D">run</span><span style="color:#E1E4E8">: </span><span style="color:#9ECBFF">uv sync</span></span>
+<span data-line=""><span style="color:#E1E4E8">- </span><span style="color:#85E89D">run</span><span style="color:#E1E4E8">: </span><span style="color:#9ECBFF">uv run pytest</span></span></code></pre></figure>
+<p>先 sync 再跑，確保環境與 lockfile 一致。別在 CI 裡 <code>uv add</code>，那會改 lockfile，容易造成非預期 diff。</p>
+<h3 id="5-開發工具放-optional--dev">5) 開發工具放 optional / dev</h3>
+<figure data-rehype-pretty-code-figure=""><pre style="background-color:#24292e;color:#e1e4e8" tabindex="0" data-language="bash" data-theme="github-dark"><code data-language="bash" data-theme="github-dark" style="display: grid;"><span data-line=""><span style="color:#B392F0">uv</span><span style="color:#9ECBFF"> add</span><span style="color:#79B8FF"> --dev</span><span style="color:#9ECBFF"> pytest</span><span style="color:#9ECBFF"> ruff</span><span style="color:#9ECBFF"> mypy</span></span></code></pre></figure>
+<p>測試、lint、型別檢查不影響生產依賴，也不會被打進 wheel。生產 image 只需要 <code>uv sync --no-dev</code>。</p>
+<h2 id="常見誤區">常見誤區</h2>
+<h3 id="誤區-1混用-pip-跟-uv-add">誤區 1：混用 pip 跟 uv add</h3>
+<p>同一個 venv 裡不要又 <code>pip install</code> 又 <code>uv add</code>，lockfile 會對不上。選一條路走到底。</p>
+<h3 id="誤區-2把-uvx-當專案工具用">誤區 2：把 uvx 當專案工具用</h3>
+<p>專案要固定版本的工具（如 pytest、mypy）→ 用 <code>uv add --dev</code> + <code>uv run</code>。<br>
+臨時試一下、一次性腳本 → 用 <code>uvx</code>。</p>
+<h3 id="誤區-3不讀-pyprojecttoml-就手動改">誤區 3：不讀 pyproject.toml 就手動改</h3>
+<p>改依賴盡量用 <code>uv add</code> / <code>uv remove</code>，避免格式跑掉或漏更新 lockfile。</p>
+<h3 id="誤區-4ci-不安裝-uv">誤區 4：CI 不安裝 uv</h3>
+<p>很多 CI 現在支援 uv，安裝快、執行更快。用官方 installer 或 <code>pip install uv</code> 都可，別堅持用 pip 解鎖依賴到天荒地老。</p>
+<h3 id="誤區-5專案不用-requires-python">誤區 5：專案不用 requires-python</h3>
+<p>在 <code>pyproject.toml</code> 標明 <code>requires-python = ">=3.12"</code> 等，讓工具跟協作者知道最低版本，避免「我這 3.12 能跑你那 3.8 爆」的慘劇。</p>
+<hr>
+<p>照這份清單做，不敢說零故障，但至少少走很多彎路。有問題再翻官方文件，多數坑都有人踩過了。<br>
+祝開發順利，依賴乖乖裝、測試都綠燈、CI 不再等你等到天荒地老～ 🦦<br>
+（對了，用 uv 之後你會發現：等 pip 轉圈圈的時間，夠你撸三輪貓了。）</p>
+<h2 id="延伸閱讀">延伸閱讀</h2>
+<ul>
+<li><a href="https://docs.astral.sh/uv/">uv 官方文件</a></li>
+<li><a href="https://peps.python.org/pep-0518/">PEP 517/518 – pyproject.toml 規範</a></li>
+<li><a href="https://peps.python.org/pep-0723/">PEP 723 – Inline script metadata</a></li>
+</ul>0:{"buildId":"Yck3R4ooQxWkwGLT6is1X","rsc":["$","$1","c",{"children":[[["$","script",null,{"type":"application/ld+json","dangerouslySetInnerHTML":{"__html":"{\"@context\":\"https://schema.org\",\"@type\":\"Article\",\"headline\":\"Python uv 最佳實踐：穩定性與協作清單\",\"description\":\"整理 uv 長期維運的推薦做法與常見誤區，幫你降低故障率與協作摩擦。\",\"url\":\"https://benxhub.com/zh/blog/python/uv/05-best-practices\",\"mainEntityOfPage\":{\"@type\":\"WebPage\",\"@id\":\"https://benxhub.com/zh/blog/python/uv/05-best-practices\"},\"datePublished\":\"2026-02-27T00:00:00.000Z\",\"dateModified\":\"2026-02-27T00:00:00.000Z\",\"keywords\":\"python, uv, best-practices, pyproject, ci\",\"inLanguage\":\"zh\",\"author\":{\"@type\":\"Person\",\"name\":\"BenX\",\"url\":\"https://benxhub.com\"},\"publisher\":{\"@type\":\"Organization\",\"name\":\"BenXHub Blog\",\"url\":\"https://benxhub.com\"},\"image\":\"https://benxhub.com/images/posts/uv-best-practices.jpg\"}"}}],["$","div",null,{"className":"mx-auto max-w-6xl px-4 py-12 sm:px-6","children":["$","div",null,{"className":"lg:grid lg:grid-cols-[1fr_240px] lg:gap-14","children":[["$","article",null,{"children":[["$","header",null,{"className":"mb-10","children":[["$","div",null,{"className":"mb-4 flex flex-wrap gap-2","children":[["$","$L2","python",{"href":"/zh/tags/python","localeCookie":{"name":"NEXT_LOCALE","sameSite":"lax"},"className":"inline-flex items-center rounded-full px-2.5 py-0.5 text-xs font-medium transition-colors","style":{"background":"var(--color-code-bg)","color":"var(--color-accent)","border":"1px solid var(--color-border)"},"children":["#","python"]}],["$","$L2","uv",{"href":"/zh/tags/uv","localeCookie":{"name":"NEXT_LOCALE","sameSite":"lax"},"className":"inline-flex items-center rounded-full px-2.5 py-0.5 text-xs font-medium transition-colors","style":{"background":"var(--color-code-bg)","color":"var(--color-accent)","border":"1px solid var(--color-border)"},"children":["#","uv"]}],["$","$L2","best-practices",{"href":"/zh/tags/best-practices","localeCookie":{"name":"NEXT_LOCALE","sameSite":"lax"},"className":"inline-flex items-center rounded-full px-2.5 py-0.5 text-xs font-medium transition-colors","style":{"background":"var(--color-code-bg)","color":"var(--color-accent)","border":"1px solid var(--color-border)"},"children":["#","best-practices"]}],["$","$L2","pyproject",{"href":"/zh/tags/pyproject","localeCookie":{"name":"NEXT_LOCALE","sameSite":"lax"},"className":"inline-flex items-center rounded-full px-2.5 py-0.5 text-xs font-medium transition-colors","style":{"background":"var(--color-code-bg)","color":"var(--color-accent)","border":"1px solid var(--color-border)"},"children":["#","pyproject"]}],["$","$L2","ci",{"href":"/zh/tags/ci","localeCookie":{"name":"NEXT_LOCALE","sameSite":"lax"},"className":"inline-flex items-center rounded-full px-2.5 py-0.5 text-xs font-medium transition-colors","style":{"background":"var(--color-code-bg)","color":"var(--color-accent)","border":"1px solid var(--color-border)"},"children":["#","ci"]}]]}],["$","h1",null,{"className":"mb-4 text-3xl leading-snug font-bold tracking-tight sm:text-4xl","style":{"color":"var(--color-text)"},"children":"Python uv 最佳實踐：穩定性與協作清單"}],["$","div",null,{"className":"flex flex-wrap items-center gap-3 text-sm","style":{"color":"var(--color-muted)"},"children":[["$","time",null,{"dateTime":"2026-02-27","children":"2026 年 2 月 27 日"}],["$","span",null,{"aria-hidden":"true","children":"·"}],["$","span",null,{"children":"4 min read"}]]}],["$","div",null,{"className":"mt-6 overflow-hidden rounded-lg","children":["$","img",null,{"src":"/images/posts/uv-best-practices.jpg","alt":"Python uv 最佳實踐：穩定性與協作清單","className":"w-full h-auto"}]}],["$","div",null,{"className":"mt-6 border-b","style":{"borderColor":"var(--color-border)"}}]]}],["$","div",null,{"className":"prose","dangerouslySetInnerHTML":{"__html":"$3"}}],"$L4"]}],"$L5"]}]}]],["$L6"],"$L7"]}],"loading":null,"isPartial":false}
+4:["$","footer",null,{"className":"mt-14 border-t pt-8","style":{"borderColor":"var(--color-border)"},"children":[["$","div",null,{"className":"mb-8 flex flex-wrap gap-2","children":[["$","$L2","python",{"href":"/zh/tags/python","localeCookie":{"name":"NEXT_LOCALE","sameSite":"lax"},"className":"inline-flex items-center rounded-full px-3 py-1 text-sm font-medium transition-colors","style":{"background":"var(--color-code-bg)","color":"var(--color-accent)","border":"1px solid var(--color-border)"},"children":["#","python"]}],["$","$L2","uv",{"href":"/zh/tags/uv","localeCookie":{"name":"NEXT_LOCALE","sameSite":"lax"},"className":"inline-flex items-center rounded-full px-3 py-1 text-sm font-medium transition-colors","style":{"background":"var(--color-code-bg)","color":"var(--color-accent)","border":"1px solid var(--color-border)"},"children":["#","uv"]}],["$","$L2","best-practices",{"href":"/zh/tags/best-practices","localeCookie":{"name":"NEXT_LOCALE","sameSite":"lax"},"className":"inline-flex items-center rounded-full px-3 py-1 text-sm font-medium transition-colors","style":{"background":"var(--color-code-bg)","color":"var(--color-accent)","border":"1px solid var(--color-border)"},"children":["#","best-practices"]}],["$","$L2","pyproject",{"href":"/zh/tags/pyproject","localeCookie":{"name":"NEXT_LOCALE","sameSite":"lax"},"className":"inline-flex items-center rounded-full px-3 py-1 text-sm font-medium transition-colors","style":{"background":"var(--color-code-bg)","color":"var(--color-accent)","border":"1px solid var(--color-border)"},"children":["#","pyproject"]}],["$","$L2","ci",{"href":"/zh/tags/ci","localeCookie":{"name":"NEXT_LOCALE","sameSite":"lax"},"className":"inline-flex items-center rounded-full px-3 py-1 text-sm font-medium transition-colors","style":{"background":"var(--color-code-bg)","color":"var(--color-accent)","border":"1px solid var(--color-border)"},"children":["#","ci"]}]]}],["$","nav",null,{"aria-label":"文章導覽","className":"grid grid-cols-1 gap-4 sm:grid-cols-2","children":[["$","$L2",null,{"href":"/zh/blog/python/uv/04-advanced","localeCookie":{"name":"NEXT_LOCALE","sameSite":"lax"},"className":"group rounded-lg border p-4 transition-colors hover:border-accent","style":{"borderColor":"var(--color-border)","background":"var(--color-surface)"},"children":[["$","p",null,{"className":"mb-1 text-xs","style":{"color":"var(--color-muted)"},"children":"← 較新文章"}],["$","p",null,{"className":"line-clamp-1 text-sm font-medium transition-colors group-hover:text-accent","style":{"color":"var(--color-text)"},"children":"Python uv 進階實務：Python 版本、pip 介面與工具安裝"}]]}],["$","$L2",null,{"href":"/zh/blog/cursor/cli/00-overview","localeCookie":{"name":"NEXT_LOCALE","sameSite":"lax"},"className":"group rounded-lg border p-4 text-right transition-colors hover:border-accent","style":{"borderColor":"var(--color-border)","background":"var(--color-surface)"},"children":[["$","p",null,{"className":"mb-1 text-xs","style":{"color":"var(--color-muted)"},"children":"較舊文章 →"}],["$","p",null,{"className":"line-clamp-1 text-sm font-medium transition-colors group-hover:text-accent","style":{"color":"var(--color-text)"},"children":"Cursor CLI 完整教學系列 — 終端機裡的 AI 助手"}]]}]]}]]}]
+9:T1205,<p>進到實際維運後，搞掛環境的往往不是「uv 不夠強」，而是<strong>流程跟習慣</strong>。下面這份清單可以直接當日常準則用——少踩一次雷，就多一次準時下班。</p>
+<h2 id="推薦做法">推薦做法</h2>
+<h3 id="1-uvlock-一定要-commit">1) uv.lock 一定要 commit</h3>
+<p>lockfile 是重現性的基礎。不 commit 等於每人、每台機器、每次 CI 可能裝出不同依賴，重現 bug 會地獄難度。沒 lockfile 的專案，就像沒試穿過的新鞋，上戰場才知道磨腳。</p>
+<h3 id="2-venv-不要-commit">2) .venv 不要 commit</h3>
+<p>虛擬環境是本地產物，應該在 <code>.gitignore</code>。uv 會自動把 <code>.venv</code> 加進專案 ignore，確認一下就好。</p>
+<h3 id="3-依賴能鎖就鎖">3) 依賴能鎖就鎖</h3>
+<p><code>pyproject.toml</code> 裡避免裸寫 <code>requests</code>，盡量寫 <code>requests>=2.31,&#x3C;3</code> 或更精確。<code>uv add</code> 預設會加合理約束，手動改時別放太寬。</p>
+<h3 id="4-ci-用-uv-sync-或-uv-pip-sync">4) CI 用 uv sync 或 uv pip sync</h3>
+<figure data-rehype-pretty-code-figure=""><pre style="background-color:#24292e;color:#e1e4e8" tabindex="0" data-language="yaml" data-theme="github-dark"><code data-language="yaml" data-theme="github-dark" style="display: grid;"><span data-line=""><span style="color:#6A737D"># GitHub Actions 範例</span></span>
+<span data-line=""><span style="color:#E1E4E8">- </span><span style="color:#85E89D">run</span><span style="color:#E1E4E8">: </span><span style="color:#9ECBFF">uv sync</span></span>
+<span data-line=""><span style="color:#E1E4E8">- </span><span style="color:#85E89D">run</span><span style="color:#E1E4E8">: </span><span style="color:#9ECBFF">uv run pytest</span></span></code></pre></figure>
+<p>先 sync 再跑，確保環境與 lockfile 一致。別在 CI 裡 <code>uv add</code>，那會改 lockfile，容易造成非預期 diff。</p>
+<h3 id="5-開發工具放-optional--dev">5) 開發工具放 optional / dev</h3>
+<figure data-rehype-pretty-code-figure=""><pre style="background-color:#24292e;color:#e1e4e8" tabindex="0" data-language="bash" data-theme="github-dark"><code data-language="bash" data-theme="github-dark" style="display: grid;"><span data-line=""><span style="color:#B392F0">uv</span><span style="color:#9ECBFF"> add</span><span style="color:#79B8FF"> --dev</span><span style="color:#9ECBFF"> pytest</span><span style="color:#9ECBFF"> ruff</span><span style="color:#9ECBFF"> mypy</span></span></code></pre></figure>
+<p>測試、lint、型別檢查不影響生產依賴，也不會被打進 wheel。生產 image 只需要 <code>uv sync --no-dev</code>。</p>
+<h2 id="常見誤區">常見誤區</h2>
+<h3 id="誤區-1混用-pip-跟-uv-add">誤區 1：混用 pip 跟 uv add</h3>
+<p>同一個 venv 裡不要又 <code>pip install</code> 又 <code>uv add</code>，lockfile 會對不上。選一條路走到底。</p>
+<h3 id="誤區-2把-uvx-當專案工具用">誤區 2：把 uvx 當專案工具用</h3>
+<p>專案要固定版本的工具（如 pytest、mypy）→ 用 <code>uv add --dev</code> + <code>uv run</code>。<br>
+臨時試一下、一次性腳本 → 用 <code>uvx</code>。</p>
+<h3 id="誤區-3不讀-pyprojecttoml-就手動改">誤區 3：不讀 pyproject.toml 就手動改</h3>
+<p>改依賴盡量用 <code>uv add</code> / <code>uv remove</code>，避免格式跑掉或漏更新 lockfile。</p>
+<h3 id="誤區-4ci-不安裝-uv">誤區 4：CI 不安裝 uv</h3>
+<p>很多 CI 現在支援 uv，安裝快、執行更快。用官方 installer 或 <code>pip install uv</code> 都可，別堅持用 pip 解鎖依賴到天荒地老。</p>
+<h3 id="誤區-5專案不用-requires-python">誤區 5：專案不用 requires-python</h3>
+<p>在 <code>pyproject.toml</code> 標明 <code>requires-python = ">=3.12"</code> 等，讓工具跟協作者知道最低版本，避免「我這 3.12 能跑你那 3.8 爆」的慘劇。</p>
+<hr>
+<p>照這份清單做，不敢說零故障，但至少少走很多彎路。有問題再翻官方文件，多數坑都有人踩過了。<br>
+祝開發順利，依賴乖乖裝、測試都綠燈、CI 不再等你等到天荒地老～ 🦦<br>
+（對了，用 uv 之後你會發現：等 pip 轉圈圈的時間，夠你撸三輪貓了。）</p>
+<h2 id="延伸閱讀">延伸閱讀</h2>
+<ul>
+<li><a href="https://docs.astral.sh/uv/">uv 官方文件</a></li>
+<li><a href="https://peps.python.org/pep-0518/">PEP 517/518 – pyproject.toml 規範</a></li>
+<li><a href="https://peps.python.org/pep-0723/">PEP 723 – Inline script metadata</a></li>
+</ul>5:["$","aside",null,{"className":"hidden lg:block","children":["$","$L8",null,{"html":"$9"}]}]
+6:["$","script","script-0",{"src":"/_next/static/chunks/2dddb3bc05093f69.js","async":true}]
+7:["$","$La",null,{"children":["$","$b",null,{"name":"Next.MetadataOutlet","children":"$@c"}]}]
+c:null

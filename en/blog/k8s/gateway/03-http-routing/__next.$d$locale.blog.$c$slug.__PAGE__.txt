@@ -1,0 +1,417 @@
+1:"$Sreact.fragment"
+2:I[14864,["/_next/static/chunks/7923a261b80bb6e1.js","/_next/static/chunks/e09b4358027e8033.js","/_next/static/chunks/2dddb3bc05093f69.js"],"default"]
+8:I[24801,["/_next/static/chunks/7923a261b80bb6e1.js","/_next/static/chunks/e09b4358027e8033.js","/_next/static/chunks/2dddb3bc05093f69.js"],"default"]
+a:I[50183,["/_next/static/chunks/5a5b5b13c22d14f7.js","/_next/static/chunks/a484d1d3dd4b55ab.js"],"OutletBoundary"]
+b:"$Sreact.suspense"
+3:T63f3,<p>The first two posts gave you the "what is this thing" foundation. This one gets into what you'll actually be editing day-to-day: <code>HTTPRoute</code>.</p>
+<p>Think of <code>HTTPRoute</code> as a routing script for incoming traffic — except instead of writing Nginx rules or memorizing controller annotations, you're using Kubernetes-native resources.</p>
+<p>One thing to get clear first: this post only covers <code>HTTPRoute</code>, because it handles HTTP/HTTPS semantics. For gRPC, you'd lean toward <code>GRPCRoute</code>; for raw TCP, <code>TCPRoute</code>; for TLS passthrough, <code>TLSRoute</code>. Don't force everything into <code>HTTPRoute</code> — the YAML starts giving off a "making do" vibe.</p>
+<h2 id="the-most-common-routing-host-and-path">The Most Common Routing: Host and Path</h2>
+<p>Here's the most typical example:</p>
+<figure data-rehype-pretty-code-figure=""><pre style="background-color:#24292e;color:#e1e4e8" tabindex="0" data-language="yaml" data-theme="github-dark"><code data-language="yaml" data-theme="github-dark" style="display: grid;"><span data-line=""><span style="color:#85E89D">apiVersion</span><span style="color:#E1E4E8">: </span><span style="color:#9ECBFF">gateway.networking.k8s.io/v1</span></span>
+<span data-line=""><span style="color:#85E89D">kind</span><span style="color:#E1E4E8">: </span><span style="color:#9ECBFF">HTTPRoute</span></span>
+<span data-line=""><span style="color:#85E89D">metadata</span><span style="color:#E1E4E8">:</span></span>
+<span data-line=""><span style="color:#85E89D">  name</span><span style="color:#E1E4E8">: </span><span style="color:#9ECBFF">app-route</span></span>
+<span data-line=""><span style="color:#85E89D">spec</span><span style="color:#E1E4E8">:</span></span>
+<span data-line=""><span style="color:#85E89D">  parentRefs</span><span style="color:#E1E4E8">:</span></span>
+<span data-line=""><span style="color:#E1E4E8">    - </span><span style="color:#85E89D">name</span><span style="color:#E1E4E8">: </span><span style="color:#9ECBFF">eg</span></span>
+<span data-line=""><span style="color:#85E89D">  hostnames</span><span style="color:#E1E4E8">:</span></span>
+<span data-line=""><span style="color:#E1E4E8">    - </span><span style="color:#9ECBFF">"app.example.com"</span></span>
+<span data-line=""><span style="color:#85E89D">  rules</span><span style="color:#E1E4E8">:</span></span>
+<span data-line=""><span style="color:#E1E4E8">    - </span><span style="color:#85E89D">matches</span><span style="color:#E1E4E8">:</span></span>
+<span data-line=""><span style="color:#E1E4E8">        - </span><span style="color:#85E89D">path</span><span style="color:#E1E4E8">:</span></span>
+<span data-line=""><span style="color:#85E89D">            type</span><span style="color:#E1E4E8">: </span><span style="color:#9ECBFF">PathPrefix</span></span>
+<span data-line=""><span style="color:#85E89D">            value</span><span style="color:#E1E4E8">: </span><span style="color:#9ECBFF">/api</span></span>
+<span data-line=""><span style="color:#85E89D">      backendRefs</span><span style="color:#E1E4E8">:</span></span>
+<span data-line=""><span style="color:#E1E4E8">        - </span><span style="color:#85E89D">name</span><span style="color:#E1E4E8">: </span><span style="color:#9ECBFF">api-service</span></span>
+<span data-line=""><span style="color:#85E89D">          port</span><span style="color:#E1E4E8">: </span><span style="color:#79B8FF">8080</span></span></code></pre></figure>
+<p>What this means:</p>
+<ul>
+<li>Only <code>Host: app.example.com</code> will match this route</li>
+<li>Path must start with <code>/api</code></li>
+<li>Traffic is forwarded to <code>api-service:8080</code></li>
+</ul>
+<p>If you remove <code>hostnames</code>, the route becomes "path-only, any domain."</p>
+<h2 id="what-matches-can-match">What <code>matches</code> Can Match</h2>
+<p><code>matches</code> is one of the most central concepts in <code>HTTPRoute</code>.
+Think of it as "what conditions trigger this rule."</p>
+<p>Common match conditions:</p>
+<ul>
+<li><code>path</code></li>
+<li><code>headers</code></li>
+<li><code>queryParams</code></li>
+<li><code>method</code></li>
+</ul>
+<p>Example:</p>
+<figure data-rehype-pretty-code-figure=""><pre style="background-color:#24292e;color:#e1e4e8" tabindex="0" data-language="yaml" data-theme="github-dark"><code data-language="yaml" data-theme="github-dark" style="display: grid;"><span data-line=""><span style="color:#85E89D">matches</span><span style="color:#E1E4E8">:</span></span>
+<span data-line=""><span style="color:#E1E4E8">  - </span><span style="color:#85E89D">method</span><span style="color:#E1E4E8">: </span><span style="color:#9ECBFF">GET</span></span>
+<span data-line=""><span style="color:#85E89D">    path</span><span style="color:#E1E4E8">:</span></span>
+<span data-line=""><span style="color:#85E89D">      type</span><span style="color:#E1E4E8">: </span><span style="color:#9ECBFF">PathPrefix</span></span>
+<span data-line=""><span style="color:#85E89D">      value</span><span style="color:#E1E4E8">: </span><span style="color:#9ECBFF">/api</span></span>
+<span data-line=""><span style="color:#85E89D">    headers</span><span style="color:#E1E4E8">:</span></span>
+<span data-line=""><span style="color:#E1E4E8">      - </span><span style="color:#85E89D">name</span><span style="color:#E1E4E8">: </span><span style="color:#9ECBFF">version</span></span>
+<span data-line=""><span style="color:#85E89D">        value</span><span style="color:#E1E4E8">: </span><span style="color:#9ECBFF">v2</span></span></code></pre></figure>
+<p>Meaning:</p>
+<ul>
+<li>Only <code>GET</code> requests</li>
+<li>Path starts with <code>/api</code></li>
+<li>Request must include header <code>version: v2</code></li>
+</ul>
+<p>This pattern is ideal for API version trials or staged rollouts to specific users.</p>
+<h2 id="one-route-multiple-rules">One Route, Multiple Rules</h2>
+<p>A single <code>HTTPRoute</code> can route different paths to different services:</p>
+<figure data-rehype-pretty-code-figure=""><pre style="background-color:#24292e;color:#e1e4e8" tabindex="0" data-language="yaml" data-theme="github-dark"><code data-language="yaml" data-theme="github-dark" style="display: grid;"><span data-line=""><span style="color:#85E89D">rules</span><span style="color:#E1E4E8">:</span></span>
+<span data-line=""><span style="color:#E1E4E8">  - </span><span style="color:#85E89D">matches</span><span style="color:#E1E4E8">:</span></span>
+<span data-line=""><span style="color:#E1E4E8">      - </span><span style="color:#85E89D">path</span><span style="color:#E1E4E8">:</span></span>
+<span data-line=""><span style="color:#85E89D">          type</span><span style="color:#E1E4E8">: </span><span style="color:#9ECBFF">PathPrefix</span></span>
+<span data-line=""><span style="color:#85E89D">          value</span><span style="color:#E1E4E8">: </span><span style="color:#9ECBFF">/api</span></span>
+<span data-line=""><span style="color:#85E89D">    backendRefs</span><span style="color:#E1E4E8">:</span></span>
+<span data-line=""><span style="color:#E1E4E8">      - </span><span style="color:#85E89D">name</span><span style="color:#E1E4E8">: </span><span style="color:#9ECBFF">api-service</span></span>
+<span data-line=""><span style="color:#85E89D">        port</span><span style="color:#E1E4E8">: </span><span style="color:#79B8FF">8080</span></span>
+<span data-line=""><span style="color:#E1E4E8">  - </span><span style="color:#85E89D">matches</span><span style="color:#E1E4E8">:</span></span>
+<span data-line=""><span style="color:#E1E4E8">      - </span><span style="color:#85E89D">path</span><span style="color:#E1E4E8">:</span></span>
+<span data-line=""><span style="color:#85E89D">          type</span><span style="color:#E1E4E8">: </span><span style="color:#9ECBFF">PathPrefix</span></span>
+<span data-line=""><span style="color:#85E89D">          value</span><span style="color:#E1E4E8">: </span><span style="color:#9ECBFF">/admin</span></span>
+<span data-line=""><span style="color:#85E89D">    backendRefs</span><span style="color:#E1E4E8">:</span></span>
+<span data-line=""><span style="color:#E1E4E8">      - </span><span style="color:#85E89D">name</span><span style="color:#E1E4E8">: </span><span style="color:#9ECBFF">admin-service</span></span>
+<span data-line=""><span style="color:#85E89D">        port</span><span style="color:#E1E4E8">: </span><span style="color:#79B8FF">8080</span></span></code></pre></figure>
+<p>This is great for splitting sub-paths under one domain — for example:</p>
+<ul>
+<li><code>/api</code> goes to the API service</li>
+<li><code>/admin</code> goes to the admin backend</li>
+</ul>
+<p>The routing logic is immediately visible. Unlike some legacy config files where you read halfway through and start doubting your own existence.</p>
+<h2 id="header-method-and-query-as-conditions">Header, Method, and Query as Conditions</h2>
+<p><code>HTTPRoute</code> isn't limited to path matching — it can also match on request headers, methods, and query params.</p>
+<p>For example, only route requests with <code>version: v2</code> to the new service:</p>
+<figure data-rehype-pretty-code-figure=""><pre style="background-color:#24292e;color:#e1e4e8" tabindex="0" data-language="yaml" data-theme="github-dark"><code data-language="yaml" data-theme="github-dark" style="display: grid;"><span data-line=""><span style="color:#85E89D">apiVersion</span><span style="color:#E1E4E8">: </span><span style="color:#9ECBFF">gateway.networking.k8s.io/v1</span></span>
+<span data-line=""><span style="color:#85E89D">kind</span><span style="color:#E1E4E8">: </span><span style="color:#9ECBFF">HTTPRoute</span></span>
+<span data-line=""><span style="color:#85E89D">metadata</span><span style="color:#E1E4E8">:</span></span>
+<span data-line=""><span style="color:#85E89D">  name</span><span style="color:#E1E4E8">: </span><span style="color:#9ECBFF">versioned-route</span></span>
+<span data-line=""><span style="color:#85E89D">spec</span><span style="color:#E1E4E8">:</span></span>
+<span data-line=""><span style="color:#85E89D">  parentRefs</span><span style="color:#E1E4E8">:</span></span>
+<span data-line=""><span style="color:#E1E4E8">    - </span><span style="color:#85E89D">name</span><span style="color:#E1E4E8">: </span><span style="color:#9ECBFF">eg</span></span>
+<span data-line=""><span style="color:#85E89D">  rules</span><span style="color:#E1E4E8">:</span></span>
+<span data-line=""><span style="color:#E1E4E8">    - </span><span style="color:#85E89D">matches</span><span style="color:#E1E4E8">:</span></span>
+<span data-line=""><span style="color:#E1E4E8">        - </span><span style="color:#85E89D">path</span><span style="color:#E1E4E8">:</span></span>
+<span data-line=""><span style="color:#85E89D">            type</span><span style="color:#E1E4E8">: </span><span style="color:#9ECBFF">PathPrefix</span></span>
+<span data-line=""><span style="color:#85E89D">            value</span><span style="color:#E1E4E8">: </span><span style="color:#9ECBFF">/api</span></span>
+<span data-line=""><span style="color:#85E89D">          headers</span><span style="color:#E1E4E8">:</span></span>
+<span data-line=""><span style="color:#E1E4E8">            - </span><span style="color:#85E89D">name</span><span style="color:#E1E4E8">: </span><span style="color:#9ECBFF">version</span></span>
+<span data-line=""><span style="color:#85E89D">              value</span><span style="color:#E1E4E8">: </span><span style="color:#9ECBFF">v2</span></span>
+<span data-line=""><span style="color:#85E89D">      backendRefs</span><span style="color:#E1E4E8">:</span></span>
+<span data-line=""><span style="color:#E1E4E8">        - </span><span style="color:#85E89D">name</span><span style="color:#E1E4E8">: </span><span style="color:#9ECBFF">api-v2</span></span>
+<span data-line=""><span style="color:#85E89D">          port</span><span style="color:#E1E4E8">: </span><span style="color:#79B8FF">8080</span></span>
+<span data-line=""><span style="color:#E1E4E8">    - </span><span style="color:#85E89D">matches</span><span style="color:#E1E4E8">:</span></span>
+<span data-line=""><span style="color:#E1E4E8">        - </span><span style="color:#85E89D">path</span><span style="color:#E1E4E8">:</span></span>
+<span data-line=""><span style="color:#85E89D">            type</span><span style="color:#E1E4E8">: </span><span style="color:#9ECBFF">PathPrefix</span></span>
+<span data-line=""><span style="color:#85E89D">            value</span><span style="color:#E1E4E8">: </span><span style="color:#9ECBFF">/api</span></span>
+<span data-line=""><span style="color:#85E89D">      backendRefs</span><span style="color:#E1E4E8">:</span></span>
+<span data-line=""><span style="color:#E1E4E8">        - </span><span style="color:#85E89D">name</span><span style="color:#E1E4E8">: </span><span style="color:#9ECBFF">api-v1</span></span>
+<span data-line=""><span style="color:#85E89D">          port</span><span style="color:#E1E4E8">: </span><span style="color:#79B8FF">8080</span></span></code></pre></figure>
+<p>This pattern works well for:</p>
+<ul>
+<li>Canary releases</li>
+<li>Letting specific customers try new versions early</li>
+<li>Manual validation of new features</li>
+</ul>
+<p>Compared to cutting over an entire new domain, header-based routing is more granular and easier to experiment with.</p>
+<h2 id="filters-process-requests-before-forwarding"><code>filters</code>: Process Requests Before Forwarding</h2>
+<p><code>HTTPRoute</code> doesn't just "match and forward" — it can also apply transformations before or after forwarding. That's what <code>filters</code> are for.</p>
+<p>A common use case is adding headers:</p>
+<figure data-rehype-pretty-code-figure=""><pre style="background-color:#24292e;color:#e1e4e8" tabindex="0" data-language="yaml" data-theme="github-dark"><code data-language="yaml" data-theme="github-dark" style="display: grid;"><span data-line=""><span style="color:#85E89D">rules</span><span style="color:#E1E4E8">:</span></span>
+<span data-line=""><span style="color:#E1E4E8">  - </span><span style="color:#85E89D">filters</span><span style="color:#E1E4E8">:</span></span>
+<span data-line=""><span style="color:#E1E4E8">      - </span><span style="color:#85E89D">type</span><span style="color:#E1E4E8">: </span><span style="color:#9ECBFF">RequestHeaderModifier</span></span>
+<span data-line=""><span style="color:#85E89D">        requestHeaderModifier</span><span style="color:#E1E4E8">:</span></span>
+<span data-line=""><span style="color:#85E89D">          add</span><span style="color:#E1E4E8">:</span></span>
+<span data-line=""><span style="color:#E1E4E8">            - </span><span style="color:#85E89D">name</span><span style="color:#E1E4E8">: </span><span style="color:#9ECBFF">x-env</span></span>
+<span data-line=""><span style="color:#85E89D">              value</span><span style="color:#E1E4E8">: </span><span style="color:#9ECBFF">prod</span></span>
+<span data-line=""><span style="color:#85E89D">    backendRefs</span><span style="color:#E1E4E8">:</span></span>
+<span data-line=""><span style="color:#E1E4E8">      - </span><span style="color:#85E89D">name</span><span style="color:#E1E4E8">: </span><span style="color:#9ECBFF">api-service</span></span>
+<span data-line=""><span style="color:#85E89D">        port</span><span style="color:#E1E4E8">: </span><span style="color:#79B8FF">8080</span></span></code></pre></figure>
+<p>This is useful for:</p>
+<ul>
+<li>Injecting tracing metadata before forwarding to the backend</li>
+<li>Adding fixed headers at the ingress layer</li>
+<li>Request/response transformations</li>
+</ul>
+<p>That said, filters are powerful but not a free pass to make the ingress layer a giant middleware blob. Too much logic piled onto routes will make debugging feel like it needs its own therapy session.</p>
+<h2 id="weighted-traffic-splitting-the-most-common-canary-pattern">Weighted Traffic Splitting: The Most Common Canary Pattern</h2>
+<p>To send 90% of traffic to the old version and 10% to the new, use <code>weight</code>:</p>
+<figure data-rehype-pretty-code-figure=""><pre style="background-color:#24292e;color:#e1e4e8" tabindex="0" data-language="yaml" data-theme="github-dark"><code data-language="yaml" data-theme="github-dark" style="display: grid;"><span data-line=""><span style="color:#85E89D">apiVersion</span><span style="color:#E1E4E8">: </span><span style="color:#9ECBFF">gateway.networking.k8s.io/v1</span></span>
+<span data-line=""><span style="color:#85E89D">kind</span><span style="color:#E1E4E8">: </span><span style="color:#9ECBFF">HTTPRoute</span></span>
+<span data-line=""><span style="color:#85E89D">metadata</span><span style="color:#E1E4E8">:</span></span>
+<span data-line=""><span style="color:#85E89D">  name</span><span style="color:#E1E4E8">: </span><span style="color:#9ECBFF">canary-route</span></span>
+<span data-line=""><span style="color:#85E89D">spec</span><span style="color:#E1E4E8">:</span></span>
+<span data-line=""><span style="color:#85E89D">  parentRefs</span><span style="color:#E1E4E8">:</span></span>
+<span data-line=""><span style="color:#E1E4E8">    - </span><span style="color:#85E89D">name</span><span style="color:#E1E4E8">: </span><span style="color:#9ECBFF">eg</span></span>
+<span data-line=""><span style="color:#85E89D">  hostnames</span><span style="color:#E1E4E8">:</span></span>
+<span data-line=""><span style="color:#E1E4E8">    - </span><span style="color:#9ECBFF">"app.example.com"</span></span>
+<span data-line=""><span style="color:#85E89D">  rules</span><span style="color:#E1E4E8">:</span></span>
+<span data-line=""><span style="color:#E1E4E8">    - </span><span style="color:#85E89D">backendRefs</span><span style="color:#E1E4E8">:</span></span>
+<span data-line=""><span style="color:#E1E4E8">        - </span><span style="color:#85E89D">name</span><span style="color:#E1E4E8">: </span><span style="color:#9ECBFF">api-v1</span></span>
+<span data-line=""><span style="color:#85E89D">          port</span><span style="color:#E1E4E8">: </span><span style="color:#79B8FF">8080</span></span>
+<span data-line=""><span style="color:#85E89D">          weight</span><span style="color:#E1E4E8">: </span><span style="color:#79B8FF">90</span></span>
+<span data-line=""><span style="color:#E1E4E8">        - </span><span style="color:#85E89D">name</span><span style="color:#E1E4E8">: </span><span style="color:#9ECBFF">api-v2</span></span>
+<span data-line=""><span style="color:#85E89D">          port</span><span style="color:#E1E4E8">: </span><span style="color:#79B8FF">8080</span></span>
+<span data-line=""><span style="color:#85E89D">          weight</span><span style="color:#E1E4E8">: </span><span style="color:#79B8FF">10</span></span></code></pre></figure>
+<p>This is basic canary / traffic splitting.</p>
+<p>You don't need a full service mesh just to run a traffic experiment. For many API services, this is more than enough — and it's a lot cleaner to configure.</p>
+<blockquote>
+<p>💡 <code>weight</code> is relative, not required to sum to 100. <code>9</code> and <code>1</code> express the same ratio as <code>90</code> and <code>10</code>.</p>
+</blockquote>
+<h2 id="timeouts-dont-let-requests-hang-forever"><code>timeouts</code>: Don't Let Requests Hang Forever</h2>
+<p>HTTPRoute supports timeout config at the rule level. This matters — if the ingress layer has no limits, bad requests sit around indefinitely like a rude customer who won't leave.</p>
+<figure data-rehype-pretty-code-figure=""><pre style="background-color:#24292e;color:#e1e4e8" tabindex="0" data-language="yaml" data-theme="github-dark"><code data-language="yaml" data-theme="github-dark" style="display: grid;"><span data-line=""><span style="color:#85E89D">rules</span><span style="color:#E1E4E8">:</span></span>
+<span data-line=""><span style="color:#E1E4E8">  - </span><span style="color:#85E89D">matches</span><span style="color:#E1E4E8">:</span></span>
+<span data-line=""><span style="color:#E1E4E8">      - </span><span style="color:#85E89D">path</span><span style="color:#E1E4E8">:</span></span>
+<span data-line=""><span style="color:#85E89D">          type</span><span style="color:#E1E4E8">: </span><span style="color:#9ECBFF">PathPrefix</span></span>
+<span data-line=""><span style="color:#85E89D">          value</span><span style="color:#E1E4E8">: </span><span style="color:#9ECBFF">/reports</span></span>
+<span data-line=""><span style="color:#85E89D">    timeouts</span><span style="color:#E1E4E8">:</span></span>
+<span data-line=""><span style="color:#85E89D">      request</span><span style="color:#E1E4E8">: </span><span style="color:#9ECBFF">10s</span></span>
+<span data-line=""><span style="color:#85E89D">      backendRequest</span><span style="color:#E1E4E8">: </span><span style="color:#9ECBFF">2s</span></span>
+<span data-line=""><span style="color:#85E89D">    backendRefs</span><span style="color:#E1E4E8">:</span></span>
+<span data-line=""><span style="color:#E1E4E8">      - </span><span style="color:#85E89D">name</span><span style="color:#E1E4E8">: </span><span style="color:#9ECBFF">report-service</span></span>
+<span data-line=""><span style="color:#85E89D">        port</span><span style="color:#E1E4E8">: </span><span style="color:#79B8FF">8080</span></span></code></pre></figure>
+<p>Understanding the two fields:</p>
+<ul>
+<li><code>request</code>: Maximum total wait time for the client request</li>
+<li><code>backendRequest</code>: Maximum wait for a single request to the backend</li>
+</ul>
+<p>Note that <code>backendRequest</code> shouldn't exceed <code>request</code> — the logic would be like saying "the whole trip takes 10 minutes, but one bus leg can wait 20 minutes." The universe gets confused.</p>
+<h2 id="two-common-nuances">Two Common Nuances</h2>
+<h3 id="1-parentrefs-can-target-a-specific-listener">1. <code>parentRefs</code> Can Target a Specific Listener</h3>
+<p>If a Gateway has multiple listeners, you can bind to just one:</p>
+<figure data-rehype-pretty-code-figure=""><pre style="background-color:#24292e;color:#e1e4e8" tabindex="0" data-language="yaml" data-theme="github-dark"><code data-language="yaml" data-theme="github-dark" style="display: grid;"><span data-line=""><span style="color:#85E89D">parentRefs</span><span style="color:#E1E4E8">:</span></span>
+<span data-line=""><span style="color:#E1E4E8">  - </span><span style="color:#85E89D">name</span><span style="color:#E1E4E8">: </span><span style="color:#9ECBFF">eg</span></span>
+<span data-line=""><span style="color:#85E89D">    sectionName</span><span style="color:#E1E4E8">: </span><span style="color:#9ECBFF">http</span></span></code></pre></figure>
+<p>This means the route only attaches to the <code>http</code> listener.
+In multi-listener setups, this is far more predictable than attaching to everything.</p>
+<h3 id="2-no-matches--match-everything">2. No <code>matches</code> = Match Everything</h3>
+<p>If a rule has no <code>matches</code>, it defaults to matching <code>/</code> — essentially a catch-all.</p>
+<p>This is convenient, but it can silently swallow what you thought were more specific rules. Don't skip it out of laziness and then spend an hour wondering why your precise rules aren't firing.</p>
+<h2 id="verifying-that-routing-works">Verifying That Routing Works</h2>
+<p>After configuring routes, validate with <code>curl</code>:</p>
+<figure data-rehype-pretty-code-figure=""><pre style="background-color:#24292e;color:#e1e4e8" tabindex="0" data-language="bash" data-theme="github-dark"><code data-language="bash" data-theme="github-dark" style="display: grid;"><span data-line=""><span style="color:#B392F0">curl</span><span style="color:#79B8FF"> -H</span><span style="color:#9ECBFF"> "Host: app.example.com"</span><span style="color:#9ECBFF"> http://</span><span style="color:#E1E4E8">$GATEWAY_HOST</span><span style="color:#9ECBFF">/api/users</span></span>
+<span data-line=""><span style="color:#B392F0">curl</span><span style="color:#79B8FF"> -H</span><span style="color:#9ECBFF"> "Host: app.example.com"</span><span style="color:#79B8FF"> -H</span><span style="color:#9ECBFF"> "version: v2"</span><span style="color:#9ECBFF"> http://</span><span style="color:#E1E4E8">$GATEWAY_HOST</span><span style="color:#9ECBFF">/api/users</span></span></code></pre></figure>
+<p>To check <code>HTTPRoute</code> status:</p>
+<figure data-rehype-pretty-code-figure=""><pre style="background-color:#24292e;color:#e1e4e8" tabindex="0" data-language="bash" data-theme="github-dark"><code data-language="bash" data-theme="github-dark" style="display: grid;"><span data-line=""><span style="color:#B392F0">kubectl</span><span style="color:#9ECBFF"> get</span><span style="color:#9ECBFF"> httproute</span><span style="color:#9ECBFF"> app-route</span><span style="color:#79B8FF"> -o</span><span style="color:#9ECBFF"> yaml</span></span></code></pre></figure>
+<p>Pay particular attention to:</p>
+<ul>
+<li><code>status.parents</code></li>
+<li>The <code>Accepted</code> condition</li>
+</ul>
+<p>Sometimes the YAML looks correct, but the Gateway rejected it. That's like submitting a job application and assuming you got the job because you heard nothing back.</p>
+<h2 id="one-line-summary">One-Line Summary</h2>
+<p>The core of <code>HTTPRoute</code> is "match first, then forward." Once you have host, path, header, and weight covered, you can handle about 80% of day-to-day HTTP ingress requirements.</p>
+<h2 id="next-step">Next Step</h2>
+<p>Next post tackles something you'll hit in every production environment: HTTPS, certificates, TLS termination, and security:
+👉 <a href="04-tls-and-security">TLS and Security</a></p>0:{"buildId":"Yck3R4ooQxWkwGLT6is1X","rsc":["$","$1","c",{"children":[[["$","script",null,{"type":"application/ld+json","dangerouslySetInnerHTML":{"__html":"{\"@context\":\"https://schema.org\",\"@type\":\"Article\",\"headline\":\"Envoy Gateway HTTP Routing in Practice: Host, Path, Header, and Traffic Splitting\",\"description\":\"From host/path matching to filters, timeouts, header conditions, and weighted traffic splitting — master the most common HTTPRoute patterns.\",\"url\":\"https://benxhub.com/en/blog/k8s/gateway/03-http-routing\",\"mainEntityOfPage\":{\"@type\":\"WebPage\",\"@id\":\"https://benxhub.com/en/blog/k8s/gateway/03-http-routing\"},\"datePublished\":\"2026-03-10T00:00:00.000Z\",\"dateModified\":\"2026-03-10T00:00:00.000Z\",\"keywords\":\"kubernetes, envoy-gateway, gateway-api, httproute, traffic-splitting\",\"inLanguage\":\"en\",\"author\":{\"@type\":\"Person\",\"name\":\"BenX\",\"url\":\"https://benxhub.com\"},\"publisher\":{\"@type\":\"Organization\",\"name\":\"BenXHub Blog\",\"url\":\"https://benxhub.com\"}}"}}],["$","div",null,{"className":"mx-auto max-w-6xl px-4 py-12 sm:px-6","children":["$","div",null,{"className":"lg:grid lg:grid-cols-[1fr_240px] lg:gap-14","children":[["$","article",null,{"children":[["$","header",null,{"className":"mb-10","children":[["$","div",null,{"className":"mb-4 flex flex-wrap gap-2","children":[["$","$L2","kubernetes",{"href":"/en/tags/kubernetes","localeCookie":{"name":"NEXT_LOCALE","sameSite":"lax"},"className":"inline-flex items-center rounded-full px-2.5 py-0.5 text-xs font-medium transition-colors","style":{"background":"var(--color-code-bg)","color":"var(--color-accent)","border":"1px solid var(--color-border)"},"children":["#","kubernetes"]}],["$","$L2","envoy-gateway",{"href":"/en/tags/envoy-gateway","localeCookie":{"name":"NEXT_LOCALE","sameSite":"lax"},"className":"inline-flex items-center rounded-full px-2.5 py-0.5 text-xs font-medium transition-colors","style":{"background":"var(--color-code-bg)","color":"var(--color-accent)","border":"1px solid var(--color-border)"},"children":["#","envoy-gateway"]}],["$","$L2","gateway-api",{"href":"/en/tags/gateway-api","localeCookie":{"name":"NEXT_LOCALE","sameSite":"lax"},"className":"inline-flex items-center rounded-full px-2.5 py-0.5 text-xs font-medium transition-colors","style":{"background":"var(--color-code-bg)","color":"var(--color-accent)","border":"1px solid var(--color-border)"},"children":["#","gateway-api"]}],["$","$L2","httproute",{"href":"/en/tags/httproute","localeCookie":{"name":"NEXT_LOCALE","sameSite":"lax"},"className":"inline-flex items-center rounded-full px-2.5 py-0.5 text-xs font-medium transition-colors","style":{"background":"var(--color-code-bg)","color":"var(--color-accent)","border":"1px solid var(--color-border)"},"children":["#","httproute"]}],["$","$L2","traffic-splitting",{"href":"/en/tags/traffic-splitting","localeCookie":{"name":"NEXT_LOCALE","sameSite":"lax"},"className":"inline-flex items-center rounded-full px-2.5 py-0.5 text-xs font-medium transition-colors","style":{"background":"var(--color-code-bg)","color":"var(--color-accent)","border":"1px solid var(--color-border)"},"children":["#","traffic-splitting"]}]]}],["$","h1",null,{"className":"mb-4 text-3xl leading-snug font-bold tracking-tight sm:text-4xl","style":{"color":"var(--color-text)"},"children":"Envoy Gateway HTTP Routing in Practice: Host, Path, Header, and Traffic Splitting"}],["$","div",null,{"className":"flex flex-wrap items-center gap-3 text-sm","style":{"color":"var(--color-muted)"},"children":[["$","time",null,{"dateTime":"2026-03-10","children":"Mar 10, 2026"}],["$","span",null,{"aria-hidden":"true","children":"·"}],["$","span",null,{"children":"6 min read"}]]}],"$undefined",["$","div",null,{"className":"mt-6 border-b","style":{"borderColor":"var(--color-border)"}}]]}],["$","div",null,{"className":"prose","dangerouslySetInnerHTML":{"__html":"$3"}}],"$L4"]}],"$L5"]}]}]],["$L6"],"$L7"]}],"loading":null,"isPartial":false}
+4:["$","footer",null,{"className":"mt-14 border-t pt-8","style":{"borderColor":"var(--color-border)"},"children":[["$","div",null,{"className":"mb-8 flex flex-wrap gap-2","children":[["$","$L2","kubernetes",{"href":"/en/tags/kubernetes","localeCookie":{"name":"NEXT_LOCALE","sameSite":"lax"},"className":"inline-flex items-center rounded-full px-3 py-1 text-sm font-medium transition-colors","style":{"background":"var(--color-code-bg)","color":"var(--color-accent)","border":"1px solid var(--color-border)"},"children":["#","kubernetes"]}],["$","$L2","envoy-gateway",{"href":"/en/tags/envoy-gateway","localeCookie":{"name":"NEXT_LOCALE","sameSite":"lax"},"className":"inline-flex items-center rounded-full px-3 py-1 text-sm font-medium transition-colors","style":{"background":"var(--color-code-bg)","color":"var(--color-accent)","border":"1px solid var(--color-border)"},"children":["#","envoy-gateway"]}],["$","$L2","gateway-api",{"href":"/en/tags/gateway-api","localeCookie":{"name":"NEXT_LOCALE","sameSite":"lax"},"className":"inline-flex items-center rounded-full px-3 py-1 text-sm font-medium transition-colors","style":{"background":"var(--color-code-bg)","color":"var(--color-accent)","border":"1px solid var(--color-border)"},"children":["#","gateway-api"]}],["$","$L2","httproute",{"href":"/en/tags/httproute","localeCookie":{"name":"NEXT_LOCALE","sameSite":"lax"},"className":"inline-flex items-center rounded-full px-3 py-1 text-sm font-medium transition-colors","style":{"background":"var(--color-code-bg)","color":"var(--color-accent)","border":"1px solid var(--color-border)"},"children":["#","httproute"]}],["$","$L2","traffic-splitting",{"href":"/en/tags/traffic-splitting","localeCookie":{"name":"NEXT_LOCALE","sameSite":"lax"},"className":"inline-flex items-center rounded-full px-3 py-1 text-sm font-medium transition-colors","style":{"background":"var(--color-code-bg)","color":"var(--color-accent)","border":"1px solid var(--color-border)"},"children":["#","traffic-splitting"]}]]}],["$","nav",null,{"aria-label":"Post navigation","className":"grid grid-cols-1 gap-4 sm:grid-cols-2","children":[["$","$L2",null,{"href":"/en/blog/k8s/gateway/02-core-concepts","localeCookie":{"name":"NEXT_LOCALE","sameSite":"lax"},"className":"group rounded-lg border p-4 transition-colors hover:border-accent","style":{"borderColor":"var(--color-border)","background":"var(--color-surface)"},"children":[["$","p",null,{"className":"mb-1 text-xs","style":{"color":"var(--color-muted)"},"children":"← Newer"}],["$","p",null,{"className":"line-clamp-1 text-sm font-medium transition-colors group-hover:text-accent","style":{"color":"var(--color-text)"},"children":"Envoy Gateway Core Concepts: Gateway, Listener, Proxy, and the Route Family Explained"}]]}],["$","$L2",null,{"href":"/en/blog/k8s/gateway/04-tls-and-security","localeCookie":{"name":"NEXT_LOCALE","sameSite":"lax"},"className":"group rounded-lg border p-4 text-right transition-colors hover:border-accent","style":{"borderColor":"var(--color-border)","background":"var(--color-surface)"},"children":[["$","p",null,{"className":"mb-1 text-xs","style":{"color":"var(--color-muted)"},"children":"Older →"}],["$","p",null,{"className":"line-clamp-1 text-sm font-medium transition-colors group-hover:text-accent","style":{"color":"var(--color-text)"},"children":"Envoy Gateway TLS and Security: Set Up HTTPS and Stop Your API from Running Naked"}]]}]]}]]}]
+9:T63f3,<p>The first two posts gave you the "what is this thing" foundation. This one gets into what you'll actually be editing day-to-day: <code>HTTPRoute</code>.</p>
+<p>Think of <code>HTTPRoute</code> as a routing script for incoming traffic — except instead of writing Nginx rules or memorizing controller annotations, you're using Kubernetes-native resources.</p>
+<p>One thing to get clear first: this post only covers <code>HTTPRoute</code>, because it handles HTTP/HTTPS semantics. For gRPC, you'd lean toward <code>GRPCRoute</code>; for raw TCP, <code>TCPRoute</code>; for TLS passthrough, <code>TLSRoute</code>. Don't force everything into <code>HTTPRoute</code> — the YAML starts giving off a "making do" vibe.</p>
+<h2 id="the-most-common-routing-host-and-path">The Most Common Routing: Host and Path</h2>
+<p>Here's the most typical example:</p>
+<figure data-rehype-pretty-code-figure=""><pre style="background-color:#24292e;color:#e1e4e8" tabindex="0" data-language="yaml" data-theme="github-dark"><code data-language="yaml" data-theme="github-dark" style="display: grid;"><span data-line=""><span style="color:#85E89D">apiVersion</span><span style="color:#E1E4E8">: </span><span style="color:#9ECBFF">gateway.networking.k8s.io/v1</span></span>
+<span data-line=""><span style="color:#85E89D">kind</span><span style="color:#E1E4E8">: </span><span style="color:#9ECBFF">HTTPRoute</span></span>
+<span data-line=""><span style="color:#85E89D">metadata</span><span style="color:#E1E4E8">:</span></span>
+<span data-line=""><span style="color:#85E89D">  name</span><span style="color:#E1E4E8">: </span><span style="color:#9ECBFF">app-route</span></span>
+<span data-line=""><span style="color:#85E89D">spec</span><span style="color:#E1E4E8">:</span></span>
+<span data-line=""><span style="color:#85E89D">  parentRefs</span><span style="color:#E1E4E8">:</span></span>
+<span data-line=""><span style="color:#E1E4E8">    - </span><span style="color:#85E89D">name</span><span style="color:#E1E4E8">: </span><span style="color:#9ECBFF">eg</span></span>
+<span data-line=""><span style="color:#85E89D">  hostnames</span><span style="color:#E1E4E8">:</span></span>
+<span data-line=""><span style="color:#E1E4E8">    - </span><span style="color:#9ECBFF">"app.example.com"</span></span>
+<span data-line=""><span style="color:#85E89D">  rules</span><span style="color:#E1E4E8">:</span></span>
+<span data-line=""><span style="color:#E1E4E8">    - </span><span style="color:#85E89D">matches</span><span style="color:#E1E4E8">:</span></span>
+<span data-line=""><span style="color:#E1E4E8">        - </span><span style="color:#85E89D">path</span><span style="color:#E1E4E8">:</span></span>
+<span data-line=""><span style="color:#85E89D">            type</span><span style="color:#E1E4E8">: </span><span style="color:#9ECBFF">PathPrefix</span></span>
+<span data-line=""><span style="color:#85E89D">            value</span><span style="color:#E1E4E8">: </span><span style="color:#9ECBFF">/api</span></span>
+<span data-line=""><span style="color:#85E89D">      backendRefs</span><span style="color:#E1E4E8">:</span></span>
+<span data-line=""><span style="color:#E1E4E8">        - </span><span style="color:#85E89D">name</span><span style="color:#E1E4E8">: </span><span style="color:#9ECBFF">api-service</span></span>
+<span data-line=""><span style="color:#85E89D">          port</span><span style="color:#E1E4E8">: </span><span style="color:#79B8FF">8080</span></span></code></pre></figure>
+<p>What this means:</p>
+<ul>
+<li>Only <code>Host: app.example.com</code> will match this route</li>
+<li>Path must start with <code>/api</code></li>
+<li>Traffic is forwarded to <code>api-service:8080</code></li>
+</ul>
+<p>If you remove <code>hostnames</code>, the route becomes "path-only, any domain."</p>
+<h2 id="what-matches-can-match">What <code>matches</code> Can Match</h2>
+<p><code>matches</code> is one of the most central concepts in <code>HTTPRoute</code>.
+Think of it as "what conditions trigger this rule."</p>
+<p>Common match conditions:</p>
+<ul>
+<li><code>path</code></li>
+<li><code>headers</code></li>
+<li><code>queryParams</code></li>
+<li><code>method</code></li>
+</ul>
+<p>Example:</p>
+<figure data-rehype-pretty-code-figure=""><pre style="background-color:#24292e;color:#e1e4e8" tabindex="0" data-language="yaml" data-theme="github-dark"><code data-language="yaml" data-theme="github-dark" style="display: grid;"><span data-line=""><span style="color:#85E89D">matches</span><span style="color:#E1E4E8">:</span></span>
+<span data-line=""><span style="color:#E1E4E8">  - </span><span style="color:#85E89D">method</span><span style="color:#E1E4E8">: </span><span style="color:#9ECBFF">GET</span></span>
+<span data-line=""><span style="color:#85E89D">    path</span><span style="color:#E1E4E8">:</span></span>
+<span data-line=""><span style="color:#85E89D">      type</span><span style="color:#E1E4E8">: </span><span style="color:#9ECBFF">PathPrefix</span></span>
+<span data-line=""><span style="color:#85E89D">      value</span><span style="color:#E1E4E8">: </span><span style="color:#9ECBFF">/api</span></span>
+<span data-line=""><span style="color:#85E89D">    headers</span><span style="color:#E1E4E8">:</span></span>
+<span data-line=""><span style="color:#E1E4E8">      - </span><span style="color:#85E89D">name</span><span style="color:#E1E4E8">: </span><span style="color:#9ECBFF">version</span></span>
+<span data-line=""><span style="color:#85E89D">        value</span><span style="color:#E1E4E8">: </span><span style="color:#9ECBFF">v2</span></span></code></pre></figure>
+<p>Meaning:</p>
+<ul>
+<li>Only <code>GET</code> requests</li>
+<li>Path starts with <code>/api</code></li>
+<li>Request must include header <code>version: v2</code></li>
+</ul>
+<p>This pattern is ideal for API version trials or staged rollouts to specific users.</p>
+<h2 id="one-route-multiple-rules">One Route, Multiple Rules</h2>
+<p>A single <code>HTTPRoute</code> can route different paths to different services:</p>
+<figure data-rehype-pretty-code-figure=""><pre style="background-color:#24292e;color:#e1e4e8" tabindex="0" data-language="yaml" data-theme="github-dark"><code data-language="yaml" data-theme="github-dark" style="display: grid;"><span data-line=""><span style="color:#85E89D">rules</span><span style="color:#E1E4E8">:</span></span>
+<span data-line=""><span style="color:#E1E4E8">  - </span><span style="color:#85E89D">matches</span><span style="color:#E1E4E8">:</span></span>
+<span data-line=""><span style="color:#E1E4E8">      - </span><span style="color:#85E89D">path</span><span style="color:#E1E4E8">:</span></span>
+<span data-line=""><span style="color:#85E89D">          type</span><span style="color:#E1E4E8">: </span><span style="color:#9ECBFF">PathPrefix</span></span>
+<span data-line=""><span style="color:#85E89D">          value</span><span style="color:#E1E4E8">: </span><span style="color:#9ECBFF">/api</span></span>
+<span data-line=""><span style="color:#85E89D">    backendRefs</span><span style="color:#E1E4E8">:</span></span>
+<span data-line=""><span style="color:#E1E4E8">      - </span><span style="color:#85E89D">name</span><span style="color:#E1E4E8">: </span><span style="color:#9ECBFF">api-service</span></span>
+<span data-line=""><span style="color:#85E89D">        port</span><span style="color:#E1E4E8">: </span><span style="color:#79B8FF">8080</span></span>
+<span data-line=""><span style="color:#E1E4E8">  - </span><span style="color:#85E89D">matches</span><span style="color:#E1E4E8">:</span></span>
+<span data-line=""><span style="color:#E1E4E8">      - </span><span style="color:#85E89D">path</span><span style="color:#E1E4E8">:</span></span>
+<span data-line=""><span style="color:#85E89D">          type</span><span style="color:#E1E4E8">: </span><span style="color:#9ECBFF">PathPrefix</span></span>
+<span data-line=""><span style="color:#85E89D">          value</span><span style="color:#E1E4E8">: </span><span style="color:#9ECBFF">/admin</span></span>
+<span data-line=""><span style="color:#85E89D">    backendRefs</span><span style="color:#E1E4E8">:</span></span>
+<span data-line=""><span style="color:#E1E4E8">      - </span><span style="color:#85E89D">name</span><span style="color:#E1E4E8">: </span><span style="color:#9ECBFF">admin-service</span></span>
+<span data-line=""><span style="color:#85E89D">        port</span><span style="color:#E1E4E8">: </span><span style="color:#79B8FF">8080</span></span></code></pre></figure>
+<p>This is great for splitting sub-paths under one domain — for example:</p>
+<ul>
+<li><code>/api</code> goes to the API service</li>
+<li><code>/admin</code> goes to the admin backend</li>
+</ul>
+<p>The routing logic is immediately visible. Unlike some legacy config files where you read halfway through and start doubting your own existence.</p>
+<h2 id="header-method-and-query-as-conditions">Header, Method, and Query as Conditions</h2>
+<p><code>HTTPRoute</code> isn't limited to path matching — it can also match on request headers, methods, and query params.</p>
+<p>For example, only route requests with <code>version: v2</code> to the new service:</p>
+<figure data-rehype-pretty-code-figure=""><pre style="background-color:#24292e;color:#e1e4e8" tabindex="0" data-language="yaml" data-theme="github-dark"><code data-language="yaml" data-theme="github-dark" style="display: grid;"><span data-line=""><span style="color:#85E89D">apiVersion</span><span style="color:#E1E4E8">: </span><span style="color:#9ECBFF">gateway.networking.k8s.io/v1</span></span>
+<span data-line=""><span style="color:#85E89D">kind</span><span style="color:#E1E4E8">: </span><span style="color:#9ECBFF">HTTPRoute</span></span>
+<span data-line=""><span style="color:#85E89D">metadata</span><span style="color:#E1E4E8">:</span></span>
+<span data-line=""><span style="color:#85E89D">  name</span><span style="color:#E1E4E8">: </span><span style="color:#9ECBFF">versioned-route</span></span>
+<span data-line=""><span style="color:#85E89D">spec</span><span style="color:#E1E4E8">:</span></span>
+<span data-line=""><span style="color:#85E89D">  parentRefs</span><span style="color:#E1E4E8">:</span></span>
+<span data-line=""><span style="color:#E1E4E8">    - </span><span style="color:#85E89D">name</span><span style="color:#E1E4E8">: </span><span style="color:#9ECBFF">eg</span></span>
+<span data-line=""><span style="color:#85E89D">  rules</span><span style="color:#E1E4E8">:</span></span>
+<span data-line=""><span style="color:#E1E4E8">    - </span><span style="color:#85E89D">matches</span><span style="color:#E1E4E8">:</span></span>
+<span data-line=""><span style="color:#E1E4E8">        - </span><span style="color:#85E89D">path</span><span style="color:#E1E4E8">:</span></span>
+<span data-line=""><span style="color:#85E89D">            type</span><span style="color:#E1E4E8">: </span><span style="color:#9ECBFF">PathPrefix</span></span>
+<span data-line=""><span style="color:#85E89D">            value</span><span style="color:#E1E4E8">: </span><span style="color:#9ECBFF">/api</span></span>
+<span data-line=""><span style="color:#85E89D">          headers</span><span style="color:#E1E4E8">:</span></span>
+<span data-line=""><span style="color:#E1E4E8">            - </span><span style="color:#85E89D">name</span><span style="color:#E1E4E8">: </span><span style="color:#9ECBFF">version</span></span>
+<span data-line=""><span style="color:#85E89D">              value</span><span style="color:#E1E4E8">: </span><span style="color:#9ECBFF">v2</span></span>
+<span data-line=""><span style="color:#85E89D">      backendRefs</span><span style="color:#E1E4E8">:</span></span>
+<span data-line=""><span style="color:#E1E4E8">        - </span><span style="color:#85E89D">name</span><span style="color:#E1E4E8">: </span><span style="color:#9ECBFF">api-v2</span></span>
+<span data-line=""><span style="color:#85E89D">          port</span><span style="color:#E1E4E8">: </span><span style="color:#79B8FF">8080</span></span>
+<span data-line=""><span style="color:#E1E4E8">    - </span><span style="color:#85E89D">matches</span><span style="color:#E1E4E8">:</span></span>
+<span data-line=""><span style="color:#E1E4E8">        - </span><span style="color:#85E89D">path</span><span style="color:#E1E4E8">:</span></span>
+<span data-line=""><span style="color:#85E89D">            type</span><span style="color:#E1E4E8">: </span><span style="color:#9ECBFF">PathPrefix</span></span>
+<span data-line=""><span style="color:#85E89D">            value</span><span style="color:#E1E4E8">: </span><span style="color:#9ECBFF">/api</span></span>
+<span data-line=""><span style="color:#85E89D">      backendRefs</span><span style="color:#E1E4E8">:</span></span>
+<span data-line=""><span style="color:#E1E4E8">        - </span><span style="color:#85E89D">name</span><span style="color:#E1E4E8">: </span><span style="color:#9ECBFF">api-v1</span></span>
+<span data-line=""><span style="color:#85E89D">          port</span><span style="color:#E1E4E8">: </span><span style="color:#79B8FF">8080</span></span></code></pre></figure>
+<p>This pattern works well for:</p>
+<ul>
+<li>Canary releases</li>
+<li>Letting specific customers try new versions early</li>
+<li>Manual validation of new features</li>
+</ul>
+<p>Compared to cutting over an entire new domain, header-based routing is more granular and easier to experiment with.</p>
+<h2 id="filters-process-requests-before-forwarding"><code>filters</code>: Process Requests Before Forwarding</h2>
+<p><code>HTTPRoute</code> doesn't just "match and forward" — it can also apply transformations before or after forwarding. That's what <code>filters</code> are for.</p>
+<p>A common use case is adding headers:</p>
+<figure data-rehype-pretty-code-figure=""><pre style="background-color:#24292e;color:#e1e4e8" tabindex="0" data-language="yaml" data-theme="github-dark"><code data-language="yaml" data-theme="github-dark" style="display: grid;"><span data-line=""><span style="color:#85E89D">rules</span><span style="color:#E1E4E8">:</span></span>
+<span data-line=""><span style="color:#E1E4E8">  - </span><span style="color:#85E89D">filters</span><span style="color:#E1E4E8">:</span></span>
+<span data-line=""><span style="color:#E1E4E8">      - </span><span style="color:#85E89D">type</span><span style="color:#E1E4E8">: </span><span style="color:#9ECBFF">RequestHeaderModifier</span></span>
+<span data-line=""><span style="color:#85E89D">        requestHeaderModifier</span><span style="color:#E1E4E8">:</span></span>
+<span data-line=""><span style="color:#85E89D">          add</span><span style="color:#E1E4E8">:</span></span>
+<span data-line=""><span style="color:#E1E4E8">            - </span><span style="color:#85E89D">name</span><span style="color:#E1E4E8">: </span><span style="color:#9ECBFF">x-env</span></span>
+<span data-line=""><span style="color:#85E89D">              value</span><span style="color:#E1E4E8">: </span><span style="color:#9ECBFF">prod</span></span>
+<span data-line=""><span style="color:#85E89D">    backendRefs</span><span style="color:#E1E4E8">:</span></span>
+<span data-line=""><span style="color:#E1E4E8">      - </span><span style="color:#85E89D">name</span><span style="color:#E1E4E8">: </span><span style="color:#9ECBFF">api-service</span></span>
+<span data-line=""><span style="color:#85E89D">        port</span><span style="color:#E1E4E8">: </span><span style="color:#79B8FF">8080</span></span></code></pre></figure>
+<p>This is useful for:</p>
+<ul>
+<li>Injecting tracing metadata before forwarding to the backend</li>
+<li>Adding fixed headers at the ingress layer</li>
+<li>Request/response transformations</li>
+</ul>
+<p>That said, filters are powerful but not a free pass to make the ingress layer a giant middleware blob. Too much logic piled onto routes will make debugging feel like it needs its own therapy session.</p>
+<h2 id="weighted-traffic-splitting-the-most-common-canary-pattern">Weighted Traffic Splitting: The Most Common Canary Pattern</h2>
+<p>To send 90% of traffic to the old version and 10% to the new, use <code>weight</code>:</p>
+<figure data-rehype-pretty-code-figure=""><pre style="background-color:#24292e;color:#e1e4e8" tabindex="0" data-language="yaml" data-theme="github-dark"><code data-language="yaml" data-theme="github-dark" style="display: grid;"><span data-line=""><span style="color:#85E89D">apiVersion</span><span style="color:#E1E4E8">: </span><span style="color:#9ECBFF">gateway.networking.k8s.io/v1</span></span>
+<span data-line=""><span style="color:#85E89D">kind</span><span style="color:#E1E4E8">: </span><span style="color:#9ECBFF">HTTPRoute</span></span>
+<span data-line=""><span style="color:#85E89D">metadata</span><span style="color:#E1E4E8">:</span></span>
+<span data-line=""><span style="color:#85E89D">  name</span><span style="color:#E1E4E8">: </span><span style="color:#9ECBFF">canary-route</span></span>
+<span data-line=""><span style="color:#85E89D">spec</span><span style="color:#E1E4E8">:</span></span>
+<span data-line=""><span style="color:#85E89D">  parentRefs</span><span style="color:#E1E4E8">:</span></span>
+<span data-line=""><span style="color:#E1E4E8">    - </span><span style="color:#85E89D">name</span><span style="color:#E1E4E8">: </span><span style="color:#9ECBFF">eg</span></span>
+<span data-line=""><span style="color:#85E89D">  hostnames</span><span style="color:#E1E4E8">:</span></span>
+<span data-line=""><span style="color:#E1E4E8">    - </span><span style="color:#9ECBFF">"app.example.com"</span></span>
+<span data-line=""><span style="color:#85E89D">  rules</span><span style="color:#E1E4E8">:</span></span>
+<span data-line=""><span style="color:#E1E4E8">    - </span><span style="color:#85E89D">backendRefs</span><span style="color:#E1E4E8">:</span></span>
+<span data-line=""><span style="color:#E1E4E8">        - </span><span style="color:#85E89D">name</span><span style="color:#E1E4E8">: </span><span style="color:#9ECBFF">api-v1</span></span>
+<span data-line=""><span style="color:#85E89D">          port</span><span style="color:#E1E4E8">: </span><span style="color:#79B8FF">8080</span></span>
+<span data-line=""><span style="color:#85E89D">          weight</span><span style="color:#E1E4E8">: </span><span style="color:#79B8FF">90</span></span>
+<span data-line=""><span style="color:#E1E4E8">        - </span><span style="color:#85E89D">name</span><span style="color:#E1E4E8">: </span><span style="color:#9ECBFF">api-v2</span></span>
+<span data-line=""><span style="color:#85E89D">          port</span><span style="color:#E1E4E8">: </span><span style="color:#79B8FF">8080</span></span>
+<span data-line=""><span style="color:#85E89D">          weight</span><span style="color:#E1E4E8">: </span><span style="color:#79B8FF">10</span></span></code></pre></figure>
+<p>This is basic canary / traffic splitting.</p>
+<p>You don't need a full service mesh just to run a traffic experiment. For many API services, this is more than enough — and it's a lot cleaner to configure.</p>
+<blockquote>
+<p>💡 <code>weight</code> is relative, not required to sum to 100. <code>9</code> and <code>1</code> express the same ratio as <code>90</code> and <code>10</code>.</p>
+</blockquote>
+<h2 id="timeouts-dont-let-requests-hang-forever"><code>timeouts</code>: Don't Let Requests Hang Forever</h2>
+<p>HTTPRoute supports timeout config at the rule level. This matters — if the ingress layer has no limits, bad requests sit around indefinitely like a rude customer who won't leave.</p>
+<figure data-rehype-pretty-code-figure=""><pre style="background-color:#24292e;color:#e1e4e8" tabindex="0" data-language="yaml" data-theme="github-dark"><code data-language="yaml" data-theme="github-dark" style="display: grid;"><span data-line=""><span style="color:#85E89D">rules</span><span style="color:#E1E4E8">:</span></span>
+<span data-line=""><span style="color:#E1E4E8">  - </span><span style="color:#85E89D">matches</span><span style="color:#E1E4E8">:</span></span>
+<span data-line=""><span style="color:#E1E4E8">      - </span><span style="color:#85E89D">path</span><span style="color:#E1E4E8">:</span></span>
+<span data-line=""><span style="color:#85E89D">          type</span><span style="color:#E1E4E8">: </span><span style="color:#9ECBFF">PathPrefix</span></span>
+<span data-line=""><span style="color:#85E89D">          value</span><span style="color:#E1E4E8">: </span><span style="color:#9ECBFF">/reports</span></span>
+<span data-line=""><span style="color:#85E89D">    timeouts</span><span style="color:#E1E4E8">:</span></span>
+<span data-line=""><span style="color:#85E89D">      request</span><span style="color:#E1E4E8">: </span><span style="color:#9ECBFF">10s</span></span>
+<span data-line=""><span style="color:#85E89D">      backendRequest</span><span style="color:#E1E4E8">: </span><span style="color:#9ECBFF">2s</span></span>
+<span data-line=""><span style="color:#85E89D">    backendRefs</span><span style="color:#E1E4E8">:</span></span>
+<span data-line=""><span style="color:#E1E4E8">      - </span><span style="color:#85E89D">name</span><span style="color:#E1E4E8">: </span><span style="color:#9ECBFF">report-service</span></span>
+<span data-line=""><span style="color:#85E89D">        port</span><span style="color:#E1E4E8">: </span><span style="color:#79B8FF">8080</span></span></code></pre></figure>
+<p>Understanding the two fields:</p>
+<ul>
+<li><code>request</code>: Maximum total wait time for the client request</li>
+<li><code>backendRequest</code>: Maximum wait for a single request to the backend</li>
+</ul>
+<p>Note that <code>backendRequest</code> shouldn't exceed <code>request</code> — the logic would be like saying "the whole trip takes 10 minutes, but one bus leg can wait 20 minutes." The universe gets confused.</p>
+<h2 id="two-common-nuances">Two Common Nuances</h2>
+<h3 id="1-parentrefs-can-target-a-specific-listener">1. <code>parentRefs</code> Can Target a Specific Listener</h3>
+<p>If a Gateway has multiple listeners, you can bind to just one:</p>
+<figure data-rehype-pretty-code-figure=""><pre style="background-color:#24292e;color:#e1e4e8" tabindex="0" data-language="yaml" data-theme="github-dark"><code data-language="yaml" data-theme="github-dark" style="display: grid;"><span data-line=""><span style="color:#85E89D">parentRefs</span><span style="color:#E1E4E8">:</span></span>
+<span data-line=""><span style="color:#E1E4E8">  - </span><span style="color:#85E89D">name</span><span style="color:#E1E4E8">: </span><span style="color:#9ECBFF">eg</span></span>
+<span data-line=""><span style="color:#85E89D">    sectionName</span><span style="color:#E1E4E8">: </span><span style="color:#9ECBFF">http</span></span></code></pre></figure>
+<p>This means the route only attaches to the <code>http</code> listener.
+In multi-listener setups, this is far more predictable than attaching to everything.</p>
+<h3 id="2-no-matches--match-everything">2. No <code>matches</code> = Match Everything</h3>
+<p>If a rule has no <code>matches</code>, it defaults to matching <code>/</code> — essentially a catch-all.</p>
+<p>This is convenient, but it can silently swallow what you thought were more specific rules. Don't skip it out of laziness and then spend an hour wondering why your precise rules aren't firing.</p>
+<h2 id="verifying-that-routing-works">Verifying That Routing Works</h2>
+<p>After configuring routes, validate with <code>curl</code>:</p>
+<figure data-rehype-pretty-code-figure=""><pre style="background-color:#24292e;color:#e1e4e8" tabindex="0" data-language="bash" data-theme="github-dark"><code data-language="bash" data-theme="github-dark" style="display: grid;"><span data-line=""><span style="color:#B392F0">curl</span><span style="color:#79B8FF"> -H</span><span style="color:#9ECBFF"> "Host: app.example.com"</span><span style="color:#9ECBFF"> http://</span><span style="color:#E1E4E8">$GATEWAY_HOST</span><span style="color:#9ECBFF">/api/users</span></span>
+<span data-line=""><span style="color:#B392F0">curl</span><span style="color:#79B8FF"> -H</span><span style="color:#9ECBFF"> "Host: app.example.com"</span><span style="color:#79B8FF"> -H</span><span style="color:#9ECBFF"> "version: v2"</span><span style="color:#9ECBFF"> http://</span><span style="color:#E1E4E8">$GATEWAY_HOST</span><span style="color:#9ECBFF">/api/users</span></span></code></pre></figure>
+<p>To check <code>HTTPRoute</code> status:</p>
+<figure data-rehype-pretty-code-figure=""><pre style="background-color:#24292e;color:#e1e4e8" tabindex="0" data-language="bash" data-theme="github-dark"><code data-language="bash" data-theme="github-dark" style="display: grid;"><span data-line=""><span style="color:#B392F0">kubectl</span><span style="color:#9ECBFF"> get</span><span style="color:#9ECBFF"> httproute</span><span style="color:#9ECBFF"> app-route</span><span style="color:#79B8FF"> -o</span><span style="color:#9ECBFF"> yaml</span></span></code></pre></figure>
+<p>Pay particular attention to:</p>
+<ul>
+<li><code>status.parents</code></li>
+<li>The <code>Accepted</code> condition</li>
+</ul>
+<p>Sometimes the YAML looks correct, but the Gateway rejected it. That's like submitting a job application and assuming you got the job because you heard nothing back.</p>
+<h2 id="one-line-summary">One-Line Summary</h2>
+<p>The core of <code>HTTPRoute</code> is "match first, then forward." Once you have host, path, header, and weight covered, you can handle about 80% of day-to-day HTTP ingress requirements.</p>
+<h2 id="next-step">Next Step</h2>
+<p>Next post tackles something you'll hit in every production environment: HTTPS, certificates, TLS termination, and security:
+👉 <a href="04-tls-and-security">TLS and Security</a></p>5:["$","aside",null,{"className":"hidden lg:block","children":["$","$L8",null,{"html":"$9"}]}]
+6:["$","script","script-0",{"src":"/_next/static/chunks/2dddb3bc05093f69.js","async":true}]
+7:["$","$La",null,{"children":["$","$b",null,{"name":"Next.MetadataOutlet","children":"$@c"}]}]
+c:null

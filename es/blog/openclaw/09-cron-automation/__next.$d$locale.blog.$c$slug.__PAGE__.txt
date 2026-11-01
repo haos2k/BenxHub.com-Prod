@@ -1,0 +1,181 @@
+1:"$Sreact.fragment"
+2:I[14864,["/_next/static/chunks/7923a261b80bb6e1.js","/_next/static/chunks/e09b4358027e8033.js","/_next/static/chunks/2dddb3bc05093f69.js"],"default"]
+8:I[24801,["/_next/static/chunks/7923a261b80bb6e1.js","/_next/static/chunks/e09b4358027e8033.js","/_next/static/chunks/2dddb3bc05093f69.js"],"default"]
+a:I[50183,["/_next/static/chunks/5a5b5b13c22d14f7.js","/_next/static/chunks/a484d1d3dd4b55ab.js"],"OutletBoundary"]
+b:"$Sreact.suspense"
+3:Tdd9,<p>Si un asistente solo responde cuando le preguntas algo, entonces es solo un chatbot. <strong>Un asistente de verdad se adelanta.</strong></p>
+<p>Para eso sirve <strong>Cron</strong>.</p>
+<h2 id="qué-vas-a-aprender">Qué vas a aprender</h2>
+<ul>
+<li>Entender la diferencia entre Cron y Heartbeat</li>
+<li>Saber qué tareas encajan bien con scheduling</li>
+<li>Configurar Cron desde el dashboard</li>
+<li>Leer la sintaxis y depurar tareas que no se ejecutan</li>
+</ul>
+<hr>
+<h2 id="qué-son-cron-y-heartbeat">¿Qué son Cron y Heartbeat?</h2>
+<p><strong>Cron</strong> significa "haz esta tarea a esta hora", como si le dejaras agenda hecha al asistente:</p>
+<ul>
+<li>Cada día a las 9: resume los correos de ayer</li>
+<li>Cada lunes: recuérdame lo importante de la semana</li>
+<li>Cada noche: archiva las notas del día</li>
+</ul>
+<p><strong>Heartbeat</strong> significa que el asistente despierta a intervalos fijos, por ejemplo cada 30 minutos, comprueba si hay algo que hacer y actúa si hace falta.</p>
+<blockquote>
+<p>💡 Si ves un log de heartbeat cada 30 minutos, es totalmente normal.</p>
+</blockquote>
+<hr>
+<h2 id="casos-típicos-de-automatización">Casos típicos de automatización</h2>
+<table>
+<thead>
+<tr>
+<th>Tarea programada</th>
+<th>Qué hace</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td>Resumen diario</td>
+<td>Resume correo, calendario o noticias y te lo envía</td>
+</tr>
+<tr>
+<td>Recordatorios</td>
+<td>Te manda tu lista de tareas a la hora indicada</td>
+</tr>
+<tr>
+<td>Monitorización</td>
+<td>Revisa una API o una web cada hora y avisa si falla</td>
+</tr>
+<tr>
+<td>Ordenar notas</td>
+<td>Convierte notas sueltas en un documento más ordenado cada semana</td>
+</tr>
+</tbody>
+</table>
+<hr>
+<h2 id="configurar-cron-desde-el-dashboard">Configurar Cron desde el dashboard</h2>
+<p>Abre Control UI → pestaña <strong>Cron</strong>:</p>
+<ul>
+<li><strong>Add schedule</strong>: escribe la expresión Cron y la tarea</li>
+<li><strong>Enable / disable</strong>: pausa o reactiva cualquier job</li>
+<li><strong>Run now</strong>: prueba el job al instante sin esperar</li>
+</ul>
+<hr>
+<h2 id="chuleta-rápida-de-sintaxis-cron">Chuleta rápida de sintaxis Cron</h2>
+<pre><code>* * * * *
+│ │ │ │ └─ día de la semana (0-7, 0 y 7 son domingo)
+│ │ │ └─── mes (1-12)
+│ │ └───── día del mes (1-31)
+│ └─────── hora (0-23)
+└───────── minuto (0-59)
+</code></pre>
+<p>Ejemplos comunes:</p>
+<pre><code>0 9 * * *      ← todos los días a las 9:00
+0 9 * * 1      ← cada lunes a las 9:00
+0 */6 * * *    ← cada 6 horas
+</code></pre>
+<hr>
+<h2 id="no-se-ejecutó-el-job-revisa-esto-primero">¿No se ejecutó el job? Revisa esto primero</h2>
+<ol>
+<li>¿Cron está habilitado en la Config?</li>
+<li>¿La zona horaria es correcta?</li>
+<li>¿Los logs muestran un error? Ejecuta <code>openclaw logs --follow</code></li>
+<li>Prueba reiniciar el Gateway</li>
+</ol>
+<blockquote>
+<p>⚠️ Los jobs programados también consumen recursos del modelo. Si ejecutas muchos jobs y muchas conversaciones a la vez, puedes golpear límites como HTTP 429. Para trabajos pesados, mejor un agente dedicado.</p>
+</blockquote>
+<hr>
+<h2 id="siguiente-paso">Siguiente paso</h2>
+<p>Tu asistente ya puede trabajar solo. Ahora cerramos la serie con configuración avanzada y patrones de debugging para que todo sea más estable.</p>
+<p><a href="08-remote-gateway-nodes">← Anterior: Gateway remoto</a> | 👉 <a href="10-advanced-config">Configuración avanzada y mentalidad de debugging</a></p>0:{"buildId":"Yck3R4ooQxWkwGLT6is1X","rsc":["$","$1","c",{"children":[[["$","script",null,{"type":"application/ld+json","dangerouslySetInnerHTML":{"__html":"{\"@context\":\"https://schema.org\",\"@type\":\"Article\",\"headline\":\"Haz que tu asistente trabaje solo: te ayuda incluso cuando no se lo pides\",\"description\":\"Usa Cron para tareas recurrentes, entiende la sintaxis, configúralo desde el dashboard y depura ejecuciones que no arrancan.\",\"url\":\"https://benxhub.com/es/blog/openclaw/09-cron-automation\",\"mainEntityOfPage\":{\"@type\":\"WebPage\",\"@id\":\"https://benxhub.com/es/blog/openclaw/09-cron-automation\"},\"datePublished\":\"2026-03-08T00:00:00.000Z\",\"dateModified\":\"2026-03-08T00:00:00.000Z\",\"keywords\":\"openclaw, cron, automation, scheduling\",\"inLanguage\":\"es\",\"author\":{\"@type\":\"Person\",\"name\":\"BenX\",\"url\":\"https://benxhub.com\"},\"publisher\":{\"@type\":\"Organization\",\"name\":\"BenXHub Blog\",\"url\":\"https://benxhub.com\"}}"}}],["$","div",null,{"className":"mx-auto max-w-6xl px-4 py-12 sm:px-6","children":["$","div",null,{"className":"lg:grid lg:grid-cols-[1fr_240px] lg:gap-14","children":[["$","article",null,{"children":[["$","header",null,{"className":"mb-10","children":[["$","div",null,{"className":"mb-4 flex flex-wrap gap-2","children":[["$","$L2","openclaw",{"href":"/es/tags/openclaw","localeCookie":{"name":"NEXT_LOCALE","sameSite":"lax"},"className":"inline-flex items-center rounded-full px-2.5 py-0.5 text-xs font-medium transition-colors","style":{"background":"var(--color-code-bg)","color":"var(--color-accent)","border":"1px solid var(--color-border)"},"children":["#","openclaw"]}],["$","$L2","cron",{"href":"/es/tags/cron","localeCookie":{"name":"NEXT_LOCALE","sameSite":"lax"},"className":"inline-flex items-center rounded-full px-2.5 py-0.5 text-xs font-medium transition-colors","style":{"background":"var(--color-code-bg)","color":"var(--color-accent)","border":"1px solid var(--color-border)"},"children":["#","cron"]}],["$","$L2","automation",{"href":"/es/tags/automation","localeCookie":{"name":"NEXT_LOCALE","sameSite":"lax"},"className":"inline-flex items-center rounded-full px-2.5 py-0.5 text-xs font-medium transition-colors","style":{"background":"var(--color-code-bg)","color":"var(--color-accent)","border":"1px solid var(--color-border)"},"children":["#","automation"]}],["$","$L2","scheduling",{"href":"/es/tags/scheduling","localeCookie":{"name":"NEXT_LOCALE","sameSite":"lax"},"className":"inline-flex items-center rounded-full px-2.5 py-0.5 text-xs font-medium transition-colors","style":{"background":"var(--color-code-bg)","color":"var(--color-accent)","border":"1px solid var(--color-border)"},"children":["#","scheduling"]}]]}],["$","h1",null,{"className":"mb-4 text-3xl leading-snug font-bold tracking-tight sm:text-4xl","style":{"color":"var(--color-text)"},"children":"Haz que tu asistente trabaje solo: te ayuda incluso cuando no se lo pides"}],["$","div",null,{"className":"flex flex-wrap items-center gap-3 text-sm","style":{"color":"var(--color-muted)"},"children":[["$","time",null,{"dateTime":"2026-03-08","children":"8 3月 2026"}],["$","span",null,{"aria-hidden":"true","children":"·"}],["$","span",null,{"children":"3 min read"}]]}],"$undefined",["$","div",null,{"className":"mt-6 border-b","style":{"borderColor":"var(--color-border)"}}]]}],["$","div",null,{"className":"prose","dangerouslySetInnerHTML":{"__html":"$3"}}],"$L4"]}],"$L5"]}]}]],["$L6"],"$L7"]}],"loading":null,"isPartial":false}
+4:["$","footer",null,{"className":"mt-14 border-t pt-8","style":{"borderColor":"var(--color-border)"},"children":[["$","div",null,{"className":"mb-8 flex flex-wrap gap-2","children":[["$","$L2","openclaw",{"href":"/es/tags/openclaw","localeCookie":{"name":"NEXT_LOCALE","sameSite":"lax"},"className":"inline-flex items-center rounded-full px-3 py-1 text-sm font-medium transition-colors","style":{"background":"var(--color-code-bg)","color":"var(--color-accent)","border":"1px solid var(--color-border)"},"children":["#","openclaw"]}],["$","$L2","cron",{"href":"/es/tags/cron","localeCookie":{"name":"NEXT_LOCALE","sameSite":"lax"},"className":"inline-flex items-center rounded-full px-3 py-1 text-sm font-medium transition-colors","style":{"background":"var(--color-code-bg)","color":"var(--color-accent)","border":"1px solid var(--color-border)"},"children":["#","cron"]}],["$","$L2","automation",{"href":"/es/tags/automation","localeCookie":{"name":"NEXT_LOCALE","sameSite":"lax"},"className":"inline-flex items-center rounded-full px-3 py-1 text-sm font-medium transition-colors","style":{"background":"var(--color-code-bg)","color":"var(--color-accent)","border":"1px solid var(--color-border)"},"children":["#","automation"]}],["$","$L2","scheduling",{"href":"/es/tags/scheduling","localeCookie":{"name":"NEXT_LOCALE","sameSite":"lax"},"className":"inline-flex items-center rounded-full px-3 py-1 text-sm font-medium transition-colors","style":{"background":"var(--color-code-bg)","color":"var(--color-accent)","border":"1px solid var(--color-border)"},"children":["#","scheduling"]}]]}],["$","nav",null,{"aria-label":"Navegación de artículos","className":"grid grid-cols-1 gap-4 sm:grid-cols-2","children":[["$","$L2",null,{"href":"/es/blog/openclaw/08-remote-gateway-nodes","localeCookie":{"name":"NEXT_LOCALE","sameSite":"lax"},"className":"group rounded-lg border p-4 transition-colors hover:border-accent","style":{"borderColor":"var(--color-border)","background":"var(--color-surface)"},"children":[["$","p",null,{"className":"mb-1 text-xs","style":{"color":"var(--color-muted)"},"children":"← Artículo más reciente"}],["$","p",null,{"className":"line-clamp-1 text-sm font-medium transition-colors group-hover:text-accent","style":{"color":"var(--color-text)"},"children":"¿Tu asistente desaparece cuando duermes el portátil? Mueve el Gateway a un VPS"}]]}],["$","$L2",null,{"href":"/es/blog/openclaw/10-advanced-config","localeCookie":{"name":"NEXT_LOCALE","sameSite":"lax"},"className":"group rounded-lg border p-4 text-right transition-colors hover:border-accent","style":{"borderColor":"var(--color-border)","background":"var(--color-surface)"},"children":[["$","p",null,{"className":"mb-1 text-xs","style":{"color":"var(--color-muted)"},"children":"Artículo más antiguo →"}],["$","p",null,{"className":"line-clamp-1 text-sm font-medium transition-colors group-hover:text-accent","style":{"color":"var(--color-text)"},"children":"¿El sistema se comporta raro? Guía de configuración avanzada y debugging"}]]}]]}]]}]
+9:Tdd9,<p>Si un asistente solo responde cuando le preguntas algo, entonces es solo un chatbot. <strong>Un asistente de verdad se adelanta.</strong></p>
+<p>Para eso sirve <strong>Cron</strong>.</p>
+<h2 id="qué-vas-a-aprender">Qué vas a aprender</h2>
+<ul>
+<li>Entender la diferencia entre Cron y Heartbeat</li>
+<li>Saber qué tareas encajan bien con scheduling</li>
+<li>Configurar Cron desde el dashboard</li>
+<li>Leer la sintaxis y depurar tareas que no se ejecutan</li>
+</ul>
+<hr>
+<h2 id="qué-son-cron-y-heartbeat">¿Qué son Cron y Heartbeat?</h2>
+<p><strong>Cron</strong> significa "haz esta tarea a esta hora", como si le dejaras agenda hecha al asistente:</p>
+<ul>
+<li>Cada día a las 9: resume los correos de ayer</li>
+<li>Cada lunes: recuérdame lo importante de la semana</li>
+<li>Cada noche: archiva las notas del día</li>
+</ul>
+<p><strong>Heartbeat</strong> significa que el asistente despierta a intervalos fijos, por ejemplo cada 30 minutos, comprueba si hay algo que hacer y actúa si hace falta.</p>
+<blockquote>
+<p>💡 Si ves un log de heartbeat cada 30 minutos, es totalmente normal.</p>
+</blockquote>
+<hr>
+<h2 id="casos-típicos-de-automatización">Casos típicos de automatización</h2>
+<table>
+<thead>
+<tr>
+<th>Tarea programada</th>
+<th>Qué hace</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td>Resumen diario</td>
+<td>Resume correo, calendario o noticias y te lo envía</td>
+</tr>
+<tr>
+<td>Recordatorios</td>
+<td>Te manda tu lista de tareas a la hora indicada</td>
+</tr>
+<tr>
+<td>Monitorización</td>
+<td>Revisa una API o una web cada hora y avisa si falla</td>
+</tr>
+<tr>
+<td>Ordenar notas</td>
+<td>Convierte notas sueltas en un documento más ordenado cada semana</td>
+</tr>
+</tbody>
+</table>
+<hr>
+<h2 id="configurar-cron-desde-el-dashboard">Configurar Cron desde el dashboard</h2>
+<p>Abre Control UI → pestaña <strong>Cron</strong>:</p>
+<ul>
+<li><strong>Add schedule</strong>: escribe la expresión Cron y la tarea</li>
+<li><strong>Enable / disable</strong>: pausa o reactiva cualquier job</li>
+<li><strong>Run now</strong>: prueba el job al instante sin esperar</li>
+</ul>
+<hr>
+<h2 id="chuleta-rápida-de-sintaxis-cron">Chuleta rápida de sintaxis Cron</h2>
+<pre><code>* * * * *
+│ │ │ │ └─ día de la semana (0-7, 0 y 7 son domingo)
+│ │ │ └─── mes (1-12)
+│ │ └───── día del mes (1-31)
+│ └─────── hora (0-23)
+└───────── minuto (0-59)
+</code></pre>
+<p>Ejemplos comunes:</p>
+<pre><code>0 9 * * *      ← todos los días a las 9:00
+0 9 * * 1      ← cada lunes a las 9:00
+0 */6 * * *    ← cada 6 horas
+</code></pre>
+<hr>
+<h2 id="no-se-ejecutó-el-job-revisa-esto-primero">¿No se ejecutó el job? Revisa esto primero</h2>
+<ol>
+<li>¿Cron está habilitado en la Config?</li>
+<li>¿La zona horaria es correcta?</li>
+<li>¿Los logs muestran un error? Ejecuta <code>openclaw logs --follow</code></li>
+<li>Prueba reiniciar el Gateway</li>
+</ol>
+<blockquote>
+<p>⚠️ Los jobs programados también consumen recursos del modelo. Si ejecutas muchos jobs y muchas conversaciones a la vez, puedes golpear límites como HTTP 429. Para trabajos pesados, mejor un agente dedicado.</p>
+</blockquote>
+<hr>
+<h2 id="siguiente-paso">Siguiente paso</h2>
+<p>Tu asistente ya puede trabajar solo. Ahora cerramos la serie con configuración avanzada y patrones de debugging para que todo sea más estable.</p>
+<p><a href="08-remote-gateway-nodes">← Anterior: Gateway remoto</a> | 👉 <a href="10-advanced-config">Configuración avanzada y mentalidad de debugging</a></p>5:["$","aside",null,{"className":"hidden lg:block","children":["$","$L8",null,{"html":"$9"}]}]
+6:["$","script","script-0",{"src":"/_next/static/chunks/2dddb3bc05093f69.js","async":true}]
+7:["$","$La",null,{"children":["$","$b",null,{"name":"Next.MetadataOutlet","children":"$@c"}]}]
+c:null

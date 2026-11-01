@@ -1,0 +1,306 @@
+1:"$Sreact.fragment"
+2:I[14864,["/_next/static/chunks/7923a261b80bb6e1.js","/_next/static/chunks/e09b4358027e8033.js","/_next/static/chunks/2dddb3bc05093f69.js"],"default"]
+b:I[24801,["/_next/static/chunks/7923a261b80bb6e1.js","/_next/static/chunks/e09b4358027e8033.js","/_next/static/chunks/2dddb3bc05093f69.js"],"default"]
+d:I[50183,["/_next/static/chunks/5a5b5b13c22d14f7.js","/_next/static/chunks/a484d1d3dd4b55ab.js"],"OutletBoundary"]
+e:"$Sreact.suspense"
+0:{"buildId":"Yck3R4ooQxWkwGLT6is1X","rsc":["$","$1","c",{"children":[[["$","script",null,{"type":"application/ld+json","dangerouslySetInnerHTML":{"__html":"{\"@context\":\"https://schema.org\",\"@type\":\"Article\",\"headline\":\"Envoy Gateway 상태와 디버깅 핸드북: Accepted, ResolvedRefs, Programmed의 실제 의미\",\"description\":\"가장 중요한 Gateway와 Route status condition, 디버깅 흐름을 정리합니다. 설정이 반영되지 않을 때 어디를 먼저 봐야 하는지 알 수 있습니다.\",\"url\":\"https://benxhub.com/ko/blog/k8s/gateway/09-debugging-and-status\",\"mainEntityOfPage\":{\"@type\":\"WebPage\",\"@id\":\"https://benxhub.com/ko/blog/k8s/gateway/09-debugging-and-status\"},\"datePublished\":\"2026-03-10T00:00:00.000Z\",\"dateModified\":\"2026-03-10T00:00:00.000Z\",\"keywords\":\"kubernetes, envoy-gateway, gateway-api, troubleshooting, status, debugging\",\"inLanguage\":\"ko\",\"author\":{\"@type\":\"Person\",\"name\":\"BenX\",\"url\":\"https://benxhub.com\"},\"publisher\":{\"@type\":\"Organization\",\"name\":\"BenXHub Blog\",\"url\":\"https://benxhub.com\"}}"}}],["$","div",null,{"className":"mx-auto max-w-6xl px-4 py-12 sm:px-6","children":["$","div",null,{"className":"lg:grid lg:grid-cols-[1fr_240px] lg:gap-14","children":[["$","article",null,{"children":[["$","header",null,{"className":"mb-10","children":[["$","div",null,{"className":"mb-4 flex flex-wrap gap-2","children":[["$","$L2","kubernetes",{"href":"/ko/tags/kubernetes","localeCookie":{"name":"NEXT_LOCALE","sameSite":"lax"},"className":"inline-flex items-center rounded-full px-2.5 py-0.5 text-xs font-medium transition-colors","style":{"background":"var(--color-code-bg)","color":"var(--color-accent)","border":"1px solid var(--color-border)"},"children":["#","kubernetes"]}],["$","$L2","envoy-gateway",{"href":"/ko/tags/envoy-gateway","localeCookie":{"name":"NEXT_LOCALE","sameSite":"lax"},"className":"inline-flex items-center rounded-full px-2.5 py-0.5 text-xs font-medium transition-colors","style":{"background":"var(--color-code-bg)","color":"var(--color-accent)","border":"1px solid var(--color-border)"},"children":["#","envoy-gateway"]}],["$","$L2","gateway-api",{"href":"/ko/tags/gateway-api","localeCookie":{"name":"NEXT_LOCALE","sameSite":"lax"},"className":"inline-flex items-center rounded-full px-2.5 py-0.5 text-xs font-medium transition-colors","style":{"background":"var(--color-code-bg)","color":"var(--color-accent)","border":"1px solid var(--color-border)"},"children":["#","gateway-api"]}],["$","$L2","troubleshooting",{"href":"/ko/tags/troubleshooting","localeCookie":{"name":"NEXT_LOCALE","sameSite":"lax"},"className":"inline-flex items-center rounded-full px-2.5 py-0.5 text-xs font-medium transition-colors","style":{"background":"var(--color-code-bg)","color":"var(--color-accent)","border":"1px solid var(--color-border)"},"children":["#","troubleshooting"]}],["$","$L2","status",{"href":"/ko/tags/status","localeCookie":{"name":"NEXT_LOCALE","sameSite":"lax"},"className":"inline-flex items-center rounded-full px-2.5 py-0.5 text-xs font-medium transition-colors","style":{"background":"var(--color-code-bg)","color":"var(--color-accent)","border":"1px solid var(--color-border)"},"children":["#","status"]}],["$","$L2","debugging",{"href":"/ko/tags/debugging","localeCookie":{"name":"NEXT_LOCALE","sameSite":"lax"},"className":"inline-flex items-center rounded-full px-2.5 py-0.5 text-xs font-medium transition-colors","style":{"background":"var(--color-code-bg)","color":"var(--color-accent)","border":"1px solid var(--color-border)"},"children":["#","debugging"]}]]}],["$","h1",null,{"className":"mb-4 text-3xl leading-snug font-bold tracking-tight sm:text-4xl","style":{"color":"var(--color-text)"},"children":"Envoy Gateway 상태와 디버깅 핸드북: Accepted, ResolvedRefs, Programmed의 실제 의미"}],["$","div",null,{"className":"flex flex-wrap items-center gap-3 text-sm","style":{"color":"var(--color-muted)"},"children":[["$","time",null,{"dateTime":"2026-03-10","children":"2026년 3월 10일"}],["$","span",null,{"aria-hidden":"true","children":"·"}],"$L3"]}],"$undefined","$L4"]}],"$L5","$L6"]}],"$L7"]}]}]],["$L8"],"$L9"]}],"loading":null,"isPartial":false}
+3:["$","span",null,{"children":"10 min read"}]
+4:["$","div",null,{"className":"mt-6 border-b","style":{"borderColor":"var(--color-border)"}}]
+a:T39a9,<p>엔지니어링에서 가장 무서운 시나리오는 에러 메시지가 아닙니다. 오히려 이런 경우죠:</p>
+<p><strong>YAML을 적용했고 <code>kubectl apply</code>도 성공했는데, 트래픽은 여전히 흐르지 않는다.</strong></p>
+<p>이 시점에 <code>spec</code>만 들여다보고 있으면, 마치 찻잎 점을 보는 기분이 들기 시작합니다.
+Gateway API에서 진짜 진단 정보는 <code>status</code> 안에 있습니다.</p>
+<p>이 글의 목표는 하나입니다. 가능한 가장 짧은 디버깅 경로를 주는 것. <code>Gateway</code>, <code>HTTPRoute</code>, <code>Listener</code>가 기대대로 동작하지 않을 때, 어디를 먼저 봐야 하는지 알게 해서 우주 전체의 의미를 의심하는 단계까지 가지 않게 하는 것입니다.</p>
+<h2 id="먼저-여기부터-spec을-바꾸기-전에-status를-읽자">먼저 여기부터: <code>spec</code>을 바꾸기 전에 <code>status</code>를 읽자</h2>
+<p>가장 유용한 명령어:</p>
+<figure data-rehype-pretty-code-figure=""><pre style="background-color:#24292e;color:#e1e4e8" tabindex="0" data-language="bash" data-theme="github-dark"><code data-language="bash" data-theme="github-dark" style="display: grid;"><span data-line=""><span style="color:#B392F0">kubectl</span><span style="color:#9ECBFF"> get</span><span style="color:#9ECBFF"> gateway</span><span style="color:#79B8FF"> -A</span></span>
+<span data-line=""><span style="color:#B392F0">kubectl</span><span style="color:#9ECBFF"> get</span><span style="color:#9ECBFF"> httproute</span><span style="color:#79B8FF"> -A</span></span>
+<span data-line=""><span style="color:#B392F0">kubectl</span><span style="color:#9ECBFF"> get</span><span style="color:#9ECBFF"> grpcroute</span><span style="color:#79B8FF"> -A</span></span>
+<span data-line=""><span style="color:#B392F0">kubectl</span><span style="color:#9ECBFF"> describe</span><span style="color:#9ECBFF"> gateway</span><span style="color:#F97583"> &#x3C;</span><span style="color:#9ECBFF">nam</span><span style="color:#E1E4E8">e</span><span style="color:#F97583">></span></span>
+<span data-line=""><span style="color:#B392F0">kubectl</span><span style="color:#9ECBFF"> describe</span><span style="color:#9ECBFF"> httproute</span><span style="color:#F97583"> &#x3C;</span><span style="color:#9ECBFF">nam</span><span style="color:#E1E4E8">e</span><span style="color:#F97583">></span></span>
+<span data-line=""><span style="color:#B392F0">kubectl</span><span style="color:#9ECBFF"> get</span><span style="color:#9ECBFF"> gateway</span><span style="color:#F97583"> &#x3C;</span><span style="color:#9ECBFF">nam</span><span style="color:#E1E4E8">e</span><span style="color:#F97583">></span><span style="color:#79B8FF"> -o</span><span style="color:#9ECBFF"> yaml</span></span>
+<span data-line=""><span style="color:#B392F0">kubectl</span><span style="color:#9ECBFF"> get</span><span style="color:#9ECBFF"> httproute</span><span style="color:#F97583"> &#x3C;</span><span style="color:#9ECBFF">nam</span><span style="color:#E1E4E8">e</span><span style="color:#F97583">></span><span style="color:#79B8FF"> -o</span><span style="color:#9ECBFF"> yaml</span></span></code></pre></figure>
+<p>핵심은 YAML을 백 번 더 읽는 것이 아니라, 컨트롤러가 여러분 설정을 실제로 받아들였는지 확인하는 것입니다.</p>
+<p><code>status</code>를 시험 성적표라고 생각하세요:</p>
+<ul>
+<li><code>spec</code>은 여러분이 제출한 답안</li>
+<li><code>status</code>는 시스템이 채점한 결과</li>
+</ul>
+<p>제출한 답안만 보고, 채점 결과를 안 보는 건 디버깅이 아니라 감정적 위안입니다.</p>
+<h2 id="가장-중요한-세-가지-condition-이것만-익혀도-대부분-해결된다">가장 중요한 세 가지 Condition: 이것만 익혀도 대부분 해결된다</h2>
+<h3 id="accepted"><code>Accepted</code></h3>
+<p>보통 이 condition은 리소스가 상위 주체에 의해 받아들여졌는지를 나타냅니다.
+route라면 일반적으로 다음을 뜻합니다:</p>
+<ul>
+<li>의도한 Gateway/listener에 성공적으로 attach 되었는가</li>
+<li>규칙에 명백한 충돌이나 invalid 설정이 없는가</li>
+</ul>
+<p><code>Accepted</code>가 <code>False</code>라면 우선 의심할 것:</p>
+<ul>
+<li><code>parentRefs</code>가 잘못된 Gateway나 listener를 가리킴</li>
+<li>hostname/listener 조건이 맞지 않음</li>
+<li>listener가 이 route 타입을 거부함</li>
+<li><code>allowedRoutes</code>에 막힘</li>
+</ul>
+<h3 id="resolvedrefs"><code>ResolvedRefs</code></h3>
+<p>이 condition은 리소스 내부에서 참조한 객체들이 성공적으로 resolve 되었는지를 뜻합니다.
+예를 들면:</p>
+<ul>
+<li><code>backendRefs</code>에서 참조한 <code>Service</code>가 존재하는가</li>
+<li><code>certificateRefs</code>의 <code>Secret</code>을 합법적으로 참조할 수 있는가</li>
+<li>네임스페이스 간 참조를 위한 <code>ReferenceGrant</code>가 올바르게 구성되었는가</li>
+</ul>
+<p>이 condition은 매우 유용합니다.
+많은 설정 실패는 라우팅 로직이 틀려서가 아니라, 참조 대상이 아예 없거나 접근 권한이 없어서 생기기 때문입니다.</p>
+<h3 id="programmed"><code>Programmed</code></h3>
+<p>이 condition은 설정이 구현 계층에 실제로 반영되었는지를 보통 나타냅니다.
+이렇게 생각하면 됩니다:</p>
+<ul>
+<li>컨트롤러가 설정을 수용했고</li>
+<li>그 설정을 데이터 플레인이나 인프라에 밀어 넣었다</li>
+</ul>
+<p><code>Accepted</code>는 이미 <code>True</code>인데도 트래픽이 흐르지 않는다면, 이제 <code>Programmed</code>, Gateway 주소, listener 상태, 하부 Envoy 리소스를 확인해 볼 가치가 있습니다.</p>
+<blockquote>
+<p>💡 리소스마다 노출하는 condition 집합은 조금씩 다를 수 있지만, 직관을 키우기 위해 가장 먼저 익혀야 할 1차 그룹은 <code>Accepted</code>, <code>ResolvedRefs</code>, <code>Programmed</code>입니다.</p>
+</blockquote>
+<h2 id="가장-짧은-디버깅-흐름-보통-이-순서가-잘-먹힌다">가장 짧은 디버깅 흐름: 보통 이 순서가 잘 먹힌다</h2>
+<h3 id="1단계-gateway가-실제로-떠-있는지-확인">1단계: Gateway가 실제로 떠 있는지 확인</h3>
+<figure data-rehype-pretty-code-figure=""><pre style="background-color:#24292e;color:#e1e4e8" tabindex="0" data-language="bash" data-theme="github-dark"><code data-language="bash" data-theme="github-dark" style="display: grid;"><span data-line=""><span style="color:#B392F0">kubectl</span><span style="color:#9ECBFF"> get</span><span style="color:#9ECBFF"> gateway</span><span style="color:#79B8FF"> -A</span></span>
+<span data-line=""><span style="color:#B392F0">kubectl</span><span style="color:#9ECBFF"> get</span><span style="color:#9ECBFF"> gateway</span><span style="color:#9ECBFF"> eg</span><span style="color:#79B8FF"> -o</span><span style="color:#9ECBFF"> yaml</span></span></code></pre></figure>
+<p>확인할 것:</p>
+<ul>
+<li><code>status.addresses</code>에 값이 있는가</li>
+<li>listener condition 중 이상한 것이 없는가</li>
+<li>listener의 hostname/protocol/port가 기대와 일치하는가</li>
+</ul>
+<p>Gateway에 주소가 없다면, 아무리 예쁜 route YAML도 결국은 창작 글쓰기일 뿐입니다.</p>
+<h3 id="2단계-route가-성공적으로-attach되었는지-확인">2단계: Route가 성공적으로 Attach되었는지 확인</h3>
+<figure data-rehype-pretty-code-figure=""><pre style="background-color:#24292e;color:#e1e4e8" tabindex="0" data-language="bash" data-theme="github-dark"><code data-language="bash" data-theme="github-dark" style="display: grid;"><span data-line=""><span style="color:#B392F0">kubectl</span><span style="color:#9ECBFF"> get</span><span style="color:#9ECBFF"> httproute</span><span style="color:#79B8FF"> -A</span></span>
+<span data-line=""><span style="color:#B392F0">kubectl</span><span style="color:#9ECBFF"> get</span><span style="color:#9ECBFF"> httproute</span><span style="color:#9ECBFF"> app-route</span><span style="color:#79B8FF"> -o</span><span style="color:#9ECBFF"> yaml</span></span></code></pre></figure>
+<p>우선순위:</p>
+<ul>
+<li><code>status.parents</code></li>
+<li><code>Accepted</code></li>
+<li><code>ResolvedRefs</code></li>
+<li><code>observedGeneration</code></li>
+</ul>
+<p><code>observedGeneration</code>은 꽤 볼 가치가 있습니다.
+이 값이 <code>metadata.generation</code>을 따라잡지 못했다면, 컨트롤러가 아직 최신 설정 버전을 처리하지 않았을 수 있습니다.</p>
+<h3 id="3단계-참조한-리소스가-실제로-존재하는지-확인">3단계: 참조한 리소스가 실제로 존재하는지 확인</h3>
+<p>이 단계는 다른 어떤 단계보다 자주 건너뛰어집니다:</p>
+<figure data-rehype-pretty-code-figure=""><pre style="background-color:#24292e;color:#e1e4e8" tabindex="0" data-language="bash" data-theme="github-dark"><code data-language="bash" data-theme="github-dark" style="display: grid;"><span data-line=""><span style="color:#B392F0">kubectl</span><span style="color:#9ECBFF"> get</span><span style="color:#9ECBFF"> svc</span><span style="color:#79B8FF"> -A</span></span>
+<span data-line=""><span style="color:#B392F0">kubectl</span><span style="color:#9ECBFF"> get</span><span style="color:#9ECBFF"> secret</span><span style="color:#79B8FF"> -A</span></span>
+<span data-line=""><span style="color:#B392F0">kubectl</span><span style="color:#9ECBFF"> get</span><span style="color:#9ECBFF"> referencegrant</span><span style="color:#79B8FF"> -A</span></span></code></pre></figure>
+<p>흔한 문제:</p>
+<ul>
+<li>백엔드 서비스 이름이 틀림</li>
+<li>포트가 틀림</li>
+<li>Secret이 생각한 네임스페이스에 없음</li>
+<li>네임스페이스 간 참조에 <code>ReferenceGrant</code>가 없음</li>
+</ul>
+<p><code>ResolvedRefs</code>가 <code>False</code>라면 이 경로를 따라 추적하세요.</p>
+<h3 id="4단계-데이터-플레인과-컨트롤러-확인">4단계: 데이터 플레인과 컨트롤러 확인</h3>
+<p>Gateway와 Route 상태가 대체로 멀쩡해 보이는데도 트래픽이 흐르지 않는다면, 더 아래를 봐야 합니다:</p>
+<figure data-rehype-pretty-code-figure=""><pre style="background-color:#24292e;color:#e1e4e8" tabindex="0" data-language="bash" data-theme="github-dark"><code data-language="bash" data-theme="github-dark" style="display: grid;"><span data-line=""><span style="color:#B392F0">kubectl</span><span style="color:#9ECBFF"> get</span><span style="color:#9ECBFF"> pods</span><span style="color:#79B8FF"> -n</span><span style="color:#9ECBFF"> envoy-gateway-system</span></span>
+<span data-line=""><span style="color:#B392F0">kubectl</span><span style="color:#9ECBFF"> logs</span><span style="color:#79B8FF"> -n</span><span style="color:#9ECBFF"> envoy-gateway-system</span><span style="color:#9ECBFF"> deployment/envoy-gateway</span></span></code></pre></figure>
+<p>이 시점에는 "규칙이 받아들여졌는가"를 디버깅하는 것이 아니라, 컨트롤 플레인과 데이터 플레인이 정상 동작하는지를 보는 단계입니다.</p>
+<p><code>egctl</code>이 설치돼 있다면 상태를 빠르게 보는 데 도움이 됩니다.
+하지만 그것이 없어도 <code>kubectl get/describe -o yaml</code>만으로 대부분의 문제는 해결할 수 있습니다.</p>
+<h2 id="가장-흔한-실패-패턴-네-가지">가장 흔한 실패 패턴 네 가지</h2>
+<h3 id="1-route는-맞는데-의도한-listener에-attach되지-않았다">1. Route는 맞는데, 의도한 Listener에 Attach되지 않았다</h3>
+<p>증상:</p>
+<ul>
+<li>YAML은 맞아 보임</li>
+<li>그런데 트래픽이 규칙에 들어오지 않음</li>
+</ul>
+<p>확인할 것:</p>
+<ul>
+<li><code>parentRefs.name</code></li>
+<li><code>parentRefs.sectionName</code></li>
+<li>Gateway listener 이름이 정확히 일치하는지</li>
+</ul>
+<p>멀티 listener 환경에서는 <code>sectionName</code> 오타 하나로도 디버깅 세션 하나를 통째로 날릴 수 있습니다.</p>
+<h3 id="2-accepted는-성공했는데-resolvedrefs가-실패한다">2. <code>Accepted</code>는 성공했는데 <code>ResolvedRefs</code>가 실패한다</h3>
+<p>보통 이건 attach 자체는 가능한데, 참조된 무언가에 문제가 있다는 뜻입니다.
+가장 흔한 원인:</p>
+<ul>
+<li>백엔드 Service가 존재하지 않음</li>
+<li>Secret 이름이 틀림</li>
+<li>네임스페이스 간 참조가 승인 없이 이뤄짐</li>
+</ul>
+<p>이 실패 유형이 가장 짜증 나는 이유는 거의 다 온 것처럼 보이는데, 실제로는 참조 계층에서 멈춰 있기 때문입니다.</p>
+<h3 id="3-gateway에는-listener가-있는데-기대한-주소가-없다">3. Gateway에는 Listener가 있는데 기대한 주소가 없다</h3>
+<p>이건 로컬 클러스터나 <code>LoadBalancer</code> 구현이 없는 환경에서 자주 보입니다.
+Gateway API가 고장 난 것이 아니라, 아래 인프라가 외부 주소를 프로비저닝하지 못하는 것입니다.</p>
+<p>선택지:</p>
+<ul>
+<li>클러스터에 <code>LoadBalancer</code> 기능이 있는지 확인</li>
+<li><code>port-forward</code>로 라우팅 경로를 검증</li>
+</ul>
+<h3 id="4-yaml은-반영됐지만-요청이-404--503을-반환한다">4. YAML은 반영됐지만 요청이 404 / 503을 반환한다</h3>
+<p>이 단계에서는 보통 한 필드만 틀린 것이 아니라, 체인 어딘가가 끊어진 경우가 많습니다:</p>
+<ul>
+<li>잘못된 Host header</li>
+<li>어떤 규칙과도 매칭되지 않는 path</li>
+<li>백엔드 Pod 비정상</li>
+<li>Service selector가 어떤 Pod도 선택하지 못함</li>
+</ul>
+<p>Ingress 문제는 프록시 실패처럼 보여도 실제로는 백엔드가 준비되지 않은 경우가 많습니다. 모든 걸 프록시 탓으로 돌리지는 마세요. 그쪽도 이미 할 일이 많습니다.</p>
+<h2 id="한-줄-요약">한 줄 요약</h2>
+<p>Gateway API를 가장 효과적으로 디버깅하는 방법은 YAML을 계속 바꾸는 것이 아니라, <code>status</code>를 읽는 법을 익히는 것입니다.
+<code>Accepted</code>는 주문이 접수됐는지 알려주고, <code>ResolvedRefs</code>는 참조가 해결됐는지 알려주며, <code>Programmed</code>는 설정이 실제로 반영됐는지 알려줍니다. 이 세 계층을 분리해서 보면 문제 해결 속도가 크게 올라갑니다.</p>
+<h2 id="다음-단계">다음 단계</h2>
+<p>이로써 10편짜리 Envoy Gateway 시리즈가 완성됩니다.
+시리즈 전체 지도를 다시 보고 싶다면:</p>
+<p>👉 <a href="00-overview">시리즈 개요</a></p>5:["$","div",null,{"className":"prose","dangerouslySetInnerHTML":{"__html":"$a"}}]
+6:["$","footer",null,{"className":"mt-14 border-t pt-8","style":{"borderColor":"var(--color-border)"},"children":[["$","div",null,{"className":"mb-8 flex flex-wrap gap-2","children":[["$","$L2","kubernetes",{"href":"/ko/tags/kubernetes","localeCookie":{"name":"NEXT_LOCALE","sameSite":"lax"},"className":"inline-flex items-center rounded-full px-3 py-1 text-sm font-medium transition-colors","style":{"background":"var(--color-code-bg)","color":"var(--color-accent)","border":"1px solid var(--color-border)"},"children":["#","kubernetes"]}],["$","$L2","envoy-gateway",{"href":"/ko/tags/envoy-gateway","localeCookie":{"name":"NEXT_LOCALE","sameSite":"lax"},"className":"inline-flex items-center rounded-full px-3 py-1 text-sm font-medium transition-colors","style":{"background":"var(--color-code-bg)","color":"var(--color-accent)","border":"1px solid var(--color-border)"},"children":["#","envoy-gateway"]}],["$","$L2","gateway-api",{"href":"/ko/tags/gateway-api","localeCookie":{"name":"NEXT_LOCALE","sameSite":"lax"},"className":"inline-flex items-center rounded-full px-3 py-1 text-sm font-medium transition-colors","style":{"background":"var(--color-code-bg)","color":"var(--color-accent)","border":"1px solid var(--color-border)"},"children":["#","gateway-api"]}],["$","$L2","troubleshooting",{"href":"/ko/tags/troubleshooting","localeCookie":{"name":"NEXT_LOCALE","sameSite":"lax"},"className":"inline-flex items-center rounded-full px-3 py-1 text-sm font-medium transition-colors","style":{"background":"var(--color-code-bg)","color":"var(--color-accent)","border":"1px solid var(--color-border)"},"children":["#","troubleshooting"]}],["$","$L2","status",{"href":"/ko/tags/status","localeCookie":{"name":"NEXT_LOCALE","sameSite":"lax"},"className":"inline-flex items-center rounded-full px-3 py-1 text-sm font-medium transition-colors","style":{"background":"var(--color-code-bg)","color":"var(--color-accent)","border":"1px solid var(--color-border)"},"children":["#","status"]}],["$","$L2","debugging",{"href":"/ko/tags/debugging","localeCookie":{"name":"NEXT_LOCALE","sameSite":"lax"},"className":"inline-flex items-center rounded-full px-3 py-1 text-sm font-medium transition-colors","style":{"background":"var(--color-code-bg)","color":"var(--color-accent)","border":"1px solid var(--color-border)"},"children":["#","debugging"]}]]}],["$","nav",null,{"aria-label":"글 탐색","className":"grid grid-cols-1 gap-4 sm:grid-cols-2","children":[["$","$L2",null,{"href":"/ko/blog/k8s/gateway/08-multi-namespace-and-teamwork","localeCookie":{"name":"NEXT_LOCALE","sameSite":"lax"},"className":"group rounded-lg border p-4 transition-colors hover:border-accent","style":{"borderColor":"var(--color-border)","background":"var(--color-surface)"},"children":[["$","p",null,{"className":"mb-1 text-xs","style":{"color":"var(--color-muted)"},"children":"← 최신 글"}],["$","p",null,{"className":"line-clamp-1 text-sm font-medium transition-colors group-hover:text-accent","style":{"color":"var(--color-text)"},"children":"Envoy Gateway 멀티 네임스페이스와 팀 소유권: allowedRoutes, ReferenceGrant, 그리고 팀 간 거버넌스"}]]}],["$","$L2",null,{"href":"/ko/blog/ai-trend/2026-03-09-ai-content-automation-workflow","localeCookie":{"name":"NEXT_LOCALE","sameSite":"lax"},"className":"group rounded-lg border p-4 text-right transition-colors hover:border-accent","style":{"borderColor":"var(--color-border)","background":"var(--color-surface)"},"children":[["$","p",null,{"className":"mb-1 text-xs","style":{"color":"var(--color-muted)"},"children":"이전 글 →"}],["$","p",null,{"className":"line-clamp-1 text-sm font-medium transition-colors group-hover:text-accent","style":{"color":"var(--color-text)"},"children":"AI 기반 콘텐츠 제작: 진짜 격차는 속도가 아니라 워크플로 설계다"}]]}]]}]]}]
+c:T39a9,<p>엔지니어링에서 가장 무서운 시나리오는 에러 메시지가 아닙니다. 오히려 이런 경우죠:</p>
+<p><strong>YAML을 적용했고 <code>kubectl apply</code>도 성공했는데, 트래픽은 여전히 흐르지 않는다.</strong></p>
+<p>이 시점에 <code>spec</code>만 들여다보고 있으면, 마치 찻잎 점을 보는 기분이 들기 시작합니다.
+Gateway API에서 진짜 진단 정보는 <code>status</code> 안에 있습니다.</p>
+<p>이 글의 목표는 하나입니다. 가능한 가장 짧은 디버깅 경로를 주는 것. <code>Gateway</code>, <code>HTTPRoute</code>, <code>Listener</code>가 기대대로 동작하지 않을 때, 어디를 먼저 봐야 하는지 알게 해서 우주 전체의 의미를 의심하는 단계까지 가지 않게 하는 것입니다.</p>
+<h2 id="먼저-여기부터-spec을-바꾸기-전에-status를-읽자">먼저 여기부터: <code>spec</code>을 바꾸기 전에 <code>status</code>를 읽자</h2>
+<p>가장 유용한 명령어:</p>
+<figure data-rehype-pretty-code-figure=""><pre style="background-color:#24292e;color:#e1e4e8" tabindex="0" data-language="bash" data-theme="github-dark"><code data-language="bash" data-theme="github-dark" style="display: grid;"><span data-line=""><span style="color:#B392F0">kubectl</span><span style="color:#9ECBFF"> get</span><span style="color:#9ECBFF"> gateway</span><span style="color:#79B8FF"> -A</span></span>
+<span data-line=""><span style="color:#B392F0">kubectl</span><span style="color:#9ECBFF"> get</span><span style="color:#9ECBFF"> httproute</span><span style="color:#79B8FF"> -A</span></span>
+<span data-line=""><span style="color:#B392F0">kubectl</span><span style="color:#9ECBFF"> get</span><span style="color:#9ECBFF"> grpcroute</span><span style="color:#79B8FF"> -A</span></span>
+<span data-line=""><span style="color:#B392F0">kubectl</span><span style="color:#9ECBFF"> describe</span><span style="color:#9ECBFF"> gateway</span><span style="color:#F97583"> &#x3C;</span><span style="color:#9ECBFF">nam</span><span style="color:#E1E4E8">e</span><span style="color:#F97583">></span></span>
+<span data-line=""><span style="color:#B392F0">kubectl</span><span style="color:#9ECBFF"> describe</span><span style="color:#9ECBFF"> httproute</span><span style="color:#F97583"> &#x3C;</span><span style="color:#9ECBFF">nam</span><span style="color:#E1E4E8">e</span><span style="color:#F97583">></span></span>
+<span data-line=""><span style="color:#B392F0">kubectl</span><span style="color:#9ECBFF"> get</span><span style="color:#9ECBFF"> gateway</span><span style="color:#F97583"> &#x3C;</span><span style="color:#9ECBFF">nam</span><span style="color:#E1E4E8">e</span><span style="color:#F97583">></span><span style="color:#79B8FF"> -o</span><span style="color:#9ECBFF"> yaml</span></span>
+<span data-line=""><span style="color:#B392F0">kubectl</span><span style="color:#9ECBFF"> get</span><span style="color:#9ECBFF"> httproute</span><span style="color:#F97583"> &#x3C;</span><span style="color:#9ECBFF">nam</span><span style="color:#E1E4E8">e</span><span style="color:#F97583">></span><span style="color:#79B8FF"> -o</span><span style="color:#9ECBFF"> yaml</span></span></code></pre></figure>
+<p>핵심은 YAML을 백 번 더 읽는 것이 아니라, 컨트롤러가 여러분 설정을 실제로 받아들였는지 확인하는 것입니다.</p>
+<p><code>status</code>를 시험 성적표라고 생각하세요:</p>
+<ul>
+<li><code>spec</code>은 여러분이 제출한 답안</li>
+<li><code>status</code>는 시스템이 채점한 결과</li>
+</ul>
+<p>제출한 답안만 보고, 채점 결과를 안 보는 건 디버깅이 아니라 감정적 위안입니다.</p>
+<h2 id="가장-중요한-세-가지-condition-이것만-익혀도-대부분-해결된다">가장 중요한 세 가지 Condition: 이것만 익혀도 대부분 해결된다</h2>
+<h3 id="accepted"><code>Accepted</code></h3>
+<p>보통 이 condition은 리소스가 상위 주체에 의해 받아들여졌는지를 나타냅니다.
+route라면 일반적으로 다음을 뜻합니다:</p>
+<ul>
+<li>의도한 Gateway/listener에 성공적으로 attach 되었는가</li>
+<li>규칙에 명백한 충돌이나 invalid 설정이 없는가</li>
+</ul>
+<p><code>Accepted</code>가 <code>False</code>라면 우선 의심할 것:</p>
+<ul>
+<li><code>parentRefs</code>가 잘못된 Gateway나 listener를 가리킴</li>
+<li>hostname/listener 조건이 맞지 않음</li>
+<li>listener가 이 route 타입을 거부함</li>
+<li><code>allowedRoutes</code>에 막힘</li>
+</ul>
+<h3 id="resolvedrefs"><code>ResolvedRefs</code></h3>
+<p>이 condition은 리소스 내부에서 참조한 객체들이 성공적으로 resolve 되었는지를 뜻합니다.
+예를 들면:</p>
+<ul>
+<li><code>backendRefs</code>에서 참조한 <code>Service</code>가 존재하는가</li>
+<li><code>certificateRefs</code>의 <code>Secret</code>을 합법적으로 참조할 수 있는가</li>
+<li>네임스페이스 간 참조를 위한 <code>ReferenceGrant</code>가 올바르게 구성되었는가</li>
+</ul>
+<p>이 condition은 매우 유용합니다.
+많은 설정 실패는 라우팅 로직이 틀려서가 아니라, 참조 대상이 아예 없거나 접근 권한이 없어서 생기기 때문입니다.</p>
+<h3 id="programmed"><code>Programmed</code></h3>
+<p>이 condition은 설정이 구현 계층에 실제로 반영되었는지를 보통 나타냅니다.
+이렇게 생각하면 됩니다:</p>
+<ul>
+<li>컨트롤러가 설정을 수용했고</li>
+<li>그 설정을 데이터 플레인이나 인프라에 밀어 넣었다</li>
+</ul>
+<p><code>Accepted</code>는 이미 <code>True</code>인데도 트래픽이 흐르지 않는다면, 이제 <code>Programmed</code>, Gateway 주소, listener 상태, 하부 Envoy 리소스를 확인해 볼 가치가 있습니다.</p>
+<blockquote>
+<p>💡 리소스마다 노출하는 condition 집합은 조금씩 다를 수 있지만, 직관을 키우기 위해 가장 먼저 익혀야 할 1차 그룹은 <code>Accepted</code>, <code>ResolvedRefs</code>, <code>Programmed</code>입니다.</p>
+</blockquote>
+<h2 id="가장-짧은-디버깅-흐름-보통-이-순서가-잘-먹힌다">가장 짧은 디버깅 흐름: 보통 이 순서가 잘 먹힌다</h2>
+<h3 id="1단계-gateway가-실제로-떠-있는지-확인">1단계: Gateway가 실제로 떠 있는지 확인</h3>
+<figure data-rehype-pretty-code-figure=""><pre style="background-color:#24292e;color:#e1e4e8" tabindex="0" data-language="bash" data-theme="github-dark"><code data-language="bash" data-theme="github-dark" style="display: grid;"><span data-line=""><span style="color:#B392F0">kubectl</span><span style="color:#9ECBFF"> get</span><span style="color:#9ECBFF"> gateway</span><span style="color:#79B8FF"> -A</span></span>
+<span data-line=""><span style="color:#B392F0">kubectl</span><span style="color:#9ECBFF"> get</span><span style="color:#9ECBFF"> gateway</span><span style="color:#9ECBFF"> eg</span><span style="color:#79B8FF"> -o</span><span style="color:#9ECBFF"> yaml</span></span></code></pre></figure>
+<p>확인할 것:</p>
+<ul>
+<li><code>status.addresses</code>에 값이 있는가</li>
+<li>listener condition 중 이상한 것이 없는가</li>
+<li>listener의 hostname/protocol/port가 기대와 일치하는가</li>
+</ul>
+<p>Gateway에 주소가 없다면, 아무리 예쁜 route YAML도 결국은 창작 글쓰기일 뿐입니다.</p>
+<h3 id="2단계-route가-성공적으로-attach되었는지-확인">2단계: Route가 성공적으로 Attach되었는지 확인</h3>
+<figure data-rehype-pretty-code-figure=""><pre style="background-color:#24292e;color:#e1e4e8" tabindex="0" data-language="bash" data-theme="github-dark"><code data-language="bash" data-theme="github-dark" style="display: grid;"><span data-line=""><span style="color:#B392F0">kubectl</span><span style="color:#9ECBFF"> get</span><span style="color:#9ECBFF"> httproute</span><span style="color:#79B8FF"> -A</span></span>
+<span data-line=""><span style="color:#B392F0">kubectl</span><span style="color:#9ECBFF"> get</span><span style="color:#9ECBFF"> httproute</span><span style="color:#9ECBFF"> app-route</span><span style="color:#79B8FF"> -o</span><span style="color:#9ECBFF"> yaml</span></span></code></pre></figure>
+<p>우선순위:</p>
+<ul>
+<li><code>status.parents</code></li>
+<li><code>Accepted</code></li>
+<li><code>ResolvedRefs</code></li>
+<li><code>observedGeneration</code></li>
+</ul>
+<p><code>observedGeneration</code>은 꽤 볼 가치가 있습니다.
+이 값이 <code>metadata.generation</code>을 따라잡지 못했다면, 컨트롤러가 아직 최신 설정 버전을 처리하지 않았을 수 있습니다.</p>
+<h3 id="3단계-참조한-리소스가-실제로-존재하는지-확인">3단계: 참조한 리소스가 실제로 존재하는지 확인</h3>
+<p>이 단계는 다른 어떤 단계보다 자주 건너뛰어집니다:</p>
+<figure data-rehype-pretty-code-figure=""><pre style="background-color:#24292e;color:#e1e4e8" tabindex="0" data-language="bash" data-theme="github-dark"><code data-language="bash" data-theme="github-dark" style="display: grid;"><span data-line=""><span style="color:#B392F0">kubectl</span><span style="color:#9ECBFF"> get</span><span style="color:#9ECBFF"> svc</span><span style="color:#79B8FF"> -A</span></span>
+<span data-line=""><span style="color:#B392F0">kubectl</span><span style="color:#9ECBFF"> get</span><span style="color:#9ECBFF"> secret</span><span style="color:#79B8FF"> -A</span></span>
+<span data-line=""><span style="color:#B392F0">kubectl</span><span style="color:#9ECBFF"> get</span><span style="color:#9ECBFF"> referencegrant</span><span style="color:#79B8FF"> -A</span></span></code></pre></figure>
+<p>흔한 문제:</p>
+<ul>
+<li>백엔드 서비스 이름이 틀림</li>
+<li>포트가 틀림</li>
+<li>Secret이 생각한 네임스페이스에 없음</li>
+<li>네임스페이스 간 참조에 <code>ReferenceGrant</code>가 없음</li>
+</ul>
+<p><code>ResolvedRefs</code>가 <code>False</code>라면 이 경로를 따라 추적하세요.</p>
+<h3 id="4단계-데이터-플레인과-컨트롤러-확인">4단계: 데이터 플레인과 컨트롤러 확인</h3>
+<p>Gateway와 Route 상태가 대체로 멀쩡해 보이는데도 트래픽이 흐르지 않는다면, 더 아래를 봐야 합니다:</p>
+<figure data-rehype-pretty-code-figure=""><pre style="background-color:#24292e;color:#e1e4e8" tabindex="0" data-language="bash" data-theme="github-dark"><code data-language="bash" data-theme="github-dark" style="display: grid;"><span data-line=""><span style="color:#B392F0">kubectl</span><span style="color:#9ECBFF"> get</span><span style="color:#9ECBFF"> pods</span><span style="color:#79B8FF"> -n</span><span style="color:#9ECBFF"> envoy-gateway-system</span></span>
+<span data-line=""><span style="color:#B392F0">kubectl</span><span style="color:#9ECBFF"> logs</span><span style="color:#79B8FF"> -n</span><span style="color:#9ECBFF"> envoy-gateway-system</span><span style="color:#9ECBFF"> deployment/envoy-gateway</span></span></code></pre></figure>
+<p>이 시점에는 "규칙이 받아들여졌는가"를 디버깅하는 것이 아니라, 컨트롤 플레인과 데이터 플레인이 정상 동작하는지를 보는 단계입니다.</p>
+<p><code>egctl</code>이 설치돼 있다면 상태를 빠르게 보는 데 도움이 됩니다.
+하지만 그것이 없어도 <code>kubectl get/describe -o yaml</code>만으로 대부분의 문제는 해결할 수 있습니다.</p>
+<h2 id="가장-흔한-실패-패턴-네-가지">가장 흔한 실패 패턴 네 가지</h2>
+<h3 id="1-route는-맞는데-의도한-listener에-attach되지-않았다">1. Route는 맞는데, 의도한 Listener에 Attach되지 않았다</h3>
+<p>증상:</p>
+<ul>
+<li>YAML은 맞아 보임</li>
+<li>그런데 트래픽이 규칙에 들어오지 않음</li>
+</ul>
+<p>확인할 것:</p>
+<ul>
+<li><code>parentRefs.name</code></li>
+<li><code>parentRefs.sectionName</code></li>
+<li>Gateway listener 이름이 정확히 일치하는지</li>
+</ul>
+<p>멀티 listener 환경에서는 <code>sectionName</code> 오타 하나로도 디버깅 세션 하나를 통째로 날릴 수 있습니다.</p>
+<h3 id="2-accepted는-성공했는데-resolvedrefs가-실패한다">2. <code>Accepted</code>는 성공했는데 <code>ResolvedRefs</code>가 실패한다</h3>
+<p>보통 이건 attach 자체는 가능한데, 참조된 무언가에 문제가 있다는 뜻입니다.
+가장 흔한 원인:</p>
+<ul>
+<li>백엔드 Service가 존재하지 않음</li>
+<li>Secret 이름이 틀림</li>
+<li>네임스페이스 간 참조가 승인 없이 이뤄짐</li>
+</ul>
+<p>이 실패 유형이 가장 짜증 나는 이유는 거의 다 온 것처럼 보이는데, 실제로는 참조 계층에서 멈춰 있기 때문입니다.</p>
+<h3 id="3-gateway에는-listener가-있는데-기대한-주소가-없다">3. Gateway에는 Listener가 있는데 기대한 주소가 없다</h3>
+<p>이건 로컬 클러스터나 <code>LoadBalancer</code> 구현이 없는 환경에서 자주 보입니다.
+Gateway API가 고장 난 것이 아니라, 아래 인프라가 외부 주소를 프로비저닝하지 못하는 것입니다.</p>
+<p>선택지:</p>
+<ul>
+<li>클러스터에 <code>LoadBalancer</code> 기능이 있는지 확인</li>
+<li><code>port-forward</code>로 라우팅 경로를 검증</li>
+</ul>
+<h3 id="4-yaml은-반영됐지만-요청이-404--503을-반환한다">4. YAML은 반영됐지만 요청이 404 / 503을 반환한다</h3>
+<p>이 단계에서는 보통 한 필드만 틀린 것이 아니라, 체인 어딘가가 끊어진 경우가 많습니다:</p>
+<ul>
+<li>잘못된 Host header</li>
+<li>어떤 규칙과도 매칭되지 않는 path</li>
+<li>백엔드 Pod 비정상</li>
+<li>Service selector가 어떤 Pod도 선택하지 못함</li>
+</ul>
+<p>Ingress 문제는 프록시 실패처럼 보여도 실제로는 백엔드가 준비되지 않은 경우가 많습니다. 모든 걸 프록시 탓으로 돌리지는 마세요. 그쪽도 이미 할 일이 많습니다.</p>
+<h2 id="한-줄-요약">한 줄 요약</h2>
+<p>Gateway API를 가장 효과적으로 디버깅하는 방법은 YAML을 계속 바꾸는 것이 아니라, <code>status</code>를 읽는 법을 익히는 것입니다.
+<code>Accepted</code>는 주문이 접수됐는지 알려주고, <code>ResolvedRefs</code>는 참조가 해결됐는지 알려주며, <code>Programmed</code>는 설정이 실제로 반영됐는지 알려줍니다. 이 세 계층을 분리해서 보면 문제 해결 속도가 크게 올라갑니다.</p>
+<h2 id="다음-단계">다음 단계</h2>
+<p>이로써 10편짜리 Envoy Gateway 시리즈가 완성됩니다.
+시리즈 전체 지도를 다시 보고 싶다면:</p>
+<p>👉 <a href="00-overview">시리즈 개요</a></p>7:["$","aside",null,{"className":"hidden lg:block","children":["$","$Lb",null,{"html":"$c"}]}]
+8:["$","script","script-0",{"src":"/_next/static/chunks/2dddb3bc05093f69.js","async":true}]
+9:["$","$Ld",null,{"children":["$","$e",null,{"name":"Next.MetadataOutlet","children":"$@f"}]}]
+f:null

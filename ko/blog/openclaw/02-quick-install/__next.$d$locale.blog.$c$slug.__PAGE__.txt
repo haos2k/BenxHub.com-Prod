@@ -1,0 +1,181 @@
+1:"$Sreact.fragment"
+2:I[14864,["/_next/static/chunks/7923a261b80bb6e1.js","/_next/static/chunks/e09b4358027e8033.js","/_next/static/chunks/2dddb3bc05093f69.js"],"default"]
+8:I[24801,["/_next/static/chunks/7923a261b80bb6e1.js","/_next/static/chunks/e09b4358027e8033.js","/_next/static/chunks/2dddb3bc05093f69.js"],"default"]
+a:I[50183,["/_next/static/chunks/5a5b5b13c22d14f7.js","/_next/static/chunks/a484d1d3dd4b55ab.js"],"OutletBoundary"]
+b:"$Sreact.suspense"
+3:T155c,<p>많은 튜토리얼이 바로 이 단계에서 사람을 놓칩니다. 이 글의 목표는 하나입니다. <strong>처음 한 번에 성공하게 만드는 것</strong>.</p>
+<h2 id="이번-글에서-배울-것">이번 글에서 배울 것</h2>
+<ul>
+<li>설치 전 필요한 조건 확인</li>
+<li>OpenClaw 설치</li>
+<li>온보딩 완료 및 첫 비서 생성</li>
+<li>대시보드 열기</li>
+</ul>
+<hr>
+<h2 id="설치-전에-꼭-확인할-두-가지">설치 전에 꼭 확인할 두 가지</h2>
+<p>많이 필요하지는 않지만, 이 두 개는 필수입니다.</p>
+<p><strong>1. Node.js (LTS 버전)</strong></p>
+<figure data-rehype-pretty-code-figure=""><pre style="background-color:#24292e;color:#e1e4e8" tabindex="0" data-language="bash" data-theme="github-dark"><code data-language="bash" data-theme="github-dark" style="display: grid;"><span data-line=""><span style="color:#B392F0">node</span><span style="color:#79B8FF"> --version</span></span>
+<span data-line=""><span style="color:#6A737D"># 버전 번호가 보이면 OK</span></span></code></pre></figure>
+<p><strong>2. AI 모델용 API key</strong></p>
+<p>Anthropic Claude나 OpenAI 같은 클라우드 모델을 쓰려면 API key가 필요합니다. 완전 오프라인으로 가고 싶다면 로컬 모델을 사용해도 됩니다. 이 시리즈는 기본적으로 클라우드 모델을 기준으로 설명합니다.</p>
+<blockquote>
+<p>💡 API key 발급 방법이 막막하다면 "Anthropic API key" 정도로 검색해 보면 보통 몇 분 안에 해결됩니다.</p>
+</blockquote>
+<hr>
+<h2 id="openclaw-설치하기">OpenClaw 설치하기</h2>
+<p>공식 문서에서는 <strong>git 기반 설치 방식</strong> 을 권장합니다. 나중에 업데이트와 디버깅이 더 쉽기 때문입니다.</p>
+<p><strong>macOS / Linux</strong></p>
+<figure data-rehype-pretty-code-figure=""><pre style="background-color:#24292e;color:#e1e4e8" tabindex="0" data-language="bash" data-theme="github-dark"><code data-language="bash" data-theme="github-dark" style="display: grid;"><span data-line=""><span style="color:#6A737D"># docs.openclaw.ai 의 Quick Start 절차를 따른다</span></span>
+<span data-line=""><span style="color:#6A737D"># 보통 한 줄짜리 curl 스크립트로 시작한다</span></span></code></pre></figure>
+<p><strong>Windows</strong></p>
+<figure data-rehype-pretty-code-figure=""><pre style="background-color:#24292e;color:#e1e4e8" tabindex="0" data-language="bash" data-theme="github-dark"><code data-language="bash" data-theme="github-dark" style="display: grid;"><span data-line=""><span style="color:#6A737D"># 먼저 Git 이 설치되어 있고 PATH 에 들어갔는지 확인</span></span>
+<span data-line=""><span style="color:#B392F0">git</span><span style="color:#79B8FF"> --version</span></span>
+<span data-line=""> </span>
+<span data-line=""><span style="color:#6A737D"># 그런 다음 docs.openclaw.ai 의 Windows 설치 안내를 따른다</span></span></code></pre></figure>
+<blockquote>
+<p>⚠️ "git not found" 또는 "openclaw 를 인식할 수 없음"에서 막히면 Git 을 PATH 에 추가하고 터미널을 다시 열어 보세요.</p>
+</blockquote>
+<hr>
+<h2 id="첫-실행-비서를-깨우기">첫 실행: 비서를 깨우기</h2>
+<p>설치가 끝났다면 다음을 실행합니다.</p>
+<figure data-rehype-pretty-code-figure=""><pre style="background-color:#24292e;color:#e1e4e8" tabindex="0" data-language="bash" data-theme="github-dark"><code data-language="bash" data-theme="github-dark" style="display: grid;"><span data-line=""><span style="color:#B392F0">openclaw</span><span style="color:#9ECBFF"> gateway</span></span></code></pre></figure>
+<p><strong>첫 실행에서는 온보딩 마법사</strong> 가 나타나 다음을 물어봅니다.</p>
+<ol>
+<li>어떤 AI 모델을 쓸지</li>
+<li>API key 는 무엇인지</li>
+<li>워크스페이스를 어디에 둘지</li>
+</ol>
+<p>질문에 답하면 첫 번째 비서가 만들어집니다.</p>
+<blockquote>
+<p>💡 "wake up my friend" 상태에서 오래 멈춘다면 API key, 네트워크, 터미널 에러 메시지를 먼저 확인하세요.</p>
+</blockquote>
+<hr>
+<h2 id="온보딩이-끝나면-무엇을-얻나">온보딩이 끝나면 무엇을 얻나?</h2>
+<ul>
+<li>대시보드 로그인용 <strong>token</strong></li>
+<li>기본 설정 파일 <code>~/.openclaw/openclaw.json</code></li>
+<li>이미 동작 중인 첫 AI 비서</li>
+</ul>
+<hr>
+<h2 id="대시보드-열기">대시보드 열기</h2>
+<p>Gateway 가 계속 실행 중인 상태에서 브라우저를 열고:</p>
+<pre><code>http://127.0.0.1:18789/
+</code></pre>
+<p><strong>자주 보는 상황</strong></p>
+<table>
+<thead>
+<tr>
+<th>화면</th>
+<th>해결 방법</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td><code>pairing required</code></td>
+<td><code>openclaw devices list</code> 후 <code>openclaw devices approve &#x3C;id></code> 실행</td>
+</tr>
+<tr>
+<td>token 입력 요청</td>
+<td>온보딩에서 받은 token 붙여넣기</td>
+</tr>
+<tr>
+<td>반응 없음</td>
+<td><code>openclaw gateway</code> 가 아직 켜져 있는지 확인</td>
+</tr>
+</tbody>
+</table>
+<hr>
+<h2 id="다음-글">다음 글</h2>
+<p>이제 비서가 집에 들어왔습니다. 다음 글에서는 로그인 흐름과 대시보드 UI 를 훨씬 덜 낯설게 만들어 보겠습니다.</p>
+<p><a href="01-intro">← 이전 글: OpenClaw 알아보기</a> | 👉 <a href="03-dashboard-auth">대시보드 인증 더 이상 무섭지 않게</a></p>0:{"buildId":"Yck3R4ooQxWkwGLT6is1X","rsc":["$","$1","c",{"children":[[["$","script",null,{"type":"application/ld+json","dangerouslySetInnerHTML":{"__html":"{\"@context\":\"https://schema.org\",\"@type\":\"Article\",\"headline\":\"5분 만에 설치하기: OpenClaw 첫 실행을 막힘 없이 끝내는 가이드\",\"description\":\"OpenClaw를 처음부터 설치하고, 온보딩을 완료한 뒤, 첫 번째 대시보드를 여는 과정까지 정리합니다.\",\"url\":\"https://benxhub.com/ko/blog/openclaw/02-quick-install\",\"mainEntityOfPage\":{\"@type\":\"WebPage\",\"@id\":\"https://benxhub.com/ko/blog/openclaw/02-quick-install\"},\"datePublished\":\"2026-03-08T00:00:00.000Z\",\"dateModified\":\"2026-03-08T00:00:00.000Z\",\"keywords\":\"openclaw, installation, quick-start, setup\",\"inLanguage\":\"ko\",\"author\":{\"@type\":\"Person\",\"name\":\"BenX\",\"url\":\"https://benxhub.com\"},\"publisher\":{\"@type\":\"Organization\",\"name\":\"BenXHub Blog\",\"url\":\"https://benxhub.com\"}}"}}],["$","div",null,{"className":"mx-auto max-w-6xl px-4 py-12 sm:px-6","children":["$","div",null,{"className":"lg:grid lg:grid-cols-[1fr_240px] lg:gap-14","children":[["$","article",null,{"children":[["$","header",null,{"className":"mb-10","children":[["$","div",null,{"className":"mb-4 flex flex-wrap gap-2","children":[["$","$L2","openclaw",{"href":"/ko/tags/openclaw","localeCookie":{"name":"NEXT_LOCALE","sameSite":"lax"},"className":"inline-flex items-center rounded-full px-2.5 py-0.5 text-xs font-medium transition-colors","style":{"background":"var(--color-code-bg)","color":"var(--color-accent)","border":"1px solid var(--color-border)"},"children":["#","openclaw"]}],["$","$L2","installation",{"href":"/ko/tags/installation","localeCookie":{"name":"NEXT_LOCALE","sameSite":"lax"},"className":"inline-flex items-center rounded-full px-2.5 py-0.5 text-xs font-medium transition-colors","style":{"background":"var(--color-code-bg)","color":"var(--color-accent)","border":"1px solid var(--color-border)"},"children":["#","installation"]}],["$","$L2","quick-start",{"href":"/ko/tags/quick-start","localeCookie":{"name":"NEXT_LOCALE","sameSite":"lax"},"className":"inline-flex items-center rounded-full px-2.5 py-0.5 text-xs font-medium transition-colors","style":{"background":"var(--color-code-bg)","color":"var(--color-accent)","border":"1px solid var(--color-border)"},"children":["#","quick-start"]}],["$","$L2","setup",{"href":"/ko/tags/setup","localeCookie":{"name":"NEXT_LOCALE","sameSite":"lax"},"className":"inline-flex items-center rounded-full px-2.5 py-0.5 text-xs font-medium transition-colors","style":{"background":"var(--color-code-bg)","color":"var(--color-accent)","border":"1px solid var(--color-border)"},"children":["#","setup"]}]]}],["$","h1",null,{"className":"mb-4 text-3xl leading-snug font-bold tracking-tight sm:text-4xl","style":{"color":"var(--color-text)"},"children":"5분 만에 설치하기: OpenClaw 첫 실행을 막힘 없이 끝내는 가이드"}],["$","div",null,{"className":"flex flex-wrap items-center gap-3 text-sm","style":{"color":"var(--color-muted)"},"children":[["$","time",null,{"dateTime":"2026-03-08","children":"2026년 3월 8일"}],["$","span",null,{"aria-hidden":"true","children":"·"}],["$","span",null,{"children":"4 min read"}]]}],"$undefined",["$","div",null,{"className":"mt-6 border-b","style":{"borderColor":"var(--color-border)"}}]]}],["$","div",null,{"className":"prose","dangerouslySetInnerHTML":{"__html":"$3"}}],"$L4"]}],"$L5"]}]}]],["$L6"],"$L7"]}],"loading":null,"isPartial":false}
+4:["$","footer",null,{"className":"mt-14 border-t pt-8","style":{"borderColor":"var(--color-border)"},"children":[["$","div",null,{"className":"mb-8 flex flex-wrap gap-2","children":[["$","$L2","openclaw",{"href":"/ko/tags/openclaw","localeCookie":{"name":"NEXT_LOCALE","sameSite":"lax"},"className":"inline-flex items-center rounded-full px-3 py-1 text-sm font-medium transition-colors","style":{"background":"var(--color-code-bg)","color":"var(--color-accent)","border":"1px solid var(--color-border)"},"children":["#","openclaw"]}],["$","$L2","installation",{"href":"/ko/tags/installation","localeCookie":{"name":"NEXT_LOCALE","sameSite":"lax"},"className":"inline-flex items-center rounded-full px-3 py-1 text-sm font-medium transition-colors","style":{"background":"var(--color-code-bg)","color":"var(--color-accent)","border":"1px solid var(--color-border)"},"children":["#","installation"]}],["$","$L2","quick-start",{"href":"/ko/tags/quick-start","localeCookie":{"name":"NEXT_LOCALE","sameSite":"lax"},"className":"inline-flex items-center rounded-full px-3 py-1 text-sm font-medium transition-colors","style":{"background":"var(--color-code-bg)","color":"var(--color-accent)","border":"1px solid var(--color-border)"},"children":["#","quick-start"]}],["$","$L2","setup",{"href":"/ko/tags/setup","localeCookie":{"name":"NEXT_LOCALE","sameSite":"lax"},"className":"inline-flex items-center rounded-full px-3 py-1 text-sm font-medium transition-colors","style":{"background":"var(--color-code-bg)","color":"var(--color-accent)","border":"1px solid var(--color-border)"},"children":["#","setup"]}]]}],["$","nav",null,{"aria-label":"글 탐색","className":"grid grid-cols-1 gap-4 sm:grid-cols-2","children":[["$","$L2",null,{"href":"/ko/blog/openclaw/01-intro","localeCookie":{"name":"NEXT_LOCALE","sameSite":"lax"},"className":"group rounded-lg border p-4 transition-colors hover:border-accent","style":{"borderColor":"var(--color-border)","background":"var(--color-surface)"},"children":[["$","p",null,{"className":"mb-1 text-xs","style":{"color":"var(--color-muted)"},"children":"← 최신 글"}],["$","p",null,{"className":"line-clamp-1 text-sm font-medium transition-colors group-hover:text-accent","style":{"color":"var(--color-text)"},"children":"OpenClaw 시리즈: AI 비서를 집으로 데려오기"}]]}],["$","$L2",null,{"href":"/ko/blog/openclaw/03-dashboard-auth","localeCookie":{"name":"NEXT_LOCALE","sameSite":"lax"},"className":"group rounded-lg border p-4 text-right transition-colors hover:border-accent","style":{"borderColor":"var(--color-border)","background":"var(--color-surface)"},"children":[["$","p",null,{"className":"mb-1 text-xs","style":{"color":"var(--color-muted)"},"children":"이전 글 →"}],["$","p",null,{"className":"line-clamp-1 text-sm font-medium transition-colors group-hover:text-accent","style":{"color":"var(--color-text)"},"children":"대시보드에서 계속 막히나요? OpenClaw 인증을 3분 안에 이해하기"}]]}]]}]]}]
+9:T155c,<p>많은 튜토리얼이 바로 이 단계에서 사람을 놓칩니다. 이 글의 목표는 하나입니다. <strong>처음 한 번에 성공하게 만드는 것</strong>.</p>
+<h2 id="이번-글에서-배울-것">이번 글에서 배울 것</h2>
+<ul>
+<li>설치 전 필요한 조건 확인</li>
+<li>OpenClaw 설치</li>
+<li>온보딩 완료 및 첫 비서 생성</li>
+<li>대시보드 열기</li>
+</ul>
+<hr>
+<h2 id="설치-전에-꼭-확인할-두-가지">설치 전에 꼭 확인할 두 가지</h2>
+<p>많이 필요하지는 않지만, 이 두 개는 필수입니다.</p>
+<p><strong>1. Node.js (LTS 버전)</strong></p>
+<figure data-rehype-pretty-code-figure=""><pre style="background-color:#24292e;color:#e1e4e8" tabindex="0" data-language="bash" data-theme="github-dark"><code data-language="bash" data-theme="github-dark" style="display: grid;"><span data-line=""><span style="color:#B392F0">node</span><span style="color:#79B8FF"> --version</span></span>
+<span data-line=""><span style="color:#6A737D"># 버전 번호가 보이면 OK</span></span></code></pre></figure>
+<p><strong>2. AI 모델용 API key</strong></p>
+<p>Anthropic Claude나 OpenAI 같은 클라우드 모델을 쓰려면 API key가 필요합니다. 완전 오프라인으로 가고 싶다면 로컬 모델을 사용해도 됩니다. 이 시리즈는 기본적으로 클라우드 모델을 기준으로 설명합니다.</p>
+<blockquote>
+<p>💡 API key 발급 방법이 막막하다면 "Anthropic API key" 정도로 검색해 보면 보통 몇 분 안에 해결됩니다.</p>
+</blockquote>
+<hr>
+<h2 id="openclaw-설치하기">OpenClaw 설치하기</h2>
+<p>공식 문서에서는 <strong>git 기반 설치 방식</strong> 을 권장합니다. 나중에 업데이트와 디버깅이 더 쉽기 때문입니다.</p>
+<p><strong>macOS / Linux</strong></p>
+<figure data-rehype-pretty-code-figure=""><pre style="background-color:#24292e;color:#e1e4e8" tabindex="0" data-language="bash" data-theme="github-dark"><code data-language="bash" data-theme="github-dark" style="display: grid;"><span data-line=""><span style="color:#6A737D"># docs.openclaw.ai 의 Quick Start 절차를 따른다</span></span>
+<span data-line=""><span style="color:#6A737D"># 보통 한 줄짜리 curl 스크립트로 시작한다</span></span></code></pre></figure>
+<p><strong>Windows</strong></p>
+<figure data-rehype-pretty-code-figure=""><pre style="background-color:#24292e;color:#e1e4e8" tabindex="0" data-language="bash" data-theme="github-dark"><code data-language="bash" data-theme="github-dark" style="display: grid;"><span data-line=""><span style="color:#6A737D"># 먼저 Git 이 설치되어 있고 PATH 에 들어갔는지 확인</span></span>
+<span data-line=""><span style="color:#B392F0">git</span><span style="color:#79B8FF"> --version</span></span>
+<span data-line=""> </span>
+<span data-line=""><span style="color:#6A737D"># 그런 다음 docs.openclaw.ai 의 Windows 설치 안내를 따른다</span></span></code></pre></figure>
+<blockquote>
+<p>⚠️ "git not found" 또는 "openclaw 를 인식할 수 없음"에서 막히면 Git 을 PATH 에 추가하고 터미널을 다시 열어 보세요.</p>
+</blockquote>
+<hr>
+<h2 id="첫-실행-비서를-깨우기">첫 실행: 비서를 깨우기</h2>
+<p>설치가 끝났다면 다음을 실행합니다.</p>
+<figure data-rehype-pretty-code-figure=""><pre style="background-color:#24292e;color:#e1e4e8" tabindex="0" data-language="bash" data-theme="github-dark"><code data-language="bash" data-theme="github-dark" style="display: grid;"><span data-line=""><span style="color:#B392F0">openclaw</span><span style="color:#9ECBFF"> gateway</span></span></code></pre></figure>
+<p><strong>첫 실행에서는 온보딩 마법사</strong> 가 나타나 다음을 물어봅니다.</p>
+<ol>
+<li>어떤 AI 모델을 쓸지</li>
+<li>API key 는 무엇인지</li>
+<li>워크스페이스를 어디에 둘지</li>
+</ol>
+<p>질문에 답하면 첫 번째 비서가 만들어집니다.</p>
+<blockquote>
+<p>💡 "wake up my friend" 상태에서 오래 멈춘다면 API key, 네트워크, 터미널 에러 메시지를 먼저 확인하세요.</p>
+</blockquote>
+<hr>
+<h2 id="온보딩이-끝나면-무엇을-얻나">온보딩이 끝나면 무엇을 얻나?</h2>
+<ul>
+<li>대시보드 로그인용 <strong>token</strong></li>
+<li>기본 설정 파일 <code>~/.openclaw/openclaw.json</code></li>
+<li>이미 동작 중인 첫 AI 비서</li>
+</ul>
+<hr>
+<h2 id="대시보드-열기">대시보드 열기</h2>
+<p>Gateway 가 계속 실행 중인 상태에서 브라우저를 열고:</p>
+<pre><code>http://127.0.0.1:18789/
+</code></pre>
+<p><strong>자주 보는 상황</strong></p>
+<table>
+<thead>
+<tr>
+<th>화면</th>
+<th>해결 방법</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td><code>pairing required</code></td>
+<td><code>openclaw devices list</code> 후 <code>openclaw devices approve &#x3C;id></code> 실행</td>
+</tr>
+<tr>
+<td>token 입력 요청</td>
+<td>온보딩에서 받은 token 붙여넣기</td>
+</tr>
+<tr>
+<td>반응 없음</td>
+<td><code>openclaw gateway</code> 가 아직 켜져 있는지 확인</td>
+</tr>
+</tbody>
+</table>
+<hr>
+<h2 id="다음-글">다음 글</h2>
+<p>이제 비서가 집에 들어왔습니다. 다음 글에서는 로그인 흐름과 대시보드 UI 를 훨씬 덜 낯설게 만들어 보겠습니다.</p>
+<p><a href="01-intro">← 이전 글: OpenClaw 알아보기</a> | 👉 <a href="03-dashboard-auth">대시보드 인증 더 이상 무섭지 않게</a></p>5:["$","aside",null,{"className":"hidden lg:block","children":["$","$L8",null,{"html":"$9"}]}]
+6:["$","script","script-0",{"src":"/_next/static/chunks/2dddb3bc05093f69.js","async":true}]
+7:["$","$La",null,{"children":["$","$b",null,{"name":"Next.MetadataOutlet","children":"$@c"}]}]
+c:null

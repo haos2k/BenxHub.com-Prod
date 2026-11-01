@@ -1,0 +1,118 @@
+1:"$Sreact.fragment"
+2:I[14864,["/_next/static/chunks/7923a261b80bb6e1.js","/_next/static/chunks/e09b4358027e8033.js","/_next/static/chunks/2dddb3bc05093f69.js"],"default"]
+8:I[24801,["/_next/static/chunks/7923a261b80bb6e1.js","/_next/static/chunks/e09b4358027e8033.js","/_next/static/chunks/2dddb3bc05093f69.js"],"default"]
+a:I[50183,["/_next/static/chunks/5a5b5b13c22d14f7.js","/_next/static/chunks/a484d1d3dd4b55ab.js"],"OutletBoundary"]
+b:"$Sreact.suspense"
+:HL["/images/posts/pve-common-patterns.jpg","image"]
+3:T22e3,<p>この記事は<strong>日常運用で最もよく行う 5 つの操作</strong>に焦点を当て、すぐに使える操作テンプレートを提供します。これらのパターンをマスターすれば 8 割のシナリオに対応できます — 残りの 2 割は上級編で。</p>
+<h2 id="パターン-1仮想マシンのバックアップ">パターン 1：仮想マシンのバックアップ</h2>
+<p>目標：定期的に復元できるバックアップを保持する — 何か壊れても最初からやり直さなくていいように。</p>
+<figure data-rehype-pretty-code-figure=""><pre style="background-color:#24292e;color:#e1e4e8" tabindex="0" data-language="bash" data-theme="github-dark"><code data-language="bash" data-theme="github-dark" style="display: grid;"><span data-line=""><span style="color:#6A737D"># VM 100 を local に手動バックアップ（スナップショットモード、VM を停止しない）</span></span>
+<span data-line=""><span style="color:#B392F0">vzdump</span><span style="color:#79B8FF"> 100</span><span style="color:#79B8FF"> --storage</span><span style="color:#9ECBFF"> local</span><span style="color:#79B8FF"> --mode</span><span style="color:#9ECBFF"> snapshot</span><span style="color:#79B8FF"> --compress</span><span style="color:#9ECBFF"> zstd</span></span></code></pre></figure>
+<p>スケジュール設定：<code>Datacenter -> Backup -> Add</code> で時刻を設定（例：毎日 02:00）。設定したら忘れてもいいです。</p>
+<blockquote>
+<p><code>snapshot</code> モードは VM が動いている間にバックアップできます — 眠っている猫を起こさずに写真を撮るようなもの。</p>
+</blockquote>
+<h2 id="パターン-2仮想マシンのクローン">パターン 2：仮想マシンのクローン</h2>
+<p>目標：既存の環境を最初からインストールし直さずに素早くコピー。</p>
+<figure data-rehype-pretty-code-figure=""><pre style="background-color:#24292e;color:#e1e4e8" tabindex="0" data-language="bash" data-theme="github-dark"><code data-language="bash" data-theme="github-dark" style="display: grid;"><span data-line=""><span style="color:#6A737D"># フルクローン（独立したディスク、完全に自律）</span></span>
+<span data-line=""><span style="color:#B392F0">qm</span><span style="color:#9ECBFF"> clone</span><span style="color:#79B8FF"> 100</span><span style="color:#79B8FF"> 101</span><span style="color:#79B8FF"> --name</span><span style="color:#9ECBFF"> clone-vm</span><span style="color:#79B8FF"> --full</span></span>
+<span data-line=""> </span>
+<span data-line=""><span style="color:#6A737D"># リンクドクローン（ベースディスクを共有、スペース節約）</span></span>
+<span data-line=""><span style="color:#B392F0">qm</span><span style="color:#9ECBFF"> clone</span><span style="color:#79B8FF"> 100</span><span style="color:#79B8FF"> 102</span><span style="color:#79B8FF"> --name</span><span style="color:#9ECBFF"> linked-clone</span><span style="color:#79B8FF"> --linked</span></span></code></pre></figure>
+<p>一言の違い：<strong>full</strong> = 独立、スペースを使う；<strong>linked</strong> = スペース節約、親ディスクに依存。親ディスクを削除しないように — リンクドクローンも一緒に壊れます。</p>
+<h2 id="パターン-3ライブマイグレーション">パターン 3：ライブマイグレーション</h2>
+<p>目標：シャットダウンせずに VM を別のノードに移動 — サービス中断なし。</p>
+<p>前提：ターゲットノードが<strong>同じディスク</strong>にアクセスできる必要があります（共有ストレージが理想）。</p>
+<figure data-rehype-pretty-code-figure=""><pre style="background-color:#24292e;color:#e1e4e8" tabindex="0" data-language="bash" data-theme="github-dark"><code data-language="bash" data-theme="github-dark" style="display: grid;"><span data-line=""><span style="color:#B392F0">qm</span><span style="color:#9ECBFF"> migrate</span><span style="color:#79B8FF"> 100</span><span style="color:#F97583"> &#x3C;</span><span style="color:#9ECBFF">target-nod</span><span style="color:#E1E4E8">e</span><span style="color:#F97583">></span><span style="color:#79B8FF"> --live</span></span></code></pre></figure>
+<blockquote>
+<p>ディスクが <code>local</code> にある場合、通常は先にディスクを移行するか共有ストレージに切り替える必要があります — そうしないと migrate に「ディスクが見つからない」と言われます。</p>
+</blockquote>
+<h2 id="パターン-4lxc-コンテナの作成">パターン 4：LXC コンテナの作成</h2>
+<p>目標：サービスを動かす軽量な Linux 環境を素早く構築 — VM よりリソースを使わない。</p>
+<figure data-rehype-pretty-code-figure=""><pre style="background-color:#24292e;color:#e1e4e8" tabindex="0" data-language="bash" data-theme="github-dark"><code data-language="bash" data-theme="github-dark" style="display: grid;"><span data-line=""><span style="color:#6A737D"># まずテンプレートリストを更新</span></span>
+<span data-line=""><span style="color:#B392F0">pveam</span><span style="color:#9ECBFF"> update</span></span>
+<span data-line=""> </span>
+<span data-line=""><span style="color:#6A737D"># Debian テンプレートをダウンロード</span></span>
+<span data-line=""><span style="color:#B392F0">pveam</span><span style="color:#9ECBFF"> download</span><span style="color:#9ECBFF"> local</span><span style="color:#9ECBFF"> debian-12-standard_12.2-1_amd64.tar.zst</span></span>
+<span data-line=""> </span>
+<span data-line=""><span style="color:#6A737D"># コンテナを作成</span></span>
+<span data-line=""><span style="color:#B392F0">pct</span><span style="color:#9ECBFF"> create</span><span style="color:#79B8FF"> 200</span><span style="color:#9ECBFF"> local:vztmpl/debian-12-standard_12.2-1_amd64.tar.zst</span><span style="color:#79B8FF"> \</span></span>
+<span data-line=""><span style="color:#79B8FF">  --hostname</span><span style="color:#9ECBFF"> my-app</span><span style="color:#79B8FF"> \</span></span>
+<span data-line=""><span style="color:#79B8FF">  --memory</span><span style="color:#79B8FF"> 512</span><span style="color:#79B8FF"> \</span></span>
+<span data-line=""><span style="color:#79B8FF">  --cores</span><span style="color:#79B8FF"> 1</span><span style="color:#79B8FF"> \</span></span>
+<span data-line=""><span style="color:#79B8FF">  --net0</span><span style="color:#9ECBFF"> name=eth0,bridge=vmbr0,ip=dhcp</span><span style="color:#79B8FF"> \</span></span>
+<span data-line=""><span style="color:#79B8FF">  --rootfs</span><span style="color:#9ECBFF"> local-lvm:8</span></span></code></pre></figure>
+<p>LXC は起動が速くリソース使用量が少ない — たくさんの小さなサービスを動かすのに最適。小さなカワウソの群れのように、一匹一匹の負担が少ない。</p>
+<h2 id="パターン-5スナップショットとロールバック">パターン 5：スナップショットとロールバック</h2>
+<p>目標：大きな更新や設定変更の前に、「ここに戻れる」復元ポイントを残す。</p>
+<figure data-rehype-pretty-code-figure=""><pre style="background-color:#24292e;color:#e1e4e8" tabindex="0" data-language="bash" data-theme="github-dark"><code data-language="bash" data-theme="github-dark" style="display: grid;"><span data-line=""><span style="color:#6A737D"># スナップショットを作成</span></span>
+<span data-line=""><span style="color:#B392F0">qm</span><span style="color:#9ECBFF"> snapshot</span><span style="color:#79B8FF"> 100</span><span style="color:#9ECBFF"> before-update</span></span>
+<span data-line=""> </span>
+<span data-line=""><span style="color:#6A737D"># 何か問題が起きた？ロールバック</span></span>
+<span data-line=""><span style="color:#B392F0">qm</span><span style="color:#9ECBFF"> rollback</span><span style="color:#79B8FF"> 100</span><span style="color:#9ECBFF"> before-update</span></span>
+<span data-line=""> </span>
+<span data-line=""><span style="color:#6A737D"># 問題なければスナップショットを削除</span></span>
+<span data-line=""><span style="color:#B392F0">qm</span><span style="color:#9ECBFF"> delsnapshot</span><span style="color:#79B8FF"> 100</span><span style="color:#9ECBFF"> before-update</span></span></code></pre></figure>
+<p>大きな操作の前にスナップショットを取る習慣をつけましょう：先にスナップショット、それから作業。節約したデバッグ時間でもっと楽しいことができます。</p>
+<h2 id="次のステップ">次のステップ</h2>
+<p>日常パターンの練習が終わったら、マルチノード・HA・Ceph を試してみましょう：
+👉 <a href="04-advanced">高度な使い方</a></p>0:{"buildId":"Yck3R4ooQxWkwGLT6is1X","rsc":["$","$1","c",{"children":[[["$","script",null,{"type":"application/ld+json","dangerouslySetInnerHTML":{"__html":"{\"@context\":\"https://schema.org\",\"@type\":\"Article\",\"headline\":\"Proxmox VE よくあるパターン：バックアップ・クローン・移行\",\"description\":\"PVE の日常でよく使う 5 つの操作パターンをまとめ、すぐに使える操作テンプレートを提供します。\",\"url\":\"https://benxhub.com/ja/blog/pve/03-common-patterns\",\"mainEntityOfPage\":{\"@type\":\"WebPage\",\"@id\":\"https://benxhub.com/ja/blog/pve/03-common-patterns\"},\"datePublished\":\"2026-02-24T00:00:00.000Z\",\"dateModified\":\"2026-02-24T00:00:00.000Z\",\"keywords\":\"proxmox, backup, migration, operations\",\"inLanguage\":\"ja\",\"author\":{\"@type\":\"Person\",\"name\":\"BenX\",\"url\":\"https://benxhub.com\"},\"publisher\":{\"@type\":\"Organization\",\"name\":\"BenXHub Blog\",\"url\":\"https://benxhub.com\"},\"image\":\"https://benxhub.com/images/posts/pve-common-patterns.jpg\"}"}}],["$","div",null,{"className":"mx-auto max-w-6xl px-4 py-12 sm:px-6","children":["$","div",null,{"className":"lg:grid lg:grid-cols-[1fr_240px] lg:gap-14","children":[["$","article",null,{"children":[["$","header",null,{"className":"mb-10","children":[["$","div",null,{"className":"mb-4 flex flex-wrap gap-2","children":[["$","$L2","proxmox",{"href":"/ja/tags/proxmox","localeCookie":{"name":"NEXT_LOCALE","sameSite":"lax"},"className":"inline-flex items-center rounded-full px-2.5 py-0.5 text-xs font-medium transition-colors","style":{"background":"var(--color-code-bg)","color":"var(--color-accent)","border":"1px solid var(--color-border)"},"children":["#","proxmox"]}],["$","$L2","backup",{"href":"/ja/tags/backup","localeCookie":{"name":"NEXT_LOCALE","sameSite":"lax"},"className":"inline-flex items-center rounded-full px-2.5 py-0.5 text-xs font-medium transition-colors","style":{"background":"var(--color-code-bg)","color":"var(--color-accent)","border":"1px solid var(--color-border)"},"children":["#","backup"]}],["$","$L2","migration",{"href":"/ja/tags/migration","localeCookie":{"name":"NEXT_LOCALE","sameSite":"lax"},"className":"inline-flex items-center rounded-full px-2.5 py-0.5 text-xs font-medium transition-colors","style":{"background":"var(--color-code-bg)","color":"var(--color-accent)","border":"1px solid var(--color-border)"},"children":["#","migration"]}],["$","$L2","operations",{"href":"/ja/tags/operations","localeCookie":{"name":"NEXT_LOCALE","sameSite":"lax"},"className":"inline-flex items-center rounded-full px-2.5 py-0.5 text-xs font-medium transition-colors","style":{"background":"var(--color-code-bg)","color":"var(--color-accent)","border":"1px solid var(--color-border)"},"children":["#","operations"]}]]}],["$","h1",null,{"className":"mb-4 text-3xl leading-snug font-bold tracking-tight sm:text-4xl","style":{"color":"var(--color-text)"},"children":"Proxmox VE よくあるパターン：バックアップ・クローン・移行"}],["$","div",null,{"className":"flex flex-wrap items-center gap-3 text-sm","style":{"color":"var(--color-muted)"},"children":[["$","time",null,{"dateTime":"2026-02-24","children":"2026年2月24日"}],["$","span",null,{"aria-hidden":"true","children":"·"}],["$","span",null,{"children":"4 min read"}]]}],["$","div",null,{"className":"mt-6 overflow-hidden rounded-lg","children":["$","img",null,{"src":"/images/posts/pve-common-patterns.jpg","alt":"Proxmox VE よくあるパターン：バックアップ・クローン・移行","className":"w-full h-auto"}]}],["$","div",null,{"className":"mt-6 border-b","style":{"borderColor":"var(--color-border)"}}]]}],["$","div",null,{"className":"prose","dangerouslySetInnerHTML":{"__html":"$3"}}],"$L4"]}],"$L5"]}]}]],["$L6"],"$L7"]}],"loading":null,"isPartial":false}
+4:["$","footer",null,{"className":"mt-14 border-t pt-8","style":{"borderColor":"var(--color-border)"},"children":[["$","div",null,{"className":"mb-8 flex flex-wrap gap-2","children":[["$","$L2","proxmox",{"href":"/ja/tags/proxmox","localeCookie":{"name":"NEXT_LOCALE","sameSite":"lax"},"className":"inline-flex items-center rounded-full px-3 py-1 text-sm font-medium transition-colors","style":{"background":"var(--color-code-bg)","color":"var(--color-accent)","border":"1px solid var(--color-border)"},"children":["#","proxmox"]}],["$","$L2","backup",{"href":"/ja/tags/backup","localeCookie":{"name":"NEXT_LOCALE","sameSite":"lax"},"className":"inline-flex items-center rounded-full px-3 py-1 text-sm font-medium transition-colors","style":{"background":"var(--color-code-bg)","color":"var(--color-accent)","border":"1px solid var(--color-border)"},"children":["#","backup"]}],["$","$L2","migration",{"href":"/ja/tags/migration","localeCookie":{"name":"NEXT_LOCALE","sameSite":"lax"},"className":"inline-flex items-center rounded-full px-3 py-1 text-sm font-medium transition-colors","style":{"background":"var(--color-code-bg)","color":"var(--color-accent)","border":"1px solid var(--color-border)"},"children":["#","migration"]}],["$","$L2","operations",{"href":"/ja/tags/operations","localeCookie":{"name":"NEXT_LOCALE","sameSite":"lax"},"className":"inline-flex items-center rounded-full px-3 py-1 text-sm font-medium transition-colors","style":{"background":"var(--color-code-bg)","color":"var(--color-accent)","border":"1px solid var(--color-border)"},"children":["#","operations"]}]]}],["$","nav",null,{"aria-label":"記事ナビゲーション","className":"grid grid-cols-1 gap-4 sm:grid-cols-2","children":[["$","$L2",null,{"href":"/ja/blog/pve/02-core-concepts","localeCookie":{"name":"NEXT_LOCALE","sameSite":"lax"},"className":"group rounded-lg border p-4 transition-colors hover:border-accent","style":{"borderColor":"var(--color-border)","background":"var(--color-surface)"},"children":[["$","p",null,{"className":"mb-1 text-xs","style":{"color":"var(--color-muted)"},"children":"← 新しい記事"}],["$","p",null,{"className":"line-clamp-1 text-sm font-medium transition-colors group-hover:text-accent","style":{"color":"var(--color-text)"},"children":"Proxmox VE コアコンセプト：VM・LXC・ストレージ・ネットワーク"}]]}],["$","$L2",null,{"href":"/ja/blog/pve/04-advanced","localeCookie":{"name":"NEXT_LOCALE","sameSite":"lax"},"className":"group rounded-lg border p-4 text-right transition-colors hover:border-accent","style":{"borderColor":"var(--color-border)","background":"var(--color-surface)"},"children":[["$","p",null,{"className":"mb-1 text-xs","style":{"color":"var(--color-muted)"},"children":"古い記事 →"}],["$","p",null,{"className":"line-clamp-1 text-sm font-medium transition-colors group-hover:text-accent","style":{"color":"var(--color-text)"},"children":"Proxmox VE 高度な実務：クラスター・HA・Ceph・API"}]]}]]}]]}]
+9:T22e3,<p>この記事は<strong>日常運用で最もよく行う 5 つの操作</strong>に焦点を当て、すぐに使える操作テンプレートを提供します。これらのパターンをマスターすれば 8 割のシナリオに対応できます — 残りの 2 割は上級編で。</p>
+<h2 id="パターン-1仮想マシンのバックアップ">パターン 1：仮想マシンのバックアップ</h2>
+<p>目標：定期的に復元できるバックアップを保持する — 何か壊れても最初からやり直さなくていいように。</p>
+<figure data-rehype-pretty-code-figure=""><pre style="background-color:#24292e;color:#e1e4e8" tabindex="0" data-language="bash" data-theme="github-dark"><code data-language="bash" data-theme="github-dark" style="display: grid;"><span data-line=""><span style="color:#6A737D"># VM 100 を local に手動バックアップ（スナップショットモード、VM を停止しない）</span></span>
+<span data-line=""><span style="color:#B392F0">vzdump</span><span style="color:#79B8FF"> 100</span><span style="color:#79B8FF"> --storage</span><span style="color:#9ECBFF"> local</span><span style="color:#79B8FF"> --mode</span><span style="color:#9ECBFF"> snapshot</span><span style="color:#79B8FF"> --compress</span><span style="color:#9ECBFF"> zstd</span></span></code></pre></figure>
+<p>スケジュール設定：<code>Datacenter -> Backup -> Add</code> で時刻を設定（例：毎日 02:00）。設定したら忘れてもいいです。</p>
+<blockquote>
+<p><code>snapshot</code> モードは VM が動いている間にバックアップできます — 眠っている猫を起こさずに写真を撮るようなもの。</p>
+</blockquote>
+<h2 id="パターン-2仮想マシンのクローン">パターン 2：仮想マシンのクローン</h2>
+<p>目標：既存の環境を最初からインストールし直さずに素早くコピー。</p>
+<figure data-rehype-pretty-code-figure=""><pre style="background-color:#24292e;color:#e1e4e8" tabindex="0" data-language="bash" data-theme="github-dark"><code data-language="bash" data-theme="github-dark" style="display: grid;"><span data-line=""><span style="color:#6A737D"># フルクローン（独立したディスク、完全に自律）</span></span>
+<span data-line=""><span style="color:#B392F0">qm</span><span style="color:#9ECBFF"> clone</span><span style="color:#79B8FF"> 100</span><span style="color:#79B8FF"> 101</span><span style="color:#79B8FF"> --name</span><span style="color:#9ECBFF"> clone-vm</span><span style="color:#79B8FF"> --full</span></span>
+<span data-line=""> </span>
+<span data-line=""><span style="color:#6A737D"># リンクドクローン（ベースディスクを共有、スペース節約）</span></span>
+<span data-line=""><span style="color:#B392F0">qm</span><span style="color:#9ECBFF"> clone</span><span style="color:#79B8FF"> 100</span><span style="color:#79B8FF"> 102</span><span style="color:#79B8FF"> --name</span><span style="color:#9ECBFF"> linked-clone</span><span style="color:#79B8FF"> --linked</span></span></code></pre></figure>
+<p>一言の違い：<strong>full</strong> = 独立、スペースを使う；<strong>linked</strong> = スペース節約、親ディスクに依存。親ディスクを削除しないように — リンクドクローンも一緒に壊れます。</p>
+<h2 id="パターン-3ライブマイグレーション">パターン 3：ライブマイグレーション</h2>
+<p>目標：シャットダウンせずに VM を別のノードに移動 — サービス中断なし。</p>
+<p>前提：ターゲットノードが<strong>同じディスク</strong>にアクセスできる必要があります（共有ストレージが理想）。</p>
+<figure data-rehype-pretty-code-figure=""><pre style="background-color:#24292e;color:#e1e4e8" tabindex="0" data-language="bash" data-theme="github-dark"><code data-language="bash" data-theme="github-dark" style="display: grid;"><span data-line=""><span style="color:#B392F0">qm</span><span style="color:#9ECBFF"> migrate</span><span style="color:#79B8FF"> 100</span><span style="color:#F97583"> &#x3C;</span><span style="color:#9ECBFF">target-nod</span><span style="color:#E1E4E8">e</span><span style="color:#F97583">></span><span style="color:#79B8FF"> --live</span></span></code></pre></figure>
+<blockquote>
+<p>ディスクが <code>local</code> にある場合、通常は先にディスクを移行するか共有ストレージに切り替える必要があります — そうしないと migrate に「ディスクが見つからない」と言われます。</p>
+</blockquote>
+<h2 id="パターン-4lxc-コンテナの作成">パターン 4：LXC コンテナの作成</h2>
+<p>目標：サービスを動かす軽量な Linux 環境を素早く構築 — VM よりリソースを使わない。</p>
+<figure data-rehype-pretty-code-figure=""><pre style="background-color:#24292e;color:#e1e4e8" tabindex="0" data-language="bash" data-theme="github-dark"><code data-language="bash" data-theme="github-dark" style="display: grid;"><span data-line=""><span style="color:#6A737D"># まずテンプレートリストを更新</span></span>
+<span data-line=""><span style="color:#B392F0">pveam</span><span style="color:#9ECBFF"> update</span></span>
+<span data-line=""> </span>
+<span data-line=""><span style="color:#6A737D"># Debian テンプレートをダウンロード</span></span>
+<span data-line=""><span style="color:#B392F0">pveam</span><span style="color:#9ECBFF"> download</span><span style="color:#9ECBFF"> local</span><span style="color:#9ECBFF"> debian-12-standard_12.2-1_amd64.tar.zst</span></span>
+<span data-line=""> </span>
+<span data-line=""><span style="color:#6A737D"># コンテナを作成</span></span>
+<span data-line=""><span style="color:#B392F0">pct</span><span style="color:#9ECBFF"> create</span><span style="color:#79B8FF"> 200</span><span style="color:#9ECBFF"> local:vztmpl/debian-12-standard_12.2-1_amd64.tar.zst</span><span style="color:#79B8FF"> \</span></span>
+<span data-line=""><span style="color:#79B8FF">  --hostname</span><span style="color:#9ECBFF"> my-app</span><span style="color:#79B8FF"> \</span></span>
+<span data-line=""><span style="color:#79B8FF">  --memory</span><span style="color:#79B8FF"> 512</span><span style="color:#79B8FF"> \</span></span>
+<span data-line=""><span style="color:#79B8FF">  --cores</span><span style="color:#79B8FF"> 1</span><span style="color:#79B8FF"> \</span></span>
+<span data-line=""><span style="color:#79B8FF">  --net0</span><span style="color:#9ECBFF"> name=eth0,bridge=vmbr0,ip=dhcp</span><span style="color:#79B8FF"> \</span></span>
+<span data-line=""><span style="color:#79B8FF">  --rootfs</span><span style="color:#9ECBFF"> local-lvm:8</span></span></code></pre></figure>
+<p>LXC は起動が速くリソース使用量が少ない — たくさんの小さなサービスを動かすのに最適。小さなカワウソの群れのように、一匹一匹の負担が少ない。</p>
+<h2 id="パターン-5スナップショットとロールバック">パターン 5：スナップショットとロールバック</h2>
+<p>目標：大きな更新や設定変更の前に、「ここに戻れる」復元ポイントを残す。</p>
+<figure data-rehype-pretty-code-figure=""><pre style="background-color:#24292e;color:#e1e4e8" tabindex="0" data-language="bash" data-theme="github-dark"><code data-language="bash" data-theme="github-dark" style="display: grid;"><span data-line=""><span style="color:#6A737D"># スナップショットを作成</span></span>
+<span data-line=""><span style="color:#B392F0">qm</span><span style="color:#9ECBFF"> snapshot</span><span style="color:#79B8FF"> 100</span><span style="color:#9ECBFF"> before-update</span></span>
+<span data-line=""> </span>
+<span data-line=""><span style="color:#6A737D"># 何か問題が起きた？ロールバック</span></span>
+<span data-line=""><span style="color:#B392F0">qm</span><span style="color:#9ECBFF"> rollback</span><span style="color:#79B8FF"> 100</span><span style="color:#9ECBFF"> before-update</span></span>
+<span data-line=""> </span>
+<span data-line=""><span style="color:#6A737D"># 問題なければスナップショットを削除</span></span>
+<span data-line=""><span style="color:#B392F0">qm</span><span style="color:#9ECBFF"> delsnapshot</span><span style="color:#79B8FF"> 100</span><span style="color:#9ECBFF"> before-update</span></span></code></pre></figure>
+<p>大きな操作の前にスナップショットを取る習慣をつけましょう：先にスナップショット、それから作業。節約したデバッグ時間でもっと楽しいことができます。</p>
+<h2 id="次のステップ">次のステップ</h2>
+<p>日常パターンの練習が終わったら、マルチノード・HA・Ceph を試してみましょう：
+👉 <a href="04-advanced">高度な使い方</a></p>5:["$","aside",null,{"className":"hidden lg:block","children":["$","$L8",null,{"html":"$9"}]}]
+6:["$","script","script-0",{"src":"/_next/static/chunks/2dddb3bc05093f69.js","async":true}]
+7:["$","$La",null,{"children":["$","$b",null,{"name":"Next.MetadataOutlet","children":"$@c"}]}]
+c:null

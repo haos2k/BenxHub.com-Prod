@@ -1,0 +1,181 @@
+1:"$Sreact.fragment"
+2:I[14864,["/_next/static/chunks/7923a261b80bb6e1.js","/_next/static/chunks/e09b4358027e8033.js","/_next/static/chunks/2dddb3bc05093f69.js"],"default"]
+8:I[24801,["/_next/static/chunks/7923a261b80bb6e1.js","/_next/static/chunks/e09b4358027e8033.js","/_next/static/chunks/2dddb3bc05093f69.js"],"default"]
+a:I[50183,["/_next/static/chunks/5a5b5b13c22d14f7.js","/_next/static/chunks/a484d1d3dd4b55ab.js"],"OutletBoundary"]
+b:"$Sreact.suspense"
+3:Tdeb,<p>묻는 것에만 답하는 비서는 그냥 챗봇일 뿐입니다. <strong>진짜 비서는 먼저 움직입니다.</strong></p>
+<p>그 역할을 해 주는 것이 <strong>Cron</strong> 입니다.</p>
+<h2 id="이번-글에서-배울-것">이번 글에서 배울 것</h2>
+<ul>
+<li>Cron 과 Heartbeat 의 차이 이해하기</li>
+<li>어떤 작업이 스케줄링에 적합한지 알기</li>
+<li>대시보드에서 Cron 설정하기</li>
+<li>Cron 문법 읽기와 미실행 작업 점검하기</li>
+</ul>
+<hr>
+<h2 id="cron-과-heartbeat-란">Cron 과 Heartbeat 란?</h2>
+<p><strong>Cron</strong> 은 "이 시간에 이 일을 해라"라는 일정표입니다.</p>
+<ul>
+<li>매일 오전 9시: 어제 메일 요약하기</li>
+<li>매주 월요일: 이번 주 중요한 할 일 알려주기</li>
+<li>매일 밤: 오늘 메모 자동 보관하기</li>
+</ul>
+<p><strong>Heartbeat</strong> 는 비서가 예를 들어 30분마다 자동으로 깨어나, 할 일이 있는지 확인하고 필요하면 움직이는 방식입니다.</p>
+<blockquote>
+<p>💡 30분마다 heartbeat 로그가 찍혀도 정상입니다.</p>
+</blockquote>
+<hr>
+<h2 id="자주-쓰는-자동화-사례">자주 쓰는 자동화 사례</h2>
+<table>
+<thead>
+<tr>
+<th>예약 작업</th>
+<th>하는 일</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td>일일 브리핑</td>
+<td>메일, 캘린더, 뉴스 등을 요약해서 전달</td>
+</tr>
+<tr>
+<td>리마인더</td>
+<td>원하는 시간에 할 일 목록 전송</td>
+</tr>
+<tr>
+<td>모니터링</td>
+<td>API 나 웹페이지를 매시간 확인하고 이상 시 알림</td>
+</tr>
+<tr>
+<td>노트 정리</td>
+<td>흩어진 메모를 주기적으로 문서로 정리</td>
+</tr>
+</tbody>
+</table>
+<hr>
+<h2 id="대시보드에서-cron-설정하기">대시보드에서 Cron 설정하기</h2>
+<p>Control UI 의 <strong>Cron</strong> 탭을 엽니다.</p>
+<ul>
+<li><strong>Add schedule</strong>: Cron 표현식과 작업 설명 입력</li>
+<li><strong>Enable / disable</strong>: 작업 일시 정지 또는 재개</li>
+<li><strong>Run now</strong>: 기다리지 않고 즉시 테스트 실행</li>
+</ul>
+<hr>
+<h2 id="cron-문법-빠른-참고">Cron 문법 빠른 참고</h2>
+<pre><code>* * * * *
+│ │ │ │ └─ 요일 (0-7, 0과 7은 일요일)
+│ │ │ └─── 월 (1-12)
+│ │ └───── 일 (1-31)
+│ └─────── 시 (0-23)
+└───────── 분 (0-59)
+</code></pre>
+<p>자주 쓰는 예시:</p>
+<pre><code>0 9 * * *      ← 매일 9:00
+0 9 * * 1      ← 매주 월요일 9:00
+0 */6 * * *    ← 6시간마다
+</code></pre>
+<hr>
+<h2 id="실행되지-않는다면-먼저-이것부터-확인">실행되지 않는다면 먼저 이것부터 확인</h2>
+<ol>
+<li>Config 에서 Cron 이 활성화되어 있는가</li>
+<li>타임존이 맞는가</li>
+<li><code>openclaw logs --follow</code> 에 오류가 있는가</li>
+<li>Gateway 를 다시 시작해 보기</li>
+</ol>
+<blockquote>
+<p>⚠️ 예약 작업도 모델 자원을 사용합니다. 예약 작업과 대화를 동시에 많이 돌리면 HTTP 429 같은 제한에 걸릴 수 있습니다. 무거운 작업은 전용 Agent 로 분리하는 편이 좋습니다.</p>
+</blockquote>
+<hr>
+<h2 id="다음-글">다음 글</h2>
+<p>이제 비서가 스스로 움직일 수 있게 되었습니다. 다음은 고급 설정과 디버깅 요령으로 시스템을 더 안정적으로 만드는 단계입니다.</p>
+<p><a href="08-remote-gateway-nodes">← 이전 글: 원격 Gateway</a> | 👉 <a href="10-advanced-config">고급 설정과 디버깅 감각</a></p>0:{"buildId":"Yck3R4ooQxWkwGLT6is1X","rsc":["$","$1","c",{"children":[[["$","script",null,{"type":"application/ld+json","dangerouslySetInnerHTML":{"__html":"{\"@context\":\"https://schema.org\",\"@type\":\"Article\",\"headline\":\"비서를 자동으로 일하게 만들기: 시키지 않아도 도와주는 구조\",\"description\":\"Cron 으로 반복 작업을 돌리고, 문법을 이해하고, 대시보드에서 설정하고, 실행되지 않는 경우를 점검합니다.\",\"url\":\"https://benxhub.com/ko/blog/openclaw/09-cron-automation\",\"mainEntityOfPage\":{\"@type\":\"WebPage\",\"@id\":\"https://benxhub.com/ko/blog/openclaw/09-cron-automation\"},\"datePublished\":\"2026-03-08T00:00:00.000Z\",\"dateModified\":\"2026-03-08T00:00:00.000Z\",\"keywords\":\"openclaw, cron, automation, scheduling\",\"inLanguage\":\"ko\",\"author\":{\"@type\":\"Person\",\"name\":\"BenX\",\"url\":\"https://benxhub.com\"},\"publisher\":{\"@type\":\"Organization\",\"name\":\"BenXHub Blog\",\"url\":\"https://benxhub.com\"}}"}}],["$","div",null,{"className":"mx-auto max-w-6xl px-4 py-12 sm:px-6","children":["$","div",null,{"className":"lg:grid lg:grid-cols-[1fr_240px] lg:gap-14","children":[["$","article",null,{"children":[["$","header",null,{"className":"mb-10","children":[["$","div",null,{"className":"mb-4 flex flex-wrap gap-2","children":[["$","$L2","openclaw",{"href":"/ko/tags/openclaw","localeCookie":{"name":"NEXT_LOCALE","sameSite":"lax"},"className":"inline-flex items-center rounded-full px-2.5 py-0.5 text-xs font-medium transition-colors","style":{"background":"var(--color-code-bg)","color":"var(--color-accent)","border":"1px solid var(--color-border)"},"children":["#","openclaw"]}],["$","$L2","cron",{"href":"/ko/tags/cron","localeCookie":{"name":"NEXT_LOCALE","sameSite":"lax"},"className":"inline-flex items-center rounded-full px-2.5 py-0.5 text-xs font-medium transition-colors","style":{"background":"var(--color-code-bg)","color":"var(--color-accent)","border":"1px solid var(--color-border)"},"children":["#","cron"]}],["$","$L2","automation",{"href":"/ko/tags/automation","localeCookie":{"name":"NEXT_LOCALE","sameSite":"lax"},"className":"inline-flex items-center rounded-full px-2.5 py-0.5 text-xs font-medium transition-colors","style":{"background":"var(--color-code-bg)","color":"var(--color-accent)","border":"1px solid var(--color-border)"},"children":["#","automation"]}],["$","$L2","scheduling",{"href":"/ko/tags/scheduling","localeCookie":{"name":"NEXT_LOCALE","sameSite":"lax"},"className":"inline-flex items-center rounded-full px-2.5 py-0.5 text-xs font-medium transition-colors","style":{"background":"var(--color-code-bg)","color":"var(--color-accent)","border":"1px solid var(--color-border)"},"children":["#","scheduling"]}]]}],["$","h1",null,{"className":"mb-4 text-3xl leading-snug font-bold tracking-tight sm:text-4xl","style":{"color":"var(--color-text)"},"children":"비서를 자동으로 일하게 만들기: 시키지 않아도 도와주는 구조"}],["$","div",null,{"className":"flex flex-wrap items-center gap-3 text-sm","style":{"color":"var(--color-muted)"},"children":[["$","time",null,{"dateTime":"2026-03-08","children":"2026년 3월 8일"}],["$","span",null,{"aria-hidden":"true","children":"·"}],["$","span",null,{"children":"4 min read"}]]}],"$undefined",["$","div",null,{"className":"mt-6 border-b","style":{"borderColor":"var(--color-border)"}}]]}],["$","div",null,{"className":"prose","dangerouslySetInnerHTML":{"__html":"$3"}}],"$L4"]}],"$L5"]}]}]],["$L6"],"$L7"]}],"loading":null,"isPartial":false}
+4:["$","footer",null,{"className":"mt-14 border-t pt-8","style":{"borderColor":"var(--color-border)"},"children":[["$","div",null,{"className":"mb-8 flex flex-wrap gap-2","children":[["$","$L2","openclaw",{"href":"/ko/tags/openclaw","localeCookie":{"name":"NEXT_LOCALE","sameSite":"lax"},"className":"inline-flex items-center rounded-full px-3 py-1 text-sm font-medium transition-colors","style":{"background":"var(--color-code-bg)","color":"var(--color-accent)","border":"1px solid var(--color-border)"},"children":["#","openclaw"]}],["$","$L2","cron",{"href":"/ko/tags/cron","localeCookie":{"name":"NEXT_LOCALE","sameSite":"lax"},"className":"inline-flex items-center rounded-full px-3 py-1 text-sm font-medium transition-colors","style":{"background":"var(--color-code-bg)","color":"var(--color-accent)","border":"1px solid var(--color-border)"},"children":["#","cron"]}],["$","$L2","automation",{"href":"/ko/tags/automation","localeCookie":{"name":"NEXT_LOCALE","sameSite":"lax"},"className":"inline-flex items-center rounded-full px-3 py-1 text-sm font-medium transition-colors","style":{"background":"var(--color-code-bg)","color":"var(--color-accent)","border":"1px solid var(--color-border)"},"children":["#","automation"]}],["$","$L2","scheduling",{"href":"/ko/tags/scheduling","localeCookie":{"name":"NEXT_LOCALE","sameSite":"lax"},"className":"inline-flex items-center rounded-full px-3 py-1 text-sm font-medium transition-colors","style":{"background":"var(--color-code-bg)","color":"var(--color-accent)","border":"1px solid var(--color-border)"},"children":["#","scheduling"]}]]}],["$","nav",null,{"aria-label":"글 탐색","className":"grid grid-cols-1 gap-4 sm:grid-cols-2","children":[["$","$L2",null,{"href":"/ko/blog/openclaw/08-remote-gateway-nodes","localeCookie":{"name":"NEXT_LOCALE","sameSite":"lax"},"className":"group rounded-lg border p-4 transition-colors hover:border-accent","style":{"borderColor":"var(--color-border)","background":"var(--color-surface)"},"children":[["$","p",null,{"className":"mb-1 text-xs","style":{"color":"var(--color-muted)"},"children":"← 최신 글"}],["$","p",null,{"className":"line-clamp-1 text-sm font-medium transition-colors group-hover:text-accent","style":{"color":"var(--color-text)"},"children":"노트북이 잠들면 비서도 사라지나요? Gateway 를 VPS 로 옮기기"}]]}],["$","$L2",null,{"href":"/ko/blog/openclaw/10-advanced-config","localeCookie":{"name":"NEXT_LOCALE","sameSite":"lax"},"className":"group rounded-lg border p-4 text-right transition-colors hover:border-accent","style":{"borderColor":"var(--color-border)","background":"var(--color-surface)"},"children":[["$","p",null,{"className":"mb-1 text-xs","style":{"color":"var(--color-muted)"},"children":"이전 글 →"}],["$","p",null,{"className":"line-clamp-1 text-sm font-medium transition-colors group-hover:text-accent","style":{"color":"var(--color-text)"},"children":"시스템이 이상하게 굴까? 고급 설정과 디버깅 가이드"}]]}]]}]]}]
+9:Tdeb,<p>묻는 것에만 답하는 비서는 그냥 챗봇일 뿐입니다. <strong>진짜 비서는 먼저 움직입니다.</strong></p>
+<p>그 역할을 해 주는 것이 <strong>Cron</strong> 입니다.</p>
+<h2 id="이번-글에서-배울-것">이번 글에서 배울 것</h2>
+<ul>
+<li>Cron 과 Heartbeat 의 차이 이해하기</li>
+<li>어떤 작업이 스케줄링에 적합한지 알기</li>
+<li>대시보드에서 Cron 설정하기</li>
+<li>Cron 문법 읽기와 미실행 작업 점검하기</li>
+</ul>
+<hr>
+<h2 id="cron-과-heartbeat-란">Cron 과 Heartbeat 란?</h2>
+<p><strong>Cron</strong> 은 "이 시간에 이 일을 해라"라는 일정표입니다.</p>
+<ul>
+<li>매일 오전 9시: 어제 메일 요약하기</li>
+<li>매주 월요일: 이번 주 중요한 할 일 알려주기</li>
+<li>매일 밤: 오늘 메모 자동 보관하기</li>
+</ul>
+<p><strong>Heartbeat</strong> 는 비서가 예를 들어 30분마다 자동으로 깨어나, 할 일이 있는지 확인하고 필요하면 움직이는 방식입니다.</p>
+<blockquote>
+<p>💡 30분마다 heartbeat 로그가 찍혀도 정상입니다.</p>
+</blockquote>
+<hr>
+<h2 id="자주-쓰는-자동화-사례">자주 쓰는 자동화 사례</h2>
+<table>
+<thead>
+<tr>
+<th>예약 작업</th>
+<th>하는 일</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td>일일 브리핑</td>
+<td>메일, 캘린더, 뉴스 등을 요약해서 전달</td>
+</tr>
+<tr>
+<td>리마인더</td>
+<td>원하는 시간에 할 일 목록 전송</td>
+</tr>
+<tr>
+<td>모니터링</td>
+<td>API 나 웹페이지를 매시간 확인하고 이상 시 알림</td>
+</tr>
+<tr>
+<td>노트 정리</td>
+<td>흩어진 메모를 주기적으로 문서로 정리</td>
+</tr>
+</tbody>
+</table>
+<hr>
+<h2 id="대시보드에서-cron-설정하기">대시보드에서 Cron 설정하기</h2>
+<p>Control UI 의 <strong>Cron</strong> 탭을 엽니다.</p>
+<ul>
+<li><strong>Add schedule</strong>: Cron 표현식과 작업 설명 입력</li>
+<li><strong>Enable / disable</strong>: 작업 일시 정지 또는 재개</li>
+<li><strong>Run now</strong>: 기다리지 않고 즉시 테스트 실행</li>
+</ul>
+<hr>
+<h2 id="cron-문법-빠른-참고">Cron 문법 빠른 참고</h2>
+<pre><code>* * * * *
+│ │ │ │ └─ 요일 (0-7, 0과 7은 일요일)
+│ │ │ └─── 월 (1-12)
+│ │ └───── 일 (1-31)
+│ └─────── 시 (0-23)
+└───────── 분 (0-59)
+</code></pre>
+<p>자주 쓰는 예시:</p>
+<pre><code>0 9 * * *      ← 매일 9:00
+0 9 * * 1      ← 매주 월요일 9:00
+0 */6 * * *    ← 6시간마다
+</code></pre>
+<hr>
+<h2 id="실행되지-않는다면-먼저-이것부터-확인">실행되지 않는다면 먼저 이것부터 확인</h2>
+<ol>
+<li>Config 에서 Cron 이 활성화되어 있는가</li>
+<li>타임존이 맞는가</li>
+<li><code>openclaw logs --follow</code> 에 오류가 있는가</li>
+<li>Gateway 를 다시 시작해 보기</li>
+</ol>
+<blockquote>
+<p>⚠️ 예약 작업도 모델 자원을 사용합니다. 예약 작업과 대화를 동시에 많이 돌리면 HTTP 429 같은 제한에 걸릴 수 있습니다. 무거운 작업은 전용 Agent 로 분리하는 편이 좋습니다.</p>
+</blockquote>
+<hr>
+<h2 id="다음-글">다음 글</h2>
+<p>이제 비서가 스스로 움직일 수 있게 되었습니다. 다음은 고급 설정과 디버깅 요령으로 시스템을 더 안정적으로 만드는 단계입니다.</p>
+<p><a href="08-remote-gateway-nodes">← 이전 글: 원격 Gateway</a> | 👉 <a href="10-advanced-config">고급 설정과 디버깅 감각</a></p>5:["$","aside",null,{"className":"hidden lg:block","children":["$","$L8",null,{"html":"$9"}]}]
+6:["$","script","script-0",{"src":"/_next/static/chunks/2dddb3bc05093f69.js","async":true}]
+7:["$","$La",null,{"children":["$","$b",null,{"name":"Next.MetadataOutlet","children":"$@c"}]}]
+c:null

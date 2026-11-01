@@ -1,0 +1,147 @@
+1:"$Sreact.fragment"
+2:I[14864,["/_next/static/chunks/7923a261b80bb6e1.js","/_next/static/chunks/e09b4358027e8033.js","/_next/static/chunks/2dddb3bc05093f69.js"],"default"]
+8:I[24801,["/_next/static/chunks/7923a261b80bb6e1.js","/_next/static/chunks/e09b4358027e8033.js","/_next/static/chunks/2dddb3bc05093f69.js"],"default"]
+a:I[50183,["/_next/static/chunks/5a5b5b13c22d14f7.js","/_next/static/chunks/a484d1d3dd4b55ab.js"],"OutletBoundary"]
+b:"$Sreact.suspense"
+3:Tf6c,<p>Vous avez déjà passé la moitié d'une conversation à apprendre quelque chose à une IA, pour qu'elle oublie tout la fois suivante ?</p>
+<p>Cet article est là pour résoudre cette frustration.</p>
+<h2 id="ce-que-vous-allez-apprendre">Ce que vous allez apprendre</h2>
+<ul>
+<li>Comprendre ce qu'est un espace de travail et pourquoi c'est important</li>
+<li>Apprendre comment fonctionne la mémoire</li>
+<li>Savoir où sont stockées vos données</li>
+<li>Sauvegarder toute votre configuration en une commande</li>
+</ul>
+<hr>
+<h2 id="quest-ce-quun-espace-de-travail-">Qu'est-ce qu'un espace de travail ?</h2>
+<p>Imaginez un espace de travail comme <strong>le bureau privé de votre assistant</strong> :</p>
+<ul>
+<li>Les fichiers qu'il lit, les documents qu'il écrit et les scripts qu'il exécute se trouvent dans ce dossier</li>
+<li>Vous pouvez créer plusieurs espaces pour séparer les différents usages</li>
+</ul>
+<pre><code>~/.openclaw/workspace-main        ← bureau de votre assistant principal
+~/.openclaw/workspace-project-a   ← bureau du projet A
+~/.openclaw/workspace-project-b   ← bureau du projet B
+</code></pre>
+<p>Ainsi, « organise mon journal personnel » et « écris le code du projet A » ne se mélangent pas.</p>
+<hr>
+<h2 id="comment-fonctionne-la-mémoire-">Comment fonctionne la mémoire ?</h2>
+<p>OpenClaw stocke des éléments importants des conversations en <strong>mémoire</strong>, pour que l'assistant puisse les rechercher et les réutiliser plus tard.</p>
+<p>En clair : <strong>votre assistant se souvient de ce que vous lui avez dit</strong>.</p>
+<blockquote>
+<p>⚠️ S'il semble oublier, vérifiez :</p>
+<ul>
+<li>La mémoire est-elle activée ? La recherche sémantique peut nécessiter une clé API OpenAI</li>
+<li>L'ancienne mémoire a-t-elle été nettoyée, compactée ou limitée en longueur ?</li>
+<li>Avez-vous démarré une toute nouvelle session ? Les nouvelles sessions commencent avec un contexte court terme vide</li>
+</ul>
+</blockquote>
+<hr>
+<h2 id="où-sont-stockées-les-données-">Où sont stockées les données ?</h2>
+<table>
+<thead>
+<tr>
+<th>Type</th>
+<th>Chemin</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td>Fichier de config</td>
+<td><code>~/.openclaw/openclaw.json</code></td>
+</tr>
+<tr>
+<td>Espaces de travail</td>
+<td><code>~/.openclaw/workspace-&#x3C;nom>/</code></td>
+</tr>
+<tr>
+<td>Sessions et mémoire</td>
+<td>sous-dossiers sous <code>~/.openclaw/</code></td>
+</tr>
+</tbody>
+</table>
+<hr>
+<h2 id="sauvegarde-en-une-commande">Sauvegarde en une commande</h2>
+<p>Toute votre vie OpenClaw se trouve surtout sous <code>~/.openclaw</code>. Sauvegardez régulièrement :</p>
+<figure data-rehype-pretty-code-figure=""><pre style="background-color:#24292e;color:#e1e4e8" tabindex="0" data-language="bash" data-theme="github-dark"><code data-language="bash" data-theme="github-dark" style="display: grid;"><span data-line=""><span style="color:#6A737D"># Copier le tout vers un emplacement de sauvegarde</span></span>
+<span data-line=""><span style="color:#B392F0">cp</span><span style="color:#79B8FF"> -r</span><span style="color:#9ECBFF"> ~/.openclaw</span><span style="color:#9ECBFF"> ~/backup/openclaw-backup-</span><span style="color:#E1E4E8">$(</span><span style="color:#B392F0">date</span><span style="color:#9ECBFF"> +%Y%m%d</span><span style="color:#E1E4E8">)</span></span></code></pre></figure>
+<blockquote>
+<p>💡 Vous changez d'ordinateur ? Copiez tout le dossier <code>~/.openclaw</code> et vous pourrez souvent continuer sans refaire la configuration.</p>
+</blockquote>
+<hr>
+<h2 id="suite">Suite</h2>
+<p>Les bases des espaces de travail sont en place. Passons à la partie amusante : <strong>plusieurs assistants avec des rôles différents</strong>, routés par groupe, bot ou cas d'usage.</p>
+<p><a href="05-skills-intro">← Précédent : Skills</a> | 👉 <a href="07-multi-agent-bindings">Faire tourner plusieurs assistants derrière une Gateway avec les Bindings</a></p>0:{"buildId":"Yck3R4ooQxWkwGLT6is1X","rsc":["$","$1","c",{"children":[[["$","script",null,{"type":"application/ld+json","dangerouslySetInnerHTML":{"__html":"{\"@context\":\"https://schema.org\",\"@type\":\"Article\",\"headline\":\"Où est le cerveau de votre assistant ? Comprendre mémoire et espaces de travail\",\"description\":\"Comment sont organisés les espaces de travail, comment fonctionne la mémoire, où sont stockées les données, et comment tout sauvegarder en une commande.\",\"url\":\"https://benxhub.com/fr/blog/openclaw/06-memory-workspace\",\"mainEntityOfPage\":{\"@type\":\"WebPage\",\"@id\":\"https://benxhub.com/fr/blog/openclaw/06-memory-workspace\"},\"datePublished\":\"2026-03-08T00:00:00.000Z\",\"dateModified\":\"2026-03-08T00:00:00.000Z\",\"keywords\":\"openclaw, memory, workspace, data\",\"inLanguage\":\"fr\",\"author\":{\"@type\":\"Person\",\"name\":\"BenX\",\"url\":\"https://benxhub.com\"},\"publisher\":{\"@type\":\"Organization\",\"name\":\"BenXHub Blog\",\"url\":\"https://benxhub.com\"}}"}}],["$","div",null,{"className":"mx-auto max-w-6xl px-4 py-12 sm:px-6","children":["$","div",null,{"className":"lg:grid lg:grid-cols-[1fr_240px] lg:gap-14","children":[["$","article",null,{"children":[["$","header",null,{"className":"mb-10","children":[["$","div",null,{"className":"mb-4 flex flex-wrap gap-2","children":[["$","$L2","openclaw",{"href":"/fr/tags/openclaw","localeCookie":{"name":"NEXT_LOCALE","sameSite":"lax"},"className":"inline-flex items-center rounded-full px-2.5 py-0.5 text-xs font-medium transition-colors","style":{"background":"var(--color-code-bg)","color":"var(--color-accent)","border":"1px solid var(--color-border)"},"children":["#","openclaw"]}],["$","$L2","memory",{"href":"/fr/tags/memory","localeCookie":{"name":"NEXT_LOCALE","sameSite":"lax"},"className":"inline-flex items-center rounded-full px-2.5 py-0.5 text-xs font-medium transition-colors","style":{"background":"var(--color-code-bg)","color":"var(--color-accent)","border":"1px solid var(--color-border)"},"children":["#","memory"]}],["$","$L2","workspace",{"href":"/fr/tags/workspace","localeCookie":{"name":"NEXT_LOCALE","sameSite":"lax"},"className":"inline-flex items-center rounded-full px-2.5 py-0.5 text-xs font-medium transition-colors","style":{"background":"var(--color-code-bg)","color":"var(--color-accent)","border":"1px solid var(--color-border)"},"children":["#","workspace"]}],["$","$L2","data",{"href":"/fr/tags/data","localeCookie":{"name":"NEXT_LOCALE","sameSite":"lax"},"className":"inline-flex items-center rounded-full px-2.5 py-0.5 text-xs font-medium transition-colors","style":{"background":"var(--color-code-bg)","color":"var(--color-accent)","border":"1px solid var(--color-border)"},"children":["#","data"]}]]}],["$","h1",null,{"className":"mb-4 text-3xl leading-snug font-bold tracking-tight sm:text-4xl","style":{"color":"var(--color-text)"},"children":"Où est le cerveau de votre assistant ? Comprendre mémoire et espaces de travail"}],["$","div",null,{"className":"flex flex-wrap items-center gap-3 text-sm","style":{"color":"var(--color-muted)"},"children":[["$","time",null,{"dateTime":"2026-03-08","children":"8 mars 2026"}],["$","span",null,{"aria-hidden":"true","children":"·"}],["$","span",null,{"children":"2 min read"}]]}],"$undefined",["$","div",null,{"className":"mt-6 border-b","style":{"borderColor":"var(--color-border)"}}]]}],["$","div",null,{"className":"prose","dangerouslySetInnerHTML":{"__html":"$3"}}],"$L4"]}],"$L5"]}]}]],["$L6"],"$L7"]}],"loading":null,"isPartial":false}
+4:["$","footer",null,{"className":"mt-14 border-t pt-8","style":{"borderColor":"var(--color-border)"},"children":[["$","div",null,{"className":"mb-8 flex flex-wrap gap-2","children":[["$","$L2","openclaw",{"href":"/fr/tags/openclaw","localeCookie":{"name":"NEXT_LOCALE","sameSite":"lax"},"className":"inline-flex items-center rounded-full px-3 py-1 text-sm font-medium transition-colors","style":{"background":"var(--color-code-bg)","color":"var(--color-accent)","border":"1px solid var(--color-border)"},"children":["#","openclaw"]}],["$","$L2","memory",{"href":"/fr/tags/memory","localeCookie":{"name":"NEXT_LOCALE","sameSite":"lax"},"className":"inline-flex items-center rounded-full px-3 py-1 text-sm font-medium transition-colors","style":{"background":"var(--color-code-bg)","color":"var(--color-accent)","border":"1px solid var(--color-border)"},"children":["#","memory"]}],["$","$L2","workspace",{"href":"/fr/tags/workspace","localeCookie":{"name":"NEXT_LOCALE","sameSite":"lax"},"className":"inline-flex items-center rounded-full px-3 py-1 text-sm font-medium transition-colors","style":{"background":"var(--color-code-bg)","color":"var(--color-accent)","border":"1px solid var(--color-border)"},"children":["#","workspace"]}],["$","$L2","data",{"href":"/fr/tags/data","localeCookie":{"name":"NEXT_LOCALE","sameSite":"lax"},"className":"inline-flex items-center rounded-full px-3 py-1 text-sm font-medium transition-colors","style":{"background":"var(--color-code-bg)","color":"var(--color-accent)","border":"1px solid var(--color-border)"},"children":["#","data"]}]]}],["$","nav",null,{"aria-label":"Navigation des articles","className":"grid grid-cols-1 gap-4 sm:grid-cols-2","children":[["$","$L2",null,{"href":"/fr/blog/openclaw/05-skills-intro","localeCookie":{"name":"NEXT_LOCALE","sameSite":"lax"},"className":"group rounded-lg border p-4 transition-colors hover:border-accent","style":{"borderColor":"var(--color-border)","background":"var(--color-surface)"},"children":[["$","p",null,{"className":"mb-1 text-xs","style":{"color":"var(--color-muted)"},"children":"← Plus récent"}],["$","p",null,{"className":"line-clamp-1 text-sm font-medium transition-colors group-hover:text-accent","style":{"color":"var(--color-text)"},"children":"Donnez des super-pouvoirs à votre assistant : les Skills le transforment de bavard en acteur"}]]}],["$","$L2",null,{"href":"/fr/blog/openclaw/07-multi-agent-bindings","localeCookie":{"name":"NEXT_LOCALE","sameSite":"lax"},"className":"group rounded-lg border p-4 text-right transition-colors hover:border-accent","style":{"borderColor":"var(--color-border)","background":"var(--color-surface)"},"children":[["$","p",null,{"className":"mb-1 text-xs","style":{"color":"var(--color-muted)"},"children":"Plus ancien →"}],["$","p",null,{"className":"line-clamp-1 text-sm font-medium transition-colors group-hover:text-accent","style":{"color":"var(--color-text)"},"children":"Une Gateway, plusieurs assistants : utilisez les Bindings pour router le bon message vers le bon agent"}]]}]]}]]}]
+9:Tf6c,<p>Vous avez déjà passé la moitié d'une conversation à apprendre quelque chose à une IA, pour qu'elle oublie tout la fois suivante ?</p>
+<p>Cet article est là pour résoudre cette frustration.</p>
+<h2 id="ce-que-vous-allez-apprendre">Ce que vous allez apprendre</h2>
+<ul>
+<li>Comprendre ce qu'est un espace de travail et pourquoi c'est important</li>
+<li>Apprendre comment fonctionne la mémoire</li>
+<li>Savoir où sont stockées vos données</li>
+<li>Sauvegarder toute votre configuration en une commande</li>
+</ul>
+<hr>
+<h2 id="quest-ce-quun-espace-de-travail-">Qu'est-ce qu'un espace de travail ?</h2>
+<p>Imaginez un espace de travail comme <strong>le bureau privé de votre assistant</strong> :</p>
+<ul>
+<li>Les fichiers qu'il lit, les documents qu'il écrit et les scripts qu'il exécute se trouvent dans ce dossier</li>
+<li>Vous pouvez créer plusieurs espaces pour séparer les différents usages</li>
+</ul>
+<pre><code>~/.openclaw/workspace-main        ← bureau de votre assistant principal
+~/.openclaw/workspace-project-a   ← bureau du projet A
+~/.openclaw/workspace-project-b   ← bureau du projet B
+</code></pre>
+<p>Ainsi, « organise mon journal personnel » et « écris le code du projet A » ne se mélangent pas.</p>
+<hr>
+<h2 id="comment-fonctionne-la-mémoire-">Comment fonctionne la mémoire ?</h2>
+<p>OpenClaw stocke des éléments importants des conversations en <strong>mémoire</strong>, pour que l'assistant puisse les rechercher et les réutiliser plus tard.</p>
+<p>En clair : <strong>votre assistant se souvient de ce que vous lui avez dit</strong>.</p>
+<blockquote>
+<p>⚠️ S'il semble oublier, vérifiez :</p>
+<ul>
+<li>La mémoire est-elle activée ? La recherche sémantique peut nécessiter une clé API OpenAI</li>
+<li>L'ancienne mémoire a-t-elle été nettoyée, compactée ou limitée en longueur ?</li>
+<li>Avez-vous démarré une toute nouvelle session ? Les nouvelles sessions commencent avec un contexte court terme vide</li>
+</ul>
+</blockquote>
+<hr>
+<h2 id="où-sont-stockées-les-données-">Où sont stockées les données ?</h2>
+<table>
+<thead>
+<tr>
+<th>Type</th>
+<th>Chemin</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td>Fichier de config</td>
+<td><code>~/.openclaw/openclaw.json</code></td>
+</tr>
+<tr>
+<td>Espaces de travail</td>
+<td><code>~/.openclaw/workspace-&#x3C;nom>/</code></td>
+</tr>
+<tr>
+<td>Sessions et mémoire</td>
+<td>sous-dossiers sous <code>~/.openclaw/</code></td>
+</tr>
+</tbody>
+</table>
+<hr>
+<h2 id="sauvegarde-en-une-commande">Sauvegarde en une commande</h2>
+<p>Toute votre vie OpenClaw se trouve surtout sous <code>~/.openclaw</code>. Sauvegardez régulièrement :</p>
+<figure data-rehype-pretty-code-figure=""><pre style="background-color:#24292e;color:#e1e4e8" tabindex="0" data-language="bash" data-theme="github-dark"><code data-language="bash" data-theme="github-dark" style="display: grid;"><span data-line=""><span style="color:#6A737D"># Copier le tout vers un emplacement de sauvegarde</span></span>
+<span data-line=""><span style="color:#B392F0">cp</span><span style="color:#79B8FF"> -r</span><span style="color:#9ECBFF"> ~/.openclaw</span><span style="color:#9ECBFF"> ~/backup/openclaw-backup-</span><span style="color:#E1E4E8">$(</span><span style="color:#B392F0">date</span><span style="color:#9ECBFF"> +%Y%m%d</span><span style="color:#E1E4E8">)</span></span></code></pre></figure>
+<blockquote>
+<p>💡 Vous changez d'ordinateur ? Copiez tout le dossier <code>~/.openclaw</code> et vous pourrez souvent continuer sans refaire la configuration.</p>
+</blockquote>
+<hr>
+<h2 id="suite">Suite</h2>
+<p>Les bases des espaces de travail sont en place. Passons à la partie amusante : <strong>plusieurs assistants avec des rôles différents</strong>, routés par groupe, bot ou cas d'usage.</p>
+<p><a href="05-skills-intro">← Précédent : Skills</a> | 👉 <a href="07-multi-agent-bindings">Faire tourner plusieurs assistants derrière une Gateway avec les Bindings</a></p>5:["$","aside",null,{"className":"hidden lg:block","children":["$","$L8",null,{"html":"$9"}]}]
+6:["$","script","script-0",{"src":"/_next/static/chunks/2dddb3bc05093f69.js","async":true}]
+7:["$","$La",null,{"children":["$","$b",null,{"name":"Next.MetadataOutlet","children":"$@c"}]}]
+c:null

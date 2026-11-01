@@ -1,0 +1,89 @@
+1:"$Sreact.fragment"
+2:I[14864,["/_next/static/chunks/7923a261b80bb6e1.js","/_next/static/chunks/e09b4358027e8033.js","/_next/static/chunks/2dddb3bc05093f69.js"],"default"]
+8:I[24801,["/_next/static/chunks/7923a261b80bb6e1.js","/_next/static/chunks/e09b4358027e8033.js","/_next/static/chunks/2dddb3bc05093f69.js"],"default"]
+a:I[50183,["/_next/static/chunks/5a5b5b13c22d14f7.js","/_next/static/chunks/a484d1d3dd4b55ab.js"],"OutletBoundary"]
+b:"$Sreact.suspense"
+3:Te13,<p>Vous pouvez voir le <code>Crew</code> comme un metteur en scène qui décide qui monte sur scène en premier et qui suit.<br>
+Le <code>Process</code> est le script qui définit comment les tâches s'enchaînent.</p>
+<h2 id="conclusion-la-plus-importante-dabord">Conclusion la plus importante d'abord</h2>
+<p><strong>Pour 90 % des projets débutants, commencez avec <code>Process.sequential</code>.</strong><br>
+Raison simple : prévisible, facile à déboguer, plus simple à analyser en cas d'échec.</p>
+<h2 id="crew-minimal-viable">Crew minimal viable</h2>
+<figure data-rehype-pretty-code-figure=""><pre style="background-color:#24292e;color:#e1e4e8" tabindex="0" data-language="python" data-theme="github-dark"><code data-language="python" data-theme="github-dark" style="display: grid;"><span data-line=""><span style="color:#F97583">from</span><span style="color:#E1E4E8"> crewai </span><span style="color:#F97583">import</span><span style="color:#E1E4E8"> Crew, Process</span></span>
+<span data-line=""> </span>
+<span data-line=""><span style="color:#F97583">def</span><span style="color:#B392F0"> build_crew</span><span style="color:#E1E4E8">(agents, tasks) -> Crew:</span></span>
+<span data-line=""><span style="color:#F97583">    return</span><span style="color:#E1E4E8"> Crew(</span></span>
+<span data-line=""><span style="color:#FFAB70">        agents</span><span style="color:#F97583">=</span><span style="color:#E1E4E8">agents,</span></span>
+<span data-line=""><span style="color:#FFAB70">        tasks</span><span style="color:#F97583">=</span><span style="color:#E1E4E8">tasks,</span></span>
+<span data-line=""><span style="color:#FFAB70">        process</span><span style="color:#F97583">=</span><span style="color:#E1E4E8">Process.sequential,</span></span>
+<span data-line=""><span style="color:#FFAB70">        verbose</span><span style="color:#F97583">=</span><span style="color:#79B8FF">True</span><span style="color:#E1E4E8">,</span></span>
+<span data-line=""><span style="color:#E1E4E8">    )</span></span></code></pre></figure>
+<p>Ça a l'air banal, mais c'est crucial :<br>
+vous indiquez explicitement au système d'exécuter les tâches dans l'ordre, une par une.</p>
+<h2 id="pourquoi-le-séquentiel-aide">Pourquoi le séquentiel aide</h2>
+<ul>
+<li>Dépendances entre tâches claires</li>
+<li>Sorties reproductibles</li>
+<li>Localisation des erreurs plus rapide</li>
+<li>Meilleur contrôle des coûts</li>
+</ul>
+<p>Pour les débutants, c'est comme finir la quête principale en difficulté normale avant de toucher au mode cauchemar.</p>
+<h2 id="quand-envisager-hierarchical-">Quand envisager hierarchical ?</h2>
+<p>Envisagez-le seulement quand :</p>
+<ul>
+<li>Le nombre de tâches est très élevé et change dynamiquement</li>
+<li>Vous avez besoin d'un agent manager pour répartir le travail automatiquement</li>
+<li>Vous avez déjà des contrôles de monitoring et de coût stables</li>
+</ul>
+<p>Si vous êtes encore en train d'ajuster <code>expected_output</code>, ne passez pas encore au hierarchical.</p>
+<h2 id="conseil-pratique--rendre-lassemblage-du-crew-testable">Conseil pratique : rendre l'assemblage du crew testable</h2>
+<p>Centralisez la construction du crew dans une fonction ou une classe au lieu de l'éparpiller.<br>
+Changer de modèle, de process ou de callbacks devient alors beaucoup plus simple à maintenir.</p>
+<h2 id="prochaine-étape">Prochaine étape</h2>
+<p>Après la conception du process, vos agents ont encore besoin de « mains » pour travailler.<br>
+Article suivant :<br>
+👉 <a href="04-tools-integration">Intégration des outils</a></p>0:{"buildId":"Yck3R4ooQxWkwGLT6is1X","rsc":["$","$1","c",{"children":[[["$","script",null,{"type":"application/ld+json","dangerouslySetInnerHTML":{"__html":"{\"@context\":\"https://schema.org\",\"@type\":\"Article\",\"headline\":\"CrewAI — Crew et Process : quand utiliser Sequential ?\",\"description\":\"Comprendre la composition du Crew et le choix du Process. Commencer par des workflows séquentiels stables pour la maintenabilité.\",\"url\":\"https://benxhub.com/fr/blog/crewai/03-crew-and-process\",\"mainEntityOfPage\":{\"@type\":\"WebPage\",\"@id\":\"https://benxhub.com/fr/blog/crewai/03-crew-and-process\"},\"datePublished\":\"2026-03-02T00:00:00.000Z\",\"dateModified\":\"2026-03-02T00:00:00.000Z\",\"keywords\":\"crewai, crew, process, sequential, workflow\",\"inLanguage\":\"fr\",\"author\":{\"@type\":\"Person\",\"name\":\"BenX\",\"url\":\"https://benxhub.com\"},\"publisher\":{\"@type\":\"Organization\",\"name\":\"BenXHub Blog\",\"url\":\"https://benxhub.com\"}}"}}],["$","div",null,{"className":"mx-auto max-w-6xl px-4 py-12 sm:px-6","children":["$","div",null,{"className":"lg:grid lg:grid-cols-[1fr_240px] lg:gap-14","children":[["$","article",null,{"children":[["$","header",null,{"className":"mb-10","children":[["$","div",null,{"className":"mb-4 flex flex-wrap gap-2","children":[["$","$L2","crewai",{"href":"/fr/tags/crewai","localeCookie":{"name":"NEXT_LOCALE","sameSite":"lax"},"className":"inline-flex items-center rounded-full px-2.5 py-0.5 text-xs font-medium transition-colors","style":{"background":"var(--color-code-bg)","color":"var(--color-accent)","border":"1px solid var(--color-border)"},"children":["#","crewai"]}],["$","$L2","crew",{"href":"/fr/tags/crew","localeCookie":{"name":"NEXT_LOCALE","sameSite":"lax"},"className":"inline-flex items-center rounded-full px-2.5 py-0.5 text-xs font-medium transition-colors","style":{"background":"var(--color-code-bg)","color":"var(--color-accent)","border":"1px solid var(--color-border)"},"children":["#","crew"]}],["$","$L2","process",{"href":"/fr/tags/process","localeCookie":{"name":"NEXT_LOCALE","sameSite":"lax"},"className":"inline-flex items-center rounded-full px-2.5 py-0.5 text-xs font-medium transition-colors","style":{"background":"var(--color-code-bg)","color":"var(--color-accent)","border":"1px solid var(--color-border)"},"children":["#","process"]}],["$","$L2","sequential",{"href":"/fr/tags/sequential","localeCookie":{"name":"NEXT_LOCALE","sameSite":"lax"},"className":"inline-flex items-center rounded-full px-2.5 py-0.5 text-xs font-medium transition-colors","style":{"background":"var(--color-code-bg)","color":"var(--color-accent)","border":"1px solid var(--color-border)"},"children":["#","sequential"]}],["$","$L2","workflow",{"href":"/fr/tags/workflow","localeCookie":{"name":"NEXT_LOCALE","sameSite":"lax"},"className":"inline-flex items-center rounded-full px-2.5 py-0.5 text-xs font-medium transition-colors","style":{"background":"var(--color-code-bg)","color":"var(--color-accent)","border":"1px solid var(--color-border)"},"children":["#","workflow"]}]]}],["$","h1",null,{"className":"mb-4 text-3xl leading-snug font-bold tracking-tight sm:text-4xl","style":{"color":"var(--color-text)"},"children":"CrewAI — Crew et Process : quand utiliser Sequential ?"}],["$","div",null,{"className":"flex flex-wrap items-center gap-3 text-sm","style":{"color":"var(--color-muted)"},"children":[["$","time",null,{"dateTime":"2026-03-02","children":"2 mars 2026"}],["$","span",null,{"aria-hidden":"true","children":"·"}],["$","span",null,{"children":"2 min read"}]]}],"$undefined",["$","div",null,{"className":"mt-6 border-b","style":{"borderColor":"var(--color-border)"}}]]}],["$","div",null,{"className":"prose","dangerouslySetInnerHTML":{"__html":"$3"}}],"$L4"]}],"$L5"]}]}]],["$L6"],"$L7"]}],"loading":null,"isPartial":false}
+4:["$","footer",null,{"className":"mt-14 border-t pt-8","style":{"borderColor":"var(--color-border)"},"children":[["$","div",null,{"className":"mb-8 flex flex-wrap gap-2","children":[["$","$L2","crewai",{"href":"/fr/tags/crewai","localeCookie":{"name":"NEXT_LOCALE","sameSite":"lax"},"className":"inline-flex items-center rounded-full px-3 py-1 text-sm font-medium transition-colors","style":{"background":"var(--color-code-bg)","color":"var(--color-accent)","border":"1px solid var(--color-border)"},"children":["#","crewai"]}],["$","$L2","crew",{"href":"/fr/tags/crew","localeCookie":{"name":"NEXT_LOCALE","sameSite":"lax"},"className":"inline-flex items-center rounded-full px-3 py-1 text-sm font-medium transition-colors","style":{"background":"var(--color-code-bg)","color":"var(--color-accent)","border":"1px solid var(--color-border)"},"children":["#","crew"]}],["$","$L2","process",{"href":"/fr/tags/process","localeCookie":{"name":"NEXT_LOCALE","sameSite":"lax"},"className":"inline-flex items-center rounded-full px-3 py-1 text-sm font-medium transition-colors","style":{"background":"var(--color-code-bg)","color":"var(--color-accent)","border":"1px solid var(--color-border)"},"children":["#","process"]}],["$","$L2","sequential",{"href":"/fr/tags/sequential","localeCookie":{"name":"NEXT_LOCALE","sameSite":"lax"},"className":"inline-flex items-center rounded-full px-3 py-1 text-sm font-medium transition-colors","style":{"background":"var(--color-code-bg)","color":"var(--color-accent)","border":"1px solid var(--color-border)"},"children":["#","sequential"]}],["$","$L2","workflow",{"href":"/fr/tags/workflow","localeCookie":{"name":"NEXT_LOCALE","sameSite":"lax"},"className":"inline-flex items-center rounded-full px-3 py-1 text-sm font-medium transition-colors","style":{"background":"var(--color-code-bg)","color":"var(--color-accent)","border":"1px solid var(--color-border)"},"children":["#","workflow"]}]]}],["$","nav",null,{"aria-label":"Navigation des articles","className":"grid grid-cols-1 gap-4 sm:grid-cols-2","children":[["$","$L2",null,{"href":"/fr/blog/crewai/07-memory-and-knowledge","localeCookie":{"name":"NEXT_LOCALE","sameSite":"lax"},"className":"group rounded-lg border p-4 transition-colors hover:border-accent","style":{"borderColor":"var(--color-border)","background":"var(--color-surface)"},"children":[["$","p",null,{"className":"mb-1 text-xs","style":{"color":"var(--color-muted)"},"children":"← Plus récent"}],["$","p",null,{"className":"line-clamp-1 text-sm font-medium transition-colors group-hover:text-accent","style":{"color":"var(--color-text)"},"children":"CrewAI — Mémoire et connaissances : éviter que les agents réapprennent tout à chaque fois"}]]}],["$","$L2",null,{"href":"/fr/blog/crewai/04-tools-integration","localeCookie":{"name":"NEXT_LOCALE","sameSite":"lax"},"className":"group rounded-lg border p-4 text-right transition-colors hover:border-accent","style":{"borderColor":"var(--color-border)","background":"var(--color-surface)"},"children":[["$","p",null,{"className":"mb-1 text-xs","style":{"color":"var(--color-muted)"},"children":"Plus ancien →"}],["$","p",null,{"className":"line-clamp-1 text-sm font-medium transition-colors group-hover:text-accent","style":{"color":"var(--color-text)"},"children":"CrewAI — Intégration des outils : laisser les agents chercher, lire et vraiment travailler"}]]}]]}]]}]
+9:Te13,<p>Vous pouvez voir le <code>Crew</code> comme un metteur en scène qui décide qui monte sur scène en premier et qui suit.<br>
+Le <code>Process</code> est le script qui définit comment les tâches s'enchaînent.</p>
+<h2 id="conclusion-la-plus-importante-dabord">Conclusion la plus importante d'abord</h2>
+<p><strong>Pour 90 % des projets débutants, commencez avec <code>Process.sequential</code>.</strong><br>
+Raison simple : prévisible, facile à déboguer, plus simple à analyser en cas d'échec.</p>
+<h2 id="crew-minimal-viable">Crew minimal viable</h2>
+<figure data-rehype-pretty-code-figure=""><pre style="background-color:#24292e;color:#e1e4e8" tabindex="0" data-language="python" data-theme="github-dark"><code data-language="python" data-theme="github-dark" style="display: grid;"><span data-line=""><span style="color:#F97583">from</span><span style="color:#E1E4E8"> crewai </span><span style="color:#F97583">import</span><span style="color:#E1E4E8"> Crew, Process</span></span>
+<span data-line=""> </span>
+<span data-line=""><span style="color:#F97583">def</span><span style="color:#B392F0"> build_crew</span><span style="color:#E1E4E8">(agents, tasks) -> Crew:</span></span>
+<span data-line=""><span style="color:#F97583">    return</span><span style="color:#E1E4E8"> Crew(</span></span>
+<span data-line=""><span style="color:#FFAB70">        agents</span><span style="color:#F97583">=</span><span style="color:#E1E4E8">agents,</span></span>
+<span data-line=""><span style="color:#FFAB70">        tasks</span><span style="color:#F97583">=</span><span style="color:#E1E4E8">tasks,</span></span>
+<span data-line=""><span style="color:#FFAB70">        process</span><span style="color:#F97583">=</span><span style="color:#E1E4E8">Process.sequential,</span></span>
+<span data-line=""><span style="color:#FFAB70">        verbose</span><span style="color:#F97583">=</span><span style="color:#79B8FF">True</span><span style="color:#E1E4E8">,</span></span>
+<span data-line=""><span style="color:#E1E4E8">    )</span></span></code></pre></figure>
+<p>Ça a l'air banal, mais c'est crucial :<br>
+vous indiquez explicitement au système d'exécuter les tâches dans l'ordre, une par une.</p>
+<h2 id="pourquoi-le-séquentiel-aide">Pourquoi le séquentiel aide</h2>
+<ul>
+<li>Dépendances entre tâches claires</li>
+<li>Sorties reproductibles</li>
+<li>Localisation des erreurs plus rapide</li>
+<li>Meilleur contrôle des coûts</li>
+</ul>
+<p>Pour les débutants, c'est comme finir la quête principale en difficulté normale avant de toucher au mode cauchemar.</p>
+<h2 id="quand-envisager-hierarchical-">Quand envisager hierarchical ?</h2>
+<p>Envisagez-le seulement quand :</p>
+<ul>
+<li>Le nombre de tâches est très élevé et change dynamiquement</li>
+<li>Vous avez besoin d'un agent manager pour répartir le travail automatiquement</li>
+<li>Vous avez déjà des contrôles de monitoring et de coût stables</li>
+</ul>
+<p>Si vous êtes encore en train d'ajuster <code>expected_output</code>, ne passez pas encore au hierarchical.</p>
+<h2 id="conseil-pratique--rendre-lassemblage-du-crew-testable">Conseil pratique : rendre l'assemblage du crew testable</h2>
+<p>Centralisez la construction du crew dans une fonction ou une classe au lieu de l'éparpiller.<br>
+Changer de modèle, de process ou de callbacks devient alors beaucoup plus simple à maintenir.</p>
+<h2 id="prochaine-étape">Prochaine étape</h2>
+<p>Après la conception du process, vos agents ont encore besoin de « mains » pour travailler.<br>
+Article suivant :<br>
+👉 <a href="04-tools-integration">Intégration des outils</a></p>5:["$","aside",null,{"className":"hidden lg:block","children":["$","$L8",null,{"html":"$9"}]}]
+6:["$","script","script-0",{"src":"/_next/static/chunks/2dddb3bc05093f69.js","async":true}]
+7:["$","$La",null,{"children":["$","$b",null,{"name":"Next.MetadataOutlet","children":"$@c"}]}]
+c:null

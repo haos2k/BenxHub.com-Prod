@@ -1,0 +1,255 @@
+1:"$Sreact.fragment"
+2:I[14864,["/_next/static/chunks/7923a261b80bb6e1.js","/_next/static/chunks/e09b4358027e8033.js","/_next/static/chunks/2dddb3bc05093f69.js"],"default"]
+8:I[24801,["/_next/static/chunks/7923a261b80bb6e1.js","/_next/static/chunks/e09b4358027e8033.js","/_next/static/chunks/2dddb3bc05093f69.js"],"default"]
+a:I[50183,["/_next/static/chunks/5a5b5b13c22d14f7.js","/_next/static/chunks/a484d1d3dd4b55ab.js"],"OutletBoundary"]
+b:"$Sreact.suspense"
+3:T1e07,<p>你有沒有想過，一台電腦裡面同時跑 Windows、Linux、NAS、防火牆、還有一個 Minecraft 伺服器？聽起來像是把整間公寓塞進一個行李箱——但 Proxmox VE 真的能幫你做到這件事。</p>
+<h2 id="一句話解釋-pve">一句話解釋 PVE</h2>
+<p>Proxmox Virtual Environment（大家都叫它 PVE）是一個基於 Debian Linux 的<a href="https://www.proxmox.com/en/proxmox-virtual-environment/overview">開源虛擬化平台</a>。它把 KVM 虛擬機和 <a href="04-lxc-containers">LXC 容器</a>整合在一起，再加上一個還算順眼的 Web 管理介面，讓你用瀏覽器就能管一整台伺服器上的所有虛擬環境。</p>
+<p>想像一下：PVE 就像一個超級房東，你的實體伺服器是一棟大樓，PVE 負責把它隔成好幾間套房（VM）跟雅房（LXC 容器），每間都有自己的門牌號碼、水電表、網路線，互不干擾。</p>
+<h2 id="為什麼不用-vmware">為什麼不用 VMware？</h2>
+<p>這大概是 2024 年以後最多人問的問題了。Broadcom 買下 VMware 之後，授權政策大翻盤：</p>
+<table>
+<thead>
+<tr>
+<th>比較項目</th>
+<th>Proxmox VE</th>
+<th>VMware ESXi</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td>授權費用</td>
+<td>$0（全功能免費）</td>
+<td>$4,500+/CPU/年起跳</td>
+</tr>
+<tr>
+<td>容器支援</td>
+<td>LXC + OCI 原生支援</td>
+<td>沒有</td>
+</tr>
+<tr>
+<td>內建分散式儲存</td>
+<td>Ceph + ZFS（免費）</td>
+<td>vSAN（另外付錢）</td>
+</tr>
+<tr>
+<td>HA / Live Migration</td>
+<td>免費</td>
+<td>需要 vCenter（付費）</td>
+</tr>
+<tr>
+<td>Web 管理介面</td>
+<td>完整且免費</td>
+<td>vCenter 另計</td>
+</tr>
+<tr>
+<td>SDN</td>
+<td>內建 EVPN/VXLAN</td>
+<td>NSX（又是另外付錢）</td>
+</tr>
+</tbody>
+</table>
+<p>簡單說，VMware 玩的是遊戲本體免費、DLC 比本體貴的路線，而 PVE 是整套含季票全部 $0。難怪全球已經超過 <strong>150 萬台主機</strong> 在跑 PVE，覆蓋 140 多個國家。想看看 PVE 到底能跑在什麼硬體上？可以先看看<a href="01-hardware-guide">硬體選購指南</a>。</p>
+<blockquote>
+<p>真實案例：HorizonIQ 從 VMware 遷移到 Proxmox 後，年度成本從天文數字直接砍到 $15,000——省了 94%。這不是小數點打錯，是真的省了 94%。</p>
+</blockquote>
+<h2 id="那-hyper-v-和-xcp-ng-呢">那 Hyper-V 和 XCP-ng 呢？</h2>
+<p><strong>Hyper-V</strong>：如果你公司整間都是 Windows、Active Directory 綁得死死的、老闆又已經買了 Windows Server 授權——那 Hyper-V 是合理選擇。但如果你是 Linux 為主或混合環境，PVE 的 Web GUI 跨平台體驗好太多。</p>
+<p><strong>XCP-ng</strong>：Xen 架構隔離性確實更強，但社群規模差太多（市佔 2.4% vs PVE 的 13.9%），遇到問題能 Google 到的解法也少很多。除非你有特殊安全需求，否則 PVE 的生態系更完整。</p>
+<h2 id="pve-適合誰">PVE 適合誰？</h2>
+<ul>
+<li><strong>Homelab 玩家</strong>：你家有一台閒置的 PC 或 Mini PC，想拿來搞事</li>
+<li><strong>中小企業</strong>：不想被大廠授權費綁架，但又需要企業級功能</li>
+<li><strong>學生/工程師</strong>：想學虛擬化、K8s、網路，PVE 是最好的練兵場</li>
+<li><strong>從 VMware 逃出來的人</strong>：PVE 8.2+ 甚至有 <a href="https://pve.proxmox.com/wiki/Migrate_to_Proxmox_VE">VMware Import Wizard</a> 幫你搬家</li>
+</ul>
+<p><strong>不太適合</strong>：只需要跑幾個 Docker container 的場景。那種直接裝 Docker 就好，不用搬出 PVE 這台推土機。</p>
+<h2 id="版本演進重點">版本演進重點</h2>
+<p>PVE 的更新節奏很穩定，每個版本都有值得關注的新功能（完整歷史可參考 <a href="https://pve.proxmox.com/wiki/Roadmap">Proxmox VE Wiki - Roadmap</a>）：</p>
+<table>
+<thead>
+<tr>
+<th>版本</th>
+<th>亮點</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td>PVE 8.2</td>
+<td>VMware Import Wizard（幫你從 ESXi 搬家）</td>
+</tr>
+<tr>
+<td>PVE 8.4</td>
+<td>vGPU Live Migration、Virtiofs</td>
+</tr>
+<tr>
+<td>PVE 9.0</td>
+<td>升級到 Debian 13、SDN Fabrics</td>
+</tr>
+<tr>
+<td>PVE 9.1</td>
+<td>OCI 容器映像支援、Intel TDX 機密運算</td>
+</tr>
+</tbody>
+</table>
+<figure data-rehype-pretty-code-figure=""><pre style="background-color:#24292e;color:#e1e4e8" tabindex="0" data-language="bash" data-theme="github-dark"><code data-language="bash" data-theme="github-dark" style="display: grid;"><span data-line=""><span style="color:#6A737D"># 查看你目前的 PVE 版本</span></span>
+<span data-line=""><span style="color:#B392F0">pveversion</span><span style="color:#79B8FF"> -v</span></span></code></pre></figure>
+<h2 id="這系列文章的路線圖">這系列文章的路線圖</h2>
+<p>接下來我會從零開始，帶你走完 PVE 的完整旅程：</p>
+<ol>
+<li><strong>硬體選購指南</strong> — 該買什麼設備來跑 PVE（不同預算的選擇）</li>
+<li><strong>安裝與第一台 VM</strong> — 從 USB 開機到成功開出第一台虛擬機</li>
+<li><strong>VM 管理</strong> — CPU、記憶體、磁碟、快照、範本，全部搞懂</li>
+<li><strong>LXC 容器</strong> — 比 VM 更輕量的選擇，以及怎麼在裡面跑 Docker</li>
+<li><strong>儲存系統</strong> — ZFS、LVM、NFS，你的資料該放哪裡</li>
+<li><strong>網路管理</strong> — Bridge、VLAN、Bond，把網路搞通</li>
+<li><strong>叢集與 HA</strong> — 多台機器組隊，壞一台不怕</li>
+<li><strong>備份與還原</strong> — 因為資料不見的時候才想到備份就太晚了</li>
+<li><strong>SDN 軟體定義網路</strong> — 進階網路玩法</li>
+<li><strong>GPU 直通</strong> — 讓 VM 用到實體顯卡的完整力量</li>
+<li><strong>Cloud-init 與自動化</strong> — 用 Terraform、Ansible 批量部署</li>
+<li><strong>API 與腳本</strong> — 用 REST API 自動化管理</li>
+<li><strong>安全與使用者管理</strong> — 帳號、權限、2FA、防火牆</li>
+<li><strong>效能調校</strong> — 從預設的 61% 效能榨到 85%+</li>
+</ol>
+<p>每篇都會盡量控制在你喝一杯咖啡的時間內讀完，有 bash 指令可以直接複製貼上，有踩坑經驗可以直接避開。</p>
+<h2 id="常見問題">常見問題</h2>
+<h3 id="q-proxmox-ve-完全免費嗎有什麼限制">Q: Proxmox VE 完全免費嗎？有什麼限制？</h3>
+<p>PVE 所有功能都免費開源，沒有功能限制。付費訂閱只是多了企業級軟體源和技術支援，不影響任何功能使用。Homelab 玩家用社群版就完全夠了。</p>
+<h3 id="q-pve-適合新手嗎需要-linux-基礎嗎">Q: PVE 適合新手嗎？需要 Linux 基礎嗎？</h3>
+<p>PVE 的 Web 介面很直覺，基本操作不需要 Linux 經驗。但如果你想深入調校效能或寫自動化腳本，熟悉基本的 Linux 指令會很有幫助。</p>
+<h3 id="q-proxmox-ve-跟-docker-有什麼不同">Q: Proxmox VE 跟 Docker 有什麼不同？</h3>
+<p>PVE 是管理整台伺服器的虛擬化平台，可以跑完整的 VM 和 LXC 容器；Docker 是應用層級的容器化工具。兩者不衝突，你可以在 PVE 的 <a href="04-lxc-containers">LXC 容器</a>裡面跑 Docker。</p>
+<h3 id="q-從-vmware-遷移到-pve-困難嗎">Q: 從 VMware 遷移到 PVE 困難嗎？</h3>
+<p>PVE 8.2 以後內建 VMware Import Wizard，可以直接匯入 ESXi 上的 VM。大部分情況下只要幾個步驟就能完成搬家，不需要重新安裝作業系統。</p>
+<h2 id="下一步">下一步</h2>
+<p>硬體還沒買？或是手上的設備不確定能不能跑 PVE？下一篇帶你搞清楚：
+-> <a href="01-hardware-guide">硬體選購指南</a></p>0:{"buildId":"Yck3R4ooQxWkwGLT6is1X","rsc":["$","$1","c",{"children":[[["$","script",null,{"type":"application/ld+json","dangerouslySetInnerHTML":{"__html":"{\"@context\":\"https://schema.org\",\"@type\":\"Article\",\"headline\":\"Proxmox VE 到底是什麼？為什麼大家都在逃離 VMware\",\"description\":\"Proxmox VE 是什麼？這篇 PVE 教學帶你認識這套開源虛擬化平台，比較 VMware 替代方案，看完就知道該不該入坑。\",\"url\":\"https://benxhub.com/zh/blog/pve/00-what-is-pve\",\"mainEntityOfPage\":{\"@type\":\"WebPage\",\"@id\":\"https://benxhub.com/zh/blog/pve/00-what-is-pve\"},\"datePublished\":\"2026-04-23T00:00:00.000Z\",\"dateModified\":\"2026-04-23T00:00:00.000Z\",\"keywords\":\"proxmox, virtualization, homelab, vmware\",\"inLanguage\":\"zh\",\"author\":{\"@type\":\"Person\",\"name\":\"BenX\",\"url\":\"https://benxhub.com\"},\"publisher\":{\"@type\":\"Organization\",\"name\":\"BenXHub Blog\",\"url\":\"https://benxhub.com\"}}"}}],["$","div",null,{"className":"mx-auto max-w-6xl px-4 py-12 sm:px-6","children":["$","div",null,{"className":"lg:grid lg:grid-cols-[1fr_240px] lg:gap-14","children":[["$","article",null,{"children":[["$","header",null,{"className":"mb-10","children":[["$","div",null,{"className":"mb-4 flex flex-wrap gap-2","children":[["$","$L2","proxmox",{"href":"/zh/tags/proxmox","localeCookie":{"name":"NEXT_LOCALE","sameSite":"lax"},"className":"inline-flex items-center rounded-full px-2.5 py-0.5 text-xs font-medium transition-colors","style":{"background":"var(--color-code-bg)","color":"var(--color-accent)","border":"1px solid var(--color-border)"},"children":["#","proxmox"]}],["$","$L2","virtualization",{"href":"/zh/tags/virtualization","localeCookie":{"name":"NEXT_LOCALE","sameSite":"lax"},"className":"inline-flex items-center rounded-full px-2.5 py-0.5 text-xs font-medium transition-colors","style":{"background":"var(--color-code-bg)","color":"var(--color-accent)","border":"1px solid var(--color-border)"},"children":["#","virtualization"]}],["$","$L2","homelab",{"href":"/zh/tags/homelab","localeCookie":{"name":"NEXT_LOCALE","sameSite":"lax"},"className":"inline-flex items-center rounded-full px-2.5 py-0.5 text-xs font-medium transition-colors","style":{"background":"var(--color-code-bg)","color":"var(--color-accent)","border":"1px solid var(--color-border)"},"children":["#","homelab"]}],["$","$L2","vmware",{"href":"/zh/tags/vmware","localeCookie":{"name":"NEXT_LOCALE","sameSite":"lax"},"className":"inline-flex items-center rounded-full px-2.5 py-0.5 text-xs font-medium transition-colors","style":{"background":"var(--color-code-bg)","color":"var(--color-accent)","border":"1px solid var(--color-border)"},"children":["#","vmware"]}]]}],["$","h1",null,{"className":"mb-4 text-3xl leading-snug font-bold tracking-tight sm:text-4xl","style":{"color":"var(--color-text)"},"children":"Proxmox VE 到底是什麼？為什麼大家都在逃離 VMware"}],["$","div",null,{"className":"flex flex-wrap items-center gap-3 text-sm","style":{"color":"var(--color-muted)"},"children":[["$","time",null,{"dateTime":"2026-04-23","children":"2026 年 4 月 23 日"}],["$","span",null,{"aria-hidden":"true","children":"·"}],["$","span",null,{"children":"8 min read"}]]}],"$undefined",["$","div",null,{"className":"mt-6 border-b","style":{"borderColor":"var(--color-border)"}}]]}],["$","div",null,{"className":"prose","dangerouslySetInnerHTML":{"__html":"$3"}}],"$L4"]}],"$L5"]}]}]],["$L6"],"$L7"]}],"loading":null,"isPartial":false}
+4:["$","footer",null,{"className":"mt-14 border-t pt-8","style":{"borderColor":"var(--color-border)"},"children":[["$","div",null,{"className":"mb-8 flex flex-wrap gap-2","children":[["$","$L2","proxmox",{"href":"/zh/tags/proxmox","localeCookie":{"name":"NEXT_LOCALE","sameSite":"lax"},"className":"inline-flex items-center rounded-full px-3 py-1 text-sm font-medium transition-colors","style":{"background":"var(--color-code-bg)","color":"var(--color-accent)","border":"1px solid var(--color-border)"},"children":["#","proxmox"]}],["$","$L2","virtualization",{"href":"/zh/tags/virtualization","localeCookie":{"name":"NEXT_LOCALE","sameSite":"lax"},"className":"inline-flex items-center rounded-full px-3 py-1 text-sm font-medium transition-colors","style":{"background":"var(--color-code-bg)","color":"var(--color-accent)","border":"1px solid var(--color-border)"},"children":["#","virtualization"]}],["$","$L2","homelab",{"href":"/zh/tags/homelab","localeCookie":{"name":"NEXT_LOCALE","sameSite":"lax"},"className":"inline-flex items-center rounded-full px-3 py-1 text-sm font-medium transition-colors","style":{"background":"var(--color-code-bg)","color":"var(--color-accent)","border":"1px solid var(--color-border)"},"children":["#","homelab"]}],["$","$L2","vmware",{"href":"/zh/tags/vmware","localeCookie":{"name":"NEXT_LOCALE","sameSite":"lax"},"className":"inline-flex items-center rounded-full px-3 py-1 text-sm font-medium transition-colors","style":{"background":"var(--color-code-bg)","color":"var(--color-accent)","border":"1px solid var(--color-border)"},"children":["#","vmware"]}]]}],["$","nav",null,{"aria-label":"文章導覽","className":"grid grid-cols-1 gap-4 sm:grid-cols-2","children":[["$","$L2",null,{"href":"/zh/blog/pve/01-hardware-guide","localeCookie":{"name":"NEXT_LOCALE","sameSite":"lax"},"className":"group rounded-lg border p-4 transition-colors hover:border-accent","style":{"borderColor":"var(--color-border)","background":"var(--color-surface)"},"children":[["$","p",null,{"className":"mb-1 text-xs","style":{"color":"var(--color-muted)"},"children":"← 較新文章"}],["$","p",null,{"className":"line-clamp-1 text-sm font-medium transition-colors group-hover:text-accent","style":{"color":"var(--color-text)"},"children":"PVE 硬體選購指南：從 Mini PC 到機架式伺服器"}]]}],["$","$L2",null,{"href":"/zh/blog/Oh-My-Zsh/00-overview","localeCookie":{"name":"NEXT_LOCALE","sameSite":"lax"},"className":"group rounded-lg border p-4 text-right transition-colors hover:border-accent","style":{"borderColor":"var(--color-border)","background":"var(--color-surface)"},"children":[["$","p",null,{"className":"mb-1 text-xs","style":{"color":"var(--color-muted)"},"children":"較舊文章 →"}],["$","p",null,{"className":"line-clamp-1 text-sm font-medium transition-colors group-hover:text-accent","style":{"color":"var(--color-text)"},"children":"Oh My Zsh 完整教學系列 — 讓你的終端機有靈魂"}]]}]]}]]}]
+9:T1e07,<p>你有沒有想過，一台電腦裡面同時跑 Windows、Linux、NAS、防火牆、還有一個 Minecraft 伺服器？聽起來像是把整間公寓塞進一個行李箱——但 Proxmox VE 真的能幫你做到這件事。</p>
+<h2 id="一句話解釋-pve">一句話解釋 PVE</h2>
+<p>Proxmox Virtual Environment（大家都叫它 PVE）是一個基於 Debian Linux 的<a href="https://www.proxmox.com/en/proxmox-virtual-environment/overview">開源虛擬化平台</a>。它把 KVM 虛擬機和 <a href="04-lxc-containers">LXC 容器</a>整合在一起，再加上一個還算順眼的 Web 管理介面，讓你用瀏覽器就能管一整台伺服器上的所有虛擬環境。</p>
+<p>想像一下：PVE 就像一個超級房東，你的實體伺服器是一棟大樓，PVE 負責把它隔成好幾間套房（VM）跟雅房（LXC 容器），每間都有自己的門牌號碼、水電表、網路線，互不干擾。</p>
+<h2 id="為什麼不用-vmware">為什麼不用 VMware？</h2>
+<p>這大概是 2024 年以後最多人問的問題了。Broadcom 買下 VMware 之後，授權政策大翻盤：</p>
+<table>
+<thead>
+<tr>
+<th>比較項目</th>
+<th>Proxmox VE</th>
+<th>VMware ESXi</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td>授權費用</td>
+<td>$0（全功能免費）</td>
+<td>$4,500+/CPU/年起跳</td>
+</tr>
+<tr>
+<td>容器支援</td>
+<td>LXC + OCI 原生支援</td>
+<td>沒有</td>
+</tr>
+<tr>
+<td>內建分散式儲存</td>
+<td>Ceph + ZFS（免費）</td>
+<td>vSAN（另外付錢）</td>
+</tr>
+<tr>
+<td>HA / Live Migration</td>
+<td>免費</td>
+<td>需要 vCenter（付費）</td>
+</tr>
+<tr>
+<td>Web 管理介面</td>
+<td>完整且免費</td>
+<td>vCenter 另計</td>
+</tr>
+<tr>
+<td>SDN</td>
+<td>內建 EVPN/VXLAN</td>
+<td>NSX（又是另外付錢）</td>
+</tr>
+</tbody>
+</table>
+<p>簡單說，VMware 玩的是遊戲本體免費、DLC 比本體貴的路線，而 PVE 是整套含季票全部 $0。難怪全球已經超過 <strong>150 萬台主機</strong> 在跑 PVE，覆蓋 140 多個國家。想看看 PVE 到底能跑在什麼硬體上？可以先看看<a href="01-hardware-guide">硬體選購指南</a>。</p>
+<blockquote>
+<p>真實案例：HorizonIQ 從 VMware 遷移到 Proxmox 後，年度成本從天文數字直接砍到 $15,000——省了 94%。這不是小數點打錯，是真的省了 94%。</p>
+</blockquote>
+<h2 id="那-hyper-v-和-xcp-ng-呢">那 Hyper-V 和 XCP-ng 呢？</h2>
+<p><strong>Hyper-V</strong>：如果你公司整間都是 Windows、Active Directory 綁得死死的、老闆又已經買了 Windows Server 授權——那 Hyper-V 是合理選擇。但如果你是 Linux 為主或混合環境，PVE 的 Web GUI 跨平台體驗好太多。</p>
+<p><strong>XCP-ng</strong>：Xen 架構隔離性確實更強，但社群規模差太多（市佔 2.4% vs PVE 的 13.9%），遇到問題能 Google 到的解法也少很多。除非你有特殊安全需求，否則 PVE 的生態系更完整。</p>
+<h2 id="pve-適合誰">PVE 適合誰？</h2>
+<ul>
+<li><strong>Homelab 玩家</strong>：你家有一台閒置的 PC 或 Mini PC，想拿來搞事</li>
+<li><strong>中小企業</strong>：不想被大廠授權費綁架，但又需要企業級功能</li>
+<li><strong>學生/工程師</strong>：想學虛擬化、K8s、網路，PVE 是最好的練兵場</li>
+<li><strong>從 VMware 逃出來的人</strong>：PVE 8.2+ 甚至有 <a href="https://pve.proxmox.com/wiki/Migrate_to_Proxmox_VE">VMware Import Wizard</a> 幫你搬家</li>
+</ul>
+<p><strong>不太適合</strong>：只需要跑幾個 Docker container 的場景。那種直接裝 Docker 就好，不用搬出 PVE 這台推土機。</p>
+<h2 id="版本演進重點">版本演進重點</h2>
+<p>PVE 的更新節奏很穩定，每個版本都有值得關注的新功能（完整歷史可參考 <a href="https://pve.proxmox.com/wiki/Roadmap">Proxmox VE Wiki - Roadmap</a>）：</p>
+<table>
+<thead>
+<tr>
+<th>版本</th>
+<th>亮點</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td>PVE 8.2</td>
+<td>VMware Import Wizard（幫你從 ESXi 搬家）</td>
+</tr>
+<tr>
+<td>PVE 8.4</td>
+<td>vGPU Live Migration、Virtiofs</td>
+</tr>
+<tr>
+<td>PVE 9.0</td>
+<td>升級到 Debian 13、SDN Fabrics</td>
+</tr>
+<tr>
+<td>PVE 9.1</td>
+<td>OCI 容器映像支援、Intel TDX 機密運算</td>
+</tr>
+</tbody>
+</table>
+<figure data-rehype-pretty-code-figure=""><pre style="background-color:#24292e;color:#e1e4e8" tabindex="0" data-language="bash" data-theme="github-dark"><code data-language="bash" data-theme="github-dark" style="display: grid;"><span data-line=""><span style="color:#6A737D"># 查看你目前的 PVE 版本</span></span>
+<span data-line=""><span style="color:#B392F0">pveversion</span><span style="color:#79B8FF"> -v</span></span></code></pre></figure>
+<h2 id="這系列文章的路線圖">這系列文章的路線圖</h2>
+<p>接下來我會從零開始，帶你走完 PVE 的完整旅程：</p>
+<ol>
+<li><strong>硬體選購指南</strong> — 該買什麼設備來跑 PVE（不同預算的選擇）</li>
+<li><strong>安裝與第一台 VM</strong> — 從 USB 開機到成功開出第一台虛擬機</li>
+<li><strong>VM 管理</strong> — CPU、記憶體、磁碟、快照、範本，全部搞懂</li>
+<li><strong>LXC 容器</strong> — 比 VM 更輕量的選擇，以及怎麼在裡面跑 Docker</li>
+<li><strong>儲存系統</strong> — ZFS、LVM、NFS，你的資料該放哪裡</li>
+<li><strong>網路管理</strong> — Bridge、VLAN、Bond，把網路搞通</li>
+<li><strong>叢集與 HA</strong> — 多台機器組隊，壞一台不怕</li>
+<li><strong>備份與還原</strong> — 因為資料不見的時候才想到備份就太晚了</li>
+<li><strong>SDN 軟體定義網路</strong> — 進階網路玩法</li>
+<li><strong>GPU 直通</strong> — 讓 VM 用到實體顯卡的完整力量</li>
+<li><strong>Cloud-init 與自動化</strong> — 用 Terraform、Ansible 批量部署</li>
+<li><strong>API 與腳本</strong> — 用 REST API 自動化管理</li>
+<li><strong>安全與使用者管理</strong> — 帳號、權限、2FA、防火牆</li>
+<li><strong>效能調校</strong> — 從預設的 61% 效能榨到 85%+</li>
+</ol>
+<p>每篇都會盡量控制在你喝一杯咖啡的時間內讀完，有 bash 指令可以直接複製貼上，有踩坑經驗可以直接避開。</p>
+<h2 id="常見問題">常見問題</h2>
+<h3 id="q-proxmox-ve-完全免費嗎有什麼限制">Q: Proxmox VE 完全免費嗎？有什麼限制？</h3>
+<p>PVE 所有功能都免費開源，沒有功能限制。付費訂閱只是多了企業級軟體源和技術支援，不影響任何功能使用。Homelab 玩家用社群版就完全夠了。</p>
+<h3 id="q-pve-適合新手嗎需要-linux-基礎嗎">Q: PVE 適合新手嗎？需要 Linux 基礎嗎？</h3>
+<p>PVE 的 Web 介面很直覺，基本操作不需要 Linux 經驗。但如果你想深入調校效能或寫自動化腳本，熟悉基本的 Linux 指令會很有幫助。</p>
+<h3 id="q-proxmox-ve-跟-docker-有什麼不同">Q: Proxmox VE 跟 Docker 有什麼不同？</h3>
+<p>PVE 是管理整台伺服器的虛擬化平台，可以跑完整的 VM 和 LXC 容器；Docker 是應用層級的容器化工具。兩者不衝突，你可以在 PVE 的 <a href="04-lxc-containers">LXC 容器</a>裡面跑 Docker。</p>
+<h3 id="q-從-vmware-遷移到-pve-困難嗎">Q: 從 VMware 遷移到 PVE 困難嗎？</h3>
+<p>PVE 8.2 以後內建 VMware Import Wizard，可以直接匯入 ESXi 上的 VM。大部分情況下只要幾個步驟就能完成搬家，不需要重新安裝作業系統。</p>
+<h2 id="下一步">下一步</h2>
+<p>硬體還沒買？或是手上的設備不確定能不能跑 PVE？下一篇帶你搞清楚：
+-> <a href="01-hardware-guide">硬體選購指南</a></p>5:["$","aside",null,{"className":"hidden lg:block","children":["$","$L8",null,{"html":"$9"}]}]
+6:["$","script","script-0",{"src":"/_next/static/chunks/2dddb3bc05093f69.js","async":true}]
+7:["$","$La",null,{"children":["$","$b",null,{"name":"Next.MetadataOutlet","children":"$@c"}]}]
+c:null

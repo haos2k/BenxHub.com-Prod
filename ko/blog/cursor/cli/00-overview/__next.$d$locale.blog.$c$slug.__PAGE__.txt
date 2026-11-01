@@ -1,0 +1,189 @@
+1:"$Sreact.fragment"
+2:I[14864,["/_next/static/chunks/7923a261b80bb6e1.js","/_next/static/chunks/e09b4358027e8033.js","/_next/static/chunks/2dddb3bc05093f69.js"],"default"]
+8:I[24801,["/_next/static/chunks/7923a261b80bb6e1.js","/_next/static/chunks/e09b4358027e8033.js","/_next/static/chunks/2dddb3bc05093f69.js"],"default"]
+a:I[50183,["/_next/static/chunks/5a5b5b13c22d14f7.js","/_next/static/chunks/a484d1d3dd4b55ab.js"],"OutletBoundary"]
+b:"$Sreact.suspense"
+3:Ta5e,<p><strong>Cursor CLI</strong>를 사용하면 Cursor 창 없이 터미널에서 Cursor의 AI 기능을 바로 호출할 수 있습니다. AI에게 코드 작성, 파일 편집, 질문 답변을 요청할 수 있습니다. 터미널에서 작업하는 엔지니어에게는 언제든 호출 가능한 어시스턴트와 같습니다.</p>
+<h2 id="cli를-배우는-이유">CLI를 배우는 이유</h2>
+<table>
+<thead>
+<tr>
+<th>시나리오</th>
+<th>Cursor 창 사용</th>
+<th>Cursor CLI 사용</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td>서버에서 코드 편집</td>
+<td>SSH + 원격 설정 또는 동기화 필요</td>
+<td>터미널에서 직접 명령 실행</td>
+</tr>
+<tr>
+<td>스크립트, CI 자동화</td>
+<td>파이프라인에 통합하기 어려움</td>
+<td>비대화형 모드, 한 번에 한 명령 실행</td>
+</tr>
+<tr>
+<td>이미 터미널에서 작업 중</td>
+<td>IDE로 전환했다가 다시 돌아와야 함</td>
+<td>같은 창에서 AI에게 질문</td>
+</tr>
+<tr>
+<td>키보드 중심 워크플로 선호</td>
+<td>마우스 클릭 불가피</td>
+<td>모든 작업을 명령으로 처리</td>
+</tr>
+</tbody>
+</table>
+<p>요약하면: CLI는 AI가 당신의 워크플로를 따르게 하고, IDE에 맞춰 바꿀 필요가 없습니다.</p>
+<h2 id="코스-맵">코스 맵</h2>
+<table>
+<thead>
+<tr>
+<th>파일</th>
+<th>주제</th>
+<th>예상 시간</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td><a href="01-install">01-install</a></td>
+<td>설치 및 확인</td>
+<td>5분</td>
+</tr>
+<tr>
+<td><a href="02-basic-usage">02-basic-usage</a></td>
+<td>기본 사용: 명령과 대화</td>
+<td>10분</td>
+</tr>
+<tr>
+<td><a href="03-modes">03-modes</a></td>
+<td>세 가지 모드: Agent / Plan / Ask</td>
+<td>8분</td>
+</tr>
+<tr>
+<td><a href="04-non-interactive">04-non-interactive</a></td>
+<td>비대화형 모드와 스크립트</td>
+<td>8분</td>
+</tr>
+<tr>
+<td><a href="05-tips">05-tips</a></td>
+<td>팁 및 FAQ</td>
+<td>5분</td>
+</tr>
+<tr>
+<td><a href="06-cursor-cli-with-worktree">06-cursor-cli-with-worktree</a></td>
+<td>병렬 개발을 위한 Worktree와 CLI</td>
+<td>8분</td>
+</tr>
+<tr>
+<td><a href="07-unlimit-loop-debug">07-unlimit-loop-debug</a></td>
+<td>무한 디버그 루프: 테스트가 통과할 때까지 실행</td>
+<td>10분</td>
+</tr>
+</tbody>
+</table>
+<h2 id="사전-요구-사항">사전 요구 사항</h2>
+<ul>
+<li><strong>Cursor</strong> 설치됨(또는 최소한 로그인 가능한 Cursor 계정)</li>
+<li><strong>Cursor 구독</strong>(CLI 사용에는 구독 필요)</li>
+<li>터미널 기본 사용 능력</li>
+</ul>
+<blockquote>
+<p>먼저 <a href="01-install">01-install</a>에서 CLI를 설정하세요.</p>
+</blockquote>0:{"buildId":"Yck3R4ooQxWkwGLT6is1X","rsc":["$","$1","c",{"children":[[["$","script",null,{"type":"application/ld+json","dangerouslySetInnerHTML":{"__html":"{\"@context\":\"https://schema.org\",\"@type\":\"Article\",\"headline\":\"Cursor CLI 튜토리얼 — 개요\",\"description\":\"Cursor CLI로 터미널에서 AI 어시스턴트를 사용하세요: IDE를 열지 않고 작성·편집·질문. 서버, 스크립트, 키보드 중심 워크플로에 적합합니다.\",\"url\":\"https://benxhub.com/ko/blog/cursor/cli/00-overview\",\"mainEntityOfPage\":{\"@type\":\"WebPage\",\"@id\":\"https://benxhub.com/ko/blog/cursor/cli/00-overview\"},\"datePublished\":\"2026-02-24T00:00:00.000Z\",\"dateModified\":\"2026-02-24T00:00:00.000Z\",\"keywords\":\"cursor, cli, terminal\",\"inLanguage\":\"ko\",\"author\":{\"@type\":\"Person\",\"name\":\"BenX\",\"url\":\"https://benxhub.com\"},\"publisher\":{\"@type\":\"Organization\",\"name\":\"BenXHub Blog\",\"url\":\"https://benxhub.com\"}}"}}],["$","div",null,{"className":"mx-auto max-w-6xl px-4 py-12 sm:px-6","children":["$","div",null,{"className":"lg:grid lg:grid-cols-[1fr_240px] lg:gap-14","children":[["$","article",null,{"children":[["$","header",null,{"className":"mb-10","children":[["$","div",null,{"className":"mb-4 flex flex-wrap gap-2","children":[["$","$L2","cursor",{"href":"/ko/tags/cursor","localeCookie":{"name":"NEXT_LOCALE","sameSite":"lax"},"className":"inline-flex items-center rounded-full px-2.5 py-0.5 text-xs font-medium transition-colors","style":{"background":"var(--color-code-bg)","color":"var(--color-accent)","border":"1px solid var(--color-border)"},"children":["#","cursor"]}],["$","$L2","cli",{"href":"/ko/tags/cli","localeCookie":{"name":"NEXT_LOCALE","sameSite":"lax"},"className":"inline-flex items-center rounded-full px-2.5 py-0.5 text-xs font-medium transition-colors","style":{"background":"var(--color-code-bg)","color":"var(--color-accent)","border":"1px solid var(--color-border)"},"children":["#","cli"]}],["$","$L2","terminal",{"href":"/ko/tags/terminal","localeCookie":{"name":"NEXT_LOCALE","sameSite":"lax"},"className":"inline-flex items-center rounded-full px-2.5 py-0.5 text-xs font-medium transition-colors","style":{"background":"var(--color-code-bg)","color":"var(--color-accent)","border":"1px solid var(--color-border)"},"children":["#","terminal"]}]]}],["$","h1",null,{"className":"mb-4 text-3xl leading-snug font-bold tracking-tight sm:text-4xl","style":{"color":"var(--color-text)"},"children":"Cursor CLI 튜토리얼 — 개요"}],["$","div",null,{"className":"flex flex-wrap items-center gap-3 text-sm","style":{"color":"var(--color-muted)"},"children":[["$","time",null,{"dateTime":"2026-02-24","children":"2026년 2월 24일"}],["$","span",null,{"aria-hidden":"true","children":"·"}],["$","span",null,{"children":"3 min read"}]]}],"$undefined",["$","div",null,{"className":"mt-6 border-b","style":{"borderColor":"var(--color-border)"}}]]}],["$","div",null,{"className":"prose","dangerouslySetInnerHTML":{"__html":"$3"}}],"$L4"]}],"$L5"]}]}]],["$L6"],"$L7"]}],"loading":null,"isPartial":false}
+4:["$","footer",null,{"className":"mt-14 border-t pt-8","style":{"borderColor":"var(--color-border)"},"children":[["$","div",null,{"className":"mb-8 flex flex-wrap gap-2","children":[["$","$L2","cursor",{"href":"/ko/tags/cursor","localeCookie":{"name":"NEXT_LOCALE","sameSite":"lax"},"className":"inline-flex items-center rounded-full px-3 py-1 text-sm font-medium transition-colors","style":{"background":"var(--color-code-bg)","color":"var(--color-accent)","border":"1px solid var(--color-border)"},"children":["#","cursor"]}],["$","$L2","cli",{"href":"/ko/tags/cli","localeCookie":{"name":"NEXT_LOCALE","sameSite":"lax"},"className":"inline-flex items-center rounded-full px-3 py-1 text-sm font-medium transition-colors","style":{"background":"var(--color-code-bg)","color":"var(--color-accent)","border":"1px solid var(--color-border)"},"children":["#","cli"]}],["$","$L2","terminal",{"href":"/ko/tags/terminal","localeCookie":{"name":"NEXT_LOCALE","sameSite":"lax"},"className":"inline-flex items-center rounded-full px-3 py-1 text-sm font-medium transition-colors","style":{"background":"var(--color-code-bg)","color":"var(--color-accent)","border":"1px solid var(--color-border)"},"children":["#","terminal"]}]]}],["$","nav",null,{"aria-label":"글 탐색","className":"grid grid-cols-1 gap-4 sm:grid-cols-2","children":[["$","$L2",null,{"href":"/ko/blog/python/uv/05-best-practices","localeCookie":{"name":"NEXT_LOCALE","sameSite":"lax"},"className":"group rounded-lg border p-4 transition-colors hover:border-accent","style":{"borderColor":"var(--color-border)","background":"var(--color-surface)"},"children":[["$","p",null,{"className":"mb-1 text-xs","style":{"color":"var(--color-muted)"},"children":"← 최신 글"}],["$","p",null,{"className":"line-clamp-1 text-sm font-medium transition-colors group-hover:text-accent","style":{"color":"var(--color-text)"},"children":"Python uv 베스트 프랙티스: 안정성과 협업 체크리스트"}]]}],["$","$L2",null,{"href":"/ko/blog/cursor/cli/01-install","localeCookie":{"name":"NEXT_LOCALE","sameSite":"lax"},"className":"group rounded-lg border p-4 text-right transition-colors hover:border-accent","style":{"borderColor":"var(--color-border)","background":"var(--color-surface)"},"children":[["$","p",null,{"className":"mb-1 text-xs","style":{"color":"var(--color-muted)"},"children":"이전 글 →"}],["$","p",null,{"className":"line-clamp-1 text-sm font-medium transition-colors group-hover:text-accent","style":{"color":"var(--color-text)"},"children":"Cursor CLI 설치하기"}]]}]]}]]}]
+9:Ta5e,<p><strong>Cursor CLI</strong>를 사용하면 Cursor 창 없이 터미널에서 Cursor의 AI 기능을 바로 호출할 수 있습니다. AI에게 코드 작성, 파일 편집, 질문 답변을 요청할 수 있습니다. 터미널에서 작업하는 엔지니어에게는 언제든 호출 가능한 어시스턴트와 같습니다.</p>
+<h2 id="cli를-배우는-이유">CLI를 배우는 이유</h2>
+<table>
+<thead>
+<tr>
+<th>시나리오</th>
+<th>Cursor 창 사용</th>
+<th>Cursor CLI 사용</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td>서버에서 코드 편집</td>
+<td>SSH + 원격 설정 또는 동기화 필요</td>
+<td>터미널에서 직접 명령 실행</td>
+</tr>
+<tr>
+<td>스크립트, CI 자동화</td>
+<td>파이프라인에 통합하기 어려움</td>
+<td>비대화형 모드, 한 번에 한 명령 실행</td>
+</tr>
+<tr>
+<td>이미 터미널에서 작업 중</td>
+<td>IDE로 전환했다가 다시 돌아와야 함</td>
+<td>같은 창에서 AI에게 질문</td>
+</tr>
+<tr>
+<td>키보드 중심 워크플로 선호</td>
+<td>마우스 클릭 불가피</td>
+<td>모든 작업을 명령으로 처리</td>
+</tr>
+</tbody>
+</table>
+<p>요약하면: CLI는 AI가 당신의 워크플로를 따르게 하고, IDE에 맞춰 바꿀 필요가 없습니다.</p>
+<h2 id="코스-맵">코스 맵</h2>
+<table>
+<thead>
+<tr>
+<th>파일</th>
+<th>주제</th>
+<th>예상 시간</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td><a href="01-install">01-install</a></td>
+<td>설치 및 확인</td>
+<td>5분</td>
+</tr>
+<tr>
+<td><a href="02-basic-usage">02-basic-usage</a></td>
+<td>기본 사용: 명령과 대화</td>
+<td>10분</td>
+</tr>
+<tr>
+<td><a href="03-modes">03-modes</a></td>
+<td>세 가지 모드: Agent / Plan / Ask</td>
+<td>8분</td>
+</tr>
+<tr>
+<td><a href="04-non-interactive">04-non-interactive</a></td>
+<td>비대화형 모드와 스크립트</td>
+<td>8분</td>
+</tr>
+<tr>
+<td><a href="05-tips">05-tips</a></td>
+<td>팁 및 FAQ</td>
+<td>5분</td>
+</tr>
+<tr>
+<td><a href="06-cursor-cli-with-worktree">06-cursor-cli-with-worktree</a></td>
+<td>병렬 개발을 위한 Worktree와 CLI</td>
+<td>8분</td>
+</tr>
+<tr>
+<td><a href="07-unlimit-loop-debug">07-unlimit-loop-debug</a></td>
+<td>무한 디버그 루프: 테스트가 통과할 때까지 실행</td>
+<td>10분</td>
+</tr>
+</tbody>
+</table>
+<h2 id="사전-요구-사항">사전 요구 사항</h2>
+<ul>
+<li><strong>Cursor</strong> 설치됨(또는 최소한 로그인 가능한 Cursor 계정)</li>
+<li><strong>Cursor 구독</strong>(CLI 사용에는 구독 필요)</li>
+<li>터미널 기본 사용 능력</li>
+</ul>
+<blockquote>
+<p>먼저 <a href="01-install">01-install</a>에서 CLI를 설정하세요.</p>
+</blockquote>5:["$","aside",null,{"className":"hidden lg:block","children":["$","$L8",null,{"html":"$9"}]}]
+6:["$","script","script-0",{"src":"/_next/static/chunks/2dddb3bc05093f69.js","async":true}]
+7:["$","$La",null,{"children":["$","$b",null,{"name":"Next.MetadataOutlet","children":"$@c"}]}]
+c:null

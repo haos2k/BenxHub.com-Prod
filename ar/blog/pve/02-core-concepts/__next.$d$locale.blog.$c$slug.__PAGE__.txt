@@ -1,0 +1,128 @@
+1:"$Sreact.fragment"
+2:I[14864,["/_next/static/chunks/7923a261b80bb6e1.js","/_next/static/chunks/e09b4358027e8033.js","/_next/static/chunks/2dddb3bc05093f69.js"],"default"]
+8:I[24801,["/_next/static/chunks/7923a261b80bb6e1.js","/_next/static/chunks/e09b4358027e8033.js","/_next/static/chunks/2dddb3bc05093f69.js"],"default"]
+a:I[50183,["/_next/static/chunks/5a5b5b13c22d14f7.js","/_next/static/chunks/a484d1d3dd4b55ab.js"],"OutletBoundary"]
+b:"$Sreact.suspense"
+:HL["/images/posts/pve-core-concepts.jpg","image"]
+3:T1ac8,<p>قبل النقر على الأزرار عشوائياً، احصل على هذه المفاهيم الأربعة في ذهنك: ستكون أوضح بشأن "هل يجب استخدام VM أو LXC، أين يجب وضع القرص، كيف أربط الشبكة".</p>
+<h2 id="المفهوم-1-الفرق-بين-الآلات-الافتراضية-وlxc">المفهوم 1: الفرق بين الآلات الافتراضية وLXC</h2>
+<table>
+<thead>
+<tr>
+<th>النوع</th>
+<th>التقنية</th>
+<th>الخصائص</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td><strong>VM</strong></td>
+<td>KVM/QEMU</td>
+<td>نظام تشغيل كامل، عزل عالٍ، يشغّل Windows وLinux</td>
+</tr>
+<tr>
+<td><strong>LXC</strong></td>
+<td>حاويات Linux</td>
+<td>خفيف الوزن، بدء سريع، كثافة عالية، لكن <strong>Linux فقط</strong></td>
+</tr>
+</tbody>
+</table>
+<p><strong>قرار بجملة واحدة</strong>: تحتاج عزلاً كاملاً أو تشغيل Windows → VM؛ تريد توفير الموارد والخدمة Linux → LXC.</p>
+<figure data-rehype-pretty-code-figure=""><pre style="background-color:#24292e;color:#e1e4e8" tabindex="0" data-language="bash" data-theme="github-dark"><code data-language="bash" data-theme="github-dark" style="display: grid;"><span data-line=""><span style="color:#6A737D"># إنشاء VM (مثال)</span></span>
+<span data-line=""><span style="color:#B392F0">qm</span><span style="color:#9ECBFF"> create</span><span style="color:#79B8FF"> 100</span><span style="color:#79B8FF"> --name</span><span style="color:#9ECBFF"> my-vm</span><span style="color:#79B8FF"> --memory</span><span style="color:#79B8FF"> 1024</span><span style="color:#79B8FF"> --cores</span><span style="color:#79B8FF"> 2</span></span>
+<span data-line=""> </span>
+<span data-line=""><span style="color:#6A737D"># إنشاء حاوية LXC (مثال)</span></span>
+<span data-line=""><span style="color:#B392F0">pct</span><span style="color:#9ECBFF"> create</span><span style="color:#79B8FF"> 200</span><span style="color:#9ECBFF"> local:vztmpl/debian-12-standard_12.2-1_amd64.tar.zst</span><span style="color:#79B8FF"> --hostname</span><span style="color:#9ECBFF"> my-ct</span><span style="color:#79B8FF"> --memory</span><span style="color:#79B8FF"> 512</span></span></code></pre></figure>
+<h2 id="المفهوم-2-اختيار-التخزين-يحدد-إلى-أي-مدى-يمكنك-الذهاب">المفهوم 2: اختيار التخزين يحدد إلى أي مدى يمكنك الذهاب</h2>
+<p>اختر التخزين بشكل خاطئ وستصطدم بعقبات مع HA والترحيل لاحقاً. الأنواع الشائعة:</p>
+<ul>
+<li><strong>local</strong>: تخزين دليل عُقدة واحدة، مناسب للمبتدئين</li>
+<li><strong>local-lvm</strong>: LVM محلي، جيد للقطات والاستنساخ</li>
+<li><strong>NFS/CIFS</strong>: تخزين شبكة مشترك، قادر على العمل عبر العقد</li>
+<li><strong>ZFS/Ceph</strong>: حلول متقدمة للنسخ المتطابق والتوفر العالي</li>
+</ul>
+<figure data-rehype-pretty-code-figure=""><pre style="background-color:#24292e;color:#e1e4e8" tabindex="0" data-language="bash" data-theme="github-dark"><code data-language="bash" data-theme="github-dark" style="display: grid;"><span data-line=""><span style="color:#6A737D"># التحقق من حالة التخزين الحالية</span></span>
+<span data-line=""><span style="color:#B392F0">pvesm</span><span style="color:#9ECBFF"> status</span></span>
+<span data-line=""><span style="color:#B392F0">pvesm</span><span style="color:#9ECBFF"> list</span><span style="color:#9ECBFF"> local</span></span></code></pre></figure>
+<blockquote>
+<p>للترحيل الحي أو HA، الأقراص بشكل عام تحتاج أن تكون على <strong>تخزين مشترك</strong> — وإلا لا يمكن نقل الـ VM.</p>
+</blockquote>
+<h2 id="المفهوم-3-نموذج-الشبكة-vmbr0">المفهوم 3: نموذج الشبكة (vmbr0)</h2>
+<p>PVE يستخدم شبكة جسر افتراضياً: <code>vmbr0</code> يجسر إلى بطاقة شبكة مادية، مما يجعل الآلات الافتراضية تبدو كأنها متصلة مباشرةً بالسويتش المادي. ببساطة: <strong>كابل افتراضي واحد، الجميع يشاركون بطاقة الشبكة الخارجة.</strong></p>
+<figure data-rehype-pretty-code-figure=""><pre style="background-color:#24292e;color:#e1e4e8" tabindex="0" data-language="text" data-theme="github-dark"><code data-language="text" data-theme="github-dark" style="display: grid;"><span data-line=""><span>[بطاقة الشبكة المادية] --> [vmbr0] --> [VM1] [VM2] [VM3]</span></span></code></pre></figure>
+<figure data-rehype-pretty-code-figure=""><pre style="background-color:#24292e;color:#e1e4e8" tabindex="0" data-language="bash" data-theme="github-dark"><code data-language="bash" data-theme="github-dark" style="display: grid;"><span data-line=""><span style="color:#6A737D"># التحقق من إعداد الشبكة الحالي</span></span>
+<span data-line=""><span style="color:#B392F0">cat</span><span style="color:#9ECBFF"> /etc/network/interfaces</span></span></code></pre></figure>
+<h2 id="المفهوم-4-العقد-والتجميعات">المفهوم 4: العقد والتجميعات</h2>
+<ul>
+<li><strong>عقدة واحدة</strong>: جهاز واحد يتولى كل شيء، جيد للبدء والـ homelabs</li>
+<li><strong>تجميع</strong>: مضيفون متعددون مُدارون معاً، يدعم الترحيل وHA — مثل تكوين فريق لزنزانة</li>
+</ul>
+<figure data-rehype-pretty-code-figure=""><pre style="background-color:#24292e;color:#e1e4e8" tabindex="0" data-language="text" data-theme="github-dark"><code data-language="text" data-theme="github-dark" style="display: grid;"><span data-line=""><span>[العقدة 1] &#x3C;--> [العقدة 2] &#x3C;--> [العقدة 3]</span></span>
+<span data-line=""><span>   \\_______ إعداد مشترك (pmxcfs) _______//</span></span></code></pre></figure>
+<p>النقطة الرئيسية بجملة واحدة: مستوى إدارة موحّد، موارد قابلة للجدولة، يمكن التولي عند الفشل. فهم هذا المفهوم أولاً يجعل القسم المتقدم أسهل بكثير في المتابعة.</p>
+<h2 id="الخطوات-التالية">الخطوات التالية</h2>
+<p>بمجرد استيعاب المفاهيم الجوهرية، انتقل إلى العمليات عالية التردد: النسخ الاحتياطي والاستنساخ والترحيل واللقطات.<br>
+👉 <a href="03-common-patterns">الأنماط الشائعة</a></p>0:{"buildId":"Yck3R4ooQxWkwGLT6is1X","rsc":["$","$1","c",{"children":[[["$","script",null,{"type":"application/ld+json","dangerouslySetInnerHTML":{"__html":"{\"@context\":\"https://schema.org\",\"@type\":\"Article\",\"headline\":\"المفاهيم الجوهرية لـ Proxmox VE: VM وLXC والتخزين والشبكة\",\"description\":\"افهم المفاهيم الأربعة الجوهرية لـ PVE وابنِ المعرفة الأساسية اللازمة للعمليات والصيانة.\",\"url\":\"https://benxhub.com/ar/blog/pve/02-core-concepts\",\"mainEntityOfPage\":{\"@type\":\"WebPage\",\"@id\":\"https://benxhub.com/ar/blog/pve/02-core-concepts\"},\"datePublished\":\"2026-02-24T00:00:00.000Z\",\"dateModified\":\"2026-02-24T00:00:00.000Z\",\"keywords\":\"proxmox, kvm, lxc, storage, network\",\"inLanguage\":\"ar\",\"author\":{\"@type\":\"Person\",\"name\":\"BenX\",\"url\":\"https://benxhub.com\"},\"publisher\":{\"@type\":\"Organization\",\"name\":\"BenXHub Blog\",\"url\":\"https://benxhub.com\"},\"image\":\"https://benxhub.com/images/posts/pve-core-concepts.jpg\"}"}}],["$","div",null,{"className":"mx-auto max-w-6xl px-4 py-12 sm:px-6","children":["$","div",null,{"className":"lg:grid lg:grid-cols-[1fr_240px] lg:gap-14","children":[["$","article",null,{"children":[["$","header",null,{"className":"mb-10","children":[["$","div",null,{"className":"mb-4 flex flex-wrap gap-2","children":[["$","$L2","proxmox",{"href":"/ar/tags/proxmox","localeCookie":{"name":"NEXT_LOCALE","sameSite":"lax"},"className":"inline-flex items-center rounded-full px-2.5 py-0.5 text-xs font-medium transition-colors","style":{"background":"var(--color-code-bg)","color":"var(--color-accent)","border":"1px solid var(--color-border)"},"children":["#","proxmox"]}],["$","$L2","kvm",{"href":"/ar/tags/kvm","localeCookie":{"name":"NEXT_LOCALE","sameSite":"lax"},"className":"inline-flex items-center rounded-full px-2.5 py-0.5 text-xs font-medium transition-colors","style":{"background":"var(--color-code-bg)","color":"var(--color-accent)","border":"1px solid var(--color-border)"},"children":["#","kvm"]}],["$","$L2","lxc",{"href":"/ar/tags/lxc","localeCookie":{"name":"NEXT_LOCALE","sameSite":"lax"},"className":"inline-flex items-center rounded-full px-2.5 py-0.5 text-xs font-medium transition-colors","style":{"background":"var(--color-code-bg)","color":"var(--color-accent)","border":"1px solid var(--color-border)"},"children":["#","lxc"]}],["$","$L2","storage",{"href":"/ar/tags/storage","localeCookie":{"name":"NEXT_LOCALE","sameSite":"lax"},"className":"inline-flex items-center rounded-full px-2.5 py-0.5 text-xs font-medium transition-colors","style":{"background":"var(--color-code-bg)","color":"var(--color-accent)","border":"1px solid var(--color-border)"},"children":["#","storage"]}],["$","$L2","network",{"href":"/ar/tags/network","localeCookie":{"name":"NEXT_LOCALE","sameSite":"lax"},"className":"inline-flex items-center rounded-full px-2.5 py-0.5 text-xs font-medium transition-colors","style":{"background":"var(--color-code-bg)","color":"var(--color-accent)","border":"1px solid var(--color-border)"},"children":["#","network"]}]]}],["$","h1",null,{"className":"mb-4 text-3xl leading-snug font-bold tracking-tight sm:text-4xl","style":{"color":"var(--color-text)"},"children":"المفاهيم الجوهرية لـ Proxmox VE: VM وLXC والتخزين والشبكة"}],["$","div",null,{"className":"flex flex-wrap items-center gap-3 text-sm","style":{"color":"var(--color-muted)"},"children":[["$","time",null,{"dateTime":"2026-02-24","children":"24 2月 2026"}],["$","span",null,{"aria-hidden":"true","children":"·"}],["$","span",null,{"children":"2 min read"}]]}],["$","div",null,{"className":"mt-6 overflow-hidden rounded-lg","children":["$","img",null,{"src":"/images/posts/pve-core-concepts.jpg","alt":"المفاهيم الجوهرية لـ Proxmox VE: VM وLXC والتخزين والشبكة","className":"w-full h-auto"}]}],["$","div",null,{"className":"mt-6 border-b","style":{"borderColor":"var(--color-border)"}}]]}],["$","div",null,{"className":"prose","dangerouslySetInnerHTML":{"__html":"$3"}}],"$L4"]}],"$L5"]}]}]],["$L6"],"$L7"]}],"loading":null,"isPartial":false}
+4:["$","footer",null,{"className":"mt-14 border-t pt-8","style":{"borderColor":"var(--color-border)"},"children":[["$","div",null,{"className":"mb-8 flex flex-wrap gap-2","children":[["$","$L2","proxmox",{"href":"/ar/tags/proxmox","localeCookie":{"name":"NEXT_LOCALE","sameSite":"lax"},"className":"inline-flex items-center rounded-full px-3 py-1 text-sm font-medium transition-colors","style":{"background":"var(--color-code-bg)","color":"var(--color-accent)","border":"1px solid var(--color-border)"},"children":["#","proxmox"]}],["$","$L2","kvm",{"href":"/ar/tags/kvm","localeCookie":{"name":"NEXT_LOCALE","sameSite":"lax"},"className":"inline-flex items-center rounded-full px-3 py-1 text-sm font-medium transition-colors","style":{"background":"var(--color-code-bg)","color":"var(--color-accent)","border":"1px solid var(--color-border)"},"children":["#","kvm"]}],["$","$L2","lxc",{"href":"/ar/tags/lxc","localeCookie":{"name":"NEXT_LOCALE","sameSite":"lax"},"className":"inline-flex items-center rounded-full px-3 py-1 text-sm font-medium transition-colors","style":{"background":"var(--color-code-bg)","color":"var(--color-accent)","border":"1px solid var(--color-border)"},"children":["#","lxc"]}],["$","$L2","storage",{"href":"/ar/tags/storage","localeCookie":{"name":"NEXT_LOCALE","sameSite":"lax"},"className":"inline-flex items-center rounded-full px-3 py-1 text-sm font-medium transition-colors","style":{"background":"var(--color-code-bg)","color":"var(--color-accent)","border":"1px solid var(--color-border)"},"children":["#","storage"]}],["$","$L2","network",{"href":"/ar/tags/network","localeCookie":{"name":"NEXT_LOCALE","sameSite":"lax"},"className":"inline-flex items-center rounded-full px-3 py-1 text-sm font-medium transition-colors","style":{"background":"var(--color-code-bg)","color":"var(--color-accent)","border":"1px solid var(--color-border)"},"children":["#","network"]}]]}],["$","nav",null,{"aria-label":"التنقل بين المقالات","className":"grid grid-cols-1 gap-4 sm:grid-cols-2","children":[["$","$L2",null,{"href":"/ar/blog/pve/01-quick-start","localeCookie":{"name":"NEXT_LOCALE","sameSite":"lax"},"className":"group rounded-lg border p-4 transition-colors hover:border-accent","style":{"borderColor":"var(--color-border)","background":"var(--color-surface)"},"children":[["$","p",null,{"className":"mb-1 text-xs","style":{"color":"var(--color-muted)"},"children":"→ الأحدث"}],["$","p",null,{"className":"line-clamp-1 text-sm font-medium transition-colors group-hover:text-accent","style":{"color":"var(--color-text)"},"children":"البداية السريعة مع Proxmox VE: إنشاء أول آلة افتراضية"}]]}],["$","$L2",null,{"href":"/ar/blog/pve/03-common-patterns","localeCookie":{"name":"NEXT_LOCALE","sameSite":"lax"},"className":"group rounded-lg border p-4 text-right transition-colors hover:border-accent","style":{"borderColor":"var(--color-border)","background":"var(--color-surface)"},"children":[["$","p",null,{"className":"mb-1 text-xs","style":{"color":"var(--color-muted)"},"children":"الأقدم ←"}],["$","p",null,{"className":"line-clamp-1 text-sm font-medium transition-colors group-hover:text-accent","style":{"color":"var(--color-text)"},"children":"الأنماط الشائعة لـ Proxmox VE: النسخ الاحتياطي والاستنساخ والترحيل"}]]}]]}]]}]
+9:T1ac8,<p>قبل النقر على الأزرار عشوائياً، احصل على هذه المفاهيم الأربعة في ذهنك: ستكون أوضح بشأن "هل يجب استخدام VM أو LXC، أين يجب وضع القرص، كيف أربط الشبكة".</p>
+<h2 id="المفهوم-1-الفرق-بين-الآلات-الافتراضية-وlxc">المفهوم 1: الفرق بين الآلات الافتراضية وLXC</h2>
+<table>
+<thead>
+<tr>
+<th>النوع</th>
+<th>التقنية</th>
+<th>الخصائص</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td><strong>VM</strong></td>
+<td>KVM/QEMU</td>
+<td>نظام تشغيل كامل، عزل عالٍ، يشغّل Windows وLinux</td>
+</tr>
+<tr>
+<td><strong>LXC</strong></td>
+<td>حاويات Linux</td>
+<td>خفيف الوزن، بدء سريع، كثافة عالية، لكن <strong>Linux فقط</strong></td>
+</tr>
+</tbody>
+</table>
+<p><strong>قرار بجملة واحدة</strong>: تحتاج عزلاً كاملاً أو تشغيل Windows → VM؛ تريد توفير الموارد والخدمة Linux → LXC.</p>
+<figure data-rehype-pretty-code-figure=""><pre style="background-color:#24292e;color:#e1e4e8" tabindex="0" data-language="bash" data-theme="github-dark"><code data-language="bash" data-theme="github-dark" style="display: grid;"><span data-line=""><span style="color:#6A737D"># إنشاء VM (مثال)</span></span>
+<span data-line=""><span style="color:#B392F0">qm</span><span style="color:#9ECBFF"> create</span><span style="color:#79B8FF"> 100</span><span style="color:#79B8FF"> --name</span><span style="color:#9ECBFF"> my-vm</span><span style="color:#79B8FF"> --memory</span><span style="color:#79B8FF"> 1024</span><span style="color:#79B8FF"> --cores</span><span style="color:#79B8FF"> 2</span></span>
+<span data-line=""> </span>
+<span data-line=""><span style="color:#6A737D"># إنشاء حاوية LXC (مثال)</span></span>
+<span data-line=""><span style="color:#B392F0">pct</span><span style="color:#9ECBFF"> create</span><span style="color:#79B8FF"> 200</span><span style="color:#9ECBFF"> local:vztmpl/debian-12-standard_12.2-1_amd64.tar.zst</span><span style="color:#79B8FF"> --hostname</span><span style="color:#9ECBFF"> my-ct</span><span style="color:#79B8FF"> --memory</span><span style="color:#79B8FF"> 512</span></span></code></pre></figure>
+<h2 id="المفهوم-2-اختيار-التخزين-يحدد-إلى-أي-مدى-يمكنك-الذهاب">المفهوم 2: اختيار التخزين يحدد إلى أي مدى يمكنك الذهاب</h2>
+<p>اختر التخزين بشكل خاطئ وستصطدم بعقبات مع HA والترحيل لاحقاً. الأنواع الشائعة:</p>
+<ul>
+<li><strong>local</strong>: تخزين دليل عُقدة واحدة، مناسب للمبتدئين</li>
+<li><strong>local-lvm</strong>: LVM محلي، جيد للقطات والاستنساخ</li>
+<li><strong>NFS/CIFS</strong>: تخزين شبكة مشترك، قادر على العمل عبر العقد</li>
+<li><strong>ZFS/Ceph</strong>: حلول متقدمة للنسخ المتطابق والتوفر العالي</li>
+</ul>
+<figure data-rehype-pretty-code-figure=""><pre style="background-color:#24292e;color:#e1e4e8" tabindex="0" data-language="bash" data-theme="github-dark"><code data-language="bash" data-theme="github-dark" style="display: grid;"><span data-line=""><span style="color:#6A737D"># التحقق من حالة التخزين الحالية</span></span>
+<span data-line=""><span style="color:#B392F0">pvesm</span><span style="color:#9ECBFF"> status</span></span>
+<span data-line=""><span style="color:#B392F0">pvesm</span><span style="color:#9ECBFF"> list</span><span style="color:#9ECBFF"> local</span></span></code></pre></figure>
+<blockquote>
+<p>للترحيل الحي أو HA، الأقراص بشكل عام تحتاج أن تكون على <strong>تخزين مشترك</strong> — وإلا لا يمكن نقل الـ VM.</p>
+</blockquote>
+<h2 id="المفهوم-3-نموذج-الشبكة-vmbr0">المفهوم 3: نموذج الشبكة (vmbr0)</h2>
+<p>PVE يستخدم شبكة جسر افتراضياً: <code>vmbr0</code> يجسر إلى بطاقة شبكة مادية، مما يجعل الآلات الافتراضية تبدو كأنها متصلة مباشرةً بالسويتش المادي. ببساطة: <strong>كابل افتراضي واحد، الجميع يشاركون بطاقة الشبكة الخارجة.</strong></p>
+<figure data-rehype-pretty-code-figure=""><pre style="background-color:#24292e;color:#e1e4e8" tabindex="0" data-language="text" data-theme="github-dark"><code data-language="text" data-theme="github-dark" style="display: grid;"><span data-line=""><span>[بطاقة الشبكة المادية] --> [vmbr0] --> [VM1] [VM2] [VM3]</span></span></code></pre></figure>
+<figure data-rehype-pretty-code-figure=""><pre style="background-color:#24292e;color:#e1e4e8" tabindex="0" data-language="bash" data-theme="github-dark"><code data-language="bash" data-theme="github-dark" style="display: grid;"><span data-line=""><span style="color:#6A737D"># التحقق من إعداد الشبكة الحالي</span></span>
+<span data-line=""><span style="color:#B392F0">cat</span><span style="color:#9ECBFF"> /etc/network/interfaces</span></span></code></pre></figure>
+<h2 id="المفهوم-4-العقد-والتجميعات">المفهوم 4: العقد والتجميعات</h2>
+<ul>
+<li><strong>عقدة واحدة</strong>: جهاز واحد يتولى كل شيء، جيد للبدء والـ homelabs</li>
+<li><strong>تجميع</strong>: مضيفون متعددون مُدارون معاً، يدعم الترحيل وHA — مثل تكوين فريق لزنزانة</li>
+</ul>
+<figure data-rehype-pretty-code-figure=""><pre style="background-color:#24292e;color:#e1e4e8" tabindex="0" data-language="text" data-theme="github-dark"><code data-language="text" data-theme="github-dark" style="display: grid;"><span data-line=""><span>[العقدة 1] &#x3C;--> [العقدة 2] &#x3C;--> [العقدة 3]</span></span>
+<span data-line=""><span>   \\_______ إعداد مشترك (pmxcfs) _______//</span></span></code></pre></figure>
+<p>النقطة الرئيسية بجملة واحدة: مستوى إدارة موحّد، موارد قابلة للجدولة، يمكن التولي عند الفشل. فهم هذا المفهوم أولاً يجعل القسم المتقدم أسهل بكثير في المتابعة.</p>
+<h2 id="الخطوات-التالية">الخطوات التالية</h2>
+<p>بمجرد استيعاب المفاهيم الجوهرية، انتقل إلى العمليات عالية التردد: النسخ الاحتياطي والاستنساخ والترحيل واللقطات.<br>
+👉 <a href="03-common-patterns">الأنماط الشائعة</a></p>5:["$","aside",null,{"className":"hidden lg:block","children":["$","$L8",null,{"html":"$9"}]}]
+6:["$","script","script-0",{"src":"/_next/static/chunks/2dddb3bc05093f69.js","async":true}]
+7:["$","$La",null,{"children":["$","$b",null,{"name":"Next.MetadataOutlet","children":"$@c"}]}]
+c:null

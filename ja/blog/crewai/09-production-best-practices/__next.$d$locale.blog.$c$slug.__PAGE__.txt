@@ -1,0 +1,109 @@
+1:"$Sreact.fragment"
+2:I[14864,["/_next/static/chunks/7923a261b80bb6e1.js","/_next/static/chunks/e09b4358027e8033.js","/_next/static/chunks/2dddb3bc05093f69.js"],"default"]
+8:I[24801,["/_next/static/chunks/7923a261b80bb6e1.js","/_next/static/chunks/e09b4358027e8033.js","/_next/static/chunks/2dddb3bc05093f69.js"],"default"]
+a:I[50183,["/_next/static/chunks/5a5b5b13c22d14f7.js","/_next/static/chunks/a484d1d3dd4b55ab.js"],"OutletBoundary"]
+b:"$Sreact.suspense"
+3:Tb01,<p>おめでとうございます。CrewAI の主要ルートは完走です。<br>
+次は最も現実的な課題、<strong>本番後も安定稼働できるか</strong>です。</p>
+<h2 id="本番前に必ずやる-5-つ">本番前に必ずやる 5 つ</h2>
+<ol>
+<li><strong>フローとバージョンを固定</strong>：Agent／Task／Prompt を追跡可能に</li>
+<li><strong>品質ゲートを置く</strong>：結果を検証してから保存</li>
+<li><strong>コスト予算を設計</strong>：1 実行あたりの token 上限と警戒値</li>
+<li><strong>監視とログを追加</strong>：遅い工程・失敗工程を可視化</li>
+<li><strong>フォールバックを設計</strong>：モデル失敗時の代替経路を用意</li>
+</ol>
+<h2 id="推奨アーキテクチャ入門でも実装可能">推奨アーキテクチャ（入門でも実装可能）</h2>
+<ul>
+<li>主フローは <code>Process.sequential</code></li>
+<li>重要出力は <code>output_pydantic</code></li>
+<li>高価値資料は <code>knowledge_sources</code></li>
+<li>外部依存（検索、DB）は独立 Tool 化</li>
+</ul>
+<p>派手ではないですが、実務では非常に強い構成です。</p>
+<h2 id="最低限見るべき運用指標">最低限見るべき運用指標</h2>
+<ul>
+<li>実行ごとの所要時間</li>
+<li>実行ごとのコスト</li>
+<li>成功率／再試行率</li>
+<li>出力検収の合格率</li>
+</ul>
+<p>数字がなければ「改善したかどうか」に答えられません。</p>
+<h2 id="セキュリティコンプライアンス注意">セキュリティ／コンプライアンス注意</h2>
+<ul>
+<li>API キーは環境変数に保存し、repo に直書きしない</li>
+<li>外部出力前に機密情報をフィルタ</li>
+<li>監査とデバッグのため重要操作ログを残す</li>
+</ul>
+<h2 id="現実的な改善サイクル">現実的な改善サイクル</h2>
+<p>週 1 回、次を実施:</p>
+<ul>
+<li>失敗ケース上位 10 件をレビュー</li>
+<li>再発の多い根本原因を 1〜2 件修正</li>
+<li>固定テストセットを再実行</li>
+</ul>
+<p>大改修 1 回より、小さな改善の連続のほうが安定します。</p>
+<h2 id="シリーズまとめ">シリーズまとめ</h2>
+<p>これで、ゼロから CrewAI を構築し、フロー化し、本番運用するまでの全体像が揃いました。<br>
+次の一歩は、日々の反復業務で最も痛いものを 1 つ選び、正式な Crew プロジェクトに置き換えることです。</p>
+<p>迷ったら 3 つの基本に戻りましょう:</p>
+<ul>
+<li>役割は単一責任か</li>
+<li>タスク出力は明確か</li>
+<li>フローは検証可能か</li>
+</ul>
+<p>この 3 点を守ると、CrewAI プロジェクトは大きくブレにくくなります。</p>0:{"buildId":"Yck3R4ooQxWkwGLT6is1X","rsc":["$","$1","c",{"children":[[["$","script",null,{"type":"application/ld+json","dangerouslySetInnerHTML":{"__html":"{\"@context\":\"https://schema.org\",\"@type\":\"Article\",\"headline\":\"CrewAI 本番運用ベストプラクティス：Demo から保守可能なシステムへ\",\"description\":\"実運用で CrewAI を展開する際のアーキテクチャ、コスト、監視、運用の要点を整理。\",\"url\":\"https://benxhub.com/ja/blog/crewai/09-production-best-practices\",\"mainEntityOfPage\":{\"@type\":\"WebPage\",\"@id\":\"https://benxhub.com/ja/blog/crewai/09-production-best-practices\"},\"datePublished\":\"2026-03-05T00:00:00.000Z\",\"dateModified\":\"2026-03-05T00:00:00.000Z\",\"keywords\":\"crewai, production, best-practices, devops, ai-agent\",\"inLanguage\":\"ja\",\"author\":{\"@type\":\"Person\",\"name\":\"BenX\",\"url\":\"https://benxhub.com\"},\"publisher\":{\"@type\":\"Organization\",\"name\":\"BenXHub Blog\",\"url\":\"https://benxhub.com\"}}"}}],["$","div",null,{"className":"mx-auto max-w-6xl px-4 py-12 sm:px-6","children":["$","div",null,{"className":"lg:grid lg:grid-cols-[1fr_240px] lg:gap-14","children":[["$","article",null,{"children":[["$","header",null,{"className":"mb-10","children":[["$","div",null,{"className":"mb-4 flex flex-wrap gap-2","children":[["$","$L2","crewai",{"href":"/ja/tags/crewai","localeCookie":{"name":"NEXT_LOCALE","sameSite":"lax"},"className":"inline-flex items-center rounded-full px-2.5 py-0.5 text-xs font-medium transition-colors","style":{"background":"var(--color-code-bg)","color":"var(--color-accent)","border":"1px solid var(--color-border)"},"children":["#","crewai"]}],["$","$L2","production",{"href":"/ja/tags/production","localeCookie":{"name":"NEXT_LOCALE","sameSite":"lax"},"className":"inline-flex items-center rounded-full px-2.5 py-0.5 text-xs font-medium transition-colors","style":{"background":"var(--color-code-bg)","color":"var(--color-accent)","border":"1px solid var(--color-border)"},"children":["#","production"]}],["$","$L2","best-practices",{"href":"/ja/tags/best-practices","localeCookie":{"name":"NEXT_LOCALE","sameSite":"lax"},"className":"inline-flex items-center rounded-full px-2.5 py-0.5 text-xs font-medium transition-colors","style":{"background":"var(--color-code-bg)","color":"var(--color-accent)","border":"1px solid var(--color-border)"},"children":["#","best-practices"]}],["$","$L2","devops",{"href":"/ja/tags/devops","localeCookie":{"name":"NEXT_LOCALE","sameSite":"lax"},"className":"inline-flex items-center rounded-full px-2.5 py-0.5 text-xs font-medium transition-colors","style":{"background":"var(--color-code-bg)","color":"var(--color-accent)","border":"1px solid var(--color-border)"},"children":["#","devops"]}],["$","$L2","ai-agent",{"href":"/ja/tags/ai-agent","localeCookie":{"name":"NEXT_LOCALE","sameSite":"lax"},"className":"inline-flex items-center rounded-full px-2.5 py-0.5 text-xs font-medium transition-colors","style":{"background":"var(--color-code-bg)","color":"var(--color-accent)","border":"1px solid var(--color-border)"},"children":["#","ai-agent"]}]]}],["$","h1",null,{"className":"mb-4 text-3xl leading-snug font-bold tracking-tight sm:text-4xl","style":{"color":"var(--color-text)"},"children":"CrewAI 本番運用ベストプラクティス：Demo から保守可能なシステムへ"}],["$","div",null,{"className":"flex flex-wrap items-center gap-3 text-sm","style":{"color":"var(--color-muted)"},"children":[["$","time",null,{"dateTime":"2026-03-05","children":"2026年3月5日"}],["$","span",null,{"aria-hidden":"true","children":"·"}],["$","span",null,{"children":"3 min read"}]]}],"$undefined",["$","div",null,{"className":"mt-6 border-b","style":{"borderColor":"var(--color-border)"}}]]}],["$","div",null,{"className":"prose","dangerouslySetInnerHTML":{"__html":"$3"}}],"$L4"]}],"$L5"]}]}]],["$L6"],"$L7"]}],"loading":null,"isPartial":false}
+4:["$","footer",null,{"className":"mt-14 border-t pt-8","style":{"borderColor":"var(--color-border)"},"children":[["$","div",null,{"className":"mb-8 flex flex-wrap gap-2","children":[["$","$L2","crewai",{"href":"/ja/tags/crewai","localeCookie":{"name":"NEXT_LOCALE","sameSite":"lax"},"className":"inline-flex items-center rounded-full px-3 py-1 text-sm font-medium transition-colors","style":{"background":"var(--color-code-bg)","color":"var(--color-accent)","border":"1px solid var(--color-border)"},"children":["#","crewai"]}],["$","$L2","production",{"href":"/ja/tags/production","localeCookie":{"name":"NEXT_LOCALE","sameSite":"lax"},"className":"inline-flex items-center rounded-full px-3 py-1 text-sm font-medium transition-colors","style":{"background":"var(--color-code-bg)","color":"var(--color-accent)","border":"1px solid var(--color-border)"},"children":["#","production"]}],["$","$L2","best-practices",{"href":"/ja/tags/best-practices","localeCookie":{"name":"NEXT_LOCALE","sameSite":"lax"},"className":"inline-flex items-center rounded-full px-3 py-1 text-sm font-medium transition-colors","style":{"background":"var(--color-code-bg)","color":"var(--color-accent)","border":"1px solid var(--color-border)"},"children":["#","best-practices"]}],["$","$L2","devops",{"href":"/ja/tags/devops","localeCookie":{"name":"NEXT_LOCALE","sameSite":"lax"},"className":"inline-flex items-center rounded-full px-3 py-1 text-sm font-medium transition-colors","style":{"background":"var(--color-code-bg)","color":"var(--color-accent)","border":"1px solid var(--color-border)"},"children":["#","devops"]}],["$","$L2","ai-agent",{"href":"/ja/tags/ai-agent","localeCookie":{"name":"NEXT_LOCALE","sameSite":"lax"},"className":"inline-flex items-center rounded-full px-3 py-1 text-sm font-medium transition-colors","style":{"background":"var(--color-code-bg)","color":"var(--color-accent)","border":"1px solid var(--color-border)"},"children":["#","ai-agent"]}]]}],["$","nav",null,{"aria-label":"記事ナビゲーション","className":"grid grid-cols-1 gap-4 sm:grid-cols-2","children":[["$","$L2",null,{"href":"/ja/blog/crewai/08-debug-and-common-errors","localeCookie":{"name":"NEXT_LOCALE","sameSite":"lax"},"className":"group rounded-lg border p-4 transition-colors hover:border-accent","style":{"borderColor":"var(--color-border)","background":"var(--color-surface)"},"children":[["$","p",null,{"className":"mb-1 text-xs","style":{"color":"var(--color-muted)"},"children":"← 新しい記事"}],["$","p",null,{"className":"line-clamp-1 text-sm font-medium transition-colors group-hover:text-accent","style":{"color":"var(--color-text)"},"children":"CrewAI デバッグとよくあるエラー：初心者が最も踏みやすい 8 つの地雷"}]]}],["$","$L2",null,{"href":"/ja/blog/crewai/06-flow-basics","localeCookie":{"name":"NEXT_LOCALE","sameSite":"lax"},"className":"group rounded-lg border p-4 text-right transition-colors hover:border-accent","style":{"borderColor":"var(--color-border)","background":"var(--color-surface)"},"children":[["$","p",null,{"className":"mb-1 text-xs","style":{"color":"var(--color-muted)"},"children":"古い記事 →"}],["$","p",null,{"className":"line-clamp-1 text-sm font-medium transition-colors group-hover:text-accent","style":{"color":"var(--color-text)"},"children":"CrewAI Flow 入門：複数 Crew を制御可能なフローに接続する"}]]}]]}]]}]
+9:Tb01,<p>おめでとうございます。CrewAI の主要ルートは完走です。<br>
+次は最も現実的な課題、<strong>本番後も安定稼働できるか</strong>です。</p>
+<h2 id="本番前に必ずやる-5-つ">本番前に必ずやる 5 つ</h2>
+<ol>
+<li><strong>フローとバージョンを固定</strong>：Agent／Task／Prompt を追跡可能に</li>
+<li><strong>品質ゲートを置く</strong>：結果を検証してから保存</li>
+<li><strong>コスト予算を設計</strong>：1 実行あたりの token 上限と警戒値</li>
+<li><strong>監視とログを追加</strong>：遅い工程・失敗工程を可視化</li>
+<li><strong>フォールバックを設計</strong>：モデル失敗時の代替経路を用意</li>
+</ol>
+<h2 id="推奨アーキテクチャ入門でも実装可能">推奨アーキテクチャ（入門でも実装可能）</h2>
+<ul>
+<li>主フローは <code>Process.sequential</code></li>
+<li>重要出力は <code>output_pydantic</code></li>
+<li>高価値資料は <code>knowledge_sources</code></li>
+<li>外部依存（検索、DB）は独立 Tool 化</li>
+</ul>
+<p>派手ではないですが、実務では非常に強い構成です。</p>
+<h2 id="最低限見るべき運用指標">最低限見るべき運用指標</h2>
+<ul>
+<li>実行ごとの所要時間</li>
+<li>実行ごとのコスト</li>
+<li>成功率／再試行率</li>
+<li>出力検収の合格率</li>
+</ul>
+<p>数字がなければ「改善したかどうか」に答えられません。</p>
+<h2 id="セキュリティコンプライアンス注意">セキュリティ／コンプライアンス注意</h2>
+<ul>
+<li>API キーは環境変数に保存し、repo に直書きしない</li>
+<li>外部出力前に機密情報をフィルタ</li>
+<li>監査とデバッグのため重要操作ログを残す</li>
+</ul>
+<h2 id="現実的な改善サイクル">現実的な改善サイクル</h2>
+<p>週 1 回、次を実施:</p>
+<ul>
+<li>失敗ケース上位 10 件をレビュー</li>
+<li>再発の多い根本原因を 1〜2 件修正</li>
+<li>固定テストセットを再実行</li>
+</ul>
+<p>大改修 1 回より、小さな改善の連続のほうが安定します。</p>
+<h2 id="シリーズまとめ">シリーズまとめ</h2>
+<p>これで、ゼロから CrewAI を構築し、フロー化し、本番運用するまでの全体像が揃いました。<br>
+次の一歩は、日々の反復業務で最も痛いものを 1 つ選び、正式な Crew プロジェクトに置き換えることです。</p>
+<p>迷ったら 3 つの基本に戻りましょう:</p>
+<ul>
+<li>役割は単一責任か</li>
+<li>タスク出力は明確か</li>
+<li>フローは検証可能か</li>
+</ul>
+<p>この 3 点を守ると、CrewAI プロジェクトは大きくブレにくくなります。</p>5:["$","aside",null,{"className":"hidden lg:block","children":["$","$L8",null,{"html":"$9"}]}]
+6:["$","script","script-0",{"src":"/_next/static/chunks/2dddb3bc05093f69.js","async":true}]
+7:["$","$La",null,{"children":["$","$b",null,{"name":"Next.MetadataOutlet","children":"$@c"}]}]
+c:null

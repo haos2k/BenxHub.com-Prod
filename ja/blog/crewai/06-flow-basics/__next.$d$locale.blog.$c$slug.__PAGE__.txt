@@ -1,0 +1,111 @@
+1:"$Sreact.fragment"
+2:I[14864,["/_next/static/chunks/7923a261b80bb6e1.js","/_next/static/chunks/e09b4358027e8033.js","/_next/static/chunks/2dddb3bc05093f69.js"],"default"]
+8:I[24801,["/_next/static/chunks/7923a261b80bb6e1.js","/_next/static/chunks/e09b4358027e8033.js","/_next/static/chunks/2dddb3bc05093f69.js"],"default"]
+a:I[50183,["/_next/static/chunks/5a5b5b13c22d14f7.js","/_next/static/chunks/a484d1d3dd4b55ab.js"],"OutletBoundary"]
+b:"$Sreact.suspense"
+3:T16b1,<p>フローが「調査 -> 執筆 -> レビュー -> 公開」になると、単一 Crew では足りません。<br>
+<code>Flow</code> は複数 Crew の実行順を調整するコントロールタワーです。</p>
+<h2 id="flow-が解決する問題">Flow が解決する問題</h2>
+<ul>
+<li>多段ステートの管理</li>
+<li>条件分岐（通過なら公開、不合格なら再実行）</li>
+<li>可観測性と保守性の向上</li>
+</ul>
+<h2 id="最小-flow-例">最小 Flow 例</h2>
+<figure data-rehype-pretty-code-figure=""><pre style="background-color:#24292e;color:#e1e4e8" tabindex="0" data-language="python" data-theme="github-dark"><code data-language="python" data-theme="github-dark" style="display: grid;"><span data-line=""><span style="color:#F97583">from</span><span style="color:#E1E4E8"> pydantic </span><span style="color:#F97583">import</span><span style="color:#E1E4E8"> BaseModel</span></span>
+<span data-line=""><span style="color:#F97583">from</span><span style="color:#E1E4E8"> crewai.flow.flow </span><span style="color:#F97583">import</span><span style="color:#E1E4E8"> Flow, start, listen, router</span></span>
+<span data-line=""> </span>
+<span data-line=""><span style="color:#F97583">class</span><span style="color:#B392F0"> BlogState</span><span style="color:#E1E4E8">(</span><span style="color:#B392F0">BaseModel</span><span style="color:#E1E4E8">):</span></span>
+<span data-line=""><span style="color:#E1E4E8">    topic: </span><span style="color:#79B8FF">str</span><span style="color:#F97583"> =</span><span style="color:#9ECBFF"> ""</span></span>
+<span data-line=""><span style="color:#E1E4E8">    draft: </span><span style="color:#79B8FF">str</span><span style="color:#F97583"> =</span><span style="color:#9ECBFF"> ""</span></span>
+<span data-line=""><span style="color:#E1E4E8">    word_count: </span><span style="color:#79B8FF">int</span><span style="color:#F97583"> =</span><span style="color:#79B8FF"> 0</span></span>
+<span data-line=""> </span>
+<span data-line=""><span style="color:#F97583">class</span><span style="color:#B392F0"> BlogFlow</span><span style="color:#E1E4E8">(Flow[BlogState]):</span></span>
+<span data-line=""><span style="color:#B392F0">    @start</span><span style="color:#E1E4E8">()</span></span>
+<span data-line=""><span style="color:#F97583">    def</span><span style="color:#B392F0"> init_topic</span><span style="color:#E1E4E8">(self) -> </span><span style="color:#79B8FF">str</span><span style="color:#E1E4E8">:</span></span>
+<span data-line=""><span style="color:#79B8FF">        self</span><span style="color:#E1E4E8">.state.topic </span><span style="color:#F97583">=</span><span style="color:#9ECBFF"> "CrewAI for beginners"</span></span>
+<span data-line=""><span style="color:#F97583">        return</span><span style="color:#79B8FF"> self</span><span style="color:#E1E4E8">.state.topic</span></span>
+<span data-line=""> </span>
+<span data-line=""><span style="color:#B392F0">    @listen</span><span style="color:#E1E4E8">(init_topic)</span></span>
+<span data-line=""><span style="color:#F97583">    def</span><span style="color:#B392F0"> write_draft</span><span style="color:#E1E4E8">(self, topic: </span><span style="color:#79B8FF">str</span><span style="color:#E1E4E8">) -> </span><span style="color:#79B8FF">str</span><span style="color:#E1E4E8">:</span></span>
+<span data-line=""><span style="color:#E1E4E8">        result </span><span style="color:#F97583">=</span><span style="color:#9ECBFF"> "draft content..."</span></span>
+<span data-line=""><span style="color:#79B8FF">        self</span><span style="color:#E1E4E8">.state.draft </span><span style="color:#F97583">=</span><span style="color:#E1E4E8"> result</span></span>
+<span data-line=""><span style="color:#79B8FF">        self</span><span style="color:#E1E4E8">.state.word_count </span><span style="color:#F97583">=</span><span style="color:#79B8FF"> len</span><span style="color:#E1E4E8">(result.split())</span></span>
+<span data-line=""><span style="color:#F97583">        return</span><span style="color:#E1E4E8"> result</span></span>
+<span data-line=""> </span>
+<span data-line=""><span style="color:#B392F0">    @router</span><span style="color:#E1E4E8">(write_draft)</span></span>
+<span data-line=""><span style="color:#F97583">    def</span><span style="color:#B392F0"> quality_gate</span><span style="color:#E1E4E8">(self) -> </span><span style="color:#79B8FF">str</span><span style="color:#E1E4E8">:</span></span>
+<span data-line=""><span style="color:#F97583">        return</span><span style="color:#9ECBFF"> "ok"</span><span style="color:#F97583"> if</span><span style="color:#79B8FF"> self</span><span style="color:#E1E4E8">.state.word_count </span><span style="color:#F97583">></span><span style="color:#79B8FF"> 100</span><span style="color:#F97583"> else</span><span style="color:#9ECBFF"> "retry"</span></span></code></pre></figure>
+<h2 id="flow-設計のポイント">Flow 設計のポイント</h2>
+<ol>
+<li><code>@listen</code> 1 メソッド = 1 役割</li>
+<li>分岐ロジックは <code>@router</code> に寄せる</li>
+<li>状態は <code>BaseModel</code> で型定義し、裸 dict を避ける</li>
+</ol>
+<p>この形なら、半年後に見返しても発掘作業になりません。</p>
+<h2 id="いつ-flow-を使うべきか">いつ Flow を使うべきか</h2>
+<ul>
+<li>3 ステップを超えるフロー</li>
+<li>明確な分岐条件がある</li>
+<li>複数 Crew の協調が必要</li>
+</ul>
+<p>「調査 + レポート」程度なら単一 Crew で十分です。</p>
+<h2 id="次へ">次へ</h2>
+<p>フローが動くと次に出る疑問は「文脈を覚えてくれるか？」です。<br>
+次回は Memory と Knowledge source を扱います。<br>
+👉 <a href="07-memory-and-knowledge">Memory と Knowledge</a></p>0:{"buildId":"Yck3R4ooQxWkwGLT6is1X","rsc":["$","$1","c",{"children":[[["$","script",null,{"type":"application/ld+json","dangerouslySetInnerHTML":{"__html":"{\"@context\":\"https://schema.org\",\"@type\":\"Article\",\"headline\":\"CrewAI Flow 入門：複数 Crew を制御可能なフローに接続する\",\"description\":\"Flow で多段タスクと条件分岐を管理し、実業務に近いワークフローを構築する。\",\"url\":\"https://benxhub.com/ja/blog/crewai/06-flow-basics\",\"mainEntityOfPage\":{\"@type\":\"WebPage\",\"@id\":\"https://benxhub.com/ja/blog/crewai/06-flow-basics\"},\"datePublished\":\"2026-03-03T00:00:00.000Z\",\"dateModified\":\"2026-03-03T00:00:00.000Z\",\"keywords\":\"crewai, flow, workflow, state-machine, python\",\"inLanguage\":\"ja\",\"author\":{\"@type\":\"Person\",\"name\":\"BenX\",\"url\":\"https://benxhub.com\"},\"publisher\":{\"@type\":\"Organization\",\"name\":\"BenXHub Blog\",\"url\":\"https://benxhub.com\"}}"}}],["$","div",null,{"className":"mx-auto max-w-6xl px-4 py-12 sm:px-6","children":["$","div",null,{"className":"lg:grid lg:grid-cols-[1fr_240px] lg:gap-14","children":[["$","article",null,{"children":[["$","header",null,{"className":"mb-10","children":[["$","div",null,{"className":"mb-4 flex flex-wrap gap-2","children":[["$","$L2","crewai",{"href":"/ja/tags/crewai","localeCookie":{"name":"NEXT_LOCALE","sameSite":"lax"},"className":"inline-flex items-center rounded-full px-2.5 py-0.5 text-xs font-medium transition-colors","style":{"background":"var(--color-code-bg)","color":"var(--color-accent)","border":"1px solid var(--color-border)"},"children":["#","crewai"]}],["$","$L2","flow",{"href":"/ja/tags/flow","localeCookie":{"name":"NEXT_LOCALE","sameSite":"lax"},"className":"inline-flex items-center rounded-full px-2.5 py-0.5 text-xs font-medium transition-colors","style":{"background":"var(--color-code-bg)","color":"var(--color-accent)","border":"1px solid var(--color-border)"},"children":["#","flow"]}],["$","$L2","workflow",{"href":"/ja/tags/workflow","localeCookie":{"name":"NEXT_LOCALE","sameSite":"lax"},"className":"inline-flex items-center rounded-full px-2.5 py-0.5 text-xs font-medium transition-colors","style":{"background":"var(--color-code-bg)","color":"var(--color-accent)","border":"1px solid var(--color-border)"},"children":["#","workflow"]}],["$","$L2","state-machine",{"href":"/ja/tags/state-machine","localeCookie":{"name":"NEXT_LOCALE","sameSite":"lax"},"className":"inline-flex items-center rounded-full px-2.5 py-0.5 text-xs font-medium transition-colors","style":{"background":"var(--color-code-bg)","color":"var(--color-accent)","border":"1px solid var(--color-border)"},"children":["#","state-machine"]}],["$","$L2","python",{"href":"/ja/tags/python","localeCookie":{"name":"NEXT_LOCALE","sameSite":"lax"},"className":"inline-flex items-center rounded-full px-2.5 py-0.5 text-xs font-medium transition-colors","style":{"background":"var(--color-code-bg)","color":"var(--color-accent)","border":"1px solid var(--color-border)"},"children":["#","python"]}]]}],["$","h1",null,{"className":"mb-4 text-3xl leading-snug font-bold tracking-tight sm:text-4xl","style":{"color":"var(--color-text)"},"children":"CrewAI Flow 入門：複数 Crew を制御可能なフローに接続する"}],["$","div",null,{"className":"flex flex-wrap items-center gap-3 text-sm","style":{"color":"var(--color-muted)"},"children":[["$","time",null,{"dateTime":"2026-03-03","children":"2026年3月3日"}],["$","span",null,{"aria-hidden":"true","children":"·"}],["$","span",null,{"children":"2 min read"}]]}],"$undefined",["$","div",null,{"className":"mt-6 border-b","style":{"borderColor":"var(--color-border)"}}]]}],["$","div",null,{"className":"prose","dangerouslySetInnerHTML":{"__html":"$3"}}],"$L4"]}],"$L5"]}]}]],["$L6"],"$L7"]}],"loading":null,"isPartial":false}
+4:["$","footer",null,{"className":"mt-14 border-t pt-8","style":{"borderColor":"var(--color-border)"},"children":[["$","div",null,{"className":"mb-8 flex flex-wrap gap-2","children":[["$","$L2","crewai",{"href":"/ja/tags/crewai","localeCookie":{"name":"NEXT_LOCALE","sameSite":"lax"},"className":"inline-flex items-center rounded-full px-3 py-1 text-sm font-medium transition-colors","style":{"background":"var(--color-code-bg)","color":"var(--color-accent)","border":"1px solid var(--color-border)"},"children":["#","crewai"]}],["$","$L2","flow",{"href":"/ja/tags/flow","localeCookie":{"name":"NEXT_LOCALE","sameSite":"lax"},"className":"inline-flex items-center rounded-full px-3 py-1 text-sm font-medium transition-colors","style":{"background":"var(--color-code-bg)","color":"var(--color-accent)","border":"1px solid var(--color-border)"},"children":["#","flow"]}],["$","$L2","workflow",{"href":"/ja/tags/workflow","localeCookie":{"name":"NEXT_LOCALE","sameSite":"lax"},"className":"inline-flex items-center rounded-full px-3 py-1 text-sm font-medium transition-colors","style":{"background":"var(--color-code-bg)","color":"var(--color-accent)","border":"1px solid var(--color-border)"},"children":["#","workflow"]}],["$","$L2","state-machine",{"href":"/ja/tags/state-machine","localeCookie":{"name":"NEXT_LOCALE","sameSite":"lax"},"className":"inline-flex items-center rounded-full px-3 py-1 text-sm font-medium transition-colors","style":{"background":"var(--color-code-bg)","color":"var(--color-accent)","border":"1px solid var(--color-border)"},"children":["#","state-machine"]}],["$","$L2","python",{"href":"/ja/tags/python","localeCookie":{"name":"NEXT_LOCALE","sameSite":"lax"},"className":"inline-flex items-center rounded-full px-3 py-1 text-sm font-medium transition-colors","style":{"background":"var(--color-code-bg)","color":"var(--color-accent)","border":"1px solid var(--color-border)"},"children":["#","python"]}]]}],["$","nav",null,{"aria-label":"記事ナビゲーション","className":"grid grid-cols-1 gap-4 sm:grid-cols-2","children":[["$","$L2",null,{"href":"/ja/blog/crewai/09-production-best-practices","localeCookie":{"name":"NEXT_LOCALE","sameSite":"lax"},"className":"group rounded-lg border p-4 transition-colors hover:border-accent","style":{"borderColor":"var(--color-border)","background":"var(--color-surface)"},"children":[["$","p",null,{"className":"mb-1 text-xs","style":{"color":"var(--color-muted)"},"children":"← 新しい記事"}],["$","p",null,{"className":"line-clamp-1 text-sm font-medium transition-colors group-hover:text-accent","style":{"color":"var(--color-text)"},"children":"CrewAI 本番運用ベストプラクティス：Demo から保守可能なシステムへ"}]]}],["$","$L2",null,{"href":"/ja/blog/crewai/07-memory-and-knowledge","localeCookie":{"name":"NEXT_LOCALE","sameSite":"lax"},"className":"group rounded-lg border p-4 text-right transition-colors hover:border-accent","style":{"borderColor":"var(--color-border)","background":"var(--color-surface)"},"children":[["$","p",null,{"className":"mb-1 text-xs","style":{"color":"var(--color-muted)"},"children":"古い記事 →"}],["$","p",null,{"className":"line-clamp-1 text-sm font-medium transition-colors group-hover:text-accent","style":{"color":"var(--color-text)"},"children":"CrewAI Memory と Knowledge：Agent に毎回ゼロから学習させない"}]]}]]}]]}]
+9:T16b1,<p>フローが「調査 -> 執筆 -> レビュー -> 公開」になると、単一 Crew では足りません。<br>
+<code>Flow</code> は複数 Crew の実行順を調整するコントロールタワーです。</p>
+<h2 id="flow-が解決する問題">Flow が解決する問題</h2>
+<ul>
+<li>多段ステートの管理</li>
+<li>条件分岐（通過なら公開、不合格なら再実行）</li>
+<li>可観測性と保守性の向上</li>
+</ul>
+<h2 id="最小-flow-例">最小 Flow 例</h2>
+<figure data-rehype-pretty-code-figure=""><pre style="background-color:#24292e;color:#e1e4e8" tabindex="0" data-language="python" data-theme="github-dark"><code data-language="python" data-theme="github-dark" style="display: grid;"><span data-line=""><span style="color:#F97583">from</span><span style="color:#E1E4E8"> pydantic </span><span style="color:#F97583">import</span><span style="color:#E1E4E8"> BaseModel</span></span>
+<span data-line=""><span style="color:#F97583">from</span><span style="color:#E1E4E8"> crewai.flow.flow </span><span style="color:#F97583">import</span><span style="color:#E1E4E8"> Flow, start, listen, router</span></span>
+<span data-line=""> </span>
+<span data-line=""><span style="color:#F97583">class</span><span style="color:#B392F0"> BlogState</span><span style="color:#E1E4E8">(</span><span style="color:#B392F0">BaseModel</span><span style="color:#E1E4E8">):</span></span>
+<span data-line=""><span style="color:#E1E4E8">    topic: </span><span style="color:#79B8FF">str</span><span style="color:#F97583"> =</span><span style="color:#9ECBFF"> ""</span></span>
+<span data-line=""><span style="color:#E1E4E8">    draft: </span><span style="color:#79B8FF">str</span><span style="color:#F97583"> =</span><span style="color:#9ECBFF"> ""</span></span>
+<span data-line=""><span style="color:#E1E4E8">    word_count: </span><span style="color:#79B8FF">int</span><span style="color:#F97583"> =</span><span style="color:#79B8FF"> 0</span></span>
+<span data-line=""> </span>
+<span data-line=""><span style="color:#F97583">class</span><span style="color:#B392F0"> BlogFlow</span><span style="color:#E1E4E8">(Flow[BlogState]):</span></span>
+<span data-line=""><span style="color:#B392F0">    @start</span><span style="color:#E1E4E8">()</span></span>
+<span data-line=""><span style="color:#F97583">    def</span><span style="color:#B392F0"> init_topic</span><span style="color:#E1E4E8">(self) -> </span><span style="color:#79B8FF">str</span><span style="color:#E1E4E8">:</span></span>
+<span data-line=""><span style="color:#79B8FF">        self</span><span style="color:#E1E4E8">.state.topic </span><span style="color:#F97583">=</span><span style="color:#9ECBFF"> "CrewAI for beginners"</span></span>
+<span data-line=""><span style="color:#F97583">        return</span><span style="color:#79B8FF"> self</span><span style="color:#E1E4E8">.state.topic</span></span>
+<span data-line=""> </span>
+<span data-line=""><span style="color:#B392F0">    @listen</span><span style="color:#E1E4E8">(init_topic)</span></span>
+<span data-line=""><span style="color:#F97583">    def</span><span style="color:#B392F0"> write_draft</span><span style="color:#E1E4E8">(self, topic: </span><span style="color:#79B8FF">str</span><span style="color:#E1E4E8">) -> </span><span style="color:#79B8FF">str</span><span style="color:#E1E4E8">:</span></span>
+<span data-line=""><span style="color:#E1E4E8">        result </span><span style="color:#F97583">=</span><span style="color:#9ECBFF"> "draft content..."</span></span>
+<span data-line=""><span style="color:#79B8FF">        self</span><span style="color:#E1E4E8">.state.draft </span><span style="color:#F97583">=</span><span style="color:#E1E4E8"> result</span></span>
+<span data-line=""><span style="color:#79B8FF">        self</span><span style="color:#E1E4E8">.state.word_count </span><span style="color:#F97583">=</span><span style="color:#79B8FF"> len</span><span style="color:#E1E4E8">(result.split())</span></span>
+<span data-line=""><span style="color:#F97583">        return</span><span style="color:#E1E4E8"> result</span></span>
+<span data-line=""> </span>
+<span data-line=""><span style="color:#B392F0">    @router</span><span style="color:#E1E4E8">(write_draft)</span></span>
+<span data-line=""><span style="color:#F97583">    def</span><span style="color:#B392F0"> quality_gate</span><span style="color:#E1E4E8">(self) -> </span><span style="color:#79B8FF">str</span><span style="color:#E1E4E8">:</span></span>
+<span data-line=""><span style="color:#F97583">        return</span><span style="color:#9ECBFF"> "ok"</span><span style="color:#F97583"> if</span><span style="color:#79B8FF"> self</span><span style="color:#E1E4E8">.state.word_count </span><span style="color:#F97583">></span><span style="color:#79B8FF"> 100</span><span style="color:#F97583"> else</span><span style="color:#9ECBFF"> "retry"</span></span></code></pre></figure>
+<h2 id="flow-設計のポイント">Flow 設計のポイント</h2>
+<ol>
+<li><code>@listen</code> 1 メソッド = 1 役割</li>
+<li>分岐ロジックは <code>@router</code> に寄せる</li>
+<li>状態は <code>BaseModel</code> で型定義し、裸 dict を避ける</li>
+</ol>
+<p>この形なら、半年後に見返しても発掘作業になりません。</p>
+<h2 id="いつ-flow-を使うべきか">いつ Flow を使うべきか</h2>
+<ul>
+<li>3 ステップを超えるフロー</li>
+<li>明確な分岐条件がある</li>
+<li>複数 Crew の協調が必要</li>
+</ul>
+<p>「調査 + レポート」程度なら単一 Crew で十分です。</p>
+<h2 id="次へ">次へ</h2>
+<p>フローが動くと次に出る疑問は「文脈を覚えてくれるか？」です。<br>
+次回は Memory と Knowledge source を扱います。<br>
+👉 <a href="07-memory-and-knowledge">Memory と Knowledge</a></p>5:["$","aside",null,{"className":"hidden lg:block","children":["$","$L8",null,{"html":"$9"}]}]
+6:["$","script","script-0",{"src":"/_next/static/chunks/2dddb3bc05093f69.js","async":true}]
+7:["$","$La",null,{"children":["$","$b",null,{"name":"Next.MetadataOutlet","children":"$@c"}]}]
+c:null

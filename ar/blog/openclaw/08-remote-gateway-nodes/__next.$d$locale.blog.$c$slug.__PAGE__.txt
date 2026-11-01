@@ -1,0 +1,147 @@
+1:"$Sreact.fragment"
+2:I[14864,["/_next/static/chunks/7923a261b80bb6e1.js","/_next/static/chunks/e09b4358027e8033.js","/_next/static/chunks/2dddb3bc05093f69.js"],"default"]
+8:I[24801,["/_next/static/chunks/7923a261b80bb6e1.js","/_next/static/chunks/e09b4358027e8033.js","/_next/static/chunks/2dddb3bc05093f69.js"],"default"]
+a:I[50183,["/_next/static/chunks/5a5b5b13c22d14f7.js","/_next/static/chunks/a484d1d3dd4b55ab.js"],"OutletBoundary"]
+b:"$Sreact.suspense"
+3:T10d7,<p>لا يجب أن يتوقف مساعدك عن العمل لمجرد أن لابتوبك قرر أخذ قيلولة.</p>
+<p>هذه المقالة تُريك كيف تنقل Gateway إلى السحابة وتبقي مساعدك متصلاً طوال اليوم.</p>
+<h2 id="ما-الذي-ستتعلمه">ما الذي ستتعلمه</h2>
+<ul>
+<li>معرفة أين يمكن تشغيل Gateway</li>
+<li>إتمام نشر VPS الأساسي</li>
+<li>فهم مصادقة الوصول عن بُعد</li>
+<li>استخدام Tailscale لبناء شبكة خاصة آمنة</li>
+<li>فهم الفرق بين Gateway و Node</li>
+</ul>
+<hr>
+<h2 id="أين-يمكن-تشغيل-gateway">أين يمكن تشغيل Gateway؟</h2>
+<table>
+<thead>
+<tr>
+<th>الموقع</th>
+<th>الأفضل لـ</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td>حاسوب محلي</td>
+<td>الاختبار الشخصي والاستخدام العرضي</td>
+</tr>
+<tr>
+<td>VPS / خادم سحابي</td>
+<td>توفر 24/7</td>
+</tr>
+<tr>
+<td>NAS منزلي / حاسوب قديم</td>
+<td>متصل دائماً بدون فواتير VPS</td>
+</tr>
+</tbody>
+</table>
+<hr>
+<h2 id="كيف-يبدو-تثبيت-vps">كيف يبدو تثبيت VPS؟</h2>
+<p>سجّل الدخول إلى VPS الخاص بك، يفضّل Ubuntu أو Debian، ثم اتبع خطوات التثبيت على Linux من <a href="https://docs.openclaw.ai">docs.openclaw.ai</a>. إنه تقريباً نفس التثبيت المحلي، فقط يحدث على جهاز بعيد بدلاً من ذلك.</p>
+<hr>
+<h2 id="أساسيات-مصادقة-الوصول-عن-بُعد">أساسيات مصادقة الوصول عن بُعد</h2>
+<p>بمجرد وجود Gateway على VPS، لا يزال OpenClaw يحتاج إلى تأكيد أنك مستخدم معتمد:</p>
+<ul>
+<li>يجب استخدام رمز أو إقران جهاز</li>
+<li>إذا رأيت <code>unauthorized</code>، تحقق من <code>gateway.bind</code> وتأكد من صحة الرمز</li>
+</ul>
+<hr>
+<h2 id="tailscale-هو-الخيار-الأنظف">Tailscale هو الخيار الأنظف</h2>
+<p><strong>Tailscale</strong> هو VPN يجعل هاتفك وحاسوبك وVPS يبدون كأنهم على نفس الشبكة الخاصة:</p>
+<ol>
+<li>ثبّت Tailscale على كل من VPS والحاسوب الخاص بك</li>
+<li>اضبط <code>gateway.bind: tailnet</code></li>
+<li>اتصل بـ Gateway عبر Tailscale من أي جهاز</li>
+</ol>
+<blockquote>
+<p>💡 يمكن لـ Tailscale أيضاً نشر HTTPS مع Serve، وهو عادةً أكثر أماناً بكثير من كشف منفذ مباشرة.</p>
+</blockquote>
+<hr>
+<h2 id="ما-هو-node">ما هو Node؟</h2>
+<p>هنا الجزء الرائع: <strong>يمكن لـ Gateway و Node العيش على أجهزة مختلفة</strong>.</p>
+<ul>
+<li><strong>Gateway</strong>: يعمل على VPS ويتعامل مع المحادثات والذاكرة و Telegram وكل عمل "الدماغ"</li>
+<li><strong>Node</strong>: يعمل على حاسوبك المنزلي ويوفر "اليدين" مثل التحكم بالمتصفح والوصول للملفات المحلية والتفاعل مع الشاشة</li>
+</ul>
+<p>مثال من الواقع: بينما أنت بالخارج، ترسل رسالة لمساعدك على Telegram وتطلب منه فتح متصفح على حاسوبك المنزلي والتحقق من موقع ما. يرسل Gateway المهمة إلى Node في المنزل، ثم يعيد النتيجة إليك.</p>
+<p><strong>ما الفرق عن SSH؟</strong></p>
+<p>مع SSH، تسجل الدخول وتكتب الأوامر بنفسك. مع Node، <strong>المساعد يفعل ذلك نيابةً عنك</strong>، متكاملاً تماماً مع المهارات ومساحات العمل والمحادثات.</p>
+<hr>
+<h2 id="الخطوة-التالية">الخطوة التالية</h2>
+<p>بمجرد انتقال Gateway إلى VPS، مساعدك في الخدمة دائماً. بعد ذلك، نتركه <strong>يعمل تلقائياً</strong> بجداول زمنية.</p>
+<p><a href="07-multi-agent-bindings">← السابق: Bindings متعدد الوكلاء</a> | 👉 <a href="09-cron-automation">اجعل مساعدك يعمل تلقائياً مع Cron</a></p>0:{"buildId":"Yck3R4ooQxWkwGLT6is1X","rsc":["$","$1","c",{"children":[[["$","script",null,{"type":"application/ld+json","dangerouslySetInnerHTML":{"__html":"{\"@context\":\"https://schema.org\",\"@type\":\"Article\",\"headline\":\"مساعدك يختفي عندما ينام لابتوبك؟ انقل Gateway إلى VPS\",\"description\":\"انشر OpenClaw Gateway على VPS، اتصل بأمان مع Tailscale، وافهم كيف يقسم Gateway و Node المسؤوليات.\",\"url\":\"https://benxhub.com/ar/blog/openclaw/08-remote-gateway-nodes\",\"mainEntityOfPage\":{\"@type\":\"WebPage\",\"@id\":\"https://benxhub.com/ar/blog/openclaw/08-remote-gateway-nodes\"},\"datePublished\":\"2026-03-08T00:00:00.000Z\",\"dateModified\":\"2026-03-08T00:00:00.000Z\",\"keywords\":\"openclaw, vps, deployment, remote, tailscale\",\"inLanguage\":\"ar\",\"author\":{\"@type\":\"Person\",\"name\":\"BenX\",\"url\":\"https://benxhub.com\"},\"publisher\":{\"@type\":\"Organization\",\"name\":\"BenXHub Blog\",\"url\":\"https://benxhub.com\"}}"}}],["$","div",null,{"className":"mx-auto max-w-6xl px-4 py-12 sm:px-6","children":["$","div",null,{"className":"lg:grid lg:grid-cols-[1fr_240px] lg:gap-14","children":[["$","article",null,{"children":[["$","header",null,{"className":"mb-10","children":[["$","div",null,{"className":"mb-4 flex flex-wrap gap-2","children":[["$","$L2","openclaw",{"href":"/ar/tags/openclaw","localeCookie":{"name":"NEXT_LOCALE","sameSite":"lax"},"className":"inline-flex items-center rounded-full px-2.5 py-0.5 text-xs font-medium transition-colors","style":{"background":"var(--color-code-bg)","color":"var(--color-accent)","border":"1px solid var(--color-border)"},"children":["#","openclaw"]}],["$","$L2","vps",{"href":"/ar/tags/vps","localeCookie":{"name":"NEXT_LOCALE","sameSite":"lax"},"className":"inline-flex items-center rounded-full px-2.5 py-0.5 text-xs font-medium transition-colors","style":{"background":"var(--color-code-bg)","color":"var(--color-accent)","border":"1px solid var(--color-border)"},"children":["#","vps"]}],["$","$L2","deployment",{"href":"/ar/tags/deployment","localeCookie":{"name":"NEXT_LOCALE","sameSite":"lax"},"className":"inline-flex items-center rounded-full px-2.5 py-0.5 text-xs font-medium transition-colors","style":{"background":"var(--color-code-bg)","color":"var(--color-accent)","border":"1px solid var(--color-border)"},"children":["#","deployment"]}],["$","$L2","remote",{"href":"/ar/tags/remote","localeCookie":{"name":"NEXT_LOCALE","sameSite":"lax"},"className":"inline-flex items-center rounded-full px-2.5 py-0.5 text-xs font-medium transition-colors","style":{"background":"var(--color-code-bg)","color":"var(--color-accent)","border":"1px solid var(--color-border)"},"children":["#","remote"]}],["$","$L2","tailscale",{"href":"/ar/tags/tailscale","localeCookie":{"name":"NEXT_LOCALE","sameSite":"lax"},"className":"inline-flex items-center rounded-full px-2.5 py-0.5 text-xs font-medium transition-colors","style":{"background":"var(--color-code-bg)","color":"var(--color-accent)","border":"1px solid var(--color-border)"},"children":["#","tailscale"]}]]}],["$","h1",null,{"className":"mb-4 text-3xl leading-snug font-bold tracking-tight sm:text-4xl","style":{"color":"var(--color-text)"},"children":"مساعدك يختفي عندما ينام لابتوبك؟ انقل Gateway إلى VPS"}],["$","div",null,{"className":"flex flex-wrap items-center gap-3 text-sm","style":{"color":"var(--color-muted)"},"children":[["$","time",null,{"dateTime":"2026-03-08","children":"8 3月 2026"}],["$","span",null,{"aria-hidden":"true","children":"·"}],["$","span",null,{"children":"2 min read"}]]}],"$undefined",["$","div",null,{"className":"mt-6 border-b","style":{"borderColor":"var(--color-border)"}}]]}],["$","div",null,{"className":"prose","dangerouslySetInnerHTML":{"__html":"$3"}}],"$L4"]}],"$L5"]}]}]],["$L6"],"$L7"]}],"loading":null,"isPartial":false}
+4:["$","footer",null,{"className":"mt-14 border-t pt-8","style":{"borderColor":"var(--color-border)"},"children":[["$","div",null,{"className":"mb-8 flex flex-wrap gap-2","children":[["$","$L2","openclaw",{"href":"/ar/tags/openclaw","localeCookie":{"name":"NEXT_LOCALE","sameSite":"lax"},"className":"inline-flex items-center rounded-full px-3 py-1 text-sm font-medium transition-colors","style":{"background":"var(--color-code-bg)","color":"var(--color-accent)","border":"1px solid var(--color-border)"},"children":["#","openclaw"]}],["$","$L2","vps",{"href":"/ar/tags/vps","localeCookie":{"name":"NEXT_LOCALE","sameSite":"lax"},"className":"inline-flex items-center rounded-full px-3 py-1 text-sm font-medium transition-colors","style":{"background":"var(--color-code-bg)","color":"var(--color-accent)","border":"1px solid var(--color-border)"},"children":["#","vps"]}],["$","$L2","deployment",{"href":"/ar/tags/deployment","localeCookie":{"name":"NEXT_LOCALE","sameSite":"lax"},"className":"inline-flex items-center rounded-full px-3 py-1 text-sm font-medium transition-colors","style":{"background":"var(--color-code-bg)","color":"var(--color-accent)","border":"1px solid var(--color-border)"},"children":["#","deployment"]}],["$","$L2","remote",{"href":"/ar/tags/remote","localeCookie":{"name":"NEXT_LOCALE","sameSite":"lax"},"className":"inline-flex items-center rounded-full px-3 py-1 text-sm font-medium transition-colors","style":{"background":"var(--color-code-bg)","color":"var(--color-accent)","border":"1px solid var(--color-border)"},"children":["#","remote"]}],["$","$L2","tailscale",{"href":"/ar/tags/tailscale","localeCookie":{"name":"NEXT_LOCALE","sameSite":"lax"},"className":"inline-flex items-center rounded-full px-3 py-1 text-sm font-medium transition-colors","style":{"background":"var(--color-code-bg)","color":"var(--color-accent)","border":"1px solid var(--color-border)"},"children":["#","tailscale"]}]]}],["$","nav",null,{"aria-label":"التنقل بين المقالات","className":"grid grid-cols-1 gap-4 sm:grid-cols-2","children":[["$","$L2",null,{"href":"/ar/blog/openclaw/07-multi-agent-bindings","localeCookie":{"name":"NEXT_LOCALE","sameSite":"lax"},"className":"group rounded-lg border p-4 transition-colors hover:border-accent","style":{"borderColor":"var(--color-border)","background":"var(--color-surface)"},"children":[["$","p",null,{"className":"mb-1 text-xs","style":{"color":"var(--color-muted)"},"children":"→ الأحدث"}],["$","p",null,{"className":"line-clamp-1 text-sm font-medium transition-colors group-hover:text-accent","style":{"color":"var(--color-text)"},"children":"Gateway واحد، مساعدون متعددون: استخدم Bindings لتوجيه الرسالة الصحيحة إلى الوكيل الصحيح"}]]}],["$","$L2",null,{"href":"/ar/blog/openclaw/09-cron-automation","localeCookie":{"name":"NEXT_LOCALE","sameSite":"lax"},"className":"group rounded-lg border p-4 text-right transition-colors hover:border-accent","style":{"borderColor":"var(--color-border)","background":"var(--color-surface)"},"children":[["$","p",null,{"className":"mb-1 text-xs","style":{"color":"var(--color-muted)"},"children":"الأقدم ←"}],["$","p",null,{"className":"line-clamp-1 text-sm font-medium transition-colors group-hover:text-accent","style":{"color":"var(--color-text)"},"children":"دع مساعدك يعمل تلقائياً: يساعدك حتى حين لا تطلب"}]]}]]}]]}]
+9:T10d7,<p>لا يجب أن يتوقف مساعدك عن العمل لمجرد أن لابتوبك قرر أخذ قيلولة.</p>
+<p>هذه المقالة تُريك كيف تنقل Gateway إلى السحابة وتبقي مساعدك متصلاً طوال اليوم.</p>
+<h2 id="ما-الذي-ستتعلمه">ما الذي ستتعلمه</h2>
+<ul>
+<li>معرفة أين يمكن تشغيل Gateway</li>
+<li>إتمام نشر VPS الأساسي</li>
+<li>فهم مصادقة الوصول عن بُعد</li>
+<li>استخدام Tailscale لبناء شبكة خاصة آمنة</li>
+<li>فهم الفرق بين Gateway و Node</li>
+</ul>
+<hr>
+<h2 id="أين-يمكن-تشغيل-gateway">أين يمكن تشغيل Gateway؟</h2>
+<table>
+<thead>
+<tr>
+<th>الموقع</th>
+<th>الأفضل لـ</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td>حاسوب محلي</td>
+<td>الاختبار الشخصي والاستخدام العرضي</td>
+</tr>
+<tr>
+<td>VPS / خادم سحابي</td>
+<td>توفر 24/7</td>
+</tr>
+<tr>
+<td>NAS منزلي / حاسوب قديم</td>
+<td>متصل دائماً بدون فواتير VPS</td>
+</tr>
+</tbody>
+</table>
+<hr>
+<h2 id="كيف-يبدو-تثبيت-vps">كيف يبدو تثبيت VPS؟</h2>
+<p>سجّل الدخول إلى VPS الخاص بك، يفضّل Ubuntu أو Debian، ثم اتبع خطوات التثبيت على Linux من <a href="https://docs.openclaw.ai">docs.openclaw.ai</a>. إنه تقريباً نفس التثبيت المحلي، فقط يحدث على جهاز بعيد بدلاً من ذلك.</p>
+<hr>
+<h2 id="أساسيات-مصادقة-الوصول-عن-بُعد">أساسيات مصادقة الوصول عن بُعد</h2>
+<p>بمجرد وجود Gateway على VPS، لا يزال OpenClaw يحتاج إلى تأكيد أنك مستخدم معتمد:</p>
+<ul>
+<li>يجب استخدام رمز أو إقران جهاز</li>
+<li>إذا رأيت <code>unauthorized</code>، تحقق من <code>gateway.bind</code> وتأكد من صحة الرمز</li>
+</ul>
+<hr>
+<h2 id="tailscale-هو-الخيار-الأنظف">Tailscale هو الخيار الأنظف</h2>
+<p><strong>Tailscale</strong> هو VPN يجعل هاتفك وحاسوبك وVPS يبدون كأنهم على نفس الشبكة الخاصة:</p>
+<ol>
+<li>ثبّت Tailscale على كل من VPS والحاسوب الخاص بك</li>
+<li>اضبط <code>gateway.bind: tailnet</code></li>
+<li>اتصل بـ Gateway عبر Tailscale من أي جهاز</li>
+</ol>
+<blockquote>
+<p>💡 يمكن لـ Tailscale أيضاً نشر HTTPS مع Serve، وهو عادةً أكثر أماناً بكثير من كشف منفذ مباشرة.</p>
+</blockquote>
+<hr>
+<h2 id="ما-هو-node">ما هو Node؟</h2>
+<p>هنا الجزء الرائع: <strong>يمكن لـ Gateway و Node العيش على أجهزة مختلفة</strong>.</p>
+<ul>
+<li><strong>Gateway</strong>: يعمل على VPS ويتعامل مع المحادثات والذاكرة و Telegram وكل عمل "الدماغ"</li>
+<li><strong>Node</strong>: يعمل على حاسوبك المنزلي ويوفر "اليدين" مثل التحكم بالمتصفح والوصول للملفات المحلية والتفاعل مع الشاشة</li>
+</ul>
+<p>مثال من الواقع: بينما أنت بالخارج، ترسل رسالة لمساعدك على Telegram وتطلب منه فتح متصفح على حاسوبك المنزلي والتحقق من موقع ما. يرسل Gateway المهمة إلى Node في المنزل، ثم يعيد النتيجة إليك.</p>
+<p><strong>ما الفرق عن SSH؟</strong></p>
+<p>مع SSH، تسجل الدخول وتكتب الأوامر بنفسك. مع Node، <strong>المساعد يفعل ذلك نيابةً عنك</strong>، متكاملاً تماماً مع المهارات ومساحات العمل والمحادثات.</p>
+<hr>
+<h2 id="الخطوة-التالية">الخطوة التالية</h2>
+<p>بمجرد انتقال Gateway إلى VPS، مساعدك في الخدمة دائماً. بعد ذلك، نتركه <strong>يعمل تلقائياً</strong> بجداول زمنية.</p>
+<p><a href="07-multi-agent-bindings">← السابق: Bindings متعدد الوكلاء</a> | 👉 <a href="09-cron-automation">اجعل مساعدك يعمل تلقائياً مع Cron</a></p>5:["$","aside",null,{"className":"hidden lg:block","children":["$","$L8",null,{"html":"$9"}]}]
+6:["$","script","script-0",{"src":"/_next/static/chunks/2dddb3bc05093f69.js","async":true}]
+7:["$","$La",null,{"children":["$","$b",null,{"name":"Next.MetadataOutlet","children":"$@c"}]}]
+c:null

@@ -1,0 +1,520 @@
+1:"$Sreact.fragment"
+2:I[14864,["/_next/static/chunks/7923a261b80bb6e1.js","/_next/static/chunks/e09b4358027e8033.js","/_next/static/chunks/2dddb3bc05093f69.js"],"default"]
+b:I[24801,["/_next/static/chunks/7923a261b80bb6e1.js","/_next/static/chunks/e09b4358027e8033.js","/_next/static/chunks/2dddb3bc05093f69.js"],"default"]
+d:I[50183,["/_next/static/chunks/5a5b5b13c22d14f7.js","/_next/static/chunks/a484d1d3dd4b55ab.js"],"OutletBoundary"]
+e:"$Sreact.suspense"
+0:{"buildId":"Yck3R4ooQxWkwGLT6is1X","rsc":["$","$1","c",{"children":[[["$","script",null,{"type":"application/ld+json","dangerouslySetInnerHTML":{"__html":"{\"@context\":\"https://schema.org\",\"@type\":\"Article\",\"headline\":\"Envoy Gateway 核心概念：Gateway、Listener、Proxy 與 Route 家族一次搞懂\",\"description\":\"建立 Envoy Gateway 的完整心智模型，理解 Gateway、Listener、Envoy Proxy 與各種 Route 類型的責任分工。\",\"url\":\"https://benxhub.com/zh/blog/k8s/gateway/02-core-concepts\",\"mainEntityOfPage\":{\"@type\":\"WebPage\",\"@id\":\"https://benxhub.com/zh/blog/k8s/gateway/02-core-concepts\"},\"datePublished\":\"2026-03-10T00:00:00.000Z\",\"dateModified\":\"2026-03-10T00:00:00.000Z\",\"keywords\":\"kubernetes, envoy-gateway, gateway-api, gatewayclass, listener, httproute, grpcroute\",\"inLanguage\":\"zh\",\"author\":{\"@type\":\"Person\",\"name\":\"BenX\",\"url\":\"https://benxhub.com\"},\"publisher\":{\"@type\":\"Organization\",\"name\":\"BenXHub Blog\",\"url\":\"https://benxhub.com\"}}"}}],["$","div",null,{"className":"mx-auto max-w-6xl px-4 py-12 sm:px-6","children":["$","div",null,{"className":"lg:grid lg:grid-cols-[1fr_240px] lg:gap-14","children":[["$","article",null,{"children":[["$","header",null,{"className":"mb-10","children":[["$","div",null,{"className":"mb-4 flex flex-wrap gap-2","children":[["$","$L2","kubernetes",{"href":"/zh/tags/kubernetes","localeCookie":{"name":"NEXT_LOCALE","sameSite":"lax"},"className":"inline-flex items-center rounded-full px-2.5 py-0.5 text-xs font-medium transition-colors","style":{"background":"var(--color-code-bg)","color":"var(--color-accent)","border":"1px solid var(--color-border)"},"children":["#","kubernetes"]}],["$","$L2","envoy-gateway",{"href":"/zh/tags/envoy-gateway","localeCookie":{"name":"NEXT_LOCALE","sameSite":"lax"},"className":"inline-flex items-center rounded-full px-2.5 py-0.5 text-xs font-medium transition-colors","style":{"background":"var(--color-code-bg)","color":"var(--color-accent)","border":"1px solid var(--color-border)"},"children":["#","envoy-gateway"]}],["$","$L2","gateway-api",{"href":"/zh/tags/gateway-api","localeCookie":{"name":"NEXT_LOCALE","sameSite":"lax"},"className":"inline-flex items-center rounded-full px-2.5 py-0.5 text-xs font-medium transition-colors","style":{"background":"var(--color-code-bg)","color":"var(--color-accent)","border":"1px solid var(--color-border)"},"children":["#","gateway-api"]}],["$","$L2","gatewayclass",{"href":"/zh/tags/gatewayclass","localeCookie":{"name":"NEXT_LOCALE","sameSite":"lax"},"className":"inline-flex items-center rounded-full px-2.5 py-0.5 text-xs font-medium transition-colors","style":{"background":"var(--color-code-bg)","color":"var(--color-accent)","border":"1px solid var(--color-border)"},"children":["#","gatewayclass"]}],["$","$L2","listener",{"href":"/zh/tags/listener","localeCookie":{"name":"NEXT_LOCALE","sameSite":"lax"},"className":"inline-flex items-center rounded-full px-2.5 py-0.5 text-xs font-medium transition-colors","style":{"background":"var(--color-code-bg)","color":"var(--color-accent)","border":"1px solid var(--color-border)"},"children":["#","listener"]}],["$","$L2","httproute",{"href":"/zh/tags/httproute","localeCookie":{"name":"NEXT_LOCALE","sameSite":"lax"},"className":"inline-flex items-center rounded-full px-2.5 py-0.5 text-xs font-medium transition-colors","style":{"background":"var(--color-code-bg)","color":"var(--color-accent)","border":"1px solid var(--color-border)"},"children":["#","httproute"]}],["$","$L2","grpcroute",{"href":"/zh/tags/grpcroute","localeCookie":{"name":"NEXT_LOCALE","sameSite":"lax"},"className":"inline-flex items-center rounded-full px-2.5 py-0.5 text-xs font-medium transition-colors","style":{"background":"var(--color-code-bg)","color":"var(--color-accent)","border":"1px solid var(--color-border)"},"children":["#","grpcroute"]}]]}],["$","h1",null,{"className":"mb-4 text-3xl leading-snug font-bold tracking-tight sm:text-4xl","style":{"color":"var(--color-text)"},"children":"Envoy Gateway 核心概念：Gateway、Listener、Proxy 與 Route 家族一次搞懂"}],"$L3","$undefined","$L4"]}],"$L5","$L6"]}],"$L7"]}]}]],["$L8"],"$L9"]}],"loading":null,"isPartial":false}
+3:["$","div",null,{"className":"flex flex-wrap items-center gap-3 text-sm","style":{"color":"var(--color-muted)"},"children":[["$","time",null,{"dateTime":"2026-03-10","children":"2026 年 3 月 10 日"}],["$","span",null,{"aria-hidden":"true","children":"·"}],["$","span",null,{"children":"10 min read"}]]}]
+4:["$","div",null,{"className":"mt-6 border-b","style":{"borderColor":"var(--color-border)"}}]
+a:T4d96,<p>很多人第一次看 Gateway API 會有一種感覺：名詞看起來不多，但腦袋像在看一群長很像的角色名字，分不清誰是主角、誰是路人。這篇就是來拆掉這個混亂感，順便把常見的 route 類型一次講清楚。</p>
+<h2 id="先看整體架構">先看整體架構</h2>
+<p>Envoy Gateway 官方概念裡，整套系統可以拆成三層：</p>
+<ul>
+<li><strong>User Configuration</strong>：你寫的 <code>Gateway API</code> 資源與 Envoy Gateway 擴充 CRD</li>
+<li><strong>Envoy Gateway Controller</strong>：讀取資源、驗證、轉譯設定</li>
+<li><strong>Envoy Proxy</strong>：真正承接流量的資料面</li>
+</ul>
+<p>這代表你平常改的，大多不是 Envoy Proxy 本體，而是「宣告你想要什麼」。<br>
+Envoy Gateway 會幫你把需求翻成 Envoy Proxy 可執行的設定。這就是它比手寫代理配置舒服的地方。</p>
+<h2 id="最重要的幾個角色">最重要的幾個角色</h2>
+<p>你先記這幾個就好：</p>
+<ul>
+<li><code>GatewayClass</code>：定義「這個叢集要用哪種 Gateway 實作」</li>
+<li><code>Gateway</code>：定義「入口開在哪、聽什麼協定、要不要 TLS」</li>
+<li><code>Listener</code>：定義某個 port / protocol / hostname 的入口插槽</li>
+<li><code>Route</code>：定義「什麼請求該送到哪個 Service」</li>
+<li><code>Envoy Proxy</code>：最後真的收流量、做轉發的 Gateway Proxy</li>
+</ul>
+<p>如果要更白話一點：</p>
+<ul>
+<li><code>GatewayClass</code> 像規格書</li>
+<li><code>Gateway</code> 像整棟大樓入口</li>
+<li><code>Listener</code> 像入口櫃台</li>
+<li><code>Route</code> 像大樓裡的指示牌</li>
+<li><code>Envoy Proxy</code> 像真正執行安檢和放行的保全系統</li>
+</ul>
+<p>少了任何一個，流量都不會乖乖走到你想去的地方。</p>
+<h2 id="一張最小-yaml-看全局">一張最小 YAML 看全局</h2>
+<p>下面是最小可理解範例：</p>
+<figure data-rehype-pretty-code-figure=""><pre style="background-color:#24292e;color:#e1e4e8" tabindex="0" data-language="yaml" data-theme="github-dark"><code data-language="yaml" data-theme="github-dark" style="display: grid;"><span data-line=""><span style="color:#85E89D">apiVersion</span><span style="color:#E1E4E8">: </span><span style="color:#9ECBFF">gateway.networking.k8s.io/v1</span></span>
+<span data-line=""><span style="color:#85E89D">kind</span><span style="color:#E1E4E8">: </span><span style="color:#9ECBFF">GatewayClass</span></span>
+<span data-line=""><span style="color:#85E89D">metadata</span><span style="color:#E1E4E8">:</span></span>
+<span data-line=""><span style="color:#85E89D">  name</span><span style="color:#E1E4E8">: </span><span style="color:#9ECBFF">eg</span></span>
+<span data-line=""><span style="color:#85E89D">spec</span><span style="color:#E1E4E8">:</span></span>
+<span data-line=""><span style="color:#85E89D">  controllerName</span><span style="color:#E1E4E8">: </span><span style="color:#9ECBFF">gateway.envoyproxy.io/gatewayclass-controller</span></span>
+<span data-line=""><span style="color:#B392F0">---</span></span>
+<span data-line=""><span style="color:#85E89D">apiVersion</span><span style="color:#E1E4E8">: </span><span style="color:#9ECBFF">gateway.networking.k8s.io/v1</span></span>
+<span data-line=""><span style="color:#85E89D">kind</span><span style="color:#E1E4E8">: </span><span style="color:#9ECBFF">Gateway</span></span>
+<span data-line=""><span style="color:#85E89D">metadata</span><span style="color:#E1E4E8">:</span></span>
+<span data-line=""><span style="color:#85E89D">  name</span><span style="color:#E1E4E8">: </span><span style="color:#9ECBFF">eg</span></span>
+<span data-line=""><span style="color:#85E89D">spec</span><span style="color:#E1E4E8">:</span></span>
+<span data-line=""><span style="color:#85E89D">  gatewayClassName</span><span style="color:#E1E4E8">: </span><span style="color:#9ECBFF">eg</span></span>
+<span data-line=""><span style="color:#85E89D">  listeners</span><span style="color:#E1E4E8">:</span></span>
+<span data-line=""><span style="color:#E1E4E8">    - </span><span style="color:#85E89D">name</span><span style="color:#E1E4E8">: </span><span style="color:#9ECBFF">http</span></span>
+<span data-line=""><span style="color:#85E89D">      protocol</span><span style="color:#E1E4E8">: </span><span style="color:#9ECBFF">HTTP</span></span>
+<span data-line=""><span style="color:#85E89D">      port</span><span style="color:#E1E4E8">: </span><span style="color:#79B8FF">80</span></span>
+<span data-line=""><span style="color:#B392F0">---</span></span>
+<span data-line=""><span style="color:#85E89D">apiVersion</span><span style="color:#E1E4E8">: </span><span style="color:#9ECBFF">gateway.networking.k8s.io/v1</span></span>
+<span data-line=""><span style="color:#85E89D">kind</span><span style="color:#E1E4E8">: </span><span style="color:#9ECBFF">HTTPRoute</span></span>
+<span data-line=""><span style="color:#85E89D">metadata</span><span style="color:#E1E4E8">:</span></span>
+<span data-line=""><span style="color:#85E89D">  name</span><span style="color:#E1E4E8">: </span><span style="color:#9ECBFF">backend</span></span>
+<span data-line=""><span style="color:#85E89D">spec</span><span style="color:#E1E4E8">:</span></span>
+<span data-line=""><span style="color:#85E89D">  parentRefs</span><span style="color:#E1E4E8">:</span></span>
+<span data-line=""><span style="color:#E1E4E8">    - </span><span style="color:#85E89D">name</span><span style="color:#E1E4E8">: </span><span style="color:#9ECBFF">eg</span></span>
+<span data-line=""><span style="color:#85E89D">  hostnames</span><span style="color:#E1E4E8">:</span></span>
+<span data-line=""><span style="color:#E1E4E8">    - </span><span style="color:#9ECBFF">"www.example.com"</span></span>
+<span data-line=""><span style="color:#85E89D">  rules</span><span style="color:#E1E4E8">:</span></span>
+<span data-line=""><span style="color:#E1E4E8">    - </span><span style="color:#85E89D">backendRefs</span><span style="color:#E1E4E8">:</span></span>
+<span data-line=""><span style="color:#E1E4E8">        - </span><span style="color:#85E89D">name</span><span style="color:#E1E4E8">: </span><span style="color:#9ECBFF">backend</span></span>
+<span data-line=""><span style="color:#85E89D">          port</span><span style="color:#E1E4E8">: </span><span style="color:#79B8FF">3000</span></span></code></pre></figure>
+<p>這三段串起來後，邏輯是：</p>
+<ol>
+<li><code>GatewayClass</code> 說明由 <code>Envoy Gateway</code> 這個 controller 來接手</li>
+<li><code>Gateway</code> 宣告有一個 HTTP 入口在 <code>80</code></li>
+<li><code>HTTPRoute</code> 說明 <code>www.example.com</code> 進來的請求要導去 <code>backend:3000</code></li>
+<li><code>Envoy Gateway</code> 會把這些宣告轉譯給 <code>Envoy Proxy</code></li>
+</ol>
+<h2 id="每個欄位該怎麼理解">每個欄位該怎麼理解</h2>
+<h3 id="gatewayclass"><code>GatewayClass</code></h3>
+<p>它是叢集層級的入口類型定義。最關鍵的欄位通常是：</p>
+<figure data-rehype-pretty-code-figure=""><pre style="background-color:#24292e;color:#e1e4e8" tabindex="0" data-language="yaml" data-theme="github-dark"><code data-language="yaml" data-theme="github-dark" style="display: grid;"><span data-line=""><span style="color:#85E89D">spec</span><span style="color:#E1E4E8">:</span></span>
+<span data-line=""><span style="color:#85E89D">  controllerName</span><span style="color:#E1E4E8">: </span><span style="color:#9ECBFF">gateway.envoyproxy.io/gatewayclass-controller</span></span></code></pre></figure>
+<p>這行意思其實很單純：<br>
+「這個 <code>GatewayClass</code> 交給 Envoy Gateway controller 管。」</p>
+<p>如果 controllerName 對不上，就像你訂便當卻寄到別家公司，沒人會接單。</p>
+<h3 id="gateway"><code>Gateway</code></h3>
+<p>它定義「入口長什麼樣」。最常看的欄位是 <code>listeners</code>：</p>
+<figure data-rehype-pretty-code-figure=""><pre style="background-color:#24292e;color:#e1e4e8" tabindex="0" data-language="yaml" data-theme="github-dark"><code data-language="yaml" data-theme="github-dark" style="display: grid;"><span data-line=""><span style="color:#85E89D">listeners</span><span style="color:#E1E4E8">:</span></span>
+<span data-line=""><span style="color:#E1E4E8">  - </span><span style="color:#85E89D">name</span><span style="color:#E1E4E8">: </span><span style="color:#9ECBFF">http</span></span>
+<span data-line=""><span style="color:#85E89D">    protocol</span><span style="color:#E1E4E8">: </span><span style="color:#9ECBFF">HTTP</span></span>
+<span data-line=""><span style="color:#85E89D">    port</span><span style="color:#E1E4E8">: </span><span style="color:#79B8FF">80</span></span></code></pre></figure>
+<p>這代表：</p>
+<ul>
+<li>開一個 listener 叫 <code>http</code></li>
+<li>接 HTTP 流量</li>
+<li>對外監聽 <code>80</code></li>
+</ul>
+<p>如果要 HTTPS，通常就是再加一個 <code>protocol: HTTPS</code> 的 listener，後面再補上 TLS 設定。</p>
+<p><code>Gateway</code> 常見會管這些事：</p>
+<ul>
+<li>對外 port 與 protocol</li>
+<li>每個 <code>listener</code> 的 hostname</li>
+<li>TLS 終止位置</li>
+<li>哪些 namespace 的 route 可以附掛</li>
+</ul>
+<p>也就是說，<code>Gateway</code> 比較像平台入口設定，責任通常偏平台團隊。</p>
+<h3 id="listener"><code>Listener</code></h3>
+<p>這是很多初學者最容易忽略，但其實超重要的角色。</p>
+<p>一個 <code>listener</code> 可以理解成 Gateway 上的一個對外入口插槽。它會定義：</p>
+<ul>
+<li><code>name</code></li>
+<li><code>port</code></li>
+<li><code>protocol</code></li>
+<li><code>hostname</code></li>
+<li><code>tls</code></li>
+<li><code>allowedRoutes</code></li>
+</ul>
+<p>範例：</p>
+<figure data-rehype-pretty-code-figure=""><pre style="background-color:#24292e;color:#e1e4e8" tabindex="0" data-language="yaml" data-theme="github-dark"><code data-language="yaml" data-theme="github-dark" style="display: grid;"><span data-line=""><span style="color:#85E89D">listeners</span><span style="color:#E1E4E8">:</span></span>
+<span data-line=""><span style="color:#E1E4E8">  - </span><span style="color:#85E89D">name</span><span style="color:#E1E4E8">: </span><span style="color:#9ECBFF">https</span></span>
+<span data-line=""><span style="color:#85E89D">    protocol</span><span style="color:#E1E4E8">: </span><span style="color:#9ECBFF">HTTPS</span></span>
+<span data-line=""><span style="color:#85E89D">    port</span><span style="color:#E1E4E8">: </span><span style="color:#79B8FF">443</span></span>
+<span data-line=""><span style="color:#85E89D">    hostname</span><span style="color:#E1E4E8">: </span><span style="color:#9ECBFF">api.example.com</span></span></code></pre></figure>
+<p>這代表：</p>
+<ul>
+<li>這個入口叫 <code>https</code></li>
+<li>接 HTTPS</li>
+<li>監聽 <code>443</code></li>
+<li>專門服務 <code>api.example.com</code></li>
+</ul>
+<p>如果你有多個 listener，例如：</p>
+<ul>
+<li><code>http</code> for port 80</li>
+<li><code>https</code> for port 443</li>
+<li><code>grpc</code> for port 50051</li>
+</ul>
+<p>那其實是在同一個 Gateway 上開了多個對外入口，各自能掛不同 route。</p>
+<h3 id="envoy-proxy"><code>Envoy Proxy</code></h3>
+<p>很多人只看到 YAML，反而忘了真正在線上接流量的是 <code>Envoy Proxy</code>。</p>
+<p>它的角色是：</p>
+<ul>
+<li>接收 client request</li>
+<li>根據 Envoy Gateway 下發的設定做匹配</li>
+<li>把流量轉送到對應 backend</li>
+<li>處理 TLS、header、timeout、重試等資料面行為</li>
+</ul>
+<p>所以你可以把 Envoy Gateway 理解為「控制平面」，把 Envoy Proxy 理解為「資料面 / Gateway Proxy」。</p>
+<h3 id="route-家族">Route 家族</h3>
+<p><code>Route</code> 不是只有 <code>HTTPRoute</code> 一種。這整個家族是 Gateway API 很核心的設計。</p>
+<h4 id="httproute"><code>HTTPRoute</code></h4>
+<p>這是你最常寫、也最常改的部分。關鍵欄位有三個：</p>
+<figure data-rehype-pretty-code-figure=""><pre style="background-color:#24292e;color:#e1e4e8" tabindex="0" data-language="yaml" data-theme="github-dark"><code data-language="yaml" data-theme="github-dark" style="display: grid;"><span data-line=""><span style="color:#85E89D">spec</span><span style="color:#E1E4E8">:</span></span>
+<span data-line=""><span style="color:#85E89D">  parentRefs</span><span style="color:#E1E4E8">:</span></span>
+<span data-line=""><span style="color:#E1E4E8">    - </span><span style="color:#85E89D">name</span><span style="color:#E1E4E8">: </span><span style="color:#9ECBFF">eg</span></span>
+<span data-line=""><span style="color:#85E89D">  hostnames</span><span style="color:#E1E4E8">:</span></span>
+<span data-line=""><span style="color:#E1E4E8">    - </span><span style="color:#9ECBFF">"www.example.com"</span></span>
+<span data-line=""><span style="color:#85E89D">  rules</span><span style="color:#E1E4E8">:</span></span>
+<span data-line=""><span style="color:#E1E4E8">    - </span><span style="color:#85E89D">backendRefs</span><span style="color:#E1E4E8">:</span></span>
+<span data-line=""><span style="color:#E1E4E8">        - </span><span style="color:#85E89D">name</span><span style="color:#E1E4E8">: </span><span style="color:#9ECBFF">backend</span></span>
+<span data-line=""><span style="color:#85E89D">          port</span><span style="color:#E1E4E8">: </span><span style="color:#79B8FF">3000</span></span></code></pre></figure>
+<ul>
+<li><code>parentRefs</code>：掛到哪個 Gateway</li>
+<li><code>hostnames</code>：哪個 Host header 會匹配這條規則</li>
+<li><code>backendRefs</code>：匹配後送去哪個後端</li>
+</ul>
+<p>這邊最容易搞混的是：<br>
+<code>Gateway</code> 不是拿來寫細路由的，真正決定「怎麼分流」的是 <code>HTTPRoute</code>。</p>
+<h4 id="grpcroute"><code>GRPCRoute</code></h4>
+<p>如果你處理的是 gRPC，<code>GRPCRoute</code> 會比硬拿 <code>HTTPRoute</code> 來湊更自然。</p>
+<p>它的特色是可以根據：</p>
+<ul>
+<li>gRPC hostname</li>
+<li>gRPC service</li>
+<li>gRPC method</li>
+<li>header</li>
+</ul>
+<p>來做匹配。</p>
+<p>例如：</p>
+<figure data-rehype-pretty-code-figure=""><pre style="background-color:#24292e;color:#e1e4e8" tabindex="0" data-language="yaml" data-theme="github-dark"><code data-language="yaml" data-theme="github-dark" style="display: grid;"><span data-line=""><span style="color:#85E89D">matches</span><span style="color:#E1E4E8">:</span></span>
+<span data-line=""><span style="color:#E1E4E8">  - </span><span style="color:#85E89D">method</span><span style="color:#E1E4E8">:</span></span>
+<span data-line=""><span style="color:#85E89D">      service</span><span style="color:#E1E4E8">: </span><span style="color:#9ECBFF">com.example.User</span></span>
+<span data-line=""><span style="color:#85E89D">      method</span><span style="color:#E1E4E8">: </span><span style="color:#9ECBFF">Login</span></span></code></pre></figure>
+<p>這種語意對 gRPC 服務來說很直觀，因為它不是只看 URL path，而是直接對齊 gRPC 的 service/method 模型。</p>
+<p>官方文件也特別提醒：<code>GRPCRoute</code> 和 <code>HTTPRoute</code> 在同一個 listener 上，如果 hostname 衝突，實作方應該拒絕其中一個。簡單講，HTTP 跟 gRPC 最好不要共用同一組 hostname 亂打架。</p>
+<h4 id="tcproute"><code>TCPRoute</code></h4>
+<p><code>TCPRoute</code> 用來處理原始 TCP 流量。<br>
+這時 Gateway 不會像 <code>HTTPRoute</code> 一樣理解 path、header 這些 L7 語意，而是比較偏 L4 轉發。</p>
+<p>它適合的場景通常是：</p>
+<ul>
+<li>非 HTTP 協定服務</li>
+<li>純 TCP 服務</li>
+<li>只想根據 listener port 把連線送到不同 backend</li>
+</ul>
+<p>像資料庫協定、自訂 TCP 協定，這類就比較接近 <code>TCPRoute</code> 的使用場景。</p>
+<h4 id="tlsroute"><code>TLSRoute</code></h4>
+<p><code>TLSRoute</code> 是處理 TLS 流量的重要角色，特別常見在 <strong>TLS passthrough</strong> 場景。</p>
+<p>它的核心概念是：</p>
+<ul>
+<li>Gateway 不一定終止 TLS</li>
+<li>可能只根據 TLS handshake 裡的 SNI hostname 做分流</li>
+<li>加密流量一路保留到 backend 再解</li>
+</ul>
+<p>這對某些需要端到端加密、或不想在 Gateway 終止 TLS 的場景很重要。</p>
+<h2 id="怎麼選-route-類型">怎麼選 Route 類型</h2>
+<table>
+<thead>
+<tr>
+<th>需求</th>
+<th>該用什麼</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td>網站、REST API、一般 Web 流量</td>
+<td><code>HTTPRoute</code></td>
+</tr>
+<tr>
+<td>gRPC service / method 路由</td>
+<td><code>GRPCRoute</code></td>
+</tr>
+<tr>
+<td>純 TCP 流量</td>
+<td><code>TCPRoute</code></td>
+</tr>
+<tr>
+<td>TLS passthrough / SNI-based routing</td>
+<td><code>TLSRoute</code></td>
+</tr>
+</tbody>
+</table>
+<p>這張表很重要，因為很多人一看到 route 就先下意識寫 <code>HTTPRoute</code>。但你如果實際處理的是 gRPC 或 TCP，硬塞進 <code>HTTPRoute</code> 只會越寫越彆扭。</p>
+<h2 id="route-為什麼比-ingress-好懂">Route 為什麼比 Ingress 好懂</h2>
+<p>以前 Ingress 很常把很多責任擠在同一個資源裡，長久下來就容易有幾個痛點：</p>
+<ul>
+<li>平台設定和應用路由混在一起</li>
+<li>高級功能靠 annotation 表達，可讀性差</li>
+<li>對不同協定的表達能力有限</li>
+</ul>
+<p>而 Gateway API 的思路是拆責任：</p>
+<ul>
+<li>平台團隊可以管理 <code>GatewayClass</code> / <code>Gateway</code></li>
+<li>應用團隊可以管理自己的 <code>HTTPRoute</code></li>
+</ul>
+<p>這種拆法很適合多人協作。你不用每次改一條 path，就去碰整個入口層設定，團隊之間互相踩腳的機率會低很多。</p>
+<h2 id="你要開始注意的狀態">你要開始注意的狀態</h2>
+<p>除了 <code>spec</code>，你也要慢慢養成看 <code>status</code> 的習慣。尤其是 <code>HTTPRoute</code> 跟 <code>Gateway</code>：</p>
+<figure data-rehype-pretty-code-figure=""><pre style="background-color:#24292e;color:#e1e4e8" tabindex="0" data-language="bash" data-theme="github-dark"><code data-language="bash" data-theme="github-dark" style="display: grid;"><span data-line=""><span style="color:#B392F0">kubectl</span><span style="color:#9ECBFF"> get</span><span style="color:#9ECBFF"> gateway</span><span style="color:#9ECBFF"> eg</span><span style="color:#79B8FF"> -o</span><span style="color:#9ECBFF"> yaml</span></span>
+<span data-line=""><span style="color:#B392F0">kubectl</span><span style="color:#9ECBFF"> get</span><span style="color:#9ECBFF"> httproute</span><span style="color:#9ECBFF"> backend</span><span style="color:#79B8FF"> -o</span><span style="color:#9ECBFF"> yaml</span></span></code></pre></figure>
+<p>通常先看：</p>
+<ul>
+<li>route 有沒有被 <code>Accepted</code></li>
+<li>gateway listener 有沒有 Ready</li>
+<li>address 有沒有分配成功</li>
+</ul>
+<p>這很像看考卷成績單。不要只管有沒有交作業，還要看老師到底有沒有批改通過。</p>
+<h2 id="一句話總結">一句話總結</h2>
+<p>把 <code>GatewayClass</code>、<code>Gateway</code>、<code>Listener</code>、<code>Route</code>、<code>Envoy Proxy</code> 想成「誰來管、入口怎麼開、每個插槽怎麼接、流量怎麼分、最後誰執行」，你就已經抓到 80% 的核心概念了。</p>
+<blockquote>
+<p>💡 初學者很容易一上來就鑽進 CRD 細節。先別急，先把這幾個角色分清楚，後面看各種 YAML 才不會每段都像第一次見面。</p>
+</blockquote>
+<h2 id="下一步">下一步</h2>
+<p>概念有了，下一篇開始玩最常見的 HTTP 路由場景：host、path、header、流量分配：
+👉 <a href="03-http-routing">HTTP 路由實戰</a></p>5:["$","div",null,{"className":"prose","dangerouslySetInnerHTML":{"__html":"$a"}}]
+6:["$","footer",null,{"className":"mt-14 border-t pt-8","style":{"borderColor":"var(--color-border)"},"children":[["$","div",null,{"className":"mb-8 flex flex-wrap gap-2","children":[["$","$L2","kubernetes",{"href":"/zh/tags/kubernetes","localeCookie":{"name":"NEXT_LOCALE","sameSite":"lax"},"className":"inline-flex items-center rounded-full px-3 py-1 text-sm font-medium transition-colors","style":{"background":"var(--color-code-bg)","color":"var(--color-accent)","border":"1px solid var(--color-border)"},"children":["#","kubernetes"]}],["$","$L2","envoy-gateway",{"href":"/zh/tags/envoy-gateway","localeCookie":{"name":"NEXT_LOCALE","sameSite":"lax"},"className":"inline-flex items-center rounded-full px-3 py-1 text-sm font-medium transition-colors","style":{"background":"var(--color-code-bg)","color":"var(--color-accent)","border":"1px solid var(--color-border)"},"children":["#","envoy-gateway"]}],["$","$L2","gateway-api",{"href":"/zh/tags/gateway-api","localeCookie":{"name":"NEXT_LOCALE","sameSite":"lax"},"className":"inline-flex items-center rounded-full px-3 py-1 text-sm font-medium transition-colors","style":{"background":"var(--color-code-bg)","color":"var(--color-accent)","border":"1px solid var(--color-border)"},"children":["#","gateway-api"]}],["$","$L2","gatewayclass",{"href":"/zh/tags/gatewayclass","localeCookie":{"name":"NEXT_LOCALE","sameSite":"lax"},"className":"inline-flex items-center rounded-full px-3 py-1 text-sm font-medium transition-colors","style":{"background":"var(--color-code-bg)","color":"var(--color-accent)","border":"1px solid var(--color-border)"},"children":["#","gatewayclass"]}],["$","$L2","listener",{"href":"/zh/tags/listener","localeCookie":{"name":"NEXT_LOCALE","sameSite":"lax"},"className":"inline-flex items-center rounded-full px-3 py-1 text-sm font-medium transition-colors","style":{"background":"var(--color-code-bg)","color":"var(--color-accent)","border":"1px solid var(--color-border)"},"children":["#","listener"]}],["$","$L2","httproute",{"href":"/zh/tags/httproute","localeCookie":{"name":"NEXT_LOCALE","sameSite":"lax"},"className":"inline-flex items-center rounded-full px-3 py-1 text-sm font-medium transition-colors","style":{"background":"var(--color-code-bg)","color":"var(--color-accent)","border":"1px solid var(--color-border)"},"children":["#","httproute"]}],["$","$L2","grpcroute",{"href":"/zh/tags/grpcroute","localeCookie":{"name":"NEXT_LOCALE","sameSite":"lax"},"className":"inline-flex items-center rounded-full px-3 py-1 text-sm font-medium transition-colors","style":{"background":"var(--color-code-bg)","color":"var(--color-accent)","border":"1px solid var(--color-border)"},"children":["#","grpcroute"]}]]}],["$","nav",null,{"aria-label":"文章導覽","className":"grid grid-cols-1 gap-4 sm:grid-cols-2","children":[["$","$L2",null,{"href":"/zh/blog/k8s/gateway/01-quick-start","localeCookie":{"name":"NEXT_LOCALE","sameSite":"lax"},"className":"group rounded-lg border p-4 transition-colors hover:border-accent","style":{"borderColor":"var(--color-border)","background":"var(--color-surface)"},"children":[["$","p",null,{"className":"mb-1 text-xs","style":{"color":"var(--color-muted)"},"children":"← 較新文章"}],["$","p",null,{"className":"line-clamp-1 text-sm font-medium transition-colors group-hover:text-accent","style":{"color":"var(--color-text)"},"children":"Envoy Gateway 快速上手：10 分鐘跑通第一條流量"}]]}],["$","$L2",null,{"href":"/zh/blog/k8s/gateway/03-http-routing","localeCookie":{"name":"NEXT_LOCALE","sameSite":"lax"},"className":"group rounded-lg border p-4 text-right transition-colors hover:border-accent","style":{"borderColor":"var(--color-border)","background":"var(--color-surface)"},"children":[["$","p",null,{"className":"mb-1 text-xs","style":{"color":"var(--color-muted)"},"children":"較舊文章 →"}],["$","p",null,{"className":"line-clamp-1 text-sm font-medium transition-colors group-hover:text-accent","style":{"color":"var(--color-text)"},"children":"Envoy Gateway HTTP 路由實戰：Host、Path、Header 與流量分流"}]]}]]}]]}]
+c:T4d96,<p>很多人第一次看 Gateway API 會有一種感覺：名詞看起來不多，但腦袋像在看一群長很像的角色名字，分不清誰是主角、誰是路人。這篇就是來拆掉這個混亂感，順便把常見的 route 類型一次講清楚。</p>
+<h2 id="先看整體架構">先看整體架構</h2>
+<p>Envoy Gateway 官方概念裡，整套系統可以拆成三層：</p>
+<ul>
+<li><strong>User Configuration</strong>：你寫的 <code>Gateway API</code> 資源與 Envoy Gateway 擴充 CRD</li>
+<li><strong>Envoy Gateway Controller</strong>：讀取資源、驗證、轉譯設定</li>
+<li><strong>Envoy Proxy</strong>：真正承接流量的資料面</li>
+</ul>
+<p>這代表你平常改的，大多不是 Envoy Proxy 本體，而是「宣告你想要什麼」。<br>
+Envoy Gateway 會幫你把需求翻成 Envoy Proxy 可執行的設定。這就是它比手寫代理配置舒服的地方。</p>
+<h2 id="最重要的幾個角色">最重要的幾個角色</h2>
+<p>你先記這幾個就好：</p>
+<ul>
+<li><code>GatewayClass</code>：定義「這個叢集要用哪種 Gateway 實作」</li>
+<li><code>Gateway</code>：定義「入口開在哪、聽什麼協定、要不要 TLS」</li>
+<li><code>Listener</code>：定義某個 port / protocol / hostname 的入口插槽</li>
+<li><code>Route</code>：定義「什麼請求該送到哪個 Service」</li>
+<li><code>Envoy Proxy</code>：最後真的收流量、做轉發的 Gateway Proxy</li>
+</ul>
+<p>如果要更白話一點：</p>
+<ul>
+<li><code>GatewayClass</code> 像規格書</li>
+<li><code>Gateway</code> 像整棟大樓入口</li>
+<li><code>Listener</code> 像入口櫃台</li>
+<li><code>Route</code> 像大樓裡的指示牌</li>
+<li><code>Envoy Proxy</code> 像真正執行安檢和放行的保全系統</li>
+</ul>
+<p>少了任何一個，流量都不會乖乖走到你想去的地方。</p>
+<h2 id="一張最小-yaml-看全局">一張最小 YAML 看全局</h2>
+<p>下面是最小可理解範例：</p>
+<figure data-rehype-pretty-code-figure=""><pre style="background-color:#24292e;color:#e1e4e8" tabindex="0" data-language="yaml" data-theme="github-dark"><code data-language="yaml" data-theme="github-dark" style="display: grid;"><span data-line=""><span style="color:#85E89D">apiVersion</span><span style="color:#E1E4E8">: </span><span style="color:#9ECBFF">gateway.networking.k8s.io/v1</span></span>
+<span data-line=""><span style="color:#85E89D">kind</span><span style="color:#E1E4E8">: </span><span style="color:#9ECBFF">GatewayClass</span></span>
+<span data-line=""><span style="color:#85E89D">metadata</span><span style="color:#E1E4E8">:</span></span>
+<span data-line=""><span style="color:#85E89D">  name</span><span style="color:#E1E4E8">: </span><span style="color:#9ECBFF">eg</span></span>
+<span data-line=""><span style="color:#85E89D">spec</span><span style="color:#E1E4E8">:</span></span>
+<span data-line=""><span style="color:#85E89D">  controllerName</span><span style="color:#E1E4E8">: </span><span style="color:#9ECBFF">gateway.envoyproxy.io/gatewayclass-controller</span></span>
+<span data-line=""><span style="color:#B392F0">---</span></span>
+<span data-line=""><span style="color:#85E89D">apiVersion</span><span style="color:#E1E4E8">: </span><span style="color:#9ECBFF">gateway.networking.k8s.io/v1</span></span>
+<span data-line=""><span style="color:#85E89D">kind</span><span style="color:#E1E4E8">: </span><span style="color:#9ECBFF">Gateway</span></span>
+<span data-line=""><span style="color:#85E89D">metadata</span><span style="color:#E1E4E8">:</span></span>
+<span data-line=""><span style="color:#85E89D">  name</span><span style="color:#E1E4E8">: </span><span style="color:#9ECBFF">eg</span></span>
+<span data-line=""><span style="color:#85E89D">spec</span><span style="color:#E1E4E8">:</span></span>
+<span data-line=""><span style="color:#85E89D">  gatewayClassName</span><span style="color:#E1E4E8">: </span><span style="color:#9ECBFF">eg</span></span>
+<span data-line=""><span style="color:#85E89D">  listeners</span><span style="color:#E1E4E8">:</span></span>
+<span data-line=""><span style="color:#E1E4E8">    - </span><span style="color:#85E89D">name</span><span style="color:#E1E4E8">: </span><span style="color:#9ECBFF">http</span></span>
+<span data-line=""><span style="color:#85E89D">      protocol</span><span style="color:#E1E4E8">: </span><span style="color:#9ECBFF">HTTP</span></span>
+<span data-line=""><span style="color:#85E89D">      port</span><span style="color:#E1E4E8">: </span><span style="color:#79B8FF">80</span></span>
+<span data-line=""><span style="color:#B392F0">---</span></span>
+<span data-line=""><span style="color:#85E89D">apiVersion</span><span style="color:#E1E4E8">: </span><span style="color:#9ECBFF">gateway.networking.k8s.io/v1</span></span>
+<span data-line=""><span style="color:#85E89D">kind</span><span style="color:#E1E4E8">: </span><span style="color:#9ECBFF">HTTPRoute</span></span>
+<span data-line=""><span style="color:#85E89D">metadata</span><span style="color:#E1E4E8">:</span></span>
+<span data-line=""><span style="color:#85E89D">  name</span><span style="color:#E1E4E8">: </span><span style="color:#9ECBFF">backend</span></span>
+<span data-line=""><span style="color:#85E89D">spec</span><span style="color:#E1E4E8">:</span></span>
+<span data-line=""><span style="color:#85E89D">  parentRefs</span><span style="color:#E1E4E8">:</span></span>
+<span data-line=""><span style="color:#E1E4E8">    - </span><span style="color:#85E89D">name</span><span style="color:#E1E4E8">: </span><span style="color:#9ECBFF">eg</span></span>
+<span data-line=""><span style="color:#85E89D">  hostnames</span><span style="color:#E1E4E8">:</span></span>
+<span data-line=""><span style="color:#E1E4E8">    - </span><span style="color:#9ECBFF">"www.example.com"</span></span>
+<span data-line=""><span style="color:#85E89D">  rules</span><span style="color:#E1E4E8">:</span></span>
+<span data-line=""><span style="color:#E1E4E8">    - </span><span style="color:#85E89D">backendRefs</span><span style="color:#E1E4E8">:</span></span>
+<span data-line=""><span style="color:#E1E4E8">        - </span><span style="color:#85E89D">name</span><span style="color:#E1E4E8">: </span><span style="color:#9ECBFF">backend</span></span>
+<span data-line=""><span style="color:#85E89D">          port</span><span style="color:#E1E4E8">: </span><span style="color:#79B8FF">3000</span></span></code></pre></figure>
+<p>這三段串起來後，邏輯是：</p>
+<ol>
+<li><code>GatewayClass</code> 說明由 <code>Envoy Gateway</code> 這個 controller 來接手</li>
+<li><code>Gateway</code> 宣告有一個 HTTP 入口在 <code>80</code></li>
+<li><code>HTTPRoute</code> 說明 <code>www.example.com</code> 進來的請求要導去 <code>backend:3000</code></li>
+<li><code>Envoy Gateway</code> 會把這些宣告轉譯給 <code>Envoy Proxy</code></li>
+</ol>
+<h2 id="每個欄位該怎麼理解">每個欄位該怎麼理解</h2>
+<h3 id="gatewayclass"><code>GatewayClass</code></h3>
+<p>它是叢集層級的入口類型定義。最關鍵的欄位通常是：</p>
+<figure data-rehype-pretty-code-figure=""><pre style="background-color:#24292e;color:#e1e4e8" tabindex="0" data-language="yaml" data-theme="github-dark"><code data-language="yaml" data-theme="github-dark" style="display: grid;"><span data-line=""><span style="color:#85E89D">spec</span><span style="color:#E1E4E8">:</span></span>
+<span data-line=""><span style="color:#85E89D">  controllerName</span><span style="color:#E1E4E8">: </span><span style="color:#9ECBFF">gateway.envoyproxy.io/gatewayclass-controller</span></span></code></pre></figure>
+<p>這行意思其實很單純：<br>
+「這個 <code>GatewayClass</code> 交給 Envoy Gateway controller 管。」</p>
+<p>如果 controllerName 對不上，就像你訂便當卻寄到別家公司，沒人會接單。</p>
+<h3 id="gateway"><code>Gateway</code></h3>
+<p>它定義「入口長什麼樣」。最常看的欄位是 <code>listeners</code>：</p>
+<figure data-rehype-pretty-code-figure=""><pre style="background-color:#24292e;color:#e1e4e8" tabindex="0" data-language="yaml" data-theme="github-dark"><code data-language="yaml" data-theme="github-dark" style="display: grid;"><span data-line=""><span style="color:#85E89D">listeners</span><span style="color:#E1E4E8">:</span></span>
+<span data-line=""><span style="color:#E1E4E8">  - </span><span style="color:#85E89D">name</span><span style="color:#E1E4E8">: </span><span style="color:#9ECBFF">http</span></span>
+<span data-line=""><span style="color:#85E89D">    protocol</span><span style="color:#E1E4E8">: </span><span style="color:#9ECBFF">HTTP</span></span>
+<span data-line=""><span style="color:#85E89D">    port</span><span style="color:#E1E4E8">: </span><span style="color:#79B8FF">80</span></span></code></pre></figure>
+<p>這代表：</p>
+<ul>
+<li>開一個 listener 叫 <code>http</code></li>
+<li>接 HTTP 流量</li>
+<li>對外監聽 <code>80</code></li>
+</ul>
+<p>如果要 HTTPS，通常就是再加一個 <code>protocol: HTTPS</code> 的 listener，後面再補上 TLS 設定。</p>
+<p><code>Gateway</code> 常見會管這些事：</p>
+<ul>
+<li>對外 port 與 protocol</li>
+<li>每個 <code>listener</code> 的 hostname</li>
+<li>TLS 終止位置</li>
+<li>哪些 namespace 的 route 可以附掛</li>
+</ul>
+<p>也就是說，<code>Gateway</code> 比較像平台入口設定，責任通常偏平台團隊。</p>
+<h3 id="listener"><code>Listener</code></h3>
+<p>這是很多初學者最容易忽略，但其實超重要的角色。</p>
+<p>一個 <code>listener</code> 可以理解成 Gateway 上的一個對外入口插槽。它會定義：</p>
+<ul>
+<li><code>name</code></li>
+<li><code>port</code></li>
+<li><code>protocol</code></li>
+<li><code>hostname</code></li>
+<li><code>tls</code></li>
+<li><code>allowedRoutes</code></li>
+</ul>
+<p>範例：</p>
+<figure data-rehype-pretty-code-figure=""><pre style="background-color:#24292e;color:#e1e4e8" tabindex="0" data-language="yaml" data-theme="github-dark"><code data-language="yaml" data-theme="github-dark" style="display: grid;"><span data-line=""><span style="color:#85E89D">listeners</span><span style="color:#E1E4E8">:</span></span>
+<span data-line=""><span style="color:#E1E4E8">  - </span><span style="color:#85E89D">name</span><span style="color:#E1E4E8">: </span><span style="color:#9ECBFF">https</span></span>
+<span data-line=""><span style="color:#85E89D">    protocol</span><span style="color:#E1E4E8">: </span><span style="color:#9ECBFF">HTTPS</span></span>
+<span data-line=""><span style="color:#85E89D">    port</span><span style="color:#E1E4E8">: </span><span style="color:#79B8FF">443</span></span>
+<span data-line=""><span style="color:#85E89D">    hostname</span><span style="color:#E1E4E8">: </span><span style="color:#9ECBFF">api.example.com</span></span></code></pre></figure>
+<p>這代表：</p>
+<ul>
+<li>這個入口叫 <code>https</code></li>
+<li>接 HTTPS</li>
+<li>監聽 <code>443</code></li>
+<li>專門服務 <code>api.example.com</code></li>
+</ul>
+<p>如果你有多個 listener，例如：</p>
+<ul>
+<li><code>http</code> for port 80</li>
+<li><code>https</code> for port 443</li>
+<li><code>grpc</code> for port 50051</li>
+</ul>
+<p>那其實是在同一個 Gateway 上開了多個對外入口，各自能掛不同 route。</p>
+<h3 id="envoy-proxy"><code>Envoy Proxy</code></h3>
+<p>很多人只看到 YAML，反而忘了真正在線上接流量的是 <code>Envoy Proxy</code>。</p>
+<p>它的角色是：</p>
+<ul>
+<li>接收 client request</li>
+<li>根據 Envoy Gateway 下發的設定做匹配</li>
+<li>把流量轉送到對應 backend</li>
+<li>處理 TLS、header、timeout、重試等資料面行為</li>
+</ul>
+<p>所以你可以把 Envoy Gateway 理解為「控制平面」，把 Envoy Proxy 理解為「資料面 / Gateway Proxy」。</p>
+<h3 id="route-家族">Route 家族</h3>
+<p><code>Route</code> 不是只有 <code>HTTPRoute</code> 一種。這整個家族是 Gateway API 很核心的設計。</p>
+<h4 id="httproute"><code>HTTPRoute</code></h4>
+<p>這是你最常寫、也最常改的部分。關鍵欄位有三個：</p>
+<figure data-rehype-pretty-code-figure=""><pre style="background-color:#24292e;color:#e1e4e8" tabindex="0" data-language="yaml" data-theme="github-dark"><code data-language="yaml" data-theme="github-dark" style="display: grid;"><span data-line=""><span style="color:#85E89D">spec</span><span style="color:#E1E4E8">:</span></span>
+<span data-line=""><span style="color:#85E89D">  parentRefs</span><span style="color:#E1E4E8">:</span></span>
+<span data-line=""><span style="color:#E1E4E8">    - </span><span style="color:#85E89D">name</span><span style="color:#E1E4E8">: </span><span style="color:#9ECBFF">eg</span></span>
+<span data-line=""><span style="color:#85E89D">  hostnames</span><span style="color:#E1E4E8">:</span></span>
+<span data-line=""><span style="color:#E1E4E8">    - </span><span style="color:#9ECBFF">"www.example.com"</span></span>
+<span data-line=""><span style="color:#85E89D">  rules</span><span style="color:#E1E4E8">:</span></span>
+<span data-line=""><span style="color:#E1E4E8">    - </span><span style="color:#85E89D">backendRefs</span><span style="color:#E1E4E8">:</span></span>
+<span data-line=""><span style="color:#E1E4E8">        - </span><span style="color:#85E89D">name</span><span style="color:#E1E4E8">: </span><span style="color:#9ECBFF">backend</span></span>
+<span data-line=""><span style="color:#85E89D">          port</span><span style="color:#E1E4E8">: </span><span style="color:#79B8FF">3000</span></span></code></pre></figure>
+<ul>
+<li><code>parentRefs</code>：掛到哪個 Gateway</li>
+<li><code>hostnames</code>：哪個 Host header 會匹配這條規則</li>
+<li><code>backendRefs</code>：匹配後送去哪個後端</li>
+</ul>
+<p>這邊最容易搞混的是：<br>
+<code>Gateway</code> 不是拿來寫細路由的，真正決定「怎麼分流」的是 <code>HTTPRoute</code>。</p>
+<h4 id="grpcroute"><code>GRPCRoute</code></h4>
+<p>如果你處理的是 gRPC，<code>GRPCRoute</code> 會比硬拿 <code>HTTPRoute</code> 來湊更自然。</p>
+<p>它的特色是可以根據：</p>
+<ul>
+<li>gRPC hostname</li>
+<li>gRPC service</li>
+<li>gRPC method</li>
+<li>header</li>
+</ul>
+<p>來做匹配。</p>
+<p>例如：</p>
+<figure data-rehype-pretty-code-figure=""><pre style="background-color:#24292e;color:#e1e4e8" tabindex="0" data-language="yaml" data-theme="github-dark"><code data-language="yaml" data-theme="github-dark" style="display: grid;"><span data-line=""><span style="color:#85E89D">matches</span><span style="color:#E1E4E8">:</span></span>
+<span data-line=""><span style="color:#E1E4E8">  - </span><span style="color:#85E89D">method</span><span style="color:#E1E4E8">:</span></span>
+<span data-line=""><span style="color:#85E89D">      service</span><span style="color:#E1E4E8">: </span><span style="color:#9ECBFF">com.example.User</span></span>
+<span data-line=""><span style="color:#85E89D">      method</span><span style="color:#E1E4E8">: </span><span style="color:#9ECBFF">Login</span></span></code></pre></figure>
+<p>這種語意對 gRPC 服務來說很直觀，因為它不是只看 URL path，而是直接對齊 gRPC 的 service/method 模型。</p>
+<p>官方文件也特別提醒：<code>GRPCRoute</code> 和 <code>HTTPRoute</code> 在同一個 listener 上，如果 hostname 衝突，實作方應該拒絕其中一個。簡單講，HTTP 跟 gRPC 最好不要共用同一組 hostname 亂打架。</p>
+<h4 id="tcproute"><code>TCPRoute</code></h4>
+<p><code>TCPRoute</code> 用來處理原始 TCP 流量。<br>
+這時 Gateway 不會像 <code>HTTPRoute</code> 一樣理解 path、header 這些 L7 語意，而是比較偏 L4 轉發。</p>
+<p>它適合的場景通常是：</p>
+<ul>
+<li>非 HTTP 協定服務</li>
+<li>純 TCP 服務</li>
+<li>只想根據 listener port 把連線送到不同 backend</li>
+</ul>
+<p>像資料庫協定、自訂 TCP 協定，這類就比較接近 <code>TCPRoute</code> 的使用場景。</p>
+<h4 id="tlsroute"><code>TLSRoute</code></h4>
+<p><code>TLSRoute</code> 是處理 TLS 流量的重要角色，特別常見在 <strong>TLS passthrough</strong> 場景。</p>
+<p>它的核心概念是：</p>
+<ul>
+<li>Gateway 不一定終止 TLS</li>
+<li>可能只根據 TLS handshake 裡的 SNI hostname 做分流</li>
+<li>加密流量一路保留到 backend 再解</li>
+</ul>
+<p>這對某些需要端到端加密、或不想在 Gateway 終止 TLS 的場景很重要。</p>
+<h2 id="怎麼選-route-類型">怎麼選 Route 類型</h2>
+<table>
+<thead>
+<tr>
+<th>需求</th>
+<th>該用什麼</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td>網站、REST API、一般 Web 流量</td>
+<td><code>HTTPRoute</code></td>
+</tr>
+<tr>
+<td>gRPC service / method 路由</td>
+<td><code>GRPCRoute</code></td>
+</tr>
+<tr>
+<td>純 TCP 流量</td>
+<td><code>TCPRoute</code></td>
+</tr>
+<tr>
+<td>TLS passthrough / SNI-based routing</td>
+<td><code>TLSRoute</code></td>
+</tr>
+</tbody>
+</table>
+<p>這張表很重要，因為很多人一看到 route 就先下意識寫 <code>HTTPRoute</code>。但你如果實際處理的是 gRPC 或 TCP，硬塞進 <code>HTTPRoute</code> 只會越寫越彆扭。</p>
+<h2 id="route-為什麼比-ingress-好懂">Route 為什麼比 Ingress 好懂</h2>
+<p>以前 Ingress 很常把很多責任擠在同一個資源裡，長久下來就容易有幾個痛點：</p>
+<ul>
+<li>平台設定和應用路由混在一起</li>
+<li>高級功能靠 annotation 表達，可讀性差</li>
+<li>對不同協定的表達能力有限</li>
+</ul>
+<p>而 Gateway API 的思路是拆責任：</p>
+<ul>
+<li>平台團隊可以管理 <code>GatewayClass</code> / <code>Gateway</code></li>
+<li>應用團隊可以管理自己的 <code>HTTPRoute</code></li>
+</ul>
+<p>這種拆法很適合多人協作。你不用每次改一條 path，就去碰整個入口層設定，團隊之間互相踩腳的機率會低很多。</p>
+<h2 id="你要開始注意的狀態">你要開始注意的狀態</h2>
+<p>除了 <code>spec</code>，你也要慢慢養成看 <code>status</code> 的習慣。尤其是 <code>HTTPRoute</code> 跟 <code>Gateway</code>：</p>
+<figure data-rehype-pretty-code-figure=""><pre style="background-color:#24292e;color:#e1e4e8" tabindex="0" data-language="bash" data-theme="github-dark"><code data-language="bash" data-theme="github-dark" style="display: grid;"><span data-line=""><span style="color:#B392F0">kubectl</span><span style="color:#9ECBFF"> get</span><span style="color:#9ECBFF"> gateway</span><span style="color:#9ECBFF"> eg</span><span style="color:#79B8FF"> -o</span><span style="color:#9ECBFF"> yaml</span></span>
+<span data-line=""><span style="color:#B392F0">kubectl</span><span style="color:#9ECBFF"> get</span><span style="color:#9ECBFF"> httproute</span><span style="color:#9ECBFF"> backend</span><span style="color:#79B8FF"> -o</span><span style="color:#9ECBFF"> yaml</span></span></code></pre></figure>
+<p>通常先看：</p>
+<ul>
+<li>route 有沒有被 <code>Accepted</code></li>
+<li>gateway listener 有沒有 Ready</li>
+<li>address 有沒有分配成功</li>
+</ul>
+<p>這很像看考卷成績單。不要只管有沒有交作業，還要看老師到底有沒有批改通過。</p>
+<h2 id="一句話總結">一句話總結</h2>
+<p>把 <code>GatewayClass</code>、<code>Gateway</code>、<code>Listener</code>、<code>Route</code>、<code>Envoy Proxy</code> 想成「誰來管、入口怎麼開、每個插槽怎麼接、流量怎麼分、最後誰執行」，你就已經抓到 80% 的核心概念了。</p>
+<blockquote>
+<p>💡 初學者很容易一上來就鑽進 CRD 細節。先別急，先把這幾個角色分清楚，後面看各種 YAML 才不會每段都像第一次見面。</p>
+</blockquote>
+<h2 id="下一步">下一步</h2>
+<p>概念有了，下一篇開始玩最常見的 HTTP 路由場景：host、path、header、流量分配：
+👉 <a href="03-http-routing">HTTP 路由實戰</a></p>7:["$","aside",null,{"className":"hidden lg:block","children":["$","$Lb",null,{"html":"$c"}]}]
+8:["$","script","script-0",{"src":"/_next/static/chunks/2dddb3bc05093f69.js","async":true}]
+9:["$","$Ld",null,{"children":["$","$e",null,{"name":"Next.MetadataOutlet","children":"$@f"}]}]
+f:null

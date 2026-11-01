@@ -1,0 +1,209 @@
+1:"$Sreact.fragment"
+2:I[14864,["/_next/static/chunks/7923a261b80bb6e1.js","/_next/static/chunks/e09b4358027e8033.js","/_next/static/chunks/2dddb3bc05093f69.js"],"default"]
+8:I[24801,["/_next/static/chunks/7923a261b80bb6e1.js","/_next/static/chunks/e09b4358027e8033.js","/_next/static/chunks/2dddb3bc05093f69.js"],"default"]
+a:I[50183,["/_next/static/chunks/5a5b5b13c22d14f7.js","/_next/static/chunks/a484d1d3dd4b55ab.js"],"OutletBoundary"]
+b:"$Sreact.suspense"
+3:T20c2,<p>The previous post <a href="10-headless-scripts">10-headless-scripts</a> used <code>-p --force</code> to change files from scripts. This one is about <strong>output format</strong>: for the same Agent run you can choose “final text only,” “full structured JSON,” or “streaming JSON as it runs”—for CI you parse results, measure time, or show progress using these three formats.</p>
+<h2 id="three-output-formats">Three output formats</h2>
+<table>
+<thead>
+<tr>
+<th>Format</th>
+<th>Flag</th>
+<th>Best for</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td><strong>text</strong></td>
+<td>Default, or <code>--output-format text</code></td>
+<td>Human reading, final answer only, writing to a file</td>
+</tr>
+<tr>
+<td><strong>json</strong></td>
+<td><code>--output-format json</code></td>
+<td>Script parsing, CI pass/fail, extracting fields</td>
+</tr>
+<tr>
+<td><strong>stream-json</strong></td>
+<td><code>--output-format stream-json</code></td>
+<td>Live progress, tool-call tracking, long-run monitoring</td>
+</tr>
+</tbody>
+</table>
+<h3 id="text-clean-final-answer">text: Clean final answer</h3>
+<figure data-rehype-pretty-code-figure=""><pre style="background-color:#24292e;color:#e1e4e8" tabindex="0" data-language="bash" data-theme="github-dark"><code data-language="bash" data-theme="github-dark" style="display: grid;"><span data-line=""><span style="color:#B392F0">cursor</span><span style="color:#9ECBFF"> agent</span><span style="color:#79B8FF"> -p</span><span style="color:#9ECBFF"> "What is the entry point of this repo?"</span></span></code></pre></figure>
+<p>Without <code>--output-format</code> you get text: output is <strong>only the final reply</strong>, no tool calls or intermediate steps—good for pasting into docs or as a short description.</p>
+<p>In CI, to write the Agent’s conclusion to a file:</p>
+<figure data-rehype-pretty-code-figure=""><pre style="background-color:#24292e;color:#e1e4e8" tabindex="0" data-language="bash" data-theme="github-dark"><code data-language="bash" data-theme="github-dark" style="display: grid;"><span data-line=""><span style="color:#B392F0">cursor</span><span style="color:#9ECBFF"> agent</span><span style="color:#79B8FF"> -p</span><span style="color:#9ECBFF"> "Generate release notes for this version from CHANGELOG"</span><span style="color:#F97583"> ></span><span style="color:#9ECBFF"> release_notes.txt</span></span></code></pre></figure>
+<h3 id="json-for-scripts-and-ci">json: For scripts and CI</h3>
+<figure data-rehype-pretty-code-figure=""><pre style="background-color:#24292e;color:#e1e4e8" tabindex="0" data-language="bash" data-theme="github-dark"><code data-language="bash" data-theme="github-dark" style="display: grid;"><span data-line=""><span style="color:#B392F0">cursor</span><span style="color:#9ECBFF"> agent</span><span style="color:#79B8FF"> -p</span><span style="color:#79B8FF"> --output-format</span><span style="color:#9ECBFF"> json</span><span style="color:#9ECBFF"> "Analyze src/ dependencies and return JSON: { </span><span style="color:#79B8FF">\"</span><span style="color:#9ECBFF">entry</span><span style="color:#79B8FF">\"</span><span style="color:#9ECBFF">: </span><span style="color:#79B8FF">\"</span><span style="color:#9ECBFF">...</span><span style="color:#79B8FF">\"</span><span style="color:#9ECBFF">, </span><span style="color:#79B8FF">\"</span><span style="color:#9ECBFF">deps</span><span style="color:#79B8FF">\"</span><span style="color:#9ECBFF">: [...] }"</span></span></code></pre></figure>
+<p>Output is structured JSON, possibly with <code>result</code>, <code>duration_ms</code>, or fields you asked for in the prompt.<br>
+In CI you can:</p>
+<ul>
+<li>Use <code>jq</code> to get fields, check for empty, or look for keywords</li>
+<li>Use exit code and content to decide job pass/fail</li>
+</ul>
+<p>Conceptual example:</p>
+<figure data-rehype-pretty-code-figure=""><pre style="background-color:#24292e;color:#e1e4e8" tabindex="0" data-language="bash" data-theme="github-dark"><code data-language="bash" data-theme="github-dark" style="display: grid;"><span data-line=""><span style="color:#B392F0">cursor</span><span style="color:#9ECBFF"> agent</span><span style="color:#79B8FF"> -p</span><span style="color:#79B8FF"> --output-format</span><span style="color:#9ECBFF"> json</span><span style="color:#9ECBFF"> "Do a short code review; return {</span><span style="color:#79B8FF">\"</span><span style="color:#9ECBFF">ok</span><span style="color:#79B8FF">\"</span><span style="color:#9ECBFF">: true/false, </span><span style="color:#79B8FF">\"</span><span style="color:#9ECBFF">summary</span><span style="color:#79B8FF">\"</span><span style="color:#9ECBFF">: </span><span style="color:#79B8FF">\"</span><span style="color:#9ECBFF">...</span><span style="color:#79B8FF">\"</span><span style="color:#9ECBFF">}"</span><span style="color:#F97583"> |</span><span style="color:#B392F0"> jq</span><span style="color:#79B8FF"> -r</span><span style="color:#9ECBFF"> '.result'</span></span>
+<span data-line=""><span style="color:#6A737D"># Then use .ok or .summary for next steps or to fail the build</span></span></code></pre></figure>
+<p>Exact fields depend on Cursor’s docs; the point here is “json is for programmatic parsing.”</p>
+<h3 id="stream-json-live-progress-and-tool-tracking">stream-json: Live progress and tool tracking</h3>
+<figure data-rehype-pretty-code-figure=""><pre style="background-color:#24292e;color:#e1e4e8" tabindex="0" data-language="bash" data-theme="github-dark"><code data-language="bash" data-theme="github-dark" style="display: grid;"><span data-line=""><span style="color:#B392F0">cursor</span><span style="color:#9ECBFF"> agent</span><span style="color:#79B8FF"> -p</span><span style="color:#79B8FF"> --output-format</span><span style="color:#9ECBFF"> stream-json</span><span style="color:#79B8FF"> --stream-partial-output</span><span style="color:#9ECBFF"> "Analyze project and write analysis.txt"</span></span></code></pre></figure>
+<ul>
+<li>Each line is a JSON event (e.g. <code>system</code>, <code>assistant</code>, <code>tool_call</code>, <code>result</code>)</li>
+<li><code>--stream-partial-output</code> sends assistant text as <strong>incremental deltas</strong>, so you can show “live character count” or “progress %”</li>
+<li>Parse <code>tool_call</code> started/completed to see which file the Agent is reading/writing and how long it took</li>
+</ul>
+<p>Good for: long runs, showing “processing file N” in CI logs or a UI, or counting tool calls and duration.</p>
+<h2 id="ci-integration-tips">CI integration tips</h2>
+<table>
+<thead>
+<tr>
+<th>Need</th>
+<th>Suggestion</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td>Only care “did it finish and what’s the conclusion”</td>
+<td><code>text</code> + redirect to file or variable; check exit code</td>
+</tr>
+<tr>
+<td>Pass/fail based on content</td>
+<td><code>json</code> + <code>jq</code> parsing</td>
+</tr>
+<tr>
+<td>Live log or progress</td>
+<td><code>stream-json</code> + parse line by line by type/subtype</td>
+</tr>
+<tr>
+<td>Agent should edit files</td>
+<td>Add <code>--force</code> (see <a href="10-headless-scripts">10-headless-scripts</a>)</td>
+</tr>
+<tr>
+<td>Running in CI</td>
+<td>Set <code>CURSOR_API_KEY</code>; use <code>--model</code> to pin model if needed</td>
+</tr>
+</tbody>
+</table>
+<h2 id="handling-failures">Handling failures</h2>
+<ul>
+<li>When the Agent run fails, the CLI typically returns a <strong>non-zero exit code</strong></li>
+<li>In scripts use <code>if [ $? -ne 0 ]; then exit 1; fi</code> or <code>set -e</code> so CI fails correctly</li>
+<li>With json, you can also check for an <code>error</code> field or your custom <code>ok: false</code> for extra safety</li>
+</ul>
+<h2 id="summary">Summary</h2>
+<ul>
+<li><strong>text</strong>: Default, human-readable, minimal output; good for writing to a file or as description</li>
+<li><strong>json</strong>: Structured for <code>jq</code> or scripts; good for CI decisions and extraction</li>
+<li><strong>stream-json</strong> + <strong>--stream-partial-output</strong>: Live event stream; good for progress and tool tracking</li>
+<li>In CI: set <code>CURSOR_API_KEY</code>, respect exit code, and parse JSON for pass/fail when needed</li>
+</ul>
+<blockquote>
+<p>Next: <a href="12-sessions-cloud">12-sessions-cloud</a> — Session resume with <code>--resume</code> and cloud execution with <code>-c</code>.</p>
+</blockquote>0:{"buildId":"Yck3R4ooQxWkwGLT6is1X","rsc":["$","$1","c",{"children":[[["$","script",null,{"type":"application/ld+json","dangerouslySetInnerHTML":{"__html":"{\"@context\":\"https://schema.org\",\"@type\":\"Article\",\"headline\":\"Cursor CLI Output Formats and CI Integration\",\"description\":\"When to use text, json, and stream-json; parsing results in CI, live progress, and failure handling.\",\"url\":\"https://benxhub.com/en/blog/cursor/cli/11-output-ci\",\"mainEntityOfPage\":{\"@type\":\"WebPage\",\"@id\":\"https://benxhub.com/en/blog/cursor/cli/11-output-ci\"},\"datePublished\":\"2026-03-09T00:00:00.000Z\",\"dateModified\":\"2026-03-09T00:00:00.000Z\",\"keywords\":\"cursor, cli, ci, output-format, automation\",\"inLanguage\":\"en\",\"author\":{\"@type\":\"Person\",\"name\":\"BenX\",\"url\":\"https://benxhub.com\"},\"publisher\":{\"@type\":\"Organization\",\"name\":\"BenXHub Blog\",\"url\":\"https://benxhub.com\"}}"}}],["$","div",null,{"className":"mx-auto max-w-6xl px-4 py-12 sm:px-6","children":["$","div",null,{"className":"lg:grid lg:grid-cols-[1fr_240px] lg:gap-14","children":[["$","article",null,{"children":[["$","header",null,{"className":"mb-10","children":[["$","div",null,{"className":"mb-4 flex flex-wrap gap-2","children":[["$","$L2","cursor",{"href":"/en/tags/cursor","localeCookie":{"name":"NEXT_LOCALE","sameSite":"lax"},"className":"inline-flex items-center rounded-full px-2.5 py-0.5 text-xs font-medium transition-colors","style":{"background":"var(--color-code-bg)","color":"var(--color-accent)","border":"1px solid var(--color-border)"},"children":["#","cursor"]}],["$","$L2","cli",{"href":"/en/tags/cli","localeCookie":{"name":"NEXT_LOCALE","sameSite":"lax"},"className":"inline-flex items-center rounded-full px-2.5 py-0.5 text-xs font-medium transition-colors","style":{"background":"var(--color-code-bg)","color":"var(--color-accent)","border":"1px solid var(--color-border)"},"children":["#","cli"]}],["$","$L2","ci",{"href":"/en/tags/ci","localeCookie":{"name":"NEXT_LOCALE","sameSite":"lax"},"className":"inline-flex items-center rounded-full px-2.5 py-0.5 text-xs font-medium transition-colors","style":{"background":"var(--color-code-bg)","color":"var(--color-accent)","border":"1px solid var(--color-border)"},"children":["#","ci"]}],["$","$L2","output-format",{"href":"/en/tags/output-format","localeCookie":{"name":"NEXT_LOCALE","sameSite":"lax"},"className":"inline-flex items-center rounded-full px-2.5 py-0.5 text-xs font-medium transition-colors","style":{"background":"var(--color-code-bg)","color":"var(--color-accent)","border":"1px solid var(--color-border)"},"children":["#","output-format"]}],["$","$L2","automation",{"href":"/en/tags/automation","localeCookie":{"name":"NEXT_LOCALE","sameSite":"lax"},"className":"inline-flex items-center rounded-full px-2.5 py-0.5 text-xs font-medium transition-colors","style":{"background":"var(--color-code-bg)","color":"var(--color-accent)","border":"1px solid var(--color-border)"},"children":["#","automation"]}]]}],["$","h1",null,{"className":"mb-4 text-3xl leading-snug font-bold tracking-tight sm:text-4xl","style":{"color":"var(--color-text)"},"children":"Cursor CLI Output Formats and CI Integration"}],["$","div",null,{"className":"flex flex-wrap items-center gap-3 text-sm","style":{"color":"var(--color-muted)"},"children":[["$","time",null,{"dateTime":"2026-03-09","children":"Mar 9, 2026"}],["$","span",null,{"aria-hidden":"true","children":"·"}],["$","span",null,{"children":"4 min read"}]]}],"$undefined",["$","div",null,{"className":"mt-6 border-b","style":{"borderColor":"var(--color-border)"}}]]}],["$","div",null,{"className":"prose","dangerouslySetInnerHTML":{"__html":"$3"}}],"$L4"]}],"$L5"]}]}]],["$L6"],"$L7"]}],"loading":null,"isPartial":false}
+4:["$","footer",null,{"className":"mt-14 border-t pt-8","style":{"borderColor":"var(--color-border)"},"children":[["$","div",null,{"className":"mb-8 flex flex-wrap gap-2","children":[["$","$L2","cursor",{"href":"/en/tags/cursor","localeCookie":{"name":"NEXT_LOCALE","sameSite":"lax"},"className":"inline-flex items-center rounded-full px-3 py-1 text-sm font-medium transition-colors","style":{"background":"var(--color-code-bg)","color":"var(--color-accent)","border":"1px solid var(--color-border)"},"children":["#","cursor"]}],["$","$L2","cli",{"href":"/en/tags/cli","localeCookie":{"name":"NEXT_LOCALE","sameSite":"lax"},"className":"inline-flex items-center rounded-full px-3 py-1 text-sm font-medium transition-colors","style":{"background":"var(--color-code-bg)","color":"var(--color-accent)","border":"1px solid var(--color-border)"},"children":["#","cli"]}],["$","$L2","ci",{"href":"/en/tags/ci","localeCookie":{"name":"NEXT_LOCALE","sameSite":"lax"},"className":"inline-flex items-center rounded-full px-3 py-1 text-sm font-medium transition-colors","style":{"background":"var(--color-code-bg)","color":"var(--color-accent)","border":"1px solid var(--color-border)"},"children":["#","ci"]}],["$","$L2","output-format",{"href":"/en/tags/output-format","localeCookie":{"name":"NEXT_LOCALE","sameSite":"lax"},"className":"inline-flex items-center rounded-full px-3 py-1 text-sm font-medium transition-colors","style":{"background":"var(--color-code-bg)","color":"var(--color-accent)","border":"1px solid var(--color-border)"},"children":["#","output-format"]}],["$","$L2","automation",{"href":"/en/tags/automation","localeCookie":{"name":"NEXT_LOCALE","sameSite":"lax"},"className":"inline-flex items-center rounded-full px-3 py-1 text-sm font-medium transition-colors","style":{"background":"var(--color-code-bg)","color":"var(--color-accent)","border":"1px solid var(--color-border)"},"children":["#","automation"]}]]}],["$","nav",null,{"aria-label":"Post navigation","className":"grid grid-cols-1 gap-4 sm:grid-cols-2","children":[["$","$L2",null,{"href":"/en/blog/cursor/cli/10-headless-scripts","localeCookie":{"name":"NEXT_LOCALE","sameSite":"lax"},"className":"group rounded-lg border p-4 transition-colors hover:border-accent","style":{"borderColor":"var(--color-border)","background":"var(--color-surface)"},"children":[["$","p",null,{"className":"mb-1 text-xs","style":{"color":"var(--color-muted)"},"children":"← Newer"}],["$","p",null,{"className":"line-clamp-1 text-sm font-medium transition-colors group-hover:text-accent","style":{"color":"var(--color-text)"},"children":"Cursor CLI Headless Mode: --print, --force, and Scripts That Edit Files"}]]}],["$","$L2",null,{"href":"/en/blog/cursor/cli/12-sessions-cloud","localeCookie":{"name":"NEXT_LOCALE","sameSite":"lax"},"className":"group rounded-lg border p-4 text-right transition-colors hover:border-accent","style":{"borderColor":"var(--color-border)","background":"var(--color-surface)"},"children":[["$","p",null,{"className":"mb-1 text-xs","style":{"color":"var(--color-muted)"},"children":"Older →"}],["$","p",null,{"className":"line-clamp-1 text-sm font-medium transition-colors group-hover:text-accent","style":{"color":"var(--color-text)"},"children":"Cursor CLI Session Management and Cloud Execution"}]]}]]}]]}]
+9:T20c2,<p>The previous post <a href="10-headless-scripts">10-headless-scripts</a> used <code>-p --force</code> to change files from scripts. This one is about <strong>output format</strong>: for the same Agent run you can choose “final text only,” “full structured JSON,” or “streaming JSON as it runs”—for CI you parse results, measure time, or show progress using these three formats.</p>
+<h2 id="three-output-formats">Three output formats</h2>
+<table>
+<thead>
+<tr>
+<th>Format</th>
+<th>Flag</th>
+<th>Best for</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td><strong>text</strong></td>
+<td>Default, or <code>--output-format text</code></td>
+<td>Human reading, final answer only, writing to a file</td>
+</tr>
+<tr>
+<td><strong>json</strong></td>
+<td><code>--output-format json</code></td>
+<td>Script parsing, CI pass/fail, extracting fields</td>
+</tr>
+<tr>
+<td><strong>stream-json</strong></td>
+<td><code>--output-format stream-json</code></td>
+<td>Live progress, tool-call tracking, long-run monitoring</td>
+</tr>
+</tbody>
+</table>
+<h3 id="text-clean-final-answer">text: Clean final answer</h3>
+<figure data-rehype-pretty-code-figure=""><pre style="background-color:#24292e;color:#e1e4e8" tabindex="0" data-language="bash" data-theme="github-dark"><code data-language="bash" data-theme="github-dark" style="display: grid;"><span data-line=""><span style="color:#B392F0">cursor</span><span style="color:#9ECBFF"> agent</span><span style="color:#79B8FF"> -p</span><span style="color:#9ECBFF"> "What is the entry point of this repo?"</span></span></code></pre></figure>
+<p>Without <code>--output-format</code> you get text: output is <strong>only the final reply</strong>, no tool calls or intermediate steps—good for pasting into docs or as a short description.</p>
+<p>In CI, to write the Agent’s conclusion to a file:</p>
+<figure data-rehype-pretty-code-figure=""><pre style="background-color:#24292e;color:#e1e4e8" tabindex="0" data-language="bash" data-theme="github-dark"><code data-language="bash" data-theme="github-dark" style="display: grid;"><span data-line=""><span style="color:#B392F0">cursor</span><span style="color:#9ECBFF"> agent</span><span style="color:#79B8FF"> -p</span><span style="color:#9ECBFF"> "Generate release notes for this version from CHANGELOG"</span><span style="color:#F97583"> ></span><span style="color:#9ECBFF"> release_notes.txt</span></span></code></pre></figure>
+<h3 id="json-for-scripts-and-ci">json: For scripts and CI</h3>
+<figure data-rehype-pretty-code-figure=""><pre style="background-color:#24292e;color:#e1e4e8" tabindex="0" data-language="bash" data-theme="github-dark"><code data-language="bash" data-theme="github-dark" style="display: grid;"><span data-line=""><span style="color:#B392F0">cursor</span><span style="color:#9ECBFF"> agent</span><span style="color:#79B8FF"> -p</span><span style="color:#79B8FF"> --output-format</span><span style="color:#9ECBFF"> json</span><span style="color:#9ECBFF"> "Analyze src/ dependencies and return JSON: { </span><span style="color:#79B8FF">\"</span><span style="color:#9ECBFF">entry</span><span style="color:#79B8FF">\"</span><span style="color:#9ECBFF">: </span><span style="color:#79B8FF">\"</span><span style="color:#9ECBFF">...</span><span style="color:#79B8FF">\"</span><span style="color:#9ECBFF">, </span><span style="color:#79B8FF">\"</span><span style="color:#9ECBFF">deps</span><span style="color:#79B8FF">\"</span><span style="color:#9ECBFF">: [...] }"</span></span></code></pre></figure>
+<p>Output is structured JSON, possibly with <code>result</code>, <code>duration_ms</code>, or fields you asked for in the prompt.<br>
+In CI you can:</p>
+<ul>
+<li>Use <code>jq</code> to get fields, check for empty, or look for keywords</li>
+<li>Use exit code and content to decide job pass/fail</li>
+</ul>
+<p>Conceptual example:</p>
+<figure data-rehype-pretty-code-figure=""><pre style="background-color:#24292e;color:#e1e4e8" tabindex="0" data-language="bash" data-theme="github-dark"><code data-language="bash" data-theme="github-dark" style="display: grid;"><span data-line=""><span style="color:#B392F0">cursor</span><span style="color:#9ECBFF"> agent</span><span style="color:#79B8FF"> -p</span><span style="color:#79B8FF"> --output-format</span><span style="color:#9ECBFF"> json</span><span style="color:#9ECBFF"> "Do a short code review; return {</span><span style="color:#79B8FF">\"</span><span style="color:#9ECBFF">ok</span><span style="color:#79B8FF">\"</span><span style="color:#9ECBFF">: true/false, </span><span style="color:#79B8FF">\"</span><span style="color:#9ECBFF">summary</span><span style="color:#79B8FF">\"</span><span style="color:#9ECBFF">: </span><span style="color:#79B8FF">\"</span><span style="color:#9ECBFF">...</span><span style="color:#79B8FF">\"</span><span style="color:#9ECBFF">}"</span><span style="color:#F97583"> |</span><span style="color:#B392F0"> jq</span><span style="color:#79B8FF"> -r</span><span style="color:#9ECBFF"> '.result'</span></span>
+<span data-line=""><span style="color:#6A737D"># Then use .ok or .summary for next steps or to fail the build</span></span></code></pre></figure>
+<p>Exact fields depend on Cursor’s docs; the point here is “json is for programmatic parsing.”</p>
+<h3 id="stream-json-live-progress-and-tool-tracking">stream-json: Live progress and tool tracking</h3>
+<figure data-rehype-pretty-code-figure=""><pre style="background-color:#24292e;color:#e1e4e8" tabindex="0" data-language="bash" data-theme="github-dark"><code data-language="bash" data-theme="github-dark" style="display: grid;"><span data-line=""><span style="color:#B392F0">cursor</span><span style="color:#9ECBFF"> agent</span><span style="color:#79B8FF"> -p</span><span style="color:#79B8FF"> --output-format</span><span style="color:#9ECBFF"> stream-json</span><span style="color:#79B8FF"> --stream-partial-output</span><span style="color:#9ECBFF"> "Analyze project and write analysis.txt"</span></span></code></pre></figure>
+<ul>
+<li>Each line is a JSON event (e.g. <code>system</code>, <code>assistant</code>, <code>tool_call</code>, <code>result</code>)</li>
+<li><code>--stream-partial-output</code> sends assistant text as <strong>incremental deltas</strong>, so you can show “live character count” or “progress %”</li>
+<li>Parse <code>tool_call</code> started/completed to see which file the Agent is reading/writing and how long it took</li>
+</ul>
+<p>Good for: long runs, showing “processing file N” in CI logs or a UI, or counting tool calls and duration.</p>
+<h2 id="ci-integration-tips">CI integration tips</h2>
+<table>
+<thead>
+<tr>
+<th>Need</th>
+<th>Suggestion</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td>Only care “did it finish and what’s the conclusion”</td>
+<td><code>text</code> + redirect to file or variable; check exit code</td>
+</tr>
+<tr>
+<td>Pass/fail based on content</td>
+<td><code>json</code> + <code>jq</code> parsing</td>
+</tr>
+<tr>
+<td>Live log or progress</td>
+<td><code>stream-json</code> + parse line by line by type/subtype</td>
+</tr>
+<tr>
+<td>Agent should edit files</td>
+<td>Add <code>--force</code> (see <a href="10-headless-scripts">10-headless-scripts</a>)</td>
+</tr>
+<tr>
+<td>Running in CI</td>
+<td>Set <code>CURSOR_API_KEY</code>; use <code>--model</code> to pin model if needed</td>
+</tr>
+</tbody>
+</table>
+<h2 id="handling-failures">Handling failures</h2>
+<ul>
+<li>When the Agent run fails, the CLI typically returns a <strong>non-zero exit code</strong></li>
+<li>In scripts use <code>if [ $? -ne 0 ]; then exit 1; fi</code> or <code>set -e</code> so CI fails correctly</li>
+<li>With json, you can also check for an <code>error</code> field or your custom <code>ok: false</code> for extra safety</li>
+</ul>
+<h2 id="summary">Summary</h2>
+<ul>
+<li><strong>text</strong>: Default, human-readable, minimal output; good for writing to a file or as description</li>
+<li><strong>json</strong>: Structured for <code>jq</code> or scripts; good for CI decisions and extraction</li>
+<li><strong>stream-json</strong> + <strong>--stream-partial-output</strong>: Live event stream; good for progress and tool tracking</li>
+<li>In CI: set <code>CURSOR_API_KEY</code>, respect exit code, and parse JSON for pass/fail when needed</li>
+</ul>
+<blockquote>
+<p>Next: <a href="12-sessions-cloud">12-sessions-cloud</a> — Session resume with <code>--resume</code> and cloud execution with <code>-c</code>.</p>
+</blockquote>5:["$","aside",null,{"className":"hidden lg:block","children":["$","$L8",null,{"html":"$9"}]}]
+6:["$","script","script-0",{"src":"/_next/static/chunks/2dddb3bc05093f69.js","async":true}]
+7:["$","$La",null,{"children":["$","$b",null,{"name":"Next.MetadataOutlet","children":"$@c"}]}]
+c:null

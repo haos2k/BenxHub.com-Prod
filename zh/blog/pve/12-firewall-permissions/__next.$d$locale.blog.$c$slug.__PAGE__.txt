@@ -1,0 +1,443 @@
+1:"$Sreact.fragment"
+2:I[14864,["/_next/static/chunks/7923a261b80bb6e1.js","/_next/static/chunks/e09b4358027e8033.js","/_next/static/chunks/2dddb3bc05093f69.js"],"default"]
+8:I[24801,["/_next/static/chunks/7923a261b80bb6e1.js","/_next/static/chunks/e09b4358027e8033.js","/_next/static/chunks/2dddb3bc05093f69.js"],"default"]
+a:I[50183,["/_next/static/chunks/5a5b5b13c22d14f7.js","/_next/static/chunks/a484d1d3dd4b55ab.js"],"OutletBoundary"]
+b:"$Sreact.suspense"
+3:T2b5a,<p>系統跑起來了、服務也上線了，但你有沒有想過：誰能進來？進來之後能做什麼？防火牆管的是「門開給誰」，權限管的是「進來之後哪些抽屜能打開」。兩件事都做好，才不會某天醒來發現 VM 被人當礦機用。如果你的叢集還沒跑起來，可以先看看<a href="08-cluster">叢集管理</a>和<a href="06-networking">網路管理</a>那兩篇。</p>
+<h2 id="防火牆三層洋蔥式防護">防火牆：三層洋蔥式防護</h2>
+<p>PVE 的防火牆分三層，由外到內越來越細：</p>
+<pre><code>┌──────────────────────────────────┐
+│  Datacenter（整個叢集的通用規則）  │
+├──────────────────────────────────┤
+│  Host（每台節點自己的規則）        │
+├──────────────────────────────────┤
+│  VM/CT（每台虛擬機/容器的規則）    │
+└──────────────────────────────────┘
+</code></pre>
+<p>規則處理順序也是這個方向：Datacenter 先看、Host 再看、VM/CT 最後看。沒有匹配到的流量？預設 <strong>DROP</strong>——不認識的一律不放行。</p>
+<blockquote>
+<p>超級重要：防火牆預設是<strong>關的</strong>。開啟之前，一定要先設好「允許你自己連進來」的規則，不然就是經典的「把自己鎖在門外」劇情。</p>
+</blockquote>
+<h3 id="設定叢集防火牆">設定叢集防火牆</h3>
+<pre><code># /etc/pve/firewall/cluster.fw
+[OPTIONS]
+enable: 1
+policy_in: DROP
+policy_out: ACCEPT
+
+[RULES]
+IN ACCEPT -source 192.168.1.0/24 -p tcp -dport 8006  # Web GUI
+IN ACCEPT -source 192.168.1.0/24 -p tcp -dport 22     # SSH
+IN ACCEPT -p icmp                                       # Ping
+</code></pre>
+<h3 id="vm-層級防火牆">VM 層級防火牆</h3>
+<pre><code># /etc/pve/firewall/&#x3C;vmid>.fw
+[OPTIONS]
+enable: 1
+policy_in: DROP
+policy_out: ACCEPT
+
+[RULES]
+GROUP web-server
+IN ACCEPT -p tcp -dport 22 -source 10.0.0.0/8
+</code></pre>
+<h3 id="實用功能">實用功能</h3>
+<p><strong>Security Group</strong>：定義一組規則，取個名字（如 <code>web-server</code>），套用到多台 VM。就像衣服的標籤——Web Server 的穿 Web Server 的制服，Database 穿 Database 的。</p>
+<p><strong>IPSet</strong>：把一堆 IP 打包成一個集合，規則裡引用集合名稱就好。特殊的 <code>blacklist</code> IPSet 還能做全叢集黑名單。</p>
+<p><strong>Macro</strong>：預定義好的服務規則，省得你記埠號：</p>
+<table>
+<thead>
+<tr>
+<th>Macro</th>
+<th>協定/埠</th>
+<th>用途</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td>SSH</td>
+<td>TCP 22</td>
+<td>遠端連線</td>
+</tr>
+<tr>
+<td>HTTP</td>
+<td>TCP 80</td>
+<td>Web</td>
+</tr>
+<tr>
+<td>HTTPS</td>
+<td>TCP 443</td>
+<td>Web（加密）</td>
+</tr>
+<tr>
+<td>DNS</td>
+<td>TCP/UDP 53</td>
+<td>域名解析</td>
+</tr>
+<tr>
+<td>Ping</td>
+<td>ICMP</td>
+<td>連通測試</td>
+</tr>
+<tr>
+<td>MySQL</td>
+<td>TCP 3306</td>
+<td>資料庫</td>
+</tr>
+<tr>
+<td>Proxmox Web</td>
+<td>TCP 8006</td>
+<td>PVE 管理介面</td>
+</tr>
+</tbody>
+</table>
+<h2 id="權限誰能做什麼">權限：誰能做什麼</h2>
+<p>防火牆管完「誰能連進來」，接下來是「進來之後能幹嘛」。</p>
+<h3 id="五種認證後端">五種認證後端</h3>
+<table>
+<thead>
+<tr>
+<th>後端</th>
+<th>適合誰</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td>PAM</td>
+<td>主機系統管理員（root@pam 就是這個）</td>
+</tr>
+<tr>
+<td>PVE</td>
+<td>一般用戶，不需要 Linux 帳號</td>
+</tr>
+<tr>
+<td>LDAP</td>
+<td>接 OpenLDAP</td>
+</tr>
+<tr>
+<td>Active Directory</td>
+<td>接 Windows AD</td>
+</tr>
+<tr>
+<td>OpenID Connect</td>
+<td>接 Keycloak、Azure AD 這類 SSO</td>
+</tr>
+</tbody>
+</table>
+<h3 id="rbac-模型">RBAC 模型</h3>
+<p>PVE 的權限模型就是經典的 RBAC（Role-Based Access Control）：</p>
+<pre><code>使用者/群組 → 角色（Role） → 綁定到資源路徑（Path）
+</code></pre>
+<p>路徑長這樣：<code>/vms/100</code>（某台 VM）、<code>/storage/local-lvm</code>（某個儲存）、<code>/pool/dev</code>（某個資源池）。</p>
+<h3 id="內建角色一覽">內建角色一覽</h3>
+<table>
+<thead>
+<tr>
+<th>角色</th>
+<th>能做什麼</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td>Administrator</td>
+<td>什麼都能做（最高權限，別亂發）</td>
+</tr>
+<tr>
+<td>PVEAdmin</td>
+<td>管 VM/CT/儲存，但改不了系統</td>
+</tr>
+<tr>
+<td>PVEVMAdmin</td>
+<td>VM/CT 完整管理權</td>
+</tr>
+<tr>
+<td>PVEVMUser</td>
+<td>只能開關機和看 Console</td>
+</tr>
+<tr>
+<td>PVEDatastoreUser</td>
+<td>能用儲存（上傳 ISO 之類）</td>
+</tr>
+<tr>
+<td>PVEAuditor</td>
+<td>純看不能動，稽核用</td>
+</tr>
+<tr>
+<td>NoAccess</td>
+<td>什麼都不能做</td>
+</tr>
+</tbody>
+</table>
+<h3 id="實際操作">實際操作</h3>
+<figure data-rehype-pretty-code-figure=""><pre style="background-color:#24292e;color:#e1e4e8" tabindex="0" data-language="bash" data-theme="github-dark"><code data-language="bash" data-theme="github-dark" style="display: grid;"><span data-line=""><span style="color:#6A737D"># 建使用者</span></span>
+<span data-line=""><span style="color:#B392F0">pveum</span><span style="color:#9ECBFF"> user</span><span style="color:#9ECBFF"> add</span><span style="color:#9ECBFF"> dev01@pve</span><span style="color:#79B8FF"> --password</span><span style="color:#F97583"> &#x3C;</span><span style="color:#9ECBFF">passwor</span><span style="color:#E1E4E8">d</span><span style="color:#F97583">></span></span>
+<span data-line=""> </span>
+<span data-line=""><span style="color:#6A737D"># 建群組</span></span>
+<span data-line=""><span style="color:#B392F0">pveum</span><span style="color:#9ECBFF"> group</span><span style="color:#9ECBFF"> add</span><span style="color:#9ECBFF"> developers</span><span style="color:#79B8FF"> --comment</span><span style="color:#9ECBFF"> "Development Team"</span></span>
+<span data-line=""> </span>
+<span data-line=""><span style="color:#6A737D"># 使用者加入群組</span></span>
+<span data-line=""><span style="color:#B392F0">pveum</span><span style="color:#9ECBFF"> user</span><span style="color:#9ECBFF"> modify</span><span style="color:#9ECBFF"> dev01@pve</span><span style="color:#79B8FF"> --group</span><span style="color:#9ECBFF"> developers</span></span>
+<span data-line=""> </span>
+<span data-line=""><span style="color:#6A737D"># 給群組權限：只能管 dev-pool 裡的 VM</span></span>
+<span data-line=""><span style="color:#B392F0">pveum</span><span style="color:#9ECBFF"> acl</span><span style="color:#9ECBFF"> modify</span><span style="color:#9ECBFF"> /pool/dev-pool</span><span style="color:#79B8FF"> --role</span><span style="color:#9ECBFF"> PVEVMAdmin</span><span style="color:#79B8FF"> --group</span><span style="color:#9ECBFF"> developers</span></span>
+<span data-line=""> </span>
+<span data-line=""><span style="color:#6A737D"># 建 API Token（自動化用，比密碼安全，搭配 [自動化部署](13-automation) 使用更香）</span></span>
+<span data-line=""><span style="color:#B392F0">pveum</span><span style="color:#9ECBFF"> user</span><span style="color:#9ECBFF"> token</span><span style="color:#9ECBFF"> add</span><span style="color:#9ECBFF"> dev01@pve</span><span style="color:#9ECBFF"> ci-bot</span><span style="color:#79B8FF"> --privsep</span><span style="color:#79B8FF"> 0</span></span>
+<span data-line=""> </span>
+<span data-line=""><span style="color:#6A737D"># 看目前所有 ACL</span></span>
+<span data-line=""><span style="color:#B392F0">pveum</span><span style="color:#9ECBFF"> acl</span><span style="color:#9ECBFF"> list</span></span></code></pre></figure>
+<h3 id="2fa-雙因素認證">2FA 雙因素認證</h3>
+<p>所有管理員帳號都建議開 2FA。PVE 支援：</p>
+<ul>
+<li><strong>TOTP</strong>：Google Authenticator、Authy 那種六位數字</li>
+<li><strong>WebAuthn/FIDO2</strong>：YubiKey 之類的硬體金鑰</li>
+<li><strong>Recovery Keys</strong>：萬一手機掉了的救命繩</li>
+</ul>
+<p>設定路徑：Web GUI → Datacenter → Permissions → Two Factor</p>
+<h2 id="安全黃金法則">安全黃金法則</h2>
+<ol>
+<li><strong>最小權限原則</strong>：給剛好夠用的權限，不要圖方便開 Administrator</li>
+<li><strong>用群組管理</strong>：別一個一個使用者改權限，會改到懷疑人生</li>
+<li><strong>API Token 取代密碼</strong>：腳本和自動化工具用 Token，設定期限、限制權限</li>
+<li><strong>防火牆只開需要的埠</strong>：多開一個埠就多一個被攻擊的面</li>
+<li><strong>定期檢查 ACL</strong>：人會離職、專案會結束，權限要跟著收回</li>
+</ol>
+<blockquote>
+<p>弱密碼 + 管理介面對外 + root 帳號共用 = 資安事件倒數計時器。認真的。</p>
+</blockquote>
+<hr>
+<p>防火牆跟權限管理不是最有趣的題目，但絕對是最值得花時間搞好的。花一個下午設定清楚，能省你好幾個失眠的夜晚。</p>
+<p>更多細節可以查閱 <a href="https://pve.proxmox.com/wiki/Firewall">Proxmox 防火牆官方文件</a>、<a href="https://pve.proxmox.com/wiki/User_Management">PVE 使用者管理官方指南</a> 以及 <a href="https://pve.proxmox.com/pve-docs/pve-admin-guide.html#pveum_permission_management">PVE 管理手冊 - 權限章節</a>。</p>
+<h2 id="常見問題">常見問題</h2>
+<h3 id="q-pve-防火牆開啟後把自己鎖在外面怎麼辦">Q: PVE 防火牆開啟後把自己鎖在外面怎麼辦？</h3>
+<p>直接到主機的實體 Console 或 IPMI 登入，編輯 <code>/etc/pve/firewall/cluster.fw</code> 把 <code>enable</code> 改為 0 暫時關閉防火牆，修好規則後再開回來。所以開啟前一定要先加好允許自己 IP 的規則。</p>
+<h3 id="q-pve-的-rbac-權限可以限制到單台-vm-嗎">Q: PVE 的 RBAC 權限可以限制到單台 VM 嗎？</h3>
+<p>可以。權限綁定路徑支援到 <code>/vms/{vmid}</code> 層級，也能用 <code>/pool/{poolname}</code> 批次管理。搭配群組和角色，可以精確控制每個使用者能操作哪些資源。</p>
+<h3 id="q-proxmox-支援哪些-2fa-方式">Q: Proxmox 支援哪些 2FA 方式？</h3>
+<p>支援 TOTP（如 Google Authenticator）、WebAuthn/FIDO2（如 YubiKey 硬體金鑰）和 Recovery Keys 備用碼。建議所有管理員帳號至少開啟 TOTP，搭配 Recovery Keys 做備援。</p>
+<h3 id="q-pve-防火牆跟外部防火牆如-opnsense需要二選一嗎">Q: PVE 防火牆跟外部防火牆（如 OPNsense）需要二選一嗎？</h3>
+<p>不用，兩者互補。外部防火牆管南北向流量（進出網路邊界），PVE 內建防火牆管東西向流量（VM 之間、節點之間），搭配使用能做到更細緻的微分段防護。</p>
+<h2 id="下一步">下一步</h2>
+<p>安全底子打好了，來聊怎麼用 Cloud-init 和 API 把重複的工作自動化：
+<a href="13-automation">自動化部署</a></p>0:{"buildId":"Yck3R4ooQxWkwGLT6is1X","rsc":["$","$1","c",{"children":[[["$","script",null,{"type":"application/ld+json","dangerouslySetInnerHTML":{"__html":"{\"@context\":\"https://schema.org\",\"@type\":\"Article\",\"headline\":\"Proxmox VE 防火牆與權限：門鎖跟鑰匙一次講清楚\",\"description\":\"PVE 防火牆三層架構與 RBAC 權限管理完整教學：從防火牆規則設定、角色權限分配到 2FA 雙因素認證，全面保護你的叢集。\",\"url\":\"https://benxhub.com/zh/blog/pve/12-firewall-permissions\",\"mainEntityOfPage\":{\"@type\":\"WebPage\",\"@id\":\"https://benxhub.com/zh/blog/pve/12-firewall-permissions\"},\"datePublished\":\"2026-05-05T00:00:00.000Z\",\"dateModified\":\"2026-05-05T00:00:00.000Z\",\"keywords\":\"proxmox, firewall, security, permissions, rbac\",\"inLanguage\":\"zh\",\"author\":{\"@type\":\"Person\",\"name\":\"BenX\",\"url\":\"https://benxhub.com\"},\"publisher\":{\"@type\":\"Organization\",\"name\":\"BenXHub Blog\",\"url\":\"https://benxhub.com\"}}"}}],["$","div",null,{"className":"mx-auto max-w-6xl px-4 py-12 sm:px-6","children":["$","div",null,{"className":"lg:grid lg:grid-cols-[1fr_240px] lg:gap-14","children":[["$","article",null,{"children":[["$","header",null,{"className":"mb-10","children":[["$","div",null,{"className":"mb-4 flex flex-wrap gap-2","children":[["$","$L2","proxmox",{"href":"/zh/tags/proxmox","localeCookie":{"name":"NEXT_LOCALE","sameSite":"lax"},"className":"inline-flex items-center rounded-full px-2.5 py-0.5 text-xs font-medium transition-colors","style":{"background":"var(--color-code-bg)","color":"var(--color-accent)","border":"1px solid var(--color-border)"},"children":["#","proxmox"]}],["$","$L2","firewall",{"href":"/zh/tags/firewall","localeCookie":{"name":"NEXT_LOCALE","sameSite":"lax"},"className":"inline-flex items-center rounded-full px-2.5 py-0.5 text-xs font-medium transition-colors","style":{"background":"var(--color-code-bg)","color":"var(--color-accent)","border":"1px solid var(--color-border)"},"children":["#","firewall"]}],["$","$L2","security",{"href":"/zh/tags/security","localeCookie":{"name":"NEXT_LOCALE","sameSite":"lax"},"className":"inline-flex items-center rounded-full px-2.5 py-0.5 text-xs font-medium transition-colors","style":{"background":"var(--color-code-bg)","color":"var(--color-accent)","border":"1px solid var(--color-border)"},"children":["#","security"]}],["$","$L2","permissions",{"href":"/zh/tags/permissions","localeCookie":{"name":"NEXT_LOCALE","sameSite":"lax"},"className":"inline-flex items-center rounded-full px-2.5 py-0.5 text-xs font-medium transition-colors","style":{"background":"var(--color-code-bg)","color":"var(--color-accent)","border":"1px solid var(--color-border)"},"children":["#","permissions"]}],["$","$L2","rbac",{"href":"/zh/tags/rbac","localeCookie":{"name":"NEXT_LOCALE","sameSite":"lax"},"className":"inline-flex items-center rounded-full px-2.5 py-0.5 text-xs font-medium transition-colors","style":{"background":"var(--color-code-bg)","color":"var(--color-accent)","border":"1px solid var(--color-border)"},"children":["#","rbac"]}]]}],["$","h1",null,{"className":"mb-4 text-3xl leading-snug font-bold tracking-tight sm:text-4xl","style":{"color":"var(--color-text)"},"children":"Proxmox VE 防火牆與權限：門鎖跟鑰匙一次講清楚"}],["$","div",null,{"className":"flex flex-wrap items-center gap-3 text-sm","style":{"color":"var(--color-muted)"},"children":[["$","time",null,{"dateTime":"2026-05-05","children":"2026 年 5 月 5 日"}],["$","span",null,{"aria-hidden":"true","children":"·"}],["$","span",null,{"children":"8 min read"}]]}],"$undefined",["$","div",null,{"className":"mt-6 border-b","style":{"borderColor":"var(--color-border)"}}]]}],["$","div",null,{"className":"prose","dangerouslySetInnerHTML":{"__html":"$3"}}],"$L4"]}],"$L5"]}]}]],["$L6"],"$L7"]}],"loading":null,"isPartial":false}
+4:["$","footer",null,{"className":"mt-14 border-t pt-8","style":{"borderColor":"var(--color-border)"},"children":[["$","div",null,{"className":"mb-8 flex flex-wrap gap-2","children":[["$","$L2","proxmox",{"href":"/zh/tags/proxmox","localeCookie":{"name":"NEXT_LOCALE","sameSite":"lax"},"className":"inline-flex items-center rounded-full px-3 py-1 text-sm font-medium transition-colors","style":{"background":"var(--color-code-bg)","color":"var(--color-accent)","border":"1px solid var(--color-border)"},"children":["#","proxmox"]}],["$","$L2","firewall",{"href":"/zh/tags/firewall","localeCookie":{"name":"NEXT_LOCALE","sameSite":"lax"},"className":"inline-flex items-center rounded-full px-3 py-1 text-sm font-medium transition-colors","style":{"background":"var(--color-code-bg)","color":"var(--color-accent)","border":"1px solid var(--color-border)"},"children":["#","firewall"]}],["$","$L2","security",{"href":"/zh/tags/security","localeCookie":{"name":"NEXT_LOCALE","sameSite":"lax"},"className":"inline-flex items-center rounded-full px-3 py-1 text-sm font-medium transition-colors","style":{"background":"var(--color-code-bg)","color":"var(--color-accent)","border":"1px solid var(--color-border)"},"children":["#","security"]}],["$","$L2","permissions",{"href":"/zh/tags/permissions","localeCookie":{"name":"NEXT_LOCALE","sameSite":"lax"},"className":"inline-flex items-center rounded-full px-3 py-1 text-sm font-medium transition-colors","style":{"background":"var(--color-code-bg)","color":"var(--color-accent)","border":"1px solid var(--color-border)"},"children":["#","permissions"]}],["$","$L2","rbac",{"href":"/zh/tags/rbac","localeCookie":{"name":"NEXT_LOCALE","sameSite":"lax"},"className":"inline-flex items-center rounded-full px-3 py-1 text-sm font-medium transition-colors","style":{"background":"var(--color-code-bg)","color":"var(--color-accent)","border":"1px solid var(--color-border)"},"children":["#","rbac"]}]]}],["$","nav",null,{"aria-label":"文章導覽","className":"grid grid-cols-1 gap-4 sm:grid-cols-2","children":[["$","$L2",null,{"href":"/zh/blog/pve/13-automation","localeCookie":{"name":"NEXT_LOCALE","sameSite":"lax"},"className":"group rounded-lg border p-4 transition-colors hover:border-accent","style":{"borderColor":"var(--color-border)","background":"var(--color-surface)"},"children":[["$","p",null,{"className":"mb-1 text-xs","style":{"color":"var(--color-muted)"},"children":"← 較新文章"}],["$","p",null,{"className":"line-clamp-1 text-sm font-medium transition-colors group-hover:text-accent","style":{"color":"var(--color-text)"},"children":"Proxmox VE 自動化：別再手動建 VM 了"}]]}],["$","$L2",null,{"href":"/zh/blog/pve/11-gpu-passthrough","localeCookie":{"name":"NEXT_LOCALE","sameSite":"lax"},"className":"group rounded-lg border p-4 text-right transition-colors hover:border-accent","style":{"borderColor":"var(--color-border)","background":"var(--color-surface)"},"children":[["$","p",null,{"className":"mb-1 text-xs","style":{"color":"var(--color-muted)"},"children":"較舊文章 →"}],["$","p",null,{"className":"line-clamp-1 text-sm font-medium transition-colors group-hover:text-accent","style":{"color":"var(--color-text)"},"children":"Proxmox VE GPU 直通：讓 VM 摸到真正的顯卡"}]]}]]}]]}]
+9:T2b5a,<p>系統跑起來了、服務也上線了，但你有沒有想過：誰能進來？進來之後能做什麼？防火牆管的是「門開給誰」，權限管的是「進來之後哪些抽屜能打開」。兩件事都做好，才不會某天醒來發現 VM 被人當礦機用。如果你的叢集還沒跑起來，可以先看看<a href="08-cluster">叢集管理</a>和<a href="06-networking">網路管理</a>那兩篇。</p>
+<h2 id="防火牆三層洋蔥式防護">防火牆：三層洋蔥式防護</h2>
+<p>PVE 的防火牆分三層，由外到內越來越細：</p>
+<pre><code>┌──────────────────────────────────┐
+│  Datacenter（整個叢集的通用規則）  │
+├──────────────────────────────────┤
+│  Host（每台節點自己的規則）        │
+├──────────────────────────────────┤
+│  VM/CT（每台虛擬機/容器的規則）    │
+└──────────────────────────────────┘
+</code></pre>
+<p>規則處理順序也是這個方向：Datacenter 先看、Host 再看、VM/CT 最後看。沒有匹配到的流量？預設 <strong>DROP</strong>——不認識的一律不放行。</p>
+<blockquote>
+<p>超級重要：防火牆預設是<strong>關的</strong>。開啟之前，一定要先設好「允許你自己連進來」的規則，不然就是經典的「把自己鎖在門外」劇情。</p>
+</blockquote>
+<h3 id="設定叢集防火牆">設定叢集防火牆</h3>
+<pre><code># /etc/pve/firewall/cluster.fw
+[OPTIONS]
+enable: 1
+policy_in: DROP
+policy_out: ACCEPT
+
+[RULES]
+IN ACCEPT -source 192.168.1.0/24 -p tcp -dport 8006  # Web GUI
+IN ACCEPT -source 192.168.1.0/24 -p tcp -dport 22     # SSH
+IN ACCEPT -p icmp                                       # Ping
+</code></pre>
+<h3 id="vm-層級防火牆">VM 層級防火牆</h3>
+<pre><code># /etc/pve/firewall/&#x3C;vmid>.fw
+[OPTIONS]
+enable: 1
+policy_in: DROP
+policy_out: ACCEPT
+
+[RULES]
+GROUP web-server
+IN ACCEPT -p tcp -dport 22 -source 10.0.0.0/8
+</code></pre>
+<h3 id="實用功能">實用功能</h3>
+<p><strong>Security Group</strong>：定義一組規則，取個名字（如 <code>web-server</code>），套用到多台 VM。就像衣服的標籤——Web Server 的穿 Web Server 的制服，Database 穿 Database 的。</p>
+<p><strong>IPSet</strong>：把一堆 IP 打包成一個集合，規則裡引用集合名稱就好。特殊的 <code>blacklist</code> IPSet 還能做全叢集黑名單。</p>
+<p><strong>Macro</strong>：預定義好的服務規則，省得你記埠號：</p>
+<table>
+<thead>
+<tr>
+<th>Macro</th>
+<th>協定/埠</th>
+<th>用途</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td>SSH</td>
+<td>TCP 22</td>
+<td>遠端連線</td>
+</tr>
+<tr>
+<td>HTTP</td>
+<td>TCP 80</td>
+<td>Web</td>
+</tr>
+<tr>
+<td>HTTPS</td>
+<td>TCP 443</td>
+<td>Web（加密）</td>
+</tr>
+<tr>
+<td>DNS</td>
+<td>TCP/UDP 53</td>
+<td>域名解析</td>
+</tr>
+<tr>
+<td>Ping</td>
+<td>ICMP</td>
+<td>連通測試</td>
+</tr>
+<tr>
+<td>MySQL</td>
+<td>TCP 3306</td>
+<td>資料庫</td>
+</tr>
+<tr>
+<td>Proxmox Web</td>
+<td>TCP 8006</td>
+<td>PVE 管理介面</td>
+</tr>
+</tbody>
+</table>
+<h2 id="權限誰能做什麼">權限：誰能做什麼</h2>
+<p>防火牆管完「誰能連進來」，接下來是「進來之後能幹嘛」。</p>
+<h3 id="五種認證後端">五種認證後端</h3>
+<table>
+<thead>
+<tr>
+<th>後端</th>
+<th>適合誰</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td>PAM</td>
+<td>主機系統管理員（root@pam 就是這個）</td>
+</tr>
+<tr>
+<td>PVE</td>
+<td>一般用戶，不需要 Linux 帳號</td>
+</tr>
+<tr>
+<td>LDAP</td>
+<td>接 OpenLDAP</td>
+</tr>
+<tr>
+<td>Active Directory</td>
+<td>接 Windows AD</td>
+</tr>
+<tr>
+<td>OpenID Connect</td>
+<td>接 Keycloak、Azure AD 這類 SSO</td>
+</tr>
+</tbody>
+</table>
+<h3 id="rbac-模型">RBAC 模型</h3>
+<p>PVE 的權限模型就是經典的 RBAC（Role-Based Access Control）：</p>
+<pre><code>使用者/群組 → 角色（Role） → 綁定到資源路徑（Path）
+</code></pre>
+<p>路徑長這樣：<code>/vms/100</code>（某台 VM）、<code>/storage/local-lvm</code>（某個儲存）、<code>/pool/dev</code>（某個資源池）。</p>
+<h3 id="內建角色一覽">內建角色一覽</h3>
+<table>
+<thead>
+<tr>
+<th>角色</th>
+<th>能做什麼</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td>Administrator</td>
+<td>什麼都能做（最高權限，別亂發）</td>
+</tr>
+<tr>
+<td>PVEAdmin</td>
+<td>管 VM/CT/儲存，但改不了系統</td>
+</tr>
+<tr>
+<td>PVEVMAdmin</td>
+<td>VM/CT 完整管理權</td>
+</tr>
+<tr>
+<td>PVEVMUser</td>
+<td>只能開關機和看 Console</td>
+</tr>
+<tr>
+<td>PVEDatastoreUser</td>
+<td>能用儲存（上傳 ISO 之類）</td>
+</tr>
+<tr>
+<td>PVEAuditor</td>
+<td>純看不能動，稽核用</td>
+</tr>
+<tr>
+<td>NoAccess</td>
+<td>什麼都不能做</td>
+</tr>
+</tbody>
+</table>
+<h3 id="實際操作">實際操作</h3>
+<figure data-rehype-pretty-code-figure=""><pre style="background-color:#24292e;color:#e1e4e8" tabindex="0" data-language="bash" data-theme="github-dark"><code data-language="bash" data-theme="github-dark" style="display: grid;"><span data-line=""><span style="color:#6A737D"># 建使用者</span></span>
+<span data-line=""><span style="color:#B392F0">pveum</span><span style="color:#9ECBFF"> user</span><span style="color:#9ECBFF"> add</span><span style="color:#9ECBFF"> dev01@pve</span><span style="color:#79B8FF"> --password</span><span style="color:#F97583"> &#x3C;</span><span style="color:#9ECBFF">passwor</span><span style="color:#E1E4E8">d</span><span style="color:#F97583">></span></span>
+<span data-line=""> </span>
+<span data-line=""><span style="color:#6A737D"># 建群組</span></span>
+<span data-line=""><span style="color:#B392F0">pveum</span><span style="color:#9ECBFF"> group</span><span style="color:#9ECBFF"> add</span><span style="color:#9ECBFF"> developers</span><span style="color:#79B8FF"> --comment</span><span style="color:#9ECBFF"> "Development Team"</span></span>
+<span data-line=""> </span>
+<span data-line=""><span style="color:#6A737D"># 使用者加入群組</span></span>
+<span data-line=""><span style="color:#B392F0">pveum</span><span style="color:#9ECBFF"> user</span><span style="color:#9ECBFF"> modify</span><span style="color:#9ECBFF"> dev01@pve</span><span style="color:#79B8FF"> --group</span><span style="color:#9ECBFF"> developers</span></span>
+<span data-line=""> </span>
+<span data-line=""><span style="color:#6A737D"># 給群組權限：只能管 dev-pool 裡的 VM</span></span>
+<span data-line=""><span style="color:#B392F0">pveum</span><span style="color:#9ECBFF"> acl</span><span style="color:#9ECBFF"> modify</span><span style="color:#9ECBFF"> /pool/dev-pool</span><span style="color:#79B8FF"> --role</span><span style="color:#9ECBFF"> PVEVMAdmin</span><span style="color:#79B8FF"> --group</span><span style="color:#9ECBFF"> developers</span></span>
+<span data-line=""> </span>
+<span data-line=""><span style="color:#6A737D"># 建 API Token（自動化用，比密碼安全，搭配 [自動化部署](13-automation) 使用更香）</span></span>
+<span data-line=""><span style="color:#B392F0">pveum</span><span style="color:#9ECBFF"> user</span><span style="color:#9ECBFF"> token</span><span style="color:#9ECBFF"> add</span><span style="color:#9ECBFF"> dev01@pve</span><span style="color:#9ECBFF"> ci-bot</span><span style="color:#79B8FF"> --privsep</span><span style="color:#79B8FF"> 0</span></span>
+<span data-line=""> </span>
+<span data-line=""><span style="color:#6A737D"># 看目前所有 ACL</span></span>
+<span data-line=""><span style="color:#B392F0">pveum</span><span style="color:#9ECBFF"> acl</span><span style="color:#9ECBFF"> list</span></span></code></pre></figure>
+<h3 id="2fa-雙因素認證">2FA 雙因素認證</h3>
+<p>所有管理員帳號都建議開 2FA。PVE 支援：</p>
+<ul>
+<li><strong>TOTP</strong>：Google Authenticator、Authy 那種六位數字</li>
+<li><strong>WebAuthn/FIDO2</strong>：YubiKey 之類的硬體金鑰</li>
+<li><strong>Recovery Keys</strong>：萬一手機掉了的救命繩</li>
+</ul>
+<p>設定路徑：Web GUI → Datacenter → Permissions → Two Factor</p>
+<h2 id="安全黃金法則">安全黃金法則</h2>
+<ol>
+<li><strong>最小權限原則</strong>：給剛好夠用的權限，不要圖方便開 Administrator</li>
+<li><strong>用群組管理</strong>：別一個一個使用者改權限，會改到懷疑人生</li>
+<li><strong>API Token 取代密碼</strong>：腳本和自動化工具用 Token，設定期限、限制權限</li>
+<li><strong>防火牆只開需要的埠</strong>：多開一個埠就多一個被攻擊的面</li>
+<li><strong>定期檢查 ACL</strong>：人會離職、專案會結束，權限要跟著收回</li>
+</ol>
+<blockquote>
+<p>弱密碼 + 管理介面對外 + root 帳號共用 = 資安事件倒數計時器。認真的。</p>
+</blockquote>
+<hr>
+<p>防火牆跟權限管理不是最有趣的題目，但絕對是最值得花時間搞好的。花一個下午設定清楚，能省你好幾個失眠的夜晚。</p>
+<p>更多細節可以查閱 <a href="https://pve.proxmox.com/wiki/Firewall">Proxmox 防火牆官方文件</a>、<a href="https://pve.proxmox.com/wiki/User_Management">PVE 使用者管理官方指南</a> 以及 <a href="https://pve.proxmox.com/pve-docs/pve-admin-guide.html#pveum_permission_management">PVE 管理手冊 - 權限章節</a>。</p>
+<h2 id="常見問題">常見問題</h2>
+<h3 id="q-pve-防火牆開啟後把自己鎖在外面怎麼辦">Q: PVE 防火牆開啟後把自己鎖在外面怎麼辦？</h3>
+<p>直接到主機的實體 Console 或 IPMI 登入，編輯 <code>/etc/pve/firewall/cluster.fw</code> 把 <code>enable</code> 改為 0 暫時關閉防火牆，修好規則後再開回來。所以開啟前一定要先加好允許自己 IP 的規則。</p>
+<h3 id="q-pve-的-rbac-權限可以限制到單台-vm-嗎">Q: PVE 的 RBAC 權限可以限制到單台 VM 嗎？</h3>
+<p>可以。權限綁定路徑支援到 <code>/vms/{vmid}</code> 層級，也能用 <code>/pool/{poolname}</code> 批次管理。搭配群組和角色，可以精確控制每個使用者能操作哪些資源。</p>
+<h3 id="q-proxmox-支援哪些-2fa-方式">Q: Proxmox 支援哪些 2FA 方式？</h3>
+<p>支援 TOTP（如 Google Authenticator）、WebAuthn/FIDO2（如 YubiKey 硬體金鑰）和 Recovery Keys 備用碼。建議所有管理員帳號至少開啟 TOTP，搭配 Recovery Keys 做備援。</p>
+<h3 id="q-pve-防火牆跟外部防火牆如-opnsense需要二選一嗎">Q: PVE 防火牆跟外部防火牆（如 OPNsense）需要二選一嗎？</h3>
+<p>不用，兩者互補。外部防火牆管南北向流量（進出網路邊界），PVE 內建防火牆管東西向流量（VM 之間、節點之間），搭配使用能做到更細緻的微分段防護。</p>
+<h2 id="下一步">下一步</h2>
+<p>安全底子打好了，來聊怎麼用 Cloud-init 和 API 把重複的工作自動化：
+<a href="13-automation">自動化部署</a></p>5:["$","aside",null,{"className":"hidden lg:block","children":["$","$L8",null,{"html":"$9"}]}]
+6:["$","script","script-0",{"src":"/_next/static/chunks/2dddb3bc05093f69.js","async":true}]
+7:["$","$La",null,{"children":["$","$b",null,{"name":"Next.MetadataOutlet","children":"$@c"}]}]
+c:null

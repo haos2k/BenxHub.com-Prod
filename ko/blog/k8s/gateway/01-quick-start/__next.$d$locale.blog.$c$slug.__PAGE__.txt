@@ -1,0 +1,245 @@
+1:"$Sreact.fragment"
+2:I[14864,["/_next/static/chunks/7923a261b80bb6e1.js","/_next/static/chunks/e09b4358027e8033.js","/_next/static/chunks/2dddb3bc05093f69.js"],"default"]
+8:I[24801,["/_next/static/chunks/7923a261b80bb6e1.js","/_next/static/chunks/e09b4358027e8033.js","/_next/static/chunks/2dddb3bc05093f69.js"],"default"]
+a:I[50183,["/_next/static/chunks/5a5b5b13c22d14f7.js","/_next/static/chunks/a484d1d3dd4b55ab.js"],"OutletBoundary"]
+b:"$Sreact.suspense"
+3:T3369,<p>이 글의 목표는 단순합니다. <strong>철학은 건너뛰고, Envoy Gateway를 그냥 띄워봅시다.</strong> 예제 서비스에 성공적으로 요청을 보냈다면, 아직도 문서 첫 화면에서 헤매는 사람들보다 이미 한발 앞선 겁니다.</p>
+<h2 id="사전-준비">사전 준비</h2>
+<p>최소 한 개 이상의 동작하는 Kubernetes 클러스터가 필요합니다. 예를 들면:</p>
+<ul>
+<li>로컬: <code>kind</code>, <code>minikube</code>, <code>k3d</code></li>
+<li>클라우드: EKS, GKE, AKS</li>
+<li>홈랩: K3s + MetalLB 조합도 가능</li>
+</ul>
+<p>추가로 필요한 것:</p>
+<ul>
+<li><code>kubectl</code></li>
+<li><code>helm</code></li>
+<li><code>LoadBalancer</code> 주소를 프로비저닝할 수 있는 클러스터, 혹은 <code>port-forward</code> 사용을 감수할 수 있는 환경</li>
+</ul>
+<blockquote>
+<p>⚠️ 클러스터가 <code>LoadBalancer</code>를 지원하지 않는다면 공식 문서는 MetalLB와 함께 쓰는 것을 권장합니다. 외부 주소가 없다고 끝장은 아닙니다. 대신 <code>port-forward</code>로 테스트하면 됩니다.</p>
+</blockquote>
+<h2 id="1단계-envoy-gateway-설치">1단계: Envoy Gateway 설치</h2>
+<p>컨트롤 플레인을 설치합니다:</p>
+<figure data-rehype-pretty-code-figure=""><pre style="background-color:#24292e;color:#e1e4e8" tabindex="0" data-language="bash" data-theme="github-dark"><code data-language="bash" data-theme="github-dark" style="display: grid;"><span data-line=""><span style="color:#B392F0">helm</span><span style="color:#9ECBFF"> install</span><span style="color:#9ECBFF"> eg</span><span style="color:#9ECBFF"> oci://docker.io/envoyproxy/gateway-helm</span><span style="color:#79B8FF"> \</span></span>
+<span data-line=""><span style="color:#79B8FF">  --version</span><span style="color:#9ECBFF"> v1.7.0</span><span style="color:#79B8FF"> \</span></span>
+<span data-line=""><span style="color:#79B8FF">  -n</span><span style="color:#9ECBFF"> envoy-gateway-system</span><span style="color:#79B8FF"> \</span></span>
+<span data-line=""><span style="color:#79B8FF">  --create-namespace</span></span></code></pre></figure>
+<p>준비될 때까지 기다립니다:</p>
+<figure data-rehype-pretty-code-figure=""><pre style="background-color:#24292e;color:#e1e4e8" tabindex="0" data-language="bash" data-theme="github-dark"><code data-language="bash" data-theme="github-dark" style="display: grid;"><span data-line=""><span style="color:#B392F0">kubectl</span><span style="color:#9ECBFF"> wait</span><span style="color:#79B8FF"> --timeout=5m</span><span style="color:#79B8FF"> -n</span><span style="color:#9ECBFF"> envoy-gateway-system</span><span style="color:#79B8FF"> \</span></span>
+<span data-line=""><span style="color:#9ECBFF">  deployment/envoy-gateway</span><span style="color:#79B8FF"> \</span></span>
+<span data-line=""><span style="color:#79B8FF">  --for=condition=Available</span></span></code></pre></figure>
+<p>이 명령이 끝나면 Envoy Gateway 컨트롤러가 클러스터에서 실행 중인 상태입니다. 이제 <code>Gateway API</code> 리소스를 읽고, 이에 대응하는 Envoy 설정을 생성할 수 있습니다.</p>
+<h2 id="2단계-공식-quickstart-리소스-적용">2단계: 공식 Quickstart 리소스 적용</h2>
+<p>공식 저장소는 다음이 모두 포함된 번들 예제를 제공합니다:</p>
+<ul>
+<li><code>GatewayClass</code></li>
+<li><code>Gateway</code></li>
+<li><code>HTTPRoute</code></li>
+<li>샘플 백엔드 앱</li>
+</ul>
+<p>바로 적용해 봅시다:</p>
+<figure data-rehype-pretty-code-figure=""><pre style="background-color:#24292e;color:#e1e4e8" tabindex="0" data-language="bash" data-theme="github-dark"><code data-language="bash" data-theme="github-dark" style="display: grid;"><span data-line=""><span style="color:#B392F0">kubectl</span><span style="color:#9ECBFF"> apply</span><span style="color:#79B8FF"> -f</span><span style="color:#79B8FF"> \</span></span>
+<span data-line=""><span style="color:#9ECBFF">  https://github.com/envoyproxy/gateway/releases/download/v1.7.0/quickstart.yaml</span><span style="color:#79B8FF"> \</span></span>
+<span data-line=""><span style="color:#79B8FF">  -n</span><span style="color:#9ECBFF"> default</span></span></code></pre></figure>
+<p>이걸 공식 팀이 여러분을 위해 완성된 데모 장면을 통째로 깔아준다고 생각하면 됩니다. 먼저 돌려보고, 세부 구조는 나중에 분해해도 됩니다.</p>
+<h2 id="3단계-트래픽이-실제로-흐르는지-확인">3단계: 트래픽이 실제로 흐르는지 확인</h2>
+<h3 id="옵션-a-클러스터에-loadbalancer가-있는-경우">옵션 A: 클러스터에 LoadBalancer가 있는 경우</h3>
+<p>Gateway 주소를 가져옵니다:</p>
+<figure data-rehype-pretty-code-figure=""><pre style="background-color:#24292e;color:#e1e4e8" tabindex="0" data-language="bash" data-theme="github-dark"><code data-language="bash" data-theme="github-dark" style="display: grid;"><span data-line=""><span style="color:#F97583">export</span><span style="color:#E1E4E8"> GATEWAY_HOST</span><span style="color:#F97583">=</span><span style="color:#E1E4E8">$(</span><span style="color:#B392F0">kubectl</span><span style="color:#9ECBFF"> get</span><span style="color:#9ECBFF"> gateway/eg</span><span style="color:#79B8FF"> -o</span><span style="color:#9ECBFF"> jsonpath='{.status.addresses[0].value}'</span><span style="color:#E1E4E8">)</span></span></code></pre></figure>
+<p>요청을 보냅니다:</p>
+<figure data-rehype-pretty-code-figure=""><pre style="background-color:#24292e;color:#e1e4e8" tabindex="0" data-language="bash" data-theme="github-dark"><code data-language="bash" data-theme="github-dark" style="display: grid;"><span data-line=""><span style="color:#B392F0">curl</span><span style="color:#79B8FF"> --verbose</span><span style="color:#79B8FF"> \</span></span>
+<span data-line=""><span style="color:#79B8FF">  --header</span><span style="color:#9ECBFF"> "Host: www.example.com"</span><span style="color:#79B8FF"> \</span></span>
+<span data-line=""><span style="color:#9ECBFF">  http://</span><span style="color:#E1E4E8">$GATEWAY_HOST</span><span style="color:#9ECBFF">/get</span></span></code></pre></figure>
+<p>HTTP <code>200</code>이 반환되면 다음을 의미합니다:</p>
+<ul>
+<li>Gateway가 정상 동작하는 ingress 역할을 하고 있음</li>
+<li>HTTPRoute가 성공적으로 attach 되었음</li>
+<li>백엔드 서비스로 올바르게 라우팅되고 있음</li>
+</ul>
+<h3 id="옵션-b-loadbalancer-없음-port-forward-사용">옵션 B: LoadBalancer 없음, <code>port-forward</code> 사용</h3>
+<p>Envoy 서비스를 찾습니다:</p>
+<figure data-rehype-pretty-code-figure=""><pre style="background-color:#24292e;color:#e1e4e8" tabindex="0" data-language="bash" data-theme="github-dark"><code data-language="bash" data-theme="github-dark" style="display: grid;"><span data-line=""><span style="color:#F97583">export</span><span style="color:#E1E4E8"> ENVOY_SERVICE</span><span style="color:#F97583">=</span><span style="color:#E1E4E8">$(</span><span style="color:#B392F0">kubectl</span><span style="color:#9ECBFF"> get</span><span style="color:#9ECBFF"> svc</span><span style="color:#79B8FF"> -n</span><span style="color:#9ECBFF"> envoy-gateway-system</span><span style="color:#79B8FF"> \</span></span>
+<span data-line=""><span style="color:#79B8FF">  --selector=gateway.envoyproxy.io/owning-gateway-namespace=default,gateway.envoyproxy.io/owning-gateway-name=eg</span><span style="color:#79B8FF"> \</span></span>
+<span data-line=""><span style="color:#79B8FF">  -o</span><span style="color:#9ECBFF"> jsonpath='{.items[0].metadata.name}'</span><span style="color:#E1E4E8">)</span></span></code></pre></figure>
+<p>로컬 포트 <code>8888</code>을 Gateway 포트 <code>80</code>으로 포워딩합니다:</p>
+<figure data-rehype-pretty-code-figure=""><pre style="background-color:#24292e;color:#e1e4e8" tabindex="0" data-language="bash" data-theme="github-dark"><code data-language="bash" data-theme="github-dark" style="display: grid;"><span data-line=""><span style="color:#B392F0">kubectl</span><span style="color:#79B8FF"> -n</span><span style="color:#9ECBFF"> envoy-gateway-system</span><span style="color:#9ECBFF"> port-forward</span><span style="color:#9ECBFF"> service/</span><span style="color:#E1E4E8">${ENVOY_SERVICE} </span><span style="color:#9ECBFF">8888:80</span></span></code></pre></figure>
+<p>다른 터미널에서:</p>
+<figure data-rehype-pretty-code-figure=""><pre style="background-color:#24292e;color:#e1e4e8" tabindex="0" data-language="bash" data-theme="github-dark"><code data-language="bash" data-theme="github-dark" style="display: grid;"><span data-line=""><span style="color:#B392F0">curl</span><span style="color:#79B8FF"> --verbose</span><span style="color:#79B8FF"> \</span></span>
+<span data-line=""><span style="color:#79B8FF">  --header</span><span style="color:#9ECBFF"> "Host: www.example.com"</span><span style="color:#79B8FF"> \</span></span>
+<span data-line=""><span style="color:#9ECBFF">  http://localhost:8888/get</span></span></code></pre></figure>
+<p>이건 로컬 테스트 경로입니다. 약간 뒷문으로 들어가는 느낌은 있지만, 라우팅만 검증되면 괜찮습니다. 엔지니어링이란 원래 "먼저 되게 만들고, 그다음 우아하게 만든다"에 가깝기도 하니까요.</p>
+<h2 id="문제가-생기면-어디를-볼까">문제가 생기면 어디를 볼까</h2>
+<p>가장 흔한 문제는 Envoy Gateway 자체가 고장 난 것이 아니라, 체인의 한 구간이 연결되지 않은 경우입니다:</p>
+<table>
+<thead>
+<tr>
+<th>증상</th>
+<th>먼저 확인할 것</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td><code>gateway/eg</code>에 주소가 없음</td>
+<td>클러스터에 <code>LoadBalancer</code> 구현이 있는가?</td>
+</tr>
+<tr>
+<td><code>curl</code>이 404 또는 503 반환</td>
+<td><code>HTTPRoute</code>, <code>Service</code>, 백엔드 Pod 상태</td>
+</tr>
+<tr>
+<td><code>kubectl wait</code>가 멈춤</td>
+<td><code>envoy-gateway-system</code>의 Pod가 실행 중인가?</td>
+</tr>
+</tbody>
+</table>
+<p>유용한 명령어:</p>
+<figure data-rehype-pretty-code-figure=""><pre style="background-color:#24292e;color:#e1e4e8" tabindex="0" data-language="bash" data-theme="github-dark"><code data-language="bash" data-theme="github-dark" style="display: grid;"><span data-line=""><span style="color:#B392F0">kubectl</span><span style="color:#9ECBFF"> get</span><span style="color:#9ECBFF"> pods</span><span style="color:#79B8FF"> -n</span><span style="color:#9ECBFF"> envoy-gateway-system</span></span>
+<span data-line=""><span style="color:#B392F0">kubectl</span><span style="color:#9ECBFF"> get</span><span style="color:#9ECBFF"> gatewayclass</span></span>
+<span data-line=""><span style="color:#B392F0">kubectl</span><span style="color:#9ECBFF"> get</span><span style="color:#9ECBFF"> gateway</span><span style="color:#79B8FF"> -A</span></span>
+<span data-line=""><span style="color:#B392F0">kubectl</span><span style="color:#9ECBFF"> get</span><span style="color:#9ECBFF"> httproute</span><span style="color:#79B8FF"> -A</span></span>
+<span data-line=""><span style="color:#B392F0">kubectl</span><span style="color:#9ECBFF"> get</span><span style="color:#9ECBFF"> svc,pod</span><span style="color:#79B8FF"> -n</span><span style="color:#9ECBFF"> default</span></span></code></pre></figure>
+<p>Gateway 상태를 더 깊게 보려면:</p>
+<figure data-rehype-pretty-code-figure=""><pre style="background-color:#24292e;color:#e1e4e8" tabindex="0" data-language="bash" data-theme="github-dark"><code data-language="bash" data-theme="github-dark" style="display: grid;"><span data-line=""><span style="color:#B392F0">kubectl</span><span style="color:#9ECBFF"> get</span><span style="color:#9ECBFF"> gateway/eg</span><span style="color:#79B8FF"> -o</span><span style="color:#9ECBFF"> yaml</span></span></code></pre></figure>
+<p>핵심 체크 포인트:</p>
+<ul>
+<li><code>status.addresses</code></li>
+<li>Listener condition</li>
+<li>Route가 accepted 되었는지 여부</li>
+</ul>
+<h2 id="방금-실제로-한-일">방금 실제로 한 일</h2>
+<p>몇 개의 명령만 실행했지만, 사실 end-to-end 체인 전체를 완료한 겁니다:</p>
+<ol>
+<li><code>Envoy Gateway</code> 설치</li>
+<li>클러스터가 어떤 gateway controller를 쓸지 알려주는 <code>GatewayClass</code> 생성</li>
+<li>ingress 포트와 프로토콜을 선언하는 <code>Gateway</code> 생성</li>
+<li>트래픽을 백엔드 서비스로 보내는 <code>HTTPRoute</code> 생성</li>
+<li>Envoy Gateway가 이 선언들을 Envoy Proxy가 실행 가능한 설정으로 변환</li>
+</ol>
+<p>바로 이 점 때문에 Gateway API를 쓸 가치가 있습니다. 여러분은 Kubernetes 리소스를 작성하지, proxy 설정 파일 더미를 손으로 유지하지 않습니다.</p>
+<h2 id="다음-단계">다음 단계</h2>
+<p>이제 첫 요청이 흐르기 시작했으니, 다음 글에서는 각 리소스가 실제로 어떤 일을 하는지 살펴보며 사고 모델을 세웁니다:
+👉 <a href="02-core-concepts">핵심 개념</a></p>0:{"buildId":"Yck3R4ooQxWkwGLT6is1X","rsc":["$","$1","c",{"children":[[["$","script",null,{"type":"application/ld+json","dangerouslySetInnerHTML":{"__html":"{\"@context\":\"https://schema.org\",\"@type\":\"Article\",\"headline\":\"Envoy Gateway 빠른 시작: 10분 안에 첫 요청 통과시키기\",\"description\":\"공식 quickstart로 Envoy Gateway를 설치하고, Gateway와 HTTPRoute를 적용한 뒤, 요청이 실제로 흐르는지 확인합니다.\",\"url\":\"https://benxhub.com/ko/blog/k8s/gateway/01-quick-start\",\"mainEntityOfPage\":{\"@type\":\"WebPage\",\"@id\":\"https://benxhub.com/ko/blog/k8s/gateway/01-quick-start\"},\"datePublished\":\"2026-03-10T00:00:00.000Z\",\"dateModified\":\"2026-03-10T00:00:00.000Z\",\"keywords\":\"kubernetes, envoy-gateway, gateway-api, quick-start, httproute\",\"inLanguage\":\"ko\",\"author\":{\"@type\":\"Person\",\"name\":\"BenX\",\"url\":\"https://benxhub.com\"},\"publisher\":{\"@type\":\"Organization\",\"name\":\"BenXHub Blog\",\"url\":\"https://benxhub.com\"}}"}}],["$","div",null,{"className":"mx-auto max-w-6xl px-4 py-12 sm:px-6","children":["$","div",null,{"className":"lg:grid lg:grid-cols-[1fr_240px] lg:gap-14","children":[["$","article",null,{"children":[["$","header",null,{"className":"mb-10","children":[["$","div",null,{"className":"mb-4 flex flex-wrap gap-2","children":[["$","$L2","kubernetes",{"href":"/ko/tags/kubernetes","localeCookie":{"name":"NEXT_LOCALE","sameSite":"lax"},"className":"inline-flex items-center rounded-full px-2.5 py-0.5 text-xs font-medium transition-colors","style":{"background":"var(--color-code-bg)","color":"var(--color-accent)","border":"1px solid var(--color-border)"},"children":["#","kubernetes"]}],["$","$L2","envoy-gateway",{"href":"/ko/tags/envoy-gateway","localeCookie":{"name":"NEXT_LOCALE","sameSite":"lax"},"className":"inline-flex items-center rounded-full px-2.5 py-0.5 text-xs font-medium transition-colors","style":{"background":"var(--color-code-bg)","color":"var(--color-accent)","border":"1px solid var(--color-border)"},"children":["#","envoy-gateway"]}],["$","$L2","gateway-api",{"href":"/ko/tags/gateway-api","localeCookie":{"name":"NEXT_LOCALE","sameSite":"lax"},"className":"inline-flex items-center rounded-full px-2.5 py-0.5 text-xs font-medium transition-colors","style":{"background":"var(--color-code-bg)","color":"var(--color-accent)","border":"1px solid var(--color-border)"},"children":["#","gateway-api"]}],["$","$L2","quick-start",{"href":"/ko/tags/quick-start","localeCookie":{"name":"NEXT_LOCALE","sameSite":"lax"},"className":"inline-flex items-center rounded-full px-2.5 py-0.5 text-xs font-medium transition-colors","style":{"background":"var(--color-code-bg)","color":"var(--color-accent)","border":"1px solid var(--color-border)"},"children":["#","quick-start"]}],["$","$L2","httproute",{"href":"/ko/tags/httproute","localeCookie":{"name":"NEXT_LOCALE","sameSite":"lax"},"className":"inline-flex items-center rounded-full px-2.5 py-0.5 text-xs font-medium transition-colors","style":{"background":"var(--color-code-bg)","color":"var(--color-accent)","border":"1px solid var(--color-border)"},"children":["#","httproute"]}]]}],["$","h1",null,{"className":"mb-4 text-3xl leading-snug font-bold tracking-tight sm:text-4xl","style":{"color":"var(--color-text)"},"children":"Envoy Gateway 빠른 시작: 10분 안에 첫 요청 통과시키기"}],["$","div",null,{"className":"flex flex-wrap items-center gap-3 text-sm","style":{"color":"var(--color-muted)"},"children":[["$","time",null,{"dateTime":"2026-03-10","children":"2026년 3월 10일"}],["$","span",null,{"aria-hidden":"true","children":"·"}],["$","span",null,{"children":"6 min read"}]]}],"$undefined",["$","div",null,{"className":"mt-6 border-b","style":{"borderColor":"var(--color-border)"}}]]}],["$","div",null,{"className":"prose","dangerouslySetInnerHTML":{"__html":"$3"}}],"$L4"]}],"$L5"]}]}]],["$L6"],"$L7"]}],"loading":null,"isPartial":false}
+4:["$","footer",null,{"className":"mt-14 border-t pt-8","style":{"borderColor":"var(--color-border)"},"children":[["$","div",null,{"className":"mb-8 flex flex-wrap gap-2","children":[["$","$L2","kubernetes",{"href":"/ko/tags/kubernetes","localeCookie":{"name":"NEXT_LOCALE","sameSite":"lax"},"className":"inline-flex items-center rounded-full px-3 py-1 text-sm font-medium transition-colors","style":{"background":"var(--color-code-bg)","color":"var(--color-accent)","border":"1px solid var(--color-border)"},"children":["#","kubernetes"]}],["$","$L2","envoy-gateway",{"href":"/ko/tags/envoy-gateway","localeCookie":{"name":"NEXT_LOCALE","sameSite":"lax"},"className":"inline-flex items-center rounded-full px-3 py-1 text-sm font-medium transition-colors","style":{"background":"var(--color-code-bg)","color":"var(--color-accent)","border":"1px solid var(--color-border)"},"children":["#","envoy-gateway"]}],["$","$L2","gateway-api",{"href":"/ko/tags/gateway-api","localeCookie":{"name":"NEXT_LOCALE","sameSite":"lax"},"className":"inline-flex items-center rounded-full px-3 py-1 text-sm font-medium transition-colors","style":{"background":"var(--color-code-bg)","color":"var(--color-accent)","border":"1px solid var(--color-border)"},"children":["#","gateway-api"]}],["$","$L2","quick-start",{"href":"/ko/tags/quick-start","localeCookie":{"name":"NEXT_LOCALE","sameSite":"lax"},"className":"inline-flex items-center rounded-full px-3 py-1 text-sm font-medium transition-colors","style":{"background":"var(--color-code-bg)","color":"var(--color-accent)","border":"1px solid var(--color-border)"},"children":["#","quick-start"]}],["$","$L2","httproute",{"href":"/ko/tags/httproute","localeCookie":{"name":"NEXT_LOCALE","sameSite":"lax"},"className":"inline-flex items-center rounded-full px-3 py-1 text-sm font-medium transition-colors","style":{"background":"var(--color-code-bg)","color":"var(--color-accent)","border":"1px solid var(--color-border)"},"children":["#","httproute"]}]]}],["$","nav",null,{"aria-label":"글 탐색","className":"grid grid-cols-1 gap-4 sm:grid-cols-2","children":[["$","$L2",null,{"href":"/ko/blog/k8s/gateway/00-overview","localeCookie":{"name":"NEXT_LOCALE","sameSite":"lax"},"className":"group rounded-lg border p-4 transition-colors hover:border-accent","style":{"borderColor":"var(--color-border)","background":"var(--color-surface)"},"children":[["$","p",null,{"className":"mb-1 text-xs","style":{"color":"var(--color-muted)"},"children":"← 최신 글"}],["$","p",null,{"className":"line-clamp-1 text-sm font-medium transition-colors group-hover:text-accent","style":{"color":"var(--color-text)"},"children":"K8S Envoy Gateway 시리즈 개요: Ingress보다 더 현대적인 트래픽 진입 방식"}]]}],["$","$L2",null,{"href":"/ko/blog/k8s/gateway/02-core-concepts","localeCookie":{"name":"NEXT_LOCALE","sameSite":"lax"},"className":"group rounded-lg border p-4 text-right transition-colors hover:border-accent","style":{"borderColor":"var(--color-border)","background":"var(--color-surface)"},"children":[["$","p",null,{"className":"mb-1 text-xs","style":{"color":"var(--color-muted)"},"children":"이전 글 →"}],["$","p",null,{"className":"line-clamp-1 text-sm font-medium transition-colors group-hover:text-accent","style":{"color":"var(--color-text)"},"children":"Envoy Gateway 핵심 개념: Gateway, Listener, Proxy, 그리고 Route 계열 완전 해설"}]]}]]}]]}]
+9:T3369,<p>이 글의 목표는 단순합니다. <strong>철학은 건너뛰고, Envoy Gateway를 그냥 띄워봅시다.</strong> 예제 서비스에 성공적으로 요청을 보냈다면, 아직도 문서 첫 화면에서 헤매는 사람들보다 이미 한발 앞선 겁니다.</p>
+<h2 id="사전-준비">사전 준비</h2>
+<p>최소 한 개 이상의 동작하는 Kubernetes 클러스터가 필요합니다. 예를 들면:</p>
+<ul>
+<li>로컬: <code>kind</code>, <code>minikube</code>, <code>k3d</code></li>
+<li>클라우드: EKS, GKE, AKS</li>
+<li>홈랩: K3s + MetalLB 조합도 가능</li>
+</ul>
+<p>추가로 필요한 것:</p>
+<ul>
+<li><code>kubectl</code></li>
+<li><code>helm</code></li>
+<li><code>LoadBalancer</code> 주소를 프로비저닝할 수 있는 클러스터, 혹은 <code>port-forward</code> 사용을 감수할 수 있는 환경</li>
+</ul>
+<blockquote>
+<p>⚠️ 클러스터가 <code>LoadBalancer</code>를 지원하지 않는다면 공식 문서는 MetalLB와 함께 쓰는 것을 권장합니다. 외부 주소가 없다고 끝장은 아닙니다. 대신 <code>port-forward</code>로 테스트하면 됩니다.</p>
+</blockquote>
+<h2 id="1단계-envoy-gateway-설치">1단계: Envoy Gateway 설치</h2>
+<p>컨트롤 플레인을 설치합니다:</p>
+<figure data-rehype-pretty-code-figure=""><pre style="background-color:#24292e;color:#e1e4e8" tabindex="0" data-language="bash" data-theme="github-dark"><code data-language="bash" data-theme="github-dark" style="display: grid;"><span data-line=""><span style="color:#B392F0">helm</span><span style="color:#9ECBFF"> install</span><span style="color:#9ECBFF"> eg</span><span style="color:#9ECBFF"> oci://docker.io/envoyproxy/gateway-helm</span><span style="color:#79B8FF"> \</span></span>
+<span data-line=""><span style="color:#79B8FF">  --version</span><span style="color:#9ECBFF"> v1.7.0</span><span style="color:#79B8FF"> \</span></span>
+<span data-line=""><span style="color:#79B8FF">  -n</span><span style="color:#9ECBFF"> envoy-gateway-system</span><span style="color:#79B8FF"> \</span></span>
+<span data-line=""><span style="color:#79B8FF">  --create-namespace</span></span></code></pre></figure>
+<p>준비될 때까지 기다립니다:</p>
+<figure data-rehype-pretty-code-figure=""><pre style="background-color:#24292e;color:#e1e4e8" tabindex="0" data-language="bash" data-theme="github-dark"><code data-language="bash" data-theme="github-dark" style="display: grid;"><span data-line=""><span style="color:#B392F0">kubectl</span><span style="color:#9ECBFF"> wait</span><span style="color:#79B8FF"> --timeout=5m</span><span style="color:#79B8FF"> -n</span><span style="color:#9ECBFF"> envoy-gateway-system</span><span style="color:#79B8FF"> \</span></span>
+<span data-line=""><span style="color:#9ECBFF">  deployment/envoy-gateway</span><span style="color:#79B8FF"> \</span></span>
+<span data-line=""><span style="color:#79B8FF">  --for=condition=Available</span></span></code></pre></figure>
+<p>이 명령이 끝나면 Envoy Gateway 컨트롤러가 클러스터에서 실행 중인 상태입니다. 이제 <code>Gateway API</code> 리소스를 읽고, 이에 대응하는 Envoy 설정을 생성할 수 있습니다.</p>
+<h2 id="2단계-공식-quickstart-리소스-적용">2단계: 공식 Quickstart 리소스 적용</h2>
+<p>공식 저장소는 다음이 모두 포함된 번들 예제를 제공합니다:</p>
+<ul>
+<li><code>GatewayClass</code></li>
+<li><code>Gateway</code></li>
+<li><code>HTTPRoute</code></li>
+<li>샘플 백엔드 앱</li>
+</ul>
+<p>바로 적용해 봅시다:</p>
+<figure data-rehype-pretty-code-figure=""><pre style="background-color:#24292e;color:#e1e4e8" tabindex="0" data-language="bash" data-theme="github-dark"><code data-language="bash" data-theme="github-dark" style="display: grid;"><span data-line=""><span style="color:#B392F0">kubectl</span><span style="color:#9ECBFF"> apply</span><span style="color:#79B8FF"> -f</span><span style="color:#79B8FF"> \</span></span>
+<span data-line=""><span style="color:#9ECBFF">  https://github.com/envoyproxy/gateway/releases/download/v1.7.0/quickstart.yaml</span><span style="color:#79B8FF"> \</span></span>
+<span data-line=""><span style="color:#79B8FF">  -n</span><span style="color:#9ECBFF"> default</span></span></code></pre></figure>
+<p>이걸 공식 팀이 여러분을 위해 완성된 데모 장면을 통째로 깔아준다고 생각하면 됩니다. 먼저 돌려보고, 세부 구조는 나중에 분해해도 됩니다.</p>
+<h2 id="3단계-트래픽이-실제로-흐르는지-확인">3단계: 트래픽이 실제로 흐르는지 확인</h2>
+<h3 id="옵션-a-클러스터에-loadbalancer가-있는-경우">옵션 A: 클러스터에 LoadBalancer가 있는 경우</h3>
+<p>Gateway 주소를 가져옵니다:</p>
+<figure data-rehype-pretty-code-figure=""><pre style="background-color:#24292e;color:#e1e4e8" tabindex="0" data-language="bash" data-theme="github-dark"><code data-language="bash" data-theme="github-dark" style="display: grid;"><span data-line=""><span style="color:#F97583">export</span><span style="color:#E1E4E8"> GATEWAY_HOST</span><span style="color:#F97583">=</span><span style="color:#E1E4E8">$(</span><span style="color:#B392F0">kubectl</span><span style="color:#9ECBFF"> get</span><span style="color:#9ECBFF"> gateway/eg</span><span style="color:#79B8FF"> -o</span><span style="color:#9ECBFF"> jsonpath='{.status.addresses[0].value}'</span><span style="color:#E1E4E8">)</span></span></code></pre></figure>
+<p>요청을 보냅니다:</p>
+<figure data-rehype-pretty-code-figure=""><pre style="background-color:#24292e;color:#e1e4e8" tabindex="0" data-language="bash" data-theme="github-dark"><code data-language="bash" data-theme="github-dark" style="display: grid;"><span data-line=""><span style="color:#B392F0">curl</span><span style="color:#79B8FF"> --verbose</span><span style="color:#79B8FF"> \</span></span>
+<span data-line=""><span style="color:#79B8FF">  --header</span><span style="color:#9ECBFF"> "Host: www.example.com"</span><span style="color:#79B8FF"> \</span></span>
+<span data-line=""><span style="color:#9ECBFF">  http://</span><span style="color:#E1E4E8">$GATEWAY_HOST</span><span style="color:#9ECBFF">/get</span></span></code></pre></figure>
+<p>HTTP <code>200</code>이 반환되면 다음을 의미합니다:</p>
+<ul>
+<li>Gateway가 정상 동작하는 ingress 역할을 하고 있음</li>
+<li>HTTPRoute가 성공적으로 attach 되었음</li>
+<li>백엔드 서비스로 올바르게 라우팅되고 있음</li>
+</ul>
+<h3 id="옵션-b-loadbalancer-없음-port-forward-사용">옵션 B: LoadBalancer 없음, <code>port-forward</code> 사용</h3>
+<p>Envoy 서비스를 찾습니다:</p>
+<figure data-rehype-pretty-code-figure=""><pre style="background-color:#24292e;color:#e1e4e8" tabindex="0" data-language="bash" data-theme="github-dark"><code data-language="bash" data-theme="github-dark" style="display: grid;"><span data-line=""><span style="color:#F97583">export</span><span style="color:#E1E4E8"> ENVOY_SERVICE</span><span style="color:#F97583">=</span><span style="color:#E1E4E8">$(</span><span style="color:#B392F0">kubectl</span><span style="color:#9ECBFF"> get</span><span style="color:#9ECBFF"> svc</span><span style="color:#79B8FF"> -n</span><span style="color:#9ECBFF"> envoy-gateway-system</span><span style="color:#79B8FF"> \</span></span>
+<span data-line=""><span style="color:#79B8FF">  --selector=gateway.envoyproxy.io/owning-gateway-namespace=default,gateway.envoyproxy.io/owning-gateway-name=eg</span><span style="color:#79B8FF"> \</span></span>
+<span data-line=""><span style="color:#79B8FF">  -o</span><span style="color:#9ECBFF"> jsonpath='{.items[0].metadata.name}'</span><span style="color:#E1E4E8">)</span></span></code></pre></figure>
+<p>로컬 포트 <code>8888</code>을 Gateway 포트 <code>80</code>으로 포워딩합니다:</p>
+<figure data-rehype-pretty-code-figure=""><pre style="background-color:#24292e;color:#e1e4e8" tabindex="0" data-language="bash" data-theme="github-dark"><code data-language="bash" data-theme="github-dark" style="display: grid;"><span data-line=""><span style="color:#B392F0">kubectl</span><span style="color:#79B8FF"> -n</span><span style="color:#9ECBFF"> envoy-gateway-system</span><span style="color:#9ECBFF"> port-forward</span><span style="color:#9ECBFF"> service/</span><span style="color:#E1E4E8">${ENVOY_SERVICE} </span><span style="color:#9ECBFF">8888:80</span></span></code></pre></figure>
+<p>다른 터미널에서:</p>
+<figure data-rehype-pretty-code-figure=""><pre style="background-color:#24292e;color:#e1e4e8" tabindex="0" data-language="bash" data-theme="github-dark"><code data-language="bash" data-theme="github-dark" style="display: grid;"><span data-line=""><span style="color:#B392F0">curl</span><span style="color:#79B8FF"> --verbose</span><span style="color:#79B8FF"> \</span></span>
+<span data-line=""><span style="color:#79B8FF">  --header</span><span style="color:#9ECBFF"> "Host: www.example.com"</span><span style="color:#79B8FF"> \</span></span>
+<span data-line=""><span style="color:#9ECBFF">  http://localhost:8888/get</span></span></code></pre></figure>
+<p>이건 로컬 테스트 경로입니다. 약간 뒷문으로 들어가는 느낌은 있지만, 라우팅만 검증되면 괜찮습니다. 엔지니어링이란 원래 "먼저 되게 만들고, 그다음 우아하게 만든다"에 가깝기도 하니까요.</p>
+<h2 id="문제가-생기면-어디를-볼까">문제가 생기면 어디를 볼까</h2>
+<p>가장 흔한 문제는 Envoy Gateway 자체가 고장 난 것이 아니라, 체인의 한 구간이 연결되지 않은 경우입니다:</p>
+<table>
+<thead>
+<tr>
+<th>증상</th>
+<th>먼저 확인할 것</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td><code>gateway/eg</code>에 주소가 없음</td>
+<td>클러스터에 <code>LoadBalancer</code> 구현이 있는가?</td>
+</tr>
+<tr>
+<td><code>curl</code>이 404 또는 503 반환</td>
+<td><code>HTTPRoute</code>, <code>Service</code>, 백엔드 Pod 상태</td>
+</tr>
+<tr>
+<td><code>kubectl wait</code>가 멈춤</td>
+<td><code>envoy-gateway-system</code>의 Pod가 실행 중인가?</td>
+</tr>
+</tbody>
+</table>
+<p>유용한 명령어:</p>
+<figure data-rehype-pretty-code-figure=""><pre style="background-color:#24292e;color:#e1e4e8" tabindex="0" data-language="bash" data-theme="github-dark"><code data-language="bash" data-theme="github-dark" style="display: grid;"><span data-line=""><span style="color:#B392F0">kubectl</span><span style="color:#9ECBFF"> get</span><span style="color:#9ECBFF"> pods</span><span style="color:#79B8FF"> -n</span><span style="color:#9ECBFF"> envoy-gateway-system</span></span>
+<span data-line=""><span style="color:#B392F0">kubectl</span><span style="color:#9ECBFF"> get</span><span style="color:#9ECBFF"> gatewayclass</span></span>
+<span data-line=""><span style="color:#B392F0">kubectl</span><span style="color:#9ECBFF"> get</span><span style="color:#9ECBFF"> gateway</span><span style="color:#79B8FF"> -A</span></span>
+<span data-line=""><span style="color:#B392F0">kubectl</span><span style="color:#9ECBFF"> get</span><span style="color:#9ECBFF"> httproute</span><span style="color:#79B8FF"> -A</span></span>
+<span data-line=""><span style="color:#B392F0">kubectl</span><span style="color:#9ECBFF"> get</span><span style="color:#9ECBFF"> svc,pod</span><span style="color:#79B8FF"> -n</span><span style="color:#9ECBFF"> default</span></span></code></pre></figure>
+<p>Gateway 상태를 더 깊게 보려면:</p>
+<figure data-rehype-pretty-code-figure=""><pre style="background-color:#24292e;color:#e1e4e8" tabindex="0" data-language="bash" data-theme="github-dark"><code data-language="bash" data-theme="github-dark" style="display: grid;"><span data-line=""><span style="color:#B392F0">kubectl</span><span style="color:#9ECBFF"> get</span><span style="color:#9ECBFF"> gateway/eg</span><span style="color:#79B8FF"> -o</span><span style="color:#9ECBFF"> yaml</span></span></code></pre></figure>
+<p>핵심 체크 포인트:</p>
+<ul>
+<li><code>status.addresses</code></li>
+<li>Listener condition</li>
+<li>Route가 accepted 되었는지 여부</li>
+</ul>
+<h2 id="방금-실제로-한-일">방금 실제로 한 일</h2>
+<p>몇 개의 명령만 실행했지만, 사실 end-to-end 체인 전체를 완료한 겁니다:</p>
+<ol>
+<li><code>Envoy Gateway</code> 설치</li>
+<li>클러스터가 어떤 gateway controller를 쓸지 알려주는 <code>GatewayClass</code> 생성</li>
+<li>ingress 포트와 프로토콜을 선언하는 <code>Gateway</code> 생성</li>
+<li>트래픽을 백엔드 서비스로 보내는 <code>HTTPRoute</code> 생성</li>
+<li>Envoy Gateway가 이 선언들을 Envoy Proxy가 실행 가능한 설정으로 변환</li>
+</ol>
+<p>바로 이 점 때문에 Gateway API를 쓸 가치가 있습니다. 여러분은 Kubernetes 리소스를 작성하지, proxy 설정 파일 더미를 손으로 유지하지 않습니다.</p>
+<h2 id="다음-단계">다음 단계</h2>
+<p>이제 첫 요청이 흐르기 시작했으니, 다음 글에서는 각 리소스가 실제로 어떤 일을 하는지 살펴보며 사고 모델을 세웁니다:
+👉 <a href="02-core-concepts">핵심 개념</a></p>5:["$","aside",null,{"className":"hidden lg:block","children":["$","$L8",null,{"html":"$9"}]}]
+6:["$","script","script-0",{"src":"/_next/static/chunks/2dddb3bc05093f69.js","async":true}]
+7:["$","$La",null,{"children":["$","$b",null,{"name":"Next.MetadataOutlet","children":"$@c"}]}]
+c:null

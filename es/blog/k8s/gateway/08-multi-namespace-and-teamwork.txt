@@ -1,0 +1,323 @@
+1:"$Sreact.fragment"
+2:I[26795,["/_next/static/chunks/5a5b5b13c22d14f7.js","/_next/static/chunks/a484d1d3dd4b55ab.js"],"default"]
+3:I[73489,["/_next/static/chunks/5a5b5b13c22d14f7.js","/_next/static/chunks/a484d1d3dd4b55ab.js"],"default"]
+6:I[50183,["/_next/static/chunks/5a5b5b13c22d14f7.js","/_next/static/chunks/a484d1d3dd4b55ab.js"],"OutletBoundary"]
+7:"$Sreact.suspense"
+9:I[50183,["/_next/static/chunks/5a5b5b13c22d14f7.js","/_next/static/chunks/a484d1d3dd4b55ab.js"],"ViewportBoundary"]
+b:I[50183,["/_next/static/chunks/5a5b5b13c22d14f7.js","/_next/static/chunks/a484d1d3dd4b55ab.js"],"MetadataBoundary"]
+d:I[63847,[],"default"]
+:HL["/_next/static/chunks/446a7883c02a95fe.css","style"]
+:HL["/_next/static/media/797e433ab948586e-s.p.29207c2f.woff2","font",{"crossOrigin":"","type":"font/woff2"}]
+:HL["/_next/static/media/caa3a2e1cccd8315-s.p.3b6cae6d.woff2","font",{"crossOrigin":"","type":"font/woff2"}]
+0:{"P":null,"b":"Yck3R4ooQxWkwGLT6is1X","c":["","es","blog","k8s","gateway","08-multi-namespace-and-teamwork"],"q":"","i":false,"f":[[["",{"children":[["locale","es","d"],{"children":["blog",{"children":[["slug","k8s/gateway/08-multi-namespace-and-teamwork","c"],{"children":["__PAGE__",{}]}]}]}]},"$undefined","$undefined",true],[["$","$1","c",{"children":[null,["$","html",null,{"children":["$","body",null,{"children":["$","$L2",null,{"parallelRouterKey":"children","error":"$undefined","errorStyles":"$undefined","errorScripts":"$undefined","template":["$","$L3",null,{}],"templateStyles":"$undefined","templateScripts":"$undefined","notFound":[[["$","title",null,{"children":"404: This page could not be found."}],["$","div",null,{"style":{"fontFamily":"system-ui,\"Segoe UI\",Roboto,Helvetica,Arial,sans-serif,\"Apple Color Emoji\",\"Segoe UI Emoji\"","height":"100vh","textAlign":"center","display":"flex","flexDirection":"column","alignItems":"center","justifyContent":"center"},"children":["$","div",null,{"children":[["$","style",null,{"dangerouslySetInnerHTML":{"__html":"body{color:#000;background:#fff;margin:0}.next-error-h1{border-right:1px solid rgba(0,0,0,.3)}@media (prefers-color-scheme:dark){body{color:#fff;background:#000}.next-error-h1{border-right:1px solid rgba(255,255,255,.3)}}"}}],["$","h1",null,{"className":"next-error-h1","style":{"display":"inline-block","margin":"0 20px 0 0","padding":"0 23px 0 0","fontSize":24,"fontWeight":500,"verticalAlign":"top","lineHeight":"49px"},"children":404}],["$","div",null,{"style":{"display":"inline-block"},"children":["$","h2",null,{"style":{"fontSize":14,"fontWeight":400,"lineHeight":"49px","margin":0},"children":"This page could not be found."}]}]]}]}]],[]],"forbidden":"$undefined","unauthorized":"$undefined"}]}]}]]}],{"children":[["$","$1","c",{"children":[[["$","link","0",{"rel":"stylesheet","href":"/_next/static/chunks/446a7883c02a95fe.css","precedence":"next","crossOrigin":"$undefined","nonce":"$undefined"}],["$","script","script-0",{"src":"/_next/static/chunks/7923a261b80bb6e1.js","async":true,"nonce":"$undefined"}],["$","script","script-1",{"src":"/_next/static/chunks/e09b4358027e8033.js","async":true,"nonce":"$undefined"}]],"$L4"]}],{"children":[["$","$1","c",{"children":[null,["$","$L2",null,{"parallelRouterKey":"children","error":"$undefined","errorStyles":"$undefined","errorScripts":"$undefined","template":["$","$L3",null,{}],"templateStyles":"$undefined","templateScripts":"$undefined","notFound":"$undefined","forbidden":"$undefined","unauthorized":"$undefined"}]]}],{"children":[["$","$1","c",{"children":[null,["$","$L2",null,{"parallelRouterKey":"children","error":"$undefined","errorStyles":"$undefined","errorScripts":"$undefined","template":["$","$L3",null,{}],"templateStyles":"$undefined","templateScripts":"$undefined","notFound":"$undefined","forbidden":"$undefined","unauthorized":"$undefined"}]]}],{"children":[["$","$1","c",{"children":["$L5",[["$","script","script-0",{"src":"/_next/static/chunks/2dddb3bc05093f69.js","async":true,"nonce":"$undefined"}]],["$","$L6",null,{"children":["$","$7",null,{"name":"Next.MetadataOutlet","children":"$@8"}]}]]}],{},null,false,false]},null,false,false]},null,false,false]},null,false,false]},null,false,false],["$","$1","h",{"children":[null,["$","$L9",null,{"children":"$La"}],["$","div",null,{"hidden":true,"children":["$","$Lb",null,{"children":["$","$7",null,{"name":"Next.Metadata","children":"$Lc"}]}]}],["$","meta",null,{"name":"next-size-adjust","content":""}]]}],false]],"m":"$undefined","G":["$d",[]],"S":true}
+4:["$","div",null,{"lang":"es","dir":"ltr","className":"geist_a71539c9-module__T19VSG__variable geist_mono_8d43a2aa-module__8Li5zG__variable flex min-h-screen flex-col antialiased","children":[["$","script",null,{"type":"application/ld+json","dangerouslySetInnerHTML":{"__html":"[{\"@context\":\"https://schema.org\",\"@type\":\"WebSite\",\"name\":\"BenXHub Blog\",\"url\":\"https://benxhub.com/es\",\"inLanguage\":\"es\",\"publisher\":{\"@type\":\"Organization\",\"name\":\"BenXHub Blog\",\"url\":\"https://benxhub.com\"},\"potentialAction\":{\"@type\":\"SearchAction\",\"target\":{\"@type\":\"EntryPoint\",\"urlTemplate\":\"https://benxhub.com/es/search?q={search_term_string}\"},\"query-input\":\"required name=search_term_string\"}},{\"@context\":\"https://schema.org\",\"@type\":\"Person\",\"name\":\"BenX\",\"url\":\"https://benxhub.com\",\"sameAs\":[\"https://github.com/benzhub\"]}]"}}],"$Le"]}]
+f:I[33343,["/_next/static/chunks/7923a261b80bb6e1.js","/_next/static/chunks/e09b4358027e8033.js"],"default"]
+10:I[26817,["/_next/static/chunks/7923a261b80bb6e1.js","/_next/static/chunks/e09b4358027e8033.js"],"default"]
+11:I[6197,["/_next/static/chunks/7923a261b80bb6e1.js","/_next/static/chunks/e09b4358027e8033.js"],"default"]
+13:I[40018,["/_next/static/chunks/7923a261b80bb6e1.js","/_next/static/chunks/e09b4358027e8033.js"],"default"]
+e:["$","$Lf",null,{"formats":"$undefined","locale":"es","messages":{"common":{"siteName":"BenXHub Blog","siteDescription":"El blog técnico de BenX, donde comparto desarrollo web, diseño de arquitectura y prácticas de ingeniería."},"nav":{"home":"Inicio","tags":"Etiquetas","about":"Acerca de","searchLabel":"Buscar artículos"},"hero":{"subtitle":"Notas técnicas sobre desarrollo web, diseño de arquitectura y prácticas de ingeniería","cta":"Ver artículos"},"posts":{"title":"Lista de artículos","count":"{total} artículos en total","empty":"Aún no hay artículos. ¡Próximamente!","newerPost":"← Artículo más reciente","olderPost":"Artículo más antiguo →","navLabel":"Navegación de artículos"},"pagination":{"prev":"Anterior","next":"Siguiente","page":"Página {current} / {total}","label":"Paginación de artículos","pageTitle":"Página {num}","pageDescription":"BenXHub Blog - Paginación de la lista de artículos."},"search":{"title":"Buscar artículos","description":"Busca en todos los artículos de BenXHub Blog y filtra al instante por título, descripción o etiquetas.","subtitle":"Busca por título, descripción o etiquetas y ve resultados al instante","placeholder":"Buscar por título, descripción o etiquetas...","found":"{count} artículos encontrados","notFound":"No se encontraron artículos relacionados con \"{query}\"","emptyTitle":"No se encontraron resultados","emptyHint":"Prueba con otras palabras clave o revisa","allPosts":"todos los artículos","totalCount":"{count} artículos en total. Escribe palabras clave para buscar"},"tags":{"title":"Todas las etiquetas","description":"Explora todos los artículos por etiqueta.","count":"{count} etiquetas en total","empty":"Aún no hay etiquetas. ¡Próximamente!","allTags":"Todas las etiquetas","postCount":"{count} artículos en total","otherTags":"Otras etiquetas","tagTitle":"Artículos de #{tag}","tagDescription":"Lista de todos los artículos marcados con \"{tag}\"."},"about":{"title":"Acerca de","description":"Acerca de BenXHub Blog y una introducción del sitio.","subtitle":"Acerca de BenXHub Blog y una introducción del sitio","siteTitle":"Sobre este sitio","siteContent":"BenXHub Blog es el blog técnico de BenX, donde comparto desarrollo web, diseño de arquitectura y prácticas de ingeniería.","authorTitle":"Sobre mí","authorContent":"Me encanta programar e investigar tecnología. También disfruto documentar los problemas que encontré y sus soluciones. Bienvenido a conectar conmigo mediante los enlaces de la barra lateral o del pie de página.","linksTitle":"Enlaces"},"sidebar":{"label":"Barra lateral","authorBio":"Me gusta programar y compartir conocimiento, centrado en desarrollo web, arquitectura y DevOps.","searchPlaceholder":"Buscar artículos...","seriesTitle":"Series","articleCount":"{count} artículos"},"toc":{"title":"Tabla de contenidos","label":"Índice del artículo"},"notFound":{"message":"Esta página no existe. Es posible que el enlace haya caducado o que la URL sea incorrecta.","backHome":"Volver al inicio"},"localeSwitcher":{"label":"Cambiar idioma"}},"now":"$undefined","timeZone":"UTC","children":[["$","$L10",null,{}],["$","$L11",null,{}],["$","main",null,{"className":"flex-1 pt-16","children":["$","$L2",null,{"parallelRouterKey":"children","error":"$undefined","errorStyles":"$undefined","errorScripts":"$undefined","template":["$","$L3",null,{}],"templateStyles":"$undefined","templateScripts":"$undefined","notFound":["$L12",[]],"forbidden":"$undefined","unauthorized":"$undefined"}]}],["$","$L13",null,{}]]}]
+12:["$","div",null,{"className":"mx-auto max-w-2xl px-4 py-20 text-center sm:px-6","children":[["$","h1",null,{"className":"mb-3 text-4xl font-bold tracking-tight","style":{"color":"var(--color-text)"},"children":"404"}],["$","p",null,{"className":"mb-8 text-lg","style":{"color":"var(--color-muted)"},"children":"Esta página no existe. Es posible que el enlace haya caducado o que la URL sea incorrecta."}],"$L14"]}]
+a:[["$","meta","0",{"charSet":"utf-8"}],["$","meta","1",{"name":"viewport","content":"width=device-width, initial-scale=1"}]]
+15:I[14864,["/_next/static/chunks/7923a261b80bb6e1.js","/_next/static/chunks/e09b4358027e8033.js","/_next/static/chunks/2dddb3bc05093f69.js"],"default"]
+14:["$","$L15",null,{"ref":"$undefined","href":"/es","locale":"$undefined","localeCookie":{"name":"NEXT_LOCALE","sameSite":"lax"},"className":"inline-flex items-center rounded-lg border px-4 py-2.5 text-sm font-medium transition-colors hover:border-accent","style":{"borderColor":"var(--color-border)","color":"var(--color-accent)","background":"var(--color-surface)"},"children":"Volver al inicio"}]
+1c:T3b0b,<p>Uno de los mayores valores de Gateway API no es solo un YAML más bonito — finalmente responde con claridad una pregunta que llevaba mucho tiempo sin respuesta:</p>
+<p><strong>¿Quién es dueño de la capa de ingreso? ¿Quién puede cambiar rutas? ¿Pueden los namespaces hacer referencias cruzadas entre sí?</strong></p>
+<p>Muchos de los problemas de Ingress venían de que todo estaba enredado.
+Los equipos de plataforma temían cambios de exposición no autorizados. Los equipos de aplicación sentían que tenían que abrir un ticket solo para cambiar un path. Todos terminaban torturándose mutuamente con YAML.</p>
+<p>El enfoque de Gateway API es decir claramente:</p>
+<ul>
+<li>El ingreso de plataforma puede gobernarse de forma independiente</li>
+<li>Las rutas pueden delegarse a los equipos de aplicación</li>
+<li>El comportamiento entre namespaces requiere autorización explícita</li>
+</ul>
+<p>Este artículo explica ese modelo de propiedad de arriba a abajo.</p>
+<h2 id="empezar-aquí-adjunción-y-referencia-son-dos-cosas-distintas">Empezar aquí: Adjunción y Referencia son dos cosas distintas</h2>
+<p>Esta es la confusión más común.</p>
+<h3 id="adjunción-de-route-a-gateway--listener">Adjunción de Route a Gateway / Listener</h3>
+<p>Esto está gobernado por:</p>
+<ul>
+<li>El <code>parentRefs</code> de la ruta</li>
+<li>El <code>allowedRoutes</code> del listener</li>
+</ul>
+<p>En otras palabras, si una ruta puede adjuntarse a un listener no lo determina <code>ReferenceGrant</code> — lo determina si el listener está dispuesto a aceptarla.</p>
+<h3 id="referencias-de-recursos-entre-namespaces">Referencias de recursos entre namespaces</h3>
+<p>Aquí es donde <code>ReferenceGrant</code> suele entrar en juego.
+Por ejemplo:</p>
+<ul>
+<li>Un <code>Gateway</code> quiere referenciar un <code>Secret</code> en otro namespace</li>
+<li>Un <code>HTTPRoute</code> quiere referenciar un <code>Service</code> en otro namespace</li>
+</ul>
+<p>Esto no es una cuestión de adjunción — es "¿ha autorizado formalmente el namespace de destino que uses sus recursos?"</p>
+<p>Muchas personas mezclan ambos conceptos y empiezan a cuestionarse su cordura. Las reglas no son tan misteriosas una vez que se separan los roles.</p>
+<h2 id="allowedroutes-decide-quién-puede-adjuntarse-primero"><code>allowedRoutes</code>: Decide quién puede adjuntarse primero</h2>
+<p>El listener más restrictivo tiene este aspecto:</p>
+<figure data-rehype-pretty-code-figure=""><pre style="background-color:#24292e;color:#e1e4e8" tabindex="0" data-language="yaml" data-theme="github-dark"><code data-language="yaml" data-theme="github-dark" style="display: grid;"><span data-line=""><span style="color:#85E89D">apiVersion</span><span style="color:#E1E4E8">: </span><span style="color:#9ECBFF">gateway.networking.k8s.io/v1</span></span>
+<span data-line=""><span style="color:#85E89D">kind</span><span style="color:#E1E4E8">: </span><span style="color:#9ECBFF">Gateway</span></span>
+<span data-line=""><span style="color:#85E89D">metadata</span><span style="color:#E1E4E8">:</span></span>
+<span data-line=""><span style="color:#85E89D">  name</span><span style="color:#E1E4E8">: </span><span style="color:#9ECBFF">shared-gateway</span></span>
+<span data-line=""><span style="color:#85E89D">  namespace</span><span style="color:#E1E4E8">: </span><span style="color:#9ECBFF">infra</span></span>
+<span data-line=""><span style="color:#85E89D">spec</span><span style="color:#E1E4E8">:</span></span>
+<span data-line=""><span style="color:#85E89D">  gatewayClassName</span><span style="color:#E1E4E8">: </span><span style="color:#9ECBFF">eg</span></span>
+<span data-line=""><span style="color:#85E89D">  listeners</span><span style="color:#E1E4E8">:</span></span>
+<span data-line=""><span style="color:#E1E4E8">    - </span><span style="color:#85E89D">name</span><span style="color:#E1E4E8">: </span><span style="color:#9ECBFF">https</span></span>
+<span data-line=""><span style="color:#85E89D">      protocol</span><span style="color:#E1E4E8">: </span><span style="color:#9ECBFF">HTTPS</span></span>
+<span data-line=""><span style="color:#85E89D">      port</span><span style="color:#E1E4E8">: </span><span style="color:#79B8FF">443</span></span>
+<span data-line=""><span style="color:#85E89D">      allowedRoutes</span><span style="color:#E1E4E8">:</span></span>
+<span data-line=""><span style="color:#85E89D">        namespaces</span><span style="color:#E1E4E8">:</span></span>
+<span data-line=""><span style="color:#85E89D">          from</span><span style="color:#E1E4E8">: </span><span style="color:#9ECBFF">Same</span></span></code></pre></figure>
+<p>Esto significa que solo las rutas en el namespace <code>infra</code> pueden adjuntarse a este listener.</p>
+<p>Para permitir que namespaces de equipos específicos se adjunten, usa <code>Selector</code>:</p>
+<figure data-rehype-pretty-code-figure=""><pre style="background-color:#24292e;color:#e1e4e8" tabindex="0" data-language="yaml" data-theme="github-dark"><code data-language="yaml" data-theme="github-dark" style="display: grid;"><span data-line=""><span style="color:#85E89D">allowedRoutes</span><span style="color:#E1E4E8">:</span></span>
+<span data-line=""><span style="color:#85E89D">  namespaces</span><span style="color:#E1E4E8">:</span></span>
+<span data-line=""><span style="color:#85E89D">    from</span><span style="color:#E1E4E8">: </span><span style="color:#9ECBFF">Selector</span></span>
+<span data-line=""><span style="color:#85E89D">    selector</span><span style="color:#E1E4E8">:</span></span>
+<span data-line=""><span style="color:#85E89D">      matchLabels</span><span style="color:#E1E4E8">:</span></span>
+<span data-line=""><span style="color:#85E89D">        shared-gateway-access</span><span style="color:#E1E4E8">: </span><span style="color:#9ECBFF">"true"</span></span></code></pre></figure>
+<p>Este patrón funciona muy bien para los equipos de plataforma.
+No tienes que bloquear todo completamente, pero tampoco tienes que abrirlo con <code>from: All</code> y dejar entrar a todos sin restricción. Puedes exigir que los namespaces se ganen el derecho de adjuntarse llevando una etiqueta específica.</p>
+<blockquote>
+<p>💡 <code>allowedRoutes</code> es por listener, no por Gateway. Distintos listeners pueden tener diferentes políticas de acceso.</p>
+</blockquote>
+<h2 id="referencegrant-el-namespace-de-destino-decide"><code>ReferenceGrant</code>: El namespace de destino decide</h2>
+<p>Si una ruta o un gateway quiere referenciar recursos en otro namespace, el namespace de destino tiene que autorizarlo.</p>
+<p>Por ejemplo, el <code>HTTPRoute</code> de un equipo de aplicación quiere enviar tráfico a un backend en un namespace compartido:</p>
+<figure data-rehype-pretty-code-figure=""><pre style="background-color:#24292e;color:#e1e4e8" tabindex="0" data-language="yaml" data-theme="github-dark"><code data-language="yaml" data-theme="github-dark" style="display: grid;"><span data-line=""><span style="color:#85E89D">apiVersion</span><span style="color:#E1E4E8">: </span><span style="color:#9ECBFF">gateway.networking.k8s.io/v1</span></span>
+<span data-line=""><span style="color:#85E89D">kind</span><span style="color:#E1E4E8">: </span><span style="color:#9ECBFF">HTTPRoute</span></span>
+<span data-line=""><span style="color:#85E89D">metadata</span><span style="color:#E1E4E8">:</span></span>
+<span data-line=""><span style="color:#85E89D">  name</span><span style="color:#E1E4E8">: </span><span style="color:#9ECBFF">app-route</span></span>
+<span data-line=""><span style="color:#85E89D">  namespace</span><span style="color:#E1E4E8">: </span><span style="color:#9ECBFF">team-a</span></span>
+<span data-line=""><span style="color:#85E89D">spec</span><span style="color:#E1E4E8">:</span></span>
+<span data-line=""><span style="color:#85E89D">  parentRefs</span><span style="color:#E1E4E8">:</span></span>
+<span data-line=""><span style="color:#E1E4E8">    - </span><span style="color:#85E89D">name</span><span style="color:#E1E4E8">: </span><span style="color:#9ECBFF">shared-gateway</span></span>
+<span data-line=""><span style="color:#85E89D">      namespace</span><span style="color:#E1E4E8">: </span><span style="color:#9ECBFF">infra</span></span>
+<span data-line=""><span style="color:#85E89D">      sectionName</span><span style="color:#E1E4E8">: </span><span style="color:#9ECBFF">https</span></span>
+<span data-line=""><span style="color:#85E89D">  rules</span><span style="color:#E1E4E8">:</span></span>
+<span data-line=""><span style="color:#E1E4E8">    - </span><span style="color:#85E89D">backendRefs</span><span style="color:#E1E4E8">:</span></span>
+<span data-line=""><span style="color:#E1E4E8">        - </span><span style="color:#85E89D">name</span><span style="color:#E1E4E8">: </span><span style="color:#9ECBFF">shared-api</span></span>
+<span data-line=""><span style="color:#85E89D">          namespace</span><span style="color:#E1E4E8">: </span><span style="color:#9ECBFF">shared-services</span></span>
+<span data-line=""><span style="color:#85E89D">          port</span><span style="color:#E1E4E8">: </span><span style="color:#79B8FF">8080</span></span></code></pre></figure>
+<p>El namespace <code>shared-services</code> necesitaría un <code>ReferenceGrant</code>:</p>
+<figure data-rehype-pretty-code-figure=""><pre style="background-color:#24292e;color:#e1e4e8" tabindex="0" data-language="yaml" data-theme="github-dark"><code data-language="yaml" data-theme="github-dark" style="display: grid;"><span data-line=""><span style="color:#85E89D">apiVersion</span><span style="color:#E1E4E8">: </span><span style="color:#9ECBFF">gateway.networking.k8s.io/v1beta1</span></span>
+<span data-line=""><span style="color:#85E89D">kind</span><span style="color:#E1E4E8">: </span><span style="color:#9ECBFF">ReferenceGrant</span></span>
+<span data-line=""><span style="color:#85E89D">metadata</span><span style="color:#E1E4E8">:</span></span>
+<span data-line=""><span style="color:#85E89D">  name</span><span style="color:#E1E4E8">: </span><span style="color:#9ECBFF">allow-team-a-route</span></span>
+<span data-line=""><span style="color:#85E89D">  namespace</span><span style="color:#E1E4E8">: </span><span style="color:#9ECBFF">shared-services</span></span>
+<span data-line=""><span style="color:#85E89D">spec</span><span style="color:#E1E4E8">:</span></span>
+<span data-line=""><span style="color:#85E89D">  from</span><span style="color:#E1E4E8">:</span></span>
+<span data-line=""><span style="color:#E1E4E8">    - </span><span style="color:#85E89D">group</span><span style="color:#E1E4E8">: </span><span style="color:#9ECBFF">gateway.networking.k8s.io</span></span>
+<span data-line=""><span style="color:#85E89D">      kind</span><span style="color:#E1E4E8">: </span><span style="color:#9ECBFF">HTTPRoute</span></span>
+<span data-line=""><span style="color:#85E89D">      namespace</span><span style="color:#E1E4E8">: </span><span style="color:#9ECBFF">team-a</span></span>
+<span data-line=""><span style="color:#85E89D">  to</span><span style="color:#E1E4E8">:</span></span>
+<span data-line=""><span style="color:#E1E4E8">    - </span><span style="color:#85E89D">group</span><span style="color:#E1E4E8">: </span><span style="color:#9ECBFF">""</span></span>
+<span data-line=""><span style="color:#85E89D">      kind</span><span style="color:#E1E4E8">: </span><span style="color:#9ECBFF">Service</span></span></code></pre></figure>
+<p>En términos simples:</p>
+<ul>
+<li>Los recursos <code>HTTPRoute</code> en <code>team-a</code></li>
+<li>Están autorizados a referenciar recursos <code>Service</code> en <code>shared-services</code></li>
+</ul>
+<p>Nótese que la autorización es <strong>creada por el namespace de destino, no por el origen</strong>.
+El origen no puede simplemente declarar que quiere acceso — el propietario del recurso decide. Este diseño es bastante principista, porque los propietarios deberían controlar quién accede a sus recursos.</p>
+<h2 id="división-común-entre-equipos-de-plataforma-y-aplicación">División común entre equipos de plataforma y aplicación</h2>
+<p>El modelo de propiedad más común tiene este aspecto:</p>
+<h3 id="el-equipo-de-plataforma-posee">El equipo de plataforma posee</h3>
+<ul>
+<li><code>GatewayClass</code></li>
+<li><code>Gateway</code></li>
+<li><code>Listener</code></li>
+<li>Gestión de certificados TLS</li>
+<li>Políticas de <code>allowedRoutes</code></li>
+</ul>
+<h3 id="los-equipos-de-aplicación-poseen">Los equipos de aplicación poseen</h3>
+<ul>
+<li><code>HTTPRoute</code> / <code>GRPCRoute</code> en sus propios namespaces</li>
+<li>Servicios de backend</li>
+<li>Ajustes de reglas de enrutamiento</li>
+</ul>
+<p>Los beneficios de esta división son claros:</p>
+<ul>
+<li>El equipo de plataforma protege la exposición de ingreso y el perímetro de seguridad</li>
+<li>Los equipos de aplicación pueden seguir moviéndose rápido con sus propias reglas de tráfico</li>
+<li>Nadie necesita tocar el Gateway compartido solo para cambiar un path</li>
+</ul>
+<p>También puedes dar todos los permisos a un solo grupo — eso no está mal.
+Pero en equipos más grandes, ese modelo tiende a evolucionar hacia "cualquiera puede cambiarlo, así que cuando se rompe nadie sabe quién hizo qué."</p>
+<h2 id="consejos-prácticos-cómo-evitar-desastres-multi-tenant">Consejos prácticos: Cómo evitar desastres multi-tenant</h2>
+<p>Hábitos genuinamente útiles:</p>
+<ul>
+<li>Los Gateways compartidos usan por defecto <code>allowedRoutes.namespaces.from: Selector</code></li>
+<li>Las convenciones de etiquetas de namespace deben ser estables — no cambies <code>team-a</code> a <code>allow-gw</code> el mes que viene</li>
+<li>Todas las referencias cross-namespace a backends o Secrets pasan por <code>ReferenceGrant</code></li>
+<li>Los nombres de las rutas deben indicar el equipo o servicio — por ejemplo, <code>team-a-api-route</code></li>
+<li>Los listeners compartidos deben usar siempre <code>sectionName</code> para evitar que las rutas se adjunten a la entrada equivocada</li>
+</ul>
+<p>Un principio que vale la pena mantener:</p>
+<p><strong>Si puedes hacer cumplir un límite en la capa de ingreso, no te apoyes en la documentación y en esperar que las personas se autogestionen.</strong></p>
+<p>En ingeniería, el proceso supera al acuerdo verbal. Eso suena como un consejo de alguien mucho mayor, pero es genuinamente útil.</p>
+<h2 id="resumen-en-una-línea">Resumen en una línea</h2>
+<p>En Gateway API, <code>allowedRoutes</code> controla "quién puede entrar", y <code>ReferenceGrant</code> controla "a qué pueden acceder una vez dentro."
+Mantén esos dos conceptos claros y los escenarios multi-namespace y multi-equipo se vuelven mucho más manejables.</p>
+<h2 id="siguiente-paso">Siguiente paso</h2>
+<p>Con la propiedad y los permisos resueltos, la pieza final es:
+<strong>Cuando la configuración no surte efecto, ¿qué status, qué condition y qué comando miras primero?</strong></p>
+<p>El próximo artículo cubre el debugging e interpretación de status:
+👉 <a href="09-debugging-and-status">Manual de Status y Debugging</a></p>5:[["$","script",null,{"type":"application/ld+json","dangerouslySetInnerHTML":{"__html":"{\"@context\":\"https://schema.org\",\"@type\":\"Article\",\"headline\":\"Envoy Gateway Multi-Namespace y Propiedad de Equipos: allowedRoutes, ReferenceGrant y Gobernanza entre Equipos\",\"description\":\"Comprende el modelo multi-tenant de Gateway API — permisos de adjunción a listeners, referencias entre namespaces y los patrones comunes de propiedad entre equipos de plataforma y aplicación.\",\"url\":\"https://benxhub.com/es/blog/k8s/gateway/08-multi-namespace-and-teamwork\",\"mainEntityOfPage\":{\"@type\":\"WebPage\",\"@id\":\"https://benxhub.com/es/blog/k8s/gateway/08-multi-namespace-and-teamwork\"},\"datePublished\":\"2026-03-10T00:00:00.000Z\",\"dateModified\":\"2026-03-10T00:00:00.000Z\",\"keywords\":\"kubernetes, envoy-gateway, gateway-api, referencegrant, allowedroutes, multi-tenant\",\"inLanguage\":\"es\",\"author\":{\"@type\":\"Person\",\"name\":\"BenX\",\"url\":\"https://benxhub.com\"},\"publisher\":{\"@type\":\"Organization\",\"name\":\"BenXHub Blog\",\"url\":\"https://benxhub.com\"}}"}}],["$","div",null,{"className":"mx-auto max-w-6xl px-4 py-12 sm:px-6","children":["$","div",null,{"className":"lg:grid lg:grid-cols-[1fr_240px] lg:gap-14","children":[["$","article",null,{"children":[["$","header",null,{"className":"mb-10","children":[["$","div",null,{"className":"mb-4 flex flex-wrap gap-2","children":["$L16","$L17","$L18","$L19","$L1a","$L1b"]}],["$","h1",null,{"className":"mb-4 text-3xl leading-snug font-bold tracking-tight sm:text-4xl","style":{"color":"var(--color-text)"},"children":"Envoy Gateway Multi-Namespace y Propiedad de Equipos: allowedRoutes, ReferenceGrant y Gobernanza entre Equipos"}],["$","div",null,{"className":"flex flex-wrap items-center gap-3 text-sm","style":{"color":"var(--color-muted)"},"children":[["$","time",null,{"dateTime":"2026-03-10","children":"10 3月 2026"}],["$","span",null,{"aria-hidden":"true","children":"·"}],["$","span",null,{"children":"5 min read"}]]}],"$undefined",["$","div",null,{"className":"mt-6 border-b","style":{"borderColor":"var(--color-border)"}}]]}],["$","div",null,{"className":"prose","dangerouslySetInnerHTML":{"__html":"$1c"}}],"$L1d"]}],"$L1e"]}]}]]
+27:I[24801,["/_next/static/chunks/7923a261b80bb6e1.js","/_next/static/chunks/e09b4358027e8033.js","/_next/static/chunks/2dddb3bc05093f69.js"],"default"]
+1d:["$","footer",null,{"className":"mt-14 border-t pt-8","style":{"borderColor":"var(--color-border)"},"children":[["$","div",null,{"className":"mb-8 flex flex-wrap gap-2","children":["$L1f","$L20","$L21","$L22","$L23","$L24"]}],["$","nav",null,{"aria-label":"Navegación de artículos","className":"grid grid-cols-1 gap-4 sm:grid-cols-2","children":["$L25","$L26"]}]]}]
+28:T3b0b,<p>Uno de los mayores valores de Gateway API no es solo un YAML más bonito — finalmente responde con claridad una pregunta que llevaba mucho tiempo sin respuesta:</p>
+<p><strong>¿Quién es dueño de la capa de ingreso? ¿Quién puede cambiar rutas? ¿Pueden los namespaces hacer referencias cruzadas entre sí?</strong></p>
+<p>Muchos de los problemas de Ingress venían de que todo estaba enredado.
+Los equipos de plataforma temían cambios de exposición no autorizados. Los equipos de aplicación sentían que tenían que abrir un ticket solo para cambiar un path. Todos terminaban torturándose mutuamente con YAML.</p>
+<p>El enfoque de Gateway API es decir claramente:</p>
+<ul>
+<li>El ingreso de plataforma puede gobernarse de forma independiente</li>
+<li>Las rutas pueden delegarse a los equipos de aplicación</li>
+<li>El comportamiento entre namespaces requiere autorización explícita</li>
+</ul>
+<p>Este artículo explica ese modelo de propiedad de arriba a abajo.</p>
+<h2 id="empezar-aquí-adjunción-y-referencia-son-dos-cosas-distintas">Empezar aquí: Adjunción y Referencia son dos cosas distintas</h2>
+<p>Esta es la confusión más común.</p>
+<h3 id="adjunción-de-route-a-gateway--listener">Adjunción de Route a Gateway / Listener</h3>
+<p>Esto está gobernado por:</p>
+<ul>
+<li>El <code>parentRefs</code> de la ruta</li>
+<li>El <code>allowedRoutes</code> del listener</li>
+</ul>
+<p>En otras palabras, si una ruta puede adjuntarse a un listener no lo determina <code>ReferenceGrant</code> — lo determina si el listener está dispuesto a aceptarla.</p>
+<h3 id="referencias-de-recursos-entre-namespaces">Referencias de recursos entre namespaces</h3>
+<p>Aquí es donde <code>ReferenceGrant</code> suele entrar en juego.
+Por ejemplo:</p>
+<ul>
+<li>Un <code>Gateway</code> quiere referenciar un <code>Secret</code> en otro namespace</li>
+<li>Un <code>HTTPRoute</code> quiere referenciar un <code>Service</code> en otro namespace</li>
+</ul>
+<p>Esto no es una cuestión de adjunción — es "¿ha autorizado formalmente el namespace de destino que uses sus recursos?"</p>
+<p>Muchas personas mezclan ambos conceptos y empiezan a cuestionarse su cordura. Las reglas no son tan misteriosas una vez que se separan los roles.</p>
+<h2 id="allowedroutes-decide-quién-puede-adjuntarse-primero"><code>allowedRoutes</code>: Decide quién puede adjuntarse primero</h2>
+<p>El listener más restrictivo tiene este aspecto:</p>
+<figure data-rehype-pretty-code-figure=""><pre style="background-color:#24292e;color:#e1e4e8" tabindex="0" data-language="yaml" data-theme="github-dark"><code data-language="yaml" data-theme="github-dark" style="display: grid;"><span data-line=""><span style="color:#85E89D">apiVersion</span><span style="color:#E1E4E8">: </span><span style="color:#9ECBFF">gateway.networking.k8s.io/v1</span></span>
+<span data-line=""><span style="color:#85E89D">kind</span><span style="color:#E1E4E8">: </span><span style="color:#9ECBFF">Gateway</span></span>
+<span data-line=""><span style="color:#85E89D">metadata</span><span style="color:#E1E4E8">:</span></span>
+<span data-line=""><span style="color:#85E89D">  name</span><span style="color:#E1E4E8">: </span><span style="color:#9ECBFF">shared-gateway</span></span>
+<span data-line=""><span style="color:#85E89D">  namespace</span><span style="color:#E1E4E8">: </span><span style="color:#9ECBFF">infra</span></span>
+<span data-line=""><span style="color:#85E89D">spec</span><span style="color:#E1E4E8">:</span></span>
+<span data-line=""><span style="color:#85E89D">  gatewayClassName</span><span style="color:#E1E4E8">: </span><span style="color:#9ECBFF">eg</span></span>
+<span data-line=""><span style="color:#85E89D">  listeners</span><span style="color:#E1E4E8">:</span></span>
+<span data-line=""><span style="color:#E1E4E8">    - </span><span style="color:#85E89D">name</span><span style="color:#E1E4E8">: </span><span style="color:#9ECBFF">https</span></span>
+<span data-line=""><span style="color:#85E89D">      protocol</span><span style="color:#E1E4E8">: </span><span style="color:#9ECBFF">HTTPS</span></span>
+<span data-line=""><span style="color:#85E89D">      port</span><span style="color:#E1E4E8">: </span><span style="color:#79B8FF">443</span></span>
+<span data-line=""><span style="color:#85E89D">      allowedRoutes</span><span style="color:#E1E4E8">:</span></span>
+<span data-line=""><span style="color:#85E89D">        namespaces</span><span style="color:#E1E4E8">:</span></span>
+<span data-line=""><span style="color:#85E89D">          from</span><span style="color:#E1E4E8">: </span><span style="color:#9ECBFF">Same</span></span></code></pre></figure>
+<p>Esto significa que solo las rutas en el namespace <code>infra</code> pueden adjuntarse a este listener.</p>
+<p>Para permitir que namespaces de equipos específicos se adjunten, usa <code>Selector</code>:</p>
+<figure data-rehype-pretty-code-figure=""><pre style="background-color:#24292e;color:#e1e4e8" tabindex="0" data-language="yaml" data-theme="github-dark"><code data-language="yaml" data-theme="github-dark" style="display: grid;"><span data-line=""><span style="color:#85E89D">allowedRoutes</span><span style="color:#E1E4E8">:</span></span>
+<span data-line=""><span style="color:#85E89D">  namespaces</span><span style="color:#E1E4E8">:</span></span>
+<span data-line=""><span style="color:#85E89D">    from</span><span style="color:#E1E4E8">: </span><span style="color:#9ECBFF">Selector</span></span>
+<span data-line=""><span style="color:#85E89D">    selector</span><span style="color:#E1E4E8">:</span></span>
+<span data-line=""><span style="color:#85E89D">      matchLabels</span><span style="color:#E1E4E8">:</span></span>
+<span data-line=""><span style="color:#85E89D">        shared-gateway-access</span><span style="color:#E1E4E8">: </span><span style="color:#9ECBFF">"true"</span></span></code></pre></figure>
+<p>Este patrón funciona muy bien para los equipos de plataforma.
+No tienes que bloquear todo completamente, pero tampoco tienes que abrirlo con <code>from: All</code> y dejar entrar a todos sin restricción. Puedes exigir que los namespaces se ganen el derecho de adjuntarse llevando una etiqueta específica.</p>
+<blockquote>
+<p>💡 <code>allowedRoutes</code> es por listener, no por Gateway. Distintos listeners pueden tener diferentes políticas de acceso.</p>
+</blockquote>
+<h2 id="referencegrant-el-namespace-de-destino-decide"><code>ReferenceGrant</code>: El namespace de destino decide</h2>
+<p>Si una ruta o un gateway quiere referenciar recursos en otro namespace, el namespace de destino tiene que autorizarlo.</p>
+<p>Por ejemplo, el <code>HTTPRoute</code> de un equipo de aplicación quiere enviar tráfico a un backend en un namespace compartido:</p>
+<figure data-rehype-pretty-code-figure=""><pre style="background-color:#24292e;color:#e1e4e8" tabindex="0" data-language="yaml" data-theme="github-dark"><code data-language="yaml" data-theme="github-dark" style="display: grid;"><span data-line=""><span style="color:#85E89D">apiVersion</span><span style="color:#E1E4E8">: </span><span style="color:#9ECBFF">gateway.networking.k8s.io/v1</span></span>
+<span data-line=""><span style="color:#85E89D">kind</span><span style="color:#E1E4E8">: </span><span style="color:#9ECBFF">HTTPRoute</span></span>
+<span data-line=""><span style="color:#85E89D">metadata</span><span style="color:#E1E4E8">:</span></span>
+<span data-line=""><span style="color:#85E89D">  name</span><span style="color:#E1E4E8">: </span><span style="color:#9ECBFF">app-route</span></span>
+<span data-line=""><span style="color:#85E89D">  namespace</span><span style="color:#E1E4E8">: </span><span style="color:#9ECBFF">team-a</span></span>
+<span data-line=""><span style="color:#85E89D">spec</span><span style="color:#E1E4E8">:</span></span>
+<span data-line=""><span style="color:#85E89D">  parentRefs</span><span style="color:#E1E4E8">:</span></span>
+<span data-line=""><span style="color:#E1E4E8">    - </span><span style="color:#85E89D">name</span><span style="color:#E1E4E8">: </span><span style="color:#9ECBFF">shared-gateway</span></span>
+<span data-line=""><span style="color:#85E89D">      namespace</span><span style="color:#E1E4E8">: </span><span style="color:#9ECBFF">infra</span></span>
+<span data-line=""><span style="color:#85E89D">      sectionName</span><span style="color:#E1E4E8">: </span><span style="color:#9ECBFF">https</span></span>
+<span data-line=""><span style="color:#85E89D">  rules</span><span style="color:#E1E4E8">:</span></span>
+<span data-line=""><span style="color:#E1E4E8">    - </span><span style="color:#85E89D">backendRefs</span><span style="color:#E1E4E8">:</span></span>
+<span data-line=""><span style="color:#E1E4E8">        - </span><span style="color:#85E89D">name</span><span style="color:#E1E4E8">: </span><span style="color:#9ECBFF">shared-api</span></span>
+<span data-line=""><span style="color:#85E89D">          namespace</span><span style="color:#E1E4E8">: </span><span style="color:#9ECBFF">shared-services</span></span>
+<span data-line=""><span style="color:#85E89D">          port</span><span style="color:#E1E4E8">: </span><span style="color:#79B8FF">8080</span></span></code></pre></figure>
+<p>El namespace <code>shared-services</code> necesitaría un <code>ReferenceGrant</code>:</p>
+<figure data-rehype-pretty-code-figure=""><pre style="background-color:#24292e;color:#e1e4e8" tabindex="0" data-language="yaml" data-theme="github-dark"><code data-language="yaml" data-theme="github-dark" style="display: grid;"><span data-line=""><span style="color:#85E89D">apiVersion</span><span style="color:#E1E4E8">: </span><span style="color:#9ECBFF">gateway.networking.k8s.io/v1beta1</span></span>
+<span data-line=""><span style="color:#85E89D">kind</span><span style="color:#E1E4E8">: </span><span style="color:#9ECBFF">ReferenceGrant</span></span>
+<span data-line=""><span style="color:#85E89D">metadata</span><span style="color:#E1E4E8">:</span></span>
+<span data-line=""><span style="color:#85E89D">  name</span><span style="color:#E1E4E8">: </span><span style="color:#9ECBFF">allow-team-a-route</span></span>
+<span data-line=""><span style="color:#85E89D">  namespace</span><span style="color:#E1E4E8">: </span><span style="color:#9ECBFF">shared-services</span></span>
+<span data-line=""><span style="color:#85E89D">spec</span><span style="color:#E1E4E8">:</span></span>
+<span data-line=""><span style="color:#85E89D">  from</span><span style="color:#E1E4E8">:</span></span>
+<span data-line=""><span style="color:#E1E4E8">    - </span><span style="color:#85E89D">group</span><span style="color:#E1E4E8">: </span><span style="color:#9ECBFF">gateway.networking.k8s.io</span></span>
+<span data-line=""><span style="color:#85E89D">      kind</span><span style="color:#E1E4E8">: </span><span style="color:#9ECBFF">HTTPRoute</span></span>
+<span data-line=""><span style="color:#85E89D">      namespace</span><span style="color:#E1E4E8">: </span><span style="color:#9ECBFF">team-a</span></span>
+<span data-line=""><span style="color:#85E89D">  to</span><span style="color:#E1E4E8">:</span></span>
+<span data-line=""><span style="color:#E1E4E8">    - </span><span style="color:#85E89D">group</span><span style="color:#E1E4E8">: </span><span style="color:#9ECBFF">""</span></span>
+<span data-line=""><span style="color:#85E89D">      kind</span><span style="color:#E1E4E8">: </span><span style="color:#9ECBFF">Service</span></span></code></pre></figure>
+<p>En términos simples:</p>
+<ul>
+<li>Los recursos <code>HTTPRoute</code> en <code>team-a</code></li>
+<li>Están autorizados a referenciar recursos <code>Service</code> en <code>shared-services</code></li>
+</ul>
+<p>Nótese que la autorización es <strong>creada por el namespace de destino, no por el origen</strong>.
+El origen no puede simplemente declarar que quiere acceso — el propietario del recurso decide. Este diseño es bastante principista, porque los propietarios deberían controlar quién accede a sus recursos.</p>
+<h2 id="división-común-entre-equipos-de-plataforma-y-aplicación">División común entre equipos de plataforma y aplicación</h2>
+<p>El modelo de propiedad más común tiene este aspecto:</p>
+<h3 id="el-equipo-de-plataforma-posee">El equipo de plataforma posee</h3>
+<ul>
+<li><code>GatewayClass</code></li>
+<li><code>Gateway</code></li>
+<li><code>Listener</code></li>
+<li>Gestión de certificados TLS</li>
+<li>Políticas de <code>allowedRoutes</code></li>
+</ul>
+<h3 id="los-equipos-de-aplicación-poseen">Los equipos de aplicación poseen</h3>
+<ul>
+<li><code>HTTPRoute</code> / <code>GRPCRoute</code> en sus propios namespaces</li>
+<li>Servicios de backend</li>
+<li>Ajustes de reglas de enrutamiento</li>
+</ul>
+<p>Los beneficios de esta división son claros:</p>
+<ul>
+<li>El equipo de plataforma protege la exposición de ingreso y el perímetro de seguridad</li>
+<li>Los equipos de aplicación pueden seguir moviéndose rápido con sus propias reglas de tráfico</li>
+<li>Nadie necesita tocar el Gateway compartido solo para cambiar un path</li>
+</ul>
+<p>También puedes dar todos los permisos a un solo grupo — eso no está mal.
+Pero en equipos más grandes, ese modelo tiende a evolucionar hacia "cualquiera puede cambiarlo, así que cuando se rompe nadie sabe quién hizo qué."</p>
+<h2 id="consejos-prácticos-cómo-evitar-desastres-multi-tenant">Consejos prácticos: Cómo evitar desastres multi-tenant</h2>
+<p>Hábitos genuinamente útiles:</p>
+<ul>
+<li>Los Gateways compartidos usan por defecto <code>allowedRoutes.namespaces.from: Selector</code></li>
+<li>Las convenciones de etiquetas de namespace deben ser estables — no cambies <code>team-a</code> a <code>allow-gw</code> el mes que viene</li>
+<li>Todas las referencias cross-namespace a backends o Secrets pasan por <code>ReferenceGrant</code></li>
+<li>Los nombres de las rutas deben indicar el equipo o servicio — por ejemplo, <code>team-a-api-route</code></li>
+<li>Los listeners compartidos deben usar siempre <code>sectionName</code> para evitar que las rutas se adjunten a la entrada equivocada</li>
+</ul>
+<p>Un principio que vale la pena mantener:</p>
+<p><strong>Si puedes hacer cumplir un límite en la capa de ingreso, no te apoyes en la documentación y en esperar que las personas se autogestionen.</strong></p>
+<p>En ingeniería, el proceso supera al acuerdo verbal. Eso suena como un consejo de alguien mucho mayor, pero es genuinamente útil.</p>
+<h2 id="resumen-en-una-línea">Resumen en una línea</h2>
+<p>En Gateway API, <code>allowedRoutes</code> controla "quién puede entrar", y <code>ReferenceGrant</code> controla "a qué pueden acceder una vez dentro."
+Mantén esos dos conceptos claros y los escenarios multi-namespace y multi-equipo se vuelven mucho más manejables.</p>
+<h2 id="siguiente-paso">Siguiente paso</h2>
+<p>Con la propiedad y los permisos resueltos, la pieza final es:
+<strong>Cuando la configuración no surte efecto, ¿qué status, qué condition y qué comando miras primero?</strong></p>
+<p>El próximo artículo cubre el debugging e interpretación de status:
+👉 <a href="09-debugging-and-status">Manual de Status y Debugging</a></p>1e:["$","aside",null,{"className":"hidden lg:block","children":["$","$L27",null,{"html":"$28"}]}]
+16:["$","$L15","kubernetes",{"ref":"$undefined","href":"/es/tags/kubernetes","locale":"$undefined","localeCookie":"$14:props:localeCookie","className":"inline-flex items-center rounded-full px-2.5 py-0.5 text-xs font-medium transition-colors","style":{"background":"var(--color-code-bg)","color":"var(--color-accent)","border":"1px solid var(--color-border)"},"children":["#","kubernetes"]}]
+17:["$","$L15","envoy-gateway",{"ref":"$undefined","href":"/es/tags/envoy-gateway","locale":"$undefined","localeCookie":"$14:props:localeCookie","className":"inline-flex items-center rounded-full px-2.5 py-0.5 text-xs font-medium transition-colors","style":{"background":"var(--color-code-bg)","color":"var(--color-accent)","border":"1px solid var(--color-border)"},"children":["#","envoy-gateway"]}]
+18:["$","$L15","gateway-api",{"ref":"$undefined","href":"/es/tags/gateway-api","locale":"$undefined","localeCookie":"$14:props:localeCookie","className":"inline-flex items-center rounded-full px-2.5 py-0.5 text-xs font-medium transition-colors","style":{"background":"var(--color-code-bg)","color":"var(--color-accent)","border":"1px solid var(--color-border)"},"children":["#","gateway-api"]}]
+19:["$","$L15","referencegrant",{"ref":"$undefined","href":"/es/tags/referencegrant","locale":"$undefined","localeCookie":"$14:props:localeCookie","className":"inline-flex items-center rounded-full px-2.5 py-0.5 text-xs font-medium transition-colors","style":{"background":"var(--color-code-bg)","color":"var(--color-accent)","border":"1px solid var(--color-border)"},"children":["#","referencegrant"]}]
+1a:["$","$L15","allowedroutes",{"ref":"$undefined","href":"/es/tags/allowedroutes","locale":"$undefined","localeCookie":"$14:props:localeCookie","className":"inline-flex items-center rounded-full px-2.5 py-0.5 text-xs font-medium transition-colors","style":{"background":"var(--color-code-bg)","color":"var(--color-accent)","border":"1px solid var(--color-border)"},"children":["#","allowedroutes"]}]
+1b:["$","$L15","multi-tenant",{"ref":"$undefined","href":"/es/tags/multi-tenant","locale":"$undefined","localeCookie":"$14:props:localeCookie","className":"inline-flex items-center rounded-full px-2.5 py-0.5 text-xs font-medium transition-colors","style":{"background":"var(--color-code-bg)","color":"var(--color-accent)","border":"1px solid var(--color-border)"},"children":["#","multi-tenant"]}]
+1f:["$","$L15","kubernetes",{"ref":"$undefined","href":"/es/tags/kubernetes","locale":"$undefined","localeCookie":"$14:props:localeCookie","className":"inline-flex items-center rounded-full px-3 py-1 text-sm font-medium transition-colors","style":{"background":"var(--color-code-bg)","color":"var(--color-accent)","border":"1px solid var(--color-border)"},"children":["#","kubernetes"]}]
+20:["$","$L15","envoy-gateway",{"ref":"$undefined","href":"/es/tags/envoy-gateway","locale":"$undefined","localeCookie":"$14:props:localeCookie","className":"inline-flex items-center rounded-full px-3 py-1 text-sm font-medium transition-colors","style":{"background":"var(--color-code-bg)","color":"var(--color-accent)","border":"1px solid var(--color-border)"},"children":["#","envoy-gateway"]}]
+21:["$","$L15","gateway-api",{"ref":"$undefined","href":"/es/tags/gateway-api","locale":"$undefined","localeCookie":"$14:props:localeCookie","className":"inline-flex items-center rounded-full px-3 py-1 text-sm font-medium transition-colors","style":{"background":"var(--color-code-bg)","color":"var(--color-accent)","border":"1px solid var(--color-border)"},"children":["#","gateway-api"]}]
+22:["$","$L15","referencegrant",{"ref":"$undefined","href":"/es/tags/referencegrant","locale":"$undefined","localeCookie":"$14:props:localeCookie","className":"inline-flex items-center rounded-full px-3 py-1 text-sm font-medium transition-colors","style":{"background":"var(--color-code-bg)","color":"var(--color-accent)","border":"1px solid var(--color-border)"},"children":["#","referencegrant"]}]
+23:["$","$L15","allowedroutes",{"ref":"$undefined","href":"/es/tags/allowedroutes","locale":"$undefined","localeCookie":"$14:props:localeCookie","className":"inline-flex items-center rounded-full px-3 py-1 text-sm font-medium transition-colors","style":{"background":"var(--color-code-bg)","color":"var(--color-accent)","border":"1px solid var(--color-border)"},"children":["#","allowedroutes"]}]
+24:["$","$L15","multi-tenant",{"ref":"$undefined","href":"/es/tags/multi-tenant","locale":"$undefined","localeCookie":"$14:props:localeCookie","className":"inline-flex items-center rounded-full px-3 py-1 text-sm font-medium transition-colors","style":{"background":"var(--color-code-bg)","color":"var(--color-accent)","border":"1px solid var(--color-border)"},"children":["#","multi-tenant"]}]
+25:["$","$L15",null,{"ref":"$undefined","href":"/es/blog/k8s/gateway/07-listener-design","locale":"$undefined","localeCookie":"$14:props:localeCookie","className":"group rounded-lg border p-4 transition-colors hover:border-accent","style":{"borderColor":"var(--color-border)","background":"var(--color-surface)"},"children":[["$","p",null,{"className":"mb-1 text-xs","style":{"color":"var(--color-muted)"},"children":"← Artículo más reciente"}],["$","p",null,{"className":"line-clamp-1 text-sm font-medium transition-colors group-hover:text-accent","style":{"color":"var(--color-text)"},"children":"Guía de diseño de Listeners en Envoy Gateway: patrones multi-puerto, multi-hostname y multi-ingress"}]]}]
+26:["$","$L15",null,{"ref":"$undefined","href":"/es/blog/k8s/gateway/09-debugging-and-status","locale":"$undefined","localeCookie":"$14:props:localeCookie","className":"group rounded-lg border p-4 text-right transition-colors hover:border-accent","style":{"borderColor":"var(--color-border)","background":"var(--color-surface)"},"children":[["$","p",null,{"className":"mb-1 text-xs","style":{"color":"var(--color-muted)"},"children":"Artículo más antiguo →"}],["$","p",null,{"className":"line-clamp-1 text-sm font-medium transition-colors group-hover:text-accent","style":{"color":"var(--color-text)"},"children":"Manual de Status y Debugging de Envoy Gateway: Qué significan realmente Accepted, ResolvedRefs y Programmed"}]]}]
+29:I[92204,["/_next/static/chunks/5a5b5b13c22d14f7.js","/_next/static/chunks/a484d1d3dd4b55ab.js"],"IconMark"]
+8:null
+c:[["$","title","0",{"children":"Envoy Gateway Multi-Namespace y Propiedad de Equipos: allowedRoutes, ReferenceGrant y Gobernanza entre Equipos | BenXHub Blog"}],["$","meta","1",{"name":"description","content":"Comprende el modelo multi-tenant de Gateway API — permisos de adjunción a listeners, referencias entre namespaces y los patrones comunes de propiedad entre equipos de plataforma y aplicación."}],["$","meta","2",{"property":"og:title","content":"Envoy Gateway Multi-Namespace y Propiedad de Equipos: allowedRoutes, ReferenceGrant y Gobernanza entre Equipos"}],["$","meta","3",{"property":"og:description","content":"Comprende el modelo multi-tenant de Gateway API — permisos de adjunción a listeners, referencias entre namespaces y los patrones comunes de propiedad entre equipos de plataforma y aplicación."}],["$","meta","4",{"property":"og:url","content":"https://benxhub.com/es/blog/k8s/gateway/08-multi-namespace-and-teamwork"}],["$","meta","5",{"property":"og:type","content":"article"}],["$","meta","6",{"property":"article:published_time","content":"2026-03-10T00:00:00.000Z"}],["$","meta","7",{"property":"article:tag","content":"kubernetes"}],["$","meta","8",{"property":"article:tag","content":"envoy-gateway"}],["$","meta","9",{"property":"article:tag","content":"gateway-api"}],["$","meta","10",{"property":"article:tag","content":"referencegrant"}],["$","meta","11",{"property":"article:tag","content":"allowedroutes"}],["$","meta","12",{"property":"article:tag","content":"multi-tenant"}],["$","meta","13",{"name":"twitter:card","content":"summary_large_image"}],["$","meta","14",{"name":"twitter:title","content":"Envoy Gateway Multi-Namespace y Propiedad de Equipos: allowedRoutes, ReferenceGrant y Gobernanza entre Equipos"}],["$","meta","15",{"name":"twitter:description","content":"Comprende el modelo multi-tenant de Gateway API — permisos de adjunción a listeners, referencias entre namespaces y los patrones comunes de propiedad entre equipos de plataforma y aplicación."}],["$","link","16",{"rel":"icon","href":"/favicon.ico?favicon.0b3bf435.ico","sizes":"256x256","type":"image/x-icon"}],["$","$L29","17",{}]]

@@ -1,0 +1,311 @@
+1:"$Sreact.fragment"
+2:I[14864,["/_next/static/chunks/7923a261b80bb6e1.js","/_next/static/chunks/e09b4358027e8033.js","/_next/static/chunks/2dddb3bc05093f69.js"],"default"]
+8:I[24801,["/_next/static/chunks/7923a261b80bb6e1.js","/_next/static/chunks/e09b4358027e8033.js","/_next/static/chunks/2dddb3bc05093f69.js"],"default"]
+a:I[50183,["/_next/static/chunks/5a5b5b13c22d14f7.js","/_next/static/chunks/a484d1d3dd4b55ab.js"],"OutletBoundary"]
+b:"$Sreact.suspense"
+3:T3276,<p>備份就是買保險——平常覺得多此一舉，出事的時候恨自己當初為什麼沒買。PVE 內建的備份工具 <code>vzdump</code> 用起來不複雜，搭配 Proxmox Backup Server（PBS）更是如虎添翼。重點是：<strong>做了備份不等於安全，能還原才算數。</strong> 不管你是備份 <a href="03-vm-management">VM</a> 還是 <a href="04-lxc-containers">LXC 容器</a>，觀念都一樣。</p>
+<h2 id="三種備份模式">三種備份模式</h2>
+<p>備份 VM 的時候，PVE 給你三種選擇，差別在於「要不要關機」：</p>
+<table>
+<thead>
+<tr>
+<th>模式</th>
+<th>做法</th>
+<th align="center">停機時間</th>
+<th>適合場景</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td><strong>Snapshot</strong></td>
+<td>拍快照後備份，VM 繼續跑</td>
+<td align="center">無</td>
+<td>生產環境日常備份</td>
+</tr>
+<tr>
+<td><strong>Suspend</strong></td>
+<td>暫停 VM → 備份 → 恢復</td>
+<td align="center">短暫</td>
+<td>需要更高一致性</td>
+</tr>
+<tr>
+<td><strong>Stop</strong></td>
+<td>停機 → 備份 → 開機</td>
+<td align="center">較長</td>
+<td>追求最高資料一致性</td>
+</tr>
+</tbody>
+</table>
+<p>Snapshot 模式像是在高速公路上幫車拍照——車不用停，照片拍得到。Stop 模式則是把車開到路肩停好再拍，畫面最清楚但會耽誤行程。</p>
+<figure data-rehype-pretty-code-figure=""><pre style="background-color:#24292e;color:#e1e4e8" tabindex="0" data-language="bash" data-theme="github-dark"><code data-language="bash" data-theme="github-dark" style="display: grid;"><span data-line=""><span style="color:#6A737D"># Snapshot 模式備份 VM 100，用 zstd 壓縮</span></span>
+<span data-line=""><span style="color:#B392F0">vzdump</span><span style="color:#79B8FF"> 100</span><span style="color:#79B8FF"> --storage</span><span style="color:#9ECBFF"> local</span><span style="color:#79B8FF"> --mode</span><span style="color:#9ECBFF"> snapshot</span><span style="color:#79B8FF"> --compress</span><span style="color:#9ECBFF"> zstd</span></span>
+<span data-line=""> </span>
+<span data-line=""><span style="color:#6A737D"># 備份全部 VM</span></span>
+<span data-line=""><span style="color:#B392F0">vzdump</span><span style="color:#79B8FF"> --all</span><span style="color:#79B8FF"> --storage</span><span style="color:#9ECBFF"> nfs-backup</span><span style="color:#79B8FF"> --mode</span><span style="color:#9ECBFF"> snapshot</span></span>
+<span data-line=""> </span>
+<span data-line=""><span style="color:#6A737D"># 排除不需要的 VM</span></span>
+<span data-line=""><span style="color:#B392F0">vzdump</span><span style="color:#79B8FF"> --all</span><span style="color:#79B8FF"> --exclude</span><span style="color:#9ECBFF"> 100,101</span></span>
+<span data-line=""> </span>
+<span data-line=""><span style="color:#6A737D"># 限制備份頻寬（單位 KB/s），怕打滿網路的話很好用</span></span>
+<span data-line=""><span style="color:#B392F0">vzdump</span><span style="color:#79B8FF"> 100</span><span style="color:#79B8FF"> --compress</span><span style="color:#9ECBFF"> zstd</span><span style="color:#79B8FF"> --bwlimit</span><span style="color:#79B8FF"> 10240</span><span style="color:#79B8FF"> --storage</span><span style="color:#9ECBFF"> nfs-backup</span></span></code></pre></figure>
+<p>排程設定在 Web GUI 點一點就好：<code>Datacenter → Backup → Add</code>，選好時間、存儲、模式，設完就可以忘記它了。它會乖乖每天幫你跑。</p>
+<blockquote>
+<p>建議開啟 QEMU Guest Agent（<code>qemu-guest-agent</code>），這樣 Snapshot 備份時 PVE 會通知 VM 先做 filesystem freeze，資料一致性好很多。沒裝的話，備份出來的東西「大概」能用，但不保證完美。</p>
+</blockquote>
+<h2 id="備份存哪裡">備份存哪裡</h2>
+<table>
+<thead>
+<tr>
+<th>存儲目標</th>
+<th align="center">增量備份</th>
+<th align="center">去重</th>
+<th align="center">加密</th>
+<th>說明</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td>本地目錄</td>
+<td align="center">✗</td>
+<td align="center">✗</td>
+<td align="center">✗</td>
+<td>最簡單，但硬碟壞了就一起走</td>
+</tr>
+<tr>
+<td>NFS</td>
+<td align="center">✗</td>
+<td align="center">✗</td>
+<td align="center">✗</td>
+<td>放 NAS 上，至少跟主機分開</td>
+</tr>
+<tr>
+<td><strong>PBS</strong></td>
+<td align="center">✓</td>
+<td align="center">✓</td>
+<td align="center">✓</td>
+<td>企業級方案，認真的選這個</td>
+</tr>
+</tbody>
+</table>
+<h2 id="proxmox-backup-server備份界的正規軍">Proxmox Backup Server：備份界的正規軍</h2>
+<p>PBS 是 Proxmox 自家出的備份伺服器，跟 PVE 深度整合。如果說 <code>vzdump</code> 備份到本地是把東西塞進床底下，PBS 就是租了一間有溫濕度控制的倉庫。</p>
+<p>PBS 的殺手級功能：</p>
+<ul>
+<li><strong>增量備份</strong>：只傳有變動的區塊，第二次以後的備份超快</li>
+<li><strong>內容級去重複</strong>：不同 VM 的相同資料只存一份，空間省到不可思議</li>
+<li><strong>客戶端加密</strong>：AES-256-GCM，金鑰在你手上，伺服器端看不到內容</li>
+<li><strong>完整性驗證</strong>：每個區塊都有 SHA-256 校驗碼</li>
+<li><strong>遠端同步</strong>：備份再同步一份到異地 PBS，災難復原的最後防線</li>
+</ul>
+<figure data-rehype-pretty-code-figure=""><pre style="background-color:#24292e;color:#e1e4e8" tabindex="0" data-language="bash" data-theme="github-dark"><code data-language="bash" data-theme="github-dark" style="display: grid;"><span data-line=""><span style="color:#6A737D"># 在 PVE 上新增 PBS 存儲</span></span>
+<span data-line=""><span style="color:#B392F0">pvesm</span><span style="color:#9ECBFF"> add</span><span style="color:#9ECBFF"> pbs</span><span style="color:#9ECBFF"> pbs-store</span><span style="color:#79B8FF"> \</span></span>
+<span data-line=""><span style="color:#79B8FF">  --server</span><span style="color:#79B8FF"> 192.168.1.200</span><span style="color:#79B8FF"> \</span></span>
+<span data-line=""><span style="color:#79B8FF">  --datastore</span><span style="color:#9ECBFF"> backup1</span><span style="color:#79B8FF"> \</span></span>
+<span data-line=""><span style="color:#79B8FF">  --username</span><span style="color:#9ECBFF"> backup@pbs</span><span style="color:#79B8FF"> \</span></span>
+<span data-line=""><span style="color:#79B8FF">  --fingerprint</span><span style="color:#F97583"> &#x3C;</span><span style="color:#9ECBFF">sha256-fingerprin</span><span style="color:#E1E4E8">t</span><span style="color:#F97583">></span></span></code></pre></figure>
+<p>設定完之後，備份排程的存儲選 <code>pbs-store</code> 就行了，其他跟平常一樣。</p>
+<h2 id="還原操作">還原操作</h2>
+<p>備份做了，還原怎麼做？</p>
+<figure data-rehype-pretty-code-figure=""><pre style="background-color:#24292e;color:#e1e4e8" tabindex="0" data-language="bash" data-theme="github-dark"><code data-language="bash" data-theme="github-dark" style="display: grid;"><span data-line=""><span style="color:#6A737D"># 從本地備份還原</span></span>
+<span data-line=""><span style="color:#B392F0">qmrestore</span><span style="color:#9ECBFF"> /var/lib/vz/dump/vzdump-qemu-100-</span><span style="color:#79B8FF">*</span><span style="color:#9ECBFF">.vma.zst</span><span style="color:#79B8FF"> 100</span></span>
+<span data-line=""> </span>
+<span data-line=""><span style="color:#6A737D"># 從 PBS 還原</span></span>
+<span data-line=""><span style="color:#B392F0">qmrestore</span><span style="color:#9ECBFF"> pbs-store:backup/vm/100/2026-04-23T02:00:00Z</span><span style="color:#79B8FF"> 100</span></span>
+<span data-line=""> </span>
+<span data-line=""><span style="color:#6A737D"># 還原成不同的 VM（新 ID + 產生新 MAC）</span></span>
+<span data-line=""><span style="color:#B392F0">qmrestore</span><span style="color:#F97583"> &#x3C;</span><span style="color:#9ECBFF">backup-fil</span><span style="color:#E1E4E8">e</span><span style="color:#F97583">></span><span style="color:#79B8FF"> 200</span><span style="color:#79B8FF"> --unique</span></span>
+<span data-line=""> </span>
+<span data-line=""><span style="color:#6A737D"># LXC 容器還原</span></span>
+<span data-line=""><span style="color:#B392F0">pct</span><span style="color:#9ECBFF"> restore</span><span style="color:#79B8FF"> 200</span><span style="color:#9ECBFF"> /var/lib/vz/dump/vzdump-lxc-200-</span><span style="color:#79B8FF">*</span><span style="color:#9ECBFF">.tar.zst</span></span></code></pre></figure>
+<blockquote>
+<p>拜託，每季至少做一次<strong>還原演練</strong>。隨便挑一個備份還原到測試 VM，確認能開機、服務能跑。沒測過的備份就像沒開過的降落傘，你不會想在跳下去的那一刻才發現打不開。</p>
+</blockquote>
+<h2 id="保留策略別讓備份塞爆硬碟">保留策略：別讓備份塞爆硬碟</h2>
+<p>備份一直留不刪，硬碟遲早爆。設定保留策略讓系統自動清理：</p>
+<figure data-rehype-pretty-code-figure=""><pre style="background-color:#24292e;color:#e1e4e8" tabindex="0" data-language="bash" data-theme="github-dark"><code data-language="bash" data-theme="github-dark" style="display: grid;"><span data-line=""><span style="color:#B392F0">vzdump</span><span style="color:#79B8FF"> 100</span><span style="color:#79B8FF"> --storage</span><span style="color:#9ECBFF"> pbs-store</span><span style="color:#79B8FF"> \</span></span>
+<span data-line=""><span style="color:#79B8FF">  --prune-backups</span><span style="color:#9ECBFF"> keep-last=3,keep-daily=7,keep-weekly=4,keep-monthly=</span><span style="color:#79B8FF">6</span></span></code></pre></figure>
+<p>意思是：保留最近 3 份 + 每天 7 份 + 每週 4 份 + 每月 6 份，其餘自動清掉。策略依照你的 RPO（能接受丟多少資料）來調整。</p>
+<h2 id="vm-replication備份的好搭檔">VM Replication：備份的好搭檔</h2>
+<p>Replication 不算備份，但它能把 VM 磁碟定期複製到其他節點，用的是 ZFS send/receive：</p>
+<ul>
+<li>預設每 15 分鐘同步一次</li>
+<li>Live Migration 的時候可以利用已複製的資料加速</li>
+<li>搭配 HA 使用，故障轉移更快</li>
+</ul>
+<p>把它想成廚房的備用食材——不是正式的料理（備份），但緊急的時候可以直接拿來炒一盤。Replication 搭配 <a href="09-high-availability">高可用 HA</a> 使用效果更佳，故障轉移時能大幅縮短恢復時間。</p>
+<h2 id="3-2-1-備份原則">3-2-1 備份原則</h2>
+<p>說了一堆工具跟指令，最後回到最重要的原則：</p>
+<ul>
+<li><strong>3</strong> 份副本（原始 + 兩份備份）</li>
+<li><strong>2</strong> 種媒體（本地硬碟 + NAS 或 PBS）</li>
+<li><strong>1</strong> 份異地（雲端或遠端機房）</li>
+</ul>
+<p>做到這三點，就算辦公室著火，你的資料還有救。備份要放哪種存儲、NFS 怎麼掛載，可以回頭看 <a href="05-storage">存儲全攻略</a>。</p>
+<p>更完整的備份參數與排程設定，可以參考 <a href="https://pve.proxmox.com/pve-docs/chapter-vzdump.html">Proxmox VE Backup 官方文件</a>。如果你考慮導入 PBS，推薦閱讀 <a href="https://pbs.proxmox.com/docs/">Proxmox Backup Server 官方文件</a>，以及 <a href="https://pve.proxmox.com/wiki/Backup_and_Restore">Proxmox Wiki 的 Backup and Restore 頁面</a>。</p>
+<h2 id="常見問題">常見問題</h2>
+<h3 id="q-vzdump-備份用哪種模式最好">Q: vzdump 備份用哪種模式最好？</h3>
+<p>生產環境日常備份用 Snapshot 模式，VM 不用停機。如果追求最高資料一致性（例如資料庫），用 Stop 模式最保險。記得安裝 qemu-guest-agent 提升 Snapshot 的一致性。</p>
+<h3 id="q-proxmox-backup-server-跟-vzdump-差在哪">Q: Proxmox Backup Server 跟 vzdump 差在哪？</h3>
+<p>PBS 支援增量備份、內容級去重複和客戶端加密，第二次以後的備份速度快、空間省。vzdump 備份到本地或 NFS 則是全量備份，簡單但佔空間。認真做備份建議上 PBS。</p>
+<h3 id="q-pve-備份可以加密嗎">Q: PVE 備份可以加密嗎？</h3>
+<p>搭配 PBS 可以。PBS 支援 AES-256-GCM 客戶端加密，金鑰由你保管，伺服器端無法讀取備份內容。vzdump 備份到本地目錄或 NFS 則不支援原生加密。</p>
+<h3 id="q-備份保留策略怎麼設定比較合理">Q: 備份保留策略怎麼設定比較合理？</h3>
+<p>常見做法是保留最近 3 份、每日 7 份、每週 4 份、每月 6 份。根據你能接受的資料遺失量（RPO）調整，空間有限就減少保留數量，但至少保持 3-2-1 原則。</p>
+<h2 id="下一步">下一步</h2>
+<p>單機備份搞定了，該來組叢集了——多台主機協同工作，才能發揮 PVE 的真正實力：
+👉 <a href="08-cluster">叢集管理</a></p>0:{"buildId":"Yck3R4ooQxWkwGLT6is1X","rsc":["$","$1","c",{"children":[[["$","script",null,{"type":"application/ld+json","dangerouslySetInnerHTML":{"__html":"{\"@context\":\"https://schema.org\",\"@type\":\"Article\",\"headline\":\"Proxmox VE 備份與還原：你的後悔藥指南\",\"description\":\"PVE 備份完整指南：vzdump 三種模式、Proxmox Backup Server 設定、保留策略與 3-2-1 原則，讓你的資料真正安全。\",\"url\":\"https://benxhub.com/zh/blog/pve/07-backup-restore\",\"mainEntityOfPage\":{\"@type\":\"WebPage\",\"@id\":\"https://benxhub.com/zh/blog/pve/07-backup-restore\"},\"datePublished\":\"2026-04-30T00:00:00.000Z\",\"dateModified\":\"2026-04-30T00:00:00.000Z\",\"keywords\":\"proxmox, backup, restore, pbs, vzdump\",\"inLanguage\":\"zh\",\"author\":{\"@type\":\"Person\",\"name\":\"BenX\",\"url\":\"https://benxhub.com\"},\"publisher\":{\"@type\":\"Organization\",\"name\":\"BenXHub Blog\",\"url\":\"https://benxhub.com\"}}"}}],["$","div",null,{"className":"mx-auto max-w-6xl px-4 py-12 sm:px-6","children":["$","div",null,{"className":"lg:grid lg:grid-cols-[1fr_240px] lg:gap-14","children":[["$","article",null,{"children":[["$","header",null,{"className":"mb-10","children":[["$","div",null,{"className":"mb-4 flex flex-wrap gap-2","children":[["$","$L2","proxmox",{"href":"/zh/tags/proxmox","localeCookie":{"name":"NEXT_LOCALE","sameSite":"lax"},"className":"inline-flex items-center rounded-full px-2.5 py-0.5 text-xs font-medium transition-colors","style":{"background":"var(--color-code-bg)","color":"var(--color-accent)","border":"1px solid var(--color-border)"},"children":["#","proxmox"]}],["$","$L2","backup",{"href":"/zh/tags/backup","localeCookie":{"name":"NEXT_LOCALE","sameSite":"lax"},"className":"inline-flex items-center rounded-full px-2.5 py-0.5 text-xs font-medium transition-colors","style":{"background":"var(--color-code-bg)","color":"var(--color-accent)","border":"1px solid var(--color-border)"},"children":["#","backup"]}],["$","$L2","restore",{"href":"/zh/tags/restore","localeCookie":{"name":"NEXT_LOCALE","sameSite":"lax"},"className":"inline-flex items-center rounded-full px-2.5 py-0.5 text-xs font-medium transition-colors","style":{"background":"var(--color-code-bg)","color":"var(--color-accent)","border":"1px solid var(--color-border)"},"children":["#","restore"]}],["$","$L2","pbs",{"href":"/zh/tags/pbs","localeCookie":{"name":"NEXT_LOCALE","sameSite":"lax"},"className":"inline-flex items-center rounded-full px-2.5 py-0.5 text-xs font-medium transition-colors","style":{"background":"var(--color-code-bg)","color":"var(--color-accent)","border":"1px solid var(--color-border)"},"children":["#","pbs"]}],["$","$L2","vzdump",{"href":"/zh/tags/vzdump","localeCookie":{"name":"NEXT_LOCALE","sameSite":"lax"},"className":"inline-flex items-center rounded-full px-2.5 py-0.5 text-xs font-medium transition-colors","style":{"background":"var(--color-code-bg)","color":"var(--color-accent)","border":"1px solid var(--color-border)"},"children":["#","vzdump"]}]]}],["$","h1",null,{"className":"mb-4 text-3xl leading-snug font-bold tracking-tight sm:text-4xl","style":{"color":"var(--color-text)"},"children":"Proxmox VE 備份與還原：你的後悔藥指南"}],["$","div",null,{"className":"flex flex-wrap items-center gap-3 text-sm","style":{"color":"var(--color-muted)"},"children":[["$","time",null,{"dateTime":"2026-04-30","children":"2026 年 4 月 30 日"}],["$","span",null,{"aria-hidden":"true","children":"·"}],["$","span",null,{"children":"8 min read"}]]}],"$undefined",["$","div",null,{"className":"mt-6 border-b","style":{"borderColor":"var(--color-border)"}}]]}],["$","div",null,{"className":"prose","dangerouslySetInnerHTML":{"__html":"$3"}}],"$L4"]}],"$L5"]}]}]],["$L6"],"$L7"]}],"loading":null,"isPartial":false}
+4:["$","footer",null,{"className":"mt-14 border-t pt-8","style":{"borderColor":"var(--color-border)"},"children":[["$","div",null,{"className":"mb-8 flex flex-wrap gap-2","children":[["$","$L2","proxmox",{"href":"/zh/tags/proxmox","localeCookie":{"name":"NEXT_LOCALE","sameSite":"lax"},"className":"inline-flex items-center rounded-full px-3 py-1 text-sm font-medium transition-colors","style":{"background":"var(--color-code-bg)","color":"var(--color-accent)","border":"1px solid var(--color-border)"},"children":["#","proxmox"]}],["$","$L2","backup",{"href":"/zh/tags/backup","localeCookie":{"name":"NEXT_LOCALE","sameSite":"lax"},"className":"inline-flex items-center rounded-full px-3 py-1 text-sm font-medium transition-colors","style":{"background":"var(--color-code-bg)","color":"var(--color-accent)","border":"1px solid var(--color-border)"},"children":["#","backup"]}],["$","$L2","restore",{"href":"/zh/tags/restore","localeCookie":{"name":"NEXT_LOCALE","sameSite":"lax"},"className":"inline-flex items-center rounded-full px-3 py-1 text-sm font-medium transition-colors","style":{"background":"var(--color-code-bg)","color":"var(--color-accent)","border":"1px solid var(--color-border)"},"children":["#","restore"]}],["$","$L2","pbs",{"href":"/zh/tags/pbs","localeCookie":{"name":"NEXT_LOCALE","sameSite":"lax"},"className":"inline-flex items-center rounded-full px-3 py-1 text-sm font-medium transition-colors","style":{"background":"var(--color-code-bg)","color":"var(--color-accent)","border":"1px solid var(--color-border)"},"children":["#","pbs"]}],["$","$L2","vzdump",{"href":"/zh/tags/vzdump","localeCookie":{"name":"NEXT_LOCALE","sameSite":"lax"},"className":"inline-flex items-center rounded-full px-3 py-1 text-sm font-medium transition-colors","style":{"background":"var(--color-code-bg)","color":"var(--color-accent)","border":"1px solid var(--color-border)"},"children":["#","vzdump"]}]]}],["$","nav",null,{"aria-label":"文章導覽","className":"grid grid-cols-1 gap-4 sm:grid-cols-2","children":[["$","$L2",null,{"href":"/zh/blog/pve/08-cluster","localeCookie":{"name":"NEXT_LOCALE","sameSite":"lax"},"className":"group rounded-lg border p-4 transition-colors hover:border-accent","style":{"borderColor":"var(--color-border)","background":"var(--color-surface)"},"children":[["$","p",null,{"className":"mb-1 text-xs","style":{"color":"var(--color-muted)"},"children":"← 較新文章"}],["$","p",null,{"className":"line-clamp-1 text-sm font-medium transition-colors group-hover:text-accent","style":{"color":"var(--color-text)"},"children":"Proxmox VE 叢集管理：多台主機組隊打副本"}]]}],["$","$L2",null,{"href":"/zh/blog/pve/06-networking","localeCookie":{"name":"NEXT_LOCALE","sameSite":"lax"},"className":"group rounded-lg border p-4 text-right transition-colors hover:border-accent","style":{"borderColor":"var(--color-border)","background":"var(--color-surface)"},"children":[["$","p",null,{"className":"mb-1 text-xs","style":{"color":"var(--color-muted)"},"children":"較舊文章 →"}],["$","p",null,{"className":"line-clamp-1 text-sm font-medium transition-colors group-hover:text-accent","style":{"color":"var(--color-text)"},"children":"Proxmox VE 網路管理：Bridge、Bond 與 VLAN"}]]}]]}]]}]
+9:T3276,<p>備份就是買保險——平常覺得多此一舉，出事的時候恨自己當初為什麼沒買。PVE 內建的備份工具 <code>vzdump</code> 用起來不複雜，搭配 Proxmox Backup Server（PBS）更是如虎添翼。重點是：<strong>做了備份不等於安全，能還原才算數。</strong> 不管你是備份 <a href="03-vm-management">VM</a> 還是 <a href="04-lxc-containers">LXC 容器</a>，觀念都一樣。</p>
+<h2 id="三種備份模式">三種備份模式</h2>
+<p>備份 VM 的時候，PVE 給你三種選擇，差別在於「要不要關機」：</p>
+<table>
+<thead>
+<tr>
+<th>模式</th>
+<th>做法</th>
+<th align="center">停機時間</th>
+<th>適合場景</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td><strong>Snapshot</strong></td>
+<td>拍快照後備份，VM 繼續跑</td>
+<td align="center">無</td>
+<td>生產環境日常備份</td>
+</tr>
+<tr>
+<td><strong>Suspend</strong></td>
+<td>暫停 VM → 備份 → 恢復</td>
+<td align="center">短暫</td>
+<td>需要更高一致性</td>
+</tr>
+<tr>
+<td><strong>Stop</strong></td>
+<td>停機 → 備份 → 開機</td>
+<td align="center">較長</td>
+<td>追求最高資料一致性</td>
+</tr>
+</tbody>
+</table>
+<p>Snapshot 模式像是在高速公路上幫車拍照——車不用停，照片拍得到。Stop 模式則是把車開到路肩停好再拍，畫面最清楚但會耽誤行程。</p>
+<figure data-rehype-pretty-code-figure=""><pre style="background-color:#24292e;color:#e1e4e8" tabindex="0" data-language="bash" data-theme="github-dark"><code data-language="bash" data-theme="github-dark" style="display: grid;"><span data-line=""><span style="color:#6A737D"># Snapshot 模式備份 VM 100，用 zstd 壓縮</span></span>
+<span data-line=""><span style="color:#B392F0">vzdump</span><span style="color:#79B8FF"> 100</span><span style="color:#79B8FF"> --storage</span><span style="color:#9ECBFF"> local</span><span style="color:#79B8FF"> --mode</span><span style="color:#9ECBFF"> snapshot</span><span style="color:#79B8FF"> --compress</span><span style="color:#9ECBFF"> zstd</span></span>
+<span data-line=""> </span>
+<span data-line=""><span style="color:#6A737D"># 備份全部 VM</span></span>
+<span data-line=""><span style="color:#B392F0">vzdump</span><span style="color:#79B8FF"> --all</span><span style="color:#79B8FF"> --storage</span><span style="color:#9ECBFF"> nfs-backup</span><span style="color:#79B8FF"> --mode</span><span style="color:#9ECBFF"> snapshot</span></span>
+<span data-line=""> </span>
+<span data-line=""><span style="color:#6A737D"># 排除不需要的 VM</span></span>
+<span data-line=""><span style="color:#B392F0">vzdump</span><span style="color:#79B8FF"> --all</span><span style="color:#79B8FF"> --exclude</span><span style="color:#9ECBFF"> 100,101</span></span>
+<span data-line=""> </span>
+<span data-line=""><span style="color:#6A737D"># 限制備份頻寬（單位 KB/s），怕打滿網路的話很好用</span></span>
+<span data-line=""><span style="color:#B392F0">vzdump</span><span style="color:#79B8FF"> 100</span><span style="color:#79B8FF"> --compress</span><span style="color:#9ECBFF"> zstd</span><span style="color:#79B8FF"> --bwlimit</span><span style="color:#79B8FF"> 10240</span><span style="color:#79B8FF"> --storage</span><span style="color:#9ECBFF"> nfs-backup</span></span></code></pre></figure>
+<p>排程設定在 Web GUI 點一點就好：<code>Datacenter → Backup → Add</code>，選好時間、存儲、模式，設完就可以忘記它了。它會乖乖每天幫你跑。</p>
+<blockquote>
+<p>建議開啟 QEMU Guest Agent（<code>qemu-guest-agent</code>），這樣 Snapshot 備份時 PVE 會通知 VM 先做 filesystem freeze，資料一致性好很多。沒裝的話，備份出來的東西「大概」能用，但不保證完美。</p>
+</blockquote>
+<h2 id="備份存哪裡">備份存哪裡</h2>
+<table>
+<thead>
+<tr>
+<th>存儲目標</th>
+<th align="center">增量備份</th>
+<th align="center">去重</th>
+<th align="center">加密</th>
+<th>說明</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td>本地目錄</td>
+<td align="center">✗</td>
+<td align="center">✗</td>
+<td align="center">✗</td>
+<td>最簡單，但硬碟壞了就一起走</td>
+</tr>
+<tr>
+<td>NFS</td>
+<td align="center">✗</td>
+<td align="center">✗</td>
+<td align="center">✗</td>
+<td>放 NAS 上，至少跟主機分開</td>
+</tr>
+<tr>
+<td><strong>PBS</strong></td>
+<td align="center">✓</td>
+<td align="center">✓</td>
+<td align="center">✓</td>
+<td>企業級方案，認真的選這個</td>
+</tr>
+</tbody>
+</table>
+<h2 id="proxmox-backup-server備份界的正規軍">Proxmox Backup Server：備份界的正規軍</h2>
+<p>PBS 是 Proxmox 自家出的備份伺服器，跟 PVE 深度整合。如果說 <code>vzdump</code> 備份到本地是把東西塞進床底下，PBS 就是租了一間有溫濕度控制的倉庫。</p>
+<p>PBS 的殺手級功能：</p>
+<ul>
+<li><strong>增量備份</strong>：只傳有變動的區塊，第二次以後的備份超快</li>
+<li><strong>內容級去重複</strong>：不同 VM 的相同資料只存一份，空間省到不可思議</li>
+<li><strong>客戶端加密</strong>：AES-256-GCM，金鑰在你手上，伺服器端看不到內容</li>
+<li><strong>完整性驗證</strong>：每個區塊都有 SHA-256 校驗碼</li>
+<li><strong>遠端同步</strong>：備份再同步一份到異地 PBS，災難復原的最後防線</li>
+</ul>
+<figure data-rehype-pretty-code-figure=""><pre style="background-color:#24292e;color:#e1e4e8" tabindex="0" data-language="bash" data-theme="github-dark"><code data-language="bash" data-theme="github-dark" style="display: grid;"><span data-line=""><span style="color:#6A737D"># 在 PVE 上新增 PBS 存儲</span></span>
+<span data-line=""><span style="color:#B392F0">pvesm</span><span style="color:#9ECBFF"> add</span><span style="color:#9ECBFF"> pbs</span><span style="color:#9ECBFF"> pbs-store</span><span style="color:#79B8FF"> \</span></span>
+<span data-line=""><span style="color:#79B8FF">  --server</span><span style="color:#79B8FF"> 192.168.1.200</span><span style="color:#79B8FF"> \</span></span>
+<span data-line=""><span style="color:#79B8FF">  --datastore</span><span style="color:#9ECBFF"> backup1</span><span style="color:#79B8FF"> \</span></span>
+<span data-line=""><span style="color:#79B8FF">  --username</span><span style="color:#9ECBFF"> backup@pbs</span><span style="color:#79B8FF"> \</span></span>
+<span data-line=""><span style="color:#79B8FF">  --fingerprint</span><span style="color:#F97583"> &#x3C;</span><span style="color:#9ECBFF">sha256-fingerprin</span><span style="color:#E1E4E8">t</span><span style="color:#F97583">></span></span></code></pre></figure>
+<p>設定完之後，備份排程的存儲選 <code>pbs-store</code> 就行了，其他跟平常一樣。</p>
+<h2 id="還原操作">還原操作</h2>
+<p>備份做了，還原怎麼做？</p>
+<figure data-rehype-pretty-code-figure=""><pre style="background-color:#24292e;color:#e1e4e8" tabindex="0" data-language="bash" data-theme="github-dark"><code data-language="bash" data-theme="github-dark" style="display: grid;"><span data-line=""><span style="color:#6A737D"># 從本地備份還原</span></span>
+<span data-line=""><span style="color:#B392F0">qmrestore</span><span style="color:#9ECBFF"> /var/lib/vz/dump/vzdump-qemu-100-</span><span style="color:#79B8FF">*</span><span style="color:#9ECBFF">.vma.zst</span><span style="color:#79B8FF"> 100</span></span>
+<span data-line=""> </span>
+<span data-line=""><span style="color:#6A737D"># 從 PBS 還原</span></span>
+<span data-line=""><span style="color:#B392F0">qmrestore</span><span style="color:#9ECBFF"> pbs-store:backup/vm/100/2026-04-23T02:00:00Z</span><span style="color:#79B8FF"> 100</span></span>
+<span data-line=""> </span>
+<span data-line=""><span style="color:#6A737D"># 還原成不同的 VM（新 ID + 產生新 MAC）</span></span>
+<span data-line=""><span style="color:#B392F0">qmrestore</span><span style="color:#F97583"> &#x3C;</span><span style="color:#9ECBFF">backup-fil</span><span style="color:#E1E4E8">e</span><span style="color:#F97583">></span><span style="color:#79B8FF"> 200</span><span style="color:#79B8FF"> --unique</span></span>
+<span data-line=""> </span>
+<span data-line=""><span style="color:#6A737D"># LXC 容器還原</span></span>
+<span data-line=""><span style="color:#B392F0">pct</span><span style="color:#9ECBFF"> restore</span><span style="color:#79B8FF"> 200</span><span style="color:#9ECBFF"> /var/lib/vz/dump/vzdump-lxc-200-</span><span style="color:#79B8FF">*</span><span style="color:#9ECBFF">.tar.zst</span></span></code></pre></figure>
+<blockquote>
+<p>拜託，每季至少做一次<strong>還原演練</strong>。隨便挑一個備份還原到測試 VM，確認能開機、服務能跑。沒測過的備份就像沒開過的降落傘，你不會想在跳下去的那一刻才發現打不開。</p>
+</blockquote>
+<h2 id="保留策略別讓備份塞爆硬碟">保留策略：別讓備份塞爆硬碟</h2>
+<p>備份一直留不刪，硬碟遲早爆。設定保留策略讓系統自動清理：</p>
+<figure data-rehype-pretty-code-figure=""><pre style="background-color:#24292e;color:#e1e4e8" tabindex="0" data-language="bash" data-theme="github-dark"><code data-language="bash" data-theme="github-dark" style="display: grid;"><span data-line=""><span style="color:#B392F0">vzdump</span><span style="color:#79B8FF"> 100</span><span style="color:#79B8FF"> --storage</span><span style="color:#9ECBFF"> pbs-store</span><span style="color:#79B8FF"> \</span></span>
+<span data-line=""><span style="color:#79B8FF">  --prune-backups</span><span style="color:#9ECBFF"> keep-last=3,keep-daily=7,keep-weekly=4,keep-monthly=</span><span style="color:#79B8FF">6</span></span></code></pre></figure>
+<p>意思是：保留最近 3 份 + 每天 7 份 + 每週 4 份 + 每月 6 份，其餘自動清掉。策略依照你的 RPO（能接受丟多少資料）來調整。</p>
+<h2 id="vm-replication備份的好搭檔">VM Replication：備份的好搭檔</h2>
+<p>Replication 不算備份，但它能把 VM 磁碟定期複製到其他節點，用的是 ZFS send/receive：</p>
+<ul>
+<li>預設每 15 分鐘同步一次</li>
+<li>Live Migration 的時候可以利用已複製的資料加速</li>
+<li>搭配 HA 使用，故障轉移更快</li>
+</ul>
+<p>把它想成廚房的備用食材——不是正式的料理（備份），但緊急的時候可以直接拿來炒一盤。Replication 搭配 <a href="09-high-availability">高可用 HA</a> 使用效果更佳，故障轉移時能大幅縮短恢復時間。</p>
+<h2 id="3-2-1-備份原則">3-2-1 備份原則</h2>
+<p>說了一堆工具跟指令，最後回到最重要的原則：</p>
+<ul>
+<li><strong>3</strong> 份副本（原始 + 兩份備份）</li>
+<li><strong>2</strong> 種媒體（本地硬碟 + NAS 或 PBS）</li>
+<li><strong>1</strong> 份異地（雲端或遠端機房）</li>
+</ul>
+<p>做到這三點，就算辦公室著火，你的資料還有救。備份要放哪種存儲、NFS 怎麼掛載，可以回頭看 <a href="05-storage">存儲全攻略</a>。</p>
+<p>更完整的備份參數與排程設定，可以參考 <a href="https://pve.proxmox.com/pve-docs/chapter-vzdump.html">Proxmox VE Backup 官方文件</a>。如果你考慮導入 PBS，推薦閱讀 <a href="https://pbs.proxmox.com/docs/">Proxmox Backup Server 官方文件</a>，以及 <a href="https://pve.proxmox.com/wiki/Backup_and_Restore">Proxmox Wiki 的 Backup and Restore 頁面</a>。</p>
+<h2 id="常見問題">常見問題</h2>
+<h3 id="q-vzdump-備份用哪種模式最好">Q: vzdump 備份用哪種模式最好？</h3>
+<p>生產環境日常備份用 Snapshot 模式，VM 不用停機。如果追求最高資料一致性（例如資料庫），用 Stop 模式最保險。記得安裝 qemu-guest-agent 提升 Snapshot 的一致性。</p>
+<h3 id="q-proxmox-backup-server-跟-vzdump-差在哪">Q: Proxmox Backup Server 跟 vzdump 差在哪？</h3>
+<p>PBS 支援增量備份、內容級去重複和客戶端加密，第二次以後的備份速度快、空間省。vzdump 備份到本地或 NFS 則是全量備份，簡單但佔空間。認真做備份建議上 PBS。</p>
+<h3 id="q-pve-備份可以加密嗎">Q: PVE 備份可以加密嗎？</h3>
+<p>搭配 PBS 可以。PBS 支援 AES-256-GCM 客戶端加密，金鑰由你保管，伺服器端無法讀取備份內容。vzdump 備份到本地目錄或 NFS 則不支援原生加密。</p>
+<h3 id="q-備份保留策略怎麼設定比較合理">Q: 備份保留策略怎麼設定比較合理？</h3>
+<p>常見做法是保留最近 3 份、每日 7 份、每週 4 份、每月 6 份。根據你能接受的資料遺失量（RPO）調整，空間有限就減少保留數量，但至少保持 3-2-1 原則。</p>
+<h2 id="下一步">下一步</h2>
+<p>單機備份搞定了，該來組叢集了——多台主機協同工作，才能發揮 PVE 的真正實力：
+👉 <a href="08-cluster">叢集管理</a></p>5:["$","aside",null,{"className":"hidden lg:block","children":["$","$L8",null,{"html":"$9"}]}]
+6:["$","script","script-0",{"src":"/_next/static/chunks/2dddb3bc05093f69.js","async":true}]
+7:["$","$La",null,{"children":["$","$b",null,{"name":"Next.MetadataOutlet","children":"$@c"}]}]
+c:null

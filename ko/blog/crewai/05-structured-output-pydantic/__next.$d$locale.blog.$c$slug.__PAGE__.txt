@@ -1,0 +1,105 @@
+1:"$Sreact.fragment"
+2:I[14864,["/_next/static/chunks/7923a261b80bb6e1.js","/_next/static/chunks/e09b4358027e8033.js","/_next/static/chunks/2dddb3bc05093f69.js"],"default"]
+8:I[24801,["/_next/static/chunks/7923a261b80bb6e1.js","/_next/static/chunks/e09b4358027e8033.js","/_next/static/chunks/2dddb3bc05093f69.js"],"default"]
+a:I[50183,["/_next/static/chunks/5a5b5b13c22d14f7.js","/_next/static/chunks/a484d1d3dd4b55ab.js"],"OutletBoundary"]
+b:"$Sreact.suspense"
+3:T182d,<p>같은 Task인데 이번엔 markdown, 다음엔 산문처럼 나오는 문제를 겪었다면 정상입니다.<br>
+해결은 간단합니다. <strong>Pydantic으로 출력 형식을 정의하세요.</strong></p>
+<h2 id="왜-구조화-출력이-필요한가">왜 구조화 출력이 필요한가</h2>
+<ul>
+<li>후속 Task가 고정 필드를 읽을 수 있음</li>
+<li>매번 취약한 문자열 파싱을 안 해도 됨</li>
+<li>실패를 더 빨리 발견 가능(필드 불일치 시 즉시 오류)</li>
+</ul>
+<p>즉 API 계약과 같습니다. 계약이 있어야 협업이 안정됩니다.</p>
+<h2 id="출력-모델-만들기">출력 모델 만들기</h2>
+<figure data-rehype-pretty-code-figure=""><pre style="background-color:#24292e;color:#e1e4e8" tabindex="0" data-language="python" data-theme="github-dark"><code data-language="python" data-theme="github-dark" style="display: grid;"><span data-line=""><span style="color:#F97583">from</span><span style="color:#E1E4E8"> pydantic </span><span style="color:#F97583">import</span><span style="color:#E1E4E8"> BaseModel, Field</span></span>
+<span data-line=""> </span>
+<span data-line=""><span style="color:#F97583">class</span><span style="color:#B392F0"> Finding</span><span style="color:#E1E4E8">(</span><span style="color:#B392F0">BaseModel</span><span style="color:#E1E4E8">):</span></span>
+<span data-line=""><span style="color:#E1E4E8">    title: </span><span style="color:#79B8FF">str</span><span style="color:#F97583"> =</span><span style="color:#E1E4E8"> Field(</span><span style="color:#FFAB70">description</span><span style="color:#F97583">=</span><span style="color:#9ECBFF">"Finding title"</span><span style="color:#E1E4E8">)</span></span>
+<span data-line=""><span style="color:#E1E4E8">    summary: </span><span style="color:#79B8FF">str</span><span style="color:#F97583"> =</span><span style="color:#E1E4E8"> Field(</span><span style="color:#FFAB70">description</span><span style="color:#F97583">=</span><span style="color:#9ECBFF">"Brief explanation"</span><span style="color:#E1E4E8">)</span></span>
+<span data-line=""><span style="color:#E1E4E8">    source: </span><span style="color:#79B8FF">str</span><span style="color:#F97583"> =</span><span style="color:#E1E4E8"> Field(</span><span style="color:#FFAB70">description</span><span style="color:#F97583">=</span><span style="color:#9ECBFF">"Reference URL"</span><span style="color:#E1E4E8">)</span></span>
+<span data-line=""> </span>
+<span data-line=""><span style="color:#F97583">class</span><span style="color:#B392F0"> ResearchReport</span><span style="color:#E1E4E8">(</span><span style="color:#B392F0">BaseModel</span><span style="color:#E1E4E8">):</span></span>
+<span data-line=""><span style="color:#E1E4E8">    topic: </span><span style="color:#79B8FF">str</span><span style="color:#F97583"> =</span><span style="color:#E1E4E8"> Field(</span><span style="color:#FFAB70">description</span><span style="color:#F97583">=</span><span style="color:#9ECBFF">"Topic name"</span><span style="color:#E1E4E8">)</span></span>
+<span data-line=""><span style="color:#E1E4E8">    findings: list[Finding] </span><span style="color:#F97583">=</span><span style="color:#E1E4E8"> Field(</span><span style="color:#FFAB70">description</span><span style="color:#F97583">=</span><span style="color:#9ECBFF">"Key findings list"</span><span style="color:#E1E4E8">)</span></span>
+<span data-line=""><span style="color:#E1E4E8">    conclusion: </span><span style="color:#79B8FF">str</span><span style="color:#F97583"> =</span><span style="color:#E1E4E8"> Field(</span><span style="color:#FFAB70">description</span><span style="color:#F97583">=</span><span style="color:#9ECBFF">"Final conclusion"</span><span style="color:#E1E4E8">)</span></span></code></pre></figure>
+<h2 id="task에서-output_pydantic-사용">Task에서 <code>output_pydantic</code> 사용</h2>
+<figure data-rehype-pretty-code-figure=""><pre style="background-color:#24292e;color:#e1e4e8" tabindex="0" data-language="python" data-theme="github-dark"><code data-language="python" data-theme="github-dark" style="display: grid;"><span data-line=""><span style="color:#F97583">from</span><span style="color:#E1E4E8"> crewai </span><span style="color:#F97583">import</span><span style="color:#E1E4E8"> Task</span></span>
+<span data-line=""> </span>
+<span data-line=""><span style="color:#E1E4E8">research_task </span><span style="color:#F97583">=</span><span style="color:#E1E4E8"> Task(</span></span>
+<span data-line=""><span style="color:#FFAB70">    description</span><span style="color:#F97583">=</span><span style="color:#9ECBFF">"Research AI observability tools in 2026."</span><span style="color:#E1E4E8">,</span></span>
+<span data-line=""><span style="color:#FFAB70">    expected_output</span><span style="color:#F97583">=</span><span style="color:#9ECBFF">"Structured research result."</span><span style="color:#E1E4E8">,</span></span>
+<span data-line=""><span style="color:#FFAB70">    output_pydantic</span><span style="color:#F97583">=</span><span style="color:#E1E4E8">ResearchReport,</span></span>
+<span data-line=""><span style="color:#E1E4E8">)</span></span></code></pre></figure>
+<p>실행 후에는 텍스트를 추측해 파싱하지 않고 안정적인 필드 접근이 가능합니다.</p>
+<h2 id="함께-쓰면-좋은-방식">함께 쓰면 좋은 방식</h2>
+<ul>
+<li><code>expected_output</code>에 품질 요구를 계속 명시</li>
+<li>필드 의미를 구체화(<code>summary</code> 길이, <code>source</code> 형식)</li>
+<li>후속 Task는 문체가 아니라 필드에 의존</li>
+</ul>
+<h2 id="초보가-자주-하는-실수">초보가 자주 하는 실수</h2>
+<ol>
+<li>Pydantic이 있으면 <code>expected_output</code>이 필요 없다고 생각함</li>
+<li>필드가 너무 적어서 정보가 부족함</li>
+<li>필드가 너무 많고 세밀해서 누락이 늘어남</li>
+</ol>
+<blockquote>
+<p>⚠️ 먼저 핵심 3~5개 필드로 시작하고, 필요할 때 확장하세요.</p>
+</blockquote>
+<h2 id="다음-단계">다음 단계</h2>
+<p>단일 Crew 출력 안정화가 됐으니, 다음은 멀티 Crew 조율입니다.<br>
+👉 <a href="06-flow-basics">Flow 입문</a></p>0:{"buildId":"Yck3R4ooQxWkwGLT6is1X","rsc":["$","$1","c",{"children":[[["$","script",null,{"type":"application/ld+json","dangerouslySetInnerHTML":{"__html":"{\"@context\":\"https://schema.org\",\"@type\":\"Article\",\"headline\":\"CrewAI 구조화 출력: Pydantic으로 데이터 흔들림 막기\",\"description\":\"output_pydantic으로 안정적인 출력 스키마를 정의해 후속 작업 신뢰도를 높입니다.\",\"url\":\"https://benxhub.com/ko/blog/crewai/05-structured-output-pydantic\",\"mainEntityOfPage\":{\"@type\":\"WebPage\",\"@id\":\"https://benxhub.com/ko/blog/crewai/05-structured-output-pydantic\"},\"datePublished\":\"2026-03-02T00:00:00.000Z\",\"dateModified\":\"2026-03-02T00:00:00.000Z\",\"keywords\":\"crewai, pydantic, structured-output, python\",\"inLanguage\":\"ko\",\"author\":{\"@type\":\"Person\",\"name\":\"BenX\",\"url\":\"https://benxhub.com\"},\"publisher\":{\"@type\":\"Organization\",\"name\":\"BenXHub Blog\",\"url\":\"https://benxhub.com\"}}"}}],["$","div",null,{"className":"mx-auto max-w-6xl px-4 py-12 sm:px-6","children":["$","div",null,{"className":"lg:grid lg:grid-cols-[1fr_240px] lg:gap-14","children":[["$","article",null,{"children":[["$","header",null,{"className":"mb-10","children":[["$","div",null,{"className":"mb-4 flex flex-wrap gap-2","children":[["$","$L2","crewai",{"href":"/ko/tags/crewai","localeCookie":{"name":"NEXT_LOCALE","sameSite":"lax"},"className":"inline-flex items-center rounded-full px-2.5 py-0.5 text-xs font-medium transition-colors","style":{"background":"var(--color-code-bg)","color":"var(--color-accent)","border":"1px solid var(--color-border)"},"children":["#","crewai"]}],["$","$L2","pydantic",{"href":"/ko/tags/pydantic","localeCookie":{"name":"NEXT_LOCALE","sameSite":"lax"},"className":"inline-flex items-center rounded-full px-2.5 py-0.5 text-xs font-medium transition-colors","style":{"background":"var(--color-code-bg)","color":"var(--color-accent)","border":"1px solid var(--color-border)"},"children":["#","pydantic"]}],["$","$L2","structured-output",{"href":"/ko/tags/structured-output","localeCookie":{"name":"NEXT_LOCALE","sameSite":"lax"},"className":"inline-flex items-center rounded-full px-2.5 py-0.5 text-xs font-medium transition-colors","style":{"background":"var(--color-code-bg)","color":"var(--color-accent)","border":"1px solid var(--color-border)"},"children":["#","structured-output"]}],["$","$L2","python",{"href":"/ko/tags/python","localeCookie":{"name":"NEXT_LOCALE","sameSite":"lax"},"className":"inline-flex items-center rounded-full px-2.5 py-0.5 text-xs font-medium transition-colors","style":{"background":"var(--color-code-bg)","color":"var(--color-accent)","border":"1px solid var(--color-border)"},"children":["#","python"]}]]}],["$","h1",null,{"className":"mb-4 text-3xl leading-snug font-bold tracking-tight sm:text-4xl","style":{"color":"var(--color-text)"},"children":"CrewAI 구조화 출력: Pydantic으로 데이터 흔들림 막기"}],["$","div",null,{"className":"flex flex-wrap items-center gap-3 text-sm","style":{"color":"var(--color-muted)"},"children":[["$","time",null,{"dateTime":"2026-03-02","children":"2026년 3월 2일"}],["$","span",null,{"aria-hidden":"true","children":"·"}],["$","span",null,{"children":"3 min read"}]]}],"$undefined",["$","div",null,{"className":"mt-6 border-b","style":{"borderColor":"var(--color-border)"}}]]}],["$","div",null,{"className":"prose","dangerouslySetInnerHTML":{"__html":"$3"}}],"$L4"]}],"$L5"]}]}]],["$L6"],"$L7"]}],"loading":null,"isPartial":false}
+4:["$","footer",null,{"className":"mt-14 border-t pt-8","style":{"borderColor":"var(--color-border)"},"children":[["$","div",null,{"className":"mb-8 flex flex-wrap gap-2","children":[["$","$L2","crewai",{"href":"/ko/tags/crewai","localeCookie":{"name":"NEXT_LOCALE","sameSite":"lax"},"className":"inline-flex items-center rounded-full px-3 py-1 text-sm font-medium transition-colors","style":{"background":"var(--color-code-bg)","color":"var(--color-accent)","border":"1px solid var(--color-border)"},"children":["#","crewai"]}],["$","$L2","pydantic",{"href":"/ko/tags/pydantic","localeCookie":{"name":"NEXT_LOCALE","sameSite":"lax"},"className":"inline-flex items-center rounded-full px-3 py-1 text-sm font-medium transition-colors","style":{"background":"var(--color-code-bg)","color":"var(--color-accent)","border":"1px solid var(--color-border)"},"children":["#","pydantic"]}],["$","$L2","structured-output",{"href":"/ko/tags/structured-output","localeCookie":{"name":"NEXT_LOCALE","sameSite":"lax"},"className":"inline-flex items-center rounded-full px-3 py-1 text-sm font-medium transition-colors","style":{"background":"var(--color-code-bg)","color":"var(--color-accent)","border":"1px solid var(--color-border)"},"children":["#","structured-output"]}],["$","$L2","python",{"href":"/ko/tags/python","localeCookie":{"name":"NEXT_LOCALE","sameSite":"lax"},"className":"inline-flex items-center rounded-full px-3 py-1 text-sm font-medium transition-colors","style":{"background":"var(--color-code-bg)","color":"var(--color-accent)","border":"1px solid var(--color-border)"},"children":["#","python"]}]]}],["$","nav",null,{"aria-label":"글 탐색","className":"grid grid-cols-1 gap-4 sm:grid-cols-2","children":[["$","$L2",null,{"href":"/ko/blog/crewai/04-tools-integration","localeCookie":{"name":"NEXT_LOCALE","sameSite":"lax"},"className":"group rounded-lg border p-4 transition-colors hover:border-accent","style":{"borderColor":"var(--color-border)","background":"var(--color-surface)"},"children":[["$","p",null,{"className":"mb-1 text-xs","style":{"color":"var(--color-muted)"},"children":"← 최신 글"}],["$","p",null,{"className":"line-clamp-1 text-sm font-medium transition-colors group-hover:text-accent","style":{"color":"var(--color-text)"},"children":"CrewAI Tools 연동: Agent가 진짜로 찾고, 읽고, 실행하게 만들기"}]]}],["$","$L2",null,{"href":"/ko/blog/crewai/00-overview","localeCookie":{"name":"NEXT_LOCALE","sameSite":"lax"},"className":"group rounded-lg border p-4 text-right transition-colors hover:border-accent","style":{"borderColor":"var(--color-border)","background":"var(--color-surface)"},"children":[["$","p",null,{"className":"mb-1 text-xs","style":{"color":"var(--color-muted)"},"children":"이전 글 →"}],["$","p",null,{"className":"line-clamp-1 text-sm font-medium transition-colors group-hover:text-accent","style":{"color":"var(--color-text)"},"children":"CrewAI 튜토리얼 시리즈 개요: 0에서 운영 가능한 멀티 에이전트 워크플로까지"}]]}]]}]]}]
+9:T182d,<p>같은 Task인데 이번엔 markdown, 다음엔 산문처럼 나오는 문제를 겪었다면 정상입니다.<br>
+해결은 간단합니다. <strong>Pydantic으로 출력 형식을 정의하세요.</strong></p>
+<h2 id="왜-구조화-출력이-필요한가">왜 구조화 출력이 필요한가</h2>
+<ul>
+<li>후속 Task가 고정 필드를 읽을 수 있음</li>
+<li>매번 취약한 문자열 파싱을 안 해도 됨</li>
+<li>실패를 더 빨리 발견 가능(필드 불일치 시 즉시 오류)</li>
+</ul>
+<p>즉 API 계약과 같습니다. 계약이 있어야 협업이 안정됩니다.</p>
+<h2 id="출력-모델-만들기">출력 모델 만들기</h2>
+<figure data-rehype-pretty-code-figure=""><pre style="background-color:#24292e;color:#e1e4e8" tabindex="0" data-language="python" data-theme="github-dark"><code data-language="python" data-theme="github-dark" style="display: grid;"><span data-line=""><span style="color:#F97583">from</span><span style="color:#E1E4E8"> pydantic </span><span style="color:#F97583">import</span><span style="color:#E1E4E8"> BaseModel, Field</span></span>
+<span data-line=""> </span>
+<span data-line=""><span style="color:#F97583">class</span><span style="color:#B392F0"> Finding</span><span style="color:#E1E4E8">(</span><span style="color:#B392F0">BaseModel</span><span style="color:#E1E4E8">):</span></span>
+<span data-line=""><span style="color:#E1E4E8">    title: </span><span style="color:#79B8FF">str</span><span style="color:#F97583"> =</span><span style="color:#E1E4E8"> Field(</span><span style="color:#FFAB70">description</span><span style="color:#F97583">=</span><span style="color:#9ECBFF">"Finding title"</span><span style="color:#E1E4E8">)</span></span>
+<span data-line=""><span style="color:#E1E4E8">    summary: </span><span style="color:#79B8FF">str</span><span style="color:#F97583"> =</span><span style="color:#E1E4E8"> Field(</span><span style="color:#FFAB70">description</span><span style="color:#F97583">=</span><span style="color:#9ECBFF">"Brief explanation"</span><span style="color:#E1E4E8">)</span></span>
+<span data-line=""><span style="color:#E1E4E8">    source: </span><span style="color:#79B8FF">str</span><span style="color:#F97583"> =</span><span style="color:#E1E4E8"> Field(</span><span style="color:#FFAB70">description</span><span style="color:#F97583">=</span><span style="color:#9ECBFF">"Reference URL"</span><span style="color:#E1E4E8">)</span></span>
+<span data-line=""> </span>
+<span data-line=""><span style="color:#F97583">class</span><span style="color:#B392F0"> ResearchReport</span><span style="color:#E1E4E8">(</span><span style="color:#B392F0">BaseModel</span><span style="color:#E1E4E8">):</span></span>
+<span data-line=""><span style="color:#E1E4E8">    topic: </span><span style="color:#79B8FF">str</span><span style="color:#F97583"> =</span><span style="color:#E1E4E8"> Field(</span><span style="color:#FFAB70">description</span><span style="color:#F97583">=</span><span style="color:#9ECBFF">"Topic name"</span><span style="color:#E1E4E8">)</span></span>
+<span data-line=""><span style="color:#E1E4E8">    findings: list[Finding] </span><span style="color:#F97583">=</span><span style="color:#E1E4E8"> Field(</span><span style="color:#FFAB70">description</span><span style="color:#F97583">=</span><span style="color:#9ECBFF">"Key findings list"</span><span style="color:#E1E4E8">)</span></span>
+<span data-line=""><span style="color:#E1E4E8">    conclusion: </span><span style="color:#79B8FF">str</span><span style="color:#F97583"> =</span><span style="color:#E1E4E8"> Field(</span><span style="color:#FFAB70">description</span><span style="color:#F97583">=</span><span style="color:#9ECBFF">"Final conclusion"</span><span style="color:#E1E4E8">)</span></span></code></pre></figure>
+<h2 id="task에서-output_pydantic-사용">Task에서 <code>output_pydantic</code> 사용</h2>
+<figure data-rehype-pretty-code-figure=""><pre style="background-color:#24292e;color:#e1e4e8" tabindex="0" data-language="python" data-theme="github-dark"><code data-language="python" data-theme="github-dark" style="display: grid;"><span data-line=""><span style="color:#F97583">from</span><span style="color:#E1E4E8"> crewai </span><span style="color:#F97583">import</span><span style="color:#E1E4E8"> Task</span></span>
+<span data-line=""> </span>
+<span data-line=""><span style="color:#E1E4E8">research_task </span><span style="color:#F97583">=</span><span style="color:#E1E4E8"> Task(</span></span>
+<span data-line=""><span style="color:#FFAB70">    description</span><span style="color:#F97583">=</span><span style="color:#9ECBFF">"Research AI observability tools in 2026."</span><span style="color:#E1E4E8">,</span></span>
+<span data-line=""><span style="color:#FFAB70">    expected_output</span><span style="color:#F97583">=</span><span style="color:#9ECBFF">"Structured research result."</span><span style="color:#E1E4E8">,</span></span>
+<span data-line=""><span style="color:#FFAB70">    output_pydantic</span><span style="color:#F97583">=</span><span style="color:#E1E4E8">ResearchReport,</span></span>
+<span data-line=""><span style="color:#E1E4E8">)</span></span></code></pre></figure>
+<p>실행 후에는 텍스트를 추측해 파싱하지 않고 안정적인 필드 접근이 가능합니다.</p>
+<h2 id="함께-쓰면-좋은-방식">함께 쓰면 좋은 방식</h2>
+<ul>
+<li><code>expected_output</code>에 품질 요구를 계속 명시</li>
+<li>필드 의미를 구체화(<code>summary</code> 길이, <code>source</code> 형식)</li>
+<li>후속 Task는 문체가 아니라 필드에 의존</li>
+</ul>
+<h2 id="초보가-자주-하는-실수">초보가 자주 하는 실수</h2>
+<ol>
+<li>Pydantic이 있으면 <code>expected_output</code>이 필요 없다고 생각함</li>
+<li>필드가 너무 적어서 정보가 부족함</li>
+<li>필드가 너무 많고 세밀해서 누락이 늘어남</li>
+</ol>
+<blockquote>
+<p>⚠️ 먼저 핵심 3~5개 필드로 시작하고, 필요할 때 확장하세요.</p>
+</blockquote>
+<h2 id="다음-단계">다음 단계</h2>
+<p>단일 Crew 출력 안정화가 됐으니, 다음은 멀티 Crew 조율입니다.<br>
+👉 <a href="06-flow-basics">Flow 입문</a></p>5:["$","aside",null,{"className":"hidden lg:block","children":["$","$L8",null,{"html":"$9"}]}]
+6:["$","script","script-0",{"src":"/_next/static/chunks/2dddb3bc05093f69.js","async":true}]
+7:["$","$La",null,{"children":["$","$b",null,{"name":"Next.MetadataOutlet","children":"$@c"}]}]
+c:null

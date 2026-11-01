@@ -1,0 +1,124 @@
+1:"$Sreact.fragment"
+2:I[14864,["/_next/static/chunks/7923a261b80bb6e1.js","/_next/static/chunks/e09b4358027e8033.js","/_next/static/chunks/2dddb3bc05093f69.js"],"default"]
+8:I[24801,["/_next/static/chunks/7923a261b80bb6e1.js","/_next/static/chunks/e09b4358027e8033.js","/_next/static/chunks/2dddb3bc05093f69.js"],"default"]
+a:I[50183,["/_next/static/chunks/5a5b5b13c22d14f7.js","/_next/static/chunks/a484d1d3dd4b55ab.js"],"OutletBoundary"]
+b:"$Sreact.suspense"
+:HL["/images/posts/pve-advanced.jpg","image"]
+3:T1c77,<p>환경이 <strong>한 대의 머신</strong>에서 <strong>여러 대의 머신</strong>으로 바뀌면 운영의 핵심이 "돌기만 하면 돼"에서 "가용성·확장성·자동화"로 이동합니다. 이 글은 솔로 던전에서 레이드로 업그레이드입니다.</p>
+<h2 id="클러스터-구축">클러스터 구축</h2>
+<p>적용 시나리오: 중앙 관리·크로스 노드 스케줄링·마이그레이션을 하려면 클러스터부터 구축.</p>
+<figure data-rehype-pretty-code-figure=""><pre style="background-color:#24292e;color:#e1e4e8" tabindex="0" data-language="bash" data-theme="github-dark"><code data-language="bash" data-theme="github-dark" style="display: grid;"><span data-line=""><span style="color:#6A737D"># 첫 번째 노드에서 클러스터 만들기</span></span>
+<span data-line=""><span style="color:#B392F0">pvecm</span><span style="color:#9ECBFF"> create</span><span style="color:#9ECBFF"> my-cluster</span></span>
+<span data-line=""> </span>
+<span data-line=""><span style="color:#6A737D"># 다른 노드가 참가 (마스터 IP로 변경)</span></span>
+<span data-line=""><span style="color:#B392F0">pvecm</span><span style="color:#9ECBFF"> add</span><span style="color:#F97583"> &#x3C;</span><span style="color:#9ECBFF">cluster-master-i</span><span style="color:#E1E4E8">p</span><span style="color:#F97583">></span></span>
+<span data-line=""> </span>
+<span data-line=""><span style="color:#6A737D"># 상태 확인</span></span>
+<span data-line=""><span style="color:#B392F0">pvecm</span><span style="color:#9ECBFF"> status</span></span></code></pre></figure>
+<blockquote>
+<p>클러스터 구축 후 <strong>노드 호스트명 변경을 최대한 피하세요</strong>; 참가 전에 DNS·시간 동기화·네트워크가 모두 정상인지 확인 — 그렇지 않으면 온갖 이상한 문제가 생깁니다.</p>
+</blockquote>
+<h2 id="ha-고가용성-설정">HA (고가용성) 설정</h2>
+<p>적용 시나리오: 어떤 노드가 다운되면 VM이 다른 노드에서 자동으로 시작되어 서비스가 중단되지 않음.</p>
+<p>전제 조건:</p>
+<ul>
+<li>클러스터가 존재</li>
+<li>VM 디스크가 <strong>공유 스토리지</strong>에 있음</li>
+<li>올바른 <strong>fencing</strong> 메커니즘 — 스플릿 브레인 방지 (양쪽이 자신이 리더라고 생각하는 상황)</li>
+</ul>
+<figure data-rehype-pretty-code-figure=""><pre style="background-color:#24292e;color:#e1e4e8" tabindex="0" data-language="bash" data-theme="github-dark"><code data-language="bash" data-theme="github-dark" style="display: grid;"><span data-line=""><span style="color:#6A737D"># VM 100을 HA 관리하에 두기</span></span>
+<span data-line=""><span style="color:#B392F0">ha-manager</span><span style="color:#9ECBFF"> add</span><span style="color:#9ECBFF"> vm:100</span><span style="color:#79B8FF"> --maxrestart</span><span style="color:#79B8FF"> 3</span><span style="color:#79B8FF"> --maxrelocate</span><span style="color:#79B8FF"> 5</span></span></code></pre></figure>
+<p>HA가 올바르게 설정되면 단일 노드 장애 시 사용자는 거의 알아차리지 못합니다 — 고양이가 항상 대체 수면 장소를 확보해 두는 것처럼.</p>
+<h2 id="ceph-하이퍼컨버지드-스토리지">Ceph 하이퍼컨버지드 스토리지</h2>
+<p>적용 시나리오: 여러 노드에서 공유 스토리지와 고가용성 모두 필요 — Ceph로 함께 해결.</p>
+<p>권장 전제 조건:</p>
+<ul>
+<li>최소 <strong>3개 노드</strong> (Ceph는 단일 지점을 싫어함)</li>
+<li>각 노드에 복수의 <strong>전용 디스크</strong></li>
+<li>전용 스토리지 네트워크가 있으면 더 좋음</li>
+</ul>
+<figure data-rehype-pretty-code-figure=""><pre style="background-color:#24292e;color:#e1e4e8" tabindex="0" data-language="bash" data-theme="github-dark"><code data-language="bash" data-theme="github-dark" style="display: grid;"><span data-line=""><span style="color:#6A737D"># Ceph 초기화</span></span>
+<span data-line=""><span style="color:#B392F0">pveceph</span><span style="color:#9ECBFF"> init</span><span style="color:#79B8FF"> --network</span><span style="color:#9ECBFF"> 10.0.0.0/24</span></span>
+<span data-line=""> </span>
+<span data-line=""><span style="color:#6A737D"># 각 데이터 디스크에 OSD 만들기</span></span>
+<span data-line=""><span style="color:#B392F0">pveceph</span><span style="color:#9ECBFF"> osd</span><span style="color:#9ECBFF"> create</span><span style="color:#9ECBFF"> /dev/sdX</span></span>
+<span data-line=""> </span>
+<span data-line=""><span style="color:#6A737D"># Pool 만들고 PVE에 연결</span></span>
+<span data-line=""><span style="color:#B392F0">pveceph</span><span style="color:#9ECBFF"> pool</span><span style="color:#9ECBFF"> create</span><span style="color:#9ECBFF"> vm-data</span><span style="color:#79B8FF"> --add_storages</span></span></code></pre></figure>
+<blockquote>
+<p>Ceph는 <strong>베어 디스크를 직접 관리</strong>하는 것을 권장 — 하드웨어 RAID를 위에 쌓지 마세요. 그렇게 하면 Ceph의 데이터 보호와 관측성이 절반으로 줄어듭니다.</p>
+</blockquote>
+<h2 id="스토리지-복제">스토리지 복제</h2>
+<p>적용 시나리오: 크로스 노드 이중화, 장애 시 빠른 인계.</p>
+<figure data-rehype-pretty-code-figure=""><pre style="background-color:#24292e;color:#e1e4e8" tabindex="0" data-language="bash" data-theme="github-dark"><code data-language="bash" data-theme="github-dark" style="display: grid;"><span data-line=""><span style="color:#B392F0">pvesr</span><span style="color:#9ECBFF"> create-local-job</span><span style="color:#79B8FF"> 100</span><span style="color:#9ECBFF"> local-zfs</span><span style="color:#9ECBFF"> remote-zfs</span><span style="color:#79B8FF"> --schedule</span><span style="color:#9ECBFF"> "0 2 * * *"</span></span></code></pre></figure>
+<h2 id="api와-자동화-통합">API와 자동화 통합</h2>
+<p>적용 시나리오: 스크립트로 운영·CI/CD·다른 플랫폼과 통합. <strong>API 토큰</strong> 사용 권장 — root 비밀번호를 여기저기 붙여넣지 마세요.</p>
+<figure data-rehype-pretty-code-figure=""><pre style="background-color:#24292e;color:#e1e4e8" tabindex="0" data-language="bash" data-theme="github-dark"><code data-language="bash" data-theme="github-dark" style="display: grid;"><span data-line=""><span style="color:#6A737D"># API 토큰으로 VM 목록 가져오기</span></span>
+<span data-line=""><span style="color:#B392F0">curl</span><span style="color:#79B8FF"> -k</span><span style="color:#79B8FF"> \</span></span>
+<span data-line=""><span style="color:#79B8FF">  -H</span><span style="color:#9ECBFF"> "Authorization: PVEAPIToken=user@realm!tokenid=secret"</span><span style="color:#79B8FF"> \</span></span>
+<span data-line=""><span style="color:#9ECBFF">  "https://&#x3C;PVE-IP>:8006/api2/json/nodes/&#x3C;node>/qemu"</span></span></code></pre></figure>
+<p>자동화가 갖춰지면 반복 작업은 스크립트에 맡기고, 여러분은 커피와 고양이에 집중하면 됩니다.</p>
+<h2 id="다음-단계">다음 단계</h2>
+<p>고급 기능을 갖췄다면 운영 규범으로 위험을 줄이세요:
+👉 <a href="05-best-practices">베스트 프랙티스</a></p>0:{"buildId":"Yck3R4ooQxWkwGLT6is1X","rsc":["$","$1","c",{"children":[[["$","script",null,{"type":"application/ld+json","dangerouslySetInnerHTML":{"__html":"{\"@context\":\"https://schema.org\",\"@type\":\"Article\",\"headline\":\"Proxmox VE 고급 실무: 클러스터·HA·Ceph·API\",\"description\":\"단일 머신에서 멀티 노드로 이동할 때 필요한 클러스터·HA·스토리지 복제·API 자동화의 핵심을 다룹니다.\",\"url\":\"https://benxhub.com/ko/blog/pve/04-advanced\",\"mainEntityOfPage\":{\"@type\":\"WebPage\",\"@id\":\"https://benxhub.com/ko/blog/pve/04-advanced\"},\"datePublished\":\"2026-02-24T00:00:00.000Z\",\"dateModified\":\"2026-02-24T00:00:00.000Z\",\"keywords\":\"proxmox, cluster, ha, ceph, api\",\"inLanguage\":\"ko\",\"author\":{\"@type\":\"Person\",\"name\":\"BenX\",\"url\":\"https://benxhub.com\"},\"publisher\":{\"@type\":\"Organization\",\"name\":\"BenXHub Blog\",\"url\":\"https://benxhub.com\"},\"image\":\"https://benxhub.com/images/posts/pve-advanced.jpg\"}"}}],["$","div",null,{"className":"mx-auto max-w-6xl px-4 py-12 sm:px-6","children":["$","div",null,{"className":"lg:grid lg:grid-cols-[1fr_240px] lg:gap-14","children":[["$","article",null,{"children":[["$","header",null,{"className":"mb-10","children":[["$","div",null,{"className":"mb-4 flex flex-wrap gap-2","children":[["$","$L2","proxmox",{"href":"/ko/tags/proxmox","localeCookie":{"name":"NEXT_LOCALE","sameSite":"lax"},"className":"inline-flex items-center rounded-full px-2.5 py-0.5 text-xs font-medium transition-colors","style":{"background":"var(--color-code-bg)","color":"var(--color-accent)","border":"1px solid var(--color-border)"},"children":["#","proxmox"]}],["$","$L2","cluster",{"href":"/ko/tags/cluster","localeCookie":{"name":"NEXT_LOCALE","sameSite":"lax"},"className":"inline-flex items-center rounded-full px-2.5 py-0.5 text-xs font-medium transition-colors","style":{"background":"var(--color-code-bg)","color":"var(--color-accent)","border":"1px solid var(--color-border)"},"children":["#","cluster"]}],["$","$L2","ha",{"href":"/ko/tags/ha","localeCookie":{"name":"NEXT_LOCALE","sameSite":"lax"},"className":"inline-flex items-center rounded-full px-2.5 py-0.5 text-xs font-medium transition-colors","style":{"background":"var(--color-code-bg)","color":"var(--color-accent)","border":"1px solid var(--color-border)"},"children":["#","ha"]}],["$","$L2","ceph",{"href":"/ko/tags/ceph","localeCookie":{"name":"NEXT_LOCALE","sameSite":"lax"},"className":"inline-flex items-center rounded-full px-2.5 py-0.5 text-xs font-medium transition-colors","style":{"background":"var(--color-code-bg)","color":"var(--color-accent)","border":"1px solid var(--color-border)"},"children":["#","ceph"]}],["$","$L2","api",{"href":"/ko/tags/api","localeCookie":{"name":"NEXT_LOCALE","sameSite":"lax"},"className":"inline-flex items-center rounded-full px-2.5 py-0.5 text-xs font-medium transition-colors","style":{"background":"var(--color-code-bg)","color":"var(--color-accent)","border":"1px solid var(--color-border)"},"children":["#","api"]}]]}],["$","h1",null,{"className":"mb-4 text-3xl leading-snug font-bold tracking-tight sm:text-4xl","style":{"color":"var(--color-text)"},"children":"Proxmox VE 고급 실무: 클러스터·HA·Ceph·API"}],["$","div",null,{"className":"flex flex-wrap items-center gap-3 text-sm","style":{"color":"var(--color-muted)"},"children":[["$","time",null,{"dateTime":"2026-02-24","children":"2026년 2월 24일"}],["$","span",null,{"aria-hidden":"true","children":"·"}],["$","span",null,{"children":"5 min read"}]]}],["$","div",null,{"className":"mt-6 overflow-hidden rounded-lg","children":["$","img",null,{"src":"/images/posts/pve-advanced.jpg","alt":"Proxmox VE 고급 실무: 클러스터·HA·Ceph·API","className":"w-full h-auto"}]}],["$","div",null,{"className":"mt-6 border-b","style":{"borderColor":"var(--color-border)"}}]]}],["$","div",null,{"className":"prose","dangerouslySetInnerHTML":{"__html":"$3"}}],"$L4"]}],"$L5"]}]}]],["$L6"],"$L7"]}],"loading":null,"isPartial":false}
+4:["$","footer",null,{"className":"mt-14 border-t pt-8","style":{"borderColor":"var(--color-border)"},"children":[["$","div",null,{"className":"mb-8 flex flex-wrap gap-2","children":[["$","$L2","proxmox",{"href":"/ko/tags/proxmox","localeCookie":{"name":"NEXT_LOCALE","sameSite":"lax"},"className":"inline-flex items-center rounded-full px-3 py-1 text-sm font-medium transition-colors","style":{"background":"var(--color-code-bg)","color":"var(--color-accent)","border":"1px solid var(--color-border)"},"children":["#","proxmox"]}],["$","$L2","cluster",{"href":"/ko/tags/cluster","localeCookie":{"name":"NEXT_LOCALE","sameSite":"lax"},"className":"inline-flex items-center rounded-full px-3 py-1 text-sm font-medium transition-colors","style":{"background":"var(--color-code-bg)","color":"var(--color-accent)","border":"1px solid var(--color-border)"},"children":["#","cluster"]}],["$","$L2","ha",{"href":"/ko/tags/ha","localeCookie":{"name":"NEXT_LOCALE","sameSite":"lax"},"className":"inline-flex items-center rounded-full px-3 py-1 text-sm font-medium transition-colors","style":{"background":"var(--color-code-bg)","color":"var(--color-accent)","border":"1px solid var(--color-border)"},"children":["#","ha"]}],["$","$L2","ceph",{"href":"/ko/tags/ceph","localeCookie":{"name":"NEXT_LOCALE","sameSite":"lax"},"className":"inline-flex items-center rounded-full px-3 py-1 text-sm font-medium transition-colors","style":{"background":"var(--color-code-bg)","color":"var(--color-accent)","border":"1px solid var(--color-border)"},"children":["#","ceph"]}],["$","$L2","api",{"href":"/ko/tags/api","localeCookie":{"name":"NEXT_LOCALE","sameSite":"lax"},"className":"inline-flex items-center rounded-full px-3 py-1 text-sm font-medium transition-colors","style":{"background":"var(--color-code-bg)","color":"var(--color-accent)","border":"1px solid var(--color-border)"},"children":["#","api"]}]]}],["$","nav",null,{"aria-label":"글 탐색","className":"grid grid-cols-1 gap-4 sm:grid-cols-2","children":[["$","$L2",null,{"href":"/ko/blog/pve/03-common-patterns","localeCookie":{"name":"NEXT_LOCALE","sameSite":"lax"},"className":"group rounded-lg border p-4 transition-colors hover:border-accent","style":{"borderColor":"var(--color-border)","background":"var(--color-surface)"},"children":[["$","p",null,{"className":"mb-1 text-xs","style":{"color":"var(--color-muted)"},"children":"← 최신 글"}],["$","p",null,{"className":"line-clamp-1 text-sm font-medium transition-colors group-hover:text-accent","style":{"color":"var(--color-text)"},"children":"Proxmox VE 일반적인 패턴: 백업·클론·마이그레이션"}]]}],["$","$L2",null,{"href":"/ko/blog/pve/05-best-practices","localeCookie":{"name":"NEXT_LOCALE","sameSite":"lax"},"className":"group rounded-lg border p-4 text-right transition-colors hover:border-accent","style":{"borderColor":"var(--color-border)","background":"var(--color-surface)"},"children":[["$","p",null,{"className":"mb-1 text-xs","style":{"color":"var(--color-muted)"},"children":"이전 글 →"}],["$","p",null,{"className":"line-clamp-1 text-sm font-medium transition-colors group-hover:text-accent","style":{"color":"var(--color-text)"},"children":"Proxmox VE 베스트 프랙티스: 안정성과 보안 체크리스트"}]]}]]}]]}]
+9:T1c77,<p>환경이 <strong>한 대의 머신</strong>에서 <strong>여러 대의 머신</strong>으로 바뀌면 운영의 핵심이 "돌기만 하면 돼"에서 "가용성·확장성·자동화"로 이동합니다. 이 글은 솔로 던전에서 레이드로 업그레이드입니다.</p>
+<h2 id="클러스터-구축">클러스터 구축</h2>
+<p>적용 시나리오: 중앙 관리·크로스 노드 스케줄링·마이그레이션을 하려면 클러스터부터 구축.</p>
+<figure data-rehype-pretty-code-figure=""><pre style="background-color:#24292e;color:#e1e4e8" tabindex="0" data-language="bash" data-theme="github-dark"><code data-language="bash" data-theme="github-dark" style="display: grid;"><span data-line=""><span style="color:#6A737D"># 첫 번째 노드에서 클러스터 만들기</span></span>
+<span data-line=""><span style="color:#B392F0">pvecm</span><span style="color:#9ECBFF"> create</span><span style="color:#9ECBFF"> my-cluster</span></span>
+<span data-line=""> </span>
+<span data-line=""><span style="color:#6A737D"># 다른 노드가 참가 (마스터 IP로 변경)</span></span>
+<span data-line=""><span style="color:#B392F0">pvecm</span><span style="color:#9ECBFF"> add</span><span style="color:#F97583"> &#x3C;</span><span style="color:#9ECBFF">cluster-master-i</span><span style="color:#E1E4E8">p</span><span style="color:#F97583">></span></span>
+<span data-line=""> </span>
+<span data-line=""><span style="color:#6A737D"># 상태 확인</span></span>
+<span data-line=""><span style="color:#B392F0">pvecm</span><span style="color:#9ECBFF"> status</span></span></code></pre></figure>
+<blockquote>
+<p>클러스터 구축 후 <strong>노드 호스트명 변경을 최대한 피하세요</strong>; 참가 전에 DNS·시간 동기화·네트워크가 모두 정상인지 확인 — 그렇지 않으면 온갖 이상한 문제가 생깁니다.</p>
+</blockquote>
+<h2 id="ha-고가용성-설정">HA (고가용성) 설정</h2>
+<p>적용 시나리오: 어떤 노드가 다운되면 VM이 다른 노드에서 자동으로 시작되어 서비스가 중단되지 않음.</p>
+<p>전제 조건:</p>
+<ul>
+<li>클러스터가 존재</li>
+<li>VM 디스크가 <strong>공유 스토리지</strong>에 있음</li>
+<li>올바른 <strong>fencing</strong> 메커니즘 — 스플릿 브레인 방지 (양쪽이 자신이 리더라고 생각하는 상황)</li>
+</ul>
+<figure data-rehype-pretty-code-figure=""><pre style="background-color:#24292e;color:#e1e4e8" tabindex="0" data-language="bash" data-theme="github-dark"><code data-language="bash" data-theme="github-dark" style="display: grid;"><span data-line=""><span style="color:#6A737D"># VM 100을 HA 관리하에 두기</span></span>
+<span data-line=""><span style="color:#B392F0">ha-manager</span><span style="color:#9ECBFF"> add</span><span style="color:#9ECBFF"> vm:100</span><span style="color:#79B8FF"> --maxrestart</span><span style="color:#79B8FF"> 3</span><span style="color:#79B8FF"> --maxrelocate</span><span style="color:#79B8FF"> 5</span></span></code></pre></figure>
+<p>HA가 올바르게 설정되면 단일 노드 장애 시 사용자는 거의 알아차리지 못합니다 — 고양이가 항상 대체 수면 장소를 확보해 두는 것처럼.</p>
+<h2 id="ceph-하이퍼컨버지드-스토리지">Ceph 하이퍼컨버지드 스토리지</h2>
+<p>적용 시나리오: 여러 노드에서 공유 스토리지와 고가용성 모두 필요 — Ceph로 함께 해결.</p>
+<p>권장 전제 조건:</p>
+<ul>
+<li>최소 <strong>3개 노드</strong> (Ceph는 단일 지점을 싫어함)</li>
+<li>각 노드에 복수의 <strong>전용 디스크</strong></li>
+<li>전용 스토리지 네트워크가 있으면 더 좋음</li>
+</ul>
+<figure data-rehype-pretty-code-figure=""><pre style="background-color:#24292e;color:#e1e4e8" tabindex="0" data-language="bash" data-theme="github-dark"><code data-language="bash" data-theme="github-dark" style="display: grid;"><span data-line=""><span style="color:#6A737D"># Ceph 초기화</span></span>
+<span data-line=""><span style="color:#B392F0">pveceph</span><span style="color:#9ECBFF"> init</span><span style="color:#79B8FF"> --network</span><span style="color:#9ECBFF"> 10.0.0.0/24</span></span>
+<span data-line=""> </span>
+<span data-line=""><span style="color:#6A737D"># 각 데이터 디스크에 OSD 만들기</span></span>
+<span data-line=""><span style="color:#B392F0">pveceph</span><span style="color:#9ECBFF"> osd</span><span style="color:#9ECBFF"> create</span><span style="color:#9ECBFF"> /dev/sdX</span></span>
+<span data-line=""> </span>
+<span data-line=""><span style="color:#6A737D"># Pool 만들고 PVE에 연결</span></span>
+<span data-line=""><span style="color:#B392F0">pveceph</span><span style="color:#9ECBFF"> pool</span><span style="color:#9ECBFF"> create</span><span style="color:#9ECBFF"> vm-data</span><span style="color:#79B8FF"> --add_storages</span></span></code></pre></figure>
+<blockquote>
+<p>Ceph는 <strong>베어 디스크를 직접 관리</strong>하는 것을 권장 — 하드웨어 RAID를 위에 쌓지 마세요. 그렇게 하면 Ceph의 데이터 보호와 관측성이 절반으로 줄어듭니다.</p>
+</blockquote>
+<h2 id="스토리지-복제">스토리지 복제</h2>
+<p>적용 시나리오: 크로스 노드 이중화, 장애 시 빠른 인계.</p>
+<figure data-rehype-pretty-code-figure=""><pre style="background-color:#24292e;color:#e1e4e8" tabindex="0" data-language="bash" data-theme="github-dark"><code data-language="bash" data-theme="github-dark" style="display: grid;"><span data-line=""><span style="color:#B392F0">pvesr</span><span style="color:#9ECBFF"> create-local-job</span><span style="color:#79B8FF"> 100</span><span style="color:#9ECBFF"> local-zfs</span><span style="color:#9ECBFF"> remote-zfs</span><span style="color:#79B8FF"> --schedule</span><span style="color:#9ECBFF"> "0 2 * * *"</span></span></code></pre></figure>
+<h2 id="api와-자동화-통합">API와 자동화 통합</h2>
+<p>적용 시나리오: 스크립트로 운영·CI/CD·다른 플랫폼과 통합. <strong>API 토큰</strong> 사용 권장 — root 비밀번호를 여기저기 붙여넣지 마세요.</p>
+<figure data-rehype-pretty-code-figure=""><pre style="background-color:#24292e;color:#e1e4e8" tabindex="0" data-language="bash" data-theme="github-dark"><code data-language="bash" data-theme="github-dark" style="display: grid;"><span data-line=""><span style="color:#6A737D"># API 토큰으로 VM 목록 가져오기</span></span>
+<span data-line=""><span style="color:#B392F0">curl</span><span style="color:#79B8FF"> -k</span><span style="color:#79B8FF"> \</span></span>
+<span data-line=""><span style="color:#79B8FF">  -H</span><span style="color:#9ECBFF"> "Authorization: PVEAPIToken=user@realm!tokenid=secret"</span><span style="color:#79B8FF"> \</span></span>
+<span data-line=""><span style="color:#9ECBFF">  "https://&#x3C;PVE-IP>:8006/api2/json/nodes/&#x3C;node>/qemu"</span></span></code></pre></figure>
+<p>자동화가 갖춰지면 반복 작업은 스크립트에 맡기고, 여러분은 커피와 고양이에 집중하면 됩니다.</p>
+<h2 id="다음-단계">다음 단계</h2>
+<p>고급 기능을 갖췄다면 운영 규범으로 위험을 줄이세요:
+👉 <a href="05-best-practices">베스트 프랙티스</a></p>5:["$","aside",null,{"className":"hidden lg:block","children":["$","$L8",null,{"html":"$9"}]}]
+6:["$","script","script-0",{"src":"/_next/static/chunks/2dddb3bc05093f69.js","async":true}]
+7:["$","$La",null,{"children":["$","$b",null,{"name":"Next.MetadataOutlet","children":"$@c"}]}]
+c:null

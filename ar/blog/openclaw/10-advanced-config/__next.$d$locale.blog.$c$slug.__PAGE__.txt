@@ -1,0 +1,261 @@
+1:"$Sreact.fragment"
+2:I[14864,["/_next/static/chunks/7923a261b80bb6e1.js","/_next/static/chunks/e09b4358027e8033.js","/_next/static/chunks/2dddb3bc05093f69.js"],"default"]
+8:I[24801,["/_next/static/chunks/7923a261b80bb6e1.js","/_next/static/chunks/e09b4358027e8033.js","/_next/static/chunks/2dddb3bc05093f69.js"],"default"]
+a:I[50183,["/_next/static/chunks/5a5b5b13c22d14f7.js","/_next/static/chunks/a484d1d3dd4b55ab.js"],"OutletBoundary"]
+b:"$Sreact.suspense"
+3:T2324,<p>إذا وصلت حتى هنا، فقد بنيت OpenClaw من الصفر حتى العمل. عمل رائع.</p>
+<p>هذه المقالة الأخيرة تجمع العادات التي تجعل إعدادك أكثر استقراراً وأسهل في الصيانة.</p>
+<h2 id="ما-الذي-ستتعلمه">ما الذي ستتعلمه</h2>
+<ul>
+<li>إيجاد ملف الإعداد وفهم طريقتَي التعديل</li>
+<li>التعرف على بنية إعداد عمل بسيط</li>
+<li>تخزين مفاتيح API بأمان مع متغيرات البيئة</li>
+<li>استخدام أمر التصحيح الأكثر فائدة وقراءة رسائل الخطأ الشائعة</li>
+<li>اختيار مسار الإصدار المناسب</li>
+</ul>
+<hr>
+<h2 id="أين-يوجد-ملف-الإعداد">أين يوجد ملف الإعداد؟</h2>
+<pre><code>~/.openclaw/openclaw.json
+</code></pre>
+<p>الصيغة هي <strong>JSON5</strong>، مما يعني أن التعليقات والفواصل اللاحقة مسموح بها. أكثر صداقةً بكثير من JSON العادي.</p>
+<p>يمكنك تعديله بطريقتين:</p>
+<ul>
+<li>استخدم <strong>وضع النموذج</strong> في Control UI إذا أردت شيئاً مناسباً للمبتدئين</li>
+<li>انتقل إلى <strong>Raw JSON</strong> إذا أردت الدقة والسرعة</li>
+</ul>
+<p>كلا الوضعَين يعدّلان نفس الملف ويحفظان في نفس المسار.</p>
+<hr>
+<h2 id="كيف-يبدو-إعداد-عمل-بسيط">كيف يبدو إعداد عمل بسيط؟</h2>
+<figure data-rehype-pretty-code-figure=""><pre style="background-color:#24292e;color:#e1e4e8" tabindex="0" data-language="json5" data-theme="github-dark"><code data-language="json5" data-theme="github-dark" style="display: grid;"><span data-line=""><span style="color:#E1E4E8">{</span></span>
+<span data-line=""><span style="color:#9ECBFF">  "agents"</span><span style="color:#E1E4E8">: {</span></span>
+<span data-line=""><span style="color:#9ECBFF">    "list"</span><span style="color:#E1E4E8">: [</span></span>
+<span data-line=""><span style="color:#E1E4E8">      { </span><span style="color:#9ECBFF">"id"</span><span style="color:#E1E4E8">: </span><span style="color:#9ECBFF">"main"</span><span style="color:#E1E4E8">, </span><span style="color:#9ECBFF">"workspace"</span><span style="color:#E1E4E8">: </span><span style="color:#9ECBFF">"~/.openclaw/workspace-main"</span><span style="color:#E1E4E8">, </span><span style="color:#9ECBFF">"default"</span><span style="color:#E1E4E8">: </span><span style="color:#79B8FF">true</span><span style="color:#E1E4E8"> }</span></span>
+<span data-line=""><span style="color:#E1E4E8">    ]</span></span>
+<span data-line=""><span style="color:#E1E4E8">  },</span></span>
+<span data-line=""><span style="color:#9ECBFF">  "channels"</span><span style="color:#E1E4E8">: {</span></span>
+<span data-line=""><span style="color:#9ECBFF">    "telegram"</span><span style="color:#E1E4E8">: {</span></span>
+<span data-line=""><span style="color:#9ECBFF">      "enabled"</span><span style="color:#E1E4E8">: </span><span style="color:#79B8FF">true</span><span style="color:#E1E4E8">,</span></span>
+<span data-line=""><span style="color:#9ECBFF">      "botToken"</span><span style="color:#E1E4E8">: </span><span style="color:#9ECBFF">"رمز البوت الخاص بك"</span></span>
+<span data-line=""><span style="color:#E1E4E8">    }</span></span>
+<span data-line=""><span style="color:#E1E4E8">  },</span></span>
+<span data-line=""><span style="color:#9ECBFF">  "bindings"</span><span style="color:#E1E4E8">: [</span></span>
+<span data-line=""><span style="color:#E1E4E8">    { </span><span style="color:#9ECBFF">"agentId"</span><span style="color:#E1E4E8">: </span><span style="color:#9ECBFF">"main"</span><span style="color:#E1E4E8">, </span><span style="color:#9ECBFF">"match"</span><span style="color:#E1E4E8">: { </span><span style="color:#9ECBFF">"channel"</span><span style="color:#E1E4E8">: </span><span style="color:#9ECBFF">"telegram"</span><span style="color:#E1E4E8"> } }</span></span>
+<span data-line=""><span style="color:#E1E4E8">  ]</span></span>
+<span data-line=""><span style="color:#E1E4E8">}</span></span></code></pre></figure>
+<p>اجعل الإصدار البسيط يعمل أولاً. ثم أضف المزيد من الميزات تدريجياً.</p>
+<hr>
+<h2 id="الطريقة-الصحيحة-لتخزين-مفاتيح-api">الطريقة الصحيحة لتخزين مفاتيح API</h2>
+<p><strong>لا تضمّن مفاتيح API في الإعداد إذا أمكنك تجنب ذلك.</strong></p>
+<p>متغيرات البيئة أكثر أماناً:</p>
+<figure data-rehype-pretty-code-figure=""><pre style="background-color:#24292e;color:#e1e4e8" tabindex="0" data-language="bash" data-theme="github-dark"><code data-language="bash" data-theme="github-dark" style="display: grid;"><span data-line=""><span style="color:#6A737D"># ضع هذا في .env أو في بيئة نظامك</span></span>
+<span data-line=""><span style="color:#E1E4E8">ANTHROPIC_API_KEY</span><span style="color:#F97583">=</span><span style="color:#9ECBFF">sk-ant-xxxxx</span></span></code></pre></figure>
+<blockquote>
+<p>⚠️ إذا كان Gateway يعمل كخدمة نظام مثل <code>systemd</code>، تأكد من أن الخدمة تحمّل ملف <code>.env</code> الخاص بك. وإلا قد يفشل المساعد لأنه لا يستطيع رؤية مفتاح API، وقد تصطدم بأخطاء مثل "Shell env off".</p>
+</blockquote>
+<hr>
+<h2 id="أداة-التصحيح-الشاملة">أداة التصحيح الشاملة</h2>
+<p>عندما يبدو شيء خاطئاً، ابدأ هنا:</p>
+<figure data-rehype-pretty-code-figure=""><pre style="background-color:#24292e;color:#e1e4e8" tabindex="0" data-language="bash" data-theme="github-dark"><code data-language="bash" data-theme="github-dark" style="display: grid;"><span data-line=""><span style="color:#B392F0">openclaw</span><span style="color:#9ECBFF"> logs</span><span style="color:#79B8FF"> --follow</span></span></code></pre></figure>
+<p>السجلات الفورية تجيب على عدد مدهش من الأسئلة.</p>
+<p>أخطاء شائعة:</p>
+<table>
+<thead>
+<tr>
+<th>رسالة الخطأ</th>
+<th>السبب المحتمل</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td><code>HTTP 429</code></td>
+<td>طلبات API كثيرة جداً، وصلت إلى حد المعدل</td>
+</tr>
+<tr>
+<td><code>unauthorized</code></td>
+<td>مشكلة في الرمز أو <code>gateway.bind</code></td>
+</tr>
+<tr>
+<td><code>content tool_use input field required</code></td>
+<td>مشكلة توافق النموذج، تحقق من الوثائق</td>
+</tr>
+<tr>
+<td>Context got truncated</td>
+<td>ابدأ جلسة جديدة أو اضغط السياق كما يُوصى</td>
+</tr>
+</tbody>
+</table>
+<hr>
+<h2 id="أي-مسار-إصدار-تستخدم">أي مسار إصدار تستخدم؟</h2>
+<table>
+<thead>
+<tr>
+<th>مسار الإصدار</th>
+<th>الأفضل لـ</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td><strong>Stable</strong></td>
+<td>الاستخدام اليومي، الافتراضي الأكثر أماناً</td>
+</tr>
+<tr>
+<td><strong>Beta</strong></td>
+<td>تجربة الميزات الجديدة وقبول بعض الأخطاء</td>
+</tr>
+<tr>
+<td><strong>Dev</strong></td>
+<td>المطورون الراغبون في أحدث التغييرات أولاً</td>
+</tr>
+</tbody>
+</table>
+<blockquote>
+<p>💡 قبل ترقية رئيسية، احتفظ بنسخة احتياطية من <code>~/.openclaw</code> حتى يكون لديك دائماً مسار للتراجع.</p>
+</blockquote>
+<hr>
+<h2 id="السلسلة-مكتملة-ما-الذي-يمكنك-فعله-الآن">السلسلة مكتملة: ما الذي يمكنك فعله الآن؟</h2>
+<p>عبر هذه المقالات، تعلمت كيف:</p>
+<ol>
+<li>تفهم الفكرة الجوهرية خلف OpenClaw</li>
+<li>تثبّته وتشغّله للمرة الأولى</li>
+<li>تتعامل مع مصادقة لوحة التحكم</li>
+<li>تربط Telegram وقنوات أخرى</li>
+<li>تجعل المساعد أكثر كفاءة بالمهارات</li>
+<li>تدير الذاكرة ومساحات العمل</li>
+<li>تقسم العمل عبر وكلاء متعددين</li>
+<li>تنشر Gateway على VPS</li>
+<li>تؤتمت المهام مع Cron</li>
+<li>تصحّح وتضبط النظام كمحترف</li>
+</ol>
+<p>للحصول على تفاصيل أعمق، تعامل دائماً مع الوثائق الرسمية في <a href="https://docs.openclaw.ai">docs.openclaw.ai</a> كمصدر الحقيقة.</p>
+<p><strong>مساعدك الذكي جاهز. اجعله يعمل من أجلك.</strong></p>
+<p><a href="09-cron-automation">← السابق: الجدولة والأتمتة</a> | <a href="01-intro">العودة إلى المقالة الأولى</a></p>0:{"buildId":"Yck3R4ooQxWkwGLT6is1X","rsc":["$","$1","c",{"children":[[["$","script",null,{"type":"application/ld+json","dangerouslySetInnerHTML":{"__html":"{\"@context\":\"https://schema.org\",\"@type\":\"Article\",\"headline\":\"النظام يتصرف بشكل غريب؟ دليل الإعدادات المتقدمة والتصحيح\",\"description\":\"أين يعيش ملف الإعداد، كيف تخزن مفاتيح API بأمان، أي أدوات التصحيح تهم، وكيف تفسّر رسائل الخطأ الشائعة.\",\"url\":\"https://benxhub.com/ar/blog/openclaw/10-advanced-config\",\"mainEntityOfPage\":{\"@type\":\"WebPage\",\"@id\":\"https://benxhub.com/ar/blog/openclaw/10-advanced-config\"},\"datePublished\":\"2026-03-08T00:00:00.000Z\",\"dateModified\":\"2026-03-08T00:00:00.000Z\",\"keywords\":\"openclaw, configuration, debugging, advanced\",\"inLanguage\":\"ar\",\"author\":{\"@type\":\"Person\",\"name\":\"BenX\",\"url\":\"https://benxhub.com\"},\"publisher\":{\"@type\":\"Organization\",\"name\":\"BenXHub Blog\",\"url\":\"https://benxhub.com\"}}"}}],["$","div",null,{"className":"mx-auto max-w-6xl px-4 py-12 sm:px-6","children":["$","div",null,{"className":"lg:grid lg:grid-cols-[1fr_240px] lg:gap-14","children":[["$","article",null,{"children":[["$","header",null,{"className":"mb-10","children":[["$","div",null,{"className":"mb-4 flex flex-wrap gap-2","children":[["$","$L2","openclaw",{"href":"/ar/tags/openclaw","localeCookie":{"name":"NEXT_LOCALE","sameSite":"lax"},"className":"inline-flex items-center rounded-full px-2.5 py-0.5 text-xs font-medium transition-colors","style":{"background":"var(--color-code-bg)","color":"var(--color-accent)","border":"1px solid var(--color-border)"},"children":["#","openclaw"]}],["$","$L2","configuration",{"href":"/ar/tags/configuration","localeCookie":{"name":"NEXT_LOCALE","sameSite":"lax"},"className":"inline-flex items-center rounded-full px-2.5 py-0.5 text-xs font-medium transition-colors","style":{"background":"var(--color-code-bg)","color":"var(--color-accent)","border":"1px solid var(--color-border)"},"children":["#","configuration"]}],["$","$L2","debugging",{"href":"/ar/tags/debugging","localeCookie":{"name":"NEXT_LOCALE","sameSite":"lax"},"className":"inline-flex items-center rounded-full px-2.5 py-0.5 text-xs font-medium transition-colors","style":{"background":"var(--color-code-bg)","color":"var(--color-accent)","border":"1px solid var(--color-border)"},"children":["#","debugging"]}],["$","$L2","advanced",{"href":"/ar/tags/advanced","localeCookie":{"name":"NEXT_LOCALE","sameSite":"lax"},"className":"inline-flex items-center rounded-full px-2.5 py-0.5 text-xs font-medium transition-colors","style":{"background":"var(--color-code-bg)","color":"var(--color-accent)","border":"1px solid var(--color-border)"},"children":["#","advanced"]}]]}],["$","h1",null,{"className":"mb-4 text-3xl leading-snug font-bold tracking-tight sm:text-4xl","style":{"color":"var(--color-text)"},"children":"النظام يتصرف بشكل غريب؟ دليل الإعدادات المتقدمة والتصحيح"}],["$","div",null,{"className":"flex flex-wrap items-center gap-3 text-sm","style":{"color":"var(--color-muted)"},"children":[["$","time",null,{"dateTime":"2026-03-08","children":"8 3月 2026"}],["$","span",null,{"aria-hidden":"true","children":"·"}],["$","span",null,{"children":"3 min read"}]]}],"$undefined",["$","div",null,{"className":"mt-6 border-b","style":{"borderColor":"var(--color-border)"}}]]}],["$","div",null,{"className":"prose","dangerouslySetInnerHTML":{"__html":"$3"}}],"$L4"]}],"$L5"]}]}]],["$L6"],"$L7"]}],"loading":null,"isPartial":false}
+4:["$","footer",null,{"className":"mt-14 border-t pt-8","style":{"borderColor":"var(--color-border)"},"children":[["$","div",null,{"className":"mb-8 flex flex-wrap gap-2","children":[["$","$L2","openclaw",{"href":"/ar/tags/openclaw","localeCookie":{"name":"NEXT_LOCALE","sameSite":"lax"},"className":"inline-flex items-center rounded-full px-3 py-1 text-sm font-medium transition-colors","style":{"background":"var(--color-code-bg)","color":"var(--color-accent)","border":"1px solid var(--color-border)"},"children":["#","openclaw"]}],["$","$L2","configuration",{"href":"/ar/tags/configuration","localeCookie":{"name":"NEXT_LOCALE","sameSite":"lax"},"className":"inline-flex items-center rounded-full px-3 py-1 text-sm font-medium transition-colors","style":{"background":"var(--color-code-bg)","color":"var(--color-accent)","border":"1px solid var(--color-border)"},"children":["#","configuration"]}],["$","$L2","debugging",{"href":"/ar/tags/debugging","localeCookie":{"name":"NEXT_LOCALE","sameSite":"lax"},"className":"inline-flex items-center rounded-full px-3 py-1 text-sm font-medium transition-colors","style":{"background":"var(--color-code-bg)","color":"var(--color-accent)","border":"1px solid var(--color-border)"},"children":["#","debugging"]}],["$","$L2","advanced",{"href":"/ar/tags/advanced","localeCookie":{"name":"NEXT_LOCALE","sameSite":"lax"},"className":"inline-flex items-center rounded-full px-3 py-1 text-sm font-medium transition-colors","style":{"background":"var(--color-code-bg)","color":"var(--color-accent)","border":"1px solid var(--color-border)"},"children":["#","advanced"]}]]}],["$","nav",null,{"aria-label":"التنقل بين المقالات","className":"grid grid-cols-1 gap-4 sm:grid-cols-2","children":[["$","$L2",null,{"href":"/ar/blog/openclaw/09-cron-automation","localeCookie":{"name":"NEXT_LOCALE","sameSite":"lax"},"className":"group rounded-lg border p-4 transition-colors hover:border-accent","style":{"borderColor":"var(--color-border)","background":"var(--color-surface)"},"children":[["$","p",null,{"className":"mb-1 text-xs","style":{"color":"var(--color-muted)"},"children":"→ الأحدث"}],["$","p",null,{"className":"line-clamp-1 text-sm font-medium transition-colors group-hover:text-accent","style":{"color":"var(--color-text)"},"children":"دع مساعدك يعمل تلقائياً: يساعدك حتى حين لا تطلب"}]]}],["$","$L2",null,{"href":"/ar/blog/openclaw/11-openclaw-web-ui-setup","localeCookie":{"name":"NEXT_LOCALE","sameSite":"lax"},"className":"group rounded-lg border p-4 text-right transition-colors hover:border-accent","style":{"borderColor":"var(--color-border)","background":"var(--color-surface)"},"children":[["$","p",null,{"className":"mb-1 text-xs","style":{"color":"var(--color-muted)"},"children":"الأقدم ←"}],["$","p",null,{"className":"line-clamp-1 text-sm font-medium transition-colors group-hover:text-accent","style":{"color":"var(--color-text)"},"children":"لا حاجة لملف إعداد: اضبط OpenClaw بالكامل من واجهة الويب"}]]}]]}]]}]
+9:T2324,<p>إذا وصلت حتى هنا، فقد بنيت OpenClaw من الصفر حتى العمل. عمل رائع.</p>
+<p>هذه المقالة الأخيرة تجمع العادات التي تجعل إعدادك أكثر استقراراً وأسهل في الصيانة.</p>
+<h2 id="ما-الذي-ستتعلمه">ما الذي ستتعلمه</h2>
+<ul>
+<li>إيجاد ملف الإعداد وفهم طريقتَي التعديل</li>
+<li>التعرف على بنية إعداد عمل بسيط</li>
+<li>تخزين مفاتيح API بأمان مع متغيرات البيئة</li>
+<li>استخدام أمر التصحيح الأكثر فائدة وقراءة رسائل الخطأ الشائعة</li>
+<li>اختيار مسار الإصدار المناسب</li>
+</ul>
+<hr>
+<h2 id="أين-يوجد-ملف-الإعداد">أين يوجد ملف الإعداد؟</h2>
+<pre><code>~/.openclaw/openclaw.json
+</code></pre>
+<p>الصيغة هي <strong>JSON5</strong>، مما يعني أن التعليقات والفواصل اللاحقة مسموح بها. أكثر صداقةً بكثير من JSON العادي.</p>
+<p>يمكنك تعديله بطريقتين:</p>
+<ul>
+<li>استخدم <strong>وضع النموذج</strong> في Control UI إذا أردت شيئاً مناسباً للمبتدئين</li>
+<li>انتقل إلى <strong>Raw JSON</strong> إذا أردت الدقة والسرعة</li>
+</ul>
+<p>كلا الوضعَين يعدّلان نفس الملف ويحفظان في نفس المسار.</p>
+<hr>
+<h2 id="كيف-يبدو-إعداد-عمل-بسيط">كيف يبدو إعداد عمل بسيط؟</h2>
+<figure data-rehype-pretty-code-figure=""><pre style="background-color:#24292e;color:#e1e4e8" tabindex="0" data-language="json5" data-theme="github-dark"><code data-language="json5" data-theme="github-dark" style="display: grid;"><span data-line=""><span style="color:#E1E4E8">{</span></span>
+<span data-line=""><span style="color:#9ECBFF">  "agents"</span><span style="color:#E1E4E8">: {</span></span>
+<span data-line=""><span style="color:#9ECBFF">    "list"</span><span style="color:#E1E4E8">: [</span></span>
+<span data-line=""><span style="color:#E1E4E8">      { </span><span style="color:#9ECBFF">"id"</span><span style="color:#E1E4E8">: </span><span style="color:#9ECBFF">"main"</span><span style="color:#E1E4E8">, </span><span style="color:#9ECBFF">"workspace"</span><span style="color:#E1E4E8">: </span><span style="color:#9ECBFF">"~/.openclaw/workspace-main"</span><span style="color:#E1E4E8">, </span><span style="color:#9ECBFF">"default"</span><span style="color:#E1E4E8">: </span><span style="color:#79B8FF">true</span><span style="color:#E1E4E8"> }</span></span>
+<span data-line=""><span style="color:#E1E4E8">    ]</span></span>
+<span data-line=""><span style="color:#E1E4E8">  },</span></span>
+<span data-line=""><span style="color:#9ECBFF">  "channels"</span><span style="color:#E1E4E8">: {</span></span>
+<span data-line=""><span style="color:#9ECBFF">    "telegram"</span><span style="color:#E1E4E8">: {</span></span>
+<span data-line=""><span style="color:#9ECBFF">      "enabled"</span><span style="color:#E1E4E8">: </span><span style="color:#79B8FF">true</span><span style="color:#E1E4E8">,</span></span>
+<span data-line=""><span style="color:#9ECBFF">      "botToken"</span><span style="color:#E1E4E8">: </span><span style="color:#9ECBFF">"رمز البوت الخاص بك"</span></span>
+<span data-line=""><span style="color:#E1E4E8">    }</span></span>
+<span data-line=""><span style="color:#E1E4E8">  },</span></span>
+<span data-line=""><span style="color:#9ECBFF">  "bindings"</span><span style="color:#E1E4E8">: [</span></span>
+<span data-line=""><span style="color:#E1E4E8">    { </span><span style="color:#9ECBFF">"agentId"</span><span style="color:#E1E4E8">: </span><span style="color:#9ECBFF">"main"</span><span style="color:#E1E4E8">, </span><span style="color:#9ECBFF">"match"</span><span style="color:#E1E4E8">: { </span><span style="color:#9ECBFF">"channel"</span><span style="color:#E1E4E8">: </span><span style="color:#9ECBFF">"telegram"</span><span style="color:#E1E4E8"> } }</span></span>
+<span data-line=""><span style="color:#E1E4E8">  ]</span></span>
+<span data-line=""><span style="color:#E1E4E8">}</span></span></code></pre></figure>
+<p>اجعل الإصدار البسيط يعمل أولاً. ثم أضف المزيد من الميزات تدريجياً.</p>
+<hr>
+<h2 id="الطريقة-الصحيحة-لتخزين-مفاتيح-api">الطريقة الصحيحة لتخزين مفاتيح API</h2>
+<p><strong>لا تضمّن مفاتيح API في الإعداد إذا أمكنك تجنب ذلك.</strong></p>
+<p>متغيرات البيئة أكثر أماناً:</p>
+<figure data-rehype-pretty-code-figure=""><pre style="background-color:#24292e;color:#e1e4e8" tabindex="0" data-language="bash" data-theme="github-dark"><code data-language="bash" data-theme="github-dark" style="display: grid;"><span data-line=""><span style="color:#6A737D"># ضع هذا في .env أو في بيئة نظامك</span></span>
+<span data-line=""><span style="color:#E1E4E8">ANTHROPIC_API_KEY</span><span style="color:#F97583">=</span><span style="color:#9ECBFF">sk-ant-xxxxx</span></span></code></pre></figure>
+<blockquote>
+<p>⚠️ إذا كان Gateway يعمل كخدمة نظام مثل <code>systemd</code>، تأكد من أن الخدمة تحمّل ملف <code>.env</code> الخاص بك. وإلا قد يفشل المساعد لأنه لا يستطيع رؤية مفتاح API، وقد تصطدم بأخطاء مثل "Shell env off".</p>
+</blockquote>
+<hr>
+<h2 id="أداة-التصحيح-الشاملة">أداة التصحيح الشاملة</h2>
+<p>عندما يبدو شيء خاطئاً، ابدأ هنا:</p>
+<figure data-rehype-pretty-code-figure=""><pre style="background-color:#24292e;color:#e1e4e8" tabindex="0" data-language="bash" data-theme="github-dark"><code data-language="bash" data-theme="github-dark" style="display: grid;"><span data-line=""><span style="color:#B392F0">openclaw</span><span style="color:#9ECBFF"> logs</span><span style="color:#79B8FF"> --follow</span></span></code></pre></figure>
+<p>السجلات الفورية تجيب على عدد مدهش من الأسئلة.</p>
+<p>أخطاء شائعة:</p>
+<table>
+<thead>
+<tr>
+<th>رسالة الخطأ</th>
+<th>السبب المحتمل</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td><code>HTTP 429</code></td>
+<td>طلبات API كثيرة جداً، وصلت إلى حد المعدل</td>
+</tr>
+<tr>
+<td><code>unauthorized</code></td>
+<td>مشكلة في الرمز أو <code>gateway.bind</code></td>
+</tr>
+<tr>
+<td><code>content tool_use input field required</code></td>
+<td>مشكلة توافق النموذج، تحقق من الوثائق</td>
+</tr>
+<tr>
+<td>Context got truncated</td>
+<td>ابدأ جلسة جديدة أو اضغط السياق كما يُوصى</td>
+</tr>
+</tbody>
+</table>
+<hr>
+<h2 id="أي-مسار-إصدار-تستخدم">أي مسار إصدار تستخدم؟</h2>
+<table>
+<thead>
+<tr>
+<th>مسار الإصدار</th>
+<th>الأفضل لـ</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td><strong>Stable</strong></td>
+<td>الاستخدام اليومي، الافتراضي الأكثر أماناً</td>
+</tr>
+<tr>
+<td><strong>Beta</strong></td>
+<td>تجربة الميزات الجديدة وقبول بعض الأخطاء</td>
+</tr>
+<tr>
+<td><strong>Dev</strong></td>
+<td>المطورون الراغبون في أحدث التغييرات أولاً</td>
+</tr>
+</tbody>
+</table>
+<blockquote>
+<p>💡 قبل ترقية رئيسية، احتفظ بنسخة احتياطية من <code>~/.openclaw</code> حتى يكون لديك دائماً مسار للتراجع.</p>
+</blockquote>
+<hr>
+<h2 id="السلسلة-مكتملة-ما-الذي-يمكنك-فعله-الآن">السلسلة مكتملة: ما الذي يمكنك فعله الآن؟</h2>
+<p>عبر هذه المقالات، تعلمت كيف:</p>
+<ol>
+<li>تفهم الفكرة الجوهرية خلف OpenClaw</li>
+<li>تثبّته وتشغّله للمرة الأولى</li>
+<li>تتعامل مع مصادقة لوحة التحكم</li>
+<li>تربط Telegram وقنوات أخرى</li>
+<li>تجعل المساعد أكثر كفاءة بالمهارات</li>
+<li>تدير الذاكرة ومساحات العمل</li>
+<li>تقسم العمل عبر وكلاء متعددين</li>
+<li>تنشر Gateway على VPS</li>
+<li>تؤتمت المهام مع Cron</li>
+<li>تصحّح وتضبط النظام كمحترف</li>
+</ol>
+<p>للحصول على تفاصيل أعمق، تعامل دائماً مع الوثائق الرسمية في <a href="https://docs.openclaw.ai">docs.openclaw.ai</a> كمصدر الحقيقة.</p>
+<p><strong>مساعدك الذكي جاهز. اجعله يعمل من أجلك.</strong></p>
+<p><a href="09-cron-automation">← السابق: الجدولة والأتمتة</a> | <a href="01-intro">العودة إلى المقالة الأولى</a></p>5:["$","aside",null,{"className":"hidden lg:block","children":["$","$L8",null,{"html":"$9"}]}]
+6:["$","script","script-0",{"src":"/_next/static/chunks/2dddb3bc05093f69.js","async":true}]
+7:["$","$La",null,{"children":["$","$b",null,{"name":"Next.MetadataOutlet","children":"$@c"}]}]
+c:null

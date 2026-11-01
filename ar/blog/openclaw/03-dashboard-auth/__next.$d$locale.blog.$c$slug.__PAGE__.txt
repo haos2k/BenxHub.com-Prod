@@ -1,0 +1,109 @@
+1:"$Sreact.fragment"
+2:I[14864,["/_next/static/chunks/7923a261b80bb6e1.js","/_next/static/chunks/e09b4358027e8033.js","/_next/static/chunks/2dddb3bc05093f69.js"],"default"]
+8:I[24801,["/_next/static/chunks/7923a261b80bb6e1.js","/_next/static/chunks/e09b4358027e8033.js","/_next/static/chunks/2dddb3bc05093f69.js"],"default"]
+a:I[50183,["/_next/static/chunks/5a5b5b13c22d14f7.js","/_next/static/chunks/a484d1d3dd4b55ab.js"],"OutletBoundary"]
+b:"$Sreact.suspense"
+3:T12ec,<p>"رمز؟ إقران؟ أردت فقط فتح صفحة ويب."</p>
+<p>هذا الرد مفهوم تماماً. هذه المقالة موجودة حتى تتمكن من <strong>التوقف عن الخوف من شاشة تسجيل الدخول</strong>.</p>
+<h2 id="ما-الذي-ستتعلمه">ما الذي ستتعلمه</h2>
+<ul>
+<li>فهم العلاقة بين Gateway ولوحة التحكم</li>
+<li>التعرف على المواقف الثلاثة الأكثر شيوعاً في المصادقة</li>
+<li>تعلم كيفية إعداد الوصول عن بُعد</li>
+<li>تغيير لغة الواجهة بالمناسبة</li>
+</ul>
+<hr>
+<h2 id="ابدأ-gateway-أولاً">ابدأ Gateway أولاً</h2>
+<p>لوحة التحكم مجرد نافذة. العمل الحقيقي يحدث في <strong>Gateway</strong>. بدون Gateway، صفحة الويب مجرد قشرة فارغة جميلة.</p>
+<figure data-rehype-pretty-code-figure=""><pre style="background-color:#24292e;color:#e1e4e8" tabindex="0" data-language="bash" data-theme="github-dark"><code data-language="bash" data-theme="github-dark" style="display: grid;"><span data-line=""><span style="color:#B392F0">openclaw</span><span style="color:#9ECBFF"> gateway</span></span></code></pre></figure>
+<p>أكمل فقط بعد أن ترى شيئاً مثل "Gateway running".</p>
+<hr>
+<h2 id="فتح-لوحة-التحكم">فتح لوحة التحكم</h2>
+<pre><code>http://127.0.0.1:18789/
+</code></pre>
+<p>إذا أعددت <code>basePath</code> مثل <code>/openclaw</code>:</p>
+<pre><code>http://127.0.0.1:18789/openclaw
+</code></pre>
+<hr>
+<h2 id="المصادقة-ماذا-يُفترض-أن-أدخل">المصادقة: ماذا يُفترض أن أدخل؟</h2>
+<h3 id="الحالة-1-ترى-pairing-required">الحالة 1: ترى <code>pairing required</code></h3>
+<p>OpenClaw يسأل بشكل أساسي: "من أنت؟ لا أعرف هذا الجهاز بعد."</p>
+<figure data-rehype-pretty-code-figure=""><pre style="background-color:#24292e;color:#e1e4e8" tabindex="0" data-language="bash" data-theme="github-dark"><code data-language="bash" data-theme="github-dark" style="display: grid;"><span data-line=""><span style="color:#B392F0">openclaw</span><span style="color:#9ECBFF"> devices</span><span style="color:#9ECBFF"> list</span></span>
+<span data-line=""><span style="color:#6A737D"># ابحث عن requestId المعلق</span></span>
+<span data-line=""> </span>
+<span data-line=""><span style="color:#B392F0">openclaw</span><span style="color:#9ECBFF"> devices</span><span style="color:#9ECBFF"> approve</span><span style="color:#F97583"> &#x3C;</span><span style="color:#9ECBFF">requestI</span><span style="color:#E1E4E8">d</span><span style="color:#F97583">></span></span>
+<span data-line=""><span style="color:#6A737D"># استبدله بالمعرف الحقيقي</span></span></code></pre></figure>
+<p>أعد تحميل المتصفح وستدخل.</p>
+<h3 id="الحالة-2-يطلب-رمزاً">الحالة 2: يطلب رمزاً</h3>
+<p>منحك تدفق الإعداد رمزاً في وقت سابق. هنا تلصقه. احفظه في الإعدادات ولن تحتاج إلى لصقه مرة أخرى لاحقاً.</p>
+<blockquote>
+<p>💡 الرموز مخزنة في إعدادات واجهة المستخدم. كلمات المرور تعيش فقط في الذاكرة وتختفي عند انتهاء الجلسة. هذا مقصود للأمان.</p>
+</blockquote>
+<h3 id="الحالة-3-الوصول-عن-بُعد-من-vps-أو-lan">الحالة 3: الوصول عن بُعد من VPS أو LAN</h3>
+<p>إذا كان Gateway لا يعمل محلياً بل على خادم بعيد:</p>
+<ul>
+<li>يجب استخدام رمز أو إقران جهاز</li>
+<li>إذا رأيت <code>unauthorized</code>، تحقق من <code>gateway.bind</code> وتأكد من إدخال الرمز بشكل صحيح</li>
+</ul>
+<hr>
+<h2 id="تريد-لغة-أخرى">تريد لغة أخرى؟</h2>
+<p>تدعم واجهة Control UI لغات متعددة، بما في ذلك الإنجليزية والصينية التقليدية والصينية المبسطة.</p>
+<p>افتح قسم <strong>Access</strong>، اختر لغة، وسيتذكرها المتصفح في المرة القادمة.</p>
+<hr>
+<h2 id="الخطوة-التالية">الخطوة التالية</h2>
+<p>بمجرد تمكنك من تسجيل الدخول، أنت واقف داخل غرفة التحكم الرئيسية في OpenClaw. بعد ذلك، دعنا نربط Telegram حتى تتمكن من استدعاء مساعدك من هاتفك.</p>
+<p><a href="02-quick-install">← السابق: التثبيت والتشغيل الأول</a> | 👉 <a href="04-channels-basics">ربط Telegram واستخدام مساعدك على الهاتف</a></p>0:{"buildId":"Yck3R4ooQxWkwGLT6is1X","rsc":["$","$1","c",{"children":[[["$","script",null,{"type":"application/ld+json","dangerouslySetInnerHTML":{"__html":"{\"@context\":\"https://schema.org\",\"@type\":\"Article\",\"headline\":\"لوحة التحكم تحجبك باستمرار؟ افهم مصادقة OpenClaw في 3 دقائق\",\"description\":\"الرمز، الإقران، الوصول عن بُعد — جميع مشاكل تسجيل الدخول الشائعة في لوحة التحكم مشروحة في مكان واحد.\",\"url\":\"https://benxhub.com/ar/blog/openclaw/03-dashboard-auth\",\"mainEntityOfPage\":{\"@type\":\"WebPage\",\"@id\":\"https://benxhub.com/ar/blog/openclaw/03-dashboard-auth\"},\"datePublished\":\"2026-03-08T00:00:00.000Z\",\"dateModified\":\"2026-03-08T00:00:00.000Z\",\"keywords\":\"openclaw, dashboard, authentication, setup\",\"inLanguage\":\"ar\",\"author\":{\"@type\":\"Person\",\"name\":\"BenX\",\"url\":\"https://benxhub.com\"},\"publisher\":{\"@type\":\"Organization\",\"name\":\"BenXHub Blog\",\"url\":\"https://benxhub.com\"}}"}}],["$","div",null,{"className":"mx-auto max-w-6xl px-4 py-12 sm:px-6","children":["$","div",null,{"className":"lg:grid lg:grid-cols-[1fr_240px] lg:gap-14","children":[["$","article",null,{"children":[["$","header",null,{"className":"mb-10","children":[["$","div",null,{"className":"mb-4 flex flex-wrap gap-2","children":[["$","$L2","openclaw",{"href":"/ar/tags/openclaw","localeCookie":{"name":"NEXT_LOCALE","sameSite":"lax"},"className":"inline-flex items-center rounded-full px-2.5 py-0.5 text-xs font-medium transition-colors","style":{"background":"var(--color-code-bg)","color":"var(--color-accent)","border":"1px solid var(--color-border)"},"children":["#","openclaw"]}],["$","$L2","dashboard",{"href":"/ar/tags/dashboard","localeCookie":{"name":"NEXT_LOCALE","sameSite":"lax"},"className":"inline-flex items-center rounded-full px-2.5 py-0.5 text-xs font-medium transition-colors","style":{"background":"var(--color-code-bg)","color":"var(--color-accent)","border":"1px solid var(--color-border)"},"children":["#","dashboard"]}],["$","$L2","authentication",{"href":"/ar/tags/authentication","localeCookie":{"name":"NEXT_LOCALE","sameSite":"lax"},"className":"inline-flex items-center rounded-full px-2.5 py-0.5 text-xs font-medium transition-colors","style":{"background":"var(--color-code-bg)","color":"var(--color-accent)","border":"1px solid var(--color-border)"},"children":["#","authentication"]}],["$","$L2","setup",{"href":"/ar/tags/setup","localeCookie":{"name":"NEXT_LOCALE","sameSite":"lax"},"className":"inline-flex items-center rounded-full px-2.5 py-0.5 text-xs font-medium transition-colors","style":{"background":"var(--color-code-bg)","color":"var(--color-accent)","border":"1px solid var(--color-border)"},"children":["#","setup"]}]]}],["$","h1",null,{"className":"mb-4 text-3xl leading-snug font-bold tracking-tight sm:text-4xl","style":{"color":"var(--color-text)"},"children":"لوحة التحكم تحجبك باستمرار؟ افهم مصادقة OpenClaw في 3 دقائق"}],["$","div",null,{"className":"flex flex-wrap items-center gap-3 text-sm","style":{"color":"var(--color-muted)"},"children":[["$","time",null,{"dateTime":"2026-03-08","children":"8 3月 2026"}],["$","span",null,{"aria-hidden":"true","children":"·"}],["$","span",null,{"children":"2 min read"}]]}],"$undefined",["$","div",null,{"className":"mt-6 border-b","style":{"borderColor":"var(--color-border)"}}]]}],["$","div",null,{"className":"prose","dangerouslySetInnerHTML":{"__html":"$3"}}],"$L4"]}],"$L5"]}]}]],["$L6"],"$L7"]}],"loading":null,"isPartial":false}
+4:["$","footer",null,{"className":"mt-14 border-t pt-8","style":{"borderColor":"var(--color-border)"},"children":[["$","div",null,{"className":"mb-8 flex flex-wrap gap-2","children":[["$","$L2","openclaw",{"href":"/ar/tags/openclaw","localeCookie":{"name":"NEXT_LOCALE","sameSite":"lax"},"className":"inline-flex items-center rounded-full px-3 py-1 text-sm font-medium transition-colors","style":{"background":"var(--color-code-bg)","color":"var(--color-accent)","border":"1px solid var(--color-border)"},"children":["#","openclaw"]}],["$","$L2","dashboard",{"href":"/ar/tags/dashboard","localeCookie":{"name":"NEXT_LOCALE","sameSite":"lax"},"className":"inline-flex items-center rounded-full px-3 py-1 text-sm font-medium transition-colors","style":{"background":"var(--color-code-bg)","color":"var(--color-accent)","border":"1px solid var(--color-border)"},"children":["#","dashboard"]}],["$","$L2","authentication",{"href":"/ar/tags/authentication","localeCookie":{"name":"NEXT_LOCALE","sameSite":"lax"},"className":"inline-flex items-center rounded-full px-3 py-1 text-sm font-medium transition-colors","style":{"background":"var(--color-code-bg)","color":"var(--color-accent)","border":"1px solid var(--color-border)"},"children":["#","authentication"]}],["$","$L2","setup",{"href":"/ar/tags/setup","localeCookie":{"name":"NEXT_LOCALE","sameSite":"lax"},"className":"inline-flex items-center rounded-full px-3 py-1 text-sm font-medium transition-colors","style":{"background":"var(--color-code-bg)","color":"var(--color-accent)","border":"1px solid var(--color-border)"},"children":["#","setup"]}]]}],["$","nav",null,{"aria-label":"التنقل بين المقالات","className":"grid grid-cols-1 gap-4 sm:grid-cols-2","children":[["$","$L2",null,{"href":"/ar/blog/openclaw/02-quick-install","localeCookie":{"name":"NEXT_LOCALE","sameSite":"lax"},"className":"group rounded-lg border p-4 transition-colors hover:border-accent","style":{"borderColor":"var(--color-border)","background":"var(--color-surface)"},"children":[["$","p",null,{"className":"mb-1 text-xs","style":{"color":"var(--color-muted)"},"children":"→ الأحدث"}],["$","p",null,{"className":"line-clamp-1 text-sm font-medium transition-colors group-hover:text-accent","style":{"color":"var(--color-text)"},"children":"تثبيت OpenClaw في 5 دقائق: دليل التشغيل الأول السلس"}]]}],["$","$L2",null,{"href":"/ar/blog/openclaw/04-channels-basics","localeCookie":{"name":"NEXT_LOCALE","sameSite":"lax"},"className":"group rounded-lg border p-4 text-right transition-colors hover:border-accent","style":{"borderColor":"var(--color-border)","background":"var(--color-surface)"},"children":[["$","p",null,{"className":"mb-1 text-xs","style":{"color":"var(--color-muted)"},"children":"الأقدم ←"}],["$","p",null,{"className":"line-clamp-1 text-sm font-medium transition-colors group-hover:text-accent","style":{"color":"var(--color-text)"},"children":"اجعل مساعدك يعمل عبر Telegram: دليل إعداد القناة الكامل"}]]}]]}]]}]
+9:T12ec,<p>"رمز؟ إقران؟ أردت فقط فتح صفحة ويب."</p>
+<p>هذا الرد مفهوم تماماً. هذه المقالة موجودة حتى تتمكن من <strong>التوقف عن الخوف من شاشة تسجيل الدخول</strong>.</p>
+<h2 id="ما-الذي-ستتعلمه">ما الذي ستتعلمه</h2>
+<ul>
+<li>فهم العلاقة بين Gateway ولوحة التحكم</li>
+<li>التعرف على المواقف الثلاثة الأكثر شيوعاً في المصادقة</li>
+<li>تعلم كيفية إعداد الوصول عن بُعد</li>
+<li>تغيير لغة الواجهة بالمناسبة</li>
+</ul>
+<hr>
+<h2 id="ابدأ-gateway-أولاً">ابدأ Gateway أولاً</h2>
+<p>لوحة التحكم مجرد نافذة. العمل الحقيقي يحدث في <strong>Gateway</strong>. بدون Gateway، صفحة الويب مجرد قشرة فارغة جميلة.</p>
+<figure data-rehype-pretty-code-figure=""><pre style="background-color:#24292e;color:#e1e4e8" tabindex="0" data-language="bash" data-theme="github-dark"><code data-language="bash" data-theme="github-dark" style="display: grid;"><span data-line=""><span style="color:#B392F0">openclaw</span><span style="color:#9ECBFF"> gateway</span></span></code></pre></figure>
+<p>أكمل فقط بعد أن ترى شيئاً مثل "Gateway running".</p>
+<hr>
+<h2 id="فتح-لوحة-التحكم">فتح لوحة التحكم</h2>
+<pre><code>http://127.0.0.1:18789/
+</code></pre>
+<p>إذا أعددت <code>basePath</code> مثل <code>/openclaw</code>:</p>
+<pre><code>http://127.0.0.1:18789/openclaw
+</code></pre>
+<hr>
+<h2 id="المصادقة-ماذا-يُفترض-أن-أدخل">المصادقة: ماذا يُفترض أن أدخل؟</h2>
+<h3 id="الحالة-1-ترى-pairing-required">الحالة 1: ترى <code>pairing required</code></h3>
+<p>OpenClaw يسأل بشكل أساسي: "من أنت؟ لا أعرف هذا الجهاز بعد."</p>
+<figure data-rehype-pretty-code-figure=""><pre style="background-color:#24292e;color:#e1e4e8" tabindex="0" data-language="bash" data-theme="github-dark"><code data-language="bash" data-theme="github-dark" style="display: grid;"><span data-line=""><span style="color:#B392F0">openclaw</span><span style="color:#9ECBFF"> devices</span><span style="color:#9ECBFF"> list</span></span>
+<span data-line=""><span style="color:#6A737D"># ابحث عن requestId المعلق</span></span>
+<span data-line=""> </span>
+<span data-line=""><span style="color:#B392F0">openclaw</span><span style="color:#9ECBFF"> devices</span><span style="color:#9ECBFF"> approve</span><span style="color:#F97583"> &#x3C;</span><span style="color:#9ECBFF">requestI</span><span style="color:#E1E4E8">d</span><span style="color:#F97583">></span></span>
+<span data-line=""><span style="color:#6A737D"># استبدله بالمعرف الحقيقي</span></span></code></pre></figure>
+<p>أعد تحميل المتصفح وستدخل.</p>
+<h3 id="الحالة-2-يطلب-رمزاً">الحالة 2: يطلب رمزاً</h3>
+<p>منحك تدفق الإعداد رمزاً في وقت سابق. هنا تلصقه. احفظه في الإعدادات ولن تحتاج إلى لصقه مرة أخرى لاحقاً.</p>
+<blockquote>
+<p>💡 الرموز مخزنة في إعدادات واجهة المستخدم. كلمات المرور تعيش فقط في الذاكرة وتختفي عند انتهاء الجلسة. هذا مقصود للأمان.</p>
+</blockquote>
+<h3 id="الحالة-3-الوصول-عن-بُعد-من-vps-أو-lan">الحالة 3: الوصول عن بُعد من VPS أو LAN</h3>
+<p>إذا كان Gateway لا يعمل محلياً بل على خادم بعيد:</p>
+<ul>
+<li>يجب استخدام رمز أو إقران جهاز</li>
+<li>إذا رأيت <code>unauthorized</code>، تحقق من <code>gateway.bind</code> وتأكد من إدخال الرمز بشكل صحيح</li>
+</ul>
+<hr>
+<h2 id="تريد-لغة-أخرى">تريد لغة أخرى؟</h2>
+<p>تدعم واجهة Control UI لغات متعددة، بما في ذلك الإنجليزية والصينية التقليدية والصينية المبسطة.</p>
+<p>افتح قسم <strong>Access</strong>، اختر لغة، وسيتذكرها المتصفح في المرة القادمة.</p>
+<hr>
+<h2 id="الخطوة-التالية">الخطوة التالية</h2>
+<p>بمجرد تمكنك من تسجيل الدخول، أنت واقف داخل غرفة التحكم الرئيسية في OpenClaw. بعد ذلك، دعنا نربط Telegram حتى تتمكن من استدعاء مساعدك من هاتفك.</p>
+<p><a href="02-quick-install">← السابق: التثبيت والتشغيل الأول</a> | 👉 <a href="04-channels-basics">ربط Telegram واستخدام مساعدك على الهاتف</a></p>5:["$","aside",null,{"className":"hidden lg:block","children":["$","$L8",null,{"html":"$9"}]}]
+6:["$","script","script-0",{"src":"/_next/static/chunks/2dddb3bc05093f69.js","async":true}]
+7:["$","$La",null,{"children":["$","$b",null,{"name":"Next.MetadataOutlet","children":"$@c"}]}]
+c:null

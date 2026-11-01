@@ -1,0 +1,89 @@
+1:"$Sreact.fragment"
+2:I[14864,["/_next/static/chunks/7923a261b80bb6e1.js","/_next/static/chunks/e09b4358027e8033.js","/_next/static/chunks/2dddb3bc05093f69.js"],"default"]
+8:I[24801,["/_next/static/chunks/7923a261b80bb6e1.js","/_next/static/chunks/e09b4358027e8033.js","/_next/static/chunks/2dddb3bc05093f69.js"],"default"]
+a:I[50183,["/_next/static/chunks/5a5b5b13c22d14f7.js","/_next/static/chunks/a484d1d3dd4b55ab.js"],"OutletBoundary"]
+b:"$Sreact.suspense"
+3:Te77,<p>By default, many agents finish a run and behave like they forgot everything on the next one.<br>
+For continuous workflows, memory and knowledge sources are essential.</p>
+<h2 id="separate-these-two-capabilities-first">Separate these two capabilities first</h2>
+<ul>
+<li><code>memory</code>: in-flow or long-term interaction context</li>
+<li><code>knowledge_sources</code>: external documents (PDFs, documentation sets, etc.)</li>
+</ul>
+<p>In short: one is "remember what we just discussed," the other is "know what the manual says."</p>
+<h2 id="enable-memory-and-knowledge-sources">Enable memory and knowledge sources</h2>
+<figure data-rehype-pretty-code-figure=""><pre style="background-color:#24292e;color:#e1e4e8" tabindex="0" data-language="python" data-theme="github-dark"><code data-language="python" data-theme="github-dark" style="display: grid;"><span data-line=""><span style="color:#F97583">from</span><span style="color:#E1E4E8"> crewai </span><span style="color:#F97583">import</span><span style="color:#E1E4E8"> Crew</span></span>
+<span data-line=""><span style="color:#F97583">from</span><span style="color:#E1E4E8"> crewai.knowledge.source.pdf_knowledge_source </span><span style="color:#F97583">import</span><span style="color:#E1E4E8"> PDFKnowledgeSource</span></span>
+<span data-line=""> </span>
+<span data-line=""><span style="color:#E1E4E8">product_docs </span><span style="color:#F97583">=</span><span style="color:#E1E4E8"> PDFKnowledgeSource(</span><span style="color:#FFAB70">file_paths</span><span style="color:#F97583">=</span><span style="color:#E1E4E8">[</span><span style="color:#9ECBFF">"docs/product_manual.pdf"</span><span style="color:#E1E4E8">])</span></span>
+<span data-line=""> </span>
+<span data-line=""><span style="color:#E1E4E8">crew </span><span style="color:#F97583">=</span><span style="color:#E1E4E8"> Crew(</span></span>
+<span data-line=""><span style="color:#FFAB70">    agents</span><span style="color:#F97583">=</span><span style="color:#E1E4E8">agents,</span></span>
+<span data-line=""><span style="color:#FFAB70">    tasks</span><span style="color:#F97583">=</span><span style="color:#E1E4E8">tasks,</span></span>
+<span data-line=""><span style="color:#FFAB70">    memory</span><span style="color:#F97583">=</span><span style="color:#79B8FF">True</span><span style="color:#E1E4E8">,</span></span>
+<span data-line=""><span style="color:#FFAB70">    knowledge_sources</span><span style="color:#F97583">=</span><span style="color:#E1E4E8">[product_docs],</span></span>
+<span data-line=""><span style="color:#FFAB70">    verbose</span><span style="color:#F97583">=</span><span style="color:#79B8FF">True</span><span style="color:#E1E4E8">,</span></span>
+<span data-line=""><span style="color:#E1E4E8">)</span></span></code></pre></figure>
+<h2 id="where-does-this-help-most">Where does this help most?</h2>
+<ul>
+<li>Customer support flows: remember previous conversation context</li>
+<li>Document Q&#x26;A: cite fixed document content</li>
+<li>Multi-phase projects: carry outputs from one step to the next</li>
+</ul>
+<h2 id="three-practical-reminders">Three practical reminders</h2>
+<ol>
+<li>Do not dump all docs at once. Start from high-value documents</li>
+<li>In task descriptions, explicitly require "prioritize knowledge sources"</li>
+<li>Require citations for important answers to reduce hallucinations</li>
+</ol>
+<blockquote>
+<p>⚠️ Memory does not guarantee correctness. You still need validation and guardrails.</p>
+</blockquote>
+<h2 id="next-step">Next step</h2>
+<p>Next post is the most practical survival guide:<br>
+how to diagnose and fix failures quickly.<br>
+👉 <a href="08-debug-and-common-errors">Debugging and Common Errors</a></p>0:{"buildId":"Yck3R4ooQxWkwGLT6is1X","rsc":["$","$1","c",{"children":[[["$","script",null,{"type":"application/ld+json","dangerouslySetInnerHTML":{"__html":"{\"@context\":\"https://schema.org\",\"@type\":\"Article\",\"headline\":\"CrewAI Memory and Knowledge: Stop Agents from Relearning Everything\",\"description\":\"Understand memory modules and knowledge source integration so multi-agent workflows become more continuous and business-ready.\",\"url\":\"https://benxhub.com/en/blog/crewai/07-memory-and-knowledge\",\"mainEntityOfPage\":{\"@type\":\"WebPage\",\"@id\":\"https://benxhub.com/en/blog/crewai/07-memory-and-knowledge\"},\"datePublished\":\"2026-03-03T00:00:00.000Z\",\"dateModified\":\"2026-03-03T00:00:00.000Z\",\"keywords\":\"crewai, memory, knowledge, rag, agent\",\"inLanguage\":\"en\",\"author\":{\"@type\":\"Person\",\"name\":\"BenX\",\"url\":\"https://benxhub.com\"},\"publisher\":{\"@type\":\"Organization\",\"name\":\"BenXHub Blog\",\"url\":\"https://benxhub.com\"}}"}}],["$","div",null,{"className":"mx-auto max-w-6xl px-4 py-12 sm:px-6","children":["$","div",null,{"className":"lg:grid lg:grid-cols-[1fr_240px] lg:gap-14","children":[["$","article",null,{"children":[["$","header",null,{"className":"mb-10","children":[["$","div",null,{"className":"mb-4 flex flex-wrap gap-2","children":[["$","$L2","crewai",{"href":"/en/tags/crewai","localeCookie":{"name":"NEXT_LOCALE","sameSite":"lax"},"className":"inline-flex items-center rounded-full px-2.5 py-0.5 text-xs font-medium transition-colors","style":{"background":"var(--color-code-bg)","color":"var(--color-accent)","border":"1px solid var(--color-border)"},"children":["#","crewai"]}],["$","$L2","memory",{"href":"/en/tags/memory","localeCookie":{"name":"NEXT_LOCALE","sameSite":"lax"},"className":"inline-flex items-center rounded-full px-2.5 py-0.5 text-xs font-medium transition-colors","style":{"background":"var(--color-code-bg)","color":"var(--color-accent)","border":"1px solid var(--color-border)"},"children":["#","memory"]}],["$","$L2","knowledge",{"href":"/en/tags/knowledge","localeCookie":{"name":"NEXT_LOCALE","sameSite":"lax"},"className":"inline-flex items-center rounded-full px-2.5 py-0.5 text-xs font-medium transition-colors","style":{"background":"var(--color-code-bg)","color":"var(--color-accent)","border":"1px solid var(--color-border)"},"children":["#","knowledge"]}],["$","$L2","rag",{"href":"/en/tags/rag","localeCookie":{"name":"NEXT_LOCALE","sameSite":"lax"},"className":"inline-flex items-center rounded-full px-2.5 py-0.5 text-xs font-medium transition-colors","style":{"background":"var(--color-code-bg)","color":"var(--color-accent)","border":"1px solid var(--color-border)"},"children":["#","rag"]}],["$","$L2","agent",{"href":"/en/tags/agent","localeCookie":{"name":"NEXT_LOCALE","sameSite":"lax"},"className":"inline-flex items-center rounded-full px-2.5 py-0.5 text-xs font-medium transition-colors","style":{"background":"var(--color-code-bg)","color":"var(--color-accent)","border":"1px solid var(--color-border)"},"children":["#","agent"]}]]}],["$","h1",null,{"className":"mb-4 text-3xl leading-snug font-bold tracking-tight sm:text-4xl","style":{"color":"var(--color-text)"},"children":"CrewAI Memory and Knowledge: Stop Agents from Relearning Everything"}],["$","div",null,{"className":"flex flex-wrap items-center gap-3 text-sm","style":{"color":"var(--color-muted)"},"children":[["$","time",null,{"dateTime":"2026-03-03","children":"Mar 3, 2026"}],["$","span",null,{"aria-hidden":"true","children":"·"}],["$","span",null,{"children":"1 min read"}]]}],"$undefined",["$","div",null,{"className":"mt-6 border-b","style":{"borderColor":"var(--color-border)"}}]]}],["$","div",null,{"className":"prose","dangerouslySetInnerHTML":{"__html":"$3"}}],"$L4"]}],"$L5"]}]}]],["$L6"],"$L7"]}],"loading":null,"isPartial":false}
+4:["$","footer",null,{"className":"mt-14 border-t pt-8","style":{"borderColor":"var(--color-border)"},"children":[["$","div",null,{"className":"mb-8 flex flex-wrap gap-2","children":[["$","$L2","crewai",{"href":"/en/tags/crewai","localeCookie":{"name":"NEXT_LOCALE","sameSite":"lax"},"className":"inline-flex items-center rounded-full px-3 py-1 text-sm font-medium transition-colors","style":{"background":"var(--color-code-bg)","color":"var(--color-accent)","border":"1px solid var(--color-border)"},"children":["#","crewai"]}],["$","$L2","memory",{"href":"/en/tags/memory","localeCookie":{"name":"NEXT_LOCALE","sameSite":"lax"},"className":"inline-flex items-center rounded-full px-3 py-1 text-sm font-medium transition-colors","style":{"background":"var(--color-code-bg)","color":"var(--color-accent)","border":"1px solid var(--color-border)"},"children":["#","memory"]}],["$","$L2","knowledge",{"href":"/en/tags/knowledge","localeCookie":{"name":"NEXT_LOCALE","sameSite":"lax"},"className":"inline-flex items-center rounded-full px-3 py-1 text-sm font-medium transition-colors","style":{"background":"var(--color-code-bg)","color":"var(--color-accent)","border":"1px solid var(--color-border)"},"children":["#","knowledge"]}],["$","$L2","rag",{"href":"/en/tags/rag","localeCookie":{"name":"NEXT_LOCALE","sameSite":"lax"},"className":"inline-flex items-center rounded-full px-3 py-1 text-sm font-medium transition-colors","style":{"background":"var(--color-code-bg)","color":"var(--color-accent)","border":"1px solid var(--color-border)"},"children":["#","rag"]}],["$","$L2","agent",{"href":"/en/tags/agent","localeCookie":{"name":"NEXT_LOCALE","sameSite":"lax"},"className":"inline-flex items-center rounded-full px-3 py-1 text-sm font-medium transition-colors","style":{"background":"var(--color-code-bg)","color":"var(--color-accent)","border":"1px solid var(--color-border)"},"children":["#","agent"]}]]}],["$","nav",null,{"aria-label":"Post navigation","className":"grid grid-cols-1 gap-4 sm:grid-cols-2","children":[["$","$L2",null,{"href":"/en/blog/crewai/06-flow-basics","localeCookie":{"name":"NEXT_LOCALE","sameSite":"lax"},"className":"group rounded-lg border p-4 transition-colors hover:border-accent","style":{"borderColor":"var(--color-border)","background":"var(--color-surface)"},"children":[["$","p",null,{"className":"mb-1 text-xs","style":{"color":"var(--color-muted)"},"children":"← Newer"}],["$","p",null,{"className":"line-clamp-1 text-sm font-medium transition-colors group-hover:text-accent","style":{"color":"var(--color-text)"},"children":"CrewAI Flow Basics: Orchestrate Multiple Crews in a Controlled Workflow"}]]}],["$","$L2",null,{"href":"/en/blog/crewai/03-crew-and-process","localeCookie":{"name":"NEXT_LOCALE","sameSite":"lax"},"className":"group rounded-lg border p-4 text-right transition-colors hover:border-accent","style":{"borderColor":"var(--color-border)","background":"var(--color-surface)"},"children":[["$","p",null,{"className":"mb-1 text-xs","style":{"color":"var(--color-muted)"},"children":"Older →"}],["$","p",null,{"className":"line-clamp-1 text-sm font-medium transition-colors group-hover:text-accent","style":{"color":"var(--color-text)"},"children":"CrewAI Crew and Process: When Should You Use Sequential?"}]]}]]}]]}]
+9:Te77,<p>By default, many agents finish a run and behave like they forgot everything on the next one.<br>
+For continuous workflows, memory and knowledge sources are essential.</p>
+<h2 id="separate-these-two-capabilities-first">Separate these two capabilities first</h2>
+<ul>
+<li><code>memory</code>: in-flow or long-term interaction context</li>
+<li><code>knowledge_sources</code>: external documents (PDFs, documentation sets, etc.)</li>
+</ul>
+<p>In short: one is "remember what we just discussed," the other is "know what the manual says."</p>
+<h2 id="enable-memory-and-knowledge-sources">Enable memory and knowledge sources</h2>
+<figure data-rehype-pretty-code-figure=""><pre style="background-color:#24292e;color:#e1e4e8" tabindex="0" data-language="python" data-theme="github-dark"><code data-language="python" data-theme="github-dark" style="display: grid;"><span data-line=""><span style="color:#F97583">from</span><span style="color:#E1E4E8"> crewai </span><span style="color:#F97583">import</span><span style="color:#E1E4E8"> Crew</span></span>
+<span data-line=""><span style="color:#F97583">from</span><span style="color:#E1E4E8"> crewai.knowledge.source.pdf_knowledge_source </span><span style="color:#F97583">import</span><span style="color:#E1E4E8"> PDFKnowledgeSource</span></span>
+<span data-line=""> </span>
+<span data-line=""><span style="color:#E1E4E8">product_docs </span><span style="color:#F97583">=</span><span style="color:#E1E4E8"> PDFKnowledgeSource(</span><span style="color:#FFAB70">file_paths</span><span style="color:#F97583">=</span><span style="color:#E1E4E8">[</span><span style="color:#9ECBFF">"docs/product_manual.pdf"</span><span style="color:#E1E4E8">])</span></span>
+<span data-line=""> </span>
+<span data-line=""><span style="color:#E1E4E8">crew </span><span style="color:#F97583">=</span><span style="color:#E1E4E8"> Crew(</span></span>
+<span data-line=""><span style="color:#FFAB70">    agents</span><span style="color:#F97583">=</span><span style="color:#E1E4E8">agents,</span></span>
+<span data-line=""><span style="color:#FFAB70">    tasks</span><span style="color:#F97583">=</span><span style="color:#E1E4E8">tasks,</span></span>
+<span data-line=""><span style="color:#FFAB70">    memory</span><span style="color:#F97583">=</span><span style="color:#79B8FF">True</span><span style="color:#E1E4E8">,</span></span>
+<span data-line=""><span style="color:#FFAB70">    knowledge_sources</span><span style="color:#F97583">=</span><span style="color:#E1E4E8">[product_docs],</span></span>
+<span data-line=""><span style="color:#FFAB70">    verbose</span><span style="color:#F97583">=</span><span style="color:#79B8FF">True</span><span style="color:#E1E4E8">,</span></span>
+<span data-line=""><span style="color:#E1E4E8">)</span></span></code></pre></figure>
+<h2 id="where-does-this-help-most">Where does this help most?</h2>
+<ul>
+<li>Customer support flows: remember previous conversation context</li>
+<li>Document Q&#x26;A: cite fixed document content</li>
+<li>Multi-phase projects: carry outputs from one step to the next</li>
+</ul>
+<h2 id="three-practical-reminders">Three practical reminders</h2>
+<ol>
+<li>Do not dump all docs at once. Start from high-value documents</li>
+<li>In task descriptions, explicitly require "prioritize knowledge sources"</li>
+<li>Require citations for important answers to reduce hallucinations</li>
+</ol>
+<blockquote>
+<p>⚠️ Memory does not guarantee correctness. You still need validation and guardrails.</p>
+</blockquote>
+<h2 id="next-step">Next step</h2>
+<p>Next post is the most practical survival guide:<br>
+how to diagnose and fix failures quickly.<br>
+👉 <a href="08-debug-and-common-errors">Debugging and Common Errors</a></p>5:["$","aside",null,{"className":"hidden lg:block","children":["$","$L8",null,{"html":"$9"}]}]
+6:["$","script","script-0",{"src":"/_next/static/chunks/2dddb3bc05093f69.js","async":true}]
+7:["$","$La",null,{"children":["$","$b",null,{"name":"Next.MetadataOutlet","children":"$@c"}]}]
+c:null

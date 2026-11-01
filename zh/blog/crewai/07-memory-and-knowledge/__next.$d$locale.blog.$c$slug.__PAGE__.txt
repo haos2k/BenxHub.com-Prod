@@ -1,0 +1,113 @@
+1:"$Sreact.fragment"
+2:I[14864,["/_next/static/chunks/7923a261b80bb6e1.js","/_next/static/chunks/e09b4358027e8033.js","/_next/static/chunks/2dddb3bc05093f69.js"],"default"]
+8:I[24801,["/_next/static/chunks/7923a261b80bb6e1.js","/_next/static/chunks/e09b4358027e8033.js","/_next/static/chunks/2dddb3bc05093f69.js"],"default"]
+a:I[50183,["/_next/static/chunks/5a5b5b13c22d14f7.js","/_next/static/chunks/a484d1d3dd4b55ab.js"],"OutletBoundary"]
+b:"$Sreact.suspense"
+3:T2140,<p>預設情況下，Agent 跑完就像失憶——下一輪執行又是全新的開始，什麼都不記得。</p>
+<p>對一次性任務來說這無所謂，但如果你的業務情境是「客服對話要記得前面說了什麼」或者「Agent 需要引用你公司的內部文件」，這就是個大問題。</p>
+<p>CrewAI 提供兩種機制來解決這件事，但很多人混淆了它們的用途——先把兩個概念分清楚。</p>
+<h2 id="memory-vs-knowledge先搞清楚差別">Memory vs Knowledge：先搞清楚差別</h2>
+<p><strong><code>memory</code></strong>：流程內的對話上下文記憶。記的是「這輪執行裡說了什麼、做了什麼」，以及更長期的跨對話記憶（需要設定 storage）。</p>
+<p><strong><code>knowledge_sources</code></strong>：外部知識文件。你把 PDF、文字檔、資料庫內容告訴 Agent，它在回答問題時會參考這些來源。</p>
+<p>用白話分：memory 是「記住剛聊過什麼」，knowledge_sources 是「知道手冊裡寫什麼」。兩個是獨立的機制，可以分開啟用，也可以同時用。</p>
+<h2 id="啟用-memory">啟用 Memory</h2>
+<figure data-rehype-pretty-code-figure=""><pre style="background-color:#24292e;color:#e1e4e8" tabindex="0" data-language="python" data-theme="github-dark"><code data-language="python" data-theme="github-dark" style="display: grid;"><span data-line=""><span style="color:#F97583">from</span><span style="color:#E1E4E8"> crewai </span><span style="color:#F97583">import</span><span style="color:#E1E4E8"> Crew</span></span>
+<span data-line=""> </span>
+<span data-line=""><span style="color:#E1E4E8">crew </span><span style="color:#F97583">=</span><span style="color:#E1E4E8"> Crew(</span></span>
+<span data-line=""><span style="color:#FFAB70">    agents</span><span style="color:#F97583">=</span><span style="color:#E1E4E8">agents,</span></span>
+<span data-line=""><span style="color:#FFAB70">    tasks</span><span style="color:#F97583">=</span><span style="color:#E1E4E8">tasks,</span></span>
+<span data-line=""><span style="color:#FFAB70">    memory</span><span style="color:#F97583">=</span><span style="color:#79B8FF">True</span><span style="color:#E1E4E8">,</span></span>
+<span data-line=""><span style="color:#FFAB70">    verbose</span><span style="color:#F97583">=</span><span style="color:#79B8FF">True</span><span style="color:#E1E4E8">,</span></span>
+<span data-line=""><span style="color:#E1E4E8">)</span></span></code></pre></figure>
+<p><code>memory=True</code> 啟用的是短期記憶（Short-term memory），讓同一次執行裡的 Agent 能記住前面的對話。預設儲存在記憶體裡，流程結束就清空。</p>
+<p>如果你需要跨次執行的長期記憶，要設定持久化儲存（SQLite 或其他 storage 後端）。這個進階一點，初期先用短期記憶測試看看效果。</p>
+<h2 id="整合-knowledge-sources">整合 Knowledge Sources</h2>
+<figure data-rehype-pretty-code-figure=""><pre style="background-color:#24292e;color:#e1e4e8" tabindex="0" data-language="python" data-theme="github-dark"><code data-language="python" data-theme="github-dark" style="display: grid;"><span data-line=""><span style="color:#F97583">from</span><span style="color:#E1E4E8"> crewai </span><span style="color:#F97583">import</span><span style="color:#E1E4E8"> Crew</span></span>
+<span data-line=""><span style="color:#F97583">from</span><span style="color:#E1E4E8"> crewai.knowledge.source.pdf_knowledge_source </span><span style="color:#F97583">import</span><span style="color:#E1E4E8"> PDFKnowledgeSource</span></span>
+<span data-line=""><span style="color:#F97583">from</span><span style="color:#E1E4E8"> crewai.knowledge.source.text_file_knowledge_source </span><span style="color:#F97583">import</span><span style="color:#E1E4E8"> TextFileKnowledgeSource</span></span>
+<span data-line=""> </span>
+<span data-line=""><span style="color:#E1E4E8">product_manual </span><span style="color:#F97583">=</span><span style="color:#E1E4E8"> PDFKnowledgeSource(</span><span style="color:#FFAB70">file_paths</span><span style="color:#F97583">=</span><span style="color:#E1E4E8">[</span><span style="color:#9ECBFF">"docs/product_manual.pdf"</span><span style="color:#E1E4E8">])</span></span>
+<span data-line=""><span style="color:#E1E4E8">faq_doc </span><span style="color:#F97583">=</span><span style="color:#E1E4E8"> TextFileKnowledgeSource(</span><span style="color:#FFAB70">file_paths</span><span style="color:#F97583">=</span><span style="color:#E1E4E8">[</span><span style="color:#9ECBFF">"docs/faq.txt"</span><span style="color:#E1E4E8">])</span></span>
+<span data-line=""> </span>
+<span data-line=""><span style="color:#E1E4E8">crew </span><span style="color:#F97583">=</span><span style="color:#E1E4E8"> Crew(</span></span>
+<span data-line=""><span style="color:#FFAB70">    agents</span><span style="color:#F97583">=</span><span style="color:#E1E4E8">agents,</span></span>
+<span data-line=""><span style="color:#FFAB70">    tasks</span><span style="color:#F97583">=</span><span style="color:#E1E4E8">tasks,</span></span>
+<span data-line=""><span style="color:#FFAB70">    memory</span><span style="color:#F97583">=</span><span style="color:#79B8FF">True</span><span style="color:#E1E4E8">,</span></span>
+<span data-line=""><span style="color:#FFAB70">    knowledge_sources</span><span style="color:#F97583">=</span><span style="color:#E1E4E8">[product_manual, faq_doc],</span></span>
+<span data-line=""><span style="color:#FFAB70">    verbose</span><span style="color:#F97583">=</span><span style="color:#79B8FF">True</span><span style="color:#E1E4E8">,</span></span>
+<span data-line=""><span style="color:#E1E4E8">)</span></span></code></pre></figure>
+<p><code>knowledge_sources</code> 裡的文件會被向量化，Agent 在執行任務時可以語意搜尋這些文件的內容。這本質上是一個 RAG 架構——所以如果你做過 RAG，這個機制你一定不陌生。</p>
+<h2 id="哪些場景最有感">哪些場景最有感？</h2>
+<p><strong>客服與問答流程</strong>：Agent 需要記住這次對話的前文，同時引用產品手冊或 FAQ 文件回答問題。Memory + Knowledge 一起用，效果最好。</p>
+<p><strong>分階段專案</strong>：前一步的分析結果要在後一步延續，而且可能需要對照公司的標準文件來判斷。</p>
+<p><strong>文件問答</strong>：你有一批內部文件（SOP、設計文件、知識庫），想讓 Agent 能準確引用，而不是靠模型的訓練資料猜答案。</p>
+<h2 id="3-個實務提醒">3 個實務提醒</h2>
+<p><strong>不要一次塞太多文件</strong>：Knowledge sources 是做向量搜尋，文件越多，搜尋品質越難控制、成本也越高。先從最高價值、最常被引用的文件開始，不要把整個硬碟都餵進去。</p>
+<p><strong>Task 要明確要求引用知識源</strong>：Agent 不一定會主動去搜知識文件，在 Task 描述裡加上「優先引用知識庫中的資訊」或「如果知識庫有相關資料，必須引用」，效果會明顯提升。</p>
+<p><strong>重要回答要要求來源</strong>：即使有了知識源，模型還是可能會幻覺。在 <code>expected_output</code> 裡要求 Agent 標注引用來源，可以幫你快速識別哪些回答是真的基於文件、哪些是模型自己發明的。</p>
+<h2 id="常見問題">常見問題</h2>
+<p><strong>Q：knowledge_sources 支援哪些文件格式？</strong><br>
+目前支援 PDF、TXT、CSV、JSON 等常見格式。如果你有特殊格式的資料（例如資料庫查詢結果），可以先轉成 JSON 或文字檔再餵入。</p>
+<p><strong>Q：short-term memory 和 long-term memory 有什麼差別？</strong><br>
+Short-term memory 在當次 Crew 執行範圍內有效，執行結束就清空。Long-term memory 需要持久化儲存（SQLite 或自訂 storage），跨次執行都能保留。客服類應用通常需要 long-term memory。</p>
+<p><strong>Q：有了 knowledge_sources，還需要 SerperDevTool 嗎？</strong><br>
+取決於任務性質。Knowledge sources 適合「查你自己的文件」，SerperDevTool 適合「查網路上最新資訊」。兩個用途不一樣，通常會搭配使用。</p>
+<h2 id="下一步">下一步</h2>
+<p>記憶和知識源設定好了，流程也能跑了——接下來是最實用的生存指南：<strong>出問題的時候怎麼查、怎麼修最快</strong>。<br>
+👉 <a href="08-debug-and-common-errors">除錯與常見錯誤</a></p>0:{"buildId":"Yck3R4ooQxWkwGLT6is1X","rsc":["$","$1","c",{"children":[[["$","script",null,{"type":"application/ld+json","dangerouslySetInnerHTML":{"__html":"{\"@context\":\"https://schema.org\",\"@type\":\"Article\",\"headline\":\"CrewAI Memory 與 Knowledge：讓 Agent 不再每次重學\",\"description\":\"理解 CrewAI memory 與 knowledge_sources 的差異與整合方式，讓多代理流程記住對話上下文和業務知識。\",\"url\":\"https://benxhub.com/zh/blog/crewai/07-memory-and-knowledge\",\"mainEntityOfPage\":{\"@type\":\"WebPage\",\"@id\":\"https://benxhub.com/zh/blog/crewai/07-memory-and-knowledge\"},\"datePublished\":\"2026-03-03T00:00:00.000Z\",\"dateModified\":\"2026-03-03T00:00:00.000Z\",\"keywords\":\"crewai, memory, knowledge, rag, agent, context\",\"inLanguage\":\"zh\",\"author\":{\"@type\":\"Person\",\"name\":\"BenX\",\"url\":\"https://benxhub.com\"},\"publisher\":{\"@type\":\"Organization\",\"name\":\"BenXHub Blog\",\"url\":\"https://benxhub.com\"}}"}}],["$","div",null,{"className":"mx-auto max-w-6xl px-4 py-12 sm:px-6","children":["$","div",null,{"className":"lg:grid lg:grid-cols-[1fr_240px] lg:gap-14","children":[["$","article",null,{"children":[["$","header",null,{"className":"mb-10","children":[["$","div",null,{"className":"mb-4 flex flex-wrap gap-2","children":[["$","$L2","crewai",{"href":"/zh/tags/crewai","localeCookie":{"name":"NEXT_LOCALE","sameSite":"lax"},"className":"inline-flex items-center rounded-full px-2.5 py-0.5 text-xs font-medium transition-colors","style":{"background":"var(--color-code-bg)","color":"var(--color-accent)","border":"1px solid var(--color-border)"},"children":["#","crewai"]}],["$","$L2","memory",{"href":"/zh/tags/memory","localeCookie":{"name":"NEXT_LOCALE","sameSite":"lax"},"className":"inline-flex items-center rounded-full px-2.5 py-0.5 text-xs font-medium transition-colors","style":{"background":"var(--color-code-bg)","color":"var(--color-accent)","border":"1px solid var(--color-border)"},"children":["#","memory"]}],["$","$L2","knowledge",{"href":"/zh/tags/knowledge","localeCookie":{"name":"NEXT_LOCALE","sameSite":"lax"},"className":"inline-flex items-center rounded-full px-2.5 py-0.5 text-xs font-medium transition-colors","style":{"background":"var(--color-code-bg)","color":"var(--color-accent)","border":"1px solid var(--color-border)"},"children":["#","knowledge"]}],["$","$L2","rag",{"href":"/zh/tags/rag","localeCookie":{"name":"NEXT_LOCALE","sameSite":"lax"},"className":"inline-flex items-center rounded-full px-2.5 py-0.5 text-xs font-medium transition-colors","style":{"background":"var(--color-code-bg)","color":"var(--color-accent)","border":"1px solid var(--color-border)"},"children":["#","rag"]}],["$","$L2","agent",{"href":"/zh/tags/agent","localeCookie":{"name":"NEXT_LOCALE","sameSite":"lax"},"className":"inline-flex items-center rounded-full px-2.5 py-0.5 text-xs font-medium transition-colors","style":{"background":"var(--color-code-bg)","color":"var(--color-accent)","border":"1px solid var(--color-border)"},"children":["#","agent"]}],["$","$L2","context",{"href":"/zh/tags/context","localeCookie":{"name":"NEXT_LOCALE","sameSite":"lax"},"className":"inline-flex items-center rounded-full px-2.5 py-0.5 text-xs font-medium transition-colors","style":{"background":"var(--color-code-bg)","color":"var(--color-accent)","border":"1px solid var(--color-border)"},"children":["#","context"]}]]}],["$","h1",null,{"className":"mb-4 text-3xl leading-snug font-bold tracking-tight sm:text-4xl","style":{"color":"var(--color-text)"},"children":"CrewAI Memory 與 Knowledge：讓 Agent 不再每次重學"}],["$","div",null,{"className":"flex flex-wrap items-center gap-3 text-sm","style":{"color":"var(--color-muted)"},"children":[["$","time",null,{"dateTime":"2026-03-03","children":"2026 年 3 月 3 日"}],["$","span",null,{"aria-hidden":"true","children":"·"}],["$","span",null,{"children":"6 min read"}]]}],"$undefined",["$","div",null,{"className":"mt-6 border-b","style":{"borderColor":"var(--color-border)"}}]]}],["$","div",null,{"className":"prose","dangerouslySetInnerHTML":{"__html":"$3"}}],"$L4"]}],"$L5"]}]}]],["$L6"],"$L7"]}],"loading":null,"isPartial":false}
+4:["$","footer",null,{"className":"mt-14 border-t pt-8","style":{"borderColor":"var(--color-border)"},"children":[["$","div",null,{"className":"mb-8 flex flex-wrap gap-2","children":[["$","$L2","crewai",{"href":"/zh/tags/crewai","localeCookie":{"name":"NEXT_LOCALE","sameSite":"lax"},"className":"inline-flex items-center rounded-full px-3 py-1 text-sm font-medium transition-colors","style":{"background":"var(--color-code-bg)","color":"var(--color-accent)","border":"1px solid var(--color-border)"},"children":["#","crewai"]}],["$","$L2","memory",{"href":"/zh/tags/memory","localeCookie":{"name":"NEXT_LOCALE","sameSite":"lax"},"className":"inline-flex items-center rounded-full px-3 py-1 text-sm font-medium transition-colors","style":{"background":"var(--color-code-bg)","color":"var(--color-accent)","border":"1px solid var(--color-border)"},"children":["#","memory"]}],["$","$L2","knowledge",{"href":"/zh/tags/knowledge","localeCookie":{"name":"NEXT_LOCALE","sameSite":"lax"},"className":"inline-flex items-center rounded-full px-3 py-1 text-sm font-medium transition-colors","style":{"background":"var(--color-code-bg)","color":"var(--color-accent)","border":"1px solid var(--color-border)"},"children":["#","knowledge"]}],["$","$L2","rag",{"href":"/zh/tags/rag","localeCookie":{"name":"NEXT_LOCALE","sameSite":"lax"},"className":"inline-flex items-center rounded-full px-3 py-1 text-sm font-medium transition-colors","style":{"background":"var(--color-code-bg)","color":"var(--color-accent)","border":"1px solid var(--color-border)"},"children":["#","rag"]}],["$","$L2","agent",{"href":"/zh/tags/agent","localeCookie":{"name":"NEXT_LOCALE","sameSite":"lax"},"className":"inline-flex items-center rounded-full px-3 py-1 text-sm font-medium transition-colors","style":{"background":"var(--color-code-bg)","color":"var(--color-accent)","border":"1px solid var(--color-border)"},"children":["#","agent"]}],["$","$L2","context",{"href":"/zh/tags/context","localeCookie":{"name":"NEXT_LOCALE","sameSite":"lax"},"className":"inline-flex items-center rounded-full px-3 py-1 text-sm font-medium transition-colors","style":{"background":"var(--color-code-bg)","color":"var(--color-accent)","border":"1px solid var(--color-border)"},"children":["#","context"]}]]}],["$","nav",null,{"aria-label":"文章導覽","className":"grid grid-cols-1 gap-4 sm:grid-cols-2","children":[["$","$L2",null,{"href":"/zh/blog/crewai/06-flow-basics","localeCookie":{"name":"NEXT_LOCALE","sameSite":"lax"},"className":"group rounded-lg border p-4 transition-colors hover:border-accent","style":{"borderColor":"var(--color-border)","background":"var(--color-surface)"},"children":[["$","p",null,{"className":"mb-1 text-xs","style":{"color":"var(--color-muted)"},"children":"← 較新文章"}],["$","p",null,{"className":"line-clamp-1 text-sm font-medium transition-colors group-hover:text-accent","style":{"color":"var(--color-text)"},"children":"CrewAI Flow 入門：用狀態機把多個 Crew 串成可控流程"}]]}],["$","$L2",null,{"href":"/zh/blog/crewai/03-crew-and-process","localeCookie":{"name":"NEXT_LOCALE","sameSite":"lax"},"className":"group rounded-lg border p-4 text-right transition-colors hover:border-accent","style":{"borderColor":"var(--color-border)","background":"var(--color-surface)"},"children":[["$","p",null,{"className":"mb-1 text-xs","style":{"color":"var(--color-muted)"},"children":"較舊文章 →"}],["$","p",null,{"className":"line-clamp-1 text-sm font-medium transition-colors group-hover:text-accent","style":{"color":"var(--color-text)"},"children":"CrewAI Crew 與 Process：為什麼新手應該先用 Sequential"}]]}]]}]]}]
+9:T2140,<p>預設情況下，Agent 跑完就像失憶——下一輪執行又是全新的開始，什麼都不記得。</p>
+<p>對一次性任務來說這無所謂，但如果你的業務情境是「客服對話要記得前面說了什麼」或者「Agent 需要引用你公司的內部文件」，這就是個大問題。</p>
+<p>CrewAI 提供兩種機制來解決這件事，但很多人混淆了它們的用途——先把兩個概念分清楚。</p>
+<h2 id="memory-vs-knowledge先搞清楚差別">Memory vs Knowledge：先搞清楚差別</h2>
+<p><strong><code>memory</code></strong>：流程內的對話上下文記憶。記的是「這輪執行裡說了什麼、做了什麼」，以及更長期的跨對話記憶（需要設定 storage）。</p>
+<p><strong><code>knowledge_sources</code></strong>：外部知識文件。你把 PDF、文字檔、資料庫內容告訴 Agent，它在回答問題時會參考這些來源。</p>
+<p>用白話分：memory 是「記住剛聊過什麼」，knowledge_sources 是「知道手冊裡寫什麼」。兩個是獨立的機制，可以分開啟用，也可以同時用。</p>
+<h2 id="啟用-memory">啟用 Memory</h2>
+<figure data-rehype-pretty-code-figure=""><pre style="background-color:#24292e;color:#e1e4e8" tabindex="0" data-language="python" data-theme="github-dark"><code data-language="python" data-theme="github-dark" style="display: grid;"><span data-line=""><span style="color:#F97583">from</span><span style="color:#E1E4E8"> crewai </span><span style="color:#F97583">import</span><span style="color:#E1E4E8"> Crew</span></span>
+<span data-line=""> </span>
+<span data-line=""><span style="color:#E1E4E8">crew </span><span style="color:#F97583">=</span><span style="color:#E1E4E8"> Crew(</span></span>
+<span data-line=""><span style="color:#FFAB70">    agents</span><span style="color:#F97583">=</span><span style="color:#E1E4E8">agents,</span></span>
+<span data-line=""><span style="color:#FFAB70">    tasks</span><span style="color:#F97583">=</span><span style="color:#E1E4E8">tasks,</span></span>
+<span data-line=""><span style="color:#FFAB70">    memory</span><span style="color:#F97583">=</span><span style="color:#79B8FF">True</span><span style="color:#E1E4E8">,</span></span>
+<span data-line=""><span style="color:#FFAB70">    verbose</span><span style="color:#F97583">=</span><span style="color:#79B8FF">True</span><span style="color:#E1E4E8">,</span></span>
+<span data-line=""><span style="color:#E1E4E8">)</span></span></code></pre></figure>
+<p><code>memory=True</code> 啟用的是短期記憶（Short-term memory），讓同一次執行裡的 Agent 能記住前面的對話。預設儲存在記憶體裡，流程結束就清空。</p>
+<p>如果你需要跨次執行的長期記憶，要設定持久化儲存（SQLite 或其他 storage 後端）。這個進階一點，初期先用短期記憶測試看看效果。</p>
+<h2 id="整合-knowledge-sources">整合 Knowledge Sources</h2>
+<figure data-rehype-pretty-code-figure=""><pre style="background-color:#24292e;color:#e1e4e8" tabindex="0" data-language="python" data-theme="github-dark"><code data-language="python" data-theme="github-dark" style="display: grid;"><span data-line=""><span style="color:#F97583">from</span><span style="color:#E1E4E8"> crewai </span><span style="color:#F97583">import</span><span style="color:#E1E4E8"> Crew</span></span>
+<span data-line=""><span style="color:#F97583">from</span><span style="color:#E1E4E8"> crewai.knowledge.source.pdf_knowledge_source </span><span style="color:#F97583">import</span><span style="color:#E1E4E8"> PDFKnowledgeSource</span></span>
+<span data-line=""><span style="color:#F97583">from</span><span style="color:#E1E4E8"> crewai.knowledge.source.text_file_knowledge_source </span><span style="color:#F97583">import</span><span style="color:#E1E4E8"> TextFileKnowledgeSource</span></span>
+<span data-line=""> </span>
+<span data-line=""><span style="color:#E1E4E8">product_manual </span><span style="color:#F97583">=</span><span style="color:#E1E4E8"> PDFKnowledgeSource(</span><span style="color:#FFAB70">file_paths</span><span style="color:#F97583">=</span><span style="color:#E1E4E8">[</span><span style="color:#9ECBFF">"docs/product_manual.pdf"</span><span style="color:#E1E4E8">])</span></span>
+<span data-line=""><span style="color:#E1E4E8">faq_doc </span><span style="color:#F97583">=</span><span style="color:#E1E4E8"> TextFileKnowledgeSource(</span><span style="color:#FFAB70">file_paths</span><span style="color:#F97583">=</span><span style="color:#E1E4E8">[</span><span style="color:#9ECBFF">"docs/faq.txt"</span><span style="color:#E1E4E8">])</span></span>
+<span data-line=""> </span>
+<span data-line=""><span style="color:#E1E4E8">crew </span><span style="color:#F97583">=</span><span style="color:#E1E4E8"> Crew(</span></span>
+<span data-line=""><span style="color:#FFAB70">    agents</span><span style="color:#F97583">=</span><span style="color:#E1E4E8">agents,</span></span>
+<span data-line=""><span style="color:#FFAB70">    tasks</span><span style="color:#F97583">=</span><span style="color:#E1E4E8">tasks,</span></span>
+<span data-line=""><span style="color:#FFAB70">    memory</span><span style="color:#F97583">=</span><span style="color:#79B8FF">True</span><span style="color:#E1E4E8">,</span></span>
+<span data-line=""><span style="color:#FFAB70">    knowledge_sources</span><span style="color:#F97583">=</span><span style="color:#E1E4E8">[product_manual, faq_doc],</span></span>
+<span data-line=""><span style="color:#FFAB70">    verbose</span><span style="color:#F97583">=</span><span style="color:#79B8FF">True</span><span style="color:#E1E4E8">,</span></span>
+<span data-line=""><span style="color:#E1E4E8">)</span></span></code></pre></figure>
+<p><code>knowledge_sources</code> 裡的文件會被向量化，Agent 在執行任務時可以語意搜尋這些文件的內容。這本質上是一個 RAG 架構——所以如果你做過 RAG，這個機制你一定不陌生。</p>
+<h2 id="哪些場景最有感">哪些場景最有感？</h2>
+<p><strong>客服與問答流程</strong>：Agent 需要記住這次對話的前文，同時引用產品手冊或 FAQ 文件回答問題。Memory + Knowledge 一起用，效果最好。</p>
+<p><strong>分階段專案</strong>：前一步的分析結果要在後一步延續，而且可能需要對照公司的標準文件來判斷。</p>
+<p><strong>文件問答</strong>：你有一批內部文件（SOP、設計文件、知識庫），想讓 Agent 能準確引用，而不是靠模型的訓練資料猜答案。</p>
+<h2 id="3-個實務提醒">3 個實務提醒</h2>
+<p><strong>不要一次塞太多文件</strong>：Knowledge sources 是做向量搜尋，文件越多，搜尋品質越難控制、成本也越高。先從最高價值、最常被引用的文件開始，不要把整個硬碟都餵進去。</p>
+<p><strong>Task 要明確要求引用知識源</strong>：Agent 不一定會主動去搜知識文件，在 Task 描述裡加上「優先引用知識庫中的資訊」或「如果知識庫有相關資料，必須引用」，效果會明顯提升。</p>
+<p><strong>重要回答要要求來源</strong>：即使有了知識源，模型還是可能會幻覺。在 <code>expected_output</code> 裡要求 Agent 標注引用來源，可以幫你快速識別哪些回答是真的基於文件、哪些是模型自己發明的。</p>
+<h2 id="常見問題">常見問題</h2>
+<p><strong>Q：knowledge_sources 支援哪些文件格式？</strong><br>
+目前支援 PDF、TXT、CSV、JSON 等常見格式。如果你有特殊格式的資料（例如資料庫查詢結果），可以先轉成 JSON 或文字檔再餵入。</p>
+<p><strong>Q：short-term memory 和 long-term memory 有什麼差別？</strong><br>
+Short-term memory 在當次 Crew 執行範圍內有效，執行結束就清空。Long-term memory 需要持久化儲存（SQLite 或自訂 storage），跨次執行都能保留。客服類應用通常需要 long-term memory。</p>
+<p><strong>Q：有了 knowledge_sources，還需要 SerperDevTool 嗎？</strong><br>
+取決於任務性質。Knowledge sources 適合「查你自己的文件」，SerperDevTool 適合「查網路上最新資訊」。兩個用途不一樣，通常會搭配使用。</p>
+<h2 id="下一步">下一步</h2>
+<p>記憶和知識源設定好了，流程也能跑了——接下來是最實用的生存指南：<strong>出問題的時候怎麼查、怎麼修最快</strong>。<br>
+👉 <a href="08-debug-and-common-errors">除錯與常見錯誤</a></p>5:["$","aside",null,{"className":"hidden lg:block","children":["$","$L8",null,{"html":"$9"}]}]
+6:["$","script","script-0",{"src":"/_next/static/chunks/2dddb3bc05093f69.js","async":true}]
+7:["$","$La",null,{"children":["$","$b",null,{"name":"Next.MetadataOutlet","children":"$@c"}]}]
+c:null

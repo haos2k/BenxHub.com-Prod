@@ -1,0 +1,289 @@
+1:"$Sreact.fragment"
+2:I[26795,["/_next/static/chunks/5a5b5b13c22d14f7.js","/_next/static/chunks/a484d1d3dd4b55ab.js"],"default"]
+3:I[73489,["/_next/static/chunks/5a5b5b13c22d14f7.js","/_next/static/chunks/a484d1d3dd4b55ab.js"],"default"]
+6:I[50183,["/_next/static/chunks/5a5b5b13c22d14f7.js","/_next/static/chunks/a484d1d3dd4b55ab.js"],"OutletBoundary"]
+7:"$Sreact.suspense"
+9:I[50183,["/_next/static/chunks/5a5b5b13c22d14f7.js","/_next/static/chunks/a484d1d3dd4b55ab.js"],"ViewportBoundary"]
+b:I[50183,["/_next/static/chunks/5a5b5b13c22d14f7.js","/_next/static/chunks/a484d1d3dd4b55ab.js"],"MetadataBoundary"]
+d:I[63847,[],"default"]
+:HL["/_next/static/chunks/446a7883c02a95fe.css","style"]
+:HL["/_next/static/media/797e433ab948586e-s.p.29207c2f.woff2","font",{"crossOrigin":"","type":"font/woff2"}]
+:HL["/_next/static/media/caa3a2e1cccd8315-s.p.3b6cae6d.woff2","font",{"crossOrigin":"","type":"font/woff2"}]
+0:{"P":null,"b":"Yck3R4ooQxWkwGLT6is1X","c":["","ko","blog","openclaw","10-advanced-config"],"q":"","i":false,"f":[[["",{"children":[["locale","ko","d"],{"children":["blog",{"children":[["slug","openclaw/10-advanced-config","c"],{"children":["__PAGE__",{}]}]}]}]},"$undefined","$undefined",true],[["$","$1","c",{"children":[null,["$","html",null,{"children":["$","body",null,{"children":["$","$L2",null,{"parallelRouterKey":"children","error":"$undefined","errorStyles":"$undefined","errorScripts":"$undefined","template":["$","$L3",null,{}],"templateStyles":"$undefined","templateScripts":"$undefined","notFound":[[["$","title",null,{"children":"404: This page could not be found."}],["$","div",null,{"style":{"fontFamily":"system-ui,\"Segoe UI\",Roboto,Helvetica,Arial,sans-serif,\"Apple Color Emoji\",\"Segoe UI Emoji\"","height":"100vh","textAlign":"center","display":"flex","flexDirection":"column","alignItems":"center","justifyContent":"center"},"children":["$","div",null,{"children":[["$","style",null,{"dangerouslySetInnerHTML":{"__html":"body{color:#000;background:#fff;margin:0}.next-error-h1{border-right:1px solid rgba(0,0,0,.3)}@media (prefers-color-scheme:dark){body{color:#fff;background:#000}.next-error-h1{border-right:1px solid rgba(255,255,255,.3)}}"}}],["$","h1",null,{"className":"next-error-h1","style":{"display":"inline-block","margin":"0 20px 0 0","padding":"0 23px 0 0","fontSize":24,"fontWeight":500,"verticalAlign":"top","lineHeight":"49px"},"children":404}],["$","div",null,{"style":{"display":"inline-block"},"children":["$","h2",null,{"style":{"fontSize":14,"fontWeight":400,"lineHeight":"49px","margin":0},"children":"This page could not be found."}]}]]}]}]],[]],"forbidden":"$undefined","unauthorized":"$undefined"}]}]}]]}],{"children":[["$","$1","c",{"children":[[["$","link","0",{"rel":"stylesheet","href":"/_next/static/chunks/446a7883c02a95fe.css","precedence":"next","crossOrigin":"$undefined","nonce":"$undefined"}],["$","script","script-0",{"src":"/_next/static/chunks/7923a261b80bb6e1.js","async":true,"nonce":"$undefined"}],["$","script","script-1",{"src":"/_next/static/chunks/e09b4358027e8033.js","async":true,"nonce":"$undefined"}]],"$L4"]}],{"children":[["$","$1","c",{"children":[null,["$","$L2",null,{"parallelRouterKey":"children","error":"$undefined","errorStyles":"$undefined","errorScripts":"$undefined","template":["$","$L3",null,{}],"templateStyles":"$undefined","templateScripts":"$undefined","notFound":"$undefined","forbidden":"$undefined","unauthorized":"$undefined"}]]}],{"children":[["$","$1","c",{"children":[null,["$","$L2",null,{"parallelRouterKey":"children","error":"$undefined","errorStyles":"$undefined","errorScripts":"$undefined","template":["$","$L3",null,{}],"templateStyles":"$undefined","templateScripts":"$undefined","notFound":"$undefined","forbidden":"$undefined","unauthorized":"$undefined"}]]}],{"children":[["$","$1","c",{"children":["$L5",[["$","script","script-0",{"src":"/_next/static/chunks/2dddb3bc05093f69.js","async":true,"nonce":"$undefined"}]],["$","$L6",null,{"children":["$","$7",null,{"name":"Next.MetadataOutlet","children":"$@8"}]}]]}],{},null,false,false]},null,false,false]},null,false,false]},null,false,false]},null,false,false],["$","$1","h",{"children":[null,["$","$L9",null,{"children":"$La"}],["$","div",null,{"hidden":true,"children":["$","$Lb",null,{"children":["$","$7",null,{"name":"Next.Metadata","children":"$Lc"}]}]}],["$","meta",null,{"name":"next-size-adjust","content":""}]]}],false]],"m":"$undefined","G":["$d",[]],"S":true}
+4:["$","div",null,{"lang":"ko","dir":"ltr","className":"geist_a71539c9-module__T19VSG__variable geist_mono_8d43a2aa-module__8Li5zG__variable flex min-h-screen flex-col antialiased","children":[["$","script",null,{"type":"application/ld+json","dangerouslySetInnerHTML":{"__html":"[{\"@context\":\"https://schema.org\",\"@type\":\"WebSite\",\"name\":\"BenXHub Blog\",\"url\":\"https://benxhub.com/ko\",\"inLanguage\":\"ko\",\"publisher\":{\"@type\":\"Organization\",\"name\":\"BenXHub Blog\",\"url\":\"https://benxhub.com\"},\"potentialAction\":{\"@type\":\"SearchAction\",\"target\":{\"@type\":\"EntryPoint\",\"urlTemplate\":\"https://benxhub.com/ko/search?q={search_term_string}\"},\"query-input\":\"required name=search_term_string\"}},{\"@context\":\"https://schema.org\",\"@type\":\"Person\",\"name\":\"BenX\",\"url\":\"https://benxhub.com\",\"sameAs\":[\"https://github.com/benzhub\"]}]"}}],"$Le"]}]
+f:I[33343,["/_next/static/chunks/7923a261b80bb6e1.js","/_next/static/chunks/e09b4358027e8033.js"],"default"]
+10:I[26817,["/_next/static/chunks/7923a261b80bb6e1.js","/_next/static/chunks/e09b4358027e8033.js"],"default"]
+11:I[6197,["/_next/static/chunks/7923a261b80bb6e1.js","/_next/static/chunks/e09b4358027e8033.js"],"default"]
+13:I[40018,["/_next/static/chunks/7923a261b80bb6e1.js","/_next/static/chunks/e09b4358027e8033.js"],"default"]
+e:["$","$Lf",null,{"formats":"$undefined","locale":"ko","messages":{"common":{"siteName":"BenXHub Blog","siteDescription":"BenX의 기술 블로그 — Web 개발, 아키텍처, 엔지니어링 실천을 공유합니다."},"nav":{"home":"홈","tags":"태그","about":"소개","searchLabel":"글 검색"},"hero":{"subtitle":"Web 개발, 아키텍처, 엔지니어링 실천에 관한 기술 노트","cta":"글 보기"},"posts":{"title":"글 목록","count":"총 {total}개의 글","empty":"아직 글이 없습니다. 기대해 주세요!","newerPost":"← 최신 글","olderPost":"이전 글 →","navLabel":"글 탐색"},"pagination":{"prev":"이전","next":"다음","page":"{current} / {total} 페이지","label":"글 목록 페이지네이션","pageTitle":"페이지 {num}","pageDescription":"BenX의 기술 블로그 — 글 목록."},"search":{"title":"글 검색","description":"제목, 설명, 태그로 BenXHub Blog의 모든 글을 실시간 검색합니다.","subtitle":"제목, 설명 또는 태그로 검색","placeholder":"제목, 설명 또는 태그로 검색…","found":"{count}개의 관련 글을 찾았습니다","notFound":"\"{query}\"에 관한 글을 찾을 수 없습니다","emptyTitle":"결과를 찾을 수 없습니다","emptyHint":"다른 키워드를 시도하거나","allPosts":"모든 글 보기","totalCount":"총 {count}개의 글 — 키워드를 입력하여 검색"},"tags":{"title":"모든 태그","description":"태그별로 글을 탐색합니다.","count":"총 {count}개의 태그","empty":"아직 태그가 없습니다. 기대해 주세요!","allTags":"모든 태그","postCount":"글 {count}개","otherTags":"다른 태그","tagTitle":"#{tag} 글","tagDescription":"\"{tag}\" 태그의 모든 글 목록."},"about":{"title":"소개","description":"BenXHub Blog와 이 사이트에 대해.","subtitle":"BenXHub Blog와 이 사이트에 대해","siteTitle":"이 사이트에 대해","siteContent":"BenXHub Blog는 BenX의 기술 블로그로, Web 개발, 아키텍처, 엔지니어링 실천을 공유합니다.","authorTitle":"자기소개","authorContent":"코딩과 지식 공유를 좋아합니다. 겪은 문제와 해결책을 기록하는 것을 즐깁니다. 사이드바 또는 푸터 링크로 편하게 연락하세요.","linksTitle":"링크"},"sidebar":{"label":"사이드바","authorBio":"코딩과 공유를 좋아하며, Web 개발, 아키텍처, DevOps에 집중합니다.","searchPlaceholder":"글 검색…","seriesTitle":"시리즈","articleCount":"{count}개"},"toc":{"title":"목차","label":"목차"},"notFound":{"message":"이 페이지는 존재하지 않습니다. 링크가 유효하지 않거나 URL이 잘못되었을 수 있습니다.","backHome":"홈으로 돌아가기"},"localeSwitcher":{"label":"언어 변경"}},"now":"$undefined","timeZone":"UTC","children":[["$","$L10",null,{}],["$","$L11",null,{}],["$","main",null,{"className":"flex-1 pt-16","children":["$","$L2",null,{"parallelRouterKey":"children","error":"$undefined","errorStyles":"$undefined","errorScripts":"$undefined","template":["$","$L3",null,{}],"templateStyles":"$undefined","templateScripts":"$undefined","notFound":["$L12",[]],"forbidden":"$undefined","unauthorized":"$undefined"}]}],["$","$L13",null,{}]]}]
+12:["$","div",null,{"className":"mx-auto max-w-2xl px-4 py-20 text-center sm:px-6","children":[["$","h1",null,{"className":"mb-3 text-4xl font-bold tracking-tight","style":{"color":"var(--color-text)"},"children":"404"}],["$","p",null,{"className":"mb-8 text-lg","style":{"color":"var(--color-muted)"},"children":"이 페이지는 존재하지 않습니다. 링크가 유효하지 않거나 URL이 잘못되었을 수 있습니다."}],"$L14"]}]
+a:[["$","meta","0",{"charSet":"utf-8"}],["$","meta","1",{"name":"viewport","content":"width=device-width, initial-scale=1"}]]
+15:I[14864,["/_next/static/chunks/7923a261b80bb6e1.js","/_next/static/chunks/e09b4358027e8033.js","/_next/static/chunks/2dddb3bc05093f69.js"],"default"]
+14:["$","$L15",null,{"ref":"$undefined","href":"/ko","locale":"$undefined","localeCookie":{"name":"NEXT_LOCALE","sameSite":"lax"},"className":"inline-flex items-center rounded-lg border px-4 py-2.5 text-sm font-medium transition-colors hover:border-accent","style":{"borderColor":"var(--color-border)","color":"var(--color-accent)","background":"var(--color-surface)"},"children":"홈으로 돌아가기"}]
+1a:T1e83,<p>여기까지 왔다면 이미 OpenClaw 를 0부터 동작하는 상태까지 만들어 낸 것입니다. 잘하셨습니다.</p>
+<p>이 마지막 글에서는 시스템을 더 안정적이고 유지보수하기 쉽게 만드는 습관을 정리합니다.</p>
+<h2 id="이번-글에서-배울-것">이번 글에서 배울 것</h2>
+<ul>
+<li>설정 파일 위치와 두 가지 편집 방식</li>
+<li>최소 동작 구성 읽는 법</li>
+<li>환경 변수로 API key 를 안전하게 관리하는 법</li>
+<li>가장 중요한 디버깅 명령과 자주 보는 오류 이해하기</li>
+<li>어떤 릴리스 트랙을 선택할지 판단하기</li>
+</ul>
+<hr>
+<h2 id="설정-파일은-어디에-있을까">설정 파일은 어디에 있을까?</h2>
+<pre><code>~/.openclaw/openclaw.json
+</code></pre>
+<p>형식은 <strong>JSON5</strong> 입니다. 주석과 후행 쉼표를 쓸 수 있어 일반 JSON 보다 훨씬 편합니다.</p>
+<p>편집 방법은 두 가지입니다.</p>
+<ul>
+<li>Control UI 의 <strong>폼 모드</strong> 사용</li>
+<li><strong>Raw JSON</strong> 으로 직접 수정</li>
+</ul>
+<p>둘 다 같은 파일을 수정합니다.</p>
+<hr>
+<h2 id="최소-동작-구성은-어떻게-생겼을까">최소 동작 구성은 어떻게 생겼을까?</h2>
+<figure data-rehype-pretty-code-figure=""><pre style="background-color:#24292e;color:#e1e4e8" tabindex="0" data-language="json5" data-theme="github-dark"><code data-language="json5" data-theme="github-dark" style="display: grid;"><span data-line=""><span style="color:#E1E4E8">{</span></span>
+<span data-line=""><span style="color:#9ECBFF">  "agents"</span><span style="color:#E1E4E8">: {</span></span>
+<span data-line=""><span style="color:#9ECBFF">    "list"</span><span style="color:#E1E4E8">: [</span></span>
+<span data-line=""><span style="color:#E1E4E8">      { </span><span style="color:#9ECBFF">"id"</span><span style="color:#E1E4E8">: </span><span style="color:#9ECBFF">"main"</span><span style="color:#E1E4E8">, </span><span style="color:#9ECBFF">"workspace"</span><span style="color:#E1E4E8">: </span><span style="color:#9ECBFF">"~/.openclaw/workspace-main"</span><span style="color:#E1E4E8">, </span><span style="color:#9ECBFF">"default"</span><span style="color:#E1E4E8">: </span><span style="color:#79B8FF">true</span><span style="color:#E1E4E8"> }</span></span>
+<span data-line=""><span style="color:#E1E4E8">    ]</span></span>
+<span data-line=""><span style="color:#E1E4E8">  },</span></span>
+<span data-line=""><span style="color:#9ECBFF">  "channels"</span><span style="color:#E1E4E8">: {</span></span>
+<span data-line=""><span style="color:#9ECBFF">    "telegram"</span><span style="color:#E1E4E8">: {</span></span>
+<span data-line=""><span style="color:#9ECBFF">      "enabled"</span><span style="color:#E1E4E8">: </span><span style="color:#79B8FF">true</span><span style="color:#E1E4E8">,</span></span>
+<span data-line=""><span style="color:#9ECBFF">      "botToken"</span><span style="color:#E1E4E8">: </span><span style="color:#9ECBFF">"your bot token"</span></span>
+<span data-line=""><span style="color:#E1E4E8">    }</span></span>
+<span data-line=""><span style="color:#E1E4E8">  },</span></span>
+<span data-line=""><span style="color:#9ECBFF">  "bindings"</span><span style="color:#E1E4E8">: [</span></span>
+<span data-line=""><span style="color:#E1E4E8">    { </span><span style="color:#9ECBFF">"agentId"</span><span style="color:#E1E4E8">: </span><span style="color:#9ECBFF">"main"</span><span style="color:#E1E4E8">, </span><span style="color:#9ECBFF">"match"</span><span style="color:#E1E4E8">: { </span><span style="color:#9ECBFF">"channel"</span><span style="color:#E1E4E8">: </span><span style="color:#9ECBFF">"telegram"</span><span style="color:#E1E4E8"> } }</span></span>
+<span data-line=""><span style="color:#E1E4E8">  ]</span></span>
+<span data-line=""><span style="color:#E1E4E8">}</span></span></code></pre></figure>
+<p>먼저 단순한 구성을 확실히 돌리고, 그다음에 기능을 조금씩 추가하세요.</p>
+<hr>
+<h2 id="api-key-를-올바르게-보관하기">API key 를 올바르게 보관하기</h2>
+<p>가능하면 <strong>API key 를 config 에 직접 쓰지 않는 편이 안전합니다.</strong></p>
+<p>환경 변수를 사용하세요.</p>
+<figure data-rehype-pretty-code-figure=""><pre style="background-color:#24292e;color:#e1e4e8" tabindex="0" data-language="bash" data-theme="github-dark"><code data-language="bash" data-theme="github-dark" style="display: grid;"><span data-line=""><span style="color:#6A737D"># .env 또는 시스템 환경 변수에 설정</span></span>
+<span data-line=""><span style="color:#E1E4E8">ANTHROPIC_API_KEY</span><span style="color:#F97583">=</span><span style="color:#9ECBFF">sk-ant-xxxxx</span></span></code></pre></figure>
+<blockquote>
+<p>⚠️ Gateway 를 <code>systemd</code> 같은 시스템 서비스로 실행한다면, 해당 서비스가 <code>.env</code> 를 읽는지 꼭 확인하세요. 그렇지 않으면 API key 를 찾지 못해 "Shell env off" 같은 문제가 생길 수 있습니다.</p>
+</blockquote>
+<hr>
+<h2 id="만능-디버깅-도구">만능 디버깅 도구</h2>
+<p>뭔가 이상하다면 가장 먼저 이것부터:</p>
+<figure data-rehype-pretty-code-figure=""><pre style="background-color:#24292e;color:#e1e4e8" tabindex="0" data-language="bash" data-theme="github-dark"><code data-language="bash" data-theme="github-dark" style="display: grid;"><span data-line=""><span style="color:#B392F0">openclaw</span><span style="color:#9ECBFF"> logs</span><span style="color:#79B8FF"> --follow</span></span></code></pre></figure>
+<p>실시간 로그만으로도 많은 문제가 해결됩니다.</p>
+<p>자주 보는 오류:</p>
+<table>
+<thead>
+<tr>
+<th>오류</th>
+<th>가능한 원인</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td><code>HTTP 429</code></td>
+<td>API 요청이 너무 많아 rate limit 에 걸림</td>
+</tr>
+<tr>
+<td><code>unauthorized</code></td>
+<td>token 또는 <code>gateway.bind</code> 설정 문제</td>
+</tr>
+<tr>
+<td><code>content tool_use input field required</code></td>
+<td>모델 호환성 문제, 공식 docs 확인</td>
+</tr>
+<tr>
+<td>Context 가 잘림</td>
+<td>새 session 을 열거나 compact 수행</td>
+</tr>
+</tbody>
+</table>
+<hr>
+<h2 id="어떤-릴리스-트랙을-써야-할까">어떤 릴리스 트랙을 써야 할까?</h2>
+<table>
+<thead>
+<tr>
+<th>트랙</th>
+<th>추천 대상</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td><strong>Stable</strong></td>
+<td>일상 사용, 가장 안전한 기본값</td>
+</tr>
+<tr>
+<td><strong>Beta</strong></td>
+<td>새 기능을 빨리 써보고 싶은 경우</td>
+</tr>
+<tr>
+<td><strong>Dev</strong></td>
+<td>최신 변화를 바로 보고 싶은 개발자</td>
+</tr>
+</tbody>
+</table>
+<blockquote>
+<p>💡 큰 업그레이드 전에는 <code>~/.openclaw</code> 를 백업해 두면 되돌아갈 길이 생깁니다.</p>
+</blockquote>
+<hr>
+<h2 id="시리즈-완료-이제-무엇을-할-수-있나">시리즈 완료: 이제 무엇을 할 수 있나?</h2>
+<p>이 시리즈를 통해 다음을 익혔습니다.</p>
+<ol>
+<li>OpenClaw 의 핵심 개념 이해</li>
+<li>설치와 첫 실행</li>
+<li>대시보드 인증 처리</li>
+<li>Telegram 등 채널 연결</li>
+<li>Skills 로 비서 능력 확장</li>
+<li>메모리와 워크스페이스 관리</li>
+<li>여러 비서로 작업 분리</li>
+<li>Gateway 를 VPS 로 배치</li>
+<li>Cron 으로 자동화</li>
+<li>스스로 설정하고 디버깅하기</li>
+</ol>
+<p>더 깊은 내용은 항상 <a href="https://docs.openclaw.ai">docs.openclaw.ai</a> 를 기준으로 확인하세요.</p>
+<p><strong>이제 AI 비서는 준비되었습니다. 제대로 일 시켜 봅시다.</strong></p>
+<p><a href="09-cron-automation">← 이전 글: 스케줄과 자동화</a> | <a href="01-intro">첫 글로 돌아가기</a></p>5:[["$","script",null,{"type":"application/ld+json","dangerouslySetInnerHTML":{"__html":"{\"@context\":\"https://schema.org\",\"@type\":\"Article\",\"headline\":\"시스템이 이상하게 굴까? 고급 설정과 디버깅 가이드\",\"description\":\"설정 파일 위치, API key 를 안전하게 보관하는 방법, 중요한 디버깅 도구, 자주 만나는 오류 해석법을 정리합니다.\",\"url\":\"https://benxhub.com/ko/blog/openclaw/10-advanced-config\",\"mainEntityOfPage\":{\"@type\":\"WebPage\",\"@id\":\"https://benxhub.com/ko/blog/openclaw/10-advanced-config\"},\"datePublished\":\"2026-03-08T00:00:00.000Z\",\"dateModified\":\"2026-03-08T00:00:00.000Z\",\"keywords\":\"openclaw, configuration, debugging, advanced\",\"inLanguage\":\"ko\",\"author\":{\"@type\":\"Person\",\"name\":\"BenX\",\"url\":\"https://benxhub.com\"},\"publisher\":{\"@type\":\"Organization\",\"name\":\"BenXHub Blog\",\"url\":\"https://benxhub.com\"}}"}}],["$","div",null,{"className":"mx-auto max-w-6xl px-4 py-12 sm:px-6","children":["$","div",null,{"className":"lg:grid lg:grid-cols-[1fr_240px] lg:gap-14","children":[["$","article",null,{"children":[["$","header",null,{"className":"mb-10","children":[["$","div",null,{"className":"mb-4 flex flex-wrap gap-2","children":["$L16","$L17","$L18","$L19"]}],["$","h1",null,{"className":"mb-4 text-3xl leading-snug font-bold tracking-tight sm:text-4xl","style":{"color":"var(--color-text)"},"children":"시스템이 이상하게 굴까? 고급 설정과 디버깅 가이드"}],["$","div",null,{"className":"flex flex-wrap items-center gap-3 text-sm","style":{"color":"var(--color-muted)"},"children":[["$","time",null,{"dateTime":"2026-03-08","children":"2026년 3월 8일"}],["$","span",null,{"aria-hidden":"true","children":"·"}],["$","span",null,{"children":"5 min read"}]]}],"$undefined",["$","div",null,{"className":"mt-6 border-b","style":{"borderColor":"var(--color-border)"}}]]}],["$","div",null,{"className":"prose","dangerouslySetInnerHTML":{"__html":"$1a"}}],"$L1b"]}],"$L1c"]}]}]]
+23:I[24801,["/_next/static/chunks/7923a261b80bb6e1.js","/_next/static/chunks/e09b4358027e8033.js","/_next/static/chunks/2dddb3bc05093f69.js"],"default"]
+1b:["$","footer",null,{"className":"mt-14 border-t pt-8","style":{"borderColor":"var(--color-border)"},"children":[["$","div",null,{"className":"mb-8 flex flex-wrap gap-2","children":["$L1d","$L1e","$L1f","$L20"]}],["$","nav",null,{"aria-label":"글 탐색","className":"grid grid-cols-1 gap-4 sm:grid-cols-2","children":["$L21","$L22"]}]]}]
+24:T1e83,<p>여기까지 왔다면 이미 OpenClaw 를 0부터 동작하는 상태까지 만들어 낸 것입니다. 잘하셨습니다.</p>
+<p>이 마지막 글에서는 시스템을 더 안정적이고 유지보수하기 쉽게 만드는 습관을 정리합니다.</p>
+<h2 id="이번-글에서-배울-것">이번 글에서 배울 것</h2>
+<ul>
+<li>설정 파일 위치와 두 가지 편집 방식</li>
+<li>최소 동작 구성 읽는 법</li>
+<li>환경 변수로 API key 를 안전하게 관리하는 법</li>
+<li>가장 중요한 디버깅 명령과 자주 보는 오류 이해하기</li>
+<li>어떤 릴리스 트랙을 선택할지 판단하기</li>
+</ul>
+<hr>
+<h2 id="설정-파일은-어디에-있을까">설정 파일은 어디에 있을까?</h2>
+<pre><code>~/.openclaw/openclaw.json
+</code></pre>
+<p>형식은 <strong>JSON5</strong> 입니다. 주석과 후행 쉼표를 쓸 수 있어 일반 JSON 보다 훨씬 편합니다.</p>
+<p>편집 방법은 두 가지입니다.</p>
+<ul>
+<li>Control UI 의 <strong>폼 모드</strong> 사용</li>
+<li><strong>Raw JSON</strong> 으로 직접 수정</li>
+</ul>
+<p>둘 다 같은 파일을 수정합니다.</p>
+<hr>
+<h2 id="최소-동작-구성은-어떻게-생겼을까">최소 동작 구성은 어떻게 생겼을까?</h2>
+<figure data-rehype-pretty-code-figure=""><pre style="background-color:#24292e;color:#e1e4e8" tabindex="0" data-language="json5" data-theme="github-dark"><code data-language="json5" data-theme="github-dark" style="display: grid;"><span data-line=""><span style="color:#E1E4E8">{</span></span>
+<span data-line=""><span style="color:#9ECBFF">  "agents"</span><span style="color:#E1E4E8">: {</span></span>
+<span data-line=""><span style="color:#9ECBFF">    "list"</span><span style="color:#E1E4E8">: [</span></span>
+<span data-line=""><span style="color:#E1E4E8">      { </span><span style="color:#9ECBFF">"id"</span><span style="color:#E1E4E8">: </span><span style="color:#9ECBFF">"main"</span><span style="color:#E1E4E8">, </span><span style="color:#9ECBFF">"workspace"</span><span style="color:#E1E4E8">: </span><span style="color:#9ECBFF">"~/.openclaw/workspace-main"</span><span style="color:#E1E4E8">, </span><span style="color:#9ECBFF">"default"</span><span style="color:#E1E4E8">: </span><span style="color:#79B8FF">true</span><span style="color:#E1E4E8"> }</span></span>
+<span data-line=""><span style="color:#E1E4E8">    ]</span></span>
+<span data-line=""><span style="color:#E1E4E8">  },</span></span>
+<span data-line=""><span style="color:#9ECBFF">  "channels"</span><span style="color:#E1E4E8">: {</span></span>
+<span data-line=""><span style="color:#9ECBFF">    "telegram"</span><span style="color:#E1E4E8">: {</span></span>
+<span data-line=""><span style="color:#9ECBFF">      "enabled"</span><span style="color:#E1E4E8">: </span><span style="color:#79B8FF">true</span><span style="color:#E1E4E8">,</span></span>
+<span data-line=""><span style="color:#9ECBFF">      "botToken"</span><span style="color:#E1E4E8">: </span><span style="color:#9ECBFF">"your bot token"</span></span>
+<span data-line=""><span style="color:#E1E4E8">    }</span></span>
+<span data-line=""><span style="color:#E1E4E8">  },</span></span>
+<span data-line=""><span style="color:#9ECBFF">  "bindings"</span><span style="color:#E1E4E8">: [</span></span>
+<span data-line=""><span style="color:#E1E4E8">    { </span><span style="color:#9ECBFF">"agentId"</span><span style="color:#E1E4E8">: </span><span style="color:#9ECBFF">"main"</span><span style="color:#E1E4E8">, </span><span style="color:#9ECBFF">"match"</span><span style="color:#E1E4E8">: { </span><span style="color:#9ECBFF">"channel"</span><span style="color:#E1E4E8">: </span><span style="color:#9ECBFF">"telegram"</span><span style="color:#E1E4E8"> } }</span></span>
+<span data-line=""><span style="color:#E1E4E8">  ]</span></span>
+<span data-line=""><span style="color:#E1E4E8">}</span></span></code></pre></figure>
+<p>먼저 단순한 구성을 확실히 돌리고, 그다음에 기능을 조금씩 추가하세요.</p>
+<hr>
+<h2 id="api-key-를-올바르게-보관하기">API key 를 올바르게 보관하기</h2>
+<p>가능하면 <strong>API key 를 config 에 직접 쓰지 않는 편이 안전합니다.</strong></p>
+<p>환경 변수를 사용하세요.</p>
+<figure data-rehype-pretty-code-figure=""><pre style="background-color:#24292e;color:#e1e4e8" tabindex="0" data-language="bash" data-theme="github-dark"><code data-language="bash" data-theme="github-dark" style="display: grid;"><span data-line=""><span style="color:#6A737D"># .env 또는 시스템 환경 변수에 설정</span></span>
+<span data-line=""><span style="color:#E1E4E8">ANTHROPIC_API_KEY</span><span style="color:#F97583">=</span><span style="color:#9ECBFF">sk-ant-xxxxx</span></span></code></pre></figure>
+<blockquote>
+<p>⚠️ Gateway 를 <code>systemd</code> 같은 시스템 서비스로 실행한다면, 해당 서비스가 <code>.env</code> 를 읽는지 꼭 확인하세요. 그렇지 않으면 API key 를 찾지 못해 "Shell env off" 같은 문제가 생길 수 있습니다.</p>
+</blockquote>
+<hr>
+<h2 id="만능-디버깅-도구">만능 디버깅 도구</h2>
+<p>뭔가 이상하다면 가장 먼저 이것부터:</p>
+<figure data-rehype-pretty-code-figure=""><pre style="background-color:#24292e;color:#e1e4e8" tabindex="0" data-language="bash" data-theme="github-dark"><code data-language="bash" data-theme="github-dark" style="display: grid;"><span data-line=""><span style="color:#B392F0">openclaw</span><span style="color:#9ECBFF"> logs</span><span style="color:#79B8FF"> --follow</span></span></code></pre></figure>
+<p>실시간 로그만으로도 많은 문제가 해결됩니다.</p>
+<p>자주 보는 오류:</p>
+<table>
+<thead>
+<tr>
+<th>오류</th>
+<th>가능한 원인</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td><code>HTTP 429</code></td>
+<td>API 요청이 너무 많아 rate limit 에 걸림</td>
+</tr>
+<tr>
+<td><code>unauthorized</code></td>
+<td>token 또는 <code>gateway.bind</code> 설정 문제</td>
+</tr>
+<tr>
+<td><code>content tool_use input field required</code></td>
+<td>모델 호환성 문제, 공식 docs 확인</td>
+</tr>
+<tr>
+<td>Context 가 잘림</td>
+<td>새 session 을 열거나 compact 수행</td>
+</tr>
+</tbody>
+</table>
+<hr>
+<h2 id="어떤-릴리스-트랙을-써야-할까">어떤 릴리스 트랙을 써야 할까?</h2>
+<table>
+<thead>
+<tr>
+<th>트랙</th>
+<th>추천 대상</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td><strong>Stable</strong></td>
+<td>일상 사용, 가장 안전한 기본값</td>
+</tr>
+<tr>
+<td><strong>Beta</strong></td>
+<td>새 기능을 빨리 써보고 싶은 경우</td>
+</tr>
+<tr>
+<td><strong>Dev</strong></td>
+<td>최신 변화를 바로 보고 싶은 개발자</td>
+</tr>
+</tbody>
+</table>
+<blockquote>
+<p>💡 큰 업그레이드 전에는 <code>~/.openclaw</code> 를 백업해 두면 되돌아갈 길이 생깁니다.</p>
+</blockquote>
+<hr>
+<h2 id="시리즈-완료-이제-무엇을-할-수-있나">시리즈 완료: 이제 무엇을 할 수 있나?</h2>
+<p>이 시리즈를 통해 다음을 익혔습니다.</p>
+<ol>
+<li>OpenClaw 의 핵심 개념 이해</li>
+<li>설치와 첫 실행</li>
+<li>대시보드 인증 처리</li>
+<li>Telegram 등 채널 연결</li>
+<li>Skills 로 비서 능력 확장</li>
+<li>메모리와 워크스페이스 관리</li>
+<li>여러 비서로 작업 분리</li>
+<li>Gateway 를 VPS 로 배치</li>
+<li>Cron 으로 자동화</li>
+<li>스스로 설정하고 디버깅하기</li>
+</ol>
+<p>더 깊은 내용은 항상 <a href="https://docs.openclaw.ai">docs.openclaw.ai</a> 를 기준으로 확인하세요.</p>
+<p><strong>이제 AI 비서는 준비되었습니다. 제대로 일 시켜 봅시다.</strong></p>
+<p><a href="09-cron-automation">← 이전 글: 스케줄과 자동화</a> | <a href="01-intro">첫 글로 돌아가기</a></p>1c:["$","aside",null,{"className":"hidden lg:block","children":["$","$L23",null,{"html":"$24"}]}]
+16:["$","$L15","openclaw",{"ref":"$undefined","href":"/ko/tags/openclaw","locale":"$undefined","localeCookie":"$14:props:localeCookie","className":"inline-flex items-center rounded-full px-2.5 py-0.5 text-xs font-medium transition-colors","style":{"background":"var(--color-code-bg)","color":"var(--color-accent)","border":"1px solid var(--color-border)"},"children":["#","openclaw"]}]
+17:["$","$L15","configuration",{"ref":"$undefined","href":"/ko/tags/configuration","locale":"$undefined","localeCookie":"$14:props:localeCookie","className":"inline-flex items-center rounded-full px-2.5 py-0.5 text-xs font-medium transition-colors","style":{"background":"var(--color-code-bg)","color":"var(--color-accent)","border":"1px solid var(--color-border)"},"children":["#","configuration"]}]
+18:["$","$L15","debugging",{"ref":"$undefined","href":"/ko/tags/debugging","locale":"$undefined","localeCookie":"$14:props:localeCookie","className":"inline-flex items-center rounded-full px-2.5 py-0.5 text-xs font-medium transition-colors","style":{"background":"var(--color-code-bg)","color":"var(--color-accent)","border":"1px solid var(--color-border)"},"children":["#","debugging"]}]
+19:["$","$L15","advanced",{"ref":"$undefined","href":"/ko/tags/advanced","locale":"$undefined","localeCookie":"$14:props:localeCookie","className":"inline-flex items-center rounded-full px-2.5 py-0.5 text-xs font-medium transition-colors","style":{"background":"var(--color-code-bg)","color":"var(--color-accent)","border":"1px solid var(--color-border)"},"children":["#","advanced"]}]
+1d:["$","$L15","openclaw",{"ref":"$undefined","href":"/ko/tags/openclaw","locale":"$undefined","localeCookie":"$14:props:localeCookie","className":"inline-flex items-center rounded-full px-3 py-1 text-sm font-medium transition-colors","style":{"background":"var(--color-code-bg)","color":"var(--color-accent)","border":"1px solid var(--color-border)"},"children":["#","openclaw"]}]
+1e:["$","$L15","configuration",{"ref":"$undefined","href":"/ko/tags/configuration","locale":"$undefined","localeCookie":"$14:props:localeCookie","className":"inline-flex items-center rounded-full px-3 py-1 text-sm font-medium transition-colors","style":{"background":"var(--color-code-bg)","color":"var(--color-accent)","border":"1px solid var(--color-border)"},"children":["#","configuration"]}]
+1f:["$","$L15","debugging",{"ref":"$undefined","href":"/ko/tags/debugging","locale":"$undefined","localeCookie":"$14:props:localeCookie","className":"inline-flex items-center rounded-full px-3 py-1 text-sm font-medium transition-colors","style":{"background":"var(--color-code-bg)","color":"var(--color-accent)","border":"1px solid var(--color-border)"},"children":["#","debugging"]}]
+20:["$","$L15","advanced",{"ref":"$undefined","href":"/ko/tags/advanced","locale":"$undefined","localeCookie":"$14:props:localeCookie","className":"inline-flex items-center rounded-full px-3 py-1 text-sm font-medium transition-colors","style":{"background":"var(--color-code-bg)","color":"var(--color-accent)","border":"1px solid var(--color-border)"},"children":["#","advanced"]}]
+21:["$","$L15",null,{"ref":"$undefined","href":"/ko/blog/openclaw/09-cron-automation","locale":"$undefined","localeCookie":"$14:props:localeCookie","className":"group rounded-lg border p-4 transition-colors hover:border-accent","style":{"borderColor":"var(--color-border)","background":"var(--color-surface)"},"children":[["$","p",null,{"className":"mb-1 text-xs","style":{"color":"var(--color-muted)"},"children":"← 최신 글"}],["$","p",null,{"className":"line-clamp-1 text-sm font-medium transition-colors group-hover:text-accent","style":{"color":"var(--color-text)"},"children":"비서를 자동으로 일하게 만들기: 시키지 않아도 도와주는 구조"}]]}]
+22:["$","$L15",null,{"ref":"$undefined","href":"/ko/blog/openclaw/11-openclaw-web-ui-setup","locale":"$undefined","localeCookie":"$14:props:localeCookie","className":"group rounded-lg border p-4 text-right transition-colors hover:border-accent","style":{"borderColor":"var(--color-border)","background":"var(--color-surface)"},"children":[["$","p",null,{"className":"mb-1 text-xs","style":{"color":"var(--color-muted)"},"children":"이전 글 →"}],["$","p",null,{"className":"line-clamp-1 text-sm font-medium transition-colors group-hover:text-accent","style":{"color":"var(--color-text)"},"children":"설정 파일을 만지지 않아도 된다: Web UI 만으로 OpenClaw 설정하기"}]]}]
+25:I[92204,["/_next/static/chunks/5a5b5b13c22d14f7.js","/_next/static/chunks/a484d1d3dd4b55ab.js"],"IconMark"]
+8:null
+c:[["$","title","0",{"children":"시스템이 이상하게 굴까? 고급 설정과 디버깅 가이드 | BenXHub Blog"}],["$","meta","1",{"name":"description","content":"설정 파일 위치, API key 를 안전하게 보관하는 방법, 중요한 디버깅 도구, 자주 만나는 오류 해석법을 정리합니다."}],["$","meta","2",{"property":"og:title","content":"시스템이 이상하게 굴까? 고급 설정과 디버깅 가이드"}],["$","meta","3",{"property":"og:description","content":"설정 파일 위치, API key 를 안전하게 보관하는 방법, 중요한 디버깅 도구, 자주 만나는 오류 해석법을 정리합니다."}],["$","meta","4",{"property":"og:url","content":"https://benxhub.com/ko/blog/openclaw/10-advanced-config"}],["$","meta","5",{"property":"og:type","content":"article"}],["$","meta","6",{"property":"article:published_time","content":"2026-03-08T00:00:00.000Z"}],["$","meta","7",{"property":"article:tag","content":"openclaw"}],["$","meta","8",{"property":"article:tag","content":"configuration"}],["$","meta","9",{"property":"article:tag","content":"debugging"}],["$","meta","10",{"property":"article:tag","content":"advanced"}],["$","meta","11",{"name":"twitter:card","content":"summary_large_image"}],["$","meta","12",{"name":"twitter:title","content":"시스템이 이상하게 굴까? 고급 설정과 디버깅 가이드"}],["$","meta","13",{"name":"twitter:description","content":"설정 파일 위치, API key 를 안전하게 보관하는 방법, 중요한 디버깅 도구, 자주 만나는 오류 해석법을 정리합니다."}],["$","link","14",{"rel":"icon","href":"/favicon.ico?favicon.0b3bf435.ico","sizes":"256x256","type":"image/x-icon"}],["$","$L25","15",{}]]

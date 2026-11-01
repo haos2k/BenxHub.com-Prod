@@ -1,0 +1,224 @@
+1:"$Sreact.fragment"
+2:I[14864,["/_next/static/chunks/7923a261b80bb6e1.js","/_next/static/chunks/e09b4358027e8033.js","/_next/static/chunks/2dddb3bc05093f69.js"],"default"]
+d:I[24801,["/_next/static/chunks/7923a261b80bb6e1.js","/_next/static/chunks/e09b4358027e8033.js","/_next/static/chunks/2dddb3bc05093f69.js"],"default"]
+f:I[50183,["/_next/static/chunks/5a5b5b13c22d14f7.js","/_next/static/chunks/a484d1d3dd4b55ab.js"],"OutletBoundary"]
+10:"$Sreact.suspense"
+0:{"buildId":"Yck3R4ooQxWkwGLT6is1X","rsc":["$","$1","c",{"children":[[["$","script",null,{"type":"application/ld+json","dangerouslySetInnerHTML":{"__html":"{\"@context\":\"https://schema.org\",\"@type\":\"Article\",\"headline\":\"أفضل ممارسات Envoy Gateway: قدّم خدمة لنفسك المستقبلية قبل الذهاب إلى الإنتاج\",\"description\":\"مجموعة عملية من الأساليب الموصى بها والأخطاء التي ينبغي تجنبها عند تشغيل Envoy Gateway في الإنتاج، وتشمل TLS وحوكمة routes والمراقبة واستراتيجية التغيير.\",\"url\":\"https://benxhub.com/ar/blog/k8s/gateway/05-best-practices\",\"mainEntityOfPage\":{\"@type\":\"WebPage\",\"@id\":\"https://benxhub.com/ar/blog/k8s/gateway/05-best-practices\"},\"datePublished\":\"2026-03-10T00:00:00.000Z\",\"dateModified\":\"2026-03-10T00:00:00.000Z\",\"keywords\":\"kubernetes, envoy-gateway, gateway-api, best-practices, operations, security\",\"inLanguage\":\"ar\",\"author\":{\"@type\":\"Person\",\"name\":\"BenX\",\"url\":\"https://benxhub.com\"},\"publisher\":{\"@type\":\"Organization\",\"name\":\"BenXHub Blog\",\"url\":\"https://benxhub.com\"}}"}}],["$","div",null,{"className":"mx-auto max-w-6xl px-4 py-12 sm:px-6","children":["$","div",null,{"className":"lg:grid lg:grid-cols-[1fr_240px] lg:gap-14","children":[["$","article",null,{"children":[["$","header",null,{"className":"mb-10","children":[["$","div",null,{"className":"mb-4 flex flex-wrap gap-2","children":[["$","$L2","kubernetes",{"href":"/ar/tags/kubernetes","localeCookie":{"name":"NEXT_LOCALE","sameSite":"lax"},"className":"inline-flex items-center rounded-full px-2.5 py-0.5 text-xs font-medium transition-colors","style":{"background":"var(--color-code-bg)","color":"var(--color-accent)","border":"1px solid var(--color-border)"},"children":["#","kubernetes"]}],["$","$L2","envoy-gateway",{"href":"/ar/tags/envoy-gateway","localeCookie":{"name":"NEXT_LOCALE","sameSite":"lax"},"className":"inline-flex items-center rounded-full px-2.5 py-0.5 text-xs font-medium transition-colors","style":{"background":"var(--color-code-bg)","color":"var(--color-accent)","border":"1px solid var(--color-border)"},"children":["#","envoy-gateway"]}],["$","$L2","gateway-api",{"href":"/ar/tags/gateway-api","localeCookie":{"name":"NEXT_LOCALE","sameSite":"lax"},"className":"inline-flex items-center rounded-full px-2.5 py-0.5 text-xs font-medium transition-colors","style":{"background":"var(--color-code-bg)","color":"var(--color-accent)","border":"1px solid var(--color-border)"},"children":["#","gateway-api"]}],["$","$L2","best-practices",{"href":"/ar/tags/best-practices","localeCookie":{"name":"NEXT_LOCALE","sameSite":"lax"},"className":"inline-flex items-center rounded-full px-2.5 py-0.5 text-xs font-medium transition-colors","style":{"background":"var(--color-code-bg)","color":"var(--color-accent)","border":"1px solid var(--color-border)"},"children":["#","best-practices"]}],["$","$L2","operations",{"href":"/ar/tags/operations","localeCookie":{"name":"NEXT_LOCALE","sameSite":"lax"},"className":"inline-flex items-center rounded-full px-2.5 py-0.5 text-xs font-medium transition-colors","style":{"background":"var(--color-code-bg)","color":"var(--color-accent)","border":"1px solid var(--color-border)"},"children":["#","operations"]}],["$","$L2","security",{"href":"/ar/tags/security","localeCookie":{"name":"NEXT_LOCALE","sameSite":"lax"},"className":"inline-flex items-center rounded-full px-2.5 py-0.5 text-xs font-medium transition-colors","style":{"background":"var(--color-code-bg)","color":"var(--color-accent)","border":"1px solid var(--color-border)"},"children":["#","security"]}]]}],["$","h1",null,{"className":"mb-4 text-3xl leading-snug font-bold tracking-tight sm:text-4xl","style":{"color":"var(--color-text)"},"children":"أفضل ممارسات Envoy Gateway: قدّم خدمة لنفسك المستقبلية قبل الذهاب إلى الإنتاج"}],["$","div",null,{"className":"flex flex-wrap items-center gap-3 text-sm","style":{"color":"var(--color-muted)"},"children":["$L3","$L4","$L5"]}],"$undefined","$L6"]}],"$L7","$L8"]}],"$L9"]}]}]],["$La"],"$Lb"]}],"loading":null,"isPartial":false}
+3:["$","time",null,{"dateTime":"2026-03-10","children":"10 3月 2026"}]
+4:["$","span",null,{"aria-hidden":"true","children":"·"}]
+5:["$","span",null,{"children":"4 min read"}]
+6:["$","div",null,{"className":"mt-6 border-b","style":{"borderColor":"var(--color-border)"}}]
+c:T2f33,<p>"إنه يعمل" و"النظام مستقر فعلًا" عالمان مختلفان تمامًا. معظم حوادث طبقة ingress لا تحدث لأن Envoy Gateway غير كافٍ، بل لأن الإعدادات وُضعت بتساهل أكثر من اللازم، فتصبح العمليات صندوق مفاجآت مستمرًا. هذه المقالة تجمع أكثر التوصيات العملية على شكل checklist.</p>
+<h2 id="ممارسات-موصى-بها">ممارسات موصى بها</h2>
+<h3 id="1-كن-واضحًا-بشأن-من-يملك-gateway-ومن-يملك-routes">1. كن واضحًا بشأن من يملك Gateway ومن يملك Routes</h3>
+<p>إذا كان هناك عدة أشخاص مشاركين، فافصل المسؤوليات:</p>
+<ul>
+<li>فريق المنصة يدير <code>GatewayClass</code> و <code>Gateway</code></li>
+<li>فرق التطبيقات تدير <code>HTTPRoute</code> الخاص بها</li>
+</ul>
+<p>الفائدة هي أن أمان طبقة ingress وحدود تعريضها لا تتغير عشوائيًا مع كل تطبيق جديد، بينما تبقى لدى فرق التطبيقات مرونة التوجيه. هذا هو أحد أهم أسباب جدارة تصميم Gateway API بالاستخدام، فلا تقم بتسطيحه مرة أخرى إلى blob واحد ضخم من YAML.</p>
+<h3 id="2-تعامل-مع-tls-كخيار-افتراضي-من-البداية">2. تعامل مع TLS كخيار افتراضي من البداية</h3>
+<p>لا تفكر بأسلوب "لنبدأ بـ HTTP ثم نضيف HTTPS لاحقًا."
+ذلك الـ "لاحقًا" يتحول دائمًا تقريبًا إلى طوارئ مساء الجمعة.</p>
+<p>كحد أدنى:</p>
+<ul>
+<li>الـ listeners الخارجية تكون افتراضيًا HTTPS</li>
+<li>يكون لمصادر الشهادات مسار إدارة واضح</li>
+<li>يتم فصل تدفقات شهادات الاختبار و self-signed و production CA عن بعضها</li>
+</ul>
+<p>إذا كان لديك cert-manager أصلًا، فادمجه. تدوير الشهادات آليًا أكثر موثوقية بكثير من ترقيع الـ Secrets يدويًا عند كل دورة تجديد.</p>
+<h3 id="3-اكتب-قواعد-route-بوضوح-ولا-تُفرط-في-تحسين-الراحة">3. اكتب قواعد Route بوضوح، ولا تُفرط في تحسين الراحة</h3>
+<p>قواعد مثل هذه مريحة، لكنها تميل إلى التحول إلى ثقوب سوداء:</p>
+<figure data-rehype-pretty-code-figure=""><pre style="background-color:#24292e;color:#e1e4e8" tabindex="0" data-language="yaml" data-theme="github-dark"><code data-language="yaml" data-theme="github-dark" style="display: grid;"><span data-line=""><span style="color:#85E89D">rules</span><span style="color:#E1E4E8">:</span></span>
+<span data-line=""><span style="color:#E1E4E8">  - </span><span style="color:#85E89D">backendRefs</span><span style="color:#E1E4E8">:</span></span>
+<span data-line=""><span style="color:#E1E4E8">      - </span><span style="color:#85E89D">name</span><span style="color:#E1E4E8">: </span><span style="color:#9ECBFF">backend</span></span>
+<span data-line=""><span style="color:#85E89D">        port</span><span style="color:#E1E4E8">: </span><span style="color:#79B8FF">8080</span></span></code></pre></figure>
+<p>هي ليست خطأ، لكن مع نمو النظام تصبح كثرة قواعد "التقط كل شيء" مؤلمة عند debugging.
+إذا كان بإمكانك كتابة <code>hostnames</code>، وإذا كان بإمكانك كتابة <code>path</code>، فاكتبها بوضوح.</p>
+<h3 id="4-استخدم-تقطيعًا-صغيرًا-للمرور-ولا-تذهب-دفعة-واحدة">4. استخدم تقطيعًا صغيرًا للمرور، ولا تذهب دفعة واحدة</h3>
+<p>عند إطلاق نسخة جديدة، مرّر نسبة صغيرة من المرور أولًا:</p>
+<figure data-rehype-pretty-code-figure=""><pre style="background-color:#24292e;color:#e1e4e8" tabindex="0" data-language="yaml" data-theme="github-dark"><code data-language="yaml" data-theme="github-dark" style="display: grid;"><span data-line=""><span style="color:#85E89D">backendRefs</span><span style="color:#E1E4E8">:</span></span>
+<span data-line=""><span style="color:#E1E4E8">  - </span><span style="color:#85E89D">name</span><span style="color:#E1E4E8">: </span><span style="color:#9ECBFF">api-v1</span></span>
+<span data-line=""><span style="color:#85E89D">    port</span><span style="color:#E1E4E8">: </span><span style="color:#79B8FF">8080</span></span>
+<span data-line=""><span style="color:#85E89D">    weight</span><span style="color:#E1E4E8">: </span><span style="color:#79B8FF">90</span></span>
+<span data-line=""><span style="color:#E1E4E8">  - </span><span style="color:#85E89D">name</span><span style="color:#E1E4E8">: </span><span style="color:#9ECBFF">api-v2</span></span>
+<span data-line=""><span style="color:#85E89D">    port</span><span style="color:#E1E4E8">: </span><span style="color:#79B8FF">8080</span></span>
+<span data-line=""><span style="color:#85E89D">    weight</span><span style="color:#E1E4E8">: </span><span style="color:#79B8FF">10</span></span></code></pre></figure>
+<p>هذا ألطف بكثير من "بدّل service selector كله بضغطة واحدة."
+وعندما تسوء الأمور، يكون التراجع أسرع بكثير، وستكون ممتنًا جدًا لهذا عند الثالثة فجرًا.</p>
+<h3 id="5-ابنِ-عادة-التحقق-من-status-و-events">5. ابنِ عادة التحقق من <code>status</code> و Events</h3>
+<p>قراءة YAML وحدها لا تكفي، بل يجب أن ترى هل قبل الـ controller إعداداتك فعلًا:</p>
+<figure data-rehype-pretty-code-figure=""><pre style="background-color:#24292e;color:#e1e4e8" tabindex="0" data-language="bash" data-theme="github-dark"><code data-language="bash" data-theme="github-dark" style="display: grid;"><span data-line=""><span style="color:#B392F0">kubectl</span><span style="color:#9ECBFF"> get</span><span style="color:#9ECBFF"> gateway</span><span style="color:#79B8FF"> -A</span></span>
+<span data-line=""><span style="color:#B392F0">kubectl</span><span style="color:#9ECBFF"> get</span><span style="color:#9ECBFF"> httproute</span><span style="color:#79B8FF"> -A</span></span>
+<span data-line=""><span style="color:#B392F0">kubectl</span><span style="color:#9ECBFF"> describe</span><span style="color:#9ECBFF"> gateway</span><span style="color:#9ECBFF"> eg</span></span>
+<span data-line=""><span style="color:#B392F0">kubectl</span><span style="color:#9ECBFF"> describe</span><span style="color:#9ECBFF"> httproute</span><span style="color:#9ECBFF"> app-route</span></span></code></pre></figure>
+<p>هذه الفئات من المشاكل لا يمكن غالبًا اكتشافها من <code>spec</code> فقط:</p>
+<ul>
+<li>لم يتم قبول الـ route</li>
+<li>تم حظر reference عبر namespaces</li>
+<li>توجد anomalies في حالة الـ listener</li>
+</ul>
+<p>أسوأ شيء ليس الـ bug نفسه، بل أن "تظن أن الإعداد أخذ مفعوله بينما هو لم يُلتقط أصلًا."</p>
+<h2 id="أخطاء-شائعة">أخطاء شائعة</h2>
+<h3 id="الخطأ-1-التعامل-مع-envoy-gateway-على-أنه-صندوق-أسود-غبي-لإعادة-التوجيه">الخطأ 1: التعامل مع Envoy Gateway على أنه صندوق أسود غبي لإعادة التوجيه</h3>
+<p>هو لا يقوم فقط بتحريك الحزم من A إلى B.
+الوثائق الرسمية تصفه صراحةً على أنه Kubernetes-native API Gateway يمكن إضافة طبقات أخرى من سياسات المرور والأمان فوقه. فإذا استخدمته فقط كبديل عن Ingress، فأنت تستفيد منه بأقل بكثير من إمكاناته.</p>
+<h3 id="الخطأ-2-الإشارة-إلى-شهادات-عبر-namespaces-مختلفة-من-دون-referencegrant">الخطأ 2: الإشارة إلى شهادات عبر Namespaces مختلفة من دون <code>ReferenceGrant</code></h3>
+<p>كثير من الناس يرون أن <code>certificateRefs</code> يدعم حقل namespace، فيشيرون مباشرة عبر namespaces ثم يتساءلون لماذا لا يحدث شيء.
+والإجابة غالبًا ليست رعبًا خارقًا، بل <code>ReferenceGrant</code> مفقود.</p>
+<h3 id="الخطأ-3-اختبار-happy-path-فقط">الخطأ 3: اختبار Happy Path فقط</h3>
+<p>لا تختبر فقط:</p>
+<ul>
+<li><code>curl http://...</code> ينجح مرة واحدة</li>
+</ul>
+<p>بل اختبر أيضًا:</p>
+<ul>
+<li>hostnames مختلفة</li>
+<li>paths مختلفة</li>
+<li>صلاحية شهادة TLS</li>
+<li>ما إذا كانت نسب traffic split تعمل كما هو متوقع</li>
+</ul>
+<p>طبقة ingress تكون الأخطر عندما يبدو happy path مثاليًا بينما تنهار الحالات الطرفية فورًا.</p>
+<h3 id="الخطأ-4-استخدام-إعدادات-الـ-demo-مباشرة-في-الإنتاج">الخطأ 4: استخدام إعدادات الـ Demo مباشرة في الإنتاج</h3>
+<p>الدليل السريع الرسمي ممتاز للتعلّم، لكنه في النهاية quickstart.
+أما للإنتاج فأضف على الأقل:</p>
+<ul>
+<li>أتمتة للشهادات</li>
+<li>Monitoring و alerting</li>
+<li>عملية لإدارة التغييرات</li>
+<li>قواعد تسمية للـ routes</li>
+</ul>
+<p>وإلا فإن quickstart اليوم سيتحول إلى quick-fall غدًا.</p>
+<h2 id="checklist-مصغّر-قبل-الإطلاق">Checklist مصغّر قبل الإطلاق</h2>
+<p>استخدم هذه القائمة قبل الذهاب live:</p>
+<ul>
+<li>هل يفصل <code>Gateway</code> listener بوضوح بين HTTP و HTTPS؟</li>
+<li>هل تم تعريف Secret الخاص بالشهادة وآلية تدويرها بشكل جيد؟</li>
+<li>هل لدى <code>HTTPRoute</code> قيم واضحة لـ <code>hostnames</code> و <code>matches</code>؟</li>
+<li>هل يتم نشر التغييرات المهمة عبر تقطيع صغير للمرور؟</li>
+<li>هل تستطيع الوصول إلى المشكلة بسرعة عبر <code>status</code> و events؟</li>
+</ul>
+<p>إذا كانت هذه العناصر الخمسة موجودة، فأنت تعمل بالفعل على مستوى أعلى من "طالما أنه يعمل فالأمور بخير."</p>
+<h2 id="الخلاصة-في-سطر-واحد">الخلاصة في سطر واحد</h2>
+<p>القيمة الحقيقية لـ Envoy Gateway ليست فقط في توجيه المرور، بل في جعل إعدادات طبقة ingress لديك أكثر معيارية وقابلية للتقسيم والحَوكمة. الميزات مؤقتة، أما العمليات فطويلة الأمد. ومعاملة نفسك المستقبلية بلطف أمر مهم فعلًا.</p>
+<h2 id="الخطوة-التالية">الخطوة التالية</h2>
+<p>إذا كان لا يزال هذا السؤال يدور في الخلفية:</p>
+<p>"أنا فهمت الفكرة نظريًا، لكن عندما يصلني مطلب جديد، أي نوع Route أختار فعليًا؟"</p>
+<p>فالمقالة التالية هي ورقة الغش المناسبة لك:
+👉 <a href="06-route-types-cheatsheet">ورقة غش لأنواع Route</a></p>
+<h2 id="قراءة-إضافية">قراءة إضافية</h2>
+<ul>
+<li><a href="https://gateway.envoyproxy.io/docs/concepts/">Envoy Gateway Concepts</a></li>
+<li><a href="https://gateway.envoyproxy.io/v1.7/tasks/quickstart/">Envoy Gateway Quickstart</a></li>
+<li><a href="https://gateway.envoyproxy.io/docs/tasks/security/secure-gateways/">Envoy Gateway Secure Gateways</a></li>
+<li><a href="https://gateway-api.sigs.k8s.io/">Kubernetes Gateway API Official Docs</a></li>
+</ul>7:["$","div",null,{"className":"prose","dangerouslySetInnerHTML":{"__html":"$c"}}]
+8:["$","footer",null,{"className":"mt-14 border-t pt-8","style":{"borderColor":"var(--color-border)"},"children":[["$","div",null,{"className":"mb-8 flex flex-wrap gap-2","children":[["$","$L2","kubernetes",{"href":"/ar/tags/kubernetes","localeCookie":{"name":"NEXT_LOCALE","sameSite":"lax"},"className":"inline-flex items-center rounded-full px-3 py-1 text-sm font-medium transition-colors","style":{"background":"var(--color-code-bg)","color":"var(--color-accent)","border":"1px solid var(--color-border)"},"children":["#","kubernetes"]}],["$","$L2","envoy-gateway",{"href":"/ar/tags/envoy-gateway","localeCookie":{"name":"NEXT_LOCALE","sameSite":"lax"},"className":"inline-flex items-center rounded-full px-3 py-1 text-sm font-medium transition-colors","style":{"background":"var(--color-code-bg)","color":"var(--color-accent)","border":"1px solid var(--color-border)"},"children":["#","envoy-gateway"]}],["$","$L2","gateway-api",{"href":"/ar/tags/gateway-api","localeCookie":{"name":"NEXT_LOCALE","sameSite":"lax"},"className":"inline-flex items-center rounded-full px-3 py-1 text-sm font-medium transition-colors","style":{"background":"var(--color-code-bg)","color":"var(--color-accent)","border":"1px solid var(--color-border)"},"children":["#","gateway-api"]}],["$","$L2","best-practices",{"href":"/ar/tags/best-practices","localeCookie":{"name":"NEXT_LOCALE","sameSite":"lax"},"className":"inline-flex items-center rounded-full px-3 py-1 text-sm font-medium transition-colors","style":{"background":"var(--color-code-bg)","color":"var(--color-accent)","border":"1px solid var(--color-border)"},"children":["#","best-practices"]}],["$","$L2","operations",{"href":"/ar/tags/operations","localeCookie":{"name":"NEXT_LOCALE","sameSite":"lax"},"className":"inline-flex items-center rounded-full px-3 py-1 text-sm font-medium transition-colors","style":{"background":"var(--color-code-bg)","color":"var(--color-accent)","border":"1px solid var(--color-border)"},"children":["#","operations"]}],["$","$L2","security",{"href":"/ar/tags/security","localeCookie":{"name":"NEXT_LOCALE","sameSite":"lax"},"className":"inline-flex items-center rounded-full px-3 py-1 text-sm font-medium transition-colors","style":{"background":"var(--color-code-bg)","color":"var(--color-accent)","border":"1px solid var(--color-border)"},"children":["#","security"]}]]}],["$","nav",null,{"aria-label":"التنقل بين المقالات","className":"grid grid-cols-1 gap-4 sm:grid-cols-2","children":[["$","$L2",null,{"href":"/ar/blog/k8s/gateway/04-tls-and-security","localeCookie":{"name":"NEXT_LOCALE","sameSite":"lax"},"className":"group rounded-lg border p-4 transition-colors hover:border-accent","style":{"borderColor":"var(--color-border)","background":"var(--color-surface)"},"children":[["$","p",null,{"className":"mb-1 text-xs","style":{"color":"var(--color-muted)"},"children":"→ الأحدث"}],["$","p",null,{"className":"line-clamp-1 text-sm font-medium transition-colors group-hover:text-accent","style":{"color":"var(--color-text)"},"children":"TLS والأمان في Envoy Gateway: اضبط HTTPS وتوقف عن تشغيل الـ API لديك مكشوفًا"}]]}],["$","$L2",null,{"href":"/ar/blog/k8s/gateway/06-route-types-cheatsheet","localeCookie":{"name":"NEXT_LOCALE","sameSite":"lax"},"className":"group rounded-lg border p-4 text-right transition-colors hover:border-accent","style":{"borderColor":"var(--color-border)","background":"var(--color-surface)"},"children":[["$","p",null,{"className":"mb-1 text-xs","style":{"color":"var(--color-muted)"},"children":"الأقدم ←"}],["$","p",null,{"className":"line-clamp-1 text-sm font-medium transition-colors group-hover:text-accent","style":{"color":"var(--color-text)"},"children":"ورقة غش لأنواع Route في Envoy Gateway: ‏HTTPRoute أم GRPCRoute أم TCPRoute أم TLSRoute؟"}]]}]]}]]}]
+e:T2f33,<p>"إنه يعمل" و"النظام مستقر فعلًا" عالمان مختلفان تمامًا. معظم حوادث طبقة ingress لا تحدث لأن Envoy Gateway غير كافٍ، بل لأن الإعدادات وُضعت بتساهل أكثر من اللازم، فتصبح العمليات صندوق مفاجآت مستمرًا. هذه المقالة تجمع أكثر التوصيات العملية على شكل checklist.</p>
+<h2 id="ممارسات-موصى-بها">ممارسات موصى بها</h2>
+<h3 id="1-كن-واضحًا-بشأن-من-يملك-gateway-ومن-يملك-routes">1. كن واضحًا بشأن من يملك Gateway ومن يملك Routes</h3>
+<p>إذا كان هناك عدة أشخاص مشاركين، فافصل المسؤوليات:</p>
+<ul>
+<li>فريق المنصة يدير <code>GatewayClass</code> و <code>Gateway</code></li>
+<li>فرق التطبيقات تدير <code>HTTPRoute</code> الخاص بها</li>
+</ul>
+<p>الفائدة هي أن أمان طبقة ingress وحدود تعريضها لا تتغير عشوائيًا مع كل تطبيق جديد، بينما تبقى لدى فرق التطبيقات مرونة التوجيه. هذا هو أحد أهم أسباب جدارة تصميم Gateway API بالاستخدام، فلا تقم بتسطيحه مرة أخرى إلى blob واحد ضخم من YAML.</p>
+<h3 id="2-تعامل-مع-tls-كخيار-افتراضي-من-البداية">2. تعامل مع TLS كخيار افتراضي من البداية</h3>
+<p>لا تفكر بأسلوب "لنبدأ بـ HTTP ثم نضيف HTTPS لاحقًا."
+ذلك الـ "لاحقًا" يتحول دائمًا تقريبًا إلى طوارئ مساء الجمعة.</p>
+<p>كحد أدنى:</p>
+<ul>
+<li>الـ listeners الخارجية تكون افتراضيًا HTTPS</li>
+<li>يكون لمصادر الشهادات مسار إدارة واضح</li>
+<li>يتم فصل تدفقات شهادات الاختبار و self-signed و production CA عن بعضها</li>
+</ul>
+<p>إذا كان لديك cert-manager أصلًا، فادمجه. تدوير الشهادات آليًا أكثر موثوقية بكثير من ترقيع الـ Secrets يدويًا عند كل دورة تجديد.</p>
+<h3 id="3-اكتب-قواعد-route-بوضوح-ولا-تُفرط-في-تحسين-الراحة">3. اكتب قواعد Route بوضوح، ولا تُفرط في تحسين الراحة</h3>
+<p>قواعد مثل هذه مريحة، لكنها تميل إلى التحول إلى ثقوب سوداء:</p>
+<figure data-rehype-pretty-code-figure=""><pre style="background-color:#24292e;color:#e1e4e8" tabindex="0" data-language="yaml" data-theme="github-dark"><code data-language="yaml" data-theme="github-dark" style="display: grid;"><span data-line=""><span style="color:#85E89D">rules</span><span style="color:#E1E4E8">:</span></span>
+<span data-line=""><span style="color:#E1E4E8">  - </span><span style="color:#85E89D">backendRefs</span><span style="color:#E1E4E8">:</span></span>
+<span data-line=""><span style="color:#E1E4E8">      - </span><span style="color:#85E89D">name</span><span style="color:#E1E4E8">: </span><span style="color:#9ECBFF">backend</span></span>
+<span data-line=""><span style="color:#85E89D">        port</span><span style="color:#E1E4E8">: </span><span style="color:#79B8FF">8080</span></span></code></pre></figure>
+<p>هي ليست خطأ، لكن مع نمو النظام تصبح كثرة قواعد "التقط كل شيء" مؤلمة عند debugging.
+إذا كان بإمكانك كتابة <code>hostnames</code>، وإذا كان بإمكانك كتابة <code>path</code>، فاكتبها بوضوح.</p>
+<h3 id="4-استخدم-تقطيعًا-صغيرًا-للمرور-ولا-تذهب-دفعة-واحدة">4. استخدم تقطيعًا صغيرًا للمرور، ولا تذهب دفعة واحدة</h3>
+<p>عند إطلاق نسخة جديدة، مرّر نسبة صغيرة من المرور أولًا:</p>
+<figure data-rehype-pretty-code-figure=""><pre style="background-color:#24292e;color:#e1e4e8" tabindex="0" data-language="yaml" data-theme="github-dark"><code data-language="yaml" data-theme="github-dark" style="display: grid;"><span data-line=""><span style="color:#85E89D">backendRefs</span><span style="color:#E1E4E8">:</span></span>
+<span data-line=""><span style="color:#E1E4E8">  - </span><span style="color:#85E89D">name</span><span style="color:#E1E4E8">: </span><span style="color:#9ECBFF">api-v1</span></span>
+<span data-line=""><span style="color:#85E89D">    port</span><span style="color:#E1E4E8">: </span><span style="color:#79B8FF">8080</span></span>
+<span data-line=""><span style="color:#85E89D">    weight</span><span style="color:#E1E4E8">: </span><span style="color:#79B8FF">90</span></span>
+<span data-line=""><span style="color:#E1E4E8">  - </span><span style="color:#85E89D">name</span><span style="color:#E1E4E8">: </span><span style="color:#9ECBFF">api-v2</span></span>
+<span data-line=""><span style="color:#85E89D">    port</span><span style="color:#E1E4E8">: </span><span style="color:#79B8FF">8080</span></span>
+<span data-line=""><span style="color:#85E89D">    weight</span><span style="color:#E1E4E8">: </span><span style="color:#79B8FF">10</span></span></code></pre></figure>
+<p>هذا ألطف بكثير من "بدّل service selector كله بضغطة واحدة."
+وعندما تسوء الأمور، يكون التراجع أسرع بكثير، وستكون ممتنًا جدًا لهذا عند الثالثة فجرًا.</p>
+<h3 id="5-ابنِ-عادة-التحقق-من-status-و-events">5. ابنِ عادة التحقق من <code>status</code> و Events</h3>
+<p>قراءة YAML وحدها لا تكفي، بل يجب أن ترى هل قبل الـ controller إعداداتك فعلًا:</p>
+<figure data-rehype-pretty-code-figure=""><pre style="background-color:#24292e;color:#e1e4e8" tabindex="0" data-language="bash" data-theme="github-dark"><code data-language="bash" data-theme="github-dark" style="display: grid;"><span data-line=""><span style="color:#B392F0">kubectl</span><span style="color:#9ECBFF"> get</span><span style="color:#9ECBFF"> gateway</span><span style="color:#79B8FF"> -A</span></span>
+<span data-line=""><span style="color:#B392F0">kubectl</span><span style="color:#9ECBFF"> get</span><span style="color:#9ECBFF"> httproute</span><span style="color:#79B8FF"> -A</span></span>
+<span data-line=""><span style="color:#B392F0">kubectl</span><span style="color:#9ECBFF"> describe</span><span style="color:#9ECBFF"> gateway</span><span style="color:#9ECBFF"> eg</span></span>
+<span data-line=""><span style="color:#B392F0">kubectl</span><span style="color:#9ECBFF"> describe</span><span style="color:#9ECBFF"> httproute</span><span style="color:#9ECBFF"> app-route</span></span></code></pre></figure>
+<p>هذه الفئات من المشاكل لا يمكن غالبًا اكتشافها من <code>spec</code> فقط:</p>
+<ul>
+<li>لم يتم قبول الـ route</li>
+<li>تم حظر reference عبر namespaces</li>
+<li>توجد anomalies في حالة الـ listener</li>
+</ul>
+<p>أسوأ شيء ليس الـ bug نفسه، بل أن "تظن أن الإعداد أخذ مفعوله بينما هو لم يُلتقط أصلًا."</p>
+<h2 id="أخطاء-شائعة">أخطاء شائعة</h2>
+<h3 id="الخطأ-1-التعامل-مع-envoy-gateway-على-أنه-صندوق-أسود-غبي-لإعادة-التوجيه">الخطأ 1: التعامل مع Envoy Gateway على أنه صندوق أسود غبي لإعادة التوجيه</h3>
+<p>هو لا يقوم فقط بتحريك الحزم من A إلى B.
+الوثائق الرسمية تصفه صراحةً على أنه Kubernetes-native API Gateway يمكن إضافة طبقات أخرى من سياسات المرور والأمان فوقه. فإذا استخدمته فقط كبديل عن Ingress، فأنت تستفيد منه بأقل بكثير من إمكاناته.</p>
+<h3 id="الخطأ-2-الإشارة-إلى-شهادات-عبر-namespaces-مختلفة-من-دون-referencegrant">الخطأ 2: الإشارة إلى شهادات عبر Namespaces مختلفة من دون <code>ReferenceGrant</code></h3>
+<p>كثير من الناس يرون أن <code>certificateRefs</code> يدعم حقل namespace، فيشيرون مباشرة عبر namespaces ثم يتساءلون لماذا لا يحدث شيء.
+والإجابة غالبًا ليست رعبًا خارقًا، بل <code>ReferenceGrant</code> مفقود.</p>
+<h3 id="الخطأ-3-اختبار-happy-path-فقط">الخطأ 3: اختبار Happy Path فقط</h3>
+<p>لا تختبر فقط:</p>
+<ul>
+<li><code>curl http://...</code> ينجح مرة واحدة</li>
+</ul>
+<p>بل اختبر أيضًا:</p>
+<ul>
+<li>hostnames مختلفة</li>
+<li>paths مختلفة</li>
+<li>صلاحية شهادة TLS</li>
+<li>ما إذا كانت نسب traffic split تعمل كما هو متوقع</li>
+</ul>
+<p>طبقة ingress تكون الأخطر عندما يبدو happy path مثاليًا بينما تنهار الحالات الطرفية فورًا.</p>
+<h3 id="الخطأ-4-استخدام-إعدادات-الـ-demo-مباشرة-في-الإنتاج">الخطأ 4: استخدام إعدادات الـ Demo مباشرة في الإنتاج</h3>
+<p>الدليل السريع الرسمي ممتاز للتعلّم، لكنه في النهاية quickstart.
+أما للإنتاج فأضف على الأقل:</p>
+<ul>
+<li>أتمتة للشهادات</li>
+<li>Monitoring و alerting</li>
+<li>عملية لإدارة التغييرات</li>
+<li>قواعد تسمية للـ routes</li>
+</ul>
+<p>وإلا فإن quickstart اليوم سيتحول إلى quick-fall غدًا.</p>
+<h2 id="checklist-مصغّر-قبل-الإطلاق">Checklist مصغّر قبل الإطلاق</h2>
+<p>استخدم هذه القائمة قبل الذهاب live:</p>
+<ul>
+<li>هل يفصل <code>Gateway</code> listener بوضوح بين HTTP و HTTPS؟</li>
+<li>هل تم تعريف Secret الخاص بالشهادة وآلية تدويرها بشكل جيد؟</li>
+<li>هل لدى <code>HTTPRoute</code> قيم واضحة لـ <code>hostnames</code> و <code>matches</code>؟</li>
+<li>هل يتم نشر التغييرات المهمة عبر تقطيع صغير للمرور؟</li>
+<li>هل تستطيع الوصول إلى المشكلة بسرعة عبر <code>status</code> و events؟</li>
+</ul>
+<p>إذا كانت هذه العناصر الخمسة موجودة، فأنت تعمل بالفعل على مستوى أعلى من "طالما أنه يعمل فالأمور بخير."</p>
+<h2 id="الخلاصة-في-سطر-واحد">الخلاصة في سطر واحد</h2>
+<p>القيمة الحقيقية لـ Envoy Gateway ليست فقط في توجيه المرور، بل في جعل إعدادات طبقة ingress لديك أكثر معيارية وقابلية للتقسيم والحَوكمة. الميزات مؤقتة، أما العمليات فطويلة الأمد. ومعاملة نفسك المستقبلية بلطف أمر مهم فعلًا.</p>
+<h2 id="الخطوة-التالية">الخطوة التالية</h2>
+<p>إذا كان لا يزال هذا السؤال يدور في الخلفية:</p>
+<p>"أنا فهمت الفكرة نظريًا، لكن عندما يصلني مطلب جديد، أي نوع Route أختار فعليًا؟"</p>
+<p>فالمقالة التالية هي ورقة الغش المناسبة لك:
+👉 <a href="06-route-types-cheatsheet">ورقة غش لأنواع Route</a></p>
+<h2 id="قراءة-إضافية">قراءة إضافية</h2>
+<ul>
+<li><a href="https://gateway.envoyproxy.io/docs/concepts/">Envoy Gateway Concepts</a></li>
+<li><a href="https://gateway.envoyproxy.io/v1.7/tasks/quickstart/">Envoy Gateway Quickstart</a></li>
+<li><a href="https://gateway.envoyproxy.io/docs/tasks/security/secure-gateways/">Envoy Gateway Secure Gateways</a></li>
+<li><a href="https://gateway-api.sigs.k8s.io/">Kubernetes Gateway API Official Docs</a></li>
+</ul>9:["$","aside",null,{"className":"hidden lg:block","children":["$","$Ld",null,{"html":"$e"}]}]
+a:["$","script","script-0",{"src":"/_next/static/chunks/2dddb3bc05093f69.js","async":true}]
+b:["$","$Lf",null,{"children":["$","$10",null,{"name":"Next.MetadataOutlet","children":"$@11"}]}]
+11:null

@@ -1,0 +1,173 @@
+1:"$Sreact.fragment"
+2:I[26795,["/_next/static/chunks/5a5b5b13c22d14f7.js","/_next/static/chunks/a484d1d3dd4b55ab.js"],"default"]
+3:I[73489,["/_next/static/chunks/5a5b5b13c22d14f7.js","/_next/static/chunks/a484d1d3dd4b55ab.js"],"default"]
+6:I[50183,["/_next/static/chunks/5a5b5b13c22d14f7.js","/_next/static/chunks/a484d1d3dd4b55ab.js"],"OutletBoundary"]
+7:"$Sreact.suspense"
+9:I[50183,["/_next/static/chunks/5a5b5b13c22d14f7.js","/_next/static/chunks/a484d1d3dd4b55ab.js"],"ViewportBoundary"]
+b:I[50183,["/_next/static/chunks/5a5b5b13c22d14f7.js","/_next/static/chunks/a484d1d3dd4b55ab.js"],"MetadataBoundary"]
+d:I[63847,[],"default"]
+:HL["/_next/static/chunks/446a7883c02a95fe.css","style"]
+:HL["/_next/static/media/797e433ab948586e-s.p.29207c2f.woff2","font",{"crossOrigin":"","type":"font/woff2"}]
+:HL["/_next/static/media/caa3a2e1cccd8315-s.p.3b6cae6d.woff2","font",{"crossOrigin":"","type":"font/woff2"}]
+0:{"P":null,"b":"Yck3R4ooQxWkwGLT6is1X","c":["","ar","blog","cursor","cli","03-modes"],"q":"","i":false,"f":[[["",{"children":[["locale","ar","d"],{"children":["blog",{"children":[["slug","cursor/cli/03-modes","c"],{"children":["__PAGE__",{}]}]}]}]},"$undefined","$undefined",true],[["$","$1","c",{"children":[null,["$","html",null,{"children":["$","body",null,{"children":["$","$L2",null,{"parallelRouterKey":"children","error":"$undefined","errorStyles":"$undefined","errorScripts":"$undefined","template":["$","$L3",null,{}],"templateStyles":"$undefined","templateScripts":"$undefined","notFound":[[["$","title",null,{"children":"404: This page could not be found."}],["$","div",null,{"style":{"fontFamily":"system-ui,\"Segoe UI\",Roboto,Helvetica,Arial,sans-serif,\"Apple Color Emoji\",\"Segoe UI Emoji\"","height":"100vh","textAlign":"center","display":"flex","flexDirection":"column","alignItems":"center","justifyContent":"center"},"children":["$","div",null,{"children":[["$","style",null,{"dangerouslySetInnerHTML":{"__html":"body{color:#000;background:#fff;margin:0}.next-error-h1{border-right:1px solid rgba(0,0,0,.3)}@media (prefers-color-scheme:dark){body{color:#fff;background:#000}.next-error-h1{border-right:1px solid rgba(255,255,255,.3)}}"}}],["$","h1",null,{"className":"next-error-h1","style":{"display":"inline-block","margin":"0 20px 0 0","padding":"0 23px 0 0","fontSize":24,"fontWeight":500,"verticalAlign":"top","lineHeight":"49px"},"children":404}],["$","div",null,{"style":{"display":"inline-block"},"children":["$","h2",null,{"style":{"fontSize":14,"fontWeight":400,"lineHeight":"49px","margin":0},"children":"This page could not be found."}]}]]}]}]],[]],"forbidden":"$undefined","unauthorized":"$undefined"}]}]}]]}],{"children":[["$","$1","c",{"children":[[["$","link","0",{"rel":"stylesheet","href":"/_next/static/chunks/446a7883c02a95fe.css","precedence":"next","crossOrigin":"$undefined","nonce":"$undefined"}],["$","script","script-0",{"src":"/_next/static/chunks/7923a261b80bb6e1.js","async":true,"nonce":"$undefined"}],["$","script","script-1",{"src":"/_next/static/chunks/e09b4358027e8033.js","async":true,"nonce":"$undefined"}]],"$L4"]}],{"children":[["$","$1","c",{"children":[null,["$","$L2",null,{"parallelRouterKey":"children","error":"$undefined","errorStyles":"$undefined","errorScripts":"$undefined","template":["$","$L3",null,{}],"templateStyles":"$undefined","templateScripts":"$undefined","notFound":"$undefined","forbidden":"$undefined","unauthorized":"$undefined"}]]}],{"children":[["$","$1","c",{"children":[null,["$","$L2",null,{"parallelRouterKey":"children","error":"$undefined","errorStyles":"$undefined","errorScripts":"$undefined","template":["$","$L3",null,{}],"templateStyles":"$undefined","templateScripts":"$undefined","notFound":"$undefined","forbidden":"$undefined","unauthorized":"$undefined"}]]}],{"children":[["$","$1","c",{"children":["$L5",[["$","script","script-0",{"src":"/_next/static/chunks/2dddb3bc05093f69.js","async":true,"nonce":"$undefined"}]],["$","$L6",null,{"children":["$","$7",null,{"name":"Next.MetadataOutlet","children":"$@8"}]}]]}],{},null,false,false]},null,false,false]},null,false,false]},null,false,false]},null,false,false],["$","$1","h",{"children":[null,["$","$L9",null,{"children":"$La"}],["$","div",null,{"hidden":true,"children":["$","$Lb",null,{"children":["$","$7",null,{"name":"Next.Metadata","children":"$Lc"}]}]}],["$","meta",null,{"name":"next-size-adjust","content":""}]]}],false]],"m":"$undefined","G":["$d",[]],"S":true}
+4:["$","div",null,{"lang":"ar","dir":"rtl","className":"geist_a71539c9-module__T19VSG__variable geist_mono_8d43a2aa-module__8Li5zG__variable flex min-h-screen flex-col antialiased","children":[["$","script",null,{"type":"application/ld+json","dangerouslySetInnerHTML":{"__html":"[{\"@context\":\"https://schema.org\",\"@type\":\"WebSite\",\"name\":\"BenXHub Blog\",\"url\":\"https://benxhub.com/ar\",\"inLanguage\":\"ar\",\"publisher\":{\"@type\":\"Organization\",\"name\":\"BenXHub Blog\",\"url\":\"https://benxhub.com\"},\"potentialAction\":{\"@type\":\"SearchAction\",\"target\":{\"@type\":\"EntryPoint\",\"urlTemplate\":\"https://benxhub.com/ar/search?q={search_term_string}\"},\"query-input\":\"required name=search_term_string\"}},{\"@context\":\"https://schema.org\",\"@type\":\"Person\",\"name\":\"BenX\",\"url\":\"https://benxhub.com\",\"sameAs\":[\"https://github.com/benzhub\"]}]"}}],"$Le"]}]
+f:I[33343,["/_next/static/chunks/7923a261b80bb6e1.js","/_next/static/chunks/e09b4358027e8033.js"],"default"]
+10:I[26817,["/_next/static/chunks/7923a261b80bb6e1.js","/_next/static/chunks/e09b4358027e8033.js"],"default"]
+11:I[6197,["/_next/static/chunks/7923a261b80bb6e1.js","/_next/static/chunks/e09b4358027e8033.js"],"default"]
+13:I[40018,["/_next/static/chunks/7923a261b80bb6e1.js","/_next/static/chunks/e09b4358027e8033.js"],"default"]
+e:["$","$Lf",null,{"formats":"$undefined","locale":"ar","messages":{"common":{"siteName":"BenXHub Blog","siteDescription":"مدونة بن إكس التقنية — أشارك فيها تطوير الويب، وتصميم المعمارية، وممارسات الهندسة البرمجية."},"nav":{"home":"الرئيسية","tags":"الوسوم","about":"حول","searchLabel":"البحث في المقالات"},"hero":{"subtitle":"ملاحظات تقنية حول تطوير الويب، وتصميم المعمارية، وممارسات الهندسة البرمجية","cta":"تصفح المقالات"},"posts":{"title":"المقالات","count":"إجمالي {total} مقالة","empty":"لا توجد مقالات بعد، ترقبوا المزيد!","newerPost":"→ الأحدث","olderPost":"الأقدم ←","navLabel":"التنقل بين المقالات"},"pagination":{"prev":"السابق","next":"التالي","page":"الصفحة {current} من {total}","label":"ترقيم صفحات المقالات","pageTitle":"الصفحة {num}","pageDescription":"BenXHub Blog — قائمة المقالات."},"search":{"title":"البحث في المقالات","description":"ابحث في جميع مقالات BenXHub Blog حسب العنوان أو الوصف أو الوسوم.","subtitle":"البحث حسب العنوان أو الوصف أو الوسوم","placeholder":"ابحث في المقالات بالعنوان أو الوصف أو الوسوم…","found":"تم العثور على {count} مقالة","notFound":"لم يتم العثور على مقالات لـ \"{query}\"","emptyTitle":"لا توجد نتائج","emptyHint":"جرب كلمات مفتاحية مختلفة، أو تصفح","allPosts":"جميع المقالات","totalCount":"إجمالي {count} مقالة — اكتب للبحث"},"tags":{"title":"جميع الوسوم","description":"تصفح جميع المقالات حسب الوسم.","count":"إجمالي {count} وسم","empty":"لا توجد وسوم بعد، ترقبوا المزيد!","allTags":"جميع الوسوم","postCount":"{count} مقالة","otherTags":"وسوم أخرى","tagTitle":"مقالات الوسم #{tag}","tagDescription":"جميع المقالات المصنفة بـ \"{tag}\"."},"about":{"title":"حول","description":"حول BenXHub Blog وهذا الموقع.","subtitle":"حول BenXHub Blog وهذا الموقع","siteTitle":"حول هذا الموقع","siteContent":"BenXHub Blog هي مدونة بن إكس التقنية، أشارك فيها تطوير الويب، وتصميم المعمارية، وممارسات الهندسة البرمجية.","authorTitle":"حول المؤلف","authorContent":"أستمتع بالبرمجة ومشاركة المعرفة. أحب توثيق المشكلات التي واجهتها وحلولها. لا تتردد في التواصل عبر الروابط في الشريط الجانبي أو التذييل.","linksTitle":"الروابط"},"sidebar":{"label":"الشريط الجانبي","authorBio":"أستمتع بالبرمجة والمشاركة — متخصص في تطوير الويب، والمعمارية، وDevOps.","searchPlaceholder":"البحث في المقالات…","seriesTitle":"السلاسل","articleCount":"{count} مقالة"},"toc":{"title":"المحتويات","label":"جدول المحتويات"},"notFound":{"message":"هذه الصفحة غير موجودة. قد يكون الرابط معطلاً أو عنوان URL غير صحيح.","backHome":"العودة إلى الرئيسية"},"localeSwitcher":{"label":"تغيير اللغة"}},"now":"$undefined","timeZone":"UTC","children":[["$","$L10",null,{}],["$","$L11",null,{}],["$","main",null,{"className":"flex-1 pt-16","children":["$","$L2",null,{"parallelRouterKey":"children","error":"$undefined","errorStyles":"$undefined","errorScripts":"$undefined","template":["$","$L3",null,{}],"templateStyles":"$undefined","templateScripts":"$undefined","notFound":["$L12",[]],"forbidden":"$undefined","unauthorized":"$undefined"}]}],["$","$L13",null,{}]]}]
+12:["$","div",null,{"className":"mx-auto max-w-2xl px-4 py-20 text-center sm:px-6","children":[["$","h1",null,{"className":"mb-3 text-4xl font-bold tracking-tight","style":{"color":"var(--color-text)"},"children":"404"}],["$","p",null,{"className":"mb-8 text-lg","style":{"color":"var(--color-muted)"},"children":"هذه الصفحة غير موجودة. قد يكون الرابط معطلاً أو عنوان URL غير صحيح."}],"$L14"]}]
+a:[["$","meta","0",{"charSet":"utf-8"}],["$","meta","1",{"name":"viewport","content":"width=device-width, initial-scale=1"}]]
+15:I[14864,["/_next/static/chunks/7923a261b80bb6e1.js","/_next/static/chunks/e09b4358027e8033.js","/_next/static/chunks/2dddb3bc05093f69.js"],"default"]
+14:["$","$L15",null,{"ref":"$undefined","href":"/ar","locale":"$undefined","localeCookie":{"name":"NEXT_LOCALE","sameSite":"lax"},"className":"inline-flex items-center rounded-lg border px-4 py-2.5 text-sm font-medium transition-colors hover:border-accent","style":{"borderColor":"var(--color-border)","color":"var(--color-accent)","background":"var(--color-surface)"},"children":"العودة إلى الرئيسية"}]
+1b:T1575,<p>ثلاثة أوضاع، جملة واحدة للتمييز بينها: <strong>من يمكنه لمس كودك، ومن يكتفي بالحديث</strong>. بمجرد استيعاب ذلك، اختيار الوضع المناسب يصبح سهلاً.</p>
+<h2 id="مقارنة-في-جملة">مقارنة في جملة</h2>
+<table>
+<thead>
+<tr>
+<th>الوضع</th>
+<th>جملة واحدة</th>
+<th>هل يعدّل ملفاتك؟</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td><strong>Agent</strong></td>
+<td>"افعل" شيئاً لي</td>
+<td>✅ نعم</td>
+</tr>
+<tr>
+<td><strong>Plan</strong></td>
+<td>"خطّط" أولاً كيف ستفعل، ثم أقرّر أنا</td>
+<td>ليس بعد — فقط بعد موافقتك</td>
+</tr>
+<tr>
+<td><strong>Ask</strong></td>
+<td>فقط "اسأل" سؤالاً أو ابحث عن شيء</td>
+<td>❌ لا</td>
+</tr>
+</tbody>
+</table>
+<p>تخيلهم ثلاثة زملاء: Agent من يقول "أعطني، أنا أنفّذ"؛ Plan من يقول "دعني أكتب اقتراحاً لتراجعَه أولاً"؛ Ask من يقول "أجاوب فقط، لا ألمس الملفات" — اختر الشخص المناسب ووفر على نفسك نصف المتاعب.</p>
+<h2 id="وضع-agent-الافتراضي">وضع Agent (الافتراضي)</h2>
+<p><strong>حالة الاستخدام</strong>: أن يعدّل الذكاء الاصطناعي الكود مباشرة أو يضيف ميزات أو يعيد الهيكلة. تريد النتائج، لا النقاش.</p>
+<figure data-rehype-pretty-code-figure=""><pre style="background-color:#24292e;color:#e1e4e8" tabindex="0" data-language="bash" data-theme="github-dark"><code data-language="bash" data-theme="github-dark" style="display: grid;"><span data-line=""><span style="color:#B392F0">cursor</span><span style="color:#9ECBFF"> agent</span><span style="color:#9ECBFF"> "Change login to use JWT"</span></span></code></pre></figure>
+<ul>
+<li>يقرأ الملفات، يعدّلها، وقد يشغّل أوامر</li>
+<li>يمكنك قبول أو رفض كل خطوة — أنت المسيطر</li>
+</ul>
+<h2 id="وضع-plan">وضع Plan</h2>
+<p><strong>حالة الاستخدام</strong>: غير متأكد كيف تتعامل مع شيء، أو قلق من أن يغيّر الذكاء الاصطناعي الكثير دفعة واحدة؟ اعرض الخطة قبل الإذن.</p>
+<figure data-rehype-pretty-code-figure=""><pre style="background-color:#24292e;color:#e1e4e8" tabindex="0" data-language="bash" data-theme="github-dark"><code data-language="bash" data-theme="github-dark" style="display: grid;"><span data-line=""><span style="color:#B392F0">cursor</span><span style="color:#9ECBFF"> agent</span><span style="color:#79B8FF"> --plan</span><span style="color:#9ECBFF"> "Refactor the entire API layer"</span></span></code></pre></figure>
+<ul>
+<li>يطرح الذكاء الاصطناعي بعض الأسئلة ويقترح نهجاً</li>
+<li>ينفّذ فقط بعد موافقتك — دون مفاجآت</li>
+</ul>
+<p><strong>متى تستخدمه</strong>: للتغييرات الكبيرة، أو عندما تريد "أن ترى الأمر بوضوح قبل الالتزام."</p>
+<h2 id="وضع-ask-قراءة-فقط">وضع Ask (قراءة فقط)</h2>
+<p><strong>حالة الاستخدام</strong>: تريد فقط أن تسأل "ماذا يفعل هذا الكود" أو "هل هناك طريقة أفضل لكتابة هذا" — ولا تريد <strong>أبداً</strong> تغيير أي ملفات.</p>
+<figure data-rehype-pretty-code-figure=""><pre style="background-color:#24292e;color:#e1e4e8" tabindex="0" data-language="bash" data-theme="github-dark"><code data-language="bash" data-theme="github-dark" style="display: grid;"><span data-line=""><span style="color:#B392F0">cursor</span><span style="color:#9ECBFF"> ask</span><span style="color:#9ECBFF"> "What is the logic in src/auth.ts?"</span></span></code></pre></figure>
+<ul>
+<li>يقرأ ويحلل ويجيب فقط — لا يكتب أبداً</li>
+<li>مفيد لـ CI أو بيئات تريد فيها الفحص فقط دون التعديل</li>
+</ul>
+<h2 id="التبديل-بين-الأوضاع-أثناء-المحادثة">التبديل بين الأوضاع أثناء المحادثة</h2>
+<p>أنت بالفعل داخل محادثة <code>cursor agent</code>؟ استخدم <strong>أوامر الشرطة</strong> للتبديل فوراً:</p>
+<ul>
+<li><code>/plan</code> → التبديل لوضع Plan (خطة أولاً، تنفيذ لاحقاً)</li>
+<li><code>/ask</code> → التبديل لوضع Ask (قراءة فقط، اسأل بحرية)</li>
+</ul>
+<p>لا حاجة للخروج وإعادة التشغيل — كالتبديل بين السرعات أثناء السير.</p>
+<h2 id="ملخص">ملخص</h2>
+<ul>
+<li><strong>Agent</strong>: ينفّذ ويعدّل الملفات — استخدمه عندما تريد النتائج</li>
+<li><strong>Plan</strong>: يخطّط أولاً، ينفّذ فقط بعد موافقتك — استخدمه عندما تريد الأمان</li>
+<li><strong>Ask</strong>: أسئلة فقط، قراءة فقط — استخدمه عندما تريد إجابات دون تغييرات</li>
+</ul>
+<blockquote>
+<p>التالي: <a href="04-non-interactive">04-non-interactive</a> — الوضع غير التفاعلي للسكربتات وCI، تشغيل الذكاء الاصطناعي دون مراقبة</p>
+</blockquote>5:[["$","script",null,{"type":"application/ld+json","dangerouslySetInnerHTML":{"__html":"{\"@context\":\"https://schema.org\",\"@type\":\"Article\",\"headline\":\"Cursor CLI ثلاثة أوضاع: Agent / Plan / Ask\",\"description\":\"Agent يعدّل الملفات، Plan يضع خطة قبل التنفيذ، Ask للقراءة فقط. جملة واحدة للتمييز بينها — وتعلّم التبديل بأوامر الشرطة أثناء المحادثة.\",\"url\":\"https://benxhub.com/ar/blog/cursor/cli/03-modes\",\"mainEntityOfPage\":{\"@type\":\"WebPage\",\"@id\":\"https://benxhub.com/ar/blog/cursor/cli/03-modes\"},\"datePublished\":\"2026-02-24T00:00:00.000Z\",\"dateModified\":\"2026-02-24T00:00:00.000Z\",\"keywords\":\"cursor, cli, agent, plan, ask\",\"inLanguage\":\"ar\",\"author\":{\"@type\":\"Person\",\"name\":\"BenX\",\"url\":\"https://benxhub.com\"},\"publisher\":{\"@type\":\"Organization\",\"name\":\"BenXHub Blog\",\"url\":\"https://benxhub.com\"}}"}}],["$","div",null,{"className":"mx-auto max-w-6xl px-4 py-12 sm:px-6","children":["$","div",null,{"className":"lg:grid lg:grid-cols-[1fr_240px] lg:gap-14","children":[["$","article",null,{"children":[["$","header",null,{"className":"mb-10","children":[["$","div",null,{"className":"mb-4 flex flex-wrap gap-2","children":["$L16","$L17","$L18","$L19","$L1a"]}],["$","h1",null,{"className":"mb-4 text-3xl leading-snug font-bold tracking-tight sm:text-4xl","style":{"color":"var(--color-text)"},"children":"Cursor CLI ثلاثة أوضاع: Agent / Plan / Ask"}],["$","div",null,{"className":"flex flex-wrap items-center gap-3 text-sm","style":{"color":"var(--color-muted)"},"children":[["$","time",null,{"dateTime":"2026-02-24","children":"24 2月 2026"}],["$","span",null,{"aria-hidden":"true","children":"·"}],["$","span",null,{"children":"2 min read"}]]}],"$undefined",["$","div",null,{"className":"mt-6 border-b","style":{"borderColor":"var(--color-border)"}}]]}],["$","div",null,{"className":"prose","dangerouslySetInnerHTML":{"__html":"$1b"}}],"$L1c"]}],"$L1d"]}]}]]
+25:I[24801,["/_next/static/chunks/7923a261b80bb6e1.js","/_next/static/chunks/e09b4358027e8033.js","/_next/static/chunks/2dddb3bc05093f69.js"],"default"]
+1c:["$","footer",null,{"className":"mt-14 border-t pt-8","style":{"borderColor":"var(--color-border)"},"children":[["$","div",null,{"className":"mb-8 flex flex-wrap gap-2","children":["$L1e","$L1f","$L20","$L21","$L22"]}],["$","nav",null,{"aria-label":"التنقل بين المقالات","className":"grid grid-cols-1 gap-4 sm:grid-cols-2","children":["$L23","$L24"]}]]}]
+26:T1575,<p>ثلاثة أوضاع، جملة واحدة للتمييز بينها: <strong>من يمكنه لمس كودك، ومن يكتفي بالحديث</strong>. بمجرد استيعاب ذلك، اختيار الوضع المناسب يصبح سهلاً.</p>
+<h2 id="مقارنة-في-جملة">مقارنة في جملة</h2>
+<table>
+<thead>
+<tr>
+<th>الوضع</th>
+<th>جملة واحدة</th>
+<th>هل يعدّل ملفاتك؟</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td><strong>Agent</strong></td>
+<td>"افعل" شيئاً لي</td>
+<td>✅ نعم</td>
+</tr>
+<tr>
+<td><strong>Plan</strong></td>
+<td>"خطّط" أولاً كيف ستفعل، ثم أقرّر أنا</td>
+<td>ليس بعد — فقط بعد موافقتك</td>
+</tr>
+<tr>
+<td><strong>Ask</strong></td>
+<td>فقط "اسأل" سؤالاً أو ابحث عن شيء</td>
+<td>❌ لا</td>
+</tr>
+</tbody>
+</table>
+<p>تخيلهم ثلاثة زملاء: Agent من يقول "أعطني، أنا أنفّذ"؛ Plan من يقول "دعني أكتب اقتراحاً لتراجعَه أولاً"؛ Ask من يقول "أجاوب فقط، لا ألمس الملفات" — اختر الشخص المناسب ووفر على نفسك نصف المتاعب.</p>
+<h2 id="وضع-agent-الافتراضي">وضع Agent (الافتراضي)</h2>
+<p><strong>حالة الاستخدام</strong>: أن يعدّل الذكاء الاصطناعي الكود مباشرة أو يضيف ميزات أو يعيد الهيكلة. تريد النتائج، لا النقاش.</p>
+<figure data-rehype-pretty-code-figure=""><pre style="background-color:#24292e;color:#e1e4e8" tabindex="0" data-language="bash" data-theme="github-dark"><code data-language="bash" data-theme="github-dark" style="display: grid;"><span data-line=""><span style="color:#B392F0">cursor</span><span style="color:#9ECBFF"> agent</span><span style="color:#9ECBFF"> "Change login to use JWT"</span></span></code></pre></figure>
+<ul>
+<li>يقرأ الملفات، يعدّلها، وقد يشغّل أوامر</li>
+<li>يمكنك قبول أو رفض كل خطوة — أنت المسيطر</li>
+</ul>
+<h2 id="وضع-plan">وضع Plan</h2>
+<p><strong>حالة الاستخدام</strong>: غير متأكد كيف تتعامل مع شيء، أو قلق من أن يغيّر الذكاء الاصطناعي الكثير دفعة واحدة؟ اعرض الخطة قبل الإذن.</p>
+<figure data-rehype-pretty-code-figure=""><pre style="background-color:#24292e;color:#e1e4e8" tabindex="0" data-language="bash" data-theme="github-dark"><code data-language="bash" data-theme="github-dark" style="display: grid;"><span data-line=""><span style="color:#B392F0">cursor</span><span style="color:#9ECBFF"> agent</span><span style="color:#79B8FF"> --plan</span><span style="color:#9ECBFF"> "Refactor the entire API layer"</span></span></code></pre></figure>
+<ul>
+<li>يطرح الذكاء الاصطناعي بعض الأسئلة ويقترح نهجاً</li>
+<li>ينفّذ فقط بعد موافقتك — دون مفاجآت</li>
+</ul>
+<p><strong>متى تستخدمه</strong>: للتغييرات الكبيرة، أو عندما تريد "أن ترى الأمر بوضوح قبل الالتزام."</p>
+<h2 id="وضع-ask-قراءة-فقط">وضع Ask (قراءة فقط)</h2>
+<p><strong>حالة الاستخدام</strong>: تريد فقط أن تسأل "ماذا يفعل هذا الكود" أو "هل هناك طريقة أفضل لكتابة هذا" — ولا تريد <strong>أبداً</strong> تغيير أي ملفات.</p>
+<figure data-rehype-pretty-code-figure=""><pre style="background-color:#24292e;color:#e1e4e8" tabindex="0" data-language="bash" data-theme="github-dark"><code data-language="bash" data-theme="github-dark" style="display: grid;"><span data-line=""><span style="color:#B392F0">cursor</span><span style="color:#9ECBFF"> ask</span><span style="color:#9ECBFF"> "What is the logic in src/auth.ts?"</span></span></code></pre></figure>
+<ul>
+<li>يقرأ ويحلل ويجيب فقط — لا يكتب أبداً</li>
+<li>مفيد لـ CI أو بيئات تريد فيها الفحص فقط دون التعديل</li>
+</ul>
+<h2 id="التبديل-بين-الأوضاع-أثناء-المحادثة">التبديل بين الأوضاع أثناء المحادثة</h2>
+<p>أنت بالفعل داخل محادثة <code>cursor agent</code>؟ استخدم <strong>أوامر الشرطة</strong> للتبديل فوراً:</p>
+<ul>
+<li><code>/plan</code> → التبديل لوضع Plan (خطة أولاً، تنفيذ لاحقاً)</li>
+<li><code>/ask</code> → التبديل لوضع Ask (قراءة فقط، اسأل بحرية)</li>
+</ul>
+<p>لا حاجة للخروج وإعادة التشغيل — كالتبديل بين السرعات أثناء السير.</p>
+<h2 id="ملخص">ملخص</h2>
+<ul>
+<li><strong>Agent</strong>: ينفّذ ويعدّل الملفات — استخدمه عندما تريد النتائج</li>
+<li><strong>Plan</strong>: يخطّط أولاً، ينفّذ فقط بعد موافقتك — استخدمه عندما تريد الأمان</li>
+<li><strong>Ask</strong>: أسئلة فقط، قراءة فقط — استخدمه عندما تريد إجابات دون تغييرات</li>
+</ul>
+<blockquote>
+<p>التالي: <a href="04-non-interactive">04-non-interactive</a> — الوضع غير التفاعلي للسكربتات وCI، تشغيل الذكاء الاصطناعي دون مراقبة</p>
+</blockquote>1d:["$","aside",null,{"className":"hidden lg:block","children":["$","$L25",null,{"html":"$26"}]}]
+16:["$","$L15","cursor",{"ref":"$undefined","href":"/ar/tags/cursor","locale":"$undefined","localeCookie":"$14:props:localeCookie","className":"inline-flex items-center rounded-full px-2.5 py-0.5 text-xs font-medium transition-colors","style":{"background":"var(--color-code-bg)","color":"var(--color-accent)","border":"1px solid var(--color-border)"},"children":["#","cursor"]}]
+17:["$","$L15","cli",{"ref":"$undefined","href":"/ar/tags/cli","locale":"$undefined","localeCookie":"$14:props:localeCookie","className":"inline-flex items-center rounded-full px-2.5 py-0.5 text-xs font-medium transition-colors","style":{"background":"var(--color-code-bg)","color":"var(--color-accent)","border":"1px solid var(--color-border)"},"children":["#","cli"]}]
+18:["$","$L15","agent",{"ref":"$undefined","href":"/ar/tags/agent","locale":"$undefined","localeCookie":"$14:props:localeCookie","className":"inline-flex items-center rounded-full px-2.5 py-0.5 text-xs font-medium transition-colors","style":{"background":"var(--color-code-bg)","color":"var(--color-accent)","border":"1px solid var(--color-border)"},"children":["#","agent"]}]
+19:["$","$L15","plan",{"ref":"$undefined","href":"/ar/tags/plan","locale":"$undefined","localeCookie":"$14:props:localeCookie","className":"inline-flex items-center rounded-full px-2.5 py-0.5 text-xs font-medium transition-colors","style":{"background":"var(--color-code-bg)","color":"var(--color-accent)","border":"1px solid var(--color-border)"},"children":["#","plan"]}]
+1a:["$","$L15","ask",{"ref":"$undefined","href":"/ar/tags/ask","locale":"$undefined","localeCookie":"$14:props:localeCookie","className":"inline-flex items-center rounded-full px-2.5 py-0.5 text-xs font-medium transition-colors","style":{"background":"var(--color-code-bg)","color":"var(--color-accent)","border":"1px solid var(--color-border)"},"children":["#","ask"]}]
+1e:["$","$L15","cursor",{"ref":"$undefined","href":"/ar/tags/cursor","locale":"$undefined","localeCookie":"$14:props:localeCookie","className":"inline-flex items-center rounded-full px-3 py-1 text-sm font-medium transition-colors","style":{"background":"var(--color-code-bg)","color":"var(--color-accent)","border":"1px solid var(--color-border)"},"children":["#","cursor"]}]
+1f:["$","$L15","cli",{"ref":"$undefined","href":"/ar/tags/cli","locale":"$undefined","localeCookie":"$14:props:localeCookie","className":"inline-flex items-center rounded-full px-3 py-1 text-sm font-medium transition-colors","style":{"background":"var(--color-code-bg)","color":"var(--color-accent)","border":"1px solid var(--color-border)"},"children":["#","cli"]}]
+20:["$","$L15","agent",{"ref":"$undefined","href":"/ar/tags/agent","locale":"$undefined","localeCookie":"$14:props:localeCookie","className":"inline-flex items-center rounded-full px-3 py-1 text-sm font-medium transition-colors","style":{"background":"var(--color-code-bg)","color":"var(--color-accent)","border":"1px solid var(--color-border)"},"children":["#","agent"]}]
+21:["$","$L15","plan",{"ref":"$undefined","href":"/ar/tags/plan","locale":"$undefined","localeCookie":"$14:props:localeCookie","className":"inline-flex items-center rounded-full px-3 py-1 text-sm font-medium transition-colors","style":{"background":"var(--color-code-bg)","color":"var(--color-accent)","border":"1px solid var(--color-border)"},"children":["#","plan"]}]
+22:["$","$L15","ask",{"ref":"$undefined","href":"/ar/tags/ask","locale":"$undefined","localeCookie":"$14:props:localeCookie","className":"inline-flex items-center rounded-full px-3 py-1 text-sm font-medium transition-colors","style":{"background":"var(--color-code-bg)","color":"var(--color-accent)","border":"1px solid var(--color-border)"},"children":["#","ask"]}]
+23:["$","$L15",null,{"ref":"$undefined","href":"/ar/blog/cursor/cli/02-basic-usage","locale":"$undefined","localeCookie":"$14:props:localeCookie","className":"group rounded-lg border p-4 transition-colors hover:border-accent","style":{"borderColor":"var(--color-border)","background":"var(--color-surface)"},"children":[["$","p",null,{"className":"mb-1 text-xs","style":{"color":"var(--color-muted)"},"children":"→ الأحدث"}],["$","p",null,{"className":"line-clamp-1 text-sm font-medium transition-colors group-hover:text-accent","style":{"color":"var(--color-text)"},"children":"الاستخدام الأساسي لـ Cursor CLI"}]]}]
+24:["$","$L15",null,{"ref":"$undefined","href":"/ar/blog/cursor/cli/04-non-interactive","locale":"$undefined","localeCookie":"$14:props:localeCookie","className":"group rounded-lg border p-4 text-right transition-colors hover:border-accent","style":{"borderColor":"var(--color-border)","background":"var(--color-surface)"},"children":[["$","p",null,{"className":"mb-1 text-xs","style":{"color":"var(--color-muted)"},"children":"الأقدم ←"}],["$","p",null,{"className":"line-clamp-1 text-sm font-medium transition-colors group-hover:text-accent","style":{"color":"var(--color-text)"},"children":"Cursor CLI الوضع غير التفاعلي (السكربتات وCI)"}]]}]
+27:I[92204,["/_next/static/chunks/5a5b5b13c22d14f7.js","/_next/static/chunks/a484d1d3dd4b55ab.js"],"IconMark"]
+8:null
+c:[["$","title","0",{"children":"Cursor CLI ثلاثة أوضاع: Agent / Plan / Ask | BenXHub Blog"}],["$","meta","1",{"name":"description","content":"Agent يعدّل الملفات، Plan يضع خطة قبل التنفيذ، Ask للقراءة فقط. جملة واحدة للتمييز بينها — وتعلّم التبديل بأوامر الشرطة أثناء المحادثة."}],["$","meta","2",{"property":"og:title","content":"Cursor CLI ثلاثة أوضاع: Agent / Plan / Ask"}],["$","meta","3",{"property":"og:description","content":"Agent يعدّل الملفات، Plan يضع خطة قبل التنفيذ، Ask للقراءة فقط. جملة واحدة للتمييز بينها — وتعلّم التبديل بأوامر الشرطة أثناء المحادثة."}],["$","meta","4",{"property":"og:url","content":"https://benxhub.com/ar/blog/cursor/cli/03-modes"}],["$","meta","5",{"property":"og:type","content":"article"}],["$","meta","6",{"property":"article:published_time","content":"2026-02-24T00:00:00.000Z"}],["$","meta","7",{"property":"article:tag","content":"cursor"}],["$","meta","8",{"property":"article:tag","content":"cli"}],["$","meta","9",{"property":"article:tag","content":"agent"}],["$","meta","10",{"property":"article:tag","content":"plan"}],["$","meta","11",{"property":"article:tag","content":"ask"}],["$","meta","12",{"name":"twitter:card","content":"summary_large_image"}],["$","meta","13",{"name":"twitter:title","content":"Cursor CLI ثلاثة أوضاع: Agent / Plan / Ask"}],["$","meta","14",{"name":"twitter:description","content":"Agent يعدّل الملفات، Plan يضع خطة قبل التنفيذ، Ask للقراءة فقط. جملة واحدة للتمييز بينها — وتعلّم التبديل بأوامر الشرطة أثناء المحادثة."}],["$","link","15",{"rel":"icon","href":"/favicon.ico?favicon.0b3bf435.ico","sizes":"256x256","type":"image/x-icon"}],["$","$L27","16",{}]]
