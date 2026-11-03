@@ -1,9 +1,9 @@
 1:"$Sreact.fragment"
-2:I[14864,["/_next/static/chunks/7923a261b80bb6e1.js","/_next/static/chunks/e09b4358027e8033.js","/_next/static/chunks/2dddb3bc05093f69.js"],"default"]
-8:I[24801,["/_next/static/chunks/7923a261b80bb6e1.js","/_next/static/chunks/e09b4358027e8033.js","/_next/static/chunks/2dddb3bc05093f69.js"],"default"]
+2:I[14864,["/_next/static/chunks/4204edc93da35a5e.js","/_next/static/chunks/f2afb7fd2b7566bb.js","/_next/static/chunks/2dddb3bc05093f69.js"],"default"]
+8:I[24801,["/_next/static/chunks/4204edc93da35a5e.js","/_next/static/chunks/f2afb7fd2b7566bb.js","/_next/static/chunks/2dddb3bc05093f69.js"],"default"]
 a:I[50183,["/_next/static/chunks/5a5b5b13c22d14f7.js","/_next/static/chunks/a484d1d3dd4b55ab.js"],"OutletBoundary"]
 b:"$Sreact.suspense"
-3:T31da,<p>虛擬機預設只能用模擬的顯卡，畫面像在看 PowerPoint 投影片。GPU 直通（Passthrough）就是把實體顯卡整張遞進 VM 裡，讓它直接跟硬體對話，效能接近裸機。想在 VM 裡打遊戲、跑 Stable Diffusion、或者讓 Jellyfin 硬解 4K——都靠這招。</p>
+3:T321a,<p>虛擬機預設只能用模擬的顯卡，畫面像在看 PowerPoint 投影片。GPU 直通（Passthrough）就是把實體顯卡整張遞進 VM 裡，讓它直接跟硬體對話，效能接近裸機。想在 VM 裡打遊戲、跑 Stable Diffusion、或者讓 Jellyfin 硬解 4K——都靠這招。</p>
 <h2 id="前提條件硬體有沒有這個天賦">前提條件：硬體有沒有這個天賦</h2>
 <p>不是所有硬體都能玩直通，先確認這張入場券：</p>
 <ul>
@@ -16,54 +16,54 @@ b:"$Sreact.suspense"
 </blockquote>
 <h2 id="第一步啟用-iommu">第一步：啟用 IOMMU</h2>
 <p>改 GRUB 參數，告訴核心「我要用 IOMMU」：</p>
-<figure data-rehype-pretty-code-figure=""><pre style="background-color:#24292e;color:#e1e4e8" tabindex="0" data-language="bash" data-theme="github-dark"><code data-language="bash" data-theme="github-dark" style="display: grid;"><span data-line=""><span style="color:#6A737D"># Intel CPU</span></span>
-<span data-line=""><span style="color:#B392F0">sed</span><span style="color:#79B8FF"> -i</span><span style="color:#9ECBFF"> 's/GRUB_CMDLINE_LINUX_DEFAULT="quiet"/GRUB_CMDLINE_LINUX_DEFAULT="quiet intel_iommu=on iommu=pt"/'</span><span style="color:#9ECBFF"> /etc/default/grub</span></span>
-<span data-line=""><span style="color:#B392F0">update-grub</span></span>
+<figure data-rehype-pretty-code-figure=""><pre style="background-color:#0d1117;color:#e6edf3" tabindex="0" data-language="bash" data-theme="github-dark-default"><code data-language="bash" data-theme="github-dark-default" style="display: grid;"><span data-line=""><span style="color:#8B949E"># Intel CPU</span></span>
+<span data-line=""><span style="color:#FFA657">sed</span><span style="color:#79C0FF"> -i</span><span style="color:#A5D6FF"> 's/GRUB_CMDLINE_LINUX_DEFAULT="quiet"/GRUB_CMDLINE_LINUX_DEFAULT="quiet intel_iommu=on iommu=pt"/'</span><span style="color:#A5D6FF"> /etc/default/grub</span></span>
+<span data-line=""><span style="color:#FFA657">update-grub</span></span>
 <span data-line=""> </span>
-<span data-line=""><span style="color:#6A737D"># AMD CPU</span></span>
-<span data-line=""><span style="color:#B392F0">sed</span><span style="color:#79B8FF"> -i</span><span style="color:#9ECBFF"> 's/GRUB_CMDLINE_LINUX_DEFAULT="quiet"/GRUB_CMDLINE_LINUX_DEFAULT="quiet amd_iommu=on iommu=pt"/'</span><span style="color:#9ECBFF"> /etc/default/grub</span></span>
-<span data-line=""><span style="color:#B392F0">update-grub</span></span>
+<span data-line=""><span style="color:#8B949E"># AMD CPU</span></span>
+<span data-line=""><span style="color:#FFA657">sed</span><span style="color:#79C0FF"> -i</span><span style="color:#A5D6FF"> 's/GRUB_CMDLINE_LINUX_DEFAULT="quiet"/GRUB_CMDLINE_LINUX_DEFAULT="quiet amd_iommu=on iommu=pt"/'</span><span style="color:#A5D6FF"> /etc/default/grub</span></span>
+<span data-line=""><span style="color:#FFA657">update-grub</span></span>
 <span data-line=""> </span>
-<span data-line=""><span style="color:#6A737D"># 重開機</span></span>
-<span data-line=""><span style="color:#B392F0">reboot</span></span></code></pre></figure>
+<span data-line=""><span style="color:#8B949E"># 重開機</span></span>
+<span data-line=""><span style="color:#FFA657">reboot</span></span></code></pre></figure>
 <p>重開後驗證：</p>
-<figure data-rehype-pretty-code-figure=""><pre style="background-color:#24292e;color:#e1e4e8" tabindex="0" data-language="bash" data-theme="github-dark"><code data-language="bash" data-theme="github-dark" style="display: grid;"><span data-line=""><span style="color:#B392F0">dmesg</span><span style="color:#F97583"> |</span><span style="color:#B392F0"> grep</span><span style="color:#79B8FF"> -e</span><span style="color:#9ECBFF"> DMAR</span><span style="color:#79B8FF"> -e</span><span style="color:#9ECBFF"> IOMMU</span></span>
-<span data-line=""><span style="color:#6A737D"># 看到 "IOMMU enabled" 就對了</span></span></code></pre></figure>
+<figure data-rehype-pretty-code-figure=""><pre style="background-color:#0d1117;color:#e6edf3" tabindex="0" data-language="bash" data-theme="github-dark-default"><code data-language="bash" data-theme="github-dark-default" style="display: grid;"><span data-line=""><span style="color:#FFA657">dmesg</span><span style="color:#FF7B72"> |</span><span style="color:#FFA657"> grep</span><span style="color:#79C0FF"> -e</span><span style="color:#A5D6FF"> DMAR</span><span style="color:#79C0FF"> -e</span><span style="color:#A5D6FF"> IOMMU</span></span>
+<span data-line=""><span style="color:#8B949E"># 看到 "IOMMU enabled" 就對了</span></span></code></pre></figure>
 <h2 id="第二步設定-vfio-驅動">第二步：設定 VFIO 驅動</h2>
 <p>VFIO 是 Linux 的裝置直通框架。我們要做兩件事：載入 VFIO 模組、阻止主機搶走 GPU。</p>
-<figure data-rehype-pretty-code-figure=""><pre style="background-color:#24292e;color:#e1e4e8" tabindex="0" data-language="bash" data-theme="github-dark"><code data-language="bash" data-theme="github-dark" style="display: grid;"><span data-line=""><span style="color:#6A737D"># 載入必要模組</span></span>
-<span data-line=""><span style="color:#B392F0">cat</span><span style="color:#F97583"> >></span><span style="color:#9ECBFF"> /etc/modules</span><span style="color:#F97583"> &#x3C;&#x3C;</span><span style="color:#9ECBFF"> 'EOF'</span></span>
-<span data-line=""><span style="color:#9ECBFF">vfio</span></span>
-<span data-line=""><span style="color:#9ECBFF">vfio_iommu_type1</span></span>
-<span data-line=""><span style="color:#9ECBFF">vfio_pci</span></span>
-<span data-line=""><span style="color:#9ECBFF">vfio_virqfd</span></span>
-<span data-line=""><span style="color:#9ECBFF">EOF</span></span>
+<figure data-rehype-pretty-code-figure=""><pre style="background-color:#0d1117;color:#e6edf3" tabindex="0" data-language="bash" data-theme="github-dark-default"><code data-language="bash" data-theme="github-dark-default" style="display: grid;"><span data-line=""><span style="color:#8B949E"># 載入必要模組</span></span>
+<span data-line=""><span style="color:#FFA657">cat</span><span style="color:#FF7B72"> >></span><span style="color:#A5D6FF"> /etc/modules</span><span style="color:#FF7B72"> &#x3C;&#x3C;</span><span style="color:#E6EDF3"> 'EOF'</span></span>
+<span data-line=""><span style="color:#A5D6FF">vfio</span></span>
+<span data-line=""><span style="color:#A5D6FF">vfio_iommu_type1</span></span>
+<span data-line=""><span style="color:#A5D6FF">vfio_pci</span></span>
+<span data-line=""><span style="color:#A5D6FF">vfio_virqfd</span></span>
+<span data-line=""><span style="color:#E6EDF3">EOF</span></span>
 <span data-line=""> </span>
-<span data-line=""><span style="color:#6A737D"># 擋掉主機的 GPU 驅動（NVIDIA 為例）</span></span>
-<span data-line=""><span style="color:#79B8FF">echo</span><span style="color:#9ECBFF"> "blacklist nouveau"</span><span style="color:#F97583"> >></span><span style="color:#9ECBFF"> /etc/modprobe.d/blacklist.conf</span></span>
-<span data-line=""><span style="color:#79B8FF">echo</span><span style="color:#9ECBFF"> "blacklist nvidia"</span><span style="color:#F97583"> >></span><span style="color:#9ECBFF"> /etc/modprobe.d/blacklist.conf</span></span>
+<span data-line=""><span style="color:#8B949E"># 擋掉主機的 GPU 驅動（NVIDIA 為例）</span></span>
+<span data-line=""><span style="color:#79C0FF">echo</span><span style="color:#A5D6FF"> "blacklist nouveau"</span><span style="color:#FF7B72"> >></span><span style="color:#A5D6FF"> /etc/modprobe.d/blacklist.conf</span></span>
+<span data-line=""><span style="color:#79C0FF">echo</span><span style="color:#A5D6FF"> "blacklist nvidia"</span><span style="color:#FF7B72"> >></span><span style="color:#A5D6FF"> /etc/modprobe.d/blacklist.conf</span></span>
 <span data-line=""> </span>
-<span data-line=""><span style="color:#6A737D"># 查 GPU 的裝置 ID</span></span>
-<span data-line=""><span style="color:#B392F0">lspci</span><span style="color:#79B8FF"> -nn</span><span style="color:#F97583"> |</span><span style="color:#B392F0"> grep</span><span style="color:#79B8FF"> -i</span><span style="color:#9ECBFF"> nvidia</span></span>
-<span data-line=""><span style="color:#6A737D"># 輸出類似：01:00.0 VGA [10de:2684]</span></span>
-<span data-line=""><span style="color:#6A737D">#           01:00.1 Audio [10de:22ba]</span></span>
+<span data-line=""><span style="color:#8B949E"># 查 GPU 的裝置 ID</span></span>
+<span data-line=""><span style="color:#FFA657">lspci</span><span style="color:#79C0FF"> -nn</span><span style="color:#FF7B72"> |</span><span style="color:#FFA657"> grep</span><span style="color:#79C0FF"> -i</span><span style="color:#A5D6FF"> nvidia</span></span>
+<span data-line=""><span style="color:#8B949E"># 輸出類似：01:00.0 VGA [10de:2684]</span></span>
+<span data-line=""><span style="color:#8B949E">#           01:00.1 Audio [10de:22ba]</span></span>
 <span data-line=""> </span>
-<span data-line=""><span style="color:#6A737D"># 把 GPU 和它的音訊裝置都綁給 VFIO</span></span>
-<span data-line=""><span style="color:#79B8FF">echo</span><span style="color:#9ECBFF"> "options vfio-pci ids=10de:2684,10de:22ba"</span><span style="color:#F97583"> >></span><span style="color:#9ECBFF"> /etc/modprobe.d/vfio.conf</span></span>
+<span data-line=""><span style="color:#8B949E"># 把 GPU 和它的音訊裝置都綁給 VFIO</span></span>
+<span data-line=""><span style="color:#79C0FF">echo</span><span style="color:#A5D6FF"> "options vfio-pci ids=10de:2684,10de:22ba"</span><span style="color:#FF7B72"> >></span><span style="color:#A5D6FF"> /etc/modprobe.d/vfio.conf</span></span>
 <span data-line=""> </span>
-<span data-line=""><span style="color:#6A737D"># 更新 initramfs 並重開機</span></span>
-<span data-line=""><span style="color:#B392F0">update-initramfs</span><span style="color:#79B8FF"> -u</span><span style="color:#79B8FF"> -k</span><span style="color:#9ECBFF"> all</span></span>
-<span data-line=""><span style="color:#B392F0">reboot</span></span></code></pre></figure>
+<span data-line=""><span style="color:#8B949E"># 更新 initramfs 並重開機</span></span>
+<span data-line=""><span style="color:#FFA657">update-initramfs</span><span style="color:#79C0FF"> -u</span><span style="color:#79C0FF"> -k</span><span style="color:#A5D6FF"> all</span></span>
+<span data-line=""><span style="color:#FFA657">reboot</span></span></code></pre></figure>
 <blockquote>
 <p>GPU 通常自帶一個 Audio 裝置（HDMI 音訊），記得一起直通，不然 VM 裡會出怪事。就像養貓不能只帶貓不帶貓砂盆。</p>
 </blockquote>
 <h2 id="第三步檢查-iommu-group">第三步：檢查 IOMMU Group</h2>
 <p>確認 GPU 的分組狀況：</p>
-<figure data-rehype-pretty-code-figure=""><pre style="background-color:#24292e;color:#e1e4e8" tabindex="0" data-language="bash" data-theme="github-dark"><code data-language="bash" data-theme="github-dark" style="display: grid;"><span data-line=""><span style="color:#F97583">for</span><span style="color:#E1E4E8"> d </span><span style="color:#F97583">in</span><span style="color:#9ECBFF"> /sys/kernel/iommu_groups/*/devices/*</span><span style="color:#E1E4E8">; </span><span style="color:#F97583">do</span></span>
-<span data-line=""><span style="color:#E1E4E8">    n</span><span style="color:#F97583">=</span><span style="color:#E1E4E8">${d</span><span style="color:#F97583">#*/</span><span style="color:#E1E4E8">iommu_groups</span><span style="color:#F97583">/*</span><span style="color:#E1E4E8">}; n</span><span style="color:#F97583">=</span><span style="color:#E1E4E8">${n</span><span style="color:#F97583">%%/*</span><span style="color:#E1E4E8">}</span></span>
-<span data-line=""><span style="color:#79B8FF">    printf</span><span style="color:#9ECBFF"> 'IOMMU Group %s '</span><span style="color:#9ECBFF"> "</span><span style="color:#E1E4E8">$n</span><span style="color:#9ECBFF">"</span></span>
-<span data-line=""><span style="color:#B392F0">    lspci</span><span style="color:#79B8FF"> -nns</span><span style="color:#9ECBFF"> "${</span><span style="color:#E1E4E8">d</span><span style="color:#F97583">##*/</span><span style="color:#9ECBFF">}"</span></span>
-<span data-line=""><span style="color:#F97583">done</span></span></code></pre></figure>
+<figure data-rehype-pretty-code-figure=""><pre style="background-color:#0d1117;color:#e6edf3" tabindex="0" data-language="bash" data-theme="github-dark-default"><code data-language="bash" data-theme="github-dark-default" style="display: grid;"><span data-line=""><span style="color:#FF7B72">for</span><span style="color:#E6EDF3"> d </span><span style="color:#FF7B72">in</span><span style="color:#A5D6FF"> /sys/kernel/iommu_groups/*/devices/*</span><span style="color:#E6EDF3">; </span><span style="color:#FF7B72">do</span></span>
+<span data-line=""><span style="color:#E6EDF3">    n</span><span style="color:#FF7B72">=</span><span style="color:#E6EDF3">${d</span><span style="color:#FF7B72">#*/</span><span style="color:#E6EDF3">iommu_groups</span><span style="color:#FF7B72">/*</span><span style="color:#E6EDF3">}; n</span><span style="color:#FF7B72">=</span><span style="color:#E6EDF3">${n</span><span style="color:#FF7B72">%%/*</span><span style="color:#E6EDF3">}</span></span>
+<span data-line=""><span style="color:#79C0FF">    printf</span><span style="color:#A5D6FF"> 'IOMMU Group %s '</span><span style="color:#A5D6FF"> "</span><span style="color:#E6EDF3">$n</span><span style="color:#A5D6FF">"</span></span>
+<span data-line=""><span style="color:#FFA657">    lspci</span><span style="color:#79C0FF"> -nns</span><span style="color:#A5D6FF"> "${</span><span style="color:#E6EDF3">d</span><span style="color:#FF7B72">##*/</span><span style="color:#A5D6FF">}"</span></span>
+<span data-line=""><span style="color:#FF7B72">done</span></span></code></pre></figure>
 <p>理想狀態：GPU（VGA + Audio）自己一個 Group。如果跟其他裝置擠在一起，要嘛全部一起直通，要嘛換主機板，要嘛用 ACS Override Patch（有安全風險）。</p>
 <h2 id="第四步vm-設定">第四步：VM 設定</h2>
 <p>建立 VM 的時候選好這些：</p>
@@ -172,9 +172,9 @@ args: -cpu 'host,+kvm_pv_unhalt,+kvm_pv_eoi,hv_vendor_id=proxmox,kvm=off'
 <p>檢查三個地方：一是 hostpci 設定要加 <code>x-vga=1</code> 和 <code>rombar=1</code>；二是有些顯卡需要手動指定 ROM 檔案；三是確認 VM 的顯示設定改為 <code>none</code>，避免虛擬顯卡衝突。</p>
 <h2 id="下一步">下一步</h2>
 <p>GPU 能用了，接下來把門鎖好——防火牆跟權限管理：
-<a href="12-firewall-permissions">防火牆與權限管理</a></p>0:{"buildId":"sM8YAyjANE7sOnXm3EQGk","rsc":["$","$1","c",{"children":[[["$","script",null,{"type":"application/ld+json","dangerouslySetInnerHTML":{"__html":"{\"@context\":\"https://schema.org\",\"@type\":\"Article\",\"headline\":\"Proxmox VE GPU 直通：讓 VM 摸到真正的顯卡\",\"description\":\"PVE GPU Passthrough 完整教學：IOMMU 啟用、VFIO 設定到 NVIDIA Code 43 修復，讓 VM 直接使用實體顯卡跑 AI 和遊戲。\",\"url\":\"https://benxhub.com/zh/blog/pve/11-gpu-passthrough\",\"mainEntityOfPage\":{\"@type\":\"WebPage\",\"@id\":\"https://benxhub.com/zh/blog/pve/11-gpu-passthrough\"},\"datePublished\":\"2026-05-04T00:00:00.000Z\",\"dateModified\":\"2026-05-04T00:00:00.000Z\",\"keywords\":\"proxmox, gpu, passthrough, pcie, iommu\",\"inLanguage\":\"zh\",\"author\":{\"@type\":\"Person\",\"name\":\"BenX\",\"url\":\"https://benxhub.com\"},\"publisher\":{\"@type\":\"Organization\",\"name\":\"BenXHub Blog\",\"url\":\"https://benxhub.com\"}}"}}],["$","div",null,{"className":"mx-auto max-w-6xl px-4 py-12 sm:px-6","children":["$","div",null,{"className":"lg:grid lg:grid-cols-[1fr_240px] lg:gap-14","children":[["$","article",null,{"children":[["$","header",null,{"className":"mb-10","children":[["$","div",null,{"className":"mb-4 flex flex-wrap gap-2","children":[["$","$L2","proxmox",{"href":"/zh/tags/proxmox","localeCookie":{"name":"NEXT_LOCALE","sameSite":"lax"},"className":"inline-flex items-center rounded-full px-2.5 py-0.5 text-xs font-medium transition-colors","style":{"background":"var(--color-code-bg)","color":"var(--color-accent)","border":"1px solid var(--color-border)"},"children":["#","proxmox"]}],["$","$L2","gpu",{"href":"/zh/tags/gpu","localeCookie":{"name":"NEXT_LOCALE","sameSite":"lax"},"className":"inline-flex items-center rounded-full px-2.5 py-0.5 text-xs font-medium transition-colors","style":{"background":"var(--color-code-bg)","color":"var(--color-accent)","border":"1px solid var(--color-border)"},"children":["#","gpu"]}],["$","$L2","passthrough",{"href":"/zh/tags/passthrough","localeCookie":{"name":"NEXT_LOCALE","sameSite":"lax"},"className":"inline-flex items-center rounded-full px-2.5 py-0.5 text-xs font-medium transition-colors","style":{"background":"var(--color-code-bg)","color":"var(--color-accent)","border":"1px solid var(--color-border)"},"children":["#","passthrough"]}],["$","$L2","pcie",{"href":"/zh/tags/pcie","localeCookie":{"name":"NEXT_LOCALE","sameSite":"lax"},"className":"inline-flex items-center rounded-full px-2.5 py-0.5 text-xs font-medium transition-colors","style":{"background":"var(--color-code-bg)","color":"var(--color-accent)","border":"1px solid var(--color-border)"},"children":["#","pcie"]}],["$","$L2","iommu",{"href":"/zh/tags/iommu","localeCookie":{"name":"NEXT_LOCALE","sameSite":"lax"},"className":"inline-flex items-center rounded-full px-2.5 py-0.5 text-xs font-medium transition-colors","style":{"background":"var(--color-code-bg)","color":"var(--color-accent)","border":"1px solid var(--color-border)"},"children":["#","iommu"]}]]}],["$","h1",null,{"className":"mb-4 text-3xl leading-snug font-bold tracking-tight sm:text-4xl","style":{"color":"var(--color-text)"},"children":"Proxmox VE GPU 直通：讓 VM 摸到真正的顯卡"}],["$","div",null,{"className":"flex flex-wrap items-center gap-3 text-sm","style":{"color":"var(--color-muted)"},"children":[["$","time",null,{"dateTime":"2026-05-04","children":"2026 年 5 月 4 日"}],["$","span",null,{"aria-hidden":"true","children":"·"}],["$","span",null,{"children":"7 min read"}]]}],"$undefined",["$","div",null,{"className":"mt-6 border-b","style":{"borderColor":"var(--color-border)"}}]]}],["$","div",null,{"className":"prose","dangerouslySetInnerHTML":{"__html":"$3"}}],"$L4"]}],"$L5"]}]}]],["$L6"],"$L7"]}],"loading":null,"isPartial":false}
+<a href="12-firewall-permissions">防火牆與權限管理</a></p>0:{"buildId":"ekNoF06-0VZrB4pGVUsy8","rsc":["$","$1","c",{"children":[[["$","script",null,{"type":"application/ld+json","dangerouslySetInnerHTML":{"__html":"{\"@context\":\"https://schema.org\",\"@type\":\"Article\",\"headline\":\"Proxmox VE GPU 直通：讓 VM 摸到真正的顯卡\",\"description\":\"PVE GPU Passthrough 完整教學：IOMMU 啟用、VFIO 設定到 NVIDIA Code 43 修復，讓 VM 直接使用實體顯卡跑 AI 和遊戲。\",\"url\":\"https://benxhub.com/zh/blog/pve/11-gpu-passthrough/\",\"mainEntityOfPage\":{\"@type\":\"WebPage\",\"@id\":\"https://benxhub.com/zh/blog/pve/11-gpu-passthrough/\"},\"datePublished\":\"2026-05-04T00:00:00.000Z\",\"dateModified\":\"2026-05-04T00:00:00.000Z\",\"keywords\":\"proxmox, gpu, passthrough, pcie, iommu\",\"inLanguage\":\"zh-Hant\",\"author\":{\"@type\":\"Person\",\"@id\":\"https://benxhub.com/#author\",\"name\":\"BenX\",\"url\":\"https://benxhub.com/zh/about/\",\"sameAs\":[\"https://github.com/benzhub\"]},\"publisher\":{\"@type\":\"Organization\",\"name\":\"BenXHub Blog\",\"url\":\"https://benxhub.com\"},\"image\":\"https://benxhub.com/og-default.png\"}"}}],["$","div",null,{"className":"mx-auto max-w-6xl px-4 py-12 sm:px-6","children":["$","div",null,{"className":"lg:grid lg:grid-cols-[1fr_240px] lg:gap-14","children":[["$","article",null,{"children":[["$","header",null,{"className":"mb-10","children":[["$","div",null,{"className":"mb-4 flex flex-wrap gap-2","children":[["$","$L2","proxmox",{"href":"/zh/tags/proxmox","localeCookie":{"name":"NEXT_LOCALE","sameSite":"lax"},"className":"inline-flex items-center rounded-full px-2.5 py-0.5 text-xs font-medium transition-colors","style":{"background":"var(--color-code-bg)","color":"var(--color-accent)","border":"1px solid var(--color-border)"},"children":["#","proxmox"]}],["$","$L2","gpu",{"href":"/zh/tags/gpu","localeCookie":{"name":"NEXT_LOCALE","sameSite":"lax"},"className":"inline-flex items-center rounded-full px-2.5 py-0.5 text-xs font-medium transition-colors","style":{"background":"var(--color-code-bg)","color":"var(--color-accent)","border":"1px solid var(--color-border)"},"children":["#","gpu"]}],["$","$L2","passthrough",{"href":"/zh/tags/passthrough","localeCookie":{"name":"NEXT_LOCALE","sameSite":"lax"},"className":"inline-flex items-center rounded-full px-2.5 py-0.5 text-xs font-medium transition-colors","style":{"background":"var(--color-code-bg)","color":"var(--color-accent)","border":"1px solid var(--color-border)"},"children":["#","passthrough"]}],["$","$L2","pcie",{"href":"/zh/tags/pcie","localeCookie":{"name":"NEXT_LOCALE","sameSite":"lax"},"className":"inline-flex items-center rounded-full px-2.5 py-0.5 text-xs font-medium transition-colors","style":{"background":"var(--color-code-bg)","color":"var(--color-accent)","border":"1px solid var(--color-border)"},"children":["#","pcie"]}],["$","$L2","iommu",{"href":"/zh/tags/iommu","localeCookie":{"name":"NEXT_LOCALE","sameSite":"lax"},"className":"inline-flex items-center rounded-full px-2.5 py-0.5 text-xs font-medium transition-colors","style":{"background":"var(--color-code-bg)","color":"var(--color-accent)","border":"1px solid var(--color-border)"},"children":["#","iommu"]}]]}],["$","h1",null,{"className":"mb-4 text-3xl leading-snug font-bold tracking-tight sm:text-4xl","style":{"color":"var(--color-text)"},"children":"Proxmox VE GPU 直通：讓 VM 摸到真正的顯卡"}],["$","div",null,{"className":"flex flex-wrap items-center gap-3 text-sm","style":{"color":"var(--color-muted)"},"children":[["$","time",null,{"dateTime":"2026-05-04","children":"2026 年 5 月 4 日"}],["$","span",null,{"aria-hidden":"true","children":"·"}],["$","span",null,{"children":"7 min read"}]]}],"$undefined",["$","div",null,{"className":"mt-6 border-b","style":{"borderColor":"var(--color-border)"}}]]}],["$","div",null,{"className":"prose","dangerouslySetInnerHTML":{"__html":"$3"}}],"$L4"]}],"$L5"]}]}]],["$L6"],"$L7"]}],"loading":null,"isPartial":false}
 4:["$","footer",null,{"className":"mt-14 border-t pt-8","style":{"borderColor":"var(--color-border)"},"children":[["$","div",null,{"className":"mb-8 flex flex-wrap gap-2","children":[["$","$L2","proxmox",{"href":"/zh/tags/proxmox","localeCookie":{"name":"NEXT_LOCALE","sameSite":"lax"},"className":"inline-flex items-center rounded-full px-3 py-1 text-sm font-medium transition-colors","style":{"background":"var(--color-code-bg)","color":"var(--color-accent)","border":"1px solid var(--color-border)"},"children":["#","proxmox"]}],["$","$L2","gpu",{"href":"/zh/tags/gpu","localeCookie":{"name":"NEXT_LOCALE","sameSite":"lax"},"className":"inline-flex items-center rounded-full px-3 py-1 text-sm font-medium transition-colors","style":{"background":"var(--color-code-bg)","color":"var(--color-accent)","border":"1px solid var(--color-border)"},"children":["#","gpu"]}],["$","$L2","passthrough",{"href":"/zh/tags/passthrough","localeCookie":{"name":"NEXT_LOCALE","sameSite":"lax"},"className":"inline-flex items-center rounded-full px-3 py-1 text-sm font-medium transition-colors","style":{"background":"var(--color-code-bg)","color":"var(--color-accent)","border":"1px solid var(--color-border)"},"children":["#","passthrough"]}],["$","$L2","pcie",{"href":"/zh/tags/pcie","localeCookie":{"name":"NEXT_LOCALE","sameSite":"lax"},"className":"inline-flex items-center rounded-full px-3 py-1 text-sm font-medium transition-colors","style":{"background":"var(--color-code-bg)","color":"var(--color-accent)","border":"1px solid var(--color-border)"},"children":["#","pcie"]}],["$","$L2","iommu",{"href":"/zh/tags/iommu","localeCookie":{"name":"NEXT_LOCALE","sameSite":"lax"},"className":"inline-flex items-center rounded-full px-3 py-1 text-sm font-medium transition-colors","style":{"background":"var(--color-code-bg)","color":"var(--color-accent)","border":"1px solid var(--color-border)"},"children":["#","iommu"]}]]}],["$","nav",null,{"aria-label":"文章導覽","className":"grid grid-cols-1 gap-4 sm:grid-cols-2","children":[["$","$L2",null,{"href":"/zh/blog/pve/12-firewall-permissions","localeCookie":{"name":"NEXT_LOCALE","sameSite":"lax"},"className":"group rounded-lg border p-4 transition-colors hover:border-accent","style":{"borderColor":"var(--color-border)","background":"var(--color-surface)"},"children":[["$","p",null,{"className":"mb-1 text-xs","style":{"color":"var(--color-muted)"},"children":"← 較新文章"}],["$","p",null,{"className":"line-clamp-1 text-sm font-medium transition-colors group-hover:text-accent","style":{"color":"var(--color-text)"},"children":"Proxmox VE 防火牆與權限：門鎖跟鑰匙一次講清楚"}]]}],["$","$L2",null,{"href":"/zh/blog/pve/10-ceph-storage","localeCookie":{"name":"NEXT_LOCALE","sameSite":"lax"},"className":"group rounded-lg border p-4 text-right transition-colors hover:border-accent","style":{"borderColor":"var(--color-border)","background":"var(--color-surface)"},"children":[["$","p",null,{"className":"mb-1 text-xs","style":{"color":"var(--color-muted)"},"children":"較舊文章 →"}],["$","p",null,{"className":"line-clamp-1 text-sm font-medium transition-colors group-hover:text-accent","style":{"color":"var(--color-text)"},"children":"Proxmox VE Ceph 超融合：把儲存織進每台主機裡"}]]}]]}]]}]
-9:T31da,<p>虛擬機預設只能用模擬的顯卡，畫面像在看 PowerPoint 投影片。GPU 直通（Passthrough）就是把實體顯卡整張遞進 VM 裡，讓它直接跟硬體對話，效能接近裸機。想在 VM 裡打遊戲、跑 Stable Diffusion、或者讓 Jellyfin 硬解 4K——都靠這招。</p>
+9:T321a,<p>虛擬機預設只能用模擬的顯卡，畫面像在看 PowerPoint 投影片。GPU 直通（Passthrough）就是把實體顯卡整張遞進 VM 裡，讓它直接跟硬體對話，效能接近裸機。想在 VM 裡打遊戲、跑 Stable Diffusion、或者讓 Jellyfin 硬解 4K——都靠這招。</p>
 <h2 id="前提條件硬體有沒有這個天賦">前提條件：硬體有沒有這個天賦</h2>
 <p>不是所有硬體都能玩直通，先確認這張入場券：</p>
 <ul>
@@ -187,54 +187,54 @@ args: -cpu 'host,+kvm_pv_unhalt,+kvm_pv_eoi,hv_vendor_id=proxmox,kvm=off'
 </blockquote>
 <h2 id="第一步啟用-iommu">第一步：啟用 IOMMU</h2>
 <p>改 GRUB 參數，告訴核心「我要用 IOMMU」：</p>
-<figure data-rehype-pretty-code-figure=""><pre style="background-color:#24292e;color:#e1e4e8" tabindex="0" data-language="bash" data-theme="github-dark"><code data-language="bash" data-theme="github-dark" style="display: grid;"><span data-line=""><span style="color:#6A737D"># Intel CPU</span></span>
-<span data-line=""><span style="color:#B392F0">sed</span><span style="color:#79B8FF"> -i</span><span style="color:#9ECBFF"> 's/GRUB_CMDLINE_LINUX_DEFAULT="quiet"/GRUB_CMDLINE_LINUX_DEFAULT="quiet intel_iommu=on iommu=pt"/'</span><span style="color:#9ECBFF"> /etc/default/grub</span></span>
-<span data-line=""><span style="color:#B392F0">update-grub</span></span>
+<figure data-rehype-pretty-code-figure=""><pre style="background-color:#0d1117;color:#e6edf3" tabindex="0" data-language="bash" data-theme="github-dark-default"><code data-language="bash" data-theme="github-dark-default" style="display: grid;"><span data-line=""><span style="color:#8B949E"># Intel CPU</span></span>
+<span data-line=""><span style="color:#FFA657">sed</span><span style="color:#79C0FF"> -i</span><span style="color:#A5D6FF"> 's/GRUB_CMDLINE_LINUX_DEFAULT="quiet"/GRUB_CMDLINE_LINUX_DEFAULT="quiet intel_iommu=on iommu=pt"/'</span><span style="color:#A5D6FF"> /etc/default/grub</span></span>
+<span data-line=""><span style="color:#FFA657">update-grub</span></span>
 <span data-line=""> </span>
-<span data-line=""><span style="color:#6A737D"># AMD CPU</span></span>
-<span data-line=""><span style="color:#B392F0">sed</span><span style="color:#79B8FF"> -i</span><span style="color:#9ECBFF"> 's/GRUB_CMDLINE_LINUX_DEFAULT="quiet"/GRUB_CMDLINE_LINUX_DEFAULT="quiet amd_iommu=on iommu=pt"/'</span><span style="color:#9ECBFF"> /etc/default/grub</span></span>
-<span data-line=""><span style="color:#B392F0">update-grub</span></span>
+<span data-line=""><span style="color:#8B949E"># AMD CPU</span></span>
+<span data-line=""><span style="color:#FFA657">sed</span><span style="color:#79C0FF"> -i</span><span style="color:#A5D6FF"> 's/GRUB_CMDLINE_LINUX_DEFAULT="quiet"/GRUB_CMDLINE_LINUX_DEFAULT="quiet amd_iommu=on iommu=pt"/'</span><span style="color:#A5D6FF"> /etc/default/grub</span></span>
+<span data-line=""><span style="color:#FFA657">update-grub</span></span>
 <span data-line=""> </span>
-<span data-line=""><span style="color:#6A737D"># 重開機</span></span>
-<span data-line=""><span style="color:#B392F0">reboot</span></span></code></pre></figure>
+<span data-line=""><span style="color:#8B949E"># 重開機</span></span>
+<span data-line=""><span style="color:#FFA657">reboot</span></span></code></pre></figure>
 <p>重開後驗證：</p>
-<figure data-rehype-pretty-code-figure=""><pre style="background-color:#24292e;color:#e1e4e8" tabindex="0" data-language="bash" data-theme="github-dark"><code data-language="bash" data-theme="github-dark" style="display: grid;"><span data-line=""><span style="color:#B392F0">dmesg</span><span style="color:#F97583"> |</span><span style="color:#B392F0"> grep</span><span style="color:#79B8FF"> -e</span><span style="color:#9ECBFF"> DMAR</span><span style="color:#79B8FF"> -e</span><span style="color:#9ECBFF"> IOMMU</span></span>
-<span data-line=""><span style="color:#6A737D"># 看到 "IOMMU enabled" 就對了</span></span></code></pre></figure>
+<figure data-rehype-pretty-code-figure=""><pre style="background-color:#0d1117;color:#e6edf3" tabindex="0" data-language="bash" data-theme="github-dark-default"><code data-language="bash" data-theme="github-dark-default" style="display: grid;"><span data-line=""><span style="color:#FFA657">dmesg</span><span style="color:#FF7B72"> |</span><span style="color:#FFA657"> grep</span><span style="color:#79C0FF"> -e</span><span style="color:#A5D6FF"> DMAR</span><span style="color:#79C0FF"> -e</span><span style="color:#A5D6FF"> IOMMU</span></span>
+<span data-line=""><span style="color:#8B949E"># 看到 "IOMMU enabled" 就對了</span></span></code></pre></figure>
 <h2 id="第二步設定-vfio-驅動">第二步：設定 VFIO 驅動</h2>
 <p>VFIO 是 Linux 的裝置直通框架。我們要做兩件事：載入 VFIO 模組、阻止主機搶走 GPU。</p>
-<figure data-rehype-pretty-code-figure=""><pre style="background-color:#24292e;color:#e1e4e8" tabindex="0" data-language="bash" data-theme="github-dark"><code data-language="bash" data-theme="github-dark" style="display: grid;"><span data-line=""><span style="color:#6A737D"># 載入必要模組</span></span>
-<span data-line=""><span style="color:#B392F0">cat</span><span style="color:#F97583"> >></span><span style="color:#9ECBFF"> /etc/modules</span><span style="color:#F97583"> &#x3C;&#x3C;</span><span style="color:#9ECBFF"> 'EOF'</span></span>
-<span data-line=""><span style="color:#9ECBFF">vfio</span></span>
-<span data-line=""><span style="color:#9ECBFF">vfio_iommu_type1</span></span>
-<span data-line=""><span style="color:#9ECBFF">vfio_pci</span></span>
-<span data-line=""><span style="color:#9ECBFF">vfio_virqfd</span></span>
-<span data-line=""><span style="color:#9ECBFF">EOF</span></span>
+<figure data-rehype-pretty-code-figure=""><pre style="background-color:#0d1117;color:#e6edf3" tabindex="0" data-language="bash" data-theme="github-dark-default"><code data-language="bash" data-theme="github-dark-default" style="display: grid;"><span data-line=""><span style="color:#8B949E"># 載入必要模組</span></span>
+<span data-line=""><span style="color:#FFA657">cat</span><span style="color:#FF7B72"> >></span><span style="color:#A5D6FF"> /etc/modules</span><span style="color:#FF7B72"> &#x3C;&#x3C;</span><span style="color:#E6EDF3"> 'EOF'</span></span>
+<span data-line=""><span style="color:#A5D6FF">vfio</span></span>
+<span data-line=""><span style="color:#A5D6FF">vfio_iommu_type1</span></span>
+<span data-line=""><span style="color:#A5D6FF">vfio_pci</span></span>
+<span data-line=""><span style="color:#A5D6FF">vfio_virqfd</span></span>
+<span data-line=""><span style="color:#E6EDF3">EOF</span></span>
 <span data-line=""> </span>
-<span data-line=""><span style="color:#6A737D"># 擋掉主機的 GPU 驅動（NVIDIA 為例）</span></span>
-<span data-line=""><span style="color:#79B8FF">echo</span><span style="color:#9ECBFF"> "blacklist nouveau"</span><span style="color:#F97583"> >></span><span style="color:#9ECBFF"> /etc/modprobe.d/blacklist.conf</span></span>
-<span data-line=""><span style="color:#79B8FF">echo</span><span style="color:#9ECBFF"> "blacklist nvidia"</span><span style="color:#F97583"> >></span><span style="color:#9ECBFF"> /etc/modprobe.d/blacklist.conf</span></span>
+<span data-line=""><span style="color:#8B949E"># 擋掉主機的 GPU 驅動（NVIDIA 為例）</span></span>
+<span data-line=""><span style="color:#79C0FF">echo</span><span style="color:#A5D6FF"> "blacklist nouveau"</span><span style="color:#FF7B72"> >></span><span style="color:#A5D6FF"> /etc/modprobe.d/blacklist.conf</span></span>
+<span data-line=""><span style="color:#79C0FF">echo</span><span style="color:#A5D6FF"> "blacklist nvidia"</span><span style="color:#FF7B72"> >></span><span style="color:#A5D6FF"> /etc/modprobe.d/blacklist.conf</span></span>
 <span data-line=""> </span>
-<span data-line=""><span style="color:#6A737D"># 查 GPU 的裝置 ID</span></span>
-<span data-line=""><span style="color:#B392F0">lspci</span><span style="color:#79B8FF"> -nn</span><span style="color:#F97583"> |</span><span style="color:#B392F0"> grep</span><span style="color:#79B8FF"> -i</span><span style="color:#9ECBFF"> nvidia</span></span>
-<span data-line=""><span style="color:#6A737D"># 輸出類似：01:00.0 VGA [10de:2684]</span></span>
-<span data-line=""><span style="color:#6A737D">#           01:00.1 Audio [10de:22ba]</span></span>
+<span data-line=""><span style="color:#8B949E"># 查 GPU 的裝置 ID</span></span>
+<span data-line=""><span style="color:#FFA657">lspci</span><span style="color:#79C0FF"> -nn</span><span style="color:#FF7B72"> |</span><span style="color:#FFA657"> grep</span><span style="color:#79C0FF"> -i</span><span style="color:#A5D6FF"> nvidia</span></span>
+<span data-line=""><span style="color:#8B949E"># 輸出類似：01:00.0 VGA [10de:2684]</span></span>
+<span data-line=""><span style="color:#8B949E">#           01:00.1 Audio [10de:22ba]</span></span>
 <span data-line=""> </span>
-<span data-line=""><span style="color:#6A737D"># 把 GPU 和它的音訊裝置都綁給 VFIO</span></span>
-<span data-line=""><span style="color:#79B8FF">echo</span><span style="color:#9ECBFF"> "options vfio-pci ids=10de:2684,10de:22ba"</span><span style="color:#F97583"> >></span><span style="color:#9ECBFF"> /etc/modprobe.d/vfio.conf</span></span>
+<span data-line=""><span style="color:#8B949E"># 把 GPU 和它的音訊裝置都綁給 VFIO</span></span>
+<span data-line=""><span style="color:#79C0FF">echo</span><span style="color:#A5D6FF"> "options vfio-pci ids=10de:2684,10de:22ba"</span><span style="color:#FF7B72"> >></span><span style="color:#A5D6FF"> /etc/modprobe.d/vfio.conf</span></span>
 <span data-line=""> </span>
-<span data-line=""><span style="color:#6A737D"># 更新 initramfs 並重開機</span></span>
-<span data-line=""><span style="color:#B392F0">update-initramfs</span><span style="color:#79B8FF"> -u</span><span style="color:#79B8FF"> -k</span><span style="color:#9ECBFF"> all</span></span>
-<span data-line=""><span style="color:#B392F0">reboot</span></span></code></pre></figure>
+<span data-line=""><span style="color:#8B949E"># 更新 initramfs 並重開機</span></span>
+<span data-line=""><span style="color:#FFA657">update-initramfs</span><span style="color:#79C0FF"> -u</span><span style="color:#79C0FF"> -k</span><span style="color:#A5D6FF"> all</span></span>
+<span data-line=""><span style="color:#FFA657">reboot</span></span></code></pre></figure>
 <blockquote>
 <p>GPU 通常自帶一個 Audio 裝置（HDMI 音訊），記得一起直通，不然 VM 裡會出怪事。就像養貓不能只帶貓不帶貓砂盆。</p>
 </blockquote>
 <h2 id="第三步檢查-iommu-group">第三步：檢查 IOMMU Group</h2>
 <p>確認 GPU 的分組狀況：</p>
-<figure data-rehype-pretty-code-figure=""><pre style="background-color:#24292e;color:#e1e4e8" tabindex="0" data-language="bash" data-theme="github-dark"><code data-language="bash" data-theme="github-dark" style="display: grid;"><span data-line=""><span style="color:#F97583">for</span><span style="color:#E1E4E8"> d </span><span style="color:#F97583">in</span><span style="color:#9ECBFF"> /sys/kernel/iommu_groups/*/devices/*</span><span style="color:#E1E4E8">; </span><span style="color:#F97583">do</span></span>
-<span data-line=""><span style="color:#E1E4E8">    n</span><span style="color:#F97583">=</span><span style="color:#E1E4E8">${d</span><span style="color:#F97583">#*/</span><span style="color:#E1E4E8">iommu_groups</span><span style="color:#F97583">/*</span><span style="color:#E1E4E8">}; n</span><span style="color:#F97583">=</span><span style="color:#E1E4E8">${n</span><span style="color:#F97583">%%/*</span><span style="color:#E1E4E8">}</span></span>
-<span data-line=""><span style="color:#79B8FF">    printf</span><span style="color:#9ECBFF"> 'IOMMU Group %s '</span><span style="color:#9ECBFF"> "</span><span style="color:#E1E4E8">$n</span><span style="color:#9ECBFF">"</span></span>
-<span data-line=""><span style="color:#B392F0">    lspci</span><span style="color:#79B8FF"> -nns</span><span style="color:#9ECBFF"> "${</span><span style="color:#E1E4E8">d</span><span style="color:#F97583">##*/</span><span style="color:#9ECBFF">}"</span></span>
-<span data-line=""><span style="color:#F97583">done</span></span></code></pre></figure>
+<figure data-rehype-pretty-code-figure=""><pre style="background-color:#0d1117;color:#e6edf3" tabindex="0" data-language="bash" data-theme="github-dark-default"><code data-language="bash" data-theme="github-dark-default" style="display: grid;"><span data-line=""><span style="color:#FF7B72">for</span><span style="color:#E6EDF3"> d </span><span style="color:#FF7B72">in</span><span style="color:#A5D6FF"> /sys/kernel/iommu_groups/*/devices/*</span><span style="color:#E6EDF3">; </span><span style="color:#FF7B72">do</span></span>
+<span data-line=""><span style="color:#E6EDF3">    n</span><span style="color:#FF7B72">=</span><span style="color:#E6EDF3">${d</span><span style="color:#FF7B72">#*/</span><span style="color:#E6EDF3">iommu_groups</span><span style="color:#FF7B72">/*</span><span style="color:#E6EDF3">}; n</span><span style="color:#FF7B72">=</span><span style="color:#E6EDF3">${n</span><span style="color:#FF7B72">%%/*</span><span style="color:#E6EDF3">}</span></span>
+<span data-line=""><span style="color:#79C0FF">    printf</span><span style="color:#A5D6FF"> 'IOMMU Group %s '</span><span style="color:#A5D6FF"> "</span><span style="color:#E6EDF3">$n</span><span style="color:#A5D6FF">"</span></span>
+<span data-line=""><span style="color:#FFA657">    lspci</span><span style="color:#79C0FF"> -nns</span><span style="color:#A5D6FF"> "${</span><span style="color:#E6EDF3">d</span><span style="color:#FF7B72">##*/</span><span style="color:#A5D6FF">}"</span></span>
+<span data-line=""><span style="color:#FF7B72">done</span></span></code></pre></figure>
 <p>理想狀態：GPU（VGA + Audio）自己一個 Group。如果跟其他裝置擠在一起，要嘛全部一起直通，要嘛換主機板，要嘛用 ACS Override Patch（有安全風險）。</p>
 <h2 id="第四步vm-設定">第四步：VM 設定</h2>
 <p>建立 VM 的時候選好這些：</p>

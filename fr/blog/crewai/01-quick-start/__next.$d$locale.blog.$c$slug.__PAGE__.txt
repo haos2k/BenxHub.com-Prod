@@ -1,13 +1,13 @@
 1:"$Sreact.fragment"
-2:I[14864,["/_next/static/chunks/7923a261b80bb6e1.js","/_next/static/chunks/e09b4358027e8033.js","/_next/static/chunks/2dddb3bc05093f69.js"],"default"]
-8:I[24801,["/_next/static/chunks/7923a261b80bb6e1.js","/_next/static/chunks/e09b4358027e8033.js","/_next/static/chunks/2dddb3bc05093f69.js"],"default"]
+2:I[14864,["/_next/static/chunks/4204edc93da35a5e.js","/_next/static/chunks/f2afb7fd2b7566bb.js","/_next/static/chunks/2dddb3bc05093f69.js"],"default"]
+8:I[24801,["/_next/static/chunks/4204edc93da35a5e.js","/_next/static/chunks/f2afb7fd2b7566bb.js","/_next/static/chunks/2dddb3bc05093f69.js"],"default"]
 a:I[50183,["/_next/static/chunks/5a5b5b13c22d14f7.js","/_next/static/chunks/a484d1d3dd4b55ab.js"],"OutletBoundary"]
 b:"$Sreact.suspense"
-3:T1f6a,<p>L'objectif de cet article est simple : <strong>en suivant les étapes, vous générerez votre premier rapport de recherche IA.</strong><br>
+3:T1fba,<p>L'objectif de cet article est simple : <strong>en suivant les étapes, vous générerez votre premier rapport de recherche IA.</strong><br>
 On prend le chemin le plus court, sans fioritures.</p>
 <h2 id="étape-1--créer-un-projet">Étape 1 : Créer un projet</h2>
-<figure data-rehype-pretty-code-figure=""><pre style="background-color:#24292e;color:#e1e4e8" tabindex="0" data-language="bash" data-theme="github-dark"><code data-language="bash" data-theme="github-dark" style="display: grid;"><span data-line=""><span style="color:#B392F0">crewai</span><span style="color:#9ECBFF"> create</span><span style="color:#9ECBFF"> crew</span><span style="color:#9ECBFF"> latest-ai-notes</span></span>
-<span data-line=""><span style="color:#79B8FF">cd</span><span style="color:#9ECBFF"> latest-ai-notes</span></span></code></pre></figure>
+<figure data-rehype-pretty-code-figure=""><pre style="background-color:#0d1117;color:#e6edf3" tabindex="0" data-language="bash" data-theme="github-dark-default"><code data-language="bash" data-theme="github-dark-default" style="display: grid;"><span data-line=""><span style="color:#FFA657">crewai</span><span style="color:#A5D6FF"> create</span><span style="color:#A5D6FF"> crew</span><span style="color:#A5D6FF"> latest-ai-notes</span></span>
+<span data-line=""><span style="color:#79C0FF">cd</span><span style="color:#A5D6FF"> latest-ai-notes</span></span></code></pre></figure>
 <p>Cela crée la structure de base, notamment :</p>
 <ul>
 <li><code>src/latest_ai_notes/config/agents.yaml</code></li>
@@ -16,49 +16,49 @@ On prend le chemin le plus court, sans fioritures.</p>
 <li><code>src/latest_ai_notes/main.py</code></li>
 </ul>
 <h2 id="étape-2--installer-les-dépendances">Étape 2 : Installer les dépendances</h2>
-<figure data-rehype-pretty-code-figure=""><pre style="background-color:#24292e;color:#e1e4e8" tabindex="0" data-language="bash" data-theme="github-dark"><code data-language="bash" data-theme="github-dark" style="display: grid;"><span data-line=""><span style="color:#B392F0">crewai</span><span style="color:#9ECBFF"> install</span></span></code></pre></figure>
+<figure data-rehype-pretty-code-figure=""><pre style="background-color:#0d1117;color:#e6edf3" tabindex="0" data-language="bash" data-theme="github-dark-default"><code data-language="bash" data-theme="github-dark-default" style="display: grid;"><span data-line=""><span style="color:#FFA657">crewai</span><span style="color:#A5D6FF"> install</span></span></code></pre></figure>
 <p>Cette commande lit la configuration du projet, crée un environnement virtuel et installe les paquets automatiquement.<br>
 Pas besoin d'enchaîner une longue liste de <code>pip install</code> à la main.</p>
 <h2 id="étape-3--configurer-les-agents">Étape 3 : Configurer les agents</h2>
 <p>Modifiez <code>agents.yaml</code> :</p>
-<figure data-rehype-pretty-code-figure=""><pre style="background-color:#24292e;color:#e1e4e8" tabindex="0" data-language="yaml" data-theme="github-dark"><code data-language="yaml" data-theme="github-dark" style="display: grid;"><span data-line=""><span style="color:#85E89D">researcher</span><span style="color:#E1E4E8">:</span></span>
-<span data-line=""><span style="color:#85E89D">  role</span><span style="color:#E1E4E8">: </span><span style="color:#F97583">></span></span>
-<span data-line=""><span style="color:#9ECBFF">    {topic} Researcher</span></span>
-<span data-line=""><span style="color:#85E89D">  goal</span><span style="color:#E1E4E8">: </span><span style="color:#F97583">></span></span>
-<span data-line=""><span style="color:#9ECBFF">    Find useful and current information about {topic}</span></span>
-<span data-line=""><span style="color:#85E89D">  backstory</span><span style="color:#E1E4E8">: </span><span style="color:#F97583">></span></span>
-<span data-line=""><span style="color:#9ECBFF">    You are good at collecting reliable information and summarizing key points.</span></span>
+<figure data-rehype-pretty-code-figure=""><pre style="background-color:#0d1117;color:#e6edf3" tabindex="0" data-language="yaml" data-theme="github-dark-default"><code data-language="yaml" data-theme="github-dark-default" style="display: grid;"><span data-line=""><span style="color:#7EE787">researcher</span><span style="color:#E6EDF3">:</span></span>
+<span data-line=""><span style="color:#7EE787">  role</span><span style="color:#E6EDF3">: </span><span style="color:#FF7B72">></span></span>
+<span data-line=""><span style="color:#A5D6FF">    {topic} Researcher</span></span>
+<span data-line=""><span style="color:#7EE787">  goal</span><span style="color:#E6EDF3">: </span><span style="color:#FF7B72">></span></span>
+<span data-line=""><span style="color:#A5D6FF">    Find useful and current information about {topic}</span></span>
+<span data-line=""><span style="color:#7EE787">  backstory</span><span style="color:#E6EDF3">: </span><span style="color:#FF7B72">></span></span>
+<span data-line=""><span style="color:#A5D6FF">    You are good at collecting reliable information and summarizing key points.</span></span>
 <span data-line=""> </span>
-<span data-line=""><span style="color:#85E89D">reporter</span><span style="color:#E1E4E8">:</span></span>
-<span data-line=""><span style="color:#85E89D">  role</span><span style="color:#E1E4E8">: </span><span style="color:#F97583">></span></span>
-<span data-line=""><span style="color:#9ECBFF">    {topic} Reporter</span></span>
-<span data-line=""><span style="color:#85E89D">  goal</span><span style="color:#E1E4E8">: </span><span style="color:#F97583">></span></span>
-<span data-line=""><span style="color:#9ECBFF">    Convert research notes into a readable markdown report</span></span>
-<span data-line=""><span style="color:#85E89D">  backstory</span><span style="color:#E1E4E8">: </span><span style="color:#F97583">></span></span>
-<span data-line=""><span style="color:#9ECBFF">    You explain technical topics with simple language and clear structure.</span></span></code></pre></figure>
+<span data-line=""><span style="color:#7EE787">reporter</span><span style="color:#E6EDF3">:</span></span>
+<span data-line=""><span style="color:#7EE787">  role</span><span style="color:#E6EDF3">: </span><span style="color:#FF7B72">></span></span>
+<span data-line=""><span style="color:#A5D6FF">    {topic} Reporter</span></span>
+<span data-line=""><span style="color:#7EE787">  goal</span><span style="color:#E6EDF3">: </span><span style="color:#FF7B72">></span></span>
+<span data-line=""><span style="color:#A5D6FF">    Convert research notes into a readable markdown report</span></span>
+<span data-line=""><span style="color:#7EE787">  backstory</span><span style="color:#E6EDF3">: </span><span style="color:#FF7B72">></span></span>
+<span data-line=""><span style="color:#A5D6FF">    You explain technical topics with simple language and clear structure.</span></span></code></pre></figure>
 <h2 id="étape-4--configurer-les-tâches">Étape 4 : Configurer les tâches</h2>
 <p>Modifiez <code>tasks.yaml</code> :</p>
-<figure data-rehype-pretty-code-figure=""><pre style="background-color:#24292e;color:#e1e4e8" tabindex="0" data-language="yaml" data-theme="github-dark"><code data-language="yaml" data-theme="github-dark" style="display: grid;"><span data-line=""><span style="color:#85E89D">research_task</span><span style="color:#E1E4E8">:</span></span>
-<span data-line=""><span style="color:#85E89D">  description</span><span style="color:#E1E4E8">: </span><span style="color:#F97583">></span></span>
-<span data-line=""><span style="color:#9ECBFF">    Research {topic}. Focus on trends, tools, and practical examples in 2026.</span></span>
-<span data-line=""><span style="color:#85E89D">  expected_output</span><span style="color:#E1E4E8">: </span><span style="color:#F97583">></span></span>
-<span data-line=""><span style="color:#9ECBFF">    10 bullet points with short explanations.</span></span>
-<span data-line=""><span style="color:#85E89D">  agent</span><span style="color:#E1E4E8">: </span><span style="color:#9ECBFF">researcher</span></span>
+<figure data-rehype-pretty-code-figure=""><pre style="background-color:#0d1117;color:#e6edf3" tabindex="0" data-language="yaml" data-theme="github-dark-default"><code data-language="yaml" data-theme="github-dark-default" style="display: grid;"><span data-line=""><span style="color:#7EE787">research_task</span><span style="color:#E6EDF3">:</span></span>
+<span data-line=""><span style="color:#7EE787">  description</span><span style="color:#E6EDF3">: </span><span style="color:#FF7B72">></span></span>
+<span data-line=""><span style="color:#A5D6FF">    Research {topic}. Focus on trends, tools, and practical examples in 2026.</span></span>
+<span data-line=""><span style="color:#7EE787">  expected_output</span><span style="color:#E6EDF3">: </span><span style="color:#FF7B72">></span></span>
+<span data-line=""><span style="color:#A5D6FF">    10 bullet points with short explanations.</span></span>
+<span data-line=""><span style="color:#7EE787">  agent</span><span style="color:#E6EDF3">: </span><span style="color:#A5D6FF">researcher</span></span>
 <span data-line=""> </span>
-<span data-line=""><span style="color:#85E89D">report_task</span><span style="color:#E1E4E8">:</span></span>
-<span data-line=""><span style="color:#85E89D">  description</span><span style="color:#E1E4E8">: </span><span style="color:#F97583">></span></span>
-<span data-line=""><span style="color:#9ECBFF">    Expand the research notes into a complete markdown article for beginners.</span></span>
-<span data-line=""><span style="color:#85E89D">  expected_output</span><span style="color:#E1E4E8">: </span><span style="color:#F97583">></span></span>
-<span data-line=""><span style="color:#9ECBFF">    A beginner-friendly markdown report with sections and conclusion.</span></span>
-<span data-line=""><span style="color:#85E89D">  agent</span><span style="color:#E1E4E8">: </span><span style="color:#9ECBFF">reporter</span></span>
-<span data-line=""><span style="color:#85E89D">  context</span><span style="color:#E1E4E8">:</span></span>
-<span data-line=""><span style="color:#E1E4E8">    - </span><span style="color:#9ECBFF">research_task</span></span>
-<span data-line=""><span style="color:#85E89D">  output_file</span><span style="color:#E1E4E8">: </span><span style="color:#9ECBFF">output/report.md</span></span></code></pre></figure>
+<span data-line=""><span style="color:#7EE787">report_task</span><span style="color:#E6EDF3">:</span></span>
+<span data-line=""><span style="color:#7EE787">  description</span><span style="color:#E6EDF3">: </span><span style="color:#FF7B72">></span></span>
+<span data-line=""><span style="color:#A5D6FF">    Expand the research notes into a complete markdown article for beginners.</span></span>
+<span data-line=""><span style="color:#7EE787">  expected_output</span><span style="color:#E6EDF3">: </span><span style="color:#FF7B72">></span></span>
+<span data-line=""><span style="color:#A5D6FF">    A beginner-friendly markdown report with sections and conclusion.</span></span>
+<span data-line=""><span style="color:#7EE787">  agent</span><span style="color:#E6EDF3">: </span><span style="color:#A5D6FF">reporter</span></span>
+<span data-line=""><span style="color:#7EE787">  context</span><span style="color:#E6EDF3">:</span></span>
+<span data-line=""><span style="color:#E6EDF3">    - </span><span style="color:#A5D6FF">research_task</span></span>
+<span data-line=""><span style="color:#7EE787">  output_file</span><span style="color:#E6EDF3">: </span><span style="color:#A5D6FF">output/report.md</span></span></code></pre></figure>
 <blockquote>
 <p>💡 Le <code>context</code> est important : il indique à la deuxième tâche de consommer les résultats de la première.</p>
 </blockquote>
 <h2 id="étape-5--lancer-le-crew">Étape 5 : Lancer le crew</h2>
-<figure data-rehype-pretty-code-figure=""><pre style="background-color:#24292e;color:#e1e4e8" tabindex="0" data-language="bash" data-theme="github-dark"><code data-language="bash" data-theme="github-dark" style="display: grid;"><span data-line=""><span style="color:#B392F0">crewai</span><span style="color:#9ECBFF"> run</span></span></code></pre></figure>
+<figure data-rehype-pretty-code-figure=""><pre style="background-color:#0d1117;color:#e6edf3" tabindex="0" data-language="bash" data-theme="github-dark-default"><code data-language="bash" data-theme="github-dark-default" style="display: grid;"><span data-line=""><span style="color:#FFA657">crewai</span><span style="color:#A5D6FF"> run</span></span></code></pre></figure>
 <p>En cas de succès, vous verrez le résultat dans <code>output/report.md</code>.<br>
 Un délai au premier lancement est normal. Les appels au modèle, c'est comme un chat qui se réveille : il faut un moment avant qu'il ne réagisse.</p>
 <h2 id="problèmes-courants">Problèmes courants</h2>
@@ -91,13 +91,13 @@ Un délai au premier lancement est normal. Les appels au modèle, c'est comme un
 <h2 id="prochaine-étape">Prochaine étape</h2>
 <p>Vous avez terminé votre premier workflow.<br>
 Ensuite, nous verrons la compétence de découpage la plus critique :<br>
-👉 <a href="02-agents-and-tasks">Agents et tâches</a></p>0:{"buildId":"sM8YAyjANE7sOnXm3EQGk","rsc":["$","$1","c",{"children":[[["$","script",null,{"type":"application/ld+json","dangerouslySetInnerHTML":{"__html":"{\"@context\":\"https://schema.org\",\"@type\":\"Article\",\"headline\":\"CrewAI — Démarrage rapide : votre premier Crew de recherche en 10 minutes\",\"description\":\"De l'installation à l'exécution, complétez votre premier projet CrewAI fonctionnel.\",\"url\":\"https://benxhub.com/fr/blog/crewai/01-quick-start\",\"mainEntityOfPage\":{\"@type\":\"WebPage\",\"@id\":\"https://benxhub.com/fr/blog/crewai/01-quick-start\"},\"datePublished\":\"2026-03-01T00:00:00.000Z\",\"dateModified\":\"2026-03-01T00:00:00.000Z\",\"keywords\":\"crewai, quick-start, python, agent\",\"inLanguage\":\"fr\",\"author\":{\"@type\":\"Person\",\"name\":\"BenX\",\"url\":\"https://benxhub.com\"},\"publisher\":{\"@type\":\"Organization\",\"name\":\"BenXHub Blog\",\"url\":\"https://benxhub.com\"}}"}}],["$","div",null,{"className":"mx-auto max-w-6xl px-4 py-12 sm:px-6","children":["$","div",null,{"className":"lg:grid lg:grid-cols-[1fr_240px] lg:gap-14","children":[["$","article",null,{"children":[["$","header",null,{"className":"mb-10","children":[["$","div",null,{"className":"mb-4 flex flex-wrap gap-2","children":[["$","$L2","crewai",{"href":"/fr/tags/crewai","localeCookie":{"name":"NEXT_LOCALE","sameSite":"lax"},"className":"inline-flex items-center rounded-full px-2.5 py-0.5 text-xs font-medium transition-colors","style":{"background":"var(--color-code-bg)","color":"var(--color-accent)","border":"1px solid var(--color-border)"},"children":["#","crewai"]}],["$","$L2","quick-start",{"href":"/fr/tags/quick-start","localeCookie":{"name":"NEXT_LOCALE","sameSite":"lax"},"className":"inline-flex items-center rounded-full px-2.5 py-0.5 text-xs font-medium transition-colors","style":{"background":"var(--color-code-bg)","color":"var(--color-accent)","border":"1px solid var(--color-border)"},"children":["#","quick-start"]}],["$","$L2","python",{"href":"/fr/tags/python","localeCookie":{"name":"NEXT_LOCALE","sameSite":"lax"},"className":"inline-flex items-center rounded-full px-2.5 py-0.5 text-xs font-medium transition-colors","style":{"background":"var(--color-code-bg)","color":"var(--color-accent)","border":"1px solid var(--color-border)"},"children":["#","python"]}],["$","$L2","agent",{"href":"/fr/tags/agent","localeCookie":{"name":"NEXT_LOCALE","sameSite":"lax"},"className":"inline-flex items-center rounded-full px-2.5 py-0.5 text-xs font-medium transition-colors","style":{"background":"var(--color-code-bg)","color":"var(--color-accent)","border":"1px solid var(--color-border)"},"children":["#","agent"]}]]}],["$","h1",null,{"className":"mb-4 text-3xl leading-snug font-bold tracking-tight sm:text-4xl","style":{"color":"var(--color-text)"},"children":"CrewAI — Démarrage rapide : votre premier Crew de recherche en 10 minutes"}],["$","div",null,{"className":"flex flex-wrap items-center gap-3 text-sm","style":{"color":"var(--color-muted)"},"children":[["$","time",null,{"dateTime":"2026-03-01","children":"1 mars 2026"}],["$","span",null,{"aria-hidden":"true","children":"·"}],["$","span",null,{"children":"2 min read"}]]}],"$undefined",["$","div",null,{"className":"mt-6 border-b","style":{"borderColor":"var(--color-border)"}}]]}],["$","div",null,{"className":"prose","dangerouslySetInnerHTML":{"__html":"$3"}}],"$L4"]}],"$L5"]}]}]],["$L6"],"$L7"]}],"loading":null,"isPartial":false}
+👉 <a href="02-agents-and-tasks">Agents et tâches</a></p>0:{"buildId":"ekNoF06-0VZrB4pGVUsy8","rsc":["$","$1","c",{"children":[[["$","script",null,{"type":"application/ld+json","dangerouslySetInnerHTML":{"__html":"{\"@context\":\"https://schema.org\",\"@type\":\"Article\",\"headline\":\"CrewAI — Démarrage rapide : votre premier Crew de recherche en 10 minutes\",\"description\":\"De l'installation à l'exécution, complétez votre premier projet CrewAI fonctionnel.\",\"url\":\"https://benxhub.com/fr/blog/crewai/01-quick-start/\",\"mainEntityOfPage\":{\"@type\":\"WebPage\",\"@id\":\"https://benxhub.com/fr/blog/crewai/01-quick-start/\"},\"datePublished\":\"2026-03-01T00:00:00.000Z\",\"dateModified\":\"2026-03-01T00:00:00.000Z\",\"keywords\":\"crewai, quick-start, python, agent\",\"inLanguage\":\"fr\",\"author\":{\"@type\":\"Person\",\"@id\":\"https://benxhub.com/#author\",\"name\":\"BenX\",\"url\":\"https://benxhub.com/fr/about/\",\"sameAs\":[\"https://github.com/benzhub\"]},\"publisher\":{\"@type\":\"Organization\",\"name\":\"BenXHub Blog\",\"url\":\"https://benxhub.com\"},\"image\":\"https://benxhub.com/og-default.png\"}"}}],["$","div",null,{"className":"mx-auto max-w-6xl px-4 py-12 sm:px-6","children":["$","div",null,{"className":"lg:grid lg:grid-cols-[1fr_240px] lg:gap-14","children":[["$","article",null,{"children":[["$","header",null,{"className":"mb-10","children":[["$","div",null,{"className":"mb-4 flex flex-wrap gap-2","children":[["$","$L2","crewai",{"href":"/fr/tags/crewai","localeCookie":{"name":"NEXT_LOCALE","sameSite":"lax"},"className":"inline-flex items-center rounded-full px-2.5 py-0.5 text-xs font-medium transition-colors","style":{"background":"var(--color-code-bg)","color":"var(--color-accent)","border":"1px solid var(--color-border)"},"children":["#","crewai"]}],["$","$L2","quick-start",{"href":"/fr/tags/quick-start","localeCookie":{"name":"NEXT_LOCALE","sameSite":"lax"},"className":"inline-flex items-center rounded-full px-2.5 py-0.5 text-xs font-medium transition-colors","style":{"background":"var(--color-code-bg)","color":"var(--color-accent)","border":"1px solid var(--color-border)"},"children":["#","quick-start"]}],["$","$L2","python",{"href":"/fr/tags/python","localeCookie":{"name":"NEXT_LOCALE","sameSite":"lax"},"className":"inline-flex items-center rounded-full px-2.5 py-0.5 text-xs font-medium transition-colors","style":{"background":"var(--color-code-bg)","color":"var(--color-accent)","border":"1px solid var(--color-border)"},"children":["#","python"]}],["$","$L2","agent",{"href":"/fr/tags/agent","localeCookie":{"name":"NEXT_LOCALE","sameSite":"lax"},"className":"inline-flex items-center rounded-full px-2.5 py-0.5 text-xs font-medium transition-colors","style":{"background":"var(--color-code-bg)","color":"var(--color-accent)","border":"1px solid var(--color-border)"},"children":["#","agent"]}]]}],["$","h1",null,{"className":"mb-4 text-3xl leading-snug font-bold tracking-tight sm:text-4xl","style":{"color":"var(--color-text)"},"children":"CrewAI — Démarrage rapide : votre premier Crew de recherche en 10 minutes"}],["$","div",null,{"className":"flex flex-wrap items-center gap-3 text-sm","style":{"color":"var(--color-muted)"},"children":[["$","time",null,{"dateTime":"2026-03-01","children":"1 mars 2026"}],["$","span",null,{"aria-hidden":"true","children":"·"}],["$","span",null,{"children":"2 min read"}]]}],"$undefined",["$","div",null,{"className":"mt-6 border-b","style":{"borderColor":"var(--color-border)"}}]]}],["$","div",null,{"className":"prose","dangerouslySetInnerHTML":{"__html":"$3"}}],"$L4"]}],"$L5"]}]}]],["$L6"],"$L7"]}],"loading":null,"isPartial":false}
 4:["$","footer",null,{"className":"mt-14 border-t pt-8","style":{"borderColor":"var(--color-border)"},"children":[["$","div",null,{"className":"mb-8 flex flex-wrap gap-2","children":[["$","$L2","crewai",{"href":"/fr/tags/crewai","localeCookie":{"name":"NEXT_LOCALE","sameSite":"lax"},"className":"inline-flex items-center rounded-full px-3 py-1 text-sm font-medium transition-colors","style":{"background":"var(--color-code-bg)","color":"var(--color-accent)","border":"1px solid var(--color-border)"},"children":["#","crewai"]}],["$","$L2","quick-start",{"href":"/fr/tags/quick-start","localeCookie":{"name":"NEXT_LOCALE","sameSite":"lax"},"className":"inline-flex items-center rounded-full px-3 py-1 text-sm font-medium transition-colors","style":{"background":"var(--color-code-bg)","color":"var(--color-accent)","border":"1px solid var(--color-border)"},"children":["#","quick-start"]}],["$","$L2","python",{"href":"/fr/tags/python","localeCookie":{"name":"NEXT_LOCALE","sameSite":"lax"},"className":"inline-flex items-center rounded-full px-3 py-1 text-sm font-medium transition-colors","style":{"background":"var(--color-code-bg)","color":"var(--color-accent)","border":"1px solid var(--color-border)"},"children":["#","python"]}],["$","$L2","agent",{"href":"/fr/tags/agent","localeCookie":{"name":"NEXT_LOCALE","sameSite":"lax"},"className":"inline-flex items-center rounded-full px-3 py-1 text-sm font-medium transition-colors","style":{"background":"var(--color-code-bg)","color":"var(--color-accent)","border":"1px solid var(--color-border)"},"children":["#","agent"]}]]}],["$","nav",null,{"aria-label":"Navigation des articles","className":"grid grid-cols-1 gap-4 sm:grid-cols-2","children":[["$","$L2",null,{"href":"/fr/blog/crewai/00-overview","localeCookie":{"name":"NEXT_LOCALE","sameSite":"lax"},"className":"group rounded-lg border p-4 transition-colors hover:border-accent","style":{"borderColor":"var(--color-border)","background":"var(--color-surface)"},"children":[["$","p",null,{"className":"mb-1 text-xs","style":{"color":"var(--color-muted)"},"children":"← Plus récent"}],["$","p",null,{"className":"line-clamp-1 text-sm font-medium transition-colors group-hover:text-accent","style":{"color":"var(--color-text)"},"children":"Vue d'ensemble de la série CrewAI : des workflows multi-agents de zéro à la production"}]]}],["$","$L2",null,{"href":"/fr/blog/crewai/02-agents-and-tasks","localeCookie":{"name":"NEXT_LOCALE","sameSite":"lax"},"className":"group rounded-lg border p-4 text-right transition-colors hover:border-accent","style":{"borderColor":"var(--color-border)","background":"var(--color-surface)"},"children":[["$","p",null,{"className":"mb-1 text-xs","style":{"color":"var(--color-muted)"},"children":"Plus ancien →"}],["$","p",null,{"className":"line-clamp-1 text-sm font-medium transition-colors group-hover:text-accent","style":{"color":"var(--color-text)"},"children":"CrewAI — Agents et tâches : répartir les rôles sans chaos"}]]}]]}]]}]
-9:T1f6a,<p>L'objectif de cet article est simple : <strong>en suivant les étapes, vous générerez votre premier rapport de recherche IA.</strong><br>
+9:T1fba,<p>L'objectif de cet article est simple : <strong>en suivant les étapes, vous générerez votre premier rapport de recherche IA.</strong><br>
 On prend le chemin le plus court, sans fioritures.</p>
 <h2 id="étape-1--créer-un-projet">Étape 1 : Créer un projet</h2>
-<figure data-rehype-pretty-code-figure=""><pre style="background-color:#24292e;color:#e1e4e8" tabindex="0" data-language="bash" data-theme="github-dark"><code data-language="bash" data-theme="github-dark" style="display: grid;"><span data-line=""><span style="color:#B392F0">crewai</span><span style="color:#9ECBFF"> create</span><span style="color:#9ECBFF"> crew</span><span style="color:#9ECBFF"> latest-ai-notes</span></span>
-<span data-line=""><span style="color:#79B8FF">cd</span><span style="color:#9ECBFF"> latest-ai-notes</span></span></code></pre></figure>
+<figure data-rehype-pretty-code-figure=""><pre style="background-color:#0d1117;color:#e6edf3" tabindex="0" data-language="bash" data-theme="github-dark-default"><code data-language="bash" data-theme="github-dark-default" style="display: grid;"><span data-line=""><span style="color:#FFA657">crewai</span><span style="color:#A5D6FF"> create</span><span style="color:#A5D6FF"> crew</span><span style="color:#A5D6FF"> latest-ai-notes</span></span>
+<span data-line=""><span style="color:#79C0FF">cd</span><span style="color:#A5D6FF"> latest-ai-notes</span></span></code></pre></figure>
 <p>Cela crée la structure de base, notamment :</p>
 <ul>
 <li><code>src/latest_ai_notes/config/agents.yaml</code></li>
@@ -106,49 +106,49 @@ On prend le chemin le plus court, sans fioritures.</p>
 <li><code>src/latest_ai_notes/main.py</code></li>
 </ul>
 <h2 id="étape-2--installer-les-dépendances">Étape 2 : Installer les dépendances</h2>
-<figure data-rehype-pretty-code-figure=""><pre style="background-color:#24292e;color:#e1e4e8" tabindex="0" data-language="bash" data-theme="github-dark"><code data-language="bash" data-theme="github-dark" style="display: grid;"><span data-line=""><span style="color:#B392F0">crewai</span><span style="color:#9ECBFF"> install</span></span></code></pre></figure>
+<figure data-rehype-pretty-code-figure=""><pre style="background-color:#0d1117;color:#e6edf3" tabindex="0" data-language="bash" data-theme="github-dark-default"><code data-language="bash" data-theme="github-dark-default" style="display: grid;"><span data-line=""><span style="color:#FFA657">crewai</span><span style="color:#A5D6FF"> install</span></span></code></pre></figure>
 <p>Cette commande lit la configuration du projet, crée un environnement virtuel et installe les paquets automatiquement.<br>
 Pas besoin d'enchaîner une longue liste de <code>pip install</code> à la main.</p>
 <h2 id="étape-3--configurer-les-agents">Étape 3 : Configurer les agents</h2>
 <p>Modifiez <code>agents.yaml</code> :</p>
-<figure data-rehype-pretty-code-figure=""><pre style="background-color:#24292e;color:#e1e4e8" tabindex="0" data-language="yaml" data-theme="github-dark"><code data-language="yaml" data-theme="github-dark" style="display: grid;"><span data-line=""><span style="color:#85E89D">researcher</span><span style="color:#E1E4E8">:</span></span>
-<span data-line=""><span style="color:#85E89D">  role</span><span style="color:#E1E4E8">: </span><span style="color:#F97583">></span></span>
-<span data-line=""><span style="color:#9ECBFF">    {topic} Researcher</span></span>
-<span data-line=""><span style="color:#85E89D">  goal</span><span style="color:#E1E4E8">: </span><span style="color:#F97583">></span></span>
-<span data-line=""><span style="color:#9ECBFF">    Find useful and current information about {topic}</span></span>
-<span data-line=""><span style="color:#85E89D">  backstory</span><span style="color:#E1E4E8">: </span><span style="color:#F97583">></span></span>
-<span data-line=""><span style="color:#9ECBFF">    You are good at collecting reliable information and summarizing key points.</span></span>
+<figure data-rehype-pretty-code-figure=""><pre style="background-color:#0d1117;color:#e6edf3" tabindex="0" data-language="yaml" data-theme="github-dark-default"><code data-language="yaml" data-theme="github-dark-default" style="display: grid;"><span data-line=""><span style="color:#7EE787">researcher</span><span style="color:#E6EDF3">:</span></span>
+<span data-line=""><span style="color:#7EE787">  role</span><span style="color:#E6EDF3">: </span><span style="color:#FF7B72">></span></span>
+<span data-line=""><span style="color:#A5D6FF">    {topic} Researcher</span></span>
+<span data-line=""><span style="color:#7EE787">  goal</span><span style="color:#E6EDF3">: </span><span style="color:#FF7B72">></span></span>
+<span data-line=""><span style="color:#A5D6FF">    Find useful and current information about {topic}</span></span>
+<span data-line=""><span style="color:#7EE787">  backstory</span><span style="color:#E6EDF3">: </span><span style="color:#FF7B72">></span></span>
+<span data-line=""><span style="color:#A5D6FF">    You are good at collecting reliable information and summarizing key points.</span></span>
 <span data-line=""> </span>
-<span data-line=""><span style="color:#85E89D">reporter</span><span style="color:#E1E4E8">:</span></span>
-<span data-line=""><span style="color:#85E89D">  role</span><span style="color:#E1E4E8">: </span><span style="color:#F97583">></span></span>
-<span data-line=""><span style="color:#9ECBFF">    {topic} Reporter</span></span>
-<span data-line=""><span style="color:#85E89D">  goal</span><span style="color:#E1E4E8">: </span><span style="color:#F97583">></span></span>
-<span data-line=""><span style="color:#9ECBFF">    Convert research notes into a readable markdown report</span></span>
-<span data-line=""><span style="color:#85E89D">  backstory</span><span style="color:#E1E4E8">: </span><span style="color:#F97583">></span></span>
-<span data-line=""><span style="color:#9ECBFF">    You explain technical topics with simple language and clear structure.</span></span></code></pre></figure>
+<span data-line=""><span style="color:#7EE787">reporter</span><span style="color:#E6EDF3">:</span></span>
+<span data-line=""><span style="color:#7EE787">  role</span><span style="color:#E6EDF3">: </span><span style="color:#FF7B72">></span></span>
+<span data-line=""><span style="color:#A5D6FF">    {topic} Reporter</span></span>
+<span data-line=""><span style="color:#7EE787">  goal</span><span style="color:#E6EDF3">: </span><span style="color:#FF7B72">></span></span>
+<span data-line=""><span style="color:#A5D6FF">    Convert research notes into a readable markdown report</span></span>
+<span data-line=""><span style="color:#7EE787">  backstory</span><span style="color:#E6EDF3">: </span><span style="color:#FF7B72">></span></span>
+<span data-line=""><span style="color:#A5D6FF">    You explain technical topics with simple language and clear structure.</span></span></code></pre></figure>
 <h2 id="étape-4--configurer-les-tâches">Étape 4 : Configurer les tâches</h2>
 <p>Modifiez <code>tasks.yaml</code> :</p>
-<figure data-rehype-pretty-code-figure=""><pre style="background-color:#24292e;color:#e1e4e8" tabindex="0" data-language="yaml" data-theme="github-dark"><code data-language="yaml" data-theme="github-dark" style="display: grid;"><span data-line=""><span style="color:#85E89D">research_task</span><span style="color:#E1E4E8">:</span></span>
-<span data-line=""><span style="color:#85E89D">  description</span><span style="color:#E1E4E8">: </span><span style="color:#F97583">></span></span>
-<span data-line=""><span style="color:#9ECBFF">    Research {topic}. Focus on trends, tools, and practical examples in 2026.</span></span>
-<span data-line=""><span style="color:#85E89D">  expected_output</span><span style="color:#E1E4E8">: </span><span style="color:#F97583">></span></span>
-<span data-line=""><span style="color:#9ECBFF">    10 bullet points with short explanations.</span></span>
-<span data-line=""><span style="color:#85E89D">  agent</span><span style="color:#E1E4E8">: </span><span style="color:#9ECBFF">researcher</span></span>
+<figure data-rehype-pretty-code-figure=""><pre style="background-color:#0d1117;color:#e6edf3" tabindex="0" data-language="yaml" data-theme="github-dark-default"><code data-language="yaml" data-theme="github-dark-default" style="display: grid;"><span data-line=""><span style="color:#7EE787">research_task</span><span style="color:#E6EDF3">:</span></span>
+<span data-line=""><span style="color:#7EE787">  description</span><span style="color:#E6EDF3">: </span><span style="color:#FF7B72">></span></span>
+<span data-line=""><span style="color:#A5D6FF">    Research {topic}. Focus on trends, tools, and practical examples in 2026.</span></span>
+<span data-line=""><span style="color:#7EE787">  expected_output</span><span style="color:#E6EDF3">: </span><span style="color:#FF7B72">></span></span>
+<span data-line=""><span style="color:#A5D6FF">    10 bullet points with short explanations.</span></span>
+<span data-line=""><span style="color:#7EE787">  agent</span><span style="color:#E6EDF3">: </span><span style="color:#A5D6FF">researcher</span></span>
 <span data-line=""> </span>
-<span data-line=""><span style="color:#85E89D">report_task</span><span style="color:#E1E4E8">:</span></span>
-<span data-line=""><span style="color:#85E89D">  description</span><span style="color:#E1E4E8">: </span><span style="color:#F97583">></span></span>
-<span data-line=""><span style="color:#9ECBFF">    Expand the research notes into a complete markdown article for beginners.</span></span>
-<span data-line=""><span style="color:#85E89D">  expected_output</span><span style="color:#E1E4E8">: </span><span style="color:#F97583">></span></span>
-<span data-line=""><span style="color:#9ECBFF">    A beginner-friendly markdown report with sections and conclusion.</span></span>
-<span data-line=""><span style="color:#85E89D">  agent</span><span style="color:#E1E4E8">: </span><span style="color:#9ECBFF">reporter</span></span>
-<span data-line=""><span style="color:#85E89D">  context</span><span style="color:#E1E4E8">:</span></span>
-<span data-line=""><span style="color:#E1E4E8">    - </span><span style="color:#9ECBFF">research_task</span></span>
-<span data-line=""><span style="color:#85E89D">  output_file</span><span style="color:#E1E4E8">: </span><span style="color:#9ECBFF">output/report.md</span></span></code></pre></figure>
+<span data-line=""><span style="color:#7EE787">report_task</span><span style="color:#E6EDF3">:</span></span>
+<span data-line=""><span style="color:#7EE787">  description</span><span style="color:#E6EDF3">: </span><span style="color:#FF7B72">></span></span>
+<span data-line=""><span style="color:#A5D6FF">    Expand the research notes into a complete markdown article for beginners.</span></span>
+<span data-line=""><span style="color:#7EE787">  expected_output</span><span style="color:#E6EDF3">: </span><span style="color:#FF7B72">></span></span>
+<span data-line=""><span style="color:#A5D6FF">    A beginner-friendly markdown report with sections and conclusion.</span></span>
+<span data-line=""><span style="color:#7EE787">  agent</span><span style="color:#E6EDF3">: </span><span style="color:#A5D6FF">reporter</span></span>
+<span data-line=""><span style="color:#7EE787">  context</span><span style="color:#E6EDF3">:</span></span>
+<span data-line=""><span style="color:#E6EDF3">    - </span><span style="color:#A5D6FF">research_task</span></span>
+<span data-line=""><span style="color:#7EE787">  output_file</span><span style="color:#E6EDF3">: </span><span style="color:#A5D6FF">output/report.md</span></span></code></pre></figure>
 <blockquote>
 <p>💡 Le <code>context</code> est important : il indique à la deuxième tâche de consommer les résultats de la première.</p>
 </blockquote>
 <h2 id="étape-5--lancer-le-crew">Étape 5 : Lancer le crew</h2>
-<figure data-rehype-pretty-code-figure=""><pre style="background-color:#24292e;color:#e1e4e8" tabindex="0" data-language="bash" data-theme="github-dark"><code data-language="bash" data-theme="github-dark" style="display: grid;"><span data-line=""><span style="color:#B392F0">crewai</span><span style="color:#9ECBFF"> run</span></span></code></pre></figure>
+<figure data-rehype-pretty-code-figure=""><pre style="background-color:#0d1117;color:#e6edf3" tabindex="0" data-language="bash" data-theme="github-dark-default"><code data-language="bash" data-theme="github-dark-default" style="display: grid;"><span data-line=""><span style="color:#FFA657">crewai</span><span style="color:#A5D6FF"> run</span></span></code></pre></figure>
 <p>En cas de succès, vous verrez le résultat dans <code>output/report.md</code>.<br>
 Un délai au premier lancement est normal. Les appels au modèle, c'est comme un chat qui se réveille : il faut un moment avant qu'il ne réagisse.</p>
 <h2 id="problèmes-courants">Problèmes courants</h2>

@@ -1,9 +1,9 @@
 1:"$Sreact.fragment"
-2:I[14864,["/_next/static/chunks/7923a261b80bb6e1.js","/_next/static/chunks/e09b4358027e8033.js","/_next/static/chunks/2dddb3bc05093f69.js"],"default"]
-8:I[24801,["/_next/static/chunks/7923a261b80bb6e1.js","/_next/static/chunks/e09b4358027e8033.js","/_next/static/chunks/2dddb3bc05093f69.js"],"default"]
+2:I[14864,["/_next/static/chunks/4204edc93da35a5e.js","/_next/static/chunks/f2afb7fd2b7566bb.js","/_next/static/chunks/2dddb3bc05093f69.js"],"default"]
+8:I[24801,["/_next/static/chunks/4204edc93da35a5e.js","/_next/static/chunks/f2afb7fd2b7566bb.js","/_next/static/chunks/2dddb3bc05093f69.js"],"default"]
 a:I[50183,["/_next/static/chunks/5a5b5b13c22d14f7.js","/_next/static/chunks/a484d1d3dd4b55ab.js"],"OutletBoundary"]
 b:"$Sreact.suspense"
-3:T411f,<p>建好第一台 VM 之後，你可能會覺得它跑起來「好像有點慢」。那是因為 PVE 的預設設定偏保守，就像買了一台新車卻一直用 Eco 模式在開——能動，但完全沒發揮實力。這篇教你怎麼把 VM 調到最佳狀態。</p>
+3:T418f,<p>建好第一台 VM 之後，你可能會覺得它跑起來「好像有點慢」。那是因為 PVE 的預設設定偏保守，就像買了一台新車卻一直用 Eco 模式在開——能動，但完全沒發揮實力。這篇教你怎麼把 VM 調到最佳狀態。</p>
 <h2 id="cpu-設定不只是給幾核">CPU 設定：不只是「給幾核」</h2>
 <table>
 <thead>
@@ -37,11 +37,11 @@ b:"$Sreact.suspense"
 </tbody>
 </table>
 <p>CPU Type 選 <code>host</code> 和選預設的 <code>kvm64</code> 差多少？<a href="https://www.storagereview.com/review/proxmox-ve-8-1-performance-tuning">StorageReview 的測試</a>顯示，光是換 CPU type 就能讓效能從裸機的 61% 跳到 85%。這是免費的效能，不拿白不拿。</p>
-<figure data-rehype-pretty-code-figure=""><pre style="background-color:#24292e;color:#e1e4e8" tabindex="0" data-language="bash" data-theme="github-dark"><code data-language="bash" data-theme="github-dark" style="display: grid;"><span data-line=""><span style="color:#6A737D"># 改 CPU 類型為 host（VM 需要先關機）</span></span>
-<span data-line=""><span style="color:#B392F0">qm</span><span style="color:#9ECBFF"> set</span><span style="color:#79B8FF"> 100</span><span style="color:#79B8FF"> --cpu</span><span style="color:#9ECBFF"> host</span></span>
+<figure data-rehype-pretty-code-figure=""><pre style="background-color:#0d1117;color:#e6edf3" tabindex="0" data-language="bash" data-theme="github-dark-default"><code data-language="bash" data-theme="github-dark-default" style="display: grid;"><span data-line=""><span style="color:#8B949E"># 改 CPU 類型為 host（VM 需要先關機）</span></span>
+<span data-line=""><span style="color:#FFA657">qm</span><span style="color:#A5D6FF"> set</span><span style="color:#79C0FF"> 100</span><span style="color:#79C0FF"> --cpu</span><span style="color:#A5D6FF"> host</span></span>
 <span data-line=""> </span>
-<span data-line=""><span style="color:#6A737D"># 設定 2 核心</span></span>
-<span data-line=""><span style="color:#B392F0">qm</span><span style="color:#9ECBFF"> set</span><span style="color:#79B8FF"> 100</span><span style="color:#79B8FF"> --cores</span><span style="color:#79B8FF"> 2</span></span></code></pre></figure>
+<span data-line=""><span style="color:#8B949E"># 設定 2 核心</span></span>
+<span data-line=""><span style="color:#FFA657">qm</span><span style="color:#A5D6FF"> set</span><span style="color:#79C0FF"> 100</span><span style="color:#79C0FF"> --cores</span><span style="color:#79C0FF"> 2</span></span></code></pre></figure>
 <blockquote>
 <p>如果你打算做 Live Migration（把 VM 搬到另一台 PVE 主機），CPU Type 選 <code>host</code> 會有相容性問題——兩台主機的 CPU 必須一樣。要遷移的 VM 建議選 <code>x86-64-v2-AES</code> 之類的通用類型。想了解叢集遷移的細節可以看<a href="08-cluster">叢集與高可用篇</a>。</p>
 </blockquote>
@@ -52,11 +52,11 @@ b:"$Sreact.suspense"
 <li><strong>效能敏感的 VM</strong>：關掉 Ballooning，給固定記憶體</li>
 <li><strong>一般用途的 VM</strong>：開 Ballooning，省記憶體給其他 VM 用</li>
 </ul>
-<figure data-rehype-pretty-code-figure=""><pre style="background-color:#24292e;color:#e1e4e8" tabindex="0" data-language="bash" data-theme="github-dark"><code data-language="bash" data-theme="github-dark" style="display: grid;"><span data-line=""><span style="color:#6A737D"># 固定 4GB 記憶體（關閉 Ballooning）</span></span>
-<span data-line=""><span style="color:#B392F0">qm</span><span style="color:#9ECBFF"> set</span><span style="color:#79B8FF"> 100</span><span style="color:#79B8FF"> --memory</span><span style="color:#79B8FF"> 4096</span><span style="color:#79B8FF"> --balloon</span><span style="color:#79B8FF"> 0</span></span>
+<figure data-rehype-pretty-code-figure=""><pre style="background-color:#0d1117;color:#e6edf3" tabindex="0" data-language="bash" data-theme="github-dark-default"><code data-language="bash" data-theme="github-dark-default" style="display: grid;"><span data-line=""><span style="color:#8B949E"># 固定 4GB 記憶體（關閉 Ballooning）</span></span>
+<span data-line=""><span style="color:#FFA657">qm</span><span style="color:#A5D6FF"> set</span><span style="color:#79C0FF"> 100</span><span style="color:#79C0FF"> --memory</span><span style="color:#79C0FF"> 4096</span><span style="color:#79C0FF"> --balloon</span><span style="color:#79C0FF"> 0</span></span>
 <span data-line=""> </span>
-<span data-line=""><span style="color:#6A737D"># 動態記憶體：最小 1GB，最大 4GB</span></span>
-<span data-line=""><span style="color:#B392F0">qm</span><span style="color:#9ECBFF"> set</span><span style="color:#79B8FF"> 100</span><span style="color:#79B8FF"> --memory</span><span style="color:#79B8FF"> 4096</span><span style="color:#79B8FF"> --balloon</span><span style="color:#79B8FF"> 1024</span></span></code></pre></figure>
+<span data-line=""><span style="color:#8B949E"># 動態記憶體：最小 1GB，最大 4GB</span></span>
+<span data-line=""><span style="color:#FFA657">qm</span><span style="color:#A5D6FF"> set</span><span style="color:#79C0FF"> 100</span><span style="color:#79C0FF"> --memory</span><span style="color:#79C0FF"> 4096</span><span style="color:#79C0FF"> --balloon</span><span style="color:#79C0FF"> 1024</span></span></code></pre></figure>
 <h2 id="磁碟virtio-是唯一正解">磁碟：VirtIO 是唯一正解</h2>
 <table>
 <thead>
@@ -95,28 +95,28 @@ b:"$Sreact.suspense"
 </tbody>
 </table>
 <p>再加上一個容易忽略的設定：<strong>IO Thread</strong>。開了之後磁碟 I/O 有獨立的執行緒處理，不會卡住 VM 的主 CPU。</p>
-<figure data-rehype-pretty-code-figure=""><pre style="background-color:#24292e;color:#e1e4e8" tabindex="0" data-language="bash" data-theme="github-dark"><code data-language="bash" data-theme="github-dark" style="display: grid;"><span data-line=""><span style="color:#6A737D"># 啟用 IO Thread（需要先用 VirtIO-SCSI 控制器）</span></span>
-<span data-line=""><span style="color:#B392F0">qm</span><span style="color:#9ECBFF"> set</span><span style="color:#79B8FF"> 100</span><span style="color:#79B8FF"> --scsihw</span><span style="color:#9ECBFF"> virtio-scsi-single</span></span>
-<span data-line=""><span style="color:#B392F0">qm</span><span style="color:#9ECBFF"> set</span><span style="color:#79B8FF"> 100</span><span style="color:#79B8FF"> --scsi0</span><span style="color:#9ECBFF"> local-lvm:32,iothread=1,discard=on,ssd=</span><span style="color:#79B8FF">1</span></span></code></pre></figure>
+<figure data-rehype-pretty-code-figure=""><pre style="background-color:#0d1117;color:#e6edf3" tabindex="0" data-language="bash" data-theme="github-dark-default"><code data-language="bash" data-theme="github-dark-default" style="display: grid;"><span data-line=""><span style="color:#8B949E"># 啟用 IO Thread（需要先用 VirtIO-SCSI 控制器）</span></span>
+<span data-line=""><span style="color:#FFA657">qm</span><span style="color:#A5D6FF"> set</span><span style="color:#79C0FF"> 100</span><span style="color:#79C0FF"> --scsihw</span><span style="color:#A5D6FF"> virtio-scsi-single</span></span>
+<span data-line=""><span style="color:#FFA657">qm</span><span style="color:#A5D6FF"> set</span><span style="color:#79C0FF"> 100</span><span style="color:#79C0FF"> --scsi0</span><span style="color:#A5D6FF"> local-lvm:32,iothread=1,discard=on,ssd=</span><span style="color:#79C0FF">1</span></span></code></pre></figure>
 <blockquote>
 <p><code>discard=on</code> 和 <code>ssd=1</code> 是給 SSD 用的，讓 VM 內部的 TRIM 指令能穿透到實體磁碟。如果你的儲存後端是 HDD，這兩個不用開。更多儲存後端的選擇請看<a href="05-storage">儲存系統指南</a>。</p>
 </blockquote>
 <h2 id="vm-生命週期從搖籃到墳墓">VM 生命週期：從搖籃到墳墓</h2>
 <p>你會最常用到的指令：</p>
-<figure data-rehype-pretty-code-figure=""><pre style="background-color:#24292e;color:#e1e4e8" tabindex="0" data-language="bash" data-theme="github-dark"><code data-language="bash" data-theme="github-dark" style="display: grid;"><span data-line=""><span style="color:#6A737D"># 啟動</span></span>
-<span data-line=""><span style="color:#B392F0">qm</span><span style="color:#9ECBFF"> start</span><span style="color:#79B8FF"> 100</span></span>
+<figure data-rehype-pretty-code-figure=""><pre style="background-color:#0d1117;color:#e6edf3" tabindex="0" data-language="bash" data-theme="github-dark-default"><code data-language="bash" data-theme="github-dark-default" style="display: grid;"><span data-line=""><span style="color:#8B949E"># 啟動</span></span>
+<span data-line=""><span style="color:#FFA657">qm</span><span style="color:#A5D6FF"> start</span><span style="color:#79C0FF"> 100</span></span>
 <span data-line=""> </span>
-<span data-line=""><span style="color:#6A737D"># 優雅關機（送 ACPI 訊號，等 OS 自己關）</span></span>
-<span data-line=""><span style="color:#B392F0">qm</span><span style="color:#9ECBFF"> shutdown</span><span style="color:#79B8FF"> 100</span></span>
+<span data-line=""><span style="color:#8B949E"># 優雅關機（送 ACPI 訊號，等 OS 自己關）</span></span>
+<span data-line=""><span style="color:#FFA657">qm</span><span style="color:#A5D6FF"> shutdown</span><span style="color:#79C0FF"> 100</span></span>
 <span data-line=""> </span>
-<span data-line=""><span style="color:#6A737D"># 強制關機（拔電源等級，OS 來不及收尾）</span></span>
-<span data-line=""><span style="color:#B392F0">qm</span><span style="color:#9ECBFF"> stop</span><span style="color:#79B8FF"> 100</span></span>
+<span data-line=""><span style="color:#8B949E"># 強制關機（拔電源等級，OS 來不及收尾）</span></span>
+<span data-line=""><span style="color:#FFA657">qm</span><span style="color:#A5D6FF"> stop</span><span style="color:#79C0FF"> 100</span></span>
 <span data-line=""> </span>
-<span data-line=""><span style="color:#6A737D"># 重新啟動</span></span>
-<span data-line=""><span style="color:#B392F0">qm</span><span style="color:#9ECBFF"> reboot</span><span style="color:#79B8FF"> 100</span></span>
+<span data-line=""><span style="color:#8B949E"># 重新啟動</span></span>
+<span data-line=""><span style="color:#FFA657">qm</span><span style="color:#A5D6FF"> reboot</span><span style="color:#79C0FF"> 100</span></span>
 <span data-line=""> </span>
-<span data-line=""><span style="color:#6A737D"># 刪除（VM 必須先停止）</span></span>
-<span data-line=""><span style="color:#B392F0">qm</span><span style="color:#9ECBFF"> destroy</span><span style="color:#79B8FF"> 100</span></span></code></pre></figure>
+<span data-line=""><span style="color:#8B949E"># 刪除（VM 必須先停止）</span></span>
+<span data-line=""><span style="color:#FFA657">qm</span><span style="color:#A5D6FF"> destroy</span><span style="color:#79C0FF"> 100</span></span></code></pre></figure>
 <h2 id="快照備份克隆你的三道保險">快照、備份、克隆：你的三道保險</h2>
 <p>這三個東西經常搞混，但用途完全不同：</p>
 <table>
@@ -155,23 +155,23 @@ b:"$Sreact.suspense"
 </tr>
 </tbody>
 </table>
-<figure data-rehype-pretty-code-figure=""><pre style="background-color:#24292e;color:#e1e4e8" tabindex="0" data-language="bash" data-theme="github-dark"><code data-language="bash" data-theme="github-dark" style="display: grid;"><span data-line=""><span style="color:#6A737D"># 拍快照</span></span>
-<span data-line=""><span style="color:#B392F0">qm</span><span style="color:#9ECBFF"> snapshot</span><span style="color:#79B8FF"> 100</span><span style="color:#9ECBFF"> before-upgrade</span><span style="color:#79B8FF"> --description</span><span style="color:#9ECBFF"> "升級前的保險"</span></span>
+<figure data-rehype-pretty-code-figure=""><pre style="background-color:#0d1117;color:#e6edf3" tabindex="0" data-language="bash" data-theme="github-dark-default"><code data-language="bash" data-theme="github-dark-default" style="display: grid;"><span data-line=""><span style="color:#8B949E"># 拍快照</span></span>
+<span data-line=""><span style="color:#FFA657">qm</span><span style="color:#A5D6FF"> snapshot</span><span style="color:#79C0FF"> 100</span><span style="color:#A5D6FF"> before-upgrade</span><span style="color:#79C0FF"> --description</span><span style="color:#A5D6FF"> "升級前的保險"</span></span>
 <span data-line=""> </span>
-<span data-line=""><span style="color:#6A737D"># 回滾快照</span></span>
-<span data-line=""><span style="color:#B392F0">qm</span><span style="color:#9ECBFF"> rollback</span><span style="color:#79B8FF"> 100</span><span style="color:#9ECBFF"> before-upgrade</span></span>
+<span data-line=""><span style="color:#8B949E"># 回滾快照</span></span>
+<span data-line=""><span style="color:#FFA657">qm</span><span style="color:#A5D6FF"> rollback</span><span style="color:#79C0FF"> 100</span><span style="color:#A5D6FF"> before-upgrade</span></span>
 <span data-line=""> </span>
-<span data-line=""><span style="color:#6A737D"># 列出快照</span></span>
-<span data-line=""><span style="color:#B392F0">qm</span><span style="color:#9ECBFF"> listsnapshot</span><span style="color:#79B8FF"> 100</span></span>
+<span data-line=""><span style="color:#8B949E"># 列出快照</span></span>
+<span data-line=""><span style="color:#FFA657">qm</span><span style="color:#A5D6FF"> listsnapshot</span><span style="color:#79C0FF"> 100</span></span>
 <span data-line=""> </span>
-<span data-line=""><span style="color:#6A737D"># 備份到本地儲存</span></span>
-<span data-line=""><span style="color:#B392F0">vzdump</span><span style="color:#79B8FF"> 100</span><span style="color:#79B8FF"> --storage</span><span style="color:#9ECBFF"> local</span><span style="color:#79B8FF"> --compress</span><span style="color:#9ECBFF"> zstd</span><span style="color:#79B8FF"> --mode</span><span style="color:#9ECBFF"> snapshot</span></span>
+<span data-line=""><span style="color:#8B949E"># 備份到本地儲存</span></span>
+<span data-line=""><span style="color:#FFA657">vzdump</span><span style="color:#79C0FF"> 100</span><span style="color:#79C0FF"> --storage</span><span style="color:#A5D6FF"> local</span><span style="color:#79C0FF"> --compress</span><span style="color:#A5D6FF"> zstd</span><span style="color:#79C0FF"> --mode</span><span style="color:#A5D6FF"> snapshot</span></span>
 <span data-line=""> </span>
-<span data-line=""><span style="color:#6A737D"># 完整克隆</span></span>
-<span data-line=""><span style="color:#B392F0">qm</span><span style="color:#9ECBFF"> clone</span><span style="color:#79B8FF"> 100</span><span style="color:#79B8FF"> 101</span><span style="color:#79B8FF"> --name</span><span style="color:#9ECBFF"> debian-clone</span><span style="color:#79B8FF"> --full</span></span>
+<span data-line=""><span style="color:#8B949E"># 完整克隆</span></span>
+<span data-line=""><span style="color:#FFA657">qm</span><span style="color:#A5D6FF"> clone</span><span style="color:#79C0FF"> 100</span><span style="color:#79C0FF"> 101</span><span style="color:#79C0FF"> --name</span><span style="color:#A5D6FF"> debian-clone</span><span style="color:#79C0FF"> --full</span></span>
 <span data-line=""> </span>
-<span data-line=""><span style="color:#6A737D"># 查看備份清單</span></span>
-<span data-line=""><span style="color:#B392F0">ls</span><span style="color:#9ECBFF"> /var/lib/vz/dump/</span></span></code></pre></figure>
+<span data-line=""><span style="color:#8B949E"># 查看備份清單</span></span>
+<span data-line=""><span style="color:#FFA657">ls</span><span style="color:#A5D6FF"> /var/lib/vz/dump/</span></span></code></pre></figure>
 <h2 id="vm-範本批量生產的秘密武器">VM 範本：批量生產的秘密武器</h2>
 <p>如果你需要重複建立類似的 VM（例如測試環境），每次從 ISO 重新安裝太浪費時間。範本的概念就像做餅乾的模具——做好一個模型，之後壓出來的每一塊都一樣。</p>
 <p>製作範本的標準流程：</p>
@@ -182,15 +182,15 @@ b:"$Sreact.suspense"
 <li>清理暫存（<code>apt clean</code>、刪 bash history）</li>
 <li>轉換成範本</li>
 </ol>
-<figure data-rehype-pretty-code-figure=""><pre style="background-color:#24292e;color:#e1e4e8" tabindex="0" data-language="bash" data-theme="github-dark"><code data-language="bash" data-theme="github-dark" style="display: grid;"><span data-line=""><span style="color:#6A737D"># 在 VM 裡面裝 Guest Agent</span></span>
-<span data-line=""><span style="color:#B392F0">apt</span><span style="color:#9ECBFF"> install</span><span style="color:#79B8FF"> -y</span><span style="color:#9ECBFF"> qemu-guest-agent</span></span>
-<span data-line=""><span style="color:#B392F0">systemctl</span><span style="color:#9ECBFF"> enable</span><span style="color:#9ECBFF"> qemu-guest-agent</span></span>
+<figure data-rehype-pretty-code-figure=""><pre style="background-color:#0d1117;color:#e6edf3" tabindex="0" data-language="bash" data-theme="github-dark-default"><code data-language="bash" data-theme="github-dark-default" style="display: grid;"><span data-line=""><span style="color:#8B949E"># 在 VM 裡面裝 Guest Agent</span></span>
+<span data-line=""><span style="color:#FFA657">apt</span><span style="color:#A5D6FF"> install</span><span style="color:#79C0FF"> -y</span><span style="color:#A5D6FF"> qemu-guest-agent</span></span>
+<span data-line=""><span style="color:#FFA657">systemctl</span><span style="color:#A5D6FF"> enable</span><span style="color:#A5D6FF"> qemu-guest-agent</span></span>
 <span data-line=""> </span>
-<span data-line=""><span style="color:#6A737D"># 清理後關機</span></span>
-<span data-line=""><span style="color:#B392F0">apt</span><span style="color:#9ECBFF"> clean</span><span style="color:#E1E4E8"> &#x26;&#x26; </span><span style="color:#B392F0">rm</span><span style="color:#79B8FF"> -f</span><span style="color:#9ECBFF"> ~/.bash_history</span><span style="color:#E1E4E8"> &#x26;&#x26; </span><span style="color:#B392F0">poweroff</span></span>
+<span data-line=""><span style="color:#8B949E"># 清理後關機</span></span>
+<span data-line=""><span style="color:#FFA657">apt</span><span style="color:#A5D6FF"> clean</span><span style="color:#E6EDF3"> &#x26;&#x26; </span><span style="color:#FFA657">rm</span><span style="color:#79C0FF"> -f</span><span style="color:#A5D6FF"> ~/.bash_history</span><span style="color:#E6EDF3"> &#x26;&#x26; </span><span style="color:#FFA657">poweroff</span></span>
 <span data-line=""> </span>
-<span data-line=""><span style="color:#6A737D"># 在 PVE 主機上把 VM 轉成範本</span></span>
-<span data-line=""><span style="color:#B392F0">qm</span><span style="color:#9ECBFF"> template</span><span style="color:#79B8FF"> 100</span></span></code></pre></figure>
+<span data-line=""><span style="color:#8B949E"># 在 PVE 主機上把 VM 轉成範本</span></span>
+<span data-line=""><span style="color:#FFA657">qm</span><span style="color:#A5D6FF"> template</span><span style="color:#79C0FF"> 100</span></span></code></pre></figure>
 <p>轉成範本之後，這台 VM 就變成唯讀的了。要用它的時候，右鍵 -> Clone，選 Linked Clone 幾秒鐘就能生出一台新的。</p>
 <h2 id="qemu-guest-agent裝了就對了">QEMU Guest Agent：裝了就對了</h2>
 <p><a href="https://pve.proxmox.com/wiki/Qemu-guest-agent">Guest Agent</a> 是裝在 VM 裡面的小程式，讓 PVE 能跟 VM 內部溝通。裝了之後你能：</p>
@@ -199,11 +199,11 @@ b:"$Sreact.suspense"
 <li>拍快照時自動凍結檔案系統（資料一致性）</li>
 <li>優雅關機真的能優雅關（不然有時候 VM 裝聾作啞）</li>
 </ul>
-<figure data-rehype-pretty-code-figure=""><pre style="background-color:#24292e;color:#e1e4e8" tabindex="0" data-language="bash" data-theme="github-dark"><code data-language="bash" data-theme="github-dark" style="display: grid;"><span data-line=""><span style="color:#6A737D"># Linux</span></span>
-<span data-line=""><span style="color:#B392F0">apt</span><span style="color:#9ECBFF"> install</span><span style="color:#79B8FF"> -y</span><span style="color:#9ECBFF"> qemu-guest-agent</span></span>
-<span data-line=""><span style="color:#B392F0">systemctl</span><span style="color:#9ECBFF"> enable</span><span style="color:#79B8FF"> --now</span><span style="color:#9ECBFF"> qemu-guest-agent</span></span>
+<figure data-rehype-pretty-code-figure=""><pre style="background-color:#0d1117;color:#e6edf3" tabindex="0" data-language="bash" data-theme="github-dark-default"><code data-language="bash" data-theme="github-dark-default" style="display: grid;"><span data-line=""><span style="color:#8B949E"># Linux</span></span>
+<span data-line=""><span style="color:#FFA657">apt</span><span style="color:#A5D6FF"> install</span><span style="color:#79C0FF"> -y</span><span style="color:#A5D6FF"> qemu-guest-agent</span></span>
+<span data-line=""><span style="color:#FFA657">systemctl</span><span style="color:#A5D6FF"> enable</span><span style="color:#79C0FF"> --now</span><span style="color:#A5D6FF"> qemu-guest-agent</span></span>
 <span data-line=""> </span>
-<span data-line=""><span style="color:#6A737D"># 然後在 PVE 的 VM Options 裡勾選 "QEMU Guest Agent"</span></span></code></pre></figure>
+<span data-line=""><span style="color:#8B949E"># 然後在 PVE 的 VM Options 裡勾選 "QEMU Guest Agent"</span></span></code></pre></figure>
 <blockquote>
 <p>Windows VM 的話，Guest Agent 隨 <a href="https://fedorapeople.org/groups/virt/virtio-win/direct-downloads/stable-virtio/virtio-win.iso">VirtIO 驅動 ISO</a> 一起安裝。裝 VirtIO 驅動的時候順便裝 Guest Agent，一箭雙鵰。</p>
 </blockquote>
@@ -229,9 +229,9 @@ b:"$Sreact.suspense"
 <p>範本是唯讀的 VM 基底映像，當你需要重複建立類似配置的 VM 時特別好用。做好一個範本後，用 Linked Clone 幾秒就能生出新 VM，不用每次都從 ISO 重新安裝。</p>
 <h2 id="下一步">下一步</h2>
 <p>VM 搞懂了，但有些服務其實不需要一整台虛擬機——太重了。下一篇來聊 LXC 容器，比 VM 更輕、更快、更省資源：
--> <a href="04-lxc-containers">LXC 容器入門</a></p>0:{"buildId":"sM8YAyjANE7sOnXm3EQGk","rsc":["$","$1","c",{"children":[[["$","script",null,{"type":"application/ld+json","dangerouslySetInnerHTML":{"__html":"{\"@context\":\"https://schema.org\",\"@type\":\"Article\",\"headline\":\"PVE 虛擬機管理：從設定到效能調校\",\"description\":\"PVE VM 管理全攻略：CPU 調校、記憶體 Ballooning、VirtIO 磁碟設定，加上快照備份與 VM 範本，讓虛擬機效能接近裸機。\",\"url\":\"https://benxhub.com/zh/blog/pve/03-vm-management\",\"mainEntityOfPage\":{\"@type\":\"WebPage\",\"@id\":\"https://benxhub.com/zh/blog/pve/03-vm-management\"},\"datePublished\":\"2026-04-26T00:00:00.000Z\",\"dateModified\":\"2026-04-26T00:00:00.000Z\",\"keywords\":\"proxmox, kvm, virtual-machine, performance\",\"inLanguage\":\"zh\",\"author\":{\"@type\":\"Person\",\"name\":\"BenX\",\"url\":\"https://benxhub.com\"},\"publisher\":{\"@type\":\"Organization\",\"name\":\"BenXHub Blog\",\"url\":\"https://benxhub.com\"}}"}}],["$","div",null,{"className":"mx-auto max-w-6xl px-4 py-12 sm:px-6","children":["$","div",null,{"className":"lg:grid lg:grid-cols-[1fr_240px] lg:gap-14","children":[["$","article",null,{"children":[["$","header",null,{"className":"mb-10","children":[["$","div",null,{"className":"mb-4 flex flex-wrap gap-2","children":[["$","$L2","proxmox",{"href":"/zh/tags/proxmox","localeCookie":{"name":"NEXT_LOCALE","sameSite":"lax"},"className":"inline-flex items-center rounded-full px-2.5 py-0.5 text-xs font-medium transition-colors","style":{"background":"var(--color-code-bg)","color":"var(--color-accent)","border":"1px solid var(--color-border)"},"children":["#","proxmox"]}],["$","$L2","kvm",{"href":"/zh/tags/kvm","localeCookie":{"name":"NEXT_LOCALE","sameSite":"lax"},"className":"inline-flex items-center rounded-full px-2.5 py-0.5 text-xs font-medium transition-colors","style":{"background":"var(--color-code-bg)","color":"var(--color-accent)","border":"1px solid var(--color-border)"},"children":["#","kvm"]}],["$","$L2","virtual-machine",{"href":"/zh/tags/virtual-machine","localeCookie":{"name":"NEXT_LOCALE","sameSite":"lax"},"className":"inline-flex items-center rounded-full px-2.5 py-0.5 text-xs font-medium transition-colors","style":{"background":"var(--color-code-bg)","color":"var(--color-accent)","border":"1px solid var(--color-border)"},"children":["#","virtual-machine"]}],["$","$L2","performance",{"href":"/zh/tags/performance","localeCookie":{"name":"NEXT_LOCALE","sameSite":"lax"},"className":"inline-flex items-center rounded-full px-2.5 py-0.5 text-xs font-medium transition-colors","style":{"background":"var(--color-code-bg)","color":"var(--color-accent)","border":"1px solid var(--color-border)"},"children":["#","performance"]}]]}],["$","h1",null,{"className":"mb-4 text-3xl leading-snug font-bold tracking-tight sm:text-4xl","style":{"color":"var(--color-text)"},"children":"PVE 虛擬機管理：從設定到效能調校"}],["$","div",null,{"className":"flex flex-wrap items-center gap-3 text-sm","style":{"color":"var(--color-muted)"},"children":[["$","time",null,{"dateTime":"2026-04-26","children":"2026 年 4 月 26 日"}],["$","span",null,{"aria-hidden":"true","children":"·"}],["$","span",null,{"children":"9 min read"}]]}],"$undefined",["$","div",null,{"className":"mt-6 border-b","style":{"borderColor":"var(--color-border)"}}]]}],["$","div",null,{"className":"prose","dangerouslySetInnerHTML":{"__html":"$3"}}],"$L4"]}],"$L5"]}]}]],["$L6"],"$L7"]}],"loading":null,"isPartial":false}
+-> <a href="04-lxc-containers">LXC 容器入門</a></p>0:{"buildId":"ekNoF06-0VZrB4pGVUsy8","rsc":["$","$1","c",{"children":[[["$","script",null,{"type":"application/ld+json","dangerouslySetInnerHTML":{"__html":"{\"@context\":\"https://schema.org\",\"@type\":\"Article\",\"headline\":\"PVE 虛擬機管理：從設定到效能調校\",\"description\":\"PVE VM 管理全攻略：CPU 調校、記憶體 Ballooning、VirtIO 磁碟設定，加上快照備份與 VM 範本，讓虛擬機效能接近裸機。\",\"url\":\"https://benxhub.com/zh/blog/pve/03-vm-management/\",\"mainEntityOfPage\":{\"@type\":\"WebPage\",\"@id\":\"https://benxhub.com/zh/blog/pve/03-vm-management/\"},\"datePublished\":\"2026-04-26T00:00:00.000Z\",\"dateModified\":\"2026-04-26T00:00:00.000Z\",\"keywords\":\"proxmox, kvm, virtual-machine, performance\",\"inLanguage\":\"zh-Hant\",\"author\":{\"@type\":\"Person\",\"@id\":\"https://benxhub.com/#author\",\"name\":\"BenX\",\"url\":\"https://benxhub.com/zh/about/\",\"sameAs\":[\"https://github.com/benzhub\"]},\"publisher\":{\"@type\":\"Organization\",\"name\":\"BenXHub Blog\",\"url\":\"https://benxhub.com\"},\"image\":\"https://benxhub.com/og-default.png\"}"}}],["$","div",null,{"className":"mx-auto max-w-6xl px-4 py-12 sm:px-6","children":["$","div",null,{"className":"lg:grid lg:grid-cols-[1fr_240px] lg:gap-14","children":[["$","article",null,{"children":[["$","header",null,{"className":"mb-10","children":[["$","div",null,{"className":"mb-4 flex flex-wrap gap-2","children":[["$","$L2","proxmox",{"href":"/zh/tags/proxmox","localeCookie":{"name":"NEXT_LOCALE","sameSite":"lax"},"className":"inline-flex items-center rounded-full px-2.5 py-0.5 text-xs font-medium transition-colors","style":{"background":"var(--color-code-bg)","color":"var(--color-accent)","border":"1px solid var(--color-border)"},"children":["#","proxmox"]}],["$","$L2","kvm",{"href":"/zh/tags/kvm","localeCookie":{"name":"NEXT_LOCALE","sameSite":"lax"},"className":"inline-flex items-center rounded-full px-2.5 py-0.5 text-xs font-medium transition-colors","style":{"background":"var(--color-code-bg)","color":"var(--color-accent)","border":"1px solid var(--color-border)"},"children":["#","kvm"]}],["$","$L2","virtual-machine",{"href":"/zh/tags/virtual-machine","localeCookie":{"name":"NEXT_LOCALE","sameSite":"lax"},"className":"inline-flex items-center rounded-full px-2.5 py-0.5 text-xs font-medium transition-colors","style":{"background":"var(--color-code-bg)","color":"var(--color-accent)","border":"1px solid var(--color-border)"},"children":["#","virtual-machine"]}],["$","$L2","performance",{"href":"/zh/tags/performance","localeCookie":{"name":"NEXT_LOCALE","sameSite":"lax"},"className":"inline-flex items-center rounded-full px-2.5 py-0.5 text-xs font-medium transition-colors","style":{"background":"var(--color-code-bg)","color":"var(--color-accent)","border":"1px solid var(--color-border)"},"children":["#","performance"]}]]}],["$","h1",null,{"className":"mb-4 text-3xl leading-snug font-bold tracking-tight sm:text-4xl","style":{"color":"var(--color-text)"},"children":"PVE 虛擬機管理：從設定到效能調校"}],["$","div",null,{"className":"flex flex-wrap items-center gap-3 text-sm","style":{"color":"var(--color-muted)"},"children":[["$","time",null,{"dateTime":"2026-04-26","children":"2026 年 4 月 26 日"}],["$","span",null,{"aria-hidden":"true","children":"·"}],["$","span",null,{"children":"9 min read"}]]}],"$undefined",["$","div",null,{"className":"mt-6 border-b","style":{"borderColor":"var(--color-border)"}}]]}],["$","div",null,{"className":"prose","dangerouslySetInnerHTML":{"__html":"$3"}}],"$L4"]}],"$L5"]}]}]],["$L6"],"$L7"]}],"loading":null,"isPartial":false}
 4:["$","footer",null,{"className":"mt-14 border-t pt-8","style":{"borderColor":"var(--color-border)"},"children":[["$","div",null,{"className":"mb-8 flex flex-wrap gap-2","children":[["$","$L2","proxmox",{"href":"/zh/tags/proxmox","localeCookie":{"name":"NEXT_LOCALE","sameSite":"lax"},"className":"inline-flex items-center rounded-full px-3 py-1 text-sm font-medium transition-colors","style":{"background":"var(--color-code-bg)","color":"var(--color-accent)","border":"1px solid var(--color-border)"},"children":["#","proxmox"]}],["$","$L2","kvm",{"href":"/zh/tags/kvm","localeCookie":{"name":"NEXT_LOCALE","sameSite":"lax"},"className":"inline-flex items-center rounded-full px-3 py-1 text-sm font-medium transition-colors","style":{"background":"var(--color-code-bg)","color":"var(--color-accent)","border":"1px solid var(--color-border)"},"children":["#","kvm"]}],["$","$L2","virtual-machine",{"href":"/zh/tags/virtual-machine","localeCookie":{"name":"NEXT_LOCALE","sameSite":"lax"},"className":"inline-flex items-center rounded-full px-3 py-1 text-sm font-medium transition-colors","style":{"background":"var(--color-code-bg)","color":"var(--color-accent)","border":"1px solid var(--color-border)"},"children":["#","virtual-machine"]}],["$","$L2","performance",{"href":"/zh/tags/performance","localeCookie":{"name":"NEXT_LOCALE","sameSite":"lax"},"className":"inline-flex items-center rounded-full px-3 py-1 text-sm font-medium transition-colors","style":{"background":"var(--color-code-bg)","color":"var(--color-accent)","border":"1px solid var(--color-border)"},"children":["#","performance"]}]]}],["$","nav",null,{"aria-label":"文章導覽","className":"grid grid-cols-1 gap-4 sm:grid-cols-2","children":[["$","$L2",null,{"href":"/zh/blog/pve/04-lxc-containers","localeCookie":{"name":"NEXT_LOCALE","sameSite":"lax"},"className":"group rounded-lg border p-4 transition-colors hover:border-accent","style":{"borderColor":"var(--color-border)","background":"var(--color-surface)"},"children":[["$","p",null,{"className":"mb-1 text-xs","style":{"color":"var(--color-muted)"},"children":"← 較新文章"}],["$","p",null,{"className":"line-clamp-1 text-sm font-medium transition-colors group-hover:text-accent","style":{"color":"var(--color-text)"},"children":"LXC 容器：比 VM 輕量十倍的秘密武器"}]]}],["$","$L2",null,{"href":"/zh/blog/pve/02-install-first-vm","localeCookie":{"name":"NEXT_LOCALE","sameSite":"lax"},"className":"group rounded-lg border p-4 text-right transition-colors hover:border-accent","style":{"borderColor":"var(--color-border)","background":"var(--color-surface)"},"children":[["$","p",null,{"className":"mb-1 text-xs","style":{"color":"var(--color-muted)"},"children":"較舊文章 →"}],["$","p",null,{"className":"line-clamp-1 text-sm font-medium transition-colors group-hover:text-accent","style":{"color":"var(--color-text)"},"children":"安裝 Proxmox VE 與建立第一台虛擬機"}]]}]]}]]}]
-9:T411f,<p>建好第一台 VM 之後，你可能會覺得它跑起來「好像有點慢」。那是因為 PVE 的預設設定偏保守，就像買了一台新車卻一直用 Eco 模式在開——能動，但完全沒發揮實力。這篇教你怎麼把 VM 調到最佳狀態。</p>
+9:T418f,<p>建好第一台 VM 之後，你可能會覺得它跑起來「好像有點慢」。那是因為 PVE 的預設設定偏保守，就像買了一台新車卻一直用 Eco 模式在開——能動，但完全沒發揮實力。這篇教你怎麼把 VM 調到最佳狀態。</p>
 <h2 id="cpu-設定不只是給幾核">CPU 設定：不只是「給幾核」</h2>
 <table>
 <thead>
@@ -265,11 +265,11 @@ b:"$Sreact.suspense"
 </tbody>
 </table>
 <p>CPU Type 選 <code>host</code> 和選預設的 <code>kvm64</code> 差多少？<a href="https://www.storagereview.com/review/proxmox-ve-8-1-performance-tuning">StorageReview 的測試</a>顯示，光是換 CPU type 就能讓效能從裸機的 61% 跳到 85%。這是免費的效能，不拿白不拿。</p>
-<figure data-rehype-pretty-code-figure=""><pre style="background-color:#24292e;color:#e1e4e8" tabindex="0" data-language="bash" data-theme="github-dark"><code data-language="bash" data-theme="github-dark" style="display: grid;"><span data-line=""><span style="color:#6A737D"># 改 CPU 類型為 host（VM 需要先關機）</span></span>
-<span data-line=""><span style="color:#B392F0">qm</span><span style="color:#9ECBFF"> set</span><span style="color:#79B8FF"> 100</span><span style="color:#79B8FF"> --cpu</span><span style="color:#9ECBFF"> host</span></span>
+<figure data-rehype-pretty-code-figure=""><pre style="background-color:#0d1117;color:#e6edf3" tabindex="0" data-language="bash" data-theme="github-dark-default"><code data-language="bash" data-theme="github-dark-default" style="display: grid;"><span data-line=""><span style="color:#8B949E"># 改 CPU 類型為 host（VM 需要先關機）</span></span>
+<span data-line=""><span style="color:#FFA657">qm</span><span style="color:#A5D6FF"> set</span><span style="color:#79C0FF"> 100</span><span style="color:#79C0FF"> --cpu</span><span style="color:#A5D6FF"> host</span></span>
 <span data-line=""> </span>
-<span data-line=""><span style="color:#6A737D"># 設定 2 核心</span></span>
-<span data-line=""><span style="color:#B392F0">qm</span><span style="color:#9ECBFF"> set</span><span style="color:#79B8FF"> 100</span><span style="color:#79B8FF"> --cores</span><span style="color:#79B8FF"> 2</span></span></code></pre></figure>
+<span data-line=""><span style="color:#8B949E"># 設定 2 核心</span></span>
+<span data-line=""><span style="color:#FFA657">qm</span><span style="color:#A5D6FF"> set</span><span style="color:#79C0FF"> 100</span><span style="color:#79C0FF"> --cores</span><span style="color:#79C0FF"> 2</span></span></code></pre></figure>
 <blockquote>
 <p>如果你打算做 Live Migration（把 VM 搬到另一台 PVE 主機），CPU Type 選 <code>host</code> 會有相容性問題——兩台主機的 CPU 必須一樣。要遷移的 VM 建議選 <code>x86-64-v2-AES</code> 之類的通用類型。想了解叢集遷移的細節可以看<a href="08-cluster">叢集與高可用篇</a>。</p>
 </blockquote>
@@ -280,11 +280,11 @@ b:"$Sreact.suspense"
 <li><strong>效能敏感的 VM</strong>：關掉 Ballooning，給固定記憶體</li>
 <li><strong>一般用途的 VM</strong>：開 Ballooning，省記憶體給其他 VM 用</li>
 </ul>
-<figure data-rehype-pretty-code-figure=""><pre style="background-color:#24292e;color:#e1e4e8" tabindex="0" data-language="bash" data-theme="github-dark"><code data-language="bash" data-theme="github-dark" style="display: grid;"><span data-line=""><span style="color:#6A737D"># 固定 4GB 記憶體（關閉 Ballooning）</span></span>
-<span data-line=""><span style="color:#B392F0">qm</span><span style="color:#9ECBFF"> set</span><span style="color:#79B8FF"> 100</span><span style="color:#79B8FF"> --memory</span><span style="color:#79B8FF"> 4096</span><span style="color:#79B8FF"> --balloon</span><span style="color:#79B8FF"> 0</span></span>
+<figure data-rehype-pretty-code-figure=""><pre style="background-color:#0d1117;color:#e6edf3" tabindex="0" data-language="bash" data-theme="github-dark-default"><code data-language="bash" data-theme="github-dark-default" style="display: grid;"><span data-line=""><span style="color:#8B949E"># 固定 4GB 記憶體（關閉 Ballooning）</span></span>
+<span data-line=""><span style="color:#FFA657">qm</span><span style="color:#A5D6FF"> set</span><span style="color:#79C0FF"> 100</span><span style="color:#79C0FF"> --memory</span><span style="color:#79C0FF"> 4096</span><span style="color:#79C0FF"> --balloon</span><span style="color:#79C0FF"> 0</span></span>
 <span data-line=""> </span>
-<span data-line=""><span style="color:#6A737D"># 動態記憶體：最小 1GB，最大 4GB</span></span>
-<span data-line=""><span style="color:#B392F0">qm</span><span style="color:#9ECBFF"> set</span><span style="color:#79B8FF"> 100</span><span style="color:#79B8FF"> --memory</span><span style="color:#79B8FF"> 4096</span><span style="color:#79B8FF"> --balloon</span><span style="color:#79B8FF"> 1024</span></span></code></pre></figure>
+<span data-line=""><span style="color:#8B949E"># 動態記憶體：最小 1GB，最大 4GB</span></span>
+<span data-line=""><span style="color:#FFA657">qm</span><span style="color:#A5D6FF"> set</span><span style="color:#79C0FF"> 100</span><span style="color:#79C0FF"> --memory</span><span style="color:#79C0FF"> 4096</span><span style="color:#79C0FF"> --balloon</span><span style="color:#79C0FF"> 1024</span></span></code></pre></figure>
 <h2 id="磁碟virtio-是唯一正解">磁碟：VirtIO 是唯一正解</h2>
 <table>
 <thead>
@@ -323,28 +323,28 @@ b:"$Sreact.suspense"
 </tbody>
 </table>
 <p>再加上一個容易忽略的設定：<strong>IO Thread</strong>。開了之後磁碟 I/O 有獨立的執行緒處理，不會卡住 VM 的主 CPU。</p>
-<figure data-rehype-pretty-code-figure=""><pre style="background-color:#24292e;color:#e1e4e8" tabindex="0" data-language="bash" data-theme="github-dark"><code data-language="bash" data-theme="github-dark" style="display: grid;"><span data-line=""><span style="color:#6A737D"># 啟用 IO Thread（需要先用 VirtIO-SCSI 控制器）</span></span>
-<span data-line=""><span style="color:#B392F0">qm</span><span style="color:#9ECBFF"> set</span><span style="color:#79B8FF"> 100</span><span style="color:#79B8FF"> --scsihw</span><span style="color:#9ECBFF"> virtio-scsi-single</span></span>
-<span data-line=""><span style="color:#B392F0">qm</span><span style="color:#9ECBFF"> set</span><span style="color:#79B8FF"> 100</span><span style="color:#79B8FF"> --scsi0</span><span style="color:#9ECBFF"> local-lvm:32,iothread=1,discard=on,ssd=</span><span style="color:#79B8FF">1</span></span></code></pre></figure>
+<figure data-rehype-pretty-code-figure=""><pre style="background-color:#0d1117;color:#e6edf3" tabindex="0" data-language="bash" data-theme="github-dark-default"><code data-language="bash" data-theme="github-dark-default" style="display: grid;"><span data-line=""><span style="color:#8B949E"># 啟用 IO Thread（需要先用 VirtIO-SCSI 控制器）</span></span>
+<span data-line=""><span style="color:#FFA657">qm</span><span style="color:#A5D6FF"> set</span><span style="color:#79C0FF"> 100</span><span style="color:#79C0FF"> --scsihw</span><span style="color:#A5D6FF"> virtio-scsi-single</span></span>
+<span data-line=""><span style="color:#FFA657">qm</span><span style="color:#A5D6FF"> set</span><span style="color:#79C0FF"> 100</span><span style="color:#79C0FF"> --scsi0</span><span style="color:#A5D6FF"> local-lvm:32,iothread=1,discard=on,ssd=</span><span style="color:#79C0FF">1</span></span></code></pre></figure>
 <blockquote>
 <p><code>discard=on</code> 和 <code>ssd=1</code> 是給 SSD 用的，讓 VM 內部的 TRIM 指令能穿透到實體磁碟。如果你的儲存後端是 HDD，這兩個不用開。更多儲存後端的選擇請看<a href="05-storage">儲存系統指南</a>。</p>
 </blockquote>
 <h2 id="vm-生命週期從搖籃到墳墓">VM 生命週期：從搖籃到墳墓</h2>
 <p>你會最常用到的指令：</p>
-<figure data-rehype-pretty-code-figure=""><pre style="background-color:#24292e;color:#e1e4e8" tabindex="0" data-language="bash" data-theme="github-dark"><code data-language="bash" data-theme="github-dark" style="display: grid;"><span data-line=""><span style="color:#6A737D"># 啟動</span></span>
-<span data-line=""><span style="color:#B392F0">qm</span><span style="color:#9ECBFF"> start</span><span style="color:#79B8FF"> 100</span></span>
+<figure data-rehype-pretty-code-figure=""><pre style="background-color:#0d1117;color:#e6edf3" tabindex="0" data-language="bash" data-theme="github-dark-default"><code data-language="bash" data-theme="github-dark-default" style="display: grid;"><span data-line=""><span style="color:#8B949E"># 啟動</span></span>
+<span data-line=""><span style="color:#FFA657">qm</span><span style="color:#A5D6FF"> start</span><span style="color:#79C0FF"> 100</span></span>
 <span data-line=""> </span>
-<span data-line=""><span style="color:#6A737D"># 優雅關機（送 ACPI 訊號，等 OS 自己關）</span></span>
-<span data-line=""><span style="color:#B392F0">qm</span><span style="color:#9ECBFF"> shutdown</span><span style="color:#79B8FF"> 100</span></span>
+<span data-line=""><span style="color:#8B949E"># 優雅關機（送 ACPI 訊號，等 OS 自己關）</span></span>
+<span data-line=""><span style="color:#FFA657">qm</span><span style="color:#A5D6FF"> shutdown</span><span style="color:#79C0FF"> 100</span></span>
 <span data-line=""> </span>
-<span data-line=""><span style="color:#6A737D"># 強制關機（拔電源等級，OS 來不及收尾）</span></span>
-<span data-line=""><span style="color:#B392F0">qm</span><span style="color:#9ECBFF"> stop</span><span style="color:#79B8FF"> 100</span></span>
+<span data-line=""><span style="color:#8B949E"># 強制關機（拔電源等級，OS 來不及收尾）</span></span>
+<span data-line=""><span style="color:#FFA657">qm</span><span style="color:#A5D6FF"> stop</span><span style="color:#79C0FF"> 100</span></span>
 <span data-line=""> </span>
-<span data-line=""><span style="color:#6A737D"># 重新啟動</span></span>
-<span data-line=""><span style="color:#B392F0">qm</span><span style="color:#9ECBFF"> reboot</span><span style="color:#79B8FF"> 100</span></span>
+<span data-line=""><span style="color:#8B949E"># 重新啟動</span></span>
+<span data-line=""><span style="color:#FFA657">qm</span><span style="color:#A5D6FF"> reboot</span><span style="color:#79C0FF"> 100</span></span>
 <span data-line=""> </span>
-<span data-line=""><span style="color:#6A737D"># 刪除（VM 必須先停止）</span></span>
-<span data-line=""><span style="color:#B392F0">qm</span><span style="color:#9ECBFF"> destroy</span><span style="color:#79B8FF"> 100</span></span></code></pre></figure>
+<span data-line=""><span style="color:#8B949E"># 刪除（VM 必須先停止）</span></span>
+<span data-line=""><span style="color:#FFA657">qm</span><span style="color:#A5D6FF"> destroy</span><span style="color:#79C0FF"> 100</span></span></code></pre></figure>
 <h2 id="快照備份克隆你的三道保險">快照、備份、克隆：你的三道保險</h2>
 <p>這三個東西經常搞混，但用途完全不同：</p>
 <table>
@@ -383,23 +383,23 @@ b:"$Sreact.suspense"
 </tr>
 </tbody>
 </table>
-<figure data-rehype-pretty-code-figure=""><pre style="background-color:#24292e;color:#e1e4e8" tabindex="0" data-language="bash" data-theme="github-dark"><code data-language="bash" data-theme="github-dark" style="display: grid;"><span data-line=""><span style="color:#6A737D"># 拍快照</span></span>
-<span data-line=""><span style="color:#B392F0">qm</span><span style="color:#9ECBFF"> snapshot</span><span style="color:#79B8FF"> 100</span><span style="color:#9ECBFF"> before-upgrade</span><span style="color:#79B8FF"> --description</span><span style="color:#9ECBFF"> "升級前的保險"</span></span>
+<figure data-rehype-pretty-code-figure=""><pre style="background-color:#0d1117;color:#e6edf3" tabindex="0" data-language="bash" data-theme="github-dark-default"><code data-language="bash" data-theme="github-dark-default" style="display: grid;"><span data-line=""><span style="color:#8B949E"># 拍快照</span></span>
+<span data-line=""><span style="color:#FFA657">qm</span><span style="color:#A5D6FF"> snapshot</span><span style="color:#79C0FF"> 100</span><span style="color:#A5D6FF"> before-upgrade</span><span style="color:#79C0FF"> --description</span><span style="color:#A5D6FF"> "升級前的保險"</span></span>
 <span data-line=""> </span>
-<span data-line=""><span style="color:#6A737D"># 回滾快照</span></span>
-<span data-line=""><span style="color:#B392F0">qm</span><span style="color:#9ECBFF"> rollback</span><span style="color:#79B8FF"> 100</span><span style="color:#9ECBFF"> before-upgrade</span></span>
+<span data-line=""><span style="color:#8B949E"># 回滾快照</span></span>
+<span data-line=""><span style="color:#FFA657">qm</span><span style="color:#A5D6FF"> rollback</span><span style="color:#79C0FF"> 100</span><span style="color:#A5D6FF"> before-upgrade</span></span>
 <span data-line=""> </span>
-<span data-line=""><span style="color:#6A737D"># 列出快照</span></span>
-<span data-line=""><span style="color:#B392F0">qm</span><span style="color:#9ECBFF"> listsnapshot</span><span style="color:#79B8FF"> 100</span></span>
+<span data-line=""><span style="color:#8B949E"># 列出快照</span></span>
+<span data-line=""><span style="color:#FFA657">qm</span><span style="color:#A5D6FF"> listsnapshot</span><span style="color:#79C0FF"> 100</span></span>
 <span data-line=""> </span>
-<span data-line=""><span style="color:#6A737D"># 備份到本地儲存</span></span>
-<span data-line=""><span style="color:#B392F0">vzdump</span><span style="color:#79B8FF"> 100</span><span style="color:#79B8FF"> --storage</span><span style="color:#9ECBFF"> local</span><span style="color:#79B8FF"> --compress</span><span style="color:#9ECBFF"> zstd</span><span style="color:#79B8FF"> --mode</span><span style="color:#9ECBFF"> snapshot</span></span>
+<span data-line=""><span style="color:#8B949E"># 備份到本地儲存</span></span>
+<span data-line=""><span style="color:#FFA657">vzdump</span><span style="color:#79C0FF"> 100</span><span style="color:#79C0FF"> --storage</span><span style="color:#A5D6FF"> local</span><span style="color:#79C0FF"> --compress</span><span style="color:#A5D6FF"> zstd</span><span style="color:#79C0FF"> --mode</span><span style="color:#A5D6FF"> snapshot</span></span>
 <span data-line=""> </span>
-<span data-line=""><span style="color:#6A737D"># 完整克隆</span></span>
-<span data-line=""><span style="color:#B392F0">qm</span><span style="color:#9ECBFF"> clone</span><span style="color:#79B8FF"> 100</span><span style="color:#79B8FF"> 101</span><span style="color:#79B8FF"> --name</span><span style="color:#9ECBFF"> debian-clone</span><span style="color:#79B8FF"> --full</span></span>
+<span data-line=""><span style="color:#8B949E"># 完整克隆</span></span>
+<span data-line=""><span style="color:#FFA657">qm</span><span style="color:#A5D6FF"> clone</span><span style="color:#79C0FF"> 100</span><span style="color:#79C0FF"> 101</span><span style="color:#79C0FF"> --name</span><span style="color:#A5D6FF"> debian-clone</span><span style="color:#79C0FF"> --full</span></span>
 <span data-line=""> </span>
-<span data-line=""><span style="color:#6A737D"># 查看備份清單</span></span>
-<span data-line=""><span style="color:#B392F0">ls</span><span style="color:#9ECBFF"> /var/lib/vz/dump/</span></span></code></pre></figure>
+<span data-line=""><span style="color:#8B949E"># 查看備份清單</span></span>
+<span data-line=""><span style="color:#FFA657">ls</span><span style="color:#A5D6FF"> /var/lib/vz/dump/</span></span></code></pre></figure>
 <h2 id="vm-範本批量生產的秘密武器">VM 範本：批量生產的秘密武器</h2>
 <p>如果你需要重複建立類似的 VM（例如測試環境），每次從 ISO 重新安裝太浪費時間。範本的概念就像做餅乾的模具——做好一個模型，之後壓出來的每一塊都一樣。</p>
 <p>製作範本的標準流程：</p>
@@ -410,15 +410,15 @@ b:"$Sreact.suspense"
 <li>清理暫存（<code>apt clean</code>、刪 bash history）</li>
 <li>轉換成範本</li>
 </ol>
-<figure data-rehype-pretty-code-figure=""><pre style="background-color:#24292e;color:#e1e4e8" tabindex="0" data-language="bash" data-theme="github-dark"><code data-language="bash" data-theme="github-dark" style="display: grid;"><span data-line=""><span style="color:#6A737D"># 在 VM 裡面裝 Guest Agent</span></span>
-<span data-line=""><span style="color:#B392F0">apt</span><span style="color:#9ECBFF"> install</span><span style="color:#79B8FF"> -y</span><span style="color:#9ECBFF"> qemu-guest-agent</span></span>
-<span data-line=""><span style="color:#B392F0">systemctl</span><span style="color:#9ECBFF"> enable</span><span style="color:#9ECBFF"> qemu-guest-agent</span></span>
+<figure data-rehype-pretty-code-figure=""><pre style="background-color:#0d1117;color:#e6edf3" tabindex="0" data-language="bash" data-theme="github-dark-default"><code data-language="bash" data-theme="github-dark-default" style="display: grid;"><span data-line=""><span style="color:#8B949E"># 在 VM 裡面裝 Guest Agent</span></span>
+<span data-line=""><span style="color:#FFA657">apt</span><span style="color:#A5D6FF"> install</span><span style="color:#79C0FF"> -y</span><span style="color:#A5D6FF"> qemu-guest-agent</span></span>
+<span data-line=""><span style="color:#FFA657">systemctl</span><span style="color:#A5D6FF"> enable</span><span style="color:#A5D6FF"> qemu-guest-agent</span></span>
 <span data-line=""> </span>
-<span data-line=""><span style="color:#6A737D"># 清理後關機</span></span>
-<span data-line=""><span style="color:#B392F0">apt</span><span style="color:#9ECBFF"> clean</span><span style="color:#E1E4E8"> &#x26;&#x26; </span><span style="color:#B392F0">rm</span><span style="color:#79B8FF"> -f</span><span style="color:#9ECBFF"> ~/.bash_history</span><span style="color:#E1E4E8"> &#x26;&#x26; </span><span style="color:#B392F0">poweroff</span></span>
+<span data-line=""><span style="color:#8B949E"># 清理後關機</span></span>
+<span data-line=""><span style="color:#FFA657">apt</span><span style="color:#A5D6FF"> clean</span><span style="color:#E6EDF3"> &#x26;&#x26; </span><span style="color:#FFA657">rm</span><span style="color:#79C0FF"> -f</span><span style="color:#A5D6FF"> ~/.bash_history</span><span style="color:#E6EDF3"> &#x26;&#x26; </span><span style="color:#FFA657">poweroff</span></span>
 <span data-line=""> </span>
-<span data-line=""><span style="color:#6A737D"># 在 PVE 主機上把 VM 轉成範本</span></span>
-<span data-line=""><span style="color:#B392F0">qm</span><span style="color:#9ECBFF"> template</span><span style="color:#79B8FF"> 100</span></span></code></pre></figure>
+<span data-line=""><span style="color:#8B949E"># 在 PVE 主機上把 VM 轉成範本</span></span>
+<span data-line=""><span style="color:#FFA657">qm</span><span style="color:#A5D6FF"> template</span><span style="color:#79C0FF"> 100</span></span></code></pre></figure>
 <p>轉成範本之後，這台 VM 就變成唯讀的了。要用它的時候，右鍵 -> Clone，選 Linked Clone 幾秒鐘就能生出一台新的。</p>
 <h2 id="qemu-guest-agent裝了就對了">QEMU Guest Agent：裝了就對了</h2>
 <p><a href="https://pve.proxmox.com/wiki/Qemu-guest-agent">Guest Agent</a> 是裝在 VM 裡面的小程式，讓 PVE 能跟 VM 內部溝通。裝了之後你能：</p>
@@ -427,11 +427,11 @@ b:"$Sreact.suspense"
 <li>拍快照時自動凍結檔案系統（資料一致性）</li>
 <li>優雅關機真的能優雅關（不然有時候 VM 裝聾作啞）</li>
 </ul>
-<figure data-rehype-pretty-code-figure=""><pre style="background-color:#24292e;color:#e1e4e8" tabindex="0" data-language="bash" data-theme="github-dark"><code data-language="bash" data-theme="github-dark" style="display: grid;"><span data-line=""><span style="color:#6A737D"># Linux</span></span>
-<span data-line=""><span style="color:#B392F0">apt</span><span style="color:#9ECBFF"> install</span><span style="color:#79B8FF"> -y</span><span style="color:#9ECBFF"> qemu-guest-agent</span></span>
-<span data-line=""><span style="color:#B392F0">systemctl</span><span style="color:#9ECBFF"> enable</span><span style="color:#79B8FF"> --now</span><span style="color:#9ECBFF"> qemu-guest-agent</span></span>
+<figure data-rehype-pretty-code-figure=""><pre style="background-color:#0d1117;color:#e6edf3" tabindex="0" data-language="bash" data-theme="github-dark-default"><code data-language="bash" data-theme="github-dark-default" style="display: grid;"><span data-line=""><span style="color:#8B949E"># Linux</span></span>
+<span data-line=""><span style="color:#FFA657">apt</span><span style="color:#A5D6FF"> install</span><span style="color:#79C0FF"> -y</span><span style="color:#A5D6FF"> qemu-guest-agent</span></span>
+<span data-line=""><span style="color:#FFA657">systemctl</span><span style="color:#A5D6FF"> enable</span><span style="color:#79C0FF"> --now</span><span style="color:#A5D6FF"> qemu-guest-agent</span></span>
 <span data-line=""> </span>
-<span data-line=""><span style="color:#6A737D"># 然後在 PVE 的 VM Options 裡勾選 "QEMU Guest Agent"</span></span></code></pre></figure>
+<span data-line=""><span style="color:#8B949E"># 然後在 PVE 的 VM Options 裡勾選 "QEMU Guest Agent"</span></span></code></pre></figure>
 <blockquote>
 <p>Windows VM 的話，Guest Agent 隨 <a href="https://fedorapeople.org/groups/virt/virtio-win/direct-downloads/stable-virtio/virtio-win.iso">VirtIO 驅動 ISO</a> 一起安裝。裝 VirtIO 驅動的時候順便裝 Guest Agent，一箭雙鵰。</p>
 </blockquote>

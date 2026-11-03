@@ -2,359 +2,359 @@
 <rss version="2.0" xmlns:atom="http://www.w3.org/2005/Atom">
   <channel>
     <title>BenXHub Blog</title>
-    <link>https://benxhub.com/ja</link>
+    <link>https://benxhub.com/ja/</link>
     <description>BenXのテックブログ — Web開発、アーキテクチャ、エンジニアリング実践を共有します。</description>
-    <lastBuildDate>Sun, 01 Nov 2026 07:34:15 GMT</lastBuildDate>
+    <lastBuildDate>Tue, 03 Nov 2026 21:49:24 GMT</lastBuildDate>
     <atom:link href="https://benxhub.com/ja/feed.xml" rel="self" type="application/rss+xml"/>
     <item>
       <title>K8S Envoy Gateway シリーズ概要: Ingress よりモダンなトラフィック入口</title>
-      <link>https://benxhub.com/ja/blog/k8s/gateway/00-overview</link>
+      <link>https://benxhub.com/ja/blog/k8s/gateway/00-overview/</link>
       <description>Envoy Gateway、Gateway API、Envoy Proxy の関係を理解し、シリーズ全体の学習マップを作ります。</description>
       <pubDate>Tue, 10 Mar 2026 00:00:00 GMT</pubDate>
-      <guid isPermaLink="true">https://benxhub.com/ja/blog/k8s/gateway/00-overview</guid>
+      <guid isPermaLink="true">https://benxhub.com/ja/blog/k8s/gateway/00-overview/</guid>
     </item>
     <item>
       <title>Envoy Gateway クイックスタート: 10 分で最初のリクエストを通す</title>
-      <link>https://benxhub.com/ja/blog/k8s/gateway/01-quick-start</link>
+      <link>https://benxhub.com/ja/blog/k8s/gateway/01-quick-start/</link>
       <description>公式 quickstart を使って Envoy Gateway をインストールし、Gateway と HTTPRoute を適用して、実際にリクエストが流れることを確認します。</description>
       <pubDate>Tue, 10 Mar 2026 00:00:00 GMT</pubDate>
-      <guid isPermaLink="true">https://benxhub.com/ja/blog/k8s/gateway/01-quick-start</guid>
+      <guid isPermaLink="true">https://benxhub.com/ja/blog/k8s/gateway/01-quick-start/</guid>
     </item>
     <item>
       <title>Envoy Gateway コア概念: Gateway、Listener、Proxy、Route ファミリーを整理する</title>
-      <link>https://benxhub.com/ja/blog/k8s/gateway/02-core-concepts</link>
+      <link>https://benxhub.com/ja/blog/k8s/gateway/02-core-concepts/</link>
       <description>Envoy Gateway の完全なメンタルモデルを作ります。Gateway、Listener、Envoy Proxy、各 Route type の責務を理解します。</description>
       <pubDate>Tue, 10 Mar 2026 00:00:00 GMT</pubDate>
-      <guid isPermaLink="true">https://benxhub.com/ja/blog/k8s/gateway/02-core-concepts</guid>
+      <guid isPermaLink="true">https://benxhub.com/ja/blog/k8s/gateway/02-core-concepts/</guid>
     </item>
     <item>
       <title>Envoy Gateway HTTP ルーティング実践: Host、Path、Header、Traffic Splitting</title>
-      <link>https://benxhub.com/ja/blog/k8s/gateway/03-http-routing</link>
+      <link>https://benxhub.com/ja/blog/k8s/gateway/03-http-routing/</link>
       <description>host/path matching から filters、timeouts、header 条件、weighted traffic splitting まで、代表的な HTTPRoute パターンを整理します。</description>
       <pubDate>Tue, 10 Mar 2026 00:00:00 GMT</pubDate>
-      <guid isPermaLink="true">https://benxhub.com/ja/blog/k8s/gateway/03-http-routing</guid>
+      <guid isPermaLink="true">https://benxhub.com/ja/blog/k8s/gateway/03-http-routing/</guid>
     </item>
     <item>
       <title>Envoy Gateway TLS とセキュリティ: HTTPS を設定し、API を裸で走らせない</title>
-      <link>https://benxhub.com/ja/blog/k8s/gateway/04-tls-and-security</link>
+      <link>https://benxhub.com/ja/blog/k8s/gateway/04-tls-and-security/</link>
       <description>HTTPS listener、certificateRefs、TLS termination、TLSRoute、そして Envoy Gateway における cross-namespace certificate reference の基本を理解します。</description>
       <pubDate>Tue, 10 Mar 2026 00:00:00 GMT</pubDate>
-      <guid isPermaLink="true">https://benxhub.com/ja/blog/k8s/gateway/04-tls-and-security</guid>
+      <guid isPermaLink="true">https://benxhub.com/ja/blog/k8s/gateway/04-tls-and-security/</guid>
     </item>
     <item>
       <title>Envoy Gateway ベストプラクティス: 本番前に未来の自分を助ける</title>
-      <link>https://benxhub.com/ja/blog/k8s/gateway/05-best-practices</link>
+      <link>https://benxhub.com/ja/blog/k8s/gateway/05-best-practices/</link>
       <description>Envoy Gateway を本番運用する際の実践的な推奨事項と避けるべき落とし穴をまとめます。TLS、route governance、observability、変更戦略までカバーします。</description>
       <pubDate>Tue, 10 Mar 2026 00:00:00 GMT</pubDate>
-      <guid isPermaLink="true">https://benxhub.com/ja/blog/k8s/gateway/05-best-practices</guid>
+      <guid isPermaLink="true">https://benxhub.com/ja/blog/k8s/gateway/05-best-practices/</guid>
     </item>
     <item>
       <title>Envoy Gateway Route Type チートシート: HTTPRoute、GRPCRoute、TCPRoute、それとも TLSRoute?</title>
-      <link>https://benxhub.com/ja/blog/k8s/gateway/06-route-types-cheatsheet</link>
+      <link>https://benxhub.com/ja/blog/k8s/gateway/06-route-types-cheatsheet/</link>
       <description>正しい Route type を選ぶためのクイックリファレンスです。最小 YAML 例、判断フロー、よくある落とし穴をまとめます。</description>
       <pubDate>Tue, 10 Mar 2026 00:00:00 GMT</pubDate>
-      <guid isPermaLink="true">https://benxhub.com/ja/blog/k8s/gateway/06-route-types-cheatsheet</guid>
+      <guid isPermaLink="true">https://benxhub.com/ja/blog/k8s/gateway/06-route-types-cheatsheet/</guid>
     </item>
     <item>
       <title>Envoy Gateway Listener 設計ガイド: 複数 Port、複数 Hostname、複数 Ingress パターン</title>
-      <link>https://benxhub.com/ja/blog/k8s/gateway/07-listener-design</link>
+      <link>https://benxhub.com/ja/blog/k8s/gateway/07-listener-design/</link>
       <description>Listener を ingress 契約として捉えます。sectionName、allowedRoutes、multi-listener パターン、代表的な構造化方法を理解します。</description>
       <pubDate>Tue, 10 Mar 2026 00:00:00 GMT</pubDate>
-      <guid isPermaLink="true">https://benxhub.com/ja/blog/k8s/gateway/07-listener-design</guid>
+      <guid isPermaLink="true">https://benxhub.com/ja/blog/k8s/gateway/07-listener-design/</guid>
     </item>
     <item>
       <title>Envoy Gateway 複数 Namespace とチーム分担: allowedRoutes、ReferenceGrant、Cross-Team ガバナンス</title>
-      <link>https://benxhub.com/ja/blog/k8s/gateway/08-multi-namespace-and-teamwork</link>
+      <link>https://benxhub.com/ja/blog/k8s/gateway/08-multi-namespace-and-teamwork/</link>
       <description>Gateway API の multi-tenant モデルを理解します。listener への attach 権限、cross-namespace reference、platform team と app team の一般的な責務分担を整理します。</description>
       <pubDate>Tue, 10 Mar 2026 00:00:00 GMT</pubDate>
-      <guid isPermaLink="true">https://benxhub.com/ja/blog/k8s/gateway/08-multi-namespace-and-teamwork</guid>
+      <guid isPermaLink="true">https://benxhub.com/ja/blog/k8s/gateway/08-multi-namespace-and-teamwork/</guid>
     </item>
     <item>
       <title>Envoy Gateway ステータスとデバッグ手引き: Accepted、ResolvedRefs、Programmed の本当の意味</title>
-      <link>https://benxhub.com/ja/blog/k8s/gateway/09-debugging-and-status</link>
+      <link>https://benxhub.com/ja/blog/k8s/gateway/09-debugging-and-status/</link>
       <description>重要な Gateway / Route status condition と debugging フローを整理し、設定が効かないときにどこを見るべきかを明確にします。</description>
       <pubDate>Tue, 10 Mar 2026 00:00:00 GMT</pubDate>
-      <guid isPermaLink="true">https://benxhub.com/ja/blog/k8s/gateway/09-debugging-and-status</guid>
+      <guid isPermaLink="true">https://benxhub.com/ja/blog/k8s/gateway/09-debugging-and-status/</guid>
     </item>
     <item>
       <title>AI駆動のコンテンツ制作: 本当のギャップは速度ではなく、ワークフロー設計</title>
-      <link>https://benxhub.com/ja/blog/ai-trend/2026-03-09-ai-content-automation-workflow</link>
+      <link>https://benxhub.com/ja/blog/ai-trend/2026-03-09-ai-content-automation-workflow/</link>
       <description>AIで成果を出せるかどうかは、派手なツールを積み上げることよりも、ワークフロー設計の質で決まる。</description>
       <pubDate>Mon, 09 Mar 2026 00:00:00 GMT</pubDate>
-      <guid isPermaLink="true">https://benxhub.com/ja/blog/ai-trend/2026-03-09-ai-content-automation-workflow</guid>
+      <guid isPermaLink="true">https://benxhub.com/ja/blog/ai-trend/2026-03-09-ai-content-automation-workflow/</guid>
     </item>
     <item>
       <title>Cursor 組み込み Worktree：上級活用</title>
-      <link>https://benxhub.com/ja/blog/cursor/cli/08-worktree-merge</link>
+      <link>https://benxhub.com/ja/blog/cursor/cli/08-worktree-merge/</link>
       <description>並列タスク戦略、Apply で Merge と Full Overwrite の使い分け、コンフリクト対応、worktree 管理の実践。</description>
       <pubDate>Mon, 09 Mar 2026 00:00:00 GMT</pubDate>
-      <guid isPermaLink="true">https://benxhub.com/ja/blog/cursor/cli/08-worktree-merge</guid>
+      <guid isPermaLink="true">https://benxhub.com/ja/blog/cursor/cli/08-worktree-merge/</guid>
     </item>
     <item>
       <title>Cursor Worktree 上級: Best-of-N と worktrees.json</title>
-      <link>https://benxhub.com/ja/blog/cursor/cli/09-worktree-advanced</link>
+      <link>https://benxhub.com/ja/blog/cursor/cli/09-worktree-advanced/</link>
       <description>同じプロンプトを複数モデルで実行してベストを選ぶ；worktrees.json でセットアップ・マイグレーションをカスタマイズ、worktree クリーンアップ設定。</description>
       <pubDate>Mon, 09 Mar 2026 00:00:00 GMT</pubDate>
-      <guid isPermaLink="true">https://benxhub.com/ja/blog/cursor/cli/09-worktree-advanced</guid>
+      <guid isPermaLink="true">https://benxhub.com/ja/blog/cursor/cli/09-worktree-advanced/</guid>
     </item>
     <item>
       <title>Cursor CLI ヘッドレスモード: --print, --force とファイルを編集するスクリプト</title>
-      <link>https://benxhub.com/ja/blog/cursor/cli/10-headless-scripts</link>
+      <link>https://benxhub.com/ja/blog/cursor/cli/10-headless-scripts/</link>
       <description>-p/--print で非対話実行；--force と組み合わせて Agent がディスクに書き込む。スクリプト・バッチ・自動化に最適。</description>
       <pubDate>Mon, 09 Mar 2026 00:00:00 GMT</pubDate>
-      <guid isPermaLink="true">https://benxhub.com/ja/blog/cursor/cli/10-headless-scripts</guid>
+      <guid isPermaLink="true">https://benxhub.com/ja/blog/cursor/cli/10-headless-scripts/</guid>
     </item>
     <item>
       <title>Cursor CLI の出力形式と CI 連携</title>
-      <link>https://benxhub.com/ja/blog/cursor/cli/11-output-ci</link>
+      <link>https://benxhub.com/ja/blog/cursor/cli/11-output-ci/</link>
       <description>text / json / stream-json の使い分け、CI での結果パース、ライブ進捗、失敗時の扱い。</description>
       <pubDate>Mon, 09 Mar 2026 00:00:00 GMT</pubDate>
-      <guid isPermaLink="true">https://benxhub.com/ja/blog/cursor/cli/11-output-ci</guid>
+      <guid isPermaLink="true">https://benxhub.com/ja/blog/cursor/cli/11-output-ci/</guid>
     </item>
     <item>
       <title>Cursor CLI セッション管理とクラウド実行</title>
-      <link>https://benxhub.com/ja/blog/cursor/cli/12-sessions-cloud</link>
+      <link>https://benxhub.com/ja/blog/cursor/cli/12-sessions-cloud/</link>
       <description>--resume で最後の会話を再開、cursor agent ls で履歴一覧、-c で長時間タスクをクラウド実行してターミナルを閉じても完了まで継続。</description>
       <pubDate>Mon, 09 Mar 2026 00:00:00 GMT</pubDate>
-      <guid isPermaLink="true">https://benxhub.com/ja/blog/cursor/cli/12-sessions-cloud</guid>
+      <guid isPermaLink="true">https://benxhub.com/ja/blog/cursor/cli/12-sessions-cloud/</guid>
     </item>
     <item>
       <title>OpenClaw 連載: AI アシスタントを自宅に迎えよう</title>
-      <link>https://benxhub.com/ja/blog/openclaw/01-intro</link>
+      <link>https://benxhub.com/ja/blog/openclaw/01-intro/</link>
       <description>OpenClaw とは何か、一般的なクラウド AI サービスと何が違うのか。まずは全体像を理解して、続けるかどうか判断しましょう。</description>
       <pubDate>Sun, 08 Mar 2026 00:00:00 GMT</pubDate>
-      <guid isPermaLink="true">https://benxhub.com/ja/blog/openclaw/01-intro</guid>
+      <guid isPermaLink="true">https://benxhub.com/ja/blog/openclaw/01-intro/</guid>
     </item>
     <item>
       <title>5 分でインストール: OpenClaw 初回起動をスムーズに終わらせるガイド</title>
-      <link>https://benxhub.com/ja/blog/openclaw/02-quick-install</link>
+      <link>https://benxhub.com/ja/blog/openclaw/02-quick-install/</link>
       <description>OpenClaw をゼロからインストールし、オンボーディングを完了して最初のダッシュボードを開きます。</description>
       <pubDate>Sun, 08 Mar 2026 00:00:00 GMT</pubDate>
-      <guid isPermaLink="true">https://benxhub.com/ja/blog/openclaw/02-quick-install</guid>
+      <guid isPermaLink="true">https://benxhub.com/ja/blog/openclaw/02-quick-install/</guid>
     </item>
     <item>
       <title>ダッシュボードで止まる？ OpenClaw 認証を 3 分で理解しよう</title>
-      <link>https://benxhub.com/ja/blog/openclaw/03-dashboard-auth</link>
+      <link>https://benxhub.com/ja/blog/openclaw/03-dashboard-auth/</link>
       <description>Token、pairing、リモート接続。ダッシュボードログインでつまずきやすいポイントをまとめて整理します。</description>
       <pubDate>Sun, 08 Mar 2026 00:00:00 GMT</pubDate>
-      <guid isPermaLink="true">https://benxhub.com/ja/blog/openclaw/03-dashboard-auth</guid>
+      <guid isPermaLink="true">https://benxhub.com/ja/blog/openclaw/03-dashboard-auth/</guid>
     </item>
     <item>
       <title>Telegram でアシスタントを動かす: Channel 設定の完全ガイド</title>
-      <link>https://benxhub.com/ja/blog/openclaw/04-channels-basics</link>
+      <link>https://benxhub.com/ja/blog/openclaw/04-channels-basics/</link>
       <description>Telegram Bot の作成、グループでの発言制御、dmPolicy までまとめて設定する手順を解説します。</description>
       <pubDate>Sun, 08 Mar 2026 00:00:00 GMT</pubDate>
-      <guid isPermaLink="true">https://benxhub.com/ja/blog/openclaw/04-channels-basics</guid>
+      <guid isPermaLink="true">https://benxhub.com/ja/blog/openclaw/04-channels-basics/</guid>
     </item>
     <item>
       <title>アシスタントに道具を持たせよう: Skills で話すだけの存在から実行役へ</title>
-      <link>https://benxhub.com/ja/blog/openclaw/05-skills-intro</link>
+      <link>https://benxhub.com/ja/blog/openclaw/05-skills-intro/</link>
       <description>Skill とは何か、組み込み Skill の使い方、カスタム Skill の作り方、追加ディレクトリからの読み込み方を解説します。</description>
       <pubDate>Sun, 08 Mar 2026 00:00:00 GMT</pubDate>
-      <guid isPermaLink="true">https://benxhub.com/ja/blog/openclaw/05-skills-intro</guid>
+      <guid isPermaLink="true">https://benxhub.com/ja/blog/openclaw/05-skills-intro/</guid>
     </item>
     <item>
       <title>アシスタントの脳はどこにある？ メモリとワークスペースを理解しよう</title>
-      <link>https://benxhub.com/ja/blog/openclaw/06-memory-workspace</link>
+      <link>https://benxhub.com/ja/blog/openclaw/06-memory-workspace/</link>
       <description>Workspace の構成、Memory の仕組み、データ保存先、そして 1 コマンドでのバックアップ方法を解説します。</description>
       <pubDate>Sun, 08 Mar 2026 00:00:00 GMT</pubDate>
-      <guid isPermaLink="true">https://benxhub.com/ja/blog/openclaw/06-memory-workspace</guid>
+      <guid isPermaLink="true">https://benxhub.com/ja/blog/openclaw/06-memory-workspace/</guid>
     </item>
     <item>
       <title>1 つの Gateway で複数アシスタント: Bindings で正しいメッセージを正しい Agent へ</title>
-      <link>https://benxhub.com/ja/blog/openclaw/07-multi-agent-bindings</link>
+      <link>https://benxhub.com/ja/blog/openclaw/07-multi-agent-bindings/</link>
       <description>複数 Agent を定義し、Bindings でメッセージを振り分けて、Telegram グループごとに異なる Workspace を使い分けます。</description>
       <pubDate>Sun, 08 Mar 2026 00:00:00 GMT</pubDate>
-      <guid isPermaLink="true">https://benxhub.com/ja/blog/openclaw/07-multi-agent-bindings</guid>
+      <guid isPermaLink="true">https://benxhub.com/ja/blog/openclaw/07-multi-agent-bindings/</guid>
     </item>
     <item>
       <title>ノート PC が寝るとアシスタントも消える？ Gateway を VPS に移そう</title>
-      <link>https://benxhub.com/ja/blog/openclaw/08-remote-gateway-nodes</link>
+      <link>https://benxhub.com/ja/blog/openclaw/08-remote-gateway-nodes/</link>
       <description>OpenClaw Gateway を VPS に配置し、Tailscale で安全につなぎ、Gateway と Node の役割分担を理解します。</description>
       <pubDate>Sun, 08 Mar 2026 00:00:00 GMT</pubDate>
-      <guid isPermaLink="true">https://benxhub.com/ja/blog/openclaw/08-remote-gateway-nodes</guid>
+      <guid isPermaLink="true">https://benxhub.com/ja/blog/openclaw/08-remote-gateway-nodes/</guid>
     </item>
     <item>
       <title>アシスタントを自動で働かせよう: 頼まなくても手伝ってくれる仕組み</title>
-      <link>https://benxhub.com/ja/blog/openclaw/09-cron-automation</link>
+      <link>https://benxhub.com/ja/blog/openclaw/09-cron-automation/</link>
       <description>Cron で定期タスクを実行し、構文を理解し、ダッシュボードから設定し、実行されない場合を切り分けます。</description>
       <pubDate>Sun, 08 Mar 2026 00:00:00 GMT</pubDate>
-      <guid isPermaLink="true">https://benxhub.com/ja/blog/openclaw/09-cron-automation</guid>
+      <guid isPermaLink="true">https://benxhub.com/ja/blog/openclaw/09-cron-automation/</guid>
     </item>
     <item>
       <title>挙動が怪しい？ 高度な設定とデバッグの実践ガイド</title>
-      <link>https://benxhub.com/ja/blog/openclaw/10-advanced-config</link>
+      <link>https://benxhub.com/ja/blog/openclaw/10-advanced-config/</link>
       <description>設定ファイルの場所、API key の安全な管理方法、重要なデバッグ手段、よくあるエラーの見方をまとめます。</description>
       <pubDate>Sun, 08 Mar 2026 00:00:00 GMT</pubDate>
-      <guid isPermaLink="true">https://benxhub.com/ja/blog/openclaw/10-advanced-config</guid>
+      <guid isPermaLink="true">https://benxhub.com/ja/blog/openclaw/10-advanced-config/</guid>
     </item>
     <item>
       <title>設定ファイルを触らなくてもいい: Web UI だけで OpenClaw を設定する</title>
-      <link>https://benxhub.com/ja/blog/openclaw/11-openclaw-web-ui-setup</link>
+      <link>https://benxhub.com/ja/blog/openclaw/11-openclaw-web-ui-setup/</link>
       <description>Web UI の使い方、フォームモードと Raw JSON の違い、複数 Workspace の振り分け設定例をまとめます。</description>
       <pubDate>Sun, 08 Mar 2026 00:00:00 GMT</pubDate>
-      <guid isPermaLink="true">https://benxhub.com/ja/blog/openclaw/11-openclaw-web-ui-setup</guid>
+      <guid isPermaLink="true">https://benxhub.com/ja/blog/openclaw/11-openclaw-web-ui-setup/</guid>
     </item>
     <item>
       <title>1 つの Bot で複数タスクを整理する: Workspace x Telegram 完全ガイド</title>
-      <link>https://benxhub.com/ja/blog/openclaw/12-openclaw-workspace-telegram-setup</link>
+      <link>https://benxhub.com/ja/blog/openclaw/12-openclaw-workspace-telegram-setup/</link>
       <description>複数 Workspace を作成し、Agents と Bindings を設定して、Telegram グループごとに別アシスタントを割り当てます。</description>
       <pubDate>Sun, 08 Mar 2026 00:00:00 GMT</pubDate>
-      <guid isPermaLink="true">https://benxhub.com/ja/blog/openclaw/12-openclaw-workspace-telegram-setup</guid>
+      <guid isPermaLink="true">https://benxhub.com/ja/blog/openclaw/12-openclaw-workspace-telegram-setup/</guid>
     </item>
     <item>
       <title>CrewAI デバッグとよくあるエラー：初心者が最も踏みやすい 8 つの地雷</title>
-      <link>https://benxhub.com/ja/blog/crewai/08-debug-and-common-errors</link>
+      <link>https://benxhub.com/ja/blog/crewai/08-debug-and-common-errors/</link>
       <description>出力の不安定、タスク連携失敗、Tool 引数ミスまで、最速で切り分ける手順を整理。</description>
       <pubDate>Thu, 05 Mar 2026 00:00:00 GMT</pubDate>
-      <guid isPermaLink="true">https://benxhub.com/ja/blog/crewai/08-debug-and-common-errors</guid>
+      <guid isPermaLink="true">https://benxhub.com/ja/blog/crewai/08-debug-and-common-errors/</guid>
     </item>
     <item>
       <title>CrewAI 本番運用ベストプラクティス：Demo から保守可能なシステムへ</title>
-      <link>https://benxhub.com/ja/blog/crewai/09-production-best-practices</link>
+      <link>https://benxhub.com/ja/blog/crewai/09-production-best-practices/</link>
       <description>実運用で CrewAI を展開する際のアーキテクチャ、コスト、監視、運用の要点を整理。</description>
       <pubDate>Thu, 05 Mar 2026 00:00:00 GMT</pubDate>
-      <guid isPermaLink="true">https://benxhub.com/ja/blog/crewai/09-production-best-practices</guid>
+      <guid isPermaLink="true">https://benxhub.com/ja/blog/crewai/09-production-best-practices/</guid>
     </item>
     <item>
       <title>CrewAI Flow 入門：複数 Crew を制御可能なフローに接続する</title>
-      <link>https://benxhub.com/ja/blog/crewai/06-flow-basics</link>
+      <link>https://benxhub.com/ja/blog/crewai/06-flow-basics/</link>
       <description>Flow で多段タスクと条件分岐を管理し、実業務に近いワークフローを構築する。</description>
       <pubDate>Tue, 03 Mar 2026 00:00:00 GMT</pubDate>
-      <guid isPermaLink="true">https://benxhub.com/ja/blog/crewai/06-flow-basics</guid>
+      <guid isPermaLink="true">https://benxhub.com/ja/blog/crewai/06-flow-basics/</guid>
     </item>
     <item>
       <title>CrewAI Memory と Knowledge：Agent に毎回ゼロから学習させない</title>
-      <link>https://benxhub.com/ja/blog/crewai/07-memory-and-knowledge</link>
+      <link>https://benxhub.com/ja/blog/crewai/07-memory-and-knowledge/</link>
       <description>メモリ機構と知識ソース連携を理解し、マルチエージェントフローの継続性を高める。</description>
       <pubDate>Tue, 03 Mar 2026 00:00:00 GMT</pubDate>
-      <guid isPermaLink="true">https://benxhub.com/ja/blog/crewai/07-memory-and-knowledge</guid>
+      <guid isPermaLink="true">https://benxhub.com/ja/blog/crewai/07-memory-and-knowledge/</guid>
     </item>
     <item>
       <title>CrewAI Crew と Process：Sequential を使うべきタイミング</title>
-      <link>https://benxhub.com/ja/blog/crewai/03-crew-and-process</link>
+      <link>https://benxhub.com/ja/blog/crewai/03-crew-and-process/</link>
       <description>Crew の組み立て方とフロー選択を理解し、まずは安定した sequential で運用可能な形を作る。</description>
       <pubDate>Mon, 02 Mar 2026 00:00:00 GMT</pubDate>
-      <guid isPermaLink="true">https://benxhub.com/ja/blog/crewai/03-crew-and-process</guid>
+      <guid isPermaLink="true">https://benxhub.com/ja/blog/crewai/03-crew-and-process/</guid>
     </item>
     <item>
       <title>CrewAI Tools 連携：Agent を「調べる・読む・実行する」状態にする</title>
-      <link>https://benxhub.com/ja/blog/crewai/04-tools-integration</link>
+      <link>https://benxhub.com/ja/blog/crewai/04-tools-integration/</link>
       <description>組み込み Tool とカスタム Tool の実装ポイントを押さえ、Agent の実行力を上げる。</description>
       <pubDate>Mon, 02 Mar 2026 00:00:00 GMT</pubDate>
-      <guid isPermaLink="true">https://benxhub.com/ja/blog/crewai/04-tools-integration</guid>
+      <guid isPermaLink="true">https://benxhub.com/ja/blog/crewai/04-tools-integration/</guid>
     </item>
     <item>
       <title>CrewAI 構造化出力：Pydantic でデータのブレを止める</title>
-      <link>https://benxhub.com/ja/blog/crewai/05-structured-output-pydantic</link>
+      <link>https://benxhub.com/ja/blog/crewai/05-structured-output-pydantic/</link>
       <description>output_pydantic で安定した出力構造を定義し、後続タスクの信頼性を高める。</description>
       <pubDate>Mon, 02 Mar 2026 00:00:00 GMT</pubDate>
-      <guid isPermaLink="true">https://benxhub.com/ja/blog/crewai/05-structured-output-pydantic</guid>
+      <guid isPermaLink="true">https://benxhub.com/ja/blog/crewai/05-structured-output-pydantic/</guid>
     </item>
     <item>
       <title>CrewAI チュートリアル総覧：ゼロから本番運用できるマルチエージェントワークフローへ</title>
-      <link>https://benxhub.com/ja/blog/crewai/00-overview</link>
+      <link>https://benxhub.com/ja/blog/crewai/00-overview/</link>
       <description>まず CrewAI が何を解決するのかを理解し、10 本の記事で入門から実践まで一気に進みます。</description>
       <pubDate>Sun, 01 Mar 2026 00:00:00 GMT</pubDate>
-      <guid isPermaLink="true">https://benxhub.com/ja/blog/crewai/00-overview</guid>
+      <guid isPermaLink="true">https://benxhub.com/ja/blog/crewai/00-overview/</guid>
     </item>
     <item>
       <title>CrewAI クイックスタート：10 分で最初のリサーチ Crew を作る</title>
-      <link>https://benxhub.com/ja/blog/crewai/01-quick-start</link>
+      <link>https://benxhub.com/ja/blog/crewai/01-quick-start/</link>
       <description>インストールから実行まで、最初に動く CrewAI プロジェクトを完成させます。</description>
       <pubDate>Sun, 01 Mar 2026 00:00:00 GMT</pubDate>
-      <guid isPermaLink="true">https://benxhub.com/ja/blog/crewai/01-quick-start</guid>
+      <guid isPermaLink="true">https://benxhub.com/ja/blog/crewai/01-quick-start/</guid>
     </item>
     <item>
       <title>CrewAI Agent と Task 入門：役割分担を崩壊させない分け方</title>
-      <link>https://benxhub.com/ja/blog/crewai/02-agents-and-tasks</link>
+      <link>https://benxhub.com/ja/blog/crewai/02-agents-and-tasks/</link>
       <description>SRP 思考で Agent と Task を分割し、マルチエージェント協調を安定運用する。</description>
       <pubDate>Sun, 01 Mar 2026 00:00:00 GMT</pubDate>
-      <guid isPermaLink="true">https://benxhub.com/ja/blog/crewai/02-agents-and-tasks</guid>
+      <guid isPermaLink="true">https://benxhub.com/ja/blog/crewai/02-agents-and-tasks/</guid>
     </item>
     <item>
       <title>Python uv シリーズ総覧：pip の 100 倍速の後継者</title>
-      <link>https://benxhub.com/ja/blog/python/uv/00-overview</link>
+      <link>https://benxhub.com/ja/blog/python/uv/00-overview/</link>
       <description>uv の位置づけ・適用シナリオ・学習パスを素早く把握するための uv シリーズ導入編。</description>
       <pubDate>Fri, 27 Feb 2026 00:00:00 GMT</pubDate>
-      <guid isPermaLink="true">https://benxhub.com/ja/blog/python/uv/00-overview</guid>
+      <guid isPermaLink="true">https://benxhub.com/ja/blog/python/uv/00-overview/</guid>
     </item>
     <item>
       <title>Python uv クイックスタート：最初のプロジェクトを作る</title>
-      <link>https://benxhub.com/ja/blog/python/uv/01-quick-start</link>
+      <link>https://benxhub.com/ja/blog/python/uv/01-quick-start/</link>
       <description>インストール確認から始め、プロジェクトの初期化・依存関係の追加・実行確認まで手順を解説します。</description>
       <pubDate>Fri, 27 Feb 2026 00:00:00 GMT</pubDate>
-      <guid isPermaLink="true">https://benxhub.com/ja/blog/python/uv/01-quick-start</guid>
+      <guid isPermaLink="true">https://benxhub.com/ja/blog/python/uv/01-quick-start/</guid>
     </item>
     <item>
       <title>Python uv コアコンセプト：pyproject.toml・ロックファイル・仮想環境</title>
-      <link>https://benxhub.com/ja/blog/python/uv/02-core-concepts</link>
+      <link>https://benxhub.com/ja/blog/python/uv/02-core-concepts/</link>
       <description>uv の 4 つのコアコンセプトを理解し、日常的な操作と運用に必要な基礎知識を構築します。</description>
       <pubDate>Fri, 27 Feb 2026 00:00:00 GMT</pubDate>
-      <guid isPermaLink="true">https://benxhub.com/ja/blog/python/uv/02-core-concepts</guid>
+      <guid isPermaLink="true">https://benxhub.com/ja/blog/python/uv/02-core-concepts/</guid>
     </item>
     <item>
       <title>Python uv よくあるパターン：依存関係・uvx・スクリプト実行</title>
-      <link>https://benxhub.com/ja/blog/python/uv/03-common-patterns</link>
+      <link>https://benxhub.com/ja/blog/python/uv/03-common-patterns/</link>
       <description>uv の日常でよく使う 5 つの操作パターンをまとめ、すぐに使える操作テンプレートを提供します。</description>
       <pubDate>Fri, 27 Feb 2026 00:00:00 GMT</pubDate>
-      <guid isPermaLink="true">https://benxhub.com/ja/blog/python/uv/03-common-patterns</guid>
+      <guid isPermaLink="true">https://benxhub.com/ja/blog/python/uv/03-common-patterns/</guid>
     </item>
     <item>
       <title>Python uv 高度な実務：Python バージョン・pip インターフェース・ツールインストール</title>
-      <link>https://benxhub.com/ja/blog/python/uv/04-advanced</link>
+      <link>https://benxhub.com/ja/blog/python/uv/04-advanced/</link>
       <description>単一プロジェクトからマルチバージョンテスト・既存パイプライン対応・全域ツール管理へ移行する際のポイントを解説します。</description>
       <pubDate>Fri, 27 Feb 2026 00:00:00 GMT</pubDate>
-      <guid isPermaLink="true">https://benxhub.com/ja/blog/python/uv/04-advanced</guid>
+      <guid isPermaLink="true">https://benxhub.com/ja/blog/python/uv/04-advanced/</guid>
     </item>
     <item>
       <title>Python uv ベストプラクティス：安定性とコラボレーションのチェックリスト</title>
-      <link>https://benxhub.com/ja/blog/python/uv/05-best-practices</link>
+      <link>https://benxhub.com/ja/blog/python/uv/05-best-practices/</link>
       <description>uv の長期運用の推奨事項とよくある誤りをまとめ、障害率と協力上の摩擦を軽減するのに役立ちます。</description>
       <pubDate>Fri, 27 Feb 2026 00:00:00 GMT</pubDate>
-      <guid isPermaLink="true">https://benxhub.com/ja/blog/python/uv/05-best-practices</guid>
+      <guid isPermaLink="true">https://benxhub.com/ja/blog/python/uv/05-best-practices/</guid>
     </item>
     <item>
       <title>Cursor CLI チュートリアル — 概要</title>
-      <link>https://benxhub.com/ja/blog/cursor/cli/00-overview</link>
+      <link>https://benxhub.com/ja/blog/cursor/cli/00-overview/</link>
       <description>Cursor CLI でターミナルから AI アシスタントを利用：IDE を開かずにコードを書いたり編集したり質問したり。サーバー・スクリプト・キーボード中心のワークフローに最適。</description>
       <pubDate>Tue, 24 Feb 2026 00:00:00 GMT</pubDate>
-      <guid isPermaLink="true">https://benxhub.com/ja/blog/cursor/cli/00-overview</guid>
+      <guid isPermaLink="true">https://benxhub.com/ja/blog/cursor/cli/00-overview/</guid>
     </item>
     <item>
       <title>Cursor CLI のインストール</title>
-      <link>https://benxhub.com/ja/blog/cursor/cli/01-install</link>
+      <link>https://benxhub.com/ja/blog/cursor/cli/01-install/</link>
       <description>公式スクリプトでターミナル1コマンドで Cursor CLI をインストール。macOS、Linux、WSL、Windows 対応。</description>
       <pubDate>Tue, 24 Feb 2026 00:00:00 GMT</pubDate>
-      <guid isPermaLink="true">https://benxhub.com/ja/blog/cursor/cli/01-install</guid>
+      <guid isPermaLink="true">https://benxhub.com/ja/blog/cursor/cli/01-install/</guid>
     </item>
     <item>
       <title>Cursor CLI の基本使い方</title>
-      <link>https://benxhub.com/ja/blog/cursor/cli/02-basic-usage</link>
+      <link>https://benxhub.com/ja/blog/cursor/cli/02-basic-usage/</link>
       <description>最も一般的な使い方: cursor agent でコマンド実行や会話モード、cursor ask で読み取り専用の質問、--path で作業ディレクトリを指定。</description>
       <pubDate>Tue, 24 Feb 2026 00:00:00 GMT</pubDate>
-      <guid isPermaLink="true">https://benxhub.com/ja/blog/cursor/cli/02-basic-usage</guid>
+      <guid isPermaLink="true">https://benxhub.com/ja/blog/cursor/cli/02-basic-usage/</guid>
     </item>
     <item>
       <title>Cursor CLI の3モード: Agent / Plan / Ask</title>
-      <link>https://benxhub.com/ja/blog/cursor/cli/03-modes</link>
+      <link>https://benxhub.com/ja/blog/cursor/cli/03-modes/</link>
       <description>Agent はファイルを編集、Plan は先に計画を立ててから実行、Ask は読み取り専用。一言で区別する方法と、会話中のスラッシュコマンドでの切り替え。</description>
       <pubDate>Tue, 24 Feb 2026 00:00:00 GMT</pubDate>
-      <guid isPermaLink="true">https://benxhub.com/ja/blog/cursor/cli/03-modes</guid>
+      <guid isPermaLink="true">https://benxhub.com/ja/blog/cursor/cli/03-modes/</guid>
     </item>
     <item>
       <title>Cursor CLI 非対話モード（スクリプト・CI）</title>
-      <link>https://benxhub.com/ja/blog/cursor/cli/04-non-interactive</link>
+      <link>https://benxhub.com/ja/blog/cursor/cli/04-non-interactive/</link>
       <description>--no-interactive で AI が入力待ちせず最後まで実行。スクリプト・CI に最適。オプションで --model や -c でクラウド実行。</description>
       <pubDate>Tue, 24 Feb 2026 00:00:00 GMT</pubDate>
-      <guid isPermaLink="true">https://benxhub.com/ja/blog/cursor/cli/04-non-interactive</guid>
+      <guid isPermaLink="true">https://benxhub.com/ja/blog/cursor/cli/04-non-interactive/</guid>
     </item>
     <item>
       <title>Cursor CLI ヒントとFAQ</title>
-      <link>https://benxhub.com/ja/blog/cursor/cli/05-tips</link>
+      <link>https://benxhub.com/ja/blog/cursor/cli/05-tips/</link>
       <description>--resume で会話を再開、コマンド実行前に確認、CLI と IDE の併用、command not found・料金・サーバー利用に関する FAQ。</description>
       <pubDate>Tue, 24 Feb 2026 00:00:00 GMT</pubDate>
-      <guid isPermaLink="true">https://benxhub.com/ja/blog/cursor/cli/05-tips</guid>
+      <guid isPermaLink="true">https://benxhub.com/ja/blog/cursor/cli/05-tips/</guid>
     </item>
   </channel>
 </rss>

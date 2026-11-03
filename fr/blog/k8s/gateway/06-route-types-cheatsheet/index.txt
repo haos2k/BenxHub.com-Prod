@@ -1,0 +1,397 @@
+1:"$Sreact.fragment"
+2:I[26795,["/_next/static/chunks/5a5b5b13c22d14f7.js","/_next/static/chunks/a484d1d3dd4b55ab.js"],"default"]
+3:I[73489,["/_next/static/chunks/5a5b5b13c22d14f7.js","/_next/static/chunks/a484d1d3dd4b55ab.js"],"default"]
+6:I[50183,["/_next/static/chunks/5a5b5b13c22d14f7.js","/_next/static/chunks/a484d1d3dd4b55ab.js"],"OutletBoundary"]
+7:"$Sreact.suspense"
+9:I[50183,["/_next/static/chunks/5a5b5b13c22d14f7.js","/_next/static/chunks/a484d1d3dd4b55ab.js"],"ViewportBoundary"]
+b:I[50183,["/_next/static/chunks/5a5b5b13c22d14f7.js","/_next/static/chunks/a484d1d3dd4b55ab.js"],"MetadataBoundary"]
+d:I[63847,[],"default"]
+:HL["/_next/static/chunks/4d9c3828f6075602.css","style"]
+:HL["/_next/static/media/797e433ab948586e-s.p.29207c2f.woff2","font",{"crossOrigin":"","type":"font/woff2"}]
+:HL["/_next/static/media/caa3a2e1cccd8315-s.p.3b6cae6d.woff2","font",{"crossOrigin":"","type":"font/woff2"}]
+0:{"P":null,"b":"ekNoF06-0VZrB4pGVUsy8","c":["","fr","blog","k8s","gateway","06-route-types-cheatsheet",""],"q":"","i":false,"f":[[["",{"children":[["locale","fr","d"],{"children":["blog",{"children":[["slug","k8s/gateway/06-route-types-cheatsheet","c"],{"children":["__PAGE__",{}]}]}]}]},"$undefined","$undefined",true],[["$","$1","c",{"children":[null,["$","$L2",null,{"parallelRouterKey":"children","error":"$undefined","errorStyles":"$undefined","errorScripts":"$undefined","template":["$","$L3",null,{}],"templateStyles":"$undefined","templateScripts":"$undefined","notFound":[["$","html",null,{"lang":"zh-Hant","children":["$","body",null,{"children":["$","main",null,{"className":"mx-auto max-w-2xl px-4 py-20 text-center sm:px-6","children":[["$","h1",null,{"className":"mb-3 text-4xl font-bold tracking-tight","children":"404"}],["$","p",null,{"className":"mb-8 text-lg","style":{"color":"var(--color-muted)"},"children":"找不到這個頁面 / Page not found"}],["$","a",null,{"href":"/zh/","className":"inline-flex items-center rounded-lg border px-4 py-2.5 text-sm font-medium","style":{"borderColor":"var(--color-border)","color":"var(--color-accent)","background":"var(--color-surface)"},"children":"BenXHub Blog"}]]}]}]}],[["$","link","0",{"rel":"stylesheet","href":"/_next/static/chunks/4d9c3828f6075602.css","precedence":"next","crossOrigin":"$undefined","nonce":"$undefined"}]]],"forbidden":"$undefined","unauthorized":"$undefined"}]]}],{"children":[["$","$1","c",{"children":[[["$","link","0",{"rel":"stylesheet","href":"/_next/static/chunks/4d9c3828f6075602.css","precedence":"next","crossOrigin":"$undefined","nonce":"$undefined"}],["$","script","script-0",{"src":"/_next/static/chunks/4204edc93da35a5e.js","async":true,"nonce":"$undefined"}],["$","script","script-1",{"src":"/_next/static/chunks/f2afb7fd2b7566bb.js","async":true,"nonce":"$undefined"}]],"$L4"]}],{"children":[["$","$1","c",{"children":[null,["$","$L2",null,{"parallelRouterKey":"children","error":"$undefined","errorStyles":"$undefined","errorScripts":"$undefined","template":["$","$L3",null,{}],"templateStyles":"$undefined","templateScripts":"$undefined","notFound":"$undefined","forbidden":"$undefined","unauthorized":"$undefined"}]]}],{"children":[["$","$1","c",{"children":[null,["$","$L2",null,{"parallelRouterKey":"children","error":"$undefined","errorStyles":"$undefined","errorScripts":"$undefined","template":["$","$L3",null,{}],"templateStyles":"$undefined","templateScripts":"$undefined","notFound":"$undefined","forbidden":"$undefined","unauthorized":"$undefined"}]]}],{"children":[["$","$1","c",{"children":["$L5",[["$","script","script-0",{"src":"/_next/static/chunks/2dddb3bc05093f69.js","async":true,"nonce":"$undefined"}]],["$","$L6",null,{"children":["$","$7",null,{"name":"Next.MetadataOutlet","children":"$@8"}]}]]}],{},null,false,false]},null,false,false]},null,false,false]},null,false,false]},null,false,false],["$","$1","h",{"children":[null,["$","$L9",null,{"children":"$La"}],["$","div",null,{"hidden":true,"children":["$","$Lb",null,{"children":["$","$7",null,{"name":"Next.Metadata","children":"$Lc"}]}]}],["$","meta",null,{"name":"next-size-adjust","content":""}]]}],false]],"m":"$undefined","G":["$d",[]],"S":true}
+4:["$","html",null,{"lang":"fr","dir":"ltr","className":"geist_a71539c9-module__T19VSG__variable geist_mono_8d43a2aa-module__8Li5zG__variable","children":["$","body",null,{"className":"flex min-h-screen flex-col antialiased","children":[["$","script",null,{"type":"application/ld+json","dangerouslySetInnerHTML":{"__html":"[{\"@context\":\"https://schema.org\",\"@type\":\"WebSite\",\"name\":\"BenXHub Blog\",\"url\":\"https://benxhub.com/fr/\",\"inLanguage\":\"fr\",\"publisher\":{\"@type\":\"Organization\",\"name\":\"BenXHub Blog\",\"url\":\"https://benxhub.com\"},\"potentialAction\":{\"@type\":\"SearchAction\",\"target\":{\"@type\":\"EntryPoint\",\"urlTemplate\":\"https://benxhub.com/fr/search/?q={search_term_string}\"},\"query-input\":\"required name=search_term_string\"}},{\"@context\":\"https://schema.org\",\"@type\":\"Person\",\"@id\":\"https://benxhub.com/#author\",\"name\":\"BenX\",\"url\":\"https://benxhub.com/fr/about/\",\"sameAs\":[\"https://github.com/benzhub\"]}]"}}],"$Le"]}]}]
+f:I[33343,["/_next/static/chunks/4204edc93da35a5e.js","/_next/static/chunks/f2afb7fd2b7566bb.js"],"default"]
+10:I[26817,["/_next/static/chunks/4204edc93da35a5e.js","/_next/static/chunks/f2afb7fd2b7566bb.js"],"default"]
+11:I[6197,["/_next/static/chunks/4204edc93da35a5e.js","/_next/static/chunks/f2afb7fd2b7566bb.js"],"default"]
+13:I[40018,["/_next/static/chunks/4204edc93da35a5e.js","/_next/static/chunks/f2afb7fd2b7566bb.js"],"default"]
+e:["$","$Lf",null,{"formats":"$undefined","locale":"fr","messages":{"common":{"siteName":"BenXHub Blog","siteDescription":"Blog tech de BenX — développement Web, architecture et pratiques d'ingénierie."},"nav":{"home":"Accueil","tags":"Tags","about":"À propos","searchLabel":"Rechercher des articles"},"hero":{"subtitle":"Notes tech sur le développement Web, l'architecture et les pratiques d'ingénierie","cta":"Parcourir les articles"},"posts":{"title":"Articles","count":"{total} articles au total","empty":"Pas encore d'articles, restez à l'écoute !","newerPost":"← Plus récent","olderPost":"Plus ancien →","navLabel":"Navigation des articles"},"pagination":{"prev":"Précédent","next":"Suivant","page":"Page {current} sur {total}","label":"Pagination de la liste des articles","pageTitle":"Page {num}","pageDescription":"Blog tech de BenX — liste des articles."},"search":{"title":"Rechercher des articles","description":"Rechercher tous les articles du blog BenXHub par titre, description ou tags.","subtitle":"Rechercher par titre, description ou tags","placeholder":"Rechercher par titre, description ou tags…","found":"{count} articles trouvés","notFound":"Aucun article pour « {query} »","emptyTitle":"Aucun résultat","emptyHint":"Essayez d'autres mots-clés ou parcourez","allPosts":"tous les articles","totalCount":"{count} articles au total — tapez pour rechercher"},"tags":{"title":"Tous les tags","description":"Parcourir tous les articles par tag.","count":"{count} tags au total","empty":"Pas encore de tags, restez à l'écoute !","allTags":"Tous les tags","postCount":"{count} articles","otherTags":"Autres tags","tagTitle":"Articles avec le tag #{tag}","tagDescription":"Tous les articles avec le tag « {tag} »."},"about":{"title":"À propos","description":"À propos du blog BenXHub et de ce site.","subtitle":"À propos du blog BenXHub et de ce site","siteTitle":"À propos de ce site","siteContent":"BenXHub Blog est le blog tech de BenX : développement Web, architecture et pratiques d'ingénierie.","authorTitle":"À propos de moi","authorContent":"J'aime coder et partager. Je documente les problèmes rencontrés et leurs solutions. N'hésitez pas à me contacter via les liens dans la barre latérale ou le pied de page.","linksTitle":"Liens"},"sidebar":{"label":"Barre latérale","authorBio":"Passionné de code et de partage — développement Web, architecture et DevOps.","searchPlaceholder":"Rechercher des articles…","seriesTitle":"Séries","articleCount":"{count} articles"},"toc":{"title":"Sommaire","label":"Table des matières"},"notFound":{"message":"Cette page n'existe pas. Le lien est peut-être cassé ou l'URL incorrecte.","backHome":"Retour à l'accueil"},"localeSwitcher":{"label":"Changer de langue"}},"now":"$undefined","timeZone":"UTC","children":[["$","$L10",null,{}],["$","$L11",null,{}],["$","main",null,{"className":"flex-1 pt-16","children":["$","$L2",null,{"parallelRouterKey":"children","error":"$undefined","errorStyles":"$undefined","errorScripts":"$undefined","template":["$","$L3",null,{}],"templateStyles":"$undefined","templateScripts":"$undefined","notFound":["$L12",[]],"forbidden":"$undefined","unauthorized":"$undefined"}]}],["$","$L13",null,{}]]}]
+12:["$","div",null,{"className":"mx-auto max-w-2xl px-4 py-20 text-center sm:px-6","children":[["$","h1",null,{"className":"mb-3 text-4xl font-bold tracking-tight","style":{"color":"var(--color-text)"},"children":"404"}],["$","p",null,{"className":"mb-8 text-lg","style":{"color":"var(--color-muted)"},"children":"Cette page n'existe pas. Le lien est peut-être cassé ou l'URL incorrecte."}],"$L14"]}]
+a:[["$","meta","0",{"charSet":"utf-8"}],["$","meta","1",{"name":"viewport","content":"width=device-width, initial-scale=1"}]]
+15:I[14864,["/_next/static/chunks/4204edc93da35a5e.js","/_next/static/chunks/f2afb7fd2b7566bb.js","/_next/static/chunks/2dddb3bc05093f69.js"],"default"]
+14:["$","$L15",null,{"ref":"$undefined","href":"/fr","locale":"$undefined","localeCookie":{"name":"NEXT_LOCALE","sameSite":"lax"},"className":"inline-flex items-center rounded-lg border px-4 py-2.5 text-sm font-medium transition-colors hover:border-accent","style":{"borderColor":"var(--color-border)","color":"var(--color-accent)","background":"var(--color-surface)"},"children":"Retour à l'accueil"}]
+1d:T44a6,<p>Si vous avez lu les articles précédents, la question qui vous bloque probablement le plus maintenant n'est pas "je ne comprends pas Gateway API", mais plutôt :</p>
+<p><strong>"D'accord, mais lequel dois-je vraiment écrire : <code>HTTPRoute</code>, <code>GRPCRoute</code>, <code>TCPRoute</code> ou <code>TLSRoute</code> ?"</strong></p>
+<p>Cet article existe précisément pour démêler cela. Gardez-le comme référence de poche. Quand un nouveau service apparaît, consultez-le d'abord : cela vous évitera d'écrire du YAML à l'aveugle et de recevoir une leçon de la part des conditions de status.</p>
+<h2 id="la-conclusion-dabord--quatre-types-de-routes-quatre-usages">La conclusion d'abord : quatre types de routes, quatre usages</h2>
+<table>
+<thead>
+<tr>
+<th>Type de route</th>
+<th>Couche de trafic</th>
+<th>Ce qu'il inspecte</th>
+<th>Idéal pour</th>
+<th>Pas pour</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td><code>HTTPRoute</code></td>
+<td>L7 HTTP/HTTPS</td>
+<td>host, path, header, query, method</td>
+<td>Sites web, API REST, trafic web général</td>
+<td>TCP brut, TLS passthrough</td>
+</tr>
+<tr>
+<td><code>GRPCRoute</code></td>
+<td>L7 gRPC</td>
+<td>hostname, service, method, header</td>
+<td>Routage par service/method gRPC</td>
+<td>API REST générales, TCP brut</td>
+</tr>
+<tr>
+<td><code>TCPRoute</code></td>
+<td>L4 TCP</td>
+<td>Listener et informations au niveau connexion</td>
+<td>Bases de données, protocoles TCP personnalisés, services non HTTP</td>
+<td>Scénarios nécessitant l'inspection de path/header</td>
+</tr>
+<tr>
+<td><code>TLSRoute</code></td>
+<td>L4/L5 TLS</td>
+<td>Hostname SNI TLS</td>
+<td>TLS passthrough, conservation du chiffrement de bout en bout</td>
+<td>Scénarios où il faut inspecter les détails HTTP après déchiffrement</td>
+</tr>
+</tbody>
+</table>
+<p>Si vous voulez une version ultra-courte :</p>
+<ul>
+<li>Inspecter <code>path</code> ou <code>header</code> → <code>HTTPRoute</code></li>
+<li>Inspecter gRPC <code>service/method</code> → <code>GRPCRoute</code></li>
+<li>Simple forwarding de connexions TCP → <code>TCPRoute</code></li>
+<li>Pas de terminaison TLS, routage SNI uniquement → <code>TLSRoute</code></li>
+</ul>
+<h2 id="décision-en-trois-étapes--arrêtez-de-deviner">Décision en trois étapes : arrêtez de deviner</h2>
+<p>Utilisez cet ordre :</p>
+<ol>
+<li>Le Gateway va-t-il analyser la sémantique HTTP de ce trafic ?</li>
+<li>Si oui, s'agit-il de HTTP/REST classique, ou de gRPC ?</li>
+<li>Si non, est-ce du TCP brut, ou du TLS passthrough ?</li>
+</ol>
+<p>Cartographié :</p>
+<ul>
+<li>Il y a du HTTP path/header/method à inspecter → <code>HTTPRoute</code></li>
+<li>Il y a du gRPC service/method à inspecter → <code>GRPCRoute</code></li>
+<li>Pas de règle L7, juste du forwarding TCP → <code>TCPRoute</code></li>
+<li>Vous voulez préserver TLS jusqu'au backend → <code>TLSRoute</code></li>
+</ul>
+<p>Cette décision compte énormément. Beaucoup de gens écrivent instinctivement <code>HTTPRoute</code> d'abord, puis réalisent en plein milieu qu'ils manipulent en fait du trafic de base de données. Tout le YAML bascule alors en mode "mais qu'est-ce que je suis en train de faire ?"</p>
+<h2 id="exemples-yaml-minimaux--reconnaître-chacun-au-premier-coup-doeil">Exemples YAML minimaux : reconnaître chacun au premier coup d'oeil</h2>
+<p>Voici les versions les plus courtes et les plus reconnaissables de chacun.</p>
+<h3 id="httproute"><code>HTTPRoute</code></h3>
+<figure data-rehype-pretty-code-figure=""><pre style="background-color:#0d1117;color:#e6edf3" tabindex="0" data-language="yaml" data-theme="github-dark-default"><code data-language="yaml" data-theme="github-dark-default" style="display: grid;"><span data-line=""><span style="color:#7EE787">apiVersion</span><span style="color:#E6EDF3">: </span><span style="color:#A5D6FF">gateway.networking.k8s.io/v1</span></span>
+<span data-line=""><span style="color:#7EE787">kind</span><span style="color:#E6EDF3">: </span><span style="color:#A5D6FF">HTTPRoute</span></span>
+<span data-line=""><span style="color:#7EE787">metadata</span><span style="color:#E6EDF3">:</span></span>
+<span data-line=""><span style="color:#7EE787">  name</span><span style="color:#E6EDF3">: </span><span style="color:#A5D6FF">web-route</span></span>
+<span data-line=""><span style="color:#7EE787">spec</span><span style="color:#E6EDF3">:</span></span>
+<span data-line=""><span style="color:#7EE787">  parentRefs</span><span style="color:#E6EDF3">:</span></span>
+<span data-line=""><span style="color:#E6EDF3">    - </span><span style="color:#7EE787">name</span><span style="color:#E6EDF3">: </span><span style="color:#A5D6FF">eg</span></span>
+<span data-line=""><span style="color:#7EE787">      sectionName</span><span style="color:#E6EDF3">: </span><span style="color:#A5D6FF">http</span></span>
+<span data-line=""><span style="color:#7EE787">  hostnames</span><span style="color:#E6EDF3">:</span></span>
+<span data-line=""><span style="color:#E6EDF3">    - </span><span style="color:#A5D6FF">"app.example.com"</span></span>
+<span data-line=""><span style="color:#7EE787">  rules</span><span style="color:#E6EDF3">:</span></span>
+<span data-line=""><span style="color:#E6EDF3">    - </span><span style="color:#7EE787">matches</span><span style="color:#E6EDF3">:</span></span>
+<span data-line=""><span style="color:#E6EDF3">        - </span><span style="color:#7EE787">path</span><span style="color:#E6EDF3">:</span></span>
+<span data-line=""><span style="color:#7EE787">            type</span><span style="color:#E6EDF3">: </span><span style="color:#A5D6FF">PathPrefix</span></span>
+<span data-line=""><span style="color:#7EE787">            value</span><span style="color:#E6EDF3">: </span><span style="color:#A5D6FF">/api</span></span>
+<span data-line=""><span style="color:#7EE787">      backendRefs</span><span style="color:#E6EDF3">:</span></span>
+<span data-line=""><span style="color:#E6EDF3">        - </span><span style="color:#7EE787">name</span><span style="color:#E6EDF3">: </span><span style="color:#A5D6FF">api-service</span></span>
+<span data-line=""><span style="color:#7EE787">          port</span><span style="color:#E6EDF3">: </span><span style="color:#79C0FF">8080</span></span></code></pre></figure>
+<p>Si vous voyez <code>path</code>, <code>hostnames</code> et <code>backendRefs</code>, c'est celui-ci.</p>
+<h3 id="grpcroute"><code>GRPCRoute</code></h3>
+<figure data-rehype-pretty-code-figure=""><pre style="background-color:#0d1117;color:#e6edf3" tabindex="0" data-language="yaml" data-theme="github-dark-default"><code data-language="yaml" data-theme="github-dark-default" style="display: grid;"><span data-line=""><span style="color:#7EE787">apiVersion</span><span style="color:#E6EDF3">: </span><span style="color:#A5D6FF">gateway.networking.k8s.io/v1</span></span>
+<span data-line=""><span style="color:#7EE787">kind</span><span style="color:#E6EDF3">: </span><span style="color:#A5D6FF">GRPCRoute</span></span>
+<span data-line=""><span style="color:#7EE787">metadata</span><span style="color:#E6EDF3">:</span></span>
+<span data-line=""><span style="color:#7EE787">  name</span><span style="color:#E6EDF3">: </span><span style="color:#A5D6FF">user-grpc</span></span>
+<span data-line=""><span style="color:#7EE787">spec</span><span style="color:#E6EDF3">:</span></span>
+<span data-line=""><span style="color:#7EE787">  parentRefs</span><span style="color:#E6EDF3">:</span></span>
+<span data-line=""><span style="color:#E6EDF3">    - </span><span style="color:#7EE787">name</span><span style="color:#E6EDF3">: </span><span style="color:#A5D6FF">eg</span></span>
+<span data-line=""><span style="color:#7EE787">      sectionName</span><span style="color:#E6EDF3">: </span><span style="color:#A5D6FF">grpc</span></span>
+<span data-line=""><span style="color:#7EE787">  hostnames</span><span style="color:#E6EDF3">:</span></span>
+<span data-line=""><span style="color:#E6EDF3">    - </span><span style="color:#A5D6FF">"grpc.example.com"</span></span>
+<span data-line=""><span style="color:#7EE787">  rules</span><span style="color:#E6EDF3">:</span></span>
+<span data-line=""><span style="color:#E6EDF3">    - </span><span style="color:#7EE787">matches</span><span style="color:#E6EDF3">:</span></span>
+<span data-line=""><span style="color:#E6EDF3">        - </span><span style="color:#7EE787">method</span><span style="color:#E6EDF3">:</span></span>
+<span data-line=""><span style="color:#7EE787">            service</span><span style="color:#E6EDF3">: </span><span style="color:#A5D6FF">com.example.User</span></span>
+<span data-line=""><span style="color:#7EE787">            method</span><span style="color:#E6EDF3">: </span><span style="color:#A5D6FF">Login</span></span>
+<span data-line=""><span style="color:#7EE787">      backendRefs</span><span style="color:#E6EDF3">:</span></span>
+<span data-line=""><span style="color:#E6EDF3">        - </span><span style="color:#7EE787">name</span><span style="color:#E6EDF3">: </span><span style="color:#A5D6FF">user-grpc-service</span></span>
+<span data-line=""><span style="color:#7EE787">          port</span><span style="color:#E6EDF3">: </span><span style="color:#79C0FF">50051</span></span></code></pre></figure>
+<p>Si vous voyez <code>method.service</code> et <code>method.method</code>, vous êtes dans la sémantique gRPC, pas dans du HTTP classique.</p>
+<h3 id="tcproute"><code>TCPRoute</code></h3>
+<figure data-rehype-pretty-code-figure=""><pre style="background-color:#0d1117;color:#e6edf3" tabindex="0" data-language="yaml" data-theme="github-dark-default"><code data-language="yaml" data-theme="github-dark-default" style="display: grid;"><span data-line=""><span style="color:#7EE787">apiVersion</span><span style="color:#E6EDF3">: </span><span style="color:#A5D6FF">gateway.networking.k8s.io/v1alpha2</span></span>
+<span data-line=""><span style="color:#7EE787">kind</span><span style="color:#E6EDF3">: </span><span style="color:#A5D6FF">TCPRoute</span></span>
+<span data-line=""><span style="color:#7EE787">metadata</span><span style="color:#E6EDF3">:</span></span>
+<span data-line=""><span style="color:#7EE787">  name</span><span style="color:#E6EDF3">: </span><span style="color:#A5D6FF">postgres-route</span></span>
+<span data-line=""><span style="color:#7EE787">spec</span><span style="color:#E6EDF3">:</span></span>
+<span data-line=""><span style="color:#7EE787">  parentRefs</span><span style="color:#E6EDF3">:</span></span>
+<span data-line=""><span style="color:#E6EDF3">    - </span><span style="color:#7EE787">name</span><span style="color:#E6EDF3">: </span><span style="color:#A5D6FF">eg</span></span>
+<span data-line=""><span style="color:#7EE787">      sectionName</span><span style="color:#E6EDF3">: </span><span style="color:#A5D6FF">postgres</span></span>
+<span data-line=""><span style="color:#7EE787">  rules</span><span style="color:#E6EDF3">:</span></span>
+<span data-line=""><span style="color:#E6EDF3">    - </span><span style="color:#7EE787">backendRefs</span><span style="color:#E6EDF3">:</span></span>
+<span data-line=""><span style="color:#E6EDF3">        - </span><span style="color:#7EE787">name</span><span style="color:#E6EDF3">: </span><span style="color:#A5D6FF">postgres</span></span>
+<span data-line=""><span style="color:#7EE787">          port</span><span style="color:#E6EDF3">: </span><span style="color:#79C0FF">5432</span></span></code></pre></figure>
+<p><code>TCPRoute</code> n'a pratiquement aucune notion de path/header, parce qu'il ne les regarde pas.
+Il ressemble davantage à : "les connexions TCP arrivant sur ce listener vont vers ce backend".</p>
+<h3 id="tlsroute"><code>TLSRoute</code></h3>
+<figure data-rehype-pretty-code-figure=""><pre style="background-color:#0d1117;color:#e6edf3" tabindex="0" data-language="yaml" data-theme="github-dark-default"><code data-language="yaml" data-theme="github-dark-default" style="display: grid;"><span data-line=""><span style="color:#7EE787">apiVersion</span><span style="color:#E6EDF3">: </span><span style="color:#A5D6FF">gateway.networking.k8s.io/v1alpha2</span></span>
+<span data-line=""><span style="color:#7EE787">kind</span><span style="color:#E6EDF3">: </span><span style="color:#A5D6FF">TLSRoute</span></span>
+<span data-line=""><span style="color:#7EE787">metadata</span><span style="color:#E6EDF3">:</span></span>
+<span data-line=""><span style="color:#7EE787">  name</span><span style="color:#E6EDF3">: </span><span style="color:#A5D6FF">passthrough-route</span></span>
+<span data-line=""><span style="color:#7EE787">spec</span><span style="color:#E6EDF3">:</span></span>
+<span data-line=""><span style="color:#7EE787">  parentRefs</span><span style="color:#E6EDF3">:</span></span>
+<span data-line=""><span style="color:#E6EDF3">    - </span><span style="color:#7EE787">name</span><span style="color:#E6EDF3">: </span><span style="color:#A5D6FF">eg</span></span>
+<span data-line=""><span style="color:#7EE787">      sectionName</span><span style="color:#E6EDF3">: </span><span style="color:#A5D6FF">tls</span></span>
+<span data-line=""><span style="color:#7EE787">  hostnames</span><span style="color:#E6EDF3">:</span></span>
+<span data-line=""><span style="color:#E6EDF3">    - </span><span style="color:#A5D6FF">"db.example.com"</span></span>
+<span data-line=""><span style="color:#7EE787">  rules</span><span style="color:#E6EDF3">:</span></span>
+<span data-line=""><span style="color:#E6EDF3">    - </span><span style="color:#7EE787">backendRefs</span><span style="color:#E6EDF3">:</span></span>
+<span data-line=""><span style="color:#E6EDF3">        - </span><span style="color:#7EE787">name</span><span style="color:#E6EDF3">: </span><span style="color:#A5D6FF">db-service</span></span>
+<span data-line=""><span style="color:#7EE787">          port</span><span style="color:#E6EDF3">: </span><span style="color:#79C0FF">5432</span></span></code></pre></figure>
+<p>Il est généralement associé à un listener <code>protocol: TLS</code>. L'enjeu n'est pas le déchiffrement, mais le routage basé sur SNI.</p>
+<blockquote>
+<p>💡 <code>TCPRoute</code> et <code>TLSRoute</code> se trouvent souvent dans le canal experimental selon les versions de Gateway API. Vérifiez la version des CRD installée dans votre cluster avant d'appliquer.</p>
+</blockquote>
+<h2 id="quatre-pièges-courants">Quatre pièges courants</h2>
+<h3 id="1-grpc-ne-nécessite-pas-forcément-grpcroute">1. gRPC ne nécessite pas forcément <code>GRPCRoute</code></h3>
+<p>Si vous voulez seulement faire passer du trafic gRPC, certaines implémentations peuvent le prendre en charge via <code>HTTPRoute</code>, puisque gRPC tourne sur HTTP/2.
+Mais si vous voulez faire du matching sur la sémantique gRPC service/method, <code>GRPCRoute</code> est le choix le plus correct et le plus lisible.</p>
+<h3 id="2-tlsroute-nest-pas-https-mais-en-plus-avancé">2. <code>TLSRoute</code> n'est pas "HTTPS mais en plus avancé"</h3>
+<p>C'est la confusion la plus fréquente.</p>
+<ul>
+<li><code>HTTPS listener + HTTPRoute</code> : le Gateway termine TLS, puis applique des règles HTTP</li>
+<li><code>TLS listener + TLSRoute</code> : le Gateway ne termine PAS TLS, il route uniquement selon SNI</li>
+</ul>
+<p>L'un déchiffre et travaille en L7. L'autre garde le trafic chiffré et fait du passthrough. Ce sont deux mondes complètement différents.</p>
+<h3 id="3-tcproute-ne-peut-pas-voir-pathheader">3. <code>TCPRoute</code> ne peut pas voir path/header</h3>
+<p>Si votre besoin est :</p>
+<ul>
+<li><code>/api</code> va vers A</li>
+<li><code>/admin</code> va vers B</li>
+</ul>
+<p>Ce n'est pas le travail de <code>TCPRoute</code>.
+<code>TCPRoute</code> ne comprend pas les détails HTTP. Lui imposer ce type d'exigence, c'est simplement préparer votre future frustration.</p>
+<h3 id="4-parentrefssectionname-est-important">4. <code>parentRefs.sectionName</code> est important</h3>
+<p>Lorsqu'un Gateway possède plusieurs listeners, utilisez <code>sectionName</code> :</p>
+<figure data-rehype-pretty-code-figure=""><pre style="background-color:#0d1117;color:#e6edf3" tabindex="0" data-language="yaml" data-theme="github-dark-default"><code data-language="yaml" data-theme="github-dark-default" style="display: grid;"><span data-line=""><span style="color:#7EE787">parentRefs</span><span style="color:#E6EDF3">:</span></span>
+<span data-line=""><span style="color:#E6EDF3">  - </span><span style="color:#7EE787">name</span><span style="color:#E6EDF3">: </span><span style="color:#A5D6FF">eg</span></span>
+<span data-line=""><span style="color:#7EE787">    sectionName</span><span style="color:#E6EDF3">: </span><span style="color:#A5D6FF">https</span></span></code></pre></figure>
+<p>Cela garantit que votre route s'attache précisément au listener voulu.
+Sans cela, vous pouvez croire avoir réservé la salle VIP et vous retrouver dans le mauvais hall.</p>
+<h2 id="résumé-en-une-ligne">Résumé en une ligne</h2>
+<p>Identifiez d'abord ce que vous traitez : <strong>HTTP, gRPC, TCP, ou TLS passthrough</strong> puis choisissez le bon type de route.
+Choisissez correctement la route, et 80 % de votre YAML s'écoulera naturellement. Choisissez mal, et vous voilà coincé dans une bataille contre les conditions de status.</p>
+<h2 id="étape-suivante">Étape suivante</h2>
+<p>Une fois les types de routes compris, le prochain point de blocage courant est :
+<strong>Quand un même Gateway possède beaucoup de listeners, comment les structurer sans créer le chaos ?</strong></p>
+<p>L'article suivant couvre la conception multi-listeners :
+👉 <a href="07-listener-design">Guide de conception des listeners</a></p>5:[["$","script",null,{"type":"application/ld+json","dangerouslySetInnerHTML":{"__html":"{\"@context\":\"https://schema.org\",\"@type\":\"Article\",\"headline\":\"Antisèche des types de routes Envoy Gateway : HTTPRoute, GRPCRoute, TCPRoute ou TLSRoute ?\",\"description\":\"Une antisèche de référence rapide pour choisir le bon type de Route, avec des exemples YAML minimaux, un flux de décision et les pièges les plus courants.\",\"url\":\"https://benxhub.com/fr/blog/k8s/gateway/06-route-types-cheatsheet/\",\"mainEntityOfPage\":{\"@type\":\"WebPage\",\"@id\":\"https://benxhub.com/fr/blog/k8s/gateway/06-route-types-cheatsheet/\"},\"datePublished\":\"2026-03-10T00:00:00.000Z\",\"dateModified\":\"2026-03-10T00:00:00.000Z\",\"keywords\":\"kubernetes, envoy-gateway, gateway-api, httproute, grpcroute, tcproute, tlsroute\",\"inLanguage\":\"fr\",\"author\":{\"@type\":\"Person\",\"@id\":\"https://benxhub.com/#author\",\"name\":\"BenX\",\"url\":\"https://benxhub.com/fr/about/\",\"sameAs\":[\"https://github.com/benzhub\"]},\"publisher\":{\"@type\":\"Organization\",\"name\":\"BenXHub Blog\",\"url\":\"https://benxhub.com\"},\"image\":\"https://benxhub.com/og-default.png\"}"}}],["$","div",null,{"className":"mx-auto max-w-6xl px-4 py-12 sm:px-6","children":["$","div",null,{"className":"lg:grid lg:grid-cols-[1fr_240px] lg:gap-14","children":[["$","article",null,{"children":[["$","header",null,{"className":"mb-10","children":[["$","div",null,{"className":"mb-4 flex flex-wrap gap-2","children":["$L16","$L17","$L18","$L19","$L1a","$L1b","$L1c"]}],["$","h1",null,{"className":"mb-4 text-3xl leading-snug font-bold tracking-tight sm:text-4xl","style":{"color":"var(--color-text)"},"children":"Antisèche des types de routes Envoy Gateway : HTTPRoute, GRPCRoute, TCPRoute ou TLSRoute ?"}],["$","div",null,{"className":"flex flex-wrap items-center gap-3 text-sm","style":{"color":"var(--color-muted)"},"children":[["$","time",null,{"dateTime":"2026-03-10","children":"10 mars 2026"}],["$","span",null,{"aria-hidden":"true","children":"·"}],["$","span",null,{"children":"5 min read"}]]}],"$undefined",["$","div",null,{"className":"mt-6 border-b","style":{"borderColor":"var(--color-border)"}}]]}],["$","div",null,{"className":"prose","dangerouslySetInnerHTML":{"__html":"$1d"}}],"$L1e"]}],"$L1f"]}]}]]
+29:I[24801,["/_next/static/chunks/4204edc93da35a5e.js","/_next/static/chunks/f2afb7fd2b7566bb.js","/_next/static/chunks/2dddb3bc05093f69.js"],"default"]
+1e:["$","footer",null,{"className":"mt-14 border-t pt-8","style":{"borderColor":"var(--color-border)"},"children":[["$","div",null,{"className":"mb-8 flex flex-wrap gap-2","children":["$L20","$L21","$L22","$L23","$L24","$L25","$L26"]}],["$","nav",null,{"aria-label":"Navigation des articles","className":"grid grid-cols-1 gap-4 sm:grid-cols-2","children":["$L27","$L28"]}]]}]
+2a:T44a6,<p>Si vous avez lu les articles précédents, la question qui vous bloque probablement le plus maintenant n'est pas "je ne comprends pas Gateway API", mais plutôt :</p>
+<p><strong>"D'accord, mais lequel dois-je vraiment écrire : <code>HTTPRoute</code>, <code>GRPCRoute</code>, <code>TCPRoute</code> ou <code>TLSRoute</code> ?"</strong></p>
+<p>Cet article existe précisément pour démêler cela. Gardez-le comme référence de poche. Quand un nouveau service apparaît, consultez-le d'abord : cela vous évitera d'écrire du YAML à l'aveugle et de recevoir une leçon de la part des conditions de status.</p>
+<h2 id="la-conclusion-dabord--quatre-types-de-routes-quatre-usages">La conclusion d'abord : quatre types de routes, quatre usages</h2>
+<table>
+<thead>
+<tr>
+<th>Type de route</th>
+<th>Couche de trafic</th>
+<th>Ce qu'il inspecte</th>
+<th>Idéal pour</th>
+<th>Pas pour</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td><code>HTTPRoute</code></td>
+<td>L7 HTTP/HTTPS</td>
+<td>host, path, header, query, method</td>
+<td>Sites web, API REST, trafic web général</td>
+<td>TCP brut, TLS passthrough</td>
+</tr>
+<tr>
+<td><code>GRPCRoute</code></td>
+<td>L7 gRPC</td>
+<td>hostname, service, method, header</td>
+<td>Routage par service/method gRPC</td>
+<td>API REST générales, TCP brut</td>
+</tr>
+<tr>
+<td><code>TCPRoute</code></td>
+<td>L4 TCP</td>
+<td>Listener et informations au niveau connexion</td>
+<td>Bases de données, protocoles TCP personnalisés, services non HTTP</td>
+<td>Scénarios nécessitant l'inspection de path/header</td>
+</tr>
+<tr>
+<td><code>TLSRoute</code></td>
+<td>L4/L5 TLS</td>
+<td>Hostname SNI TLS</td>
+<td>TLS passthrough, conservation du chiffrement de bout en bout</td>
+<td>Scénarios où il faut inspecter les détails HTTP après déchiffrement</td>
+</tr>
+</tbody>
+</table>
+<p>Si vous voulez une version ultra-courte :</p>
+<ul>
+<li>Inspecter <code>path</code> ou <code>header</code> → <code>HTTPRoute</code></li>
+<li>Inspecter gRPC <code>service/method</code> → <code>GRPCRoute</code></li>
+<li>Simple forwarding de connexions TCP → <code>TCPRoute</code></li>
+<li>Pas de terminaison TLS, routage SNI uniquement → <code>TLSRoute</code></li>
+</ul>
+<h2 id="décision-en-trois-étapes--arrêtez-de-deviner">Décision en trois étapes : arrêtez de deviner</h2>
+<p>Utilisez cet ordre :</p>
+<ol>
+<li>Le Gateway va-t-il analyser la sémantique HTTP de ce trafic ?</li>
+<li>Si oui, s'agit-il de HTTP/REST classique, ou de gRPC ?</li>
+<li>Si non, est-ce du TCP brut, ou du TLS passthrough ?</li>
+</ol>
+<p>Cartographié :</p>
+<ul>
+<li>Il y a du HTTP path/header/method à inspecter → <code>HTTPRoute</code></li>
+<li>Il y a du gRPC service/method à inspecter → <code>GRPCRoute</code></li>
+<li>Pas de règle L7, juste du forwarding TCP → <code>TCPRoute</code></li>
+<li>Vous voulez préserver TLS jusqu'au backend → <code>TLSRoute</code></li>
+</ul>
+<p>Cette décision compte énormément. Beaucoup de gens écrivent instinctivement <code>HTTPRoute</code> d'abord, puis réalisent en plein milieu qu'ils manipulent en fait du trafic de base de données. Tout le YAML bascule alors en mode "mais qu'est-ce que je suis en train de faire ?"</p>
+<h2 id="exemples-yaml-minimaux--reconnaître-chacun-au-premier-coup-doeil">Exemples YAML minimaux : reconnaître chacun au premier coup d'oeil</h2>
+<p>Voici les versions les plus courtes et les plus reconnaissables de chacun.</p>
+<h3 id="httproute"><code>HTTPRoute</code></h3>
+<figure data-rehype-pretty-code-figure=""><pre style="background-color:#0d1117;color:#e6edf3" tabindex="0" data-language="yaml" data-theme="github-dark-default"><code data-language="yaml" data-theme="github-dark-default" style="display: grid;"><span data-line=""><span style="color:#7EE787">apiVersion</span><span style="color:#E6EDF3">: </span><span style="color:#A5D6FF">gateway.networking.k8s.io/v1</span></span>
+<span data-line=""><span style="color:#7EE787">kind</span><span style="color:#E6EDF3">: </span><span style="color:#A5D6FF">HTTPRoute</span></span>
+<span data-line=""><span style="color:#7EE787">metadata</span><span style="color:#E6EDF3">:</span></span>
+<span data-line=""><span style="color:#7EE787">  name</span><span style="color:#E6EDF3">: </span><span style="color:#A5D6FF">web-route</span></span>
+<span data-line=""><span style="color:#7EE787">spec</span><span style="color:#E6EDF3">:</span></span>
+<span data-line=""><span style="color:#7EE787">  parentRefs</span><span style="color:#E6EDF3">:</span></span>
+<span data-line=""><span style="color:#E6EDF3">    - </span><span style="color:#7EE787">name</span><span style="color:#E6EDF3">: </span><span style="color:#A5D6FF">eg</span></span>
+<span data-line=""><span style="color:#7EE787">      sectionName</span><span style="color:#E6EDF3">: </span><span style="color:#A5D6FF">http</span></span>
+<span data-line=""><span style="color:#7EE787">  hostnames</span><span style="color:#E6EDF3">:</span></span>
+<span data-line=""><span style="color:#E6EDF3">    - </span><span style="color:#A5D6FF">"app.example.com"</span></span>
+<span data-line=""><span style="color:#7EE787">  rules</span><span style="color:#E6EDF3">:</span></span>
+<span data-line=""><span style="color:#E6EDF3">    - </span><span style="color:#7EE787">matches</span><span style="color:#E6EDF3">:</span></span>
+<span data-line=""><span style="color:#E6EDF3">        - </span><span style="color:#7EE787">path</span><span style="color:#E6EDF3">:</span></span>
+<span data-line=""><span style="color:#7EE787">            type</span><span style="color:#E6EDF3">: </span><span style="color:#A5D6FF">PathPrefix</span></span>
+<span data-line=""><span style="color:#7EE787">            value</span><span style="color:#E6EDF3">: </span><span style="color:#A5D6FF">/api</span></span>
+<span data-line=""><span style="color:#7EE787">      backendRefs</span><span style="color:#E6EDF3">:</span></span>
+<span data-line=""><span style="color:#E6EDF3">        - </span><span style="color:#7EE787">name</span><span style="color:#E6EDF3">: </span><span style="color:#A5D6FF">api-service</span></span>
+<span data-line=""><span style="color:#7EE787">          port</span><span style="color:#E6EDF3">: </span><span style="color:#79C0FF">8080</span></span></code></pre></figure>
+<p>Si vous voyez <code>path</code>, <code>hostnames</code> et <code>backendRefs</code>, c'est celui-ci.</p>
+<h3 id="grpcroute"><code>GRPCRoute</code></h3>
+<figure data-rehype-pretty-code-figure=""><pre style="background-color:#0d1117;color:#e6edf3" tabindex="0" data-language="yaml" data-theme="github-dark-default"><code data-language="yaml" data-theme="github-dark-default" style="display: grid;"><span data-line=""><span style="color:#7EE787">apiVersion</span><span style="color:#E6EDF3">: </span><span style="color:#A5D6FF">gateway.networking.k8s.io/v1</span></span>
+<span data-line=""><span style="color:#7EE787">kind</span><span style="color:#E6EDF3">: </span><span style="color:#A5D6FF">GRPCRoute</span></span>
+<span data-line=""><span style="color:#7EE787">metadata</span><span style="color:#E6EDF3">:</span></span>
+<span data-line=""><span style="color:#7EE787">  name</span><span style="color:#E6EDF3">: </span><span style="color:#A5D6FF">user-grpc</span></span>
+<span data-line=""><span style="color:#7EE787">spec</span><span style="color:#E6EDF3">:</span></span>
+<span data-line=""><span style="color:#7EE787">  parentRefs</span><span style="color:#E6EDF3">:</span></span>
+<span data-line=""><span style="color:#E6EDF3">    - </span><span style="color:#7EE787">name</span><span style="color:#E6EDF3">: </span><span style="color:#A5D6FF">eg</span></span>
+<span data-line=""><span style="color:#7EE787">      sectionName</span><span style="color:#E6EDF3">: </span><span style="color:#A5D6FF">grpc</span></span>
+<span data-line=""><span style="color:#7EE787">  hostnames</span><span style="color:#E6EDF3">:</span></span>
+<span data-line=""><span style="color:#E6EDF3">    - </span><span style="color:#A5D6FF">"grpc.example.com"</span></span>
+<span data-line=""><span style="color:#7EE787">  rules</span><span style="color:#E6EDF3">:</span></span>
+<span data-line=""><span style="color:#E6EDF3">    - </span><span style="color:#7EE787">matches</span><span style="color:#E6EDF3">:</span></span>
+<span data-line=""><span style="color:#E6EDF3">        - </span><span style="color:#7EE787">method</span><span style="color:#E6EDF3">:</span></span>
+<span data-line=""><span style="color:#7EE787">            service</span><span style="color:#E6EDF3">: </span><span style="color:#A5D6FF">com.example.User</span></span>
+<span data-line=""><span style="color:#7EE787">            method</span><span style="color:#E6EDF3">: </span><span style="color:#A5D6FF">Login</span></span>
+<span data-line=""><span style="color:#7EE787">      backendRefs</span><span style="color:#E6EDF3">:</span></span>
+<span data-line=""><span style="color:#E6EDF3">        - </span><span style="color:#7EE787">name</span><span style="color:#E6EDF3">: </span><span style="color:#A5D6FF">user-grpc-service</span></span>
+<span data-line=""><span style="color:#7EE787">          port</span><span style="color:#E6EDF3">: </span><span style="color:#79C0FF">50051</span></span></code></pre></figure>
+<p>Si vous voyez <code>method.service</code> et <code>method.method</code>, vous êtes dans la sémantique gRPC, pas dans du HTTP classique.</p>
+<h3 id="tcproute"><code>TCPRoute</code></h3>
+<figure data-rehype-pretty-code-figure=""><pre style="background-color:#0d1117;color:#e6edf3" tabindex="0" data-language="yaml" data-theme="github-dark-default"><code data-language="yaml" data-theme="github-dark-default" style="display: grid;"><span data-line=""><span style="color:#7EE787">apiVersion</span><span style="color:#E6EDF3">: </span><span style="color:#A5D6FF">gateway.networking.k8s.io/v1alpha2</span></span>
+<span data-line=""><span style="color:#7EE787">kind</span><span style="color:#E6EDF3">: </span><span style="color:#A5D6FF">TCPRoute</span></span>
+<span data-line=""><span style="color:#7EE787">metadata</span><span style="color:#E6EDF3">:</span></span>
+<span data-line=""><span style="color:#7EE787">  name</span><span style="color:#E6EDF3">: </span><span style="color:#A5D6FF">postgres-route</span></span>
+<span data-line=""><span style="color:#7EE787">spec</span><span style="color:#E6EDF3">:</span></span>
+<span data-line=""><span style="color:#7EE787">  parentRefs</span><span style="color:#E6EDF3">:</span></span>
+<span data-line=""><span style="color:#E6EDF3">    - </span><span style="color:#7EE787">name</span><span style="color:#E6EDF3">: </span><span style="color:#A5D6FF">eg</span></span>
+<span data-line=""><span style="color:#7EE787">      sectionName</span><span style="color:#E6EDF3">: </span><span style="color:#A5D6FF">postgres</span></span>
+<span data-line=""><span style="color:#7EE787">  rules</span><span style="color:#E6EDF3">:</span></span>
+<span data-line=""><span style="color:#E6EDF3">    - </span><span style="color:#7EE787">backendRefs</span><span style="color:#E6EDF3">:</span></span>
+<span data-line=""><span style="color:#E6EDF3">        - </span><span style="color:#7EE787">name</span><span style="color:#E6EDF3">: </span><span style="color:#A5D6FF">postgres</span></span>
+<span data-line=""><span style="color:#7EE787">          port</span><span style="color:#E6EDF3">: </span><span style="color:#79C0FF">5432</span></span></code></pre></figure>
+<p><code>TCPRoute</code> n'a pratiquement aucune notion de path/header, parce qu'il ne les regarde pas.
+Il ressemble davantage à : "les connexions TCP arrivant sur ce listener vont vers ce backend".</p>
+<h3 id="tlsroute"><code>TLSRoute</code></h3>
+<figure data-rehype-pretty-code-figure=""><pre style="background-color:#0d1117;color:#e6edf3" tabindex="0" data-language="yaml" data-theme="github-dark-default"><code data-language="yaml" data-theme="github-dark-default" style="display: grid;"><span data-line=""><span style="color:#7EE787">apiVersion</span><span style="color:#E6EDF3">: </span><span style="color:#A5D6FF">gateway.networking.k8s.io/v1alpha2</span></span>
+<span data-line=""><span style="color:#7EE787">kind</span><span style="color:#E6EDF3">: </span><span style="color:#A5D6FF">TLSRoute</span></span>
+<span data-line=""><span style="color:#7EE787">metadata</span><span style="color:#E6EDF3">:</span></span>
+<span data-line=""><span style="color:#7EE787">  name</span><span style="color:#E6EDF3">: </span><span style="color:#A5D6FF">passthrough-route</span></span>
+<span data-line=""><span style="color:#7EE787">spec</span><span style="color:#E6EDF3">:</span></span>
+<span data-line=""><span style="color:#7EE787">  parentRefs</span><span style="color:#E6EDF3">:</span></span>
+<span data-line=""><span style="color:#E6EDF3">    - </span><span style="color:#7EE787">name</span><span style="color:#E6EDF3">: </span><span style="color:#A5D6FF">eg</span></span>
+<span data-line=""><span style="color:#7EE787">      sectionName</span><span style="color:#E6EDF3">: </span><span style="color:#A5D6FF">tls</span></span>
+<span data-line=""><span style="color:#7EE787">  hostnames</span><span style="color:#E6EDF3">:</span></span>
+<span data-line=""><span style="color:#E6EDF3">    - </span><span style="color:#A5D6FF">"db.example.com"</span></span>
+<span data-line=""><span style="color:#7EE787">  rules</span><span style="color:#E6EDF3">:</span></span>
+<span data-line=""><span style="color:#E6EDF3">    - </span><span style="color:#7EE787">backendRefs</span><span style="color:#E6EDF3">:</span></span>
+<span data-line=""><span style="color:#E6EDF3">        - </span><span style="color:#7EE787">name</span><span style="color:#E6EDF3">: </span><span style="color:#A5D6FF">db-service</span></span>
+<span data-line=""><span style="color:#7EE787">          port</span><span style="color:#E6EDF3">: </span><span style="color:#79C0FF">5432</span></span></code></pre></figure>
+<p>Il est généralement associé à un listener <code>protocol: TLS</code>. L'enjeu n'est pas le déchiffrement, mais le routage basé sur SNI.</p>
+<blockquote>
+<p>💡 <code>TCPRoute</code> et <code>TLSRoute</code> se trouvent souvent dans le canal experimental selon les versions de Gateway API. Vérifiez la version des CRD installée dans votre cluster avant d'appliquer.</p>
+</blockquote>
+<h2 id="quatre-pièges-courants">Quatre pièges courants</h2>
+<h3 id="1-grpc-ne-nécessite-pas-forcément-grpcroute">1. gRPC ne nécessite pas forcément <code>GRPCRoute</code></h3>
+<p>Si vous voulez seulement faire passer du trafic gRPC, certaines implémentations peuvent le prendre en charge via <code>HTTPRoute</code>, puisque gRPC tourne sur HTTP/2.
+Mais si vous voulez faire du matching sur la sémantique gRPC service/method, <code>GRPCRoute</code> est le choix le plus correct et le plus lisible.</p>
+<h3 id="2-tlsroute-nest-pas-https-mais-en-plus-avancé">2. <code>TLSRoute</code> n'est pas "HTTPS mais en plus avancé"</h3>
+<p>C'est la confusion la plus fréquente.</p>
+<ul>
+<li><code>HTTPS listener + HTTPRoute</code> : le Gateway termine TLS, puis applique des règles HTTP</li>
+<li><code>TLS listener + TLSRoute</code> : le Gateway ne termine PAS TLS, il route uniquement selon SNI</li>
+</ul>
+<p>L'un déchiffre et travaille en L7. L'autre garde le trafic chiffré et fait du passthrough. Ce sont deux mondes complètement différents.</p>
+<h3 id="3-tcproute-ne-peut-pas-voir-pathheader">3. <code>TCPRoute</code> ne peut pas voir path/header</h3>
+<p>Si votre besoin est :</p>
+<ul>
+<li><code>/api</code> va vers A</li>
+<li><code>/admin</code> va vers B</li>
+</ul>
+<p>Ce n'est pas le travail de <code>TCPRoute</code>.
+<code>TCPRoute</code> ne comprend pas les détails HTTP. Lui imposer ce type d'exigence, c'est simplement préparer votre future frustration.</p>
+<h3 id="4-parentrefssectionname-est-important">4. <code>parentRefs.sectionName</code> est important</h3>
+<p>Lorsqu'un Gateway possède plusieurs listeners, utilisez <code>sectionName</code> :</p>
+<figure data-rehype-pretty-code-figure=""><pre style="background-color:#0d1117;color:#e6edf3" tabindex="0" data-language="yaml" data-theme="github-dark-default"><code data-language="yaml" data-theme="github-dark-default" style="display: grid;"><span data-line=""><span style="color:#7EE787">parentRefs</span><span style="color:#E6EDF3">:</span></span>
+<span data-line=""><span style="color:#E6EDF3">  - </span><span style="color:#7EE787">name</span><span style="color:#E6EDF3">: </span><span style="color:#A5D6FF">eg</span></span>
+<span data-line=""><span style="color:#7EE787">    sectionName</span><span style="color:#E6EDF3">: </span><span style="color:#A5D6FF">https</span></span></code></pre></figure>
+<p>Cela garantit que votre route s'attache précisément au listener voulu.
+Sans cela, vous pouvez croire avoir réservé la salle VIP et vous retrouver dans le mauvais hall.</p>
+<h2 id="résumé-en-une-ligne">Résumé en une ligne</h2>
+<p>Identifiez d'abord ce que vous traitez : <strong>HTTP, gRPC, TCP, ou TLS passthrough</strong> puis choisissez le bon type de route.
+Choisissez correctement la route, et 80 % de votre YAML s'écoulera naturellement. Choisissez mal, et vous voilà coincé dans une bataille contre les conditions de status.</p>
+<h2 id="étape-suivante">Étape suivante</h2>
+<p>Une fois les types de routes compris, le prochain point de blocage courant est :
+<strong>Quand un même Gateway possède beaucoup de listeners, comment les structurer sans créer le chaos ?</strong></p>
+<p>L'article suivant couvre la conception multi-listeners :
+👉 <a href="07-listener-design">Guide de conception des listeners</a></p>1f:["$","aside",null,{"className":"hidden lg:block","children":["$","$L29",null,{"html":"$2a"}]}]
+16:["$","$L15","kubernetes",{"ref":"$undefined","href":"/fr/tags/kubernetes","locale":"$undefined","localeCookie":"$14:props:localeCookie","className":"inline-flex items-center rounded-full px-2.5 py-0.5 text-xs font-medium transition-colors","style":{"background":"var(--color-code-bg)","color":"var(--color-accent)","border":"1px solid var(--color-border)"},"children":["#","kubernetes"]}]
+17:["$","$L15","envoy-gateway",{"ref":"$undefined","href":"/fr/tags/envoy-gateway","locale":"$undefined","localeCookie":"$14:props:localeCookie","className":"inline-flex items-center rounded-full px-2.5 py-0.5 text-xs font-medium transition-colors","style":{"background":"var(--color-code-bg)","color":"var(--color-accent)","border":"1px solid var(--color-border)"},"children":["#","envoy-gateway"]}]
+18:["$","$L15","gateway-api",{"ref":"$undefined","href":"/fr/tags/gateway-api","locale":"$undefined","localeCookie":"$14:props:localeCookie","className":"inline-flex items-center rounded-full px-2.5 py-0.5 text-xs font-medium transition-colors","style":{"background":"var(--color-code-bg)","color":"var(--color-accent)","border":"1px solid var(--color-border)"},"children":["#","gateway-api"]}]
+19:["$","$L15","httproute",{"ref":"$undefined","href":"/fr/tags/httproute","locale":"$undefined","localeCookie":"$14:props:localeCookie","className":"inline-flex items-center rounded-full px-2.5 py-0.5 text-xs font-medium transition-colors","style":{"background":"var(--color-code-bg)","color":"var(--color-accent)","border":"1px solid var(--color-border)"},"children":["#","httproute"]}]
+1a:["$","$L15","grpcroute",{"ref":"$undefined","href":"/fr/tags/grpcroute","locale":"$undefined","localeCookie":"$14:props:localeCookie","className":"inline-flex items-center rounded-full px-2.5 py-0.5 text-xs font-medium transition-colors","style":{"background":"var(--color-code-bg)","color":"var(--color-accent)","border":"1px solid var(--color-border)"},"children":["#","grpcroute"]}]
+1b:["$","$L15","tcproute",{"ref":"$undefined","href":"/fr/tags/tcproute","locale":"$undefined","localeCookie":"$14:props:localeCookie","className":"inline-flex items-center rounded-full px-2.5 py-0.5 text-xs font-medium transition-colors","style":{"background":"var(--color-code-bg)","color":"var(--color-accent)","border":"1px solid var(--color-border)"},"children":["#","tcproute"]}]
+1c:["$","$L15","tlsroute",{"ref":"$undefined","href":"/fr/tags/tlsroute","locale":"$undefined","localeCookie":"$14:props:localeCookie","className":"inline-flex items-center rounded-full px-2.5 py-0.5 text-xs font-medium transition-colors","style":{"background":"var(--color-code-bg)","color":"var(--color-accent)","border":"1px solid var(--color-border)"},"children":["#","tlsroute"]}]
+20:["$","$L15","kubernetes",{"ref":"$undefined","href":"/fr/tags/kubernetes","locale":"$undefined","localeCookie":"$14:props:localeCookie","className":"inline-flex items-center rounded-full px-3 py-1 text-sm font-medium transition-colors","style":{"background":"var(--color-code-bg)","color":"var(--color-accent)","border":"1px solid var(--color-border)"},"children":["#","kubernetes"]}]
+21:["$","$L15","envoy-gateway",{"ref":"$undefined","href":"/fr/tags/envoy-gateway","locale":"$undefined","localeCookie":"$14:props:localeCookie","className":"inline-flex items-center rounded-full px-3 py-1 text-sm font-medium transition-colors","style":{"background":"var(--color-code-bg)","color":"var(--color-accent)","border":"1px solid var(--color-border)"},"children":["#","envoy-gateway"]}]
+22:["$","$L15","gateway-api",{"ref":"$undefined","href":"/fr/tags/gateway-api","locale":"$undefined","localeCookie":"$14:props:localeCookie","className":"inline-flex items-center rounded-full px-3 py-1 text-sm font-medium transition-colors","style":{"background":"var(--color-code-bg)","color":"var(--color-accent)","border":"1px solid var(--color-border)"},"children":["#","gateway-api"]}]
+23:["$","$L15","httproute",{"ref":"$undefined","href":"/fr/tags/httproute","locale":"$undefined","localeCookie":"$14:props:localeCookie","className":"inline-flex items-center rounded-full px-3 py-1 text-sm font-medium transition-colors","style":{"background":"var(--color-code-bg)","color":"var(--color-accent)","border":"1px solid var(--color-border)"},"children":["#","httproute"]}]
+24:["$","$L15","grpcroute",{"ref":"$undefined","href":"/fr/tags/grpcroute","locale":"$undefined","localeCookie":"$14:props:localeCookie","className":"inline-flex items-center rounded-full px-3 py-1 text-sm font-medium transition-colors","style":{"background":"var(--color-code-bg)","color":"var(--color-accent)","border":"1px solid var(--color-border)"},"children":["#","grpcroute"]}]
+25:["$","$L15","tcproute",{"ref":"$undefined","href":"/fr/tags/tcproute","locale":"$undefined","localeCookie":"$14:props:localeCookie","className":"inline-flex items-center rounded-full px-3 py-1 text-sm font-medium transition-colors","style":{"background":"var(--color-code-bg)","color":"var(--color-accent)","border":"1px solid var(--color-border)"},"children":["#","tcproute"]}]
+26:["$","$L15","tlsroute",{"ref":"$undefined","href":"/fr/tags/tlsroute","locale":"$undefined","localeCookie":"$14:props:localeCookie","className":"inline-flex items-center rounded-full px-3 py-1 text-sm font-medium transition-colors","style":{"background":"var(--color-code-bg)","color":"var(--color-accent)","border":"1px solid var(--color-border)"},"children":["#","tlsroute"]}]
+27:["$","$L15",null,{"ref":"$undefined","href":"/fr/blog/k8s/gateway/05-best-practices","locale":"$undefined","localeCookie":"$14:props:localeCookie","className":"group rounded-lg border p-4 transition-colors hover:border-accent","style":{"borderColor":"var(--color-border)","background":"var(--color-surface)"},"children":[["$","p",null,{"className":"mb-1 text-xs","style":{"color":"var(--color-muted)"},"children":"← Plus récent"}],["$","p",null,{"className":"line-clamp-1 text-sm font-medium transition-colors group-hover:text-accent","style":{"color":"var(--color-text)"},"children":"Bonnes pratiques Envoy Gateway : rendez service à votre futur vous avant la production"}]]}]
+28:["$","$L15",null,{"ref":"$undefined","href":"/fr/blog/k8s/gateway/07-listener-design","locale":"$undefined","localeCookie":"$14:props:localeCookie","className":"group rounded-lg border p-4 text-right transition-colors hover:border-accent","style":{"borderColor":"var(--color-border)","background":"var(--color-surface)"},"children":[["$","p",null,{"className":"mb-1 text-xs","style":{"color":"var(--color-muted)"},"children":"Plus ancien →"}],["$","p",null,{"className":"line-clamp-1 text-sm font-medium transition-colors group-hover:text-accent","style":{"color":"var(--color-text)"},"children":"Guide de conception des listeners Envoy Gateway : patterns multi-port, multi-hostname et multi-ingress"}]]}]
+2b:I[92204,["/_next/static/chunks/5a5b5b13c22d14f7.js","/_next/static/chunks/a484d1d3dd4b55ab.js"],"IconMark"]
+8:null
+c:[["$","title","0",{"children":"Antisèche des types de routes Envoy Gateway : HTTPRoute, GRPCRoute, TCPRoute ou TLSRoute ? | BenXHub Blog"}],["$","meta","1",{"name":"description","content":"Une antisèche de référence rapide pour choisir le bon type de Route, avec des exemples YAML minimaux, un flux de décision et les pièges les plus courants."}],["$","link","2",{"rel":"canonical","href":"https://benxhub.com/fr/blog/k8s/gateway/06-route-types-cheatsheet/"}],["$","link","3",{"rel":"alternate","hrefLang":"zh-Hant","href":"https://benxhub.com/zh/blog/k8s/gateway/06-route-types-cheatsheet/"}],["$","link","4",{"rel":"alternate","hrefLang":"en","href":"https://benxhub.com/en/blog/k8s/gateway/06-route-types-cheatsheet/"}],["$","link","5",{"rel":"alternate","hrefLang":"ja","href":"https://benxhub.com/ja/blog/k8s/gateway/06-route-types-cheatsheet/"}],["$","link","6",{"rel":"alternate","hrefLang":"ko","href":"https://benxhub.com/ko/blog/k8s/gateway/06-route-types-cheatsheet/"}],["$","link","7",{"rel":"alternate","hrefLang":"es","href":"https://benxhub.com/es/blog/k8s/gateway/06-route-types-cheatsheet/"}],["$","link","8",{"rel":"alternate","hrefLang":"fr","href":"https://benxhub.com/fr/blog/k8s/gateway/06-route-types-cheatsheet/"}],["$","link","9",{"rel":"alternate","hrefLang":"ar","href":"https://benxhub.com/ar/blog/k8s/gateway/06-route-types-cheatsheet/"}],["$","link","10",{"rel":"alternate","hrefLang":"x-default","href":"https://benxhub.com/zh/blog/k8s/gateway/06-route-types-cheatsheet/"}],["$","link","11",{"rel":"alternate","type":"application/rss+xml","href":"https://benxhub.com/fr/feed.xml"}],["$","meta","12",{"property":"og:title","content":"Antisèche des types de routes Envoy Gateway : HTTPRoute, GRPCRoute, TCPRoute ou TLSRoute ?"}],["$","meta","13",{"property":"og:description","content":"Une antisèche de référence rapide pour choisir le bon type de Route, avec des exemples YAML minimaux, un flux de décision et les pièges les plus courants."}],["$","meta","14",{"property":"og:url","content":"https://benxhub.com/fr/blog/k8s/gateway/06-route-types-cheatsheet/"}],["$","meta","15",{"property":"og:site_name","content":"BenXHub Blog"}],["$","meta","16",{"property":"og:locale","content":"fr_FR"}],["$","meta","17",{"property":"og:image","content":"https://benxhub.com/og-default.png"}],["$","meta","18",{"property":"og:image:width","content":"1200"}],["$","meta","19",{"property":"og:image:height","content":"630"}],["$","meta","20",{"property":"og:image:alt","content":"BenXHub Blog"}],["$","meta","21",{"property":"og:type","content":"article"}],["$","meta","22",{"property":"article:published_time","content":"2026-03-10T00:00:00.000Z"}],["$","meta","23",{"property":"article:tag","content":"kubernetes"}],["$","meta","24",{"property":"article:tag","content":"envoy-gateway"}],["$","meta","25",{"property":"article:tag","content":"gateway-api"}],["$","meta","26",{"property":"article:tag","content":"httproute"}],["$","meta","27",{"property":"article:tag","content":"grpcroute"}],["$","meta","28",{"property":"article:tag","content":"tcproute"}],["$","meta","29",{"property":"article:tag","content":"tlsroute"}],["$","meta","30",{"name":"twitter:card","content":"summary_large_image"}],["$","meta","31",{"name":"twitter:title","content":"Antisèche des types de routes Envoy Gateway : HTTPRoute, GRPCRoute, TCPRoute ou TLSRoute ?"}],["$","meta","32",{"name":"twitter:description","content":"Une antisèche de référence rapide pour choisir le bon type de Route, avec des exemples YAML minimaux, un flux de décision et les pièges les plus courants."}],["$","meta","33",{"name":"twitter:image","content":"https://benxhub.com/og-default.png"}],["$","link","34",{"rel":"icon","href":"/favicon.ico?favicon.0b3bf435.ico","sizes":"256x256","type":"image/x-icon"}],["$","$L2b","35",{}]]

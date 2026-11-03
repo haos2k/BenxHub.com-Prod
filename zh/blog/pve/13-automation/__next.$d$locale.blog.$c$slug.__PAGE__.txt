@@ -1,96 +1,97 @@
 1:"$Sreact.fragment"
-2:I[14864,["/_next/static/chunks/7923a261b80bb6e1.js","/_next/static/chunks/e09b4358027e8033.js","/_next/static/chunks/2dddb3bc05093f69.js"],"default"]
-8:I[24801,["/_next/static/chunks/7923a261b80bb6e1.js","/_next/static/chunks/e09b4358027e8033.js","/_next/static/chunks/2dddb3bc05093f69.js"],"default"]
-a:I[50183,["/_next/static/chunks/5a5b5b13c22d14f7.js","/_next/static/chunks/a484d1d3dd4b55ab.js"],"OutletBoundary"]
-b:"$Sreact.suspense"
-3:T557a,<p>手動從 ISO 裝一台 VM 要多久？下載映像、設定磁碟、裝系統、改網路、裝套件——順利的話半小時，不順利的話一個下午。現在想像你要建 10 台一模一樣的。對，該讓自動化上場了。</p>
+2:I[14864,["/_next/static/chunks/4204edc93da35a5e.js","/_next/static/chunks/f2afb7fd2b7566bb.js","/_next/static/chunks/2dddb3bc05093f69.js"],"default"]
+9:I[24801,["/_next/static/chunks/4204edc93da35a5e.js","/_next/static/chunks/f2afb7fd2b7566bb.js","/_next/static/chunks/2dddb3bc05093f69.js"],"default"]
+b:I[50183,["/_next/static/chunks/5a5b5b13c22d14f7.js","/_next/static/chunks/a484d1d3dd4b55ab.js"],"OutletBoundary"]
+c:"$Sreact.suspense"
+0:{"buildId":"ekNoF06-0VZrB4pGVUsy8","rsc":["$","$1","c",{"children":[[["$","script",null,{"type":"application/ld+json","dangerouslySetInnerHTML":{"__html":"{\"@context\":\"https://schema.org\",\"@type\":\"Article\",\"headline\":\"Proxmox VE 自動化：別再手動建 VM 了\",\"description\":\"PVE 自動化完整指南：用 Proxmox Cloud-init 範本秒建 VM、Terraform 管理基礎設施、REST API 整合，告別重複手動操作。\",\"url\":\"https://benxhub.com/zh/blog/pve/13-automation/\",\"mainEntityOfPage\":{\"@type\":\"WebPage\",\"@id\":\"https://benxhub.com/zh/blog/pve/13-automation/\"},\"datePublished\":\"2026-05-06T00:00:00.000Z\",\"dateModified\":\"2026-05-06T00:00:00.000Z\",\"keywords\":\"proxmox, automation, cloud-init, terraform, ansible, api\",\"inLanguage\":\"zh-Hant\",\"author\":{\"@type\":\"Person\",\"@id\":\"https://benxhub.com/#author\",\"name\":\"BenX\",\"url\":\"https://benxhub.com/zh/about/\",\"sameAs\":[\"https://github.com/benzhub\"]},\"publisher\":{\"@type\":\"Organization\",\"name\":\"BenXHub Blog\",\"url\":\"https://benxhub.com\"},\"image\":\"https://benxhub.com/og-default.png\"}"}}],["$","div",null,{"className":"mx-auto max-w-6xl px-4 py-12 sm:px-6","children":["$","div",null,{"className":"lg:grid lg:grid-cols-[1fr_240px] lg:gap-14","children":[["$","article",null,{"children":[["$","header",null,{"className":"mb-10","children":[["$","div",null,{"className":"mb-4 flex flex-wrap gap-2","children":[["$","$L2","proxmox",{"href":"/zh/tags/proxmox","localeCookie":{"name":"NEXT_LOCALE","sameSite":"lax"},"className":"inline-flex items-center rounded-full px-2.5 py-0.5 text-xs font-medium transition-colors","style":{"background":"var(--color-code-bg)","color":"var(--color-accent)","border":"1px solid var(--color-border)"},"children":["#","proxmox"]}],["$","$L2","automation",{"href":"/zh/tags/automation","localeCookie":{"name":"NEXT_LOCALE","sameSite":"lax"},"className":"inline-flex items-center rounded-full px-2.5 py-0.5 text-xs font-medium transition-colors","style":{"background":"var(--color-code-bg)","color":"var(--color-accent)","border":"1px solid var(--color-border)"},"children":["#","automation"]}],["$","$L2","cloud-init",{"href":"/zh/tags/cloud-init","localeCookie":{"name":"NEXT_LOCALE","sameSite":"lax"},"className":"inline-flex items-center rounded-full px-2.5 py-0.5 text-xs font-medium transition-colors","style":{"background":"var(--color-code-bg)","color":"var(--color-accent)","border":"1px solid var(--color-border)"},"children":["#","cloud-init"]}],["$","$L2","terraform",{"href":"/zh/tags/terraform","localeCookie":{"name":"NEXT_LOCALE","sameSite":"lax"},"className":"inline-flex items-center rounded-full px-2.5 py-0.5 text-xs font-medium transition-colors","style":{"background":"var(--color-code-bg)","color":"var(--color-accent)","border":"1px solid var(--color-border)"},"children":["#","terraform"]}],["$","$L2","ansible",{"href":"/zh/tags/ansible","localeCookie":{"name":"NEXT_LOCALE","sameSite":"lax"},"className":"inline-flex items-center rounded-full px-2.5 py-0.5 text-xs font-medium transition-colors","style":{"background":"var(--color-code-bg)","color":"var(--color-accent)","border":"1px solid var(--color-border)"},"children":["#","ansible"]}],["$","$L2","api",{"href":"/zh/tags/api","localeCookie":{"name":"NEXT_LOCALE","sameSite":"lax"},"className":"inline-flex items-center rounded-full px-2.5 py-0.5 text-xs font-medium transition-colors","style":{"background":"var(--color-code-bg)","color":"var(--color-accent)","border":"1px solid var(--color-border)"},"children":["#","api"]}]]}],["$","h1",null,{"className":"mb-4 text-3xl leading-snug font-bold tracking-tight sm:text-4xl","style":{"color":"var(--color-text)"},"children":"Proxmox VE 自動化：別再手動建 VM 了"}],["$","div",null,{"className":"flex flex-wrap items-center gap-3 text-sm","style":{"color":"var(--color-muted)"},"children":[["$","time",null,{"dateTime":"2026-05-06","children":"2026 年 5 月 6 日"}],["$","span",null,{"aria-hidden":"true","children":"·"}],["$","span",null,{"children":"7 min read"}]]}],"$undefined",["$","div",null,{"className":"mt-6 border-b","style":{"borderColor":"var(--color-border)"}}]]}],"$L3","$L4"]}],"$L5"]}]}]],["$L6"],"$L7"]}],"loading":null,"isPartial":false}
+8:T55da,<p>手動從 ISO 裝一台 VM 要多久？下載映像、設定磁碟、裝系統、改網路、裝套件——順利的話半小時，不順利的話一個下午。現在想像你要建 10 台一模一樣的。對，該讓自動化上場了。</p>
 <h2 id="cloud-initvm-的開箱即用設定">Cloud-init：VM 的開箱即用設定</h2>
 <p>Cloud-init 是雲端映像的標準初始化工具。VM 第一次開機時，它會自動幫你設好主機名、網路、使用者帳號和 SSH Key。流程是：做一個範本，之後每台新 VM 都從範本 clone，開機就能用。如果你對 VM 範本還不熟，可以先回顧<a href="03-vm-management">VM 管理</a>裡的範本與快照章節。</p>
 <h3 id="製作雲端映像範本">製作雲端映像範本</h3>
-<figure data-rehype-pretty-code-figure=""><pre style="background-color:#24292e;color:#e1e4e8" tabindex="0" data-language="bash" data-theme="github-dark"><code data-language="bash" data-theme="github-dark" style="display: grid;"><span data-line=""><span style="color:#6A737D"># 下載 Ubuntu 雲端映像</span></span>
-<span data-line=""><span style="color:#B392F0">wget</span><span style="color:#9ECBFF"> https://cloud-images.ubuntu.com/noble/current/noble-server-cloudimg-amd64.img</span></span>
+<figure data-rehype-pretty-code-figure=""><pre style="background-color:#0d1117;color:#e6edf3" tabindex="0" data-language="bash" data-theme="github-dark-default"><code data-language="bash" data-theme="github-dark-default" style="display: grid;"><span data-line=""><span style="color:#8B949E"># 下載 Ubuntu 雲端映像</span></span>
+<span data-line=""><span style="color:#FFA657">wget</span><span style="color:#A5D6FF"> https://cloud-images.ubuntu.com/noble/current/noble-server-cloudimg-amd64.img</span></span>
 <span data-line=""> </span>
-<span data-line=""><span style="color:#6A737D"># 建立一台 VM 當範本（ID 9000，不啟動）</span></span>
-<span data-line=""><span style="color:#B392F0">qm</span><span style="color:#9ECBFF"> create</span><span style="color:#79B8FF"> 9000</span><span style="color:#79B8FF"> --name</span><span style="color:#9ECBFF"> ubuntu-cloud</span><span style="color:#79B8FF"> --memory</span><span style="color:#79B8FF"> 2048</span><span style="color:#79B8FF"> --cores</span><span style="color:#79B8FF"> 2</span><span style="color:#79B8FF"> \</span></span>
-<span data-line=""><span style="color:#79B8FF">  --net0</span><span style="color:#9ECBFF"> virtio,bridge=vmbr0</span><span style="color:#79B8FF"> --scsihw</span><span style="color:#9ECBFF"> virtio-scsi-pci</span></span>
+<span data-line=""><span style="color:#8B949E"># 建立一台 VM 當範本（ID 9000，不啟動）</span></span>
+<span data-line=""><span style="color:#FFA657">qm</span><span style="color:#A5D6FF"> create</span><span style="color:#79C0FF"> 9000</span><span style="color:#79C0FF"> --name</span><span style="color:#A5D6FF"> ubuntu-cloud</span><span style="color:#79C0FF"> --memory</span><span style="color:#79C0FF"> 2048</span><span style="color:#79C0FF"> --cores</span><span style="color:#79C0FF"> 2</span><span style="color:#FF7B72"> \</span></span>
+<span data-line=""><span style="color:#79C0FF">  --net0</span><span style="color:#A5D6FF"> virtio,bridge=vmbr0</span><span style="color:#79C0FF"> --scsihw</span><span style="color:#A5D6FF"> virtio-scsi-pci</span></span>
 <span data-line=""> </span>
-<span data-line=""><span style="color:#6A737D"># 匯入雲端映像當系統碟</span></span>
-<span data-line=""><span style="color:#B392F0">qm</span><span style="color:#9ECBFF"> set</span><span style="color:#79B8FF"> 9000</span><span style="color:#79B8FF"> --scsi0</span><span style="color:#9ECBFF"> local-lvm:0,import-from=/root/noble-server-cloudimg-amd64.img</span></span>
+<span data-line=""><span style="color:#8B949E"># 匯入雲端映像當系統碟</span></span>
+<span data-line=""><span style="color:#FFA657">qm</span><span style="color:#A5D6FF"> set</span><span style="color:#79C0FF"> 9000</span><span style="color:#79C0FF"> --scsi0</span><span style="color:#A5D6FF"> local-lvm:0,import-from=/root/noble-server-cloudimg-amd64.img</span></span>
 <span data-line=""> </span>
-<span data-line=""><span style="color:#6A737D"># 掛載 Cloud-init 光碟</span></span>
-<span data-line=""><span style="color:#B392F0">qm</span><span style="color:#9ECBFF"> set</span><span style="color:#79B8FF"> 9000</span><span style="color:#79B8FF"> --ide2</span><span style="color:#9ECBFF"> local-lvm:cloudinit</span></span>
+<span data-line=""><span style="color:#8B949E"># 掛載 Cloud-init 光碟</span></span>
+<span data-line=""><span style="color:#FFA657">qm</span><span style="color:#A5D6FF"> set</span><span style="color:#79C0FF"> 9000</span><span style="color:#79C0FF"> --ide2</span><span style="color:#A5D6FF"> local-lvm:cloudinit</span></span>
 <span data-line=""> </span>
-<span data-line=""><span style="color:#6A737D"># 設定開機順序和 Console</span></span>
-<span data-line=""><span style="color:#B392F0">qm</span><span style="color:#9ECBFF"> set</span><span style="color:#79B8FF"> 9000</span><span style="color:#79B8FF"> --boot</span><span style="color:#9ECBFF"> order=scsi0</span></span>
-<span data-line=""><span style="color:#B392F0">qm</span><span style="color:#9ECBFF"> set</span><span style="color:#79B8FF"> 9000</span><span style="color:#79B8FF"> --serial0</span><span style="color:#9ECBFF"> socket</span><span style="color:#79B8FF"> --vga</span><span style="color:#9ECBFF"> serial0</span></span>
+<span data-line=""><span style="color:#8B949E"># 設定開機順序和 Console</span></span>
+<span data-line=""><span style="color:#FFA657">qm</span><span style="color:#A5D6FF"> set</span><span style="color:#79C0FF"> 9000</span><span style="color:#79C0FF"> --boot</span><span style="color:#A5D6FF"> order=scsi0</span></span>
+<span data-line=""><span style="color:#FFA657">qm</span><span style="color:#A5D6FF"> set</span><span style="color:#79C0FF"> 9000</span><span style="color:#79C0FF"> --serial0</span><span style="color:#A5D6FF"> socket</span><span style="color:#79C0FF"> --vga</span><span style="color:#A5D6FF"> serial0</span></span>
 <span data-line=""> </span>
-<span data-line=""><span style="color:#6A737D"># 預設 Cloud-init 參數</span></span>
-<span data-line=""><span style="color:#B392F0">qm</span><span style="color:#9ECBFF"> set</span><span style="color:#79B8FF"> 9000</span><span style="color:#79B8FF"> --ciuser</span><span style="color:#9ECBFF"> admin</span><span style="color:#79B8FF"> --sshkeys</span><span style="color:#9ECBFF"> ~/.ssh/id_rsa.pub</span><span style="color:#79B8FF"> --ipconfig0</span><span style="color:#9ECBFF"> ip=dhcp</span></span>
+<span data-line=""><span style="color:#8B949E"># 預設 Cloud-init 參數</span></span>
+<span data-line=""><span style="color:#FFA657">qm</span><span style="color:#A5D6FF"> set</span><span style="color:#79C0FF"> 9000</span><span style="color:#79C0FF"> --ciuser</span><span style="color:#A5D6FF"> admin</span><span style="color:#79C0FF"> --sshkeys</span><span style="color:#A5D6FF"> ~/.ssh/id_rsa.pub</span><span style="color:#79C0FF"> --ipconfig0</span><span style="color:#A5D6FF"> ip=dhcp</span></span>
 <span data-line=""> </span>
-<span data-line=""><span style="color:#6A737D"># 轉成範本（不能再修改，只能 clone）</span></span>
-<span data-line=""><span style="color:#B392F0">qm</span><span style="color:#9ECBFF"> template</span><span style="color:#79B8FF"> 9000</span></span></code></pre></figure>
+<span data-line=""><span style="color:#8B949E"># 轉成範本（不能再修改，只能 clone）</span></span>
+<span data-line=""><span style="color:#FFA657">qm</span><span style="color:#A5D6FF"> template</span><span style="color:#79C0FF"> 9000</span></span></code></pre></figure>
 <h3 id="從範本秒建-vm">從範本秒建 VM</h3>
-<figure data-rehype-pretty-code-figure=""><pre style="background-color:#24292e;color:#e1e4e8" tabindex="0" data-language="bash" data-theme="github-dark"><code data-language="bash" data-theme="github-dark" style="display: grid;"><span data-line=""><span style="color:#6A737D"># Clone 出一台新 VM</span></span>
-<span data-line=""><span style="color:#B392F0">qm</span><span style="color:#9ECBFF"> clone</span><span style="color:#79B8FF"> 9000</span><span style="color:#79B8FF"> 100</span><span style="color:#79B8FF"> --name</span><span style="color:#9ECBFF"> web-server-01</span></span>
+<figure data-rehype-pretty-code-figure=""><pre style="background-color:#0d1117;color:#e6edf3" tabindex="0" data-language="bash" data-theme="github-dark-default"><code data-language="bash" data-theme="github-dark-default" style="display: grid;"><span data-line=""><span style="color:#8B949E"># Clone 出一台新 VM</span></span>
+<span data-line=""><span style="color:#FFA657">qm</span><span style="color:#A5D6FF"> clone</span><span style="color:#79C0FF"> 9000</span><span style="color:#79C0FF"> 100</span><span style="color:#79C0FF"> --name</span><span style="color:#A5D6FF"> web-server-01</span></span>
 <span data-line=""> </span>
-<span data-line=""><span style="color:#6A737D"># 覆寫 Cloud-init 參數</span></span>
-<span data-line=""><span style="color:#B392F0">qm</span><span style="color:#9ECBFF"> set</span><span style="color:#79B8FF"> 100</span><span style="color:#79B8FF"> --ipconfig0</span><span style="color:#9ECBFF"> ip=192.168.1.100/24,gw=</span><span style="color:#79B8FF">192.168.1.1</span></span>
-<span data-line=""><span style="color:#B392F0">qm</span><span style="color:#9ECBFF"> set</span><span style="color:#79B8FF"> 100</span><span style="color:#79B8FF"> --nameserver</span><span style="color:#79B8FF"> 1.1.1.1</span></span>
+<span data-line=""><span style="color:#8B949E"># 覆寫 Cloud-init 參數</span></span>
+<span data-line=""><span style="color:#FFA657">qm</span><span style="color:#A5D6FF"> set</span><span style="color:#79C0FF"> 100</span><span style="color:#79C0FF"> --ipconfig0</span><span style="color:#A5D6FF"> ip=192.168.1.100/24,gw=</span><span style="color:#79C0FF">192.168.1.1</span></span>
+<span data-line=""><span style="color:#FFA657">qm</span><span style="color:#A5D6FF"> set</span><span style="color:#79C0FF"> 100</span><span style="color:#79C0FF"> --nameserver</span><span style="color:#79C0FF"> 1.1.1.1</span></span>
 <span data-line=""> </span>
-<span data-line=""><span style="color:#6A737D"># 開機，30 秒後 SSH 直接連</span></span>
-<span data-line=""><span style="color:#B392F0">qm</span><span style="color:#9ECBFF"> start</span><span style="color:#79B8FF"> 100</span></span></code></pre></figure>
+<span data-line=""><span style="color:#8B949E"># 開機，30 秒後 SSH 直接連</span></span>
+<span data-line=""><span style="color:#FFA657">qm</span><span style="color:#A5D6FF"> start</span><span style="color:#79C0FF"> 100</span></span></code></pre></figure>
 <blockquote>
 <p>範本做好之後，建一台新 VM 從「半小時」變成「30 秒」。這不是誇張，是真的。</p>
 </blockquote>
 <h2 id="terraform基礎設施寫成程式碼">Terraform：基礎設施寫成程式碼</h2>
 <p>Terraform 讓你用設定檔描述「我要什麼 VM」，然後一個指令全部建好。改了設定檔，再跑一次就自動更新。</p>
-<figure data-rehype-pretty-code-figure=""><pre style="background-color:#24292e;color:#e1e4e8" tabindex="0" data-language="hcl" data-theme="github-dark"><code data-language="hcl" data-theme="github-dark" style="display: grid;"><span data-line=""><span style="color:#6A737D"># provider.tf</span></span>
-<span data-line=""><span style="color:#B392F0">terraform</span><span style="color:#E1E4E8"> {</span></span>
-<span data-line=""><span style="color:#B392F0">  required_providers</span><span style="color:#E1E4E8"> {</span></span>
-<span data-line=""><span style="color:#E1E4E8">    proxmox</span><span style="color:#F97583"> =</span><span style="color:#E1E4E8"> {</span></span>
-<span data-line=""><span style="color:#E1E4E8">      source  </span><span style="color:#F97583">=</span><span style="color:#9ECBFF"> "bpg/proxmox"</span></span>
-<span data-line=""><span style="color:#E1E4E8">      version </span><span style="color:#F97583">=</span><span style="color:#9ECBFF"> ">=0.50.0"</span></span>
-<span data-line=""><span style="color:#E1E4E8">    }</span></span>
-<span data-line=""><span style="color:#E1E4E8">  }</span></span>
-<span data-line=""><span style="color:#E1E4E8">}</span></span>
+<figure data-rehype-pretty-code-figure=""><pre style="background-color:#0d1117;color:#e6edf3" tabindex="0" data-language="hcl" data-theme="github-dark-default"><code data-language="hcl" data-theme="github-dark-default" style="display: grid;"><span data-line=""><span style="color:#8B949E"># provider.tf</span></span>
+<span data-line=""><span style="color:#FFA657">terraform</span><span style="color:#E6EDF3"> {</span></span>
+<span data-line=""><span style="color:#FFA657">  required_providers</span><span style="color:#E6EDF3"> {</span></span>
+<span data-line=""><span style="color:#E6EDF3">    proxmox</span><span style="color:#FF7B72"> =</span><span style="color:#E6EDF3"> {</span></span>
+<span data-line=""><span style="color:#E6EDF3">      source  </span><span style="color:#FF7B72">=</span><span style="color:#A5D6FF"> "bpg/proxmox"</span></span>
+<span data-line=""><span style="color:#E6EDF3">      version </span><span style="color:#FF7B72">=</span><span style="color:#A5D6FF"> ">=0.50.0"</span></span>
+<span data-line=""><span style="color:#E6EDF3">    }</span></span>
+<span data-line=""><span style="color:#E6EDF3">  }</span></span>
+<span data-line=""><span style="color:#E6EDF3">}</span></span>
 <span data-line=""> </span>
-<span data-line=""><span style="color:#B392F0">provider</span><span style="color:#79B8FF"> "proxmox"</span><span style="color:#E1E4E8"> {</span></span>
-<span data-line=""><span style="color:#E1E4E8">  endpoint</span><span style="color:#F97583">  =</span><span style="color:#9ECBFF"> "https://pve:8006"</span></span>
-<span data-line=""><span style="color:#E1E4E8">  api_token</span><span style="color:#F97583"> =</span><span style="color:#9ECBFF"> "terraform@pve!automation=uuid-secret"</span></span>
-<span data-line=""><span style="color:#E1E4E8">  insecure</span><span style="color:#F97583">  =</span><span style="color:#79B8FF"> true</span></span>
-<span data-line=""><span style="color:#E1E4E8">}</span></span>
+<span data-line=""><span style="color:#FFA657">provider</span><span style="color:#79C0FF"> "proxmox"</span><span style="color:#E6EDF3"> {</span></span>
+<span data-line=""><span style="color:#E6EDF3">  endpoint</span><span style="color:#FF7B72">  =</span><span style="color:#A5D6FF"> "https://pve:8006"</span></span>
+<span data-line=""><span style="color:#E6EDF3">  api_token</span><span style="color:#FF7B72"> =</span><span style="color:#A5D6FF"> "terraform@pve!automation=uuid-secret"</span></span>
+<span data-line=""><span style="color:#E6EDF3">  insecure</span><span style="color:#FF7B72">  =</span><span style="color:#79C0FF"> true</span></span>
+<span data-line=""><span style="color:#E6EDF3">}</span></span>
 <span data-line=""> </span>
-<span data-line=""><span style="color:#6A737D"># vm.tf</span></span>
-<span data-line=""><span style="color:#B392F0">resource</span><span style="color:#79B8FF"> "proxmox_virtual_environment_vm"</span><span style="color:#79B8FF"> "web_server"</span><span style="color:#E1E4E8"> {</span></span>
-<span data-line=""><span style="color:#E1E4E8">  name</span><span style="color:#F97583">      =</span><span style="color:#9ECBFF"> "web-server-01"</span></span>
-<span data-line=""><span style="color:#E1E4E8">  node_name</span><span style="color:#F97583"> =</span><span style="color:#9ECBFF"> "pve1"</span></span>
+<span data-line=""><span style="color:#8B949E"># vm.tf</span></span>
+<span data-line=""><span style="color:#FFA657">resource</span><span style="color:#79C0FF"> "proxmox_virtual_environment_vm"</span><span style="color:#79C0FF"> "web_server"</span><span style="color:#E6EDF3"> {</span></span>
+<span data-line=""><span style="color:#E6EDF3">  name</span><span style="color:#FF7B72">      =</span><span style="color:#A5D6FF"> "web-server-01"</span></span>
+<span data-line=""><span style="color:#E6EDF3">  node_name</span><span style="color:#FF7B72"> =</span><span style="color:#A5D6FF"> "pve1"</span></span>
 <span data-line=""> </span>
-<span data-line=""><span style="color:#B392F0">  clone</span><span style="color:#E1E4E8"> { vm_id</span><span style="color:#F97583"> =</span><span style="color:#79B8FF"> 9000</span><span style="color:#E1E4E8"> }</span></span>
+<span data-line=""><span style="color:#FFA657">  clone</span><span style="color:#E6EDF3"> { vm_id</span><span style="color:#FF7B72"> =</span><span style="color:#79C0FF"> 9000</span><span style="color:#E6EDF3"> }</span></span>
 <span data-line=""> </span>
-<span data-line=""><span style="color:#B392F0">  cpu</span><span style="color:#E1E4E8">    { cores</span><span style="color:#F97583"> =</span><span style="color:#79B8FF"> 2</span><span style="color:#E1E4E8">; type</span><span style="color:#F97583"> =</span><span style="color:#9ECBFF"> "host"</span><span style="color:#E1E4E8"> }</span></span>
-<span data-line=""><span style="color:#B392F0">  memory</span><span style="color:#E1E4E8"> { dedicated</span><span style="color:#F97583"> =</span><span style="color:#79B8FF"> 4096</span><span style="color:#E1E4E8"> }</span></span>
+<span data-line=""><span style="color:#FFA657">  cpu</span><span style="color:#E6EDF3">    { cores</span><span style="color:#FF7B72"> =</span><span style="color:#79C0FF"> 2</span><span style="color:#E6EDF3">; type</span><span style="color:#FF7B72"> =</span><span style="color:#A5D6FF"> "host"</span><span style="color:#E6EDF3"> }</span></span>
+<span data-line=""><span style="color:#FFA657">  memory</span><span style="color:#E6EDF3"> { dedicated</span><span style="color:#FF7B72"> =</span><span style="color:#79C0FF"> 4096</span><span style="color:#E6EDF3"> }</span></span>
 <span data-line=""> </span>
-<span data-line=""><span style="color:#B392F0">  disk</span><span style="color:#E1E4E8"> {</span></span>
-<span data-line=""><span style="color:#E1E4E8">    datastore_id</span><span style="color:#F97583"> =</span><span style="color:#9ECBFF"> "local-lvm"</span></span>
-<span data-line=""><span style="color:#E1E4E8">    size</span><span style="color:#F97583">         =</span><span style="color:#79B8FF"> 32</span></span>
-<span data-line=""><span style="color:#E1E4E8">    interface</span><span style="color:#F97583">    =</span><span style="color:#9ECBFF"> "scsi0"</span></span>
-<span data-line=""><span style="color:#E1E4E8">  }</span></span>
+<span data-line=""><span style="color:#FFA657">  disk</span><span style="color:#E6EDF3"> {</span></span>
+<span data-line=""><span style="color:#E6EDF3">    datastore_id</span><span style="color:#FF7B72"> =</span><span style="color:#A5D6FF"> "local-lvm"</span></span>
+<span data-line=""><span style="color:#E6EDF3">    size</span><span style="color:#FF7B72">         =</span><span style="color:#79C0FF"> 32</span></span>
+<span data-line=""><span style="color:#E6EDF3">    interface</span><span style="color:#FF7B72">    =</span><span style="color:#A5D6FF"> "scsi0"</span></span>
+<span data-line=""><span style="color:#E6EDF3">  }</span></span>
 <span data-line=""> </span>
-<span data-line=""><span style="color:#B392F0">  network_device</span><span style="color:#E1E4E8"> { bridge</span><span style="color:#F97583"> =</span><span style="color:#9ECBFF"> "vmbr0"</span><span style="color:#E1E4E8"> }</span></span>
+<span data-line=""><span style="color:#FFA657">  network_device</span><span style="color:#E6EDF3"> { bridge</span><span style="color:#FF7B72"> =</span><span style="color:#A5D6FF"> "vmbr0"</span><span style="color:#E6EDF3"> }</span></span>
 <span data-line=""> </span>
-<span data-line=""><span style="color:#B392F0">  initialization</span><span style="color:#E1E4E8"> {</span></span>
-<span data-line=""><span style="color:#B392F0">    ip_config</span><span style="color:#E1E4E8"> {</span></span>
-<span data-line=""><span style="color:#B392F0">      ipv4</span><span style="color:#E1E4E8"> { address</span><span style="color:#F97583"> =</span><span style="color:#9ECBFF"> "192.168.1.100/24"</span><span style="color:#E1E4E8">; gateway</span><span style="color:#F97583"> =</span><span style="color:#9ECBFF"> "192.168.1.1"</span><span style="color:#E1E4E8"> }</span></span>
-<span data-line=""><span style="color:#E1E4E8">    }</span></span>
-<span data-line=""><span style="color:#B392F0">    user_account</span><span style="color:#E1E4E8"> {</span></span>
-<span data-line=""><span style="color:#E1E4E8">      username</span><span style="color:#F97583"> =</span><span style="color:#9ECBFF"> "admin"</span></span>
-<span data-line=""><span style="color:#E1E4E8">      keys</span><span style="color:#F97583">     =</span><span style="color:#E1E4E8"> [</span><span style="color:#79B8FF">file</span><span style="color:#E1E4E8">(</span><span style="color:#9ECBFF">"~/.ssh/id_rsa.pub"</span><span style="color:#E1E4E8">)]</span></span>
-<span data-line=""><span style="color:#E1E4E8">    }</span></span>
-<span data-line=""><span style="color:#E1E4E8">  }</span></span>
-<span data-line=""><span style="color:#E1E4E8">}</span></span></code></pre></figure>
-<figure data-rehype-pretty-code-figure=""><pre style="background-color:#24292e;color:#e1e4e8" tabindex="0" data-language="bash" data-theme="github-dark"><code data-language="bash" data-theme="github-dark" style="display: grid;"><span data-line=""><span style="color:#B392F0">terraform</span><span style="color:#9ECBFF"> init</span><span style="color:#6A737D">    # 初始化</span></span>
-<span data-line=""><span style="color:#B392F0">terraform</span><span style="color:#9ECBFF"> plan</span><span style="color:#6A737D">    # 預覽變更（看看要建什麼）</span></span>
-<span data-line=""><span style="color:#B392F0">terraform</span><span style="color:#9ECBFF"> apply</span><span style="color:#6A737D">   # 執行（真的建下去）</span></span></code></pre></figure>
+<span data-line=""><span style="color:#FFA657">  initialization</span><span style="color:#E6EDF3"> {</span></span>
+<span data-line=""><span style="color:#FFA657">    ip_config</span><span style="color:#E6EDF3"> {</span></span>
+<span data-line=""><span style="color:#FFA657">      ipv4</span><span style="color:#E6EDF3"> { address</span><span style="color:#FF7B72"> =</span><span style="color:#A5D6FF"> "192.168.1.100/24"</span><span style="color:#E6EDF3">; gateway</span><span style="color:#FF7B72"> =</span><span style="color:#A5D6FF"> "192.168.1.1"</span><span style="color:#E6EDF3"> }</span></span>
+<span data-line=""><span style="color:#E6EDF3">    }</span></span>
+<span data-line=""><span style="color:#FFA657">    user_account</span><span style="color:#E6EDF3"> {</span></span>
+<span data-line=""><span style="color:#E6EDF3">      username</span><span style="color:#FF7B72"> =</span><span style="color:#A5D6FF"> "admin"</span></span>
+<span data-line=""><span style="color:#E6EDF3">      keys</span><span style="color:#FF7B72">     =</span><span style="color:#E6EDF3"> [</span><span style="color:#79C0FF">file</span><span style="color:#E6EDF3">(</span><span style="color:#A5D6FF">"~/.ssh/id_rsa.pub"</span><span style="color:#E6EDF3">)]</span></span>
+<span data-line=""><span style="color:#E6EDF3">    }</span></span>
+<span data-line=""><span style="color:#E6EDF3">  }</span></span>
+<span data-line=""><span style="color:#E6EDF3">}</span></span></code></pre></figure>
+<figure data-rehype-pretty-code-figure=""><pre style="background-color:#0d1117;color:#e6edf3" tabindex="0" data-language="bash" data-theme="github-dark-default"><code data-language="bash" data-theme="github-dark-default" style="display: grid;"><span data-line=""><span style="color:#FFA657">terraform</span><span style="color:#A5D6FF"> init</span><span style="color:#8B949E">    # 初始化</span></span>
+<span data-line=""><span style="color:#FFA657">terraform</span><span style="color:#A5D6FF"> plan</span><span style="color:#8B949E">    # 預覽變更（看看要建什麼）</span></span>
+<span data-line=""><span style="color:#FFA657">terraform</span><span style="color:#A5D6FF"> apply</span><span style="color:#8B949E">   # 執行（真的建下去）</span></span></code></pre></figure>
 <h2 id="ansible軟體安裝與設定管理">Ansible：軟體安裝與設定管理</h2>
 <p>Terraform 管「建 VM」，Ansible 管「VM 裡面裝什麼」。兩個搭配起來就是完整的自動化流水線：</p>
 <pre><code>Terraform → 建 VM（硬體、網路、Cloud-init）
@@ -99,21 +100,21 @@ Cloud-init → 初始設定（SSH Key、基本網路）
     ↓
 Ansible → 軟體安裝、設定檔、服務啟動
 </code></pre>
-<figure data-rehype-pretty-code-figure=""><pre style="background-color:#24292e;color:#e1e4e8" tabindex="0" data-language="yaml" data-theme="github-dark"><code data-language="yaml" data-theme="github-dark" style="display: grid;"><span data-line=""><span style="color:#6A737D"># playbook.yml</span></span>
-<span data-line=""><span style="color:#E1E4E8">- </span><span style="color:#85E89D">name</span><span style="color:#E1E4E8">: </span><span style="color:#9ECBFF">Manage Proxmox VMs</span></span>
-<span data-line=""><span style="color:#85E89D">  hosts</span><span style="color:#E1E4E8">: </span><span style="color:#9ECBFF">localhost</span></span>
-<span data-line=""><span style="color:#85E89D">  tasks</span><span style="color:#E1E4E8">:</span></span>
-<span data-line=""><span style="color:#E1E4E8">    - </span><span style="color:#85E89D">name</span><span style="color:#E1E4E8">: </span><span style="color:#9ECBFF">Create VM from template</span></span>
-<span data-line=""><span style="color:#85E89D">      community.general.proxmox_kvm</span><span style="color:#E1E4E8">:</span></span>
-<span data-line=""><span style="color:#85E89D">        api_host</span><span style="color:#E1E4E8">: </span><span style="color:#9ECBFF">pve.example.com</span></span>
-<span data-line=""><span style="color:#85E89D">        api_user</span><span style="color:#E1E4E8">: </span><span style="color:#9ECBFF">ansible@pve</span></span>
-<span data-line=""><span style="color:#85E89D">        api_token_id</span><span style="color:#E1E4E8">: </span><span style="color:#9ECBFF">automation</span></span>
-<span data-line=""><span style="color:#85E89D">        api_token_secret</span><span style="color:#E1E4E8">: </span><span style="color:#9ECBFF">"uuid-secret"</span></span>
-<span data-line=""><span style="color:#85E89D">        clone</span><span style="color:#E1E4E8">: </span><span style="color:#9ECBFF">ubuntu-cloud-template</span></span>
-<span data-line=""><span style="color:#85E89D">        name</span><span style="color:#E1E4E8">: </span><span style="color:#9ECBFF">web-server-01</span></span>
-<span data-line=""><span style="color:#85E89D">        node</span><span style="color:#E1E4E8">: </span><span style="color:#9ECBFF">pve1</span></span>
-<span data-line=""><span style="color:#85E89D">        full</span><span style="color:#E1E4E8">: </span><span style="color:#79B8FF">true</span></span>
-<span data-line=""><span style="color:#85E89D">        timeout</span><span style="color:#E1E4E8">: </span><span style="color:#79B8FF">300</span></span></code></pre></figure>
+<figure data-rehype-pretty-code-figure=""><pre style="background-color:#0d1117;color:#e6edf3" tabindex="0" data-language="yaml" data-theme="github-dark-default"><code data-language="yaml" data-theme="github-dark-default" style="display: grid;"><span data-line=""><span style="color:#8B949E"># playbook.yml</span></span>
+<span data-line=""><span style="color:#E6EDF3">- </span><span style="color:#7EE787">name</span><span style="color:#E6EDF3">: </span><span style="color:#A5D6FF">Manage Proxmox VMs</span></span>
+<span data-line=""><span style="color:#7EE787">  hosts</span><span style="color:#E6EDF3">: </span><span style="color:#A5D6FF">localhost</span></span>
+<span data-line=""><span style="color:#7EE787">  tasks</span><span style="color:#E6EDF3">:</span></span>
+<span data-line=""><span style="color:#E6EDF3">    - </span><span style="color:#7EE787">name</span><span style="color:#E6EDF3">: </span><span style="color:#A5D6FF">Create VM from template</span></span>
+<span data-line=""><span style="color:#7EE787">      community.general.proxmox_kvm</span><span style="color:#E6EDF3">:</span></span>
+<span data-line=""><span style="color:#7EE787">        api_host</span><span style="color:#E6EDF3">: </span><span style="color:#A5D6FF">pve.example.com</span></span>
+<span data-line=""><span style="color:#7EE787">        api_user</span><span style="color:#E6EDF3">: </span><span style="color:#A5D6FF">ansible@pve</span></span>
+<span data-line=""><span style="color:#7EE787">        api_token_id</span><span style="color:#E6EDF3">: </span><span style="color:#A5D6FF">automation</span></span>
+<span data-line=""><span style="color:#7EE787">        api_token_secret</span><span style="color:#E6EDF3">: </span><span style="color:#A5D6FF">"uuid-secret"</span></span>
+<span data-line=""><span style="color:#7EE787">        clone</span><span style="color:#E6EDF3">: </span><span style="color:#A5D6FF">ubuntu-cloud-template</span></span>
+<span data-line=""><span style="color:#7EE787">        name</span><span style="color:#E6EDF3">: </span><span style="color:#A5D6FF">web-server-01</span></span>
+<span data-line=""><span style="color:#7EE787">        node</span><span style="color:#E6EDF3">: </span><span style="color:#A5D6FF">pve1</span></span>
+<span data-line=""><span style="color:#7EE787">        full</span><span style="color:#E6EDF3">: </span><span style="color:#79C0FF">true</span></span>
+<span data-line=""><span style="color:#7EE787">        timeout</span><span style="color:#E6EDF3">: </span><span style="color:#79C0FF">300</span></span></code></pre></figure>
 <h2 id="rest-api什麼都能呼叫">REST API：什麼都能呼叫</h2>
 <p>PVE 的 Web GUI 背後就是 REST API，所有操作都能用 API 做。</p>
 <h3 id="認證方式">認證方式</h3>
@@ -138,14 +139,14 @@ Ansible → 軟體安裝、設定檔、服務啟動
 </tr>
 </tbody>
 </table>
-<figure data-rehype-pretty-code-figure=""><pre style="background-color:#24292e;color:#e1e4e8" tabindex="0" data-language="bash" data-theme="github-dark"><code data-language="bash" data-theme="github-dark" style="display: grid;"><span data-line=""><span style="color:#6A737D"># API Token 直接用（推薦）</span></span>
-<span data-line=""><span style="color:#B392F0">curl</span><span style="color:#79B8FF"> -k</span><span style="color:#79B8FF"> -H</span><span style="color:#9ECBFF"> "Authorization: PVEAPIToken=user@pve!mytoken=uuid-secret"</span><span style="color:#79B8FF"> \</span></span>
-<span data-line=""><span style="color:#9ECBFF">  https://pve:8006/api2/json/nodes</span></span>
+<figure data-rehype-pretty-code-figure=""><pre style="background-color:#0d1117;color:#e6edf3" tabindex="0" data-language="bash" data-theme="github-dark-default"><code data-language="bash" data-theme="github-dark-default" style="display: grid;"><span data-line=""><span style="color:#8B949E"># API Token 直接用（推薦）</span></span>
+<span data-line=""><span style="color:#FFA657">curl</span><span style="color:#79C0FF"> -k</span><span style="color:#79C0FF"> -H</span><span style="color:#A5D6FF"> "Authorization: PVEAPIToken=user@pve!mytoken=uuid-secret"</span><span style="color:#FF7B72"> \</span></span>
+<span data-line=""><span style="color:#A5D6FF">  https://pve:8006/api2/json/nodes</span></span>
 <span data-line=""> </span>
-<span data-line=""><span style="color:#6A737D"># pvesh：PVE 內建的 CLI API 工具</span></span>
-<span data-line=""><span style="color:#B392F0">pvesh</span><span style="color:#9ECBFF"> get</span><span style="color:#9ECBFF"> /nodes</span></span>
-<span data-line=""><span style="color:#B392F0">pvesh</span><span style="color:#9ECBFF"> get</span><span style="color:#9ECBFF"> /nodes/pve1/qemu/100/status/current</span></span>
-<span data-line=""><span style="color:#B392F0">pvesh</span><span style="color:#9ECBFF"> create</span><span style="color:#9ECBFF"> /nodes/pve1/qemu/100/status/start</span></span></code></pre></figure>
+<span data-line=""><span style="color:#8B949E"># pvesh：PVE 內建的 CLI API 工具</span></span>
+<span data-line=""><span style="color:#FFA657">pvesh</span><span style="color:#A5D6FF"> get</span><span style="color:#A5D6FF"> /nodes</span></span>
+<span data-line=""><span style="color:#FFA657">pvesh</span><span style="color:#A5D6FF"> get</span><span style="color:#A5D6FF"> /nodes/pve1/qemu/100/status/current</span></span>
+<span data-line=""><span style="color:#FFA657">pvesh</span><span style="color:#A5D6FF"> create</span><span style="color:#A5D6FF"> /nodes/pve1/qemu/100/status/start</span></span></code></pre></figure>
 <h3 id="常用端點速查">常用端點速查</h3>
 <table>
 <thead>
@@ -244,96 +245,96 @@ Ansible → 軟體安裝、設定檔、服務啟動
 <p>Terraform 負責「建基礎設施」（建 VM、設網路、分配儲存），Ansible 負責「設定軟體」（裝套件、改設定檔、啟動服務）。兩者搭配 Cloud-init 形成完整的自動化流水線。</p>
 <h2 id="下一步">下一步</h2>
 <p>系列最後一篇，整理 Homelab 的實用服務清單和長期維運心法：
-<a href="14-homelab-best-practices">Homelab 最佳實踐</a></p>0:{"buildId":"sM8YAyjANE7sOnXm3EQGk","rsc":["$","$1","c",{"children":[[["$","script",null,{"type":"application/ld+json","dangerouslySetInnerHTML":{"__html":"{\"@context\":\"https://schema.org\",\"@type\":\"Article\",\"headline\":\"Proxmox VE 自動化：別再手動建 VM 了\",\"description\":\"PVE 自動化完整指南：用 Proxmox Cloud-init 範本秒建 VM、Terraform 管理基礎設施、REST API 整合，告別重複手動操作。\",\"url\":\"https://benxhub.com/zh/blog/pve/13-automation\",\"mainEntityOfPage\":{\"@type\":\"WebPage\",\"@id\":\"https://benxhub.com/zh/blog/pve/13-automation\"},\"datePublished\":\"2026-05-06T00:00:00.000Z\",\"dateModified\":\"2026-05-06T00:00:00.000Z\",\"keywords\":\"proxmox, automation, cloud-init, terraform, ansible, api\",\"inLanguage\":\"zh\",\"author\":{\"@type\":\"Person\",\"name\":\"BenX\",\"url\":\"https://benxhub.com\"},\"publisher\":{\"@type\":\"Organization\",\"name\":\"BenXHub Blog\",\"url\":\"https://benxhub.com\"}}"}}],["$","div",null,{"className":"mx-auto max-w-6xl px-4 py-12 sm:px-6","children":["$","div",null,{"className":"lg:grid lg:grid-cols-[1fr_240px] lg:gap-14","children":[["$","article",null,{"children":[["$","header",null,{"className":"mb-10","children":[["$","div",null,{"className":"mb-4 flex flex-wrap gap-2","children":[["$","$L2","proxmox",{"href":"/zh/tags/proxmox","localeCookie":{"name":"NEXT_LOCALE","sameSite":"lax"},"className":"inline-flex items-center rounded-full px-2.5 py-0.5 text-xs font-medium transition-colors","style":{"background":"var(--color-code-bg)","color":"var(--color-accent)","border":"1px solid var(--color-border)"},"children":["#","proxmox"]}],["$","$L2","automation",{"href":"/zh/tags/automation","localeCookie":{"name":"NEXT_LOCALE","sameSite":"lax"},"className":"inline-flex items-center rounded-full px-2.5 py-0.5 text-xs font-medium transition-colors","style":{"background":"var(--color-code-bg)","color":"var(--color-accent)","border":"1px solid var(--color-border)"},"children":["#","automation"]}],["$","$L2","cloud-init",{"href":"/zh/tags/cloud-init","localeCookie":{"name":"NEXT_LOCALE","sameSite":"lax"},"className":"inline-flex items-center rounded-full px-2.5 py-0.5 text-xs font-medium transition-colors","style":{"background":"var(--color-code-bg)","color":"var(--color-accent)","border":"1px solid var(--color-border)"},"children":["#","cloud-init"]}],["$","$L2","terraform",{"href":"/zh/tags/terraform","localeCookie":{"name":"NEXT_LOCALE","sameSite":"lax"},"className":"inline-flex items-center rounded-full px-2.5 py-0.5 text-xs font-medium transition-colors","style":{"background":"var(--color-code-bg)","color":"var(--color-accent)","border":"1px solid var(--color-border)"},"children":["#","terraform"]}],["$","$L2","ansible",{"href":"/zh/tags/ansible","localeCookie":{"name":"NEXT_LOCALE","sameSite":"lax"},"className":"inline-flex items-center rounded-full px-2.5 py-0.5 text-xs font-medium transition-colors","style":{"background":"var(--color-code-bg)","color":"var(--color-accent)","border":"1px solid var(--color-border)"},"children":["#","ansible"]}],["$","$L2","api",{"href":"/zh/tags/api","localeCookie":{"name":"NEXT_LOCALE","sameSite":"lax"},"className":"inline-flex items-center rounded-full px-2.5 py-0.5 text-xs font-medium transition-colors","style":{"background":"var(--color-code-bg)","color":"var(--color-accent)","border":"1px solid var(--color-border)"},"children":["#","api"]}]]}],["$","h1",null,{"className":"mb-4 text-3xl leading-snug font-bold tracking-tight sm:text-4xl","style":{"color":"var(--color-text)"},"children":"Proxmox VE 自動化：別再手動建 VM 了"}],["$","div",null,{"className":"flex flex-wrap items-center gap-3 text-sm","style":{"color":"var(--color-muted)"},"children":[["$","time",null,{"dateTime":"2026-05-06","children":"2026 年 5 月 6 日"}],["$","span",null,{"aria-hidden":"true","children":"·"}],["$","span",null,{"children":"7 min read"}]]}],"$undefined",["$","div",null,{"className":"mt-6 border-b","style":{"borderColor":"var(--color-border)"}}]]}],["$","div",null,{"className":"prose","dangerouslySetInnerHTML":{"__html":"$3"}}],"$L4"]}],"$L5"]}]}]],["$L6"],"$L7"]}],"loading":null,"isPartial":false}
+<a href="14-homelab-best-practices">Homelab 最佳實踐</a></p>3:["$","div",null,{"className":"prose","dangerouslySetInnerHTML":{"__html":"$8"}}]
 4:["$","footer",null,{"className":"mt-14 border-t pt-8","style":{"borderColor":"var(--color-border)"},"children":[["$","div",null,{"className":"mb-8 flex flex-wrap gap-2","children":[["$","$L2","proxmox",{"href":"/zh/tags/proxmox","localeCookie":{"name":"NEXT_LOCALE","sameSite":"lax"},"className":"inline-flex items-center rounded-full px-3 py-1 text-sm font-medium transition-colors","style":{"background":"var(--color-code-bg)","color":"var(--color-accent)","border":"1px solid var(--color-border)"},"children":["#","proxmox"]}],["$","$L2","automation",{"href":"/zh/tags/automation","localeCookie":{"name":"NEXT_LOCALE","sameSite":"lax"},"className":"inline-flex items-center rounded-full px-3 py-1 text-sm font-medium transition-colors","style":{"background":"var(--color-code-bg)","color":"var(--color-accent)","border":"1px solid var(--color-border)"},"children":["#","automation"]}],["$","$L2","cloud-init",{"href":"/zh/tags/cloud-init","localeCookie":{"name":"NEXT_LOCALE","sameSite":"lax"},"className":"inline-flex items-center rounded-full px-3 py-1 text-sm font-medium transition-colors","style":{"background":"var(--color-code-bg)","color":"var(--color-accent)","border":"1px solid var(--color-border)"},"children":["#","cloud-init"]}],["$","$L2","terraform",{"href":"/zh/tags/terraform","localeCookie":{"name":"NEXT_LOCALE","sameSite":"lax"},"className":"inline-flex items-center rounded-full px-3 py-1 text-sm font-medium transition-colors","style":{"background":"var(--color-code-bg)","color":"var(--color-accent)","border":"1px solid var(--color-border)"},"children":["#","terraform"]}],["$","$L2","ansible",{"href":"/zh/tags/ansible","localeCookie":{"name":"NEXT_LOCALE","sameSite":"lax"},"className":"inline-flex items-center rounded-full px-3 py-1 text-sm font-medium transition-colors","style":{"background":"var(--color-code-bg)","color":"var(--color-accent)","border":"1px solid var(--color-border)"},"children":["#","ansible"]}],["$","$L2","api",{"href":"/zh/tags/api","localeCookie":{"name":"NEXT_LOCALE","sameSite":"lax"},"className":"inline-flex items-center rounded-full px-3 py-1 text-sm font-medium transition-colors","style":{"background":"var(--color-code-bg)","color":"var(--color-accent)","border":"1px solid var(--color-border)"},"children":["#","api"]}]]}],["$","nav",null,{"aria-label":"文章導覽","className":"grid grid-cols-1 gap-4 sm:grid-cols-2","children":[["$","$L2",null,{"href":"/zh/blog/pve/14-homelab-best-practices","localeCookie":{"name":"NEXT_LOCALE","sameSite":"lax"},"className":"group rounded-lg border p-4 transition-colors hover:border-accent","style":{"borderColor":"var(--color-border)","background":"var(--color-surface)"},"children":[["$","p",null,{"className":"mb-1 text-xs","style":{"color":"var(--color-muted)"},"children":"← 較新文章"}],["$","p",null,{"className":"line-clamp-1 text-sm font-medium transition-colors group-hover:text-accent","style":{"color":"var(--color-text)"},"children":"Proxmox VE Homelab 最佳實踐：收尾與長期生存指南"}]]}],["$","$L2",null,{"href":"/zh/blog/pve/12-firewall-permissions","localeCookie":{"name":"NEXT_LOCALE","sameSite":"lax"},"className":"group rounded-lg border p-4 text-right transition-colors hover:border-accent","style":{"borderColor":"var(--color-border)","background":"var(--color-surface)"},"children":[["$","p",null,{"className":"mb-1 text-xs","style":{"color":"var(--color-muted)"},"children":"較舊文章 →"}],["$","p",null,{"className":"line-clamp-1 text-sm font-medium transition-colors group-hover:text-accent","style":{"color":"var(--color-text)"},"children":"Proxmox VE 防火牆與權限：門鎖跟鑰匙一次講清楚"}]]}]]}]]}]
-9:T557a,<p>手動從 ISO 裝一台 VM 要多久？下載映像、設定磁碟、裝系統、改網路、裝套件——順利的話半小時，不順利的話一個下午。現在想像你要建 10 台一模一樣的。對，該讓自動化上場了。</p>
+a:T55da,<p>手動從 ISO 裝一台 VM 要多久？下載映像、設定磁碟、裝系統、改網路、裝套件——順利的話半小時，不順利的話一個下午。現在想像你要建 10 台一模一樣的。對，該讓自動化上場了。</p>
 <h2 id="cloud-initvm-的開箱即用設定">Cloud-init：VM 的開箱即用設定</h2>
 <p>Cloud-init 是雲端映像的標準初始化工具。VM 第一次開機時，它會自動幫你設好主機名、網路、使用者帳號和 SSH Key。流程是：做一個範本，之後每台新 VM 都從範本 clone，開機就能用。如果你對 VM 範本還不熟，可以先回顧<a href="03-vm-management">VM 管理</a>裡的範本與快照章節。</p>
 <h3 id="製作雲端映像範本">製作雲端映像範本</h3>
-<figure data-rehype-pretty-code-figure=""><pre style="background-color:#24292e;color:#e1e4e8" tabindex="0" data-language="bash" data-theme="github-dark"><code data-language="bash" data-theme="github-dark" style="display: grid;"><span data-line=""><span style="color:#6A737D"># 下載 Ubuntu 雲端映像</span></span>
-<span data-line=""><span style="color:#B392F0">wget</span><span style="color:#9ECBFF"> https://cloud-images.ubuntu.com/noble/current/noble-server-cloudimg-amd64.img</span></span>
+<figure data-rehype-pretty-code-figure=""><pre style="background-color:#0d1117;color:#e6edf3" tabindex="0" data-language="bash" data-theme="github-dark-default"><code data-language="bash" data-theme="github-dark-default" style="display: grid;"><span data-line=""><span style="color:#8B949E"># 下載 Ubuntu 雲端映像</span></span>
+<span data-line=""><span style="color:#FFA657">wget</span><span style="color:#A5D6FF"> https://cloud-images.ubuntu.com/noble/current/noble-server-cloudimg-amd64.img</span></span>
 <span data-line=""> </span>
-<span data-line=""><span style="color:#6A737D"># 建立一台 VM 當範本（ID 9000，不啟動）</span></span>
-<span data-line=""><span style="color:#B392F0">qm</span><span style="color:#9ECBFF"> create</span><span style="color:#79B8FF"> 9000</span><span style="color:#79B8FF"> --name</span><span style="color:#9ECBFF"> ubuntu-cloud</span><span style="color:#79B8FF"> --memory</span><span style="color:#79B8FF"> 2048</span><span style="color:#79B8FF"> --cores</span><span style="color:#79B8FF"> 2</span><span style="color:#79B8FF"> \</span></span>
-<span data-line=""><span style="color:#79B8FF">  --net0</span><span style="color:#9ECBFF"> virtio,bridge=vmbr0</span><span style="color:#79B8FF"> --scsihw</span><span style="color:#9ECBFF"> virtio-scsi-pci</span></span>
+<span data-line=""><span style="color:#8B949E"># 建立一台 VM 當範本（ID 9000，不啟動）</span></span>
+<span data-line=""><span style="color:#FFA657">qm</span><span style="color:#A5D6FF"> create</span><span style="color:#79C0FF"> 9000</span><span style="color:#79C0FF"> --name</span><span style="color:#A5D6FF"> ubuntu-cloud</span><span style="color:#79C0FF"> --memory</span><span style="color:#79C0FF"> 2048</span><span style="color:#79C0FF"> --cores</span><span style="color:#79C0FF"> 2</span><span style="color:#FF7B72"> \</span></span>
+<span data-line=""><span style="color:#79C0FF">  --net0</span><span style="color:#A5D6FF"> virtio,bridge=vmbr0</span><span style="color:#79C0FF"> --scsihw</span><span style="color:#A5D6FF"> virtio-scsi-pci</span></span>
 <span data-line=""> </span>
-<span data-line=""><span style="color:#6A737D"># 匯入雲端映像當系統碟</span></span>
-<span data-line=""><span style="color:#B392F0">qm</span><span style="color:#9ECBFF"> set</span><span style="color:#79B8FF"> 9000</span><span style="color:#79B8FF"> --scsi0</span><span style="color:#9ECBFF"> local-lvm:0,import-from=/root/noble-server-cloudimg-amd64.img</span></span>
+<span data-line=""><span style="color:#8B949E"># 匯入雲端映像當系統碟</span></span>
+<span data-line=""><span style="color:#FFA657">qm</span><span style="color:#A5D6FF"> set</span><span style="color:#79C0FF"> 9000</span><span style="color:#79C0FF"> --scsi0</span><span style="color:#A5D6FF"> local-lvm:0,import-from=/root/noble-server-cloudimg-amd64.img</span></span>
 <span data-line=""> </span>
-<span data-line=""><span style="color:#6A737D"># 掛載 Cloud-init 光碟</span></span>
-<span data-line=""><span style="color:#B392F0">qm</span><span style="color:#9ECBFF"> set</span><span style="color:#79B8FF"> 9000</span><span style="color:#79B8FF"> --ide2</span><span style="color:#9ECBFF"> local-lvm:cloudinit</span></span>
+<span data-line=""><span style="color:#8B949E"># 掛載 Cloud-init 光碟</span></span>
+<span data-line=""><span style="color:#FFA657">qm</span><span style="color:#A5D6FF"> set</span><span style="color:#79C0FF"> 9000</span><span style="color:#79C0FF"> --ide2</span><span style="color:#A5D6FF"> local-lvm:cloudinit</span></span>
 <span data-line=""> </span>
-<span data-line=""><span style="color:#6A737D"># 設定開機順序和 Console</span></span>
-<span data-line=""><span style="color:#B392F0">qm</span><span style="color:#9ECBFF"> set</span><span style="color:#79B8FF"> 9000</span><span style="color:#79B8FF"> --boot</span><span style="color:#9ECBFF"> order=scsi0</span></span>
-<span data-line=""><span style="color:#B392F0">qm</span><span style="color:#9ECBFF"> set</span><span style="color:#79B8FF"> 9000</span><span style="color:#79B8FF"> --serial0</span><span style="color:#9ECBFF"> socket</span><span style="color:#79B8FF"> --vga</span><span style="color:#9ECBFF"> serial0</span></span>
+<span data-line=""><span style="color:#8B949E"># 設定開機順序和 Console</span></span>
+<span data-line=""><span style="color:#FFA657">qm</span><span style="color:#A5D6FF"> set</span><span style="color:#79C0FF"> 9000</span><span style="color:#79C0FF"> --boot</span><span style="color:#A5D6FF"> order=scsi0</span></span>
+<span data-line=""><span style="color:#FFA657">qm</span><span style="color:#A5D6FF"> set</span><span style="color:#79C0FF"> 9000</span><span style="color:#79C0FF"> --serial0</span><span style="color:#A5D6FF"> socket</span><span style="color:#79C0FF"> --vga</span><span style="color:#A5D6FF"> serial0</span></span>
 <span data-line=""> </span>
-<span data-line=""><span style="color:#6A737D"># 預設 Cloud-init 參數</span></span>
-<span data-line=""><span style="color:#B392F0">qm</span><span style="color:#9ECBFF"> set</span><span style="color:#79B8FF"> 9000</span><span style="color:#79B8FF"> --ciuser</span><span style="color:#9ECBFF"> admin</span><span style="color:#79B8FF"> --sshkeys</span><span style="color:#9ECBFF"> ~/.ssh/id_rsa.pub</span><span style="color:#79B8FF"> --ipconfig0</span><span style="color:#9ECBFF"> ip=dhcp</span></span>
+<span data-line=""><span style="color:#8B949E"># 預設 Cloud-init 參數</span></span>
+<span data-line=""><span style="color:#FFA657">qm</span><span style="color:#A5D6FF"> set</span><span style="color:#79C0FF"> 9000</span><span style="color:#79C0FF"> --ciuser</span><span style="color:#A5D6FF"> admin</span><span style="color:#79C0FF"> --sshkeys</span><span style="color:#A5D6FF"> ~/.ssh/id_rsa.pub</span><span style="color:#79C0FF"> --ipconfig0</span><span style="color:#A5D6FF"> ip=dhcp</span></span>
 <span data-line=""> </span>
-<span data-line=""><span style="color:#6A737D"># 轉成範本（不能再修改，只能 clone）</span></span>
-<span data-line=""><span style="color:#B392F0">qm</span><span style="color:#9ECBFF"> template</span><span style="color:#79B8FF"> 9000</span></span></code></pre></figure>
+<span data-line=""><span style="color:#8B949E"># 轉成範本（不能再修改，只能 clone）</span></span>
+<span data-line=""><span style="color:#FFA657">qm</span><span style="color:#A5D6FF"> template</span><span style="color:#79C0FF"> 9000</span></span></code></pre></figure>
 <h3 id="從範本秒建-vm">從範本秒建 VM</h3>
-<figure data-rehype-pretty-code-figure=""><pre style="background-color:#24292e;color:#e1e4e8" tabindex="0" data-language="bash" data-theme="github-dark"><code data-language="bash" data-theme="github-dark" style="display: grid;"><span data-line=""><span style="color:#6A737D"># Clone 出一台新 VM</span></span>
-<span data-line=""><span style="color:#B392F0">qm</span><span style="color:#9ECBFF"> clone</span><span style="color:#79B8FF"> 9000</span><span style="color:#79B8FF"> 100</span><span style="color:#79B8FF"> --name</span><span style="color:#9ECBFF"> web-server-01</span></span>
+<figure data-rehype-pretty-code-figure=""><pre style="background-color:#0d1117;color:#e6edf3" tabindex="0" data-language="bash" data-theme="github-dark-default"><code data-language="bash" data-theme="github-dark-default" style="display: grid;"><span data-line=""><span style="color:#8B949E"># Clone 出一台新 VM</span></span>
+<span data-line=""><span style="color:#FFA657">qm</span><span style="color:#A5D6FF"> clone</span><span style="color:#79C0FF"> 9000</span><span style="color:#79C0FF"> 100</span><span style="color:#79C0FF"> --name</span><span style="color:#A5D6FF"> web-server-01</span></span>
 <span data-line=""> </span>
-<span data-line=""><span style="color:#6A737D"># 覆寫 Cloud-init 參數</span></span>
-<span data-line=""><span style="color:#B392F0">qm</span><span style="color:#9ECBFF"> set</span><span style="color:#79B8FF"> 100</span><span style="color:#79B8FF"> --ipconfig0</span><span style="color:#9ECBFF"> ip=192.168.1.100/24,gw=</span><span style="color:#79B8FF">192.168.1.1</span></span>
-<span data-line=""><span style="color:#B392F0">qm</span><span style="color:#9ECBFF"> set</span><span style="color:#79B8FF"> 100</span><span style="color:#79B8FF"> --nameserver</span><span style="color:#79B8FF"> 1.1.1.1</span></span>
+<span data-line=""><span style="color:#8B949E"># 覆寫 Cloud-init 參數</span></span>
+<span data-line=""><span style="color:#FFA657">qm</span><span style="color:#A5D6FF"> set</span><span style="color:#79C0FF"> 100</span><span style="color:#79C0FF"> --ipconfig0</span><span style="color:#A5D6FF"> ip=192.168.1.100/24,gw=</span><span style="color:#79C0FF">192.168.1.1</span></span>
+<span data-line=""><span style="color:#FFA657">qm</span><span style="color:#A5D6FF"> set</span><span style="color:#79C0FF"> 100</span><span style="color:#79C0FF"> --nameserver</span><span style="color:#79C0FF"> 1.1.1.1</span></span>
 <span data-line=""> </span>
-<span data-line=""><span style="color:#6A737D"># 開機，30 秒後 SSH 直接連</span></span>
-<span data-line=""><span style="color:#B392F0">qm</span><span style="color:#9ECBFF"> start</span><span style="color:#79B8FF"> 100</span></span></code></pre></figure>
+<span data-line=""><span style="color:#8B949E"># 開機，30 秒後 SSH 直接連</span></span>
+<span data-line=""><span style="color:#FFA657">qm</span><span style="color:#A5D6FF"> start</span><span style="color:#79C0FF"> 100</span></span></code></pre></figure>
 <blockquote>
 <p>範本做好之後，建一台新 VM 從「半小時」變成「30 秒」。這不是誇張，是真的。</p>
 </blockquote>
 <h2 id="terraform基礎設施寫成程式碼">Terraform：基礎設施寫成程式碼</h2>
 <p>Terraform 讓你用設定檔描述「我要什麼 VM」，然後一個指令全部建好。改了設定檔，再跑一次就自動更新。</p>
-<figure data-rehype-pretty-code-figure=""><pre style="background-color:#24292e;color:#e1e4e8" tabindex="0" data-language="hcl" data-theme="github-dark"><code data-language="hcl" data-theme="github-dark" style="display: grid;"><span data-line=""><span style="color:#6A737D"># provider.tf</span></span>
-<span data-line=""><span style="color:#B392F0">terraform</span><span style="color:#E1E4E8"> {</span></span>
-<span data-line=""><span style="color:#B392F0">  required_providers</span><span style="color:#E1E4E8"> {</span></span>
-<span data-line=""><span style="color:#E1E4E8">    proxmox</span><span style="color:#F97583"> =</span><span style="color:#E1E4E8"> {</span></span>
-<span data-line=""><span style="color:#E1E4E8">      source  </span><span style="color:#F97583">=</span><span style="color:#9ECBFF"> "bpg/proxmox"</span></span>
-<span data-line=""><span style="color:#E1E4E8">      version </span><span style="color:#F97583">=</span><span style="color:#9ECBFF"> ">=0.50.0"</span></span>
-<span data-line=""><span style="color:#E1E4E8">    }</span></span>
-<span data-line=""><span style="color:#E1E4E8">  }</span></span>
-<span data-line=""><span style="color:#E1E4E8">}</span></span>
+<figure data-rehype-pretty-code-figure=""><pre style="background-color:#0d1117;color:#e6edf3" tabindex="0" data-language="hcl" data-theme="github-dark-default"><code data-language="hcl" data-theme="github-dark-default" style="display: grid;"><span data-line=""><span style="color:#8B949E"># provider.tf</span></span>
+<span data-line=""><span style="color:#FFA657">terraform</span><span style="color:#E6EDF3"> {</span></span>
+<span data-line=""><span style="color:#FFA657">  required_providers</span><span style="color:#E6EDF3"> {</span></span>
+<span data-line=""><span style="color:#E6EDF3">    proxmox</span><span style="color:#FF7B72"> =</span><span style="color:#E6EDF3"> {</span></span>
+<span data-line=""><span style="color:#E6EDF3">      source  </span><span style="color:#FF7B72">=</span><span style="color:#A5D6FF"> "bpg/proxmox"</span></span>
+<span data-line=""><span style="color:#E6EDF3">      version </span><span style="color:#FF7B72">=</span><span style="color:#A5D6FF"> ">=0.50.0"</span></span>
+<span data-line=""><span style="color:#E6EDF3">    }</span></span>
+<span data-line=""><span style="color:#E6EDF3">  }</span></span>
+<span data-line=""><span style="color:#E6EDF3">}</span></span>
 <span data-line=""> </span>
-<span data-line=""><span style="color:#B392F0">provider</span><span style="color:#79B8FF"> "proxmox"</span><span style="color:#E1E4E8"> {</span></span>
-<span data-line=""><span style="color:#E1E4E8">  endpoint</span><span style="color:#F97583">  =</span><span style="color:#9ECBFF"> "https://pve:8006"</span></span>
-<span data-line=""><span style="color:#E1E4E8">  api_token</span><span style="color:#F97583"> =</span><span style="color:#9ECBFF"> "terraform@pve!automation=uuid-secret"</span></span>
-<span data-line=""><span style="color:#E1E4E8">  insecure</span><span style="color:#F97583">  =</span><span style="color:#79B8FF"> true</span></span>
-<span data-line=""><span style="color:#E1E4E8">}</span></span>
+<span data-line=""><span style="color:#FFA657">provider</span><span style="color:#79C0FF"> "proxmox"</span><span style="color:#E6EDF3"> {</span></span>
+<span data-line=""><span style="color:#E6EDF3">  endpoint</span><span style="color:#FF7B72">  =</span><span style="color:#A5D6FF"> "https://pve:8006"</span></span>
+<span data-line=""><span style="color:#E6EDF3">  api_token</span><span style="color:#FF7B72"> =</span><span style="color:#A5D6FF"> "terraform@pve!automation=uuid-secret"</span></span>
+<span data-line=""><span style="color:#E6EDF3">  insecure</span><span style="color:#FF7B72">  =</span><span style="color:#79C0FF"> true</span></span>
+<span data-line=""><span style="color:#E6EDF3">}</span></span>
 <span data-line=""> </span>
-<span data-line=""><span style="color:#6A737D"># vm.tf</span></span>
-<span data-line=""><span style="color:#B392F0">resource</span><span style="color:#79B8FF"> "proxmox_virtual_environment_vm"</span><span style="color:#79B8FF"> "web_server"</span><span style="color:#E1E4E8"> {</span></span>
-<span data-line=""><span style="color:#E1E4E8">  name</span><span style="color:#F97583">      =</span><span style="color:#9ECBFF"> "web-server-01"</span></span>
-<span data-line=""><span style="color:#E1E4E8">  node_name</span><span style="color:#F97583"> =</span><span style="color:#9ECBFF"> "pve1"</span></span>
+<span data-line=""><span style="color:#8B949E"># vm.tf</span></span>
+<span data-line=""><span style="color:#FFA657">resource</span><span style="color:#79C0FF"> "proxmox_virtual_environment_vm"</span><span style="color:#79C0FF"> "web_server"</span><span style="color:#E6EDF3"> {</span></span>
+<span data-line=""><span style="color:#E6EDF3">  name</span><span style="color:#FF7B72">      =</span><span style="color:#A5D6FF"> "web-server-01"</span></span>
+<span data-line=""><span style="color:#E6EDF3">  node_name</span><span style="color:#FF7B72"> =</span><span style="color:#A5D6FF"> "pve1"</span></span>
 <span data-line=""> </span>
-<span data-line=""><span style="color:#B392F0">  clone</span><span style="color:#E1E4E8"> { vm_id</span><span style="color:#F97583"> =</span><span style="color:#79B8FF"> 9000</span><span style="color:#E1E4E8"> }</span></span>
+<span data-line=""><span style="color:#FFA657">  clone</span><span style="color:#E6EDF3"> { vm_id</span><span style="color:#FF7B72"> =</span><span style="color:#79C0FF"> 9000</span><span style="color:#E6EDF3"> }</span></span>
 <span data-line=""> </span>
-<span data-line=""><span style="color:#B392F0">  cpu</span><span style="color:#E1E4E8">    { cores</span><span style="color:#F97583"> =</span><span style="color:#79B8FF"> 2</span><span style="color:#E1E4E8">; type</span><span style="color:#F97583"> =</span><span style="color:#9ECBFF"> "host"</span><span style="color:#E1E4E8"> }</span></span>
-<span data-line=""><span style="color:#B392F0">  memory</span><span style="color:#E1E4E8"> { dedicated</span><span style="color:#F97583"> =</span><span style="color:#79B8FF"> 4096</span><span style="color:#E1E4E8"> }</span></span>
+<span data-line=""><span style="color:#FFA657">  cpu</span><span style="color:#E6EDF3">    { cores</span><span style="color:#FF7B72"> =</span><span style="color:#79C0FF"> 2</span><span style="color:#E6EDF3">; type</span><span style="color:#FF7B72"> =</span><span style="color:#A5D6FF"> "host"</span><span style="color:#E6EDF3"> }</span></span>
+<span data-line=""><span style="color:#FFA657">  memory</span><span style="color:#E6EDF3"> { dedicated</span><span style="color:#FF7B72"> =</span><span style="color:#79C0FF"> 4096</span><span style="color:#E6EDF3"> }</span></span>
 <span data-line=""> </span>
-<span data-line=""><span style="color:#B392F0">  disk</span><span style="color:#E1E4E8"> {</span></span>
-<span data-line=""><span style="color:#E1E4E8">    datastore_id</span><span style="color:#F97583"> =</span><span style="color:#9ECBFF"> "local-lvm"</span></span>
-<span data-line=""><span style="color:#E1E4E8">    size</span><span style="color:#F97583">         =</span><span style="color:#79B8FF"> 32</span></span>
-<span data-line=""><span style="color:#E1E4E8">    interface</span><span style="color:#F97583">    =</span><span style="color:#9ECBFF"> "scsi0"</span></span>
-<span data-line=""><span style="color:#E1E4E8">  }</span></span>
+<span data-line=""><span style="color:#FFA657">  disk</span><span style="color:#E6EDF3"> {</span></span>
+<span data-line=""><span style="color:#E6EDF3">    datastore_id</span><span style="color:#FF7B72"> =</span><span style="color:#A5D6FF"> "local-lvm"</span></span>
+<span data-line=""><span style="color:#E6EDF3">    size</span><span style="color:#FF7B72">         =</span><span style="color:#79C0FF"> 32</span></span>
+<span data-line=""><span style="color:#E6EDF3">    interface</span><span style="color:#FF7B72">    =</span><span style="color:#A5D6FF"> "scsi0"</span></span>
+<span data-line=""><span style="color:#E6EDF3">  }</span></span>
 <span data-line=""> </span>
-<span data-line=""><span style="color:#B392F0">  network_device</span><span style="color:#E1E4E8"> { bridge</span><span style="color:#F97583"> =</span><span style="color:#9ECBFF"> "vmbr0"</span><span style="color:#E1E4E8"> }</span></span>
+<span data-line=""><span style="color:#FFA657">  network_device</span><span style="color:#E6EDF3"> { bridge</span><span style="color:#FF7B72"> =</span><span style="color:#A5D6FF"> "vmbr0"</span><span style="color:#E6EDF3"> }</span></span>
 <span data-line=""> </span>
-<span data-line=""><span style="color:#B392F0">  initialization</span><span style="color:#E1E4E8"> {</span></span>
-<span data-line=""><span style="color:#B392F0">    ip_config</span><span style="color:#E1E4E8"> {</span></span>
-<span data-line=""><span style="color:#B392F0">      ipv4</span><span style="color:#E1E4E8"> { address</span><span style="color:#F97583"> =</span><span style="color:#9ECBFF"> "192.168.1.100/24"</span><span style="color:#E1E4E8">; gateway</span><span style="color:#F97583"> =</span><span style="color:#9ECBFF"> "192.168.1.1"</span><span style="color:#E1E4E8"> }</span></span>
-<span data-line=""><span style="color:#E1E4E8">    }</span></span>
-<span data-line=""><span style="color:#B392F0">    user_account</span><span style="color:#E1E4E8"> {</span></span>
-<span data-line=""><span style="color:#E1E4E8">      username</span><span style="color:#F97583"> =</span><span style="color:#9ECBFF"> "admin"</span></span>
-<span data-line=""><span style="color:#E1E4E8">      keys</span><span style="color:#F97583">     =</span><span style="color:#E1E4E8"> [</span><span style="color:#79B8FF">file</span><span style="color:#E1E4E8">(</span><span style="color:#9ECBFF">"~/.ssh/id_rsa.pub"</span><span style="color:#E1E4E8">)]</span></span>
-<span data-line=""><span style="color:#E1E4E8">    }</span></span>
-<span data-line=""><span style="color:#E1E4E8">  }</span></span>
-<span data-line=""><span style="color:#E1E4E8">}</span></span></code></pre></figure>
-<figure data-rehype-pretty-code-figure=""><pre style="background-color:#24292e;color:#e1e4e8" tabindex="0" data-language="bash" data-theme="github-dark"><code data-language="bash" data-theme="github-dark" style="display: grid;"><span data-line=""><span style="color:#B392F0">terraform</span><span style="color:#9ECBFF"> init</span><span style="color:#6A737D">    # 初始化</span></span>
-<span data-line=""><span style="color:#B392F0">terraform</span><span style="color:#9ECBFF"> plan</span><span style="color:#6A737D">    # 預覽變更（看看要建什麼）</span></span>
-<span data-line=""><span style="color:#B392F0">terraform</span><span style="color:#9ECBFF"> apply</span><span style="color:#6A737D">   # 執行（真的建下去）</span></span></code></pre></figure>
+<span data-line=""><span style="color:#FFA657">  initialization</span><span style="color:#E6EDF3"> {</span></span>
+<span data-line=""><span style="color:#FFA657">    ip_config</span><span style="color:#E6EDF3"> {</span></span>
+<span data-line=""><span style="color:#FFA657">      ipv4</span><span style="color:#E6EDF3"> { address</span><span style="color:#FF7B72"> =</span><span style="color:#A5D6FF"> "192.168.1.100/24"</span><span style="color:#E6EDF3">; gateway</span><span style="color:#FF7B72"> =</span><span style="color:#A5D6FF"> "192.168.1.1"</span><span style="color:#E6EDF3"> }</span></span>
+<span data-line=""><span style="color:#E6EDF3">    }</span></span>
+<span data-line=""><span style="color:#FFA657">    user_account</span><span style="color:#E6EDF3"> {</span></span>
+<span data-line=""><span style="color:#E6EDF3">      username</span><span style="color:#FF7B72"> =</span><span style="color:#A5D6FF"> "admin"</span></span>
+<span data-line=""><span style="color:#E6EDF3">      keys</span><span style="color:#FF7B72">     =</span><span style="color:#E6EDF3"> [</span><span style="color:#79C0FF">file</span><span style="color:#E6EDF3">(</span><span style="color:#A5D6FF">"~/.ssh/id_rsa.pub"</span><span style="color:#E6EDF3">)]</span></span>
+<span data-line=""><span style="color:#E6EDF3">    }</span></span>
+<span data-line=""><span style="color:#E6EDF3">  }</span></span>
+<span data-line=""><span style="color:#E6EDF3">}</span></span></code></pre></figure>
+<figure data-rehype-pretty-code-figure=""><pre style="background-color:#0d1117;color:#e6edf3" tabindex="0" data-language="bash" data-theme="github-dark-default"><code data-language="bash" data-theme="github-dark-default" style="display: grid;"><span data-line=""><span style="color:#FFA657">terraform</span><span style="color:#A5D6FF"> init</span><span style="color:#8B949E">    # 初始化</span></span>
+<span data-line=""><span style="color:#FFA657">terraform</span><span style="color:#A5D6FF"> plan</span><span style="color:#8B949E">    # 預覽變更（看看要建什麼）</span></span>
+<span data-line=""><span style="color:#FFA657">terraform</span><span style="color:#A5D6FF"> apply</span><span style="color:#8B949E">   # 執行（真的建下去）</span></span></code></pre></figure>
 <h2 id="ansible軟體安裝與設定管理">Ansible：軟體安裝與設定管理</h2>
 <p>Terraform 管「建 VM」，Ansible 管「VM 裡面裝什麼」。兩個搭配起來就是完整的自動化流水線：</p>
 <pre><code>Terraform → 建 VM（硬體、網路、Cloud-init）
@@ -342,21 +343,21 @@ Cloud-init → 初始設定（SSH Key、基本網路）
     ↓
 Ansible → 軟體安裝、設定檔、服務啟動
 </code></pre>
-<figure data-rehype-pretty-code-figure=""><pre style="background-color:#24292e;color:#e1e4e8" tabindex="0" data-language="yaml" data-theme="github-dark"><code data-language="yaml" data-theme="github-dark" style="display: grid;"><span data-line=""><span style="color:#6A737D"># playbook.yml</span></span>
-<span data-line=""><span style="color:#E1E4E8">- </span><span style="color:#85E89D">name</span><span style="color:#E1E4E8">: </span><span style="color:#9ECBFF">Manage Proxmox VMs</span></span>
-<span data-line=""><span style="color:#85E89D">  hosts</span><span style="color:#E1E4E8">: </span><span style="color:#9ECBFF">localhost</span></span>
-<span data-line=""><span style="color:#85E89D">  tasks</span><span style="color:#E1E4E8">:</span></span>
-<span data-line=""><span style="color:#E1E4E8">    - </span><span style="color:#85E89D">name</span><span style="color:#E1E4E8">: </span><span style="color:#9ECBFF">Create VM from template</span></span>
-<span data-line=""><span style="color:#85E89D">      community.general.proxmox_kvm</span><span style="color:#E1E4E8">:</span></span>
-<span data-line=""><span style="color:#85E89D">        api_host</span><span style="color:#E1E4E8">: </span><span style="color:#9ECBFF">pve.example.com</span></span>
-<span data-line=""><span style="color:#85E89D">        api_user</span><span style="color:#E1E4E8">: </span><span style="color:#9ECBFF">ansible@pve</span></span>
-<span data-line=""><span style="color:#85E89D">        api_token_id</span><span style="color:#E1E4E8">: </span><span style="color:#9ECBFF">automation</span></span>
-<span data-line=""><span style="color:#85E89D">        api_token_secret</span><span style="color:#E1E4E8">: </span><span style="color:#9ECBFF">"uuid-secret"</span></span>
-<span data-line=""><span style="color:#85E89D">        clone</span><span style="color:#E1E4E8">: </span><span style="color:#9ECBFF">ubuntu-cloud-template</span></span>
-<span data-line=""><span style="color:#85E89D">        name</span><span style="color:#E1E4E8">: </span><span style="color:#9ECBFF">web-server-01</span></span>
-<span data-line=""><span style="color:#85E89D">        node</span><span style="color:#E1E4E8">: </span><span style="color:#9ECBFF">pve1</span></span>
-<span data-line=""><span style="color:#85E89D">        full</span><span style="color:#E1E4E8">: </span><span style="color:#79B8FF">true</span></span>
-<span data-line=""><span style="color:#85E89D">        timeout</span><span style="color:#E1E4E8">: </span><span style="color:#79B8FF">300</span></span></code></pre></figure>
+<figure data-rehype-pretty-code-figure=""><pre style="background-color:#0d1117;color:#e6edf3" tabindex="0" data-language="yaml" data-theme="github-dark-default"><code data-language="yaml" data-theme="github-dark-default" style="display: grid;"><span data-line=""><span style="color:#8B949E"># playbook.yml</span></span>
+<span data-line=""><span style="color:#E6EDF3">- </span><span style="color:#7EE787">name</span><span style="color:#E6EDF3">: </span><span style="color:#A5D6FF">Manage Proxmox VMs</span></span>
+<span data-line=""><span style="color:#7EE787">  hosts</span><span style="color:#E6EDF3">: </span><span style="color:#A5D6FF">localhost</span></span>
+<span data-line=""><span style="color:#7EE787">  tasks</span><span style="color:#E6EDF3">:</span></span>
+<span data-line=""><span style="color:#E6EDF3">    - </span><span style="color:#7EE787">name</span><span style="color:#E6EDF3">: </span><span style="color:#A5D6FF">Create VM from template</span></span>
+<span data-line=""><span style="color:#7EE787">      community.general.proxmox_kvm</span><span style="color:#E6EDF3">:</span></span>
+<span data-line=""><span style="color:#7EE787">        api_host</span><span style="color:#E6EDF3">: </span><span style="color:#A5D6FF">pve.example.com</span></span>
+<span data-line=""><span style="color:#7EE787">        api_user</span><span style="color:#E6EDF3">: </span><span style="color:#A5D6FF">ansible@pve</span></span>
+<span data-line=""><span style="color:#7EE787">        api_token_id</span><span style="color:#E6EDF3">: </span><span style="color:#A5D6FF">automation</span></span>
+<span data-line=""><span style="color:#7EE787">        api_token_secret</span><span style="color:#E6EDF3">: </span><span style="color:#A5D6FF">"uuid-secret"</span></span>
+<span data-line=""><span style="color:#7EE787">        clone</span><span style="color:#E6EDF3">: </span><span style="color:#A5D6FF">ubuntu-cloud-template</span></span>
+<span data-line=""><span style="color:#7EE787">        name</span><span style="color:#E6EDF3">: </span><span style="color:#A5D6FF">web-server-01</span></span>
+<span data-line=""><span style="color:#7EE787">        node</span><span style="color:#E6EDF3">: </span><span style="color:#A5D6FF">pve1</span></span>
+<span data-line=""><span style="color:#7EE787">        full</span><span style="color:#E6EDF3">: </span><span style="color:#79C0FF">true</span></span>
+<span data-line=""><span style="color:#7EE787">        timeout</span><span style="color:#E6EDF3">: </span><span style="color:#79C0FF">300</span></span></code></pre></figure>
 <h2 id="rest-api什麼都能呼叫">REST API：什麼都能呼叫</h2>
 <p>PVE 的 Web GUI 背後就是 REST API，所有操作都能用 API 做。</p>
 <h3 id="認證方式">認證方式</h3>
@@ -381,14 +382,14 @@ Ansible → 軟體安裝、設定檔、服務啟動
 </tr>
 </tbody>
 </table>
-<figure data-rehype-pretty-code-figure=""><pre style="background-color:#24292e;color:#e1e4e8" tabindex="0" data-language="bash" data-theme="github-dark"><code data-language="bash" data-theme="github-dark" style="display: grid;"><span data-line=""><span style="color:#6A737D"># API Token 直接用（推薦）</span></span>
-<span data-line=""><span style="color:#B392F0">curl</span><span style="color:#79B8FF"> -k</span><span style="color:#79B8FF"> -H</span><span style="color:#9ECBFF"> "Authorization: PVEAPIToken=user@pve!mytoken=uuid-secret"</span><span style="color:#79B8FF"> \</span></span>
-<span data-line=""><span style="color:#9ECBFF">  https://pve:8006/api2/json/nodes</span></span>
+<figure data-rehype-pretty-code-figure=""><pre style="background-color:#0d1117;color:#e6edf3" tabindex="0" data-language="bash" data-theme="github-dark-default"><code data-language="bash" data-theme="github-dark-default" style="display: grid;"><span data-line=""><span style="color:#8B949E"># API Token 直接用（推薦）</span></span>
+<span data-line=""><span style="color:#FFA657">curl</span><span style="color:#79C0FF"> -k</span><span style="color:#79C0FF"> -H</span><span style="color:#A5D6FF"> "Authorization: PVEAPIToken=user@pve!mytoken=uuid-secret"</span><span style="color:#FF7B72"> \</span></span>
+<span data-line=""><span style="color:#A5D6FF">  https://pve:8006/api2/json/nodes</span></span>
 <span data-line=""> </span>
-<span data-line=""><span style="color:#6A737D"># pvesh：PVE 內建的 CLI API 工具</span></span>
-<span data-line=""><span style="color:#B392F0">pvesh</span><span style="color:#9ECBFF"> get</span><span style="color:#9ECBFF"> /nodes</span></span>
-<span data-line=""><span style="color:#B392F0">pvesh</span><span style="color:#9ECBFF"> get</span><span style="color:#9ECBFF"> /nodes/pve1/qemu/100/status/current</span></span>
-<span data-line=""><span style="color:#B392F0">pvesh</span><span style="color:#9ECBFF"> create</span><span style="color:#9ECBFF"> /nodes/pve1/qemu/100/status/start</span></span></code></pre></figure>
+<span data-line=""><span style="color:#8B949E"># pvesh：PVE 內建的 CLI API 工具</span></span>
+<span data-line=""><span style="color:#FFA657">pvesh</span><span style="color:#A5D6FF"> get</span><span style="color:#A5D6FF"> /nodes</span></span>
+<span data-line=""><span style="color:#FFA657">pvesh</span><span style="color:#A5D6FF"> get</span><span style="color:#A5D6FF"> /nodes/pve1/qemu/100/status/current</span></span>
+<span data-line=""><span style="color:#FFA657">pvesh</span><span style="color:#A5D6FF"> create</span><span style="color:#A5D6FF"> /nodes/pve1/qemu/100/status/start</span></span></code></pre></figure>
 <h3 id="常用端點速查">常用端點速查</h3>
 <table>
 <thead>
@@ -487,7 +488,7 @@ Ansible → 軟體安裝、設定檔、服務啟動
 <p>Terraform 負責「建基礎設施」（建 VM、設網路、分配儲存），Ansible 負責「設定軟體」（裝套件、改設定檔、啟動服務）。兩者搭配 Cloud-init 形成完整的自動化流水線。</p>
 <h2 id="下一步">下一步</h2>
 <p>系列最後一篇，整理 Homelab 的實用服務清單和長期維運心法：
-<a href="14-homelab-best-practices">Homelab 最佳實踐</a></p>5:["$","aside",null,{"className":"hidden lg:block","children":["$","$L8",null,{"html":"$9"}]}]
+<a href="14-homelab-best-practices">Homelab 最佳實踐</a></p>5:["$","aside",null,{"className":"hidden lg:block","children":["$","$L9",null,{"html":"$a"}]}]
 6:["$","script","script-0",{"src":"/_next/static/chunks/2dddb3bc05093f69.js","async":true}]
-7:["$","$La",null,{"children":["$","$b",null,{"name":"Next.MetadataOutlet","children":"$@c"}]}]
-c:null
+7:["$","$Lb",null,{"children":["$","$c",null,{"name":"Next.MetadataOutlet","children":"$@d"}]}]
+d:null

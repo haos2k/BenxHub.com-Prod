@@ -1,0 +1,335 @@
+1:"$Sreact.fragment"
+2:I[26795,["/_next/static/chunks/5a5b5b13c22d14f7.js","/_next/static/chunks/a484d1d3dd4b55ab.js"],"default"]
+3:I[73489,["/_next/static/chunks/5a5b5b13c22d14f7.js","/_next/static/chunks/a484d1d3dd4b55ab.js"],"default"]
+6:I[50183,["/_next/static/chunks/5a5b5b13c22d14f7.js","/_next/static/chunks/a484d1d3dd4b55ab.js"],"OutletBoundary"]
+7:"$Sreact.suspense"
+9:I[50183,["/_next/static/chunks/5a5b5b13c22d14f7.js","/_next/static/chunks/a484d1d3dd4b55ab.js"],"ViewportBoundary"]
+b:I[50183,["/_next/static/chunks/5a5b5b13c22d14f7.js","/_next/static/chunks/a484d1d3dd4b55ab.js"],"MetadataBoundary"]
+d:I[63847,[],"default"]
+:HL["/_next/static/chunks/4d9c3828f6075602.css","style"]
+:HL["/_next/static/media/797e433ab948586e-s.p.29207c2f.woff2","font",{"crossOrigin":"","type":"font/woff2"}]
+:HL["/_next/static/media/caa3a2e1cccd8315-s.p.3b6cae6d.woff2","font",{"crossOrigin":"","type":"font/woff2"}]
+0:{"P":null,"b":"ekNoF06-0VZrB4pGVUsy8","c":["","zh","blog","k8s","gateway","09-debugging-and-status",""],"q":"","i":false,"f":[[["",{"children":[["locale","zh","d"],{"children":["blog",{"children":[["slug","k8s/gateway/09-debugging-and-status","c"],{"children":["__PAGE__",{}]}]}]}]},"$undefined","$undefined",true],[["$","$1","c",{"children":[null,["$","$L2",null,{"parallelRouterKey":"children","error":"$undefined","errorStyles":"$undefined","errorScripts":"$undefined","template":["$","$L3",null,{}],"templateStyles":"$undefined","templateScripts":"$undefined","notFound":[["$","html",null,{"lang":"zh-Hant","children":["$","body",null,{"children":["$","main",null,{"className":"mx-auto max-w-2xl px-4 py-20 text-center sm:px-6","children":[["$","h1",null,{"className":"mb-3 text-4xl font-bold tracking-tight","children":"404"}],["$","p",null,{"className":"mb-8 text-lg","style":{"color":"var(--color-muted)"},"children":"找不到這個頁面 / Page not found"}],["$","a",null,{"href":"/zh/","className":"inline-flex items-center rounded-lg border px-4 py-2.5 text-sm font-medium","style":{"borderColor":"var(--color-border)","color":"var(--color-accent)","background":"var(--color-surface)"},"children":"BenXHub Blog"}]]}]}]}],[["$","link","0",{"rel":"stylesheet","href":"/_next/static/chunks/4d9c3828f6075602.css","precedence":"next","crossOrigin":"$undefined","nonce":"$undefined"}]]],"forbidden":"$undefined","unauthorized":"$undefined"}]]}],{"children":[["$","$1","c",{"children":[[["$","link","0",{"rel":"stylesheet","href":"/_next/static/chunks/4d9c3828f6075602.css","precedence":"next","crossOrigin":"$undefined","nonce":"$undefined"}],["$","script","script-0",{"src":"/_next/static/chunks/4204edc93da35a5e.js","async":true,"nonce":"$undefined"}],["$","script","script-1",{"src":"/_next/static/chunks/f2afb7fd2b7566bb.js","async":true,"nonce":"$undefined"}]],"$L4"]}],{"children":[["$","$1","c",{"children":[null,["$","$L2",null,{"parallelRouterKey":"children","error":"$undefined","errorStyles":"$undefined","errorScripts":"$undefined","template":["$","$L3",null,{}],"templateStyles":"$undefined","templateScripts":"$undefined","notFound":"$undefined","forbidden":"$undefined","unauthorized":"$undefined"}]]}],{"children":[["$","$1","c",{"children":[null,["$","$L2",null,{"parallelRouterKey":"children","error":"$undefined","errorStyles":"$undefined","errorScripts":"$undefined","template":["$","$L3",null,{}],"templateStyles":"$undefined","templateScripts":"$undefined","notFound":"$undefined","forbidden":"$undefined","unauthorized":"$undefined"}]]}],{"children":[["$","$1","c",{"children":["$L5",[["$","script","script-0",{"src":"/_next/static/chunks/2dddb3bc05093f69.js","async":true,"nonce":"$undefined"}]],["$","$L6",null,{"children":["$","$7",null,{"name":"Next.MetadataOutlet","children":"$@8"}]}]]}],{},null,false,false]},null,false,false]},null,false,false]},null,false,false]},null,false,false],["$","$1","h",{"children":[null,["$","$L9",null,{"children":"$La"}],["$","div",null,{"hidden":true,"children":["$","$Lb",null,{"children":["$","$7",null,{"name":"Next.Metadata","children":"$Lc"}]}]}],["$","meta",null,{"name":"next-size-adjust","content":""}]]}],false]],"m":"$undefined","G":["$d",[]],"S":true}
+4:["$","html",null,{"lang":"zh-Hant","dir":"ltr","className":"geist_a71539c9-module__T19VSG__variable geist_mono_8d43a2aa-module__8Li5zG__variable","children":["$","body",null,{"className":"flex min-h-screen flex-col antialiased","children":[["$","script",null,{"type":"application/ld+json","dangerouslySetInnerHTML":{"__html":"[{\"@context\":\"https://schema.org\",\"@type\":\"WebSite\",\"name\":\"BenXHub Blog\",\"url\":\"https://benxhub.com/zh/\",\"inLanguage\":\"zh-Hant\",\"publisher\":{\"@type\":\"Organization\",\"name\":\"BenXHub Blog\",\"url\":\"https://benxhub.com\"},\"potentialAction\":{\"@type\":\"SearchAction\",\"target\":{\"@type\":\"EntryPoint\",\"urlTemplate\":\"https://benxhub.com/zh/search/?q={search_term_string}\"},\"query-input\":\"required name=search_term_string\"}},{\"@context\":\"https://schema.org\",\"@type\":\"Person\",\"@id\":\"https://benxhub.com/#author\",\"name\":\"BenX\",\"url\":\"https://benxhub.com/zh/about/\",\"sameAs\":[\"https://github.com/benzhub\"]}]"}}],"$Le"]}]}]
+f:I[33343,["/_next/static/chunks/4204edc93da35a5e.js","/_next/static/chunks/f2afb7fd2b7566bb.js"],"default"]
+10:I[26817,["/_next/static/chunks/4204edc93da35a5e.js","/_next/static/chunks/f2afb7fd2b7566bb.js"],"default"]
+11:I[6197,["/_next/static/chunks/4204edc93da35a5e.js","/_next/static/chunks/f2afb7fd2b7566bb.js"],"default"]
+13:I[40018,["/_next/static/chunks/4204edc93da35a5e.js","/_next/static/chunks/f2afb7fd2b7566bb.js"],"default"]
+e:["$","$Lf",null,{"formats":"$undefined","locale":"zh","messages":{"common":{"siteName":"BenXHub Blog","siteDescription":"BenX 的技術部落格，分享 Web 開發、架構設計與工程實踐。"},"nav":{"home":"首頁","tags":"標籤","about":"關於","searchLabel":"搜尋文章"},"hero":{"subtitle":"分享 Web 開發、架構設計與工程實踐的技術筆記","cta":"瀏覽文章"},"posts":{"title":"文章列表","count":"共 {total} 篇文章","empty":"目前還沒有文章，敬請期待！","newerPost":"← 較新文章","olderPost":"較舊文章 →","navLabel":"文章導覽"},"pagination":{"prev":"上一頁","next":"下一頁","page":"第 {current} / {total} 頁","label":"文章列表分頁","pageTitle":"第 {num} 頁","pageDescription":"BenX 的技術部落格 — 文章列表分頁。"},"search":{"title":"搜尋文章","description":"搜尋 BenXHub Blog 的所有文章，按標題、描述或標籤即時篩選。","subtitle":"搜尋標題、描述或標籤，即時顯示結果","placeholder":"搜尋文章標題、描述或標籤…","found":"找到 {count} 篇相關文章","notFound":"沒有找到與「{query}」相關的文章","emptyTitle":"找不到相關文章","emptyHint":"試試看其他關鍵字，或瀏覽","allPosts":"所有文章","totalCount":"共 {count} 篇文章，輸入關鍵字即可搜尋"},"tags":{"title":"所有標籤","description":"依標籤瀏覽所有文章。","count":"共 {count} 個標籤","empty":"目前還沒有標籤，敬請期待！","allTags":"所有標籤","postCount":"共 {count} 篇文章","otherTags":"其他標籤","tagTitle":"#{tag} 的文章","tagDescription":"所有標記為「{tag}」的文章列表。"},"about":{"title":"關於","description":"關於 BenXHub Blog 與本站簡介。","subtitle":"關於 BenXHub Blog 與本站簡介","siteTitle":"關於本站","siteContent":"BenXHub Blog 是 BenX 的技術部落格，分享 Web 開發、架構設計與工程實踐。","authorTitle":"關於我","authorContent":"喜歡寫程式、研究技術，樂於把踩過的坑與解法記錄下來，也歡迎透過本站側欄或 Footer 的連結交流。","linksTitle":"連結"},"sidebar":{"label":"側邊欄","authorBio":"喜歡寫程式與分享，專注 Web 開發、架構與 DevOps。","searchPlaceholder":"搜尋文章…","seriesTitle":"系列文章","articleCount":"{count} 篇"},"toc":{"title":"目錄","label":"文章目錄"},"notFound":{"message":"此頁面不存在，可能連結已失效或網址輸入錯誤。","backHome":"返回首頁"},"localeSwitcher":{"label":"切換語言"}},"now":"$undefined","timeZone":"UTC","children":[["$","$L10",null,{}],["$","$L11",null,{}],["$","main",null,{"className":"flex-1 pt-16","children":["$","$L2",null,{"parallelRouterKey":"children","error":"$undefined","errorStyles":"$undefined","errorScripts":"$undefined","template":["$","$L3",null,{}],"templateStyles":"$undefined","templateScripts":"$undefined","notFound":["$L12",[]],"forbidden":"$undefined","unauthorized":"$undefined"}]}],["$","$L13",null,{}]]}]
+12:["$","div",null,{"className":"mx-auto max-w-2xl px-4 py-20 text-center sm:px-6","children":[["$","h1",null,{"className":"mb-3 text-4xl font-bold tracking-tight","style":{"color":"var(--color-text)"},"children":"404"}],["$","p",null,{"className":"mb-8 text-lg","style":{"color":"var(--color-muted)"},"children":"此頁面不存在，可能連結已失效或網址輸入錯誤。"}],"$L14"]}]
+a:[["$","meta","0",{"charSet":"utf-8"}],["$","meta","1",{"name":"viewport","content":"width=device-width, initial-scale=1"}]]
+15:I[14864,["/_next/static/chunks/4204edc93da35a5e.js","/_next/static/chunks/f2afb7fd2b7566bb.js","/_next/static/chunks/2dddb3bc05093f69.js"],"default"]
+14:["$","$L15",null,{"ref":"$undefined","href":"/zh","locale":"$undefined","localeCookie":{"name":"NEXT_LOCALE","sameSite":"lax"},"className":"inline-flex items-center rounded-lg border px-4 py-2.5 text-sm font-medium transition-colors hover:border-accent","style":{"borderColor":"var(--color-border)","color":"var(--color-accent)","background":"var(--color-surface)"},"children":"返回首頁"}]
+1c:T31aa,<p>工程師最怕的不是報錯，而是：</p>
+<p><strong>YAML 套上去了，<code>kubectl apply</code> 也成功了，但流量就是沒通。</strong></p>
+<p>這時候如果你只盯著 <code>spec</code> 看，很容易越看越像在占卜。<br>
+Gateway API 真正的救命資訊，很多都在 <code>status</code> 裡。</p>
+<p>這篇的目標很簡單：幫你建立一套最短除錯路徑。讓你遇到 <code>Gateway</code>、<code>HTTPRoute</code>、<code>Listener</code> 不生效時，知道先看哪裡，而不是一開場就懷疑宇宙。</p>
+<h2 id="先記住除錯先看-status不是先改-yaml">先記住：除錯先看 <code>status</code>，不是先改 YAML</h2>
+<p>最常用的幾個指令：</p>
+<figure data-rehype-pretty-code-figure=""><pre style="background-color:#0d1117;color:#e6edf3" tabindex="0" data-language="bash" data-theme="github-dark-default"><code data-language="bash" data-theme="github-dark-default" style="display: grid;"><span data-line=""><span style="color:#FFA657">kubectl</span><span style="color:#A5D6FF"> get</span><span style="color:#A5D6FF"> gateway</span><span style="color:#79C0FF"> -A</span></span>
+<span data-line=""><span style="color:#FFA657">kubectl</span><span style="color:#A5D6FF"> get</span><span style="color:#A5D6FF"> httproute</span><span style="color:#79C0FF"> -A</span></span>
+<span data-line=""><span style="color:#FFA657">kubectl</span><span style="color:#A5D6FF"> get</span><span style="color:#A5D6FF"> grpcroute</span><span style="color:#79C0FF"> -A</span></span>
+<span data-line=""><span style="color:#FFA657">kubectl</span><span style="color:#A5D6FF"> describe</span><span style="color:#A5D6FF"> gateway</span><span style="color:#FF7B72"> &#x3C;</span><span style="color:#A5D6FF">nam</span><span style="color:#E6EDF3">e</span><span style="color:#FF7B72">></span></span>
+<span data-line=""><span style="color:#FFA657">kubectl</span><span style="color:#A5D6FF"> describe</span><span style="color:#A5D6FF"> httproute</span><span style="color:#FF7B72"> &#x3C;</span><span style="color:#A5D6FF">nam</span><span style="color:#E6EDF3">e</span><span style="color:#FF7B72">></span></span>
+<span data-line=""><span style="color:#FFA657">kubectl</span><span style="color:#A5D6FF"> get</span><span style="color:#A5D6FF"> gateway</span><span style="color:#FF7B72"> &#x3C;</span><span style="color:#A5D6FF">nam</span><span style="color:#E6EDF3">e</span><span style="color:#FF7B72">></span><span style="color:#79C0FF"> -o</span><span style="color:#A5D6FF"> yaml</span></span>
+<span data-line=""><span style="color:#FFA657">kubectl</span><span style="color:#A5D6FF"> get</span><span style="color:#A5D6FF"> httproute</span><span style="color:#FF7B72"> &#x3C;</span><span style="color:#A5D6FF">nam</span><span style="color:#E6EDF3">e</span><span style="color:#FF7B72">></span><span style="color:#79C0FF"> -o</span><span style="color:#A5D6FF"> yaml</span></span></code></pre></figure>
+<p>重點不是把 YAML 再讀一百遍，而是看 controller 有沒有真的接受你的設定。</p>
+<p>你可以把 <code>status</code> 想成考試成績單：</p>
+<ul>
+<li><code>spec</code> 是你交上去的答案</li>
+<li><code>status</code> 是系統批改後的結果</li>
+</ul>
+<p>只看交卷內容，不看成績，很多時候真的只是心靈安慰。</p>
+<h2 id="三個最常見的-condition先看懂這些就夠用了">三個最常見的 condition：先看懂這些就夠用了</h2>
+<h3 id="accepted"><code>Accepted</code></h3>
+<p>這通常表示資源有沒有被父層接納。<br>
+以 route 來說，意思通常接近：</p>
+<ul>
+<li>有沒有成功附掛到對應 Gateway / listener</li>
+<li>規則本身有沒有明顯衝突或不合法</li>
+</ul>
+<p>如果 <code>Accepted</code> 是 <code>False</code>，先懷疑：</p>
+<ul>
+<li><code>parentRefs</code> 指錯 Gateway 或 listener</li>
+<li>hostname / listener 條件不匹配</li>
+<li>該 listener 不接受這種 route 類型</li>
+<li><code>allowedRoutes</code> 把你擋掉了</li>
+</ul>
+<h3 id="resolvedrefs"><code>ResolvedRefs</code></h3>
+<p>這表示資源裡引用到的其他物件有沒有成功解析。<br>
+例如：</p>
+<ul>
+<li><code>backendRefs</code> 指到的 Service 存不存在</li>
+<li><code>certificateRefs</code> 指到的 Secret 能不能合法引用</li>
+<li>跨 namespace 引用有沒有配好 <code>ReferenceGrant</code></li>
+</ul>
+<p>這個 condition 超實用。<br>
+因為很多設定不是路由邏輯有錯，而是你引用的東西根本不存在，或沒有權限引用。</p>
+<h3 id="programmed"><code>Programmed</code></h3>
+<p>這通常代表設定有沒有真的被實作層落地。<br>
+你可以把它理解成：</p>
+<ul>
+<li>controller 已經接受</li>
+<li>也把設定推進資料面或基礎設施</li>
+</ul>
+<p>如果 <code>Accepted</code> 已經是 <code>True</code>，但實際流量還是不通，這時就值得去看 <code>Programmed</code>、Gateway address、listener 狀態，以及底下的 Envoy 相關資源。</p>
+<blockquote>
+<p>💡 不同資源會看到的 condition 可能不完全相同，但 <code>Accepted</code>、<code>ResolvedRefs</code>、<code>Programmed</code> 是最值得優先建立感覺的一組。</p>
+</blockquote>
+<h2 id="最短排錯流程照這個順序通常夠用">最短排錯流程：照這個順序通常夠用</h2>
+<h3 id="第一步先看-gateway-有沒有真的站起來">第一步：先看 Gateway 有沒有真的站起來</h3>
+<figure data-rehype-pretty-code-figure=""><pre style="background-color:#0d1117;color:#e6edf3" tabindex="0" data-language="bash" data-theme="github-dark-default"><code data-language="bash" data-theme="github-dark-default" style="display: grid;"><span data-line=""><span style="color:#FFA657">kubectl</span><span style="color:#A5D6FF"> get</span><span style="color:#A5D6FF"> gateway</span><span style="color:#79C0FF"> -A</span></span>
+<span data-line=""><span style="color:#FFA657">kubectl</span><span style="color:#A5D6FF"> get</span><span style="color:#A5D6FF"> gateway</span><span style="color:#A5D6FF"> eg</span><span style="color:#79C0FF"> -o</span><span style="color:#A5D6FF"> yaml</span></span></code></pre></figure>
+<p>先確認：</p>
+<ul>
+<li><code>status.addresses</code> 有沒有值</li>
+<li>listener condition 有沒有異常</li>
+<li>listener 的 hostname / protocol / port 是不是你以為的那組</li>
+</ul>
+<p>如果連 Gateway 都沒 address，後面 route 寫得再漂亮都只是文學創作。</p>
+<h3 id="第二步看-route-有沒有被接上">第二步：看 Route 有沒有被接上</h3>
+<figure data-rehype-pretty-code-figure=""><pre style="background-color:#0d1117;color:#e6edf3" tabindex="0" data-language="bash" data-theme="github-dark-default"><code data-language="bash" data-theme="github-dark-default" style="display: grid;"><span data-line=""><span style="color:#FFA657">kubectl</span><span style="color:#A5D6FF"> get</span><span style="color:#A5D6FF"> httproute</span><span style="color:#79C0FF"> -A</span></span>
+<span data-line=""><span style="color:#FFA657">kubectl</span><span style="color:#A5D6FF"> get</span><span style="color:#A5D6FF"> httproute</span><span style="color:#A5D6FF"> app-route</span><span style="color:#79C0FF"> -o</span><span style="color:#A5D6FF"> yaml</span></span></code></pre></figure>
+<p>優先看：</p>
+<ul>
+<li><code>status.parents</code></li>
+<li><code>Accepted</code></li>
+<li><code>ResolvedRefs</code></li>
+<li><code>observedGeneration</code></li>
+</ul>
+<p><code>observedGeneration</code> 很值得注意。<br>
+如果它還沒追上 <code>metadata.generation</code>，代表 controller 可能還沒處理到你最新那版設定。</p>
+<h3 id="第三步看引用資源是不是都存在">第三步：看引用資源是不是都存在</h3>
+<p>這一步超多人漏掉：</p>
+<figure data-rehype-pretty-code-figure=""><pre style="background-color:#0d1117;color:#e6edf3" tabindex="0" data-language="bash" data-theme="github-dark-default"><code data-language="bash" data-theme="github-dark-default" style="display: grid;"><span data-line=""><span style="color:#FFA657">kubectl</span><span style="color:#A5D6FF"> get</span><span style="color:#A5D6FF"> svc</span><span style="color:#79C0FF"> -A</span></span>
+<span data-line=""><span style="color:#FFA657">kubectl</span><span style="color:#A5D6FF"> get</span><span style="color:#A5D6FF"> secret</span><span style="color:#79C0FF"> -A</span></span>
+<span data-line=""><span style="color:#FFA657">kubectl</span><span style="color:#A5D6FF"> get</span><span style="color:#A5D6FF"> referencegrant</span><span style="color:#79C0FF"> -A</span></span></code></pre></figure>
+<p>常見問題像是：</p>
+<ul>
+<li>backend service 名字打錯</li>
+<li>port 寫錯</li>
+<li>Secret 不在你以為的 namespace</li>
+<li>跨 namespace 引用少了 <code>ReferenceGrant</code></li>
+</ul>
+<p>如果 <code>ResolvedRefs</code> 是 <code>False</code>，幾乎就該沿著這條線查。</p>
+<h3 id="第四步再看資料面與-controller">第四步：再看資料面與 controller</h3>
+<p>如果 Gateway 與 Route 狀態都看起來差不多對了，但流量還是不通，再往下看：</p>
+<figure data-rehype-pretty-code-figure=""><pre style="background-color:#0d1117;color:#e6edf3" tabindex="0" data-language="bash" data-theme="github-dark-default"><code data-language="bash" data-theme="github-dark-default" style="display: grid;"><span data-line=""><span style="color:#FFA657">kubectl</span><span style="color:#A5D6FF"> get</span><span style="color:#A5D6FF"> pods</span><span style="color:#79C0FF"> -n</span><span style="color:#A5D6FF"> envoy-gateway-system</span></span>
+<span data-line=""><span style="color:#FFA657">kubectl</span><span style="color:#A5D6FF"> logs</span><span style="color:#79C0FF"> -n</span><span style="color:#A5D6FF"> envoy-gateway-system</span><span style="color:#A5D6FF"> deployment/envoy-gateway</span></span></code></pre></figure>
+<p>這時候你在查的已經不是「規則有沒有被接受」，而是控制平面與資料面有沒有正常工作。</p>
+<p>如果你有裝 <code>egctl</code>，也可以用它快速看狀態。<br>
+但就算沒有，<code>kubectl get/describe -o yaml</code> 其實已經能解大部分問題。</p>
+<h2 id="四個超常見故障模式">四個超常見故障模式</h2>
+<h3 id="1-route-寫對了但沒掛到你以為的-listener">1. Route 寫對了，但沒掛到你以為的 listener</h3>
+<p>症狀：</p>
+<ul>
+<li>YAML 很像對</li>
+<li>但流量沒有命中規則</li>
+</ul>
+<p>先查：</p>
+<ul>
+<li><code>parentRefs.name</code></li>
+<li><code>parentRefs.sectionName</code></li>
+<li>Gateway listener 名稱有沒有拼對</li>
+</ul>
+<p>多 listener 場景裡，<code>sectionName</code> 拼錯一個字就足夠讓你白忙一輪。</p>
+<h3 id="2-accepted-成功但-resolvedrefs-失敗">2. <code>Accepted</code> 成功，但 <code>ResolvedRefs</code> 失敗</h3>
+<p>這通常代表邏輯上可以掛，但引用的東西有問題。<br>
+最常見就是：</p>
+<ul>
+<li>backend Service 不存在</li>
+<li>Secret 名稱錯</li>
+<li>cross-namespace reference 沒授權</li>
+</ul>
+<p>這種問題最煩的地方在於，表面上看起來「快好了」，結果其實只是卡在引用層。</p>
+<h3 id="3-gateway-有-listener卻沒有你預期的-address">3. Gateway 有 listener，卻沒有你預期的 address</h3>
+<p>這很常出現在本地叢集或沒有 <code>LoadBalancer</code> 實作的環境。<br>
+不是 Gateway API 壞掉，而是底層根本沒有幫你配出外部位址。</p>
+<p>這時可以：</p>
+<ul>
+<li>檢查叢集有沒有 <code>LoadBalancer</code> 能力</li>
+<li>改用 <code>port-forward</code> 先驗證路徑</li>
+</ul>
+<h3 id="4-yaml-生效了但請求還是-404--503">4. YAML 生效了，但請求還是 404 / 503</h3>
+<p>這時通常不是單一欄位錯，而是鏈路某一段沒接上：</p>
+<ul>
+<li>Host header 不對</li>
+<li>path 沒命中</li>
+<li>backend Pod 不健康</li>
+<li>Service selector 沒對到 Pod</li>
+</ul>
+<p>入口層問題有時候看起來像 Gateway 壞掉，實際上只是後端根本沒站好。不要把所有鍋都丟給代理層，代理層也很委屈。</p>
+<h2 id="一句話總結">一句話總結</h2>
+<p>除錯 Gateway API 最有效的方式，不是一直改 YAML，而是先讀懂 <code>status</code>。<br>
+<code>Accepted</code> 看有沒有接單，<code>ResolvedRefs</code> 看引用有沒有通，<code>Programmed</code> 看設定有沒有真的落地。這三層拆開看，排錯速度會快很多。</p>
+<h2 id="下一步">下一步</h2>
+<p>到這裡，這套 Envoy Gateway 系列就湊成完整 10 篇了。<br>
+如果你想重新從地圖看一次整體脈絡，可以回到：</p>
+<p>👉 <a href="00-overview">系列總覽</a></p>5:[["$","script",null,{"type":"application/ld+json","dangerouslySetInnerHTML":{"__html":"{\"@context\":\"https://schema.org\",\"@type\":\"Article\",\"headline\":\"Envoy Gateway 狀態與除錯手冊：Accepted、ResolvedRefs、Programmed 到底在說什麼\",\"description\":\"整理 Gateway 與 Route 最常看的 status、condition 與排錯流程，讓你知道設定沒生效時該先查哪裡。\",\"url\":\"https://benxhub.com/zh/blog/k8s/gateway/09-debugging-and-status/\",\"mainEntityOfPage\":{\"@type\":\"WebPage\",\"@id\":\"https://benxhub.com/zh/blog/k8s/gateway/09-debugging-and-status/\"},\"datePublished\":\"2026-03-10T00:00:00.000Z\",\"dateModified\":\"2026-03-10T00:00:00.000Z\",\"keywords\":\"kubernetes, envoy-gateway, gateway-api, troubleshooting, status, debugging\",\"inLanguage\":\"zh-Hant\",\"author\":{\"@type\":\"Person\",\"@id\":\"https://benxhub.com/#author\",\"name\":\"BenX\",\"url\":\"https://benxhub.com/zh/about/\",\"sameAs\":[\"https://github.com/benzhub\"]},\"publisher\":{\"@type\":\"Organization\",\"name\":\"BenXHub Blog\",\"url\":\"https://benxhub.com\"},\"image\":\"https://benxhub.com/og-default.png\"}"}}],["$","div",null,{"className":"mx-auto max-w-6xl px-4 py-12 sm:px-6","children":["$","div",null,{"className":"lg:grid lg:grid-cols-[1fr_240px] lg:gap-14","children":[["$","article",null,{"children":[["$","header",null,{"className":"mb-10","children":[["$","div",null,{"className":"mb-4 flex flex-wrap gap-2","children":["$L16","$L17","$L18","$L19","$L1a","$L1b"]}],["$","h1",null,{"className":"mb-4 text-3xl leading-snug font-bold tracking-tight sm:text-4xl","style":{"color":"var(--color-text)"},"children":"Envoy Gateway 狀態與除錯手冊：Accepted、ResolvedRefs、Programmed 到底在說什麼"}],["$","div",null,{"className":"flex flex-wrap items-center gap-3 text-sm","style":{"color":"var(--color-muted)"},"children":[["$","time",null,{"dateTime":"2026-03-10","children":"2026 年 3 月 10 日"}],["$","span",null,{"aria-hidden":"true","children":"·"}],["$","span",null,{"children":"7 min read"}]]}],"$undefined",["$","div",null,{"className":"mt-6 border-b","style":{"borderColor":"var(--color-border)"}}]]}],["$","div",null,{"className":"prose","dangerouslySetInnerHTML":{"__html":"$1c"}}],"$L1d"]}],"$L1e"]}]}]]
+27:I[24801,["/_next/static/chunks/4204edc93da35a5e.js","/_next/static/chunks/f2afb7fd2b7566bb.js","/_next/static/chunks/2dddb3bc05093f69.js"],"default"]
+1d:["$","footer",null,{"className":"mt-14 border-t pt-8","style":{"borderColor":"var(--color-border)"},"children":[["$","div",null,{"className":"mb-8 flex flex-wrap gap-2","children":["$L1f","$L20","$L21","$L22","$L23","$L24"]}],["$","nav",null,{"aria-label":"文章導覽","className":"grid grid-cols-1 gap-4 sm:grid-cols-2","children":["$L25","$L26"]}]]}]
+28:T31aa,<p>工程師最怕的不是報錯，而是：</p>
+<p><strong>YAML 套上去了，<code>kubectl apply</code> 也成功了，但流量就是沒通。</strong></p>
+<p>這時候如果你只盯著 <code>spec</code> 看，很容易越看越像在占卜。<br>
+Gateway API 真正的救命資訊，很多都在 <code>status</code> 裡。</p>
+<p>這篇的目標很簡單：幫你建立一套最短除錯路徑。讓你遇到 <code>Gateway</code>、<code>HTTPRoute</code>、<code>Listener</code> 不生效時，知道先看哪裡，而不是一開場就懷疑宇宙。</p>
+<h2 id="先記住除錯先看-status不是先改-yaml">先記住：除錯先看 <code>status</code>，不是先改 YAML</h2>
+<p>最常用的幾個指令：</p>
+<figure data-rehype-pretty-code-figure=""><pre style="background-color:#0d1117;color:#e6edf3" tabindex="0" data-language="bash" data-theme="github-dark-default"><code data-language="bash" data-theme="github-dark-default" style="display: grid;"><span data-line=""><span style="color:#FFA657">kubectl</span><span style="color:#A5D6FF"> get</span><span style="color:#A5D6FF"> gateway</span><span style="color:#79C0FF"> -A</span></span>
+<span data-line=""><span style="color:#FFA657">kubectl</span><span style="color:#A5D6FF"> get</span><span style="color:#A5D6FF"> httproute</span><span style="color:#79C0FF"> -A</span></span>
+<span data-line=""><span style="color:#FFA657">kubectl</span><span style="color:#A5D6FF"> get</span><span style="color:#A5D6FF"> grpcroute</span><span style="color:#79C0FF"> -A</span></span>
+<span data-line=""><span style="color:#FFA657">kubectl</span><span style="color:#A5D6FF"> describe</span><span style="color:#A5D6FF"> gateway</span><span style="color:#FF7B72"> &#x3C;</span><span style="color:#A5D6FF">nam</span><span style="color:#E6EDF3">e</span><span style="color:#FF7B72">></span></span>
+<span data-line=""><span style="color:#FFA657">kubectl</span><span style="color:#A5D6FF"> describe</span><span style="color:#A5D6FF"> httproute</span><span style="color:#FF7B72"> &#x3C;</span><span style="color:#A5D6FF">nam</span><span style="color:#E6EDF3">e</span><span style="color:#FF7B72">></span></span>
+<span data-line=""><span style="color:#FFA657">kubectl</span><span style="color:#A5D6FF"> get</span><span style="color:#A5D6FF"> gateway</span><span style="color:#FF7B72"> &#x3C;</span><span style="color:#A5D6FF">nam</span><span style="color:#E6EDF3">e</span><span style="color:#FF7B72">></span><span style="color:#79C0FF"> -o</span><span style="color:#A5D6FF"> yaml</span></span>
+<span data-line=""><span style="color:#FFA657">kubectl</span><span style="color:#A5D6FF"> get</span><span style="color:#A5D6FF"> httproute</span><span style="color:#FF7B72"> &#x3C;</span><span style="color:#A5D6FF">nam</span><span style="color:#E6EDF3">e</span><span style="color:#FF7B72">></span><span style="color:#79C0FF"> -o</span><span style="color:#A5D6FF"> yaml</span></span></code></pre></figure>
+<p>重點不是把 YAML 再讀一百遍，而是看 controller 有沒有真的接受你的設定。</p>
+<p>你可以把 <code>status</code> 想成考試成績單：</p>
+<ul>
+<li><code>spec</code> 是你交上去的答案</li>
+<li><code>status</code> 是系統批改後的結果</li>
+</ul>
+<p>只看交卷內容，不看成績，很多時候真的只是心靈安慰。</p>
+<h2 id="三個最常見的-condition先看懂這些就夠用了">三個最常見的 condition：先看懂這些就夠用了</h2>
+<h3 id="accepted"><code>Accepted</code></h3>
+<p>這通常表示資源有沒有被父層接納。<br>
+以 route 來說，意思通常接近：</p>
+<ul>
+<li>有沒有成功附掛到對應 Gateway / listener</li>
+<li>規則本身有沒有明顯衝突或不合法</li>
+</ul>
+<p>如果 <code>Accepted</code> 是 <code>False</code>，先懷疑：</p>
+<ul>
+<li><code>parentRefs</code> 指錯 Gateway 或 listener</li>
+<li>hostname / listener 條件不匹配</li>
+<li>該 listener 不接受這種 route 類型</li>
+<li><code>allowedRoutes</code> 把你擋掉了</li>
+</ul>
+<h3 id="resolvedrefs"><code>ResolvedRefs</code></h3>
+<p>這表示資源裡引用到的其他物件有沒有成功解析。<br>
+例如：</p>
+<ul>
+<li><code>backendRefs</code> 指到的 Service 存不存在</li>
+<li><code>certificateRefs</code> 指到的 Secret 能不能合法引用</li>
+<li>跨 namespace 引用有沒有配好 <code>ReferenceGrant</code></li>
+</ul>
+<p>這個 condition 超實用。<br>
+因為很多設定不是路由邏輯有錯，而是你引用的東西根本不存在，或沒有權限引用。</p>
+<h3 id="programmed"><code>Programmed</code></h3>
+<p>這通常代表設定有沒有真的被實作層落地。<br>
+你可以把它理解成：</p>
+<ul>
+<li>controller 已經接受</li>
+<li>也把設定推進資料面或基礎設施</li>
+</ul>
+<p>如果 <code>Accepted</code> 已經是 <code>True</code>，但實際流量還是不通，這時就值得去看 <code>Programmed</code>、Gateway address、listener 狀態，以及底下的 Envoy 相關資源。</p>
+<blockquote>
+<p>💡 不同資源會看到的 condition 可能不完全相同，但 <code>Accepted</code>、<code>ResolvedRefs</code>、<code>Programmed</code> 是最值得優先建立感覺的一組。</p>
+</blockquote>
+<h2 id="最短排錯流程照這個順序通常夠用">最短排錯流程：照這個順序通常夠用</h2>
+<h3 id="第一步先看-gateway-有沒有真的站起來">第一步：先看 Gateway 有沒有真的站起來</h3>
+<figure data-rehype-pretty-code-figure=""><pre style="background-color:#0d1117;color:#e6edf3" tabindex="0" data-language="bash" data-theme="github-dark-default"><code data-language="bash" data-theme="github-dark-default" style="display: grid;"><span data-line=""><span style="color:#FFA657">kubectl</span><span style="color:#A5D6FF"> get</span><span style="color:#A5D6FF"> gateway</span><span style="color:#79C0FF"> -A</span></span>
+<span data-line=""><span style="color:#FFA657">kubectl</span><span style="color:#A5D6FF"> get</span><span style="color:#A5D6FF"> gateway</span><span style="color:#A5D6FF"> eg</span><span style="color:#79C0FF"> -o</span><span style="color:#A5D6FF"> yaml</span></span></code></pre></figure>
+<p>先確認：</p>
+<ul>
+<li><code>status.addresses</code> 有沒有值</li>
+<li>listener condition 有沒有異常</li>
+<li>listener 的 hostname / protocol / port 是不是你以為的那組</li>
+</ul>
+<p>如果連 Gateway 都沒 address，後面 route 寫得再漂亮都只是文學創作。</p>
+<h3 id="第二步看-route-有沒有被接上">第二步：看 Route 有沒有被接上</h3>
+<figure data-rehype-pretty-code-figure=""><pre style="background-color:#0d1117;color:#e6edf3" tabindex="0" data-language="bash" data-theme="github-dark-default"><code data-language="bash" data-theme="github-dark-default" style="display: grid;"><span data-line=""><span style="color:#FFA657">kubectl</span><span style="color:#A5D6FF"> get</span><span style="color:#A5D6FF"> httproute</span><span style="color:#79C0FF"> -A</span></span>
+<span data-line=""><span style="color:#FFA657">kubectl</span><span style="color:#A5D6FF"> get</span><span style="color:#A5D6FF"> httproute</span><span style="color:#A5D6FF"> app-route</span><span style="color:#79C0FF"> -o</span><span style="color:#A5D6FF"> yaml</span></span></code></pre></figure>
+<p>優先看：</p>
+<ul>
+<li><code>status.parents</code></li>
+<li><code>Accepted</code></li>
+<li><code>ResolvedRefs</code></li>
+<li><code>observedGeneration</code></li>
+</ul>
+<p><code>observedGeneration</code> 很值得注意。<br>
+如果它還沒追上 <code>metadata.generation</code>，代表 controller 可能還沒處理到你最新那版設定。</p>
+<h3 id="第三步看引用資源是不是都存在">第三步：看引用資源是不是都存在</h3>
+<p>這一步超多人漏掉：</p>
+<figure data-rehype-pretty-code-figure=""><pre style="background-color:#0d1117;color:#e6edf3" tabindex="0" data-language="bash" data-theme="github-dark-default"><code data-language="bash" data-theme="github-dark-default" style="display: grid;"><span data-line=""><span style="color:#FFA657">kubectl</span><span style="color:#A5D6FF"> get</span><span style="color:#A5D6FF"> svc</span><span style="color:#79C0FF"> -A</span></span>
+<span data-line=""><span style="color:#FFA657">kubectl</span><span style="color:#A5D6FF"> get</span><span style="color:#A5D6FF"> secret</span><span style="color:#79C0FF"> -A</span></span>
+<span data-line=""><span style="color:#FFA657">kubectl</span><span style="color:#A5D6FF"> get</span><span style="color:#A5D6FF"> referencegrant</span><span style="color:#79C0FF"> -A</span></span></code></pre></figure>
+<p>常見問題像是：</p>
+<ul>
+<li>backend service 名字打錯</li>
+<li>port 寫錯</li>
+<li>Secret 不在你以為的 namespace</li>
+<li>跨 namespace 引用少了 <code>ReferenceGrant</code></li>
+</ul>
+<p>如果 <code>ResolvedRefs</code> 是 <code>False</code>，幾乎就該沿著這條線查。</p>
+<h3 id="第四步再看資料面與-controller">第四步：再看資料面與 controller</h3>
+<p>如果 Gateway 與 Route 狀態都看起來差不多對了，但流量還是不通，再往下看：</p>
+<figure data-rehype-pretty-code-figure=""><pre style="background-color:#0d1117;color:#e6edf3" tabindex="0" data-language="bash" data-theme="github-dark-default"><code data-language="bash" data-theme="github-dark-default" style="display: grid;"><span data-line=""><span style="color:#FFA657">kubectl</span><span style="color:#A5D6FF"> get</span><span style="color:#A5D6FF"> pods</span><span style="color:#79C0FF"> -n</span><span style="color:#A5D6FF"> envoy-gateway-system</span></span>
+<span data-line=""><span style="color:#FFA657">kubectl</span><span style="color:#A5D6FF"> logs</span><span style="color:#79C0FF"> -n</span><span style="color:#A5D6FF"> envoy-gateway-system</span><span style="color:#A5D6FF"> deployment/envoy-gateway</span></span></code></pre></figure>
+<p>這時候你在查的已經不是「規則有沒有被接受」，而是控制平面與資料面有沒有正常工作。</p>
+<p>如果你有裝 <code>egctl</code>，也可以用它快速看狀態。<br>
+但就算沒有，<code>kubectl get/describe -o yaml</code> 其實已經能解大部分問題。</p>
+<h2 id="四個超常見故障模式">四個超常見故障模式</h2>
+<h3 id="1-route-寫對了但沒掛到你以為的-listener">1. Route 寫對了，但沒掛到你以為的 listener</h3>
+<p>症狀：</p>
+<ul>
+<li>YAML 很像對</li>
+<li>但流量沒有命中規則</li>
+</ul>
+<p>先查：</p>
+<ul>
+<li><code>parentRefs.name</code></li>
+<li><code>parentRefs.sectionName</code></li>
+<li>Gateway listener 名稱有沒有拼對</li>
+</ul>
+<p>多 listener 場景裡，<code>sectionName</code> 拼錯一個字就足夠讓你白忙一輪。</p>
+<h3 id="2-accepted-成功但-resolvedrefs-失敗">2. <code>Accepted</code> 成功，但 <code>ResolvedRefs</code> 失敗</h3>
+<p>這通常代表邏輯上可以掛，但引用的東西有問題。<br>
+最常見就是：</p>
+<ul>
+<li>backend Service 不存在</li>
+<li>Secret 名稱錯</li>
+<li>cross-namespace reference 沒授權</li>
+</ul>
+<p>這種問題最煩的地方在於，表面上看起來「快好了」，結果其實只是卡在引用層。</p>
+<h3 id="3-gateway-有-listener卻沒有你預期的-address">3. Gateway 有 listener，卻沒有你預期的 address</h3>
+<p>這很常出現在本地叢集或沒有 <code>LoadBalancer</code> 實作的環境。<br>
+不是 Gateway API 壞掉，而是底層根本沒有幫你配出外部位址。</p>
+<p>這時可以：</p>
+<ul>
+<li>檢查叢集有沒有 <code>LoadBalancer</code> 能力</li>
+<li>改用 <code>port-forward</code> 先驗證路徑</li>
+</ul>
+<h3 id="4-yaml-生效了但請求還是-404--503">4. YAML 生效了，但請求還是 404 / 503</h3>
+<p>這時通常不是單一欄位錯，而是鏈路某一段沒接上：</p>
+<ul>
+<li>Host header 不對</li>
+<li>path 沒命中</li>
+<li>backend Pod 不健康</li>
+<li>Service selector 沒對到 Pod</li>
+</ul>
+<p>入口層問題有時候看起來像 Gateway 壞掉，實際上只是後端根本沒站好。不要把所有鍋都丟給代理層，代理層也很委屈。</p>
+<h2 id="一句話總結">一句話總結</h2>
+<p>除錯 Gateway API 最有效的方式，不是一直改 YAML，而是先讀懂 <code>status</code>。<br>
+<code>Accepted</code> 看有沒有接單，<code>ResolvedRefs</code> 看引用有沒有通，<code>Programmed</code> 看設定有沒有真的落地。這三層拆開看，排錯速度會快很多。</p>
+<h2 id="下一步">下一步</h2>
+<p>到這裡，這套 Envoy Gateway 系列就湊成完整 10 篇了。<br>
+如果你想重新從地圖看一次整體脈絡，可以回到：</p>
+<p>👉 <a href="00-overview">系列總覽</a></p>1e:["$","aside",null,{"className":"hidden lg:block","children":["$","$L27",null,{"html":"$28"}]}]
+16:["$","$L15","kubernetes",{"ref":"$undefined","href":"/zh/tags/kubernetes","locale":"$undefined","localeCookie":"$14:props:localeCookie","className":"inline-flex items-center rounded-full px-2.5 py-0.5 text-xs font-medium transition-colors","style":{"background":"var(--color-code-bg)","color":"var(--color-accent)","border":"1px solid var(--color-border)"},"children":["#","kubernetes"]}]
+17:["$","$L15","envoy-gateway",{"ref":"$undefined","href":"/zh/tags/envoy-gateway","locale":"$undefined","localeCookie":"$14:props:localeCookie","className":"inline-flex items-center rounded-full px-2.5 py-0.5 text-xs font-medium transition-colors","style":{"background":"var(--color-code-bg)","color":"var(--color-accent)","border":"1px solid var(--color-border)"},"children":["#","envoy-gateway"]}]
+18:["$","$L15","gateway-api",{"ref":"$undefined","href":"/zh/tags/gateway-api","locale":"$undefined","localeCookie":"$14:props:localeCookie","className":"inline-flex items-center rounded-full px-2.5 py-0.5 text-xs font-medium transition-colors","style":{"background":"var(--color-code-bg)","color":"var(--color-accent)","border":"1px solid var(--color-border)"},"children":["#","gateway-api"]}]
+19:["$","$L15","troubleshooting",{"ref":"$undefined","href":"/zh/tags/troubleshooting","locale":"$undefined","localeCookie":"$14:props:localeCookie","className":"inline-flex items-center rounded-full px-2.5 py-0.5 text-xs font-medium transition-colors","style":{"background":"var(--color-code-bg)","color":"var(--color-accent)","border":"1px solid var(--color-border)"},"children":["#","troubleshooting"]}]
+1a:["$","$L15","status",{"ref":"$undefined","href":"/zh/tags/status","locale":"$undefined","localeCookie":"$14:props:localeCookie","className":"inline-flex items-center rounded-full px-2.5 py-0.5 text-xs font-medium transition-colors","style":{"background":"var(--color-code-bg)","color":"var(--color-accent)","border":"1px solid var(--color-border)"},"children":["#","status"]}]
+1b:["$","$L15","debugging",{"ref":"$undefined","href":"/zh/tags/debugging","locale":"$undefined","localeCookie":"$14:props:localeCookie","className":"inline-flex items-center rounded-full px-2.5 py-0.5 text-xs font-medium transition-colors","style":{"background":"var(--color-code-bg)","color":"var(--color-accent)","border":"1px solid var(--color-border)"},"children":["#","debugging"]}]
+1f:["$","$L15","kubernetes",{"ref":"$undefined","href":"/zh/tags/kubernetes","locale":"$undefined","localeCookie":"$14:props:localeCookie","className":"inline-flex items-center rounded-full px-3 py-1 text-sm font-medium transition-colors","style":{"background":"var(--color-code-bg)","color":"var(--color-accent)","border":"1px solid var(--color-border)"},"children":["#","kubernetes"]}]
+20:["$","$L15","envoy-gateway",{"ref":"$undefined","href":"/zh/tags/envoy-gateway","locale":"$undefined","localeCookie":"$14:props:localeCookie","className":"inline-flex items-center rounded-full px-3 py-1 text-sm font-medium transition-colors","style":{"background":"var(--color-code-bg)","color":"var(--color-accent)","border":"1px solid var(--color-border)"},"children":["#","envoy-gateway"]}]
+21:["$","$L15","gateway-api",{"ref":"$undefined","href":"/zh/tags/gateway-api","locale":"$undefined","localeCookie":"$14:props:localeCookie","className":"inline-flex items-center rounded-full px-3 py-1 text-sm font-medium transition-colors","style":{"background":"var(--color-code-bg)","color":"var(--color-accent)","border":"1px solid var(--color-border)"},"children":["#","gateway-api"]}]
+22:["$","$L15","troubleshooting",{"ref":"$undefined","href":"/zh/tags/troubleshooting","locale":"$undefined","localeCookie":"$14:props:localeCookie","className":"inline-flex items-center rounded-full px-3 py-1 text-sm font-medium transition-colors","style":{"background":"var(--color-code-bg)","color":"var(--color-accent)","border":"1px solid var(--color-border)"},"children":["#","troubleshooting"]}]
+23:["$","$L15","status",{"ref":"$undefined","href":"/zh/tags/status","locale":"$undefined","localeCookie":"$14:props:localeCookie","className":"inline-flex items-center rounded-full px-3 py-1 text-sm font-medium transition-colors","style":{"background":"var(--color-code-bg)","color":"var(--color-accent)","border":"1px solid var(--color-border)"},"children":["#","status"]}]
+24:["$","$L15","debugging",{"ref":"$undefined","href":"/zh/tags/debugging","locale":"$undefined","localeCookie":"$14:props:localeCookie","className":"inline-flex items-center rounded-full px-3 py-1 text-sm font-medium transition-colors","style":{"background":"var(--color-code-bg)","color":"var(--color-accent)","border":"1px solid var(--color-border)"},"children":["#","debugging"]}]
+25:["$","$L15",null,{"ref":"$undefined","href":"/zh/blog/k8s/gateway/08-multi-namespace-and-teamwork","locale":"$undefined","localeCookie":"$14:props:localeCookie","className":"group rounded-lg border p-4 transition-colors hover:border-accent","style":{"borderColor":"var(--color-border)","background":"var(--color-surface)"},"children":[["$","p",null,{"className":"mb-1 text-xs","style":{"color":"var(--color-muted)"},"children":"← 較新文章"}],["$","p",null,{"className":"line-clamp-1 text-sm font-medium transition-colors group-hover:text-accent","style":{"color":"var(--color-text)"},"children":"Envoy Gateway 多 Namespace 與團隊分工：allowedRoutes、ReferenceGrant、跨團隊怎麼管"}]]}]
+26:["$","$L15",null,{"ref":"$undefined","href":"/zh/blog/ai-trend/2026-03-09-ai-content-automation-workflow","locale":"$undefined","localeCookie":"$14:props:localeCookie","className":"group rounded-lg border p-4 text-right transition-colors hover:border-accent","style":{"borderColor":"var(--color-border)","background":"var(--color-surface)"},"children":[["$","p",null,{"className":"mb-1 text-xs","style":{"color":"var(--color-muted)"},"children":"較舊文章 →"}],["$","p",null,{"className":"line-clamp-1 text-sm font-medium transition-colors group-hover:text-accent","style":{"color":"var(--color-text)"},"children":"AI 內容自動化：真正拉開差距的不是速度，是你的工作流設計"}]]}]
+29:I[92204,["/_next/static/chunks/5a5b5b13c22d14f7.js","/_next/static/chunks/a484d1d3dd4b55ab.js"],"IconMark"]
+8:null
+c:[["$","title","0",{"children":"Envoy Gateway 狀態與除錯手冊：Accepted、ResolvedRefs、Programmed 到底在說什麼 | BenXHub Blog"}],["$","meta","1",{"name":"description","content":"整理 Gateway 與 Route 最常看的 status、condition 與排錯流程，讓你知道設定沒生效時該先查哪裡。"}],["$","link","2",{"rel":"canonical","href":"https://benxhub.com/zh/blog/k8s/gateway/09-debugging-and-status/"}],["$","link","3",{"rel":"alternate","hrefLang":"zh-Hant","href":"https://benxhub.com/zh/blog/k8s/gateway/09-debugging-and-status/"}],["$","link","4",{"rel":"alternate","hrefLang":"en","href":"https://benxhub.com/en/blog/k8s/gateway/09-debugging-and-status/"}],["$","link","5",{"rel":"alternate","hrefLang":"ja","href":"https://benxhub.com/ja/blog/k8s/gateway/09-debugging-and-status/"}],["$","link","6",{"rel":"alternate","hrefLang":"ko","href":"https://benxhub.com/ko/blog/k8s/gateway/09-debugging-and-status/"}],["$","link","7",{"rel":"alternate","hrefLang":"es","href":"https://benxhub.com/es/blog/k8s/gateway/09-debugging-and-status/"}],["$","link","8",{"rel":"alternate","hrefLang":"fr","href":"https://benxhub.com/fr/blog/k8s/gateway/09-debugging-and-status/"}],["$","link","9",{"rel":"alternate","hrefLang":"ar","href":"https://benxhub.com/ar/blog/k8s/gateway/09-debugging-and-status/"}],["$","link","10",{"rel":"alternate","hrefLang":"x-default","href":"https://benxhub.com/zh/blog/k8s/gateway/09-debugging-and-status/"}],["$","link","11",{"rel":"alternate","type":"application/rss+xml","href":"https://benxhub.com/zh/feed.xml"}],["$","meta","12",{"property":"og:title","content":"Envoy Gateway 狀態與除錯手冊：Accepted、ResolvedRefs、Programmed 到底在說什麼"}],["$","meta","13",{"property":"og:description","content":"整理 Gateway 與 Route 最常看的 status、condition 與排錯流程，讓你知道設定沒生效時該先查哪裡。"}],["$","meta","14",{"property":"og:url","content":"https://benxhub.com/zh/blog/k8s/gateway/09-debugging-and-status/"}],["$","meta","15",{"property":"og:site_name","content":"BenXHub Blog"}],["$","meta","16",{"property":"og:locale","content":"zh_TW"}],["$","meta","17",{"property":"og:image","content":"https://benxhub.com/og-default.png"}],["$","meta","18",{"property":"og:image:width","content":"1200"}],["$","meta","19",{"property":"og:image:height","content":"630"}],["$","meta","20",{"property":"og:image:alt","content":"BenXHub Blog"}],["$","meta","21",{"property":"og:type","content":"article"}],["$","meta","22",{"property":"article:published_time","content":"2026-03-10T00:00:00.000Z"}],["$","meta","23",{"property":"article:tag","content":"kubernetes"}],["$","meta","24",{"property":"article:tag","content":"envoy-gateway"}],["$","meta","25",{"property":"article:tag","content":"gateway-api"}],["$","meta","26",{"property":"article:tag","content":"troubleshooting"}],["$","meta","27",{"property":"article:tag","content":"status"}],["$","meta","28",{"property":"article:tag","content":"debugging"}],["$","meta","29",{"name":"twitter:card","content":"summary_large_image"}],["$","meta","30",{"name":"twitter:title","content":"Envoy Gateway 狀態與除錯手冊：Accepted、ResolvedRefs、Programmed 到底在說什麼"}],["$","meta","31",{"name":"twitter:description","content":"整理 Gateway 與 Route 最常看的 status、condition 與排錯流程，讓你知道設定沒生效時該先查哪裡。"}],["$","meta","32",{"name":"twitter:image","content":"https://benxhub.com/og-default.png"}],["$","link","33",{"rel":"icon","href":"/favicon.ico?favicon.0b3bf435.ico","sizes":"256x256","type":"image/x-icon"}],["$","$L29","34",{}]]

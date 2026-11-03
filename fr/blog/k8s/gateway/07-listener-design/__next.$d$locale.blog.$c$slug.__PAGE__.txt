@@ -1,14 +1,12 @@
 1:"$Sreact.fragment"
-2:I[14864,["/_next/static/chunks/7923a261b80bb6e1.js","/_next/static/chunks/e09b4358027e8033.js","/_next/static/chunks/2dddb3bc05093f69.js"],"default"]
-d:I[24801,["/_next/static/chunks/7923a261b80bb6e1.js","/_next/static/chunks/e09b4358027e8033.js","/_next/static/chunks/2dddb3bc05093f69.js"],"default"]
-f:I[50183,["/_next/static/chunks/5a5b5b13c22d14f7.js","/_next/static/chunks/a484d1d3dd4b55ab.js"],"OutletBoundary"]
-10:"$Sreact.suspense"
-0:{"buildId":"sM8YAyjANE7sOnXm3EQGk","rsc":["$","$1","c",{"children":[[["$","script",null,{"type":"application/ld+json","dangerouslySetInnerHTML":{"__html":"{\"@context\":\"https://schema.org\",\"@type\":\"Article\",\"headline\":\"Guide de conception des listeners Envoy Gateway : patterns multi-port, multi-hostname et multi-ingress\",\"description\":\"Traiter les Listeners comme des contrats d'entrée : comprendre sectionName, allowedRoutes, les patterns multi-listeners et les approches structurelles les plus courantes.\",\"url\":\"https://benxhub.com/fr/blog/k8s/gateway/07-listener-design\",\"mainEntityOfPage\":{\"@type\":\"WebPage\",\"@id\":\"https://benxhub.com/fr/blog/k8s/gateway/07-listener-design\"},\"datePublished\":\"2026-03-10T00:00:00.000Z\",\"dateModified\":\"2026-03-10T00:00:00.000Z\",\"keywords\":\"kubernetes, envoy-gateway, gateway-api, listener, gateway, httproute\",\"inLanguage\":\"fr\",\"author\":{\"@type\":\"Person\",\"name\":\"BenX\",\"url\":\"https://benxhub.com\"},\"publisher\":{\"@type\":\"Organization\",\"name\":\"BenXHub Blog\",\"url\":\"https://benxhub.com\"}}"}}],["$","div",null,{"className":"mx-auto max-w-6xl px-4 py-12 sm:px-6","children":["$","div",null,{"className":"lg:grid lg:grid-cols-[1fr_240px] lg:gap-14","children":[["$","article",null,{"children":[["$","header",null,{"className":"mb-10","children":[["$","div",null,{"className":"mb-4 flex flex-wrap gap-2","children":[["$","$L2","kubernetes",{"href":"/fr/tags/kubernetes","localeCookie":{"name":"NEXT_LOCALE","sameSite":"lax"},"className":"inline-flex items-center rounded-full px-2.5 py-0.5 text-xs font-medium transition-colors","style":{"background":"var(--color-code-bg)","color":"var(--color-accent)","border":"1px solid var(--color-border)"},"children":["#","kubernetes"]}],["$","$L2","envoy-gateway",{"href":"/fr/tags/envoy-gateway","localeCookie":{"name":"NEXT_LOCALE","sameSite":"lax"},"className":"inline-flex items-center rounded-full px-2.5 py-0.5 text-xs font-medium transition-colors","style":{"background":"var(--color-code-bg)","color":"var(--color-accent)","border":"1px solid var(--color-border)"},"children":["#","envoy-gateway"]}],["$","$L2","gateway-api",{"href":"/fr/tags/gateway-api","localeCookie":{"name":"NEXT_LOCALE","sameSite":"lax"},"className":"inline-flex items-center rounded-full px-2.5 py-0.5 text-xs font-medium transition-colors","style":{"background":"var(--color-code-bg)","color":"var(--color-accent)","border":"1px solid var(--color-border)"},"children":["#","gateway-api"]}],["$","$L2","listener",{"href":"/fr/tags/listener","localeCookie":{"name":"NEXT_LOCALE","sameSite":"lax"},"className":"inline-flex items-center rounded-full px-2.5 py-0.5 text-xs font-medium transition-colors","style":{"background":"var(--color-code-bg)","color":"var(--color-accent)","border":"1px solid var(--color-border)"},"children":["#","listener"]}],["$","$L2","gateway",{"href":"/fr/tags/gateway","localeCookie":{"name":"NEXT_LOCALE","sameSite":"lax"},"className":"inline-flex items-center rounded-full px-2.5 py-0.5 text-xs font-medium transition-colors","style":{"background":"var(--color-code-bg)","color":"var(--color-accent)","border":"1px solid var(--color-border)"},"children":["#","gateway"]}],["$","$L2","httproute",{"href":"/fr/tags/httproute","localeCookie":{"name":"NEXT_LOCALE","sameSite":"lax"},"className":"inline-flex items-center rounded-full px-2.5 py-0.5 text-xs font-medium transition-colors","style":{"background":"var(--color-code-bg)","color":"var(--color-accent)","border":"1px solid var(--color-border)"},"children":["#","httproute"]}]]}],["$","h1",null,{"className":"mb-4 text-3xl leading-snug font-bold tracking-tight sm:text-4xl","style":{"color":"var(--color-text)"},"children":"Guide de conception des listeners Envoy Gateway : patterns multi-port, multi-hostname et multi-ingress"}],["$","div",null,{"className":"flex flex-wrap items-center gap-3 text-sm","style":{"color":"var(--color-muted)"},"children":["$L3","$L4","$L5"]}],"$undefined","$L6"]}],"$L7","$L8"]}],"$L9"]}]}]],["$La"],"$Lb"]}],"loading":null,"isPartial":false}
-3:["$","time",null,{"dateTime":"2026-03-10","children":"10 mars 2026"}]
-4:["$","span",null,{"aria-hidden":"true","children":"·"}]
-5:["$","span",null,{"children":"5 min read"}]
-6:["$","div",null,{"className":"mt-6 border-b","style":{"borderColor":"var(--color-border)"}}]
-c:T3db7,<p>Beaucoup de gens qui apprennent Gateway API traitent <code>Listener</code> comme "ah oui, c'est juste le champ <code>port: 80</code>."
+2:I[14864,["/_next/static/chunks/4204edc93da35a5e.js","/_next/static/chunks/f2afb7fd2b7566bb.js","/_next/static/chunks/2dddb3bc05093f69.js"],"default"]
+b:I[24801,["/_next/static/chunks/4204edc93da35a5e.js","/_next/static/chunks/f2afb7fd2b7566bb.js","/_next/static/chunks/2dddb3bc05093f69.js"],"default"]
+d:I[50183,["/_next/static/chunks/5a5b5b13c22d14f7.js","/_next/static/chunks/a484d1d3dd4b55ab.js"],"OutletBoundary"]
+e:"$Sreact.suspense"
+0:{"buildId":"ekNoF06-0VZrB4pGVUsy8","rsc":["$","$1","c",{"children":[[["$","script",null,{"type":"application/ld+json","dangerouslySetInnerHTML":{"__html":"{\"@context\":\"https://schema.org\",\"@type\":\"Article\",\"headline\":\"Guide de conception des listeners Envoy Gateway : patterns multi-port, multi-hostname et multi-ingress\",\"description\":\"Traiter les Listeners comme des contrats d'entrée : comprendre sectionName, allowedRoutes, les patterns multi-listeners et les approches structurelles les plus courantes.\",\"url\":\"https://benxhub.com/fr/blog/k8s/gateway/07-listener-design/\",\"mainEntityOfPage\":{\"@type\":\"WebPage\",\"@id\":\"https://benxhub.com/fr/blog/k8s/gateway/07-listener-design/\"},\"datePublished\":\"2026-03-10T00:00:00.000Z\",\"dateModified\":\"2026-03-10T00:00:00.000Z\",\"keywords\":\"kubernetes, envoy-gateway, gateway-api, listener, gateway, httproute\",\"inLanguage\":\"fr\",\"author\":{\"@type\":\"Person\",\"@id\":\"https://benxhub.com/#author\",\"name\":\"BenX\",\"url\":\"https://benxhub.com/fr/about/\",\"sameAs\":[\"https://github.com/benzhub\"]},\"publisher\":{\"@type\":\"Organization\",\"name\":\"BenXHub Blog\",\"url\":\"https://benxhub.com\"},\"image\":\"https://benxhub.com/og-default.png\"}"}}],["$","div",null,{"className":"mx-auto max-w-6xl px-4 py-12 sm:px-6","children":["$","div",null,{"className":"lg:grid lg:grid-cols-[1fr_240px] lg:gap-14","children":[["$","article",null,{"children":[["$","header",null,{"className":"mb-10","children":[["$","div",null,{"className":"mb-4 flex flex-wrap gap-2","children":[["$","$L2","kubernetes",{"href":"/fr/tags/kubernetes","localeCookie":{"name":"NEXT_LOCALE","sameSite":"lax"},"className":"inline-flex items-center rounded-full px-2.5 py-0.5 text-xs font-medium transition-colors","style":{"background":"var(--color-code-bg)","color":"var(--color-accent)","border":"1px solid var(--color-border)"},"children":["#","kubernetes"]}],["$","$L2","envoy-gateway",{"href":"/fr/tags/envoy-gateway","localeCookie":{"name":"NEXT_LOCALE","sameSite":"lax"},"className":"inline-flex items-center rounded-full px-2.5 py-0.5 text-xs font-medium transition-colors","style":{"background":"var(--color-code-bg)","color":"var(--color-accent)","border":"1px solid var(--color-border)"},"children":["#","envoy-gateway"]}],["$","$L2","gateway-api",{"href":"/fr/tags/gateway-api","localeCookie":{"name":"NEXT_LOCALE","sameSite":"lax"},"className":"inline-flex items-center rounded-full px-2.5 py-0.5 text-xs font-medium transition-colors","style":{"background":"var(--color-code-bg)","color":"var(--color-accent)","border":"1px solid var(--color-border)"},"children":["#","gateway-api"]}],["$","$L2","listener",{"href":"/fr/tags/listener","localeCookie":{"name":"NEXT_LOCALE","sameSite":"lax"},"className":"inline-flex items-center rounded-full px-2.5 py-0.5 text-xs font-medium transition-colors","style":{"background":"var(--color-code-bg)","color":"var(--color-accent)","border":"1px solid var(--color-border)"},"children":["#","listener"]}],["$","$L2","gateway",{"href":"/fr/tags/gateway","localeCookie":{"name":"NEXT_LOCALE","sameSite":"lax"},"className":"inline-flex items-center rounded-full px-2.5 py-0.5 text-xs font-medium transition-colors","style":{"background":"var(--color-code-bg)","color":"var(--color-accent)","border":"1px solid var(--color-border)"},"children":["#","gateway"]}],["$","$L2","httproute",{"href":"/fr/tags/httproute","localeCookie":{"name":"NEXT_LOCALE","sameSite":"lax"},"className":"inline-flex items-center rounded-full px-2.5 py-0.5 text-xs font-medium transition-colors","style":{"background":"var(--color-code-bg)","color":"var(--color-accent)","border":"1px solid var(--color-border)"},"children":["#","httproute"]}]]}],["$","h1",null,{"className":"mb-4 text-3xl leading-snug font-bold tracking-tight sm:text-4xl","style":{"color":"var(--color-text)"},"children":"Guide de conception des listeners Envoy Gateway : patterns multi-port, multi-hostname et multi-ingress"}],"$L3","$undefined","$L4"]}],"$L5","$L6"]}],"$L7"]}]}]],["$L8"],"$L9"]}],"loading":null,"isPartial":false}
+3:["$","div",null,{"className":"flex flex-wrap items-center gap-3 text-sm","style":{"color":"var(--color-muted)"},"children":[["$","time",null,{"dateTime":"2026-03-10","children":"10 mars 2026"}],["$","span",null,{"aria-hidden":"true","children":"·"}],["$","span",null,{"children":"5 min read"}]]}]
+4:["$","div",null,{"className":"mt-6 border-b","style":{"borderColor":"var(--color-border)"}}]
+a:T3df7,<p>Beaucoup de gens qui apprennent Gateway API traitent <code>Listener</code> comme "ah oui, c'est juste le champ <code>port: 80</code>."
 Mais dans les déploiements réels, <code>Listener</code> est loin d'être un figurant : c'est plutôt le centre de contrôle du trafic pour toute votre couche d'entrée.</p>
 <p>Un listener ne se contente pas d'ouvrir un port. Il définit :</p>
 <ul>
@@ -20,32 +18,32 @@ Mais dans les déploiements réels, <code>Listener</code> est loin d'être un fi
 <p>Autrement dit, <strong>un listener est un contrat d'entrée</strong>. Écrivez des contrats propres, et les routes en aval, la répartition des responsabilités d'équipe et la complexité du débogage deviennent plus propres elles aussi.</p>
 <h2 id="construire-le-bon-modèle-mental--un-listener--un-slot-dentrée">Construire le bon modèle mental : un listener = un slot d'entrée</h2>
 <p>Prenez ce Gateway :</p>
-<figure data-rehype-pretty-code-figure=""><pre style="background-color:#24292e;color:#e1e4e8" tabindex="0" data-language="yaml" data-theme="github-dark"><code data-language="yaml" data-theme="github-dark" style="display: grid;"><span data-line=""><span style="color:#85E89D">apiVersion</span><span style="color:#E1E4E8">: </span><span style="color:#9ECBFF">gateway.networking.k8s.io/v1</span></span>
-<span data-line=""><span style="color:#85E89D">kind</span><span style="color:#E1E4E8">: </span><span style="color:#9ECBFF">Gateway</span></span>
-<span data-line=""><span style="color:#85E89D">metadata</span><span style="color:#E1E4E8">:</span></span>
-<span data-line=""><span style="color:#85E89D">  name</span><span style="color:#E1E4E8">: </span><span style="color:#9ECBFF">eg</span></span>
-<span data-line=""><span style="color:#85E89D">spec</span><span style="color:#E1E4E8">:</span></span>
-<span data-line=""><span style="color:#85E89D">  gatewayClassName</span><span style="color:#E1E4E8">: </span><span style="color:#9ECBFF">eg</span></span>
-<span data-line=""><span style="color:#85E89D">  listeners</span><span style="color:#E1E4E8">:</span></span>
-<span data-line=""><span style="color:#E1E4E8">    - </span><span style="color:#85E89D">name</span><span style="color:#E1E4E8">: </span><span style="color:#9ECBFF">http</span></span>
-<span data-line=""><span style="color:#85E89D">      protocol</span><span style="color:#E1E4E8">: </span><span style="color:#9ECBFF">HTTP</span></span>
-<span data-line=""><span style="color:#85E89D">      port</span><span style="color:#E1E4E8">: </span><span style="color:#79B8FF">80</span></span>
-<span data-line=""><span style="color:#E1E4E8">    - </span><span style="color:#85E89D">name</span><span style="color:#E1E4E8">: </span><span style="color:#9ECBFF">https</span></span>
-<span data-line=""><span style="color:#85E89D">      protocol</span><span style="color:#E1E4E8">: </span><span style="color:#9ECBFF">HTTPS</span></span>
-<span data-line=""><span style="color:#85E89D">      port</span><span style="color:#E1E4E8">: </span><span style="color:#79B8FF">443</span></span>
-<span data-line=""><span style="color:#85E89D">      hostname</span><span style="color:#E1E4E8">: </span><span style="color:#9ECBFF">app.example.com</span></span>
-<span data-line=""><span style="color:#85E89D">      tls</span><span style="color:#E1E4E8">:</span></span>
-<span data-line=""><span style="color:#85E89D">        mode</span><span style="color:#E1E4E8">: </span><span style="color:#9ECBFF">Terminate</span></span>
-<span data-line=""><span style="color:#85E89D">        certificateRefs</span><span style="color:#E1E4E8">:</span></span>
-<span data-line=""><span style="color:#E1E4E8">          - </span><span style="color:#85E89D">name</span><span style="color:#E1E4E8">: </span><span style="color:#9ECBFF">app-cert</span></span>
-<span data-line=""><span style="color:#E1E4E8">    - </span><span style="color:#85E89D">name</span><span style="color:#E1E4E8">: </span><span style="color:#9ECBFF">grpc</span></span>
-<span data-line=""><span style="color:#85E89D">      protocol</span><span style="color:#E1E4E8">: </span><span style="color:#9ECBFF">HTTPS</span></span>
-<span data-line=""><span style="color:#85E89D">      port</span><span style="color:#E1E4E8">: </span><span style="color:#79B8FF">8443</span></span>
-<span data-line=""><span style="color:#85E89D">      hostname</span><span style="color:#E1E4E8">: </span><span style="color:#9ECBFF">grpc.example.com</span></span>
-<span data-line=""><span style="color:#85E89D">      tls</span><span style="color:#E1E4E8">:</span></span>
-<span data-line=""><span style="color:#85E89D">        mode</span><span style="color:#E1E4E8">: </span><span style="color:#9ECBFF">Terminate</span></span>
-<span data-line=""><span style="color:#85E89D">        certificateRefs</span><span style="color:#E1E4E8">:</span></span>
-<span data-line=""><span style="color:#E1E4E8">          - </span><span style="color:#85E89D">name</span><span style="color:#E1E4E8">: </span><span style="color:#9ECBFF">grpc-cert</span></span></code></pre></figure>
+<figure data-rehype-pretty-code-figure=""><pre style="background-color:#0d1117;color:#e6edf3" tabindex="0" data-language="yaml" data-theme="github-dark-default"><code data-language="yaml" data-theme="github-dark-default" style="display: grid;"><span data-line=""><span style="color:#7EE787">apiVersion</span><span style="color:#E6EDF3">: </span><span style="color:#A5D6FF">gateway.networking.k8s.io/v1</span></span>
+<span data-line=""><span style="color:#7EE787">kind</span><span style="color:#E6EDF3">: </span><span style="color:#A5D6FF">Gateway</span></span>
+<span data-line=""><span style="color:#7EE787">metadata</span><span style="color:#E6EDF3">:</span></span>
+<span data-line=""><span style="color:#7EE787">  name</span><span style="color:#E6EDF3">: </span><span style="color:#A5D6FF">eg</span></span>
+<span data-line=""><span style="color:#7EE787">spec</span><span style="color:#E6EDF3">:</span></span>
+<span data-line=""><span style="color:#7EE787">  gatewayClassName</span><span style="color:#E6EDF3">: </span><span style="color:#A5D6FF">eg</span></span>
+<span data-line=""><span style="color:#7EE787">  listeners</span><span style="color:#E6EDF3">:</span></span>
+<span data-line=""><span style="color:#E6EDF3">    - </span><span style="color:#7EE787">name</span><span style="color:#E6EDF3">: </span><span style="color:#A5D6FF">http</span></span>
+<span data-line=""><span style="color:#7EE787">      protocol</span><span style="color:#E6EDF3">: </span><span style="color:#A5D6FF">HTTP</span></span>
+<span data-line=""><span style="color:#7EE787">      port</span><span style="color:#E6EDF3">: </span><span style="color:#79C0FF">80</span></span>
+<span data-line=""><span style="color:#E6EDF3">    - </span><span style="color:#7EE787">name</span><span style="color:#E6EDF3">: </span><span style="color:#A5D6FF">https</span></span>
+<span data-line=""><span style="color:#7EE787">      protocol</span><span style="color:#E6EDF3">: </span><span style="color:#A5D6FF">HTTPS</span></span>
+<span data-line=""><span style="color:#7EE787">      port</span><span style="color:#E6EDF3">: </span><span style="color:#79C0FF">443</span></span>
+<span data-line=""><span style="color:#7EE787">      hostname</span><span style="color:#E6EDF3">: </span><span style="color:#A5D6FF">app.example.com</span></span>
+<span data-line=""><span style="color:#7EE787">      tls</span><span style="color:#E6EDF3">:</span></span>
+<span data-line=""><span style="color:#7EE787">        mode</span><span style="color:#E6EDF3">: </span><span style="color:#A5D6FF">Terminate</span></span>
+<span data-line=""><span style="color:#7EE787">        certificateRefs</span><span style="color:#E6EDF3">:</span></span>
+<span data-line=""><span style="color:#E6EDF3">          - </span><span style="color:#7EE787">name</span><span style="color:#E6EDF3">: </span><span style="color:#A5D6FF">app-cert</span></span>
+<span data-line=""><span style="color:#E6EDF3">    - </span><span style="color:#7EE787">name</span><span style="color:#E6EDF3">: </span><span style="color:#A5D6FF">grpc</span></span>
+<span data-line=""><span style="color:#7EE787">      protocol</span><span style="color:#E6EDF3">: </span><span style="color:#A5D6FF">HTTPS</span></span>
+<span data-line=""><span style="color:#7EE787">      port</span><span style="color:#E6EDF3">: </span><span style="color:#79C0FF">8443</span></span>
+<span data-line=""><span style="color:#7EE787">      hostname</span><span style="color:#E6EDF3">: </span><span style="color:#A5D6FF">grpc.example.com</span></span>
+<span data-line=""><span style="color:#7EE787">      tls</span><span style="color:#E6EDF3">:</span></span>
+<span data-line=""><span style="color:#7EE787">        mode</span><span style="color:#E6EDF3">: </span><span style="color:#A5D6FF">Terminate</span></span>
+<span data-line=""><span style="color:#7EE787">        certificateRefs</span><span style="color:#E6EDF3">:</span></span>
+<span data-line=""><span style="color:#E6EDF3">          - </span><span style="color:#7EE787">name</span><span style="color:#E6EDF3">: </span><span style="color:#A5D6FF">grpc-cert</span></span></code></pre></figure>
 <p>Ce n'est pas juste "un Gateway avec trois trous". Voyez-le plutôt comme :</p>
 <ul>
 <li>Le listener <code>http</code> : pour le HTTP en clair</li>
@@ -67,15 +65,15 @@ Vous n'assemblez pas seulement du YAML, vous dessinez des frontières d'entrée.
 Même si gRPC et les API web générales peuvent tous deux tourner sur HTTP/2, leurs modèles de service diffèrent. Les garder séparés évite que les routes interfèrent les unes avec les autres.</p>
 <h3 id="pattern-2--découper-par-hostname">Pattern 2 : découper par hostname</h3>
 <p>Si vous avez plusieurs domaines, un pattern courant consiste à mettre un listener par hostname principal :</p>
-<figure data-rehype-pretty-code-figure=""><pre style="background-color:#24292e;color:#e1e4e8" tabindex="0" data-language="yaml" data-theme="github-dark"><code data-language="yaml" data-theme="github-dark" style="display: grid;"><span data-line=""><span style="color:#85E89D">listeners</span><span style="color:#E1E4E8">:</span></span>
-<span data-line=""><span style="color:#E1E4E8">  - </span><span style="color:#85E89D">name</span><span style="color:#E1E4E8">: </span><span style="color:#9ECBFF">app</span></span>
-<span data-line=""><span style="color:#85E89D">    hostname</span><span style="color:#E1E4E8">: </span><span style="color:#9ECBFF">app.example.com</span></span>
-<span data-line=""><span style="color:#85E89D">    protocol</span><span style="color:#E1E4E8">: </span><span style="color:#9ECBFF">HTTPS</span></span>
-<span data-line=""><span style="color:#85E89D">    port</span><span style="color:#E1E4E8">: </span><span style="color:#79B8FF">443</span></span>
-<span data-line=""><span style="color:#E1E4E8">  - </span><span style="color:#85E89D">name</span><span style="color:#E1E4E8">: </span><span style="color:#9ECBFF">admin</span></span>
-<span data-line=""><span style="color:#85E89D">    hostname</span><span style="color:#E1E4E8">: </span><span style="color:#9ECBFF">admin.example.com</span></span>
-<span data-line=""><span style="color:#85E89D">    protocol</span><span style="color:#E1E4E8">: </span><span style="color:#9ECBFF">HTTPS</span></span>
-<span data-line=""><span style="color:#85E89D">    port</span><span style="color:#E1E4E8">: </span><span style="color:#79B8FF">443</span></span></code></pre></figure>
+<figure data-rehype-pretty-code-figure=""><pre style="background-color:#0d1117;color:#e6edf3" tabindex="0" data-language="yaml" data-theme="github-dark-default"><code data-language="yaml" data-theme="github-dark-default" style="display: grid;"><span data-line=""><span style="color:#7EE787">listeners</span><span style="color:#E6EDF3">:</span></span>
+<span data-line=""><span style="color:#E6EDF3">  - </span><span style="color:#7EE787">name</span><span style="color:#E6EDF3">: </span><span style="color:#A5D6FF">app</span></span>
+<span data-line=""><span style="color:#7EE787">    hostname</span><span style="color:#E6EDF3">: </span><span style="color:#A5D6FF">app.example.com</span></span>
+<span data-line=""><span style="color:#7EE787">    protocol</span><span style="color:#E6EDF3">: </span><span style="color:#A5D6FF">HTTPS</span></span>
+<span data-line=""><span style="color:#7EE787">    port</span><span style="color:#E6EDF3">: </span><span style="color:#79C0FF">443</span></span>
+<span data-line=""><span style="color:#E6EDF3">  - </span><span style="color:#7EE787">name</span><span style="color:#E6EDF3">: </span><span style="color:#A5D6FF">admin</span></span>
+<span data-line=""><span style="color:#7EE787">    hostname</span><span style="color:#E6EDF3">: </span><span style="color:#A5D6FF">admin.example.com</span></span>
+<span data-line=""><span style="color:#7EE787">    protocol</span><span style="color:#E6EDF3">: </span><span style="color:#A5D6FF">HTTPS</span></span>
+<span data-line=""><span style="color:#7EE787">    port</span><span style="color:#E6EDF3">: </span><span style="color:#79C0FF">443</span></span></code></pre></figure>
 <p>Cela fonctionne bien pour :</p>
 <ul>
 <li>Séparer la gouvernance publique et la gouvernance d'administration</li>
@@ -93,30 +91,30 @@ Même si gRPC et les API web générales peuvent tous deux tourner sur HTTP/2, l
 Ce pattern change réellement la donne dans les équipes moyennes à grandes, car il réduit la catastrophe du "même point d'entrée où tout le monde peut attacher n'importe quoi".</p>
 <h2 id="sectionname-et-allowedroutes--deux-champs-critiques"><code>sectionName</code> et <code>allowedRoutes</code> : deux champs critiques</h2>
 <p>Une route s'attache à un listener précis via <code>parentRefs.sectionName</code> :</p>
-<figure data-rehype-pretty-code-figure=""><pre style="background-color:#24292e;color:#e1e4e8" tabindex="0" data-language="yaml" data-theme="github-dark"><code data-language="yaml" data-theme="github-dark" style="display: grid;"><span data-line=""><span style="color:#85E89D">apiVersion</span><span style="color:#E1E4E8">: </span><span style="color:#9ECBFF">gateway.networking.k8s.io/v1</span></span>
-<span data-line=""><span style="color:#85E89D">kind</span><span style="color:#E1E4E8">: </span><span style="color:#9ECBFF">HTTPRoute</span></span>
-<span data-line=""><span style="color:#85E89D">metadata</span><span style="color:#E1E4E8">:</span></span>
-<span data-line=""><span style="color:#85E89D">  name</span><span style="color:#E1E4E8">: </span><span style="color:#9ECBFF">app-route</span></span>
-<span data-line=""><span style="color:#85E89D">spec</span><span style="color:#E1E4E8">:</span></span>
-<span data-line=""><span style="color:#85E89D">  parentRefs</span><span style="color:#E1E4E8">:</span></span>
-<span data-line=""><span style="color:#E1E4E8">    - </span><span style="color:#85E89D">name</span><span style="color:#E1E4E8">: </span><span style="color:#9ECBFF">eg</span></span>
-<span data-line=""><span style="color:#85E89D">      sectionName</span><span style="color:#E1E4E8">: </span><span style="color:#9ECBFF">https</span></span>
-<span data-line=""><span style="color:#85E89D">  hostnames</span><span style="color:#E1E4E8">:</span></span>
-<span data-line=""><span style="color:#E1E4E8">    - </span><span style="color:#9ECBFF">"app.example.com"</span></span>
-<span data-line=""><span style="color:#85E89D">  rules</span><span style="color:#E1E4E8">:</span></span>
-<span data-line=""><span style="color:#E1E4E8">    - </span><span style="color:#85E89D">backendRefs</span><span style="color:#E1E4E8">:</span></span>
-<span data-line=""><span style="color:#E1E4E8">        - </span><span style="color:#85E89D">name</span><span style="color:#E1E4E8">: </span><span style="color:#9ECBFF">app-service</span></span>
-<span data-line=""><span style="color:#85E89D">          port</span><span style="color:#E1E4E8">: </span><span style="color:#79B8FF">8080</span></span></code></pre></figure>
+<figure data-rehype-pretty-code-figure=""><pre style="background-color:#0d1117;color:#e6edf3" tabindex="0" data-language="yaml" data-theme="github-dark-default"><code data-language="yaml" data-theme="github-dark-default" style="display: grid;"><span data-line=""><span style="color:#7EE787">apiVersion</span><span style="color:#E6EDF3">: </span><span style="color:#A5D6FF">gateway.networking.k8s.io/v1</span></span>
+<span data-line=""><span style="color:#7EE787">kind</span><span style="color:#E6EDF3">: </span><span style="color:#A5D6FF">HTTPRoute</span></span>
+<span data-line=""><span style="color:#7EE787">metadata</span><span style="color:#E6EDF3">:</span></span>
+<span data-line=""><span style="color:#7EE787">  name</span><span style="color:#E6EDF3">: </span><span style="color:#A5D6FF">app-route</span></span>
+<span data-line=""><span style="color:#7EE787">spec</span><span style="color:#E6EDF3">:</span></span>
+<span data-line=""><span style="color:#7EE787">  parentRefs</span><span style="color:#E6EDF3">:</span></span>
+<span data-line=""><span style="color:#E6EDF3">    - </span><span style="color:#7EE787">name</span><span style="color:#E6EDF3">: </span><span style="color:#A5D6FF">eg</span></span>
+<span data-line=""><span style="color:#7EE787">      sectionName</span><span style="color:#E6EDF3">: </span><span style="color:#A5D6FF">https</span></span>
+<span data-line=""><span style="color:#7EE787">  hostnames</span><span style="color:#E6EDF3">:</span></span>
+<span data-line=""><span style="color:#E6EDF3">    - </span><span style="color:#A5D6FF">"app.example.com"</span></span>
+<span data-line=""><span style="color:#7EE787">  rules</span><span style="color:#E6EDF3">:</span></span>
+<span data-line=""><span style="color:#E6EDF3">    - </span><span style="color:#7EE787">backendRefs</span><span style="color:#E6EDF3">:</span></span>
+<span data-line=""><span style="color:#E6EDF3">        - </span><span style="color:#7EE787">name</span><span style="color:#E6EDF3">: </span><span style="color:#A5D6FF">app-service</span></span>
+<span data-line=""><span style="color:#7EE787">          port</span><span style="color:#E6EDF3">: </span><span style="color:#79C0FF">8080</span></span></code></pre></figure>
 <p>Cette route ne cherchera que le listener <code>https</code>.
 Sans préciser <code>sectionName</code>, le système applique des règles pour trouver des listeners compatibles, mais dans les configurations multi-listeners, être explicite est presque toujours plus sûr.</p>
 <p>L'autre champ critique est <code>allowedRoutes</code> :</p>
-<figure data-rehype-pretty-code-figure=""><pre style="background-color:#24292e;color:#e1e4e8" tabindex="0" data-language="yaml" data-theme="github-dark"><code data-language="yaml" data-theme="github-dark" style="display: grid;"><span data-line=""><span style="color:#85E89D">listeners</span><span style="color:#E1E4E8">:</span></span>
-<span data-line=""><span style="color:#E1E4E8">  - </span><span style="color:#85E89D">name</span><span style="color:#E1E4E8">: </span><span style="color:#9ECBFF">public</span></span>
-<span data-line=""><span style="color:#85E89D">    protocol</span><span style="color:#E1E4E8">: </span><span style="color:#9ECBFF">HTTPS</span></span>
-<span data-line=""><span style="color:#85E89D">    port</span><span style="color:#E1E4E8">: </span><span style="color:#79B8FF">443</span></span>
-<span data-line=""><span style="color:#85E89D">    allowedRoutes</span><span style="color:#E1E4E8">:</span></span>
-<span data-line=""><span style="color:#85E89D">      namespaces</span><span style="color:#E1E4E8">:</span></span>
-<span data-line=""><span style="color:#85E89D">        from</span><span style="color:#E1E4E8">: </span><span style="color:#9ECBFF">Same</span></span></code></pre></figure>
+<figure data-rehype-pretty-code-figure=""><pre style="background-color:#0d1117;color:#e6edf3" tabindex="0" data-language="yaml" data-theme="github-dark-default"><code data-language="yaml" data-theme="github-dark-default" style="display: grid;"><span data-line=""><span style="color:#7EE787">listeners</span><span style="color:#E6EDF3">:</span></span>
+<span data-line=""><span style="color:#E6EDF3">  - </span><span style="color:#7EE787">name</span><span style="color:#E6EDF3">: </span><span style="color:#A5D6FF">public</span></span>
+<span data-line=""><span style="color:#7EE787">    protocol</span><span style="color:#E6EDF3">: </span><span style="color:#A5D6FF">HTTPS</span></span>
+<span data-line=""><span style="color:#7EE787">    port</span><span style="color:#E6EDF3">: </span><span style="color:#79C0FF">443</span></span>
+<span data-line=""><span style="color:#7EE787">    allowedRoutes</span><span style="color:#E6EDF3">:</span></span>
+<span data-line=""><span style="color:#7EE787">      namespaces</span><span style="color:#E6EDF3">:</span></span>
+<span data-line=""><span style="color:#7EE787">        from</span><span style="color:#E6EDF3">: </span><span style="color:#A5D6FF">Same</span></span></code></pre></figure>
 <p>Cela signifie que seules les routes présentes dans le même namespace que le <code>Gateway</code> peuvent s'attacher.
 Valeurs courantes :</p>
 <ul>
@@ -151,9 +149,9 @@ Des frontières propres côté listener signifient que les routes s'attachent co
 <p>Une fois la conception des listeners réglée, la question suivante revient souvent :
 <strong>Entre différents namespaces et différentes équipes, qui peut attacher des routes, et qui peut référencer quoi ?</strong></p>
 <p>L'article suivant couvre les patterns inter-namespace et la répartition de responsabilité :
-👉 <a href="08-multi-namespace-and-teamwork">Multi-namespace et responsabilité d'équipe</a></p>7:["$","div",null,{"className":"prose","dangerouslySetInnerHTML":{"__html":"$c"}}]
-8:["$","footer",null,{"className":"mt-14 border-t pt-8","style":{"borderColor":"var(--color-border)"},"children":[["$","div",null,{"className":"mb-8 flex flex-wrap gap-2","children":[["$","$L2","kubernetes",{"href":"/fr/tags/kubernetes","localeCookie":{"name":"NEXT_LOCALE","sameSite":"lax"},"className":"inline-flex items-center rounded-full px-3 py-1 text-sm font-medium transition-colors","style":{"background":"var(--color-code-bg)","color":"var(--color-accent)","border":"1px solid var(--color-border)"},"children":["#","kubernetes"]}],["$","$L2","envoy-gateway",{"href":"/fr/tags/envoy-gateway","localeCookie":{"name":"NEXT_LOCALE","sameSite":"lax"},"className":"inline-flex items-center rounded-full px-3 py-1 text-sm font-medium transition-colors","style":{"background":"var(--color-code-bg)","color":"var(--color-accent)","border":"1px solid var(--color-border)"},"children":["#","envoy-gateway"]}],["$","$L2","gateway-api",{"href":"/fr/tags/gateway-api","localeCookie":{"name":"NEXT_LOCALE","sameSite":"lax"},"className":"inline-flex items-center rounded-full px-3 py-1 text-sm font-medium transition-colors","style":{"background":"var(--color-code-bg)","color":"var(--color-accent)","border":"1px solid var(--color-border)"},"children":["#","gateway-api"]}],["$","$L2","listener",{"href":"/fr/tags/listener","localeCookie":{"name":"NEXT_LOCALE","sameSite":"lax"},"className":"inline-flex items-center rounded-full px-3 py-1 text-sm font-medium transition-colors","style":{"background":"var(--color-code-bg)","color":"var(--color-accent)","border":"1px solid var(--color-border)"},"children":["#","listener"]}],["$","$L2","gateway",{"href":"/fr/tags/gateway","localeCookie":{"name":"NEXT_LOCALE","sameSite":"lax"},"className":"inline-flex items-center rounded-full px-3 py-1 text-sm font-medium transition-colors","style":{"background":"var(--color-code-bg)","color":"var(--color-accent)","border":"1px solid var(--color-border)"},"children":["#","gateway"]}],["$","$L2","httproute",{"href":"/fr/tags/httproute","localeCookie":{"name":"NEXT_LOCALE","sameSite":"lax"},"className":"inline-flex items-center rounded-full px-3 py-1 text-sm font-medium transition-colors","style":{"background":"var(--color-code-bg)","color":"var(--color-accent)","border":"1px solid var(--color-border)"},"children":["#","httproute"]}]]}],["$","nav",null,{"aria-label":"Navigation des articles","className":"grid grid-cols-1 gap-4 sm:grid-cols-2","children":[["$","$L2",null,{"href":"/fr/blog/k8s/gateway/06-route-types-cheatsheet","localeCookie":{"name":"NEXT_LOCALE","sameSite":"lax"},"className":"group rounded-lg border p-4 transition-colors hover:border-accent","style":{"borderColor":"var(--color-border)","background":"var(--color-surface)"},"children":[["$","p",null,{"className":"mb-1 text-xs","style":{"color":"var(--color-muted)"},"children":"← Plus récent"}],["$","p",null,{"className":"line-clamp-1 text-sm font-medium transition-colors group-hover:text-accent","style":{"color":"var(--color-text)"},"children":"Antisèche des types de routes Envoy Gateway : HTTPRoute, GRPCRoute, TCPRoute ou TLSRoute ?"}]]}],["$","$L2",null,{"href":"/fr/blog/k8s/gateway/08-multi-namespace-and-teamwork","localeCookie":{"name":"NEXT_LOCALE","sameSite":"lax"},"className":"group rounded-lg border p-4 text-right transition-colors hover:border-accent","style":{"borderColor":"var(--color-border)","background":"var(--color-surface)"},"children":[["$","p",null,{"className":"mb-1 text-xs","style":{"color":"var(--color-muted)"},"children":"Plus ancien →"}],["$","p",null,{"className":"line-clamp-1 text-sm font-medium transition-colors group-hover:text-accent","style":{"color":"var(--color-text)"},"children":"Envoy Gateway multi-namespace et responsabilité d'équipe : allowedRoutes, ReferenceGrant et gouvernance inter-équipes"}]]}]]}]]}]
-e:T3db7,<p>Beaucoup de gens qui apprennent Gateway API traitent <code>Listener</code> comme "ah oui, c'est juste le champ <code>port: 80</code>."
+👉 <a href="08-multi-namespace-and-teamwork">Multi-namespace et responsabilité d'équipe</a></p>5:["$","div",null,{"className":"prose","dangerouslySetInnerHTML":{"__html":"$a"}}]
+6:["$","footer",null,{"className":"mt-14 border-t pt-8","style":{"borderColor":"var(--color-border)"},"children":[["$","div",null,{"className":"mb-8 flex flex-wrap gap-2","children":[["$","$L2","kubernetes",{"href":"/fr/tags/kubernetes","localeCookie":{"name":"NEXT_LOCALE","sameSite":"lax"},"className":"inline-flex items-center rounded-full px-3 py-1 text-sm font-medium transition-colors","style":{"background":"var(--color-code-bg)","color":"var(--color-accent)","border":"1px solid var(--color-border)"},"children":["#","kubernetes"]}],["$","$L2","envoy-gateway",{"href":"/fr/tags/envoy-gateway","localeCookie":{"name":"NEXT_LOCALE","sameSite":"lax"},"className":"inline-flex items-center rounded-full px-3 py-1 text-sm font-medium transition-colors","style":{"background":"var(--color-code-bg)","color":"var(--color-accent)","border":"1px solid var(--color-border)"},"children":["#","envoy-gateway"]}],["$","$L2","gateway-api",{"href":"/fr/tags/gateway-api","localeCookie":{"name":"NEXT_LOCALE","sameSite":"lax"},"className":"inline-flex items-center rounded-full px-3 py-1 text-sm font-medium transition-colors","style":{"background":"var(--color-code-bg)","color":"var(--color-accent)","border":"1px solid var(--color-border)"},"children":["#","gateway-api"]}],["$","$L2","listener",{"href":"/fr/tags/listener","localeCookie":{"name":"NEXT_LOCALE","sameSite":"lax"},"className":"inline-flex items-center rounded-full px-3 py-1 text-sm font-medium transition-colors","style":{"background":"var(--color-code-bg)","color":"var(--color-accent)","border":"1px solid var(--color-border)"},"children":["#","listener"]}],["$","$L2","gateway",{"href":"/fr/tags/gateway","localeCookie":{"name":"NEXT_LOCALE","sameSite":"lax"},"className":"inline-flex items-center rounded-full px-3 py-1 text-sm font-medium transition-colors","style":{"background":"var(--color-code-bg)","color":"var(--color-accent)","border":"1px solid var(--color-border)"},"children":["#","gateway"]}],["$","$L2","httproute",{"href":"/fr/tags/httproute","localeCookie":{"name":"NEXT_LOCALE","sameSite":"lax"},"className":"inline-flex items-center rounded-full px-3 py-1 text-sm font-medium transition-colors","style":{"background":"var(--color-code-bg)","color":"var(--color-accent)","border":"1px solid var(--color-border)"},"children":["#","httproute"]}]]}],["$","nav",null,{"aria-label":"Navigation des articles","className":"grid grid-cols-1 gap-4 sm:grid-cols-2","children":[["$","$L2",null,{"href":"/fr/blog/k8s/gateway/06-route-types-cheatsheet","localeCookie":{"name":"NEXT_LOCALE","sameSite":"lax"},"className":"group rounded-lg border p-4 transition-colors hover:border-accent","style":{"borderColor":"var(--color-border)","background":"var(--color-surface)"},"children":[["$","p",null,{"className":"mb-1 text-xs","style":{"color":"var(--color-muted)"},"children":"← Plus récent"}],["$","p",null,{"className":"line-clamp-1 text-sm font-medium transition-colors group-hover:text-accent","style":{"color":"var(--color-text)"},"children":"Antisèche des types de routes Envoy Gateway : HTTPRoute, GRPCRoute, TCPRoute ou TLSRoute ?"}]]}],["$","$L2",null,{"href":"/fr/blog/k8s/gateway/08-multi-namespace-and-teamwork","localeCookie":{"name":"NEXT_LOCALE","sameSite":"lax"},"className":"group rounded-lg border p-4 text-right transition-colors hover:border-accent","style":{"borderColor":"var(--color-border)","background":"var(--color-surface)"},"children":[["$","p",null,{"className":"mb-1 text-xs","style":{"color":"var(--color-muted)"},"children":"Plus ancien →"}],["$","p",null,{"className":"line-clamp-1 text-sm font-medium transition-colors group-hover:text-accent","style":{"color":"var(--color-text)"},"children":"Envoy Gateway multi-namespace et responsabilité d'équipe : allowedRoutes, ReferenceGrant et gouvernance inter-équipes"}]]}]]}]]}]
+c:T3df7,<p>Beaucoup de gens qui apprennent Gateway API traitent <code>Listener</code> comme "ah oui, c'est juste le champ <code>port: 80</code>."
 Mais dans les déploiements réels, <code>Listener</code> est loin d'être un figurant : c'est plutôt le centre de contrôle du trafic pour toute votre couche d'entrée.</p>
 <p>Un listener ne se contente pas d'ouvrir un port. Il définit :</p>
 <ul>
@@ -165,32 +163,32 @@ Mais dans les déploiements réels, <code>Listener</code> est loin d'être un fi
 <p>Autrement dit, <strong>un listener est un contrat d'entrée</strong>. Écrivez des contrats propres, et les routes en aval, la répartition des responsabilités d'équipe et la complexité du débogage deviennent plus propres elles aussi.</p>
 <h2 id="construire-le-bon-modèle-mental--un-listener--un-slot-dentrée">Construire le bon modèle mental : un listener = un slot d'entrée</h2>
 <p>Prenez ce Gateway :</p>
-<figure data-rehype-pretty-code-figure=""><pre style="background-color:#24292e;color:#e1e4e8" tabindex="0" data-language="yaml" data-theme="github-dark"><code data-language="yaml" data-theme="github-dark" style="display: grid;"><span data-line=""><span style="color:#85E89D">apiVersion</span><span style="color:#E1E4E8">: </span><span style="color:#9ECBFF">gateway.networking.k8s.io/v1</span></span>
-<span data-line=""><span style="color:#85E89D">kind</span><span style="color:#E1E4E8">: </span><span style="color:#9ECBFF">Gateway</span></span>
-<span data-line=""><span style="color:#85E89D">metadata</span><span style="color:#E1E4E8">:</span></span>
-<span data-line=""><span style="color:#85E89D">  name</span><span style="color:#E1E4E8">: </span><span style="color:#9ECBFF">eg</span></span>
-<span data-line=""><span style="color:#85E89D">spec</span><span style="color:#E1E4E8">:</span></span>
-<span data-line=""><span style="color:#85E89D">  gatewayClassName</span><span style="color:#E1E4E8">: </span><span style="color:#9ECBFF">eg</span></span>
-<span data-line=""><span style="color:#85E89D">  listeners</span><span style="color:#E1E4E8">:</span></span>
-<span data-line=""><span style="color:#E1E4E8">    - </span><span style="color:#85E89D">name</span><span style="color:#E1E4E8">: </span><span style="color:#9ECBFF">http</span></span>
-<span data-line=""><span style="color:#85E89D">      protocol</span><span style="color:#E1E4E8">: </span><span style="color:#9ECBFF">HTTP</span></span>
-<span data-line=""><span style="color:#85E89D">      port</span><span style="color:#E1E4E8">: </span><span style="color:#79B8FF">80</span></span>
-<span data-line=""><span style="color:#E1E4E8">    - </span><span style="color:#85E89D">name</span><span style="color:#E1E4E8">: </span><span style="color:#9ECBFF">https</span></span>
-<span data-line=""><span style="color:#85E89D">      protocol</span><span style="color:#E1E4E8">: </span><span style="color:#9ECBFF">HTTPS</span></span>
-<span data-line=""><span style="color:#85E89D">      port</span><span style="color:#E1E4E8">: </span><span style="color:#79B8FF">443</span></span>
-<span data-line=""><span style="color:#85E89D">      hostname</span><span style="color:#E1E4E8">: </span><span style="color:#9ECBFF">app.example.com</span></span>
-<span data-line=""><span style="color:#85E89D">      tls</span><span style="color:#E1E4E8">:</span></span>
-<span data-line=""><span style="color:#85E89D">        mode</span><span style="color:#E1E4E8">: </span><span style="color:#9ECBFF">Terminate</span></span>
-<span data-line=""><span style="color:#85E89D">        certificateRefs</span><span style="color:#E1E4E8">:</span></span>
-<span data-line=""><span style="color:#E1E4E8">          - </span><span style="color:#85E89D">name</span><span style="color:#E1E4E8">: </span><span style="color:#9ECBFF">app-cert</span></span>
-<span data-line=""><span style="color:#E1E4E8">    - </span><span style="color:#85E89D">name</span><span style="color:#E1E4E8">: </span><span style="color:#9ECBFF">grpc</span></span>
-<span data-line=""><span style="color:#85E89D">      protocol</span><span style="color:#E1E4E8">: </span><span style="color:#9ECBFF">HTTPS</span></span>
-<span data-line=""><span style="color:#85E89D">      port</span><span style="color:#E1E4E8">: </span><span style="color:#79B8FF">8443</span></span>
-<span data-line=""><span style="color:#85E89D">      hostname</span><span style="color:#E1E4E8">: </span><span style="color:#9ECBFF">grpc.example.com</span></span>
-<span data-line=""><span style="color:#85E89D">      tls</span><span style="color:#E1E4E8">:</span></span>
-<span data-line=""><span style="color:#85E89D">        mode</span><span style="color:#E1E4E8">: </span><span style="color:#9ECBFF">Terminate</span></span>
-<span data-line=""><span style="color:#85E89D">        certificateRefs</span><span style="color:#E1E4E8">:</span></span>
-<span data-line=""><span style="color:#E1E4E8">          - </span><span style="color:#85E89D">name</span><span style="color:#E1E4E8">: </span><span style="color:#9ECBFF">grpc-cert</span></span></code></pre></figure>
+<figure data-rehype-pretty-code-figure=""><pre style="background-color:#0d1117;color:#e6edf3" tabindex="0" data-language="yaml" data-theme="github-dark-default"><code data-language="yaml" data-theme="github-dark-default" style="display: grid;"><span data-line=""><span style="color:#7EE787">apiVersion</span><span style="color:#E6EDF3">: </span><span style="color:#A5D6FF">gateway.networking.k8s.io/v1</span></span>
+<span data-line=""><span style="color:#7EE787">kind</span><span style="color:#E6EDF3">: </span><span style="color:#A5D6FF">Gateway</span></span>
+<span data-line=""><span style="color:#7EE787">metadata</span><span style="color:#E6EDF3">:</span></span>
+<span data-line=""><span style="color:#7EE787">  name</span><span style="color:#E6EDF3">: </span><span style="color:#A5D6FF">eg</span></span>
+<span data-line=""><span style="color:#7EE787">spec</span><span style="color:#E6EDF3">:</span></span>
+<span data-line=""><span style="color:#7EE787">  gatewayClassName</span><span style="color:#E6EDF3">: </span><span style="color:#A5D6FF">eg</span></span>
+<span data-line=""><span style="color:#7EE787">  listeners</span><span style="color:#E6EDF3">:</span></span>
+<span data-line=""><span style="color:#E6EDF3">    - </span><span style="color:#7EE787">name</span><span style="color:#E6EDF3">: </span><span style="color:#A5D6FF">http</span></span>
+<span data-line=""><span style="color:#7EE787">      protocol</span><span style="color:#E6EDF3">: </span><span style="color:#A5D6FF">HTTP</span></span>
+<span data-line=""><span style="color:#7EE787">      port</span><span style="color:#E6EDF3">: </span><span style="color:#79C0FF">80</span></span>
+<span data-line=""><span style="color:#E6EDF3">    - </span><span style="color:#7EE787">name</span><span style="color:#E6EDF3">: </span><span style="color:#A5D6FF">https</span></span>
+<span data-line=""><span style="color:#7EE787">      protocol</span><span style="color:#E6EDF3">: </span><span style="color:#A5D6FF">HTTPS</span></span>
+<span data-line=""><span style="color:#7EE787">      port</span><span style="color:#E6EDF3">: </span><span style="color:#79C0FF">443</span></span>
+<span data-line=""><span style="color:#7EE787">      hostname</span><span style="color:#E6EDF3">: </span><span style="color:#A5D6FF">app.example.com</span></span>
+<span data-line=""><span style="color:#7EE787">      tls</span><span style="color:#E6EDF3">:</span></span>
+<span data-line=""><span style="color:#7EE787">        mode</span><span style="color:#E6EDF3">: </span><span style="color:#A5D6FF">Terminate</span></span>
+<span data-line=""><span style="color:#7EE787">        certificateRefs</span><span style="color:#E6EDF3">:</span></span>
+<span data-line=""><span style="color:#E6EDF3">          - </span><span style="color:#7EE787">name</span><span style="color:#E6EDF3">: </span><span style="color:#A5D6FF">app-cert</span></span>
+<span data-line=""><span style="color:#E6EDF3">    - </span><span style="color:#7EE787">name</span><span style="color:#E6EDF3">: </span><span style="color:#A5D6FF">grpc</span></span>
+<span data-line=""><span style="color:#7EE787">      protocol</span><span style="color:#E6EDF3">: </span><span style="color:#A5D6FF">HTTPS</span></span>
+<span data-line=""><span style="color:#7EE787">      port</span><span style="color:#E6EDF3">: </span><span style="color:#79C0FF">8443</span></span>
+<span data-line=""><span style="color:#7EE787">      hostname</span><span style="color:#E6EDF3">: </span><span style="color:#A5D6FF">grpc.example.com</span></span>
+<span data-line=""><span style="color:#7EE787">      tls</span><span style="color:#E6EDF3">:</span></span>
+<span data-line=""><span style="color:#7EE787">        mode</span><span style="color:#E6EDF3">: </span><span style="color:#A5D6FF">Terminate</span></span>
+<span data-line=""><span style="color:#7EE787">        certificateRefs</span><span style="color:#E6EDF3">:</span></span>
+<span data-line=""><span style="color:#E6EDF3">          - </span><span style="color:#7EE787">name</span><span style="color:#E6EDF3">: </span><span style="color:#A5D6FF">grpc-cert</span></span></code></pre></figure>
 <p>Ce n'est pas juste "un Gateway avec trois trous". Voyez-le plutôt comme :</p>
 <ul>
 <li>Le listener <code>http</code> : pour le HTTP en clair</li>
@@ -212,15 +210,15 @@ Vous n'assemblez pas seulement du YAML, vous dessinez des frontières d'entrée.
 Même si gRPC et les API web générales peuvent tous deux tourner sur HTTP/2, leurs modèles de service diffèrent. Les garder séparés évite que les routes interfèrent les unes avec les autres.</p>
 <h3 id="pattern-2--découper-par-hostname">Pattern 2 : découper par hostname</h3>
 <p>Si vous avez plusieurs domaines, un pattern courant consiste à mettre un listener par hostname principal :</p>
-<figure data-rehype-pretty-code-figure=""><pre style="background-color:#24292e;color:#e1e4e8" tabindex="0" data-language="yaml" data-theme="github-dark"><code data-language="yaml" data-theme="github-dark" style="display: grid;"><span data-line=""><span style="color:#85E89D">listeners</span><span style="color:#E1E4E8">:</span></span>
-<span data-line=""><span style="color:#E1E4E8">  - </span><span style="color:#85E89D">name</span><span style="color:#E1E4E8">: </span><span style="color:#9ECBFF">app</span></span>
-<span data-line=""><span style="color:#85E89D">    hostname</span><span style="color:#E1E4E8">: </span><span style="color:#9ECBFF">app.example.com</span></span>
-<span data-line=""><span style="color:#85E89D">    protocol</span><span style="color:#E1E4E8">: </span><span style="color:#9ECBFF">HTTPS</span></span>
-<span data-line=""><span style="color:#85E89D">    port</span><span style="color:#E1E4E8">: </span><span style="color:#79B8FF">443</span></span>
-<span data-line=""><span style="color:#E1E4E8">  - </span><span style="color:#85E89D">name</span><span style="color:#E1E4E8">: </span><span style="color:#9ECBFF">admin</span></span>
-<span data-line=""><span style="color:#85E89D">    hostname</span><span style="color:#E1E4E8">: </span><span style="color:#9ECBFF">admin.example.com</span></span>
-<span data-line=""><span style="color:#85E89D">    protocol</span><span style="color:#E1E4E8">: </span><span style="color:#9ECBFF">HTTPS</span></span>
-<span data-line=""><span style="color:#85E89D">    port</span><span style="color:#E1E4E8">: </span><span style="color:#79B8FF">443</span></span></code></pre></figure>
+<figure data-rehype-pretty-code-figure=""><pre style="background-color:#0d1117;color:#e6edf3" tabindex="0" data-language="yaml" data-theme="github-dark-default"><code data-language="yaml" data-theme="github-dark-default" style="display: grid;"><span data-line=""><span style="color:#7EE787">listeners</span><span style="color:#E6EDF3">:</span></span>
+<span data-line=""><span style="color:#E6EDF3">  - </span><span style="color:#7EE787">name</span><span style="color:#E6EDF3">: </span><span style="color:#A5D6FF">app</span></span>
+<span data-line=""><span style="color:#7EE787">    hostname</span><span style="color:#E6EDF3">: </span><span style="color:#A5D6FF">app.example.com</span></span>
+<span data-line=""><span style="color:#7EE787">    protocol</span><span style="color:#E6EDF3">: </span><span style="color:#A5D6FF">HTTPS</span></span>
+<span data-line=""><span style="color:#7EE787">    port</span><span style="color:#E6EDF3">: </span><span style="color:#79C0FF">443</span></span>
+<span data-line=""><span style="color:#E6EDF3">  - </span><span style="color:#7EE787">name</span><span style="color:#E6EDF3">: </span><span style="color:#A5D6FF">admin</span></span>
+<span data-line=""><span style="color:#7EE787">    hostname</span><span style="color:#E6EDF3">: </span><span style="color:#A5D6FF">admin.example.com</span></span>
+<span data-line=""><span style="color:#7EE787">    protocol</span><span style="color:#E6EDF3">: </span><span style="color:#A5D6FF">HTTPS</span></span>
+<span data-line=""><span style="color:#7EE787">    port</span><span style="color:#E6EDF3">: </span><span style="color:#79C0FF">443</span></span></code></pre></figure>
 <p>Cela fonctionne bien pour :</p>
 <ul>
 <li>Séparer la gouvernance publique et la gouvernance d'administration</li>
@@ -238,30 +236,30 @@ Même si gRPC et les API web générales peuvent tous deux tourner sur HTTP/2, l
 Ce pattern change réellement la donne dans les équipes moyennes à grandes, car il réduit la catastrophe du "même point d'entrée où tout le monde peut attacher n'importe quoi".</p>
 <h2 id="sectionname-et-allowedroutes--deux-champs-critiques"><code>sectionName</code> et <code>allowedRoutes</code> : deux champs critiques</h2>
 <p>Une route s'attache à un listener précis via <code>parentRefs.sectionName</code> :</p>
-<figure data-rehype-pretty-code-figure=""><pre style="background-color:#24292e;color:#e1e4e8" tabindex="0" data-language="yaml" data-theme="github-dark"><code data-language="yaml" data-theme="github-dark" style="display: grid;"><span data-line=""><span style="color:#85E89D">apiVersion</span><span style="color:#E1E4E8">: </span><span style="color:#9ECBFF">gateway.networking.k8s.io/v1</span></span>
-<span data-line=""><span style="color:#85E89D">kind</span><span style="color:#E1E4E8">: </span><span style="color:#9ECBFF">HTTPRoute</span></span>
-<span data-line=""><span style="color:#85E89D">metadata</span><span style="color:#E1E4E8">:</span></span>
-<span data-line=""><span style="color:#85E89D">  name</span><span style="color:#E1E4E8">: </span><span style="color:#9ECBFF">app-route</span></span>
-<span data-line=""><span style="color:#85E89D">spec</span><span style="color:#E1E4E8">:</span></span>
-<span data-line=""><span style="color:#85E89D">  parentRefs</span><span style="color:#E1E4E8">:</span></span>
-<span data-line=""><span style="color:#E1E4E8">    - </span><span style="color:#85E89D">name</span><span style="color:#E1E4E8">: </span><span style="color:#9ECBFF">eg</span></span>
-<span data-line=""><span style="color:#85E89D">      sectionName</span><span style="color:#E1E4E8">: </span><span style="color:#9ECBFF">https</span></span>
-<span data-line=""><span style="color:#85E89D">  hostnames</span><span style="color:#E1E4E8">:</span></span>
-<span data-line=""><span style="color:#E1E4E8">    - </span><span style="color:#9ECBFF">"app.example.com"</span></span>
-<span data-line=""><span style="color:#85E89D">  rules</span><span style="color:#E1E4E8">:</span></span>
-<span data-line=""><span style="color:#E1E4E8">    - </span><span style="color:#85E89D">backendRefs</span><span style="color:#E1E4E8">:</span></span>
-<span data-line=""><span style="color:#E1E4E8">        - </span><span style="color:#85E89D">name</span><span style="color:#E1E4E8">: </span><span style="color:#9ECBFF">app-service</span></span>
-<span data-line=""><span style="color:#85E89D">          port</span><span style="color:#E1E4E8">: </span><span style="color:#79B8FF">8080</span></span></code></pre></figure>
+<figure data-rehype-pretty-code-figure=""><pre style="background-color:#0d1117;color:#e6edf3" tabindex="0" data-language="yaml" data-theme="github-dark-default"><code data-language="yaml" data-theme="github-dark-default" style="display: grid;"><span data-line=""><span style="color:#7EE787">apiVersion</span><span style="color:#E6EDF3">: </span><span style="color:#A5D6FF">gateway.networking.k8s.io/v1</span></span>
+<span data-line=""><span style="color:#7EE787">kind</span><span style="color:#E6EDF3">: </span><span style="color:#A5D6FF">HTTPRoute</span></span>
+<span data-line=""><span style="color:#7EE787">metadata</span><span style="color:#E6EDF3">:</span></span>
+<span data-line=""><span style="color:#7EE787">  name</span><span style="color:#E6EDF3">: </span><span style="color:#A5D6FF">app-route</span></span>
+<span data-line=""><span style="color:#7EE787">spec</span><span style="color:#E6EDF3">:</span></span>
+<span data-line=""><span style="color:#7EE787">  parentRefs</span><span style="color:#E6EDF3">:</span></span>
+<span data-line=""><span style="color:#E6EDF3">    - </span><span style="color:#7EE787">name</span><span style="color:#E6EDF3">: </span><span style="color:#A5D6FF">eg</span></span>
+<span data-line=""><span style="color:#7EE787">      sectionName</span><span style="color:#E6EDF3">: </span><span style="color:#A5D6FF">https</span></span>
+<span data-line=""><span style="color:#7EE787">  hostnames</span><span style="color:#E6EDF3">:</span></span>
+<span data-line=""><span style="color:#E6EDF3">    - </span><span style="color:#A5D6FF">"app.example.com"</span></span>
+<span data-line=""><span style="color:#7EE787">  rules</span><span style="color:#E6EDF3">:</span></span>
+<span data-line=""><span style="color:#E6EDF3">    - </span><span style="color:#7EE787">backendRefs</span><span style="color:#E6EDF3">:</span></span>
+<span data-line=""><span style="color:#E6EDF3">        - </span><span style="color:#7EE787">name</span><span style="color:#E6EDF3">: </span><span style="color:#A5D6FF">app-service</span></span>
+<span data-line=""><span style="color:#7EE787">          port</span><span style="color:#E6EDF3">: </span><span style="color:#79C0FF">8080</span></span></code></pre></figure>
 <p>Cette route ne cherchera que le listener <code>https</code>.
 Sans préciser <code>sectionName</code>, le système applique des règles pour trouver des listeners compatibles, mais dans les configurations multi-listeners, être explicite est presque toujours plus sûr.</p>
 <p>L'autre champ critique est <code>allowedRoutes</code> :</p>
-<figure data-rehype-pretty-code-figure=""><pre style="background-color:#24292e;color:#e1e4e8" tabindex="0" data-language="yaml" data-theme="github-dark"><code data-language="yaml" data-theme="github-dark" style="display: grid;"><span data-line=""><span style="color:#85E89D">listeners</span><span style="color:#E1E4E8">:</span></span>
-<span data-line=""><span style="color:#E1E4E8">  - </span><span style="color:#85E89D">name</span><span style="color:#E1E4E8">: </span><span style="color:#9ECBFF">public</span></span>
-<span data-line=""><span style="color:#85E89D">    protocol</span><span style="color:#E1E4E8">: </span><span style="color:#9ECBFF">HTTPS</span></span>
-<span data-line=""><span style="color:#85E89D">    port</span><span style="color:#E1E4E8">: </span><span style="color:#79B8FF">443</span></span>
-<span data-line=""><span style="color:#85E89D">    allowedRoutes</span><span style="color:#E1E4E8">:</span></span>
-<span data-line=""><span style="color:#85E89D">      namespaces</span><span style="color:#E1E4E8">:</span></span>
-<span data-line=""><span style="color:#85E89D">        from</span><span style="color:#E1E4E8">: </span><span style="color:#9ECBFF">Same</span></span></code></pre></figure>
+<figure data-rehype-pretty-code-figure=""><pre style="background-color:#0d1117;color:#e6edf3" tabindex="0" data-language="yaml" data-theme="github-dark-default"><code data-language="yaml" data-theme="github-dark-default" style="display: grid;"><span data-line=""><span style="color:#7EE787">listeners</span><span style="color:#E6EDF3">:</span></span>
+<span data-line=""><span style="color:#E6EDF3">  - </span><span style="color:#7EE787">name</span><span style="color:#E6EDF3">: </span><span style="color:#A5D6FF">public</span></span>
+<span data-line=""><span style="color:#7EE787">    protocol</span><span style="color:#E6EDF3">: </span><span style="color:#A5D6FF">HTTPS</span></span>
+<span data-line=""><span style="color:#7EE787">    port</span><span style="color:#E6EDF3">: </span><span style="color:#79C0FF">443</span></span>
+<span data-line=""><span style="color:#7EE787">    allowedRoutes</span><span style="color:#E6EDF3">:</span></span>
+<span data-line=""><span style="color:#7EE787">      namespaces</span><span style="color:#E6EDF3">:</span></span>
+<span data-line=""><span style="color:#7EE787">        from</span><span style="color:#E6EDF3">: </span><span style="color:#A5D6FF">Same</span></span></code></pre></figure>
 <p>Cela signifie que seules les routes présentes dans le même namespace que le <code>Gateway</code> peuvent s'attacher.
 Valeurs courantes :</p>
 <ul>
@@ -296,7 +294,7 @@ Des frontières propres côté listener signifient que les routes s'attachent co
 <p>Une fois la conception des listeners réglée, la question suivante revient souvent :
 <strong>Entre différents namespaces et différentes équipes, qui peut attacher des routes, et qui peut référencer quoi ?</strong></p>
 <p>L'article suivant couvre les patterns inter-namespace et la répartition de responsabilité :
-👉 <a href="08-multi-namespace-and-teamwork">Multi-namespace et responsabilité d'équipe</a></p>9:["$","aside",null,{"className":"hidden lg:block","children":["$","$Ld",null,{"html":"$e"}]}]
-a:["$","script","script-0",{"src":"/_next/static/chunks/2dddb3bc05093f69.js","async":true}]
-b:["$","$Lf",null,{"children":["$","$10",null,{"name":"Next.MetadataOutlet","children":"$@11"}]}]
-11:null
+👉 <a href="08-multi-namespace-and-teamwork">Multi-namespace et responsabilité d'équipe</a></p>7:["$","aside",null,{"className":"hidden lg:block","children":["$","$Lb",null,{"html":"$c"}]}]
+8:["$","script","script-0",{"src":"/_next/static/chunks/2dddb3bc05093f69.js","async":true}]
+9:["$","$Ld",null,{"children":["$","$e",null,{"name":"Next.MetadataOutlet","children":"$@f"}]}]
+f:null

@@ -1,12 +1,13 @@
 1:"$Sreact.fragment"
-2:I[14864,["/_next/static/chunks/7923a261b80bb6e1.js","/_next/static/chunks/e09b4358027e8033.js","/_next/static/chunks/2dddb3bc05093f69.js"],"default"]
-b:I[24801,["/_next/static/chunks/7923a261b80bb6e1.js","/_next/static/chunks/e09b4358027e8033.js","/_next/static/chunks/2dddb3bc05093f69.js"],"default"]
-d:I[50183,["/_next/static/chunks/5a5b5b13c22d14f7.js","/_next/static/chunks/a484d1d3dd4b55ab.js"],"OutletBoundary"]
-e:"$Sreact.suspense"
-0:{"buildId":"sM8YAyjANE7sOnXm3EQGk","rsc":["$","$1","c",{"children":[[["$","script",null,{"type":"application/ld+json","dangerouslySetInnerHTML":{"__html":"{\"@context\":\"https://schema.org\",\"@type\":\"Article\",\"headline\":\"Envoy Gateway 핵심 개념: Gateway, Listener, Proxy, 그리고 Route 계열 완전 해설\",\"description\":\"Envoy Gateway의 완전한 사고 모델을 세웁니다. Gateway, Listener, Envoy Proxy, 각 Route 타입의 책임을 이해합니다.\",\"url\":\"https://benxhub.com/ko/blog/k8s/gateway/02-core-concepts\",\"mainEntityOfPage\":{\"@type\":\"WebPage\",\"@id\":\"https://benxhub.com/ko/blog/k8s/gateway/02-core-concepts\"},\"datePublished\":\"2026-03-10T00:00:00.000Z\",\"dateModified\":\"2026-03-10T00:00:00.000Z\",\"keywords\":\"kubernetes, envoy-gateway, gateway-api, gatewayclass, listener, httproute, grpcroute\",\"inLanguage\":\"ko\",\"author\":{\"@type\":\"Person\",\"name\":\"BenX\",\"url\":\"https://benxhub.com\"},\"publisher\":{\"@type\":\"Organization\",\"name\":\"BenXHub Blog\",\"url\":\"https://benxhub.com\"}}"}}],["$","div",null,{"className":"mx-auto max-w-6xl px-4 py-12 sm:px-6","children":["$","div",null,{"className":"lg:grid lg:grid-cols-[1fr_240px] lg:gap-14","children":[["$","article",null,{"children":[["$","header",null,{"className":"mb-10","children":[["$","div",null,{"className":"mb-4 flex flex-wrap gap-2","children":[["$","$L2","kubernetes",{"href":"/ko/tags/kubernetes","localeCookie":{"name":"NEXT_LOCALE","sameSite":"lax"},"className":"inline-flex items-center rounded-full px-2.5 py-0.5 text-xs font-medium transition-colors","style":{"background":"var(--color-code-bg)","color":"var(--color-accent)","border":"1px solid var(--color-border)"},"children":["#","kubernetes"]}],["$","$L2","envoy-gateway",{"href":"/ko/tags/envoy-gateway","localeCookie":{"name":"NEXT_LOCALE","sameSite":"lax"},"className":"inline-flex items-center rounded-full px-2.5 py-0.5 text-xs font-medium transition-colors","style":{"background":"var(--color-code-bg)","color":"var(--color-accent)","border":"1px solid var(--color-border)"},"children":["#","envoy-gateway"]}],["$","$L2","gateway-api",{"href":"/ko/tags/gateway-api","localeCookie":{"name":"NEXT_LOCALE","sameSite":"lax"},"className":"inline-flex items-center rounded-full px-2.5 py-0.5 text-xs font-medium transition-colors","style":{"background":"var(--color-code-bg)","color":"var(--color-accent)","border":"1px solid var(--color-border)"},"children":["#","gateway-api"]}],["$","$L2","gatewayclass",{"href":"/ko/tags/gatewayclass","localeCookie":{"name":"NEXT_LOCALE","sameSite":"lax"},"className":"inline-flex items-center rounded-full px-2.5 py-0.5 text-xs font-medium transition-colors","style":{"background":"var(--color-code-bg)","color":"var(--color-accent)","border":"1px solid var(--color-border)"},"children":["#","gatewayclass"]}],["$","$L2","listener",{"href":"/ko/tags/listener","localeCookie":{"name":"NEXT_LOCALE","sameSite":"lax"},"className":"inline-flex items-center rounded-full px-2.5 py-0.5 text-xs font-medium transition-colors","style":{"background":"var(--color-code-bg)","color":"var(--color-accent)","border":"1px solid var(--color-border)"},"children":["#","listener"]}],["$","$L2","httproute",{"href":"/ko/tags/httproute","localeCookie":{"name":"NEXT_LOCALE","sameSite":"lax"},"className":"inline-flex items-center rounded-full px-2.5 py-0.5 text-xs font-medium transition-colors","style":{"background":"var(--color-code-bg)","color":"var(--color-accent)","border":"1px solid var(--color-border)"},"children":["#","httproute"]}],["$","$L2","grpcroute",{"href":"/ko/tags/grpcroute","localeCookie":{"name":"NEXT_LOCALE","sameSite":"lax"},"className":"inline-flex items-center rounded-full px-2.5 py-0.5 text-xs font-medium transition-colors","style":{"background":"var(--color-code-bg)","color":"var(--color-accent)","border":"1px solid var(--color-border)"},"children":["#","grpcroute"]}]]}],["$","h1",null,{"className":"mb-4 text-3xl leading-snug font-bold tracking-tight sm:text-4xl","style":{"color":"var(--color-text)"},"children":"Envoy Gateway 핵심 개념: Gateway, Listener, Proxy, 그리고 Route 계열 완전 해설"}],"$L3","$undefined","$L4"]}],"$L5","$L6"]}],"$L7"]}]}]],["$L8"],"$L9"]}],"loading":null,"isPartial":false}
-3:["$","div",null,{"className":"flex flex-wrap items-center gap-3 text-sm","style":{"color":"var(--color-muted)"},"children":[["$","time",null,{"dateTime":"2026-03-10","children":"2026년 3월 10일"}],["$","span",null,{"aria-hidden":"true","children":"·"}],["$","span",null,{"children":"13 min read"}]]}]
-4:["$","div",null,{"className":"mt-6 border-b","style":{"borderColor":"var(--color-border)"}}]
-a:T558e,<p>Gateway API를 처음 보면 많은 사람이 이런 느낌을 받습니다. "용어 수가 엄청 많은 건 아닌데, 이름 비슷한 등장인물만 가득한 출연진 표를 보는 느낌이다. 누가 주인공이고 누가 조연인지 모르겠다." 이 글은 바로 그 혼란을 잘라내기 위해 존재합니다. 그리고 그 과정에서 자주 쓰는 route 타입들도 함께 정리합니다.</p>
+2:I[14864,["/_next/static/chunks/4204edc93da35a5e.js","/_next/static/chunks/f2afb7fd2b7566bb.js","/_next/static/chunks/2dddb3bc05093f69.js"],"default"]
+c:I[24801,["/_next/static/chunks/4204edc93da35a5e.js","/_next/static/chunks/f2afb7fd2b7566bb.js","/_next/static/chunks/2dddb3bc05093f69.js"],"default"]
+e:I[50183,["/_next/static/chunks/5a5b5b13c22d14f7.js","/_next/static/chunks/a484d1d3dd4b55ab.js"],"OutletBoundary"]
+f:"$Sreact.suspense"
+0:{"buildId":"ekNoF06-0VZrB4pGVUsy8","rsc":["$","$1","c",{"children":[[["$","script",null,{"type":"application/ld+json","dangerouslySetInnerHTML":{"__html":"{\"@context\":\"https://schema.org\",\"@type\":\"Article\",\"headline\":\"Envoy Gateway 핵심 개념: Gateway, Listener, Proxy, 그리고 Route 계열 완전 해설\",\"description\":\"Envoy Gateway의 완전한 사고 모델을 세웁니다. Gateway, Listener, Envoy Proxy, 각 Route 타입의 책임을 이해합니다.\",\"url\":\"https://benxhub.com/ko/blog/k8s/gateway/02-core-concepts/\",\"mainEntityOfPage\":{\"@type\":\"WebPage\",\"@id\":\"https://benxhub.com/ko/blog/k8s/gateway/02-core-concepts/\"},\"datePublished\":\"2026-03-10T00:00:00.000Z\",\"dateModified\":\"2026-03-10T00:00:00.000Z\",\"keywords\":\"kubernetes, envoy-gateway, gateway-api, gatewayclass, listener, httproute, grpcroute\",\"inLanguage\":\"ko\",\"author\":{\"@type\":\"Person\",\"@id\":\"https://benxhub.com/#author\",\"name\":\"BenX\",\"url\":\"https://benxhub.com/ko/about/\",\"sameAs\":[\"https://github.com/benzhub\"]},\"publisher\":{\"@type\":\"Organization\",\"name\":\"BenXHub Blog\",\"url\":\"https://benxhub.com\"},\"image\":\"https://benxhub.com/og-default.png\"}"}}],["$","div",null,{"className":"mx-auto max-w-6xl px-4 py-12 sm:px-6","children":["$","div",null,{"className":"lg:grid lg:grid-cols-[1fr_240px] lg:gap-14","children":[["$","article",null,{"children":[["$","header",null,{"className":"mb-10","children":[["$","div",null,{"className":"mb-4 flex flex-wrap gap-2","children":[["$","$L2","kubernetes",{"href":"/ko/tags/kubernetes","localeCookie":{"name":"NEXT_LOCALE","sameSite":"lax"},"className":"inline-flex items-center rounded-full px-2.5 py-0.5 text-xs font-medium transition-colors","style":{"background":"var(--color-code-bg)","color":"var(--color-accent)","border":"1px solid var(--color-border)"},"children":["#","kubernetes"]}],["$","$L2","envoy-gateway",{"href":"/ko/tags/envoy-gateway","localeCookie":{"name":"NEXT_LOCALE","sameSite":"lax"},"className":"inline-flex items-center rounded-full px-2.5 py-0.5 text-xs font-medium transition-colors","style":{"background":"var(--color-code-bg)","color":"var(--color-accent)","border":"1px solid var(--color-border)"},"children":["#","envoy-gateway"]}],["$","$L2","gateway-api",{"href":"/ko/tags/gateway-api","localeCookie":{"name":"NEXT_LOCALE","sameSite":"lax"},"className":"inline-flex items-center rounded-full px-2.5 py-0.5 text-xs font-medium transition-colors","style":{"background":"var(--color-code-bg)","color":"var(--color-accent)","border":"1px solid var(--color-border)"},"children":["#","gateway-api"]}],["$","$L2","gatewayclass",{"href":"/ko/tags/gatewayclass","localeCookie":{"name":"NEXT_LOCALE","sameSite":"lax"},"className":"inline-flex items-center rounded-full px-2.5 py-0.5 text-xs font-medium transition-colors","style":{"background":"var(--color-code-bg)","color":"var(--color-accent)","border":"1px solid var(--color-border)"},"children":["#","gatewayclass"]}],["$","$L2","listener",{"href":"/ko/tags/listener","localeCookie":{"name":"NEXT_LOCALE","sameSite":"lax"},"className":"inline-flex items-center rounded-full px-2.5 py-0.5 text-xs font-medium transition-colors","style":{"background":"var(--color-code-bg)","color":"var(--color-accent)","border":"1px solid var(--color-border)"},"children":["#","listener"]}],["$","$L2","httproute",{"href":"/ko/tags/httproute","localeCookie":{"name":"NEXT_LOCALE","sameSite":"lax"},"className":"inline-flex items-center rounded-full px-2.5 py-0.5 text-xs font-medium transition-colors","style":{"background":"var(--color-code-bg)","color":"var(--color-accent)","border":"1px solid var(--color-border)"},"children":["#","httproute"]}],["$","$L2","grpcroute",{"href":"/ko/tags/grpcroute","localeCookie":{"name":"NEXT_LOCALE","sameSite":"lax"},"className":"inline-flex items-center rounded-full px-2.5 py-0.5 text-xs font-medium transition-colors","style":{"background":"var(--color-code-bg)","color":"var(--color-accent)","border":"1px solid var(--color-border)"},"children":["#","grpcroute"]}]]}],"$L3","$L4","$undefined","$L5"]}],"$L6","$L7"]}],"$L8"]}]}]],["$L9"],"$La"]}],"loading":null,"isPartial":false}
+3:["$","h1",null,{"className":"mb-4 text-3xl leading-snug font-bold tracking-tight sm:text-4xl","style":{"color":"var(--color-text)"},"children":"Envoy Gateway 핵심 개념: Gateway, Listener, Proxy, 그리고 Route 계열 완전 해설"}]
+4:["$","div",null,{"className":"flex flex-wrap items-center gap-3 text-sm","style":{"color":"var(--color-muted)"},"children":[["$","time",null,{"dateTime":"2026-03-10","children":"2026년 3월 10일"}],["$","span",null,{"aria-hidden":"true","children":"·"}],["$","span",null,{"children":"13 min read"}]]}]
+5:["$","div",null,{"className":"mt-6 border-b","style":{"borderColor":"var(--color-border)"}}]
+b:T55fe,<p>Gateway API를 처음 보면 많은 사람이 이런 느낌을 받습니다. "용어 수가 엄청 많은 건 아닌데, 이름 비슷한 등장인물만 가득한 출연진 표를 보는 느낌이다. 누가 주인공이고 누가 조연인지 모르겠다." 이 글은 바로 그 혼란을 잘라내기 위해 존재합니다. 그리고 그 과정에서 자주 쓰는 route 타입들도 함께 정리합니다.</p>
 <h2 id="전체-아키텍처">전체 아키텍처</h2>
 <p>공식 Envoy Gateway 개념 문서는 시스템을 세 계층으로 나눕니다:</p>
 <ul>
@@ -36,37 +37,37 @@ Envoy Gateway는 그 선언을 Envoy Proxy가 실행할 수 있는 설정으로 
 <p>이들 중 하나라도 빠지면 트래픽은 원하는 목적지까지 가지 못합니다.</p>
 <h2 id="전체-그림이-보이는-최소-yaml">전체 그림이 보이는 최소 YAML</h2>
 <p>이해 가능한 가장 작은 예시는 이렇습니다:</p>
-<figure data-rehype-pretty-code-figure=""><pre style="background-color:#24292e;color:#e1e4e8" tabindex="0" data-language="yaml" data-theme="github-dark"><code data-language="yaml" data-theme="github-dark" style="display: grid;"><span data-line=""><span style="color:#85E89D">apiVersion</span><span style="color:#E1E4E8">: </span><span style="color:#9ECBFF">gateway.networking.k8s.io/v1</span></span>
-<span data-line=""><span style="color:#85E89D">kind</span><span style="color:#E1E4E8">: </span><span style="color:#9ECBFF">GatewayClass</span></span>
-<span data-line=""><span style="color:#85E89D">metadata</span><span style="color:#E1E4E8">:</span></span>
-<span data-line=""><span style="color:#85E89D">  name</span><span style="color:#E1E4E8">: </span><span style="color:#9ECBFF">eg</span></span>
-<span data-line=""><span style="color:#85E89D">spec</span><span style="color:#E1E4E8">:</span></span>
-<span data-line=""><span style="color:#85E89D">  controllerName</span><span style="color:#E1E4E8">: </span><span style="color:#9ECBFF">gateway.envoyproxy.io/gatewayclass-controller</span></span>
-<span data-line=""><span style="color:#B392F0">---</span></span>
-<span data-line=""><span style="color:#85E89D">apiVersion</span><span style="color:#E1E4E8">: </span><span style="color:#9ECBFF">gateway.networking.k8s.io/v1</span></span>
-<span data-line=""><span style="color:#85E89D">kind</span><span style="color:#E1E4E8">: </span><span style="color:#9ECBFF">Gateway</span></span>
-<span data-line=""><span style="color:#85E89D">metadata</span><span style="color:#E1E4E8">:</span></span>
-<span data-line=""><span style="color:#85E89D">  name</span><span style="color:#E1E4E8">: </span><span style="color:#9ECBFF">eg</span></span>
-<span data-line=""><span style="color:#85E89D">spec</span><span style="color:#E1E4E8">:</span></span>
-<span data-line=""><span style="color:#85E89D">  gatewayClassName</span><span style="color:#E1E4E8">: </span><span style="color:#9ECBFF">eg</span></span>
-<span data-line=""><span style="color:#85E89D">  listeners</span><span style="color:#E1E4E8">:</span></span>
-<span data-line=""><span style="color:#E1E4E8">    - </span><span style="color:#85E89D">name</span><span style="color:#E1E4E8">: </span><span style="color:#9ECBFF">http</span></span>
-<span data-line=""><span style="color:#85E89D">      protocol</span><span style="color:#E1E4E8">: </span><span style="color:#9ECBFF">HTTP</span></span>
-<span data-line=""><span style="color:#85E89D">      port</span><span style="color:#E1E4E8">: </span><span style="color:#79B8FF">80</span></span>
-<span data-line=""><span style="color:#B392F0">---</span></span>
-<span data-line=""><span style="color:#85E89D">apiVersion</span><span style="color:#E1E4E8">: </span><span style="color:#9ECBFF">gateway.networking.k8s.io/v1</span></span>
-<span data-line=""><span style="color:#85E89D">kind</span><span style="color:#E1E4E8">: </span><span style="color:#9ECBFF">HTTPRoute</span></span>
-<span data-line=""><span style="color:#85E89D">metadata</span><span style="color:#E1E4E8">:</span></span>
-<span data-line=""><span style="color:#85E89D">  name</span><span style="color:#E1E4E8">: </span><span style="color:#9ECBFF">backend</span></span>
-<span data-line=""><span style="color:#85E89D">spec</span><span style="color:#E1E4E8">:</span></span>
-<span data-line=""><span style="color:#85E89D">  parentRefs</span><span style="color:#E1E4E8">:</span></span>
-<span data-line=""><span style="color:#E1E4E8">    - </span><span style="color:#85E89D">name</span><span style="color:#E1E4E8">: </span><span style="color:#9ECBFF">eg</span></span>
-<span data-line=""><span style="color:#85E89D">  hostnames</span><span style="color:#E1E4E8">:</span></span>
-<span data-line=""><span style="color:#E1E4E8">    - </span><span style="color:#9ECBFF">"www.example.com"</span></span>
-<span data-line=""><span style="color:#85E89D">  rules</span><span style="color:#E1E4E8">:</span></span>
-<span data-line=""><span style="color:#E1E4E8">    - </span><span style="color:#85E89D">backendRefs</span><span style="color:#E1E4E8">:</span></span>
-<span data-line=""><span style="color:#E1E4E8">        - </span><span style="color:#85E89D">name</span><span style="color:#E1E4E8">: </span><span style="color:#9ECBFF">backend</span></span>
-<span data-line=""><span style="color:#85E89D">          port</span><span style="color:#E1E4E8">: </span><span style="color:#79B8FF">3000</span></span></code></pre></figure>
+<figure data-rehype-pretty-code-figure=""><pre style="background-color:#0d1117;color:#e6edf3" tabindex="0" data-language="yaml" data-theme="github-dark-default"><code data-language="yaml" data-theme="github-dark-default" style="display: grid;"><span data-line=""><span style="color:#7EE787">apiVersion</span><span style="color:#E6EDF3">: </span><span style="color:#A5D6FF">gateway.networking.k8s.io/v1</span></span>
+<span data-line=""><span style="color:#7EE787">kind</span><span style="color:#E6EDF3">: </span><span style="color:#A5D6FF">GatewayClass</span></span>
+<span data-line=""><span style="color:#7EE787">metadata</span><span style="color:#E6EDF3">:</span></span>
+<span data-line=""><span style="color:#7EE787">  name</span><span style="color:#E6EDF3">: </span><span style="color:#A5D6FF">eg</span></span>
+<span data-line=""><span style="color:#7EE787">spec</span><span style="color:#E6EDF3">:</span></span>
+<span data-line=""><span style="color:#7EE787">  controllerName</span><span style="color:#E6EDF3">: </span><span style="color:#A5D6FF">gateway.envoyproxy.io/gatewayclass-controller</span></span>
+<span data-line=""><span style="color:#79C0FF">---</span></span>
+<span data-line=""><span style="color:#7EE787">apiVersion</span><span style="color:#E6EDF3">: </span><span style="color:#A5D6FF">gateway.networking.k8s.io/v1</span></span>
+<span data-line=""><span style="color:#7EE787">kind</span><span style="color:#E6EDF3">: </span><span style="color:#A5D6FF">Gateway</span></span>
+<span data-line=""><span style="color:#7EE787">metadata</span><span style="color:#E6EDF3">:</span></span>
+<span data-line=""><span style="color:#7EE787">  name</span><span style="color:#E6EDF3">: </span><span style="color:#A5D6FF">eg</span></span>
+<span data-line=""><span style="color:#7EE787">spec</span><span style="color:#E6EDF3">:</span></span>
+<span data-line=""><span style="color:#7EE787">  gatewayClassName</span><span style="color:#E6EDF3">: </span><span style="color:#A5D6FF">eg</span></span>
+<span data-line=""><span style="color:#7EE787">  listeners</span><span style="color:#E6EDF3">:</span></span>
+<span data-line=""><span style="color:#E6EDF3">    - </span><span style="color:#7EE787">name</span><span style="color:#E6EDF3">: </span><span style="color:#A5D6FF">http</span></span>
+<span data-line=""><span style="color:#7EE787">      protocol</span><span style="color:#E6EDF3">: </span><span style="color:#A5D6FF">HTTP</span></span>
+<span data-line=""><span style="color:#7EE787">      port</span><span style="color:#E6EDF3">: </span><span style="color:#79C0FF">80</span></span>
+<span data-line=""><span style="color:#79C0FF">---</span></span>
+<span data-line=""><span style="color:#7EE787">apiVersion</span><span style="color:#E6EDF3">: </span><span style="color:#A5D6FF">gateway.networking.k8s.io/v1</span></span>
+<span data-line=""><span style="color:#7EE787">kind</span><span style="color:#E6EDF3">: </span><span style="color:#A5D6FF">HTTPRoute</span></span>
+<span data-line=""><span style="color:#7EE787">metadata</span><span style="color:#E6EDF3">:</span></span>
+<span data-line=""><span style="color:#7EE787">  name</span><span style="color:#E6EDF3">: </span><span style="color:#A5D6FF">backend</span></span>
+<span data-line=""><span style="color:#7EE787">spec</span><span style="color:#E6EDF3">:</span></span>
+<span data-line=""><span style="color:#7EE787">  parentRefs</span><span style="color:#E6EDF3">:</span></span>
+<span data-line=""><span style="color:#E6EDF3">    - </span><span style="color:#7EE787">name</span><span style="color:#E6EDF3">: </span><span style="color:#A5D6FF">eg</span></span>
+<span data-line=""><span style="color:#7EE787">  hostnames</span><span style="color:#E6EDF3">:</span></span>
+<span data-line=""><span style="color:#E6EDF3">    - </span><span style="color:#A5D6FF">"www.example.com"</span></span>
+<span data-line=""><span style="color:#7EE787">  rules</span><span style="color:#E6EDF3">:</span></span>
+<span data-line=""><span style="color:#E6EDF3">    - </span><span style="color:#7EE787">backendRefs</span><span style="color:#E6EDF3">:</span></span>
+<span data-line=""><span style="color:#E6EDF3">        - </span><span style="color:#7EE787">name</span><span style="color:#E6EDF3">: </span><span style="color:#A5D6FF">backend</span></span>
+<span data-line=""><span style="color:#7EE787">          port</span><span style="color:#E6EDF3">: </span><span style="color:#79C0FF">3000</span></span></code></pre></figure>
 <p>이걸 체인으로 보면 로직은 다음과 같습니다:</p>
 <ol>
 <li><code>GatewayClass</code>가 <code>Envoy Gateway</code> 컨트롤러가 담당한다고 선언</li>
@@ -77,17 +78,17 @@ Envoy Gateway는 그 선언을 Envoy Proxy가 실행할 수 있는 설정으로 
 <h2 id="각-필드-이해하기">각 필드 이해하기</h2>
 <h3 id="gatewayclass"><code>GatewayClass</code></h3>
 <p>이것은 클러스터 수준의 ingress 타입 정의입니다. 보통 가장 중요한 필드는 다음입니다:</p>
-<figure data-rehype-pretty-code-figure=""><pre style="background-color:#24292e;color:#e1e4e8" tabindex="0" data-language="yaml" data-theme="github-dark"><code data-language="yaml" data-theme="github-dark" style="display: grid;"><span data-line=""><span style="color:#85E89D">spec</span><span style="color:#E1E4E8">:</span></span>
-<span data-line=""><span style="color:#85E89D">  controllerName</span><span style="color:#E1E4E8">: </span><span style="color:#9ECBFF">gateway.envoyproxy.io/gatewayclass-controller</span></span></code></pre></figure>
+<figure data-rehype-pretty-code-figure=""><pre style="background-color:#0d1117;color:#e6edf3" tabindex="0" data-language="yaml" data-theme="github-dark-default"><code data-language="yaml" data-theme="github-dark-default" style="display: grid;"><span data-line=""><span style="color:#7EE787">spec</span><span style="color:#E6EDF3">:</span></span>
+<span data-line=""><span style="color:#7EE787">  controllerName</span><span style="color:#E6EDF3">: </span><span style="color:#A5D6FF">gateway.envoyproxy.io/gatewayclass-controller</span></span></code></pre></figure>
 <p>뜻은 아주 단순합니다:
 "이 <code>GatewayClass</code>는 Envoy Gateway 컨트롤러가 관리한다."</p>
 <p>controllerName이 맞지 않으면, 잘못된 회사에 택배를 보낸 것과 같습니다. 아무도 수거하러 오지 않죠.</p>
 <h3 id="gateway"><code>Gateway</code></h3>
 <p>이것은 "ingress가 어떤 모습인지"를 정의합니다. 가장 자주 참고하는 필드는 <code>listeners</code>입니다:</p>
-<figure data-rehype-pretty-code-figure=""><pre style="background-color:#24292e;color:#e1e4e8" tabindex="0" data-language="yaml" data-theme="github-dark"><code data-language="yaml" data-theme="github-dark" style="display: grid;"><span data-line=""><span style="color:#85E89D">listeners</span><span style="color:#E1E4E8">:</span></span>
-<span data-line=""><span style="color:#E1E4E8">  - </span><span style="color:#85E89D">name</span><span style="color:#E1E4E8">: </span><span style="color:#9ECBFF">http</span></span>
-<span data-line=""><span style="color:#85E89D">    protocol</span><span style="color:#E1E4E8">: </span><span style="color:#9ECBFF">HTTP</span></span>
-<span data-line=""><span style="color:#85E89D">    port</span><span style="color:#E1E4E8">: </span><span style="color:#79B8FF">80</span></span></code></pre></figure>
+<figure data-rehype-pretty-code-figure=""><pre style="background-color:#0d1117;color:#e6edf3" tabindex="0" data-language="yaml" data-theme="github-dark-default"><code data-language="yaml" data-theme="github-dark-default" style="display: grid;"><span data-line=""><span style="color:#7EE787">listeners</span><span style="color:#E6EDF3">:</span></span>
+<span data-line=""><span style="color:#E6EDF3">  - </span><span style="color:#7EE787">name</span><span style="color:#E6EDF3">: </span><span style="color:#A5D6FF">http</span></span>
+<span data-line=""><span style="color:#7EE787">    protocol</span><span style="color:#E6EDF3">: </span><span style="color:#A5D6FF">HTTP</span></span>
+<span data-line=""><span style="color:#7EE787">    port</span><span style="color:#E6EDF3">: </span><span style="color:#79C0FF">80</span></span></code></pre></figure>
 <p>의미는 다음과 같습니다:</p>
 <ul>
 <li><code>http</code>라는 이름의 listener를 연다</li>
@@ -115,11 +116,11 @@ Envoy Gateway는 그 선언을 Envoy Proxy가 실행할 수 있는 설정으로 
 <li><code>allowedRoutes</code></li>
 </ul>
 <p>예시:</p>
-<figure data-rehype-pretty-code-figure=""><pre style="background-color:#24292e;color:#e1e4e8" tabindex="0" data-language="yaml" data-theme="github-dark"><code data-language="yaml" data-theme="github-dark" style="display: grid;"><span data-line=""><span style="color:#85E89D">listeners</span><span style="color:#E1E4E8">:</span></span>
-<span data-line=""><span style="color:#E1E4E8">  - </span><span style="color:#85E89D">name</span><span style="color:#E1E4E8">: </span><span style="color:#9ECBFF">https</span></span>
-<span data-line=""><span style="color:#85E89D">    protocol</span><span style="color:#E1E4E8">: </span><span style="color:#9ECBFF">HTTPS</span></span>
-<span data-line=""><span style="color:#85E89D">    port</span><span style="color:#E1E4E8">: </span><span style="color:#79B8FF">443</span></span>
-<span data-line=""><span style="color:#85E89D">    hostname</span><span style="color:#E1E4E8">: </span><span style="color:#9ECBFF">api.example.com</span></span></code></pre></figure>
+<figure data-rehype-pretty-code-figure=""><pre style="background-color:#0d1117;color:#e6edf3" tabindex="0" data-language="yaml" data-theme="github-dark-default"><code data-language="yaml" data-theme="github-dark-default" style="display: grid;"><span data-line=""><span style="color:#7EE787">listeners</span><span style="color:#E6EDF3">:</span></span>
+<span data-line=""><span style="color:#E6EDF3">  - </span><span style="color:#7EE787">name</span><span style="color:#E6EDF3">: </span><span style="color:#A5D6FF">https</span></span>
+<span data-line=""><span style="color:#7EE787">    protocol</span><span style="color:#E6EDF3">: </span><span style="color:#A5D6FF">HTTPS</span></span>
+<span data-line=""><span style="color:#7EE787">    port</span><span style="color:#E6EDF3">: </span><span style="color:#79C0FF">443</span></span>
+<span data-line=""><span style="color:#7EE787">    hostname</span><span style="color:#E6EDF3">: </span><span style="color:#A5D6FF">api.example.com</span></span></code></pre></figure>
 <p>이 말은 곧:</p>
 <ul>
 <li>이 슬롯 이름은 <code>https</code></li>
@@ -148,15 +149,15 @@ Envoy Gateway는 그 선언을 Envoy Proxy가 실행할 수 있는 설정으로 
 <p><code>Route</code>는 단순히 <code>HTTPRoute</code>만을 뜻하지 않습니다. 이 계열 전체가 Gateway API 설계의 핵심입니다.</p>
 <h4 id="httproute"><code>HTTPRoute</code></h4>
 <p>여러분이 가장 자주 작성하고 수정하게 될 타입입니다. 핵심 필드 세 가지:</p>
-<figure data-rehype-pretty-code-figure=""><pre style="background-color:#24292e;color:#e1e4e8" tabindex="0" data-language="yaml" data-theme="github-dark"><code data-language="yaml" data-theme="github-dark" style="display: grid;"><span data-line=""><span style="color:#85E89D">spec</span><span style="color:#E1E4E8">:</span></span>
-<span data-line=""><span style="color:#85E89D">  parentRefs</span><span style="color:#E1E4E8">:</span></span>
-<span data-line=""><span style="color:#E1E4E8">    - </span><span style="color:#85E89D">name</span><span style="color:#E1E4E8">: </span><span style="color:#9ECBFF">eg</span></span>
-<span data-line=""><span style="color:#85E89D">  hostnames</span><span style="color:#E1E4E8">:</span></span>
-<span data-line=""><span style="color:#E1E4E8">    - </span><span style="color:#9ECBFF">"www.example.com"</span></span>
-<span data-line=""><span style="color:#85E89D">  rules</span><span style="color:#E1E4E8">:</span></span>
-<span data-line=""><span style="color:#E1E4E8">    - </span><span style="color:#85E89D">backendRefs</span><span style="color:#E1E4E8">:</span></span>
-<span data-line=""><span style="color:#E1E4E8">        - </span><span style="color:#85E89D">name</span><span style="color:#E1E4E8">: </span><span style="color:#9ECBFF">backend</span></span>
-<span data-line=""><span style="color:#85E89D">          port</span><span style="color:#E1E4E8">: </span><span style="color:#79B8FF">3000</span></span></code></pre></figure>
+<figure data-rehype-pretty-code-figure=""><pre style="background-color:#0d1117;color:#e6edf3" tabindex="0" data-language="yaml" data-theme="github-dark-default"><code data-language="yaml" data-theme="github-dark-default" style="display: grid;"><span data-line=""><span style="color:#7EE787">spec</span><span style="color:#E6EDF3">:</span></span>
+<span data-line=""><span style="color:#7EE787">  parentRefs</span><span style="color:#E6EDF3">:</span></span>
+<span data-line=""><span style="color:#E6EDF3">    - </span><span style="color:#7EE787">name</span><span style="color:#E6EDF3">: </span><span style="color:#A5D6FF">eg</span></span>
+<span data-line=""><span style="color:#7EE787">  hostnames</span><span style="color:#E6EDF3">:</span></span>
+<span data-line=""><span style="color:#E6EDF3">    - </span><span style="color:#A5D6FF">"www.example.com"</span></span>
+<span data-line=""><span style="color:#7EE787">  rules</span><span style="color:#E6EDF3">:</span></span>
+<span data-line=""><span style="color:#E6EDF3">    - </span><span style="color:#7EE787">backendRefs</span><span style="color:#E6EDF3">:</span></span>
+<span data-line=""><span style="color:#E6EDF3">        - </span><span style="color:#7EE787">name</span><span style="color:#E6EDF3">: </span><span style="color:#A5D6FF">backend</span></span>
+<span data-line=""><span style="color:#7EE787">          port</span><span style="color:#E6EDF3">: </span><span style="color:#79C0FF">3000</span></span></code></pre></figure>
 <ul>
 <li><code>parentRefs</code>: 어느 Gateway에 attach할지</li>
 <li><code>hostnames</code>: 어떤 Host header가 이 규칙을 트리거하는지</li>
@@ -173,10 +174,10 @@ Envoy Gateway는 그 선언을 Envoy Proxy가 실행할 수 있는 설정으로 
 <li>headers</li>
 </ul>
 <p>예시:</p>
-<figure data-rehype-pretty-code-figure=""><pre style="background-color:#24292e;color:#e1e4e8" tabindex="0" data-language="yaml" data-theme="github-dark"><code data-language="yaml" data-theme="github-dark" style="display: grid;"><span data-line=""><span style="color:#85E89D">matches</span><span style="color:#E1E4E8">:</span></span>
-<span data-line=""><span style="color:#E1E4E8">  - </span><span style="color:#85E89D">method</span><span style="color:#E1E4E8">:</span></span>
-<span data-line=""><span style="color:#85E89D">      service</span><span style="color:#E1E4E8">: </span><span style="color:#9ECBFF">com.example.User</span></span>
-<span data-line=""><span style="color:#85E89D">      method</span><span style="color:#E1E4E8">: </span><span style="color:#9ECBFF">Login</span></span></code></pre></figure>
+<figure data-rehype-pretty-code-figure=""><pre style="background-color:#0d1117;color:#e6edf3" tabindex="0" data-language="yaml" data-theme="github-dark-default"><code data-language="yaml" data-theme="github-dark-default" style="display: grid;"><span data-line=""><span style="color:#7EE787">matches</span><span style="color:#E6EDF3">:</span></span>
+<span data-line=""><span style="color:#E6EDF3">  - </span><span style="color:#7EE787">method</span><span style="color:#E6EDF3">:</span></span>
+<span data-line=""><span style="color:#7EE787">      service</span><span style="color:#E6EDF3">: </span><span style="color:#A5D6FF">com.example.User</span></span>
+<span data-line=""><span style="color:#7EE787">      method</span><span style="color:#E6EDF3">: </span><span style="color:#A5D6FF">Login</span></span></code></pre></figure>
 <p>이 의미 체계는 gRPC와 자연스럽게 맞아떨어집니다. 단순히 URL path를 보는 게 아니라, gRPC service/method 모델에 직접 매칭하는 것이니까요.</p>
 <p>공식 문서도 말하듯, <code>GRPCRoute</code>와 <code>HTTPRoute</code>가 같은 listener를 공유하고 hostname이 충돌하면 구현체는 한쪽을 거부해야 합니다. 쉽게 말해 HTTP와 gRPC가 같은 hostname을 두고 싸우게 두지 말라는 뜻입니다.</p>
 <h4 id="tcproute"><code>TCPRoute</code></h4>
@@ -241,8 +242,8 @@ Envoy Gateway는 그 선언을 Envoy Proxy가 실행할 수 있는 설정으로 
 <p>이 분리는 여러 사람이 협업할 때 특히 잘 맞습니다. 단순히 path 하나 바꾸려고 ingress 전체를 건드릴 필요가 없고, 팀끼리 서로 밟는 일도 크게 줄어듭니다.</p>
 <h2 id="이제-status를-보기-시작하세요">이제 <code>status</code>를 보기 시작하세요</h2>
 <p><code>spec</code>뿐 아니라, 점차 <code>status</code>를 확인하는 습관을 들이세요. 특히 <code>HTTPRoute</code>와 <code>Gateway</code>에서 중요합니다:</p>
-<figure data-rehype-pretty-code-figure=""><pre style="background-color:#24292e;color:#e1e4e8" tabindex="0" data-language="bash" data-theme="github-dark"><code data-language="bash" data-theme="github-dark" style="display: grid;"><span data-line=""><span style="color:#B392F0">kubectl</span><span style="color:#9ECBFF"> get</span><span style="color:#9ECBFF"> gateway</span><span style="color:#9ECBFF"> eg</span><span style="color:#79B8FF"> -o</span><span style="color:#9ECBFF"> yaml</span></span>
-<span data-line=""><span style="color:#B392F0">kubectl</span><span style="color:#9ECBFF"> get</span><span style="color:#9ECBFF"> httproute</span><span style="color:#9ECBFF"> backend</span><span style="color:#79B8FF"> -o</span><span style="color:#9ECBFF"> yaml</span></span></code></pre></figure>
+<figure data-rehype-pretty-code-figure=""><pre style="background-color:#0d1117;color:#e6edf3" tabindex="0" data-language="bash" data-theme="github-dark-default"><code data-language="bash" data-theme="github-dark-default" style="display: grid;"><span data-line=""><span style="color:#FFA657">kubectl</span><span style="color:#A5D6FF"> get</span><span style="color:#A5D6FF"> gateway</span><span style="color:#A5D6FF"> eg</span><span style="color:#79C0FF"> -o</span><span style="color:#A5D6FF"> yaml</span></span>
+<span data-line=""><span style="color:#FFA657">kubectl</span><span style="color:#A5D6FF"> get</span><span style="color:#A5D6FF"> httproute</span><span style="color:#A5D6FF"> backend</span><span style="color:#79C0FF"> -o</span><span style="color:#A5D6FF"> yaml</span></span></code></pre></figure>
 <p>처음에는 이것만 확인해도 좋습니다:</p>
 <ul>
 <li>route가 <code>Accepted</code> 되었는가</li>
@@ -257,9 +258,9 @@ Envoy Gateway는 그 선언을 Envoy Proxy가 실행할 수 있는 설정으로 
 </blockquote>
 <h2 id="다음-단계">다음 단계</h2>
 <p>이제 개념이 잡혔으니, 다음 글에서는 가장 흔한 HTTP 라우팅 시나리오인 host, path, header, 트래픽 분할을 살펴봅니다:
-👉 <a href="03-http-routing">실전 HTTP 라우팅</a></p>5:["$","div",null,{"className":"prose","dangerouslySetInnerHTML":{"__html":"$a"}}]
-6:["$","footer",null,{"className":"mt-14 border-t pt-8","style":{"borderColor":"var(--color-border)"},"children":[["$","div",null,{"className":"mb-8 flex flex-wrap gap-2","children":[["$","$L2","kubernetes",{"href":"/ko/tags/kubernetes","localeCookie":{"name":"NEXT_LOCALE","sameSite":"lax"},"className":"inline-flex items-center rounded-full px-3 py-1 text-sm font-medium transition-colors","style":{"background":"var(--color-code-bg)","color":"var(--color-accent)","border":"1px solid var(--color-border)"},"children":["#","kubernetes"]}],["$","$L2","envoy-gateway",{"href":"/ko/tags/envoy-gateway","localeCookie":{"name":"NEXT_LOCALE","sameSite":"lax"},"className":"inline-flex items-center rounded-full px-3 py-1 text-sm font-medium transition-colors","style":{"background":"var(--color-code-bg)","color":"var(--color-accent)","border":"1px solid var(--color-border)"},"children":["#","envoy-gateway"]}],["$","$L2","gateway-api",{"href":"/ko/tags/gateway-api","localeCookie":{"name":"NEXT_LOCALE","sameSite":"lax"},"className":"inline-flex items-center rounded-full px-3 py-1 text-sm font-medium transition-colors","style":{"background":"var(--color-code-bg)","color":"var(--color-accent)","border":"1px solid var(--color-border)"},"children":["#","gateway-api"]}],["$","$L2","gatewayclass",{"href":"/ko/tags/gatewayclass","localeCookie":{"name":"NEXT_LOCALE","sameSite":"lax"},"className":"inline-flex items-center rounded-full px-3 py-1 text-sm font-medium transition-colors","style":{"background":"var(--color-code-bg)","color":"var(--color-accent)","border":"1px solid var(--color-border)"},"children":["#","gatewayclass"]}],["$","$L2","listener",{"href":"/ko/tags/listener","localeCookie":{"name":"NEXT_LOCALE","sameSite":"lax"},"className":"inline-flex items-center rounded-full px-3 py-1 text-sm font-medium transition-colors","style":{"background":"var(--color-code-bg)","color":"var(--color-accent)","border":"1px solid var(--color-border)"},"children":["#","listener"]}],["$","$L2","httproute",{"href":"/ko/tags/httproute","localeCookie":{"name":"NEXT_LOCALE","sameSite":"lax"},"className":"inline-flex items-center rounded-full px-3 py-1 text-sm font-medium transition-colors","style":{"background":"var(--color-code-bg)","color":"var(--color-accent)","border":"1px solid var(--color-border)"},"children":["#","httproute"]}],["$","$L2","grpcroute",{"href":"/ko/tags/grpcroute","localeCookie":{"name":"NEXT_LOCALE","sameSite":"lax"},"className":"inline-flex items-center rounded-full px-3 py-1 text-sm font-medium transition-colors","style":{"background":"var(--color-code-bg)","color":"var(--color-accent)","border":"1px solid var(--color-border)"},"children":["#","grpcroute"]}]]}],["$","nav",null,{"aria-label":"글 탐색","className":"grid grid-cols-1 gap-4 sm:grid-cols-2","children":[["$","$L2",null,{"href":"/ko/blog/k8s/gateway/01-quick-start","localeCookie":{"name":"NEXT_LOCALE","sameSite":"lax"},"className":"group rounded-lg border p-4 transition-colors hover:border-accent","style":{"borderColor":"var(--color-border)","background":"var(--color-surface)"},"children":[["$","p",null,{"className":"mb-1 text-xs","style":{"color":"var(--color-muted)"},"children":"← 최신 글"}],["$","p",null,{"className":"line-clamp-1 text-sm font-medium transition-colors group-hover:text-accent","style":{"color":"var(--color-text)"},"children":"Envoy Gateway 빠른 시작: 10분 안에 첫 요청 통과시키기"}]]}],["$","$L2",null,{"href":"/ko/blog/k8s/gateway/03-http-routing","localeCookie":{"name":"NEXT_LOCALE","sameSite":"lax"},"className":"group rounded-lg border p-4 text-right transition-colors hover:border-accent","style":{"borderColor":"var(--color-border)","background":"var(--color-surface)"},"children":[["$","p",null,{"className":"mb-1 text-xs","style":{"color":"var(--color-muted)"},"children":"이전 글 →"}],["$","p",null,{"className":"line-clamp-1 text-sm font-medium transition-colors group-hover:text-accent","style":{"color":"var(--color-text)"},"children":"Envoy Gateway 실전 HTTP 라우팅: Host, Path, Header, 그리고 트래픽 분할"}]]}]]}]]}]
-c:T558e,<p>Gateway API를 처음 보면 많은 사람이 이런 느낌을 받습니다. "용어 수가 엄청 많은 건 아닌데, 이름 비슷한 등장인물만 가득한 출연진 표를 보는 느낌이다. 누가 주인공이고 누가 조연인지 모르겠다." 이 글은 바로 그 혼란을 잘라내기 위해 존재합니다. 그리고 그 과정에서 자주 쓰는 route 타입들도 함께 정리합니다.</p>
+👉 <a href="03-http-routing">실전 HTTP 라우팅</a></p>6:["$","div",null,{"className":"prose","dangerouslySetInnerHTML":{"__html":"$b"}}]
+7:["$","footer",null,{"className":"mt-14 border-t pt-8","style":{"borderColor":"var(--color-border)"},"children":[["$","div",null,{"className":"mb-8 flex flex-wrap gap-2","children":[["$","$L2","kubernetes",{"href":"/ko/tags/kubernetes","localeCookie":{"name":"NEXT_LOCALE","sameSite":"lax"},"className":"inline-flex items-center rounded-full px-3 py-1 text-sm font-medium transition-colors","style":{"background":"var(--color-code-bg)","color":"var(--color-accent)","border":"1px solid var(--color-border)"},"children":["#","kubernetes"]}],["$","$L2","envoy-gateway",{"href":"/ko/tags/envoy-gateway","localeCookie":{"name":"NEXT_LOCALE","sameSite":"lax"},"className":"inline-flex items-center rounded-full px-3 py-1 text-sm font-medium transition-colors","style":{"background":"var(--color-code-bg)","color":"var(--color-accent)","border":"1px solid var(--color-border)"},"children":["#","envoy-gateway"]}],["$","$L2","gateway-api",{"href":"/ko/tags/gateway-api","localeCookie":{"name":"NEXT_LOCALE","sameSite":"lax"},"className":"inline-flex items-center rounded-full px-3 py-1 text-sm font-medium transition-colors","style":{"background":"var(--color-code-bg)","color":"var(--color-accent)","border":"1px solid var(--color-border)"},"children":["#","gateway-api"]}],["$","$L2","gatewayclass",{"href":"/ko/tags/gatewayclass","localeCookie":{"name":"NEXT_LOCALE","sameSite":"lax"},"className":"inline-flex items-center rounded-full px-3 py-1 text-sm font-medium transition-colors","style":{"background":"var(--color-code-bg)","color":"var(--color-accent)","border":"1px solid var(--color-border)"},"children":["#","gatewayclass"]}],["$","$L2","listener",{"href":"/ko/tags/listener","localeCookie":{"name":"NEXT_LOCALE","sameSite":"lax"},"className":"inline-flex items-center rounded-full px-3 py-1 text-sm font-medium transition-colors","style":{"background":"var(--color-code-bg)","color":"var(--color-accent)","border":"1px solid var(--color-border)"},"children":["#","listener"]}],["$","$L2","httproute",{"href":"/ko/tags/httproute","localeCookie":{"name":"NEXT_LOCALE","sameSite":"lax"},"className":"inline-flex items-center rounded-full px-3 py-1 text-sm font-medium transition-colors","style":{"background":"var(--color-code-bg)","color":"var(--color-accent)","border":"1px solid var(--color-border)"},"children":["#","httproute"]}],["$","$L2","grpcroute",{"href":"/ko/tags/grpcroute","localeCookie":{"name":"NEXT_LOCALE","sameSite":"lax"},"className":"inline-flex items-center rounded-full px-3 py-1 text-sm font-medium transition-colors","style":{"background":"var(--color-code-bg)","color":"var(--color-accent)","border":"1px solid var(--color-border)"},"children":["#","grpcroute"]}]]}],["$","nav",null,{"aria-label":"글 탐색","className":"grid grid-cols-1 gap-4 sm:grid-cols-2","children":[["$","$L2",null,{"href":"/ko/blog/k8s/gateway/01-quick-start","localeCookie":{"name":"NEXT_LOCALE","sameSite":"lax"},"className":"group rounded-lg border p-4 transition-colors hover:border-accent","style":{"borderColor":"var(--color-border)","background":"var(--color-surface)"},"children":[["$","p",null,{"className":"mb-1 text-xs","style":{"color":"var(--color-muted)"},"children":"← 최신 글"}],["$","p",null,{"className":"line-clamp-1 text-sm font-medium transition-colors group-hover:text-accent","style":{"color":"var(--color-text)"},"children":"Envoy Gateway 빠른 시작: 10분 안에 첫 요청 통과시키기"}]]}],["$","$L2",null,{"href":"/ko/blog/k8s/gateway/03-http-routing","localeCookie":{"name":"NEXT_LOCALE","sameSite":"lax"},"className":"group rounded-lg border p-4 text-right transition-colors hover:border-accent","style":{"borderColor":"var(--color-border)","background":"var(--color-surface)"},"children":[["$","p",null,{"className":"mb-1 text-xs","style":{"color":"var(--color-muted)"},"children":"이전 글 →"}],["$","p",null,{"className":"line-clamp-1 text-sm font-medium transition-colors group-hover:text-accent","style":{"color":"var(--color-text)"},"children":"Envoy Gateway 실전 HTTP 라우팅: Host, Path, Header, 그리고 트래픽 분할"}]]}]]}]]}]
+d:T55fe,<p>Gateway API를 처음 보면 많은 사람이 이런 느낌을 받습니다. "용어 수가 엄청 많은 건 아닌데, 이름 비슷한 등장인물만 가득한 출연진 표를 보는 느낌이다. 누가 주인공이고 누가 조연인지 모르겠다." 이 글은 바로 그 혼란을 잘라내기 위해 존재합니다. 그리고 그 과정에서 자주 쓰는 route 타입들도 함께 정리합니다.</p>
 <h2 id="전체-아키텍처">전체 아키텍처</h2>
 <p>공식 Envoy Gateway 개념 문서는 시스템을 세 계층으로 나눕니다:</p>
 <ul>
@@ -289,37 +290,37 @@ Envoy Gateway는 그 선언을 Envoy Proxy가 실행할 수 있는 설정으로 
 <p>이들 중 하나라도 빠지면 트래픽은 원하는 목적지까지 가지 못합니다.</p>
 <h2 id="전체-그림이-보이는-최소-yaml">전체 그림이 보이는 최소 YAML</h2>
 <p>이해 가능한 가장 작은 예시는 이렇습니다:</p>
-<figure data-rehype-pretty-code-figure=""><pre style="background-color:#24292e;color:#e1e4e8" tabindex="0" data-language="yaml" data-theme="github-dark"><code data-language="yaml" data-theme="github-dark" style="display: grid;"><span data-line=""><span style="color:#85E89D">apiVersion</span><span style="color:#E1E4E8">: </span><span style="color:#9ECBFF">gateway.networking.k8s.io/v1</span></span>
-<span data-line=""><span style="color:#85E89D">kind</span><span style="color:#E1E4E8">: </span><span style="color:#9ECBFF">GatewayClass</span></span>
-<span data-line=""><span style="color:#85E89D">metadata</span><span style="color:#E1E4E8">:</span></span>
-<span data-line=""><span style="color:#85E89D">  name</span><span style="color:#E1E4E8">: </span><span style="color:#9ECBFF">eg</span></span>
-<span data-line=""><span style="color:#85E89D">spec</span><span style="color:#E1E4E8">:</span></span>
-<span data-line=""><span style="color:#85E89D">  controllerName</span><span style="color:#E1E4E8">: </span><span style="color:#9ECBFF">gateway.envoyproxy.io/gatewayclass-controller</span></span>
-<span data-line=""><span style="color:#B392F0">---</span></span>
-<span data-line=""><span style="color:#85E89D">apiVersion</span><span style="color:#E1E4E8">: </span><span style="color:#9ECBFF">gateway.networking.k8s.io/v1</span></span>
-<span data-line=""><span style="color:#85E89D">kind</span><span style="color:#E1E4E8">: </span><span style="color:#9ECBFF">Gateway</span></span>
-<span data-line=""><span style="color:#85E89D">metadata</span><span style="color:#E1E4E8">:</span></span>
-<span data-line=""><span style="color:#85E89D">  name</span><span style="color:#E1E4E8">: </span><span style="color:#9ECBFF">eg</span></span>
-<span data-line=""><span style="color:#85E89D">spec</span><span style="color:#E1E4E8">:</span></span>
-<span data-line=""><span style="color:#85E89D">  gatewayClassName</span><span style="color:#E1E4E8">: </span><span style="color:#9ECBFF">eg</span></span>
-<span data-line=""><span style="color:#85E89D">  listeners</span><span style="color:#E1E4E8">:</span></span>
-<span data-line=""><span style="color:#E1E4E8">    - </span><span style="color:#85E89D">name</span><span style="color:#E1E4E8">: </span><span style="color:#9ECBFF">http</span></span>
-<span data-line=""><span style="color:#85E89D">      protocol</span><span style="color:#E1E4E8">: </span><span style="color:#9ECBFF">HTTP</span></span>
-<span data-line=""><span style="color:#85E89D">      port</span><span style="color:#E1E4E8">: </span><span style="color:#79B8FF">80</span></span>
-<span data-line=""><span style="color:#B392F0">---</span></span>
-<span data-line=""><span style="color:#85E89D">apiVersion</span><span style="color:#E1E4E8">: </span><span style="color:#9ECBFF">gateway.networking.k8s.io/v1</span></span>
-<span data-line=""><span style="color:#85E89D">kind</span><span style="color:#E1E4E8">: </span><span style="color:#9ECBFF">HTTPRoute</span></span>
-<span data-line=""><span style="color:#85E89D">metadata</span><span style="color:#E1E4E8">:</span></span>
-<span data-line=""><span style="color:#85E89D">  name</span><span style="color:#E1E4E8">: </span><span style="color:#9ECBFF">backend</span></span>
-<span data-line=""><span style="color:#85E89D">spec</span><span style="color:#E1E4E8">:</span></span>
-<span data-line=""><span style="color:#85E89D">  parentRefs</span><span style="color:#E1E4E8">:</span></span>
-<span data-line=""><span style="color:#E1E4E8">    - </span><span style="color:#85E89D">name</span><span style="color:#E1E4E8">: </span><span style="color:#9ECBFF">eg</span></span>
-<span data-line=""><span style="color:#85E89D">  hostnames</span><span style="color:#E1E4E8">:</span></span>
-<span data-line=""><span style="color:#E1E4E8">    - </span><span style="color:#9ECBFF">"www.example.com"</span></span>
-<span data-line=""><span style="color:#85E89D">  rules</span><span style="color:#E1E4E8">:</span></span>
-<span data-line=""><span style="color:#E1E4E8">    - </span><span style="color:#85E89D">backendRefs</span><span style="color:#E1E4E8">:</span></span>
-<span data-line=""><span style="color:#E1E4E8">        - </span><span style="color:#85E89D">name</span><span style="color:#E1E4E8">: </span><span style="color:#9ECBFF">backend</span></span>
-<span data-line=""><span style="color:#85E89D">          port</span><span style="color:#E1E4E8">: </span><span style="color:#79B8FF">3000</span></span></code></pre></figure>
+<figure data-rehype-pretty-code-figure=""><pre style="background-color:#0d1117;color:#e6edf3" tabindex="0" data-language="yaml" data-theme="github-dark-default"><code data-language="yaml" data-theme="github-dark-default" style="display: grid;"><span data-line=""><span style="color:#7EE787">apiVersion</span><span style="color:#E6EDF3">: </span><span style="color:#A5D6FF">gateway.networking.k8s.io/v1</span></span>
+<span data-line=""><span style="color:#7EE787">kind</span><span style="color:#E6EDF3">: </span><span style="color:#A5D6FF">GatewayClass</span></span>
+<span data-line=""><span style="color:#7EE787">metadata</span><span style="color:#E6EDF3">:</span></span>
+<span data-line=""><span style="color:#7EE787">  name</span><span style="color:#E6EDF3">: </span><span style="color:#A5D6FF">eg</span></span>
+<span data-line=""><span style="color:#7EE787">spec</span><span style="color:#E6EDF3">:</span></span>
+<span data-line=""><span style="color:#7EE787">  controllerName</span><span style="color:#E6EDF3">: </span><span style="color:#A5D6FF">gateway.envoyproxy.io/gatewayclass-controller</span></span>
+<span data-line=""><span style="color:#79C0FF">---</span></span>
+<span data-line=""><span style="color:#7EE787">apiVersion</span><span style="color:#E6EDF3">: </span><span style="color:#A5D6FF">gateway.networking.k8s.io/v1</span></span>
+<span data-line=""><span style="color:#7EE787">kind</span><span style="color:#E6EDF3">: </span><span style="color:#A5D6FF">Gateway</span></span>
+<span data-line=""><span style="color:#7EE787">metadata</span><span style="color:#E6EDF3">:</span></span>
+<span data-line=""><span style="color:#7EE787">  name</span><span style="color:#E6EDF3">: </span><span style="color:#A5D6FF">eg</span></span>
+<span data-line=""><span style="color:#7EE787">spec</span><span style="color:#E6EDF3">:</span></span>
+<span data-line=""><span style="color:#7EE787">  gatewayClassName</span><span style="color:#E6EDF3">: </span><span style="color:#A5D6FF">eg</span></span>
+<span data-line=""><span style="color:#7EE787">  listeners</span><span style="color:#E6EDF3">:</span></span>
+<span data-line=""><span style="color:#E6EDF3">    - </span><span style="color:#7EE787">name</span><span style="color:#E6EDF3">: </span><span style="color:#A5D6FF">http</span></span>
+<span data-line=""><span style="color:#7EE787">      protocol</span><span style="color:#E6EDF3">: </span><span style="color:#A5D6FF">HTTP</span></span>
+<span data-line=""><span style="color:#7EE787">      port</span><span style="color:#E6EDF3">: </span><span style="color:#79C0FF">80</span></span>
+<span data-line=""><span style="color:#79C0FF">---</span></span>
+<span data-line=""><span style="color:#7EE787">apiVersion</span><span style="color:#E6EDF3">: </span><span style="color:#A5D6FF">gateway.networking.k8s.io/v1</span></span>
+<span data-line=""><span style="color:#7EE787">kind</span><span style="color:#E6EDF3">: </span><span style="color:#A5D6FF">HTTPRoute</span></span>
+<span data-line=""><span style="color:#7EE787">metadata</span><span style="color:#E6EDF3">:</span></span>
+<span data-line=""><span style="color:#7EE787">  name</span><span style="color:#E6EDF3">: </span><span style="color:#A5D6FF">backend</span></span>
+<span data-line=""><span style="color:#7EE787">spec</span><span style="color:#E6EDF3">:</span></span>
+<span data-line=""><span style="color:#7EE787">  parentRefs</span><span style="color:#E6EDF3">:</span></span>
+<span data-line=""><span style="color:#E6EDF3">    - </span><span style="color:#7EE787">name</span><span style="color:#E6EDF3">: </span><span style="color:#A5D6FF">eg</span></span>
+<span data-line=""><span style="color:#7EE787">  hostnames</span><span style="color:#E6EDF3">:</span></span>
+<span data-line=""><span style="color:#E6EDF3">    - </span><span style="color:#A5D6FF">"www.example.com"</span></span>
+<span data-line=""><span style="color:#7EE787">  rules</span><span style="color:#E6EDF3">:</span></span>
+<span data-line=""><span style="color:#E6EDF3">    - </span><span style="color:#7EE787">backendRefs</span><span style="color:#E6EDF3">:</span></span>
+<span data-line=""><span style="color:#E6EDF3">        - </span><span style="color:#7EE787">name</span><span style="color:#E6EDF3">: </span><span style="color:#A5D6FF">backend</span></span>
+<span data-line=""><span style="color:#7EE787">          port</span><span style="color:#E6EDF3">: </span><span style="color:#79C0FF">3000</span></span></code></pre></figure>
 <p>이걸 체인으로 보면 로직은 다음과 같습니다:</p>
 <ol>
 <li><code>GatewayClass</code>가 <code>Envoy Gateway</code> 컨트롤러가 담당한다고 선언</li>
@@ -330,17 +331,17 @@ Envoy Gateway는 그 선언을 Envoy Proxy가 실행할 수 있는 설정으로 
 <h2 id="각-필드-이해하기">각 필드 이해하기</h2>
 <h3 id="gatewayclass"><code>GatewayClass</code></h3>
 <p>이것은 클러스터 수준의 ingress 타입 정의입니다. 보통 가장 중요한 필드는 다음입니다:</p>
-<figure data-rehype-pretty-code-figure=""><pre style="background-color:#24292e;color:#e1e4e8" tabindex="0" data-language="yaml" data-theme="github-dark"><code data-language="yaml" data-theme="github-dark" style="display: grid;"><span data-line=""><span style="color:#85E89D">spec</span><span style="color:#E1E4E8">:</span></span>
-<span data-line=""><span style="color:#85E89D">  controllerName</span><span style="color:#E1E4E8">: </span><span style="color:#9ECBFF">gateway.envoyproxy.io/gatewayclass-controller</span></span></code></pre></figure>
+<figure data-rehype-pretty-code-figure=""><pre style="background-color:#0d1117;color:#e6edf3" tabindex="0" data-language="yaml" data-theme="github-dark-default"><code data-language="yaml" data-theme="github-dark-default" style="display: grid;"><span data-line=""><span style="color:#7EE787">spec</span><span style="color:#E6EDF3">:</span></span>
+<span data-line=""><span style="color:#7EE787">  controllerName</span><span style="color:#E6EDF3">: </span><span style="color:#A5D6FF">gateway.envoyproxy.io/gatewayclass-controller</span></span></code></pre></figure>
 <p>뜻은 아주 단순합니다:
 "이 <code>GatewayClass</code>는 Envoy Gateway 컨트롤러가 관리한다."</p>
 <p>controllerName이 맞지 않으면, 잘못된 회사에 택배를 보낸 것과 같습니다. 아무도 수거하러 오지 않죠.</p>
 <h3 id="gateway"><code>Gateway</code></h3>
 <p>이것은 "ingress가 어떤 모습인지"를 정의합니다. 가장 자주 참고하는 필드는 <code>listeners</code>입니다:</p>
-<figure data-rehype-pretty-code-figure=""><pre style="background-color:#24292e;color:#e1e4e8" tabindex="0" data-language="yaml" data-theme="github-dark"><code data-language="yaml" data-theme="github-dark" style="display: grid;"><span data-line=""><span style="color:#85E89D">listeners</span><span style="color:#E1E4E8">:</span></span>
-<span data-line=""><span style="color:#E1E4E8">  - </span><span style="color:#85E89D">name</span><span style="color:#E1E4E8">: </span><span style="color:#9ECBFF">http</span></span>
-<span data-line=""><span style="color:#85E89D">    protocol</span><span style="color:#E1E4E8">: </span><span style="color:#9ECBFF">HTTP</span></span>
-<span data-line=""><span style="color:#85E89D">    port</span><span style="color:#E1E4E8">: </span><span style="color:#79B8FF">80</span></span></code></pre></figure>
+<figure data-rehype-pretty-code-figure=""><pre style="background-color:#0d1117;color:#e6edf3" tabindex="0" data-language="yaml" data-theme="github-dark-default"><code data-language="yaml" data-theme="github-dark-default" style="display: grid;"><span data-line=""><span style="color:#7EE787">listeners</span><span style="color:#E6EDF3">:</span></span>
+<span data-line=""><span style="color:#E6EDF3">  - </span><span style="color:#7EE787">name</span><span style="color:#E6EDF3">: </span><span style="color:#A5D6FF">http</span></span>
+<span data-line=""><span style="color:#7EE787">    protocol</span><span style="color:#E6EDF3">: </span><span style="color:#A5D6FF">HTTP</span></span>
+<span data-line=""><span style="color:#7EE787">    port</span><span style="color:#E6EDF3">: </span><span style="color:#79C0FF">80</span></span></code></pre></figure>
 <p>의미는 다음과 같습니다:</p>
 <ul>
 <li><code>http</code>라는 이름의 listener를 연다</li>
@@ -368,11 +369,11 @@ Envoy Gateway는 그 선언을 Envoy Proxy가 실행할 수 있는 설정으로 
 <li><code>allowedRoutes</code></li>
 </ul>
 <p>예시:</p>
-<figure data-rehype-pretty-code-figure=""><pre style="background-color:#24292e;color:#e1e4e8" tabindex="0" data-language="yaml" data-theme="github-dark"><code data-language="yaml" data-theme="github-dark" style="display: grid;"><span data-line=""><span style="color:#85E89D">listeners</span><span style="color:#E1E4E8">:</span></span>
-<span data-line=""><span style="color:#E1E4E8">  - </span><span style="color:#85E89D">name</span><span style="color:#E1E4E8">: </span><span style="color:#9ECBFF">https</span></span>
-<span data-line=""><span style="color:#85E89D">    protocol</span><span style="color:#E1E4E8">: </span><span style="color:#9ECBFF">HTTPS</span></span>
-<span data-line=""><span style="color:#85E89D">    port</span><span style="color:#E1E4E8">: </span><span style="color:#79B8FF">443</span></span>
-<span data-line=""><span style="color:#85E89D">    hostname</span><span style="color:#E1E4E8">: </span><span style="color:#9ECBFF">api.example.com</span></span></code></pre></figure>
+<figure data-rehype-pretty-code-figure=""><pre style="background-color:#0d1117;color:#e6edf3" tabindex="0" data-language="yaml" data-theme="github-dark-default"><code data-language="yaml" data-theme="github-dark-default" style="display: grid;"><span data-line=""><span style="color:#7EE787">listeners</span><span style="color:#E6EDF3">:</span></span>
+<span data-line=""><span style="color:#E6EDF3">  - </span><span style="color:#7EE787">name</span><span style="color:#E6EDF3">: </span><span style="color:#A5D6FF">https</span></span>
+<span data-line=""><span style="color:#7EE787">    protocol</span><span style="color:#E6EDF3">: </span><span style="color:#A5D6FF">HTTPS</span></span>
+<span data-line=""><span style="color:#7EE787">    port</span><span style="color:#E6EDF3">: </span><span style="color:#79C0FF">443</span></span>
+<span data-line=""><span style="color:#7EE787">    hostname</span><span style="color:#E6EDF3">: </span><span style="color:#A5D6FF">api.example.com</span></span></code></pre></figure>
 <p>이 말은 곧:</p>
 <ul>
 <li>이 슬롯 이름은 <code>https</code></li>
@@ -401,15 +402,15 @@ Envoy Gateway는 그 선언을 Envoy Proxy가 실행할 수 있는 설정으로 
 <p><code>Route</code>는 단순히 <code>HTTPRoute</code>만을 뜻하지 않습니다. 이 계열 전체가 Gateway API 설계의 핵심입니다.</p>
 <h4 id="httproute"><code>HTTPRoute</code></h4>
 <p>여러분이 가장 자주 작성하고 수정하게 될 타입입니다. 핵심 필드 세 가지:</p>
-<figure data-rehype-pretty-code-figure=""><pre style="background-color:#24292e;color:#e1e4e8" tabindex="0" data-language="yaml" data-theme="github-dark"><code data-language="yaml" data-theme="github-dark" style="display: grid;"><span data-line=""><span style="color:#85E89D">spec</span><span style="color:#E1E4E8">:</span></span>
-<span data-line=""><span style="color:#85E89D">  parentRefs</span><span style="color:#E1E4E8">:</span></span>
-<span data-line=""><span style="color:#E1E4E8">    - </span><span style="color:#85E89D">name</span><span style="color:#E1E4E8">: </span><span style="color:#9ECBFF">eg</span></span>
-<span data-line=""><span style="color:#85E89D">  hostnames</span><span style="color:#E1E4E8">:</span></span>
-<span data-line=""><span style="color:#E1E4E8">    - </span><span style="color:#9ECBFF">"www.example.com"</span></span>
-<span data-line=""><span style="color:#85E89D">  rules</span><span style="color:#E1E4E8">:</span></span>
-<span data-line=""><span style="color:#E1E4E8">    - </span><span style="color:#85E89D">backendRefs</span><span style="color:#E1E4E8">:</span></span>
-<span data-line=""><span style="color:#E1E4E8">        - </span><span style="color:#85E89D">name</span><span style="color:#E1E4E8">: </span><span style="color:#9ECBFF">backend</span></span>
-<span data-line=""><span style="color:#85E89D">          port</span><span style="color:#E1E4E8">: </span><span style="color:#79B8FF">3000</span></span></code></pre></figure>
+<figure data-rehype-pretty-code-figure=""><pre style="background-color:#0d1117;color:#e6edf3" tabindex="0" data-language="yaml" data-theme="github-dark-default"><code data-language="yaml" data-theme="github-dark-default" style="display: grid;"><span data-line=""><span style="color:#7EE787">spec</span><span style="color:#E6EDF3">:</span></span>
+<span data-line=""><span style="color:#7EE787">  parentRefs</span><span style="color:#E6EDF3">:</span></span>
+<span data-line=""><span style="color:#E6EDF3">    - </span><span style="color:#7EE787">name</span><span style="color:#E6EDF3">: </span><span style="color:#A5D6FF">eg</span></span>
+<span data-line=""><span style="color:#7EE787">  hostnames</span><span style="color:#E6EDF3">:</span></span>
+<span data-line=""><span style="color:#E6EDF3">    - </span><span style="color:#A5D6FF">"www.example.com"</span></span>
+<span data-line=""><span style="color:#7EE787">  rules</span><span style="color:#E6EDF3">:</span></span>
+<span data-line=""><span style="color:#E6EDF3">    - </span><span style="color:#7EE787">backendRefs</span><span style="color:#E6EDF3">:</span></span>
+<span data-line=""><span style="color:#E6EDF3">        - </span><span style="color:#7EE787">name</span><span style="color:#E6EDF3">: </span><span style="color:#A5D6FF">backend</span></span>
+<span data-line=""><span style="color:#7EE787">          port</span><span style="color:#E6EDF3">: </span><span style="color:#79C0FF">3000</span></span></code></pre></figure>
 <ul>
 <li><code>parentRefs</code>: 어느 Gateway에 attach할지</li>
 <li><code>hostnames</code>: 어떤 Host header가 이 규칙을 트리거하는지</li>
@@ -426,10 +427,10 @@ Envoy Gateway는 그 선언을 Envoy Proxy가 실행할 수 있는 설정으로 
 <li>headers</li>
 </ul>
 <p>예시:</p>
-<figure data-rehype-pretty-code-figure=""><pre style="background-color:#24292e;color:#e1e4e8" tabindex="0" data-language="yaml" data-theme="github-dark"><code data-language="yaml" data-theme="github-dark" style="display: grid;"><span data-line=""><span style="color:#85E89D">matches</span><span style="color:#E1E4E8">:</span></span>
-<span data-line=""><span style="color:#E1E4E8">  - </span><span style="color:#85E89D">method</span><span style="color:#E1E4E8">:</span></span>
-<span data-line=""><span style="color:#85E89D">      service</span><span style="color:#E1E4E8">: </span><span style="color:#9ECBFF">com.example.User</span></span>
-<span data-line=""><span style="color:#85E89D">      method</span><span style="color:#E1E4E8">: </span><span style="color:#9ECBFF">Login</span></span></code></pre></figure>
+<figure data-rehype-pretty-code-figure=""><pre style="background-color:#0d1117;color:#e6edf3" tabindex="0" data-language="yaml" data-theme="github-dark-default"><code data-language="yaml" data-theme="github-dark-default" style="display: grid;"><span data-line=""><span style="color:#7EE787">matches</span><span style="color:#E6EDF3">:</span></span>
+<span data-line=""><span style="color:#E6EDF3">  - </span><span style="color:#7EE787">method</span><span style="color:#E6EDF3">:</span></span>
+<span data-line=""><span style="color:#7EE787">      service</span><span style="color:#E6EDF3">: </span><span style="color:#A5D6FF">com.example.User</span></span>
+<span data-line=""><span style="color:#7EE787">      method</span><span style="color:#E6EDF3">: </span><span style="color:#A5D6FF">Login</span></span></code></pre></figure>
 <p>이 의미 체계는 gRPC와 자연스럽게 맞아떨어집니다. 단순히 URL path를 보는 게 아니라, gRPC service/method 모델에 직접 매칭하는 것이니까요.</p>
 <p>공식 문서도 말하듯, <code>GRPCRoute</code>와 <code>HTTPRoute</code>가 같은 listener를 공유하고 hostname이 충돌하면 구현체는 한쪽을 거부해야 합니다. 쉽게 말해 HTTP와 gRPC가 같은 hostname을 두고 싸우게 두지 말라는 뜻입니다.</p>
 <h4 id="tcproute"><code>TCPRoute</code></h4>
@@ -494,8 +495,8 @@ Envoy Gateway는 그 선언을 Envoy Proxy가 실행할 수 있는 설정으로 
 <p>이 분리는 여러 사람이 협업할 때 특히 잘 맞습니다. 단순히 path 하나 바꾸려고 ingress 전체를 건드릴 필요가 없고, 팀끼리 서로 밟는 일도 크게 줄어듭니다.</p>
 <h2 id="이제-status를-보기-시작하세요">이제 <code>status</code>를 보기 시작하세요</h2>
 <p><code>spec</code>뿐 아니라, 점차 <code>status</code>를 확인하는 습관을 들이세요. 특히 <code>HTTPRoute</code>와 <code>Gateway</code>에서 중요합니다:</p>
-<figure data-rehype-pretty-code-figure=""><pre style="background-color:#24292e;color:#e1e4e8" tabindex="0" data-language="bash" data-theme="github-dark"><code data-language="bash" data-theme="github-dark" style="display: grid;"><span data-line=""><span style="color:#B392F0">kubectl</span><span style="color:#9ECBFF"> get</span><span style="color:#9ECBFF"> gateway</span><span style="color:#9ECBFF"> eg</span><span style="color:#79B8FF"> -o</span><span style="color:#9ECBFF"> yaml</span></span>
-<span data-line=""><span style="color:#B392F0">kubectl</span><span style="color:#9ECBFF"> get</span><span style="color:#9ECBFF"> httproute</span><span style="color:#9ECBFF"> backend</span><span style="color:#79B8FF"> -o</span><span style="color:#9ECBFF"> yaml</span></span></code></pre></figure>
+<figure data-rehype-pretty-code-figure=""><pre style="background-color:#0d1117;color:#e6edf3" tabindex="0" data-language="bash" data-theme="github-dark-default"><code data-language="bash" data-theme="github-dark-default" style="display: grid;"><span data-line=""><span style="color:#FFA657">kubectl</span><span style="color:#A5D6FF"> get</span><span style="color:#A5D6FF"> gateway</span><span style="color:#A5D6FF"> eg</span><span style="color:#79C0FF"> -o</span><span style="color:#A5D6FF"> yaml</span></span>
+<span data-line=""><span style="color:#FFA657">kubectl</span><span style="color:#A5D6FF"> get</span><span style="color:#A5D6FF"> httproute</span><span style="color:#A5D6FF"> backend</span><span style="color:#79C0FF"> -o</span><span style="color:#A5D6FF"> yaml</span></span></code></pre></figure>
 <p>처음에는 이것만 확인해도 좋습니다:</p>
 <ul>
 <li>route가 <code>Accepted</code> 되었는가</li>
@@ -510,7 +511,7 @@ Envoy Gateway는 그 선언을 Envoy Proxy가 실행할 수 있는 설정으로 
 </blockquote>
 <h2 id="다음-단계">다음 단계</h2>
 <p>이제 개념이 잡혔으니, 다음 글에서는 가장 흔한 HTTP 라우팅 시나리오인 host, path, header, 트래픽 분할을 살펴봅니다:
-👉 <a href="03-http-routing">실전 HTTP 라우팅</a></p>7:["$","aside",null,{"className":"hidden lg:block","children":["$","$Lb",null,{"html":"$c"}]}]
-8:["$","script","script-0",{"src":"/_next/static/chunks/2dddb3bc05093f69.js","async":true}]
-9:["$","$Ld",null,{"children":["$","$e",null,{"name":"Next.MetadataOutlet","children":"$@f"}]}]
-f:null
+👉 <a href="03-http-routing">실전 HTTP 라우팅</a></p>8:["$","aside",null,{"className":"hidden lg:block","children":["$","$Lc",null,{"html":"$d"}]}]
+9:["$","script","script-0",{"src":"/_next/static/chunks/2dddb3bc05093f69.js","async":true}]
+a:["$","$Le",null,{"children":["$","$f",null,{"name":"Next.MetadataOutlet","children":"$@10"}]}]
+10:null

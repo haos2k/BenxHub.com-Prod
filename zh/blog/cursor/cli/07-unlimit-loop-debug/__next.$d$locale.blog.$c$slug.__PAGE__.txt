@@ -1,10 +1,10 @@
 1:"$Sreact.fragment"
-2:I[14864,["/_next/static/chunks/7923a261b80bb6e1.js","/_next/static/chunks/e09b4358027e8033.js","/_next/static/chunks/2dddb3bc05093f69.js"],"default"]
-8:I[24801,["/_next/static/chunks/7923a261b80bb6e1.js","/_next/static/chunks/e09b4358027e8033.js","/_next/static/chunks/2dddb3bc05093f69.js"],"default"]
+2:I[14864,["/_next/static/chunks/4204edc93da35a5e.js","/_next/static/chunks/f2afb7fd2b7566bb.js","/_next/static/chunks/2dddb3bc05093f69.js"],"default"]
+8:I[24801,["/_next/static/chunks/4204edc93da35a5e.js","/_next/static/chunks/f2afb7fd2b7566bb.js","/_next/static/chunks/2dddb3bc05093f69.js"],"default"]
 a:I[50183,["/_next/static/chunks/5a5b5b13c22d14f7.js","/_next/static/chunks/a484d1d3dd4b55ab.js"],"OutletBoundary"]
 b:"$Sreact.suspense"
 :HL["/images/posts/cursor-cli-debug-loop.png","image"]
-3:T3cd7,<p>測試掛了，改 code，再跑測試，還是掛，再改——這個迴圈大家都做過。<strong>為什麼要自己來？</strong></p>
+3:T3d27,<p>測試掛了，改 code，再跑測試，還是掛，再改——這個迴圈大家都做過。<strong>為什麼要自己來？</strong></p>
 <p>寫一個 shell 腳本，把這個迴圈交給 <code>cursor agent</code> 跑：測試失敗就把錯誤訊息餵給 AI，AI 修完再跑，直到測試全過才停。你去喝咖啡、回訊息，等終端機出現 <code>✅ 測試通過！</code> 再回來驗收。</p>
 <h2 id="核心邏輯">核心邏輯</h2>
 <pre><code>while 測試沒過:
@@ -22,89 +22,89 @@ b:"$Sreact.suspense"
 </ul>
 <h2 id="最簡版腳本">最簡版腳本</h2>
 <p>建立 <code>debug-loop.sh</code>：</p>
-<figure data-rehype-pretty-code-figure=""><pre style="background-color:#24292e;color:#e1e4e8" tabindex="0" data-language="bash" data-theme="github-dark"><code data-language="bash" data-theme="github-dark" style="display: grid;"><span data-line=""><span style="color:#6A737D">#!/bin/bash</span></span>
+<figure data-rehype-pretty-code-figure=""><pre style="background-color:#0d1117;color:#e6edf3" tabindex="0" data-language="bash" data-theme="github-dark-default"><code data-language="bash" data-theme="github-dark-default" style="display: grid;"><span data-line=""><span style="color:#8B949E">#!/bin/bash</span></span>
 <span data-line=""> </span>
-<span data-line=""><span style="color:#E1E4E8">MAX_LOOPS</span><span style="color:#F97583">=</span><span style="color:#9ECBFF">10</span><span style="color:#6A737D">        # 最多跑幾圈，防止真的無限跑</span></span>
-<span data-line=""><span style="color:#E1E4E8">TEST_CMD</span><span style="color:#F97583">=</span><span style="color:#9ECBFF">"npm test"</span><span style="color:#6A737D"> # 換成你的測試指令</span></span>
-<span data-line=""><span style="color:#E1E4E8">loop</span><span style="color:#F97583">=</span><span style="color:#9ECBFF">0</span></span>
+<span data-line=""><span style="color:#E6EDF3">MAX_LOOPS</span><span style="color:#FF7B72">=</span><span style="color:#A5D6FF">10</span><span style="color:#8B949E">        # 最多跑幾圈，防止真的無限跑</span></span>
+<span data-line=""><span style="color:#E6EDF3">TEST_CMD</span><span style="color:#FF7B72">=</span><span style="color:#A5D6FF">"npm test"</span><span style="color:#8B949E"> # 換成你的測試指令</span></span>
+<span data-line=""><span style="color:#E6EDF3">loop</span><span style="color:#FF7B72">=</span><span style="color:#A5D6FF">0</span></span>
 <span data-line=""> </span>
-<span data-line=""><span style="color:#F97583">while</span><span style="color:#E1E4E8"> [ $loop </span><span style="color:#F97583">-lt</span><span style="color:#E1E4E8"> $MAX_LOOPS ]; </span><span style="color:#F97583">do</span></span>
-<span data-line=""><span style="color:#79B8FF">  echo</span><span style="color:#9ECBFF"> ""</span></span>
-<span data-line=""><span style="color:#79B8FF">  echo</span><span style="color:#9ECBFF"> "=== 第 $((</span><span style="color:#B392F0">loop</span><span style="color:#9ECBFF"> + </span><span style="color:#79B8FF">1</span><span style="color:#9ECBFF">)) 圈 ==="</span></span>
+<span data-line=""><span style="color:#FF7B72">while</span><span style="color:#E6EDF3"> [ $loop </span><span style="color:#FF7B72">-lt</span><span style="color:#E6EDF3"> $MAX_LOOPS ]; </span><span style="color:#FF7B72">do</span></span>
+<span data-line=""><span style="color:#79C0FF">  echo</span><span style="color:#A5D6FF"> ""</span></span>
+<span data-line=""><span style="color:#79C0FF">  echo</span><span style="color:#A5D6FF"> "=== 第 $((</span><span style="color:#FFA657">loop</span><span style="color:#A5D6FF"> + </span><span style="color:#79C0FF">1</span><span style="color:#A5D6FF">)) 圈 ==="</span></span>
 <span data-line=""> </span>
-<span data-line=""><span style="color:#E1E4E8">  TEST_OUTPUT</span><span style="color:#F97583">=</span><span style="color:#E1E4E8">$(</span><span style="color:#79B8FF">eval</span><span style="color:#9ECBFF"> "</span><span style="color:#E1E4E8">$TEST_CMD</span><span style="color:#9ECBFF">"</span><span style="color:#F97583"> 2>&#x26;1</span><span style="color:#E1E4E8">)</span></span>
-<span data-line=""><span style="color:#E1E4E8">  EXIT_CODE</span><span style="color:#F97583">=</span><span style="color:#79B8FF">$?</span></span>
+<span data-line=""><span style="color:#E6EDF3">  TEST_OUTPUT</span><span style="color:#FF7B72">=</span><span style="color:#E6EDF3">$(</span><span style="color:#79C0FF">eval</span><span style="color:#A5D6FF"> "</span><span style="color:#E6EDF3">$TEST_CMD</span><span style="color:#A5D6FF">"</span><span style="color:#FF7B72"> 2>&#x26;1</span><span style="color:#E6EDF3">)</span></span>
+<span data-line=""><span style="color:#E6EDF3">  EXIT_CODE</span><span style="color:#FF7B72">=</span><span style="color:#79C0FF">$?</span></span>
 <span data-line=""> </span>
-<span data-line=""><span style="color:#F97583">  if</span><span style="color:#E1E4E8"> [ $EXIT_CODE </span><span style="color:#F97583">-eq</span><span style="color:#79B8FF"> 0</span><span style="color:#E1E4E8"> ]; </span><span style="color:#F97583">then</span></span>
-<span data-line=""><span style="color:#79B8FF">    echo</span><span style="color:#9ECBFF"> "✅ 測試通過！共跑了 $((</span><span style="color:#B392F0">loop</span><span style="color:#9ECBFF"> + </span><span style="color:#79B8FF">1</span><span style="color:#9ECBFF">)) 圈。"</span></span>
-<span data-line=""><span style="color:#79B8FF">    exit</span><span style="color:#79B8FF"> 0</span></span>
-<span data-line=""><span style="color:#F97583">  fi</span></span>
+<span data-line=""><span style="color:#FF7B72">  if</span><span style="color:#E6EDF3"> [ $EXIT_CODE </span><span style="color:#FF7B72">-eq</span><span style="color:#79C0FF"> 0</span><span style="color:#E6EDF3"> ]; </span><span style="color:#FF7B72">then</span></span>
+<span data-line=""><span style="color:#79C0FF">    echo</span><span style="color:#A5D6FF"> "✅ 測試通過！共跑了 $((</span><span style="color:#FFA657">loop</span><span style="color:#A5D6FF"> + </span><span style="color:#79C0FF">1</span><span style="color:#A5D6FF">)) 圈。"</span></span>
+<span data-line=""><span style="color:#79C0FF">    exit</span><span style="color:#79C0FF"> 0</span></span>
+<span data-line=""><span style="color:#FF7B72">  fi</span></span>
 <span data-line=""> </span>
-<span data-line=""><span style="color:#79B8FF">  echo</span><span style="color:#9ECBFF"> "❌ 測試失敗，讓 AI 來修..."</span></span>
-<span data-line=""><span style="color:#79B8FF">  echo</span><span style="color:#9ECBFF"> "</span><span style="color:#E1E4E8">$TEST_OUTPUT</span><span style="color:#9ECBFF">"</span><span style="color:#F97583"> |</span><span style="color:#B392F0"> tail</span><span style="color:#79B8FF"> -30</span></span>
+<span data-line=""><span style="color:#79C0FF">  echo</span><span style="color:#A5D6FF"> "❌ 測試失敗，讓 AI 來修..."</span></span>
+<span data-line=""><span style="color:#79C0FF">  echo</span><span style="color:#A5D6FF"> "</span><span style="color:#E6EDF3">$TEST_OUTPUT</span><span style="color:#A5D6FF">"</span><span style="color:#FF7B72"> |</span><span style="color:#FFA657"> tail</span><span style="color:#79C0FF"> -30</span></span>
 <span data-line=""> </span>
-<span data-line=""><span style="color:#B392F0">  cursor</span><span style="color:#9ECBFF"> agent</span><span style="color:#9ECBFF"> "測試失敗了，錯誤如下，請修 code 讓測試通過：</span></span>
+<span data-line=""><span style="color:#FFA657">  cursor</span><span style="color:#A5D6FF"> agent</span><span style="color:#A5D6FF"> "測試失敗了，錯誤如下，請修 code 讓測試通過：</span></span>
 <span data-line=""> </span>
-<span data-line=""><span style="color:#E1E4E8">$TEST_OUTPUT</span><span style="color:#9ECBFF">"</span><span style="color:#79B8FF"> --model</span><span style="color:#9ECBFF"> gpt-codex-5.3-high</span><span style="color:#79B8FF"> --no-interactive</span></span>
+<span data-line=""><span style="color:#E6EDF3">$TEST_OUTPUT</span><span style="color:#A5D6FF">"</span><span style="color:#79C0FF"> --model</span><span style="color:#A5D6FF"> gpt-codex-5.3-high</span><span style="color:#79C0FF"> --no-interactive</span></span>
 <span data-line=""> </span>
-<span data-line=""><span style="color:#E1E4E8">  loop</span><span style="color:#F97583">=</span><span style="color:#E1E4E8">$((</span><span style="color:#B392F0">loop</span><span style="color:#9ECBFF"> +</span><span style="color:#79B8FF"> 1</span><span style="color:#E1E4E8">))</span></span>
-<span data-line=""><span style="color:#F97583">done</span></span>
+<span data-line=""><span style="color:#E6EDF3">  loop</span><span style="color:#FF7B72">=</span><span style="color:#E6EDF3">$((</span><span style="color:#FFA657">loop</span><span style="color:#A5D6FF"> +</span><span style="color:#79C0FF"> 1</span><span style="color:#E6EDF3">))</span></span>
+<span data-line=""><span style="color:#FF7B72">done</span></span>
 <span data-line=""> </span>
-<span data-line=""><span style="color:#79B8FF">echo</span><span style="color:#9ECBFF"> "⚠️  已達最大圈數 (</span><span style="color:#E1E4E8">$MAX_LOOPS</span><span style="color:#9ECBFF">)，停止。請手動檢查。"</span></span>
-<span data-line=""><span style="color:#79B8FF">exit</span><span style="color:#79B8FF"> 1</span></span></code></pre></figure>
+<span data-line=""><span style="color:#79C0FF">echo</span><span style="color:#A5D6FF"> "⚠️  已達最大圈數 (</span><span style="color:#E6EDF3">$MAX_LOOPS</span><span style="color:#A5D6FF">)，停止。請手動檢查。"</span></span>
+<span data-line=""><span style="color:#79C0FF">exit</span><span style="color:#79C0FF"> 1</span></span></code></pre></figure>
 <p>執行：</p>
-<figure data-rehype-pretty-code-figure=""><pre style="background-color:#24292e;color:#e1e4e8" tabindex="0" data-language="bash" data-theme="github-dark"><code data-language="bash" data-theme="github-dark" style="display: grid;"><span data-line=""><span style="color:#B392F0">chmod</span><span style="color:#9ECBFF"> +x</span><span style="color:#9ECBFF"> debug-loop.sh</span></span>
-<span data-line=""><span style="color:#B392F0">./debug-loop.sh</span></span></code></pre></figure>
+<figure data-rehype-pretty-code-figure=""><pre style="background-color:#0d1117;color:#e6edf3" tabindex="0" data-language="bash" data-theme="github-dark-default"><code data-language="bash" data-theme="github-dark-default" style="display: grid;"><span data-line=""><span style="color:#FFA657">chmod</span><span style="color:#A5D6FF"> +x</span><span style="color:#A5D6FF"> debug-loop.sh</span></span>
+<span data-line=""><span style="color:#FFA657">./debug-loop.sh</span></span></code></pre></figure>
 <p>跑起來之後就可以去做別的事了。若跑滿 <code>MAX_LOOPS</code> 還沒過，代表問題超出 AI 能自己解決的範圍，這時才需要人介入。</p>
 <h2 id="依專案調整">依專案調整</h2>
 <p><strong>換測試指令</strong>（第 3 行）：</p>
-<figure data-rehype-pretty-code-figure=""><pre style="background-color:#24292e;color:#e1e4e8" tabindex="0" data-language="bash" data-theme="github-dark"><code data-language="bash" data-theme="github-dark" style="display: grid;"><span data-line=""><span style="color:#E1E4E8">TEST_CMD</span><span style="color:#F97583">=</span><span style="color:#9ECBFF">"pytest -x"</span><span style="color:#6A737D">            # Python，-x 遇第一個錯就停</span></span>
-<span data-line=""><span style="color:#E1E4E8">TEST_CMD</span><span style="color:#F97583">=</span><span style="color:#9ECBFF">"go test ./..."</span><span style="color:#6A737D">        # Go</span></span>
-<span data-line=""><span style="color:#E1E4E8">TEST_CMD</span><span style="color:#F97583">=</span><span style="color:#9ECBFF">"cargo test"</span><span style="color:#6A737D">           # Rust</span></span>
-<span data-line=""><span style="color:#E1E4E8">TEST_CMD</span><span style="color:#F97583">=</span><span style="color:#9ECBFF">"./vendor/bin/phpunit"</span><span style="color:#6A737D"> # PHP</span></span></code></pre></figure>
+<figure data-rehype-pretty-code-figure=""><pre style="background-color:#0d1117;color:#e6edf3" tabindex="0" data-language="bash" data-theme="github-dark-default"><code data-language="bash" data-theme="github-dark-default" style="display: grid;"><span data-line=""><span style="color:#E6EDF3">TEST_CMD</span><span style="color:#FF7B72">=</span><span style="color:#A5D6FF">"pytest -x"</span><span style="color:#8B949E">            # Python，-x 遇第一個錯就停</span></span>
+<span data-line=""><span style="color:#E6EDF3">TEST_CMD</span><span style="color:#FF7B72">=</span><span style="color:#A5D6FF">"go test ./..."</span><span style="color:#8B949E">        # Go</span></span>
+<span data-line=""><span style="color:#E6EDF3">TEST_CMD</span><span style="color:#FF7B72">=</span><span style="color:#A5D6FF">"cargo test"</span><span style="color:#8B949E">           # Rust</span></span>
+<span data-line=""><span style="color:#E6EDF3">TEST_CMD</span><span style="color:#FF7B72">=</span><span style="color:#A5D6FF">"./vendor/bin/phpunit"</span><span style="color:#8B949E"> # PHP</span></span></code></pre></figure>
 <p><strong>調最大圈數</strong>：5 圈保守（問題複雜的話 AI 比較快卡死）、15 圈給點餘裕——設太大只是在浪費 quota，設太小又不夠。10 是個不錯的起點。</p>
 <p><strong>讓 AI 有更多背景資訊</strong>，在 <code>cursor agent</code> 指令裡說清楚：</p>
-<figure data-rehype-pretty-code-figure=""><pre style="background-color:#24292e;color:#e1e4e8" tabindex="0" data-language="bash" data-theme="github-dark"><code data-language="bash" data-theme="github-dark" style="display: grid;"><span data-line=""><span style="color:#B392F0">cursor</span><span style="color:#9ECBFF"> agent</span><span style="color:#9ECBFF"> "測試失敗，錯誤如下。</span></span>
-<span data-line=""><span style="color:#9ECBFF">測試框架是 Jest，語言是 TypeScript。</span></span>
-<span data-line=""><span style="color:#9ECBFF">不要改測試檔案，只改 src/ 底下的檔案。</span></span>
+<figure data-rehype-pretty-code-figure=""><pre style="background-color:#0d1117;color:#e6edf3" tabindex="0" data-language="bash" data-theme="github-dark-default"><code data-language="bash" data-theme="github-dark-default" style="display: grid;"><span data-line=""><span style="color:#FFA657">cursor</span><span style="color:#A5D6FF"> agent</span><span style="color:#A5D6FF"> "測試失敗，錯誤如下。</span></span>
+<span data-line=""><span style="color:#A5D6FF">測試框架是 Jest，語言是 TypeScript。</span></span>
+<span data-line=""><span style="color:#A5D6FF">不要改測試檔案，只改 src/ 底下的檔案。</span></span>
 <span data-line=""> </span>
-<span data-line=""><span style="color:#9ECBFF">錯誤訊息：</span></span>
-<span data-line=""><span style="color:#E1E4E8">$TEST_OUTPUT</span><span style="color:#9ECBFF">"</span><span style="color:#79B8FF"> --model</span><span style="color:#9ECBFF"> gpt-codex-5.3-high</span><span style="color:#79B8FF"> --no-interactive</span></span></code></pre></figure>
+<span data-line=""><span style="color:#A5D6FF">錯誤訊息：</span></span>
+<span data-line=""><span style="color:#E6EDF3">$TEST_OUTPUT</span><span style="color:#A5D6FF">"</span><span style="color:#79C0FF"> --model</span><span style="color:#A5D6FF"> gpt-codex-5.3-high</span><span style="color:#79C0FF"> --no-interactive</span></span></code></pre></figure>
 <h2 id="加強版保留每圈的日誌">加強版：保留每圈的日誌</h2>
 <p>如果想事後分析「第幾圈開始跑歪了」：</p>
-<figure data-rehype-pretty-code-figure=""><pre style="background-color:#24292e;color:#e1e4e8" tabindex="0" data-language="bash" data-theme="github-dark"><code data-language="bash" data-theme="github-dark" style="display: grid;"><span data-line=""><span style="color:#6A737D">#!/bin/bash</span></span>
+<figure data-rehype-pretty-code-figure=""><pre style="background-color:#0d1117;color:#e6edf3" tabindex="0" data-language="bash" data-theme="github-dark-default"><code data-language="bash" data-theme="github-dark-default" style="display: grid;"><span data-line=""><span style="color:#8B949E">#!/bin/bash</span></span>
 <span data-line=""> </span>
-<span data-line=""><span style="color:#E1E4E8">MAX_LOOPS</span><span style="color:#F97583">=</span><span style="color:#9ECBFF">10</span></span>
-<span data-line=""><span style="color:#E1E4E8">TEST_CMD</span><span style="color:#F97583">=</span><span style="color:#9ECBFF">"npm test"</span></span>
-<span data-line=""><span style="color:#E1E4E8">LOG_DIR</span><span style="color:#F97583">=</span><span style="color:#9ECBFF">"debug-logs"</span></span>
-<span data-line=""><span style="color:#B392F0">mkdir</span><span style="color:#79B8FF"> -p</span><span style="color:#E1E4E8"> $LOG_DIR</span></span>
+<span data-line=""><span style="color:#E6EDF3">MAX_LOOPS</span><span style="color:#FF7B72">=</span><span style="color:#A5D6FF">10</span></span>
+<span data-line=""><span style="color:#E6EDF3">TEST_CMD</span><span style="color:#FF7B72">=</span><span style="color:#A5D6FF">"npm test"</span></span>
+<span data-line=""><span style="color:#E6EDF3">LOG_DIR</span><span style="color:#FF7B72">=</span><span style="color:#A5D6FF">"debug-logs"</span></span>
+<span data-line=""><span style="color:#FFA657">mkdir</span><span style="color:#79C0FF"> -p</span><span style="color:#E6EDF3"> $LOG_DIR</span></span>
 <span data-line=""> </span>
-<span data-line=""><span style="color:#E1E4E8">loop</span><span style="color:#F97583">=</span><span style="color:#9ECBFF">0</span></span>
+<span data-line=""><span style="color:#E6EDF3">loop</span><span style="color:#FF7B72">=</span><span style="color:#A5D6FF">0</span></span>
 <span data-line=""> </span>
-<span data-line=""><span style="color:#F97583">while</span><span style="color:#E1E4E8"> [ $loop </span><span style="color:#F97583">-lt</span><span style="color:#E1E4E8"> $MAX_LOOPS ]; </span><span style="color:#F97583">do</span></span>
-<span data-line=""><span style="color:#79B8FF">  echo</span><span style="color:#9ECBFF"> ""</span></span>
-<span data-line=""><span style="color:#79B8FF">  echo</span><span style="color:#9ECBFF"> "=== 第 $((</span><span style="color:#B392F0">loop</span><span style="color:#9ECBFF"> + </span><span style="color:#79B8FF">1</span><span style="color:#9ECBFF">)) 圈 ==="</span></span>
+<span data-line=""><span style="color:#FF7B72">while</span><span style="color:#E6EDF3"> [ $loop </span><span style="color:#FF7B72">-lt</span><span style="color:#E6EDF3"> $MAX_LOOPS ]; </span><span style="color:#FF7B72">do</span></span>
+<span data-line=""><span style="color:#79C0FF">  echo</span><span style="color:#A5D6FF"> ""</span></span>
+<span data-line=""><span style="color:#79C0FF">  echo</span><span style="color:#A5D6FF"> "=== 第 $((</span><span style="color:#FFA657">loop</span><span style="color:#A5D6FF"> + </span><span style="color:#79C0FF">1</span><span style="color:#A5D6FF">)) 圈 ==="</span></span>
 <span data-line=""> </span>
-<span data-line=""><span style="color:#E1E4E8">  LOG_FILE</span><span style="color:#F97583">=</span><span style="color:#9ECBFF">"</span><span style="color:#E1E4E8">$LOG_DIR</span><span style="color:#9ECBFF">/loop-$((</span><span style="color:#B392F0">loop</span><span style="color:#9ECBFF"> + </span><span style="color:#79B8FF">1</span><span style="color:#9ECBFF">)).log"</span></span>
-<span data-line=""><span style="color:#E1E4E8">  TEST_OUTPUT</span><span style="color:#F97583">=</span><span style="color:#E1E4E8">$(</span><span style="color:#79B8FF">eval</span><span style="color:#9ECBFF"> "</span><span style="color:#E1E4E8">$TEST_CMD</span><span style="color:#9ECBFF">"</span><span style="color:#F97583"> 2>&#x26;1</span><span style="color:#F97583"> |</span><span style="color:#B392F0"> tee</span><span style="color:#9ECBFF"> "</span><span style="color:#E1E4E8">$LOG_FILE</span><span style="color:#9ECBFF">"</span><span style="color:#E1E4E8">)</span></span>
-<span data-line=""><span style="color:#E1E4E8">  EXIT_CODE</span><span style="color:#F97583">=</span><span style="color:#E1E4E8">${PIPESTATUS[0]}</span></span>
+<span data-line=""><span style="color:#E6EDF3">  LOG_FILE</span><span style="color:#FF7B72">=</span><span style="color:#A5D6FF">"</span><span style="color:#E6EDF3">$LOG_DIR</span><span style="color:#A5D6FF">/loop-$((</span><span style="color:#FFA657">loop</span><span style="color:#A5D6FF"> + </span><span style="color:#79C0FF">1</span><span style="color:#A5D6FF">)).log"</span></span>
+<span data-line=""><span style="color:#E6EDF3">  TEST_OUTPUT</span><span style="color:#FF7B72">=</span><span style="color:#E6EDF3">$(</span><span style="color:#79C0FF">eval</span><span style="color:#A5D6FF"> "</span><span style="color:#E6EDF3">$TEST_CMD</span><span style="color:#A5D6FF">"</span><span style="color:#FF7B72"> 2>&#x26;1</span><span style="color:#FF7B72"> |</span><span style="color:#FFA657"> tee</span><span style="color:#A5D6FF"> "</span><span style="color:#E6EDF3">$LOG_FILE</span><span style="color:#A5D6FF">"</span><span style="color:#E6EDF3">)</span></span>
+<span data-line=""><span style="color:#E6EDF3">  EXIT_CODE</span><span style="color:#FF7B72">=</span><span style="color:#E6EDF3">${PIPESTATUS[0]}</span></span>
 <span data-line=""> </span>
-<span data-line=""><span style="color:#F97583">  if</span><span style="color:#E1E4E8"> [ $EXIT_CODE </span><span style="color:#F97583">-eq</span><span style="color:#79B8FF"> 0</span><span style="color:#E1E4E8"> ]; </span><span style="color:#F97583">then</span></span>
-<span data-line=""><span style="color:#79B8FF">    echo</span><span style="color:#9ECBFF"> "✅ 測試通過！共跑了 $((</span><span style="color:#B392F0">loop</span><span style="color:#9ECBFF"> + </span><span style="color:#79B8FF">1</span><span style="color:#9ECBFF">)) 圈。"</span></span>
-<span data-line=""><span style="color:#79B8FF">    exit</span><span style="color:#79B8FF"> 0</span></span>
-<span data-line=""><span style="color:#F97583">  fi</span></span>
+<span data-line=""><span style="color:#FF7B72">  if</span><span style="color:#E6EDF3"> [ $EXIT_CODE </span><span style="color:#FF7B72">-eq</span><span style="color:#79C0FF"> 0</span><span style="color:#E6EDF3"> ]; </span><span style="color:#FF7B72">then</span></span>
+<span data-line=""><span style="color:#79C0FF">    echo</span><span style="color:#A5D6FF"> "✅ 測試通過！共跑了 $((</span><span style="color:#FFA657">loop</span><span style="color:#A5D6FF"> + </span><span style="color:#79C0FF">1</span><span style="color:#A5D6FF">)) 圈。"</span></span>
+<span data-line=""><span style="color:#79C0FF">    exit</span><span style="color:#79C0FF"> 0</span></span>
+<span data-line=""><span style="color:#FF7B72">  fi</span></span>
 <span data-line=""> </span>
-<span data-line=""><span style="color:#79B8FF">  echo</span><span style="color:#9ECBFF"> "❌ 失敗，日誌存到 </span><span style="color:#E1E4E8">$LOG_FILE</span><span style="color:#9ECBFF">"</span></span>
+<span data-line=""><span style="color:#79C0FF">  echo</span><span style="color:#A5D6FF"> "❌ 失敗，日誌存到 </span><span style="color:#E6EDF3">$LOG_FILE</span><span style="color:#A5D6FF">"</span></span>
 <span data-line=""> </span>
-<span data-line=""><span style="color:#B392F0">  cursor</span><span style="color:#9ECBFF"> agent</span><span style="color:#9ECBFF"> "測試失敗，錯誤如下，請修 code 讓測試通過：</span></span>
+<span data-line=""><span style="color:#FFA657">  cursor</span><span style="color:#A5D6FF"> agent</span><span style="color:#A5D6FF"> "測試失敗，錯誤如下，請修 code 讓測試通過：</span></span>
 <span data-line=""> </span>
-<span data-line=""><span style="color:#E1E4E8">$TEST_OUTPUT</span><span style="color:#9ECBFF">"</span><span style="color:#79B8FF"> --model</span><span style="color:#9ECBFF"> gpt-codex-5.3-high</span><span style="color:#79B8FF"> --no-interactive</span></span>
+<span data-line=""><span style="color:#E6EDF3">$TEST_OUTPUT</span><span style="color:#A5D6FF">"</span><span style="color:#79C0FF"> --model</span><span style="color:#A5D6FF"> gpt-codex-5.3-high</span><span style="color:#79C0FF"> --no-interactive</span></span>
 <span data-line=""> </span>
-<span data-line=""><span style="color:#E1E4E8">  loop</span><span style="color:#F97583">=</span><span style="color:#E1E4E8">$((</span><span style="color:#B392F0">loop</span><span style="color:#9ECBFF"> +</span><span style="color:#79B8FF"> 1</span><span style="color:#E1E4E8">))</span></span>
-<span data-line=""><span style="color:#F97583">done</span></span>
+<span data-line=""><span style="color:#E6EDF3">  loop</span><span style="color:#FF7B72">=</span><span style="color:#E6EDF3">$((</span><span style="color:#FFA657">loop</span><span style="color:#A5D6FF"> +</span><span style="color:#79C0FF"> 1</span><span style="color:#E6EDF3">))</span></span>
+<span data-line=""><span style="color:#FF7B72">done</span></span>
 <span data-line=""> </span>
-<span data-line=""><span style="color:#79B8FF">echo</span><span style="color:#9ECBFF"> "⚠️  達最大圈數，停止。請看 </span><span style="color:#E1E4E8">$LOG_DIR</span><span style="color:#9ECBFF">/ 裡的日誌。"</span></span>
-<span data-line=""><span style="color:#79B8FF">exit</span><span style="color:#79B8FF"> 1</span></span></code></pre></figure>
+<span data-line=""><span style="color:#79C0FF">echo</span><span style="color:#A5D6FF"> "⚠️  達最大圈數，停止。請看 </span><span style="color:#E6EDF3">$LOG_DIR</span><span style="color:#A5D6FF">/ 裡的日誌。"</span></span>
+<span data-line=""><span style="color:#79C0FF">exit</span><span style="color:#79C0FF"> 1</span></span></code></pre></figure>
 <p>每圈的錯誤都存成獨立檔案，方便對比 AI 改了什麼、問題有沒有在演化。</p>
 <h2 id="安全注意事項">安全注意事項</h2>
 <table>
@@ -137,9 +137,9 @@ b:"$Sreact.suspense"
 <blockquote>
 <p>搭配 Worktree：在不同 branch 各開一個除錯迴圈，可參考 <a href="06-cursor-cli-with-worktree">06-cursor-cli-with-worktree</a>。<br>
 下一步：<a href="08-worktree-merge">08-worktree-merge</a> — Cursor 內建 Worktree 進階應用與 Apply 策略。</p>
-</blockquote>0:{"buildId":"sM8YAyjANE7sOnXm3EQGk","rsc":["$","$1","c",{"children":[[["$","script",null,{"type":"application/ld+json","dangerouslySetInnerHTML":{"__html":"{\"@context\":\"https://schema.org\",\"@type\":\"Article\",\"headline\":\"Cursor CLI 無限除錯迴圈：讓 AI 跑到測試通過才停\",\"description\":\"一個 shell 腳本讓 cursor agent 自動修 code、跑測試、測試失敗再讓 AI 修，直到全過為止。你去忙別的，等 ✅ 再回來驗收。\",\"url\":\"https://benxhub.com/zh/blog/cursor/cli/07-unlimit-loop-debug\",\"mainEntityOfPage\":{\"@type\":\"WebPage\",\"@id\":\"https://benxhub.com/zh/blog/cursor/cli/07-unlimit-loop-debug\"},\"datePublished\":\"2026-02-24T00:00:00.000Z\",\"dateModified\":\"2026-02-24T00:00:00.000Z\",\"keywords\":\"cursor, cli, debug, automation, testing\",\"inLanguage\":\"zh\",\"author\":{\"@type\":\"Person\",\"name\":\"BenX\",\"url\":\"https://benxhub.com\"},\"publisher\":{\"@type\":\"Organization\",\"name\":\"BenXHub Blog\",\"url\":\"https://benxhub.com\"},\"image\":\"https://benxhub.com/images/posts/cursor-cli-debug-loop.png\"}"}}],["$","div",null,{"className":"mx-auto max-w-6xl px-4 py-12 sm:px-6","children":["$","div",null,{"className":"lg:grid lg:grid-cols-[1fr_240px] lg:gap-14","children":[["$","article",null,{"children":[["$","header",null,{"className":"mb-10","children":[["$","div",null,{"className":"mb-4 flex flex-wrap gap-2","children":[["$","$L2","cursor",{"href":"/zh/tags/cursor","localeCookie":{"name":"NEXT_LOCALE","sameSite":"lax"},"className":"inline-flex items-center rounded-full px-2.5 py-0.5 text-xs font-medium transition-colors","style":{"background":"var(--color-code-bg)","color":"var(--color-accent)","border":"1px solid var(--color-border)"},"children":["#","cursor"]}],["$","$L2","cli",{"href":"/zh/tags/cli","localeCookie":{"name":"NEXT_LOCALE","sameSite":"lax"},"className":"inline-flex items-center rounded-full px-2.5 py-0.5 text-xs font-medium transition-colors","style":{"background":"var(--color-code-bg)","color":"var(--color-accent)","border":"1px solid var(--color-border)"},"children":["#","cli"]}],["$","$L2","debug",{"href":"/zh/tags/debug","localeCookie":{"name":"NEXT_LOCALE","sameSite":"lax"},"className":"inline-flex items-center rounded-full px-2.5 py-0.5 text-xs font-medium transition-colors","style":{"background":"var(--color-code-bg)","color":"var(--color-accent)","border":"1px solid var(--color-border)"},"children":["#","debug"]}],["$","$L2","automation",{"href":"/zh/tags/automation","localeCookie":{"name":"NEXT_LOCALE","sameSite":"lax"},"className":"inline-flex items-center rounded-full px-2.5 py-0.5 text-xs font-medium transition-colors","style":{"background":"var(--color-code-bg)","color":"var(--color-accent)","border":"1px solid var(--color-border)"},"children":["#","automation"]}],["$","$L2","testing",{"href":"/zh/tags/testing","localeCookie":{"name":"NEXT_LOCALE","sameSite":"lax"},"className":"inline-flex items-center rounded-full px-2.5 py-0.5 text-xs font-medium transition-colors","style":{"background":"var(--color-code-bg)","color":"var(--color-accent)","border":"1px solid var(--color-border)"},"children":["#","testing"]}]]}],["$","h1",null,{"className":"mb-4 text-3xl leading-snug font-bold tracking-tight sm:text-4xl","style":{"color":"var(--color-text)"},"children":"Cursor CLI 無限除錯迴圈：讓 AI 跑到測試通過才停"}],["$","div",null,{"className":"flex flex-wrap items-center gap-3 text-sm","style":{"color":"var(--color-muted)"},"children":[["$","time",null,{"dateTime":"2026-02-24","children":"2026 年 2 月 24 日"}],["$","span",null,{"aria-hidden":"true","children":"·"}],["$","span",null,{"children":"5 min read"}]]}],["$","div",null,{"className":"mt-6 overflow-hidden rounded-lg","children":["$","img",null,{"src":"/images/posts/cursor-cli-debug-loop.png","alt":"Cursor CLI 無限除錯迴圈：讓 AI 跑到測試通過才停","className":"w-full h-auto"}]}],["$","div",null,{"className":"mt-6 border-b","style":{"borderColor":"var(--color-border)"}}]]}],["$","div",null,{"className":"prose","dangerouslySetInnerHTML":{"__html":"$3"}}],"$L4"]}],"$L5"]}]}]],["$L6"],"$L7"]}],"loading":null,"isPartial":false}
+</blockquote>0:{"buildId":"ekNoF06-0VZrB4pGVUsy8","rsc":["$","$1","c",{"children":[[["$","script",null,{"type":"application/ld+json","dangerouslySetInnerHTML":{"__html":"{\"@context\":\"https://schema.org\",\"@type\":\"Article\",\"headline\":\"Cursor CLI 無限除錯迴圈：讓 AI 跑到測試通過才停\",\"description\":\"一個 shell 腳本讓 cursor agent 自動修 code、跑測試、測試失敗再讓 AI 修，直到全過為止。你去忙別的，等 ✅ 再回來驗收。\",\"url\":\"https://benxhub.com/zh/blog/cursor/cli/07-unlimit-loop-debug/\",\"mainEntityOfPage\":{\"@type\":\"WebPage\",\"@id\":\"https://benxhub.com/zh/blog/cursor/cli/07-unlimit-loop-debug/\"},\"datePublished\":\"2026-02-24T00:00:00.000Z\",\"dateModified\":\"2026-02-24T00:00:00.000Z\",\"keywords\":\"cursor, cli, debug, automation, testing\",\"inLanguage\":\"zh-Hant\",\"author\":{\"@type\":\"Person\",\"@id\":\"https://benxhub.com/#author\",\"name\":\"BenX\",\"url\":\"https://benxhub.com/zh/about/\",\"sameAs\":[\"https://github.com/benzhub\"]},\"publisher\":{\"@type\":\"Organization\",\"name\":\"BenXHub Blog\",\"url\":\"https://benxhub.com\"},\"image\":\"https://benxhub.com/images/posts/cursor-cli-debug-loop.png\"}"}}],["$","div",null,{"className":"mx-auto max-w-6xl px-4 py-12 sm:px-6","children":["$","div",null,{"className":"lg:grid lg:grid-cols-[1fr_240px] lg:gap-14","children":[["$","article",null,{"children":[["$","header",null,{"className":"mb-10","children":[["$","div",null,{"className":"mb-4 flex flex-wrap gap-2","children":[["$","$L2","cursor",{"href":"/zh/tags/cursor","localeCookie":{"name":"NEXT_LOCALE","sameSite":"lax"},"className":"inline-flex items-center rounded-full px-2.5 py-0.5 text-xs font-medium transition-colors","style":{"background":"var(--color-code-bg)","color":"var(--color-accent)","border":"1px solid var(--color-border)"},"children":["#","cursor"]}],["$","$L2","cli",{"href":"/zh/tags/cli","localeCookie":{"name":"NEXT_LOCALE","sameSite":"lax"},"className":"inline-flex items-center rounded-full px-2.5 py-0.5 text-xs font-medium transition-colors","style":{"background":"var(--color-code-bg)","color":"var(--color-accent)","border":"1px solid var(--color-border)"},"children":["#","cli"]}],["$","$L2","debug",{"href":"/zh/tags/debug","localeCookie":{"name":"NEXT_LOCALE","sameSite":"lax"},"className":"inline-flex items-center rounded-full px-2.5 py-0.5 text-xs font-medium transition-colors","style":{"background":"var(--color-code-bg)","color":"var(--color-accent)","border":"1px solid var(--color-border)"},"children":["#","debug"]}],["$","$L2","automation",{"href":"/zh/tags/automation","localeCookie":{"name":"NEXT_LOCALE","sameSite":"lax"},"className":"inline-flex items-center rounded-full px-2.5 py-0.5 text-xs font-medium transition-colors","style":{"background":"var(--color-code-bg)","color":"var(--color-accent)","border":"1px solid var(--color-border)"},"children":["#","automation"]}],["$","$L2","testing",{"href":"/zh/tags/testing","localeCookie":{"name":"NEXT_LOCALE","sameSite":"lax"},"className":"inline-flex items-center rounded-full px-2.5 py-0.5 text-xs font-medium transition-colors","style":{"background":"var(--color-code-bg)","color":"var(--color-accent)","border":"1px solid var(--color-border)"},"children":["#","testing"]}]]}],["$","h1",null,{"className":"mb-4 text-3xl leading-snug font-bold tracking-tight sm:text-4xl","style":{"color":"var(--color-text)"},"children":"Cursor CLI 無限除錯迴圈：讓 AI 跑到測試通過才停"}],["$","div",null,{"className":"flex flex-wrap items-center gap-3 text-sm","style":{"color":"var(--color-muted)"},"children":[["$","time",null,{"dateTime":"2026-02-24","children":"2026 年 2 月 24 日"}],["$","span",null,{"aria-hidden":"true","children":"·"}],["$","span",null,{"children":"5 min read"}]]}],["$","div",null,{"className":"mt-6 overflow-hidden rounded-lg","children":["$","img",null,{"src":"/images/posts/cursor-cli-debug-loop.png","alt":"Cursor CLI 無限除錯迴圈：讓 AI 跑到測試通過才停","className":"w-full h-auto"}]}],["$","div",null,{"className":"mt-6 border-b","style":{"borderColor":"var(--color-border)"}}]]}],["$","div",null,{"className":"prose","dangerouslySetInnerHTML":{"__html":"$3"}}],"$L4"]}],"$L5"]}]}]],["$L6"],"$L7"]}],"loading":null,"isPartial":false}
 4:["$","footer",null,{"className":"mt-14 border-t pt-8","style":{"borderColor":"var(--color-border)"},"children":[["$","div",null,{"className":"mb-8 flex flex-wrap gap-2","children":[["$","$L2","cursor",{"href":"/zh/tags/cursor","localeCookie":{"name":"NEXT_LOCALE","sameSite":"lax"},"className":"inline-flex items-center rounded-full px-3 py-1 text-sm font-medium transition-colors","style":{"background":"var(--color-code-bg)","color":"var(--color-accent)","border":"1px solid var(--color-border)"},"children":["#","cursor"]}],["$","$L2","cli",{"href":"/zh/tags/cli","localeCookie":{"name":"NEXT_LOCALE","sameSite":"lax"},"className":"inline-flex items-center rounded-full px-3 py-1 text-sm font-medium transition-colors","style":{"background":"var(--color-code-bg)","color":"var(--color-accent)","border":"1px solid var(--color-border)"},"children":["#","cli"]}],["$","$L2","debug",{"href":"/zh/tags/debug","localeCookie":{"name":"NEXT_LOCALE","sameSite":"lax"},"className":"inline-flex items-center rounded-full px-3 py-1 text-sm font-medium transition-colors","style":{"background":"var(--color-code-bg)","color":"var(--color-accent)","border":"1px solid var(--color-border)"},"children":["#","debug"]}],["$","$L2","automation",{"href":"/zh/tags/automation","localeCookie":{"name":"NEXT_LOCALE","sameSite":"lax"},"className":"inline-flex items-center rounded-full px-3 py-1 text-sm font-medium transition-colors","style":{"background":"var(--color-code-bg)","color":"var(--color-accent)","border":"1px solid var(--color-border)"},"children":["#","automation"]}],["$","$L2","testing",{"href":"/zh/tags/testing","localeCookie":{"name":"NEXT_LOCALE","sameSite":"lax"},"className":"inline-flex items-center rounded-full px-3 py-1 text-sm font-medium transition-colors","style":{"background":"var(--color-code-bg)","color":"var(--color-accent)","border":"1px solid var(--color-border)"},"children":["#","testing"]}]]}],["$","nav",null,{"aria-label":"文章導覽","className":"grid grid-cols-1 gap-4 sm:grid-cols-2","children":[["$","$L2",null,{"href":"/zh/blog/cursor/cli/06-cursor-cli-with-worktree","localeCookie":{"name":"NEXT_LOCALE","sameSite":"lax"},"className":"group rounded-lg border p-4 transition-colors hover:border-accent","style":{"borderColor":"var(--color-border)","background":"var(--color-surface)"},"children":[["$","p",null,{"className":"mb-1 text-xs","style":{"color":"var(--color-muted)"},"children":"← 較新文章"}],["$","p",null,{"className":"line-clamp-1 text-sm font-medium transition-colors group-hover:text-accent","style":{"color":"var(--color-text)"},"children":"Cursor CLI 搭配 Git Worktree：多 branch 同時有 AI 在跑"}]]}],["$","div",null,{}]]}]]}]
-9:T3cd7,<p>測試掛了，改 code，再跑測試，還是掛，再改——這個迴圈大家都做過。<strong>為什麼要自己來？</strong></p>
+9:T3d27,<p>測試掛了，改 code，再跑測試，還是掛，再改——這個迴圈大家都做過。<strong>為什麼要自己來？</strong></p>
 <p>寫一個 shell 腳本，把這個迴圈交給 <code>cursor agent</code> 跑：測試失敗就把錯誤訊息餵給 AI，AI 修完再跑，直到測試全過才停。你去喝咖啡、回訊息，等終端機出現 <code>✅ 測試通過！</code> 再回來驗收。</p>
 <h2 id="核心邏輯">核心邏輯</h2>
 <pre><code>while 測試沒過:
@@ -157,89 +157,89 @@ b:"$Sreact.suspense"
 </ul>
 <h2 id="最簡版腳本">最簡版腳本</h2>
 <p>建立 <code>debug-loop.sh</code>：</p>
-<figure data-rehype-pretty-code-figure=""><pre style="background-color:#24292e;color:#e1e4e8" tabindex="0" data-language="bash" data-theme="github-dark"><code data-language="bash" data-theme="github-dark" style="display: grid;"><span data-line=""><span style="color:#6A737D">#!/bin/bash</span></span>
+<figure data-rehype-pretty-code-figure=""><pre style="background-color:#0d1117;color:#e6edf3" tabindex="0" data-language="bash" data-theme="github-dark-default"><code data-language="bash" data-theme="github-dark-default" style="display: grid;"><span data-line=""><span style="color:#8B949E">#!/bin/bash</span></span>
 <span data-line=""> </span>
-<span data-line=""><span style="color:#E1E4E8">MAX_LOOPS</span><span style="color:#F97583">=</span><span style="color:#9ECBFF">10</span><span style="color:#6A737D">        # 最多跑幾圈，防止真的無限跑</span></span>
-<span data-line=""><span style="color:#E1E4E8">TEST_CMD</span><span style="color:#F97583">=</span><span style="color:#9ECBFF">"npm test"</span><span style="color:#6A737D"> # 換成你的測試指令</span></span>
-<span data-line=""><span style="color:#E1E4E8">loop</span><span style="color:#F97583">=</span><span style="color:#9ECBFF">0</span></span>
+<span data-line=""><span style="color:#E6EDF3">MAX_LOOPS</span><span style="color:#FF7B72">=</span><span style="color:#A5D6FF">10</span><span style="color:#8B949E">        # 最多跑幾圈，防止真的無限跑</span></span>
+<span data-line=""><span style="color:#E6EDF3">TEST_CMD</span><span style="color:#FF7B72">=</span><span style="color:#A5D6FF">"npm test"</span><span style="color:#8B949E"> # 換成你的測試指令</span></span>
+<span data-line=""><span style="color:#E6EDF3">loop</span><span style="color:#FF7B72">=</span><span style="color:#A5D6FF">0</span></span>
 <span data-line=""> </span>
-<span data-line=""><span style="color:#F97583">while</span><span style="color:#E1E4E8"> [ $loop </span><span style="color:#F97583">-lt</span><span style="color:#E1E4E8"> $MAX_LOOPS ]; </span><span style="color:#F97583">do</span></span>
-<span data-line=""><span style="color:#79B8FF">  echo</span><span style="color:#9ECBFF"> ""</span></span>
-<span data-line=""><span style="color:#79B8FF">  echo</span><span style="color:#9ECBFF"> "=== 第 $((</span><span style="color:#B392F0">loop</span><span style="color:#9ECBFF"> + </span><span style="color:#79B8FF">1</span><span style="color:#9ECBFF">)) 圈 ==="</span></span>
+<span data-line=""><span style="color:#FF7B72">while</span><span style="color:#E6EDF3"> [ $loop </span><span style="color:#FF7B72">-lt</span><span style="color:#E6EDF3"> $MAX_LOOPS ]; </span><span style="color:#FF7B72">do</span></span>
+<span data-line=""><span style="color:#79C0FF">  echo</span><span style="color:#A5D6FF"> ""</span></span>
+<span data-line=""><span style="color:#79C0FF">  echo</span><span style="color:#A5D6FF"> "=== 第 $((</span><span style="color:#FFA657">loop</span><span style="color:#A5D6FF"> + </span><span style="color:#79C0FF">1</span><span style="color:#A5D6FF">)) 圈 ==="</span></span>
 <span data-line=""> </span>
-<span data-line=""><span style="color:#E1E4E8">  TEST_OUTPUT</span><span style="color:#F97583">=</span><span style="color:#E1E4E8">$(</span><span style="color:#79B8FF">eval</span><span style="color:#9ECBFF"> "</span><span style="color:#E1E4E8">$TEST_CMD</span><span style="color:#9ECBFF">"</span><span style="color:#F97583"> 2>&#x26;1</span><span style="color:#E1E4E8">)</span></span>
-<span data-line=""><span style="color:#E1E4E8">  EXIT_CODE</span><span style="color:#F97583">=</span><span style="color:#79B8FF">$?</span></span>
+<span data-line=""><span style="color:#E6EDF3">  TEST_OUTPUT</span><span style="color:#FF7B72">=</span><span style="color:#E6EDF3">$(</span><span style="color:#79C0FF">eval</span><span style="color:#A5D6FF"> "</span><span style="color:#E6EDF3">$TEST_CMD</span><span style="color:#A5D6FF">"</span><span style="color:#FF7B72"> 2>&#x26;1</span><span style="color:#E6EDF3">)</span></span>
+<span data-line=""><span style="color:#E6EDF3">  EXIT_CODE</span><span style="color:#FF7B72">=</span><span style="color:#79C0FF">$?</span></span>
 <span data-line=""> </span>
-<span data-line=""><span style="color:#F97583">  if</span><span style="color:#E1E4E8"> [ $EXIT_CODE </span><span style="color:#F97583">-eq</span><span style="color:#79B8FF"> 0</span><span style="color:#E1E4E8"> ]; </span><span style="color:#F97583">then</span></span>
-<span data-line=""><span style="color:#79B8FF">    echo</span><span style="color:#9ECBFF"> "✅ 測試通過！共跑了 $((</span><span style="color:#B392F0">loop</span><span style="color:#9ECBFF"> + </span><span style="color:#79B8FF">1</span><span style="color:#9ECBFF">)) 圈。"</span></span>
-<span data-line=""><span style="color:#79B8FF">    exit</span><span style="color:#79B8FF"> 0</span></span>
-<span data-line=""><span style="color:#F97583">  fi</span></span>
+<span data-line=""><span style="color:#FF7B72">  if</span><span style="color:#E6EDF3"> [ $EXIT_CODE </span><span style="color:#FF7B72">-eq</span><span style="color:#79C0FF"> 0</span><span style="color:#E6EDF3"> ]; </span><span style="color:#FF7B72">then</span></span>
+<span data-line=""><span style="color:#79C0FF">    echo</span><span style="color:#A5D6FF"> "✅ 測試通過！共跑了 $((</span><span style="color:#FFA657">loop</span><span style="color:#A5D6FF"> + </span><span style="color:#79C0FF">1</span><span style="color:#A5D6FF">)) 圈。"</span></span>
+<span data-line=""><span style="color:#79C0FF">    exit</span><span style="color:#79C0FF"> 0</span></span>
+<span data-line=""><span style="color:#FF7B72">  fi</span></span>
 <span data-line=""> </span>
-<span data-line=""><span style="color:#79B8FF">  echo</span><span style="color:#9ECBFF"> "❌ 測試失敗，讓 AI 來修..."</span></span>
-<span data-line=""><span style="color:#79B8FF">  echo</span><span style="color:#9ECBFF"> "</span><span style="color:#E1E4E8">$TEST_OUTPUT</span><span style="color:#9ECBFF">"</span><span style="color:#F97583"> |</span><span style="color:#B392F0"> tail</span><span style="color:#79B8FF"> -30</span></span>
+<span data-line=""><span style="color:#79C0FF">  echo</span><span style="color:#A5D6FF"> "❌ 測試失敗，讓 AI 來修..."</span></span>
+<span data-line=""><span style="color:#79C0FF">  echo</span><span style="color:#A5D6FF"> "</span><span style="color:#E6EDF3">$TEST_OUTPUT</span><span style="color:#A5D6FF">"</span><span style="color:#FF7B72"> |</span><span style="color:#FFA657"> tail</span><span style="color:#79C0FF"> -30</span></span>
 <span data-line=""> </span>
-<span data-line=""><span style="color:#B392F0">  cursor</span><span style="color:#9ECBFF"> agent</span><span style="color:#9ECBFF"> "測試失敗了，錯誤如下，請修 code 讓測試通過：</span></span>
+<span data-line=""><span style="color:#FFA657">  cursor</span><span style="color:#A5D6FF"> agent</span><span style="color:#A5D6FF"> "測試失敗了，錯誤如下，請修 code 讓測試通過：</span></span>
 <span data-line=""> </span>
-<span data-line=""><span style="color:#E1E4E8">$TEST_OUTPUT</span><span style="color:#9ECBFF">"</span><span style="color:#79B8FF"> --model</span><span style="color:#9ECBFF"> gpt-codex-5.3-high</span><span style="color:#79B8FF"> --no-interactive</span></span>
+<span data-line=""><span style="color:#E6EDF3">$TEST_OUTPUT</span><span style="color:#A5D6FF">"</span><span style="color:#79C0FF"> --model</span><span style="color:#A5D6FF"> gpt-codex-5.3-high</span><span style="color:#79C0FF"> --no-interactive</span></span>
 <span data-line=""> </span>
-<span data-line=""><span style="color:#E1E4E8">  loop</span><span style="color:#F97583">=</span><span style="color:#E1E4E8">$((</span><span style="color:#B392F0">loop</span><span style="color:#9ECBFF"> +</span><span style="color:#79B8FF"> 1</span><span style="color:#E1E4E8">))</span></span>
-<span data-line=""><span style="color:#F97583">done</span></span>
+<span data-line=""><span style="color:#E6EDF3">  loop</span><span style="color:#FF7B72">=</span><span style="color:#E6EDF3">$((</span><span style="color:#FFA657">loop</span><span style="color:#A5D6FF"> +</span><span style="color:#79C0FF"> 1</span><span style="color:#E6EDF3">))</span></span>
+<span data-line=""><span style="color:#FF7B72">done</span></span>
 <span data-line=""> </span>
-<span data-line=""><span style="color:#79B8FF">echo</span><span style="color:#9ECBFF"> "⚠️  已達最大圈數 (</span><span style="color:#E1E4E8">$MAX_LOOPS</span><span style="color:#9ECBFF">)，停止。請手動檢查。"</span></span>
-<span data-line=""><span style="color:#79B8FF">exit</span><span style="color:#79B8FF"> 1</span></span></code></pre></figure>
+<span data-line=""><span style="color:#79C0FF">echo</span><span style="color:#A5D6FF"> "⚠️  已達最大圈數 (</span><span style="color:#E6EDF3">$MAX_LOOPS</span><span style="color:#A5D6FF">)，停止。請手動檢查。"</span></span>
+<span data-line=""><span style="color:#79C0FF">exit</span><span style="color:#79C0FF"> 1</span></span></code></pre></figure>
 <p>執行：</p>
-<figure data-rehype-pretty-code-figure=""><pre style="background-color:#24292e;color:#e1e4e8" tabindex="0" data-language="bash" data-theme="github-dark"><code data-language="bash" data-theme="github-dark" style="display: grid;"><span data-line=""><span style="color:#B392F0">chmod</span><span style="color:#9ECBFF"> +x</span><span style="color:#9ECBFF"> debug-loop.sh</span></span>
-<span data-line=""><span style="color:#B392F0">./debug-loop.sh</span></span></code></pre></figure>
+<figure data-rehype-pretty-code-figure=""><pre style="background-color:#0d1117;color:#e6edf3" tabindex="0" data-language="bash" data-theme="github-dark-default"><code data-language="bash" data-theme="github-dark-default" style="display: grid;"><span data-line=""><span style="color:#FFA657">chmod</span><span style="color:#A5D6FF"> +x</span><span style="color:#A5D6FF"> debug-loop.sh</span></span>
+<span data-line=""><span style="color:#FFA657">./debug-loop.sh</span></span></code></pre></figure>
 <p>跑起來之後就可以去做別的事了。若跑滿 <code>MAX_LOOPS</code> 還沒過，代表問題超出 AI 能自己解決的範圍，這時才需要人介入。</p>
 <h2 id="依專案調整">依專案調整</h2>
 <p><strong>換測試指令</strong>（第 3 行）：</p>
-<figure data-rehype-pretty-code-figure=""><pre style="background-color:#24292e;color:#e1e4e8" tabindex="0" data-language="bash" data-theme="github-dark"><code data-language="bash" data-theme="github-dark" style="display: grid;"><span data-line=""><span style="color:#E1E4E8">TEST_CMD</span><span style="color:#F97583">=</span><span style="color:#9ECBFF">"pytest -x"</span><span style="color:#6A737D">            # Python，-x 遇第一個錯就停</span></span>
-<span data-line=""><span style="color:#E1E4E8">TEST_CMD</span><span style="color:#F97583">=</span><span style="color:#9ECBFF">"go test ./..."</span><span style="color:#6A737D">        # Go</span></span>
-<span data-line=""><span style="color:#E1E4E8">TEST_CMD</span><span style="color:#F97583">=</span><span style="color:#9ECBFF">"cargo test"</span><span style="color:#6A737D">           # Rust</span></span>
-<span data-line=""><span style="color:#E1E4E8">TEST_CMD</span><span style="color:#F97583">=</span><span style="color:#9ECBFF">"./vendor/bin/phpunit"</span><span style="color:#6A737D"> # PHP</span></span></code></pre></figure>
+<figure data-rehype-pretty-code-figure=""><pre style="background-color:#0d1117;color:#e6edf3" tabindex="0" data-language="bash" data-theme="github-dark-default"><code data-language="bash" data-theme="github-dark-default" style="display: grid;"><span data-line=""><span style="color:#E6EDF3">TEST_CMD</span><span style="color:#FF7B72">=</span><span style="color:#A5D6FF">"pytest -x"</span><span style="color:#8B949E">            # Python，-x 遇第一個錯就停</span></span>
+<span data-line=""><span style="color:#E6EDF3">TEST_CMD</span><span style="color:#FF7B72">=</span><span style="color:#A5D6FF">"go test ./..."</span><span style="color:#8B949E">        # Go</span></span>
+<span data-line=""><span style="color:#E6EDF3">TEST_CMD</span><span style="color:#FF7B72">=</span><span style="color:#A5D6FF">"cargo test"</span><span style="color:#8B949E">           # Rust</span></span>
+<span data-line=""><span style="color:#E6EDF3">TEST_CMD</span><span style="color:#FF7B72">=</span><span style="color:#A5D6FF">"./vendor/bin/phpunit"</span><span style="color:#8B949E"> # PHP</span></span></code></pre></figure>
 <p><strong>調最大圈數</strong>：5 圈保守（問題複雜的話 AI 比較快卡死）、15 圈給點餘裕——設太大只是在浪費 quota，設太小又不夠。10 是個不錯的起點。</p>
 <p><strong>讓 AI 有更多背景資訊</strong>，在 <code>cursor agent</code> 指令裡說清楚：</p>
-<figure data-rehype-pretty-code-figure=""><pre style="background-color:#24292e;color:#e1e4e8" tabindex="0" data-language="bash" data-theme="github-dark"><code data-language="bash" data-theme="github-dark" style="display: grid;"><span data-line=""><span style="color:#B392F0">cursor</span><span style="color:#9ECBFF"> agent</span><span style="color:#9ECBFF"> "測試失敗，錯誤如下。</span></span>
-<span data-line=""><span style="color:#9ECBFF">測試框架是 Jest，語言是 TypeScript。</span></span>
-<span data-line=""><span style="color:#9ECBFF">不要改測試檔案，只改 src/ 底下的檔案。</span></span>
+<figure data-rehype-pretty-code-figure=""><pre style="background-color:#0d1117;color:#e6edf3" tabindex="0" data-language="bash" data-theme="github-dark-default"><code data-language="bash" data-theme="github-dark-default" style="display: grid;"><span data-line=""><span style="color:#FFA657">cursor</span><span style="color:#A5D6FF"> agent</span><span style="color:#A5D6FF"> "測試失敗，錯誤如下。</span></span>
+<span data-line=""><span style="color:#A5D6FF">測試框架是 Jest，語言是 TypeScript。</span></span>
+<span data-line=""><span style="color:#A5D6FF">不要改測試檔案，只改 src/ 底下的檔案。</span></span>
 <span data-line=""> </span>
-<span data-line=""><span style="color:#9ECBFF">錯誤訊息：</span></span>
-<span data-line=""><span style="color:#E1E4E8">$TEST_OUTPUT</span><span style="color:#9ECBFF">"</span><span style="color:#79B8FF"> --model</span><span style="color:#9ECBFF"> gpt-codex-5.3-high</span><span style="color:#79B8FF"> --no-interactive</span></span></code></pre></figure>
+<span data-line=""><span style="color:#A5D6FF">錯誤訊息：</span></span>
+<span data-line=""><span style="color:#E6EDF3">$TEST_OUTPUT</span><span style="color:#A5D6FF">"</span><span style="color:#79C0FF"> --model</span><span style="color:#A5D6FF"> gpt-codex-5.3-high</span><span style="color:#79C0FF"> --no-interactive</span></span></code></pre></figure>
 <h2 id="加強版保留每圈的日誌">加強版：保留每圈的日誌</h2>
 <p>如果想事後分析「第幾圈開始跑歪了」：</p>
-<figure data-rehype-pretty-code-figure=""><pre style="background-color:#24292e;color:#e1e4e8" tabindex="0" data-language="bash" data-theme="github-dark"><code data-language="bash" data-theme="github-dark" style="display: grid;"><span data-line=""><span style="color:#6A737D">#!/bin/bash</span></span>
+<figure data-rehype-pretty-code-figure=""><pre style="background-color:#0d1117;color:#e6edf3" tabindex="0" data-language="bash" data-theme="github-dark-default"><code data-language="bash" data-theme="github-dark-default" style="display: grid;"><span data-line=""><span style="color:#8B949E">#!/bin/bash</span></span>
 <span data-line=""> </span>
-<span data-line=""><span style="color:#E1E4E8">MAX_LOOPS</span><span style="color:#F97583">=</span><span style="color:#9ECBFF">10</span></span>
-<span data-line=""><span style="color:#E1E4E8">TEST_CMD</span><span style="color:#F97583">=</span><span style="color:#9ECBFF">"npm test"</span></span>
-<span data-line=""><span style="color:#E1E4E8">LOG_DIR</span><span style="color:#F97583">=</span><span style="color:#9ECBFF">"debug-logs"</span></span>
-<span data-line=""><span style="color:#B392F0">mkdir</span><span style="color:#79B8FF"> -p</span><span style="color:#E1E4E8"> $LOG_DIR</span></span>
+<span data-line=""><span style="color:#E6EDF3">MAX_LOOPS</span><span style="color:#FF7B72">=</span><span style="color:#A5D6FF">10</span></span>
+<span data-line=""><span style="color:#E6EDF3">TEST_CMD</span><span style="color:#FF7B72">=</span><span style="color:#A5D6FF">"npm test"</span></span>
+<span data-line=""><span style="color:#E6EDF3">LOG_DIR</span><span style="color:#FF7B72">=</span><span style="color:#A5D6FF">"debug-logs"</span></span>
+<span data-line=""><span style="color:#FFA657">mkdir</span><span style="color:#79C0FF"> -p</span><span style="color:#E6EDF3"> $LOG_DIR</span></span>
 <span data-line=""> </span>
-<span data-line=""><span style="color:#E1E4E8">loop</span><span style="color:#F97583">=</span><span style="color:#9ECBFF">0</span></span>
+<span data-line=""><span style="color:#E6EDF3">loop</span><span style="color:#FF7B72">=</span><span style="color:#A5D6FF">0</span></span>
 <span data-line=""> </span>
-<span data-line=""><span style="color:#F97583">while</span><span style="color:#E1E4E8"> [ $loop </span><span style="color:#F97583">-lt</span><span style="color:#E1E4E8"> $MAX_LOOPS ]; </span><span style="color:#F97583">do</span></span>
-<span data-line=""><span style="color:#79B8FF">  echo</span><span style="color:#9ECBFF"> ""</span></span>
-<span data-line=""><span style="color:#79B8FF">  echo</span><span style="color:#9ECBFF"> "=== 第 $((</span><span style="color:#B392F0">loop</span><span style="color:#9ECBFF"> + </span><span style="color:#79B8FF">1</span><span style="color:#9ECBFF">)) 圈 ==="</span></span>
+<span data-line=""><span style="color:#FF7B72">while</span><span style="color:#E6EDF3"> [ $loop </span><span style="color:#FF7B72">-lt</span><span style="color:#E6EDF3"> $MAX_LOOPS ]; </span><span style="color:#FF7B72">do</span></span>
+<span data-line=""><span style="color:#79C0FF">  echo</span><span style="color:#A5D6FF"> ""</span></span>
+<span data-line=""><span style="color:#79C0FF">  echo</span><span style="color:#A5D6FF"> "=== 第 $((</span><span style="color:#FFA657">loop</span><span style="color:#A5D6FF"> + </span><span style="color:#79C0FF">1</span><span style="color:#A5D6FF">)) 圈 ==="</span></span>
 <span data-line=""> </span>
-<span data-line=""><span style="color:#E1E4E8">  LOG_FILE</span><span style="color:#F97583">=</span><span style="color:#9ECBFF">"</span><span style="color:#E1E4E8">$LOG_DIR</span><span style="color:#9ECBFF">/loop-$((</span><span style="color:#B392F0">loop</span><span style="color:#9ECBFF"> + </span><span style="color:#79B8FF">1</span><span style="color:#9ECBFF">)).log"</span></span>
-<span data-line=""><span style="color:#E1E4E8">  TEST_OUTPUT</span><span style="color:#F97583">=</span><span style="color:#E1E4E8">$(</span><span style="color:#79B8FF">eval</span><span style="color:#9ECBFF"> "</span><span style="color:#E1E4E8">$TEST_CMD</span><span style="color:#9ECBFF">"</span><span style="color:#F97583"> 2>&#x26;1</span><span style="color:#F97583"> |</span><span style="color:#B392F0"> tee</span><span style="color:#9ECBFF"> "</span><span style="color:#E1E4E8">$LOG_FILE</span><span style="color:#9ECBFF">"</span><span style="color:#E1E4E8">)</span></span>
-<span data-line=""><span style="color:#E1E4E8">  EXIT_CODE</span><span style="color:#F97583">=</span><span style="color:#E1E4E8">${PIPESTATUS[0]}</span></span>
+<span data-line=""><span style="color:#E6EDF3">  LOG_FILE</span><span style="color:#FF7B72">=</span><span style="color:#A5D6FF">"</span><span style="color:#E6EDF3">$LOG_DIR</span><span style="color:#A5D6FF">/loop-$((</span><span style="color:#FFA657">loop</span><span style="color:#A5D6FF"> + </span><span style="color:#79C0FF">1</span><span style="color:#A5D6FF">)).log"</span></span>
+<span data-line=""><span style="color:#E6EDF3">  TEST_OUTPUT</span><span style="color:#FF7B72">=</span><span style="color:#E6EDF3">$(</span><span style="color:#79C0FF">eval</span><span style="color:#A5D6FF"> "</span><span style="color:#E6EDF3">$TEST_CMD</span><span style="color:#A5D6FF">"</span><span style="color:#FF7B72"> 2>&#x26;1</span><span style="color:#FF7B72"> |</span><span style="color:#FFA657"> tee</span><span style="color:#A5D6FF"> "</span><span style="color:#E6EDF3">$LOG_FILE</span><span style="color:#A5D6FF">"</span><span style="color:#E6EDF3">)</span></span>
+<span data-line=""><span style="color:#E6EDF3">  EXIT_CODE</span><span style="color:#FF7B72">=</span><span style="color:#E6EDF3">${PIPESTATUS[0]}</span></span>
 <span data-line=""> </span>
-<span data-line=""><span style="color:#F97583">  if</span><span style="color:#E1E4E8"> [ $EXIT_CODE </span><span style="color:#F97583">-eq</span><span style="color:#79B8FF"> 0</span><span style="color:#E1E4E8"> ]; </span><span style="color:#F97583">then</span></span>
-<span data-line=""><span style="color:#79B8FF">    echo</span><span style="color:#9ECBFF"> "✅ 測試通過！共跑了 $((</span><span style="color:#B392F0">loop</span><span style="color:#9ECBFF"> + </span><span style="color:#79B8FF">1</span><span style="color:#9ECBFF">)) 圈。"</span></span>
-<span data-line=""><span style="color:#79B8FF">    exit</span><span style="color:#79B8FF"> 0</span></span>
-<span data-line=""><span style="color:#F97583">  fi</span></span>
+<span data-line=""><span style="color:#FF7B72">  if</span><span style="color:#E6EDF3"> [ $EXIT_CODE </span><span style="color:#FF7B72">-eq</span><span style="color:#79C0FF"> 0</span><span style="color:#E6EDF3"> ]; </span><span style="color:#FF7B72">then</span></span>
+<span data-line=""><span style="color:#79C0FF">    echo</span><span style="color:#A5D6FF"> "✅ 測試通過！共跑了 $((</span><span style="color:#FFA657">loop</span><span style="color:#A5D6FF"> + </span><span style="color:#79C0FF">1</span><span style="color:#A5D6FF">)) 圈。"</span></span>
+<span data-line=""><span style="color:#79C0FF">    exit</span><span style="color:#79C0FF"> 0</span></span>
+<span data-line=""><span style="color:#FF7B72">  fi</span></span>
 <span data-line=""> </span>
-<span data-line=""><span style="color:#79B8FF">  echo</span><span style="color:#9ECBFF"> "❌ 失敗，日誌存到 </span><span style="color:#E1E4E8">$LOG_FILE</span><span style="color:#9ECBFF">"</span></span>
+<span data-line=""><span style="color:#79C0FF">  echo</span><span style="color:#A5D6FF"> "❌ 失敗，日誌存到 </span><span style="color:#E6EDF3">$LOG_FILE</span><span style="color:#A5D6FF">"</span></span>
 <span data-line=""> </span>
-<span data-line=""><span style="color:#B392F0">  cursor</span><span style="color:#9ECBFF"> agent</span><span style="color:#9ECBFF"> "測試失敗，錯誤如下，請修 code 讓測試通過：</span></span>
+<span data-line=""><span style="color:#FFA657">  cursor</span><span style="color:#A5D6FF"> agent</span><span style="color:#A5D6FF"> "測試失敗，錯誤如下，請修 code 讓測試通過：</span></span>
 <span data-line=""> </span>
-<span data-line=""><span style="color:#E1E4E8">$TEST_OUTPUT</span><span style="color:#9ECBFF">"</span><span style="color:#79B8FF"> --model</span><span style="color:#9ECBFF"> gpt-codex-5.3-high</span><span style="color:#79B8FF"> --no-interactive</span></span>
+<span data-line=""><span style="color:#E6EDF3">$TEST_OUTPUT</span><span style="color:#A5D6FF">"</span><span style="color:#79C0FF"> --model</span><span style="color:#A5D6FF"> gpt-codex-5.3-high</span><span style="color:#79C0FF"> --no-interactive</span></span>
 <span data-line=""> </span>
-<span data-line=""><span style="color:#E1E4E8">  loop</span><span style="color:#F97583">=</span><span style="color:#E1E4E8">$((</span><span style="color:#B392F0">loop</span><span style="color:#9ECBFF"> +</span><span style="color:#79B8FF"> 1</span><span style="color:#E1E4E8">))</span></span>
-<span data-line=""><span style="color:#F97583">done</span></span>
+<span data-line=""><span style="color:#E6EDF3">  loop</span><span style="color:#FF7B72">=</span><span style="color:#E6EDF3">$((</span><span style="color:#FFA657">loop</span><span style="color:#A5D6FF"> +</span><span style="color:#79C0FF"> 1</span><span style="color:#E6EDF3">))</span></span>
+<span data-line=""><span style="color:#FF7B72">done</span></span>
 <span data-line=""> </span>
-<span data-line=""><span style="color:#79B8FF">echo</span><span style="color:#9ECBFF"> "⚠️  達最大圈數，停止。請看 </span><span style="color:#E1E4E8">$LOG_DIR</span><span style="color:#9ECBFF">/ 裡的日誌。"</span></span>
-<span data-line=""><span style="color:#79B8FF">exit</span><span style="color:#79B8FF"> 1</span></span></code></pre></figure>
+<span data-line=""><span style="color:#79C0FF">echo</span><span style="color:#A5D6FF"> "⚠️  達最大圈數，停止。請看 </span><span style="color:#E6EDF3">$LOG_DIR</span><span style="color:#A5D6FF">/ 裡的日誌。"</span></span>
+<span data-line=""><span style="color:#79C0FF">exit</span><span style="color:#79C0FF"> 1</span></span></code></pre></figure>
 <p>每圈的錯誤都存成獨立檔案，方便對比 AI 改了什麼、問題有沒有在演化。</p>
 <h2 id="安全注意事項">安全注意事項</h2>
 <table>

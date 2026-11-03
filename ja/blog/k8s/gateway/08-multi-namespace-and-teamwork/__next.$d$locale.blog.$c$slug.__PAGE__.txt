@@ -1,14 +1,12 @@
 1:"$Sreact.fragment"
-2:I[14864,["/_next/static/chunks/7923a261b80bb6e1.js","/_next/static/chunks/e09b4358027e8033.js","/_next/static/chunks/2dddb3bc05093f69.js"],"default"]
-d:I[24801,["/_next/static/chunks/7923a261b80bb6e1.js","/_next/static/chunks/e09b4358027e8033.js","/_next/static/chunks/2dddb3bc05093f69.js"],"default"]
-f:I[50183,["/_next/static/chunks/5a5b5b13c22d14f7.js","/_next/static/chunks/a484d1d3dd4b55ab.js"],"OutletBoundary"]
-10:"$Sreact.suspense"
-0:{"buildId":"sM8YAyjANE7sOnXm3EQGk","rsc":["$","$1","c",{"children":[[["$","script",null,{"type":"application/ld+json","dangerouslySetInnerHTML":{"__html":"{\"@context\":\"https://schema.org\",\"@type\":\"Article\",\"headline\":\"Envoy Gateway 複数 Namespace とチーム分担: allowedRoutes、ReferenceGrant、Cross-Team ガバナンス\",\"description\":\"Gateway API の multi-tenant モデルを理解します。listener への attach 権限、cross-namespace reference、platform team と app team の一般的な責務分担を整理します。\",\"url\":\"https://benxhub.com/ja/blog/k8s/gateway/08-multi-namespace-and-teamwork\",\"mainEntityOfPage\":{\"@type\":\"WebPage\",\"@id\":\"https://benxhub.com/ja/blog/k8s/gateway/08-multi-namespace-and-teamwork\"},\"datePublished\":\"2026-03-10T00:00:00.000Z\",\"dateModified\":\"2026-03-10T00:00:00.000Z\",\"keywords\":\"kubernetes, envoy-gateway, gateway-api, referencegrant, allowedroutes, multi-tenant\",\"inLanguage\":\"ja\",\"author\":{\"@type\":\"Person\",\"name\":\"BenX\",\"url\":\"https://benxhub.com\"},\"publisher\":{\"@type\":\"Organization\",\"name\":\"BenXHub Blog\",\"url\":\"https://benxhub.com\"}}"}}],["$","div",null,{"className":"mx-auto max-w-6xl px-4 py-12 sm:px-6","children":["$","div",null,{"className":"lg:grid lg:grid-cols-[1fr_240px] lg:gap-14","children":[["$","article",null,{"children":[["$","header",null,{"className":"mb-10","children":[["$","div",null,{"className":"mb-4 flex flex-wrap gap-2","children":[["$","$L2","kubernetes",{"href":"/ja/tags/kubernetes","localeCookie":{"name":"NEXT_LOCALE","sameSite":"lax"},"className":"inline-flex items-center rounded-full px-2.5 py-0.5 text-xs font-medium transition-colors","style":{"background":"var(--color-code-bg)","color":"var(--color-accent)","border":"1px solid var(--color-border)"},"children":["#","kubernetes"]}],["$","$L2","envoy-gateway",{"href":"/ja/tags/envoy-gateway","localeCookie":{"name":"NEXT_LOCALE","sameSite":"lax"},"className":"inline-flex items-center rounded-full px-2.5 py-0.5 text-xs font-medium transition-colors","style":{"background":"var(--color-code-bg)","color":"var(--color-accent)","border":"1px solid var(--color-border)"},"children":["#","envoy-gateway"]}],["$","$L2","gateway-api",{"href":"/ja/tags/gateway-api","localeCookie":{"name":"NEXT_LOCALE","sameSite":"lax"},"className":"inline-flex items-center rounded-full px-2.5 py-0.5 text-xs font-medium transition-colors","style":{"background":"var(--color-code-bg)","color":"var(--color-accent)","border":"1px solid var(--color-border)"},"children":["#","gateway-api"]}],["$","$L2","referencegrant",{"href":"/ja/tags/referencegrant","localeCookie":{"name":"NEXT_LOCALE","sameSite":"lax"},"className":"inline-flex items-center rounded-full px-2.5 py-0.5 text-xs font-medium transition-colors","style":{"background":"var(--color-code-bg)","color":"var(--color-accent)","border":"1px solid var(--color-border)"},"children":["#","referencegrant"]}],["$","$L2","allowedroutes",{"href":"/ja/tags/allowedroutes","localeCookie":{"name":"NEXT_LOCALE","sameSite":"lax"},"className":"inline-flex items-center rounded-full px-2.5 py-0.5 text-xs font-medium transition-colors","style":{"background":"var(--color-code-bg)","color":"var(--color-accent)","border":"1px solid var(--color-border)"},"children":["#","allowedroutes"]}],["$","$L2","multi-tenant",{"href":"/ja/tags/multi-tenant","localeCookie":{"name":"NEXT_LOCALE","sameSite":"lax"},"className":"inline-flex items-center rounded-full px-2.5 py-0.5 text-xs font-medium transition-colors","style":{"background":"var(--color-code-bg)","color":"var(--color-accent)","border":"1px solid var(--color-border)"},"children":["#","multi-tenant"]}]]}],["$","h1",null,{"className":"mb-4 text-3xl leading-snug font-bold tracking-tight sm:text-4xl","style":{"color":"var(--color-text)"},"children":"Envoy Gateway 複数 Namespace とチーム分担: allowedRoutes、ReferenceGrant、Cross-Team ガバナンス"}],["$","div",null,{"className":"flex flex-wrap items-center gap-3 text-sm","style":{"color":"var(--color-muted)"},"children":["$L3","$L4","$L5"]}],"$undefined","$L6"]}],"$L7","$L8"]}],"$L9"]}]}]],["$La"],"$Lb"]}],"loading":null,"isPartial":false}
-3:["$","time",null,{"dateTime":"2026-03-10","children":"2026年3月10日"}]
-4:["$","span",null,{"aria-hidden":"true","children":"·"}]
-5:["$","span",null,{"children":"8 min read"}]
-6:["$","div",null,{"className":"mt-6 border-b","style":{"borderColor":"var(--color-border)"}}]
-c:T3c1b,<p>Gateway API の大きな価値は、YAML がきれいになることだけではありません。長年ぼんやりしていた問いに、ようやく明確な答えを出してくれることです。</p>
+2:I[14864,["/_next/static/chunks/4204edc93da35a5e.js","/_next/static/chunks/f2afb7fd2b7566bb.js","/_next/static/chunks/2dddb3bc05093f69.js"],"default"]
+b:I[24801,["/_next/static/chunks/4204edc93da35a5e.js","/_next/static/chunks/f2afb7fd2b7566bb.js","/_next/static/chunks/2dddb3bc05093f69.js"],"default"]
+d:I[50183,["/_next/static/chunks/5a5b5b13c22d14f7.js","/_next/static/chunks/a484d1d3dd4b55ab.js"],"OutletBoundary"]
+e:"$Sreact.suspense"
+0:{"buildId":"ekNoF06-0VZrB4pGVUsy8","rsc":["$","$1","c",{"children":[[["$","script",null,{"type":"application/ld+json","dangerouslySetInnerHTML":{"__html":"{\"@context\":\"https://schema.org\",\"@type\":\"Article\",\"headline\":\"Envoy Gateway 複数 Namespace とチーム分担: allowedRoutes、ReferenceGrant、Cross-Team ガバナンス\",\"description\":\"Gateway API の multi-tenant モデルを理解します。listener への attach 権限、cross-namespace reference、platform team と app team の一般的な責務分担を整理します。\",\"url\":\"https://benxhub.com/ja/blog/k8s/gateway/08-multi-namespace-and-teamwork/\",\"mainEntityOfPage\":{\"@type\":\"WebPage\",\"@id\":\"https://benxhub.com/ja/blog/k8s/gateway/08-multi-namespace-and-teamwork/\"},\"datePublished\":\"2026-03-10T00:00:00.000Z\",\"dateModified\":\"2026-03-10T00:00:00.000Z\",\"keywords\":\"kubernetes, envoy-gateway, gateway-api, referencegrant, allowedroutes, multi-tenant\",\"inLanguage\":\"ja\",\"author\":{\"@type\":\"Person\",\"@id\":\"https://benxhub.com/#author\",\"name\":\"BenX\",\"url\":\"https://benxhub.com/ja/about/\",\"sameAs\":[\"https://github.com/benzhub\"]},\"publisher\":{\"@type\":\"Organization\",\"name\":\"BenXHub Blog\",\"url\":\"https://benxhub.com\"},\"image\":\"https://benxhub.com/og-default.png\"}"}}],["$","div",null,{"className":"mx-auto max-w-6xl px-4 py-12 sm:px-6","children":["$","div",null,{"className":"lg:grid lg:grid-cols-[1fr_240px] lg:gap-14","children":[["$","article",null,{"children":[["$","header",null,{"className":"mb-10","children":[["$","div",null,{"className":"mb-4 flex flex-wrap gap-2","children":[["$","$L2","kubernetes",{"href":"/ja/tags/kubernetes","localeCookie":{"name":"NEXT_LOCALE","sameSite":"lax"},"className":"inline-flex items-center rounded-full px-2.5 py-0.5 text-xs font-medium transition-colors","style":{"background":"var(--color-code-bg)","color":"var(--color-accent)","border":"1px solid var(--color-border)"},"children":["#","kubernetes"]}],["$","$L2","envoy-gateway",{"href":"/ja/tags/envoy-gateway","localeCookie":{"name":"NEXT_LOCALE","sameSite":"lax"},"className":"inline-flex items-center rounded-full px-2.5 py-0.5 text-xs font-medium transition-colors","style":{"background":"var(--color-code-bg)","color":"var(--color-accent)","border":"1px solid var(--color-border)"},"children":["#","envoy-gateway"]}],["$","$L2","gateway-api",{"href":"/ja/tags/gateway-api","localeCookie":{"name":"NEXT_LOCALE","sameSite":"lax"},"className":"inline-flex items-center rounded-full px-2.5 py-0.5 text-xs font-medium transition-colors","style":{"background":"var(--color-code-bg)","color":"var(--color-accent)","border":"1px solid var(--color-border)"},"children":["#","gateway-api"]}],["$","$L2","referencegrant",{"href":"/ja/tags/referencegrant","localeCookie":{"name":"NEXT_LOCALE","sameSite":"lax"},"className":"inline-flex items-center rounded-full px-2.5 py-0.5 text-xs font-medium transition-colors","style":{"background":"var(--color-code-bg)","color":"var(--color-accent)","border":"1px solid var(--color-border)"},"children":["#","referencegrant"]}],["$","$L2","allowedroutes",{"href":"/ja/tags/allowedroutes","localeCookie":{"name":"NEXT_LOCALE","sameSite":"lax"},"className":"inline-flex items-center rounded-full px-2.5 py-0.5 text-xs font-medium transition-colors","style":{"background":"var(--color-code-bg)","color":"var(--color-accent)","border":"1px solid var(--color-border)"},"children":["#","allowedroutes"]}],["$","$L2","multi-tenant",{"href":"/ja/tags/multi-tenant","localeCookie":{"name":"NEXT_LOCALE","sameSite":"lax"},"className":"inline-flex items-center rounded-full px-2.5 py-0.5 text-xs font-medium transition-colors","style":{"background":"var(--color-code-bg)","color":"var(--color-accent)","border":"1px solid var(--color-border)"},"children":["#","multi-tenant"]}]]}],["$","h1",null,{"className":"mb-4 text-3xl leading-snug font-bold tracking-tight sm:text-4xl","style":{"color":"var(--color-text)"},"children":"Envoy Gateway 複数 Namespace とチーム分担: allowedRoutes、ReferenceGrant、Cross-Team ガバナンス"}],"$L3","$undefined","$L4"]}],"$L5","$L6"]}],"$L7"]}]}]],["$L8"],"$L9"]}],"loading":null,"isPartial":false}
+3:["$","div",null,{"className":"flex flex-wrap items-center gap-3 text-sm","style":{"color":"var(--color-muted)"},"children":[["$","time",null,{"dateTime":"2026-03-10","children":"2026年3月10日"}],["$","span",null,{"aria-hidden":"true","children":"·"}],["$","span",null,{"children":"8 min read"}]]}]
+4:["$","div",null,{"className":"mt-6 border-b","style":{"borderColor":"var(--color-border)"}}]
+a:T3c5b,<p>Gateway API の大きな価値は、YAML がきれいになることだけではありません。長年ぼんやりしていた問いに、ようやく明確な答えを出してくれることです。</p>
 <p><strong>入口層を誰が持つのか? Route を誰が変えられるのか? Namespace をまたいで相互参照できるのか?</strong></p>
 <p>Ingress で痛みが出やすかった理由の一つは、全部が一緒くたに絡んでいたことです。
 Platform team は無断の公開変更を怖がり、app team は path を変えるだけでも ticket を切る感覚になり、最終的にみんなで YAML を拷問し合う構図になりがちでした。</p>
@@ -39,28 +37,28 @@ Platform team は無断の公開変更を怖がり、app team は path を変え
 <p>この 2 つを一つに混ぜると、だいたい正気を疑い始めます。役割を分ければ、ルールはそこまで神秘的ではありません。</p>
 <h2 id="allowedroutes-まず誰が-attach-できるかを決める"><code>allowedRoutes</code>: まず誰が attach できるかを決める</h2>
 <p>最も厳しく絞った listener はこうです。</p>
-<figure data-rehype-pretty-code-figure=""><pre style="background-color:#24292e;color:#e1e4e8" tabindex="0" data-language="yaml" data-theme="github-dark"><code data-language="yaml" data-theme="github-dark" style="display: grid;"><span data-line=""><span style="color:#85E89D">apiVersion</span><span style="color:#E1E4E8">: </span><span style="color:#9ECBFF">gateway.networking.k8s.io/v1</span></span>
-<span data-line=""><span style="color:#85E89D">kind</span><span style="color:#E1E4E8">: </span><span style="color:#9ECBFF">Gateway</span></span>
-<span data-line=""><span style="color:#85E89D">metadata</span><span style="color:#E1E4E8">:</span></span>
-<span data-line=""><span style="color:#85E89D">  name</span><span style="color:#E1E4E8">: </span><span style="color:#9ECBFF">shared-gateway</span></span>
-<span data-line=""><span style="color:#85E89D">  namespace</span><span style="color:#E1E4E8">: </span><span style="color:#9ECBFF">infra</span></span>
-<span data-line=""><span style="color:#85E89D">spec</span><span style="color:#E1E4E8">:</span></span>
-<span data-line=""><span style="color:#85E89D">  gatewayClassName</span><span style="color:#E1E4E8">: </span><span style="color:#9ECBFF">eg</span></span>
-<span data-line=""><span style="color:#85E89D">  listeners</span><span style="color:#E1E4E8">:</span></span>
-<span data-line=""><span style="color:#E1E4E8">    - </span><span style="color:#85E89D">name</span><span style="color:#E1E4E8">: </span><span style="color:#9ECBFF">https</span></span>
-<span data-line=""><span style="color:#85E89D">      protocol</span><span style="color:#E1E4E8">: </span><span style="color:#9ECBFF">HTTPS</span></span>
-<span data-line=""><span style="color:#85E89D">      port</span><span style="color:#E1E4E8">: </span><span style="color:#79B8FF">443</span></span>
-<span data-line=""><span style="color:#85E89D">      allowedRoutes</span><span style="color:#E1E4E8">:</span></span>
-<span data-line=""><span style="color:#85E89D">        namespaces</span><span style="color:#E1E4E8">:</span></span>
-<span data-line=""><span style="color:#85E89D">          from</span><span style="color:#E1E4E8">: </span><span style="color:#9ECBFF">Same</span></span></code></pre></figure>
+<figure data-rehype-pretty-code-figure=""><pre style="background-color:#0d1117;color:#e6edf3" tabindex="0" data-language="yaml" data-theme="github-dark-default"><code data-language="yaml" data-theme="github-dark-default" style="display: grid;"><span data-line=""><span style="color:#7EE787">apiVersion</span><span style="color:#E6EDF3">: </span><span style="color:#A5D6FF">gateway.networking.k8s.io/v1</span></span>
+<span data-line=""><span style="color:#7EE787">kind</span><span style="color:#E6EDF3">: </span><span style="color:#A5D6FF">Gateway</span></span>
+<span data-line=""><span style="color:#7EE787">metadata</span><span style="color:#E6EDF3">:</span></span>
+<span data-line=""><span style="color:#7EE787">  name</span><span style="color:#E6EDF3">: </span><span style="color:#A5D6FF">shared-gateway</span></span>
+<span data-line=""><span style="color:#7EE787">  namespace</span><span style="color:#E6EDF3">: </span><span style="color:#A5D6FF">infra</span></span>
+<span data-line=""><span style="color:#7EE787">spec</span><span style="color:#E6EDF3">:</span></span>
+<span data-line=""><span style="color:#7EE787">  gatewayClassName</span><span style="color:#E6EDF3">: </span><span style="color:#A5D6FF">eg</span></span>
+<span data-line=""><span style="color:#7EE787">  listeners</span><span style="color:#E6EDF3">:</span></span>
+<span data-line=""><span style="color:#E6EDF3">    - </span><span style="color:#7EE787">name</span><span style="color:#E6EDF3">: </span><span style="color:#A5D6FF">https</span></span>
+<span data-line=""><span style="color:#7EE787">      protocol</span><span style="color:#E6EDF3">: </span><span style="color:#A5D6FF">HTTPS</span></span>
+<span data-line=""><span style="color:#7EE787">      port</span><span style="color:#E6EDF3">: </span><span style="color:#79C0FF">443</span></span>
+<span data-line=""><span style="color:#7EE787">      allowedRoutes</span><span style="color:#E6EDF3">:</span></span>
+<span data-line=""><span style="color:#7EE787">        namespaces</span><span style="color:#E6EDF3">:</span></span>
+<span data-line=""><span style="color:#7EE787">          from</span><span style="color:#E6EDF3">: </span><span style="color:#A5D6FF">Same</span></span></code></pre></figure>
 <p>これは <code>infra</code> namespace にある route だけがこの listener に attach できることを意味します。</p>
 <p>特定 team の namespace を許可したい場合は <code>Selector</code> を使います。</p>
-<figure data-rehype-pretty-code-figure=""><pre style="background-color:#24292e;color:#e1e4e8" tabindex="0" data-language="yaml" data-theme="github-dark"><code data-language="yaml" data-theme="github-dark" style="display: grid;"><span data-line=""><span style="color:#85E89D">allowedRoutes</span><span style="color:#E1E4E8">:</span></span>
-<span data-line=""><span style="color:#85E89D">  namespaces</span><span style="color:#E1E4E8">:</span></span>
-<span data-line=""><span style="color:#85E89D">    from</span><span style="color:#E1E4E8">: </span><span style="color:#9ECBFF">Selector</span></span>
-<span data-line=""><span style="color:#85E89D">    selector</span><span style="color:#E1E4E8">:</span></span>
-<span data-line=""><span style="color:#85E89D">      matchLabels</span><span style="color:#E1E4E8">:</span></span>
-<span data-line=""><span style="color:#85E89D">        shared-gateway-access</span><span style="color:#E1E4E8">: </span><span style="color:#9ECBFF">"true"</span></span></code></pre></figure>
+<figure data-rehype-pretty-code-figure=""><pre style="background-color:#0d1117;color:#e6edf3" tabindex="0" data-language="yaml" data-theme="github-dark-default"><code data-language="yaml" data-theme="github-dark-default" style="display: grid;"><span data-line=""><span style="color:#7EE787">allowedRoutes</span><span style="color:#E6EDF3">:</span></span>
+<span data-line=""><span style="color:#7EE787">  namespaces</span><span style="color:#E6EDF3">:</span></span>
+<span data-line=""><span style="color:#7EE787">    from</span><span style="color:#E6EDF3">: </span><span style="color:#A5D6FF">Selector</span></span>
+<span data-line=""><span style="color:#7EE787">    selector</span><span style="color:#E6EDF3">:</span></span>
+<span data-line=""><span style="color:#7EE787">      matchLabels</span><span style="color:#E6EDF3">:</span></span>
+<span data-line=""><span style="color:#7EE787">        shared-gateway-access</span><span style="color:#E6EDF3">: </span><span style="color:#A5D6FF">"true"</span></span></code></pre></figure>
 <p>このパターンは platform team に向いています。
 すべてを完全封鎖しなくてもいいし、かといって <code>from: All</code> で誰でも入れてしまう必要もありません。特定 label を持つ namespace だけが attach できるようにできます。</p>
 <blockquote>
@@ -69,35 +67,35 @@ Platform team は無断の公開変更を怖がり、app team は path を変え
 <h2 id="referencegrant-決めるのは対象-namespace-側"><code>ReferenceGrant</code>: 決めるのは対象 Namespace 側</h2>
 <p>route や gateway が他 namespace の resource を参照したい場合、対象 namespace 側が許可を出す必要があります。</p>
 <p>たとえば app team の <code>HTTPRoute</code> が共有 namespace の backend へトラフィックを送りたい場合:</p>
-<figure data-rehype-pretty-code-figure=""><pre style="background-color:#24292e;color:#e1e4e8" tabindex="0" data-language="yaml" data-theme="github-dark"><code data-language="yaml" data-theme="github-dark" style="display: grid;"><span data-line=""><span style="color:#85E89D">apiVersion</span><span style="color:#E1E4E8">: </span><span style="color:#9ECBFF">gateway.networking.k8s.io/v1</span></span>
-<span data-line=""><span style="color:#85E89D">kind</span><span style="color:#E1E4E8">: </span><span style="color:#9ECBFF">HTTPRoute</span></span>
-<span data-line=""><span style="color:#85E89D">metadata</span><span style="color:#E1E4E8">:</span></span>
-<span data-line=""><span style="color:#85E89D">  name</span><span style="color:#E1E4E8">: </span><span style="color:#9ECBFF">app-route</span></span>
-<span data-line=""><span style="color:#85E89D">  namespace</span><span style="color:#E1E4E8">: </span><span style="color:#9ECBFF">team-a</span></span>
-<span data-line=""><span style="color:#85E89D">spec</span><span style="color:#E1E4E8">:</span></span>
-<span data-line=""><span style="color:#85E89D">  parentRefs</span><span style="color:#E1E4E8">:</span></span>
-<span data-line=""><span style="color:#E1E4E8">    - </span><span style="color:#85E89D">name</span><span style="color:#E1E4E8">: </span><span style="color:#9ECBFF">shared-gateway</span></span>
-<span data-line=""><span style="color:#85E89D">      namespace</span><span style="color:#E1E4E8">: </span><span style="color:#9ECBFF">infra</span></span>
-<span data-line=""><span style="color:#85E89D">      sectionName</span><span style="color:#E1E4E8">: </span><span style="color:#9ECBFF">https</span></span>
-<span data-line=""><span style="color:#85E89D">  rules</span><span style="color:#E1E4E8">:</span></span>
-<span data-line=""><span style="color:#E1E4E8">    - </span><span style="color:#85E89D">backendRefs</span><span style="color:#E1E4E8">:</span></span>
-<span data-line=""><span style="color:#E1E4E8">        - </span><span style="color:#85E89D">name</span><span style="color:#E1E4E8">: </span><span style="color:#9ECBFF">shared-api</span></span>
-<span data-line=""><span style="color:#85E89D">          namespace</span><span style="color:#E1E4E8">: </span><span style="color:#9ECBFF">shared-services</span></span>
-<span data-line=""><span style="color:#85E89D">          port</span><span style="color:#E1E4E8">: </span><span style="color:#79B8FF">8080</span></span></code></pre></figure>
+<figure data-rehype-pretty-code-figure=""><pre style="background-color:#0d1117;color:#e6edf3" tabindex="0" data-language="yaml" data-theme="github-dark-default"><code data-language="yaml" data-theme="github-dark-default" style="display: grid;"><span data-line=""><span style="color:#7EE787">apiVersion</span><span style="color:#E6EDF3">: </span><span style="color:#A5D6FF">gateway.networking.k8s.io/v1</span></span>
+<span data-line=""><span style="color:#7EE787">kind</span><span style="color:#E6EDF3">: </span><span style="color:#A5D6FF">HTTPRoute</span></span>
+<span data-line=""><span style="color:#7EE787">metadata</span><span style="color:#E6EDF3">:</span></span>
+<span data-line=""><span style="color:#7EE787">  name</span><span style="color:#E6EDF3">: </span><span style="color:#A5D6FF">app-route</span></span>
+<span data-line=""><span style="color:#7EE787">  namespace</span><span style="color:#E6EDF3">: </span><span style="color:#A5D6FF">team-a</span></span>
+<span data-line=""><span style="color:#7EE787">spec</span><span style="color:#E6EDF3">:</span></span>
+<span data-line=""><span style="color:#7EE787">  parentRefs</span><span style="color:#E6EDF3">:</span></span>
+<span data-line=""><span style="color:#E6EDF3">    - </span><span style="color:#7EE787">name</span><span style="color:#E6EDF3">: </span><span style="color:#A5D6FF">shared-gateway</span></span>
+<span data-line=""><span style="color:#7EE787">      namespace</span><span style="color:#E6EDF3">: </span><span style="color:#A5D6FF">infra</span></span>
+<span data-line=""><span style="color:#7EE787">      sectionName</span><span style="color:#E6EDF3">: </span><span style="color:#A5D6FF">https</span></span>
+<span data-line=""><span style="color:#7EE787">  rules</span><span style="color:#E6EDF3">:</span></span>
+<span data-line=""><span style="color:#E6EDF3">    - </span><span style="color:#7EE787">backendRefs</span><span style="color:#E6EDF3">:</span></span>
+<span data-line=""><span style="color:#E6EDF3">        - </span><span style="color:#7EE787">name</span><span style="color:#E6EDF3">: </span><span style="color:#A5D6FF">shared-api</span></span>
+<span data-line=""><span style="color:#7EE787">          namespace</span><span style="color:#E6EDF3">: </span><span style="color:#A5D6FF">shared-services</span></span>
+<span data-line=""><span style="color:#7EE787">          port</span><span style="color:#E6EDF3">: </span><span style="color:#79C0FF">8080</span></span></code></pre></figure>
 <p><code>shared-services</code> namespace 側には <code>ReferenceGrant</code> が必要です。</p>
-<figure data-rehype-pretty-code-figure=""><pre style="background-color:#24292e;color:#e1e4e8" tabindex="0" data-language="yaml" data-theme="github-dark"><code data-language="yaml" data-theme="github-dark" style="display: grid;"><span data-line=""><span style="color:#85E89D">apiVersion</span><span style="color:#E1E4E8">: </span><span style="color:#9ECBFF">gateway.networking.k8s.io/v1beta1</span></span>
-<span data-line=""><span style="color:#85E89D">kind</span><span style="color:#E1E4E8">: </span><span style="color:#9ECBFF">ReferenceGrant</span></span>
-<span data-line=""><span style="color:#85E89D">metadata</span><span style="color:#E1E4E8">:</span></span>
-<span data-line=""><span style="color:#85E89D">  name</span><span style="color:#E1E4E8">: </span><span style="color:#9ECBFF">allow-team-a-route</span></span>
-<span data-line=""><span style="color:#85E89D">  namespace</span><span style="color:#E1E4E8">: </span><span style="color:#9ECBFF">shared-services</span></span>
-<span data-line=""><span style="color:#85E89D">spec</span><span style="color:#E1E4E8">:</span></span>
-<span data-line=""><span style="color:#85E89D">  from</span><span style="color:#E1E4E8">:</span></span>
-<span data-line=""><span style="color:#E1E4E8">    - </span><span style="color:#85E89D">group</span><span style="color:#E1E4E8">: </span><span style="color:#9ECBFF">gateway.networking.k8s.io</span></span>
-<span data-line=""><span style="color:#85E89D">      kind</span><span style="color:#E1E4E8">: </span><span style="color:#9ECBFF">HTTPRoute</span></span>
-<span data-line=""><span style="color:#85E89D">      namespace</span><span style="color:#E1E4E8">: </span><span style="color:#9ECBFF">team-a</span></span>
-<span data-line=""><span style="color:#85E89D">  to</span><span style="color:#E1E4E8">:</span></span>
-<span data-line=""><span style="color:#E1E4E8">    - </span><span style="color:#85E89D">group</span><span style="color:#E1E4E8">: </span><span style="color:#9ECBFF">""</span></span>
-<span data-line=""><span style="color:#85E89D">      kind</span><span style="color:#E1E4E8">: </span><span style="color:#9ECBFF">Service</span></span></code></pre></figure>
+<figure data-rehype-pretty-code-figure=""><pre style="background-color:#0d1117;color:#e6edf3" tabindex="0" data-language="yaml" data-theme="github-dark-default"><code data-language="yaml" data-theme="github-dark-default" style="display: grid;"><span data-line=""><span style="color:#7EE787">apiVersion</span><span style="color:#E6EDF3">: </span><span style="color:#A5D6FF">gateway.networking.k8s.io/v1beta1</span></span>
+<span data-line=""><span style="color:#7EE787">kind</span><span style="color:#E6EDF3">: </span><span style="color:#A5D6FF">ReferenceGrant</span></span>
+<span data-line=""><span style="color:#7EE787">metadata</span><span style="color:#E6EDF3">:</span></span>
+<span data-line=""><span style="color:#7EE787">  name</span><span style="color:#E6EDF3">: </span><span style="color:#A5D6FF">allow-team-a-route</span></span>
+<span data-line=""><span style="color:#7EE787">  namespace</span><span style="color:#E6EDF3">: </span><span style="color:#A5D6FF">shared-services</span></span>
+<span data-line=""><span style="color:#7EE787">spec</span><span style="color:#E6EDF3">:</span></span>
+<span data-line=""><span style="color:#7EE787">  from</span><span style="color:#E6EDF3">:</span></span>
+<span data-line=""><span style="color:#E6EDF3">    - </span><span style="color:#7EE787">group</span><span style="color:#E6EDF3">: </span><span style="color:#A5D6FF">gateway.networking.k8s.io</span></span>
+<span data-line=""><span style="color:#7EE787">      kind</span><span style="color:#E6EDF3">: </span><span style="color:#A5D6FF">HTTPRoute</span></span>
+<span data-line=""><span style="color:#7EE787">      namespace</span><span style="color:#E6EDF3">: </span><span style="color:#A5D6FF">team-a</span></span>
+<span data-line=""><span style="color:#7EE787">  to</span><span style="color:#E6EDF3">:</span></span>
+<span data-line=""><span style="color:#E6EDF3">    - </span><span style="color:#7EE787">group</span><span style="color:#E6EDF3">: </span><span style="color:#A5D6FF">""</span></span>
+<span data-line=""><span style="color:#7EE787">      kind</span><span style="color:#E6EDF3">: </span><span style="color:#A5D6FF">Service</span></span></code></pre></figure>
 <p>平たく言うと:</p>
 <ul>
 <li><code>team-a</code> にある <code>HTTPRoute</code> が</li>
@@ -148,9 +146,9 @@ source が「使いたい」と宣言するだけでは足りず、resource owne
 <p>ownership と権限が整理できたら、最後のピースはこれです。
 <strong>設定が効かないとき、最初にどの status、どの condition、どの command を見るべきか?</strong></p>
 <p>次の記事では debugging と status の読み方を扱います。
-👉 <a href="09-debugging-and-status">ステータスとデバッグ手引き</a></p>7:["$","div",null,{"className":"prose","dangerouslySetInnerHTML":{"__html":"$c"}}]
-8:["$","footer",null,{"className":"mt-14 border-t pt-8","style":{"borderColor":"var(--color-border)"},"children":[["$","div",null,{"className":"mb-8 flex flex-wrap gap-2","children":[["$","$L2","kubernetes",{"href":"/ja/tags/kubernetes","localeCookie":{"name":"NEXT_LOCALE","sameSite":"lax"},"className":"inline-flex items-center rounded-full px-3 py-1 text-sm font-medium transition-colors","style":{"background":"var(--color-code-bg)","color":"var(--color-accent)","border":"1px solid var(--color-border)"},"children":["#","kubernetes"]}],["$","$L2","envoy-gateway",{"href":"/ja/tags/envoy-gateway","localeCookie":{"name":"NEXT_LOCALE","sameSite":"lax"},"className":"inline-flex items-center rounded-full px-3 py-1 text-sm font-medium transition-colors","style":{"background":"var(--color-code-bg)","color":"var(--color-accent)","border":"1px solid var(--color-border)"},"children":["#","envoy-gateway"]}],["$","$L2","gateway-api",{"href":"/ja/tags/gateway-api","localeCookie":{"name":"NEXT_LOCALE","sameSite":"lax"},"className":"inline-flex items-center rounded-full px-3 py-1 text-sm font-medium transition-colors","style":{"background":"var(--color-code-bg)","color":"var(--color-accent)","border":"1px solid var(--color-border)"},"children":["#","gateway-api"]}],["$","$L2","referencegrant",{"href":"/ja/tags/referencegrant","localeCookie":{"name":"NEXT_LOCALE","sameSite":"lax"},"className":"inline-flex items-center rounded-full px-3 py-1 text-sm font-medium transition-colors","style":{"background":"var(--color-code-bg)","color":"var(--color-accent)","border":"1px solid var(--color-border)"},"children":["#","referencegrant"]}],["$","$L2","allowedroutes",{"href":"/ja/tags/allowedroutes","localeCookie":{"name":"NEXT_LOCALE","sameSite":"lax"},"className":"inline-flex items-center rounded-full px-3 py-1 text-sm font-medium transition-colors","style":{"background":"var(--color-code-bg)","color":"var(--color-accent)","border":"1px solid var(--color-border)"},"children":["#","allowedroutes"]}],["$","$L2","multi-tenant",{"href":"/ja/tags/multi-tenant","localeCookie":{"name":"NEXT_LOCALE","sameSite":"lax"},"className":"inline-flex items-center rounded-full px-3 py-1 text-sm font-medium transition-colors","style":{"background":"var(--color-code-bg)","color":"var(--color-accent)","border":"1px solid var(--color-border)"},"children":["#","multi-tenant"]}]]}],["$","nav",null,{"aria-label":"記事ナビゲーション","className":"grid grid-cols-1 gap-4 sm:grid-cols-2","children":[["$","$L2",null,{"href":"/ja/blog/k8s/gateway/07-listener-design","localeCookie":{"name":"NEXT_LOCALE","sameSite":"lax"},"className":"group rounded-lg border p-4 transition-colors hover:border-accent","style":{"borderColor":"var(--color-border)","background":"var(--color-surface)"},"children":[["$","p",null,{"className":"mb-1 text-xs","style":{"color":"var(--color-muted)"},"children":"← 新しい記事"}],["$","p",null,{"className":"line-clamp-1 text-sm font-medium transition-colors group-hover:text-accent","style":{"color":"var(--color-text)"},"children":"Envoy Gateway Listener 設計ガイド: 複数 Port、複数 Hostname、複数 Ingress パターン"}]]}],["$","$L2",null,{"href":"/ja/blog/k8s/gateway/09-debugging-and-status","localeCookie":{"name":"NEXT_LOCALE","sameSite":"lax"},"className":"group rounded-lg border p-4 text-right transition-colors hover:border-accent","style":{"borderColor":"var(--color-border)","background":"var(--color-surface)"},"children":[["$","p",null,{"className":"mb-1 text-xs","style":{"color":"var(--color-muted)"},"children":"古い記事 →"}],["$","p",null,{"className":"line-clamp-1 text-sm font-medium transition-colors group-hover:text-accent","style":{"color":"var(--color-text)"},"children":"Envoy Gateway ステータスとデバッグ手引き: Accepted、ResolvedRefs、Programmed の本当の意味"}]]}]]}]]}]
-e:T3c1b,<p>Gateway API の大きな価値は、YAML がきれいになることだけではありません。長年ぼんやりしていた問いに、ようやく明確な答えを出してくれることです。</p>
+👉 <a href="09-debugging-and-status">ステータスとデバッグ手引き</a></p>5:["$","div",null,{"className":"prose","dangerouslySetInnerHTML":{"__html":"$a"}}]
+6:["$","footer",null,{"className":"mt-14 border-t pt-8","style":{"borderColor":"var(--color-border)"},"children":[["$","div",null,{"className":"mb-8 flex flex-wrap gap-2","children":[["$","$L2","kubernetes",{"href":"/ja/tags/kubernetes","localeCookie":{"name":"NEXT_LOCALE","sameSite":"lax"},"className":"inline-flex items-center rounded-full px-3 py-1 text-sm font-medium transition-colors","style":{"background":"var(--color-code-bg)","color":"var(--color-accent)","border":"1px solid var(--color-border)"},"children":["#","kubernetes"]}],["$","$L2","envoy-gateway",{"href":"/ja/tags/envoy-gateway","localeCookie":{"name":"NEXT_LOCALE","sameSite":"lax"},"className":"inline-flex items-center rounded-full px-3 py-1 text-sm font-medium transition-colors","style":{"background":"var(--color-code-bg)","color":"var(--color-accent)","border":"1px solid var(--color-border)"},"children":["#","envoy-gateway"]}],["$","$L2","gateway-api",{"href":"/ja/tags/gateway-api","localeCookie":{"name":"NEXT_LOCALE","sameSite":"lax"},"className":"inline-flex items-center rounded-full px-3 py-1 text-sm font-medium transition-colors","style":{"background":"var(--color-code-bg)","color":"var(--color-accent)","border":"1px solid var(--color-border)"},"children":["#","gateway-api"]}],["$","$L2","referencegrant",{"href":"/ja/tags/referencegrant","localeCookie":{"name":"NEXT_LOCALE","sameSite":"lax"},"className":"inline-flex items-center rounded-full px-3 py-1 text-sm font-medium transition-colors","style":{"background":"var(--color-code-bg)","color":"var(--color-accent)","border":"1px solid var(--color-border)"},"children":["#","referencegrant"]}],["$","$L2","allowedroutes",{"href":"/ja/tags/allowedroutes","localeCookie":{"name":"NEXT_LOCALE","sameSite":"lax"},"className":"inline-flex items-center rounded-full px-3 py-1 text-sm font-medium transition-colors","style":{"background":"var(--color-code-bg)","color":"var(--color-accent)","border":"1px solid var(--color-border)"},"children":["#","allowedroutes"]}],["$","$L2","multi-tenant",{"href":"/ja/tags/multi-tenant","localeCookie":{"name":"NEXT_LOCALE","sameSite":"lax"},"className":"inline-flex items-center rounded-full px-3 py-1 text-sm font-medium transition-colors","style":{"background":"var(--color-code-bg)","color":"var(--color-accent)","border":"1px solid var(--color-border)"},"children":["#","multi-tenant"]}]]}],["$","nav",null,{"aria-label":"記事ナビゲーション","className":"grid grid-cols-1 gap-4 sm:grid-cols-2","children":[["$","$L2",null,{"href":"/ja/blog/k8s/gateway/07-listener-design","localeCookie":{"name":"NEXT_LOCALE","sameSite":"lax"},"className":"group rounded-lg border p-4 transition-colors hover:border-accent","style":{"borderColor":"var(--color-border)","background":"var(--color-surface)"},"children":[["$","p",null,{"className":"mb-1 text-xs","style":{"color":"var(--color-muted)"},"children":"← 新しい記事"}],["$","p",null,{"className":"line-clamp-1 text-sm font-medium transition-colors group-hover:text-accent","style":{"color":"var(--color-text)"},"children":"Envoy Gateway Listener 設計ガイド: 複数 Port、複数 Hostname、複数 Ingress パターン"}]]}],["$","$L2",null,{"href":"/ja/blog/k8s/gateway/09-debugging-and-status","localeCookie":{"name":"NEXT_LOCALE","sameSite":"lax"},"className":"group rounded-lg border p-4 text-right transition-colors hover:border-accent","style":{"borderColor":"var(--color-border)","background":"var(--color-surface)"},"children":[["$","p",null,{"className":"mb-1 text-xs","style":{"color":"var(--color-muted)"},"children":"古い記事 →"}],["$","p",null,{"className":"line-clamp-1 text-sm font-medium transition-colors group-hover:text-accent","style":{"color":"var(--color-text)"},"children":"Envoy Gateway ステータスとデバッグ手引き: Accepted、ResolvedRefs、Programmed の本当の意味"}]]}]]}]]}]
+c:T3c5b,<p>Gateway API の大きな価値は、YAML がきれいになることだけではありません。長年ぼんやりしていた問いに、ようやく明確な答えを出してくれることです。</p>
 <p><strong>入口層を誰が持つのか? Route を誰が変えられるのか? Namespace をまたいで相互参照できるのか?</strong></p>
 <p>Ingress で痛みが出やすかった理由の一つは、全部が一緒くたに絡んでいたことです。
 Platform team は無断の公開変更を怖がり、app team は path を変えるだけでも ticket を切る感覚になり、最終的にみんなで YAML を拷問し合う構図になりがちでした。</p>
@@ -181,28 +179,28 @@ Platform team は無断の公開変更を怖がり、app team は path を変え
 <p>この 2 つを一つに混ぜると、だいたい正気を疑い始めます。役割を分ければ、ルールはそこまで神秘的ではありません。</p>
 <h2 id="allowedroutes-まず誰が-attach-できるかを決める"><code>allowedRoutes</code>: まず誰が attach できるかを決める</h2>
 <p>最も厳しく絞った listener はこうです。</p>
-<figure data-rehype-pretty-code-figure=""><pre style="background-color:#24292e;color:#e1e4e8" tabindex="0" data-language="yaml" data-theme="github-dark"><code data-language="yaml" data-theme="github-dark" style="display: grid;"><span data-line=""><span style="color:#85E89D">apiVersion</span><span style="color:#E1E4E8">: </span><span style="color:#9ECBFF">gateway.networking.k8s.io/v1</span></span>
-<span data-line=""><span style="color:#85E89D">kind</span><span style="color:#E1E4E8">: </span><span style="color:#9ECBFF">Gateway</span></span>
-<span data-line=""><span style="color:#85E89D">metadata</span><span style="color:#E1E4E8">:</span></span>
-<span data-line=""><span style="color:#85E89D">  name</span><span style="color:#E1E4E8">: </span><span style="color:#9ECBFF">shared-gateway</span></span>
-<span data-line=""><span style="color:#85E89D">  namespace</span><span style="color:#E1E4E8">: </span><span style="color:#9ECBFF">infra</span></span>
-<span data-line=""><span style="color:#85E89D">spec</span><span style="color:#E1E4E8">:</span></span>
-<span data-line=""><span style="color:#85E89D">  gatewayClassName</span><span style="color:#E1E4E8">: </span><span style="color:#9ECBFF">eg</span></span>
-<span data-line=""><span style="color:#85E89D">  listeners</span><span style="color:#E1E4E8">:</span></span>
-<span data-line=""><span style="color:#E1E4E8">    - </span><span style="color:#85E89D">name</span><span style="color:#E1E4E8">: </span><span style="color:#9ECBFF">https</span></span>
-<span data-line=""><span style="color:#85E89D">      protocol</span><span style="color:#E1E4E8">: </span><span style="color:#9ECBFF">HTTPS</span></span>
-<span data-line=""><span style="color:#85E89D">      port</span><span style="color:#E1E4E8">: </span><span style="color:#79B8FF">443</span></span>
-<span data-line=""><span style="color:#85E89D">      allowedRoutes</span><span style="color:#E1E4E8">:</span></span>
-<span data-line=""><span style="color:#85E89D">        namespaces</span><span style="color:#E1E4E8">:</span></span>
-<span data-line=""><span style="color:#85E89D">          from</span><span style="color:#E1E4E8">: </span><span style="color:#9ECBFF">Same</span></span></code></pre></figure>
+<figure data-rehype-pretty-code-figure=""><pre style="background-color:#0d1117;color:#e6edf3" tabindex="0" data-language="yaml" data-theme="github-dark-default"><code data-language="yaml" data-theme="github-dark-default" style="display: grid;"><span data-line=""><span style="color:#7EE787">apiVersion</span><span style="color:#E6EDF3">: </span><span style="color:#A5D6FF">gateway.networking.k8s.io/v1</span></span>
+<span data-line=""><span style="color:#7EE787">kind</span><span style="color:#E6EDF3">: </span><span style="color:#A5D6FF">Gateway</span></span>
+<span data-line=""><span style="color:#7EE787">metadata</span><span style="color:#E6EDF3">:</span></span>
+<span data-line=""><span style="color:#7EE787">  name</span><span style="color:#E6EDF3">: </span><span style="color:#A5D6FF">shared-gateway</span></span>
+<span data-line=""><span style="color:#7EE787">  namespace</span><span style="color:#E6EDF3">: </span><span style="color:#A5D6FF">infra</span></span>
+<span data-line=""><span style="color:#7EE787">spec</span><span style="color:#E6EDF3">:</span></span>
+<span data-line=""><span style="color:#7EE787">  gatewayClassName</span><span style="color:#E6EDF3">: </span><span style="color:#A5D6FF">eg</span></span>
+<span data-line=""><span style="color:#7EE787">  listeners</span><span style="color:#E6EDF3">:</span></span>
+<span data-line=""><span style="color:#E6EDF3">    - </span><span style="color:#7EE787">name</span><span style="color:#E6EDF3">: </span><span style="color:#A5D6FF">https</span></span>
+<span data-line=""><span style="color:#7EE787">      protocol</span><span style="color:#E6EDF3">: </span><span style="color:#A5D6FF">HTTPS</span></span>
+<span data-line=""><span style="color:#7EE787">      port</span><span style="color:#E6EDF3">: </span><span style="color:#79C0FF">443</span></span>
+<span data-line=""><span style="color:#7EE787">      allowedRoutes</span><span style="color:#E6EDF3">:</span></span>
+<span data-line=""><span style="color:#7EE787">        namespaces</span><span style="color:#E6EDF3">:</span></span>
+<span data-line=""><span style="color:#7EE787">          from</span><span style="color:#E6EDF3">: </span><span style="color:#A5D6FF">Same</span></span></code></pre></figure>
 <p>これは <code>infra</code> namespace にある route だけがこの listener に attach できることを意味します。</p>
 <p>特定 team の namespace を許可したい場合は <code>Selector</code> を使います。</p>
-<figure data-rehype-pretty-code-figure=""><pre style="background-color:#24292e;color:#e1e4e8" tabindex="0" data-language="yaml" data-theme="github-dark"><code data-language="yaml" data-theme="github-dark" style="display: grid;"><span data-line=""><span style="color:#85E89D">allowedRoutes</span><span style="color:#E1E4E8">:</span></span>
-<span data-line=""><span style="color:#85E89D">  namespaces</span><span style="color:#E1E4E8">:</span></span>
-<span data-line=""><span style="color:#85E89D">    from</span><span style="color:#E1E4E8">: </span><span style="color:#9ECBFF">Selector</span></span>
-<span data-line=""><span style="color:#85E89D">    selector</span><span style="color:#E1E4E8">:</span></span>
-<span data-line=""><span style="color:#85E89D">      matchLabels</span><span style="color:#E1E4E8">:</span></span>
-<span data-line=""><span style="color:#85E89D">        shared-gateway-access</span><span style="color:#E1E4E8">: </span><span style="color:#9ECBFF">"true"</span></span></code></pre></figure>
+<figure data-rehype-pretty-code-figure=""><pre style="background-color:#0d1117;color:#e6edf3" tabindex="0" data-language="yaml" data-theme="github-dark-default"><code data-language="yaml" data-theme="github-dark-default" style="display: grid;"><span data-line=""><span style="color:#7EE787">allowedRoutes</span><span style="color:#E6EDF3">:</span></span>
+<span data-line=""><span style="color:#7EE787">  namespaces</span><span style="color:#E6EDF3">:</span></span>
+<span data-line=""><span style="color:#7EE787">    from</span><span style="color:#E6EDF3">: </span><span style="color:#A5D6FF">Selector</span></span>
+<span data-line=""><span style="color:#7EE787">    selector</span><span style="color:#E6EDF3">:</span></span>
+<span data-line=""><span style="color:#7EE787">      matchLabels</span><span style="color:#E6EDF3">:</span></span>
+<span data-line=""><span style="color:#7EE787">        shared-gateway-access</span><span style="color:#E6EDF3">: </span><span style="color:#A5D6FF">"true"</span></span></code></pre></figure>
 <p>このパターンは platform team に向いています。
 すべてを完全封鎖しなくてもいいし、かといって <code>from: All</code> で誰でも入れてしまう必要もありません。特定 label を持つ namespace だけが attach できるようにできます。</p>
 <blockquote>
@@ -211,35 +209,35 @@ Platform team は無断の公開変更を怖がり、app team は path を変え
 <h2 id="referencegrant-決めるのは対象-namespace-側"><code>ReferenceGrant</code>: 決めるのは対象 Namespace 側</h2>
 <p>route や gateway が他 namespace の resource を参照したい場合、対象 namespace 側が許可を出す必要があります。</p>
 <p>たとえば app team の <code>HTTPRoute</code> が共有 namespace の backend へトラフィックを送りたい場合:</p>
-<figure data-rehype-pretty-code-figure=""><pre style="background-color:#24292e;color:#e1e4e8" tabindex="0" data-language="yaml" data-theme="github-dark"><code data-language="yaml" data-theme="github-dark" style="display: grid;"><span data-line=""><span style="color:#85E89D">apiVersion</span><span style="color:#E1E4E8">: </span><span style="color:#9ECBFF">gateway.networking.k8s.io/v1</span></span>
-<span data-line=""><span style="color:#85E89D">kind</span><span style="color:#E1E4E8">: </span><span style="color:#9ECBFF">HTTPRoute</span></span>
-<span data-line=""><span style="color:#85E89D">metadata</span><span style="color:#E1E4E8">:</span></span>
-<span data-line=""><span style="color:#85E89D">  name</span><span style="color:#E1E4E8">: </span><span style="color:#9ECBFF">app-route</span></span>
-<span data-line=""><span style="color:#85E89D">  namespace</span><span style="color:#E1E4E8">: </span><span style="color:#9ECBFF">team-a</span></span>
-<span data-line=""><span style="color:#85E89D">spec</span><span style="color:#E1E4E8">:</span></span>
-<span data-line=""><span style="color:#85E89D">  parentRefs</span><span style="color:#E1E4E8">:</span></span>
-<span data-line=""><span style="color:#E1E4E8">    - </span><span style="color:#85E89D">name</span><span style="color:#E1E4E8">: </span><span style="color:#9ECBFF">shared-gateway</span></span>
-<span data-line=""><span style="color:#85E89D">      namespace</span><span style="color:#E1E4E8">: </span><span style="color:#9ECBFF">infra</span></span>
-<span data-line=""><span style="color:#85E89D">      sectionName</span><span style="color:#E1E4E8">: </span><span style="color:#9ECBFF">https</span></span>
-<span data-line=""><span style="color:#85E89D">  rules</span><span style="color:#E1E4E8">:</span></span>
-<span data-line=""><span style="color:#E1E4E8">    - </span><span style="color:#85E89D">backendRefs</span><span style="color:#E1E4E8">:</span></span>
-<span data-line=""><span style="color:#E1E4E8">        - </span><span style="color:#85E89D">name</span><span style="color:#E1E4E8">: </span><span style="color:#9ECBFF">shared-api</span></span>
-<span data-line=""><span style="color:#85E89D">          namespace</span><span style="color:#E1E4E8">: </span><span style="color:#9ECBFF">shared-services</span></span>
-<span data-line=""><span style="color:#85E89D">          port</span><span style="color:#E1E4E8">: </span><span style="color:#79B8FF">8080</span></span></code></pre></figure>
+<figure data-rehype-pretty-code-figure=""><pre style="background-color:#0d1117;color:#e6edf3" tabindex="0" data-language="yaml" data-theme="github-dark-default"><code data-language="yaml" data-theme="github-dark-default" style="display: grid;"><span data-line=""><span style="color:#7EE787">apiVersion</span><span style="color:#E6EDF3">: </span><span style="color:#A5D6FF">gateway.networking.k8s.io/v1</span></span>
+<span data-line=""><span style="color:#7EE787">kind</span><span style="color:#E6EDF3">: </span><span style="color:#A5D6FF">HTTPRoute</span></span>
+<span data-line=""><span style="color:#7EE787">metadata</span><span style="color:#E6EDF3">:</span></span>
+<span data-line=""><span style="color:#7EE787">  name</span><span style="color:#E6EDF3">: </span><span style="color:#A5D6FF">app-route</span></span>
+<span data-line=""><span style="color:#7EE787">  namespace</span><span style="color:#E6EDF3">: </span><span style="color:#A5D6FF">team-a</span></span>
+<span data-line=""><span style="color:#7EE787">spec</span><span style="color:#E6EDF3">:</span></span>
+<span data-line=""><span style="color:#7EE787">  parentRefs</span><span style="color:#E6EDF3">:</span></span>
+<span data-line=""><span style="color:#E6EDF3">    - </span><span style="color:#7EE787">name</span><span style="color:#E6EDF3">: </span><span style="color:#A5D6FF">shared-gateway</span></span>
+<span data-line=""><span style="color:#7EE787">      namespace</span><span style="color:#E6EDF3">: </span><span style="color:#A5D6FF">infra</span></span>
+<span data-line=""><span style="color:#7EE787">      sectionName</span><span style="color:#E6EDF3">: </span><span style="color:#A5D6FF">https</span></span>
+<span data-line=""><span style="color:#7EE787">  rules</span><span style="color:#E6EDF3">:</span></span>
+<span data-line=""><span style="color:#E6EDF3">    - </span><span style="color:#7EE787">backendRefs</span><span style="color:#E6EDF3">:</span></span>
+<span data-line=""><span style="color:#E6EDF3">        - </span><span style="color:#7EE787">name</span><span style="color:#E6EDF3">: </span><span style="color:#A5D6FF">shared-api</span></span>
+<span data-line=""><span style="color:#7EE787">          namespace</span><span style="color:#E6EDF3">: </span><span style="color:#A5D6FF">shared-services</span></span>
+<span data-line=""><span style="color:#7EE787">          port</span><span style="color:#E6EDF3">: </span><span style="color:#79C0FF">8080</span></span></code></pre></figure>
 <p><code>shared-services</code> namespace 側には <code>ReferenceGrant</code> が必要です。</p>
-<figure data-rehype-pretty-code-figure=""><pre style="background-color:#24292e;color:#e1e4e8" tabindex="0" data-language="yaml" data-theme="github-dark"><code data-language="yaml" data-theme="github-dark" style="display: grid;"><span data-line=""><span style="color:#85E89D">apiVersion</span><span style="color:#E1E4E8">: </span><span style="color:#9ECBFF">gateway.networking.k8s.io/v1beta1</span></span>
-<span data-line=""><span style="color:#85E89D">kind</span><span style="color:#E1E4E8">: </span><span style="color:#9ECBFF">ReferenceGrant</span></span>
-<span data-line=""><span style="color:#85E89D">metadata</span><span style="color:#E1E4E8">:</span></span>
-<span data-line=""><span style="color:#85E89D">  name</span><span style="color:#E1E4E8">: </span><span style="color:#9ECBFF">allow-team-a-route</span></span>
-<span data-line=""><span style="color:#85E89D">  namespace</span><span style="color:#E1E4E8">: </span><span style="color:#9ECBFF">shared-services</span></span>
-<span data-line=""><span style="color:#85E89D">spec</span><span style="color:#E1E4E8">:</span></span>
-<span data-line=""><span style="color:#85E89D">  from</span><span style="color:#E1E4E8">:</span></span>
-<span data-line=""><span style="color:#E1E4E8">    - </span><span style="color:#85E89D">group</span><span style="color:#E1E4E8">: </span><span style="color:#9ECBFF">gateway.networking.k8s.io</span></span>
-<span data-line=""><span style="color:#85E89D">      kind</span><span style="color:#E1E4E8">: </span><span style="color:#9ECBFF">HTTPRoute</span></span>
-<span data-line=""><span style="color:#85E89D">      namespace</span><span style="color:#E1E4E8">: </span><span style="color:#9ECBFF">team-a</span></span>
-<span data-line=""><span style="color:#85E89D">  to</span><span style="color:#E1E4E8">:</span></span>
-<span data-line=""><span style="color:#E1E4E8">    - </span><span style="color:#85E89D">group</span><span style="color:#E1E4E8">: </span><span style="color:#9ECBFF">""</span></span>
-<span data-line=""><span style="color:#85E89D">      kind</span><span style="color:#E1E4E8">: </span><span style="color:#9ECBFF">Service</span></span></code></pre></figure>
+<figure data-rehype-pretty-code-figure=""><pre style="background-color:#0d1117;color:#e6edf3" tabindex="0" data-language="yaml" data-theme="github-dark-default"><code data-language="yaml" data-theme="github-dark-default" style="display: grid;"><span data-line=""><span style="color:#7EE787">apiVersion</span><span style="color:#E6EDF3">: </span><span style="color:#A5D6FF">gateway.networking.k8s.io/v1beta1</span></span>
+<span data-line=""><span style="color:#7EE787">kind</span><span style="color:#E6EDF3">: </span><span style="color:#A5D6FF">ReferenceGrant</span></span>
+<span data-line=""><span style="color:#7EE787">metadata</span><span style="color:#E6EDF3">:</span></span>
+<span data-line=""><span style="color:#7EE787">  name</span><span style="color:#E6EDF3">: </span><span style="color:#A5D6FF">allow-team-a-route</span></span>
+<span data-line=""><span style="color:#7EE787">  namespace</span><span style="color:#E6EDF3">: </span><span style="color:#A5D6FF">shared-services</span></span>
+<span data-line=""><span style="color:#7EE787">spec</span><span style="color:#E6EDF3">:</span></span>
+<span data-line=""><span style="color:#7EE787">  from</span><span style="color:#E6EDF3">:</span></span>
+<span data-line=""><span style="color:#E6EDF3">    - </span><span style="color:#7EE787">group</span><span style="color:#E6EDF3">: </span><span style="color:#A5D6FF">gateway.networking.k8s.io</span></span>
+<span data-line=""><span style="color:#7EE787">      kind</span><span style="color:#E6EDF3">: </span><span style="color:#A5D6FF">HTTPRoute</span></span>
+<span data-line=""><span style="color:#7EE787">      namespace</span><span style="color:#E6EDF3">: </span><span style="color:#A5D6FF">team-a</span></span>
+<span data-line=""><span style="color:#7EE787">  to</span><span style="color:#E6EDF3">:</span></span>
+<span data-line=""><span style="color:#E6EDF3">    - </span><span style="color:#7EE787">group</span><span style="color:#E6EDF3">: </span><span style="color:#A5D6FF">""</span></span>
+<span data-line=""><span style="color:#7EE787">      kind</span><span style="color:#E6EDF3">: </span><span style="color:#A5D6FF">Service</span></span></code></pre></figure>
 <p>平たく言うと:</p>
 <ul>
 <li><code>team-a</code> にある <code>HTTPRoute</code> が</li>
@@ -290,7 +288,7 @@ source が「使いたい」と宣言するだけでは足りず、resource owne
 <p>ownership と権限が整理できたら、最後のピースはこれです。
 <strong>設定が効かないとき、最初にどの status、どの condition、どの command を見るべきか?</strong></p>
 <p>次の記事では debugging と status の読み方を扱います。
-👉 <a href="09-debugging-and-status">ステータスとデバッグ手引き</a></p>9:["$","aside",null,{"className":"hidden lg:block","children":["$","$Ld",null,{"html":"$e"}]}]
-a:["$","script","script-0",{"src":"/_next/static/chunks/2dddb3bc05093f69.js","async":true}]
-b:["$","$Lf",null,{"children":["$","$10",null,{"name":"Next.MetadataOutlet","children":"$@11"}]}]
-11:null
+👉 <a href="09-debugging-and-status">ステータスとデバッグ手引き</a></p>7:["$","aside",null,{"className":"hidden lg:block","children":["$","$Lb",null,{"html":"$c"}]}]
+8:["$","script","script-0",{"src":"/_next/static/chunks/2dddb3bc05093f69.js","async":true}]
+9:["$","$Ld",null,{"children":["$","$e",null,{"name":"Next.MetadataOutlet","children":"$@f"}]}]
+f:null

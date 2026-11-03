@@ -2,359 +2,359 @@
 <rss version="2.0" xmlns:atom="http://www.w3.org/2005/Atom">
   <channel>
     <title>BenXHub Blog</title>
-    <link>https://benxhub.com/en</link>
+    <link>https://benxhub.com/en/</link>
     <description>BenX&apos;s tech blog — sharing Web development, architecture, and engineering practices.</description>
-    <lastBuildDate>Sun, 01 Nov 2026 07:34:15 GMT</lastBuildDate>
+    <lastBuildDate>Tue, 03 Nov 2026 21:49:24 GMT</lastBuildDate>
     <atom:link href="https://benxhub.com/en/feed.xml" rel="self" type="application/rss+xml"/>
     <item>
       <title>K8S Envoy Gateway Series Overview: A More Modern Traffic Ingress Than Ingress</title>
-      <link>https://benxhub.com/en/blog/k8s/gateway/00-overview</link>
+      <link>https://benxhub.com/en/blog/k8s/gateway/00-overview/</link>
       <description>Understand the relationship between Envoy Gateway, Gateway API, and Envoy Proxy, and build a learning map for the entire series.</description>
       <pubDate>Tue, 10 Mar 2026 00:00:00 GMT</pubDate>
-      <guid isPermaLink="true">https://benxhub.com/en/blog/k8s/gateway/00-overview</guid>
+      <guid isPermaLink="true">https://benxhub.com/en/blog/k8s/gateway/00-overview/</guid>
     </item>
     <item>
       <title>Envoy Gateway Quick Start: Get Your First Request Through in 10 Minutes</title>
-      <link>https://benxhub.com/en/blog/k8s/gateway/01-quick-start</link>
+      <link>https://benxhub.com/en/blog/k8s/gateway/01-quick-start/</link>
       <description>Install Envoy Gateway using the official quickstart, apply a Gateway and HTTPRoute, and confirm requests are actually flowing.</description>
       <pubDate>Tue, 10 Mar 2026 00:00:00 GMT</pubDate>
-      <guid isPermaLink="true">https://benxhub.com/en/blog/k8s/gateway/01-quick-start</guid>
+      <guid isPermaLink="true">https://benxhub.com/en/blog/k8s/gateway/01-quick-start/</guid>
     </item>
     <item>
       <title>Envoy Gateway Core Concepts: Gateway, Listener, Proxy, and the Route Family Explained</title>
-      <link>https://benxhub.com/en/blog/k8s/gateway/02-core-concepts</link>
+      <link>https://benxhub.com/en/blog/k8s/gateway/02-core-concepts/</link>
       <description>Build a complete mental model of Envoy Gateway — understand the responsibilities of Gateway, Listener, Envoy Proxy, and each Route type.</description>
       <pubDate>Tue, 10 Mar 2026 00:00:00 GMT</pubDate>
-      <guid isPermaLink="true">https://benxhub.com/en/blog/k8s/gateway/02-core-concepts</guid>
+      <guid isPermaLink="true">https://benxhub.com/en/blog/k8s/gateway/02-core-concepts/</guid>
     </item>
     <item>
       <title>Envoy Gateway HTTP Routing in Practice: Host, Path, Header, and Traffic Splitting</title>
-      <link>https://benxhub.com/en/blog/k8s/gateway/03-http-routing</link>
+      <link>https://benxhub.com/en/blog/k8s/gateway/03-http-routing/</link>
       <description>From host/path matching to filters, timeouts, header conditions, and weighted traffic splitting — master the most common HTTPRoute patterns.</description>
       <pubDate>Tue, 10 Mar 2026 00:00:00 GMT</pubDate>
-      <guid isPermaLink="true">https://benxhub.com/en/blog/k8s/gateway/03-http-routing</guid>
+      <guid isPermaLink="true">https://benxhub.com/en/blog/k8s/gateway/03-http-routing/</guid>
     </item>
     <item>
       <title>Envoy Gateway TLS and Security: Set Up HTTPS and Stop Your API from Running Naked</title>
-      <link>https://benxhub.com/en/blog/k8s/gateway/04-tls-and-security</link>
+      <link>https://benxhub.com/en/blog/k8s/gateway/04-tls-and-security/</link>
       <description>Understand HTTPS listeners, certificateRefs, TLS termination, TLSRoute, and the basics of cross-namespace certificate references in Envoy Gateway.</description>
       <pubDate>Tue, 10 Mar 2026 00:00:00 GMT</pubDate>
-      <guid isPermaLink="true">https://benxhub.com/en/blog/k8s/gateway/04-tls-and-security</guid>
+      <guid isPermaLink="true">https://benxhub.com/en/blog/k8s/gateway/04-tls-and-security/</guid>
     </item>
     <item>
       <title>Envoy Gateway Best Practices: Do Future-You a Favor Before Going to Production</title>
-      <link>https://benxhub.com/en/blog/k8s/gateway/05-best-practices</link>
+      <link>https://benxhub.com/en/blog/k8s/gateway/05-best-practices/</link>
       <description>A practical collection of recommended approaches and pitfalls to avoid when running Envoy Gateway in production — covering TLS, route governance, observability, and change strategy.</description>
       <pubDate>Tue, 10 Mar 2026 00:00:00 GMT</pubDate>
-      <guid isPermaLink="true">https://benxhub.com/en/blog/k8s/gateway/05-best-practices</guid>
+      <guid isPermaLink="true">https://benxhub.com/en/blog/k8s/gateway/05-best-practices/</guid>
     </item>
     <item>
       <title>Envoy Gateway Route Type Cheatsheet: HTTPRoute, GRPCRoute, TCPRoute, or TLSRoute?</title>
-      <link>https://benxhub.com/en/blog/k8s/gateway/06-route-types-cheatsheet</link>
+      <link>https://benxhub.com/en/blog/k8s/gateway/06-route-types-cheatsheet/</link>
       <description>A quick-reference cheatsheet for choosing the right Route type — with minimal YAML examples, a decision flowchart, and common pitfalls.</description>
       <pubDate>Tue, 10 Mar 2026 00:00:00 GMT</pubDate>
-      <guid isPermaLink="true">https://benxhub.com/en/blog/k8s/gateway/06-route-types-cheatsheet</guid>
+      <guid isPermaLink="true">https://benxhub.com/en/blog/k8s/gateway/06-route-types-cheatsheet/</guid>
     </item>
     <item>
       <title>Envoy Gateway Listener Design Guide: Multi-Port, Multi-Hostname, Multi-Ingress Patterns</title>
-      <link>https://benxhub.com/en/blog/k8s/gateway/07-listener-design</link>
+      <link>https://benxhub.com/en/blog/k8s/gateway/07-listener-design/</link>
       <description>Treat Listeners as ingress contracts — understand sectionName, allowedRoutes, multi-listener patterns, and common structural approaches.</description>
       <pubDate>Tue, 10 Mar 2026 00:00:00 GMT</pubDate>
-      <guid isPermaLink="true">https://benxhub.com/en/blog/k8s/gateway/07-listener-design</guid>
+      <guid isPermaLink="true">https://benxhub.com/en/blog/k8s/gateway/07-listener-design/</guid>
     </item>
     <item>
       <title>Envoy Gateway Multi-Namespace and Team Ownership: allowedRoutes, ReferenceGrant, and Cross-Team Governance</title>
-      <link>https://benxhub.com/en/blog/k8s/gateway/08-multi-namespace-and-teamwork</link>
+      <link>https://benxhub.com/en/blog/k8s/gateway/08-multi-namespace-and-teamwork/</link>
       <description>Understand Gateway API&apos;s multi-tenant model — listener attachment permissions, cross-namespace references, and common platform/app team ownership patterns.</description>
       <pubDate>Tue, 10 Mar 2026 00:00:00 GMT</pubDate>
-      <guid isPermaLink="true">https://benxhub.com/en/blog/k8s/gateway/08-multi-namespace-and-teamwork</guid>
+      <guid isPermaLink="true">https://benxhub.com/en/blog/k8s/gateway/08-multi-namespace-and-teamwork/</guid>
     </item>
     <item>
       <title>Envoy Gateway Status and Debugging Handbook: What Accepted, ResolvedRefs, and Programmed Actually Mean</title>
-      <link>https://benxhub.com/en/blog/k8s/gateway/09-debugging-and-status</link>
+      <link>https://benxhub.com/en/blog/k8s/gateway/09-debugging-and-status/</link>
       <description>A guide to the most important Gateway and Route status conditions and debugging flow — so you know where to look when config doesn&apos;t take effect.</description>
       <pubDate>Tue, 10 Mar 2026 00:00:00 GMT</pubDate>
-      <guid isPermaLink="true">https://benxhub.com/en/blog/k8s/gateway/09-debugging-and-status</guid>
+      <guid isPermaLink="true">https://benxhub.com/en/blog/k8s/gateway/09-debugging-and-status/</guid>
     </item>
     <item>
       <title>AI-Powered Content Production: The Real Gap Isn&apos;t Speed, It&apos;s Workflow Design</title>
-      <link>https://benxhub.com/en/blog/ai-trend/2026-03-09-ai-content-automation-workflow</link>
+      <link>https://benxhub.com/en/blog/ai-trend/2026-03-09-ai-content-automation-workflow/</link>
       <description>Whether a team succeeds with AI depends less on stacking flashy tools and more on the quality of its workflow design.</description>
       <pubDate>Mon, 09 Mar 2026 00:00:00 GMT</pubDate>
-      <guid isPermaLink="true">https://benxhub.com/en/blog/ai-trend/2026-03-09-ai-content-automation-workflow</guid>
+      <guid isPermaLink="true">https://benxhub.com/en/blog/ai-trend/2026-03-09-ai-content-automation-workflow/</guid>
     </item>
     <item>
       <title>Cursor Built-in Worktree: Advanced Usage</title>
-      <link>https://benxhub.com/en/blog/cursor/cli/08-worktree-merge</link>
+      <link>https://benxhub.com/en/blog/cursor/cli/08-worktree-merge/</link>
       <description>Multi-task parallel strategy, when to choose Merge vs Full Overwrite on Apply, conflict handling, and worktree management in practice.</description>
       <pubDate>Mon, 09 Mar 2026 00:00:00 GMT</pubDate>
-      <guid isPermaLink="true">https://benxhub.com/en/blog/cursor/cli/08-worktree-merge</guid>
+      <guid isPermaLink="true">https://benxhub.com/en/blog/cursor/cli/08-worktree-merge/</guid>
     </item>
     <item>
       <title>Cursor Worktree Advanced: Best-of-N and worktrees.json</title>
-      <link>https://benxhub.com/en/blog/cursor/cli/09-worktree-advanced</link>
+      <link>https://benxhub.com/en/blog/cursor/cli/09-worktree-advanced/</link>
       <description>Run the same prompt with multiple models, pick the best result; customize setup and migration with worktrees.json, and worktree cleanup settings.</description>
       <pubDate>Mon, 09 Mar 2026 00:00:00 GMT</pubDate>
-      <guid isPermaLink="true">https://benxhub.com/en/blog/cursor/cli/09-worktree-advanced</guid>
+      <guid isPermaLink="true">https://benxhub.com/en/blog/cursor/cli/09-worktree-advanced/</guid>
     </item>
     <item>
       <title>Cursor CLI Headless Mode: --print, --force, and Scripts That Edit Files</title>
-      <link>https://benxhub.com/en/blog/cursor/cli/10-headless-scripts</link>
+      <link>https://benxhub.com/en/blog/cursor/cli/10-headless-scripts/</link>
       <description>Use -p/--print for non-interactive runs; combine with --force so the Agent writes to disk. Ideal for scripts, batch jobs, and automation.</description>
       <pubDate>Mon, 09 Mar 2026 00:00:00 GMT</pubDate>
-      <guid isPermaLink="true">https://benxhub.com/en/blog/cursor/cli/10-headless-scripts</guid>
+      <guid isPermaLink="true">https://benxhub.com/en/blog/cursor/cli/10-headless-scripts/</guid>
     </item>
     <item>
       <title>Cursor CLI Output Formats and CI Integration</title>
-      <link>https://benxhub.com/en/blog/cursor/cli/11-output-ci</link>
+      <link>https://benxhub.com/en/blog/cursor/cli/11-output-ci/</link>
       <description>When to use text, json, and stream-json; parsing results in CI, live progress, and failure handling.</description>
       <pubDate>Mon, 09 Mar 2026 00:00:00 GMT</pubDate>
-      <guid isPermaLink="true">https://benxhub.com/en/blog/cursor/cli/11-output-ci</guid>
+      <guid isPermaLink="true">https://benxhub.com/en/blog/cursor/cli/11-output-ci/</guid>
     </item>
     <item>
       <title>Cursor CLI Session Management and Cloud Execution</title>
-      <link>https://benxhub.com/en/blog/cursor/cli/12-sessions-cloud</link>
+      <link>https://benxhub.com/en/blog/cursor/cli/12-sessions-cloud/</link>
       <description>Resume the last conversation with --resume, list history with cursor agent ls, and run long tasks in the cloud with -c so they keep running after you close the terminal.</description>
       <pubDate>Mon, 09 Mar 2026 00:00:00 GMT</pubDate>
-      <guid isPermaLink="true">https://benxhub.com/en/blog/cursor/cli/12-sessions-cloud</guid>
+      <guid isPermaLink="true">https://benxhub.com/en/blog/cursor/cli/12-sessions-cloud/</guid>
     </item>
     <item>
       <title>OpenClaw Series: Bring Your AI Assistant Home</title>
-      <link>https://benxhub.com/en/blog/openclaw/01-intro</link>
+      <link>https://benxhub.com/en/blog/openclaw/01-intro/</link>
       <description>What is OpenClaw, and how is it different from cloud AI services? Understand the basics first, then decide whether to keep going.</description>
       <pubDate>Sun, 08 Mar 2026 00:00:00 GMT</pubDate>
-      <guid isPermaLink="true">https://benxhub.com/en/blog/openclaw/01-intro</guid>
+      <guid isPermaLink="true">https://benxhub.com/en/blog/openclaw/01-intro/</guid>
     </item>
     <item>
       <title>Install OpenClaw in 5 Minutes: Smooth First Launch Guide</title>
-      <link>https://benxhub.com/en/blog/openclaw/02-quick-install</link>
+      <link>https://benxhub.com/en/blog/openclaw/02-quick-install/</link>
       <description>Install OpenClaw from scratch, complete the onboarding wizard, and open your first dashboard.</description>
       <pubDate>Sun, 08 Mar 2026 00:00:00 GMT</pubDate>
-      <guid isPermaLink="true">https://benxhub.com/en/blog/openclaw/02-quick-install</guid>
+      <guid isPermaLink="true">https://benxhub.com/en/blog/openclaw/02-quick-install/</guid>
     </item>
     <item>
       <title>Dashboard Keeps Blocking You? Understand OpenClaw Authentication in 3 Minutes</title>
-      <link>https://benxhub.com/en/blog/openclaw/03-dashboard-auth</link>
+      <link>https://benxhub.com/en/blog/openclaw/03-dashboard-auth/</link>
       <description>Token, pairing, remote access — all the common dashboard login pitfalls explained in one place.</description>
       <pubDate>Sun, 08 Mar 2026 00:00:00 GMT</pubDate>
-      <guid isPermaLink="true">https://benxhub.com/en/blog/openclaw/03-dashboard-auth</guid>
+      <guid isPermaLink="true">https://benxhub.com/en/blog/openclaw/03-dashboard-auth/</guid>
     </item>
     <item>
       <title>Make Your Assistant Work Through Telegram: Complete Channel Setup Walkthrough</title>
-      <link>https://benxhub.com/en/blog/openclaw/04-channels-basics</link>
+      <link>https://benxhub.com/en/blog/openclaw/04-channels-basics/</link>
       <description>Put your AI assistant into Telegram by setting up a bot, group behavior, and dmPolicy in one pass.</description>
       <pubDate>Sun, 08 Mar 2026 00:00:00 GMT</pubDate>
-      <guid isPermaLink="true">https://benxhub.com/en/blog/openclaw/04-channels-basics</guid>
+      <guid isPermaLink="true">https://benxhub.com/en/blog/openclaw/04-channels-basics/</guid>
     </item>
     <item>
       <title>Give Your Assistant Superpowers: Skills Turn It from Talker into Doer</title>
-      <link>https://benxhub.com/en/blog/openclaw/05-skills-intro</link>
+      <link>https://benxhub.com/en/blog/openclaw/05-skills-intro/</link>
       <description>What is a Skill, how do built-in skills work, and how do you add custom skills or load them from extra directories?</description>
       <pubDate>Sun, 08 Mar 2026 00:00:00 GMT</pubDate>
-      <guid isPermaLink="true">https://benxhub.com/en/blog/openclaw/05-skills-intro</guid>
+      <guid isPermaLink="true">https://benxhub.com/en/blog/openclaw/05-skills-intro/</guid>
     </item>
     <item>
       <title>Where Is Your Assistant&apos;s Brain? Understand Memory and Workspaces</title>
-      <link>https://benxhub.com/en/blog/openclaw/06-memory-workspace</link>
+      <link>https://benxhub.com/en/blog/openclaw/06-memory-workspace/</link>
       <description>How workspaces are organized, how memory works, where data is stored, and how to back everything up with one command.</description>
       <pubDate>Sun, 08 Mar 2026 00:00:00 GMT</pubDate>
-      <guid isPermaLink="true">https://benxhub.com/en/blog/openclaw/06-memory-workspace</guid>
+      <guid isPermaLink="true">https://benxhub.com/en/blog/openclaw/06-memory-workspace/</guid>
     </item>
     <item>
       <title>One Gateway, Multiple Assistants: Use Bindings to Route the Right Message to the Right Agent</title>
-      <link>https://benxhub.com/en/blog/openclaw/07-multi-agent-bindings</link>
+      <link>https://benxhub.com/en/blog/openclaw/07-multi-agent-bindings/</link>
       <description>Define multiple agents and route messages with Bindings so different Telegram groups map to different workspaces.</description>
       <pubDate>Sun, 08 Mar 2026 00:00:00 GMT</pubDate>
-      <guid isPermaLink="true">https://benxhub.com/en/blog/openclaw/07-multi-agent-bindings</guid>
+      <guid isPermaLink="true">https://benxhub.com/en/blog/openclaw/07-multi-agent-bindings/</guid>
     </item>
     <item>
       <title>Assistant Vanishes When Your Laptop Sleeps? Move the Gateway to a VPS</title>
-      <link>https://benxhub.com/en/blog/openclaw/08-remote-gateway-nodes</link>
+      <link>https://benxhub.com/en/blog/openclaw/08-remote-gateway-nodes/</link>
       <description>Deploy OpenClaw Gateway to a VPS, connect safely with Tailscale, and understand how Gateway and Node split responsibilities.</description>
       <pubDate>Sun, 08 Mar 2026 00:00:00 GMT</pubDate>
-      <guid isPermaLink="true">https://benxhub.com/en/blog/openclaw/08-remote-gateway-nodes</guid>
+      <guid isPermaLink="true">https://benxhub.com/en/blog/openclaw/08-remote-gateway-nodes/</guid>
     </item>
     <item>
       <title>Let Your Assistant Work Automatically: It Helps Even When You Don&apos;t Ask</title>
-      <link>https://benxhub.com/en/blog/openclaw/09-cron-automation</link>
+      <link>https://benxhub.com/en/blog/openclaw/09-cron-automation/</link>
       <description>Use Cron scheduling for recurring tasks, understand the syntax, configure it from the dashboard, and debug missed runs.</description>
       <pubDate>Sun, 08 Mar 2026 00:00:00 GMT</pubDate>
-      <guid isPermaLink="true">https://benxhub.com/en/blog/openclaw/09-cron-automation</guid>
+      <guid isPermaLink="true">https://benxhub.com/en/blog/openclaw/09-cron-automation/</guid>
     </item>
     <item>
       <title>System Acting Weird? Advanced Settings and Debugging Guide</title>
-      <link>https://benxhub.com/en/blog/openclaw/10-advanced-config</link>
+      <link>https://benxhub.com/en/blog/openclaw/10-advanced-config/</link>
       <description>Where the config lives, how to store API keys safely, which debugging tools matter, and how to interpret common errors.</description>
       <pubDate>Sun, 08 Mar 2026 00:00:00 GMT</pubDate>
-      <guid isPermaLink="true">https://benxhub.com/en/blog/openclaw/10-advanced-config</guid>
+      <guid isPermaLink="true">https://benxhub.com/en/blog/openclaw/10-advanced-config/</guid>
     </item>
     <item>
       <title>No Config File Needed: Set Up OpenClaw Entirely from the Web UI</title>
-      <link>https://benxhub.com/en/blog/openclaw/11-openclaw-web-ui-setup</link>
+      <link>https://benxhub.com/en/blog/openclaw/11-openclaw-web-ui-setup/</link>
       <description>How the Web UI works, the difference between form mode and Raw JSON, and complete routing examples for multiple workspaces.</description>
       <pubDate>Sun, 08 Mar 2026 00:00:00 GMT</pubDate>
-      <guid isPermaLink="true">https://benxhub.com/en/blog/openclaw/11-openclaw-web-ui-setup</guid>
+      <guid isPermaLink="true">https://benxhub.com/en/blog/openclaw/11-openclaw-web-ui-setup/</guid>
     </item>
     <item>
       <title>One Bot, Many Tasks: Full Workspace x Telegram Setup Guide</title>
-      <link>https://benxhub.com/en/blog/openclaw/12-openclaw-workspace-telegram-setup</link>
+      <link>https://benxhub.com/en/blog/openclaw/12-openclaw-workspace-telegram-setup/</link>
       <description>Create multiple workspaces, configure Agents and Bindings, and route different Telegram groups to different assistants.</description>
       <pubDate>Sun, 08 Mar 2026 00:00:00 GMT</pubDate>
-      <guid isPermaLink="true">https://benxhub.com/en/blog/openclaw/12-openclaw-workspace-telegram-setup</guid>
+      <guid isPermaLink="true">https://benxhub.com/en/blog/openclaw/12-openclaw-workspace-telegram-setup/</guid>
     </item>
     <item>
       <title>CrewAI Debugging and Common Errors: 8 Pitfalls Beginners Hit Most</title>
-      <link>https://benxhub.com/en/blog/crewai/08-debug-and-common-errors</link>
+      <link>https://benxhub.com/en/blog/crewai/08-debug-and-common-errors/</link>
       <description>From unstable outputs to task chaining failures and tool argument issues, here is the fastest troubleshooting path.</description>
       <pubDate>Thu, 05 Mar 2026 00:00:00 GMT</pubDate>
-      <guid isPermaLink="true">https://benxhub.com/en/blog/crewai/08-debug-and-common-errors</guid>
+      <guid isPermaLink="true">https://benxhub.com/en/blog/crewai/08-debug-and-common-errors/</guid>
     </item>
     <item>
       <title>CrewAI Production Best Practices: From Demo to Maintainable System</title>
-      <link>https://benxhub.com/en/blog/crewai/09-production-best-practices</link>
+      <link>https://benxhub.com/en/blog/crewai/09-production-best-practices/</link>
       <description>A practical guide to architecture, cost, monitoring, and operations when deploying CrewAI in real environments.</description>
       <pubDate>Thu, 05 Mar 2026 00:00:00 GMT</pubDate>
-      <guid isPermaLink="true">https://benxhub.com/en/blog/crewai/09-production-best-practices</guid>
+      <guid isPermaLink="true">https://benxhub.com/en/blog/crewai/09-production-best-practices/</guid>
     </item>
     <item>
       <title>CrewAI Flow Basics: Orchestrate Multiple Crews in a Controlled Workflow</title>
-      <link>https://benxhub.com/en/blog/crewai/06-flow-basics</link>
+      <link>https://benxhub.com/en/blog/crewai/06-flow-basics/</link>
       <description>Use Flow to manage multi-step tasks and branching logic, and build workflows closer to real business operations.</description>
       <pubDate>Tue, 03 Mar 2026 00:00:00 GMT</pubDate>
-      <guid isPermaLink="true">https://benxhub.com/en/blog/crewai/06-flow-basics</guid>
+      <guid isPermaLink="true">https://benxhub.com/en/blog/crewai/06-flow-basics/</guid>
     </item>
     <item>
       <title>CrewAI Memory and Knowledge: Stop Agents from Relearning Everything</title>
-      <link>https://benxhub.com/en/blog/crewai/07-memory-and-knowledge</link>
+      <link>https://benxhub.com/en/blog/crewai/07-memory-and-knowledge/</link>
       <description>Understand memory modules and knowledge source integration so multi-agent workflows become more continuous and business-ready.</description>
       <pubDate>Tue, 03 Mar 2026 00:00:00 GMT</pubDate>
-      <guid isPermaLink="true">https://benxhub.com/en/blog/crewai/07-memory-and-knowledge</guid>
+      <guid isPermaLink="true">https://benxhub.com/en/blog/crewai/07-memory-and-knowledge/</guid>
     </item>
     <item>
       <title>CrewAI Crew and Process: When Should You Use Sequential?</title>
-      <link>https://benxhub.com/en/blog/crewai/03-crew-and-process</link>
+      <link>https://benxhub.com/en/blog/crewai/03-crew-and-process/</link>
       <description>Understand Crew composition and process selection. Start with stable sequential workflows for maintainability.</description>
       <pubDate>Mon, 02 Mar 2026 00:00:00 GMT</pubDate>
-      <guid isPermaLink="true">https://benxhub.com/en/blog/crewai/03-crew-and-process</guid>
+      <guid isPermaLink="true">https://benxhub.com/en/blog/crewai/03-crew-and-process/</guid>
     </item>
     <item>
       <title>CrewAI Tools Integration: Let Agents Search, Read, and Actually Do Work</title>
-      <link>https://benxhub.com/en/blog/crewai/04-tools-integration</link>
+      <link>https://benxhub.com/en/blog/crewai/04-tools-integration/</link>
       <description>Learn how to attach built-in and custom tools to agents, with practical design principles.</description>
       <pubDate>Mon, 02 Mar 2026 00:00:00 GMT</pubDate>
-      <guid isPermaLink="true">https://benxhub.com/en/blog/crewai/04-tools-integration</guid>
+      <guid isPermaLink="true">https://benxhub.com/en/blog/crewai/04-tools-integration/</guid>
     </item>
     <item>
       <title>CrewAI Structured Output: Stop Data Drift with Pydantic</title>
-      <link>https://benxhub.com/en/blog/crewai/05-structured-output-pydantic</link>
+      <link>https://benxhub.com/en/blog/crewai/05-structured-output-pydantic/</link>
       <description>Use output_pydantic to define stable output schemas and improve downstream reliability.</description>
       <pubDate>Mon, 02 Mar 2026 00:00:00 GMT</pubDate>
-      <guid isPermaLink="true">https://benxhub.com/en/blog/crewai/05-structured-output-pydantic</guid>
+      <guid isPermaLink="true">https://benxhub.com/en/blog/crewai/05-structured-output-pydantic/</guid>
     </item>
     <item>
       <title>CrewAI Series Overview: From Zero to Production-Ready Multi-Agent Workflows</title>
-      <link>https://benxhub.com/en/blog/crewai/00-overview</link>
+      <link>https://benxhub.com/en/blog/crewai/00-overview/</link>
       <description>First understand what CrewAI does and what problems it solves, then move from basics to real-world practice in 10 posts.</description>
       <pubDate>Sun, 01 Mar 2026 00:00:00 GMT</pubDate>
-      <guid isPermaLink="true">https://benxhub.com/en/blog/crewai/00-overview</guid>
+      <guid isPermaLink="true">https://benxhub.com/en/blog/crewai/00-overview/</guid>
     </item>
     <item>
       <title>CrewAI Quick Start: Build Your First Research Crew in 10 Minutes</title>
-      <link>https://benxhub.com/en/blog/crewai/01-quick-start</link>
+      <link>https://benxhub.com/en/blog/crewai/01-quick-start/</link>
       <description>From installation to execution, complete your first working CrewAI project.</description>
       <pubDate>Sun, 01 Mar 2026 00:00:00 GMT</pubDate>
-      <guid isPermaLink="true">https://benxhub.com/en/blog/crewai/01-quick-start</guid>
+      <guid isPermaLink="true">https://benxhub.com/en/blog/crewai/01-quick-start/</guid>
     </item>
     <item>
       <title>CrewAI Agents and Tasks: How to Split Roles Without Chaos</title>
-      <link>https://benxhub.com/en/blog/crewai/02-agents-and-tasks</link>
+      <link>https://benxhub.com/en/blog/crewai/02-agents-and-tasks/</link>
       <description>Use SRP thinking to split Agents and Tasks so multi-agent collaboration stays stable and maintainable.</description>
       <pubDate>Sun, 01 Mar 2026 00:00:00 GMT</pubDate>
-      <guid isPermaLink="true">https://benxhub.com/en/blog/crewai/02-agents-and-tasks</guid>
+      <guid isPermaLink="true">https://benxhub.com/en/blog/crewai/02-agents-and-tasks/</guid>
     </item>
     <item>
       <title>Python uv Series Overview: The 100x Faster pip Replacement</title>
-      <link>https://benxhub.com/en/blog/python/uv/00-overview</link>
+      <link>https://benxhub.com/en/blog/python/uv/00-overview/</link>
       <description>A quick introduction to uv&apos;s role, use cases, and learning path — an introduction to the entire uv series.</description>
       <pubDate>Fri, 27 Feb 2026 00:00:00 GMT</pubDate>
-      <guid isPermaLink="true">https://benxhub.com/en/blog/python/uv/00-overview</guid>
+      <guid isPermaLink="true">https://benxhub.com/en/blog/python/uv/00-overview/</guid>
     </item>
     <item>
       <title>Python uv Quick Start: Build Your First Project</title>
-      <link>https://benxhub.com/en/blog/python/uv/01-quick-start</link>
+      <link>https://benxhub.com/en/blog/python/uv/01-quick-start/</link>
       <description>Starting from installation verification, walk through project initialization, adding dependencies, and running your first program.</description>
       <pubDate>Fri, 27 Feb 2026 00:00:00 GMT</pubDate>
-      <guid isPermaLink="true">https://benxhub.com/en/blog/python/uv/01-quick-start</guid>
+      <guid isPermaLink="true">https://benxhub.com/en/blog/python/uv/01-quick-start/</guid>
     </item>
     <item>
       <title>Python uv Core Concepts: pyproject.toml, Lockfile &amp; Virtual Environments</title>
-      <link>https://benxhub.com/en/blog/python/uv/02-core-concepts</link>
+      <link>https://benxhub.com/en/blog/python/uv/02-core-concepts/</link>
       <description>Understand uv&apos;s four core concepts and build the foundational knowledge needed for daily operations.</description>
       <pubDate>Fri, 27 Feb 2026 00:00:00 GMT</pubDate>
-      <guid isPermaLink="true">https://benxhub.com/en/blog/python/uv/02-core-concepts</guid>
+      <guid isPermaLink="true">https://benxhub.com/en/blog/python/uv/02-core-concepts/</guid>
     </item>
     <item>
       <title>Python uv Common Patterns: Dependencies, uvx &amp; Script Execution</title>
-      <link>https://benxhub.com/en/blog/python/uv/03-common-patterns</link>
+      <link>https://benxhub.com/en/blog/python/uv/03-common-patterns/</link>
       <description>A collection of uv&apos;s five most common daily operations, with practical templates you can use immediately.</description>
       <pubDate>Fri, 27 Feb 2026 00:00:00 GMT</pubDate>
-      <guid isPermaLink="true">https://benxhub.com/en/blog/python/uv/03-common-patterns</guid>
+      <guid isPermaLink="true">https://benxhub.com/en/blog/python/uv/03-common-patterns/</guid>
     </item>
     <item>
       <title>Python uv Advanced: Python Versions, pip Interface &amp; Tool Installation</title>
-      <link>https://benxhub.com/en/blog/python/uv/04-advanced</link>
+      <link>https://benxhub.com/en/blog/python/uv/04-advanced/</link>
       <description>When moving beyond a single project to multi-version testing, legacy pipeline compatibility, and global tool management, uv handles it all.</description>
       <pubDate>Fri, 27 Feb 2026 00:00:00 GMT</pubDate>
-      <guid isPermaLink="true">https://benxhub.com/en/blog/python/uv/04-advanced</guid>
+      <guid isPermaLink="true">https://benxhub.com/en/blog/python/uv/04-advanced/</guid>
     </item>
     <item>
       <title>Python uv Best Practices: Stability &amp; Collaboration Checklist</title>
-      <link>https://benxhub.com/en/blog/python/uv/05-best-practices</link>
+      <link>https://benxhub.com/en/blog/python/uv/05-best-practices/</link>
       <description>A collection of uv&apos;s recommended long-term practices and common pitfalls, to help reduce failures and collaboration friction.</description>
       <pubDate>Fri, 27 Feb 2026 00:00:00 GMT</pubDate>
-      <guid isPermaLink="true">https://benxhub.com/en/blog/python/uv/05-best-practices</guid>
+      <guid isPermaLink="true">https://benxhub.com/en/blog/python/uv/05-best-practices/</guid>
     </item>
     <item>
       <title>Cursor CLI Tutorial — Overview</title>
-      <link>https://benxhub.com/en/blog/cursor/cli/00-overview</link>
+      <link>https://benxhub.com/en/blog/cursor/cli/00-overview/</link>
       <description>Cursor CLI brings your AI assistant to the terminal: write, edit, and ask questions without opening the IDE. Perfect for servers, scripts, and keyboard-driven workflows.</description>
       <pubDate>Tue, 24 Feb 2026 00:00:00 GMT</pubDate>
-      <guid isPermaLink="true">https://benxhub.com/en/blog/cursor/cli/00-overview</guid>
+      <guid isPermaLink="true">https://benxhub.com/en/blog/cursor/cli/00-overview/</guid>
     </item>
     <item>
       <title>Installing Cursor CLI</title>
-      <link>https://benxhub.com/en/blog/cursor/cli/01-install</link>
+      <link>https://benxhub.com/en/blog/cursor/cli/01-install/</link>
       <description>Install Cursor CLI in one terminal command using the official script. Supports macOS, Linux, WSL, and Windows.</description>
       <pubDate>Tue, 24 Feb 2026 00:00:00 GMT</pubDate>
-      <guid isPermaLink="true">https://benxhub.com/en/blog/cursor/cli/01-install</guid>
+      <guid isPermaLink="true">https://benxhub.com/en/blog/cursor/cli/01-install/</guid>
     </item>
     <item>
       <title>Cursor CLI Basic Usage</title>
-      <link>https://benxhub.com/en/blog/cursor/cli/02-basic-usage</link>
+      <link>https://benxhub.com/en/blog/cursor/cli/02-basic-usage/</link>
       <description>The most common approach: use cursor agent to run commands or enter conversation mode; cursor ask for read-only questions; use --path to specify a working directory.</description>
       <pubDate>Tue, 24 Feb 2026 00:00:00 GMT</pubDate>
-      <guid isPermaLink="true">https://benxhub.com/en/blog/cursor/cli/02-basic-usage</guid>
+      <guid isPermaLink="true">https://benxhub.com/en/blog/cursor/cli/02-basic-usage/</guid>
     </item>
     <item>
       <title>Cursor CLI Three Modes: Agent / Plan / Ask</title>
-      <link>https://benxhub.com/en/blog/cursor/cli/03-modes</link>
+      <link>https://benxhub.com/en/blog/cursor/cli/03-modes/</link>
       <description>Agent modifies files, Plan drafts a plan before acting, Ask is read-only. One sentence to tell them apart — and learn to switch with slash commands mid-conversation.</description>
       <pubDate>Tue, 24 Feb 2026 00:00:00 GMT</pubDate>
-      <guid isPermaLink="true">https://benxhub.com/en/blog/cursor/cli/03-modes</guid>
+      <guid isPermaLink="true">https://benxhub.com/en/blog/cursor/cli/03-modes/</guid>
     </item>
     <item>
       <title>Cursor CLI Non-Interactive Mode (Scripts &amp; CI)</title>
-      <link>https://benxhub.com/en/blog/cursor/cli/04-non-interactive</link>
+      <link>https://benxhub.com/en/blog/cursor/cli/04-non-interactive/</link>
       <description>Use --no-interactive to let the AI run to completion without waiting for input. Perfect for scripts and CI. Optionally pick --model or use -c to run in the cloud.</description>
       <pubDate>Tue, 24 Feb 2026 00:00:00 GMT</pubDate>
-      <guid isPermaLink="true">https://benxhub.com/en/blog/cursor/cli/04-non-interactive</guid>
+      <guid isPermaLink="true">https://benxhub.com/en/blog/cursor/cli/04-non-interactive/</guid>
     </item>
     <item>
       <title>Cursor CLI Tips &amp; FAQ</title>
-      <link>https://benxhub.com/en/blog/cursor/cli/05-tips</link>
+      <link>https://benxhub.com/en/blog/cursor/cli/05-tips/</link>
       <description>Resume conversations with --resume, confirm before running commands, use CLI alongside the IDE, plus answers to FAQs about command not found, pricing, and server usage.</description>
       <pubDate>Tue, 24 Feb 2026 00:00:00 GMT</pubDate>
-      <guid isPermaLink="true">https://benxhub.com/en/blog/cursor/cli/05-tips</guid>
+      <guid isPermaLink="true">https://benxhub.com/en/blog/cursor/cli/05-tips/</guid>
     </item>
   </channel>
 </rss>

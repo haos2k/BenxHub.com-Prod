@@ -1,10 +1,14 @@
 1:"$Sreact.fragment"
-2:I[14864,["/_next/static/chunks/7923a261b80bb6e1.js","/_next/static/chunks/e09b4358027e8033.js","/_next/static/chunks/2dddb3bc05093f69.js"],"default"]
-9:I[24801,["/_next/static/chunks/7923a261b80bb6e1.js","/_next/static/chunks/e09b4358027e8033.js","/_next/static/chunks/2dddb3bc05093f69.js"],"default"]
-b:I[50183,["/_next/static/chunks/5a5b5b13c22d14f7.js","/_next/static/chunks/a484d1d3dd4b55ab.js"],"OutletBoundary"]
-c:"$Sreact.suspense"
-0:{"buildId":"sM8YAyjANE7sOnXm3EQGk","rsc":["$","$1","c",{"children":[[["$","script",null,{"type":"application/ld+json","dangerouslySetInnerHTML":{"__html":"{\"@context\":\"https://schema.org\",\"@type\":\"Article\",\"headline\":\"Envoy Gateway TLS とセキュリティ: HTTPS を設定し、API を裸で走らせない\",\"description\":\"HTTPS listener、certificateRefs、TLS termination、TLSRoute、そして Envoy Gateway における cross-namespace certificate reference の基本を理解します。\",\"url\":\"https://benxhub.com/ja/blog/k8s/gateway/04-tls-and-security\",\"mainEntityOfPage\":{\"@type\":\"WebPage\",\"@id\":\"https://benxhub.com/ja/blog/k8s/gateway/04-tls-and-security\"},\"datePublished\":\"2026-03-10T00:00:00.000Z\",\"dateModified\":\"2026-03-10T00:00:00.000Z\",\"keywords\":\"kubernetes, envoy-gateway, gateway-api, tls, https, security\",\"inLanguage\":\"ja\",\"author\":{\"@type\":\"Person\",\"name\":\"BenX\",\"url\":\"https://benxhub.com\"},\"publisher\":{\"@type\":\"Organization\",\"name\":\"BenXHub Blog\",\"url\":\"https://benxhub.com\"}}"}}],["$","div",null,{"className":"mx-auto max-w-6xl px-4 py-12 sm:px-6","children":["$","div",null,{"className":"lg:grid lg:grid-cols-[1fr_240px] lg:gap-14","children":[["$","article",null,{"children":[["$","header",null,{"className":"mb-10","children":[["$","div",null,{"className":"mb-4 flex flex-wrap gap-2","children":[["$","$L2","kubernetes",{"href":"/ja/tags/kubernetes","localeCookie":{"name":"NEXT_LOCALE","sameSite":"lax"},"className":"inline-flex items-center rounded-full px-2.5 py-0.5 text-xs font-medium transition-colors","style":{"background":"var(--color-code-bg)","color":"var(--color-accent)","border":"1px solid var(--color-border)"},"children":["#","kubernetes"]}],["$","$L2","envoy-gateway",{"href":"/ja/tags/envoy-gateway","localeCookie":{"name":"NEXT_LOCALE","sameSite":"lax"},"className":"inline-flex items-center rounded-full px-2.5 py-0.5 text-xs font-medium transition-colors","style":{"background":"var(--color-code-bg)","color":"var(--color-accent)","border":"1px solid var(--color-border)"},"children":["#","envoy-gateway"]}],["$","$L2","gateway-api",{"href":"/ja/tags/gateway-api","localeCookie":{"name":"NEXT_LOCALE","sameSite":"lax"},"className":"inline-flex items-center rounded-full px-2.5 py-0.5 text-xs font-medium transition-colors","style":{"background":"var(--color-code-bg)","color":"var(--color-accent)","border":"1px solid var(--color-border)"},"children":["#","gateway-api"]}],["$","$L2","tls",{"href":"/ja/tags/tls","localeCookie":{"name":"NEXT_LOCALE","sameSite":"lax"},"className":"inline-flex items-center rounded-full px-2.5 py-0.5 text-xs font-medium transition-colors","style":{"background":"var(--color-code-bg)","color":"var(--color-accent)","border":"1px solid var(--color-border)"},"children":["#","tls"]}],["$","$L2","https",{"href":"/ja/tags/https","localeCookie":{"name":"NEXT_LOCALE","sameSite":"lax"},"className":"inline-flex items-center rounded-full px-2.5 py-0.5 text-xs font-medium transition-colors","style":{"background":"var(--color-code-bg)","color":"var(--color-accent)","border":"1px solid var(--color-border)"},"children":["#","https"]}],["$","$L2","security",{"href":"/ja/tags/security","localeCookie":{"name":"NEXT_LOCALE","sameSite":"lax"},"className":"inline-flex items-center rounded-full px-2.5 py-0.5 text-xs font-medium transition-colors","style":{"background":"var(--color-code-bg)","color":"var(--color-accent)","border":"1px solid var(--color-border)"},"children":["#","security"]}]]}],["$","h1",null,{"className":"mb-4 text-3xl leading-snug font-bold tracking-tight sm:text-4xl","style":{"color":"var(--color-text)"},"children":"Envoy Gateway TLS とセキュリティ: HTTPS を設定し、API を裸で走らせない"}],["$","div",null,{"className":"flex flex-wrap items-center gap-3 text-sm","style":{"color":"var(--color-muted)"},"children":[["$","time",null,{"dateTime":"2026-03-10","children":"2026年3月10日"}],["$","span",null,{"aria-hidden":"true","children":"·"}],["$","span",null,{"children":"8 min read"}]]}],"$undefined",["$","div",null,{"className":"mt-6 border-b","style":{"borderColor":"var(--color-border)"}}]]}],"$L3","$L4"]}],"$L5"]}]}]],["$L6"],"$L7"]}],"loading":null,"isPartial":false}
-8:T5f5a,<p>HTTP が動いたら、そこはまだウォームアップです。あなたの service が石器時代に住んでいない限り、本番ではほぼ確実に HTTPS が必要です。この記事では、Envoy Gateway における TLS の基本を整理し、API を平文で走らせないための土台を固めます。</p>
+2:I[14864,["/_next/static/chunks/4204edc93da35a5e.js","/_next/static/chunks/f2afb7fd2b7566bb.js","/_next/static/chunks/2dddb3bc05093f69.js"],"default"]
+d:I[24801,["/_next/static/chunks/4204edc93da35a5e.js","/_next/static/chunks/f2afb7fd2b7566bb.js","/_next/static/chunks/2dddb3bc05093f69.js"],"default"]
+f:I[50183,["/_next/static/chunks/5a5b5b13c22d14f7.js","/_next/static/chunks/a484d1d3dd4b55ab.js"],"OutletBoundary"]
+10:"$Sreact.suspense"
+0:{"buildId":"ekNoF06-0VZrB4pGVUsy8","rsc":["$","$1","c",{"children":[[["$","script",null,{"type":"application/ld+json","dangerouslySetInnerHTML":{"__html":"{\"@context\":\"https://schema.org\",\"@type\":\"Article\",\"headline\":\"Envoy Gateway TLS とセキュリティ: HTTPS を設定し、API を裸で走らせない\",\"description\":\"HTTPS listener、certificateRefs、TLS termination、TLSRoute、そして Envoy Gateway における cross-namespace certificate reference の基本を理解します。\",\"url\":\"https://benxhub.com/ja/blog/k8s/gateway/04-tls-and-security/\",\"mainEntityOfPage\":{\"@type\":\"WebPage\",\"@id\":\"https://benxhub.com/ja/blog/k8s/gateway/04-tls-and-security/\"},\"datePublished\":\"2026-03-10T00:00:00.000Z\",\"dateModified\":\"2026-03-10T00:00:00.000Z\",\"keywords\":\"kubernetes, envoy-gateway, gateway-api, tls, https, security\",\"inLanguage\":\"ja\",\"author\":{\"@type\":\"Person\",\"@id\":\"https://benxhub.com/#author\",\"name\":\"BenX\",\"url\":\"https://benxhub.com/ja/about/\",\"sameAs\":[\"https://github.com/benzhub\"]},\"publisher\":{\"@type\":\"Organization\",\"name\":\"BenXHub Blog\",\"url\":\"https://benxhub.com\"},\"image\":\"https://benxhub.com/og-default.png\"}"}}],["$","div",null,{"className":"mx-auto max-w-6xl px-4 py-12 sm:px-6","children":["$","div",null,{"className":"lg:grid lg:grid-cols-[1fr_240px] lg:gap-14","children":[["$","article",null,{"children":[["$","header",null,{"className":"mb-10","children":[["$","div",null,{"className":"mb-4 flex flex-wrap gap-2","children":[["$","$L2","kubernetes",{"href":"/ja/tags/kubernetes","localeCookie":{"name":"NEXT_LOCALE","sameSite":"lax"},"className":"inline-flex items-center rounded-full px-2.5 py-0.5 text-xs font-medium transition-colors","style":{"background":"var(--color-code-bg)","color":"var(--color-accent)","border":"1px solid var(--color-border)"},"children":["#","kubernetes"]}],["$","$L2","envoy-gateway",{"href":"/ja/tags/envoy-gateway","localeCookie":{"name":"NEXT_LOCALE","sameSite":"lax"},"className":"inline-flex items-center rounded-full px-2.5 py-0.5 text-xs font-medium transition-colors","style":{"background":"var(--color-code-bg)","color":"var(--color-accent)","border":"1px solid var(--color-border)"},"children":["#","envoy-gateway"]}],["$","$L2","gateway-api",{"href":"/ja/tags/gateway-api","localeCookie":{"name":"NEXT_LOCALE","sameSite":"lax"},"className":"inline-flex items-center rounded-full px-2.5 py-0.5 text-xs font-medium transition-colors","style":{"background":"var(--color-code-bg)","color":"var(--color-accent)","border":"1px solid var(--color-border)"},"children":["#","gateway-api"]}],["$","$L2","tls",{"href":"/ja/tags/tls","localeCookie":{"name":"NEXT_LOCALE","sameSite":"lax"},"className":"inline-flex items-center rounded-full px-2.5 py-0.5 text-xs font-medium transition-colors","style":{"background":"var(--color-code-bg)","color":"var(--color-accent)","border":"1px solid var(--color-border)"},"children":["#","tls"]}],["$","$L2","https",{"href":"/ja/tags/https","localeCookie":{"name":"NEXT_LOCALE","sameSite":"lax"},"className":"inline-flex items-center rounded-full px-2.5 py-0.5 text-xs font-medium transition-colors","style":{"background":"var(--color-code-bg)","color":"var(--color-accent)","border":"1px solid var(--color-border)"},"children":["#","https"]}],["$","$L2","security",{"href":"/ja/tags/security","localeCookie":{"name":"NEXT_LOCALE","sameSite":"lax"},"className":"inline-flex items-center rounded-full px-2.5 py-0.5 text-xs font-medium transition-colors","style":{"background":"var(--color-code-bg)","color":"var(--color-accent)","border":"1px solid var(--color-border)"},"children":["#","security"]}]]}],["$","h1",null,{"className":"mb-4 text-3xl leading-snug font-bold tracking-tight sm:text-4xl","style":{"color":"var(--color-text)"},"children":"Envoy Gateway TLS とセキュリティ: HTTPS を設定し、API を裸で走らせない"}],["$","div",null,{"className":"flex flex-wrap items-center gap-3 text-sm","style":{"color":"var(--color-muted)"},"children":["$L3","$L4","$L5"]}],"$undefined","$L6"]}],"$L7","$L8"]}],"$L9"]}]}]],["$La"],"$Lb"]}],"loading":null,"isPartial":false}
+3:["$","time",null,{"dateTime":"2026-03-10","children":"2026年3月10日"}]
+4:["$","span",null,{"aria-hidden":"true","children":"·"}]
+5:["$","span",null,{"children":"8 min read"}]
+6:["$","div",null,{"className":"mt-6 border-b","style":{"borderColor":"var(--color-border)"}}]
+c:T5fea,<p>HTTP が動いたら、そこはまだウォームアップです。あなたの service が石器時代に住んでいない限り、本番ではほぼ確実に HTTPS が必要です。この記事では、Envoy Gateway における TLS の基本を整理し、API を平文で走らせないための土台を固めます。</p>
 <h2 id="gateway-で-tls-はどう動くのか">Gateway で TLS はどう動くのか</h2>
 <p>最も一般的なやり方は、<strong>Gateway listener で TLS を terminate する</strong>ことです。</p>
 <p>意味:</p>
@@ -14,25 +18,25 @@ c:"$Sreact.suspense"
 <li>その後のトラフィックは内部では平文のまま Service へ転送される</li>
 </ul>
 <p>基本的な HTTPS listener はこうです。</p>
-<figure data-rehype-pretty-code-figure=""><pre style="background-color:#24292e;color:#e1e4e8" tabindex="0" data-language="yaml" data-theme="github-dark"><code data-language="yaml" data-theme="github-dark" style="display: grid;"><span data-line=""><span style="color:#85E89D">apiVersion</span><span style="color:#E1E4E8">: </span><span style="color:#9ECBFF">gateway.networking.k8s.io/v1</span></span>
-<span data-line=""><span style="color:#85E89D">kind</span><span style="color:#E1E4E8">: </span><span style="color:#9ECBFF">Gateway</span></span>
-<span data-line=""><span style="color:#85E89D">metadata</span><span style="color:#E1E4E8">:</span></span>
-<span data-line=""><span style="color:#85E89D">  name</span><span style="color:#E1E4E8">: </span><span style="color:#9ECBFF">eg</span></span>
-<span data-line=""><span style="color:#85E89D">spec</span><span style="color:#E1E4E8">:</span></span>
-<span data-line=""><span style="color:#85E89D">  gatewayClassName</span><span style="color:#E1E4E8">: </span><span style="color:#9ECBFF">eg</span></span>
-<span data-line=""><span style="color:#85E89D">  listeners</span><span style="color:#E1E4E8">:</span></span>
-<span data-line=""><span style="color:#E1E4E8">    - </span><span style="color:#85E89D">name</span><span style="color:#E1E4E8">: </span><span style="color:#9ECBFF">http</span></span>
-<span data-line=""><span style="color:#85E89D">      protocol</span><span style="color:#E1E4E8">: </span><span style="color:#9ECBFF">HTTP</span></span>
-<span data-line=""><span style="color:#85E89D">      port</span><span style="color:#E1E4E8">: </span><span style="color:#79B8FF">80</span></span>
-<span data-line=""><span style="color:#E1E4E8">    - </span><span style="color:#85E89D">name</span><span style="color:#E1E4E8">: </span><span style="color:#9ECBFF">https</span></span>
-<span data-line=""><span style="color:#85E89D">      protocol</span><span style="color:#E1E4E8">: </span><span style="color:#9ECBFF">HTTPS</span></span>
-<span data-line=""><span style="color:#85E89D">      port</span><span style="color:#E1E4E8">: </span><span style="color:#79B8FF">443</span></span>
-<span data-line=""><span style="color:#85E89D">      tls</span><span style="color:#E1E4E8">:</span></span>
-<span data-line=""><span style="color:#85E89D">        mode</span><span style="color:#E1E4E8">: </span><span style="color:#9ECBFF">Terminate</span></span>
-<span data-line=""><span style="color:#85E89D">        certificateRefs</span><span style="color:#E1E4E8">:</span></span>
-<span data-line=""><span style="color:#E1E4E8">          - </span><span style="color:#85E89D">kind</span><span style="color:#E1E4E8">: </span><span style="color:#9ECBFF">Secret</span></span>
-<span data-line=""><span style="color:#85E89D">            group</span><span style="color:#E1E4E8">: </span><span style="color:#9ECBFF">""</span></span>
-<span data-line=""><span style="color:#85E89D">            name</span><span style="color:#E1E4E8">: </span><span style="color:#9ECBFF">example-cert</span></span></code></pre></figure>
+<figure data-rehype-pretty-code-figure=""><pre style="background-color:#0d1117;color:#e6edf3" tabindex="0" data-language="yaml" data-theme="github-dark-default"><code data-language="yaml" data-theme="github-dark-default" style="display: grid;"><span data-line=""><span style="color:#7EE787">apiVersion</span><span style="color:#E6EDF3">: </span><span style="color:#A5D6FF">gateway.networking.k8s.io/v1</span></span>
+<span data-line=""><span style="color:#7EE787">kind</span><span style="color:#E6EDF3">: </span><span style="color:#A5D6FF">Gateway</span></span>
+<span data-line=""><span style="color:#7EE787">metadata</span><span style="color:#E6EDF3">:</span></span>
+<span data-line=""><span style="color:#7EE787">  name</span><span style="color:#E6EDF3">: </span><span style="color:#A5D6FF">eg</span></span>
+<span data-line=""><span style="color:#7EE787">spec</span><span style="color:#E6EDF3">:</span></span>
+<span data-line=""><span style="color:#7EE787">  gatewayClassName</span><span style="color:#E6EDF3">: </span><span style="color:#A5D6FF">eg</span></span>
+<span data-line=""><span style="color:#7EE787">  listeners</span><span style="color:#E6EDF3">:</span></span>
+<span data-line=""><span style="color:#E6EDF3">    - </span><span style="color:#7EE787">name</span><span style="color:#E6EDF3">: </span><span style="color:#A5D6FF">http</span></span>
+<span data-line=""><span style="color:#7EE787">      protocol</span><span style="color:#E6EDF3">: </span><span style="color:#A5D6FF">HTTP</span></span>
+<span data-line=""><span style="color:#7EE787">      port</span><span style="color:#E6EDF3">: </span><span style="color:#79C0FF">80</span></span>
+<span data-line=""><span style="color:#E6EDF3">    - </span><span style="color:#7EE787">name</span><span style="color:#E6EDF3">: </span><span style="color:#A5D6FF">https</span></span>
+<span data-line=""><span style="color:#7EE787">      protocol</span><span style="color:#E6EDF3">: </span><span style="color:#A5D6FF">HTTPS</span></span>
+<span data-line=""><span style="color:#7EE787">      port</span><span style="color:#E6EDF3">: </span><span style="color:#79C0FF">443</span></span>
+<span data-line=""><span style="color:#7EE787">      tls</span><span style="color:#E6EDF3">:</span></span>
+<span data-line=""><span style="color:#7EE787">        mode</span><span style="color:#E6EDF3">: </span><span style="color:#A5D6FF">Terminate</span></span>
+<span data-line=""><span style="color:#7EE787">        certificateRefs</span><span style="color:#E6EDF3">:</span></span>
+<span data-line=""><span style="color:#E6EDF3">          - </span><span style="color:#7EE787">kind</span><span style="color:#E6EDF3">: </span><span style="color:#A5D6FF">Secret</span></span>
+<span data-line=""><span style="color:#7EE787">            group</span><span style="color:#E6EDF3">: </span><span style="color:#A5D6FF">""</span></span>
+<span data-line=""><span style="color:#7EE787">            name</span><span style="color:#E6EDF3">: </span><span style="color:#A5D6FF">example-cert</span></span></code></pre></figure>
 <p>ここで大事なのは 2 点です。</p>
 <ul>
 <li><code>protocol: HTTPS</code></li>
@@ -72,88 +76,88 @@ c:"$Sreact.suspense"
 <p>どちらが「より上級」かではありません。大事なのは、自分が欲しいのが「TLS を terminate して L7 routing したい」のか、「暗号化を保ったまま SNI ベース routing したい」のかを理解することです。</p>
 <h2 id="証明書-secret-を用意する">証明書 Secret を用意する</h2>
 <p>テスト環境なら self-signed certificate で十分です。公式例でもこの形を使っています。</p>
-<figure data-rehype-pretty-code-figure=""><pre style="background-color:#24292e;color:#e1e4e8" tabindex="0" data-language="bash" data-theme="github-dark"><code data-language="bash" data-theme="github-dark" style="display: grid;"><span data-line=""><span style="color:#B392F0">openssl</span><span style="color:#9ECBFF"> req</span><span style="color:#79B8FF"> -x509</span><span style="color:#79B8FF"> -sha256</span><span style="color:#79B8FF"> -nodes</span><span style="color:#79B8FF"> -days</span><span style="color:#79B8FF"> 365</span><span style="color:#79B8FF"> -newkey</span><span style="color:#9ECBFF"> rsa:2048</span><span style="color:#79B8FF">   -subj</span><span style="color:#9ECBFF"> '/O=example Inc./CN=example.com'</span><span style="color:#79B8FF">   -keyout</span><span style="color:#9ECBFF"> example.com.key</span><span style="color:#79B8FF">   -out</span><span style="color:#9ECBFF"> example.com.crt</span></span>
+<figure data-rehype-pretty-code-figure=""><pre style="background-color:#0d1117;color:#e6edf3" tabindex="0" data-language="bash" data-theme="github-dark-default"><code data-language="bash" data-theme="github-dark-default" style="display: grid;"><span data-line=""><span style="color:#FFA657">openssl</span><span style="color:#A5D6FF"> req</span><span style="color:#79C0FF"> -x509</span><span style="color:#79C0FF"> -sha256</span><span style="color:#79C0FF"> -nodes</span><span style="color:#79C0FF"> -days</span><span style="color:#79C0FF"> 365</span><span style="color:#79C0FF"> -newkey</span><span style="color:#A5D6FF"> rsa:2048</span><span style="color:#79C0FF">   -subj</span><span style="color:#A5D6FF"> '/O=example Inc./CN=example.com'</span><span style="color:#79C0FF">   -keyout</span><span style="color:#A5D6FF"> example.com.key</span><span style="color:#79C0FF">   -out</span><span style="color:#A5D6FF"> example.com.crt</span></span>
 <span data-line=""> </span>
-<span data-line=""><span style="color:#B392F0">openssl</span><span style="color:#9ECBFF"> req</span><span style="color:#79B8FF"> -out</span><span style="color:#9ECBFF"> www.example.com.csr</span><span style="color:#79B8FF"> -newkey</span><span style="color:#9ECBFF"> rsa:2048</span><span style="color:#79B8FF"> -nodes</span><span style="color:#79B8FF">   -keyout</span><span style="color:#9ECBFF"> www.example.com.key</span><span style="color:#79B8FF">   -subj</span><span style="color:#9ECBFF"> "/CN=www.example.com/O=example organization"</span></span>
+<span data-line=""><span style="color:#FFA657">openssl</span><span style="color:#A5D6FF"> req</span><span style="color:#79C0FF"> -out</span><span style="color:#A5D6FF"> www.example.com.csr</span><span style="color:#79C0FF"> -newkey</span><span style="color:#A5D6FF"> rsa:2048</span><span style="color:#79C0FF"> -nodes</span><span style="color:#79C0FF">   -keyout</span><span style="color:#A5D6FF"> www.example.com.key</span><span style="color:#79C0FF">   -subj</span><span style="color:#A5D6FF"> "/CN=www.example.com/O=example organization"</span></span>
 <span data-line=""> </span>
-<span data-line=""><span style="color:#B392F0">openssl</span><span style="color:#9ECBFF"> x509</span><span style="color:#79B8FF"> -req</span><span style="color:#79B8FF"> -days</span><span style="color:#79B8FF"> 365</span><span style="color:#79B8FF"> -CA</span><span style="color:#9ECBFF"> example.com.crt</span><span style="color:#79B8FF"> -CAkey</span><span style="color:#9ECBFF"> example.com.key</span><span style="color:#79B8FF">   -set_serial</span><span style="color:#79B8FF"> 0</span><span style="color:#79B8FF"> -in</span><span style="color:#9ECBFF"> www.example.com.csr</span><span style="color:#79B8FF"> -out</span><span style="color:#9ECBFF"> www.example.com.crt</span></span></code></pre></figure>
+<span data-line=""><span style="color:#FFA657">openssl</span><span style="color:#A5D6FF"> x509</span><span style="color:#79C0FF"> -req</span><span style="color:#79C0FF"> -days</span><span style="color:#79C0FF"> 365</span><span style="color:#79C0FF"> -CA</span><span style="color:#A5D6FF"> example.com.crt</span><span style="color:#79C0FF"> -CAkey</span><span style="color:#A5D6FF"> example.com.key</span><span style="color:#79C0FF">   -set_serial</span><span style="color:#79C0FF"> 0</span><span style="color:#79C0FF"> -in</span><span style="color:#A5D6FF"> www.example.com.csr</span><span style="color:#79C0FF"> -out</span><span style="color:#A5D6FF"> www.example.com.crt</span></span></code></pre></figure>
 <p>cert/key を Kubernetes Secret として保存します。</p>
-<figure data-rehype-pretty-code-figure=""><pre style="background-color:#24292e;color:#e1e4e8" tabindex="0" data-language="bash" data-theme="github-dark"><code data-language="bash" data-theme="github-dark" style="display: grid;"><span data-line=""><span style="color:#B392F0">kubectl</span><span style="color:#9ECBFF"> create</span><span style="color:#9ECBFF"> secret</span><span style="color:#9ECBFF"> tls</span><span style="color:#9ECBFF"> example-cert</span><span style="color:#79B8FF">   --key=www.example.com.key</span><span style="color:#79B8FF">   --cert=www.example.com.crt</span></span></code></pre></figure>
+<figure data-rehype-pretty-code-figure=""><pre style="background-color:#0d1117;color:#e6edf3" tabindex="0" data-language="bash" data-theme="github-dark-default"><code data-language="bash" data-theme="github-dark-default" style="display: grid;"><span data-line=""><span style="color:#FFA657">kubectl</span><span style="color:#A5D6FF"> create</span><span style="color:#A5D6FF"> secret</span><span style="color:#A5D6FF"> tls</span><span style="color:#A5D6FF"> example-cert</span><span style="color:#79C0FF">   --key=www.example.com.key</span><span style="color:#79C0FF">   --cert=www.example.com.crt</span></span></code></pre></figure>
 <p>その後 <code>Gateway</code> から <code>certificateRefs</code> 経由でこの Secret を参照できます。</p>
 <blockquote>
 <p>⚠️ self-signed cert はテスト用に限ります。本番では cert-manager など既存の証明書管理フローを使ってください。デモ構成をそのまま本番へ持ち込むのは、カップ麺だけで生活するようなもので、たまにならいいけれど長期運用には向きません。</p>
 </blockquote>
 <h2 id="既存-gateway-に-https-listener-を追加する">既存 Gateway に HTTPS listener を追加する</h2>
 <p>前の記事の <code>eg</code> Gateway がすでにあるなら、そのまま patch できます。</p>
-<figure data-rehype-pretty-code-figure=""><pre style="background-color:#24292e;color:#e1e4e8" tabindex="0" data-language="bash" data-theme="github-dark"><code data-language="bash" data-theme="github-dark" style="display: grid;"><span data-line=""><span style="color:#B392F0">kubectl</span><span style="color:#9ECBFF"> patch</span><span style="color:#9ECBFF"> gateway</span><span style="color:#9ECBFF"> eg</span><span style="color:#79B8FF"> --type=json</span><span style="color:#79B8FF"> --patch</span><span style="color:#9ECBFF"> '</span></span>
-<span data-line=""><span style="color:#9ECBFF">  - op: add</span></span>
-<span data-line=""><span style="color:#9ECBFF">    path: /spec/listeners/-</span></span>
-<span data-line=""><span style="color:#9ECBFF">    value:</span></span>
-<span data-line=""><span style="color:#9ECBFF">      name: https</span></span>
-<span data-line=""><span style="color:#9ECBFF">      protocol: HTTPS</span></span>
-<span data-line=""><span style="color:#9ECBFF">      port: 443</span></span>
-<span data-line=""><span style="color:#9ECBFF">      tls:</span></span>
-<span data-line=""><span style="color:#9ECBFF">        mode: Terminate</span></span>
-<span data-line=""><span style="color:#9ECBFF">        certificateRefs:</span></span>
-<span data-line=""><span style="color:#9ECBFF">        - kind: Secret</span></span>
-<span data-line=""><span style="color:#9ECBFF">          group: ""</span></span>
-<span data-line=""><span style="color:#9ECBFF">          name: example-cert</span></span>
-<span data-line=""><span style="color:#9ECBFF">'</span></span></code></pre></figure>
+<figure data-rehype-pretty-code-figure=""><pre style="background-color:#0d1117;color:#e6edf3" tabindex="0" data-language="bash" data-theme="github-dark-default"><code data-language="bash" data-theme="github-dark-default" style="display: grid;"><span data-line=""><span style="color:#FFA657">kubectl</span><span style="color:#A5D6FF"> patch</span><span style="color:#A5D6FF"> gateway</span><span style="color:#A5D6FF"> eg</span><span style="color:#79C0FF"> --type=json</span><span style="color:#79C0FF"> --patch</span><span style="color:#A5D6FF"> '</span></span>
+<span data-line=""><span style="color:#A5D6FF">  - op: add</span></span>
+<span data-line=""><span style="color:#A5D6FF">    path: /spec/listeners/-</span></span>
+<span data-line=""><span style="color:#A5D6FF">    value:</span></span>
+<span data-line=""><span style="color:#A5D6FF">      name: https</span></span>
+<span data-line=""><span style="color:#A5D6FF">      protocol: HTTPS</span></span>
+<span data-line=""><span style="color:#A5D6FF">      port: 443</span></span>
+<span data-line=""><span style="color:#A5D6FF">      tls:</span></span>
+<span data-line=""><span style="color:#A5D6FF">        mode: Terminate</span></span>
+<span data-line=""><span style="color:#A5D6FF">        certificateRefs:</span></span>
+<span data-line=""><span style="color:#A5D6FF">        - kind: Secret</span></span>
+<span data-line=""><span style="color:#A5D6FF">          group: ""</span></span>
+<span data-line=""><span style="color:#A5D6FF">          name: example-cert</span></span>
+<span data-line=""><span style="color:#A5D6FF">'</span></span></code></pre></figure>
 <p>status を確認します。</p>
-<figure data-rehype-pretty-code-figure=""><pre style="background-color:#24292e;color:#e1e4e8" tabindex="0" data-language="bash" data-theme="github-dark"><code data-language="bash" data-theme="github-dark" style="display: grid;"><span data-line=""><span style="color:#B392F0">kubectl</span><span style="color:#9ECBFF"> get</span><span style="color:#9ECBFF"> gateway/eg</span><span style="color:#79B8FF"> -o</span><span style="color:#9ECBFF"> yaml</span></span></code></pre></figure>
+<figure data-rehype-pretty-code-figure=""><pre style="background-color:#0d1117;color:#e6edf3" tabindex="0" data-language="bash" data-theme="github-dark-default"><code data-language="bash" data-theme="github-dark-default" style="display: grid;"><span data-line=""><span style="color:#FFA657">kubectl</span><span style="color:#A5D6FF"> get</span><span style="color:#A5D6FF"> gateway/eg</span><span style="color:#79C0FF"> -o</span><span style="color:#A5D6FF"> yaml</span></span></code></pre></figure>
 <p>listener が正常そうなら HTTPS を試します。</p>
-<figure data-rehype-pretty-code-figure=""><pre style="background-color:#24292e;color:#e1e4e8" tabindex="0" data-language="bash" data-theme="github-dark"><code data-language="bash" data-theme="github-dark" style="display: grid;"><span data-line=""><span style="color:#B392F0">curl</span><span style="color:#79B8FF"> -v</span><span style="color:#79B8FF"> -HHost:www.example.com</span><span style="color:#79B8FF">   --resolve</span><span style="color:#9ECBFF"> "www.example.com:443:${</span><span style="color:#E1E4E8">GATEWAY_HOST</span><span style="color:#9ECBFF">}"</span><span style="color:#79B8FF">   --cacert</span><span style="color:#9ECBFF"> example.com.crt</span><span style="color:#9ECBFF">   https://www.example.com/get</span></span></code></pre></figure>
+<figure data-rehype-pretty-code-figure=""><pre style="background-color:#0d1117;color:#e6edf3" tabindex="0" data-language="bash" data-theme="github-dark-default"><code data-language="bash" data-theme="github-dark-default" style="display: grid;"><span data-line=""><span style="color:#FFA657">curl</span><span style="color:#79C0FF"> -v</span><span style="color:#79C0FF"> -HHost:www.example.com</span><span style="color:#79C0FF">   --resolve</span><span style="color:#A5D6FF"> "www.example.com:443:${</span><span style="color:#E6EDF3">GATEWAY_HOST</span><span style="color:#A5D6FF">}"</span><span style="color:#79C0FF">   --cacert</span><span style="color:#A5D6FF"> example.com.crt</span><span style="color:#A5D6FF">   https://www.example.com/get</span></span></code></pre></figure>
 <p>このコマンドはローカル検証にかなり便利です。特に DNS がまだ張られていない段階で役立ちます。</p>
 <h2 id="1-つの-gateway-で複数-https-domain-を扱う">1 つの Gateway で複数 HTTPS domain を扱う</h2>
 <p>複数 domain がある場合、同じ Gateway に複数の HTTPS listener を追加します。
 たとえば <code>foo.example.com</code> を足すなら:</p>
-<figure data-rehype-pretty-code-figure=""><pre style="background-color:#24292e;color:#e1e4e8" tabindex="0" data-language="yaml" data-theme="github-dark"><code data-language="yaml" data-theme="github-dark" style="display: grid;"><span data-line=""><span style="color:#85E89D">listeners</span><span style="color:#E1E4E8">:</span></span>
-<span data-line=""><span style="color:#E1E4E8">  - </span><span style="color:#85E89D">name</span><span style="color:#E1E4E8">: </span><span style="color:#9ECBFF">https-main</span></span>
-<span data-line=""><span style="color:#85E89D">    protocol</span><span style="color:#E1E4E8">: </span><span style="color:#9ECBFF">HTTPS</span></span>
-<span data-line=""><span style="color:#85E89D">    port</span><span style="color:#E1E4E8">: </span><span style="color:#79B8FF">443</span></span>
-<span data-line=""><span style="color:#85E89D">    hostname</span><span style="color:#E1E4E8">: </span><span style="color:#9ECBFF">www.example.com</span></span>
-<span data-line=""><span style="color:#85E89D">    tls</span><span style="color:#E1E4E8">:</span></span>
-<span data-line=""><span style="color:#85E89D">      mode</span><span style="color:#E1E4E8">: </span><span style="color:#9ECBFF">Terminate</span></span>
-<span data-line=""><span style="color:#85E89D">      certificateRefs</span><span style="color:#E1E4E8">:</span></span>
-<span data-line=""><span style="color:#E1E4E8">        - </span><span style="color:#85E89D">name</span><span style="color:#E1E4E8">: </span><span style="color:#9ECBFF">example-cert</span></span>
-<span data-line=""><span style="color:#E1E4E8">  - </span><span style="color:#85E89D">name</span><span style="color:#E1E4E8">: </span><span style="color:#9ECBFF">https-foo</span></span>
-<span data-line=""><span style="color:#85E89D">    protocol</span><span style="color:#E1E4E8">: </span><span style="color:#9ECBFF">HTTPS</span></span>
-<span data-line=""><span style="color:#85E89D">    port</span><span style="color:#E1E4E8">: </span><span style="color:#79B8FF">443</span></span>
-<span data-line=""><span style="color:#85E89D">    hostname</span><span style="color:#E1E4E8">: </span><span style="color:#9ECBFF">foo.example.com</span></span>
-<span data-line=""><span style="color:#85E89D">    tls</span><span style="color:#E1E4E8">:</span></span>
-<span data-line=""><span style="color:#85E89D">      mode</span><span style="color:#E1E4E8">: </span><span style="color:#9ECBFF">Terminate</span></span>
-<span data-line=""><span style="color:#85E89D">      certificateRefs</span><span style="color:#E1E4E8">:</span></span>
-<span data-line=""><span style="color:#E1E4E8">        - </span><span style="color:#85E89D">name</span><span style="color:#E1E4E8">: </span><span style="color:#9ECBFF">foo-cert</span></span></code></pre></figure>
+<figure data-rehype-pretty-code-figure=""><pre style="background-color:#0d1117;color:#e6edf3" tabindex="0" data-language="yaml" data-theme="github-dark-default"><code data-language="yaml" data-theme="github-dark-default" style="display: grid;"><span data-line=""><span style="color:#7EE787">listeners</span><span style="color:#E6EDF3">:</span></span>
+<span data-line=""><span style="color:#E6EDF3">  - </span><span style="color:#7EE787">name</span><span style="color:#E6EDF3">: </span><span style="color:#A5D6FF">https-main</span></span>
+<span data-line=""><span style="color:#7EE787">    protocol</span><span style="color:#E6EDF3">: </span><span style="color:#A5D6FF">HTTPS</span></span>
+<span data-line=""><span style="color:#7EE787">    port</span><span style="color:#E6EDF3">: </span><span style="color:#79C0FF">443</span></span>
+<span data-line=""><span style="color:#7EE787">    hostname</span><span style="color:#E6EDF3">: </span><span style="color:#A5D6FF">www.example.com</span></span>
+<span data-line=""><span style="color:#7EE787">    tls</span><span style="color:#E6EDF3">:</span></span>
+<span data-line=""><span style="color:#7EE787">      mode</span><span style="color:#E6EDF3">: </span><span style="color:#A5D6FF">Terminate</span></span>
+<span data-line=""><span style="color:#7EE787">      certificateRefs</span><span style="color:#E6EDF3">:</span></span>
+<span data-line=""><span style="color:#E6EDF3">        - </span><span style="color:#7EE787">name</span><span style="color:#E6EDF3">: </span><span style="color:#A5D6FF">example-cert</span></span>
+<span data-line=""><span style="color:#E6EDF3">  - </span><span style="color:#7EE787">name</span><span style="color:#E6EDF3">: </span><span style="color:#A5D6FF">https-foo</span></span>
+<span data-line=""><span style="color:#7EE787">    protocol</span><span style="color:#E6EDF3">: </span><span style="color:#A5D6FF">HTTPS</span></span>
+<span data-line=""><span style="color:#7EE787">    port</span><span style="color:#E6EDF3">: </span><span style="color:#79C0FF">443</span></span>
+<span data-line=""><span style="color:#7EE787">    hostname</span><span style="color:#E6EDF3">: </span><span style="color:#A5D6FF">foo.example.com</span></span>
+<span data-line=""><span style="color:#7EE787">    tls</span><span style="color:#E6EDF3">:</span></span>
+<span data-line=""><span style="color:#7EE787">      mode</span><span style="color:#E6EDF3">: </span><span style="color:#A5D6FF">Terminate</span></span>
+<span data-line=""><span style="color:#7EE787">      certificateRefs</span><span style="color:#E6EDF3">:</span></span>
+<span data-line=""><span style="color:#E6EDF3">        - </span><span style="color:#7EE787">name</span><span style="color:#E6EDF3">: </span><span style="color:#A5D6FF">foo-cert</span></span></code></pre></figure>
 <p>対応する <code>HTTPRoute</code> 側の hostname も正しく更新するのを忘れないでください。listener が待ち受けていても、route が送信先を知らなければトラフィックは流れません。</p>
 <h2 id="tlsroute-のメンタルモデル"><code>TLSRoute</code> のメンタルモデル</h2>
 <p>TLS passthrough では、<code>TLSRoute</code> を次のように捉えるとわかりやすいです。</p>
 <blockquote>
 <p>💡 <code>TLSRoute</code> の <code>apiVersion</code> は、インストールしている Gateway API CRD の version によって異なる場合があります。以下は概念説明用の例です。適用前に cluster に入っている version を確認してください。</p>
 </blockquote>
-<figure data-rehype-pretty-code-figure=""><pre style="background-color:#24292e;color:#e1e4e8" tabindex="0" data-language="yaml" data-theme="github-dark"><code data-language="yaml" data-theme="github-dark" style="display: grid;"><span data-line=""><span style="color:#85E89D">apiVersion</span><span style="color:#E1E4E8">: </span><span style="color:#9ECBFF">gateway.networking.k8s.io/v1</span></span>
-<span data-line=""><span style="color:#85E89D">kind</span><span style="color:#E1E4E8">: </span><span style="color:#9ECBFF">Gateway</span></span>
-<span data-line=""><span style="color:#85E89D">metadata</span><span style="color:#E1E4E8">:</span></span>
-<span data-line=""><span style="color:#85E89D">  name</span><span style="color:#E1E4E8">: </span><span style="color:#9ECBFF">eg-tls</span></span>
-<span data-line=""><span style="color:#85E89D">spec</span><span style="color:#E1E4E8">:</span></span>
-<span data-line=""><span style="color:#85E89D">  gatewayClassName</span><span style="color:#E1E4E8">: </span><span style="color:#9ECBFF">eg</span></span>
-<span data-line=""><span style="color:#85E89D">  listeners</span><span style="color:#E1E4E8">:</span></span>
-<span data-line=""><span style="color:#E1E4E8">    - </span><span style="color:#85E89D">name</span><span style="color:#E1E4E8">: </span><span style="color:#9ECBFF">tls</span></span>
-<span data-line=""><span style="color:#85E89D">      protocol</span><span style="color:#E1E4E8">: </span><span style="color:#9ECBFF">TLS</span></span>
-<span data-line=""><span style="color:#85E89D">      port</span><span style="color:#E1E4E8">: </span><span style="color:#79B8FF">443</span></span>
-<span data-line=""><span style="color:#B392F0">---</span></span>
-<span data-line=""><span style="color:#85E89D">apiVersion</span><span style="color:#E1E4E8">: </span><span style="color:#9ECBFF">gateway.networking.k8s.io/v1alpha2</span></span>
-<span data-line=""><span style="color:#85E89D">kind</span><span style="color:#E1E4E8">: </span><span style="color:#9ECBFF">TLSRoute</span></span>
-<span data-line=""><span style="color:#85E89D">metadata</span><span style="color:#E1E4E8">:</span></span>
-<span data-line=""><span style="color:#85E89D">  name</span><span style="color:#E1E4E8">: </span><span style="color:#9ECBFF">passthrough-route</span></span>
-<span data-line=""><span style="color:#85E89D">spec</span><span style="color:#E1E4E8">:</span></span>
-<span data-line=""><span style="color:#85E89D">  parentRefs</span><span style="color:#E1E4E8">:</span></span>
-<span data-line=""><span style="color:#E1E4E8">    - </span><span style="color:#85E89D">name</span><span style="color:#E1E4E8">: </span><span style="color:#9ECBFF">eg-tls</span></span>
-<span data-line=""><span style="color:#85E89D">  hostnames</span><span style="color:#E1E4E8">:</span></span>
-<span data-line=""><span style="color:#E1E4E8">    - </span><span style="color:#9ECBFF">"db.example.com"</span></span>
-<span data-line=""><span style="color:#85E89D">  rules</span><span style="color:#E1E4E8">:</span></span>
-<span data-line=""><span style="color:#E1E4E8">    - </span><span style="color:#85E89D">backendRefs</span><span style="color:#E1E4E8">:</span></span>
-<span data-line=""><span style="color:#E1E4E8">        - </span><span style="color:#85E89D">name</span><span style="color:#E1E4E8">: </span><span style="color:#9ECBFF">db-service</span></span>
-<span data-line=""><span style="color:#85E89D">          port</span><span style="color:#E1E4E8">: </span><span style="color:#79B8FF">5432</span></span></code></pre></figure>
+<figure data-rehype-pretty-code-figure=""><pre style="background-color:#0d1117;color:#e6edf3" tabindex="0" data-language="yaml" data-theme="github-dark-default"><code data-language="yaml" data-theme="github-dark-default" style="display: grid;"><span data-line=""><span style="color:#7EE787">apiVersion</span><span style="color:#E6EDF3">: </span><span style="color:#A5D6FF">gateway.networking.k8s.io/v1</span></span>
+<span data-line=""><span style="color:#7EE787">kind</span><span style="color:#E6EDF3">: </span><span style="color:#A5D6FF">Gateway</span></span>
+<span data-line=""><span style="color:#7EE787">metadata</span><span style="color:#E6EDF3">:</span></span>
+<span data-line=""><span style="color:#7EE787">  name</span><span style="color:#E6EDF3">: </span><span style="color:#A5D6FF">eg-tls</span></span>
+<span data-line=""><span style="color:#7EE787">spec</span><span style="color:#E6EDF3">:</span></span>
+<span data-line=""><span style="color:#7EE787">  gatewayClassName</span><span style="color:#E6EDF3">: </span><span style="color:#A5D6FF">eg</span></span>
+<span data-line=""><span style="color:#7EE787">  listeners</span><span style="color:#E6EDF3">:</span></span>
+<span data-line=""><span style="color:#E6EDF3">    - </span><span style="color:#7EE787">name</span><span style="color:#E6EDF3">: </span><span style="color:#A5D6FF">tls</span></span>
+<span data-line=""><span style="color:#7EE787">      protocol</span><span style="color:#E6EDF3">: </span><span style="color:#A5D6FF">TLS</span></span>
+<span data-line=""><span style="color:#7EE787">      port</span><span style="color:#E6EDF3">: </span><span style="color:#79C0FF">443</span></span>
+<span data-line=""><span style="color:#79C0FF">---</span></span>
+<span data-line=""><span style="color:#7EE787">apiVersion</span><span style="color:#E6EDF3">: </span><span style="color:#A5D6FF">gateway.networking.k8s.io/v1alpha2</span></span>
+<span data-line=""><span style="color:#7EE787">kind</span><span style="color:#E6EDF3">: </span><span style="color:#A5D6FF">TLSRoute</span></span>
+<span data-line=""><span style="color:#7EE787">metadata</span><span style="color:#E6EDF3">:</span></span>
+<span data-line=""><span style="color:#7EE787">  name</span><span style="color:#E6EDF3">: </span><span style="color:#A5D6FF">passthrough-route</span></span>
+<span data-line=""><span style="color:#7EE787">spec</span><span style="color:#E6EDF3">:</span></span>
+<span data-line=""><span style="color:#7EE787">  parentRefs</span><span style="color:#E6EDF3">:</span></span>
+<span data-line=""><span style="color:#E6EDF3">    - </span><span style="color:#7EE787">name</span><span style="color:#E6EDF3">: </span><span style="color:#A5D6FF">eg-tls</span></span>
+<span data-line=""><span style="color:#7EE787">  hostnames</span><span style="color:#E6EDF3">:</span></span>
+<span data-line=""><span style="color:#E6EDF3">    - </span><span style="color:#A5D6FF">"db.example.com"</span></span>
+<span data-line=""><span style="color:#7EE787">  rules</span><span style="color:#E6EDF3">:</span></span>
+<span data-line=""><span style="color:#E6EDF3">    - </span><span style="color:#7EE787">backendRefs</span><span style="color:#E6EDF3">:</span></span>
+<span data-line=""><span style="color:#E6EDF3">        - </span><span style="color:#7EE787">name</span><span style="color:#E6EDF3">: </span><span style="color:#A5D6FF">db-service</span></span>
+<span data-line=""><span style="color:#7EE787">          port</span><span style="color:#E6EDF3">: </span><span style="color:#79C0FF">5432</span></span></code></pre></figure>
 <p>このパターンのよくある用途:</p>
 <ul>
 <li>SNI hostname だけで route する</li>
@@ -166,19 +170,19 @@ c:"$Sreact.suspense"
 <strong>Gateway は他 namespace の certificate Secret を参照できますが、そのためには <code>ReferenceGrant</code> が必要です。</strong></p>
 <p>たとえば platform team が <code>envoy-gateway-system</code> に証明書を集約し、application 側の Gateway が <code>default</code> にある場合、明示的な許可なしに namespace をまたいで参照することはできません。</p>
 <p>例:</p>
-<figure data-rehype-pretty-code-figure=""><pre style="background-color:#24292e;color:#e1e4e8" tabindex="0" data-language="yaml" data-theme="github-dark"><code data-language="yaml" data-theme="github-dark" style="display: grid;"><span data-line=""><span style="color:#85E89D">apiVersion</span><span style="color:#E1E4E8">: </span><span style="color:#9ECBFF">gateway.networking.k8s.io/v1beta1</span></span>
-<span data-line=""><span style="color:#85E89D">kind</span><span style="color:#E1E4E8">: </span><span style="color:#9ECBFF">ReferenceGrant</span></span>
-<span data-line=""><span style="color:#85E89D">metadata</span><span style="color:#E1E4E8">:</span></span>
-<span data-line=""><span style="color:#85E89D">  name</span><span style="color:#E1E4E8">: </span><span style="color:#9ECBFF">allow-default-to-read-cert</span></span>
-<span data-line=""><span style="color:#85E89D">  namespace</span><span style="color:#E1E4E8">: </span><span style="color:#9ECBFF">envoy-gateway-system</span></span>
-<span data-line=""><span style="color:#85E89D">spec</span><span style="color:#E1E4E8">:</span></span>
-<span data-line=""><span style="color:#85E89D">  from</span><span style="color:#E1E4E8">:</span></span>
-<span data-line=""><span style="color:#E1E4E8">    - </span><span style="color:#85E89D">group</span><span style="color:#E1E4E8">: </span><span style="color:#9ECBFF">gateway.networking.k8s.io</span></span>
-<span data-line=""><span style="color:#85E89D">      kind</span><span style="color:#E1E4E8">: </span><span style="color:#9ECBFF">Gateway</span></span>
-<span data-line=""><span style="color:#85E89D">      namespace</span><span style="color:#E1E4E8">: </span><span style="color:#9ECBFF">default</span></span>
-<span data-line=""><span style="color:#85E89D">  to</span><span style="color:#E1E4E8">:</span></span>
-<span data-line=""><span style="color:#E1E4E8">    - </span><span style="color:#85E89D">group</span><span style="color:#E1E4E8">: </span><span style="color:#9ECBFF">""</span></span>
-<span data-line=""><span style="color:#85E89D">      kind</span><span style="color:#E1E4E8">: </span><span style="color:#9ECBFF">Secret</span></span></code></pre></figure>
+<figure data-rehype-pretty-code-figure=""><pre style="background-color:#0d1117;color:#e6edf3" tabindex="0" data-language="yaml" data-theme="github-dark-default"><code data-language="yaml" data-theme="github-dark-default" style="display: grid;"><span data-line=""><span style="color:#7EE787">apiVersion</span><span style="color:#E6EDF3">: </span><span style="color:#A5D6FF">gateway.networking.k8s.io/v1beta1</span></span>
+<span data-line=""><span style="color:#7EE787">kind</span><span style="color:#E6EDF3">: </span><span style="color:#A5D6FF">ReferenceGrant</span></span>
+<span data-line=""><span style="color:#7EE787">metadata</span><span style="color:#E6EDF3">:</span></span>
+<span data-line=""><span style="color:#7EE787">  name</span><span style="color:#E6EDF3">: </span><span style="color:#A5D6FF">allow-default-to-read-cert</span></span>
+<span data-line=""><span style="color:#7EE787">  namespace</span><span style="color:#E6EDF3">: </span><span style="color:#A5D6FF">envoy-gateway-system</span></span>
+<span data-line=""><span style="color:#7EE787">spec</span><span style="color:#E6EDF3">:</span></span>
+<span data-line=""><span style="color:#7EE787">  from</span><span style="color:#E6EDF3">:</span></span>
+<span data-line=""><span style="color:#E6EDF3">    - </span><span style="color:#7EE787">group</span><span style="color:#E6EDF3">: </span><span style="color:#A5D6FF">gateway.networking.k8s.io</span></span>
+<span data-line=""><span style="color:#7EE787">      kind</span><span style="color:#E6EDF3">: </span><span style="color:#A5D6FF">Gateway</span></span>
+<span data-line=""><span style="color:#7EE787">      namespace</span><span style="color:#E6EDF3">: </span><span style="color:#A5D6FF">default</span></span>
+<span data-line=""><span style="color:#7EE787">  to</span><span style="color:#E6EDF3">:</span></span>
+<span data-line=""><span style="color:#E6EDF3">    - </span><span style="color:#7EE787">group</span><span style="color:#E6EDF3">: </span><span style="color:#A5D6FF">""</span></span>
+<span data-line=""><span style="color:#7EE787">      kind</span><span style="color:#E6EDF3">: </span><span style="color:#A5D6FF">Secret</span></span></code></pre></figure>
 <p>意味:</p>
 <ul>
 <li><code>default</code> namespace の <code>Gateway</code> が</li>
@@ -192,9 +196,9 @@ c:"$Sreact.suspense"
 </blockquote>
 <h2 id="次の一歩">次の一歩</h2>
 <p>インストール、概念、routing、TLS を一通り見たので、次の記事ではそれらを本番で爆発しにくい実践知にまとめます。
-👉 <a href="05-best-practices">ベストプラクティス</a></p>3:["$","div",null,{"className":"prose","dangerouslySetInnerHTML":{"__html":"$8"}}]
-4:["$","footer",null,{"className":"mt-14 border-t pt-8","style":{"borderColor":"var(--color-border)"},"children":[["$","div",null,{"className":"mb-8 flex flex-wrap gap-2","children":[["$","$L2","kubernetes",{"href":"/ja/tags/kubernetes","localeCookie":{"name":"NEXT_LOCALE","sameSite":"lax"},"className":"inline-flex items-center rounded-full px-3 py-1 text-sm font-medium transition-colors","style":{"background":"var(--color-code-bg)","color":"var(--color-accent)","border":"1px solid var(--color-border)"},"children":["#","kubernetes"]}],["$","$L2","envoy-gateway",{"href":"/ja/tags/envoy-gateway","localeCookie":{"name":"NEXT_LOCALE","sameSite":"lax"},"className":"inline-flex items-center rounded-full px-3 py-1 text-sm font-medium transition-colors","style":{"background":"var(--color-code-bg)","color":"var(--color-accent)","border":"1px solid var(--color-border)"},"children":["#","envoy-gateway"]}],["$","$L2","gateway-api",{"href":"/ja/tags/gateway-api","localeCookie":{"name":"NEXT_LOCALE","sameSite":"lax"},"className":"inline-flex items-center rounded-full px-3 py-1 text-sm font-medium transition-colors","style":{"background":"var(--color-code-bg)","color":"var(--color-accent)","border":"1px solid var(--color-border)"},"children":["#","gateway-api"]}],["$","$L2","tls",{"href":"/ja/tags/tls","localeCookie":{"name":"NEXT_LOCALE","sameSite":"lax"},"className":"inline-flex items-center rounded-full px-3 py-1 text-sm font-medium transition-colors","style":{"background":"var(--color-code-bg)","color":"var(--color-accent)","border":"1px solid var(--color-border)"},"children":["#","tls"]}],["$","$L2","https",{"href":"/ja/tags/https","localeCookie":{"name":"NEXT_LOCALE","sameSite":"lax"},"className":"inline-flex items-center rounded-full px-3 py-1 text-sm font-medium transition-colors","style":{"background":"var(--color-code-bg)","color":"var(--color-accent)","border":"1px solid var(--color-border)"},"children":["#","https"]}],["$","$L2","security",{"href":"/ja/tags/security","localeCookie":{"name":"NEXT_LOCALE","sameSite":"lax"},"className":"inline-flex items-center rounded-full px-3 py-1 text-sm font-medium transition-colors","style":{"background":"var(--color-code-bg)","color":"var(--color-accent)","border":"1px solid var(--color-border)"},"children":["#","security"]}]]}],["$","nav",null,{"aria-label":"記事ナビゲーション","className":"grid grid-cols-1 gap-4 sm:grid-cols-2","children":[["$","$L2",null,{"href":"/ja/blog/k8s/gateway/03-http-routing","localeCookie":{"name":"NEXT_LOCALE","sameSite":"lax"},"className":"group rounded-lg border p-4 transition-colors hover:border-accent","style":{"borderColor":"var(--color-border)","background":"var(--color-surface)"},"children":[["$","p",null,{"className":"mb-1 text-xs","style":{"color":"var(--color-muted)"},"children":"← 新しい記事"}],["$","p",null,{"className":"line-clamp-1 text-sm font-medium transition-colors group-hover:text-accent","style":{"color":"var(--color-text)"},"children":"Envoy Gateway HTTP ルーティング実践: Host、Path、Header、Traffic Splitting"}]]}],["$","$L2",null,{"href":"/ja/blog/k8s/gateway/05-best-practices","localeCookie":{"name":"NEXT_LOCALE","sameSite":"lax"},"className":"group rounded-lg border p-4 text-right transition-colors hover:border-accent","style":{"borderColor":"var(--color-border)","background":"var(--color-surface)"},"children":[["$","p",null,{"className":"mb-1 text-xs","style":{"color":"var(--color-muted)"},"children":"古い記事 →"}],["$","p",null,{"className":"line-clamp-1 text-sm font-medium transition-colors group-hover:text-accent","style":{"color":"var(--color-text)"},"children":"Envoy Gateway ベストプラクティス: 本番前に未来の自分を助ける"}]]}]]}]]}]
-a:T5f5a,<p>HTTP が動いたら、そこはまだウォームアップです。あなたの service が石器時代に住んでいない限り、本番ではほぼ確実に HTTPS が必要です。この記事では、Envoy Gateway における TLS の基本を整理し、API を平文で走らせないための土台を固めます。</p>
+👉 <a href="05-best-practices">ベストプラクティス</a></p>7:["$","div",null,{"className":"prose","dangerouslySetInnerHTML":{"__html":"$c"}}]
+8:["$","footer",null,{"className":"mt-14 border-t pt-8","style":{"borderColor":"var(--color-border)"},"children":[["$","div",null,{"className":"mb-8 flex flex-wrap gap-2","children":[["$","$L2","kubernetes",{"href":"/ja/tags/kubernetes","localeCookie":{"name":"NEXT_LOCALE","sameSite":"lax"},"className":"inline-flex items-center rounded-full px-3 py-1 text-sm font-medium transition-colors","style":{"background":"var(--color-code-bg)","color":"var(--color-accent)","border":"1px solid var(--color-border)"},"children":["#","kubernetes"]}],["$","$L2","envoy-gateway",{"href":"/ja/tags/envoy-gateway","localeCookie":{"name":"NEXT_LOCALE","sameSite":"lax"},"className":"inline-flex items-center rounded-full px-3 py-1 text-sm font-medium transition-colors","style":{"background":"var(--color-code-bg)","color":"var(--color-accent)","border":"1px solid var(--color-border)"},"children":["#","envoy-gateway"]}],["$","$L2","gateway-api",{"href":"/ja/tags/gateway-api","localeCookie":{"name":"NEXT_LOCALE","sameSite":"lax"},"className":"inline-flex items-center rounded-full px-3 py-1 text-sm font-medium transition-colors","style":{"background":"var(--color-code-bg)","color":"var(--color-accent)","border":"1px solid var(--color-border)"},"children":["#","gateway-api"]}],["$","$L2","tls",{"href":"/ja/tags/tls","localeCookie":{"name":"NEXT_LOCALE","sameSite":"lax"},"className":"inline-flex items-center rounded-full px-3 py-1 text-sm font-medium transition-colors","style":{"background":"var(--color-code-bg)","color":"var(--color-accent)","border":"1px solid var(--color-border)"},"children":["#","tls"]}],["$","$L2","https",{"href":"/ja/tags/https","localeCookie":{"name":"NEXT_LOCALE","sameSite":"lax"},"className":"inline-flex items-center rounded-full px-3 py-1 text-sm font-medium transition-colors","style":{"background":"var(--color-code-bg)","color":"var(--color-accent)","border":"1px solid var(--color-border)"},"children":["#","https"]}],["$","$L2","security",{"href":"/ja/tags/security","localeCookie":{"name":"NEXT_LOCALE","sameSite":"lax"},"className":"inline-flex items-center rounded-full px-3 py-1 text-sm font-medium transition-colors","style":{"background":"var(--color-code-bg)","color":"var(--color-accent)","border":"1px solid var(--color-border)"},"children":["#","security"]}]]}],["$","nav",null,{"aria-label":"記事ナビゲーション","className":"grid grid-cols-1 gap-4 sm:grid-cols-2","children":[["$","$L2",null,{"href":"/ja/blog/k8s/gateway/03-http-routing","localeCookie":{"name":"NEXT_LOCALE","sameSite":"lax"},"className":"group rounded-lg border p-4 transition-colors hover:border-accent","style":{"borderColor":"var(--color-border)","background":"var(--color-surface)"},"children":[["$","p",null,{"className":"mb-1 text-xs","style":{"color":"var(--color-muted)"},"children":"← 新しい記事"}],["$","p",null,{"className":"line-clamp-1 text-sm font-medium transition-colors group-hover:text-accent","style":{"color":"var(--color-text)"},"children":"Envoy Gateway HTTP ルーティング実践: Host、Path、Header、Traffic Splitting"}]]}],["$","$L2",null,{"href":"/ja/blog/k8s/gateway/05-best-practices","localeCookie":{"name":"NEXT_LOCALE","sameSite":"lax"},"className":"group rounded-lg border p-4 text-right transition-colors hover:border-accent","style":{"borderColor":"var(--color-border)","background":"var(--color-surface)"},"children":[["$","p",null,{"className":"mb-1 text-xs","style":{"color":"var(--color-muted)"},"children":"古い記事 →"}],["$","p",null,{"className":"line-clamp-1 text-sm font-medium transition-colors group-hover:text-accent","style":{"color":"var(--color-text)"},"children":"Envoy Gateway ベストプラクティス: 本番前に未来の自分を助ける"}]]}]]}]]}]
+e:T5fea,<p>HTTP が動いたら、そこはまだウォームアップです。あなたの service が石器時代に住んでいない限り、本番ではほぼ確実に HTTPS が必要です。この記事では、Envoy Gateway における TLS の基本を整理し、API を平文で走らせないための土台を固めます。</p>
 <h2 id="gateway-で-tls-はどう動くのか">Gateway で TLS はどう動くのか</h2>
 <p>最も一般的なやり方は、<strong>Gateway listener で TLS を terminate する</strong>ことです。</p>
 <p>意味:</p>
@@ -204,25 +208,25 @@ a:T5f5a,<p>HTTP が動いたら、そこはまだウォームアップです。�
 <li>その後のトラフィックは内部では平文のまま Service へ転送される</li>
 </ul>
 <p>基本的な HTTPS listener はこうです。</p>
-<figure data-rehype-pretty-code-figure=""><pre style="background-color:#24292e;color:#e1e4e8" tabindex="0" data-language="yaml" data-theme="github-dark"><code data-language="yaml" data-theme="github-dark" style="display: grid;"><span data-line=""><span style="color:#85E89D">apiVersion</span><span style="color:#E1E4E8">: </span><span style="color:#9ECBFF">gateway.networking.k8s.io/v1</span></span>
-<span data-line=""><span style="color:#85E89D">kind</span><span style="color:#E1E4E8">: </span><span style="color:#9ECBFF">Gateway</span></span>
-<span data-line=""><span style="color:#85E89D">metadata</span><span style="color:#E1E4E8">:</span></span>
-<span data-line=""><span style="color:#85E89D">  name</span><span style="color:#E1E4E8">: </span><span style="color:#9ECBFF">eg</span></span>
-<span data-line=""><span style="color:#85E89D">spec</span><span style="color:#E1E4E8">:</span></span>
-<span data-line=""><span style="color:#85E89D">  gatewayClassName</span><span style="color:#E1E4E8">: </span><span style="color:#9ECBFF">eg</span></span>
-<span data-line=""><span style="color:#85E89D">  listeners</span><span style="color:#E1E4E8">:</span></span>
-<span data-line=""><span style="color:#E1E4E8">    - </span><span style="color:#85E89D">name</span><span style="color:#E1E4E8">: </span><span style="color:#9ECBFF">http</span></span>
-<span data-line=""><span style="color:#85E89D">      protocol</span><span style="color:#E1E4E8">: </span><span style="color:#9ECBFF">HTTP</span></span>
-<span data-line=""><span style="color:#85E89D">      port</span><span style="color:#E1E4E8">: </span><span style="color:#79B8FF">80</span></span>
-<span data-line=""><span style="color:#E1E4E8">    - </span><span style="color:#85E89D">name</span><span style="color:#E1E4E8">: </span><span style="color:#9ECBFF">https</span></span>
-<span data-line=""><span style="color:#85E89D">      protocol</span><span style="color:#E1E4E8">: </span><span style="color:#9ECBFF">HTTPS</span></span>
-<span data-line=""><span style="color:#85E89D">      port</span><span style="color:#E1E4E8">: </span><span style="color:#79B8FF">443</span></span>
-<span data-line=""><span style="color:#85E89D">      tls</span><span style="color:#E1E4E8">:</span></span>
-<span data-line=""><span style="color:#85E89D">        mode</span><span style="color:#E1E4E8">: </span><span style="color:#9ECBFF">Terminate</span></span>
-<span data-line=""><span style="color:#85E89D">        certificateRefs</span><span style="color:#E1E4E8">:</span></span>
-<span data-line=""><span style="color:#E1E4E8">          - </span><span style="color:#85E89D">kind</span><span style="color:#E1E4E8">: </span><span style="color:#9ECBFF">Secret</span></span>
-<span data-line=""><span style="color:#85E89D">            group</span><span style="color:#E1E4E8">: </span><span style="color:#9ECBFF">""</span></span>
-<span data-line=""><span style="color:#85E89D">            name</span><span style="color:#E1E4E8">: </span><span style="color:#9ECBFF">example-cert</span></span></code></pre></figure>
+<figure data-rehype-pretty-code-figure=""><pre style="background-color:#0d1117;color:#e6edf3" tabindex="0" data-language="yaml" data-theme="github-dark-default"><code data-language="yaml" data-theme="github-dark-default" style="display: grid;"><span data-line=""><span style="color:#7EE787">apiVersion</span><span style="color:#E6EDF3">: </span><span style="color:#A5D6FF">gateway.networking.k8s.io/v1</span></span>
+<span data-line=""><span style="color:#7EE787">kind</span><span style="color:#E6EDF3">: </span><span style="color:#A5D6FF">Gateway</span></span>
+<span data-line=""><span style="color:#7EE787">metadata</span><span style="color:#E6EDF3">:</span></span>
+<span data-line=""><span style="color:#7EE787">  name</span><span style="color:#E6EDF3">: </span><span style="color:#A5D6FF">eg</span></span>
+<span data-line=""><span style="color:#7EE787">spec</span><span style="color:#E6EDF3">:</span></span>
+<span data-line=""><span style="color:#7EE787">  gatewayClassName</span><span style="color:#E6EDF3">: </span><span style="color:#A5D6FF">eg</span></span>
+<span data-line=""><span style="color:#7EE787">  listeners</span><span style="color:#E6EDF3">:</span></span>
+<span data-line=""><span style="color:#E6EDF3">    - </span><span style="color:#7EE787">name</span><span style="color:#E6EDF3">: </span><span style="color:#A5D6FF">http</span></span>
+<span data-line=""><span style="color:#7EE787">      protocol</span><span style="color:#E6EDF3">: </span><span style="color:#A5D6FF">HTTP</span></span>
+<span data-line=""><span style="color:#7EE787">      port</span><span style="color:#E6EDF3">: </span><span style="color:#79C0FF">80</span></span>
+<span data-line=""><span style="color:#E6EDF3">    - </span><span style="color:#7EE787">name</span><span style="color:#E6EDF3">: </span><span style="color:#A5D6FF">https</span></span>
+<span data-line=""><span style="color:#7EE787">      protocol</span><span style="color:#E6EDF3">: </span><span style="color:#A5D6FF">HTTPS</span></span>
+<span data-line=""><span style="color:#7EE787">      port</span><span style="color:#E6EDF3">: </span><span style="color:#79C0FF">443</span></span>
+<span data-line=""><span style="color:#7EE787">      tls</span><span style="color:#E6EDF3">:</span></span>
+<span data-line=""><span style="color:#7EE787">        mode</span><span style="color:#E6EDF3">: </span><span style="color:#A5D6FF">Terminate</span></span>
+<span data-line=""><span style="color:#7EE787">        certificateRefs</span><span style="color:#E6EDF3">:</span></span>
+<span data-line=""><span style="color:#E6EDF3">          - </span><span style="color:#7EE787">kind</span><span style="color:#E6EDF3">: </span><span style="color:#A5D6FF">Secret</span></span>
+<span data-line=""><span style="color:#7EE787">            group</span><span style="color:#E6EDF3">: </span><span style="color:#A5D6FF">""</span></span>
+<span data-line=""><span style="color:#7EE787">            name</span><span style="color:#E6EDF3">: </span><span style="color:#A5D6FF">example-cert</span></span></code></pre></figure>
 <p>ここで大事なのは 2 点です。</p>
 <ul>
 <li><code>protocol: HTTPS</code></li>
@@ -262,88 +266,88 @@ a:T5f5a,<p>HTTP が動いたら、そこはまだウォームアップです。�
 <p>どちらが「より上級」かではありません。大事なのは、自分が欲しいのが「TLS を terminate して L7 routing したい」のか、「暗号化を保ったまま SNI ベース routing したい」のかを理解することです。</p>
 <h2 id="証明書-secret-を用意する">証明書 Secret を用意する</h2>
 <p>テスト環境なら self-signed certificate で十分です。公式例でもこの形を使っています。</p>
-<figure data-rehype-pretty-code-figure=""><pre style="background-color:#24292e;color:#e1e4e8" tabindex="0" data-language="bash" data-theme="github-dark"><code data-language="bash" data-theme="github-dark" style="display: grid;"><span data-line=""><span style="color:#B392F0">openssl</span><span style="color:#9ECBFF"> req</span><span style="color:#79B8FF"> -x509</span><span style="color:#79B8FF"> -sha256</span><span style="color:#79B8FF"> -nodes</span><span style="color:#79B8FF"> -days</span><span style="color:#79B8FF"> 365</span><span style="color:#79B8FF"> -newkey</span><span style="color:#9ECBFF"> rsa:2048</span><span style="color:#79B8FF">   -subj</span><span style="color:#9ECBFF"> '/O=example Inc./CN=example.com'</span><span style="color:#79B8FF">   -keyout</span><span style="color:#9ECBFF"> example.com.key</span><span style="color:#79B8FF">   -out</span><span style="color:#9ECBFF"> example.com.crt</span></span>
+<figure data-rehype-pretty-code-figure=""><pre style="background-color:#0d1117;color:#e6edf3" tabindex="0" data-language="bash" data-theme="github-dark-default"><code data-language="bash" data-theme="github-dark-default" style="display: grid;"><span data-line=""><span style="color:#FFA657">openssl</span><span style="color:#A5D6FF"> req</span><span style="color:#79C0FF"> -x509</span><span style="color:#79C0FF"> -sha256</span><span style="color:#79C0FF"> -nodes</span><span style="color:#79C0FF"> -days</span><span style="color:#79C0FF"> 365</span><span style="color:#79C0FF"> -newkey</span><span style="color:#A5D6FF"> rsa:2048</span><span style="color:#79C0FF">   -subj</span><span style="color:#A5D6FF"> '/O=example Inc./CN=example.com'</span><span style="color:#79C0FF">   -keyout</span><span style="color:#A5D6FF"> example.com.key</span><span style="color:#79C0FF">   -out</span><span style="color:#A5D6FF"> example.com.crt</span></span>
 <span data-line=""> </span>
-<span data-line=""><span style="color:#B392F0">openssl</span><span style="color:#9ECBFF"> req</span><span style="color:#79B8FF"> -out</span><span style="color:#9ECBFF"> www.example.com.csr</span><span style="color:#79B8FF"> -newkey</span><span style="color:#9ECBFF"> rsa:2048</span><span style="color:#79B8FF"> -nodes</span><span style="color:#79B8FF">   -keyout</span><span style="color:#9ECBFF"> www.example.com.key</span><span style="color:#79B8FF">   -subj</span><span style="color:#9ECBFF"> "/CN=www.example.com/O=example organization"</span></span>
+<span data-line=""><span style="color:#FFA657">openssl</span><span style="color:#A5D6FF"> req</span><span style="color:#79C0FF"> -out</span><span style="color:#A5D6FF"> www.example.com.csr</span><span style="color:#79C0FF"> -newkey</span><span style="color:#A5D6FF"> rsa:2048</span><span style="color:#79C0FF"> -nodes</span><span style="color:#79C0FF">   -keyout</span><span style="color:#A5D6FF"> www.example.com.key</span><span style="color:#79C0FF">   -subj</span><span style="color:#A5D6FF"> "/CN=www.example.com/O=example organization"</span></span>
 <span data-line=""> </span>
-<span data-line=""><span style="color:#B392F0">openssl</span><span style="color:#9ECBFF"> x509</span><span style="color:#79B8FF"> -req</span><span style="color:#79B8FF"> -days</span><span style="color:#79B8FF"> 365</span><span style="color:#79B8FF"> -CA</span><span style="color:#9ECBFF"> example.com.crt</span><span style="color:#79B8FF"> -CAkey</span><span style="color:#9ECBFF"> example.com.key</span><span style="color:#79B8FF">   -set_serial</span><span style="color:#79B8FF"> 0</span><span style="color:#79B8FF"> -in</span><span style="color:#9ECBFF"> www.example.com.csr</span><span style="color:#79B8FF"> -out</span><span style="color:#9ECBFF"> www.example.com.crt</span></span></code></pre></figure>
+<span data-line=""><span style="color:#FFA657">openssl</span><span style="color:#A5D6FF"> x509</span><span style="color:#79C0FF"> -req</span><span style="color:#79C0FF"> -days</span><span style="color:#79C0FF"> 365</span><span style="color:#79C0FF"> -CA</span><span style="color:#A5D6FF"> example.com.crt</span><span style="color:#79C0FF"> -CAkey</span><span style="color:#A5D6FF"> example.com.key</span><span style="color:#79C0FF">   -set_serial</span><span style="color:#79C0FF"> 0</span><span style="color:#79C0FF"> -in</span><span style="color:#A5D6FF"> www.example.com.csr</span><span style="color:#79C0FF"> -out</span><span style="color:#A5D6FF"> www.example.com.crt</span></span></code></pre></figure>
 <p>cert/key を Kubernetes Secret として保存します。</p>
-<figure data-rehype-pretty-code-figure=""><pre style="background-color:#24292e;color:#e1e4e8" tabindex="0" data-language="bash" data-theme="github-dark"><code data-language="bash" data-theme="github-dark" style="display: grid;"><span data-line=""><span style="color:#B392F0">kubectl</span><span style="color:#9ECBFF"> create</span><span style="color:#9ECBFF"> secret</span><span style="color:#9ECBFF"> tls</span><span style="color:#9ECBFF"> example-cert</span><span style="color:#79B8FF">   --key=www.example.com.key</span><span style="color:#79B8FF">   --cert=www.example.com.crt</span></span></code></pre></figure>
+<figure data-rehype-pretty-code-figure=""><pre style="background-color:#0d1117;color:#e6edf3" tabindex="0" data-language="bash" data-theme="github-dark-default"><code data-language="bash" data-theme="github-dark-default" style="display: grid;"><span data-line=""><span style="color:#FFA657">kubectl</span><span style="color:#A5D6FF"> create</span><span style="color:#A5D6FF"> secret</span><span style="color:#A5D6FF"> tls</span><span style="color:#A5D6FF"> example-cert</span><span style="color:#79C0FF">   --key=www.example.com.key</span><span style="color:#79C0FF">   --cert=www.example.com.crt</span></span></code></pre></figure>
 <p>その後 <code>Gateway</code> から <code>certificateRefs</code> 経由でこの Secret を参照できます。</p>
 <blockquote>
 <p>⚠️ self-signed cert はテスト用に限ります。本番では cert-manager など既存の証明書管理フローを使ってください。デモ構成をそのまま本番へ持ち込むのは、カップ麺だけで生活するようなもので、たまにならいいけれど長期運用には向きません。</p>
 </blockquote>
 <h2 id="既存-gateway-に-https-listener-を追加する">既存 Gateway に HTTPS listener を追加する</h2>
 <p>前の記事の <code>eg</code> Gateway がすでにあるなら、そのまま patch できます。</p>
-<figure data-rehype-pretty-code-figure=""><pre style="background-color:#24292e;color:#e1e4e8" tabindex="0" data-language="bash" data-theme="github-dark"><code data-language="bash" data-theme="github-dark" style="display: grid;"><span data-line=""><span style="color:#B392F0">kubectl</span><span style="color:#9ECBFF"> patch</span><span style="color:#9ECBFF"> gateway</span><span style="color:#9ECBFF"> eg</span><span style="color:#79B8FF"> --type=json</span><span style="color:#79B8FF"> --patch</span><span style="color:#9ECBFF"> '</span></span>
-<span data-line=""><span style="color:#9ECBFF">  - op: add</span></span>
-<span data-line=""><span style="color:#9ECBFF">    path: /spec/listeners/-</span></span>
-<span data-line=""><span style="color:#9ECBFF">    value:</span></span>
-<span data-line=""><span style="color:#9ECBFF">      name: https</span></span>
-<span data-line=""><span style="color:#9ECBFF">      protocol: HTTPS</span></span>
-<span data-line=""><span style="color:#9ECBFF">      port: 443</span></span>
-<span data-line=""><span style="color:#9ECBFF">      tls:</span></span>
-<span data-line=""><span style="color:#9ECBFF">        mode: Terminate</span></span>
-<span data-line=""><span style="color:#9ECBFF">        certificateRefs:</span></span>
-<span data-line=""><span style="color:#9ECBFF">        - kind: Secret</span></span>
-<span data-line=""><span style="color:#9ECBFF">          group: ""</span></span>
-<span data-line=""><span style="color:#9ECBFF">          name: example-cert</span></span>
-<span data-line=""><span style="color:#9ECBFF">'</span></span></code></pre></figure>
+<figure data-rehype-pretty-code-figure=""><pre style="background-color:#0d1117;color:#e6edf3" tabindex="0" data-language="bash" data-theme="github-dark-default"><code data-language="bash" data-theme="github-dark-default" style="display: grid;"><span data-line=""><span style="color:#FFA657">kubectl</span><span style="color:#A5D6FF"> patch</span><span style="color:#A5D6FF"> gateway</span><span style="color:#A5D6FF"> eg</span><span style="color:#79C0FF"> --type=json</span><span style="color:#79C0FF"> --patch</span><span style="color:#A5D6FF"> '</span></span>
+<span data-line=""><span style="color:#A5D6FF">  - op: add</span></span>
+<span data-line=""><span style="color:#A5D6FF">    path: /spec/listeners/-</span></span>
+<span data-line=""><span style="color:#A5D6FF">    value:</span></span>
+<span data-line=""><span style="color:#A5D6FF">      name: https</span></span>
+<span data-line=""><span style="color:#A5D6FF">      protocol: HTTPS</span></span>
+<span data-line=""><span style="color:#A5D6FF">      port: 443</span></span>
+<span data-line=""><span style="color:#A5D6FF">      tls:</span></span>
+<span data-line=""><span style="color:#A5D6FF">        mode: Terminate</span></span>
+<span data-line=""><span style="color:#A5D6FF">        certificateRefs:</span></span>
+<span data-line=""><span style="color:#A5D6FF">        - kind: Secret</span></span>
+<span data-line=""><span style="color:#A5D6FF">          group: ""</span></span>
+<span data-line=""><span style="color:#A5D6FF">          name: example-cert</span></span>
+<span data-line=""><span style="color:#A5D6FF">'</span></span></code></pre></figure>
 <p>status を確認します。</p>
-<figure data-rehype-pretty-code-figure=""><pre style="background-color:#24292e;color:#e1e4e8" tabindex="0" data-language="bash" data-theme="github-dark"><code data-language="bash" data-theme="github-dark" style="display: grid;"><span data-line=""><span style="color:#B392F0">kubectl</span><span style="color:#9ECBFF"> get</span><span style="color:#9ECBFF"> gateway/eg</span><span style="color:#79B8FF"> -o</span><span style="color:#9ECBFF"> yaml</span></span></code></pre></figure>
+<figure data-rehype-pretty-code-figure=""><pre style="background-color:#0d1117;color:#e6edf3" tabindex="0" data-language="bash" data-theme="github-dark-default"><code data-language="bash" data-theme="github-dark-default" style="display: grid;"><span data-line=""><span style="color:#FFA657">kubectl</span><span style="color:#A5D6FF"> get</span><span style="color:#A5D6FF"> gateway/eg</span><span style="color:#79C0FF"> -o</span><span style="color:#A5D6FF"> yaml</span></span></code></pre></figure>
 <p>listener が正常そうなら HTTPS を試します。</p>
-<figure data-rehype-pretty-code-figure=""><pre style="background-color:#24292e;color:#e1e4e8" tabindex="0" data-language="bash" data-theme="github-dark"><code data-language="bash" data-theme="github-dark" style="display: grid;"><span data-line=""><span style="color:#B392F0">curl</span><span style="color:#79B8FF"> -v</span><span style="color:#79B8FF"> -HHost:www.example.com</span><span style="color:#79B8FF">   --resolve</span><span style="color:#9ECBFF"> "www.example.com:443:${</span><span style="color:#E1E4E8">GATEWAY_HOST</span><span style="color:#9ECBFF">}"</span><span style="color:#79B8FF">   --cacert</span><span style="color:#9ECBFF"> example.com.crt</span><span style="color:#9ECBFF">   https://www.example.com/get</span></span></code></pre></figure>
+<figure data-rehype-pretty-code-figure=""><pre style="background-color:#0d1117;color:#e6edf3" tabindex="0" data-language="bash" data-theme="github-dark-default"><code data-language="bash" data-theme="github-dark-default" style="display: grid;"><span data-line=""><span style="color:#FFA657">curl</span><span style="color:#79C0FF"> -v</span><span style="color:#79C0FF"> -HHost:www.example.com</span><span style="color:#79C0FF">   --resolve</span><span style="color:#A5D6FF"> "www.example.com:443:${</span><span style="color:#E6EDF3">GATEWAY_HOST</span><span style="color:#A5D6FF">}"</span><span style="color:#79C0FF">   --cacert</span><span style="color:#A5D6FF"> example.com.crt</span><span style="color:#A5D6FF">   https://www.example.com/get</span></span></code></pre></figure>
 <p>このコマンドはローカル検証にかなり便利です。特に DNS がまだ張られていない段階で役立ちます。</p>
 <h2 id="1-つの-gateway-で複数-https-domain-を扱う">1 つの Gateway で複数 HTTPS domain を扱う</h2>
 <p>複数 domain がある場合、同じ Gateway に複数の HTTPS listener を追加します。
 たとえば <code>foo.example.com</code> を足すなら:</p>
-<figure data-rehype-pretty-code-figure=""><pre style="background-color:#24292e;color:#e1e4e8" tabindex="0" data-language="yaml" data-theme="github-dark"><code data-language="yaml" data-theme="github-dark" style="display: grid;"><span data-line=""><span style="color:#85E89D">listeners</span><span style="color:#E1E4E8">:</span></span>
-<span data-line=""><span style="color:#E1E4E8">  - </span><span style="color:#85E89D">name</span><span style="color:#E1E4E8">: </span><span style="color:#9ECBFF">https-main</span></span>
-<span data-line=""><span style="color:#85E89D">    protocol</span><span style="color:#E1E4E8">: </span><span style="color:#9ECBFF">HTTPS</span></span>
-<span data-line=""><span style="color:#85E89D">    port</span><span style="color:#E1E4E8">: </span><span style="color:#79B8FF">443</span></span>
-<span data-line=""><span style="color:#85E89D">    hostname</span><span style="color:#E1E4E8">: </span><span style="color:#9ECBFF">www.example.com</span></span>
-<span data-line=""><span style="color:#85E89D">    tls</span><span style="color:#E1E4E8">:</span></span>
-<span data-line=""><span style="color:#85E89D">      mode</span><span style="color:#E1E4E8">: </span><span style="color:#9ECBFF">Terminate</span></span>
-<span data-line=""><span style="color:#85E89D">      certificateRefs</span><span style="color:#E1E4E8">:</span></span>
-<span data-line=""><span style="color:#E1E4E8">        - </span><span style="color:#85E89D">name</span><span style="color:#E1E4E8">: </span><span style="color:#9ECBFF">example-cert</span></span>
-<span data-line=""><span style="color:#E1E4E8">  - </span><span style="color:#85E89D">name</span><span style="color:#E1E4E8">: </span><span style="color:#9ECBFF">https-foo</span></span>
-<span data-line=""><span style="color:#85E89D">    protocol</span><span style="color:#E1E4E8">: </span><span style="color:#9ECBFF">HTTPS</span></span>
-<span data-line=""><span style="color:#85E89D">    port</span><span style="color:#E1E4E8">: </span><span style="color:#79B8FF">443</span></span>
-<span data-line=""><span style="color:#85E89D">    hostname</span><span style="color:#E1E4E8">: </span><span style="color:#9ECBFF">foo.example.com</span></span>
-<span data-line=""><span style="color:#85E89D">    tls</span><span style="color:#E1E4E8">:</span></span>
-<span data-line=""><span style="color:#85E89D">      mode</span><span style="color:#E1E4E8">: </span><span style="color:#9ECBFF">Terminate</span></span>
-<span data-line=""><span style="color:#85E89D">      certificateRefs</span><span style="color:#E1E4E8">:</span></span>
-<span data-line=""><span style="color:#E1E4E8">        - </span><span style="color:#85E89D">name</span><span style="color:#E1E4E8">: </span><span style="color:#9ECBFF">foo-cert</span></span></code></pre></figure>
+<figure data-rehype-pretty-code-figure=""><pre style="background-color:#0d1117;color:#e6edf3" tabindex="0" data-language="yaml" data-theme="github-dark-default"><code data-language="yaml" data-theme="github-dark-default" style="display: grid;"><span data-line=""><span style="color:#7EE787">listeners</span><span style="color:#E6EDF3">:</span></span>
+<span data-line=""><span style="color:#E6EDF3">  - </span><span style="color:#7EE787">name</span><span style="color:#E6EDF3">: </span><span style="color:#A5D6FF">https-main</span></span>
+<span data-line=""><span style="color:#7EE787">    protocol</span><span style="color:#E6EDF3">: </span><span style="color:#A5D6FF">HTTPS</span></span>
+<span data-line=""><span style="color:#7EE787">    port</span><span style="color:#E6EDF3">: </span><span style="color:#79C0FF">443</span></span>
+<span data-line=""><span style="color:#7EE787">    hostname</span><span style="color:#E6EDF3">: </span><span style="color:#A5D6FF">www.example.com</span></span>
+<span data-line=""><span style="color:#7EE787">    tls</span><span style="color:#E6EDF3">:</span></span>
+<span data-line=""><span style="color:#7EE787">      mode</span><span style="color:#E6EDF3">: </span><span style="color:#A5D6FF">Terminate</span></span>
+<span data-line=""><span style="color:#7EE787">      certificateRefs</span><span style="color:#E6EDF3">:</span></span>
+<span data-line=""><span style="color:#E6EDF3">        - </span><span style="color:#7EE787">name</span><span style="color:#E6EDF3">: </span><span style="color:#A5D6FF">example-cert</span></span>
+<span data-line=""><span style="color:#E6EDF3">  - </span><span style="color:#7EE787">name</span><span style="color:#E6EDF3">: </span><span style="color:#A5D6FF">https-foo</span></span>
+<span data-line=""><span style="color:#7EE787">    protocol</span><span style="color:#E6EDF3">: </span><span style="color:#A5D6FF">HTTPS</span></span>
+<span data-line=""><span style="color:#7EE787">    port</span><span style="color:#E6EDF3">: </span><span style="color:#79C0FF">443</span></span>
+<span data-line=""><span style="color:#7EE787">    hostname</span><span style="color:#E6EDF3">: </span><span style="color:#A5D6FF">foo.example.com</span></span>
+<span data-line=""><span style="color:#7EE787">    tls</span><span style="color:#E6EDF3">:</span></span>
+<span data-line=""><span style="color:#7EE787">      mode</span><span style="color:#E6EDF3">: </span><span style="color:#A5D6FF">Terminate</span></span>
+<span data-line=""><span style="color:#7EE787">      certificateRefs</span><span style="color:#E6EDF3">:</span></span>
+<span data-line=""><span style="color:#E6EDF3">        - </span><span style="color:#7EE787">name</span><span style="color:#E6EDF3">: </span><span style="color:#A5D6FF">foo-cert</span></span></code></pre></figure>
 <p>対応する <code>HTTPRoute</code> 側の hostname も正しく更新するのを忘れないでください。listener が待ち受けていても、route が送信先を知らなければトラフィックは流れません。</p>
 <h2 id="tlsroute-のメンタルモデル"><code>TLSRoute</code> のメンタルモデル</h2>
 <p>TLS passthrough では、<code>TLSRoute</code> を次のように捉えるとわかりやすいです。</p>
 <blockquote>
 <p>💡 <code>TLSRoute</code> の <code>apiVersion</code> は、インストールしている Gateway API CRD の version によって異なる場合があります。以下は概念説明用の例です。適用前に cluster に入っている version を確認してください。</p>
 </blockquote>
-<figure data-rehype-pretty-code-figure=""><pre style="background-color:#24292e;color:#e1e4e8" tabindex="0" data-language="yaml" data-theme="github-dark"><code data-language="yaml" data-theme="github-dark" style="display: grid;"><span data-line=""><span style="color:#85E89D">apiVersion</span><span style="color:#E1E4E8">: </span><span style="color:#9ECBFF">gateway.networking.k8s.io/v1</span></span>
-<span data-line=""><span style="color:#85E89D">kind</span><span style="color:#E1E4E8">: </span><span style="color:#9ECBFF">Gateway</span></span>
-<span data-line=""><span style="color:#85E89D">metadata</span><span style="color:#E1E4E8">:</span></span>
-<span data-line=""><span style="color:#85E89D">  name</span><span style="color:#E1E4E8">: </span><span style="color:#9ECBFF">eg-tls</span></span>
-<span data-line=""><span style="color:#85E89D">spec</span><span style="color:#E1E4E8">:</span></span>
-<span data-line=""><span style="color:#85E89D">  gatewayClassName</span><span style="color:#E1E4E8">: </span><span style="color:#9ECBFF">eg</span></span>
-<span data-line=""><span style="color:#85E89D">  listeners</span><span style="color:#E1E4E8">:</span></span>
-<span data-line=""><span style="color:#E1E4E8">    - </span><span style="color:#85E89D">name</span><span style="color:#E1E4E8">: </span><span style="color:#9ECBFF">tls</span></span>
-<span data-line=""><span style="color:#85E89D">      protocol</span><span style="color:#E1E4E8">: </span><span style="color:#9ECBFF">TLS</span></span>
-<span data-line=""><span style="color:#85E89D">      port</span><span style="color:#E1E4E8">: </span><span style="color:#79B8FF">443</span></span>
-<span data-line=""><span style="color:#B392F0">---</span></span>
-<span data-line=""><span style="color:#85E89D">apiVersion</span><span style="color:#E1E4E8">: </span><span style="color:#9ECBFF">gateway.networking.k8s.io/v1alpha2</span></span>
-<span data-line=""><span style="color:#85E89D">kind</span><span style="color:#E1E4E8">: </span><span style="color:#9ECBFF">TLSRoute</span></span>
-<span data-line=""><span style="color:#85E89D">metadata</span><span style="color:#E1E4E8">:</span></span>
-<span data-line=""><span style="color:#85E89D">  name</span><span style="color:#E1E4E8">: </span><span style="color:#9ECBFF">passthrough-route</span></span>
-<span data-line=""><span style="color:#85E89D">spec</span><span style="color:#E1E4E8">:</span></span>
-<span data-line=""><span style="color:#85E89D">  parentRefs</span><span style="color:#E1E4E8">:</span></span>
-<span data-line=""><span style="color:#E1E4E8">    - </span><span style="color:#85E89D">name</span><span style="color:#E1E4E8">: </span><span style="color:#9ECBFF">eg-tls</span></span>
-<span data-line=""><span style="color:#85E89D">  hostnames</span><span style="color:#E1E4E8">:</span></span>
-<span data-line=""><span style="color:#E1E4E8">    - </span><span style="color:#9ECBFF">"db.example.com"</span></span>
-<span data-line=""><span style="color:#85E89D">  rules</span><span style="color:#E1E4E8">:</span></span>
-<span data-line=""><span style="color:#E1E4E8">    - </span><span style="color:#85E89D">backendRefs</span><span style="color:#E1E4E8">:</span></span>
-<span data-line=""><span style="color:#E1E4E8">        - </span><span style="color:#85E89D">name</span><span style="color:#E1E4E8">: </span><span style="color:#9ECBFF">db-service</span></span>
-<span data-line=""><span style="color:#85E89D">          port</span><span style="color:#E1E4E8">: </span><span style="color:#79B8FF">5432</span></span></code></pre></figure>
+<figure data-rehype-pretty-code-figure=""><pre style="background-color:#0d1117;color:#e6edf3" tabindex="0" data-language="yaml" data-theme="github-dark-default"><code data-language="yaml" data-theme="github-dark-default" style="display: grid;"><span data-line=""><span style="color:#7EE787">apiVersion</span><span style="color:#E6EDF3">: </span><span style="color:#A5D6FF">gateway.networking.k8s.io/v1</span></span>
+<span data-line=""><span style="color:#7EE787">kind</span><span style="color:#E6EDF3">: </span><span style="color:#A5D6FF">Gateway</span></span>
+<span data-line=""><span style="color:#7EE787">metadata</span><span style="color:#E6EDF3">:</span></span>
+<span data-line=""><span style="color:#7EE787">  name</span><span style="color:#E6EDF3">: </span><span style="color:#A5D6FF">eg-tls</span></span>
+<span data-line=""><span style="color:#7EE787">spec</span><span style="color:#E6EDF3">:</span></span>
+<span data-line=""><span style="color:#7EE787">  gatewayClassName</span><span style="color:#E6EDF3">: </span><span style="color:#A5D6FF">eg</span></span>
+<span data-line=""><span style="color:#7EE787">  listeners</span><span style="color:#E6EDF3">:</span></span>
+<span data-line=""><span style="color:#E6EDF3">    - </span><span style="color:#7EE787">name</span><span style="color:#E6EDF3">: </span><span style="color:#A5D6FF">tls</span></span>
+<span data-line=""><span style="color:#7EE787">      protocol</span><span style="color:#E6EDF3">: </span><span style="color:#A5D6FF">TLS</span></span>
+<span data-line=""><span style="color:#7EE787">      port</span><span style="color:#E6EDF3">: </span><span style="color:#79C0FF">443</span></span>
+<span data-line=""><span style="color:#79C0FF">---</span></span>
+<span data-line=""><span style="color:#7EE787">apiVersion</span><span style="color:#E6EDF3">: </span><span style="color:#A5D6FF">gateway.networking.k8s.io/v1alpha2</span></span>
+<span data-line=""><span style="color:#7EE787">kind</span><span style="color:#E6EDF3">: </span><span style="color:#A5D6FF">TLSRoute</span></span>
+<span data-line=""><span style="color:#7EE787">metadata</span><span style="color:#E6EDF3">:</span></span>
+<span data-line=""><span style="color:#7EE787">  name</span><span style="color:#E6EDF3">: </span><span style="color:#A5D6FF">passthrough-route</span></span>
+<span data-line=""><span style="color:#7EE787">spec</span><span style="color:#E6EDF3">:</span></span>
+<span data-line=""><span style="color:#7EE787">  parentRefs</span><span style="color:#E6EDF3">:</span></span>
+<span data-line=""><span style="color:#E6EDF3">    - </span><span style="color:#7EE787">name</span><span style="color:#E6EDF3">: </span><span style="color:#A5D6FF">eg-tls</span></span>
+<span data-line=""><span style="color:#7EE787">  hostnames</span><span style="color:#E6EDF3">:</span></span>
+<span data-line=""><span style="color:#E6EDF3">    - </span><span style="color:#A5D6FF">"db.example.com"</span></span>
+<span data-line=""><span style="color:#7EE787">  rules</span><span style="color:#E6EDF3">:</span></span>
+<span data-line=""><span style="color:#E6EDF3">    - </span><span style="color:#7EE787">backendRefs</span><span style="color:#E6EDF3">:</span></span>
+<span data-line=""><span style="color:#E6EDF3">        - </span><span style="color:#7EE787">name</span><span style="color:#E6EDF3">: </span><span style="color:#A5D6FF">db-service</span></span>
+<span data-line=""><span style="color:#7EE787">          port</span><span style="color:#E6EDF3">: </span><span style="color:#79C0FF">5432</span></span></code></pre></figure>
 <p>このパターンのよくある用途:</p>
 <ul>
 <li>SNI hostname だけで route する</li>
@@ -356,19 +360,19 @@ a:T5f5a,<p>HTTP が動いたら、そこはまだウォームアップです。�
 <strong>Gateway は他 namespace の certificate Secret を参照できますが、そのためには <code>ReferenceGrant</code> が必要です。</strong></p>
 <p>たとえば platform team が <code>envoy-gateway-system</code> に証明書を集約し、application 側の Gateway が <code>default</code> にある場合、明示的な許可なしに namespace をまたいで参照することはできません。</p>
 <p>例:</p>
-<figure data-rehype-pretty-code-figure=""><pre style="background-color:#24292e;color:#e1e4e8" tabindex="0" data-language="yaml" data-theme="github-dark"><code data-language="yaml" data-theme="github-dark" style="display: grid;"><span data-line=""><span style="color:#85E89D">apiVersion</span><span style="color:#E1E4E8">: </span><span style="color:#9ECBFF">gateway.networking.k8s.io/v1beta1</span></span>
-<span data-line=""><span style="color:#85E89D">kind</span><span style="color:#E1E4E8">: </span><span style="color:#9ECBFF">ReferenceGrant</span></span>
-<span data-line=""><span style="color:#85E89D">metadata</span><span style="color:#E1E4E8">:</span></span>
-<span data-line=""><span style="color:#85E89D">  name</span><span style="color:#E1E4E8">: </span><span style="color:#9ECBFF">allow-default-to-read-cert</span></span>
-<span data-line=""><span style="color:#85E89D">  namespace</span><span style="color:#E1E4E8">: </span><span style="color:#9ECBFF">envoy-gateway-system</span></span>
-<span data-line=""><span style="color:#85E89D">spec</span><span style="color:#E1E4E8">:</span></span>
-<span data-line=""><span style="color:#85E89D">  from</span><span style="color:#E1E4E8">:</span></span>
-<span data-line=""><span style="color:#E1E4E8">    - </span><span style="color:#85E89D">group</span><span style="color:#E1E4E8">: </span><span style="color:#9ECBFF">gateway.networking.k8s.io</span></span>
-<span data-line=""><span style="color:#85E89D">      kind</span><span style="color:#E1E4E8">: </span><span style="color:#9ECBFF">Gateway</span></span>
-<span data-line=""><span style="color:#85E89D">      namespace</span><span style="color:#E1E4E8">: </span><span style="color:#9ECBFF">default</span></span>
-<span data-line=""><span style="color:#85E89D">  to</span><span style="color:#E1E4E8">:</span></span>
-<span data-line=""><span style="color:#E1E4E8">    - </span><span style="color:#85E89D">group</span><span style="color:#E1E4E8">: </span><span style="color:#9ECBFF">""</span></span>
-<span data-line=""><span style="color:#85E89D">      kind</span><span style="color:#E1E4E8">: </span><span style="color:#9ECBFF">Secret</span></span></code></pre></figure>
+<figure data-rehype-pretty-code-figure=""><pre style="background-color:#0d1117;color:#e6edf3" tabindex="0" data-language="yaml" data-theme="github-dark-default"><code data-language="yaml" data-theme="github-dark-default" style="display: grid;"><span data-line=""><span style="color:#7EE787">apiVersion</span><span style="color:#E6EDF3">: </span><span style="color:#A5D6FF">gateway.networking.k8s.io/v1beta1</span></span>
+<span data-line=""><span style="color:#7EE787">kind</span><span style="color:#E6EDF3">: </span><span style="color:#A5D6FF">ReferenceGrant</span></span>
+<span data-line=""><span style="color:#7EE787">metadata</span><span style="color:#E6EDF3">:</span></span>
+<span data-line=""><span style="color:#7EE787">  name</span><span style="color:#E6EDF3">: </span><span style="color:#A5D6FF">allow-default-to-read-cert</span></span>
+<span data-line=""><span style="color:#7EE787">  namespace</span><span style="color:#E6EDF3">: </span><span style="color:#A5D6FF">envoy-gateway-system</span></span>
+<span data-line=""><span style="color:#7EE787">spec</span><span style="color:#E6EDF3">:</span></span>
+<span data-line=""><span style="color:#7EE787">  from</span><span style="color:#E6EDF3">:</span></span>
+<span data-line=""><span style="color:#E6EDF3">    - </span><span style="color:#7EE787">group</span><span style="color:#E6EDF3">: </span><span style="color:#A5D6FF">gateway.networking.k8s.io</span></span>
+<span data-line=""><span style="color:#7EE787">      kind</span><span style="color:#E6EDF3">: </span><span style="color:#A5D6FF">Gateway</span></span>
+<span data-line=""><span style="color:#7EE787">      namespace</span><span style="color:#E6EDF3">: </span><span style="color:#A5D6FF">default</span></span>
+<span data-line=""><span style="color:#7EE787">  to</span><span style="color:#E6EDF3">:</span></span>
+<span data-line=""><span style="color:#E6EDF3">    - </span><span style="color:#7EE787">group</span><span style="color:#E6EDF3">: </span><span style="color:#A5D6FF">""</span></span>
+<span data-line=""><span style="color:#7EE787">      kind</span><span style="color:#E6EDF3">: </span><span style="color:#A5D6FF">Secret</span></span></code></pre></figure>
 <p>意味:</p>
 <ul>
 <li><code>default</code> namespace の <code>Gateway</code> が</li>
@@ -382,7 +386,7 @@ a:T5f5a,<p>HTTP が動いたら、そこはまだウォームアップです。�
 </blockquote>
 <h2 id="次の一歩">次の一歩</h2>
 <p>インストール、概念、routing、TLS を一通り見たので、次の記事ではそれらを本番で爆発しにくい実践知にまとめます。
-👉 <a href="05-best-practices">ベストプラクティス</a></p>5:["$","aside",null,{"className":"hidden lg:block","children":["$","$L9",null,{"html":"$a"}]}]
-6:["$","script","script-0",{"src":"/_next/static/chunks/2dddb3bc05093f69.js","async":true}]
-7:["$","$Lb",null,{"children":["$","$c",null,{"name":"Next.MetadataOutlet","children":"$@d"}]}]
-d:null
+👉 <a href="05-best-practices">ベストプラクティス</a></p>9:["$","aside",null,{"className":"hidden lg:block","children":["$","$Ld",null,{"html":"$e"}]}]
+a:["$","script","script-0",{"src":"/_next/static/chunks/2dddb3bc05093f69.js","async":true}]
+b:["$","$Lf",null,{"children":["$","$10",null,{"name":"Next.MetadataOutlet","children":"$@11"}]}]
+11:null

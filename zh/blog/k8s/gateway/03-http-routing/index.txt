@@ -1,0 +1,449 @@
+1:"$Sreact.fragment"
+2:I[26795,["/_next/static/chunks/5a5b5b13c22d14f7.js","/_next/static/chunks/a484d1d3dd4b55ab.js"],"default"]
+3:I[73489,["/_next/static/chunks/5a5b5b13c22d14f7.js","/_next/static/chunks/a484d1d3dd4b55ab.js"],"default"]
+6:I[50183,["/_next/static/chunks/5a5b5b13c22d14f7.js","/_next/static/chunks/a484d1d3dd4b55ab.js"],"OutletBoundary"]
+7:"$Sreact.suspense"
+9:I[50183,["/_next/static/chunks/5a5b5b13c22d14f7.js","/_next/static/chunks/a484d1d3dd4b55ab.js"],"ViewportBoundary"]
+b:I[50183,["/_next/static/chunks/5a5b5b13c22d14f7.js","/_next/static/chunks/a484d1d3dd4b55ab.js"],"MetadataBoundary"]
+d:I[63847,[],"default"]
+:HL["/_next/static/chunks/4d9c3828f6075602.css","style"]
+:HL["/_next/static/media/797e433ab948586e-s.p.29207c2f.woff2","font",{"crossOrigin":"","type":"font/woff2"}]
+:HL["/_next/static/media/caa3a2e1cccd8315-s.p.3b6cae6d.woff2","font",{"crossOrigin":"","type":"font/woff2"}]
+0:{"P":null,"b":"ekNoF06-0VZrB4pGVUsy8","c":["","zh","blog","k8s","gateway","03-http-routing",""],"q":"","i":false,"f":[[["",{"children":[["locale","zh","d"],{"children":["blog",{"children":[["slug","k8s/gateway/03-http-routing","c"],{"children":["__PAGE__",{}]}]}]}]},"$undefined","$undefined",true],[["$","$1","c",{"children":[null,["$","$L2",null,{"parallelRouterKey":"children","error":"$undefined","errorStyles":"$undefined","errorScripts":"$undefined","template":["$","$L3",null,{}],"templateStyles":"$undefined","templateScripts":"$undefined","notFound":[["$","html",null,{"lang":"zh-Hant","children":["$","body",null,{"children":["$","main",null,{"className":"mx-auto max-w-2xl px-4 py-20 text-center sm:px-6","children":[["$","h1",null,{"className":"mb-3 text-4xl font-bold tracking-tight","children":"404"}],["$","p",null,{"className":"mb-8 text-lg","style":{"color":"var(--color-muted)"},"children":"找不到這個頁面 / Page not found"}],["$","a",null,{"href":"/zh/","className":"inline-flex items-center rounded-lg border px-4 py-2.5 text-sm font-medium","style":{"borderColor":"var(--color-border)","color":"var(--color-accent)","background":"var(--color-surface)"},"children":"BenXHub Blog"}]]}]}]}],[["$","link","0",{"rel":"stylesheet","href":"/_next/static/chunks/4d9c3828f6075602.css","precedence":"next","crossOrigin":"$undefined","nonce":"$undefined"}]]],"forbidden":"$undefined","unauthorized":"$undefined"}]]}],{"children":[["$","$1","c",{"children":[[["$","link","0",{"rel":"stylesheet","href":"/_next/static/chunks/4d9c3828f6075602.css","precedence":"next","crossOrigin":"$undefined","nonce":"$undefined"}],["$","script","script-0",{"src":"/_next/static/chunks/4204edc93da35a5e.js","async":true,"nonce":"$undefined"}],["$","script","script-1",{"src":"/_next/static/chunks/f2afb7fd2b7566bb.js","async":true,"nonce":"$undefined"}]],"$L4"]}],{"children":[["$","$1","c",{"children":[null,["$","$L2",null,{"parallelRouterKey":"children","error":"$undefined","errorStyles":"$undefined","errorScripts":"$undefined","template":["$","$L3",null,{}],"templateStyles":"$undefined","templateScripts":"$undefined","notFound":"$undefined","forbidden":"$undefined","unauthorized":"$undefined"}]]}],{"children":[["$","$1","c",{"children":[null,["$","$L2",null,{"parallelRouterKey":"children","error":"$undefined","errorStyles":"$undefined","errorScripts":"$undefined","template":["$","$L3",null,{}],"templateStyles":"$undefined","templateScripts":"$undefined","notFound":"$undefined","forbidden":"$undefined","unauthorized":"$undefined"}]]}],{"children":[["$","$1","c",{"children":["$L5",[["$","script","script-0",{"src":"/_next/static/chunks/2dddb3bc05093f69.js","async":true,"nonce":"$undefined"}]],["$","$L6",null,{"children":["$","$7",null,{"name":"Next.MetadataOutlet","children":"$@8"}]}]]}],{},null,false,false]},null,false,false]},null,false,false]},null,false,false]},null,false,false],["$","$1","h",{"children":[null,["$","$L9",null,{"children":"$La"}],["$","div",null,{"hidden":true,"children":["$","$Lb",null,{"children":["$","$7",null,{"name":"Next.Metadata","children":"$Lc"}]}]}],["$","meta",null,{"name":"next-size-adjust","content":""}]]}],false]],"m":"$undefined","G":["$d",[]],"S":true}
+4:["$","html",null,{"lang":"zh-Hant","dir":"ltr","className":"geist_a71539c9-module__T19VSG__variable geist_mono_8d43a2aa-module__8Li5zG__variable","children":["$","body",null,{"className":"flex min-h-screen flex-col antialiased","children":[["$","script",null,{"type":"application/ld+json","dangerouslySetInnerHTML":{"__html":"[{\"@context\":\"https://schema.org\",\"@type\":\"WebSite\",\"name\":\"BenXHub Blog\",\"url\":\"https://benxhub.com/zh/\",\"inLanguage\":\"zh-Hant\",\"publisher\":{\"@type\":\"Organization\",\"name\":\"BenXHub Blog\",\"url\":\"https://benxhub.com\"},\"potentialAction\":{\"@type\":\"SearchAction\",\"target\":{\"@type\":\"EntryPoint\",\"urlTemplate\":\"https://benxhub.com/zh/search/?q={search_term_string}\"},\"query-input\":\"required name=search_term_string\"}},{\"@context\":\"https://schema.org\",\"@type\":\"Person\",\"@id\":\"https://benxhub.com/#author\",\"name\":\"BenX\",\"url\":\"https://benxhub.com/zh/about/\",\"sameAs\":[\"https://github.com/benzhub\"]}]"}}],"$Le"]}]}]
+f:I[33343,["/_next/static/chunks/4204edc93da35a5e.js","/_next/static/chunks/f2afb7fd2b7566bb.js"],"default"]
+10:I[26817,["/_next/static/chunks/4204edc93da35a5e.js","/_next/static/chunks/f2afb7fd2b7566bb.js"],"default"]
+11:I[6197,["/_next/static/chunks/4204edc93da35a5e.js","/_next/static/chunks/f2afb7fd2b7566bb.js"],"default"]
+13:I[40018,["/_next/static/chunks/4204edc93da35a5e.js","/_next/static/chunks/f2afb7fd2b7566bb.js"],"default"]
+e:["$","$Lf",null,{"formats":"$undefined","locale":"zh","messages":{"common":{"siteName":"BenXHub Blog","siteDescription":"BenX 的技術部落格，分享 Web 開發、架構設計與工程實踐。"},"nav":{"home":"首頁","tags":"標籤","about":"關於","searchLabel":"搜尋文章"},"hero":{"subtitle":"分享 Web 開發、架構設計與工程實踐的技術筆記","cta":"瀏覽文章"},"posts":{"title":"文章列表","count":"共 {total} 篇文章","empty":"目前還沒有文章，敬請期待！","newerPost":"← 較新文章","olderPost":"較舊文章 →","navLabel":"文章導覽"},"pagination":{"prev":"上一頁","next":"下一頁","page":"第 {current} / {total} 頁","label":"文章列表分頁","pageTitle":"第 {num} 頁","pageDescription":"BenX 的技術部落格 — 文章列表分頁。"},"search":{"title":"搜尋文章","description":"搜尋 BenXHub Blog 的所有文章，按標題、描述或標籤即時篩選。","subtitle":"搜尋標題、描述或標籤，即時顯示結果","placeholder":"搜尋文章標題、描述或標籤…","found":"找到 {count} 篇相關文章","notFound":"沒有找到與「{query}」相關的文章","emptyTitle":"找不到相關文章","emptyHint":"試試看其他關鍵字，或瀏覽","allPosts":"所有文章","totalCount":"共 {count} 篇文章，輸入關鍵字即可搜尋"},"tags":{"title":"所有標籤","description":"依標籤瀏覽所有文章。","count":"共 {count} 個標籤","empty":"目前還沒有標籤，敬請期待！","allTags":"所有標籤","postCount":"共 {count} 篇文章","otherTags":"其他標籤","tagTitle":"#{tag} 的文章","tagDescription":"所有標記為「{tag}」的文章列表。"},"about":{"title":"關於","description":"關於 BenXHub Blog 與本站簡介。","subtitle":"關於 BenXHub Blog 與本站簡介","siteTitle":"關於本站","siteContent":"BenXHub Blog 是 BenX 的技術部落格，分享 Web 開發、架構設計與工程實踐。","authorTitle":"關於我","authorContent":"喜歡寫程式、研究技術，樂於把踩過的坑與解法記錄下來，也歡迎透過本站側欄或 Footer 的連結交流。","linksTitle":"連結"},"sidebar":{"label":"側邊欄","authorBio":"喜歡寫程式與分享，專注 Web 開發、架構與 DevOps。","searchPlaceholder":"搜尋文章…","seriesTitle":"系列文章","articleCount":"{count} 篇"},"toc":{"title":"目錄","label":"文章目錄"},"notFound":{"message":"此頁面不存在，可能連結已失效或網址輸入錯誤。","backHome":"返回首頁"},"localeSwitcher":{"label":"切換語言"}},"now":"$undefined","timeZone":"UTC","children":[["$","$L10",null,{}],["$","$L11",null,{}],["$","main",null,{"className":"flex-1 pt-16","children":["$","$L2",null,{"parallelRouterKey":"children","error":"$undefined","errorStyles":"$undefined","errorScripts":"$undefined","template":["$","$L3",null,{}],"templateStyles":"$undefined","templateScripts":"$undefined","notFound":["$L12",[]],"forbidden":"$undefined","unauthorized":"$undefined"}]}],["$","$L13",null,{}]]}]
+12:["$","div",null,{"className":"mx-auto max-w-2xl px-4 py-20 text-center sm:px-6","children":[["$","h1",null,{"className":"mb-3 text-4xl font-bold tracking-tight","style":{"color":"var(--color-text)"},"children":"404"}],["$","p",null,{"className":"mb-8 text-lg","style":{"color":"var(--color-muted)"},"children":"此頁面不存在，可能連結已失效或網址輸入錯誤。"}],"$L14"]}]
+a:[["$","meta","0",{"charSet":"utf-8"}],["$","meta","1",{"name":"viewport","content":"width=device-width, initial-scale=1"}]]
+15:I[14864,["/_next/static/chunks/4204edc93da35a5e.js","/_next/static/chunks/f2afb7fd2b7566bb.js","/_next/static/chunks/2dddb3bc05093f69.js"],"default"]
+14:["$","$L15",null,{"ref":"$undefined","href":"/zh","locale":"$undefined","localeCookie":{"name":"NEXT_LOCALE","sameSite":"lax"},"className":"inline-flex items-center rounded-lg border px-4 py-2.5 text-sm font-medium transition-colors hover:border-accent","style":{"borderColor":"var(--color-border)","color":"var(--color-accent)","background":"var(--color-surface)"},"children":"返回首頁"}]
+1b:T62fe,<p>前兩篇先讓你知道「這套東西是什麼」。這篇開始進入大家最常真的會改的地方：<code>HTTPRoute</code>。</p>
+<p>你可以把 <code>HTTPRoute</code> 想成入口流量的分流腳本，只是這次不是寫 Nginx 規則，也不是背 controller annotation，而是用 Kubernetes 原生資源來描述。</p>
+<p>先講一個容易混淆的點：這篇只講 <code>HTTPRoute</code>，因為它處理的是 HTTP/HTTPS 語意。如果你是 gRPC，會更偏 <code>GRPCRoute</code>；如果是原始 TCP，則是 <code>TCPRoute</code>；如果是 TLS passthrough，則可能會用 <code>TLSRoute</code>。不要什麼都硬塞成 <code>HTTPRoute</code>，那樣 YAML 會開始長出一股「勉強湊合」的味道。</p>
+<h2 id="最常見的路由看-host-與-path">最常見的路由：看 Host 與 Path</h2>
+<p>下面這段是最典型的例子：</p>
+<figure data-rehype-pretty-code-figure=""><pre style="background-color:#0d1117;color:#e6edf3" tabindex="0" data-language="yaml" data-theme="github-dark-default"><code data-language="yaml" data-theme="github-dark-default" style="display: grid;"><span data-line=""><span style="color:#7EE787">apiVersion</span><span style="color:#E6EDF3">: </span><span style="color:#A5D6FF">gateway.networking.k8s.io/v1</span></span>
+<span data-line=""><span style="color:#7EE787">kind</span><span style="color:#E6EDF3">: </span><span style="color:#A5D6FF">HTTPRoute</span></span>
+<span data-line=""><span style="color:#7EE787">metadata</span><span style="color:#E6EDF3">:</span></span>
+<span data-line=""><span style="color:#7EE787">  name</span><span style="color:#E6EDF3">: </span><span style="color:#A5D6FF">app-route</span></span>
+<span data-line=""><span style="color:#7EE787">spec</span><span style="color:#E6EDF3">:</span></span>
+<span data-line=""><span style="color:#7EE787">  parentRefs</span><span style="color:#E6EDF3">:</span></span>
+<span data-line=""><span style="color:#E6EDF3">    - </span><span style="color:#7EE787">name</span><span style="color:#E6EDF3">: </span><span style="color:#A5D6FF">eg</span></span>
+<span data-line=""><span style="color:#7EE787">  hostnames</span><span style="color:#E6EDF3">:</span></span>
+<span data-line=""><span style="color:#E6EDF3">    - </span><span style="color:#A5D6FF">"app.example.com"</span></span>
+<span data-line=""><span style="color:#7EE787">  rules</span><span style="color:#E6EDF3">:</span></span>
+<span data-line=""><span style="color:#E6EDF3">    - </span><span style="color:#7EE787">matches</span><span style="color:#E6EDF3">:</span></span>
+<span data-line=""><span style="color:#E6EDF3">        - </span><span style="color:#7EE787">path</span><span style="color:#E6EDF3">:</span></span>
+<span data-line=""><span style="color:#7EE787">            type</span><span style="color:#E6EDF3">: </span><span style="color:#A5D6FF">PathPrefix</span></span>
+<span data-line=""><span style="color:#7EE787">            value</span><span style="color:#E6EDF3">: </span><span style="color:#A5D6FF">/api</span></span>
+<span data-line=""><span style="color:#7EE787">      backendRefs</span><span style="color:#E6EDF3">:</span></span>
+<span data-line=""><span style="color:#E6EDF3">        - </span><span style="color:#7EE787">name</span><span style="color:#E6EDF3">: </span><span style="color:#A5D6FF">api-service</span></span>
+<span data-line=""><span style="color:#7EE787">          port</span><span style="color:#E6EDF3">: </span><span style="color:#79C0FF">8080</span></span></code></pre></figure>
+<p>意思是：</p>
+<ul>
+<li>只有 <code>Host: app.example.com</code> 會吃這條 route</li>
+<li>且路徑要符合 <code>/api</code> 開頭</li>
+<li>最後送到 <code>api-service:8080</code></li>
+</ul>
+<p>如果你把 <code>hostnames</code> 拿掉，這條 route 就會更像「只看 path，不看網域」。</p>
+<h2 id="matches-到底能匹配什麼"><code>matches</code> 到底能匹配什麼</h2>
+<p><code>HTTPRoute</code> 最核心的概念之一就是 <code>matches</code>。<br>
+你可以把它理解成「什麼樣的請求會命中這條 rule」。</p>
+<p>常見可匹配條件有：</p>
+<ul>
+<li><code>path</code></li>
+<li><code>headers</code></li>
+<li><code>queryParams</code></li>
+<li><code>method</code></li>
+</ul>
+<p>例如：</p>
+<figure data-rehype-pretty-code-figure=""><pre style="background-color:#0d1117;color:#e6edf3" tabindex="0" data-language="yaml" data-theme="github-dark-default"><code data-language="yaml" data-theme="github-dark-default" style="display: grid;"><span data-line=""><span style="color:#7EE787">matches</span><span style="color:#E6EDF3">:</span></span>
+<span data-line=""><span style="color:#E6EDF3">  - </span><span style="color:#7EE787">method</span><span style="color:#E6EDF3">: </span><span style="color:#A5D6FF">GET</span></span>
+<span data-line=""><span style="color:#7EE787">    path</span><span style="color:#E6EDF3">:</span></span>
+<span data-line=""><span style="color:#7EE787">      type</span><span style="color:#E6EDF3">: </span><span style="color:#A5D6FF">PathPrefix</span></span>
+<span data-line=""><span style="color:#7EE787">      value</span><span style="color:#E6EDF3">: </span><span style="color:#A5D6FF">/api</span></span>
+<span data-line=""><span style="color:#7EE787">    headers</span><span style="color:#E6EDF3">:</span></span>
+<span data-line=""><span style="color:#E6EDF3">      - </span><span style="color:#7EE787">name</span><span style="color:#E6EDF3">: </span><span style="color:#A5D6FF">version</span></span>
+<span data-line=""><span style="color:#7EE787">        value</span><span style="color:#E6EDF3">: </span><span style="color:#A5D6FF">v2</span></span></code></pre></figure>
+<p>意思就是：</p>
+<ul>
+<li>只接受 <code>GET</code></li>
+<li>path 要以 <code>/api</code> 開頭</li>
+<li>header 還得帶 <code>version: v2</code></li>
+</ul>
+<p>這種規則非常適合做 API 版本試跑或客戶分批放量。</p>
+<h2 id="一條-route-可以寫多組規則">一條 Route 可以寫多組規則</h2>
+<p>同一個 <code>HTTPRoute</code> 裡，可以根據不同路徑把流量送去不同服務：</p>
+<figure data-rehype-pretty-code-figure=""><pre style="background-color:#0d1117;color:#e6edf3" tabindex="0" data-language="yaml" data-theme="github-dark-default"><code data-language="yaml" data-theme="github-dark-default" style="display: grid;"><span data-line=""><span style="color:#7EE787">rules</span><span style="color:#E6EDF3">:</span></span>
+<span data-line=""><span style="color:#E6EDF3">  - </span><span style="color:#7EE787">matches</span><span style="color:#E6EDF3">:</span></span>
+<span data-line=""><span style="color:#E6EDF3">      - </span><span style="color:#7EE787">path</span><span style="color:#E6EDF3">:</span></span>
+<span data-line=""><span style="color:#7EE787">          type</span><span style="color:#E6EDF3">: </span><span style="color:#A5D6FF">PathPrefix</span></span>
+<span data-line=""><span style="color:#7EE787">          value</span><span style="color:#E6EDF3">: </span><span style="color:#A5D6FF">/api</span></span>
+<span data-line=""><span style="color:#7EE787">    backendRefs</span><span style="color:#E6EDF3">:</span></span>
+<span data-line=""><span style="color:#E6EDF3">      - </span><span style="color:#7EE787">name</span><span style="color:#E6EDF3">: </span><span style="color:#A5D6FF">api-service</span></span>
+<span data-line=""><span style="color:#7EE787">        port</span><span style="color:#E6EDF3">: </span><span style="color:#79C0FF">8080</span></span>
+<span data-line=""><span style="color:#E6EDF3">  - </span><span style="color:#7EE787">matches</span><span style="color:#E6EDF3">:</span></span>
+<span data-line=""><span style="color:#E6EDF3">      - </span><span style="color:#7EE787">path</span><span style="color:#E6EDF3">:</span></span>
+<span data-line=""><span style="color:#7EE787">          type</span><span style="color:#E6EDF3">: </span><span style="color:#A5D6FF">PathPrefix</span></span>
+<span data-line=""><span style="color:#7EE787">          value</span><span style="color:#E6EDF3">: </span><span style="color:#A5D6FF">/admin</span></span>
+<span data-line=""><span style="color:#7EE787">    backendRefs</span><span style="color:#E6EDF3">:</span></span>
+<span data-line=""><span style="color:#E6EDF3">      - </span><span style="color:#7EE787">name</span><span style="color:#E6EDF3">: </span><span style="color:#A5D6FF">admin-service</span></span>
+<span data-line=""><span style="color:#7EE787">        port</span><span style="color:#E6EDF3">: </span><span style="color:#79C0FF">8080</span></span></code></pre></figure>
+<p>這很適合一個網域底下切不同子路徑。像：</p>
+<ul>
+<li><code>/api</code> 給 API service</li>
+<li><code>/admin</code> 給後台 service</li>
+</ul>
+<p>這種寫法的好處是，一眼就能看出路由邏輯，不像某些老配置檔，讀到一半會懷疑自己是不是在看 RPG 技能樹。</p>
+<h2 id="headermethodquery-也能當條件">Header、Method、Query 也能當條件</h2>
+<p><code>HTTPRoute</code> 不只看 path，還能看 request header、method、query param。</p>
+<p>例如只有帶 <code>version: v2</code> 的請求才進新版服務：</p>
+<figure data-rehype-pretty-code-figure=""><pre style="background-color:#0d1117;color:#e6edf3" tabindex="0" data-language="yaml" data-theme="github-dark-default"><code data-language="yaml" data-theme="github-dark-default" style="display: grid;"><span data-line=""><span style="color:#7EE787">apiVersion</span><span style="color:#E6EDF3">: </span><span style="color:#A5D6FF">gateway.networking.k8s.io/v1</span></span>
+<span data-line=""><span style="color:#7EE787">kind</span><span style="color:#E6EDF3">: </span><span style="color:#A5D6FF">HTTPRoute</span></span>
+<span data-line=""><span style="color:#7EE787">metadata</span><span style="color:#E6EDF3">:</span></span>
+<span data-line=""><span style="color:#7EE787">  name</span><span style="color:#E6EDF3">: </span><span style="color:#A5D6FF">versioned-route</span></span>
+<span data-line=""><span style="color:#7EE787">spec</span><span style="color:#E6EDF3">:</span></span>
+<span data-line=""><span style="color:#7EE787">  parentRefs</span><span style="color:#E6EDF3">:</span></span>
+<span data-line=""><span style="color:#E6EDF3">    - </span><span style="color:#7EE787">name</span><span style="color:#E6EDF3">: </span><span style="color:#A5D6FF">eg</span></span>
+<span data-line=""><span style="color:#7EE787">  rules</span><span style="color:#E6EDF3">:</span></span>
+<span data-line=""><span style="color:#E6EDF3">    - </span><span style="color:#7EE787">matches</span><span style="color:#E6EDF3">:</span></span>
+<span data-line=""><span style="color:#E6EDF3">        - </span><span style="color:#7EE787">path</span><span style="color:#E6EDF3">:</span></span>
+<span data-line=""><span style="color:#7EE787">            type</span><span style="color:#E6EDF3">: </span><span style="color:#A5D6FF">PathPrefix</span></span>
+<span data-line=""><span style="color:#7EE787">            value</span><span style="color:#E6EDF3">: </span><span style="color:#A5D6FF">/api</span></span>
+<span data-line=""><span style="color:#7EE787">          headers</span><span style="color:#E6EDF3">:</span></span>
+<span data-line=""><span style="color:#E6EDF3">            - </span><span style="color:#7EE787">name</span><span style="color:#E6EDF3">: </span><span style="color:#A5D6FF">version</span></span>
+<span data-line=""><span style="color:#7EE787">              value</span><span style="color:#E6EDF3">: </span><span style="color:#A5D6FF">v2</span></span>
+<span data-line=""><span style="color:#7EE787">      backendRefs</span><span style="color:#E6EDF3">:</span></span>
+<span data-line=""><span style="color:#E6EDF3">        - </span><span style="color:#7EE787">name</span><span style="color:#E6EDF3">: </span><span style="color:#A5D6FF">api-v2</span></span>
+<span data-line=""><span style="color:#7EE787">          port</span><span style="color:#E6EDF3">: </span><span style="color:#79C0FF">8080</span></span>
+<span data-line=""><span style="color:#E6EDF3">    - </span><span style="color:#7EE787">matches</span><span style="color:#E6EDF3">:</span></span>
+<span data-line=""><span style="color:#E6EDF3">        - </span><span style="color:#7EE787">path</span><span style="color:#E6EDF3">:</span></span>
+<span data-line=""><span style="color:#7EE787">            type</span><span style="color:#E6EDF3">: </span><span style="color:#A5D6FF">PathPrefix</span></span>
+<span data-line=""><span style="color:#7EE787">            value</span><span style="color:#E6EDF3">: </span><span style="color:#A5D6FF">/api</span></span>
+<span data-line=""><span style="color:#7EE787">      backendRefs</span><span style="color:#E6EDF3">:</span></span>
+<span data-line=""><span style="color:#E6EDF3">        - </span><span style="color:#7EE787">name</span><span style="color:#E6EDF3">: </span><span style="color:#A5D6FF">api-v1</span></span>
+<span data-line=""><span style="color:#7EE787">          port</span><span style="color:#E6EDF3">: </span><span style="color:#79C0FF">8080</span></span></code></pre></figure>
+<p>這個模式很適合：</p>
+<ul>
+<li>灰度釋出</li>
+<li>特定客戶先試用新版本</li>
+<li>手動驗證新功能</li>
+</ul>
+<p>比起直接切一個全新網域，header-based routing 通常更細，也更方便做實驗。</p>
+<h2 id="filters匹配後還能先加工"><code>filters</code>：匹配後還能先加工</h2>
+<p><code>HTTPRoute</code> 不只是「符合就轉送」，它還能在轉送前後做一些處理，這就是 <code>filters</code>。</p>
+<p>常見用法像是加 header：</p>
+<figure data-rehype-pretty-code-figure=""><pre style="background-color:#0d1117;color:#e6edf3" tabindex="0" data-language="yaml" data-theme="github-dark-default"><code data-language="yaml" data-theme="github-dark-default" style="display: grid;"><span data-line=""><span style="color:#7EE787">rules</span><span style="color:#E6EDF3">:</span></span>
+<span data-line=""><span style="color:#E6EDF3">  - </span><span style="color:#7EE787">filters</span><span style="color:#E6EDF3">:</span></span>
+<span data-line=""><span style="color:#E6EDF3">      - </span><span style="color:#7EE787">type</span><span style="color:#E6EDF3">: </span><span style="color:#A5D6FF">RequestHeaderModifier</span></span>
+<span data-line=""><span style="color:#7EE787">        requestHeaderModifier</span><span style="color:#E6EDF3">:</span></span>
+<span data-line=""><span style="color:#7EE787">          add</span><span style="color:#E6EDF3">:</span></span>
+<span data-line=""><span style="color:#E6EDF3">            - </span><span style="color:#7EE787">name</span><span style="color:#E6EDF3">: </span><span style="color:#A5D6FF">x-env</span></span>
+<span data-line=""><span style="color:#7EE787">              value</span><span style="color:#E6EDF3">: </span><span style="color:#A5D6FF">prod</span></span>
+<span data-line=""><span style="color:#7EE787">    backendRefs</span><span style="color:#E6EDF3">:</span></span>
+<span data-line=""><span style="color:#E6EDF3">      - </span><span style="color:#7EE787">name</span><span style="color:#E6EDF3">: </span><span style="color:#A5D6FF">api-service</span></span>
+<span data-line=""><span style="color:#7EE787">        port</span><span style="color:#E6EDF3">: </span><span style="color:#79C0FF">8080</span></span></code></pre></figure>
+<p>這種做法常見於：</p>
+<ul>
+<li>往後端補追蹤資訊</li>
+<li>在入口層加固定 header</li>
+<li>做 request/response 調整</li>
+</ul>
+<p>不過要記得，filter 雖然好用，但它不是拿來把入口層寫成一個巨大神奇中介層的。太多行為堆在 route 上，之後除錯會很想把鍵盤拿去餵水獺。</p>
+<h2 id="權重分流最常見的流量切分">權重分流：最常見的流量切分</h2>
+<p>如果你想把 90% 流量送舊版、10% 送新版，可以直接用 <code>weight</code>：</p>
+<figure data-rehype-pretty-code-figure=""><pre style="background-color:#0d1117;color:#e6edf3" tabindex="0" data-language="yaml" data-theme="github-dark-default"><code data-language="yaml" data-theme="github-dark-default" style="display: grid;"><span data-line=""><span style="color:#7EE787">apiVersion</span><span style="color:#E6EDF3">: </span><span style="color:#A5D6FF">gateway.networking.k8s.io/v1</span></span>
+<span data-line=""><span style="color:#7EE787">kind</span><span style="color:#E6EDF3">: </span><span style="color:#A5D6FF">HTTPRoute</span></span>
+<span data-line=""><span style="color:#7EE787">metadata</span><span style="color:#E6EDF3">:</span></span>
+<span data-line=""><span style="color:#7EE787">  name</span><span style="color:#E6EDF3">: </span><span style="color:#A5D6FF">canary-route</span></span>
+<span data-line=""><span style="color:#7EE787">spec</span><span style="color:#E6EDF3">:</span></span>
+<span data-line=""><span style="color:#7EE787">  parentRefs</span><span style="color:#E6EDF3">:</span></span>
+<span data-line=""><span style="color:#E6EDF3">    - </span><span style="color:#7EE787">name</span><span style="color:#E6EDF3">: </span><span style="color:#A5D6FF">eg</span></span>
+<span data-line=""><span style="color:#7EE787">  hostnames</span><span style="color:#E6EDF3">:</span></span>
+<span data-line=""><span style="color:#E6EDF3">    - </span><span style="color:#A5D6FF">"app.example.com"</span></span>
+<span data-line=""><span style="color:#7EE787">  rules</span><span style="color:#E6EDF3">:</span></span>
+<span data-line=""><span style="color:#E6EDF3">    - </span><span style="color:#7EE787">backendRefs</span><span style="color:#E6EDF3">:</span></span>
+<span data-line=""><span style="color:#E6EDF3">        - </span><span style="color:#7EE787">name</span><span style="color:#E6EDF3">: </span><span style="color:#A5D6FF">api-v1</span></span>
+<span data-line=""><span style="color:#7EE787">          port</span><span style="color:#E6EDF3">: </span><span style="color:#79C0FF">8080</span></span>
+<span data-line=""><span style="color:#7EE787">          weight</span><span style="color:#E6EDF3">: </span><span style="color:#79C0FF">90</span></span>
+<span data-line=""><span style="color:#E6EDF3">        - </span><span style="color:#7EE787">name</span><span style="color:#E6EDF3">: </span><span style="color:#A5D6FF">api-v2</span></span>
+<span data-line=""><span style="color:#7EE787">          port</span><span style="color:#E6EDF3">: </span><span style="color:#79C0FF">8080</span></span>
+<span data-line=""><span style="color:#7EE787">          weight</span><span style="color:#E6EDF3">: </span><span style="color:#79C0FF">10</span></span></code></pre></figure>
+<p>這就是最基礎的 canary / traffic splitting。</p>
+<p>你不需要一開始就上 service mesh 才能做一點流量實驗。對很多 API 服務來說，這已經夠用了，而且設定乾淨很多。</p>
+<blockquote>
+<p>💡 <code>weight</code> 是相對值，不一定非得加到 100。<code>9</code> 和 <code>1</code> 也能表達一樣的比例。</p>
+</blockquote>
+<h2 id="timeouts不要讓請求掛到天荒地老"><code>timeouts</code>：不要讓請求掛到天荒地老</h2>
+<p>HTTPRoute 也能在 rule 層設定 timeout。這點很重要，因為入口層如果沒有邊界，爛請求就會像奧客一樣坐著不走。</p>
+<figure data-rehype-pretty-code-figure=""><pre style="background-color:#0d1117;color:#e6edf3" tabindex="0" data-language="yaml" data-theme="github-dark-default"><code data-language="yaml" data-theme="github-dark-default" style="display: grid;"><span data-line=""><span style="color:#7EE787">rules</span><span style="color:#E6EDF3">:</span></span>
+<span data-line=""><span style="color:#E6EDF3">  - </span><span style="color:#7EE787">matches</span><span style="color:#E6EDF3">:</span></span>
+<span data-line=""><span style="color:#E6EDF3">      - </span><span style="color:#7EE787">path</span><span style="color:#E6EDF3">:</span></span>
+<span data-line=""><span style="color:#7EE787">          type</span><span style="color:#E6EDF3">: </span><span style="color:#A5D6FF">PathPrefix</span></span>
+<span data-line=""><span style="color:#7EE787">          value</span><span style="color:#E6EDF3">: </span><span style="color:#A5D6FF">/reports</span></span>
+<span data-line=""><span style="color:#7EE787">    timeouts</span><span style="color:#E6EDF3">:</span></span>
+<span data-line=""><span style="color:#7EE787">      request</span><span style="color:#E6EDF3">: </span><span style="color:#A5D6FF">10s</span></span>
+<span data-line=""><span style="color:#7EE787">      backendRequest</span><span style="color:#E6EDF3">: </span><span style="color:#A5D6FF">2s</span></span>
+<span data-line=""><span style="color:#7EE787">    backendRefs</span><span style="color:#E6EDF3">:</span></span>
+<span data-line=""><span style="color:#E6EDF3">      - </span><span style="color:#7EE787">name</span><span style="color:#E6EDF3">: </span><span style="color:#A5D6FF">report-service</span></span>
+<span data-line=""><span style="color:#7EE787">        port</span><span style="color:#E6EDF3">: </span><span style="color:#79C0FF">8080</span></span></code></pre></figure>
+<p>可以這樣理解：</p>
+<ul>
+<li><code>request</code>：整個 client 請求最多等多久</li>
+<li><code>backendRequest</code>：Gateway 跟後端單次請求最多等多久</li>
+</ul>
+<p>通常 <code>backendRequest</code> 不能比 <code>request</code> 還大，不然邏輯上就很像說「整趟旅程 10 分鐘內要到，但其中一段公車我可以等 20 分鐘」，宇宙會先困惑。</p>
+<h2 id="兩個常見細節">兩個常見細節</h2>
+<h3 id="1-parentrefs-可以指定-listener">1. <code>parentRefs</code> 可以指定 listener</h3>
+<p>如果一個 Gateway 有多個 listener，你可以只綁其中一個：</p>
+<figure data-rehype-pretty-code-figure=""><pre style="background-color:#0d1117;color:#e6edf3" tabindex="0" data-language="yaml" data-theme="github-dark-default"><code data-language="yaml" data-theme="github-dark-default" style="display: grid;"><span data-line=""><span style="color:#7EE787">parentRefs</span><span style="color:#E6EDF3">:</span></span>
+<span data-line=""><span style="color:#E6EDF3">  - </span><span style="color:#7EE787">name</span><span style="color:#E6EDF3">: </span><span style="color:#A5D6FF">eg</span></span>
+<span data-line=""><span style="color:#7EE787">    sectionName</span><span style="color:#E6EDF3">: </span><span style="color:#A5D6FF">http</span></span></code></pre></figure>
+<p>這代表這條 route 只掛到 <code>http</code> 這個 listener。<br>
+對有多個入口設定的場景，這會比全部亂掛更可控。</p>
+<h3 id="2-沒寫-matches等於全匹配">2. 沒寫 matches，等於全匹配</h3>
+<p>如果某條 rule 沒寫 <code>matches</code>，預設效果接近匹配 <code>/</code>。<br>
+也就是說，它很像預設規則，所有請求都可能進來。</p>
+<p>這很方便，但也很容易蓋掉你以為更精準的規則，所以不要因為偷懶少寫，最後把自己坑進去。</p>
+<h2 id="驗證路由有沒有生效">驗證路由有沒有生效</h2>
+<p>路由配置完，可以直接用 <code>curl</code> 驗證：</p>
+<figure data-rehype-pretty-code-figure=""><pre style="background-color:#0d1117;color:#e6edf3" tabindex="0" data-language="bash" data-theme="github-dark-default"><code data-language="bash" data-theme="github-dark-default" style="display: grid;"><span data-line=""><span style="color:#FFA657">curl</span><span style="color:#79C0FF"> -H</span><span style="color:#A5D6FF"> "Host: app.example.com"</span><span style="color:#A5D6FF"> http://</span><span style="color:#E6EDF3">$GATEWAY_HOST</span><span style="color:#A5D6FF">/api/users</span></span>
+<span data-line=""><span style="color:#FFA657">curl</span><span style="color:#79C0FF"> -H</span><span style="color:#A5D6FF"> "Host: app.example.com"</span><span style="color:#79C0FF"> -H</span><span style="color:#A5D6FF"> "version: v2"</span><span style="color:#A5D6FF"> http://</span><span style="color:#E6EDF3">$GATEWAY_HOST</span><span style="color:#A5D6FF">/api/users</span></span></code></pre></figure>
+<p>如果你想看 <code>HTTPRoute</code> 狀態：</p>
+<figure data-rehype-pretty-code-figure=""><pre style="background-color:#0d1117;color:#e6edf3" tabindex="0" data-language="bash" data-theme="github-dark-default"><code data-language="bash" data-theme="github-dark-default" style="display: grid;"><span data-line=""><span style="color:#FFA657">kubectl</span><span style="color:#A5D6FF"> get</span><span style="color:#A5D6FF"> httproute</span><span style="color:#A5D6FF"> app-route</span><span style="color:#79C0FF"> -o</span><span style="color:#A5D6FF"> yaml</span></span></code></pre></figure>
+<p>特別注意：</p>
+<ul>
+<li><code>status.parents</code></li>
+<li><code>Accepted</code> condition</li>
+</ul>
+<p>有時候 YAML 看起來很正確，但 Gateway 沒接受，那就像投履歷沒回信，不能當成入職成功。</p>
+<h2 id="一句話總結">一句話總結</h2>
+<p><code>HTTPRoute</code> 的核心就是「先匹配，再轉送」。你掌握了 host、path、header、weight，日常 80% 的 HTTP 入口需求就差不多能處理。</p>
+<h2 id="下一步">下一步</h2>
+<p>下一篇來處理正式上線一定會碰到的事：HTTPS、憑證、TLS 終止與安全設定：
+👉 <a href="04-tls-and-security">TLS 與安全</a></p>5:[["$","script",null,{"type":"application/ld+json","dangerouslySetInnerHTML":{"__html":"{\"@context\":\"https://schema.org\",\"@type\":\"Article\",\"headline\":\"Envoy Gateway HTTP 路由實戰：Host、Path、Header 與流量分流\",\"description\":\"從 host/path 匹配，到 filters、timeouts、header 條件與權重分流，掌握 HTTPRoute 最常見的用法。\",\"url\":\"https://benxhub.com/zh/blog/k8s/gateway/03-http-routing/\",\"mainEntityOfPage\":{\"@type\":\"WebPage\",\"@id\":\"https://benxhub.com/zh/blog/k8s/gateway/03-http-routing/\"},\"datePublished\":\"2026-03-10T00:00:00.000Z\",\"dateModified\":\"2026-03-10T00:00:00.000Z\",\"keywords\":\"kubernetes, envoy-gateway, gateway-api, httproute, traffic-splitting\",\"inLanguage\":\"zh-Hant\",\"author\":{\"@type\":\"Person\",\"@id\":\"https://benxhub.com/#author\",\"name\":\"BenX\",\"url\":\"https://benxhub.com/zh/about/\",\"sameAs\":[\"https://github.com/benzhub\"]},\"publisher\":{\"@type\":\"Organization\",\"name\":\"BenXHub Blog\",\"url\":\"https://benxhub.com\"},\"image\":\"https://benxhub.com/og-default.png\"}"}}],["$","div",null,{"className":"mx-auto max-w-6xl px-4 py-12 sm:px-6","children":["$","div",null,{"className":"lg:grid lg:grid-cols-[1fr_240px] lg:gap-14","children":[["$","article",null,{"children":[["$","header",null,{"className":"mb-10","children":[["$","div",null,{"className":"mb-4 flex flex-wrap gap-2","children":["$L16","$L17","$L18","$L19","$L1a"]}],["$","h1",null,{"className":"mb-4 text-3xl leading-snug font-bold tracking-tight sm:text-4xl","style":{"color":"var(--color-text)"},"children":"Envoy Gateway HTTP 路由實戰：Host、Path、Header 與流量分流"}],["$","div",null,{"className":"flex flex-wrap items-center gap-3 text-sm","style":{"color":"var(--color-muted)"},"children":[["$","time",null,{"dateTime":"2026-03-10","children":"2026 年 3 月 10 日"}],["$","span",null,{"aria-hidden":"true","children":"·"}],["$","span",null,{"children":"8 min read"}]]}],"$undefined",["$","div",null,{"className":"mt-6 border-b","style":{"borderColor":"var(--color-border)"}}]]}],["$","div",null,{"className":"prose","dangerouslySetInnerHTML":{"__html":"$1b"}}],"$L1c"]}],"$L1d"]}]}]]
+25:I[24801,["/_next/static/chunks/4204edc93da35a5e.js","/_next/static/chunks/f2afb7fd2b7566bb.js","/_next/static/chunks/2dddb3bc05093f69.js"],"default"]
+1c:["$","footer",null,{"className":"mt-14 border-t pt-8","style":{"borderColor":"var(--color-border)"},"children":[["$","div",null,{"className":"mb-8 flex flex-wrap gap-2","children":["$L1e","$L1f","$L20","$L21","$L22"]}],["$","nav",null,{"aria-label":"文章導覽","className":"grid grid-cols-1 gap-4 sm:grid-cols-2","children":["$L23","$L24"]}]]}]
+26:T62fe,<p>前兩篇先讓你知道「這套東西是什麼」。這篇開始進入大家最常真的會改的地方：<code>HTTPRoute</code>。</p>
+<p>你可以把 <code>HTTPRoute</code> 想成入口流量的分流腳本，只是這次不是寫 Nginx 規則，也不是背 controller annotation，而是用 Kubernetes 原生資源來描述。</p>
+<p>先講一個容易混淆的點：這篇只講 <code>HTTPRoute</code>，因為它處理的是 HTTP/HTTPS 語意。如果你是 gRPC，會更偏 <code>GRPCRoute</code>；如果是原始 TCP，則是 <code>TCPRoute</code>；如果是 TLS passthrough，則可能會用 <code>TLSRoute</code>。不要什麼都硬塞成 <code>HTTPRoute</code>，那樣 YAML 會開始長出一股「勉強湊合」的味道。</p>
+<h2 id="最常見的路由看-host-與-path">最常見的路由：看 Host 與 Path</h2>
+<p>下面這段是最典型的例子：</p>
+<figure data-rehype-pretty-code-figure=""><pre style="background-color:#0d1117;color:#e6edf3" tabindex="0" data-language="yaml" data-theme="github-dark-default"><code data-language="yaml" data-theme="github-dark-default" style="display: grid;"><span data-line=""><span style="color:#7EE787">apiVersion</span><span style="color:#E6EDF3">: </span><span style="color:#A5D6FF">gateway.networking.k8s.io/v1</span></span>
+<span data-line=""><span style="color:#7EE787">kind</span><span style="color:#E6EDF3">: </span><span style="color:#A5D6FF">HTTPRoute</span></span>
+<span data-line=""><span style="color:#7EE787">metadata</span><span style="color:#E6EDF3">:</span></span>
+<span data-line=""><span style="color:#7EE787">  name</span><span style="color:#E6EDF3">: </span><span style="color:#A5D6FF">app-route</span></span>
+<span data-line=""><span style="color:#7EE787">spec</span><span style="color:#E6EDF3">:</span></span>
+<span data-line=""><span style="color:#7EE787">  parentRefs</span><span style="color:#E6EDF3">:</span></span>
+<span data-line=""><span style="color:#E6EDF3">    - </span><span style="color:#7EE787">name</span><span style="color:#E6EDF3">: </span><span style="color:#A5D6FF">eg</span></span>
+<span data-line=""><span style="color:#7EE787">  hostnames</span><span style="color:#E6EDF3">:</span></span>
+<span data-line=""><span style="color:#E6EDF3">    - </span><span style="color:#A5D6FF">"app.example.com"</span></span>
+<span data-line=""><span style="color:#7EE787">  rules</span><span style="color:#E6EDF3">:</span></span>
+<span data-line=""><span style="color:#E6EDF3">    - </span><span style="color:#7EE787">matches</span><span style="color:#E6EDF3">:</span></span>
+<span data-line=""><span style="color:#E6EDF3">        - </span><span style="color:#7EE787">path</span><span style="color:#E6EDF3">:</span></span>
+<span data-line=""><span style="color:#7EE787">            type</span><span style="color:#E6EDF3">: </span><span style="color:#A5D6FF">PathPrefix</span></span>
+<span data-line=""><span style="color:#7EE787">            value</span><span style="color:#E6EDF3">: </span><span style="color:#A5D6FF">/api</span></span>
+<span data-line=""><span style="color:#7EE787">      backendRefs</span><span style="color:#E6EDF3">:</span></span>
+<span data-line=""><span style="color:#E6EDF3">        - </span><span style="color:#7EE787">name</span><span style="color:#E6EDF3">: </span><span style="color:#A5D6FF">api-service</span></span>
+<span data-line=""><span style="color:#7EE787">          port</span><span style="color:#E6EDF3">: </span><span style="color:#79C0FF">8080</span></span></code></pre></figure>
+<p>意思是：</p>
+<ul>
+<li>只有 <code>Host: app.example.com</code> 會吃這條 route</li>
+<li>且路徑要符合 <code>/api</code> 開頭</li>
+<li>最後送到 <code>api-service:8080</code></li>
+</ul>
+<p>如果你把 <code>hostnames</code> 拿掉，這條 route 就會更像「只看 path，不看網域」。</p>
+<h2 id="matches-到底能匹配什麼"><code>matches</code> 到底能匹配什麼</h2>
+<p><code>HTTPRoute</code> 最核心的概念之一就是 <code>matches</code>。<br>
+你可以把它理解成「什麼樣的請求會命中這條 rule」。</p>
+<p>常見可匹配條件有：</p>
+<ul>
+<li><code>path</code></li>
+<li><code>headers</code></li>
+<li><code>queryParams</code></li>
+<li><code>method</code></li>
+</ul>
+<p>例如：</p>
+<figure data-rehype-pretty-code-figure=""><pre style="background-color:#0d1117;color:#e6edf3" tabindex="0" data-language="yaml" data-theme="github-dark-default"><code data-language="yaml" data-theme="github-dark-default" style="display: grid;"><span data-line=""><span style="color:#7EE787">matches</span><span style="color:#E6EDF3">:</span></span>
+<span data-line=""><span style="color:#E6EDF3">  - </span><span style="color:#7EE787">method</span><span style="color:#E6EDF3">: </span><span style="color:#A5D6FF">GET</span></span>
+<span data-line=""><span style="color:#7EE787">    path</span><span style="color:#E6EDF3">:</span></span>
+<span data-line=""><span style="color:#7EE787">      type</span><span style="color:#E6EDF3">: </span><span style="color:#A5D6FF">PathPrefix</span></span>
+<span data-line=""><span style="color:#7EE787">      value</span><span style="color:#E6EDF3">: </span><span style="color:#A5D6FF">/api</span></span>
+<span data-line=""><span style="color:#7EE787">    headers</span><span style="color:#E6EDF3">:</span></span>
+<span data-line=""><span style="color:#E6EDF3">      - </span><span style="color:#7EE787">name</span><span style="color:#E6EDF3">: </span><span style="color:#A5D6FF">version</span></span>
+<span data-line=""><span style="color:#7EE787">        value</span><span style="color:#E6EDF3">: </span><span style="color:#A5D6FF">v2</span></span></code></pre></figure>
+<p>意思就是：</p>
+<ul>
+<li>只接受 <code>GET</code></li>
+<li>path 要以 <code>/api</code> 開頭</li>
+<li>header 還得帶 <code>version: v2</code></li>
+</ul>
+<p>這種規則非常適合做 API 版本試跑或客戶分批放量。</p>
+<h2 id="一條-route-可以寫多組規則">一條 Route 可以寫多組規則</h2>
+<p>同一個 <code>HTTPRoute</code> 裡，可以根據不同路徑把流量送去不同服務：</p>
+<figure data-rehype-pretty-code-figure=""><pre style="background-color:#0d1117;color:#e6edf3" tabindex="0" data-language="yaml" data-theme="github-dark-default"><code data-language="yaml" data-theme="github-dark-default" style="display: grid;"><span data-line=""><span style="color:#7EE787">rules</span><span style="color:#E6EDF3">:</span></span>
+<span data-line=""><span style="color:#E6EDF3">  - </span><span style="color:#7EE787">matches</span><span style="color:#E6EDF3">:</span></span>
+<span data-line=""><span style="color:#E6EDF3">      - </span><span style="color:#7EE787">path</span><span style="color:#E6EDF3">:</span></span>
+<span data-line=""><span style="color:#7EE787">          type</span><span style="color:#E6EDF3">: </span><span style="color:#A5D6FF">PathPrefix</span></span>
+<span data-line=""><span style="color:#7EE787">          value</span><span style="color:#E6EDF3">: </span><span style="color:#A5D6FF">/api</span></span>
+<span data-line=""><span style="color:#7EE787">    backendRefs</span><span style="color:#E6EDF3">:</span></span>
+<span data-line=""><span style="color:#E6EDF3">      - </span><span style="color:#7EE787">name</span><span style="color:#E6EDF3">: </span><span style="color:#A5D6FF">api-service</span></span>
+<span data-line=""><span style="color:#7EE787">        port</span><span style="color:#E6EDF3">: </span><span style="color:#79C0FF">8080</span></span>
+<span data-line=""><span style="color:#E6EDF3">  - </span><span style="color:#7EE787">matches</span><span style="color:#E6EDF3">:</span></span>
+<span data-line=""><span style="color:#E6EDF3">      - </span><span style="color:#7EE787">path</span><span style="color:#E6EDF3">:</span></span>
+<span data-line=""><span style="color:#7EE787">          type</span><span style="color:#E6EDF3">: </span><span style="color:#A5D6FF">PathPrefix</span></span>
+<span data-line=""><span style="color:#7EE787">          value</span><span style="color:#E6EDF3">: </span><span style="color:#A5D6FF">/admin</span></span>
+<span data-line=""><span style="color:#7EE787">    backendRefs</span><span style="color:#E6EDF3">:</span></span>
+<span data-line=""><span style="color:#E6EDF3">      - </span><span style="color:#7EE787">name</span><span style="color:#E6EDF3">: </span><span style="color:#A5D6FF">admin-service</span></span>
+<span data-line=""><span style="color:#7EE787">        port</span><span style="color:#E6EDF3">: </span><span style="color:#79C0FF">8080</span></span></code></pre></figure>
+<p>這很適合一個網域底下切不同子路徑。像：</p>
+<ul>
+<li><code>/api</code> 給 API service</li>
+<li><code>/admin</code> 給後台 service</li>
+</ul>
+<p>這種寫法的好處是，一眼就能看出路由邏輯，不像某些老配置檔，讀到一半會懷疑自己是不是在看 RPG 技能樹。</p>
+<h2 id="headermethodquery-也能當條件">Header、Method、Query 也能當條件</h2>
+<p><code>HTTPRoute</code> 不只看 path，還能看 request header、method、query param。</p>
+<p>例如只有帶 <code>version: v2</code> 的請求才進新版服務：</p>
+<figure data-rehype-pretty-code-figure=""><pre style="background-color:#0d1117;color:#e6edf3" tabindex="0" data-language="yaml" data-theme="github-dark-default"><code data-language="yaml" data-theme="github-dark-default" style="display: grid;"><span data-line=""><span style="color:#7EE787">apiVersion</span><span style="color:#E6EDF3">: </span><span style="color:#A5D6FF">gateway.networking.k8s.io/v1</span></span>
+<span data-line=""><span style="color:#7EE787">kind</span><span style="color:#E6EDF3">: </span><span style="color:#A5D6FF">HTTPRoute</span></span>
+<span data-line=""><span style="color:#7EE787">metadata</span><span style="color:#E6EDF3">:</span></span>
+<span data-line=""><span style="color:#7EE787">  name</span><span style="color:#E6EDF3">: </span><span style="color:#A5D6FF">versioned-route</span></span>
+<span data-line=""><span style="color:#7EE787">spec</span><span style="color:#E6EDF3">:</span></span>
+<span data-line=""><span style="color:#7EE787">  parentRefs</span><span style="color:#E6EDF3">:</span></span>
+<span data-line=""><span style="color:#E6EDF3">    - </span><span style="color:#7EE787">name</span><span style="color:#E6EDF3">: </span><span style="color:#A5D6FF">eg</span></span>
+<span data-line=""><span style="color:#7EE787">  rules</span><span style="color:#E6EDF3">:</span></span>
+<span data-line=""><span style="color:#E6EDF3">    - </span><span style="color:#7EE787">matches</span><span style="color:#E6EDF3">:</span></span>
+<span data-line=""><span style="color:#E6EDF3">        - </span><span style="color:#7EE787">path</span><span style="color:#E6EDF3">:</span></span>
+<span data-line=""><span style="color:#7EE787">            type</span><span style="color:#E6EDF3">: </span><span style="color:#A5D6FF">PathPrefix</span></span>
+<span data-line=""><span style="color:#7EE787">            value</span><span style="color:#E6EDF3">: </span><span style="color:#A5D6FF">/api</span></span>
+<span data-line=""><span style="color:#7EE787">          headers</span><span style="color:#E6EDF3">:</span></span>
+<span data-line=""><span style="color:#E6EDF3">            - </span><span style="color:#7EE787">name</span><span style="color:#E6EDF3">: </span><span style="color:#A5D6FF">version</span></span>
+<span data-line=""><span style="color:#7EE787">              value</span><span style="color:#E6EDF3">: </span><span style="color:#A5D6FF">v2</span></span>
+<span data-line=""><span style="color:#7EE787">      backendRefs</span><span style="color:#E6EDF3">:</span></span>
+<span data-line=""><span style="color:#E6EDF3">        - </span><span style="color:#7EE787">name</span><span style="color:#E6EDF3">: </span><span style="color:#A5D6FF">api-v2</span></span>
+<span data-line=""><span style="color:#7EE787">          port</span><span style="color:#E6EDF3">: </span><span style="color:#79C0FF">8080</span></span>
+<span data-line=""><span style="color:#E6EDF3">    - </span><span style="color:#7EE787">matches</span><span style="color:#E6EDF3">:</span></span>
+<span data-line=""><span style="color:#E6EDF3">        - </span><span style="color:#7EE787">path</span><span style="color:#E6EDF3">:</span></span>
+<span data-line=""><span style="color:#7EE787">            type</span><span style="color:#E6EDF3">: </span><span style="color:#A5D6FF">PathPrefix</span></span>
+<span data-line=""><span style="color:#7EE787">            value</span><span style="color:#E6EDF3">: </span><span style="color:#A5D6FF">/api</span></span>
+<span data-line=""><span style="color:#7EE787">      backendRefs</span><span style="color:#E6EDF3">:</span></span>
+<span data-line=""><span style="color:#E6EDF3">        - </span><span style="color:#7EE787">name</span><span style="color:#E6EDF3">: </span><span style="color:#A5D6FF">api-v1</span></span>
+<span data-line=""><span style="color:#7EE787">          port</span><span style="color:#E6EDF3">: </span><span style="color:#79C0FF">8080</span></span></code></pre></figure>
+<p>這個模式很適合：</p>
+<ul>
+<li>灰度釋出</li>
+<li>特定客戶先試用新版本</li>
+<li>手動驗證新功能</li>
+</ul>
+<p>比起直接切一個全新網域，header-based routing 通常更細，也更方便做實驗。</p>
+<h2 id="filters匹配後還能先加工"><code>filters</code>：匹配後還能先加工</h2>
+<p><code>HTTPRoute</code> 不只是「符合就轉送」，它還能在轉送前後做一些處理，這就是 <code>filters</code>。</p>
+<p>常見用法像是加 header：</p>
+<figure data-rehype-pretty-code-figure=""><pre style="background-color:#0d1117;color:#e6edf3" tabindex="0" data-language="yaml" data-theme="github-dark-default"><code data-language="yaml" data-theme="github-dark-default" style="display: grid;"><span data-line=""><span style="color:#7EE787">rules</span><span style="color:#E6EDF3">:</span></span>
+<span data-line=""><span style="color:#E6EDF3">  - </span><span style="color:#7EE787">filters</span><span style="color:#E6EDF3">:</span></span>
+<span data-line=""><span style="color:#E6EDF3">      - </span><span style="color:#7EE787">type</span><span style="color:#E6EDF3">: </span><span style="color:#A5D6FF">RequestHeaderModifier</span></span>
+<span data-line=""><span style="color:#7EE787">        requestHeaderModifier</span><span style="color:#E6EDF3">:</span></span>
+<span data-line=""><span style="color:#7EE787">          add</span><span style="color:#E6EDF3">:</span></span>
+<span data-line=""><span style="color:#E6EDF3">            - </span><span style="color:#7EE787">name</span><span style="color:#E6EDF3">: </span><span style="color:#A5D6FF">x-env</span></span>
+<span data-line=""><span style="color:#7EE787">              value</span><span style="color:#E6EDF3">: </span><span style="color:#A5D6FF">prod</span></span>
+<span data-line=""><span style="color:#7EE787">    backendRefs</span><span style="color:#E6EDF3">:</span></span>
+<span data-line=""><span style="color:#E6EDF3">      - </span><span style="color:#7EE787">name</span><span style="color:#E6EDF3">: </span><span style="color:#A5D6FF">api-service</span></span>
+<span data-line=""><span style="color:#7EE787">        port</span><span style="color:#E6EDF3">: </span><span style="color:#79C0FF">8080</span></span></code></pre></figure>
+<p>這種做法常見於：</p>
+<ul>
+<li>往後端補追蹤資訊</li>
+<li>在入口層加固定 header</li>
+<li>做 request/response 調整</li>
+</ul>
+<p>不過要記得，filter 雖然好用，但它不是拿來把入口層寫成一個巨大神奇中介層的。太多行為堆在 route 上，之後除錯會很想把鍵盤拿去餵水獺。</p>
+<h2 id="權重分流最常見的流量切分">權重分流：最常見的流量切分</h2>
+<p>如果你想把 90% 流量送舊版、10% 送新版，可以直接用 <code>weight</code>：</p>
+<figure data-rehype-pretty-code-figure=""><pre style="background-color:#0d1117;color:#e6edf3" tabindex="0" data-language="yaml" data-theme="github-dark-default"><code data-language="yaml" data-theme="github-dark-default" style="display: grid;"><span data-line=""><span style="color:#7EE787">apiVersion</span><span style="color:#E6EDF3">: </span><span style="color:#A5D6FF">gateway.networking.k8s.io/v1</span></span>
+<span data-line=""><span style="color:#7EE787">kind</span><span style="color:#E6EDF3">: </span><span style="color:#A5D6FF">HTTPRoute</span></span>
+<span data-line=""><span style="color:#7EE787">metadata</span><span style="color:#E6EDF3">:</span></span>
+<span data-line=""><span style="color:#7EE787">  name</span><span style="color:#E6EDF3">: </span><span style="color:#A5D6FF">canary-route</span></span>
+<span data-line=""><span style="color:#7EE787">spec</span><span style="color:#E6EDF3">:</span></span>
+<span data-line=""><span style="color:#7EE787">  parentRefs</span><span style="color:#E6EDF3">:</span></span>
+<span data-line=""><span style="color:#E6EDF3">    - </span><span style="color:#7EE787">name</span><span style="color:#E6EDF3">: </span><span style="color:#A5D6FF">eg</span></span>
+<span data-line=""><span style="color:#7EE787">  hostnames</span><span style="color:#E6EDF3">:</span></span>
+<span data-line=""><span style="color:#E6EDF3">    - </span><span style="color:#A5D6FF">"app.example.com"</span></span>
+<span data-line=""><span style="color:#7EE787">  rules</span><span style="color:#E6EDF3">:</span></span>
+<span data-line=""><span style="color:#E6EDF3">    - </span><span style="color:#7EE787">backendRefs</span><span style="color:#E6EDF3">:</span></span>
+<span data-line=""><span style="color:#E6EDF3">        - </span><span style="color:#7EE787">name</span><span style="color:#E6EDF3">: </span><span style="color:#A5D6FF">api-v1</span></span>
+<span data-line=""><span style="color:#7EE787">          port</span><span style="color:#E6EDF3">: </span><span style="color:#79C0FF">8080</span></span>
+<span data-line=""><span style="color:#7EE787">          weight</span><span style="color:#E6EDF3">: </span><span style="color:#79C0FF">90</span></span>
+<span data-line=""><span style="color:#E6EDF3">        - </span><span style="color:#7EE787">name</span><span style="color:#E6EDF3">: </span><span style="color:#A5D6FF">api-v2</span></span>
+<span data-line=""><span style="color:#7EE787">          port</span><span style="color:#E6EDF3">: </span><span style="color:#79C0FF">8080</span></span>
+<span data-line=""><span style="color:#7EE787">          weight</span><span style="color:#E6EDF3">: </span><span style="color:#79C0FF">10</span></span></code></pre></figure>
+<p>這就是最基礎的 canary / traffic splitting。</p>
+<p>你不需要一開始就上 service mesh 才能做一點流量實驗。對很多 API 服務來說，這已經夠用了，而且設定乾淨很多。</p>
+<blockquote>
+<p>💡 <code>weight</code> 是相對值，不一定非得加到 100。<code>9</code> 和 <code>1</code> 也能表達一樣的比例。</p>
+</blockquote>
+<h2 id="timeouts不要讓請求掛到天荒地老"><code>timeouts</code>：不要讓請求掛到天荒地老</h2>
+<p>HTTPRoute 也能在 rule 層設定 timeout。這點很重要，因為入口層如果沒有邊界，爛請求就會像奧客一樣坐著不走。</p>
+<figure data-rehype-pretty-code-figure=""><pre style="background-color:#0d1117;color:#e6edf3" tabindex="0" data-language="yaml" data-theme="github-dark-default"><code data-language="yaml" data-theme="github-dark-default" style="display: grid;"><span data-line=""><span style="color:#7EE787">rules</span><span style="color:#E6EDF3">:</span></span>
+<span data-line=""><span style="color:#E6EDF3">  - </span><span style="color:#7EE787">matches</span><span style="color:#E6EDF3">:</span></span>
+<span data-line=""><span style="color:#E6EDF3">      - </span><span style="color:#7EE787">path</span><span style="color:#E6EDF3">:</span></span>
+<span data-line=""><span style="color:#7EE787">          type</span><span style="color:#E6EDF3">: </span><span style="color:#A5D6FF">PathPrefix</span></span>
+<span data-line=""><span style="color:#7EE787">          value</span><span style="color:#E6EDF3">: </span><span style="color:#A5D6FF">/reports</span></span>
+<span data-line=""><span style="color:#7EE787">    timeouts</span><span style="color:#E6EDF3">:</span></span>
+<span data-line=""><span style="color:#7EE787">      request</span><span style="color:#E6EDF3">: </span><span style="color:#A5D6FF">10s</span></span>
+<span data-line=""><span style="color:#7EE787">      backendRequest</span><span style="color:#E6EDF3">: </span><span style="color:#A5D6FF">2s</span></span>
+<span data-line=""><span style="color:#7EE787">    backendRefs</span><span style="color:#E6EDF3">:</span></span>
+<span data-line=""><span style="color:#E6EDF3">      - </span><span style="color:#7EE787">name</span><span style="color:#E6EDF3">: </span><span style="color:#A5D6FF">report-service</span></span>
+<span data-line=""><span style="color:#7EE787">        port</span><span style="color:#E6EDF3">: </span><span style="color:#79C0FF">8080</span></span></code></pre></figure>
+<p>可以這樣理解：</p>
+<ul>
+<li><code>request</code>：整個 client 請求最多等多久</li>
+<li><code>backendRequest</code>：Gateway 跟後端單次請求最多等多久</li>
+</ul>
+<p>通常 <code>backendRequest</code> 不能比 <code>request</code> 還大，不然邏輯上就很像說「整趟旅程 10 分鐘內要到，但其中一段公車我可以等 20 分鐘」，宇宙會先困惑。</p>
+<h2 id="兩個常見細節">兩個常見細節</h2>
+<h3 id="1-parentrefs-可以指定-listener">1. <code>parentRefs</code> 可以指定 listener</h3>
+<p>如果一個 Gateway 有多個 listener，你可以只綁其中一個：</p>
+<figure data-rehype-pretty-code-figure=""><pre style="background-color:#0d1117;color:#e6edf3" tabindex="0" data-language="yaml" data-theme="github-dark-default"><code data-language="yaml" data-theme="github-dark-default" style="display: grid;"><span data-line=""><span style="color:#7EE787">parentRefs</span><span style="color:#E6EDF3">:</span></span>
+<span data-line=""><span style="color:#E6EDF3">  - </span><span style="color:#7EE787">name</span><span style="color:#E6EDF3">: </span><span style="color:#A5D6FF">eg</span></span>
+<span data-line=""><span style="color:#7EE787">    sectionName</span><span style="color:#E6EDF3">: </span><span style="color:#A5D6FF">http</span></span></code></pre></figure>
+<p>這代表這條 route 只掛到 <code>http</code> 這個 listener。<br>
+對有多個入口設定的場景，這會比全部亂掛更可控。</p>
+<h3 id="2-沒寫-matches等於全匹配">2. 沒寫 matches，等於全匹配</h3>
+<p>如果某條 rule 沒寫 <code>matches</code>，預設效果接近匹配 <code>/</code>。<br>
+也就是說，它很像預設規則，所有請求都可能進來。</p>
+<p>這很方便，但也很容易蓋掉你以為更精準的規則，所以不要因為偷懶少寫，最後把自己坑進去。</p>
+<h2 id="驗證路由有沒有生效">驗證路由有沒有生效</h2>
+<p>路由配置完，可以直接用 <code>curl</code> 驗證：</p>
+<figure data-rehype-pretty-code-figure=""><pre style="background-color:#0d1117;color:#e6edf3" tabindex="0" data-language="bash" data-theme="github-dark-default"><code data-language="bash" data-theme="github-dark-default" style="display: grid;"><span data-line=""><span style="color:#FFA657">curl</span><span style="color:#79C0FF"> -H</span><span style="color:#A5D6FF"> "Host: app.example.com"</span><span style="color:#A5D6FF"> http://</span><span style="color:#E6EDF3">$GATEWAY_HOST</span><span style="color:#A5D6FF">/api/users</span></span>
+<span data-line=""><span style="color:#FFA657">curl</span><span style="color:#79C0FF"> -H</span><span style="color:#A5D6FF"> "Host: app.example.com"</span><span style="color:#79C0FF"> -H</span><span style="color:#A5D6FF"> "version: v2"</span><span style="color:#A5D6FF"> http://</span><span style="color:#E6EDF3">$GATEWAY_HOST</span><span style="color:#A5D6FF">/api/users</span></span></code></pre></figure>
+<p>如果你想看 <code>HTTPRoute</code> 狀態：</p>
+<figure data-rehype-pretty-code-figure=""><pre style="background-color:#0d1117;color:#e6edf3" tabindex="0" data-language="bash" data-theme="github-dark-default"><code data-language="bash" data-theme="github-dark-default" style="display: grid;"><span data-line=""><span style="color:#FFA657">kubectl</span><span style="color:#A5D6FF"> get</span><span style="color:#A5D6FF"> httproute</span><span style="color:#A5D6FF"> app-route</span><span style="color:#79C0FF"> -o</span><span style="color:#A5D6FF"> yaml</span></span></code></pre></figure>
+<p>特別注意：</p>
+<ul>
+<li><code>status.parents</code></li>
+<li><code>Accepted</code> condition</li>
+</ul>
+<p>有時候 YAML 看起來很正確，但 Gateway 沒接受，那就像投履歷沒回信，不能當成入職成功。</p>
+<h2 id="一句話總結">一句話總結</h2>
+<p><code>HTTPRoute</code> 的核心就是「先匹配，再轉送」。你掌握了 host、path、header、weight，日常 80% 的 HTTP 入口需求就差不多能處理。</p>
+<h2 id="下一步">下一步</h2>
+<p>下一篇來處理正式上線一定會碰到的事：HTTPS、憑證、TLS 終止與安全設定：
+👉 <a href="04-tls-and-security">TLS 與安全</a></p>1d:["$","aside",null,{"className":"hidden lg:block","children":["$","$L25",null,{"html":"$26"}]}]
+16:["$","$L15","kubernetes",{"ref":"$undefined","href":"/zh/tags/kubernetes","locale":"$undefined","localeCookie":"$14:props:localeCookie","className":"inline-flex items-center rounded-full px-2.5 py-0.5 text-xs font-medium transition-colors","style":{"background":"var(--color-code-bg)","color":"var(--color-accent)","border":"1px solid var(--color-border)"},"children":["#","kubernetes"]}]
+17:["$","$L15","envoy-gateway",{"ref":"$undefined","href":"/zh/tags/envoy-gateway","locale":"$undefined","localeCookie":"$14:props:localeCookie","className":"inline-flex items-center rounded-full px-2.5 py-0.5 text-xs font-medium transition-colors","style":{"background":"var(--color-code-bg)","color":"var(--color-accent)","border":"1px solid var(--color-border)"},"children":["#","envoy-gateway"]}]
+18:["$","$L15","gateway-api",{"ref":"$undefined","href":"/zh/tags/gateway-api","locale":"$undefined","localeCookie":"$14:props:localeCookie","className":"inline-flex items-center rounded-full px-2.5 py-0.5 text-xs font-medium transition-colors","style":{"background":"var(--color-code-bg)","color":"var(--color-accent)","border":"1px solid var(--color-border)"},"children":["#","gateway-api"]}]
+19:["$","$L15","httproute",{"ref":"$undefined","href":"/zh/tags/httproute","locale":"$undefined","localeCookie":"$14:props:localeCookie","className":"inline-flex items-center rounded-full px-2.5 py-0.5 text-xs font-medium transition-colors","style":{"background":"var(--color-code-bg)","color":"var(--color-accent)","border":"1px solid var(--color-border)"},"children":["#","httproute"]}]
+1a:["$","$L15","traffic-splitting",{"ref":"$undefined","href":"/zh/tags/traffic-splitting","locale":"$undefined","localeCookie":"$14:props:localeCookie","className":"inline-flex items-center rounded-full px-2.5 py-0.5 text-xs font-medium transition-colors","style":{"background":"var(--color-code-bg)","color":"var(--color-accent)","border":"1px solid var(--color-border)"},"children":["#","traffic-splitting"]}]
+1e:["$","$L15","kubernetes",{"ref":"$undefined","href":"/zh/tags/kubernetes","locale":"$undefined","localeCookie":"$14:props:localeCookie","className":"inline-flex items-center rounded-full px-3 py-1 text-sm font-medium transition-colors","style":{"background":"var(--color-code-bg)","color":"var(--color-accent)","border":"1px solid var(--color-border)"},"children":["#","kubernetes"]}]
+1f:["$","$L15","envoy-gateway",{"ref":"$undefined","href":"/zh/tags/envoy-gateway","locale":"$undefined","localeCookie":"$14:props:localeCookie","className":"inline-flex items-center rounded-full px-3 py-1 text-sm font-medium transition-colors","style":{"background":"var(--color-code-bg)","color":"var(--color-accent)","border":"1px solid var(--color-border)"},"children":["#","envoy-gateway"]}]
+20:["$","$L15","gateway-api",{"ref":"$undefined","href":"/zh/tags/gateway-api","locale":"$undefined","localeCookie":"$14:props:localeCookie","className":"inline-flex items-center rounded-full px-3 py-1 text-sm font-medium transition-colors","style":{"background":"var(--color-code-bg)","color":"var(--color-accent)","border":"1px solid var(--color-border)"},"children":["#","gateway-api"]}]
+21:["$","$L15","httproute",{"ref":"$undefined","href":"/zh/tags/httproute","locale":"$undefined","localeCookie":"$14:props:localeCookie","className":"inline-flex items-center rounded-full px-3 py-1 text-sm font-medium transition-colors","style":{"background":"var(--color-code-bg)","color":"var(--color-accent)","border":"1px solid var(--color-border)"},"children":["#","httproute"]}]
+22:["$","$L15","traffic-splitting",{"ref":"$undefined","href":"/zh/tags/traffic-splitting","locale":"$undefined","localeCookie":"$14:props:localeCookie","className":"inline-flex items-center rounded-full px-3 py-1 text-sm font-medium transition-colors","style":{"background":"var(--color-code-bg)","color":"var(--color-accent)","border":"1px solid var(--color-border)"},"children":["#","traffic-splitting"]}]
+23:["$","$L15",null,{"ref":"$undefined","href":"/zh/blog/k8s/gateway/02-core-concepts","locale":"$undefined","localeCookie":"$14:props:localeCookie","className":"group rounded-lg border p-4 transition-colors hover:border-accent","style":{"borderColor":"var(--color-border)","background":"var(--color-surface)"},"children":[["$","p",null,{"className":"mb-1 text-xs","style":{"color":"var(--color-muted)"},"children":"← 較新文章"}],["$","p",null,{"className":"line-clamp-1 text-sm font-medium transition-colors group-hover:text-accent","style":{"color":"var(--color-text)"},"children":"Envoy Gateway 核心概念：Gateway、Listener、Proxy 與 Route 家族一次搞懂"}]]}]
+24:["$","$L15",null,{"ref":"$undefined","href":"/zh/blog/k8s/gateway/04-tls-and-security","locale":"$undefined","localeCookie":"$14:props:localeCookie","className":"group rounded-lg border p-4 text-right transition-colors hover:border-accent","style":{"borderColor":"var(--color-border)","background":"var(--color-surface)"},"children":[["$","p",null,{"className":"mb-1 text-xs","style":{"color":"var(--color-muted)"},"children":"較舊文章 →"}],["$","p",null,{"className":"line-clamp-1 text-sm font-medium transition-colors group-hover:text-accent","style":{"color":"var(--color-text)"},"children":"Envoy Gateway TLS 與安全：把 HTTPS 接起來，別讓 API 裸奔"}]]}]
+27:I[92204,["/_next/static/chunks/5a5b5b13c22d14f7.js","/_next/static/chunks/a484d1d3dd4b55ab.js"],"IconMark"]
+8:null
+c:[["$","title","0",{"children":"Envoy Gateway HTTP 路由實戰：Host、Path、Header 與流量分流 | BenXHub Blog"}],["$","meta","1",{"name":"description","content":"從 host/path 匹配，到 filters、timeouts、header 條件與權重分流，掌握 HTTPRoute 最常見的用法。"}],["$","link","2",{"rel":"canonical","href":"https://benxhub.com/zh/blog/k8s/gateway/03-http-routing/"}],["$","link","3",{"rel":"alternate","hrefLang":"zh-Hant","href":"https://benxhub.com/zh/blog/k8s/gateway/03-http-routing/"}],["$","link","4",{"rel":"alternate","hrefLang":"en","href":"https://benxhub.com/en/blog/k8s/gateway/03-http-routing/"}],["$","link","5",{"rel":"alternate","hrefLang":"ja","href":"https://benxhub.com/ja/blog/k8s/gateway/03-http-routing/"}],["$","link","6",{"rel":"alternate","hrefLang":"ko","href":"https://benxhub.com/ko/blog/k8s/gateway/03-http-routing/"}],["$","link","7",{"rel":"alternate","hrefLang":"es","href":"https://benxhub.com/es/blog/k8s/gateway/03-http-routing/"}],["$","link","8",{"rel":"alternate","hrefLang":"fr","href":"https://benxhub.com/fr/blog/k8s/gateway/03-http-routing/"}],["$","link","9",{"rel":"alternate","hrefLang":"ar","href":"https://benxhub.com/ar/blog/k8s/gateway/03-http-routing/"}],["$","link","10",{"rel":"alternate","hrefLang":"x-default","href":"https://benxhub.com/zh/blog/k8s/gateway/03-http-routing/"}],["$","link","11",{"rel":"alternate","type":"application/rss+xml","href":"https://benxhub.com/zh/feed.xml"}],["$","meta","12",{"property":"og:title","content":"Envoy Gateway HTTP 路由實戰：Host、Path、Header 與流量分流"}],["$","meta","13",{"property":"og:description","content":"從 host/path 匹配，到 filters、timeouts、header 條件與權重分流，掌握 HTTPRoute 最常見的用法。"}],["$","meta","14",{"property":"og:url","content":"https://benxhub.com/zh/blog/k8s/gateway/03-http-routing/"}],["$","meta","15",{"property":"og:site_name","content":"BenXHub Blog"}],["$","meta","16",{"property":"og:locale","content":"zh_TW"}],["$","meta","17",{"property":"og:image","content":"https://benxhub.com/og-default.png"}],["$","meta","18",{"property":"og:image:width","content":"1200"}],["$","meta","19",{"property":"og:image:height","content":"630"}],["$","meta","20",{"property":"og:image:alt","content":"BenXHub Blog"}],["$","meta","21",{"property":"og:type","content":"article"}],["$","meta","22",{"property":"article:published_time","content":"2026-03-10T00:00:00.000Z"}],["$","meta","23",{"property":"article:tag","content":"kubernetes"}],["$","meta","24",{"property":"article:tag","content":"envoy-gateway"}],["$","meta","25",{"property":"article:tag","content":"gateway-api"}],["$","meta","26",{"property":"article:tag","content":"httproute"}],["$","meta","27",{"property":"article:tag","content":"traffic-splitting"}],["$","meta","28",{"name":"twitter:card","content":"summary_large_image"}],["$","meta","29",{"name":"twitter:title","content":"Envoy Gateway HTTP 路由實戰：Host、Path、Header 與流量分流"}],["$","meta","30",{"name":"twitter:description","content":"從 host/path 匹配，到 filters、timeouts、header 條件與權重分流，掌握 HTTPRoute 最常見的用法。"}],["$","meta","31",{"name":"twitter:image","content":"https://benxhub.com/og-default.png"}],["$","link","32",{"rel":"icon","href":"/favicon.ico?favicon.0b3bf435.ico","sizes":"256x256","type":"image/x-icon"}],["$","$L27","33",{}]]

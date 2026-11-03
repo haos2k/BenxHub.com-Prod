@@ -1,9 +1,9 @@
 1:"$Sreact.fragment"
-2:I[14864,["/_next/static/chunks/7923a261b80bb6e1.js","/_next/static/chunks/e09b4358027e8033.js","/_next/static/chunks/2dddb3bc05093f69.js"],"default"]
-8:I[24801,["/_next/static/chunks/7923a261b80bb6e1.js","/_next/static/chunks/e09b4358027e8033.js","/_next/static/chunks/2dddb3bc05093f69.js"],"default"]
+2:I[14864,["/_next/static/chunks/4204edc93da35a5e.js","/_next/static/chunks/f2afb7fd2b7566bb.js","/_next/static/chunks/2dddb3bc05093f69.js"],"default"]
+8:I[24801,["/_next/static/chunks/4204edc93da35a5e.js","/_next/static/chunks/f2afb7fd2b7566bb.js","/_next/static/chunks/2dddb3bc05093f69.js"],"default"]
 a:I[50183,["/_next/static/chunks/5a5b5b13c22d14f7.js","/_next/static/chunks/a484d1d3dd4b55ab.js"],"OutletBoundary"]
 b:"$Sreact.suspense"
-3:T2856,<p>想像你開了一間餐廳，傳統做法是廚房歸廚房、冰箱歸冰箱，中間還要拉一條走廊搬食材。超融合（HCI）的思路不一樣——每個工作站自己就有爐子和冰箱，大家共用食材庫存，誰缺什麼就近拿，不用跑來跑去。Ceph 在 PVE 裡扮演的角色，就是把「共享儲存」直接織進每台節點裡，不用另外買 SAN 或 NAS。</p>
+3:T2886,<p>想像你開了一間餐廳，傳統做法是廚房歸廚房、冰箱歸冰箱，中間還要拉一條走廊搬食材。超融合（HCI）的思路不一樣——每個工作站自己就有爐子和冰箱，大家共用食材庫存，誰缺什麼就近拿，不用跑來跑去。Ceph 在 PVE 裡扮演的角色，就是把「共享儲存」直接織進每台節點裡，不用另外買 SAN 或 NAS。</p>
 <h2 id="你需要什麼才能玩-ceph">你需要什麼才能玩 Ceph</h2>
 <p>別想著一台機器就搞 Ceph，它天生就是群體動物。如果你還沒組好叢集，先回頭看看<a href="08-cluster">叢集管理</a>那篇。</p>
 <table>
@@ -55,40 +55,40 @@ b:"$Sreact.suspense"
 </ul>
 <h2 id="部署流程">部署流程</h2>
 <p>整套流程在 PVE 裡已經包好了，不用自己從頭編譯：</p>
-<figure data-rehype-pretty-code-figure=""><pre style="background-color:#24292e;color:#e1e4e8" tabindex="0" data-language="bash" data-theme="github-dark"><code data-language="bash" data-theme="github-dark" style="display: grid;"><span data-line=""><span style="color:#6A737D"># 在所有節點上安裝 Ceph 套件</span></span>
-<span data-line=""><span style="color:#B392F0">pveceph</span><span style="color:#9ECBFF"> install</span></span>
+<figure data-rehype-pretty-code-figure=""><pre style="background-color:#0d1117;color:#e6edf3" tabindex="0" data-language="bash" data-theme="github-dark-default"><code data-language="bash" data-theme="github-dark-default" style="display: grid;"><span data-line=""><span style="color:#8B949E"># 在所有節點上安裝 Ceph 套件</span></span>
+<span data-line=""><span style="color:#FFA657">pveceph</span><span style="color:#A5D6FF"> install</span></span>
 <span data-line=""> </span>
-<span data-line=""><span style="color:#6A737D"># 在第一台節點初始化（指定 Ceph 專用網路）</span></span>
-<span data-line=""><span style="color:#B392F0">pveceph</span><span style="color:#9ECBFF"> init</span><span style="color:#79B8FF"> --network</span><span style="color:#9ECBFF"> 10.0.0.0/24</span></span>
+<span data-line=""><span style="color:#8B949E"># 在第一台節點初始化（指定 Ceph 專用網路）</span></span>
+<span data-line=""><span style="color:#FFA657">pveceph</span><span style="color:#A5D6FF"> init</span><span style="color:#79C0FF"> --network</span><span style="color:#A5D6FF"> 10.0.0.0/24</span></span>
 <span data-line=""> </span>
-<span data-line=""><span style="color:#6A737D"># 每個節點建 MON 和 MGR</span></span>
-<span data-line=""><span style="color:#B392F0">pveceph</span><span style="color:#9ECBFF"> mon</span><span style="color:#9ECBFF"> create</span></span>
-<span data-line=""><span style="color:#B392F0">pveceph</span><span style="color:#9ECBFF"> mgr</span><span style="color:#9ECBFF"> create</span></span>
+<span data-line=""><span style="color:#8B949E"># 每個節點建 MON 和 MGR</span></span>
+<span data-line=""><span style="color:#FFA657">pveceph</span><span style="color:#A5D6FF"> mon</span><span style="color:#A5D6FF"> create</span></span>
+<span data-line=""><span style="color:#FFA657">pveceph</span><span style="color:#A5D6FF"> mgr</span><span style="color:#A5D6FF"> create</span></span>
 <span data-line=""> </span>
-<span data-line=""><span style="color:#6A737D"># 每顆資料碟建 OSD（裸碟直接上，不要疊 RAID）</span></span>
-<span data-line=""><span style="color:#B392F0">pveceph</span><span style="color:#9ECBFF"> osd</span><span style="color:#9ECBFF"> create</span><span style="color:#9ECBFF"> /dev/sdb</span></span>
+<span data-line=""><span style="color:#8B949E"># 每顆資料碟建 OSD（裸碟直接上，不要疊 RAID）</span></span>
+<span data-line=""><span style="color:#FFA657">pveceph</span><span style="color:#A5D6FF"> osd</span><span style="color:#A5D6FF"> create</span><span style="color:#A5D6FF"> /dev/sdb</span></span>
 <span data-line=""> </span>
-<span data-line=""><span style="color:#6A737D"># 如果 HDD 想加速，用 NVMe 當 DB/WAL</span></span>
-<span data-line=""><span style="color:#B392F0">pveceph</span><span style="color:#9ECBFF"> osd</span><span style="color:#9ECBFF"> create</span><span style="color:#9ECBFF"> /dev/sdb</span><span style="color:#79B8FF"> -db_dev</span><span style="color:#9ECBFF"> /dev/nvme0n1</span><span style="color:#79B8FF"> -wal_dev</span><span style="color:#9ECBFF"> /dev/nvme0n1</span></span>
+<span data-line=""><span style="color:#8B949E"># 如果 HDD 想加速，用 NVMe 當 DB/WAL</span></span>
+<span data-line=""><span style="color:#FFA657">pveceph</span><span style="color:#A5D6FF"> osd</span><span style="color:#A5D6FF"> create</span><span style="color:#A5D6FF"> /dev/sdb</span><span style="color:#79C0FF"> -db_dev</span><span style="color:#A5D6FF"> /dev/nvme0n1</span><span style="color:#79C0FF"> -wal_dev</span><span style="color:#A5D6FF"> /dev/nvme0n1</span></span>
 <span data-line=""> </span>
-<span data-line=""><span style="color:#6A737D"># 建立儲存池，順便掛到 PVE</span></span>
-<span data-line=""><span style="color:#B392F0">pveceph</span><span style="color:#9ECBFF"> pool</span><span style="color:#9ECBFF"> create</span><span style="color:#9ECBFF"> vm-data</span><span style="color:#79B8FF"> --add_storages</span></span>
+<span data-line=""><span style="color:#8B949E"># 建立儲存池，順便掛到 PVE</span></span>
+<span data-line=""><span style="color:#FFA657">pveceph</span><span style="color:#A5D6FF"> pool</span><span style="color:#A5D6FF"> create</span><span style="color:#A5D6FF"> vm-data</span><span style="color:#79C0FF"> --add_storages</span></span>
 <span data-line=""> </span>
-<span data-line=""><span style="color:#6A737D"># 確認一切正常</span></span>
-<span data-line=""><span style="color:#B392F0">ceph</span><span style="color:#9ECBFF"> status</span></span></code></pre></figure>
+<span data-line=""><span style="color:#8B949E"># 確認一切正常</span></span>
+<span data-line=""><span style="color:#FFA657">ceph</span><span style="color:#A5D6FF"> status</span></span></code></pre></figure>
 <p>看到 <code>HEALTH_OK</code> 就可以開香檳了。看到 <code>HEALTH_WARN</code> 先別慌，通常是 PG 還在調整。看到 <code>HEALTH_ERR</code>——嗯，去倒杯咖啡冷靜一下再查。</p>
 <h2 id="crush-map-與故障域">CRUSH Map 與故障域</h2>
 <p>CRUSH Map 決定「資料副本要放哪」。預設故障域是 <code>host</code>，意思是同一份資料的三個副本一定分散在不同節點上。這樣一台機器掛了，資料還是完整的——像把雞蛋分放三個籃子。</p>
 <h2 id="cephfs共享檔案系統">CephFS：共享檔案系統</h2>
 <p>如果你需要多個節點共用 ISO、容器範本或備份目錄，CephFS 很方便：</p>
-<figure data-rehype-pretty-code-figure=""><pre style="background-color:#24292e;color:#e1e4e8" tabindex="0" data-language="bash" data-theme="github-dark"><code data-language="bash" data-theme="github-dark" style="display: grid;"><span data-line=""><span style="color:#B392F0">pveceph</span><span style="color:#9ECBFF"> fs</span><span style="color:#9ECBFF"> create</span><span style="color:#79B8FF"> --pg_num</span><span style="color:#79B8FF"> 128</span><span style="color:#79B8FF"> --add-storage</span></span></code></pre></figure>
+<figure data-rehype-pretty-code-figure=""><pre style="background-color:#0d1117;color:#e6edf3" tabindex="0" data-language="bash" data-theme="github-dark-default"><code data-language="bash" data-theme="github-dark-default" style="display: grid;"><span data-line=""><span style="color:#FFA657">pveceph</span><span style="color:#A5D6FF"> fs</span><span style="color:#A5D6FF"> create</span><span style="color:#79C0FF"> --pg_num</span><span style="color:#79C0FF"> 128</span><span style="color:#79C0FF"> --add-storage</span></span></code></pre></figure>
 <p>它會自動建好 <code>cephfs_data</code> 和 <code>cephfs_metadata</code> 兩個 Pool。</p>
 <h2 id="日常監控指令">日常監控指令</h2>
-<figure data-rehype-pretty-code-figure=""><pre style="background-color:#24292e;color:#e1e4e8" tabindex="0" data-language="bash" data-theme="github-dark"><code data-language="bash" data-theme="github-dark" style="display: grid;"><span data-line=""><span style="color:#B392F0">ceph</span><span style="color:#9ECBFF"> status</span><span style="color:#6A737D">          # 整體健康度</span></span>
-<span data-line=""><span style="color:#B392F0">ceph</span><span style="color:#9ECBFF"> osd</span><span style="color:#9ECBFF"> tree</span><span style="color:#6A737D">        # OSD 分布圖</span></span>
-<span data-line=""><span style="color:#B392F0">ceph</span><span style="color:#9ECBFF"> osd</span><span style="color:#9ECBFF"> df</span><span style="color:#6A737D">          # 各 OSD 用量</span></span>
-<span data-line=""><span style="color:#B392F0">ceph</span><span style="color:#9ECBFF"> df</span><span style="color:#6A737D">              # Pool 用量</span></span>
-<span data-line=""><span style="color:#B392F0">ceph</span><span style="color:#9ECBFF"> osd</span><span style="color:#9ECBFF"> perf</span><span style="color:#6A737D">        # 延遲統計</span></span></code></pre></figure>
+<figure data-rehype-pretty-code-figure=""><pre style="background-color:#0d1117;color:#e6edf3" tabindex="0" data-language="bash" data-theme="github-dark-default"><code data-language="bash" data-theme="github-dark-default" style="display: grid;"><span data-line=""><span style="color:#FFA657">ceph</span><span style="color:#A5D6FF"> status</span><span style="color:#8B949E">          # 整體健康度</span></span>
+<span data-line=""><span style="color:#FFA657">ceph</span><span style="color:#A5D6FF"> osd</span><span style="color:#A5D6FF"> tree</span><span style="color:#8B949E">        # OSD 分布圖</span></span>
+<span data-line=""><span style="color:#FFA657">ceph</span><span style="color:#A5D6FF"> osd</span><span style="color:#A5D6FF"> df</span><span style="color:#8B949E">          # 各 OSD 用量</span></span>
+<span data-line=""><span style="color:#FFA657">ceph</span><span style="color:#A5D6FF"> df</span><span style="color:#8B949E">              # Pool 用量</span></span>
+<span data-line=""><span style="color:#FFA657">ceph</span><span style="color:#A5D6FF"> osd</span><span style="color:#A5D6FF"> perf</span><span style="color:#8B949E">        # 延遲統計</span></span></code></pre></figure>
 <blockquote>
 <p>叢集容量超過 80% 就該擴容了。等到 95% Ceph 會自動阻止寫入，到時候就不是加硬碟能救的——是加班才能救。</p>
 </blockquote>
@@ -113,9 +113,9 @@ b:"$Sreact.suspense"
 <p>最低 10 Gbps 專用網路，建議 25 Gbps。Ceph 的資料複製和恢復都吃網路頻寬，1 Gbps 會嚴重瓶頸。同時建議開啟 Jumbo Frames（MTU 9000）減少封包開銷。</p>
 <h2 id="下一步">下一步</h2>
 <p>有了共享儲存，接下來試試把 GPU 也塞進 VM 裡跑 AI 或打遊戲：
-<a href="11-gpu-passthrough">GPU 直通</a></p>0:{"buildId":"sM8YAyjANE7sOnXm3EQGk","rsc":["$","$1","c",{"children":[[["$","script",null,{"type":"application/ld+json","dangerouslySetInnerHTML":{"__html":"{\"@context\":\"https://schema.org\",\"@type\":\"Article\",\"headline\":\"Proxmox VE Ceph 超融合：把儲存織進每台主機裡\",\"description\":\"PVE Ceph 超融合儲存完整教學：從 Ceph OSD 部署、CRUSH Map 設定到效能調校，三節點就能打造免費分散式儲存。\",\"url\":\"https://benxhub.com/zh/blog/pve/10-ceph-storage\",\"mainEntityOfPage\":{\"@type\":\"WebPage\",\"@id\":\"https://benxhub.com/zh/blog/pve/10-ceph-storage\"},\"datePublished\":\"2026-05-03T00:00:00.000Z\",\"dateModified\":\"2026-05-03T00:00:00.000Z\",\"keywords\":\"proxmox, ceph, storage, hci\",\"inLanguage\":\"zh\",\"author\":{\"@type\":\"Person\",\"name\":\"BenX\",\"url\":\"https://benxhub.com\"},\"publisher\":{\"@type\":\"Organization\",\"name\":\"BenXHub Blog\",\"url\":\"https://benxhub.com\"}}"}}],["$","div",null,{"className":"mx-auto max-w-6xl px-4 py-12 sm:px-6","children":["$","div",null,{"className":"lg:grid lg:grid-cols-[1fr_240px] lg:gap-14","children":[["$","article",null,{"children":[["$","header",null,{"className":"mb-10","children":[["$","div",null,{"className":"mb-4 flex flex-wrap gap-2","children":[["$","$L2","proxmox",{"href":"/zh/tags/proxmox","localeCookie":{"name":"NEXT_LOCALE","sameSite":"lax"},"className":"inline-flex items-center rounded-full px-2.5 py-0.5 text-xs font-medium transition-colors","style":{"background":"var(--color-code-bg)","color":"var(--color-accent)","border":"1px solid var(--color-border)"},"children":["#","proxmox"]}],["$","$L2","ceph",{"href":"/zh/tags/ceph","localeCookie":{"name":"NEXT_LOCALE","sameSite":"lax"},"className":"inline-flex items-center rounded-full px-2.5 py-0.5 text-xs font-medium transition-colors","style":{"background":"var(--color-code-bg)","color":"var(--color-accent)","border":"1px solid var(--color-border)"},"children":["#","ceph"]}],["$","$L2","storage",{"href":"/zh/tags/storage","localeCookie":{"name":"NEXT_LOCALE","sameSite":"lax"},"className":"inline-flex items-center rounded-full px-2.5 py-0.5 text-xs font-medium transition-colors","style":{"background":"var(--color-code-bg)","color":"var(--color-accent)","border":"1px solid var(--color-border)"},"children":["#","storage"]}],["$","$L2","hci",{"href":"/zh/tags/hci","localeCookie":{"name":"NEXT_LOCALE","sameSite":"lax"},"className":"inline-flex items-center rounded-full px-2.5 py-0.5 text-xs font-medium transition-colors","style":{"background":"var(--color-code-bg)","color":"var(--color-accent)","border":"1px solid var(--color-border)"},"children":["#","hci"]}]]}],["$","h1",null,{"className":"mb-4 text-3xl leading-snug font-bold tracking-tight sm:text-4xl","style":{"color":"var(--color-text)"},"children":"Proxmox VE Ceph 超融合：把儲存織進每台主機裡"}],["$","div",null,{"className":"flex flex-wrap items-center gap-3 text-sm","style":{"color":"var(--color-muted)"},"children":[["$","time",null,{"dateTime":"2026-05-03","children":"2026 年 5 月 3 日"}],["$","span",null,{"aria-hidden":"true","children":"·"}],["$","span",null,{"children":"7 min read"}]]}],"$undefined",["$","div",null,{"className":"mt-6 border-b","style":{"borderColor":"var(--color-border)"}}]]}],["$","div",null,{"className":"prose","dangerouslySetInnerHTML":{"__html":"$3"}}],"$L4"]}],"$L5"]}]}]],["$L6"],"$L7"]}],"loading":null,"isPartial":false}
+<a href="11-gpu-passthrough">GPU 直通</a></p>0:{"buildId":"ekNoF06-0VZrB4pGVUsy8","rsc":["$","$1","c",{"children":[[["$","script",null,{"type":"application/ld+json","dangerouslySetInnerHTML":{"__html":"{\"@context\":\"https://schema.org\",\"@type\":\"Article\",\"headline\":\"Proxmox VE Ceph 超融合：把儲存織進每台主機裡\",\"description\":\"PVE Ceph 超融合儲存完整教學：從 Ceph OSD 部署、CRUSH Map 設定到效能調校，三節點就能打造免費分散式儲存。\",\"url\":\"https://benxhub.com/zh/blog/pve/10-ceph-storage/\",\"mainEntityOfPage\":{\"@type\":\"WebPage\",\"@id\":\"https://benxhub.com/zh/blog/pve/10-ceph-storage/\"},\"datePublished\":\"2026-05-03T00:00:00.000Z\",\"dateModified\":\"2026-05-03T00:00:00.000Z\",\"keywords\":\"proxmox, ceph, storage, hci\",\"inLanguage\":\"zh-Hant\",\"author\":{\"@type\":\"Person\",\"@id\":\"https://benxhub.com/#author\",\"name\":\"BenX\",\"url\":\"https://benxhub.com/zh/about/\",\"sameAs\":[\"https://github.com/benzhub\"]},\"publisher\":{\"@type\":\"Organization\",\"name\":\"BenXHub Blog\",\"url\":\"https://benxhub.com\"},\"image\":\"https://benxhub.com/og-default.png\"}"}}],["$","div",null,{"className":"mx-auto max-w-6xl px-4 py-12 sm:px-6","children":["$","div",null,{"className":"lg:grid lg:grid-cols-[1fr_240px] lg:gap-14","children":[["$","article",null,{"children":[["$","header",null,{"className":"mb-10","children":[["$","div",null,{"className":"mb-4 flex flex-wrap gap-2","children":[["$","$L2","proxmox",{"href":"/zh/tags/proxmox","localeCookie":{"name":"NEXT_LOCALE","sameSite":"lax"},"className":"inline-flex items-center rounded-full px-2.5 py-0.5 text-xs font-medium transition-colors","style":{"background":"var(--color-code-bg)","color":"var(--color-accent)","border":"1px solid var(--color-border)"},"children":["#","proxmox"]}],["$","$L2","ceph",{"href":"/zh/tags/ceph","localeCookie":{"name":"NEXT_LOCALE","sameSite":"lax"},"className":"inline-flex items-center rounded-full px-2.5 py-0.5 text-xs font-medium transition-colors","style":{"background":"var(--color-code-bg)","color":"var(--color-accent)","border":"1px solid var(--color-border)"},"children":["#","ceph"]}],["$","$L2","storage",{"href":"/zh/tags/storage","localeCookie":{"name":"NEXT_LOCALE","sameSite":"lax"},"className":"inline-flex items-center rounded-full px-2.5 py-0.5 text-xs font-medium transition-colors","style":{"background":"var(--color-code-bg)","color":"var(--color-accent)","border":"1px solid var(--color-border)"},"children":["#","storage"]}],["$","$L2","hci",{"href":"/zh/tags/hci","localeCookie":{"name":"NEXT_LOCALE","sameSite":"lax"},"className":"inline-flex items-center rounded-full px-2.5 py-0.5 text-xs font-medium transition-colors","style":{"background":"var(--color-code-bg)","color":"var(--color-accent)","border":"1px solid var(--color-border)"},"children":["#","hci"]}]]}],["$","h1",null,{"className":"mb-4 text-3xl leading-snug font-bold tracking-tight sm:text-4xl","style":{"color":"var(--color-text)"},"children":"Proxmox VE Ceph 超融合：把儲存織進每台主機裡"}],["$","div",null,{"className":"flex flex-wrap items-center gap-3 text-sm","style":{"color":"var(--color-muted)"},"children":[["$","time",null,{"dateTime":"2026-05-03","children":"2026 年 5 月 3 日"}],["$","span",null,{"aria-hidden":"true","children":"·"}],["$","span",null,{"children":"7 min read"}]]}],"$undefined",["$","div",null,{"className":"mt-6 border-b","style":{"borderColor":"var(--color-border)"}}]]}],["$","div",null,{"className":"prose","dangerouslySetInnerHTML":{"__html":"$3"}}],"$L4"]}],"$L5"]}]}]],["$L6"],"$L7"]}],"loading":null,"isPartial":false}
 4:["$","footer",null,{"className":"mt-14 border-t pt-8","style":{"borderColor":"var(--color-border)"},"children":[["$","div",null,{"className":"mb-8 flex flex-wrap gap-2","children":[["$","$L2","proxmox",{"href":"/zh/tags/proxmox","localeCookie":{"name":"NEXT_LOCALE","sameSite":"lax"},"className":"inline-flex items-center rounded-full px-3 py-1 text-sm font-medium transition-colors","style":{"background":"var(--color-code-bg)","color":"var(--color-accent)","border":"1px solid var(--color-border)"},"children":["#","proxmox"]}],["$","$L2","ceph",{"href":"/zh/tags/ceph","localeCookie":{"name":"NEXT_LOCALE","sameSite":"lax"},"className":"inline-flex items-center rounded-full px-3 py-1 text-sm font-medium transition-colors","style":{"background":"var(--color-code-bg)","color":"var(--color-accent)","border":"1px solid var(--color-border)"},"children":["#","ceph"]}],["$","$L2","storage",{"href":"/zh/tags/storage","localeCookie":{"name":"NEXT_LOCALE","sameSite":"lax"},"className":"inline-flex items-center rounded-full px-3 py-1 text-sm font-medium transition-colors","style":{"background":"var(--color-code-bg)","color":"var(--color-accent)","border":"1px solid var(--color-border)"},"children":["#","storage"]}],["$","$L2","hci",{"href":"/zh/tags/hci","localeCookie":{"name":"NEXT_LOCALE","sameSite":"lax"},"className":"inline-flex items-center rounded-full px-3 py-1 text-sm font-medium transition-colors","style":{"background":"var(--color-code-bg)","color":"var(--color-accent)","border":"1px solid var(--color-border)"},"children":["#","hci"]}]]}],["$","nav",null,{"aria-label":"文章導覽","className":"grid grid-cols-1 gap-4 sm:grid-cols-2","children":[["$","$L2",null,{"href":"/zh/blog/pve/11-gpu-passthrough","localeCookie":{"name":"NEXT_LOCALE","sameSite":"lax"},"className":"group rounded-lg border p-4 transition-colors hover:border-accent","style":{"borderColor":"var(--color-border)","background":"var(--color-surface)"},"children":[["$","p",null,{"className":"mb-1 text-xs","style":{"color":"var(--color-muted)"},"children":"← 較新文章"}],["$","p",null,{"className":"line-clamp-1 text-sm font-medium transition-colors group-hover:text-accent","style":{"color":"var(--color-text)"},"children":"Proxmox VE GPU 直通：讓 VM 摸到真正的顯卡"}]]}],["$","$L2",null,{"href":"/zh/blog/pve/09-high-availability","localeCookie":{"name":"NEXT_LOCALE","sameSite":"lax"},"className":"group rounded-lg border p-4 text-right transition-colors hover:border-accent","style":{"borderColor":"var(--color-border)","background":"var(--color-surface)"},"children":[["$","p",null,{"className":"mb-1 text-xs","style":{"color":"var(--color-muted)"},"children":"較舊文章 →"}],["$","p",null,{"className":"line-clamp-1 text-sm font-medium transition-colors group-hover:text-accent","style":{"color":"var(--color-text)"},"children":"Proxmox VE 高可用性：讓 VM 自己找活路"}]]}]]}]]}]
-9:T2856,<p>想像你開了一間餐廳，傳統做法是廚房歸廚房、冰箱歸冰箱，中間還要拉一條走廊搬食材。超融合（HCI）的思路不一樣——每個工作站自己就有爐子和冰箱，大家共用食材庫存，誰缺什麼就近拿，不用跑來跑去。Ceph 在 PVE 裡扮演的角色，就是把「共享儲存」直接織進每台節點裡，不用另外買 SAN 或 NAS。</p>
+9:T2886,<p>想像你開了一間餐廳，傳統做法是廚房歸廚房、冰箱歸冰箱，中間還要拉一條走廊搬食材。超融合（HCI）的思路不一樣——每個工作站自己就有爐子和冰箱，大家共用食材庫存，誰缺什麼就近拿，不用跑來跑去。Ceph 在 PVE 裡扮演的角色，就是把「共享儲存」直接織進每台節點裡，不用另外買 SAN 或 NAS。</p>
 <h2 id="你需要什麼才能玩-ceph">你需要什麼才能玩 Ceph</h2>
 <p>別想著一台機器就搞 Ceph，它天生就是群體動物。如果你還沒組好叢集，先回頭看看<a href="08-cluster">叢集管理</a>那篇。</p>
 <table>
@@ -167,40 +167,40 @@ b:"$Sreact.suspense"
 </ul>
 <h2 id="部署流程">部署流程</h2>
 <p>整套流程在 PVE 裡已經包好了，不用自己從頭編譯：</p>
-<figure data-rehype-pretty-code-figure=""><pre style="background-color:#24292e;color:#e1e4e8" tabindex="0" data-language="bash" data-theme="github-dark"><code data-language="bash" data-theme="github-dark" style="display: grid;"><span data-line=""><span style="color:#6A737D"># 在所有節點上安裝 Ceph 套件</span></span>
-<span data-line=""><span style="color:#B392F0">pveceph</span><span style="color:#9ECBFF"> install</span></span>
+<figure data-rehype-pretty-code-figure=""><pre style="background-color:#0d1117;color:#e6edf3" tabindex="0" data-language="bash" data-theme="github-dark-default"><code data-language="bash" data-theme="github-dark-default" style="display: grid;"><span data-line=""><span style="color:#8B949E"># 在所有節點上安裝 Ceph 套件</span></span>
+<span data-line=""><span style="color:#FFA657">pveceph</span><span style="color:#A5D6FF"> install</span></span>
 <span data-line=""> </span>
-<span data-line=""><span style="color:#6A737D"># 在第一台節點初始化（指定 Ceph 專用網路）</span></span>
-<span data-line=""><span style="color:#B392F0">pveceph</span><span style="color:#9ECBFF"> init</span><span style="color:#79B8FF"> --network</span><span style="color:#9ECBFF"> 10.0.0.0/24</span></span>
+<span data-line=""><span style="color:#8B949E"># 在第一台節點初始化（指定 Ceph 專用網路）</span></span>
+<span data-line=""><span style="color:#FFA657">pveceph</span><span style="color:#A5D6FF"> init</span><span style="color:#79C0FF"> --network</span><span style="color:#A5D6FF"> 10.0.0.0/24</span></span>
 <span data-line=""> </span>
-<span data-line=""><span style="color:#6A737D"># 每個節點建 MON 和 MGR</span></span>
-<span data-line=""><span style="color:#B392F0">pveceph</span><span style="color:#9ECBFF"> mon</span><span style="color:#9ECBFF"> create</span></span>
-<span data-line=""><span style="color:#B392F0">pveceph</span><span style="color:#9ECBFF"> mgr</span><span style="color:#9ECBFF"> create</span></span>
+<span data-line=""><span style="color:#8B949E"># 每個節點建 MON 和 MGR</span></span>
+<span data-line=""><span style="color:#FFA657">pveceph</span><span style="color:#A5D6FF"> mon</span><span style="color:#A5D6FF"> create</span></span>
+<span data-line=""><span style="color:#FFA657">pveceph</span><span style="color:#A5D6FF"> mgr</span><span style="color:#A5D6FF"> create</span></span>
 <span data-line=""> </span>
-<span data-line=""><span style="color:#6A737D"># 每顆資料碟建 OSD（裸碟直接上，不要疊 RAID）</span></span>
-<span data-line=""><span style="color:#B392F0">pveceph</span><span style="color:#9ECBFF"> osd</span><span style="color:#9ECBFF"> create</span><span style="color:#9ECBFF"> /dev/sdb</span></span>
+<span data-line=""><span style="color:#8B949E"># 每顆資料碟建 OSD（裸碟直接上，不要疊 RAID）</span></span>
+<span data-line=""><span style="color:#FFA657">pveceph</span><span style="color:#A5D6FF"> osd</span><span style="color:#A5D6FF"> create</span><span style="color:#A5D6FF"> /dev/sdb</span></span>
 <span data-line=""> </span>
-<span data-line=""><span style="color:#6A737D"># 如果 HDD 想加速，用 NVMe 當 DB/WAL</span></span>
-<span data-line=""><span style="color:#B392F0">pveceph</span><span style="color:#9ECBFF"> osd</span><span style="color:#9ECBFF"> create</span><span style="color:#9ECBFF"> /dev/sdb</span><span style="color:#79B8FF"> -db_dev</span><span style="color:#9ECBFF"> /dev/nvme0n1</span><span style="color:#79B8FF"> -wal_dev</span><span style="color:#9ECBFF"> /dev/nvme0n1</span></span>
+<span data-line=""><span style="color:#8B949E"># 如果 HDD 想加速，用 NVMe 當 DB/WAL</span></span>
+<span data-line=""><span style="color:#FFA657">pveceph</span><span style="color:#A5D6FF"> osd</span><span style="color:#A5D6FF"> create</span><span style="color:#A5D6FF"> /dev/sdb</span><span style="color:#79C0FF"> -db_dev</span><span style="color:#A5D6FF"> /dev/nvme0n1</span><span style="color:#79C0FF"> -wal_dev</span><span style="color:#A5D6FF"> /dev/nvme0n1</span></span>
 <span data-line=""> </span>
-<span data-line=""><span style="color:#6A737D"># 建立儲存池，順便掛到 PVE</span></span>
-<span data-line=""><span style="color:#B392F0">pveceph</span><span style="color:#9ECBFF"> pool</span><span style="color:#9ECBFF"> create</span><span style="color:#9ECBFF"> vm-data</span><span style="color:#79B8FF"> --add_storages</span></span>
+<span data-line=""><span style="color:#8B949E"># 建立儲存池，順便掛到 PVE</span></span>
+<span data-line=""><span style="color:#FFA657">pveceph</span><span style="color:#A5D6FF"> pool</span><span style="color:#A5D6FF"> create</span><span style="color:#A5D6FF"> vm-data</span><span style="color:#79C0FF"> --add_storages</span></span>
 <span data-line=""> </span>
-<span data-line=""><span style="color:#6A737D"># 確認一切正常</span></span>
-<span data-line=""><span style="color:#B392F0">ceph</span><span style="color:#9ECBFF"> status</span></span></code></pre></figure>
+<span data-line=""><span style="color:#8B949E"># 確認一切正常</span></span>
+<span data-line=""><span style="color:#FFA657">ceph</span><span style="color:#A5D6FF"> status</span></span></code></pre></figure>
 <p>看到 <code>HEALTH_OK</code> 就可以開香檳了。看到 <code>HEALTH_WARN</code> 先別慌，通常是 PG 還在調整。看到 <code>HEALTH_ERR</code>——嗯，去倒杯咖啡冷靜一下再查。</p>
 <h2 id="crush-map-與故障域">CRUSH Map 與故障域</h2>
 <p>CRUSH Map 決定「資料副本要放哪」。預設故障域是 <code>host</code>，意思是同一份資料的三個副本一定分散在不同節點上。這樣一台機器掛了，資料還是完整的——像把雞蛋分放三個籃子。</p>
 <h2 id="cephfs共享檔案系統">CephFS：共享檔案系統</h2>
 <p>如果你需要多個節點共用 ISO、容器範本或備份目錄，CephFS 很方便：</p>
-<figure data-rehype-pretty-code-figure=""><pre style="background-color:#24292e;color:#e1e4e8" tabindex="0" data-language="bash" data-theme="github-dark"><code data-language="bash" data-theme="github-dark" style="display: grid;"><span data-line=""><span style="color:#B392F0">pveceph</span><span style="color:#9ECBFF"> fs</span><span style="color:#9ECBFF"> create</span><span style="color:#79B8FF"> --pg_num</span><span style="color:#79B8FF"> 128</span><span style="color:#79B8FF"> --add-storage</span></span></code></pre></figure>
+<figure data-rehype-pretty-code-figure=""><pre style="background-color:#0d1117;color:#e6edf3" tabindex="0" data-language="bash" data-theme="github-dark-default"><code data-language="bash" data-theme="github-dark-default" style="display: grid;"><span data-line=""><span style="color:#FFA657">pveceph</span><span style="color:#A5D6FF"> fs</span><span style="color:#A5D6FF"> create</span><span style="color:#79C0FF"> --pg_num</span><span style="color:#79C0FF"> 128</span><span style="color:#79C0FF"> --add-storage</span></span></code></pre></figure>
 <p>它會自動建好 <code>cephfs_data</code> 和 <code>cephfs_metadata</code> 兩個 Pool。</p>
 <h2 id="日常監控指令">日常監控指令</h2>
-<figure data-rehype-pretty-code-figure=""><pre style="background-color:#24292e;color:#e1e4e8" tabindex="0" data-language="bash" data-theme="github-dark"><code data-language="bash" data-theme="github-dark" style="display: grid;"><span data-line=""><span style="color:#B392F0">ceph</span><span style="color:#9ECBFF"> status</span><span style="color:#6A737D">          # 整體健康度</span></span>
-<span data-line=""><span style="color:#B392F0">ceph</span><span style="color:#9ECBFF"> osd</span><span style="color:#9ECBFF"> tree</span><span style="color:#6A737D">        # OSD 分布圖</span></span>
-<span data-line=""><span style="color:#B392F0">ceph</span><span style="color:#9ECBFF"> osd</span><span style="color:#9ECBFF"> df</span><span style="color:#6A737D">          # 各 OSD 用量</span></span>
-<span data-line=""><span style="color:#B392F0">ceph</span><span style="color:#9ECBFF"> df</span><span style="color:#6A737D">              # Pool 用量</span></span>
-<span data-line=""><span style="color:#B392F0">ceph</span><span style="color:#9ECBFF"> osd</span><span style="color:#9ECBFF"> perf</span><span style="color:#6A737D">        # 延遲統計</span></span></code></pre></figure>
+<figure data-rehype-pretty-code-figure=""><pre style="background-color:#0d1117;color:#e6edf3" tabindex="0" data-language="bash" data-theme="github-dark-default"><code data-language="bash" data-theme="github-dark-default" style="display: grid;"><span data-line=""><span style="color:#FFA657">ceph</span><span style="color:#A5D6FF"> status</span><span style="color:#8B949E">          # 整體健康度</span></span>
+<span data-line=""><span style="color:#FFA657">ceph</span><span style="color:#A5D6FF"> osd</span><span style="color:#A5D6FF"> tree</span><span style="color:#8B949E">        # OSD 分布圖</span></span>
+<span data-line=""><span style="color:#FFA657">ceph</span><span style="color:#A5D6FF"> osd</span><span style="color:#A5D6FF"> df</span><span style="color:#8B949E">          # 各 OSD 用量</span></span>
+<span data-line=""><span style="color:#FFA657">ceph</span><span style="color:#A5D6FF"> df</span><span style="color:#8B949E">              # Pool 用量</span></span>
+<span data-line=""><span style="color:#FFA657">ceph</span><span style="color:#A5D6FF"> osd</span><span style="color:#A5D6FF"> perf</span><span style="color:#8B949E">        # 延遲統計</span></span></code></pre></figure>
 <blockquote>
 <p>叢集容量超過 80% 就該擴容了。等到 95% Ceph 會自動阻止寫入，到時候就不是加硬碟能救的——是加班才能救。</p>
 </blockquote>

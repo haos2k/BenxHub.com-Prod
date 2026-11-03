@@ -1,0 +1,41 @@
+# BenXHub Blog
+
+> BenX's tech blog with hands-on engineering notes on Web development, architecture, AI agents, Kubernetes, Proxmox VE and developer tooling. Articles are published in 7 languages.
+
+- Site: https://benxhub.com/
+- Sitemap: https://benxhub.com/sitemap.xml
+- About: https://benxhub.com/zh/about/
+
+## Languages
+
+- [繁體中文 (default)](https://benxhub.com/zh/): RSS https://benxhub.com/zh/feed.xml
+- [English](https://benxhub.com/en/): RSS https://benxhub.com/en/feed.xml
+- [日本語](https://benxhub.com/ja/): RSS https://benxhub.com/ja/feed.xml
+- [한국어](https://benxhub.com/ko/): RSS https://benxhub.com/ko/feed.xml
+- [Español](https://benxhub.com/es/): RSS https://benxhub.com/es/feed.xml
+- [Français](https://benxhub.com/fr/): RSS https://benxhub.com/fr/feed.xml
+- [العربية](https://benxhub.com/ar/): RSS https://benxhub.com/ar/feed.xml
+
+## Series
+
+- [Ai-trend](https://benxhub.com/zh/blog/ai-trend/2026-03-09-ai-content-automation-workflow/): 1 article, starting with "AI 內容自動化：真正拉開差距的不是速度，是你的工作流設計"
+- [Crewai](https://benxhub.com/zh/blog/crewai/00-overview/): 10 articles, starting with "CrewAI 教學系列總覽：從 0 到可上線的多代理工作流"
+- [Cursor / Cli](https://benxhub.com/zh/blog/cursor/cli/00-overview/): 13 articles, starting with "Cursor CLI 完整教學系列 — 終端機裡的 AI 助手"
+- [K8s / Gateway](https://benxhub.com/zh/blog/k8s/gateway/00-overview/): 10 articles, starting with "K8S Envoy Gateway 系列總覽：比 Ingress 更像現代人的流量入口"
+- [Oh-my-zsh](https://benxhub.com/zh/blog/Oh-My-Zsh/00-overview/): 6 articles, starting with "Oh My Zsh 完整教學系列 — 讓你的終端機有靈魂"
+- [Openclaw](https://benxhub.com/zh/blog/openclaw/01-intro/): 12 articles, starting with "OpenClaw 教學系列：讓 AI 助理住進你家"
+- [Pve](https://benxhub.com/zh/blog/pve/00-what-is-pve/): 15 articles, starting with "Proxmox VE 到底是什麼？為什麼大家都在逃離 VMware"
+- [Python / Uv](https://benxhub.com/zh/blog/python/uv/00-overview/): 6 articles, starting with "Python uv 系列總覽：pip 的 100 倍速接班人"
+
+## Recent articles
+
+- [Proxmox VE Homelab 最佳實踐：收尾與長期生存指南](https://benxhub.com/zh/blog/pve/14-homelab-best-practices/): PVE 最佳實踐與 Homelab 完整指南：推薦服務清單、3-2-1 備份策略、VLAN 網路分區到長期維運心法，避開常見地雷穩定運行。
+- [Proxmox VE 自動化：別再手動建 VM 了](https://benxhub.com/zh/blog/pve/13-automation/): PVE 自動化完整指南：用 Proxmox Cloud-init 範本秒建 VM、Terraform 管理基礎設施、REST API 整合，告別重複手動操作。
+- [Proxmox VE 防火牆與權限：門鎖跟鑰匙一次講清楚](https://benxhub.com/zh/blog/pve/12-firewall-permissions/): PVE 防火牆三層架構與 RBAC 權限管理完整教學：從防火牆規則設定、角色權限分配到 2FA 雙因素認證，全面保護你的叢集。
+- [Proxmox VE GPU 直通：讓 VM 摸到真正的顯卡](https://benxhub.com/zh/blog/pve/11-gpu-passthrough/): PVE GPU Passthrough 完整教學：IOMMU 啟用、VFIO 設定到 NVIDIA Code 43 修復，讓 VM 直接使用實體顯卡跑 AI 和遊戲。
+- [Proxmox VE Ceph 超融合：把儲存織進每台主機裡](https://benxhub.com/zh/blog/pve/10-ceph-storage/): PVE Ceph 超融合儲存完整教學：從 Ceph OSD 部署、CRUSH Map 設定到效能調校，三節點就能打造免費分散式儲存。
+- [Proxmox VE 高可用性：讓 VM 自己找活路](https://benxhub.com/zh/blog/pve/09-high-availability/): PVE HA 高可用設定全攻略：Fencing 機制、Live Migration 零停機遷移、Affinity Rules，讓 Proxmox VM 自動故障轉移。
+- [Proxmox VE 叢集管理：多台主機組隊打副本](https://benxhub.com/zh/blog/pve/08-cluster/): PVE 叢集建置教學：pvecm 建立 Proxmox Cluster、Corosync 心跳設定、Quorum 投票機制與常見踩坑全解析。
+- [Proxmox VE 備份與還原：你的後悔藥指南](https://benxhub.com/zh/blog/pve/07-backup-restore/): PVE 備份完整指南：vzdump 三種模式、Proxmox Backup Server 設定、保留策略與 3-2-1 原則，讓你的資料真正安全。
+- [Proxmox VE 網路管理：Bridge、Bond 與 VLAN](https://benxhub.com/zh/blog/pve/06-networking/): PVE 網路設定完整教學：Linux Bridge、Network Bonding、VLAN 隔離一次搞懂，避免改錯設定斷網的悲劇。
+- [Proxmox VE 存儲全攻略：磁碟該放哪才對？](https://benxhub.com/zh/blog/pve/05-storage/): PVE 存儲怎麼選？ZFS、LVM-thin、NFS、Ceph 完整比較，一次搞懂 Proxmox 儲存類型與最佳配置方案。

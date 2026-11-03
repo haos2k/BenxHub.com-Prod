@@ -1,0 +1,335 @@
+1:"$Sreact.fragment"
+2:I[26795,["/_next/static/chunks/5a5b5b13c22d14f7.js","/_next/static/chunks/a484d1d3dd4b55ab.js"],"default"]
+3:I[73489,["/_next/static/chunks/5a5b5b13c22d14f7.js","/_next/static/chunks/a484d1d3dd4b55ab.js"],"default"]
+6:I[50183,["/_next/static/chunks/5a5b5b13c22d14f7.js","/_next/static/chunks/a484d1d3dd4b55ab.js"],"OutletBoundary"]
+7:"$Sreact.suspense"
+9:I[50183,["/_next/static/chunks/5a5b5b13c22d14f7.js","/_next/static/chunks/a484d1d3dd4b55ab.js"],"ViewportBoundary"]
+b:I[50183,["/_next/static/chunks/5a5b5b13c22d14f7.js","/_next/static/chunks/a484d1d3dd4b55ab.js"],"MetadataBoundary"]
+d:I[63847,[],"default"]
+:HL["/_next/static/chunks/4d9c3828f6075602.css","style"]
+:HL["/_next/static/media/797e433ab948586e-s.p.29207c2f.woff2","font",{"crossOrigin":"","type":"font/woff2"}]
+:HL["/_next/static/media/caa3a2e1cccd8315-s.p.3b6cae6d.woff2","font",{"crossOrigin":"","type":"font/woff2"}]
+0:{"P":null,"b":"ekNoF06-0VZrB4pGVUsy8","c":["","es","blog","k8s","gateway","09-debugging-and-status",""],"q":"","i":false,"f":[[["",{"children":[["locale","es","d"],{"children":["blog",{"children":[["slug","k8s/gateway/09-debugging-and-status","c"],{"children":["__PAGE__",{}]}]}]}]},"$undefined","$undefined",true],[["$","$1","c",{"children":[null,["$","$L2",null,{"parallelRouterKey":"children","error":"$undefined","errorStyles":"$undefined","errorScripts":"$undefined","template":["$","$L3",null,{}],"templateStyles":"$undefined","templateScripts":"$undefined","notFound":[["$","html",null,{"lang":"zh-Hant","children":["$","body",null,{"children":["$","main",null,{"className":"mx-auto max-w-2xl px-4 py-20 text-center sm:px-6","children":[["$","h1",null,{"className":"mb-3 text-4xl font-bold tracking-tight","children":"404"}],["$","p",null,{"className":"mb-8 text-lg","style":{"color":"var(--color-muted)"},"children":"找不到這個頁面 / Page not found"}],["$","a",null,{"href":"/zh/","className":"inline-flex items-center rounded-lg border px-4 py-2.5 text-sm font-medium","style":{"borderColor":"var(--color-border)","color":"var(--color-accent)","background":"var(--color-surface)"},"children":"BenXHub Blog"}]]}]}]}],[["$","link","0",{"rel":"stylesheet","href":"/_next/static/chunks/4d9c3828f6075602.css","precedence":"next","crossOrigin":"$undefined","nonce":"$undefined"}]]],"forbidden":"$undefined","unauthorized":"$undefined"}]]}],{"children":[["$","$1","c",{"children":[[["$","link","0",{"rel":"stylesheet","href":"/_next/static/chunks/4d9c3828f6075602.css","precedence":"next","crossOrigin":"$undefined","nonce":"$undefined"}],["$","script","script-0",{"src":"/_next/static/chunks/4204edc93da35a5e.js","async":true,"nonce":"$undefined"}],["$","script","script-1",{"src":"/_next/static/chunks/f2afb7fd2b7566bb.js","async":true,"nonce":"$undefined"}]],"$L4"]}],{"children":[["$","$1","c",{"children":[null,["$","$L2",null,{"parallelRouterKey":"children","error":"$undefined","errorStyles":"$undefined","errorScripts":"$undefined","template":["$","$L3",null,{}],"templateStyles":"$undefined","templateScripts":"$undefined","notFound":"$undefined","forbidden":"$undefined","unauthorized":"$undefined"}]]}],{"children":[["$","$1","c",{"children":[null,["$","$L2",null,{"parallelRouterKey":"children","error":"$undefined","errorStyles":"$undefined","errorScripts":"$undefined","template":["$","$L3",null,{}],"templateStyles":"$undefined","templateScripts":"$undefined","notFound":"$undefined","forbidden":"$undefined","unauthorized":"$undefined"}]]}],{"children":[["$","$1","c",{"children":["$L5",[["$","script","script-0",{"src":"/_next/static/chunks/2dddb3bc05093f69.js","async":true,"nonce":"$undefined"}]],["$","$L6",null,{"children":["$","$7",null,{"name":"Next.MetadataOutlet","children":"$@8"}]}]]}],{},null,false,false]},null,false,false]},null,false,false]},null,false,false]},null,false,false],["$","$1","h",{"children":[null,["$","$L9",null,{"children":"$La"}],["$","div",null,{"hidden":true,"children":["$","$Lb",null,{"children":["$","$7",null,{"name":"Next.Metadata","children":"$Lc"}]}]}],["$","meta",null,{"name":"next-size-adjust","content":""}]]}],false]],"m":"$undefined","G":["$d",[]],"S":true}
+4:["$","html",null,{"lang":"es","dir":"ltr","className":"geist_a71539c9-module__T19VSG__variable geist_mono_8d43a2aa-module__8Li5zG__variable","children":["$","body",null,{"className":"flex min-h-screen flex-col antialiased","children":[["$","script",null,{"type":"application/ld+json","dangerouslySetInnerHTML":{"__html":"[{\"@context\":\"https://schema.org\",\"@type\":\"WebSite\",\"name\":\"BenXHub Blog\",\"url\":\"https://benxhub.com/es/\",\"inLanguage\":\"es\",\"publisher\":{\"@type\":\"Organization\",\"name\":\"BenXHub Blog\",\"url\":\"https://benxhub.com\"},\"potentialAction\":{\"@type\":\"SearchAction\",\"target\":{\"@type\":\"EntryPoint\",\"urlTemplate\":\"https://benxhub.com/es/search/?q={search_term_string}\"},\"query-input\":\"required name=search_term_string\"}},{\"@context\":\"https://schema.org\",\"@type\":\"Person\",\"@id\":\"https://benxhub.com/#author\",\"name\":\"BenX\",\"url\":\"https://benxhub.com/es/about/\",\"sameAs\":[\"https://github.com/benzhub\"]}]"}}],"$Le"]}]}]
+f:I[33343,["/_next/static/chunks/4204edc93da35a5e.js","/_next/static/chunks/f2afb7fd2b7566bb.js"],"default"]
+10:I[26817,["/_next/static/chunks/4204edc93da35a5e.js","/_next/static/chunks/f2afb7fd2b7566bb.js"],"default"]
+11:I[6197,["/_next/static/chunks/4204edc93da35a5e.js","/_next/static/chunks/f2afb7fd2b7566bb.js"],"default"]
+13:I[40018,["/_next/static/chunks/4204edc93da35a5e.js","/_next/static/chunks/f2afb7fd2b7566bb.js"],"default"]
+e:["$","$Lf",null,{"formats":"$undefined","locale":"es","messages":{"common":{"siteName":"BenXHub Blog","siteDescription":"El blog técnico de BenX, donde comparto desarrollo web, diseño de arquitectura y prácticas de ingeniería."},"nav":{"home":"Inicio","tags":"Etiquetas","about":"Acerca de","searchLabel":"Buscar artículos"},"hero":{"subtitle":"Notas técnicas sobre desarrollo web, diseño de arquitectura y prácticas de ingeniería","cta":"Ver artículos"},"posts":{"title":"Lista de artículos","count":"{total} artículos en total","empty":"Aún no hay artículos. ¡Próximamente!","newerPost":"← Artículo más reciente","olderPost":"Artículo más antiguo →","navLabel":"Navegación de artículos"},"pagination":{"prev":"Anterior","next":"Siguiente","page":"Página {current} / {total}","label":"Paginación de artículos","pageTitle":"Página {num}","pageDescription":"BenXHub Blog - Paginación de la lista de artículos."},"search":{"title":"Buscar artículos","description":"Busca en todos los artículos de BenXHub Blog y filtra al instante por título, descripción o etiquetas.","subtitle":"Busca por título, descripción o etiquetas y ve resultados al instante","placeholder":"Buscar por título, descripción o etiquetas...","found":"{count} artículos encontrados","notFound":"No se encontraron artículos relacionados con \"{query}\"","emptyTitle":"No se encontraron resultados","emptyHint":"Prueba con otras palabras clave o revisa","allPosts":"todos los artículos","totalCount":"{count} artículos en total. Escribe palabras clave para buscar"},"tags":{"title":"Todas las etiquetas","description":"Explora todos los artículos por etiqueta.","count":"{count} etiquetas en total","empty":"Aún no hay etiquetas. ¡Próximamente!","allTags":"Todas las etiquetas","postCount":"{count} artículos en total","otherTags":"Otras etiquetas","tagTitle":"Artículos de #{tag}","tagDescription":"Lista de todos los artículos marcados con \"{tag}\"."},"about":{"title":"Acerca de","description":"Acerca de BenXHub Blog y una introducción del sitio.","subtitle":"Acerca de BenXHub Blog y una introducción del sitio","siteTitle":"Sobre este sitio","siteContent":"BenXHub Blog es el blog técnico de BenX, donde comparto desarrollo web, diseño de arquitectura y prácticas de ingeniería.","authorTitle":"Sobre mí","authorContent":"Me encanta programar e investigar tecnología. También disfruto documentar los problemas que encontré y sus soluciones. Bienvenido a conectar conmigo mediante los enlaces de la barra lateral o del pie de página.","linksTitle":"Enlaces"},"sidebar":{"label":"Barra lateral","authorBio":"Me gusta programar y compartir conocimiento, centrado en desarrollo web, arquitectura y DevOps.","searchPlaceholder":"Buscar artículos...","seriesTitle":"Series","articleCount":"{count} artículos"},"toc":{"title":"Tabla de contenidos","label":"Índice del artículo"},"notFound":{"message":"Esta página no existe. Es posible que el enlace haya caducado o que la URL sea incorrecta.","backHome":"Volver al inicio"},"localeSwitcher":{"label":"Cambiar idioma"}},"now":"$undefined","timeZone":"UTC","children":[["$","$L10",null,{}],["$","$L11",null,{}],["$","main",null,{"className":"flex-1 pt-16","children":["$","$L2",null,{"parallelRouterKey":"children","error":"$undefined","errorStyles":"$undefined","errorScripts":"$undefined","template":["$","$L3",null,{}],"templateStyles":"$undefined","templateScripts":"$undefined","notFound":["$L12",[]],"forbidden":"$undefined","unauthorized":"$undefined"}]}],["$","$L13",null,{}]]}]
+12:["$","div",null,{"className":"mx-auto max-w-2xl px-4 py-20 text-center sm:px-6","children":[["$","h1",null,{"className":"mb-3 text-4xl font-bold tracking-tight","style":{"color":"var(--color-text)"},"children":"404"}],["$","p",null,{"className":"mb-8 text-lg","style":{"color":"var(--color-muted)"},"children":"Esta página no existe. Es posible que el enlace haya caducado o que la URL sea incorrecta."}],"$L14"]}]
+a:[["$","meta","0",{"charSet":"utf-8"}],["$","meta","1",{"name":"viewport","content":"width=device-width, initial-scale=1"}]]
+15:I[14864,["/_next/static/chunks/4204edc93da35a5e.js","/_next/static/chunks/f2afb7fd2b7566bb.js","/_next/static/chunks/2dddb3bc05093f69.js"],"default"]
+14:["$","$L15",null,{"ref":"$undefined","href":"/es","locale":"$undefined","localeCookie":{"name":"NEXT_LOCALE","sameSite":"lax"},"className":"inline-flex items-center rounded-lg border px-4 py-2.5 text-sm font-medium transition-colors hover:border-accent","style":{"borderColor":"var(--color-border)","color":"var(--color-accent)","background":"var(--color-surface)"},"children":"Volver al inicio"}]
+1c:T3813,<p>El escenario de ingeniería más temido no es un mensaje de error — es:</p>
+<p><strong>Aplicaste el YAML, <code>kubectl apply</code> tuvo éxito, pero el tráfico sigue sin fluir.</strong></p>
+<p>Si en este punto solo te quedas mirando el <code>spec</code>, empezarás a sentir que estás leyendo el poso del café.
+La información diagnóstica real en Gateway API vive en <code>status</code>.</p>
+<p>Este artículo tiene un solo objetivo: darte el camino de debugging más corto posible. Cuando un <code>Gateway</code>, <code>HTTPRoute</code> o <code>Listener</code> no surte efecto, sabrás dónde mirar primero — en lugar de cuestionarte de inmediato si el universo tiene sentido.</p>
+<h2 id="empezar-aquí-depura-leyendo-status-no-cambiando-spec">Empezar aquí: Depura leyendo <code>status</code>, no cambiando <code>spec</code></h2>
+<p>Los comandos más útiles:</p>
+<figure data-rehype-pretty-code-figure=""><pre style="background-color:#0d1117;color:#e6edf3" tabindex="0" data-language="bash" data-theme="github-dark-default"><code data-language="bash" data-theme="github-dark-default" style="display: grid;"><span data-line=""><span style="color:#FFA657">kubectl</span><span style="color:#A5D6FF"> get</span><span style="color:#A5D6FF"> gateway</span><span style="color:#79C0FF"> -A</span></span>
+<span data-line=""><span style="color:#FFA657">kubectl</span><span style="color:#A5D6FF"> get</span><span style="color:#A5D6FF"> httproute</span><span style="color:#79C0FF"> -A</span></span>
+<span data-line=""><span style="color:#FFA657">kubectl</span><span style="color:#A5D6FF"> get</span><span style="color:#A5D6FF"> grpcroute</span><span style="color:#79C0FF"> -A</span></span>
+<span data-line=""><span style="color:#FFA657">kubectl</span><span style="color:#A5D6FF"> describe</span><span style="color:#A5D6FF"> gateway</span><span style="color:#FF7B72"> &#x3C;</span><span style="color:#A5D6FF">nam</span><span style="color:#E6EDF3">e</span><span style="color:#FF7B72">></span></span>
+<span data-line=""><span style="color:#FFA657">kubectl</span><span style="color:#A5D6FF"> describe</span><span style="color:#A5D6FF"> httproute</span><span style="color:#FF7B72"> &#x3C;</span><span style="color:#A5D6FF">nam</span><span style="color:#E6EDF3">e</span><span style="color:#FF7B72">></span></span>
+<span data-line=""><span style="color:#FFA657">kubectl</span><span style="color:#A5D6FF"> get</span><span style="color:#A5D6FF"> gateway</span><span style="color:#FF7B72"> &#x3C;</span><span style="color:#A5D6FF">nam</span><span style="color:#E6EDF3">e</span><span style="color:#FF7B72">></span><span style="color:#79C0FF"> -o</span><span style="color:#A5D6FF"> yaml</span></span>
+<span data-line=""><span style="color:#FFA657">kubectl</span><span style="color:#A5D6FF"> get</span><span style="color:#A5D6FF"> httproute</span><span style="color:#FF7B72"> &#x3C;</span><span style="color:#A5D6FF">nam</span><span style="color:#E6EDF3">e</span><span style="color:#FF7B72">></span><span style="color:#79C0FF"> -o</span><span style="color:#A5D6FF"> yaml</span></span></code></pre></figure>
+<p>El objetivo no es releer el YAML cien veces más — es verificar si el controlador realmente aceptó tu configuración.</p>
+<p>Piensa en <code>status</code> como una hoja de calificaciones de examen:</p>
+<ul>
+<li><code>spec</code> es la respuesta que enviaste</li>
+<li><code>status</code> es el resultado corregido por el sistema</li>
+</ul>
+<p>Mirar solo lo que enviaste, sin revisar nunca la calificación — eso es solo consuelo emocional, no debugging.</p>
+<h2 id="las-tres-conditions-más-importantes-domínalas-y-estarás-cubierto">Las tres conditions más importantes: domínalas y estarás cubierto</h2>
+<h3 id="accepted"><code>Accepted</code></h3>
+<p>Esto normalmente indica si el recurso fue aceptado por su padre.
+Para una ruta, suele significar:</p>
+<ul>
+<li>Si se adjuntó correctamente al Gateway/listener previsto</li>
+<li>Si las reglas tienen algún conflicto obvio o configuración inválida</li>
+</ul>
+<p>Si <code>Accepted</code> es <code>False</code>, sospecha primero de:</p>
+<ul>
+<li><code>parentRefs</code> apuntando al Gateway o listener equivocado</li>
+<li>Condiciones de hostname/listener que no coinciden</li>
+<li>El listener rechazando este tipo de ruta</li>
+<li><code>allowedRoutes</code> bloqueándote</li>
+</ul>
+<h3 id="resolvedrefs"><code>ResolvedRefs</code></h3>
+<p>Esto indica si los objetos referenciados dentro del recurso se resolvieron correctamente.
+Por ejemplo:</p>
+<ul>
+<li>¿Existe el <code>Service</code> referenciado en <code>backendRefs</code>?</li>
+<li>¿Puede referenciarse legalmente el <code>Secret</code> en <code>certificateRefs</code>?</li>
+<li>¿Está <code>ReferenceGrant</code> correctamente configurado para referencias entre namespaces?</li>
+</ul>
+<p>Esta condition es extremadamente útil.
+Muchos fallos de configuración no son por lógica de enrutamiento incorrecta — son por cosas referenciadas que simplemente no existen, o a las que no tienes permiso de acceder.</p>
+<h3 id="programmed"><code>Programmed</code></h3>
+<p>Esto normalmente indica si la configuración fue efectivamente aplicada en la capa de implementación.
+Piénsalo como:</p>
+<ul>
+<li>El controlador aceptó la configuración</li>
+<li>Y la envió al data plane o la infraestructura</li>
+</ul>
+<p>Si <code>Accepted</code> ya es <code>True</code> pero el tráfico sigue sin fluir, es el momento en que vale la pena revisar <code>Programmed</code>, la dirección del Gateway, el estado de los listeners y los recursos de Envoy subyacentes.</p>
+<blockquote>
+<p>💡 Distintos recursos pueden exponer diferentes conjuntos de conditions, pero <code>Accepted</code>, <code>ResolvedRefs</code> y <code>Programmed</code> son el primer grupo sobre el que conviene desarrollar intuición.</p>
+</blockquote>
+<h2 id="flujo-de-debugging-más-corto-este-orden-suele-funcionar">Flujo de debugging más corto: este orden suele funcionar</h2>
+<h3 id="paso-1-verificar-si-el-gateway-está-realmente-en-ejecución">Paso 1: Verificar si el Gateway está realmente en ejecución</h3>
+<figure data-rehype-pretty-code-figure=""><pre style="background-color:#0d1117;color:#e6edf3" tabindex="0" data-language="bash" data-theme="github-dark-default"><code data-language="bash" data-theme="github-dark-default" style="display: grid;"><span data-line=""><span style="color:#FFA657">kubectl</span><span style="color:#A5D6FF"> get</span><span style="color:#A5D6FF"> gateway</span><span style="color:#79C0FF"> -A</span></span>
+<span data-line=""><span style="color:#FFA657">kubectl</span><span style="color:#A5D6FF"> get</span><span style="color:#A5D6FF"> gateway</span><span style="color:#A5D6FF"> eg</span><span style="color:#79C0FF"> -o</span><span style="color:#A5D6FF"> yaml</span></span></code></pre></figure>
+<p>Verifica:</p>
+<ul>
+<li>¿Tiene <code>status.addresses</code> algún valor?</li>
+<li>¿Hay alguna condition de listener anormal?</li>
+<li>¿El hostname/protocol/port del listener coincide con lo que esperas?</li>
+</ul>
+<p>Si el Gateway no tiene dirección, incluso el YAML de ruta más hermoso es solo escritura creativa.</p>
+<h3 id="paso-2-verificar-si-la-ruta-se-adjuntó-correctamente">Paso 2: Verificar si la ruta se adjuntó correctamente</h3>
+<figure data-rehype-pretty-code-figure=""><pre style="background-color:#0d1117;color:#e6edf3" tabindex="0" data-language="bash" data-theme="github-dark-default"><code data-language="bash" data-theme="github-dark-default" style="display: grid;"><span data-line=""><span style="color:#FFA657">kubectl</span><span style="color:#A5D6FF"> get</span><span style="color:#A5D6FF"> httproute</span><span style="color:#79C0FF"> -A</span></span>
+<span data-line=""><span style="color:#FFA657">kubectl</span><span style="color:#A5D6FF"> get</span><span style="color:#A5D6FF"> httproute</span><span style="color:#A5D6FF"> app-route</span><span style="color:#79C0FF"> -o</span><span style="color:#A5D6FF"> yaml</span></span></code></pre></figure>
+<p>Prioriza:</p>
+<ul>
+<li><code>status.parents</code></li>
+<li><code>Accepted</code></li>
+<li><code>ResolvedRefs</code></li>
+<li><code>observedGeneration</code></li>
+</ul>
+<p><code>observedGeneration</code> vale la pena vigilarlo.
+Si no ha alcanzado a <code>metadata.generation</code>, es posible que el controlador aún no haya procesado tu última versión de configuración.</p>
+<h3 id="paso-3-verificar-si-los-recursos-referenciados-realmente-existen">Paso 3: Verificar si los recursos referenciados realmente existen</h3>
+<p>Este paso se omite con más frecuencia que cualquier otro:</p>
+<figure data-rehype-pretty-code-figure=""><pre style="background-color:#0d1117;color:#e6edf3" tabindex="0" data-language="bash" data-theme="github-dark-default"><code data-language="bash" data-theme="github-dark-default" style="display: grid;"><span data-line=""><span style="color:#FFA657">kubectl</span><span style="color:#A5D6FF"> get</span><span style="color:#A5D6FF"> svc</span><span style="color:#79C0FF"> -A</span></span>
+<span data-line=""><span style="color:#FFA657">kubectl</span><span style="color:#A5D6FF"> get</span><span style="color:#A5D6FF"> secret</span><span style="color:#79C0FF"> -A</span></span>
+<span data-line=""><span style="color:#FFA657">kubectl</span><span style="color:#A5D6FF"> get</span><span style="color:#A5D6FF"> referencegrant</span><span style="color:#79C0FF"> -A</span></span></code></pre></figure>
+<p>Problemas comunes:</p>
+<ul>
+<li>El nombre del servicio de backend es incorrecto</li>
+<li>El puerto es incorrecto</li>
+<li>El Secret no está en el namespace que crees</li>
+<li>La referencia entre namespaces no tiene <code>ReferenceGrant</code></li>
+</ul>
+<p>Si <code>ResolvedRefs</code> es <code>False</code>, rastrea el problema siguiendo este camino.</p>
+<h3 id="paso-4-verificar-el-data-plane-y-el-controlador">Paso 4: Verificar el data plane y el controlador</h3>
+<p>Si el status del Gateway y de la ruta parecen más o menos correctos pero el tráfico sigue sin fluir, profundiza más:</p>
+<figure data-rehype-pretty-code-figure=""><pre style="background-color:#0d1117;color:#e6edf3" tabindex="0" data-language="bash" data-theme="github-dark-default"><code data-language="bash" data-theme="github-dark-default" style="display: grid;"><span data-line=""><span style="color:#FFA657">kubectl</span><span style="color:#A5D6FF"> get</span><span style="color:#A5D6FF"> pods</span><span style="color:#79C0FF"> -n</span><span style="color:#A5D6FF"> envoy-gateway-system</span></span>
+<span data-line=""><span style="color:#FFA657">kubectl</span><span style="color:#A5D6FF"> logs</span><span style="color:#79C0FF"> -n</span><span style="color:#A5D6FF"> envoy-gateway-system</span><span style="color:#A5D6FF"> deployment/envoy-gateway</span></span></code></pre></figure>
+<p>En este punto ya no estás depurando "¿se aceptó la regla?" — estás verificando si el control plane y el data plane funcionan con normalidad.</p>
+<p>Si tienes <code>egctl</code> instalado, puede ayudarte a inspeccionar el estado rápidamente.
+Pero incluso sin él, <code>kubectl get/describe -o yaml</code> puede resolver la mayoría de los problemas.</p>
+<h2 id="los-cuatro-patrones-de-fallo-más-comunes">Los cuatro patrones de fallo más comunes</h2>
+<h3 id="1-la-ruta-es-correcta-pero-no-se-adjuntó-al-listener-previsto">1. La ruta es correcta, pero no se adjuntó al listener previsto</h3>
+<p>Síntomas:</p>
+<ul>
+<li>El YAML parece correcto</li>
+<li>Pero el tráfico no está llegando a la regla</li>
+</ul>
+<p>Comprueba:</p>
+<ul>
+<li><code>parentRefs.name</code></li>
+<li><code>parentRefs.sectionName</code></li>
+<li>Si el nombre del listener del Gateway coincide exactamente</li>
+</ul>
+<p>En configuraciones multi-listener, un solo error tipográfico en <code>sectionName</code> es suficiente para desperdiciar una sesión de debugging entera.</p>
+<h3 id="2-accepted-tiene-éxito-pero-resolvedrefs-falla">2. <code>Accepted</code> tiene éxito, pero <code>ResolvedRefs</code> falla</h3>
+<p>Esto suele significar que la lógica puede adjuntarse, pero algo referenciado tiene un problema.
+Causas más comunes:</p>
+<ul>
+<li>El Service de backend no existe</li>
+<li>El nombre del Secret es incorrecto</li>
+<li>Referencia entre namespaces sin autorización</li>
+</ul>
+<p>Lo más frustrante de este tipo de fallo es que parece que ya casi llegaste — pero en realidad está atascado en la capa de referencia.</p>
+<h3 id="3-el-gateway-tiene-listeners-pero-no-tiene-la-dirección-esperada">3. El Gateway tiene listeners pero no tiene la dirección esperada</h3>
+<p>Esto aparece con frecuencia en clústeres locales o entornos sin una implementación de <code>LoadBalancer</code>.
+No es que Gateway API esté roto — simplemente la infraestructura subyacente no está aprovisionando una dirección externa.</p>
+<p>Opciones:</p>
+<ul>
+<li>Verificar si el clúster tiene capacidad <code>LoadBalancer</code></li>
+<li>Usar <code>port-forward</code> para validar el camino de enrutamiento</li>
+</ul>
+<h3 id="4-el-yaml-surtió-efecto-pero-las-solicitudes-devuelven-404--503">4. El YAML surtió efecto, pero las solicitudes devuelven 404 / 503</h3>
+<p>En este punto normalmente no es un solo campo incorrecto — es una cadena rota en algún punto:</p>
+<ul>
+<li>Header Host incorrecto</li>
+<li>El path no coincide con ninguna regla</li>
+<li>El Pod de backend no está saludable</li>
+<li>El selector del Service no está seleccionando ningún Pod</li>
+</ul>
+<p>Los problemas de ingreso a veces parecen un fallo del proxy, pero el backend simplemente no estaba listo. No culpes de todo a la capa de proxy — ya tiene suficiente trabajo.</p>
+<h2 id="resumen-en-una-línea">Resumen en una línea</h2>
+<p>La forma más efectiva de depurar Gateway API no es cambiar el YAML constantemente — es aprender a leer <code>status</code>.
+<code>Accepted</code> te dice si se recogió la orden. <code>ResolvedRefs</code> te dice si las referencias se resolvieron. <code>Programmed</code> te dice si la configuración fue efectivamente aplicada. Examina esas tres capas por separado y la velocidad de resolución de problemas aumenta drásticamente.</p>
+<h2 id="siguiente-paso">Siguiente paso</h2>
+<p>Esto completa la serie de 10 artículos sobre Envoy Gateway.
+Si quieres repasar el mapa completo de la serie:</p>
+<p>👉 <a href="00-overview">Resumen de la serie</a></p>5:[["$","script",null,{"type":"application/ld+json","dangerouslySetInnerHTML":{"__html":"{\"@context\":\"https://schema.org\",\"@type\":\"Article\",\"headline\":\"Manual de Status y Debugging de Envoy Gateway: Qué significan realmente Accepted, ResolvedRefs y Programmed\",\"description\":\"Una guía sobre las conditions de status más importantes de Gateway y Route, y el flujo de debugging — para saber dónde mirar cuando la configuración no surte efecto.\",\"url\":\"https://benxhub.com/es/blog/k8s/gateway/09-debugging-and-status/\",\"mainEntityOfPage\":{\"@type\":\"WebPage\",\"@id\":\"https://benxhub.com/es/blog/k8s/gateway/09-debugging-and-status/\"},\"datePublished\":\"2026-03-10T00:00:00.000Z\",\"dateModified\":\"2026-03-10T00:00:00.000Z\",\"keywords\":\"kubernetes, envoy-gateway, gateway-api, troubleshooting, status, debugging\",\"inLanguage\":\"es\",\"author\":{\"@type\":\"Person\",\"@id\":\"https://benxhub.com/#author\",\"name\":\"BenX\",\"url\":\"https://benxhub.com/es/about/\",\"sameAs\":[\"https://github.com/benzhub\"]},\"publisher\":{\"@type\":\"Organization\",\"name\":\"BenXHub Blog\",\"url\":\"https://benxhub.com\"},\"image\":\"https://benxhub.com/og-default.png\"}"}}],["$","div",null,{"className":"mx-auto max-w-6xl px-4 py-12 sm:px-6","children":["$","div",null,{"className":"lg:grid lg:grid-cols-[1fr_240px] lg:gap-14","children":[["$","article",null,{"children":[["$","header",null,{"className":"mb-10","children":[["$","div",null,{"className":"mb-4 flex flex-wrap gap-2","children":["$L16","$L17","$L18","$L19","$L1a","$L1b"]}],["$","h1",null,{"className":"mb-4 text-3xl leading-snug font-bold tracking-tight sm:text-4xl","style":{"color":"var(--color-text)"},"children":"Manual de Status y Debugging de Envoy Gateway: Qué significan realmente Accepted, ResolvedRefs y Programmed"}],["$","div",null,{"className":"flex flex-wrap items-center gap-3 text-sm","style":{"color":"var(--color-muted)"},"children":[["$","time",null,{"dateTime":"2026-03-10","children":"10 3月 2026"}],["$","span",null,{"aria-hidden":"true","children":"·"}],["$","span",null,{"children":"6 min read"}]]}],"$undefined",["$","div",null,{"className":"mt-6 border-b","style":{"borderColor":"var(--color-border)"}}]]}],["$","div",null,{"className":"prose","dangerouslySetInnerHTML":{"__html":"$1c"}}],"$L1d"]}],"$L1e"]}]}]]
+27:I[24801,["/_next/static/chunks/4204edc93da35a5e.js","/_next/static/chunks/f2afb7fd2b7566bb.js","/_next/static/chunks/2dddb3bc05093f69.js"],"default"]
+1d:["$","footer",null,{"className":"mt-14 border-t pt-8","style":{"borderColor":"var(--color-border)"},"children":[["$","div",null,{"className":"mb-8 flex flex-wrap gap-2","children":["$L1f","$L20","$L21","$L22","$L23","$L24"]}],["$","nav",null,{"aria-label":"Navegación de artículos","className":"grid grid-cols-1 gap-4 sm:grid-cols-2","children":["$L25","$L26"]}]]}]
+28:T3813,<p>El escenario de ingeniería más temido no es un mensaje de error — es:</p>
+<p><strong>Aplicaste el YAML, <code>kubectl apply</code> tuvo éxito, pero el tráfico sigue sin fluir.</strong></p>
+<p>Si en este punto solo te quedas mirando el <code>spec</code>, empezarás a sentir que estás leyendo el poso del café.
+La información diagnóstica real en Gateway API vive en <code>status</code>.</p>
+<p>Este artículo tiene un solo objetivo: darte el camino de debugging más corto posible. Cuando un <code>Gateway</code>, <code>HTTPRoute</code> o <code>Listener</code> no surte efecto, sabrás dónde mirar primero — en lugar de cuestionarte de inmediato si el universo tiene sentido.</p>
+<h2 id="empezar-aquí-depura-leyendo-status-no-cambiando-spec">Empezar aquí: Depura leyendo <code>status</code>, no cambiando <code>spec</code></h2>
+<p>Los comandos más útiles:</p>
+<figure data-rehype-pretty-code-figure=""><pre style="background-color:#0d1117;color:#e6edf3" tabindex="0" data-language="bash" data-theme="github-dark-default"><code data-language="bash" data-theme="github-dark-default" style="display: grid;"><span data-line=""><span style="color:#FFA657">kubectl</span><span style="color:#A5D6FF"> get</span><span style="color:#A5D6FF"> gateway</span><span style="color:#79C0FF"> -A</span></span>
+<span data-line=""><span style="color:#FFA657">kubectl</span><span style="color:#A5D6FF"> get</span><span style="color:#A5D6FF"> httproute</span><span style="color:#79C0FF"> -A</span></span>
+<span data-line=""><span style="color:#FFA657">kubectl</span><span style="color:#A5D6FF"> get</span><span style="color:#A5D6FF"> grpcroute</span><span style="color:#79C0FF"> -A</span></span>
+<span data-line=""><span style="color:#FFA657">kubectl</span><span style="color:#A5D6FF"> describe</span><span style="color:#A5D6FF"> gateway</span><span style="color:#FF7B72"> &#x3C;</span><span style="color:#A5D6FF">nam</span><span style="color:#E6EDF3">e</span><span style="color:#FF7B72">></span></span>
+<span data-line=""><span style="color:#FFA657">kubectl</span><span style="color:#A5D6FF"> describe</span><span style="color:#A5D6FF"> httproute</span><span style="color:#FF7B72"> &#x3C;</span><span style="color:#A5D6FF">nam</span><span style="color:#E6EDF3">e</span><span style="color:#FF7B72">></span></span>
+<span data-line=""><span style="color:#FFA657">kubectl</span><span style="color:#A5D6FF"> get</span><span style="color:#A5D6FF"> gateway</span><span style="color:#FF7B72"> &#x3C;</span><span style="color:#A5D6FF">nam</span><span style="color:#E6EDF3">e</span><span style="color:#FF7B72">></span><span style="color:#79C0FF"> -o</span><span style="color:#A5D6FF"> yaml</span></span>
+<span data-line=""><span style="color:#FFA657">kubectl</span><span style="color:#A5D6FF"> get</span><span style="color:#A5D6FF"> httproute</span><span style="color:#FF7B72"> &#x3C;</span><span style="color:#A5D6FF">nam</span><span style="color:#E6EDF3">e</span><span style="color:#FF7B72">></span><span style="color:#79C0FF"> -o</span><span style="color:#A5D6FF"> yaml</span></span></code></pre></figure>
+<p>El objetivo no es releer el YAML cien veces más — es verificar si el controlador realmente aceptó tu configuración.</p>
+<p>Piensa en <code>status</code> como una hoja de calificaciones de examen:</p>
+<ul>
+<li><code>spec</code> es la respuesta que enviaste</li>
+<li><code>status</code> es el resultado corregido por el sistema</li>
+</ul>
+<p>Mirar solo lo que enviaste, sin revisar nunca la calificación — eso es solo consuelo emocional, no debugging.</p>
+<h2 id="las-tres-conditions-más-importantes-domínalas-y-estarás-cubierto">Las tres conditions más importantes: domínalas y estarás cubierto</h2>
+<h3 id="accepted"><code>Accepted</code></h3>
+<p>Esto normalmente indica si el recurso fue aceptado por su padre.
+Para una ruta, suele significar:</p>
+<ul>
+<li>Si se adjuntó correctamente al Gateway/listener previsto</li>
+<li>Si las reglas tienen algún conflicto obvio o configuración inválida</li>
+</ul>
+<p>Si <code>Accepted</code> es <code>False</code>, sospecha primero de:</p>
+<ul>
+<li><code>parentRefs</code> apuntando al Gateway o listener equivocado</li>
+<li>Condiciones de hostname/listener que no coinciden</li>
+<li>El listener rechazando este tipo de ruta</li>
+<li><code>allowedRoutes</code> bloqueándote</li>
+</ul>
+<h3 id="resolvedrefs"><code>ResolvedRefs</code></h3>
+<p>Esto indica si los objetos referenciados dentro del recurso se resolvieron correctamente.
+Por ejemplo:</p>
+<ul>
+<li>¿Existe el <code>Service</code> referenciado en <code>backendRefs</code>?</li>
+<li>¿Puede referenciarse legalmente el <code>Secret</code> en <code>certificateRefs</code>?</li>
+<li>¿Está <code>ReferenceGrant</code> correctamente configurado para referencias entre namespaces?</li>
+</ul>
+<p>Esta condition es extremadamente útil.
+Muchos fallos de configuración no son por lógica de enrutamiento incorrecta — son por cosas referenciadas que simplemente no existen, o a las que no tienes permiso de acceder.</p>
+<h3 id="programmed"><code>Programmed</code></h3>
+<p>Esto normalmente indica si la configuración fue efectivamente aplicada en la capa de implementación.
+Piénsalo como:</p>
+<ul>
+<li>El controlador aceptó la configuración</li>
+<li>Y la envió al data plane o la infraestructura</li>
+</ul>
+<p>Si <code>Accepted</code> ya es <code>True</code> pero el tráfico sigue sin fluir, es el momento en que vale la pena revisar <code>Programmed</code>, la dirección del Gateway, el estado de los listeners y los recursos de Envoy subyacentes.</p>
+<blockquote>
+<p>💡 Distintos recursos pueden exponer diferentes conjuntos de conditions, pero <code>Accepted</code>, <code>ResolvedRefs</code> y <code>Programmed</code> son el primer grupo sobre el que conviene desarrollar intuición.</p>
+</blockquote>
+<h2 id="flujo-de-debugging-más-corto-este-orden-suele-funcionar">Flujo de debugging más corto: este orden suele funcionar</h2>
+<h3 id="paso-1-verificar-si-el-gateway-está-realmente-en-ejecución">Paso 1: Verificar si el Gateway está realmente en ejecución</h3>
+<figure data-rehype-pretty-code-figure=""><pre style="background-color:#0d1117;color:#e6edf3" tabindex="0" data-language="bash" data-theme="github-dark-default"><code data-language="bash" data-theme="github-dark-default" style="display: grid;"><span data-line=""><span style="color:#FFA657">kubectl</span><span style="color:#A5D6FF"> get</span><span style="color:#A5D6FF"> gateway</span><span style="color:#79C0FF"> -A</span></span>
+<span data-line=""><span style="color:#FFA657">kubectl</span><span style="color:#A5D6FF"> get</span><span style="color:#A5D6FF"> gateway</span><span style="color:#A5D6FF"> eg</span><span style="color:#79C0FF"> -o</span><span style="color:#A5D6FF"> yaml</span></span></code></pre></figure>
+<p>Verifica:</p>
+<ul>
+<li>¿Tiene <code>status.addresses</code> algún valor?</li>
+<li>¿Hay alguna condition de listener anormal?</li>
+<li>¿El hostname/protocol/port del listener coincide con lo que esperas?</li>
+</ul>
+<p>Si el Gateway no tiene dirección, incluso el YAML de ruta más hermoso es solo escritura creativa.</p>
+<h3 id="paso-2-verificar-si-la-ruta-se-adjuntó-correctamente">Paso 2: Verificar si la ruta se adjuntó correctamente</h3>
+<figure data-rehype-pretty-code-figure=""><pre style="background-color:#0d1117;color:#e6edf3" tabindex="0" data-language="bash" data-theme="github-dark-default"><code data-language="bash" data-theme="github-dark-default" style="display: grid;"><span data-line=""><span style="color:#FFA657">kubectl</span><span style="color:#A5D6FF"> get</span><span style="color:#A5D6FF"> httproute</span><span style="color:#79C0FF"> -A</span></span>
+<span data-line=""><span style="color:#FFA657">kubectl</span><span style="color:#A5D6FF"> get</span><span style="color:#A5D6FF"> httproute</span><span style="color:#A5D6FF"> app-route</span><span style="color:#79C0FF"> -o</span><span style="color:#A5D6FF"> yaml</span></span></code></pre></figure>
+<p>Prioriza:</p>
+<ul>
+<li><code>status.parents</code></li>
+<li><code>Accepted</code></li>
+<li><code>ResolvedRefs</code></li>
+<li><code>observedGeneration</code></li>
+</ul>
+<p><code>observedGeneration</code> vale la pena vigilarlo.
+Si no ha alcanzado a <code>metadata.generation</code>, es posible que el controlador aún no haya procesado tu última versión de configuración.</p>
+<h3 id="paso-3-verificar-si-los-recursos-referenciados-realmente-existen">Paso 3: Verificar si los recursos referenciados realmente existen</h3>
+<p>Este paso se omite con más frecuencia que cualquier otro:</p>
+<figure data-rehype-pretty-code-figure=""><pre style="background-color:#0d1117;color:#e6edf3" tabindex="0" data-language="bash" data-theme="github-dark-default"><code data-language="bash" data-theme="github-dark-default" style="display: grid;"><span data-line=""><span style="color:#FFA657">kubectl</span><span style="color:#A5D6FF"> get</span><span style="color:#A5D6FF"> svc</span><span style="color:#79C0FF"> -A</span></span>
+<span data-line=""><span style="color:#FFA657">kubectl</span><span style="color:#A5D6FF"> get</span><span style="color:#A5D6FF"> secret</span><span style="color:#79C0FF"> -A</span></span>
+<span data-line=""><span style="color:#FFA657">kubectl</span><span style="color:#A5D6FF"> get</span><span style="color:#A5D6FF"> referencegrant</span><span style="color:#79C0FF"> -A</span></span></code></pre></figure>
+<p>Problemas comunes:</p>
+<ul>
+<li>El nombre del servicio de backend es incorrecto</li>
+<li>El puerto es incorrecto</li>
+<li>El Secret no está en el namespace que crees</li>
+<li>La referencia entre namespaces no tiene <code>ReferenceGrant</code></li>
+</ul>
+<p>Si <code>ResolvedRefs</code> es <code>False</code>, rastrea el problema siguiendo este camino.</p>
+<h3 id="paso-4-verificar-el-data-plane-y-el-controlador">Paso 4: Verificar el data plane y el controlador</h3>
+<p>Si el status del Gateway y de la ruta parecen más o menos correctos pero el tráfico sigue sin fluir, profundiza más:</p>
+<figure data-rehype-pretty-code-figure=""><pre style="background-color:#0d1117;color:#e6edf3" tabindex="0" data-language="bash" data-theme="github-dark-default"><code data-language="bash" data-theme="github-dark-default" style="display: grid;"><span data-line=""><span style="color:#FFA657">kubectl</span><span style="color:#A5D6FF"> get</span><span style="color:#A5D6FF"> pods</span><span style="color:#79C0FF"> -n</span><span style="color:#A5D6FF"> envoy-gateway-system</span></span>
+<span data-line=""><span style="color:#FFA657">kubectl</span><span style="color:#A5D6FF"> logs</span><span style="color:#79C0FF"> -n</span><span style="color:#A5D6FF"> envoy-gateway-system</span><span style="color:#A5D6FF"> deployment/envoy-gateway</span></span></code></pre></figure>
+<p>En este punto ya no estás depurando "¿se aceptó la regla?" — estás verificando si el control plane y el data plane funcionan con normalidad.</p>
+<p>Si tienes <code>egctl</code> instalado, puede ayudarte a inspeccionar el estado rápidamente.
+Pero incluso sin él, <code>kubectl get/describe -o yaml</code> puede resolver la mayoría de los problemas.</p>
+<h2 id="los-cuatro-patrones-de-fallo-más-comunes">Los cuatro patrones de fallo más comunes</h2>
+<h3 id="1-la-ruta-es-correcta-pero-no-se-adjuntó-al-listener-previsto">1. La ruta es correcta, pero no se adjuntó al listener previsto</h3>
+<p>Síntomas:</p>
+<ul>
+<li>El YAML parece correcto</li>
+<li>Pero el tráfico no está llegando a la regla</li>
+</ul>
+<p>Comprueba:</p>
+<ul>
+<li><code>parentRefs.name</code></li>
+<li><code>parentRefs.sectionName</code></li>
+<li>Si el nombre del listener del Gateway coincide exactamente</li>
+</ul>
+<p>En configuraciones multi-listener, un solo error tipográfico en <code>sectionName</code> es suficiente para desperdiciar una sesión de debugging entera.</p>
+<h3 id="2-accepted-tiene-éxito-pero-resolvedrefs-falla">2. <code>Accepted</code> tiene éxito, pero <code>ResolvedRefs</code> falla</h3>
+<p>Esto suele significar que la lógica puede adjuntarse, pero algo referenciado tiene un problema.
+Causas más comunes:</p>
+<ul>
+<li>El Service de backend no existe</li>
+<li>El nombre del Secret es incorrecto</li>
+<li>Referencia entre namespaces sin autorización</li>
+</ul>
+<p>Lo más frustrante de este tipo de fallo es que parece que ya casi llegaste — pero en realidad está atascado en la capa de referencia.</p>
+<h3 id="3-el-gateway-tiene-listeners-pero-no-tiene-la-dirección-esperada">3. El Gateway tiene listeners pero no tiene la dirección esperada</h3>
+<p>Esto aparece con frecuencia en clústeres locales o entornos sin una implementación de <code>LoadBalancer</code>.
+No es que Gateway API esté roto — simplemente la infraestructura subyacente no está aprovisionando una dirección externa.</p>
+<p>Opciones:</p>
+<ul>
+<li>Verificar si el clúster tiene capacidad <code>LoadBalancer</code></li>
+<li>Usar <code>port-forward</code> para validar el camino de enrutamiento</li>
+</ul>
+<h3 id="4-el-yaml-surtió-efecto-pero-las-solicitudes-devuelven-404--503">4. El YAML surtió efecto, pero las solicitudes devuelven 404 / 503</h3>
+<p>En este punto normalmente no es un solo campo incorrecto — es una cadena rota en algún punto:</p>
+<ul>
+<li>Header Host incorrecto</li>
+<li>El path no coincide con ninguna regla</li>
+<li>El Pod de backend no está saludable</li>
+<li>El selector del Service no está seleccionando ningún Pod</li>
+</ul>
+<p>Los problemas de ingreso a veces parecen un fallo del proxy, pero el backend simplemente no estaba listo. No culpes de todo a la capa de proxy — ya tiene suficiente trabajo.</p>
+<h2 id="resumen-en-una-línea">Resumen en una línea</h2>
+<p>La forma más efectiva de depurar Gateway API no es cambiar el YAML constantemente — es aprender a leer <code>status</code>.
+<code>Accepted</code> te dice si se recogió la orden. <code>ResolvedRefs</code> te dice si las referencias se resolvieron. <code>Programmed</code> te dice si la configuración fue efectivamente aplicada. Examina esas tres capas por separado y la velocidad de resolución de problemas aumenta drásticamente.</p>
+<h2 id="siguiente-paso">Siguiente paso</h2>
+<p>Esto completa la serie de 10 artículos sobre Envoy Gateway.
+Si quieres repasar el mapa completo de la serie:</p>
+<p>👉 <a href="00-overview">Resumen de la serie</a></p>1e:["$","aside",null,{"className":"hidden lg:block","children":["$","$L27",null,{"html":"$28"}]}]
+16:["$","$L15","kubernetes",{"ref":"$undefined","href":"/es/tags/kubernetes","locale":"$undefined","localeCookie":"$14:props:localeCookie","className":"inline-flex items-center rounded-full px-2.5 py-0.5 text-xs font-medium transition-colors","style":{"background":"var(--color-code-bg)","color":"var(--color-accent)","border":"1px solid var(--color-border)"},"children":["#","kubernetes"]}]
+17:["$","$L15","envoy-gateway",{"ref":"$undefined","href":"/es/tags/envoy-gateway","locale":"$undefined","localeCookie":"$14:props:localeCookie","className":"inline-flex items-center rounded-full px-2.5 py-0.5 text-xs font-medium transition-colors","style":{"background":"var(--color-code-bg)","color":"var(--color-accent)","border":"1px solid var(--color-border)"},"children":["#","envoy-gateway"]}]
+18:["$","$L15","gateway-api",{"ref":"$undefined","href":"/es/tags/gateway-api","locale":"$undefined","localeCookie":"$14:props:localeCookie","className":"inline-flex items-center rounded-full px-2.5 py-0.5 text-xs font-medium transition-colors","style":{"background":"var(--color-code-bg)","color":"var(--color-accent)","border":"1px solid var(--color-border)"},"children":["#","gateway-api"]}]
+19:["$","$L15","troubleshooting",{"ref":"$undefined","href":"/es/tags/troubleshooting","locale":"$undefined","localeCookie":"$14:props:localeCookie","className":"inline-flex items-center rounded-full px-2.5 py-0.5 text-xs font-medium transition-colors","style":{"background":"var(--color-code-bg)","color":"var(--color-accent)","border":"1px solid var(--color-border)"},"children":["#","troubleshooting"]}]
+1a:["$","$L15","status",{"ref":"$undefined","href":"/es/tags/status","locale":"$undefined","localeCookie":"$14:props:localeCookie","className":"inline-flex items-center rounded-full px-2.5 py-0.5 text-xs font-medium transition-colors","style":{"background":"var(--color-code-bg)","color":"var(--color-accent)","border":"1px solid var(--color-border)"},"children":["#","status"]}]
+1b:["$","$L15","debugging",{"ref":"$undefined","href":"/es/tags/debugging","locale":"$undefined","localeCookie":"$14:props:localeCookie","className":"inline-flex items-center rounded-full px-2.5 py-0.5 text-xs font-medium transition-colors","style":{"background":"var(--color-code-bg)","color":"var(--color-accent)","border":"1px solid var(--color-border)"},"children":["#","debugging"]}]
+1f:["$","$L15","kubernetes",{"ref":"$undefined","href":"/es/tags/kubernetes","locale":"$undefined","localeCookie":"$14:props:localeCookie","className":"inline-flex items-center rounded-full px-3 py-1 text-sm font-medium transition-colors","style":{"background":"var(--color-code-bg)","color":"var(--color-accent)","border":"1px solid var(--color-border)"},"children":["#","kubernetes"]}]
+20:["$","$L15","envoy-gateway",{"ref":"$undefined","href":"/es/tags/envoy-gateway","locale":"$undefined","localeCookie":"$14:props:localeCookie","className":"inline-flex items-center rounded-full px-3 py-1 text-sm font-medium transition-colors","style":{"background":"var(--color-code-bg)","color":"var(--color-accent)","border":"1px solid var(--color-border)"},"children":["#","envoy-gateway"]}]
+21:["$","$L15","gateway-api",{"ref":"$undefined","href":"/es/tags/gateway-api","locale":"$undefined","localeCookie":"$14:props:localeCookie","className":"inline-flex items-center rounded-full px-3 py-1 text-sm font-medium transition-colors","style":{"background":"var(--color-code-bg)","color":"var(--color-accent)","border":"1px solid var(--color-border)"},"children":["#","gateway-api"]}]
+22:["$","$L15","troubleshooting",{"ref":"$undefined","href":"/es/tags/troubleshooting","locale":"$undefined","localeCookie":"$14:props:localeCookie","className":"inline-flex items-center rounded-full px-3 py-1 text-sm font-medium transition-colors","style":{"background":"var(--color-code-bg)","color":"var(--color-accent)","border":"1px solid var(--color-border)"},"children":["#","troubleshooting"]}]
+23:["$","$L15","status",{"ref":"$undefined","href":"/es/tags/status","locale":"$undefined","localeCookie":"$14:props:localeCookie","className":"inline-flex items-center rounded-full px-3 py-1 text-sm font-medium transition-colors","style":{"background":"var(--color-code-bg)","color":"var(--color-accent)","border":"1px solid var(--color-border)"},"children":["#","status"]}]
+24:["$","$L15","debugging",{"ref":"$undefined","href":"/es/tags/debugging","locale":"$undefined","localeCookie":"$14:props:localeCookie","className":"inline-flex items-center rounded-full px-3 py-1 text-sm font-medium transition-colors","style":{"background":"var(--color-code-bg)","color":"var(--color-accent)","border":"1px solid var(--color-border)"},"children":["#","debugging"]}]
+25:["$","$L15",null,{"ref":"$undefined","href":"/es/blog/k8s/gateway/08-multi-namespace-and-teamwork","locale":"$undefined","localeCookie":"$14:props:localeCookie","className":"group rounded-lg border p-4 transition-colors hover:border-accent","style":{"borderColor":"var(--color-border)","background":"var(--color-surface)"},"children":[["$","p",null,{"className":"mb-1 text-xs","style":{"color":"var(--color-muted)"},"children":"← Artículo más reciente"}],["$","p",null,{"className":"line-clamp-1 text-sm font-medium transition-colors group-hover:text-accent","style":{"color":"var(--color-text)"},"children":"Envoy Gateway Multi-Namespace y Propiedad de Equipos: allowedRoutes, ReferenceGrant y Gobernanza entre Equipos"}]]}]
+26:["$","$L15",null,{"ref":"$undefined","href":"/es/blog/ai-trend/2026-03-09-ai-content-automation-workflow","locale":"$undefined","localeCookie":"$14:props:localeCookie","className":"group rounded-lg border p-4 text-right transition-colors hover:border-accent","style":{"borderColor":"var(--color-border)","background":"var(--color-surface)"},"children":[["$","p",null,{"className":"mb-1 text-xs","style":{"color":"var(--color-muted)"},"children":"Artículo más antiguo →"}],["$","p",null,{"className":"line-clamp-1 text-sm font-medium transition-colors group-hover:text-accent","style":{"color":"var(--color-text)"},"children":"Producción de contenido con IA: la brecha real no es la velocidad, sino el diseño del flujo de trabajo"}]]}]
+29:I[92204,["/_next/static/chunks/5a5b5b13c22d14f7.js","/_next/static/chunks/a484d1d3dd4b55ab.js"],"IconMark"]
+8:null
+c:[["$","title","0",{"children":"Manual de Status y Debugging de Envoy Gateway: Qué significan realmente Accepted, ResolvedRefs y Programmed | BenXHub Blog"}],["$","meta","1",{"name":"description","content":"Una guía sobre las conditions de status más importantes de Gateway y Route, y el flujo de debugging — para saber dónde mirar cuando la configuración no surte efecto."}],["$","link","2",{"rel":"canonical","href":"https://benxhub.com/es/blog/k8s/gateway/09-debugging-and-status/"}],["$","link","3",{"rel":"alternate","hrefLang":"zh-Hant","href":"https://benxhub.com/zh/blog/k8s/gateway/09-debugging-and-status/"}],["$","link","4",{"rel":"alternate","hrefLang":"en","href":"https://benxhub.com/en/blog/k8s/gateway/09-debugging-and-status/"}],["$","link","5",{"rel":"alternate","hrefLang":"ja","href":"https://benxhub.com/ja/blog/k8s/gateway/09-debugging-and-status/"}],["$","link","6",{"rel":"alternate","hrefLang":"ko","href":"https://benxhub.com/ko/blog/k8s/gateway/09-debugging-and-status/"}],["$","link","7",{"rel":"alternate","hrefLang":"es","href":"https://benxhub.com/es/blog/k8s/gateway/09-debugging-and-status/"}],["$","link","8",{"rel":"alternate","hrefLang":"fr","href":"https://benxhub.com/fr/blog/k8s/gateway/09-debugging-and-status/"}],["$","link","9",{"rel":"alternate","hrefLang":"ar","href":"https://benxhub.com/ar/blog/k8s/gateway/09-debugging-and-status/"}],["$","link","10",{"rel":"alternate","hrefLang":"x-default","href":"https://benxhub.com/zh/blog/k8s/gateway/09-debugging-and-status/"}],["$","link","11",{"rel":"alternate","type":"application/rss+xml","href":"https://benxhub.com/es/feed.xml"}],["$","meta","12",{"property":"og:title","content":"Manual de Status y Debugging de Envoy Gateway: Qué significan realmente Accepted, ResolvedRefs y Programmed"}],["$","meta","13",{"property":"og:description","content":"Una guía sobre las conditions de status más importantes de Gateway y Route, y el flujo de debugging — para saber dónde mirar cuando la configuración no surte efecto."}],["$","meta","14",{"property":"og:url","content":"https://benxhub.com/es/blog/k8s/gateway/09-debugging-and-status/"}],["$","meta","15",{"property":"og:site_name","content":"BenXHub Blog"}],["$","meta","16",{"property":"og:locale","content":"es_ES"}],["$","meta","17",{"property":"og:image","content":"https://benxhub.com/og-default.png"}],["$","meta","18",{"property":"og:image:width","content":"1200"}],["$","meta","19",{"property":"og:image:height","content":"630"}],["$","meta","20",{"property":"og:image:alt","content":"BenXHub Blog"}],["$","meta","21",{"property":"og:type","content":"article"}],["$","meta","22",{"property":"article:published_time","content":"2026-03-10T00:00:00.000Z"}],["$","meta","23",{"property":"article:tag","content":"kubernetes"}],["$","meta","24",{"property":"article:tag","content":"envoy-gateway"}],["$","meta","25",{"property":"article:tag","content":"gateway-api"}],["$","meta","26",{"property":"article:tag","content":"troubleshooting"}],["$","meta","27",{"property":"article:tag","content":"status"}],["$","meta","28",{"property":"article:tag","content":"debugging"}],["$","meta","29",{"name":"twitter:card","content":"summary_large_image"}],["$","meta","30",{"name":"twitter:title","content":"Manual de Status y Debugging de Envoy Gateway: Qué significan realmente Accepted, ResolvedRefs y Programmed"}],["$","meta","31",{"name":"twitter:description","content":"Una guía sobre las conditions de status más importantes de Gateway y Route, y el flujo de debugging — para saber dónde mirar cuando la configuración no surte efecto."}],["$","meta","32",{"name":"twitter:image","content":"https://benxhub.com/og-default.png"}],["$","link","33",{"rel":"icon","href":"/favicon.ico?favicon.0b3bf435.ico","sizes":"256x256","type":"image/x-icon"}],["$","$L29","34",{}]]

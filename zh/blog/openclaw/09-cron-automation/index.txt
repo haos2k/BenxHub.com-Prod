@@ -1,0 +1,209 @@
+1:"$Sreact.fragment"
+2:I[26795,["/_next/static/chunks/5a5b5b13c22d14f7.js","/_next/static/chunks/a484d1d3dd4b55ab.js"],"default"]
+3:I[73489,["/_next/static/chunks/5a5b5b13c22d14f7.js","/_next/static/chunks/a484d1d3dd4b55ab.js"],"default"]
+6:I[50183,["/_next/static/chunks/5a5b5b13c22d14f7.js","/_next/static/chunks/a484d1d3dd4b55ab.js"],"OutletBoundary"]
+7:"$Sreact.suspense"
+9:I[50183,["/_next/static/chunks/5a5b5b13c22d14f7.js","/_next/static/chunks/a484d1d3dd4b55ab.js"],"ViewportBoundary"]
+b:I[50183,["/_next/static/chunks/5a5b5b13c22d14f7.js","/_next/static/chunks/a484d1d3dd4b55ab.js"],"MetadataBoundary"]
+d:I[63847,[],"default"]
+:HL["/_next/static/chunks/4d9c3828f6075602.css","style"]
+:HL["/_next/static/media/797e433ab948586e-s.p.29207c2f.woff2","font",{"crossOrigin":"","type":"font/woff2"}]
+:HL["/_next/static/media/caa3a2e1cccd8315-s.p.3b6cae6d.woff2","font",{"crossOrigin":"","type":"font/woff2"}]
+0:{"P":null,"b":"ekNoF06-0VZrB4pGVUsy8","c":["","zh","blog","openclaw","09-cron-automation",""],"q":"","i":false,"f":[[["",{"children":[["locale","zh","d"],{"children":["blog",{"children":[["slug","openclaw/09-cron-automation","c"],{"children":["__PAGE__",{}]}]}]}]},"$undefined","$undefined",true],[["$","$1","c",{"children":[null,["$","$L2",null,{"parallelRouterKey":"children","error":"$undefined","errorStyles":"$undefined","errorScripts":"$undefined","template":["$","$L3",null,{}],"templateStyles":"$undefined","templateScripts":"$undefined","notFound":[["$","html",null,{"lang":"zh-Hant","children":["$","body",null,{"children":["$","main",null,{"className":"mx-auto max-w-2xl px-4 py-20 text-center sm:px-6","children":[["$","h1",null,{"className":"mb-3 text-4xl font-bold tracking-tight","children":"404"}],["$","p",null,{"className":"mb-8 text-lg","style":{"color":"var(--color-muted)"},"children":"找不到這個頁面 / Page not found"}],["$","a",null,{"href":"/zh/","className":"inline-flex items-center rounded-lg border px-4 py-2.5 text-sm font-medium","style":{"borderColor":"var(--color-border)","color":"var(--color-accent)","background":"var(--color-surface)"},"children":"BenXHub Blog"}]]}]}]}],[["$","link","0",{"rel":"stylesheet","href":"/_next/static/chunks/4d9c3828f6075602.css","precedence":"next","crossOrigin":"$undefined","nonce":"$undefined"}]]],"forbidden":"$undefined","unauthorized":"$undefined"}]]}],{"children":[["$","$1","c",{"children":[[["$","link","0",{"rel":"stylesheet","href":"/_next/static/chunks/4d9c3828f6075602.css","precedence":"next","crossOrigin":"$undefined","nonce":"$undefined"}],["$","script","script-0",{"src":"/_next/static/chunks/4204edc93da35a5e.js","async":true,"nonce":"$undefined"}],["$","script","script-1",{"src":"/_next/static/chunks/f2afb7fd2b7566bb.js","async":true,"nonce":"$undefined"}]],"$L4"]}],{"children":[["$","$1","c",{"children":[null,["$","$L2",null,{"parallelRouterKey":"children","error":"$undefined","errorStyles":"$undefined","errorScripts":"$undefined","template":["$","$L3",null,{}],"templateStyles":"$undefined","templateScripts":"$undefined","notFound":"$undefined","forbidden":"$undefined","unauthorized":"$undefined"}]]}],{"children":[["$","$1","c",{"children":[null,["$","$L2",null,{"parallelRouterKey":"children","error":"$undefined","errorStyles":"$undefined","errorScripts":"$undefined","template":["$","$L3",null,{}],"templateStyles":"$undefined","templateScripts":"$undefined","notFound":"$undefined","forbidden":"$undefined","unauthorized":"$undefined"}]]}],{"children":[["$","$1","c",{"children":["$L5",[["$","script","script-0",{"src":"/_next/static/chunks/2dddb3bc05093f69.js","async":true,"nonce":"$undefined"}]],["$","$L6",null,{"children":["$","$7",null,{"name":"Next.MetadataOutlet","children":"$@8"}]}]]}],{},null,false,false]},null,false,false]},null,false,false]},null,false,false]},null,false,false],["$","$1","h",{"children":[null,["$","$L9",null,{"children":"$La"}],["$","div",null,{"hidden":true,"children":["$","$Lb",null,{"children":["$","$7",null,{"name":"Next.Metadata","children":"$Lc"}]}]}],["$","meta",null,{"name":"next-size-adjust","content":""}]]}],false]],"m":"$undefined","G":["$d",[]],"S":true}
+4:["$","html",null,{"lang":"zh-Hant","dir":"ltr","className":"geist_a71539c9-module__T19VSG__variable geist_mono_8d43a2aa-module__8Li5zG__variable","children":["$","body",null,{"className":"flex min-h-screen flex-col antialiased","children":[["$","script",null,{"type":"application/ld+json","dangerouslySetInnerHTML":{"__html":"[{\"@context\":\"https://schema.org\",\"@type\":\"WebSite\",\"name\":\"BenXHub Blog\",\"url\":\"https://benxhub.com/zh/\",\"inLanguage\":\"zh-Hant\",\"publisher\":{\"@type\":\"Organization\",\"name\":\"BenXHub Blog\",\"url\":\"https://benxhub.com\"},\"potentialAction\":{\"@type\":\"SearchAction\",\"target\":{\"@type\":\"EntryPoint\",\"urlTemplate\":\"https://benxhub.com/zh/search/?q={search_term_string}\"},\"query-input\":\"required name=search_term_string\"}},{\"@context\":\"https://schema.org\",\"@type\":\"Person\",\"@id\":\"https://benxhub.com/#author\",\"name\":\"BenX\",\"url\":\"https://benxhub.com/zh/about/\",\"sameAs\":[\"https://github.com/benzhub\"]}]"}}],"$Le"]}]}]
+13:Td21,<p>如果助理只能「被動回答問題」，那只是個聊天機器人。<strong>真正的助理，會主動替你工作。</strong></p>
+<p>這就是 <strong>Cron 排程</strong>在做的事。</p>
+<h2 id="本篇學習目標">本篇學習目標</h2>
+<ul>
+<li>理解 Cron 和 Heartbeat 各自的用途</li>
+<li>知道哪些任務適合排程化</li>
+<li>學會在儀表板設定 Cron</li>
+<li>看懂 Cron 語法，知道排程沒觸發時怎麼排查</li>
+</ul>
+<hr>
+<h2 id="cron-和-heartbeat-是什麼">Cron 和 Heartbeat 是什麼？</h2>
+<p><strong>Cron</strong>：設定「什麼時間做什麼事」，就像你幫助理排好了行事曆：</p>
+<ul>
+<li>每天早上 9 點：整理昨天的郵件，給我一份摘要</li>
+<li>每週一：提醒我本週的待辦事項</li>
+<li>每天深夜：把今天的筆記自動歸檔</li>
+</ul>
+<p><strong>Heartbeat</strong>：助理每隔一段時間（例如每 30 分鐘）自動醒來檢查一次，有需要做的事就去做。</p>
+<blockquote>
+<p>💡 看到每 30 分鐘有一條 heartbeat 的 log？正常的，不用擔心。</p>
+</blockquote>
+<hr>
+<h2 id="常見自動化用途">常見自動化用途</h2>
+<table>
+<thead>
+<tr>
+<th>排程任務</th>
+<th>說明</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td>每日簡報</td>
+<td>每天固定時間總結信箱、日曆、新聞，推播給你</td>
+</tr>
+<tr>
+<td>提醒待辦</td>
+<td>在你設定的時間，把待辦清單推給你</td>
+</tr>
+<tr>
+<td>定期監控</td>
+<td>每小時檢查某個 API 或網頁，有異常就通知</td>
+</tr>
+<tr>
+<td>整理筆記</td>
+<td>每週幫你把散落的筆記整理成有條理的文件</td>
+</tr>
+</tbody>
+</table>
+<hr>
+<h2 id="在儀表板設定-cron">在儀表板設定 Cron</h2>
+<p>打開 Control UI → <strong>Cron</strong> 標籤：</p>
+<ul>
+<li><strong>新增排程</strong>：填入 Cron 表達式和要做的任務描述</li>
+<li><strong>啟用 / 停用</strong>：隨時可以暫停某個排程</li>
+<li><strong>立即執行</strong>：不想等到時間到，手動觸發一次看效果</li>
+</ul>
+<hr>
+<h2 id="cron-語法速查">Cron 語法速查</h2>
+<pre><code>* * * * *
+│ │ │ │ └─ 星期幾（0-7，0和7都是週日）
+│ │ │ └─── 月份（1-12）
+│ │ └───── 日（1-31）
+│ └─────── 小時（0-23）
+└───────── 分鐘（0-59）
+</code></pre>
+<p>常用範例：</p>
+<pre><code>0 9 * * *      ← 每天早上 9:00
+0 9 * * 1      ← 每週一早上 9:00
+0 */6 * * *    ← 每 6 小時一次
+</code></pre>
+<hr>
+<h2 id="排程沒有觸發先查這幾點">排程沒有觸發？先查這幾點</h2>
+<ol>
+<li>Config 裡 Cron 有沒有啟用</li>
+<li>時區設定對不對</li>
+<li>看 log 有沒有錯誤：<code>openclaw logs --follow</code></li>
+<li>試試重啟 Gateway</li>
+</ol>
+<blockquote>
+<p>⚠️ 排程任務會佔用助理的模型資源。如果同時跑大量排程加上大量對話，可能觸發 rate limit（HTTP 429）。重工作考慮分配給專屬的 Agent。</p>
+</blockquote>
+<hr>
+<h2 id="下一步">下一步</h2>
+<p>助理現在會主動工作了！最後一篇，我們來整理一些進階設定和除錯心法，讓你的系統跑得更穩。</p>
+<p><a href="08-remote-gateway-nodes">← 上一篇：遠端 Gateway</a> | 👉 <a href="10-advanced-config">進階設定與除錯心法</a></p>5:[["$","script",null,{"type":"application/ld+json","dangerouslySetInnerHTML":{"__html":"{\"@context\":\"https://schema.org\",\"@type\":\"Article\",\"headline\":\"讓助理自動打工——不用你叫，他就主動幫你做事\",\"description\":\"用 Cron 排程讓助理定時執行任務，搞懂語法、在儀表板設定、除錯常見問題。\",\"url\":\"https://benxhub.com/zh/blog/openclaw/09-cron-automation/\",\"mainEntityOfPage\":{\"@type\":\"WebPage\",\"@id\":\"https://benxhub.com/zh/blog/openclaw/09-cron-automation/\"},\"datePublished\":\"2026-03-08T00:00:00.000Z\",\"dateModified\":\"2026-03-08T00:00:00.000Z\",\"keywords\":\"openclaw, cron, automation, scheduling\",\"inLanguage\":\"zh-Hant\",\"author\":{\"@type\":\"Person\",\"@id\":\"https://benxhub.com/#author\",\"name\":\"BenX\",\"url\":\"https://benxhub.com/zh/about/\",\"sameAs\":[\"https://github.com/benzhub\"]},\"publisher\":{\"@type\":\"Organization\",\"name\":\"BenXHub Blog\",\"url\":\"https://benxhub.com\"},\"image\":\"https://benxhub.com/og-default.png\"}"}}],["$","div",null,{"className":"mx-auto max-w-6xl px-4 py-12 sm:px-6","children":["$","div",null,{"className":"lg:grid lg:grid-cols-[1fr_240px] lg:gap-14","children":[["$","article",null,{"children":[["$","header",null,{"className":"mb-10","children":[["$","div",null,{"className":"mb-4 flex flex-wrap gap-2","children":["$Lf","$L10","$L11","$L12"]}],["$","h1",null,{"className":"mb-4 text-3xl leading-snug font-bold tracking-tight sm:text-4xl","style":{"color":"var(--color-text)"},"children":"讓助理自動打工——不用你叫，他就主動幫你做事"}],["$","div",null,{"className":"flex flex-wrap items-center gap-3 text-sm","style":{"color":"var(--color-muted)"},"children":[["$","time",null,{"dateTime":"2026-03-08","children":"2026 年 3 月 8 日"}],["$","span",null,{"aria-hidden":"true","children":"·"}],["$","span",null,{"children":"4 min read"}]]}],"$undefined",["$","div",null,{"className":"mt-6 border-b","style":{"borderColor":"var(--color-border)"}}]]}],["$","div",null,{"className":"prose","dangerouslySetInnerHTML":{"__html":"$13"}}],"$L14"]}],"$L15"]}]}]]
+1c:I[24801,["/_next/static/chunks/4204edc93da35a5e.js","/_next/static/chunks/f2afb7fd2b7566bb.js","/_next/static/chunks/2dddb3bc05093f69.js"],"default"]
+14:["$","footer",null,{"className":"mt-14 border-t pt-8","style":{"borderColor":"var(--color-border)"},"children":[["$","div",null,{"className":"mb-8 flex flex-wrap gap-2","children":["$L16","$L17","$L18","$L19"]}],["$","nav",null,{"aria-label":"文章導覽","className":"grid grid-cols-1 gap-4 sm:grid-cols-2","children":["$L1a","$L1b"]}]]}]
+1d:Td21,<p>如果助理只能「被動回答問題」，那只是個聊天機器人。<strong>真正的助理，會主動替你工作。</strong></p>
+<p>這就是 <strong>Cron 排程</strong>在做的事。</p>
+<h2 id="本篇學習目標">本篇學習目標</h2>
+<ul>
+<li>理解 Cron 和 Heartbeat 各自的用途</li>
+<li>知道哪些任務適合排程化</li>
+<li>學會在儀表板設定 Cron</li>
+<li>看懂 Cron 語法，知道排程沒觸發時怎麼排查</li>
+</ul>
+<hr>
+<h2 id="cron-和-heartbeat-是什麼">Cron 和 Heartbeat 是什麼？</h2>
+<p><strong>Cron</strong>：設定「什麼時間做什麼事」，就像你幫助理排好了行事曆：</p>
+<ul>
+<li>每天早上 9 點：整理昨天的郵件，給我一份摘要</li>
+<li>每週一：提醒我本週的待辦事項</li>
+<li>每天深夜：把今天的筆記自動歸檔</li>
+</ul>
+<p><strong>Heartbeat</strong>：助理每隔一段時間（例如每 30 分鐘）自動醒來檢查一次，有需要做的事就去做。</p>
+<blockquote>
+<p>💡 看到每 30 分鐘有一條 heartbeat 的 log？正常的，不用擔心。</p>
+</blockquote>
+<hr>
+<h2 id="常見自動化用途">常見自動化用途</h2>
+<table>
+<thead>
+<tr>
+<th>排程任務</th>
+<th>說明</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td>每日簡報</td>
+<td>每天固定時間總結信箱、日曆、新聞，推播給你</td>
+</tr>
+<tr>
+<td>提醒待辦</td>
+<td>在你設定的時間，把待辦清單推給你</td>
+</tr>
+<tr>
+<td>定期監控</td>
+<td>每小時檢查某個 API 或網頁，有異常就通知</td>
+</tr>
+<tr>
+<td>整理筆記</td>
+<td>每週幫你把散落的筆記整理成有條理的文件</td>
+</tr>
+</tbody>
+</table>
+<hr>
+<h2 id="在儀表板設定-cron">在儀表板設定 Cron</h2>
+<p>打開 Control UI → <strong>Cron</strong> 標籤：</p>
+<ul>
+<li><strong>新增排程</strong>：填入 Cron 表達式和要做的任務描述</li>
+<li><strong>啟用 / 停用</strong>：隨時可以暫停某個排程</li>
+<li><strong>立即執行</strong>：不想等到時間到，手動觸發一次看效果</li>
+</ul>
+<hr>
+<h2 id="cron-語法速查">Cron 語法速查</h2>
+<pre><code>* * * * *
+│ │ │ │ └─ 星期幾（0-7，0和7都是週日）
+│ │ │ └─── 月份（1-12）
+│ │ └───── 日（1-31）
+│ └─────── 小時（0-23）
+└───────── 分鐘（0-59）
+</code></pre>
+<p>常用範例：</p>
+<pre><code>0 9 * * *      ← 每天早上 9:00
+0 9 * * 1      ← 每週一早上 9:00
+0 */6 * * *    ← 每 6 小時一次
+</code></pre>
+<hr>
+<h2 id="排程沒有觸發先查這幾點">排程沒有觸發？先查這幾點</h2>
+<ol>
+<li>Config 裡 Cron 有沒有啟用</li>
+<li>時區設定對不對</li>
+<li>看 log 有沒有錯誤：<code>openclaw logs --follow</code></li>
+<li>試試重啟 Gateway</li>
+</ol>
+<blockquote>
+<p>⚠️ 排程任務會佔用助理的模型資源。如果同時跑大量排程加上大量對話，可能觸發 rate limit（HTTP 429）。重工作考慮分配給專屬的 Agent。</p>
+</blockquote>
+<hr>
+<h2 id="下一步">下一步</h2>
+<p>助理現在會主動工作了！最後一篇，我們來整理一些進階設定和除錯心法，讓你的系統跑得更穩。</p>
+<p><a href="08-remote-gateway-nodes">← 上一篇：遠端 Gateway</a> | 👉 <a href="10-advanced-config">進階設定與除錯心法</a></p>15:["$","aside",null,{"className":"hidden lg:block","children":["$","$L1c",null,{"html":"$1d"}]}]
+1e:I[14864,["/_next/static/chunks/4204edc93da35a5e.js","/_next/static/chunks/f2afb7fd2b7566bb.js","/_next/static/chunks/2dddb3bc05093f69.js"],"default"]
+f:["$","$L1e","openclaw",{"ref":"$undefined","href":"/zh/tags/openclaw","locale":"$undefined","localeCookie":{"name":"NEXT_LOCALE","sameSite":"lax"},"className":"inline-flex items-center rounded-full px-2.5 py-0.5 text-xs font-medium transition-colors","style":{"background":"var(--color-code-bg)","color":"var(--color-accent)","border":"1px solid var(--color-border)"},"children":["#","openclaw"]}]
+10:["$","$L1e","cron",{"ref":"$undefined","href":"/zh/tags/cron","locale":"$undefined","localeCookie":"$f:props:localeCookie","className":"inline-flex items-center rounded-full px-2.5 py-0.5 text-xs font-medium transition-colors","style":{"background":"var(--color-code-bg)","color":"var(--color-accent)","border":"1px solid var(--color-border)"},"children":["#","cron"]}]
+11:["$","$L1e","automation",{"ref":"$undefined","href":"/zh/tags/automation","locale":"$undefined","localeCookie":"$f:props:localeCookie","className":"inline-flex items-center rounded-full px-2.5 py-0.5 text-xs font-medium transition-colors","style":{"background":"var(--color-code-bg)","color":"var(--color-accent)","border":"1px solid var(--color-border)"},"children":["#","automation"]}]
+12:["$","$L1e","scheduling",{"ref":"$undefined","href":"/zh/tags/scheduling","locale":"$undefined","localeCookie":"$f:props:localeCookie","className":"inline-flex items-center rounded-full px-2.5 py-0.5 text-xs font-medium transition-colors","style":{"background":"var(--color-code-bg)","color":"var(--color-accent)","border":"1px solid var(--color-border)"},"children":["#","scheduling"]}]
+16:["$","$L1e","openclaw",{"ref":"$undefined","href":"/zh/tags/openclaw","locale":"$undefined","localeCookie":"$f:props:localeCookie","className":"inline-flex items-center rounded-full px-3 py-1 text-sm font-medium transition-colors","style":{"background":"var(--color-code-bg)","color":"var(--color-accent)","border":"1px solid var(--color-border)"},"children":["#","openclaw"]}]
+17:["$","$L1e","cron",{"ref":"$undefined","href":"/zh/tags/cron","locale":"$undefined","localeCookie":"$f:props:localeCookie","className":"inline-flex items-center rounded-full px-3 py-1 text-sm font-medium transition-colors","style":{"background":"var(--color-code-bg)","color":"var(--color-accent)","border":"1px solid var(--color-border)"},"children":["#","cron"]}]
+18:["$","$L1e","automation",{"ref":"$undefined","href":"/zh/tags/automation","locale":"$undefined","localeCookie":"$f:props:localeCookie","className":"inline-flex items-center rounded-full px-3 py-1 text-sm font-medium transition-colors","style":{"background":"var(--color-code-bg)","color":"var(--color-accent)","border":"1px solid var(--color-border)"},"children":["#","automation"]}]
+19:["$","$L1e","scheduling",{"ref":"$undefined","href":"/zh/tags/scheduling","locale":"$undefined","localeCookie":"$f:props:localeCookie","className":"inline-flex items-center rounded-full px-3 py-1 text-sm font-medium transition-colors","style":{"background":"var(--color-code-bg)","color":"var(--color-accent)","border":"1px solid var(--color-border)"},"children":["#","scheduling"]}]
+1a:["$","$L1e",null,{"ref":"$undefined","href":"/zh/blog/openclaw/08-remote-gateway-nodes","locale":"$undefined","localeCookie":"$f:props:localeCookie","className":"group rounded-lg border p-4 transition-colors hover:border-accent","style":{"borderColor":"var(--color-border)","background":"var(--color-surface)"},"children":[["$","p",null,{"className":"mb-1 text-xs","style":{"color":"var(--color-muted)"},"children":"← 較新文章"}],["$","p",null,{"className":"line-clamp-1 text-sm font-medium transition-colors group-hover:text-accent","style":{"color":"var(--color-text)"},"children":"關掉電腦助理就消失？把 Gateway 搬到 VPS，24 小時隨時待命"}]]}]
+1b:["$","$L1e",null,{"ref":"$undefined","href":"/zh/blog/openclaw/10-advanced-config","locale":"$undefined","localeCookie":"$f:props:localeCookie","className":"group rounded-lg border p-4 text-right transition-colors hover:border-accent","style":{"borderColor":"var(--color-border)","background":"var(--color-surface)"},"children":[["$","p",null,{"className":"mb-1 text-xs","style":{"color":"var(--color-muted)"},"children":"較舊文章 →"}],["$","p",null,{"className":"line-clamp-1 text-sm font-medium transition-colors group-hover:text-accent","style":{"color":"var(--color-text)"},"children":"系統跑歪了怎麼辦？進階設定與除錯心法大全"}]]}]
+1f:I[33343,["/_next/static/chunks/4204edc93da35a5e.js","/_next/static/chunks/f2afb7fd2b7566bb.js"],"default"]
+20:I[26817,["/_next/static/chunks/4204edc93da35a5e.js","/_next/static/chunks/f2afb7fd2b7566bb.js"],"default"]
+21:I[6197,["/_next/static/chunks/4204edc93da35a5e.js","/_next/static/chunks/f2afb7fd2b7566bb.js"],"default"]
+23:I[40018,["/_next/static/chunks/4204edc93da35a5e.js","/_next/static/chunks/f2afb7fd2b7566bb.js"],"default"]
+e:["$","$L1f",null,{"formats":"$undefined","locale":"zh","messages":{"common":{"siteName":"BenXHub Blog","siteDescription":"BenX 的技術部落格，分享 Web 開發、架構設計與工程實踐。"},"nav":{"home":"首頁","tags":"標籤","about":"關於","searchLabel":"搜尋文章"},"hero":{"subtitle":"分享 Web 開發、架構設計與工程實踐的技術筆記","cta":"瀏覽文章"},"posts":{"title":"文章列表","count":"共 {total} 篇文章","empty":"目前還沒有文章，敬請期待！","newerPost":"← 較新文章","olderPost":"較舊文章 →","navLabel":"文章導覽"},"pagination":{"prev":"上一頁","next":"下一頁","page":"第 {current} / {total} 頁","label":"文章列表分頁","pageTitle":"第 {num} 頁","pageDescription":"BenX 的技術部落格 — 文章列表分頁。"},"search":{"title":"搜尋文章","description":"搜尋 BenXHub Blog 的所有文章，按標題、描述或標籤即時篩選。","subtitle":"搜尋標題、描述或標籤，即時顯示結果","placeholder":"搜尋文章標題、描述或標籤…","found":"找到 {count} 篇相關文章","notFound":"沒有找到與「{query}」相關的文章","emptyTitle":"找不到相關文章","emptyHint":"試試看其他關鍵字，或瀏覽","allPosts":"所有文章","totalCount":"共 {count} 篇文章，輸入關鍵字即可搜尋"},"tags":{"title":"所有標籤","description":"依標籤瀏覽所有文章。","count":"共 {count} 個標籤","empty":"目前還沒有標籤，敬請期待！","allTags":"所有標籤","postCount":"共 {count} 篇文章","otherTags":"其他標籤","tagTitle":"#{tag} 的文章","tagDescription":"所有標記為「{tag}」的文章列表。"},"about":{"title":"關於","description":"關於 BenXHub Blog 與本站簡介。","subtitle":"關於 BenXHub Blog 與本站簡介","siteTitle":"關於本站","siteContent":"BenXHub Blog 是 BenX 的技術部落格，分享 Web 開發、架構設計與工程實踐。","authorTitle":"關於我","authorContent":"喜歡寫程式、研究技術，樂於把踩過的坑與解法記錄下來，也歡迎透過本站側欄或 Footer 的連結交流。","linksTitle":"連結"},"sidebar":{"label":"側邊欄","authorBio":"喜歡寫程式與分享，專注 Web 開發、架構與 DevOps。","searchPlaceholder":"搜尋文章…","seriesTitle":"系列文章","articleCount":"{count} 篇"},"toc":{"title":"目錄","label":"文章目錄"},"notFound":{"message":"此頁面不存在，可能連結已失效或網址輸入錯誤。","backHome":"返回首頁"},"localeSwitcher":{"label":"切換語言"}},"now":"$undefined","timeZone":"UTC","children":[["$","$L20",null,{}],["$","$L21",null,{}],["$","main",null,{"className":"flex-1 pt-16","children":["$","$L2",null,{"parallelRouterKey":"children","error":"$undefined","errorStyles":"$undefined","errorScripts":"$undefined","template":["$","$L3",null,{}],"templateStyles":"$undefined","templateScripts":"$undefined","notFound":["$L22",[]],"forbidden":"$undefined","unauthorized":"$undefined"}]}],["$","$L23",null,{}]]}]
+22:["$","div",null,{"className":"mx-auto max-w-2xl px-4 py-20 text-center sm:px-6","children":[["$","h1",null,{"className":"mb-3 text-4xl font-bold tracking-tight","style":{"color":"var(--color-text)"},"children":"404"}],["$","p",null,{"className":"mb-8 text-lg","style":{"color":"var(--color-muted)"},"children":"此頁面不存在，可能連結已失效或網址輸入錯誤。"}],"$L24"]}]
+a:[["$","meta","0",{"charSet":"utf-8"}],["$","meta","1",{"name":"viewport","content":"width=device-width, initial-scale=1"}]]
+24:["$","$L1e",null,{"ref":"$undefined","href":"/zh","locale":"$undefined","localeCookie":"$f:props:localeCookie","className":"inline-flex items-center rounded-lg border px-4 py-2.5 text-sm font-medium transition-colors hover:border-accent","style":{"borderColor":"var(--color-border)","color":"var(--color-accent)","background":"var(--color-surface)"},"children":"返回首頁"}]
+25:I[92204,["/_next/static/chunks/5a5b5b13c22d14f7.js","/_next/static/chunks/a484d1d3dd4b55ab.js"],"IconMark"]
+8:null
+c:[["$","title","0",{"children":"讓助理自動打工——不用你叫，他就主動幫你做事 | BenXHub Blog"}],["$","meta","1",{"name":"description","content":"用 Cron 排程讓助理定時執行任務，搞懂語法、在儀表板設定、除錯常見問題。"}],["$","link","2",{"rel":"canonical","href":"https://benxhub.com/zh/blog/openclaw/09-cron-automation/"}],["$","link","3",{"rel":"alternate","hrefLang":"zh-Hant","href":"https://benxhub.com/zh/blog/openclaw/09-cron-automation/"}],["$","link","4",{"rel":"alternate","hrefLang":"en","href":"https://benxhub.com/en/blog/openclaw/09-cron-automation/"}],["$","link","5",{"rel":"alternate","hrefLang":"ja","href":"https://benxhub.com/ja/blog/openclaw/09-cron-automation/"}],["$","link","6",{"rel":"alternate","hrefLang":"ko","href":"https://benxhub.com/ko/blog/openclaw/09-cron-automation/"}],["$","link","7",{"rel":"alternate","hrefLang":"es","href":"https://benxhub.com/es/blog/openclaw/09-cron-automation/"}],["$","link","8",{"rel":"alternate","hrefLang":"fr","href":"https://benxhub.com/fr/blog/openclaw/09-cron-automation/"}],["$","link","9",{"rel":"alternate","hrefLang":"ar","href":"https://benxhub.com/ar/blog/openclaw/09-cron-automation/"}],["$","link","10",{"rel":"alternate","hrefLang":"x-default","href":"https://benxhub.com/zh/blog/openclaw/09-cron-automation/"}],["$","link","11",{"rel":"alternate","type":"application/rss+xml","href":"https://benxhub.com/zh/feed.xml"}],["$","meta","12",{"property":"og:title","content":"讓助理自動打工——不用你叫，他就主動幫你做事"}],["$","meta","13",{"property":"og:description","content":"用 Cron 排程讓助理定時執行任務，搞懂語法、在儀表板設定、除錯常見問題。"}],["$","meta","14",{"property":"og:url","content":"https://benxhub.com/zh/blog/openclaw/09-cron-automation/"}],["$","meta","15",{"property":"og:site_name","content":"BenXHub Blog"}],["$","meta","16",{"property":"og:locale","content":"zh_TW"}],["$","meta","17",{"property":"og:image","content":"https://benxhub.com/og-default.png"}],["$","meta","18",{"property":"og:image:width","content":"1200"}],["$","meta","19",{"property":"og:image:height","content":"630"}],["$","meta","20",{"property":"og:image:alt","content":"BenXHub Blog"}],["$","meta","21",{"property":"og:type","content":"article"}],["$","meta","22",{"property":"article:published_time","content":"2026-03-08T00:00:00.000Z"}],["$","meta","23",{"property":"article:tag","content":"openclaw"}],["$","meta","24",{"property":"article:tag","content":"cron"}],["$","meta","25",{"property":"article:tag","content":"automation"}],["$","meta","26",{"property":"article:tag","content":"scheduling"}],["$","meta","27",{"name":"twitter:card","content":"summary_large_image"}],["$","meta","28",{"name":"twitter:title","content":"讓助理自動打工——不用你叫，他就主動幫你做事"}],["$","meta","29",{"name":"twitter:description","content":"用 Cron 排程讓助理定時執行任務，搞懂語法、在儀表板設定、除錯常見問題。"}],["$","meta","30",{"name":"twitter:image","content":"https://benxhub.com/og-default.png"}],["$","link","31",{"rel":"icon","href":"/favicon.ico?favicon.0b3bf435.ico","sizes":"256x256","type":"image/x-icon"}],["$","$L25","32",{}]]

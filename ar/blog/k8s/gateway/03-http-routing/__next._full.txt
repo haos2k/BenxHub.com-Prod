@@ -6,42 +6,42 @@
 9:I[50183,["/_next/static/chunks/5a5b5b13c22d14f7.js","/_next/static/chunks/a484d1d3dd4b55ab.js"],"ViewportBoundary"]
 b:I[50183,["/_next/static/chunks/5a5b5b13c22d14f7.js","/_next/static/chunks/a484d1d3dd4b55ab.js"],"MetadataBoundary"]
 d:I[63847,[],"default"]
-:HL["/_next/static/chunks/446a7883c02a95fe.css","style"]
+:HL["/_next/static/chunks/4d9c3828f6075602.css","style"]
 :HL["/_next/static/media/797e433ab948586e-s.p.29207c2f.woff2","font",{"crossOrigin":"","type":"font/woff2"}]
 :HL["/_next/static/media/caa3a2e1cccd8315-s.p.3b6cae6d.woff2","font",{"crossOrigin":"","type":"font/woff2"}]
-0:{"P":null,"b":"sM8YAyjANE7sOnXm3EQGk","c":["","ar","blog","k8s","gateway","03-http-routing"],"q":"","i":false,"f":[[["",{"children":[["locale","ar","d"],{"children":["blog",{"children":[["slug","k8s/gateway/03-http-routing","c"],{"children":["__PAGE__",{}]}]}]}]},"$undefined","$undefined",true],[["$","$1","c",{"children":[null,["$","html",null,{"children":["$","body",null,{"children":["$","$L2",null,{"parallelRouterKey":"children","error":"$undefined","errorStyles":"$undefined","errorScripts":"$undefined","template":["$","$L3",null,{}],"templateStyles":"$undefined","templateScripts":"$undefined","notFound":[[["$","title",null,{"children":"404: This page could not be found."}],["$","div",null,{"style":{"fontFamily":"system-ui,\"Segoe UI\",Roboto,Helvetica,Arial,sans-serif,\"Apple Color Emoji\",\"Segoe UI Emoji\"","height":"100vh","textAlign":"center","display":"flex","flexDirection":"column","alignItems":"center","justifyContent":"center"},"children":["$","div",null,{"children":[["$","style",null,{"dangerouslySetInnerHTML":{"__html":"body{color:#000;background:#fff;margin:0}.next-error-h1{border-right:1px solid rgba(0,0,0,.3)}@media (prefers-color-scheme:dark){body{color:#fff;background:#000}.next-error-h1{border-right:1px solid rgba(255,255,255,.3)}}"}}],["$","h1",null,{"className":"next-error-h1","style":{"display":"inline-block","margin":"0 20px 0 0","padding":"0 23px 0 0","fontSize":24,"fontWeight":500,"verticalAlign":"top","lineHeight":"49px"},"children":404}],["$","div",null,{"style":{"display":"inline-block"},"children":["$","h2",null,{"style":{"fontSize":14,"fontWeight":400,"lineHeight":"49px","margin":0},"children":"This page could not be found."}]}]]}]}]],[]],"forbidden":"$undefined","unauthorized":"$undefined"}]}]}]]}],{"children":[["$","$1","c",{"children":[[["$","link","0",{"rel":"stylesheet","href":"/_next/static/chunks/446a7883c02a95fe.css","precedence":"next","crossOrigin":"$undefined","nonce":"$undefined"}],["$","script","script-0",{"src":"/_next/static/chunks/7923a261b80bb6e1.js","async":true,"nonce":"$undefined"}],["$","script","script-1",{"src":"/_next/static/chunks/e09b4358027e8033.js","async":true,"nonce":"$undefined"}]],"$L4"]}],{"children":[["$","$1","c",{"children":[null,["$","$L2",null,{"parallelRouterKey":"children","error":"$undefined","errorStyles":"$undefined","errorScripts":"$undefined","template":["$","$L3",null,{}],"templateStyles":"$undefined","templateScripts":"$undefined","notFound":"$undefined","forbidden":"$undefined","unauthorized":"$undefined"}]]}],{"children":[["$","$1","c",{"children":[null,["$","$L2",null,{"parallelRouterKey":"children","error":"$undefined","errorStyles":"$undefined","errorScripts":"$undefined","template":["$","$L3",null,{}],"templateStyles":"$undefined","templateScripts":"$undefined","notFound":"$undefined","forbidden":"$undefined","unauthorized":"$undefined"}]]}],{"children":[["$","$1","c",{"children":["$L5",[["$","script","script-0",{"src":"/_next/static/chunks/2dddb3bc05093f69.js","async":true,"nonce":"$undefined"}]],["$","$L6",null,{"children":["$","$7",null,{"name":"Next.MetadataOutlet","children":"$@8"}]}]]}],{},null,false,false]},null,false,false]},null,false,false]},null,false,false]},null,false,false],["$","$1","h",{"children":[null,["$","$L9",null,{"children":"$La"}],["$","div",null,{"hidden":true,"children":["$","$Lb",null,{"children":["$","$7",null,{"name":"Next.Metadata","children":"$Lc"}]}]}],["$","meta",null,{"name":"next-size-adjust","content":""}]]}],false]],"m":"$undefined","G":["$d",[]],"S":true}
-4:["$","div",null,{"lang":"ar","dir":"rtl","className":"geist_a71539c9-module__T19VSG__variable geist_mono_8d43a2aa-module__8Li5zG__variable flex min-h-screen flex-col antialiased","children":[["$","script",null,{"type":"application/ld+json","dangerouslySetInnerHTML":{"__html":"[{\"@context\":\"https://schema.org\",\"@type\":\"WebSite\",\"name\":\"BenXHub Blog\",\"url\":\"https://benxhub.com/ar\",\"inLanguage\":\"ar\",\"publisher\":{\"@type\":\"Organization\",\"name\":\"BenXHub Blog\",\"url\":\"https://benxhub.com\"},\"potentialAction\":{\"@type\":\"SearchAction\",\"target\":{\"@type\":\"EntryPoint\",\"urlTemplate\":\"https://benxhub.com/ar/search?q={search_term_string}\"},\"query-input\":\"required name=search_term_string\"}},{\"@context\":\"https://schema.org\",\"@type\":\"Person\",\"name\":\"BenX\",\"url\":\"https://benxhub.com\",\"sameAs\":[\"https://github.com/benzhub\"]}]"}}],"$Le"]}]
-f:I[33343,["/_next/static/chunks/7923a261b80bb6e1.js","/_next/static/chunks/e09b4358027e8033.js"],"default"]
-10:I[26817,["/_next/static/chunks/7923a261b80bb6e1.js","/_next/static/chunks/e09b4358027e8033.js"],"default"]
-11:I[6197,["/_next/static/chunks/7923a261b80bb6e1.js","/_next/static/chunks/e09b4358027e8033.js"],"default"]
-13:I[40018,["/_next/static/chunks/7923a261b80bb6e1.js","/_next/static/chunks/e09b4358027e8033.js"],"default"]
+0:{"P":null,"b":"ekNoF06-0VZrB4pGVUsy8","c":["","ar","blog","k8s","gateway","03-http-routing",""],"q":"","i":false,"f":[[["",{"children":[["locale","ar","d"],{"children":["blog",{"children":[["slug","k8s/gateway/03-http-routing","c"],{"children":["__PAGE__",{}]}]}]}]},"$undefined","$undefined",true],[["$","$1","c",{"children":[null,["$","$L2",null,{"parallelRouterKey":"children","error":"$undefined","errorStyles":"$undefined","errorScripts":"$undefined","template":["$","$L3",null,{}],"templateStyles":"$undefined","templateScripts":"$undefined","notFound":[["$","html",null,{"lang":"zh-Hant","children":["$","body",null,{"children":["$","main",null,{"className":"mx-auto max-w-2xl px-4 py-20 text-center sm:px-6","children":[["$","h1",null,{"className":"mb-3 text-4xl font-bold tracking-tight","children":"404"}],["$","p",null,{"className":"mb-8 text-lg","style":{"color":"var(--color-muted)"},"children":"找不到這個頁面 / Page not found"}],["$","a",null,{"href":"/zh/","className":"inline-flex items-center rounded-lg border px-4 py-2.5 text-sm font-medium","style":{"borderColor":"var(--color-border)","color":"var(--color-accent)","background":"var(--color-surface)"},"children":"BenXHub Blog"}]]}]}]}],[["$","link","0",{"rel":"stylesheet","href":"/_next/static/chunks/4d9c3828f6075602.css","precedence":"next","crossOrigin":"$undefined","nonce":"$undefined"}]]],"forbidden":"$undefined","unauthorized":"$undefined"}]]}],{"children":[["$","$1","c",{"children":[[["$","link","0",{"rel":"stylesheet","href":"/_next/static/chunks/4d9c3828f6075602.css","precedence":"next","crossOrigin":"$undefined","nonce":"$undefined"}],["$","script","script-0",{"src":"/_next/static/chunks/4204edc93da35a5e.js","async":true,"nonce":"$undefined"}],["$","script","script-1",{"src":"/_next/static/chunks/f2afb7fd2b7566bb.js","async":true,"nonce":"$undefined"}]],"$L4"]}],{"children":[["$","$1","c",{"children":[null,["$","$L2",null,{"parallelRouterKey":"children","error":"$undefined","errorStyles":"$undefined","errorScripts":"$undefined","template":["$","$L3",null,{}],"templateStyles":"$undefined","templateScripts":"$undefined","notFound":"$undefined","forbidden":"$undefined","unauthorized":"$undefined"}]]}],{"children":[["$","$1","c",{"children":[null,["$","$L2",null,{"parallelRouterKey":"children","error":"$undefined","errorStyles":"$undefined","errorScripts":"$undefined","template":["$","$L3",null,{}],"templateStyles":"$undefined","templateScripts":"$undefined","notFound":"$undefined","forbidden":"$undefined","unauthorized":"$undefined"}]]}],{"children":[["$","$1","c",{"children":["$L5",[["$","script","script-0",{"src":"/_next/static/chunks/2dddb3bc05093f69.js","async":true,"nonce":"$undefined"}]],["$","$L6",null,{"children":["$","$7",null,{"name":"Next.MetadataOutlet","children":"$@8"}]}]]}],{},null,false,false]},null,false,false]},null,false,false]},null,false,false]},null,false,false],["$","$1","h",{"children":[null,["$","$L9",null,{"children":"$La"}],["$","div",null,{"hidden":true,"children":["$","$Lb",null,{"children":["$","$7",null,{"name":"Next.Metadata","children":"$Lc"}]}]}],["$","meta",null,{"name":"next-size-adjust","content":""}]]}],false]],"m":"$undefined","G":["$d",[]],"S":true}
+4:["$","html",null,{"lang":"ar","dir":"rtl","className":"geist_a71539c9-module__T19VSG__variable geist_mono_8d43a2aa-module__8Li5zG__variable","children":["$","body",null,{"className":"flex min-h-screen flex-col antialiased","children":[["$","script",null,{"type":"application/ld+json","dangerouslySetInnerHTML":{"__html":"[{\"@context\":\"https://schema.org\",\"@type\":\"WebSite\",\"name\":\"BenXHub Blog\",\"url\":\"https://benxhub.com/ar/\",\"inLanguage\":\"ar\",\"publisher\":{\"@type\":\"Organization\",\"name\":\"BenXHub Blog\",\"url\":\"https://benxhub.com\"},\"potentialAction\":{\"@type\":\"SearchAction\",\"target\":{\"@type\":\"EntryPoint\",\"urlTemplate\":\"https://benxhub.com/ar/search/?q={search_term_string}\"},\"query-input\":\"required name=search_term_string\"}},{\"@context\":\"https://schema.org\",\"@type\":\"Person\",\"@id\":\"https://benxhub.com/#author\",\"name\":\"BenX\",\"url\":\"https://benxhub.com/ar/about/\",\"sameAs\":[\"https://github.com/benzhub\"]}]"}}],"$Le"]}]}]
+f:I[33343,["/_next/static/chunks/4204edc93da35a5e.js","/_next/static/chunks/f2afb7fd2b7566bb.js"],"default"]
+10:I[26817,["/_next/static/chunks/4204edc93da35a5e.js","/_next/static/chunks/f2afb7fd2b7566bb.js"],"default"]
+11:I[6197,["/_next/static/chunks/4204edc93da35a5e.js","/_next/static/chunks/f2afb7fd2b7566bb.js"],"default"]
+13:I[40018,["/_next/static/chunks/4204edc93da35a5e.js","/_next/static/chunks/f2afb7fd2b7566bb.js"],"default"]
 e:["$","$Lf",null,{"formats":"$undefined","locale":"ar","messages":{"common":{"siteName":"BenXHub Blog","siteDescription":"مدونة بن إكس التقنية — أشارك فيها تطوير الويب، وتصميم المعمارية، وممارسات الهندسة البرمجية."},"nav":{"home":"الرئيسية","tags":"الوسوم","about":"حول","searchLabel":"البحث في المقالات"},"hero":{"subtitle":"ملاحظات تقنية حول تطوير الويب، وتصميم المعمارية، وممارسات الهندسة البرمجية","cta":"تصفح المقالات"},"posts":{"title":"المقالات","count":"إجمالي {total} مقالة","empty":"لا توجد مقالات بعد، ترقبوا المزيد!","newerPost":"→ الأحدث","olderPost":"الأقدم ←","navLabel":"التنقل بين المقالات"},"pagination":{"prev":"السابق","next":"التالي","page":"الصفحة {current} من {total}","label":"ترقيم صفحات المقالات","pageTitle":"الصفحة {num}","pageDescription":"BenXHub Blog — قائمة المقالات."},"search":{"title":"البحث في المقالات","description":"ابحث في جميع مقالات BenXHub Blog حسب العنوان أو الوصف أو الوسوم.","subtitle":"البحث حسب العنوان أو الوصف أو الوسوم","placeholder":"ابحث في المقالات بالعنوان أو الوصف أو الوسوم…","found":"تم العثور على {count} مقالة","notFound":"لم يتم العثور على مقالات لـ \"{query}\"","emptyTitle":"لا توجد نتائج","emptyHint":"جرب كلمات مفتاحية مختلفة، أو تصفح","allPosts":"جميع المقالات","totalCount":"إجمالي {count} مقالة — اكتب للبحث"},"tags":{"title":"جميع الوسوم","description":"تصفح جميع المقالات حسب الوسم.","count":"إجمالي {count} وسم","empty":"لا توجد وسوم بعد، ترقبوا المزيد!","allTags":"جميع الوسوم","postCount":"{count} مقالة","otherTags":"وسوم أخرى","tagTitle":"مقالات الوسم #{tag}","tagDescription":"جميع المقالات المصنفة بـ \"{tag}\"."},"about":{"title":"حول","description":"حول BenXHub Blog وهذا الموقع.","subtitle":"حول BenXHub Blog وهذا الموقع","siteTitle":"حول هذا الموقع","siteContent":"BenXHub Blog هي مدونة بن إكس التقنية، أشارك فيها تطوير الويب، وتصميم المعمارية، وممارسات الهندسة البرمجية.","authorTitle":"حول المؤلف","authorContent":"أستمتع بالبرمجة ومشاركة المعرفة. أحب توثيق المشكلات التي واجهتها وحلولها. لا تتردد في التواصل عبر الروابط في الشريط الجانبي أو التذييل.","linksTitle":"الروابط"},"sidebar":{"label":"الشريط الجانبي","authorBio":"أستمتع بالبرمجة والمشاركة — متخصص في تطوير الويب، والمعمارية، وDevOps.","searchPlaceholder":"البحث في المقالات…","seriesTitle":"السلاسل","articleCount":"{count} مقالة"},"toc":{"title":"المحتويات","label":"جدول المحتويات"},"notFound":{"message":"هذه الصفحة غير موجودة. قد يكون الرابط معطلاً أو عنوان URL غير صحيح.","backHome":"العودة إلى الرئيسية"},"localeSwitcher":{"label":"تغيير اللغة"}},"now":"$undefined","timeZone":"UTC","children":[["$","$L10",null,{}],["$","$L11",null,{}],["$","main",null,{"className":"flex-1 pt-16","children":["$","$L2",null,{"parallelRouterKey":"children","error":"$undefined","errorStyles":"$undefined","errorScripts":"$undefined","template":["$","$L3",null,{}],"templateStyles":"$undefined","templateScripts":"$undefined","notFound":["$L12",[]],"forbidden":"$undefined","unauthorized":"$undefined"}]}],["$","$L13",null,{}]]}]
 12:["$","div",null,{"className":"mx-auto max-w-2xl px-4 py-20 text-center sm:px-6","children":[["$","h1",null,{"className":"mb-3 text-4xl font-bold tracking-tight","style":{"color":"var(--color-text)"},"children":"404"}],["$","p",null,{"className":"mb-8 text-lg","style":{"color":"var(--color-muted)"},"children":"هذه الصفحة غير موجودة. قد يكون الرابط معطلاً أو عنوان URL غير صحيح."}],"$L14"]}]
 a:[["$","meta","0",{"charSet":"utf-8"}],["$","meta","1",{"name":"viewport","content":"width=device-width, initial-scale=1"}]]
-15:I[14864,["/_next/static/chunks/7923a261b80bb6e1.js","/_next/static/chunks/e09b4358027e8033.js","/_next/static/chunks/2dddb3bc05093f69.js"],"default"]
+15:I[14864,["/_next/static/chunks/4204edc93da35a5e.js","/_next/static/chunks/f2afb7fd2b7566bb.js","/_next/static/chunks/2dddb3bc05093f69.js"],"default"]
 14:["$","$L15",null,{"ref":"$undefined","href":"/ar","locale":"$undefined","localeCookie":{"name":"NEXT_LOCALE","sameSite":"lax"},"className":"inline-flex items-center rounded-lg border px-4 py-2.5 text-sm font-medium transition-colors hover:border-accent","style":{"borderColor":"var(--color-border)","color":"var(--color-accent)","background":"var(--color-surface)"},"children":"العودة إلى الرئيسية"}]
-1b:T6e5c,<p>المقالتان الأوليان منحتاك أساس "ما هذا الشيء". وهذه المقالة تدخل في الشيء الذي ستعدله فعليًا يومًا بعد يوم: <code>HTTPRoute</code>.</p>
+1b:T6efc,<p>المقالتان الأوليان منحتاك أساس "ما هذا الشيء". وهذه المقالة تدخل في الشيء الذي ستعدله فعليًا يومًا بعد يوم: <code>HTTPRoute</code>.</p>
 <p>فكّر في <code>HTTPRoute</code> على أنه سكربت توجيه للمرور الوارد، لكن بدلًا من كتابة قواعد Nginx أو حفظ annotations الخاصة بالـ controllers، فأنت تستخدم موارد أصلية في Kubernetes.</p>
 <p>شيء يجب توضيحه من البداية: هذه المقالة تغطي فقط <code>HTTPRoute</code> لأنه يتعامل مع دلالات HTTP/HTTPS. أما gRPC فالأرجح أنك ستتجه إلى <code>GRPCRoute</code>، وبالنسبة إلى TCP الخام فإلى <code>TCPRoute</code>، وبالنسبة إلى TLS passthrough فإلى <code>TLSRoute</code>. لا تُجبر كل شيء على الدخول في <code>HTTPRoute</code> لأن الـ YAML سيبدأ بإعطاء انطباع "نحن فقط نحاول الترقيع."</p>
 <h2 id="أكثر-أنواع-التوجيه-شيوعًا-host-و-path">أكثر أنواع التوجيه شيوعًا: Host و Path</h2>
 <p>هذا هو المثال الأكثر شيوعًا:</p>
-<figure data-rehype-pretty-code-figure=""><pre style="background-color:#24292e;color:#e1e4e8" tabindex="0" data-language="yaml" data-theme="github-dark"><code data-language="yaml" data-theme="github-dark" style="display: grid;"><span data-line=""><span style="color:#85E89D">apiVersion</span><span style="color:#E1E4E8">: </span><span style="color:#9ECBFF">gateway.networking.k8s.io/v1</span></span>
-<span data-line=""><span style="color:#85E89D">kind</span><span style="color:#E1E4E8">: </span><span style="color:#9ECBFF">HTTPRoute</span></span>
-<span data-line=""><span style="color:#85E89D">metadata</span><span style="color:#E1E4E8">:</span></span>
-<span data-line=""><span style="color:#85E89D">  name</span><span style="color:#E1E4E8">: </span><span style="color:#9ECBFF">app-route</span></span>
-<span data-line=""><span style="color:#85E89D">spec</span><span style="color:#E1E4E8">:</span></span>
-<span data-line=""><span style="color:#85E89D">  parentRefs</span><span style="color:#E1E4E8">:</span></span>
-<span data-line=""><span style="color:#E1E4E8">    - </span><span style="color:#85E89D">name</span><span style="color:#E1E4E8">: </span><span style="color:#9ECBFF">eg</span></span>
-<span data-line=""><span style="color:#85E89D">  hostnames</span><span style="color:#E1E4E8">:</span></span>
-<span data-line=""><span style="color:#E1E4E8">    - </span><span style="color:#9ECBFF">"app.example.com"</span></span>
-<span data-line=""><span style="color:#85E89D">  rules</span><span style="color:#E1E4E8">:</span></span>
-<span data-line=""><span style="color:#E1E4E8">    - </span><span style="color:#85E89D">matches</span><span style="color:#E1E4E8">:</span></span>
-<span data-line=""><span style="color:#E1E4E8">        - </span><span style="color:#85E89D">path</span><span style="color:#E1E4E8">:</span></span>
-<span data-line=""><span style="color:#85E89D">            type</span><span style="color:#E1E4E8">: </span><span style="color:#9ECBFF">PathPrefix</span></span>
-<span data-line=""><span style="color:#85E89D">            value</span><span style="color:#E1E4E8">: </span><span style="color:#9ECBFF">/api</span></span>
-<span data-line=""><span style="color:#85E89D">      backendRefs</span><span style="color:#E1E4E8">:</span></span>
-<span data-line=""><span style="color:#E1E4E8">        - </span><span style="color:#85E89D">name</span><span style="color:#E1E4E8">: </span><span style="color:#9ECBFF">api-service</span></span>
-<span data-line=""><span style="color:#85E89D">          port</span><span style="color:#E1E4E8">: </span><span style="color:#79B8FF">8080</span></span></code></pre></figure>
+<figure data-rehype-pretty-code-figure=""><pre style="background-color:#0d1117;color:#e6edf3" tabindex="0" data-language="yaml" data-theme="github-dark-default"><code data-language="yaml" data-theme="github-dark-default" style="display: grid;"><span data-line=""><span style="color:#7EE787">apiVersion</span><span style="color:#E6EDF3">: </span><span style="color:#A5D6FF">gateway.networking.k8s.io/v1</span></span>
+<span data-line=""><span style="color:#7EE787">kind</span><span style="color:#E6EDF3">: </span><span style="color:#A5D6FF">HTTPRoute</span></span>
+<span data-line=""><span style="color:#7EE787">metadata</span><span style="color:#E6EDF3">:</span></span>
+<span data-line=""><span style="color:#7EE787">  name</span><span style="color:#E6EDF3">: </span><span style="color:#A5D6FF">app-route</span></span>
+<span data-line=""><span style="color:#7EE787">spec</span><span style="color:#E6EDF3">:</span></span>
+<span data-line=""><span style="color:#7EE787">  parentRefs</span><span style="color:#E6EDF3">:</span></span>
+<span data-line=""><span style="color:#E6EDF3">    - </span><span style="color:#7EE787">name</span><span style="color:#E6EDF3">: </span><span style="color:#A5D6FF">eg</span></span>
+<span data-line=""><span style="color:#7EE787">  hostnames</span><span style="color:#E6EDF3">:</span></span>
+<span data-line=""><span style="color:#E6EDF3">    - </span><span style="color:#A5D6FF">"app.example.com"</span></span>
+<span data-line=""><span style="color:#7EE787">  rules</span><span style="color:#E6EDF3">:</span></span>
+<span data-line=""><span style="color:#E6EDF3">    - </span><span style="color:#7EE787">matches</span><span style="color:#E6EDF3">:</span></span>
+<span data-line=""><span style="color:#E6EDF3">        - </span><span style="color:#7EE787">path</span><span style="color:#E6EDF3">:</span></span>
+<span data-line=""><span style="color:#7EE787">            type</span><span style="color:#E6EDF3">: </span><span style="color:#A5D6FF">PathPrefix</span></span>
+<span data-line=""><span style="color:#7EE787">            value</span><span style="color:#E6EDF3">: </span><span style="color:#A5D6FF">/api</span></span>
+<span data-line=""><span style="color:#7EE787">      backendRefs</span><span style="color:#E6EDF3">:</span></span>
+<span data-line=""><span style="color:#E6EDF3">        - </span><span style="color:#7EE787">name</span><span style="color:#E6EDF3">: </span><span style="color:#A5D6FF">api-service</span></span>
+<span data-line=""><span style="color:#7EE787">          port</span><span style="color:#E6EDF3">: </span><span style="color:#79C0FF">8080</span></span></code></pre></figure>
 <p>ومعناه:</p>
 <ul>
 <li>فقط <code>Host: app.example.com</code> سيطابق هذا الـ route</li>
@@ -60,14 +60,14 @@ a:[["$","meta","0",{"charSet":"utf-8"}],["$","meta","1",{"name":"viewport","cont
 <li><code>method</code></li>
 </ul>
 <p>مثال:</p>
-<figure data-rehype-pretty-code-figure=""><pre style="background-color:#24292e;color:#e1e4e8" tabindex="0" data-language="yaml" data-theme="github-dark"><code data-language="yaml" data-theme="github-dark" style="display: grid;"><span data-line=""><span style="color:#85E89D">matches</span><span style="color:#E1E4E8">:</span></span>
-<span data-line=""><span style="color:#E1E4E8">  - </span><span style="color:#85E89D">method</span><span style="color:#E1E4E8">: </span><span style="color:#9ECBFF">GET</span></span>
-<span data-line=""><span style="color:#85E89D">    path</span><span style="color:#E1E4E8">:</span></span>
-<span data-line=""><span style="color:#85E89D">      type</span><span style="color:#E1E4E8">: </span><span style="color:#9ECBFF">PathPrefix</span></span>
-<span data-line=""><span style="color:#85E89D">      value</span><span style="color:#E1E4E8">: </span><span style="color:#9ECBFF">/api</span></span>
-<span data-line=""><span style="color:#85E89D">    headers</span><span style="color:#E1E4E8">:</span></span>
-<span data-line=""><span style="color:#E1E4E8">      - </span><span style="color:#85E89D">name</span><span style="color:#E1E4E8">: </span><span style="color:#9ECBFF">version</span></span>
-<span data-line=""><span style="color:#85E89D">        value</span><span style="color:#E1E4E8">: </span><span style="color:#9ECBFF">v2</span></span></code></pre></figure>
+<figure data-rehype-pretty-code-figure=""><pre style="background-color:#0d1117;color:#e6edf3" tabindex="0" data-language="yaml" data-theme="github-dark-default"><code data-language="yaml" data-theme="github-dark-default" style="display: grid;"><span data-line=""><span style="color:#7EE787">matches</span><span style="color:#E6EDF3">:</span></span>
+<span data-line=""><span style="color:#E6EDF3">  - </span><span style="color:#7EE787">method</span><span style="color:#E6EDF3">: </span><span style="color:#A5D6FF">GET</span></span>
+<span data-line=""><span style="color:#7EE787">    path</span><span style="color:#E6EDF3">:</span></span>
+<span data-line=""><span style="color:#7EE787">      type</span><span style="color:#E6EDF3">: </span><span style="color:#A5D6FF">PathPrefix</span></span>
+<span data-line=""><span style="color:#7EE787">      value</span><span style="color:#E6EDF3">: </span><span style="color:#A5D6FF">/api</span></span>
+<span data-line=""><span style="color:#7EE787">    headers</span><span style="color:#E6EDF3">:</span></span>
+<span data-line=""><span style="color:#E6EDF3">      - </span><span style="color:#7EE787">name</span><span style="color:#E6EDF3">: </span><span style="color:#A5D6FF">version</span></span>
+<span data-line=""><span style="color:#7EE787">        value</span><span style="color:#E6EDF3">: </span><span style="color:#A5D6FF">v2</span></span></code></pre></figure>
 <p>ومعناه:</p>
 <ul>
 <li>فقط طلبات <code>GET</code></li>
@@ -77,21 +77,21 @@ a:[["$","meta","0",{"charSet":"utf-8"}],["$","meta","1",{"name":"viewport","cont
 <p>هذا النمط مثالي لتجارب نسخ الـ API أو الإطلاقات المرحلية لمستخدمين محددين.</p>
 <h2 id="route-واحد-وعدة-rules">Route واحد، وعدة Rules</h2>
 <p>يمكن لـ <code>HTTPRoute</code> واحد أن يوجّه paths مختلفة إلى خدمات مختلفة:</p>
-<figure data-rehype-pretty-code-figure=""><pre style="background-color:#24292e;color:#e1e4e8" tabindex="0" data-language="yaml" data-theme="github-dark"><code data-language="yaml" data-theme="github-dark" style="display: grid;"><span data-line=""><span style="color:#85E89D">rules</span><span style="color:#E1E4E8">:</span></span>
-<span data-line=""><span style="color:#E1E4E8">  - </span><span style="color:#85E89D">matches</span><span style="color:#E1E4E8">:</span></span>
-<span data-line=""><span style="color:#E1E4E8">      - </span><span style="color:#85E89D">path</span><span style="color:#E1E4E8">:</span></span>
-<span data-line=""><span style="color:#85E89D">          type</span><span style="color:#E1E4E8">: </span><span style="color:#9ECBFF">PathPrefix</span></span>
-<span data-line=""><span style="color:#85E89D">          value</span><span style="color:#E1E4E8">: </span><span style="color:#9ECBFF">/api</span></span>
-<span data-line=""><span style="color:#85E89D">    backendRefs</span><span style="color:#E1E4E8">:</span></span>
-<span data-line=""><span style="color:#E1E4E8">      - </span><span style="color:#85E89D">name</span><span style="color:#E1E4E8">: </span><span style="color:#9ECBFF">api-service</span></span>
-<span data-line=""><span style="color:#85E89D">        port</span><span style="color:#E1E4E8">: </span><span style="color:#79B8FF">8080</span></span>
-<span data-line=""><span style="color:#E1E4E8">  - </span><span style="color:#85E89D">matches</span><span style="color:#E1E4E8">:</span></span>
-<span data-line=""><span style="color:#E1E4E8">      - </span><span style="color:#85E89D">path</span><span style="color:#E1E4E8">:</span></span>
-<span data-line=""><span style="color:#85E89D">          type</span><span style="color:#E1E4E8">: </span><span style="color:#9ECBFF">PathPrefix</span></span>
-<span data-line=""><span style="color:#85E89D">          value</span><span style="color:#E1E4E8">: </span><span style="color:#9ECBFF">/admin</span></span>
-<span data-line=""><span style="color:#85E89D">    backendRefs</span><span style="color:#E1E4E8">:</span></span>
-<span data-line=""><span style="color:#E1E4E8">      - </span><span style="color:#85E89D">name</span><span style="color:#E1E4E8">: </span><span style="color:#9ECBFF">admin-service</span></span>
-<span data-line=""><span style="color:#85E89D">        port</span><span style="color:#E1E4E8">: </span><span style="color:#79B8FF">8080</span></span></code></pre></figure>
+<figure data-rehype-pretty-code-figure=""><pre style="background-color:#0d1117;color:#e6edf3" tabindex="0" data-language="yaml" data-theme="github-dark-default"><code data-language="yaml" data-theme="github-dark-default" style="display: grid;"><span data-line=""><span style="color:#7EE787">rules</span><span style="color:#E6EDF3">:</span></span>
+<span data-line=""><span style="color:#E6EDF3">  - </span><span style="color:#7EE787">matches</span><span style="color:#E6EDF3">:</span></span>
+<span data-line=""><span style="color:#E6EDF3">      - </span><span style="color:#7EE787">path</span><span style="color:#E6EDF3">:</span></span>
+<span data-line=""><span style="color:#7EE787">          type</span><span style="color:#E6EDF3">: </span><span style="color:#A5D6FF">PathPrefix</span></span>
+<span data-line=""><span style="color:#7EE787">          value</span><span style="color:#E6EDF3">: </span><span style="color:#A5D6FF">/api</span></span>
+<span data-line=""><span style="color:#7EE787">    backendRefs</span><span style="color:#E6EDF3">:</span></span>
+<span data-line=""><span style="color:#E6EDF3">      - </span><span style="color:#7EE787">name</span><span style="color:#E6EDF3">: </span><span style="color:#A5D6FF">api-service</span></span>
+<span data-line=""><span style="color:#7EE787">        port</span><span style="color:#E6EDF3">: </span><span style="color:#79C0FF">8080</span></span>
+<span data-line=""><span style="color:#E6EDF3">  - </span><span style="color:#7EE787">matches</span><span style="color:#E6EDF3">:</span></span>
+<span data-line=""><span style="color:#E6EDF3">      - </span><span style="color:#7EE787">path</span><span style="color:#E6EDF3">:</span></span>
+<span data-line=""><span style="color:#7EE787">          type</span><span style="color:#E6EDF3">: </span><span style="color:#A5D6FF">PathPrefix</span></span>
+<span data-line=""><span style="color:#7EE787">          value</span><span style="color:#E6EDF3">: </span><span style="color:#A5D6FF">/admin</span></span>
+<span data-line=""><span style="color:#7EE787">    backendRefs</span><span style="color:#E6EDF3">:</span></span>
+<span data-line=""><span style="color:#E6EDF3">      - </span><span style="color:#7EE787">name</span><span style="color:#E6EDF3">: </span><span style="color:#A5D6FF">admin-service</span></span>
+<span data-line=""><span style="color:#7EE787">        port</span><span style="color:#E6EDF3">: </span><span style="color:#79C0FF">8080</span></span></code></pre></figure>
 <p>وهذا ممتاز لتقسيم المسارات الفرعية تحت domain واحد، مثلًا:</p>
 <ul>
 <li><code>/api</code> يذهب إلى خدمة API</li>
@@ -101,31 +101,31 @@ a:[["$","meta","0",{"charSet":"utf-8"}],["$","meta","1",{"name":"viewport","cont
 <h2 id="استخدام-header-و-method-و-query-كشروط">استخدام Header و Method و Query كشروط</h2>
 <p><code>HTTPRoute</code> لا يقتصر على المطابقة حسب path، بل يمكنه أيضًا المطابقة حسب request headers و methods و query params.</p>
 <p>على سبيل المثال، وجّه فقط الطلبات التي تحمل <code>version: v2</code> إلى الخدمة الجديدة:</p>
-<figure data-rehype-pretty-code-figure=""><pre style="background-color:#24292e;color:#e1e4e8" tabindex="0" data-language="yaml" data-theme="github-dark"><code data-language="yaml" data-theme="github-dark" style="display: grid;"><span data-line=""><span style="color:#85E89D">apiVersion</span><span style="color:#E1E4E8">: </span><span style="color:#9ECBFF">gateway.networking.k8s.io/v1</span></span>
-<span data-line=""><span style="color:#85E89D">kind</span><span style="color:#E1E4E8">: </span><span style="color:#9ECBFF">HTTPRoute</span></span>
-<span data-line=""><span style="color:#85E89D">metadata</span><span style="color:#E1E4E8">:</span></span>
-<span data-line=""><span style="color:#85E89D">  name</span><span style="color:#E1E4E8">: </span><span style="color:#9ECBFF">versioned-route</span></span>
-<span data-line=""><span style="color:#85E89D">spec</span><span style="color:#E1E4E8">:</span></span>
-<span data-line=""><span style="color:#85E89D">  parentRefs</span><span style="color:#E1E4E8">:</span></span>
-<span data-line=""><span style="color:#E1E4E8">    - </span><span style="color:#85E89D">name</span><span style="color:#E1E4E8">: </span><span style="color:#9ECBFF">eg</span></span>
-<span data-line=""><span style="color:#85E89D">  rules</span><span style="color:#E1E4E8">:</span></span>
-<span data-line=""><span style="color:#E1E4E8">    - </span><span style="color:#85E89D">matches</span><span style="color:#E1E4E8">:</span></span>
-<span data-line=""><span style="color:#E1E4E8">        - </span><span style="color:#85E89D">path</span><span style="color:#E1E4E8">:</span></span>
-<span data-line=""><span style="color:#85E89D">            type</span><span style="color:#E1E4E8">: </span><span style="color:#9ECBFF">PathPrefix</span></span>
-<span data-line=""><span style="color:#85E89D">            value</span><span style="color:#E1E4E8">: </span><span style="color:#9ECBFF">/api</span></span>
-<span data-line=""><span style="color:#85E89D">          headers</span><span style="color:#E1E4E8">:</span></span>
-<span data-line=""><span style="color:#E1E4E8">            - </span><span style="color:#85E89D">name</span><span style="color:#E1E4E8">: </span><span style="color:#9ECBFF">version</span></span>
-<span data-line=""><span style="color:#85E89D">              value</span><span style="color:#E1E4E8">: </span><span style="color:#9ECBFF">v2</span></span>
-<span data-line=""><span style="color:#85E89D">      backendRefs</span><span style="color:#E1E4E8">:</span></span>
-<span data-line=""><span style="color:#E1E4E8">        - </span><span style="color:#85E89D">name</span><span style="color:#E1E4E8">: </span><span style="color:#9ECBFF">api-v2</span></span>
-<span data-line=""><span style="color:#85E89D">          port</span><span style="color:#E1E4E8">: </span><span style="color:#79B8FF">8080</span></span>
-<span data-line=""><span style="color:#E1E4E8">    - </span><span style="color:#85E89D">matches</span><span style="color:#E1E4E8">:</span></span>
-<span data-line=""><span style="color:#E1E4E8">        - </span><span style="color:#85E89D">path</span><span style="color:#E1E4E8">:</span></span>
-<span data-line=""><span style="color:#85E89D">            type</span><span style="color:#E1E4E8">: </span><span style="color:#9ECBFF">PathPrefix</span></span>
-<span data-line=""><span style="color:#85E89D">            value</span><span style="color:#E1E4E8">: </span><span style="color:#9ECBFF">/api</span></span>
-<span data-line=""><span style="color:#85E89D">      backendRefs</span><span style="color:#E1E4E8">:</span></span>
-<span data-line=""><span style="color:#E1E4E8">        - </span><span style="color:#85E89D">name</span><span style="color:#E1E4E8">: </span><span style="color:#9ECBFF">api-v1</span></span>
-<span data-line=""><span style="color:#85E89D">          port</span><span style="color:#E1E4E8">: </span><span style="color:#79B8FF">8080</span></span></code></pre></figure>
+<figure data-rehype-pretty-code-figure=""><pre style="background-color:#0d1117;color:#e6edf3" tabindex="0" data-language="yaml" data-theme="github-dark-default"><code data-language="yaml" data-theme="github-dark-default" style="display: grid;"><span data-line=""><span style="color:#7EE787">apiVersion</span><span style="color:#E6EDF3">: </span><span style="color:#A5D6FF">gateway.networking.k8s.io/v1</span></span>
+<span data-line=""><span style="color:#7EE787">kind</span><span style="color:#E6EDF3">: </span><span style="color:#A5D6FF">HTTPRoute</span></span>
+<span data-line=""><span style="color:#7EE787">metadata</span><span style="color:#E6EDF3">:</span></span>
+<span data-line=""><span style="color:#7EE787">  name</span><span style="color:#E6EDF3">: </span><span style="color:#A5D6FF">versioned-route</span></span>
+<span data-line=""><span style="color:#7EE787">spec</span><span style="color:#E6EDF3">:</span></span>
+<span data-line=""><span style="color:#7EE787">  parentRefs</span><span style="color:#E6EDF3">:</span></span>
+<span data-line=""><span style="color:#E6EDF3">    - </span><span style="color:#7EE787">name</span><span style="color:#E6EDF3">: </span><span style="color:#A5D6FF">eg</span></span>
+<span data-line=""><span style="color:#7EE787">  rules</span><span style="color:#E6EDF3">:</span></span>
+<span data-line=""><span style="color:#E6EDF3">    - </span><span style="color:#7EE787">matches</span><span style="color:#E6EDF3">:</span></span>
+<span data-line=""><span style="color:#E6EDF3">        - </span><span style="color:#7EE787">path</span><span style="color:#E6EDF3">:</span></span>
+<span data-line=""><span style="color:#7EE787">            type</span><span style="color:#E6EDF3">: </span><span style="color:#A5D6FF">PathPrefix</span></span>
+<span data-line=""><span style="color:#7EE787">            value</span><span style="color:#E6EDF3">: </span><span style="color:#A5D6FF">/api</span></span>
+<span data-line=""><span style="color:#7EE787">          headers</span><span style="color:#E6EDF3">:</span></span>
+<span data-line=""><span style="color:#E6EDF3">            - </span><span style="color:#7EE787">name</span><span style="color:#E6EDF3">: </span><span style="color:#A5D6FF">version</span></span>
+<span data-line=""><span style="color:#7EE787">              value</span><span style="color:#E6EDF3">: </span><span style="color:#A5D6FF">v2</span></span>
+<span data-line=""><span style="color:#7EE787">      backendRefs</span><span style="color:#E6EDF3">:</span></span>
+<span data-line=""><span style="color:#E6EDF3">        - </span><span style="color:#7EE787">name</span><span style="color:#E6EDF3">: </span><span style="color:#A5D6FF">api-v2</span></span>
+<span data-line=""><span style="color:#7EE787">          port</span><span style="color:#E6EDF3">: </span><span style="color:#79C0FF">8080</span></span>
+<span data-line=""><span style="color:#E6EDF3">    - </span><span style="color:#7EE787">matches</span><span style="color:#E6EDF3">:</span></span>
+<span data-line=""><span style="color:#E6EDF3">        - </span><span style="color:#7EE787">path</span><span style="color:#E6EDF3">:</span></span>
+<span data-line=""><span style="color:#7EE787">            type</span><span style="color:#E6EDF3">: </span><span style="color:#A5D6FF">PathPrefix</span></span>
+<span data-line=""><span style="color:#7EE787">            value</span><span style="color:#E6EDF3">: </span><span style="color:#A5D6FF">/api</span></span>
+<span data-line=""><span style="color:#7EE787">      backendRefs</span><span style="color:#E6EDF3">:</span></span>
+<span data-line=""><span style="color:#E6EDF3">        - </span><span style="color:#7EE787">name</span><span style="color:#E6EDF3">: </span><span style="color:#A5D6FF">api-v1</span></span>
+<span data-line=""><span style="color:#7EE787">          port</span><span style="color:#E6EDF3">: </span><span style="color:#79C0FF">8080</span></span></code></pre></figure>
 <p>هذا النمط مفيد جدًا في:</p>
 <ul>
 <li>Canary releases</li>
@@ -136,16 +136,16 @@ a:[["$","meta","0",{"charSet":"utf-8"}],["$","meta","1",{"name":"viewport","cont
 <h2 id="filters-معالجة-الطلبات-قبل-التوجيه"><code>filters</code>: معالجة الطلبات قبل التوجيه</h2>
 <p><code>HTTPRoute</code> لا يكتفي بـ "المطابقة ثم التوجيه"، بل يمكنه أيضًا تطبيق تحويلات قبل التوجيه أو بعده. ولهذا توجد <code>filters</code>.</p>
 <p>من الاستخدامات الشائعة إضافة headers:</p>
-<figure data-rehype-pretty-code-figure=""><pre style="background-color:#24292e;color:#e1e4e8" tabindex="0" data-language="yaml" data-theme="github-dark"><code data-language="yaml" data-theme="github-dark" style="display: grid;"><span data-line=""><span style="color:#85E89D">rules</span><span style="color:#E1E4E8">:</span></span>
-<span data-line=""><span style="color:#E1E4E8">  - </span><span style="color:#85E89D">filters</span><span style="color:#E1E4E8">:</span></span>
-<span data-line=""><span style="color:#E1E4E8">      - </span><span style="color:#85E89D">type</span><span style="color:#E1E4E8">: </span><span style="color:#9ECBFF">RequestHeaderModifier</span></span>
-<span data-line=""><span style="color:#85E89D">        requestHeaderModifier</span><span style="color:#E1E4E8">:</span></span>
-<span data-line=""><span style="color:#85E89D">          add</span><span style="color:#E1E4E8">:</span></span>
-<span data-line=""><span style="color:#E1E4E8">            - </span><span style="color:#85E89D">name</span><span style="color:#E1E4E8">: </span><span style="color:#9ECBFF">x-env</span></span>
-<span data-line=""><span style="color:#85E89D">              value</span><span style="color:#E1E4E8">: </span><span style="color:#9ECBFF">prod</span></span>
-<span data-line=""><span style="color:#85E89D">    backendRefs</span><span style="color:#E1E4E8">:</span></span>
-<span data-line=""><span style="color:#E1E4E8">      - </span><span style="color:#85E89D">name</span><span style="color:#E1E4E8">: </span><span style="color:#9ECBFF">api-service</span></span>
-<span data-line=""><span style="color:#85E89D">        port</span><span style="color:#E1E4E8">: </span><span style="color:#79B8FF">8080</span></span></code></pre></figure>
+<figure data-rehype-pretty-code-figure=""><pre style="background-color:#0d1117;color:#e6edf3" tabindex="0" data-language="yaml" data-theme="github-dark-default"><code data-language="yaml" data-theme="github-dark-default" style="display: grid;"><span data-line=""><span style="color:#7EE787">rules</span><span style="color:#E6EDF3">:</span></span>
+<span data-line=""><span style="color:#E6EDF3">  - </span><span style="color:#7EE787">filters</span><span style="color:#E6EDF3">:</span></span>
+<span data-line=""><span style="color:#E6EDF3">      - </span><span style="color:#7EE787">type</span><span style="color:#E6EDF3">: </span><span style="color:#A5D6FF">RequestHeaderModifier</span></span>
+<span data-line=""><span style="color:#7EE787">        requestHeaderModifier</span><span style="color:#E6EDF3">:</span></span>
+<span data-line=""><span style="color:#7EE787">          add</span><span style="color:#E6EDF3">:</span></span>
+<span data-line=""><span style="color:#E6EDF3">            - </span><span style="color:#7EE787">name</span><span style="color:#E6EDF3">: </span><span style="color:#A5D6FF">x-env</span></span>
+<span data-line=""><span style="color:#7EE787">              value</span><span style="color:#E6EDF3">: </span><span style="color:#A5D6FF">prod</span></span>
+<span data-line=""><span style="color:#7EE787">    backendRefs</span><span style="color:#E6EDF3">:</span></span>
+<span data-line=""><span style="color:#E6EDF3">      - </span><span style="color:#7EE787">name</span><span style="color:#E6EDF3">: </span><span style="color:#A5D6FF">api-service</span></span>
+<span data-line=""><span style="color:#7EE787">        port</span><span style="color:#E6EDF3">: </span><span style="color:#79C0FF">8080</span></span></code></pre></figure>
 <p>وهذا مفيد في:</p>
 <ul>
 <li>حقن بيانات tracing قبل تمرير الطلب إلى backend</li>
@@ -155,23 +155,23 @@ a:[["$","meta","0",{"charSet":"utf-8"}],["$","meta","1",{"name":"viewport","cont
 <p>ومع ذلك، فـ filters قوية لكنها ليست تصريحًا مجانيًا لتحويل طبقة ingress إلى blob ضخم من middleware. تكديس منطق كثير على الـ routes سيجعل debugging يبدو وكأنه يحتاج إلى جلسة علاج نفسي خاصة به.</p>
 <h2 id="تقسيم-المرور-بالأوزان-أكثر-أنماط-canary-شيوعًا">تقسيم المرور بالأوزان: أكثر أنماط Canary شيوعًا</h2>
 <p>لإرسال 90% من المرور إلى النسخة القديمة و10% إلى النسخة الجديدة، استخدم <code>weight</code>:</p>
-<figure data-rehype-pretty-code-figure=""><pre style="background-color:#24292e;color:#e1e4e8" tabindex="0" data-language="yaml" data-theme="github-dark"><code data-language="yaml" data-theme="github-dark" style="display: grid;"><span data-line=""><span style="color:#85E89D">apiVersion</span><span style="color:#E1E4E8">: </span><span style="color:#9ECBFF">gateway.networking.k8s.io/v1</span></span>
-<span data-line=""><span style="color:#85E89D">kind</span><span style="color:#E1E4E8">: </span><span style="color:#9ECBFF">HTTPRoute</span></span>
-<span data-line=""><span style="color:#85E89D">metadata</span><span style="color:#E1E4E8">:</span></span>
-<span data-line=""><span style="color:#85E89D">  name</span><span style="color:#E1E4E8">: </span><span style="color:#9ECBFF">canary-route</span></span>
-<span data-line=""><span style="color:#85E89D">spec</span><span style="color:#E1E4E8">:</span></span>
-<span data-line=""><span style="color:#85E89D">  parentRefs</span><span style="color:#E1E4E8">:</span></span>
-<span data-line=""><span style="color:#E1E4E8">    - </span><span style="color:#85E89D">name</span><span style="color:#E1E4E8">: </span><span style="color:#9ECBFF">eg</span></span>
-<span data-line=""><span style="color:#85E89D">  hostnames</span><span style="color:#E1E4E8">:</span></span>
-<span data-line=""><span style="color:#E1E4E8">    - </span><span style="color:#9ECBFF">"app.example.com"</span></span>
-<span data-line=""><span style="color:#85E89D">  rules</span><span style="color:#E1E4E8">:</span></span>
-<span data-line=""><span style="color:#E1E4E8">    - </span><span style="color:#85E89D">backendRefs</span><span style="color:#E1E4E8">:</span></span>
-<span data-line=""><span style="color:#E1E4E8">        - </span><span style="color:#85E89D">name</span><span style="color:#E1E4E8">: </span><span style="color:#9ECBFF">api-v1</span></span>
-<span data-line=""><span style="color:#85E89D">          port</span><span style="color:#E1E4E8">: </span><span style="color:#79B8FF">8080</span></span>
-<span data-line=""><span style="color:#85E89D">          weight</span><span style="color:#E1E4E8">: </span><span style="color:#79B8FF">90</span></span>
-<span data-line=""><span style="color:#E1E4E8">        - </span><span style="color:#85E89D">name</span><span style="color:#E1E4E8">: </span><span style="color:#9ECBFF">api-v2</span></span>
-<span data-line=""><span style="color:#85E89D">          port</span><span style="color:#E1E4E8">: </span><span style="color:#79B8FF">8080</span></span>
-<span data-line=""><span style="color:#85E89D">          weight</span><span style="color:#E1E4E8">: </span><span style="color:#79B8FF">10</span></span></code></pre></figure>
+<figure data-rehype-pretty-code-figure=""><pre style="background-color:#0d1117;color:#e6edf3" tabindex="0" data-language="yaml" data-theme="github-dark-default"><code data-language="yaml" data-theme="github-dark-default" style="display: grid;"><span data-line=""><span style="color:#7EE787">apiVersion</span><span style="color:#E6EDF3">: </span><span style="color:#A5D6FF">gateway.networking.k8s.io/v1</span></span>
+<span data-line=""><span style="color:#7EE787">kind</span><span style="color:#E6EDF3">: </span><span style="color:#A5D6FF">HTTPRoute</span></span>
+<span data-line=""><span style="color:#7EE787">metadata</span><span style="color:#E6EDF3">:</span></span>
+<span data-line=""><span style="color:#7EE787">  name</span><span style="color:#E6EDF3">: </span><span style="color:#A5D6FF">canary-route</span></span>
+<span data-line=""><span style="color:#7EE787">spec</span><span style="color:#E6EDF3">:</span></span>
+<span data-line=""><span style="color:#7EE787">  parentRefs</span><span style="color:#E6EDF3">:</span></span>
+<span data-line=""><span style="color:#E6EDF3">    - </span><span style="color:#7EE787">name</span><span style="color:#E6EDF3">: </span><span style="color:#A5D6FF">eg</span></span>
+<span data-line=""><span style="color:#7EE787">  hostnames</span><span style="color:#E6EDF3">:</span></span>
+<span data-line=""><span style="color:#E6EDF3">    - </span><span style="color:#A5D6FF">"app.example.com"</span></span>
+<span data-line=""><span style="color:#7EE787">  rules</span><span style="color:#E6EDF3">:</span></span>
+<span data-line=""><span style="color:#E6EDF3">    - </span><span style="color:#7EE787">backendRefs</span><span style="color:#E6EDF3">:</span></span>
+<span data-line=""><span style="color:#E6EDF3">        - </span><span style="color:#7EE787">name</span><span style="color:#E6EDF3">: </span><span style="color:#A5D6FF">api-v1</span></span>
+<span data-line=""><span style="color:#7EE787">          port</span><span style="color:#E6EDF3">: </span><span style="color:#79C0FF">8080</span></span>
+<span data-line=""><span style="color:#7EE787">          weight</span><span style="color:#E6EDF3">: </span><span style="color:#79C0FF">90</span></span>
+<span data-line=""><span style="color:#E6EDF3">        - </span><span style="color:#7EE787">name</span><span style="color:#E6EDF3">: </span><span style="color:#A5D6FF">api-v2</span></span>
+<span data-line=""><span style="color:#7EE787">          port</span><span style="color:#E6EDF3">: </span><span style="color:#79C0FF">8080</span></span>
+<span data-line=""><span style="color:#7EE787">          weight</span><span style="color:#E6EDF3">: </span><span style="color:#79C0FF">10</span></span></code></pre></figure>
 <p>هذا هو الشكل الأساسي للـ canary / traffic splitting.</p>
 <p>أنت لا تحتاج إلى service mesh كامل فقط كي تنفذ تجربة على المرور. بالنسبة إلى كثير من خدمات الـ API، فهذا أكثر من كافٍ، كما أن ضبطه أنظف بكثير.</p>
 <blockquote>
@@ -179,17 +179,17 @@ a:[["$","meta","0",{"charSet":"utf-8"}],["$","meta","1",{"name":"viewport","cont
 </blockquote>
 <h2 id="timeouts-لا-تجعل-الطلبات-معلّقة-للأبد"><code>timeouts</code>: لا تجعل الطلبات معلّقة للأبد</h2>
 <p>يدعم HTTPRoute إعدادات timeout على مستوى rule. وهذا مهم، فإذا لم تكن هناك حدود في طبقة ingress، فستبقى الطلبات السيئة معلقة بلا نهاية مثل عميل وقح يرفض المغادرة.</p>
-<figure data-rehype-pretty-code-figure=""><pre style="background-color:#24292e;color:#e1e4e8" tabindex="0" data-language="yaml" data-theme="github-dark"><code data-language="yaml" data-theme="github-dark" style="display: grid;"><span data-line=""><span style="color:#85E89D">rules</span><span style="color:#E1E4E8">:</span></span>
-<span data-line=""><span style="color:#E1E4E8">  - </span><span style="color:#85E89D">matches</span><span style="color:#E1E4E8">:</span></span>
-<span data-line=""><span style="color:#E1E4E8">      - </span><span style="color:#85E89D">path</span><span style="color:#E1E4E8">:</span></span>
-<span data-line=""><span style="color:#85E89D">          type</span><span style="color:#E1E4E8">: </span><span style="color:#9ECBFF">PathPrefix</span></span>
-<span data-line=""><span style="color:#85E89D">          value</span><span style="color:#E1E4E8">: </span><span style="color:#9ECBFF">/reports</span></span>
-<span data-line=""><span style="color:#85E89D">    timeouts</span><span style="color:#E1E4E8">:</span></span>
-<span data-line=""><span style="color:#85E89D">      request</span><span style="color:#E1E4E8">: </span><span style="color:#9ECBFF">10s</span></span>
-<span data-line=""><span style="color:#85E89D">      backendRequest</span><span style="color:#E1E4E8">: </span><span style="color:#9ECBFF">2s</span></span>
-<span data-line=""><span style="color:#85E89D">    backendRefs</span><span style="color:#E1E4E8">:</span></span>
-<span data-line=""><span style="color:#E1E4E8">      - </span><span style="color:#85E89D">name</span><span style="color:#E1E4E8">: </span><span style="color:#9ECBFF">report-service</span></span>
-<span data-line=""><span style="color:#85E89D">        port</span><span style="color:#E1E4E8">: </span><span style="color:#79B8FF">8080</span></span></code></pre></figure>
+<figure data-rehype-pretty-code-figure=""><pre style="background-color:#0d1117;color:#e6edf3" tabindex="0" data-language="yaml" data-theme="github-dark-default"><code data-language="yaml" data-theme="github-dark-default" style="display: grid;"><span data-line=""><span style="color:#7EE787">rules</span><span style="color:#E6EDF3">:</span></span>
+<span data-line=""><span style="color:#E6EDF3">  - </span><span style="color:#7EE787">matches</span><span style="color:#E6EDF3">:</span></span>
+<span data-line=""><span style="color:#E6EDF3">      - </span><span style="color:#7EE787">path</span><span style="color:#E6EDF3">:</span></span>
+<span data-line=""><span style="color:#7EE787">          type</span><span style="color:#E6EDF3">: </span><span style="color:#A5D6FF">PathPrefix</span></span>
+<span data-line=""><span style="color:#7EE787">          value</span><span style="color:#E6EDF3">: </span><span style="color:#A5D6FF">/reports</span></span>
+<span data-line=""><span style="color:#7EE787">    timeouts</span><span style="color:#E6EDF3">:</span></span>
+<span data-line=""><span style="color:#7EE787">      request</span><span style="color:#E6EDF3">: </span><span style="color:#A5D6FF">10s</span></span>
+<span data-line=""><span style="color:#7EE787">      backendRequest</span><span style="color:#E6EDF3">: </span><span style="color:#A5D6FF">2s</span></span>
+<span data-line=""><span style="color:#7EE787">    backendRefs</span><span style="color:#E6EDF3">:</span></span>
+<span data-line=""><span style="color:#E6EDF3">      - </span><span style="color:#7EE787">name</span><span style="color:#E6EDF3">: </span><span style="color:#A5D6FF">report-service</span></span>
+<span data-line=""><span style="color:#7EE787">        port</span><span style="color:#E6EDF3">: </span><span style="color:#79C0FF">8080</span></span></code></pre></figure>
 <p>فهم الحقلين:</p>
 <ul>
 <li><code>request</code>: الحد الأقصى للانتظار الكلي لطلب العميل</li>
@@ -199,9 +199,9 @@ a:[["$","meta","0",{"charSet":"utf-8"}],["$","meta","1",{"name":"viewport","cont
 <h2 id="نقطتان-شائعتان-ودقيقتان">نقطتان شائعتان ودقيقتان</h2>
 <h3 id="1-يمكن-لـ-parentrefs-أن-يستهدف-listener-محددًا">1. يمكن لـ <code>parentRefs</code> أن يستهدف Listener محددًا</h3>
 <p>إذا كان الـ Gateway يملك عدة listeners، فيمكنك الارتباط بواحد فقط:</p>
-<figure data-rehype-pretty-code-figure=""><pre style="background-color:#24292e;color:#e1e4e8" tabindex="0" data-language="yaml" data-theme="github-dark"><code data-language="yaml" data-theme="github-dark" style="display: grid;"><span data-line=""><span style="color:#85E89D">parentRefs</span><span style="color:#E1E4E8">:</span></span>
-<span data-line=""><span style="color:#E1E4E8">  - </span><span style="color:#85E89D">name</span><span style="color:#E1E4E8">: </span><span style="color:#9ECBFF">eg</span></span>
-<span data-line=""><span style="color:#85E89D">    sectionName</span><span style="color:#E1E4E8">: </span><span style="color:#9ECBFF">http</span></span></code></pre></figure>
+<figure data-rehype-pretty-code-figure=""><pre style="background-color:#0d1117;color:#e6edf3" tabindex="0" data-language="yaml" data-theme="github-dark-default"><code data-language="yaml" data-theme="github-dark-default" style="display: grid;"><span data-line=""><span style="color:#7EE787">parentRefs</span><span style="color:#E6EDF3">:</span></span>
+<span data-line=""><span style="color:#E6EDF3">  - </span><span style="color:#7EE787">name</span><span style="color:#E6EDF3">: </span><span style="color:#A5D6FF">eg</span></span>
+<span data-line=""><span style="color:#7EE787">    sectionName</span><span style="color:#E6EDF3">: </span><span style="color:#A5D6FF">http</span></span></code></pre></figure>
 <p>وهذا يعني أن الـ route يرتبط فقط بالـ listener المسمى <code>http</code>.
 وفي البنى متعددة الـ listeners، يكون هذا أكثر قابلية للتوقع بكثير من الارتباط بكل شيء.</p>
 <h3 id="2-عدم-وجود-matches-يعني-مطابقة-كل-شيء">2. عدم وجود <code>matches</code> يعني مطابقة كل شيء</h3>
@@ -209,10 +209,10 @@ a:[["$","meta","0",{"charSet":"utf-8"}],["$","meta","1",{"name":"viewport","cont
 <p>وهذا مريح، لكنه قد يبتلع بصمت ما كنت تظنه rules أكثر تحديدًا. فلا تتجاوزه بدافع الكسل ثم تقضي ساعة تتساءل لماذا قواعدك الدقيقة لا تعمل.</p>
 <h2 id="التحقق-من-أن-التوجيه-يعمل">التحقق من أن التوجيه يعمل</h2>
 <p>بعد ضبط الـ routes، تحقّق باستخدام <code>curl</code>:</p>
-<figure data-rehype-pretty-code-figure=""><pre style="background-color:#24292e;color:#e1e4e8" tabindex="0" data-language="bash" data-theme="github-dark"><code data-language="bash" data-theme="github-dark" style="display: grid;"><span data-line=""><span style="color:#B392F0">curl</span><span style="color:#79B8FF"> -H</span><span style="color:#9ECBFF"> "Host: app.example.com"</span><span style="color:#9ECBFF"> http://</span><span style="color:#E1E4E8">$GATEWAY_HOST</span><span style="color:#9ECBFF">/api/users</span></span>
-<span data-line=""><span style="color:#B392F0">curl</span><span style="color:#79B8FF"> -H</span><span style="color:#9ECBFF"> "Host: app.example.com"</span><span style="color:#79B8FF"> -H</span><span style="color:#9ECBFF"> "version: v2"</span><span style="color:#9ECBFF"> http://</span><span style="color:#E1E4E8">$GATEWAY_HOST</span><span style="color:#9ECBFF">/api/users</span></span></code></pre></figure>
+<figure data-rehype-pretty-code-figure=""><pre style="background-color:#0d1117;color:#e6edf3" tabindex="0" data-language="bash" data-theme="github-dark-default"><code data-language="bash" data-theme="github-dark-default" style="display: grid;"><span data-line=""><span style="color:#FFA657">curl</span><span style="color:#79C0FF"> -H</span><span style="color:#A5D6FF"> "Host: app.example.com"</span><span style="color:#A5D6FF"> http://</span><span style="color:#E6EDF3">$GATEWAY_HOST</span><span style="color:#A5D6FF">/api/users</span></span>
+<span data-line=""><span style="color:#FFA657">curl</span><span style="color:#79C0FF"> -H</span><span style="color:#A5D6FF"> "Host: app.example.com"</span><span style="color:#79C0FF"> -H</span><span style="color:#A5D6FF"> "version: v2"</span><span style="color:#A5D6FF"> http://</span><span style="color:#E6EDF3">$GATEWAY_HOST</span><span style="color:#A5D6FF">/api/users</span></span></code></pre></figure>
 <p>ولفحص حالة <code>HTTPRoute</code>:</p>
-<figure data-rehype-pretty-code-figure=""><pre style="background-color:#24292e;color:#e1e4e8" tabindex="0" data-language="bash" data-theme="github-dark"><code data-language="bash" data-theme="github-dark" style="display: grid;"><span data-line=""><span style="color:#B392F0">kubectl</span><span style="color:#9ECBFF"> get</span><span style="color:#9ECBFF"> httproute</span><span style="color:#9ECBFF"> app-route</span><span style="color:#79B8FF"> -o</span><span style="color:#9ECBFF"> yaml</span></span></code></pre></figure>
+<figure data-rehype-pretty-code-figure=""><pre style="background-color:#0d1117;color:#e6edf3" tabindex="0" data-language="bash" data-theme="github-dark-default"><code data-language="bash" data-theme="github-dark-default" style="display: grid;"><span data-line=""><span style="color:#FFA657">kubectl</span><span style="color:#A5D6FF"> get</span><span style="color:#A5D6FF"> httproute</span><span style="color:#A5D6FF"> app-route</span><span style="color:#79C0FF"> -o</span><span style="color:#A5D6FF"> yaml</span></span></code></pre></figure>
 <p>ركّز بشكل خاص على:</p>
 <ul>
 <li><code>status.parents</code></li>
@@ -223,31 +223,31 @@ a:[["$","meta","0",{"charSet":"utf-8"}],["$","meta","1",{"name":"viewport","cont
 <p>جوهر <code>HTTPRoute</code> هو: "طابِق أولًا، ثم وجّه." وبمجرد أن تتقن host و path و header و weight، ستتمكن من تغطية نحو 80% من متطلبات HTTP ingress اليومية.</p>
 <h2 id="الخطوة-التالية">الخطوة التالية</h2>
 <p>المقالة التالية تتناول شيئًا ستواجهه في كل بيئة إنتاج تقريبًا: HTTPS والشهادات و TLS termination والأمان:
-👉 <a href="04-tls-and-security">TLS والأمان</a></p>5:[["$","script",null,{"type":"application/ld+json","dangerouslySetInnerHTML":{"__html":"{\"@context\":\"https://schema.org\",\"@type\":\"Article\",\"headline\":\"التوجيه العملي لـ Envoy Gateway HTTP: Host و Path و Header وتقسيم المرور\",\"description\":\"من المطابقة بحسب host/path إلى filters و timeouts وشروط header وتقسيم المرور بالأوزان، أتقن أكثر أنماط HTTPRoute شيوعًا.\",\"url\":\"https://benxhub.com/ar/blog/k8s/gateway/03-http-routing\",\"mainEntityOfPage\":{\"@type\":\"WebPage\",\"@id\":\"https://benxhub.com/ar/blog/k8s/gateway/03-http-routing\"},\"datePublished\":\"2026-03-10T00:00:00.000Z\",\"dateModified\":\"2026-03-10T00:00:00.000Z\",\"keywords\":\"kubernetes, envoy-gateway, gateway-api, httproute, traffic-splitting\",\"inLanguage\":\"ar\",\"author\":{\"@type\":\"Person\",\"name\":\"BenX\",\"url\":\"https://benxhub.com\"},\"publisher\":{\"@type\":\"Organization\",\"name\":\"BenXHub Blog\",\"url\":\"https://benxhub.com\"}}"}}],["$","div",null,{"className":"mx-auto max-w-6xl px-4 py-12 sm:px-6","children":["$","div",null,{"className":"lg:grid lg:grid-cols-[1fr_240px] lg:gap-14","children":[["$","article",null,{"children":[["$","header",null,{"className":"mb-10","children":[["$","div",null,{"className":"mb-4 flex flex-wrap gap-2","children":["$L16","$L17","$L18","$L19","$L1a"]}],["$","h1",null,{"className":"mb-4 text-3xl leading-snug font-bold tracking-tight sm:text-4xl","style":{"color":"var(--color-text)"},"children":"التوجيه العملي لـ Envoy Gateway HTTP: Host و Path و Header وتقسيم المرور"}],["$","div",null,{"className":"flex flex-wrap items-center gap-3 text-sm","style":{"color":"var(--color-muted)"},"children":[["$","time",null,{"dateTime":"2026-03-10","children":"10 3月 2026"}],["$","span",null,{"aria-hidden":"true","children":"·"}],["$","span",null,{"children":"6 min read"}]]}],"$undefined",["$","div",null,{"className":"mt-6 border-b","style":{"borderColor":"var(--color-border)"}}]]}],["$","div",null,{"className":"prose","dangerouslySetInnerHTML":{"__html":"$1b"}}],"$L1c"]}],"$L1d"]}]}]]
-25:I[24801,["/_next/static/chunks/7923a261b80bb6e1.js","/_next/static/chunks/e09b4358027e8033.js","/_next/static/chunks/2dddb3bc05093f69.js"],"default"]
+👉 <a href="04-tls-and-security">TLS والأمان</a></p>5:[["$","script",null,{"type":"application/ld+json","dangerouslySetInnerHTML":{"__html":"{\"@context\":\"https://schema.org\",\"@type\":\"Article\",\"headline\":\"التوجيه العملي لـ Envoy Gateway HTTP: Host و Path و Header وتقسيم المرور\",\"description\":\"من المطابقة بحسب host/path إلى filters و timeouts وشروط header وتقسيم المرور بالأوزان، أتقن أكثر أنماط HTTPRoute شيوعًا.\",\"url\":\"https://benxhub.com/ar/blog/k8s/gateway/03-http-routing/\",\"mainEntityOfPage\":{\"@type\":\"WebPage\",\"@id\":\"https://benxhub.com/ar/blog/k8s/gateway/03-http-routing/\"},\"datePublished\":\"2026-03-10T00:00:00.000Z\",\"dateModified\":\"2026-03-10T00:00:00.000Z\",\"keywords\":\"kubernetes, envoy-gateway, gateway-api, httproute, traffic-splitting\",\"inLanguage\":\"ar\",\"author\":{\"@type\":\"Person\",\"@id\":\"https://benxhub.com/#author\",\"name\":\"BenX\",\"url\":\"https://benxhub.com/ar/about/\",\"sameAs\":[\"https://github.com/benzhub\"]},\"publisher\":{\"@type\":\"Organization\",\"name\":\"BenXHub Blog\",\"url\":\"https://benxhub.com\"},\"image\":\"https://benxhub.com/og-default.png\"}"}}],["$","div",null,{"className":"mx-auto max-w-6xl px-4 py-12 sm:px-6","children":["$","div",null,{"className":"lg:grid lg:grid-cols-[1fr_240px] lg:gap-14","children":[["$","article",null,{"children":[["$","header",null,{"className":"mb-10","children":[["$","div",null,{"className":"mb-4 flex flex-wrap gap-2","children":["$L16","$L17","$L18","$L19","$L1a"]}],["$","h1",null,{"className":"mb-4 text-3xl leading-snug font-bold tracking-tight sm:text-4xl","style":{"color":"var(--color-text)"},"children":"التوجيه العملي لـ Envoy Gateway HTTP: Host و Path و Header وتقسيم المرور"}],["$","div",null,{"className":"flex flex-wrap items-center gap-3 text-sm","style":{"color":"var(--color-muted)"},"children":[["$","time",null,{"dateTime":"2026-03-10","children":"10 3月 2026"}],["$","span",null,{"aria-hidden":"true","children":"·"}],["$","span",null,{"children":"6 min read"}]]}],"$undefined",["$","div",null,{"className":"mt-6 border-b","style":{"borderColor":"var(--color-border)"}}]]}],["$","div",null,{"className":"prose","dangerouslySetInnerHTML":{"__html":"$1b"}}],"$L1c"]}],"$L1d"]}]}]]
+25:I[24801,["/_next/static/chunks/4204edc93da35a5e.js","/_next/static/chunks/f2afb7fd2b7566bb.js","/_next/static/chunks/2dddb3bc05093f69.js"],"default"]
 1c:["$","footer",null,{"className":"mt-14 border-t pt-8","style":{"borderColor":"var(--color-border)"},"children":[["$","div",null,{"className":"mb-8 flex flex-wrap gap-2","children":["$L1e","$L1f","$L20","$L21","$L22"]}],["$","nav",null,{"aria-label":"التنقل بين المقالات","className":"grid grid-cols-1 gap-4 sm:grid-cols-2","children":["$L23","$L24"]}]]}]
-26:T6e5c,<p>المقالتان الأوليان منحتاك أساس "ما هذا الشيء". وهذه المقالة تدخل في الشيء الذي ستعدله فعليًا يومًا بعد يوم: <code>HTTPRoute</code>.</p>
+26:T6efc,<p>المقالتان الأوليان منحتاك أساس "ما هذا الشيء". وهذه المقالة تدخل في الشيء الذي ستعدله فعليًا يومًا بعد يوم: <code>HTTPRoute</code>.</p>
 <p>فكّر في <code>HTTPRoute</code> على أنه سكربت توجيه للمرور الوارد، لكن بدلًا من كتابة قواعد Nginx أو حفظ annotations الخاصة بالـ controllers، فأنت تستخدم موارد أصلية في Kubernetes.</p>
 <p>شيء يجب توضيحه من البداية: هذه المقالة تغطي فقط <code>HTTPRoute</code> لأنه يتعامل مع دلالات HTTP/HTTPS. أما gRPC فالأرجح أنك ستتجه إلى <code>GRPCRoute</code>، وبالنسبة إلى TCP الخام فإلى <code>TCPRoute</code>، وبالنسبة إلى TLS passthrough فإلى <code>TLSRoute</code>. لا تُجبر كل شيء على الدخول في <code>HTTPRoute</code> لأن الـ YAML سيبدأ بإعطاء انطباع "نحن فقط نحاول الترقيع."</p>
 <h2 id="أكثر-أنواع-التوجيه-شيوعًا-host-و-path">أكثر أنواع التوجيه شيوعًا: Host و Path</h2>
 <p>هذا هو المثال الأكثر شيوعًا:</p>
-<figure data-rehype-pretty-code-figure=""><pre style="background-color:#24292e;color:#e1e4e8" tabindex="0" data-language="yaml" data-theme="github-dark"><code data-language="yaml" data-theme="github-dark" style="display: grid;"><span data-line=""><span style="color:#85E89D">apiVersion</span><span style="color:#E1E4E8">: </span><span style="color:#9ECBFF">gateway.networking.k8s.io/v1</span></span>
-<span data-line=""><span style="color:#85E89D">kind</span><span style="color:#E1E4E8">: </span><span style="color:#9ECBFF">HTTPRoute</span></span>
-<span data-line=""><span style="color:#85E89D">metadata</span><span style="color:#E1E4E8">:</span></span>
-<span data-line=""><span style="color:#85E89D">  name</span><span style="color:#E1E4E8">: </span><span style="color:#9ECBFF">app-route</span></span>
-<span data-line=""><span style="color:#85E89D">spec</span><span style="color:#E1E4E8">:</span></span>
-<span data-line=""><span style="color:#85E89D">  parentRefs</span><span style="color:#E1E4E8">:</span></span>
-<span data-line=""><span style="color:#E1E4E8">    - </span><span style="color:#85E89D">name</span><span style="color:#E1E4E8">: </span><span style="color:#9ECBFF">eg</span></span>
-<span data-line=""><span style="color:#85E89D">  hostnames</span><span style="color:#E1E4E8">:</span></span>
-<span data-line=""><span style="color:#E1E4E8">    - </span><span style="color:#9ECBFF">"app.example.com"</span></span>
-<span data-line=""><span style="color:#85E89D">  rules</span><span style="color:#E1E4E8">:</span></span>
-<span data-line=""><span style="color:#E1E4E8">    - </span><span style="color:#85E89D">matches</span><span style="color:#E1E4E8">:</span></span>
-<span data-line=""><span style="color:#E1E4E8">        - </span><span style="color:#85E89D">path</span><span style="color:#E1E4E8">:</span></span>
-<span data-line=""><span style="color:#85E89D">            type</span><span style="color:#E1E4E8">: </span><span style="color:#9ECBFF">PathPrefix</span></span>
-<span data-line=""><span style="color:#85E89D">            value</span><span style="color:#E1E4E8">: </span><span style="color:#9ECBFF">/api</span></span>
-<span data-line=""><span style="color:#85E89D">      backendRefs</span><span style="color:#E1E4E8">:</span></span>
-<span data-line=""><span style="color:#E1E4E8">        - </span><span style="color:#85E89D">name</span><span style="color:#E1E4E8">: </span><span style="color:#9ECBFF">api-service</span></span>
-<span data-line=""><span style="color:#85E89D">          port</span><span style="color:#E1E4E8">: </span><span style="color:#79B8FF">8080</span></span></code></pre></figure>
+<figure data-rehype-pretty-code-figure=""><pre style="background-color:#0d1117;color:#e6edf3" tabindex="0" data-language="yaml" data-theme="github-dark-default"><code data-language="yaml" data-theme="github-dark-default" style="display: grid;"><span data-line=""><span style="color:#7EE787">apiVersion</span><span style="color:#E6EDF3">: </span><span style="color:#A5D6FF">gateway.networking.k8s.io/v1</span></span>
+<span data-line=""><span style="color:#7EE787">kind</span><span style="color:#E6EDF3">: </span><span style="color:#A5D6FF">HTTPRoute</span></span>
+<span data-line=""><span style="color:#7EE787">metadata</span><span style="color:#E6EDF3">:</span></span>
+<span data-line=""><span style="color:#7EE787">  name</span><span style="color:#E6EDF3">: </span><span style="color:#A5D6FF">app-route</span></span>
+<span data-line=""><span style="color:#7EE787">spec</span><span style="color:#E6EDF3">:</span></span>
+<span data-line=""><span style="color:#7EE787">  parentRefs</span><span style="color:#E6EDF3">:</span></span>
+<span data-line=""><span style="color:#E6EDF3">    - </span><span style="color:#7EE787">name</span><span style="color:#E6EDF3">: </span><span style="color:#A5D6FF">eg</span></span>
+<span data-line=""><span style="color:#7EE787">  hostnames</span><span style="color:#E6EDF3">:</span></span>
+<span data-line=""><span style="color:#E6EDF3">    - </span><span style="color:#A5D6FF">"app.example.com"</span></span>
+<span data-line=""><span style="color:#7EE787">  rules</span><span style="color:#E6EDF3">:</span></span>
+<span data-line=""><span style="color:#E6EDF3">    - </span><span style="color:#7EE787">matches</span><span style="color:#E6EDF3">:</span></span>
+<span data-line=""><span style="color:#E6EDF3">        - </span><span style="color:#7EE787">path</span><span style="color:#E6EDF3">:</span></span>
+<span data-line=""><span style="color:#7EE787">            type</span><span style="color:#E6EDF3">: </span><span style="color:#A5D6FF">PathPrefix</span></span>
+<span data-line=""><span style="color:#7EE787">            value</span><span style="color:#E6EDF3">: </span><span style="color:#A5D6FF">/api</span></span>
+<span data-line=""><span style="color:#7EE787">      backendRefs</span><span style="color:#E6EDF3">:</span></span>
+<span data-line=""><span style="color:#E6EDF3">        - </span><span style="color:#7EE787">name</span><span style="color:#E6EDF3">: </span><span style="color:#A5D6FF">api-service</span></span>
+<span data-line=""><span style="color:#7EE787">          port</span><span style="color:#E6EDF3">: </span><span style="color:#79C0FF">8080</span></span></code></pre></figure>
 <p>ومعناه:</p>
 <ul>
 <li>فقط <code>Host: app.example.com</code> سيطابق هذا الـ route</li>
@@ -266,14 +266,14 @@ a:[["$","meta","0",{"charSet":"utf-8"}],["$","meta","1",{"name":"viewport","cont
 <li><code>method</code></li>
 </ul>
 <p>مثال:</p>
-<figure data-rehype-pretty-code-figure=""><pre style="background-color:#24292e;color:#e1e4e8" tabindex="0" data-language="yaml" data-theme="github-dark"><code data-language="yaml" data-theme="github-dark" style="display: grid;"><span data-line=""><span style="color:#85E89D">matches</span><span style="color:#E1E4E8">:</span></span>
-<span data-line=""><span style="color:#E1E4E8">  - </span><span style="color:#85E89D">method</span><span style="color:#E1E4E8">: </span><span style="color:#9ECBFF">GET</span></span>
-<span data-line=""><span style="color:#85E89D">    path</span><span style="color:#E1E4E8">:</span></span>
-<span data-line=""><span style="color:#85E89D">      type</span><span style="color:#E1E4E8">: </span><span style="color:#9ECBFF">PathPrefix</span></span>
-<span data-line=""><span style="color:#85E89D">      value</span><span style="color:#E1E4E8">: </span><span style="color:#9ECBFF">/api</span></span>
-<span data-line=""><span style="color:#85E89D">    headers</span><span style="color:#E1E4E8">:</span></span>
-<span data-line=""><span style="color:#E1E4E8">      - </span><span style="color:#85E89D">name</span><span style="color:#E1E4E8">: </span><span style="color:#9ECBFF">version</span></span>
-<span data-line=""><span style="color:#85E89D">        value</span><span style="color:#E1E4E8">: </span><span style="color:#9ECBFF">v2</span></span></code></pre></figure>
+<figure data-rehype-pretty-code-figure=""><pre style="background-color:#0d1117;color:#e6edf3" tabindex="0" data-language="yaml" data-theme="github-dark-default"><code data-language="yaml" data-theme="github-dark-default" style="display: grid;"><span data-line=""><span style="color:#7EE787">matches</span><span style="color:#E6EDF3">:</span></span>
+<span data-line=""><span style="color:#E6EDF3">  - </span><span style="color:#7EE787">method</span><span style="color:#E6EDF3">: </span><span style="color:#A5D6FF">GET</span></span>
+<span data-line=""><span style="color:#7EE787">    path</span><span style="color:#E6EDF3">:</span></span>
+<span data-line=""><span style="color:#7EE787">      type</span><span style="color:#E6EDF3">: </span><span style="color:#A5D6FF">PathPrefix</span></span>
+<span data-line=""><span style="color:#7EE787">      value</span><span style="color:#E6EDF3">: </span><span style="color:#A5D6FF">/api</span></span>
+<span data-line=""><span style="color:#7EE787">    headers</span><span style="color:#E6EDF3">:</span></span>
+<span data-line=""><span style="color:#E6EDF3">      - </span><span style="color:#7EE787">name</span><span style="color:#E6EDF3">: </span><span style="color:#A5D6FF">version</span></span>
+<span data-line=""><span style="color:#7EE787">        value</span><span style="color:#E6EDF3">: </span><span style="color:#A5D6FF">v2</span></span></code></pre></figure>
 <p>ومعناه:</p>
 <ul>
 <li>فقط طلبات <code>GET</code></li>
@@ -283,21 +283,21 @@ a:[["$","meta","0",{"charSet":"utf-8"}],["$","meta","1",{"name":"viewport","cont
 <p>هذا النمط مثالي لتجارب نسخ الـ API أو الإطلاقات المرحلية لمستخدمين محددين.</p>
 <h2 id="route-واحد-وعدة-rules">Route واحد، وعدة Rules</h2>
 <p>يمكن لـ <code>HTTPRoute</code> واحد أن يوجّه paths مختلفة إلى خدمات مختلفة:</p>
-<figure data-rehype-pretty-code-figure=""><pre style="background-color:#24292e;color:#e1e4e8" tabindex="0" data-language="yaml" data-theme="github-dark"><code data-language="yaml" data-theme="github-dark" style="display: grid;"><span data-line=""><span style="color:#85E89D">rules</span><span style="color:#E1E4E8">:</span></span>
-<span data-line=""><span style="color:#E1E4E8">  - </span><span style="color:#85E89D">matches</span><span style="color:#E1E4E8">:</span></span>
-<span data-line=""><span style="color:#E1E4E8">      - </span><span style="color:#85E89D">path</span><span style="color:#E1E4E8">:</span></span>
-<span data-line=""><span style="color:#85E89D">          type</span><span style="color:#E1E4E8">: </span><span style="color:#9ECBFF">PathPrefix</span></span>
-<span data-line=""><span style="color:#85E89D">          value</span><span style="color:#E1E4E8">: </span><span style="color:#9ECBFF">/api</span></span>
-<span data-line=""><span style="color:#85E89D">    backendRefs</span><span style="color:#E1E4E8">:</span></span>
-<span data-line=""><span style="color:#E1E4E8">      - </span><span style="color:#85E89D">name</span><span style="color:#E1E4E8">: </span><span style="color:#9ECBFF">api-service</span></span>
-<span data-line=""><span style="color:#85E89D">        port</span><span style="color:#E1E4E8">: </span><span style="color:#79B8FF">8080</span></span>
-<span data-line=""><span style="color:#E1E4E8">  - </span><span style="color:#85E89D">matches</span><span style="color:#E1E4E8">:</span></span>
-<span data-line=""><span style="color:#E1E4E8">      - </span><span style="color:#85E89D">path</span><span style="color:#E1E4E8">:</span></span>
-<span data-line=""><span style="color:#85E89D">          type</span><span style="color:#E1E4E8">: </span><span style="color:#9ECBFF">PathPrefix</span></span>
-<span data-line=""><span style="color:#85E89D">          value</span><span style="color:#E1E4E8">: </span><span style="color:#9ECBFF">/admin</span></span>
-<span data-line=""><span style="color:#85E89D">    backendRefs</span><span style="color:#E1E4E8">:</span></span>
-<span data-line=""><span style="color:#E1E4E8">      - </span><span style="color:#85E89D">name</span><span style="color:#E1E4E8">: </span><span style="color:#9ECBFF">admin-service</span></span>
-<span data-line=""><span style="color:#85E89D">        port</span><span style="color:#E1E4E8">: </span><span style="color:#79B8FF">8080</span></span></code></pre></figure>
+<figure data-rehype-pretty-code-figure=""><pre style="background-color:#0d1117;color:#e6edf3" tabindex="0" data-language="yaml" data-theme="github-dark-default"><code data-language="yaml" data-theme="github-dark-default" style="display: grid;"><span data-line=""><span style="color:#7EE787">rules</span><span style="color:#E6EDF3">:</span></span>
+<span data-line=""><span style="color:#E6EDF3">  - </span><span style="color:#7EE787">matches</span><span style="color:#E6EDF3">:</span></span>
+<span data-line=""><span style="color:#E6EDF3">      - </span><span style="color:#7EE787">path</span><span style="color:#E6EDF3">:</span></span>
+<span data-line=""><span style="color:#7EE787">          type</span><span style="color:#E6EDF3">: </span><span style="color:#A5D6FF">PathPrefix</span></span>
+<span data-line=""><span style="color:#7EE787">          value</span><span style="color:#E6EDF3">: </span><span style="color:#A5D6FF">/api</span></span>
+<span data-line=""><span style="color:#7EE787">    backendRefs</span><span style="color:#E6EDF3">:</span></span>
+<span data-line=""><span style="color:#E6EDF3">      - </span><span style="color:#7EE787">name</span><span style="color:#E6EDF3">: </span><span style="color:#A5D6FF">api-service</span></span>
+<span data-line=""><span style="color:#7EE787">        port</span><span style="color:#E6EDF3">: </span><span style="color:#79C0FF">8080</span></span>
+<span data-line=""><span style="color:#E6EDF3">  - </span><span style="color:#7EE787">matches</span><span style="color:#E6EDF3">:</span></span>
+<span data-line=""><span style="color:#E6EDF3">      - </span><span style="color:#7EE787">path</span><span style="color:#E6EDF3">:</span></span>
+<span data-line=""><span style="color:#7EE787">          type</span><span style="color:#E6EDF3">: </span><span style="color:#A5D6FF">PathPrefix</span></span>
+<span data-line=""><span style="color:#7EE787">          value</span><span style="color:#E6EDF3">: </span><span style="color:#A5D6FF">/admin</span></span>
+<span data-line=""><span style="color:#7EE787">    backendRefs</span><span style="color:#E6EDF3">:</span></span>
+<span data-line=""><span style="color:#E6EDF3">      - </span><span style="color:#7EE787">name</span><span style="color:#E6EDF3">: </span><span style="color:#A5D6FF">admin-service</span></span>
+<span data-line=""><span style="color:#7EE787">        port</span><span style="color:#E6EDF3">: </span><span style="color:#79C0FF">8080</span></span></code></pre></figure>
 <p>وهذا ممتاز لتقسيم المسارات الفرعية تحت domain واحد، مثلًا:</p>
 <ul>
 <li><code>/api</code> يذهب إلى خدمة API</li>
@@ -307,31 +307,31 @@ a:[["$","meta","0",{"charSet":"utf-8"}],["$","meta","1",{"name":"viewport","cont
 <h2 id="استخدام-header-و-method-و-query-كشروط">استخدام Header و Method و Query كشروط</h2>
 <p><code>HTTPRoute</code> لا يقتصر على المطابقة حسب path، بل يمكنه أيضًا المطابقة حسب request headers و methods و query params.</p>
 <p>على سبيل المثال، وجّه فقط الطلبات التي تحمل <code>version: v2</code> إلى الخدمة الجديدة:</p>
-<figure data-rehype-pretty-code-figure=""><pre style="background-color:#24292e;color:#e1e4e8" tabindex="0" data-language="yaml" data-theme="github-dark"><code data-language="yaml" data-theme="github-dark" style="display: grid;"><span data-line=""><span style="color:#85E89D">apiVersion</span><span style="color:#E1E4E8">: </span><span style="color:#9ECBFF">gateway.networking.k8s.io/v1</span></span>
-<span data-line=""><span style="color:#85E89D">kind</span><span style="color:#E1E4E8">: </span><span style="color:#9ECBFF">HTTPRoute</span></span>
-<span data-line=""><span style="color:#85E89D">metadata</span><span style="color:#E1E4E8">:</span></span>
-<span data-line=""><span style="color:#85E89D">  name</span><span style="color:#E1E4E8">: </span><span style="color:#9ECBFF">versioned-route</span></span>
-<span data-line=""><span style="color:#85E89D">spec</span><span style="color:#E1E4E8">:</span></span>
-<span data-line=""><span style="color:#85E89D">  parentRefs</span><span style="color:#E1E4E8">:</span></span>
-<span data-line=""><span style="color:#E1E4E8">    - </span><span style="color:#85E89D">name</span><span style="color:#E1E4E8">: </span><span style="color:#9ECBFF">eg</span></span>
-<span data-line=""><span style="color:#85E89D">  rules</span><span style="color:#E1E4E8">:</span></span>
-<span data-line=""><span style="color:#E1E4E8">    - </span><span style="color:#85E89D">matches</span><span style="color:#E1E4E8">:</span></span>
-<span data-line=""><span style="color:#E1E4E8">        - </span><span style="color:#85E89D">path</span><span style="color:#E1E4E8">:</span></span>
-<span data-line=""><span style="color:#85E89D">            type</span><span style="color:#E1E4E8">: </span><span style="color:#9ECBFF">PathPrefix</span></span>
-<span data-line=""><span style="color:#85E89D">            value</span><span style="color:#E1E4E8">: </span><span style="color:#9ECBFF">/api</span></span>
-<span data-line=""><span style="color:#85E89D">          headers</span><span style="color:#E1E4E8">:</span></span>
-<span data-line=""><span style="color:#E1E4E8">            - </span><span style="color:#85E89D">name</span><span style="color:#E1E4E8">: </span><span style="color:#9ECBFF">version</span></span>
-<span data-line=""><span style="color:#85E89D">              value</span><span style="color:#E1E4E8">: </span><span style="color:#9ECBFF">v2</span></span>
-<span data-line=""><span style="color:#85E89D">      backendRefs</span><span style="color:#E1E4E8">:</span></span>
-<span data-line=""><span style="color:#E1E4E8">        - </span><span style="color:#85E89D">name</span><span style="color:#E1E4E8">: </span><span style="color:#9ECBFF">api-v2</span></span>
-<span data-line=""><span style="color:#85E89D">          port</span><span style="color:#E1E4E8">: </span><span style="color:#79B8FF">8080</span></span>
-<span data-line=""><span style="color:#E1E4E8">    - </span><span style="color:#85E89D">matches</span><span style="color:#E1E4E8">:</span></span>
-<span data-line=""><span style="color:#E1E4E8">        - </span><span style="color:#85E89D">path</span><span style="color:#E1E4E8">:</span></span>
-<span data-line=""><span style="color:#85E89D">            type</span><span style="color:#E1E4E8">: </span><span style="color:#9ECBFF">PathPrefix</span></span>
-<span data-line=""><span style="color:#85E89D">            value</span><span style="color:#E1E4E8">: </span><span style="color:#9ECBFF">/api</span></span>
-<span data-line=""><span style="color:#85E89D">      backendRefs</span><span style="color:#E1E4E8">:</span></span>
-<span data-line=""><span style="color:#E1E4E8">        - </span><span style="color:#85E89D">name</span><span style="color:#E1E4E8">: </span><span style="color:#9ECBFF">api-v1</span></span>
-<span data-line=""><span style="color:#85E89D">          port</span><span style="color:#E1E4E8">: </span><span style="color:#79B8FF">8080</span></span></code></pre></figure>
+<figure data-rehype-pretty-code-figure=""><pre style="background-color:#0d1117;color:#e6edf3" tabindex="0" data-language="yaml" data-theme="github-dark-default"><code data-language="yaml" data-theme="github-dark-default" style="display: grid;"><span data-line=""><span style="color:#7EE787">apiVersion</span><span style="color:#E6EDF3">: </span><span style="color:#A5D6FF">gateway.networking.k8s.io/v1</span></span>
+<span data-line=""><span style="color:#7EE787">kind</span><span style="color:#E6EDF3">: </span><span style="color:#A5D6FF">HTTPRoute</span></span>
+<span data-line=""><span style="color:#7EE787">metadata</span><span style="color:#E6EDF3">:</span></span>
+<span data-line=""><span style="color:#7EE787">  name</span><span style="color:#E6EDF3">: </span><span style="color:#A5D6FF">versioned-route</span></span>
+<span data-line=""><span style="color:#7EE787">spec</span><span style="color:#E6EDF3">:</span></span>
+<span data-line=""><span style="color:#7EE787">  parentRefs</span><span style="color:#E6EDF3">:</span></span>
+<span data-line=""><span style="color:#E6EDF3">    - </span><span style="color:#7EE787">name</span><span style="color:#E6EDF3">: </span><span style="color:#A5D6FF">eg</span></span>
+<span data-line=""><span style="color:#7EE787">  rules</span><span style="color:#E6EDF3">:</span></span>
+<span data-line=""><span style="color:#E6EDF3">    - </span><span style="color:#7EE787">matches</span><span style="color:#E6EDF3">:</span></span>
+<span data-line=""><span style="color:#E6EDF3">        - </span><span style="color:#7EE787">path</span><span style="color:#E6EDF3">:</span></span>
+<span data-line=""><span style="color:#7EE787">            type</span><span style="color:#E6EDF3">: </span><span style="color:#A5D6FF">PathPrefix</span></span>
+<span data-line=""><span style="color:#7EE787">            value</span><span style="color:#E6EDF3">: </span><span style="color:#A5D6FF">/api</span></span>
+<span data-line=""><span style="color:#7EE787">          headers</span><span style="color:#E6EDF3">:</span></span>
+<span data-line=""><span style="color:#E6EDF3">            - </span><span style="color:#7EE787">name</span><span style="color:#E6EDF3">: </span><span style="color:#A5D6FF">version</span></span>
+<span data-line=""><span style="color:#7EE787">              value</span><span style="color:#E6EDF3">: </span><span style="color:#A5D6FF">v2</span></span>
+<span data-line=""><span style="color:#7EE787">      backendRefs</span><span style="color:#E6EDF3">:</span></span>
+<span data-line=""><span style="color:#E6EDF3">        - </span><span style="color:#7EE787">name</span><span style="color:#E6EDF3">: </span><span style="color:#A5D6FF">api-v2</span></span>
+<span data-line=""><span style="color:#7EE787">          port</span><span style="color:#E6EDF3">: </span><span style="color:#79C0FF">8080</span></span>
+<span data-line=""><span style="color:#E6EDF3">    - </span><span style="color:#7EE787">matches</span><span style="color:#E6EDF3">:</span></span>
+<span data-line=""><span style="color:#E6EDF3">        - </span><span style="color:#7EE787">path</span><span style="color:#E6EDF3">:</span></span>
+<span data-line=""><span style="color:#7EE787">            type</span><span style="color:#E6EDF3">: </span><span style="color:#A5D6FF">PathPrefix</span></span>
+<span data-line=""><span style="color:#7EE787">            value</span><span style="color:#E6EDF3">: </span><span style="color:#A5D6FF">/api</span></span>
+<span data-line=""><span style="color:#7EE787">      backendRefs</span><span style="color:#E6EDF3">:</span></span>
+<span data-line=""><span style="color:#E6EDF3">        - </span><span style="color:#7EE787">name</span><span style="color:#E6EDF3">: </span><span style="color:#A5D6FF">api-v1</span></span>
+<span data-line=""><span style="color:#7EE787">          port</span><span style="color:#E6EDF3">: </span><span style="color:#79C0FF">8080</span></span></code></pre></figure>
 <p>هذا النمط مفيد جدًا في:</p>
 <ul>
 <li>Canary releases</li>
@@ -342,16 +342,16 @@ a:[["$","meta","0",{"charSet":"utf-8"}],["$","meta","1",{"name":"viewport","cont
 <h2 id="filters-معالجة-الطلبات-قبل-التوجيه"><code>filters</code>: معالجة الطلبات قبل التوجيه</h2>
 <p><code>HTTPRoute</code> لا يكتفي بـ "المطابقة ثم التوجيه"، بل يمكنه أيضًا تطبيق تحويلات قبل التوجيه أو بعده. ولهذا توجد <code>filters</code>.</p>
 <p>من الاستخدامات الشائعة إضافة headers:</p>
-<figure data-rehype-pretty-code-figure=""><pre style="background-color:#24292e;color:#e1e4e8" tabindex="0" data-language="yaml" data-theme="github-dark"><code data-language="yaml" data-theme="github-dark" style="display: grid;"><span data-line=""><span style="color:#85E89D">rules</span><span style="color:#E1E4E8">:</span></span>
-<span data-line=""><span style="color:#E1E4E8">  - </span><span style="color:#85E89D">filters</span><span style="color:#E1E4E8">:</span></span>
-<span data-line=""><span style="color:#E1E4E8">      - </span><span style="color:#85E89D">type</span><span style="color:#E1E4E8">: </span><span style="color:#9ECBFF">RequestHeaderModifier</span></span>
-<span data-line=""><span style="color:#85E89D">        requestHeaderModifier</span><span style="color:#E1E4E8">:</span></span>
-<span data-line=""><span style="color:#85E89D">          add</span><span style="color:#E1E4E8">:</span></span>
-<span data-line=""><span style="color:#E1E4E8">            - </span><span style="color:#85E89D">name</span><span style="color:#E1E4E8">: </span><span style="color:#9ECBFF">x-env</span></span>
-<span data-line=""><span style="color:#85E89D">              value</span><span style="color:#E1E4E8">: </span><span style="color:#9ECBFF">prod</span></span>
-<span data-line=""><span style="color:#85E89D">    backendRefs</span><span style="color:#E1E4E8">:</span></span>
-<span data-line=""><span style="color:#E1E4E8">      - </span><span style="color:#85E89D">name</span><span style="color:#E1E4E8">: </span><span style="color:#9ECBFF">api-service</span></span>
-<span data-line=""><span style="color:#85E89D">        port</span><span style="color:#E1E4E8">: </span><span style="color:#79B8FF">8080</span></span></code></pre></figure>
+<figure data-rehype-pretty-code-figure=""><pre style="background-color:#0d1117;color:#e6edf3" tabindex="0" data-language="yaml" data-theme="github-dark-default"><code data-language="yaml" data-theme="github-dark-default" style="display: grid;"><span data-line=""><span style="color:#7EE787">rules</span><span style="color:#E6EDF3">:</span></span>
+<span data-line=""><span style="color:#E6EDF3">  - </span><span style="color:#7EE787">filters</span><span style="color:#E6EDF3">:</span></span>
+<span data-line=""><span style="color:#E6EDF3">      - </span><span style="color:#7EE787">type</span><span style="color:#E6EDF3">: </span><span style="color:#A5D6FF">RequestHeaderModifier</span></span>
+<span data-line=""><span style="color:#7EE787">        requestHeaderModifier</span><span style="color:#E6EDF3">:</span></span>
+<span data-line=""><span style="color:#7EE787">          add</span><span style="color:#E6EDF3">:</span></span>
+<span data-line=""><span style="color:#E6EDF3">            - </span><span style="color:#7EE787">name</span><span style="color:#E6EDF3">: </span><span style="color:#A5D6FF">x-env</span></span>
+<span data-line=""><span style="color:#7EE787">              value</span><span style="color:#E6EDF3">: </span><span style="color:#A5D6FF">prod</span></span>
+<span data-line=""><span style="color:#7EE787">    backendRefs</span><span style="color:#E6EDF3">:</span></span>
+<span data-line=""><span style="color:#E6EDF3">      - </span><span style="color:#7EE787">name</span><span style="color:#E6EDF3">: </span><span style="color:#A5D6FF">api-service</span></span>
+<span data-line=""><span style="color:#7EE787">        port</span><span style="color:#E6EDF3">: </span><span style="color:#79C0FF">8080</span></span></code></pre></figure>
 <p>وهذا مفيد في:</p>
 <ul>
 <li>حقن بيانات tracing قبل تمرير الطلب إلى backend</li>
@@ -361,23 +361,23 @@ a:[["$","meta","0",{"charSet":"utf-8"}],["$","meta","1",{"name":"viewport","cont
 <p>ومع ذلك، فـ filters قوية لكنها ليست تصريحًا مجانيًا لتحويل طبقة ingress إلى blob ضخم من middleware. تكديس منطق كثير على الـ routes سيجعل debugging يبدو وكأنه يحتاج إلى جلسة علاج نفسي خاصة به.</p>
 <h2 id="تقسيم-المرور-بالأوزان-أكثر-أنماط-canary-شيوعًا">تقسيم المرور بالأوزان: أكثر أنماط Canary شيوعًا</h2>
 <p>لإرسال 90% من المرور إلى النسخة القديمة و10% إلى النسخة الجديدة، استخدم <code>weight</code>:</p>
-<figure data-rehype-pretty-code-figure=""><pre style="background-color:#24292e;color:#e1e4e8" tabindex="0" data-language="yaml" data-theme="github-dark"><code data-language="yaml" data-theme="github-dark" style="display: grid;"><span data-line=""><span style="color:#85E89D">apiVersion</span><span style="color:#E1E4E8">: </span><span style="color:#9ECBFF">gateway.networking.k8s.io/v1</span></span>
-<span data-line=""><span style="color:#85E89D">kind</span><span style="color:#E1E4E8">: </span><span style="color:#9ECBFF">HTTPRoute</span></span>
-<span data-line=""><span style="color:#85E89D">metadata</span><span style="color:#E1E4E8">:</span></span>
-<span data-line=""><span style="color:#85E89D">  name</span><span style="color:#E1E4E8">: </span><span style="color:#9ECBFF">canary-route</span></span>
-<span data-line=""><span style="color:#85E89D">spec</span><span style="color:#E1E4E8">:</span></span>
-<span data-line=""><span style="color:#85E89D">  parentRefs</span><span style="color:#E1E4E8">:</span></span>
-<span data-line=""><span style="color:#E1E4E8">    - </span><span style="color:#85E89D">name</span><span style="color:#E1E4E8">: </span><span style="color:#9ECBFF">eg</span></span>
-<span data-line=""><span style="color:#85E89D">  hostnames</span><span style="color:#E1E4E8">:</span></span>
-<span data-line=""><span style="color:#E1E4E8">    - </span><span style="color:#9ECBFF">"app.example.com"</span></span>
-<span data-line=""><span style="color:#85E89D">  rules</span><span style="color:#E1E4E8">:</span></span>
-<span data-line=""><span style="color:#E1E4E8">    - </span><span style="color:#85E89D">backendRefs</span><span style="color:#E1E4E8">:</span></span>
-<span data-line=""><span style="color:#E1E4E8">        - </span><span style="color:#85E89D">name</span><span style="color:#E1E4E8">: </span><span style="color:#9ECBFF">api-v1</span></span>
-<span data-line=""><span style="color:#85E89D">          port</span><span style="color:#E1E4E8">: </span><span style="color:#79B8FF">8080</span></span>
-<span data-line=""><span style="color:#85E89D">          weight</span><span style="color:#E1E4E8">: </span><span style="color:#79B8FF">90</span></span>
-<span data-line=""><span style="color:#E1E4E8">        - </span><span style="color:#85E89D">name</span><span style="color:#E1E4E8">: </span><span style="color:#9ECBFF">api-v2</span></span>
-<span data-line=""><span style="color:#85E89D">          port</span><span style="color:#E1E4E8">: </span><span style="color:#79B8FF">8080</span></span>
-<span data-line=""><span style="color:#85E89D">          weight</span><span style="color:#E1E4E8">: </span><span style="color:#79B8FF">10</span></span></code></pre></figure>
+<figure data-rehype-pretty-code-figure=""><pre style="background-color:#0d1117;color:#e6edf3" tabindex="0" data-language="yaml" data-theme="github-dark-default"><code data-language="yaml" data-theme="github-dark-default" style="display: grid;"><span data-line=""><span style="color:#7EE787">apiVersion</span><span style="color:#E6EDF3">: </span><span style="color:#A5D6FF">gateway.networking.k8s.io/v1</span></span>
+<span data-line=""><span style="color:#7EE787">kind</span><span style="color:#E6EDF3">: </span><span style="color:#A5D6FF">HTTPRoute</span></span>
+<span data-line=""><span style="color:#7EE787">metadata</span><span style="color:#E6EDF3">:</span></span>
+<span data-line=""><span style="color:#7EE787">  name</span><span style="color:#E6EDF3">: </span><span style="color:#A5D6FF">canary-route</span></span>
+<span data-line=""><span style="color:#7EE787">spec</span><span style="color:#E6EDF3">:</span></span>
+<span data-line=""><span style="color:#7EE787">  parentRefs</span><span style="color:#E6EDF3">:</span></span>
+<span data-line=""><span style="color:#E6EDF3">    - </span><span style="color:#7EE787">name</span><span style="color:#E6EDF3">: </span><span style="color:#A5D6FF">eg</span></span>
+<span data-line=""><span style="color:#7EE787">  hostnames</span><span style="color:#E6EDF3">:</span></span>
+<span data-line=""><span style="color:#E6EDF3">    - </span><span style="color:#A5D6FF">"app.example.com"</span></span>
+<span data-line=""><span style="color:#7EE787">  rules</span><span style="color:#E6EDF3">:</span></span>
+<span data-line=""><span style="color:#E6EDF3">    - </span><span style="color:#7EE787">backendRefs</span><span style="color:#E6EDF3">:</span></span>
+<span data-line=""><span style="color:#E6EDF3">        - </span><span style="color:#7EE787">name</span><span style="color:#E6EDF3">: </span><span style="color:#A5D6FF">api-v1</span></span>
+<span data-line=""><span style="color:#7EE787">          port</span><span style="color:#E6EDF3">: </span><span style="color:#79C0FF">8080</span></span>
+<span data-line=""><span style="color:#7EE787">          weight</span><span style="color:#E6EDF3">: </span><span style="color:#79C0FF">90</span></span>
+<span data-line=""><span style="color:#E6EDF3">        - </span><span style="color:#7EE787">name</span><span style="color:#E6EDF3">: </span><span style="color:#A5D6FF">api-v2</span></span>
+<span data-line=""><span style="color:#7EE787">          port</span><span style="color:#E6EDF3">: </span><span style="color:#79C0FF">8080</span></span>
+<span data-line=""><span style="color:#7EE787">          weight</span><span style="color:#E6EDF3">: </span><span style="color:#79C0FF">10</span></span></code></pre></figure>
 <p>هذا هو الشكل الأساسي للـ canary / traffic splitting.</p>
 <p>أنت لا تحتاج إلى service mesh كامل فقط كي تنفذ تجربة على المرور. بالنسبة إلى كثير من خدمات الـ API، فهذا أكثر من كافٍ، كما أن ضبطه أنظف بكثير.</p>
 <blockquote>
@@ -385,17 +385,17 @@ a:[["$","meta","0",{"charSet":"utf-8"}],["$","meta","1",{"name":"viewport","cont
 </blockquote>
 <h2 id="timeouts-لا-تجعل-الطلبات-معلّقة-للأبد"><code>timeouts</code>: لا تجعل الطلبات معلّقة للأبد</h2>
 <p>يدعم HTTPRoute إعدادات timeout على مستوى rule. وهذا مهم، فإذا لم تكن هناك حدود في طبقة ingress، فستبقى الطلبات السيئة معلقة بلا نهاية مثل عميل وقح يرفض المغادرة.</p>
-<figure data-rehype-pretty-code-figure=""><pre style="background-color:#24292e;color:#e1e4e8" tabindex="0" data-language="yaml" data-theme="github-dark"><code data-language="yaml" data-theme="github-dark" style="display: grid;"><span data-line=""><span style="color:#85E89D">rules</span><span style="color:#E1E4E8">:</span></span>
-<span data-line=""><span style="color:#E1E4E8">  - </span><span style="color:#85E89D">matches</span><span style="color:#E1E4E8">:</span></span>
-<span data-line=""><span style="color:#E1E4E8">      - </span><span style="color:#85E89D">path</span><span style="color:#E1E4E8">:</span></span>
-<span data-line=""><span style="color:#85E89D">          type</span><span style="color:#E1E4E8">: </span><span style="color:#9ECBFF">PathPrefix</span></span>
-<span data-line=""><span style="color:#85E89D">          value</span><span style="color:#E1E4E8">: </span><span style="color:#9ECBFF">/reports</span></span>
-<span data-line=""><span style="color:#85E89D">    timeouts</span><span style="color:#E1E4E8">:</span></span>
-<span data-line=""><span style="color:#85E89D">      request</span><span style="color:#E1E4E8">: </span><span style="color:#9ECBFF">10s</span></span>
-<span data-line=""><span style="color:#85E89D">      backendRequest</span><span style="color:#E1E4E8">: </span><span style="color:#9ECBFF">2s</span></span>
-<span data-line=""><span style="color:#85E89D">    backendRefs</span><span style="color:#E1E4E8">:</span></span>
-<span data-line=""><span style="color:#E1E4E8">      - </span><span style="color:#85E89D">name</span><span style="color:#E1E4E8">: </span><span style="color:#9ECBFF">report-service</span></span>
-<span data-line=""><span style="color:#85E89D">        port</span><span style="color:#E1E4E8">: </span><span style="color:#79B8FF">8080</span></span></code></pre></figure>
+<figure data-rehype-pretty-code-figure=""><pre style="background-color:#0d1117;color:#e6edf3" tabindex="0" data-language="yaml" data-theme="github-dark-default"><code data-language="yaml" data-theme="github-dark-default" style="display: grid;"><span data-line=""><span style="color:#7EE787">rules</span><span style="color:#E6EDF3">:</span></span>
+<span data-line=""><span style="color:#E6EDF3">  - </span><span style="color:#7EE787">matches</span><span style="color:#E6EDF3">:</span></span>
+<span data-line=""><span style="color:#E6EDF3">      - </span><span style="color:#7EE787">path</span><span style="color:#E6EDF3">:</span></span>
+<span data-line=""><span style="color:#7EE787">          type</span><span style="color:#E6EDF3">: </span><span style="color:#A5D6FF">PathPrefix</span></span>
+<span data-line=""><span style="color:#7EE787">          value</span><span style="color:#E6EDF3">: </span><span style="color:#A5D6FF">/reports</span></span>
+<span data-line=""><span style="color:#7EE787">    timeouts</span><span style="color:#E6EDF3">:</span></span>
+<span data-line=""><span style="color:#7EE787">      request</span><span style="color:#E6EDF3">: </span><span style="color:#A5D6FF">10s</span></span>
+<span data-line=""><span style="color:#7EE787">      backendRequest</span><span style="color:#E6EDF3">: </span><span style="color:#A5D6FF">2s</span></span>
+<span data-line=""><span style="color:#7EE787">    backendRefs</span><span style="color:#E6EDF3">:</span></span>
+<span data-line=""><span style="color:#E6EDF3">      - </span><span style="color:#7EE787">name</span><span style="color:#E6EDF3">: </span><span style="color:#A5D6FF">report-service</span></span>
+<span data-line=""><span style="color:#7EE787">        port</span><span style="color:#E6EDF3">: </span><span style="color:#79C0FF">8080</span></span></code></pre></figure>
 <p>فهم الحقلين:</p>
 <ul>
 <li><code>request</code>: الحد الأقصى للانتظار الكلي لطلب العميل</li>
@@ -405,9 +405,9 @@ a:[["$","meta","0",{"charSet":"utf-8"}],["$","meta","1",{"name":"viewport","cont
 <h2 id="نقطتان-شائعتان-ودقيقتان">نقطتان شائعتان ودقيقتان</h2>
 <h3 id="1-يمكن-لـ-parentrefs-أن-يستهدف-listener-محددًا">1. يمكن لـ <code>parentRefs</code> أن يستهدف Listener محددًا</h3>
 <p>إذا كان الـ Gateway يملك عدة listeners، فيمكنك الارتباط بواحد فقط:</p>
-<figure data-rehype-pretty-code-figure=""><pre style="background-color:#24292e;color:#e1e4e8" tabindex="0" data-language="yaml" data-theme="github-dark"><code data-language="yaml" data-theme="github-dark" style="display: grid;"><span data-line=""><span style="color:#85E89D">parentRefs</span><span style="color:#E1E4E8">:</span></span>
-<span data-line=""><span style="color:#E1E4E8">  - </span><span style="color:#85E89D">name</span><span style="color:#E1E4E8">: </span><span style="color:#9ECBFF">eg</span></span>
-<span data-line=""><span style="color:#85E89D">    sectionName</span><span style="color:#E1E4E8">: </span><span style="color:#9ECBFF">http</span></span></code></pre></figure>
+<figure data-rehype-pretty-code-figure=""><pre style="background-color:#0d1117;color:#e6edf3" tabindex="0" data-language="yaml" data-theme="github-dark-default"><code data-language="yaml" data-theme="github-dark-default" style="display: grid;"><span data-line=""><span style="color:#7EE787">parentRefs</span><span style="color:#E6EDF3">:</span></span>
+<span data-line=""><span style="color:#E6EDF3">  - </span><span style="color:#7EE787">name</span><span style="color:#E6EDF3">: </span><span style="color:#A5D6FF">eg</span></span>
+<span data-line=""><span style="color:#7EE787">    sectionName</span><span style="color:#E6EDF3">: </span><span style="color:#A5D6FF">http</span></span></code></pre></figure>
 <p>وهذا يعني أن الـ route يرتبط فقط بالـ listener المسمى <code>http</code>.
 وفي البنى متعددة الـ listeners، يكون هذا أكثر قابلية للتوقع بكثير من الارتباط بكل شيء.</p>
 <h3 id="2-عدم-وجود-matches-يعني-مطابقة-كل-شيء">2. عدم وجود <code>matches</code> يعني مطابقة كل شيء</h3>
@@ -415,10 +415,10 @@ a:[["$","meta","0",{"charSet":"utf-8"}],["$","meta","1",{"name":"viewport","cont
 <p>وهذا مريح، لكنه قد يبتلع بصمت ما كنت تظنه rules أكثر تحديدًا. فلا تتجاوزه بدافع الكسل ثم تقضي ساعة تتساءل لماذا قواعدك الدقيقة لا تعمل.</p>
 <h2 id="التحقق-من-أن-التوجيه-يعمل">التحقق من أن التوجيه يعمل</h2>
 <p>بعد ضبط الـ routes، تحقّق باستخدام <code>curl</code>:</p>
-<figure data-rehype-pretty-code-figure=""><pre style="background-color:#24292e;color:#e1e4e8" tabindex="0" data-language="bash" data-theme="github-dark"><code data-language="bash" data-theme="github-dark" style="display: grid;"><span data-line=""><span style="color:#B392F0">curl</span><span style="color:#79B8FF"> -H</span><span style="color:#9ECBFF"> "Host: app.example.com"</span><span style="color:#9ECBFF"> http://</span><span style="color:#E1E4E8">$GATEWAY_HOST</span><span style="color:#9ECBFF">/api/users</span></span>
-<span data-line=""><span style="color:#B392F0">curl</span><span style="color:#79B8FF"> -H</span><span style="color:#9ECBFF"> "Host: app.example.com"</span><span style="color:#79B8FF"> -H</span><span style="color:#9ECBFF"> "version: v2"</span><span style="color:#9ECBFF"> http://</span><span style="color:#E1E4E8">$GATEWAY_HOST</span><span style="color:#9ECBFF">/api/users</span></span></code></pre></figure>
+<figure data-rehype-pretty-code-figure=""><pre style="background-color:#0d1117;color:#e6edf3" tabindex="0" data-language="bash" data-theme="github-dark-default"><code data-language="bash" data-theme="github-dark-default" style="display: grid;"><span data-line=""><span style="color:#FFA657">curl</span><span style="color:#79C0FF"> -H</span><span style="color:#A5D6FF"> "Host: app.example.com"</span><span style="color:#A5D6FF"> http://</span><span style="color:#E6EDF3">$GATEWAY_HOST</span><span style="color:#A5D6FF">/api/users</span></span>
+<span data-line=""><span style="color:#FFA657">curl</span><span style="color:#79C0FF"> -H</span><span style="color:#A5D6FF"> "Host: app.example.com"</span><span style="color:#79C0FF"> -H</span><span style="color:#A5D6FF"> "version: v2"</span><span style="color:#A5D6FF"> http://</span><span style="color:#E6EDF3">$GATEWAY_HOST</span><span style="color:#A5D6FF">/api/users</span></span></code></pre></figure>
 <p>ولفحص حالة <code>HTTPRoute</code>:</p>
-<figure data-rehype-pretty-code-figure=""><pre style="background-color:#24292e;color:#e1e4e8" tabindex="0" data-language="bash" data-theme="github-dark"><code data-language="bash" data-theme="github-dark" style="display: grid;"><span data-line=""><span style="color:#B392F0">kubectl</span><span style="color:#9ECBFF"> get</span><span style="color:#9ECBFF"> httproute</span><span style="color:#9ECBFF"> app-route</span><span style="color:#79B8FF"> -o</span><span style="color:#9ECBFF"> yaml</span></span></code></pre></figure>
+<figure data-rehype-pretty-code-figure=""><pre style="background-color:#0d1117;color:#e6edf3" tabindex="0" data-language="bash" data-theme="github-dark-default"><code data-language="bash" data-theme="github-dark-default" style="display: grid;"><span data-line=""><span style="color:#FFA657">kubectl</span><span style="color:#A5D6FF"> get</span><span style="color:#A5D6FF"> httproute</span><span style="color:#A5D6FF"> app-route</span><span style="color:#79C0FF"> -o</span><span style="color:#A5D6FF"> yaml</span></span></code></pre></figure>
 <p>ركّز بشكل خاص على:</p>
 <ul>
 <li><code>status.parents</code></li>
@@ -444,4 +444,4 @@ a:[["$","meta","0",{"charSet":"utf-8"}],["$","meta","1",{"name":"viewport","cont
 24:["$","$L15",null,{"ref":"$undefined","href":"/ar/blog/k8s/gateway/04-tls-and-security","locale":"$undefined","localeCookie":"$14:props:localeCookie","className":"group rounded-lg border p-4 text-right transition-colors hover:border-accent","style":{"borderColor":"var(--color-border)","background":"var(--color-surface)"},"children":[["$","p",null,{"className":"mb-1 text-xs","style":{"color":"var(--color-muted)"},"children":"الأقدم ←"}],["$","p",null,{"className":"line-clamp-1 text-sm font-medium transition-colors group-hover:text-accent","style":{"color":"var(--color-text)"},"children":"TLS والأمان في Envoy Gateway: اضبط HTTPS وتوقف عن تشغيل الـ API لديك مكشوفًا"}]]}]
 27:I[92204,["/_next/static/chunks/5a5b5b13c22d14f7.js","/_next/static/chunks/a484d1d3dd4b55ab.js"],"IconMark"]
 8:null
-c:[["$","title","0",{"children":"التوجيه العملي لـ Envoy Gateway HTTP: Host و Path و Header وتقسيم المرور | BenXHub Blog"}],["$","meta","1",{"name":"description","content":"من المطابقة بحسب host/path إلى filters و timeouts وشروط header وتقسيم المرور بالأوزان، أتقن أكثر أنماط HTTPRoute شيوعًا."}],["$","meta","2",{"property":"og:title","content":"التوجيه العملي لـ Envoy Gateway HTTP: Host و Path و Header وتقسيم المرور"}],["$","meta","3",{"property":"og:description","content":"من المطابقة بحسب host/path إلى filters و timeouts وشروط header وتقسيم المرور بالأوزان، أتقن أكثر أنماط HTTPRoute شيوعًا."}],["$","meta","4",{"property":"og:url","content":"https://benxhub.com/ar/blog/k8s/gateway/03-http-routing"}],["$","meta","5",{"property":"og:type","content":"article"}],["$","meta","6",{"property":"article:published_time","content":"2026-03-10T00:00:00.000Z"}],["$","meta","7",{"property":"article:tag","content":"kubernetes"}],["$","meta","8",{"property":"article:tag","content":"envoy-gateway"}],["$","meta","9",{"property":"article:tag","content":"gateway-api"}],["$","meta","10",{"property":"article:tag","content":"httproute"}],["$","meta","11",{"property":"article:tag","content":"traffic-splitting"}],["$","meta","12",{"name":"twitter:card","content":"summary_large_image"}],["$","meta","13",{"name":"twitter:title","content":"التوجيه العملي لـ Envoy Gateway HTTP: Host و Path و Header وتقسيم المرور"}],["$","meta","14",{"name":"twitter:description","content":"من المطابقة بحسب host/path إلى filters و timeouts وشروط header وتقسيم المرور بالأوزان، أتقن أكثر أنماط HTTPRoute شيوعًا."}],["$","link","15",{"rel":"icon","href":"/favicon.ico?favicon.0b3bf435.ico","sizes":"256x256","type":"image/x-icon"}],["$","$L27","16",{}]]
+c:[["$","title","0",{"children":"التوجيه العملي لـ Envoy Gateway HTTP: Host و Path و Header وتقسيم المرور | BenXHub Blog"}],["$","meta","1",{"name":"description","content":"من المطابقة بحسب host/path إلى filters و timeouts وشروط header وتقسيم المرور بالأوزان، أتقن أكثر أنماط HTTPRoute شيوعًا."}],["$","link","2",{"rel":"canonical","href":"https://benxhub.com/ar/blog/k8s/gateway/03-http-routing/"}],["$","link","3",{"rel":"alternate","hrefLang":"zh-Hant","href":"https://benxhub.com/zh/blog/k8s/gateway/03-http-routing/"}],["$","link","4",{"rel":"alternate","hrefLang":"en","href":"https://benxhub.com/en/blog/k8s/gateway/03-http-routing/"}],["$","link","5",{"rel":"alternate","hrefLang":"ja","href":"https://benxhub.com/ja/blog/k8s/gateway/03-http-routing/"}],["$","link","6",{"rel":"alternate","hrefLang":"ko","href":"https://benxhub.com/ko/blog/k8s/gateway/03-http-routing/"}],["$","link","7",{"rel":"alternate","hrefLang":"es","href":"https://benxhub.com/es/blog/k8s/gateway/03-http-routing/"}],["$","link","8",{"rel":"alternate","hrefLang":"fr","href":"https://benxhub.com/fr/blog/k8s/gateway/03-http-routing/"}],["$","link","9",{"rel":"alternate","hrefLang":"ar","href":"https://benxhub.com/ar/blog/k8s/gateway/03-http-routing/"}],["$","link","10",{"rel":"alternate","hrefLang":"x-default","href":"https://benxhub.com/zh/blog/k8s/gateway/03-http-routing/"}],["$","link","11",{"rel":"alternate","type":"application/rss+xml","href":"https://benxhub.com/ar/feed.xml"}],["$","meta","12",{"property":"og:title","content":"التوجيه العملي لـ Envoy Gateway HTTP: Host و Path و Header وتقسيم المرور"}],["$","meta","13",{"property":"og:description","content":"من المطابقة بحسب host/path إلى filters و timeouts وشروط header وتقسيم المرور بالأوزان، أتقن أكثر أنماط HTTPRoute شيوعًا."}],["$","meta","14",{"property":"og:url","content":"https://benxhub.com/ar/blog/k8s/gateway/03-http-routing/"}],["$","meta","15",{"property":"og:site_name","content":"BenXHub Blog"}],["$","meta","16",{"property":"og:locale","content":"ar_SA"}],["$","meta","17",{"property":"og:image","content":"https://benxhub.com/og-default.png"}],["$","meta","18",{"property":"og:image:width","content":"1200"}],["$","meta","19",{"property":"og:image:height","content":"630"}],["$","meta","20",{"property":"og:image:alt","content":"BenXHub Blog"}],["$","meta","21",{"property":"og:type","content":"article"}],["$","meta","22",{"property":"article:published_time","content":"2026-03-10T00:00:00.000Z"}],["$","meta","23",{"property":"article:tag","content":"kubernetes"}],["$","meta","24",{"property":"article:tag","content":"envoy-gateway"}],["$","meta","25",{"property":"article:tag","content":"gateway-api"}],["$","meta","26",{"property":"article:tag","content":"httproute"}],["$","meta","27",{"property":"article:tag","content":"traffic-splitting"}],["$","meta","28",{"name":"twitter:card","content":"summary_large_image"}],["$","meta","29",{"name":"twitter:title","content":"التوجيه العملي لـ Envoy Gateway HTTP: Host و Path و Header وتقسيم المرور"}],["$","meta","30",{"name":"twitter:description","content":"من المطابقة بحسب host/path إلى filters و timeouts وشروط header وتقسيم المرور بالأوزان، أتقن أكثر أنماط HTTPRoute شيوعًا."}],["$","meta","31",{"name":"twitter:image","content":"https://benxhub.com/og-default.png"}],["$","link","32",{"rel":"icon","href":"/favicon.ico?favicon.0b3bf435.ico","sizes":"256x256","type":"image/x-icon"}],["$","$L27","33",{}]]

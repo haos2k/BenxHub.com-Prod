@@ -1,0 +1,347 @@
+1:"$Sreact.fragment"
+2:I[26795,["/_next/static/chunks/5a5b5b13c22d14f7.js","/_next/static/chunks/a484d1d3dd4b55ab.js"],"default"]
+3:I[73489,["/_next/static/chunks/5a5b5b13c22d14f7.js","/_next/static/chunks/a484d1d3dd4b55ab.js"],"default"]
+6:I[50183,["/_next/static/chunks/5a5b5b13c22d14f7.js","/_next/static/chunks/a484d1d3dd4b55ab.js"],"OutletBoundary"]
+7:"$Sreact.suspense"
+9:I[50183,["/_next/static/chunks/5a5b5b13c22d14f7.js","/_next/static/chunks/a484d1d3dd4b55ab.js"],"ViewportBoundary"]
+b:I[50183,["/_next/static/chunks/5a5b5b13c22d14f7.js","/_next/static/chunks/a484d1d3dd4b55ab.js"],"MetadataBoundary"]
+d:I[63847,[],"default"]
+:HL["/_next/static/chunks/4d9c3828f6075602.css","style"]
+:HL["/_next/static/media/797e433ab948586e-s.p.29207c2f.woff2","font",{"crossOrigin":"","type":"font/woff2"}]
+:HL["/_next/static/media/caa3a2e1cccd8315-s.p.3b6cae6d.woff2","font",{"crossOrigin":"","type":"font/woff2"}]
+0:{"P":null,"b":"ekNoF06-0VZrB4pGVUsy8","c":["","zh","blog","pve","09-high-availability",""],"q":"","i":false,"f":[[["",{"children":[["locale","zh","d"],{"children":["blog",{"children":[["slug","pve/09-high-availability","c"],{"children":["__PAGE__",{}]}]}]}]},"$undefined","$undefined",true],[["$","$1","c",{"children":[null,["$","$L2",null,{"parallelRouterKey":"children","error":"$undefined","errorStyles":"$undefined","errorScripts":"$undefined","template":["$","$L3",null,{}],"templateStyles":"$undefined","templateScripts":"$undefined","notFound":[["$","html",null,{"lang":"zh-Hant","children":["$","body",null,{"children":["$","main",null,{"className":"mx-auto max-w-2xl px-4 py-20 text-center sm:px-6","children":[["$","h1",null,{"className":"mb-3 text-4xl font-bold tracking-tight","children":"404"}],["$","p",null,{"className":"mb-8 text-lg","style":{"color":"var(--color-muted)"},"children":"找不到這個頁面 / Page not found"}],["$","a",null,{"href":"/zh/","className":"inline-flex items-center rounded-lg border px-4 py-2.5 text-sm font-medium","style":{"borderColor":"var(--color-border)","color":"var(--color-accent)","background":"var(--color-surface)"},"children":"BenXHub Blog"}]]}]}]}],[["$","link","0",{"rel":"stylesheet","href":"/_next/static/chunks/4d9c3828f6075602.css","precedence":"next","crossOrigin":"$undefined","nonce":"$undefined"}]]],"forbidden":"$undefined","unauthorized":"$undefined"}]]}],{"children":[["$","$1","c",{"children":[[["$","link","0",{"rel":"stylesheet","href":"/_next/static/chunks/4d9c3828f6075602.css","precedence":"next","crossOrigin":"$undefined","nonce":"$undefined"}],["$","script","script-0",{"src":"/_next/static/chunks/4204edc93da35a5e.js","async":true,"nonce":"$undefined"}],["$","script","script-1",{"src":"/_next/static/chunks/f2afb7fd2b7566bb.js","async":true,"nonce":"$undefined"}]],"$L4"]}],{"children":[["$","$1","c",{"children":[null,["$","$L2",null,{"parallelRouterKey":"children","error":"$undefined","errorStyles":"$undefined","errorScripts":"$undefined","template":["$","$L3",null,{}],"templateStyles":"$undefined","templateScripts":"$undefined","notFound":"$undefined","forbidden":"$undefined","unauthorized":"$undefined"}]]}],{"children":[["$","$1","c",{"children":[null,["$","$L2",null,{"parallelRouterKey":"children","error":"$undefined","errorStyles":"$undefined","errorScripts":"$undefined","template":["$","$L3",null,{}],"templateStyles":"$undefined","templateScripts":"$undefined","notFound":"$undefined","forbidden":"$undefined","unauthorized":"$undefined"}]]}],{"children":[["$","$1","c",{"children":["$L5",[["$","script","script-0",{"src":"/_next/static/chunks/2dddb3bc05093f69.js","async":true,"nonce":"$undefined"}]],["$","$L6",null,{"children":["$","$7",null,{"name":"Next.MetadataOutlet","children":"$@8"}]}]]}],{},null,false,false]},null,false,false]},null,false,false]},null,false,false]},null,false,false],["$","$1","h",{"children":[null,["$","$L9",null,{"children":"$La"}],["$","div",null,{"hidden":true,"children":["$","$Lb",null,{"children":["$","$7",null,{"name":"Next.Metadata","children":"$Lc"}]}]}],["$","meta",null,{"name":"next-size-adjust","content":""}]]}],false]],"m":"$undefined","G":["$d",[]],"S":true}
+4:["$","html",null,{"lang":"zh-Hant","dir":"ltr","className":"geist_a71539c9-module__T19VSG__variable geist_mono_8d43a2aa-module__8Li5zG__variable","children":["$","body",null,{"className":"flex min-h-screen flex-col antialiased","children":[["$","script",null,{"type":"application/ld+json","dangerouslySetInnerHTML":{"__html":"[{\"@context\":\"https://schema.org\",\"@type\":\"WebSite\",\"name\":\"BenXHub Blog\",\"url\":\"https://benxhub.com/zh/\",\"inLanguage\":\"zh-Hant\",\"publisher\":{\"@type\":\"Organization\",\"name\":\"BenXHub Blog\",\"url\":\"https://benxhub.com\"},\"potentialAction\":{\"@type\":\"SearchAction\",\"target\":{\"@type\":\"EntryPoint\",\"urlTemplate\":\"https://benxhub.com/zh/search/?q={search_term_string}\"},\"query-input\":\"required name=search_term_string\"}},{\"@context\":\"https://schema.org\",\"@type\":\"Person\",\"@id\":\"https://benxhub.com/#author\",\"name\":\"BenX\",\"url\":\"https://benxhub.com/zh/about/\",\"sameAs\":[\"https://github.com/benzhub\"]}]"}}],"$Le"]}]}]
+f:I[33343,["/_next/static/chunks/4204edc93da35a5e.js","/_next/static/chunks/f2afb7fd2b7566bb.js"],"default"]
+10:I[26817,["/_next/static/chunks/4204edc93da35a5e.js","/_next/static/chunks/f2afb7fd2b7566bb.js"],"default"]
+11:I[6197,["/_next/static/chunks/4204edc93da35a5e.js","/_next/static/chunks/f2afb7fd2b7566bb.js"],"default"]
+13:I[40018,["/_next/static/chunks/4204edc93da35a5e.js","/_next/static/chunks/f2afb7fd2b7566bb.js"],"default"]
+e:["$","$Lf",null,{"formats":"$undefined","locale":"zh","messages":{"common":{"siteName":"BenXHub Blog","siteDescription":"BenX 的技術部落格，分享 Web 開發、架構設計與工程實踐。"},"nav":{"home":"首頁","tags":"標籤","about":"關於","searchLabel":"搜尋文章"},"hero":{"subtitle":"分享 Web 開發、架構設計與工程實踐的技術筆記","cta":"瀏覽文章"},"posts":{"title":"文章列表","count":"共 {total} 篇文章","empty":"目前還沒有文章，敬請期待！","newerPost":"← 較新文章","olderPost":"較舊文章 →","navLabel":"文章導覽"},"pagination":{"prev":"上一頁","next":"下一頁","page":"第 {current} / {total} 頁","label":"文章列表分頁","pageTitle":"第 {num} 頁","pageDescription":"BenX 的技術部落格 — 文章列表分頁。"},"search":{"title":"搜尋文章","description":"搜尋 BenXHub Blog 的所有文章，按標題、描述或標籤即時篩選。","subtitle":"搜尋標題、描述或標籤，即時顯示結果","placeholder":"搜尋文章標題、描述或標籤…","found":"找到 {count} 篇相關文章","notFound":"沒有找到與「{query}」相關的文章","emptyTitle":"找不到相關文章","emptyHint":"試試看其他關鍵字，或瀏覽","allPosts":"所有文章","totalCount":"共 {count} 篇文章，輸入關鍵字即可搜尋"},"tags":{"title":"所有標籤","description":"依標籤瀏覽所有文章。","count":"共 {count} 個標籤","empty":"目前還沒有標籤，敬請期待！","allTags":"所有標籤","postCount":"共 {count} 篇文章","otherTags":"其他標籤","tagTitle":"#{tag} 的文章","tagDescription":"所有標記為「{tag}」的文章列表。"},"about":{"title":"關於","description":"關於 BenXHub Blog 與本站簡介。","subtitle":"關於 BenXHub Blog 與本站簡介","siteTitle":"關於本站","siteContent":"BenXHub Blog 是 BenX 的技術部落格，分享 Web 開發、架構設計與工程實踐。","authorTitle":"關於我","authorContent":"喜歡寫程式、研究技術，樂於把踩過的坑與解法記錄下來，也歡迎透過本站側欄或 Footer 的連結交流。","linksTitle":"連結"},"sidebar":{"label":"側邊欄","authorBio":"喜歡寫程式與分享，專注 Web 開發、架構與 DevOps。","searchPlaceholder":"搜尋文章…","seriesTitle":"系列文章","articleCount":"{count} 篇"},"toc":{"title":"目錄","label":"文章目錄"},"notFound":{"message":"此頁面不存在，可能連結已失效或網址輸入錯誤。","backHome":"返回首頁"},"localeSwitcher":{"label":"切換語言"}},"now":"$undefined","timeZone":"UTC","children":[["$","$L10",null,{}],["$","$L11",null,{}],["$","main",null,{"className":"flex-1 pt-16","children":["$","$L2",null,{"parallelRouterKey":"children","error":"$undefined","errorStyles":"$undefined","errorScripts":"$undefined","template":["$","$L3",null,{}],"templateStyles":"$undefined","templateScripts":"$undefined","notFound":["$L12",[]],"forbidden":"$undefined","unauthorized":"$undefined"}]}],["$","$L13",null,{}]]}]
+12:["$","div",null,{"className":"mx-auto max-w-2xl px-4 py-20 text-center sm:px-6","children":[["$","h1",null,{"className":"mb-3 text-4xl font-bold tracking-tight","style":{"color":"var(--color-text)"},"children":"404"}],["$","p",null,{"className":"mb-8 text-lg","style":{"color":"var(--color-muted)"},"children":"此頁面不存在，可能連結已失效或網址輸入錯誤。"}],"$L14"]}]
+a:[["$","meta","0",{"charSet":"utf-8"}],["$","meta","1",{"name":"viewport","content":"width=device-width, initial-scale=1"}]]
+15:I[14864,["/_next/static/chunks/4204edc93da35a5e.js","/_next/static/chunks/f2afb7fd2b7566bb.js","/_next/static/chunks/2dddb3bc05093f69.js"],"default"]
+14:["$","$L15",null,{"ref":"$undefined","href":"/zh","locale":"$undefined","localeCookie":{"name":"NEXT_LOCALE","sameSite":"lax"},"className":"inline-flex items-center rounded-lg border px-4 py-2.5 text-sm font-medium transition-colors hover:border-accent","style":{"borderColor":"var(--color-border)","color":"var(--color-accent)","background":"var(--color-surface)"},"children":"返回首頁"}]
+1b:T2efd,<p>高可用性（HA）的核心概念其實很樸素：<strong>某台機器掛了，上面的服務自動在別台機器重新跑起來。</strong> 就像餐廳的備用瓦斯爐——主爐壞了，菜不能停，換一台繼續炒。聽起來理所當然，但要做到「自動」且「安全」，底層有不少機制要搞對。HA 是建立在 <a href="08-cluster">叢集</a> 之上的功能，還沒組叢集的話請先回去看。</p>
+<h2 id="ha-的腦與手">HA 的腦與手</h2>
+<p>PVE 的 HA 架構分成兩層：</p>
+<pre><code>┌─────────────────────────────────────┐
+│         CRM（叢集資源管理器）          │
+│      → 在 Master 節點上執行            │
+│      → 決策中心：誰掛了、搬去哪         │
+├────────┬────────┬───────────────────┤
+│ LRM    │ LRM    │ LRM               │
+│ Node 1 │ Node 2 │ Node 3            │
+│ → 執行者│ → 執行者│ → 執行者           │
+├────────┴────────┴───────────────────┤
+│     Corosync + Quorum + Fencing     │
+└─────────────────────────────────────┘
+</code></pre>
+<ul>
+<li><strong>CRM（Cluster Resource Manager）</strong>：大腦，負責監控所有 HA 資源，判斷「誰掛了」「搬去哪」</li>
+<li><strong>LRM（Local Resource Manager）</strong>：手腳，每個節點上都有一個，負責實際的開機、關機、遷移動作</li>
+</ul>
+<p>CRM 跟 LRM 的關係像是調度室跟現場工人——調度室下指令，工人動手做。</p>
+<h2 id="fencing先確認倒下的人不會亂動">Fencing：先確認倒下的人不會亂動</h2>
+<p>這是 HA 最關鍵也最常被忽略的一環。</p>
+<p>想像一個場景：Node 1 的網路斷了，CRM 覺得它掛了，於是在 Node 2 啟動同一台 VM。但其實 Node 1 還活著，上面那台 VM 也還在跑。兩邊同時寫同一份資料——恭喜，資料毀了。</p>
+<p>Fencing 就是為了防止這種事。PVE 使用 <strong>watchdog-based fencing</strong>：</p>
+<ol>
+<li>每個節點跑一個 <code>watchdog-mux</code> 守護程序，持續「餵狗」</li>
+<li>節點失去 Quorum → 停止餵狗 → watchdog 超時</li>
+<li>watchdog 超時 → <strong>強制重啟該節點</strong></li>
+<li>節點重啟後，上面的 VM 自然就停了，CRM 才能安全地在其他節點啟動它們</li>
+</ol>
+<figure data-rehype-pretty-code-figure=""><pre style="background-color:#0d1117;color:#e6edf3" tabindex="0" data-language="bash" data-theme="github-dark-default"><code data-language="bash" data-theme="github-dark-default" style="display: grid;"><span data-line=""><span style="color:#8B949E"># 確認 watchdog 狀態</span></span>
+<span data-line=""><span style="color:#FFA657">systemctl</span><span style="color:#A5D6FF"> status</span><span style="color:#A5D6FF"> watchdog-mux</span></span>
+<span data-line=""> </span>
+<span data-line=""><span style="color:#8B949E"># 檢查有沒有硬體 watchdog</span></span>
+<span data-line=""><span style="color:#FFA657">ls</span><span style="color:#A5D6FF"> /dev/watchdog</span><span style="color:#79C0FF">*</span></span></code></pre></figure>
+<blockquote>
+<p>PVE 預設用軟體 watchdog（<code>softdog</code>），能用但不是最可靠。如果你的伺服器有硬體 watchdog（多數 server 級主板都有），建議啟用它。硬體 watchdog 就算系統整個卡死也能強制重啟，軟體的做不到。</p>
+</blockquote>
+<h2 id="設定-ha-資源">設定 HA 資源</h2>
+<p>把 VM 加入 HA 管理很簡單：</p>
+<figure data-rehype-pretty-code-figure=""><pre style="background-color:#0d1117;color:#e6edf3" tabindex="0" data-language="bash" data-theme="github-dark-default"><code data-language="bash" data-theme="github-dark-default" style="display: grid;"><span data-line=""><span style="color:#8B949E"># 新增 HA 資源</span></span>
+<span data-line=""><span style="color:#FFA657">ha-manager</span><span style="color:#A5D6FF"> add</span><span style="color:#A5D6FF"> vm:100</span><span style="color:#79C0FF"> --state</span><span style="color:#A5D6FF"> started</span><span style="color:#79C0FF"> --group</span><span style="color:#A5D6FF"> my-ha-group</span></span>
+<span data-line=""> </span>
+<span data-line=""><span style="color:#8B949E"># 查看 HA 狀態</span></span>
+<span data-line=""><span style="color:#FFA657">ha-manager</span><span style="color:#A5D6FF"> status</span></span>
+<span data-line=""> </span>
+<span data-line=""><span style="color:#8B949E"># 移除 HA 資源</span></span>
+<span data-line=""><span style="color:#FFA657">ha-manager</span><span style="color:#A5D6FF"> remove</span><span style="color:#A5D6FF"> vm:100</span></span></code></pre></figure>
+<p>Web GUI 操作路徑：<code>Datacenter → HA → Add → 選 VM → 設定 Group</code></p>
+<h2 id="ha-groups決定-vm-能住哪">HA Groups：決定 VM 能住哪</h2>
+<p>HA Group 定義了資源可以在哪些節點上執行，以及優先順序：</p>
+<ul>
+<li><strong>Priority</strong>：數字越大越優先，故障轉移時優先選高優先順序的節點</li>
+<li><strong>restricted</strong>：開啟後資源只能在 Group 內的節點跑，不會跑到外面</li>
+<li><strong>nofailback</strong>：故障轉移後不自動搬回原來的節點，避免不必要的遷移</li>
+</ul>
+<p>就像員工排班——你可以指定某些人優先上早班，也可以限制某些人只能待在特定部門。</p>
+<h2 id="ha-資源狀態速查">HA 資源狀態速查</h2>
+<table>
+<thead>
+<tr>
+<th>狀態</th>
+<th>意思</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td><code>started</code></td>
+<td>正常運行中</td>
+</tr>
+<tr>
+<td><code>stopped</code></td>
+<td>已停止（HA 會確保它維持停止）</td>
+</tr>
+<tr>
+<td><code>migrate</code></td>
+<td>正在遷移</td>
+</tr>
+<tr>
+<td><code>relocate</code></td>
+<td>故障後正在重新安置</td>
+</tr>
+<tr>
+<td><code>error</code></td>
+<td>出事了，需要人工介入</td>
+</tr>
+<tr>
+<td><code>fence</code></td>
+<td>節點正在被隔離中</td>
+</tr>
+</tbody>
+</table>
+<h2 id="live-migrationvm-搬家不斷線">Live Migration：VM 搬家不斷線</h2>
+<p>Live Migration 是把正在跑的 VM 從 A 節點搬到 B 節點，過程中服務（幾乎）不中斷：</p>
+<ol>
+<li>開始複製 VM 記憶體到目標節點</li>
+<li>持續同步變動的記憶體頁面</li>
+<li>最終短暫暫停（通常不到 1 秒）→ 切換完成</li>
+<li>VM 在目標節點繼續跑</li>
+</ol>
+<p>前提條件：</p>
+<ul>
+<li><strong>共享存儲</strong>（Ceph/NFS/iSCSI），或者用 Replication 先把磁碟同步過去——存儲怎麼選可以看 <a href="05-storage">存儲全攻略</a></li>
+<li>兩台節點的 CPU 相容（同廠牌同世代最保險）</li>
+</ul>
+<figure data-rehype-pretty-code-figure=""><pre style="background-color:#0d1117;color:#e6edf3" tabindex="0" data-language="bash" data-theme="github-dark-default"><code data-language="bash" data-theme="github-dark-default" style="display: grid;"><span data-line=""><span style="color:#8B949E"># 手動觸發 Live Migration</span></span>
+<span data-line=""><span style="color:#FFA657">qm</span><span style="color:#A5D6FF"> migrate</span><span style="color:#79C0FF"> 100</span><span style="color:#A5D6FF"> node2</span><span style="color:#79C0FF"> --online</span></span></code></pre></figure>
+<p>Live Migration 最常用在<strong>計劃維護</strong>——要更新 Node 1 的韌體？先把上面的 VM 全部 live migrate 到其他節點，更新完再搬回來。使用者完全無感，就像魔術師在你眼前把東西換掉，你卻什麼都沒察覺。</p>
+<h2 id="affinity-rulespve-90">Affinity Rules（PVE 9.0+）</h2>
+<p>PVE 9.0 開始支援 Affinity Rules，讓你控制 VM 之間的「距離」：</p>
+<ul>
+<li><strong>共置（Co-locate）</strong>：指定一群 VM 必須在同一節點。例如 Web Server 跟它的 Redis Cache，放一起延遲最低</li>
+<li><strong>分離（Separate）</strong>：指定一群 VM 必須分散在不同節點。例如兩台 Database 主備，放一起就失去了備援的意義</li>
+</ul>
+<p>這就像安排座位——有些人要坐在一起方便討論，有些人必須分開坐避免作弊。</p>
+<h2 id="故障轉移完整流程">故障轉移完整流程</h2>
+<p>當一台節點真的掛了，整個流程是這樣的：</p>
+<ol>
+<li>Corosync 偵測到心跳消失</li>
+<li>其他節點確認：「它真的掛了，不是網路抖一下」</li>
+<li>CRM 觸發 Fencing → 等 watchdog 強制重啟故障節點</li>
+<li>確認 Fencing 完成（故障節點上的 VM 確實停了）</li>
+<li>CRM 指派 LRM 在目標節點啟動受影響的 HA 資源</li>
+<li>持續監控直到資源恢復正常</li>
+</ol>
+<p>整個流程大概幾十秒到幾分鐘，取決於 watchdog 超時設定和 VM 啟動速度。</p>
+<h2 id="ha-不是萬能的">HA 不是萬能的</h2>
+<p>幾個前提得滿足，不然 HA 只是擺設：</p>
+<ul>
+<li><strong>最少 3 節點</strong>（或 2 節點 + QDevice）——Quorum 機制的硬需求</li>
+<li><strong>共享存儲或 Replication</strong>——VM 磁碟搬不過去，HA 就沒用</li>
+<li><strong>Fencing 正常運作</strong>——沒有 Fencing 的 HA 比沒有 HA 更危險</li>
+<li>不適合<strong>所有 VM 都開 HA</strong>——資源吃緊的時候故障轉移也跑不動，挑關鍵服務就好</li>
+<li>就算有 HA，<a href="07-backup-restore">備份</a>還是要做——HA 防的是節點故障，不防人為誤刪或資料損壞</li>
+</ul>
+<blockquote>
+<p>維護節點之前，記得先把 HA 資源手動遷走。直接關機會觸發故障轉移流程——不是不行，但沒必要讓系統白跑一趟驚嚇反應。更多 Homelab 維運的眉角，可以參考 <a href="14-homelab-best-practices">最佳實踐總整理</a>。</p>
+</blockquote>
+<h2 id="延伸閱讀">延伸閱讀</h2>
+<ul>
+<li><a href="https://pve.proxmox.com/pve-docs/chapter-ha-manager.html">Proxmox VE HA 官方文件</a></li>
+<li><a href="https://pve.proxmox.com/pve-docs/chapter-pvecm.html">Proxmox VE 叢集官方文件</a></li>
+<li><a href="https://pve.proxmox.com/wiki/Fencing">Proxmox Wiki - Fencing 機制說明</a></li>
+</ul>
+<h2 id="常見問題">常見問題</h2>
+<h3 id="q-pve-ha-最少需要幾個節點">Q: PVE HA 最少需要幾個節點？</h3>
+<p>最少 3 個節點（或 2 節點加 QDevice）。HA 依賴 Quorum 機制運作，過半數節點存活才能做決策。2 節點不加 QDevice 的話，掛一台整個 HA 就停擺了。</p>
+<h3 id="q-live-migration-需要共享存儲嗎">Q: Live Migration 需要共享存儲嗎？</h3>
+<p>標準做法是需要的，Ceph、NFS 或 iSCSI 都可以。如果沒有共享存儲，可以用 ZFS Replication 先同步磁碟到目標節點，但遷移速度會受磁碟大小影響。</p>
+<h3 id="q-proxmox-高可用的-fencing-是什麼">Q: Proxmox 高可用的 Fencing 是什麼？</h3>
+<p>Fencing 是確保故障節點上的 VM 真正停止後，才在其他節點重新啟動的安全機制。PVE 用 watchdog 實現——節點失去 Quorum 後停止餵狗，watchdog 超時就強制重啟該節點，避免兩邊同時跑同一台 VM 導致資料損壞。</p>
+<h3 id="q-ha-故障轉移要多久">Q: HA 故障轉移要多久？</h3>
+<p>從偵測到故障到 VM 在新節點啟動完成，通常需要幾十秒到幾分鐘。取決於 watchdog 超時設定（預設約 60 秒）和 VM 本身的開機速度。這段期間服務會中斷，不像 Live Migration 幾乎無感。</p>
+<p>HA 設定好之後，你的 PVE 叢集就從「多台電腦各管各的」升級成了「互相掩護的團隊」。搭配前面的存儲、網路、備份知識，一套完整的虛擬化基礎建設就成形了。剩下的就是根據你的場景微調，然後享受穩定運作帶來的安心感。</p>5:[["$","script",null,{"type":"application/ld+json","dangerouslySetInnerHTML":{"__html":"{\"@context\":\"https://schema.org\",\"@type\":\"Article\",\"headline\":\"Proxmox VE 高可用性：讓 VM 自己找活路\",\"description\":\"PVE HA 高可用設定全攻略：Fencing 機制、Live Migration 零停機遷移、Affinity Rules，讓 Proxmox VM 自動故障轉移。\",\"url\":\"https://benxhub.com/zh/blog/pve/09-high-availability/\",\"mainEntityOfPage\":{\"@type\":\"WebPage\",\"@id\":\"https://benxhub.com/zh/blog/pve/09-high-availability/\"},\"datePublished\":\"2026-05-02T00:00:00.000Z\",\"dateModified\":\"2026-05-02T00:00:00.000Z\",\"keywords\":\"proxmox, ha, high-availability, migration, fencing\",\"inLanguage\":\"zh-Hant\",\"author\":{\"@type\":\"Person\",\"@id\":\"https://benxhub.com/#author\",\"name\":\"BenX\",\"url\":\"https://benxhub.com/zh/about/\",\"sameAs\":[\"https://github.com/benzhub\"]},\"publisher\":{\"@type\":\"Organization\",\"name\":\"BenXHub Blog\",\"url\":\"https://benxhub.com\"},\"image\":\"https://benxhub.com/og-default.png\"}"}}],["$","div",null,{"className":"mx-auto max-w-6xl px-4 py-12 sm:px-6","children":["$","div",null,{"className":"lg:grid lg:grid-cols-[1fr_240px] lg:gap-14","children":[["$","article",null,{"children":[["$","header",null,{"className":"mb-10","children":[["$","div",null,{"className":"mb-4 flex flex-wrap gap-2","children":["$L16","$L17","$L18","$L19","$L1a"]}],["$","h1",null,{"className":"mb-4 text-3xl leading-snug font-bold tracking-tight sm:text-4xl","style":{"color":"var(--color-text)"},"children":"Proxmox VE 高可用性：讓 VM 自己找活路"}],["$","div",null,{"className":"flex flex-wrap items-center gap-3 text-sm","style":{"color":"var(--color-muted)"},"children":[["$","time",null,{"dateTime":"2026-05-02","children":"2026 年 5 月 2 日"}],["$","span",null,{"aria-hidden":"true","children":"·"}],["$","span",null,{"children":"10 min read"}]]}],"$undefined",["$","div",null,{"className":"mt-6 border-b","style":{"borderColor":"var(--color-border)"}}]]}],["$","div",null,{"className":"prose","dangerouslySetInnerHTML":{"__html":"$1b"}}],"$L1c"]}],"$L1d"]}]}]]
+25:I[24801,["/_next/static/chunks/4204edc93da35a5e.js","/_next/static/chunks/f2afb7fd2b7566bb.js","/_next/static/chunks/2dddb3bc05093f69.js"],"default"]
+1c:["$","footer",null,{"className":"mt-14 border-t pt-8","style":{"borderColor":"var(--color-border)"},"children":[["$","div",null,{"className":"mb-8 flex flex-wrap gap-2","children":["$L1e","$L1f","$L20","$L21","$L22"]}],["$","nav",null,{"aria-label":"文章導覽","className":"grid grid-cols-1 gap-4 sm:grid-cols-2","children":["$L23","$L24"]}]]}]
+26:T2efd,<p>高可用性（HA）的核心概念其實很樸素：<strong>某台機器掛了，上面的服務自動在別台機器重新跑起來。</strong> 就像餐廳的備用瓦斯爐——主爐壞了，菜不能停，換一台繼續炒。聽起來理所當然，但要做到「自動」且「安全」，底層有不少機制要搞對。HA 是建立在 <a href="08-cluster">叢集</a> 之上的功能，還沒組叢集的話請先回去看。</p>
+<h2 id="ha-的腦與手">HA 的腦與手</h2>
+<p>PVE 的 HA 架構分成兩層：</p>
+<pre><code>┌─────────────────────────────────────┐
+│         CRM（叢集資源管理器）          │
+│      → 在 Master 節點上執行            │
+│      → 決策中心：誰掛了、搬去哪         │
+├────────┬────────┬───────────────────┤
+│ LRM    │ LRM    │ LRM               │
+│ Node 1 │ Node 2 │ Node 3            │
+│ → 執行者│ → 執行者│ → 執行者           │
+├────────┴────────┴───────────────────┤
+│     Corosync + Quorum + Fencing     │
+└─────────────────────────────────────┘
+</code></pre>
+<ul>
+<li><strong>CRM（Cluster Resource Manager）</strong>：大腦，負責監控所有 HA 資源，判斷「誰掛了」「搬去哪」</li>
+<li><strong>LRM（Local Resource Manager）</strong>：手腳，每個節點上都有一個，負責實際的開機、關機、遷移動作</li>
+</ul>
+<p>CRM 跟 LRM 的關係像是調度室跟現場工人——調度室下指令，工人動手做。</p>
+<h2 id="fencing先確認倒下的人不會亂動">Fencing：先確認倒下的人不會亂動</h2>
+<p>這是 HA 最關鍵也最常被忽略的一環。</p>
+<p>想像一個場景：Node 1 的網路斷了，CRM 覺得它掛了，於是在 Node 2 啟動同一台 VM。但其實 Node 1 還活著，上面那台 VM 也還在跑。兩邊同時寫同一份資料——恭喜，資料毀了。</p>
+<p>Fencing 就是為了防止這種事。PVE 使用 <strong>watchdog-based fencing</strong>：</p>
+<ol>
+<li>每個節點跑一個 <code>watchdog-mux</code> 守護程序，持續「餵狗」</li>
+<li>節點失去 Quorum → 停止餵狗 → watchdog 超時</li>
+<li>watchdog 超時 → <strong>強制重啟該節點</strong></li>
+<li>節點重啟後，上面的 VM 自然就停了，CRM 才能安全地在其他節點啟動它們</li>
+</ol>
+<figure data-rehype-pretty-code-figure=""><pre style="background-color:#0d1117;color:#e6edf3" tabindex="0" data-language="bash" data-theme="github-dark-default"><code data-language="bash" data-theme="github-dark-default" style="display: grid;"><span data-line=""><span style="color:#8B949E"># 確認 watchdog 狀態</span></span>
+<span data-line=""><span style="color:#FFA657">systemctl</span><span style="color:#A5D6FF"> status</span><span style="color:#A5D6FF"> watchdog-mux</span></span>
+<span data-line=""> </span>
+<span data-line=""><span style="color:#8B949E"># 檢查有沒有硬體 watchdog</span></span>
+<span data-line=""><span style="color:#FFA657">ls</span><span style="color:#A5D6FF"> /dev/watchdog</span><span style="color:#79C0FF">*</span></span></code></pre></figure>
+<blockquote>
+<p>PVE 預設用軟體 watchdog（<code>softdog</code>），能用但不是最可靠。如果你的伺服器有硬體 watchdog（多數 server 級主板都有），建議啟用它。硬體 watchdog 就算系統整個卡死也能強制重啟，軟體的做不到。</p>
+</blockquote>
+<h2 id="設定-ha-資源">設定 HA 資源</h2>
+<p>把 VM 加入 HA 管理很簡單：</p>
+<figure data-rehype-pretty-code-figure=""><pre style="background-color:#0d1117;color:#e6edf3" tabindex="0" data-language="bash" data-theme="github-dark-default"><code data-language="bash" data-theme="github-dark-default" style="display: grid;"><span data-line=""><span style="color:#8B949E"># 新增 HA 資源</span></span>
+<span data-line=""><span style="color:#FFA657">ha-manager</span><span style="color:#A5D6FF"> add</span><span style="color:#A5D6FF"> vm:100</span><span style="color:#79C0FF"> --state</span><span style="color:#A5D6FF"> started</span><span style="color:#79C0FF"> --group</span><span style="color:#A5D6FF"> my-ha-group</span></span>
+<span data-line=""> </span>
+<span data-line=""><span style="color:#8B949E"># 查看 HA 狀態</span></span>
+<span data-line=""><span style="color:#FFA657">ha-manager</span><span style="color:#A5D6FF"> status</span></span>
+<span data-line=""> </span>
+<span data-line=""><span style="color:#8B949E"># 移除 HA 資源</span></span>
+<span data-line=""><span style="color:#FFA657">ha-manager</span><span style="color:#A5D6FF"> remove</span><span style="color:#A5D6FF"> vm:100</span></span></code></pre></figure>
+<p>Web GUI 操作路徑：<code>Datacenter → HA → Add → 選 VM → 設定 Group</code></p>
+<h2 id="ha-groups決定-vm-能住哪">HA Groups：決定 VM 能住哪</h2>
+<p>HA Group 定義了資源可以在哪些節點上執行，以及優先順序：</p>
+<ul>
+<li><strong>Priority</strong>：數字越大越優先，故障轉移時優先選高優先順序的節點</li>
+<li><strong>restricted</strong>：開啟後資源只能在 Group 內的節點跑，不會跑到外面</li>
+<li><strong>nofailback</strong>：故障轉移後不自動搬回原來的節點，避免不必要的遷移</li>
+</ul>
+<p>就像員工排班——你可以指定某些人優先上早班，也可以限制某些人只能待在特定部門。</p>
+<h2 id="ha-資源狀態速查">HA 資源狀態速查</h2>
+<table>
+<thead>
+<tr>
+<th>狀態</th>
+<th>意思</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td><code>started</code></td>
+<td>正常運行中</td>
+</tr>
+<tr>
+<td><code>stopped</code></td>
+<td>已停止（HA 會確保它維持停止）</td>
+</tr>
+<tr>
+<td><code>migrate</code></td>
+<td>正在遷移</td>
+</tr>
+<tr>
+<td><code>relocate</code></td>
+<td>故障後正在重新安置</td>
+</tr>
+<tr>
+<td><code>error</code></td>
+<td>出事了，需要人工介入</td>
+</tr>
+<tr>
+<td><code>fence</code></td>
+<td>節點正在被隔離中</td>
+</tr>
+</tbody>
+</table>
+<h2 id="live-migrationvm-搬家不斷線">Live Migration：VM 搬家不斷線</h2>
+<p>Live Migration 是把正在跑的 VM 從 A 節點搬到 B 節點，過程中服務（幾乎）不中斷：</p>
+<ol>
+<li>開始複製 VM 記憶體到目標節點</li>
+<li>持續同步變動的記憶體頁面</li>
+<li>最終短暫暫停（通常不到 1 秒）→ 切換完成</li>
+<li>VM 在目標節點繼續跑</li>
+</ol>
+<p>前提條件：</p>
+<ul>
+<li><strong>共享存儲</strong>（Ceph/NFS/iSCSI），或者用 Replication 先把磁碟同步過去——存儲怎麼選可以看 <a href="05-storage">存儲全攻略</a></li>
+<li>兩台節點的 CPU 相容（同廠牌同世代最保險）</li>
+</ul>
+<figure data-rehype-pretty-code-figure=""><pre style="background-color:#0d1117;color:#e6edf3" tabindex="0" data-language="bash" data-theme="github-dark-default"><code data-language="bash" data-theme="github-dark-default" style="display: grid;"><span data-line=""><span style="color:#8B949E"># 手動觸發 Live Migration</span></span>
+<span data-line=""><span style="color:#FFA657">qm</span><span style="color:#A5D6FF"> migrate</span><span style="color:#79C0FF"> 100</span><span style="color:#A5D6FF"> node2</span><span style="color:#79C0FF"> --online</span></span></code></pre></figure>
+<p>Live Migration 最常用在<strong>計劃維護</strong>——要更新 Node 1 的韌體？先把上面的 VM 全部 live migrate 到其他節點，更新完再搬回來。使用者完全無感，就像魔術師在你眼前把東西換掉，你卻什麼都沒察覺。</p>
+<h2 id="affinity-rulespve-90">Affinity Rules（PVE 9.0+）</h2>
+<p>PVE 9.0 開始支援 Affinity Rules，讓你控制 VM 之間的「距離」：</p>
+<ul>
+<li><strong>共置（Co-locate）</strong>：指定一群 VM 必須在同一節點。例如 Web Server 跟它的 Redis Cache，放一起延遲最低</li>
+<li><strong>分離（Separate）</strong>：指定一群 VM 必須分散在不同節點。例如兩台 Database 主備，放一起就失去了備援的意義</li>
+</ul>
+<p>這就像安排座位——有些人要坐在一起方便討論，有些人必須分開坐避免作弊。</p>
+<h2 id="故障轉移完整流程">故障轉移完整流程</h2>
+<p>當一台節點真的掛了，整個流程是這樣的：</p>
+<ol>
+<li>Corosync 偵測到心跳消失</li>
+<li>其他節點確認：「它真的掛了，不是網路抖一下」</li>
+<li>CRM 觸發 Fencing → 等 watchdog 強制重啟故障節點</li>
+<li>確認 Fencing 完成（故障節點上的 VM 確實停了）</li>
+<li>CRM 指派 LRM 在目標節點啟動受影響的 HA 資源</li>
+<li>持續監控直到資源恢復正常</li>
+</ol>
+<p>整個流程大概幾十秒到幾分鐘，取決於 watchdog 超時設定和 VM 啟動速度。</p>
+<h2 id="ha-不是萬能的">HA 不是萬能的</h2>
+<p>幾個前提得滿足，不然 HA 只是擺設：</p>
+<ul>
+<li><strong>最少 3 節點</strong>（或 2 節點 + QDevice）——Quorum 機制的硬需求</li>
+<li><strong>共享存儲或 Replication</strong>——VM 磁碟搬不過去，HA 就沒用</li>
+<li><strong>Fencing 正常運作</strong>——沒有 Fencing 的 HA 比沒有 HA 更危險</li>
+<li>不適合<strong>所有 VM 都開 HA</strong>——資源吃緊的時候故障轉移也跑不動，挑關鍵服務就好</li>
+<li>就算有 HA，<a href="07-backup-restore">備份</a>還是要做——HA 防的是節點故障，不防人為誤刪或資料損壞</li>
+</ul>
+<blockquote>
+<p>維護節點之前，記得先把 HA 資源手動遷走。直接關機會觸發故障轉移流程——不是不行，但沒必要讓系統白跑一趟驚嚇反應。更多 Homelab 維運的眉角，可以參考 <a href="14-homelab-best-practices">最佳實踐總整理</a>。</p>
+</blockquote>
+<h2 id="延伸閱讀">延伸閱讀</h2>
+<ul>
+<li><a href="https://pve.proxmox.com/pve-docs/chapter-ha-manager.html">Proxmox VE HA 官方文件</a></li>
+<li><a href="https://pve.proxmox.com/pve-docs/chapter-pvecm.html">Proxmox VE 叢集官方文件</a></li>
+<li><a href="https://pve.proxmox.com/wiki/Fencing">Proxmox Wiki - Fencing 機制說明</a></li>
+</ul>
+<h2 id="常見問題">常見問題</h2>
+<h3 id="q-pve-ha-最少需要幾個節點">Q: PVE HA 最少需要幾個節點？</h3>
+<p>最少 3 個節點（或 2 節點加 QDevice）。HA 依賴 Quorum 機制運作，過半數節點存活才能做決策。2 節點不加 QDevice 的話，掛一台整個 HA 就停擺了。</p>
+<h3 id="q-live-migration-需要共享存儲嗎">Q: Live Migration 需要共享存儲嗎？</h3>
+<p>標準做法是需要的，Ceph、NFS 或 iSCSI 都可以。如果沒有共享存儲，可以用 ZFS Replication 先同步磁碟到目標節點，但遷移速度會受磁碟大小影響。</p>
+<h3 id="q-proxmox-高可用的-fencing-是什麼">Q: Proxmox 高可用的 Fencing 是什麼？</h3>
+<p>Fencing 是確保故障節點上的 VM 真正停止後，才在其他節點重新啟動的安全機制。PVE 用 watchdog 實現——節點失去 Quorum 後停止餵狗，watchdog 超時就強制重啟該節點，避免兩邊同時跑同一台 VM 導致資料損壞。</p>
+<h3 id="q-ha-故障轉移要多久">Q: HA 故障轉移要多久？</h3>
+<p>從偵測到故障到 VM 在新節點啟動完成，通常需要幾十秒到幾分鐘。取決於 watchdog 超時設定（預設約 60 秒）和 VM 本身的開機速度。這段期間服務會中斷，不像 Live Migration 幾乎無感。</p>
+<p>HA 設定好之後，你的 PVE 叢集就從「多台電腦各管各的」升級成了「互相掩護的團隊」。搭配前面的存儲、網路、備份知識，一套完整的虛擬化基礎建設就成形了。剩下的就是根據你的場景微調，然後享受穩定運作帶來的安心感。</p>1d:["$","aside",null,{"className":"hidden lg:block","children":["$","$L25",null,{"html":"$26"}]}]
+16:["$","$L15","proxmox",{"ref":"$undefined","href":"/zh/tags/proxmox","locale":"$undefined","localeCookie":"$14:props:localeCookie","className":"inline-flex items-center rounded-full px-2.5 py-0.5 text-xs font-medium transition-colors","style":{"background":"var(--color-code-bg)","color":"var(--color-accent)","border":"1px solid var(--color-border)"},"children":["#","proxmox"]}]
+17:["$","$L15","ha",{"ref":"$undefined","href":"/zh/tags/ha","locale":"$undefined","localeCookie":"$14:props:localeCookie","className":"inline-flex items-center rounded-full px-2.5 py-0.5 text-xs font-medium transition-colors","style":{"background":"var(--color-code-bg)","color":"var(--color-accent)","border":"1px solid var(--color-border)"},"children":["#","ha"]}]
+18:["$","$L15","high-availability",{"ref":"$undefined","href":"/zh/tags/high-availability","locale":"$undefined","localeCookie":"$14:props:localeCookie","className":"inline-flex items-center rounded-full px-2.5 py-0.5 text-xs font-medium transition-colors","style":{"background":"var(--color-code-bg)","color":"var(--color-accent)","border":"1px solid var(--color-border)"},"children":["#","high-availability"]}]
+19:["$","$L15","migration",{"ref":"$undefined","href":"/zh/tags/migration","locale":"$undefined","localeCookie":"$14:props:localeCookie","className":"inline-flex items-center rounded-full px-2.5 py-0.5 text-xs font-medium transition-colors","style":{"background":"var(--color-code-bg)","color":"var(--color-accent)","border":"1px solid var(--color-border)"},"children":["#","migration"]}]
+1a:["$","$L15","fencing",{"ref":"$undefined","href":"/zh/tags/fencing","locale":"$undefined","localeCookie":"$14:props:localeCookie","className":"inline-flex items-center rounded-full px-2.5 py-0.5 text-xs font-medium transition-colors","style":{"background":"var(--color-code-bg)","color":"var(--color-accent)","border":"1px solid var(--color-border)"},"children":["#","fencing"]}]
+1e:["$","$L15","proxmox",{"ref":"$undefined","href":"/zh/tags/proxmox","locale":"$undefined","localeCookie":"$14:props:localeCookie","className":"inline-flex items-center rounded-full px-3 py-1 text-sm font-medium transition-colors","style":{"background":"var(--color-code-bg)","color":"var(--color-accent)","border":"1px solid var(--color-border)"},"children":["#","proxmox"]}]
+1f:["$","$L15","ha",{"ref":"$undefined","href":"/zh/tags/ha","locale":"$undefined","localeCookie":"$14:props:localeCookie","className":"inline-flex items-center rounded-full px-3 py-1 text-sm font-medium transition-colors","style":{"background":"var(--color-code-bg)","color":"var(--color-accent)","border":"1px solid var(--color-border)"},"children":["#","ha"]}]
+20:["$","$L15","high-availability",{"ref":"$undefined","href":"/zh/tags/high-availability","locale":"$undefined","localeCookie":"$14:props:localeCookie","className":"inline-flex items-center rounded-full px-3 py-1 text-sm font-medium transition-colors","style":{"background":"var(--color-code-bg)","color":"var(--color-accent)","border":"1px solid var(--color-border)"},"children":["#","high-availability"]}]
+21:["$","$L15","migration",{"ref":"$undefined","href":"/zh/tags/migration","locale":"$undefined","localeCookie":"$14:props:localeCookie","className":"inline-flex items-center rounded-full px-3 py-1 text-sm font-medium transition-colors","style":{"background":"var(--color-code-bg)","color":"var(--color-accent)","border":"1px solid var(--color-border)"},"children":["#","migration"]}]
+22:["$","$L15","fencing",{"ref":"$undefined","href":"/zh/tags/fencing","locale":"$undefined","localeCookie":"$14:props:localeCookie","className":"inline-flex items-center rounded-full px-3 py-1 text-sm font-medium transition-colors","style":{"background":"var(--color-code-bg)","color":"var(--color-accent)","border":"1px solid var(--color-border)"},"children":["#","fencing"]}]
+23:["$","$L15",null,{"ref":"$undefined","href":"/zh/blog/pve/10-ceph-storage","locale":"$undefined","localeCookie":"$14:props:localeCookie","className":"group rounded-lg border p-4 transition-colors hover:border-accent","style":{"borderColor":"var(--color-border)","background":"var(--color-surface)"},"children":[["$","p",null,{"className":"mb-1 text-xs","style":{"color":"var(--color-muted)"},"children":"← 較新文章"}],["$","p",null,{"className":"line-clamp-1 text-sm font-medium transition-colors group-hover:text-accent","style":{"color":"var(--color-text)"},"children":"Proxmox VE Ceph 超融合：把儲存織進每台主機裡"}]]}]
+24:["$","$L15",null,{"ref":"$undefined","href":"/zh/blog/pve/08-cluster","locale":"$undefined","localeCookie":"$14:props:localeCookie","className":"group rounded-lg border p-4 text-right transition-colors hover:border-accent","style":{"borderColor":"var(--color-border)","background":"var(--color-surface)"},"children":[["$","p",null,{"className":"mb-1 text-xs","style":{"color":"var(--color-muted)"},"children":"較舊文章 →"}],["$","p",null,{"className":"line-clamp-1 text-sm font-medium transition-colors group-hover:text-accent","style":{"color":"var(--color-text)"},"children":"Proxmox VE 叢集管理：多台主機組隊打副本"}]]}]
+27:I[92204,["/_next/static/chunks/5a5b5b13c22d14f7.js","/_next/static/chunks/a484d1d3dd4b55ab.js"],"IconMark"]
+8:null
+c:[["$","title","0",{"children":"Proxmox VE 高可用性：讓 VM 自己找活路 | BenXHub Blog"}],["$","meta","1",{"name":"description","content":"PVE HA 高可用設定全攻略：Fencing 機制、Live Migration 零停機遷移、Affinity Rules，讓 Proxmox VM 自動故障轉移。"}],["$","link","2",{"rel":"canonical","href":"https://benxhub.com/zh/blog/pve/09-high-availability/"}],["$","link","3",{"rel":"alternate","hrefLang":"zh-Hant","href":"https://benxhub.com/zh/blog/pve/09-high-availability/"}],["$","link","4",{"rel":"alternate","hrefLang":"x-default","href":"https://benxhub.com/zh/blog/pve/09-high-availability/"}],["$","link","5",{"rel":"alternate","type":"application/rss+xml","href":"https://benxhub.com/zh/feed.xml"}],["$","meta","6",{"property":"og:title","content":"Proxmox VE 高可用性：讓 VM 自己找活路"}],["$","meta","7",{"property":"og:description","content":"PVE HA 高可用設定全攻略：Fencing 機制、Live Migration 零停機遷移、Affinity Rules，讓 Proxmox VM 自動故障轉移。"}],["$","meta","8",{"property":"og:url","content":"https://benxhub.com/zh/blog/pve/09-high-availability/"}],["$","meta","9",{"property":"og:site_name","content":"BenXHub Blog"}],["$","meta","10",{"property":"og:locale","content":"zh_TW"}],["$","meta","11",{"property":"og:image","content":"https://benxhub.com/og-default.png"}],["$","meta","12",{"property":"og:image:width","content":"1200"}],["$","meta","13",{"property":"og:image:height","content":"630"}],["$","meta","14",{"property":"og:image:alt","content":"BenXHub Blog"}],["$","meta","15",{"property":"og:type","content":"article"}],["$","meta","16",{"property":"article:published_time","content":"2026-05-02T00:00:00.000Z"}],["$","meta","17",{"property":"article:tag","content":"proxmox"}],["$","meta","18",{"property":"article:tag","content":"ha"}],["$","meta","19",{"property":"article:tag","content":"high-availability"}],["$","meta","20",{"property":"article:tag","content":"migration"}],["$","meta","21",{"property":"article:tag","content":"fencing"}],["$","meta","22",{"name":"twitter:card","content":"summary_large_image"}],["$","meta","23",{"name":"twitter:title","content":"Proxmox VE 高可用性：讓 VM 自己找活路"}],["$","meta","24",{"name":"twitter:description","content":"PVE HA 高可用設定全攻略：Fencing 機制、Live Migration 零停機遷移、Affinity Rules，讓 Proxmox VM 自動故障轉移。"}],["$","meta","25",{"name":"twitter:image","content":"https://benxhub.com/og-default.png"}],["$","link","26",{"rel":"icon","href":"/favicon.ico?favicon.0b3bf435.ico","sizes":"256x256","type":"image/x-icon"}],["$","$L27","27",{}]]

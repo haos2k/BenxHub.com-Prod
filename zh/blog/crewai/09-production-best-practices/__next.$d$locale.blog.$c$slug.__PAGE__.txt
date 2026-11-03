@@ -1,64 +1,10 @@
 1:"$Sreact.fragment"
-2:I[14864,["/_next/static/chunks/7923a261b80bb6e1.js","/_next/static/chunks/e09b4358027e8033.js","/_next/static/chunks/2dddb3bc05093f69.js"],"default"]
-8:I[24801,["/_next/static/chunks/7923a261b80bb6e1.js","/_next/static/chunks/e09b4358027e8033.js","/_next/static/chunks/2dddb3bc05093f69.js"],"default"]
-a:I[50183,["/_next/static/chunks/5a5b5b13c22d14f7.js","/_next/static/chunks/a484d1d3dd4b55ab.js"],"OutletBoundary"]
-b:"$Sreact.suspense"
-3:T1791,<p>恭喜，你已經把 CrewAI 主線全破了。</p>
-<p>但有一件事要先說清楚：能跑的 demo 和能穩定維運的生產系統，是兩件性質完全不同的事。Demo 只需要「有時候跑得好」，生產系統需要的是「可以預期它在什麼條件下會成功、什麼條件下會失敗」。</p>
-<p>這篇整理的就是讓你從前者走到後者需要的幾個關鍵轉變。</p>
-<h2 id="上線前必做的-5-件事">上線前必做的 5 件事</h2>
-<p><strong>固定流程版本</strong>：Agent 的設定、Task 的描述、Prompt 的內容，這些都要進版本控制。你今天調了一行 backstory，三天後表現突然變差，你需要能 diff 出差在哪裡。</p>
-<p><strong>建立品質守門（Quality Gate）</strong>：輸出在進入下一步或寫進資料庫之前，要先驗收。最基本的做法是用 Pydantic schema 驗證——格式不符直接拒絕，比讓壞資料悄悄流進去好很多。</p>
-<p><strong>設定成本預算</strong>：每次 Crew 執行消耗多少 token，要心裡有數。設定 token 上限警戒，超過了就通知你，不要等帳單來才發現。</p>
-<p><strong>加監控與日誌</strong>：至少要知道每次執行：花了多久、成功還是失敗、失敗在哪個步驟。沒有這些數字，你很難回答「系統有沒有在變好」。</p>
-<p><strong>設計降級策略</strong>：模型 API 有時候會掛掉或超時，你的流程需要有 fallback——要嘛重試、要嘛降級到更便宜的模型、要嘛優雅地告知用戶暫時無法服務。</p>
-<h2 id="一套不炫但實用的架構組合">一套不炫但實用的架構組合</h2>
-<p>不需要一開始就追求最複雜的設計。這套組合在大多數場景都夠用：</p>
-<ul>
-<li><strong><code>Process.sequential</code></strong> 當主流程——可預期、好 debug</li>
-<li><strong><code>output_pydantic</code></strong> 固定所有關鍵輸出格式——防止資料漂移</li>
-<li><strong><code>knowledge_sources</code></strong> 放高價值業務文件——讓 Agent 引用而不是憑空生成</li>
-<li><strong>外部依賴包成獨立 Tool</strong>——搜尋、資料庫查詢、API 呼叫全部封裝成 Tool，不要散在 Task 描述裡</li>
-</ul>
-<p>就像貓主子的罐罐：樸實無華，但每天都要靠它。</p>
-<h2 id="你至少要監控這-4-個指標">你至少要監控這 4 個指標</h2>
-<p>不是要你建一個完整的 observability 平台，但這 4 個數字如果完全沒有，你就是盲飛：</p>
-<ul>
-<li><strong>每次執行耗時</strong>：知道正常範圍是多久，偏離太多就代表某個步驟出了問題</li>
-<li><strong>每次執行成本</strong>：token 消耗，跟預算比對</li>
-<li><strong>成功率 / 重試率</strong>：多少次執行完成了、多少次失敗或需要重試</li>
-<li><strong>輸出驗收通過率</strong>：Pydantic 驗證通過了幾次，失敗的都在哪一步</li>
-</ul>
-<p>這四個指標週週看，你對系統的理解速度會比只看「有沒有跑完」快很多。</p>
-<h2 id="安全與合規不是最後才想的事">安全與合規不是最後才想的事</h2>
-<p>三個基本的安全習慣，上線前就要確認：</p>
-<p><strong>API Key 放環境變數</strong>：不要 hardcode 進程式碼或 YAML，不要 commit 進 git repo。這件事做不到，其他都是白搭。</p>
-<p><strong>對外輸出做敏感資訊過濾</strong>：如果你的 Agent 會輸出對用戶可見的內容，確認過濾掉可能外洩的資料——個人資訊、內部系統路徑、API Key 等。</p>
-<p><strong>記錄關鍵操作軌跡</strong>：什麼時候跑了什麼流程、輸入是什麼、輸出是什麼，保留日誌。不只是為了除錯，也是為了稽核和追蹤。</p>
-<h2 id="一個務實的迭代節奏">一個務實的迭代節奏</h2>
-<p>別等到「完全準備好」再開始迭代——找一個小範圍先跑起來，然後週週做一次：</p>
-<ol>
-<li>回顧上週失敗案例的前 5 名</li>
-<li>找出最常見的 1-2 個根因</li>
-<li>修正它，重新跑固定測試集</li>
-<li>確認有沒有變好（用數字說話，不是感覺）</li>
-</ol>
-<p>小步快跑比一次大改可靠很多。每次改動範圍越小，出了問題越容易定位到是哪個變更造成的。</p>
-<h2 id="常見問題">常見問題</h2>
-<p><strong>Q：應該用雲端托管的 CrewAI 服務還是自架？</strong><br>
-小型內部工具先自架，成本低、控制完整。當規模變大、需要多人協作或有 SLA 要求時，再評估托管服務。CrewAI 官方有 CrewAI Enterprise，但多數起步情境不需要它。</p>
-<p><strong>Q：如何在不影響生產的情況下測試新版本的 Agent 設定？</strong><br>
-維護兩套配置（staging 和 production），用相同的測試輸入跑兩套，比較輸出差異後再決定是否升級。同時確保你的配置有版本控制，可以隨時回滾。</p>
-<p><strong>Q：Crew 流程可以加 timeout 嗎？</strong><br>
-可以。在 Task 層級或 Crew 層級都可以設定超時，避免某個呼叫卡住讓整個流程懸著。生產環境一定要設，不然一個 API 超時會讓整個流程堵死。</p>
-<p><strong>Q：如何估算一次執行的成本？</strong><br>
-用 <code>verbose=True</code> 跑幾次，觀察 token 用量。LangSmith、LangFuse 等工具可以自動幫你追蹤 token 消耗，比自己算好用很多。</p>
-<h2 id="系列收尾">系列收尾</h2>
-<p>你現在有了從 0 建立 CrewAI、到穩定上線維運的完整路徑。</p>
-<p>理論都看完了，最難的部分其實是接下來的這一步：<strong>拿一個你工作中真的存在的重複任務，把它改造成你的第一個正式 Crew 專案</strong>。</p>
-<p>如果跑起來之後流程開始卡，記得回到這三個基本功：角色是否職責單一、任務輸出是否格式明確、流程是否每次可驗證。做到這三點，大部分問題都找得到根因。</p>
-<p>收工，去吸一口水獺級的成就感。</p>0:{"buildId":"sM8YAyjANE7sOnXm3EQGk","rsc":["$","$1","c",{"children":[[["$","script",null,{"type":"application/ld+json","dangerouslySetInnerHTML":{"__html":"{\"@context\":\"https://schema.org\",\"@type\":\"Article\",\"headline\":\"CrewAI 上線最佳實踐：從 Demo 走到可維運的生產系統\",\"description\":\"整理 CrewAI 生產環境上線的架構選擇、成本控制、監控策略與維運節奏，讓你的多代理系統真的能穩定跑。\",\"url\":\"https://benxhub.com/zh/blog/crewai/09-production-best-practices\",\"mainEntityOfPage\":{\"@type\":\"WebPage\",\"@id\":\"https://benxhub.com/zh/blog/crewai/09-production-best-practices\"},\"datePublished\":\"2026-03-05T00:00:00.000Z\",\"dateModified\":\"2026-03-05T00:00:00.000Z\",\"keywords\":\"crewai, production, best-practices, devops, ai-agent, monitoring\",\"inLanguage\":\"zh\",\"author\":{\"@type\":\"Person\",\"name\":\"BenX\",\"url\":\"https://benxhub.com\"},\"publisher\":{\"@type\":\"Organization\",\"name\":\"BenXHub Blog\",\"url\":\"https://benxhub.com\"}}"}}],["$","div",null,{"className":"mx-auto max-w-6xl px-4 py-12 sm:px-6","children":["$","div",null,{"className":"lg:grid lg:grid-cols-[1fr_240px] lg:gap-14","children":[["$","article",null,{"children":[["$","header",null,{"className":"mb-10","children":[["$","div",null,{"className":"mb-4 flex flex-wrap gap-2","children":[["$","$L2","crewai",{"href":"/zh/tags/crewai","localeCookie":{"name":"NEXT_LOCALE","sameSite":"lax"},"className":"inline-flex items-center rounded-full px-2.5 py-0.5 text-xs font-medium transition-colors","style":{"background":"var(--color-code-bg)","color":"var(--color-accent)","border":"1px solid var(--color-border)"},"children":["#","crewai"]}],["$","$L2","production",{"href":"/zh/tags/production","localeCookie":{"name":"NEXT_LOCALE","sameSite":"lax"},"className":"inline-flex items-center rounded-full px-2.5 py-0.5 text-xs font-medium transition-colors","style":{"background":"var(--color-code-bg)","color":"var(--color-accent)","border":"1px solid var(--color-border)"},"children":["#","production"]}],["$","$L2","best-practices",{"href":"/zh/tags/best-practices","localeCookie":{"name":"NEXT_LOCALE","sameSite":"lax"},"className":"inline-flex items-center rounded-full px-2.5 py-0.5 text-xs font-medium transition-colors","style":{"background":"var(--color-code-bg)","color":"var(--color-accent)","border":"1px solid var(--color-border)"},"children":["#","best-practices"]}],["$","$L2","devops",{"href":"/zh/tags/devops","localeCookie":{"name":"NEXT_LOCALE","sameSite":"lax"},"className":"inline-flex items-center rounded-full px-2.5 py-0.5 text-xs font-medium transition-colors","style":{"background":"var(--color-code-bg)","color":"var(--color-accent)","border":"1px solid var(--color-border)"},"children":["#","devops"]}],["$","$L2","ai-agent",{"href":"/zh/tags/ai-agent","localeCookie":{"name":"NEXT_LOCALE","sameSite":"lax"},"className":"inline-flex items-center rounded-full px-2.5 py-0.5 text-xs font-medium transition-colors","style":{"background":"var(--color-code-bg)","color":"var(--color-accent)","border":"1px solid var(--color-border)"},"children":["#","ai-agent"]}],["$","$L2","monitoring",{"href":"/zh/tags/monitoring","localeCookie":{"name":"NEXT_LOCALE","sameSite":"lax"},"className":"inline-flex items-center rounded-full px-2.5 py-0.5 text-xs font-medium transition-colors","style":{"background":"var(--color-code-bg)","color":"var(--color-accent)","border":"1px solid var(--color-border)"},"children":["#","monitoring"]}]]}],["$","h1",null,{"className":"mb-4 text-3xl leading-snug font-bold tracking-tight sm:text-4xl","style":{"color":"var(--color-text)"},"children":"CrewAI 上線最佳實踐：從 Demo 走到可維運的生產系統"}],["$","div",null,{"className":"flex flex-wrap items-center gap-3 text-sm","style":{"color":"var(--color-muted)"},"children":[["$","time",null,{"dateTime":"2026-03-05","children":"2026 年 3 月 5 日"}],["$","span",null,{"aria-hidden":"true","children":"·"}],["$","span",null,{"children":"8 min read"}]]}],"$undefined",["$","div",null,{"className":"mt-6 border-b","style":{"borderColor":"var(--color-border)"}}]]}],["$","div",null,{"className":"prose","dangerouslySetInnerHTML":{"__html":"$3"}}],"$L4"]}],"$L5"]}]}]],["$L6"],"$L7"]}],"loading":null,"isPartial":false}
-4:["$","footer",null,{"className":"mt-14 border-t pt-8","style":{"borderColor":"var(--color-border)"},"children":[["$","div",null,{"className":"mb-8 flex flex-wrap gap-2","children":[["$","$L2","crewai",{"href":"/zh/tags/crewai","localeCookie":{"name":"NEXT_LOCALE","sameSite":"lax"},"className":"inline-flex items-center rounded-full px-3 py-1 text-sm font-medium transition-colors","style":{"background":"var(--color-code-bg)","color":"var(--color-accent)","border":"1px solid var(--color-border)"},"children":["#","crewai"]}],["$","$L2","production",{"href":"/zh/tags/production","localeCookie":{"name":"NEXT_LOCALE","sameSite":"lax"},"className":"inline-flex items-center rounded-full px-3 py-1 text-sm font-medium transition-colors","style":{"background":"var(--color-code-bg)","color":"var(--color-accent)","border":"1px solid var(--color-border)"},"children":["#","production"]}],["$","$L2","best-practices",{"href":"/zh/tags/best-practices","localeCookie":{"name":"NEXT_LOCALE","sameSite":"lax"},"className":"inline-flex items-center rounded-full px-3 py-1 text-sm font-medium transition-colors","style":{"background":"var(--color-code-bg)","color":"var(--color-accent)","border":"1px solid var(--color-border)"},"children":["#","best-practices"]}],["$","$L2","devops",{"href":"/zh/tags/devops","localeCookie":{"name":"NEXT_LOCALE","sameSite":"lax"},"className":"inline-flex items-center rounded-full px-3 py-1 text-sm font-medium transition-colors","style":{"background":"var(--color-code-bg)","color":"var(--color-accent)","border":"1px solid var(--color-border)"},"children":["#","devops"]}],["$","$L2","ai-agent",{"href":"/zh/tags/ai-agent","localeCookie":{"name":"NEXT_LOCALE","sameSite":"lax"},"className":"inline-flex items-center rounded-full px-3 py-1 text-sm font-medium transition-colors","style":{"background":"var(--color-code-bg)","color":"var(--color-accent)","border":"1px solid var(--color-border)"},"children":["#","ai-agent"]}],["$","$L2","monitoring",{"href":"/zh/tags/monitoring","localeCookie":{"name":"NEXT_LOCALE","sameSite":"lax"},"className":"inline-flex items-center rounded-full px-3 py-1 text-sm font-medium transition-colors","style":{"background":"var(--color-code-bg)","color":"var(--color-accent)","border":"1px solid var(--color-border)"},"children":["#","monitoring"]}]]}],["$","nav",null,{"aria-label":"文章導覽","className":"grid grid-cols-1 gap-4 sm:grid-cols-2","children":[["$","$L2",null,{"href":"/zh/blog/crewai/08-debug-and-common-errors","localeCookie":{"name":"NEXT_LOCALE","sameSite":"lax"},"className":"group rounded-lg border p-4 transition-colors hover:border-accent","style":{"borderColor":"var(--color-border)","background":"var(--color-surface)"},"children":[["$","p",null,{"className":"mb-1 text-xs","style":{"color":"var(--color-muted)"},"children":"← 較新文章"}],["$","p",null,{"className":"line-clamp-1 text-sm font-medium transition-colors group-hover:text-accent","style":{"color":"var(--color-text)"},"children":"CrewAI 除錯指南：新手最常爆的 8 個雷與最快排查路徑"}]]}],["$","$L2",null,{"href":"/zh/blog/crewai/06-flow-basics","localeCookie":{"name":"NEXT_LOCALE","sameSite":"lax"},"className":"group rounded-lg border p-4 text-right transition-colors hover:border-accent","style":{"borderColor":"var(--color-border)","background":"var(--color-surface)"},"children":[["$","p",null,{"className":"mb-1 text-xs","style":{"color":"var(--color-muted)"},"children":"較舊文章 →"}],["$","p",null,{"className":"line-clamp-1 text-sm font-medium transition-colors group-hover:text-accent","style":{"color":"var(--color-text)"},"children":"CrewAI Flow 入門：用狀態機把多個 Crew 串成可控流程"}]]}]]}]]}]
+2:I[14864,["/_next/static/chunks/4204edc93da35a5e.js","/_next/static/chunks/f2afb7fd2b7566bb.js","/_next/static/chunks/2dddb3bc05093f69.js"],"default"]
+a:I[24801,["/_next/static/chunks/4204edc93da35a5e.js","/_next/static/chunks/f2afb7fd2b7566bb.js","/_next/static/chunks/2dddb3bc05093f69.js"],"default"]
+c:I[50183,["/_next/static/chunks/5a5b5b13c22d14f7.js","/_next/static/chunks/a484d1d3dd4b55ab.js"],"OutletBoundary"]
+d:"$Sreact.suspense"
+0:{"buildId":"ekNoF06-0VZrB4pGVUsy8","rsc":["$","$1","c",{"children":[[["$","script",null,{"type":"application/ld+json","dangerouslySetInnerHTML":{"__html":"{\"@context\":\"https://schema.org\",\"@type\":\"Article\",\"headline\":\"CrewAI 上線最佳實踐：從 Demo 走到可維運的生產系統\",\"description\":\"整理 CrewAI 生產環境上線的架構選擇、成本控制、監控策略與維運節奏，讓你的多代理系統真的能穩定跑。\",\"url\":\"https://benxhub.com/zh/blog/crewai/09-production-best-practices/\",\"mainEntityOfPage\":{\"@type\":\"WebPage\",\"@id\":\"https://benxhub.com/zh/blog/crewai/09-production-best-practices/\"},\"datePublished\":\"2026-03-05T00:00:00.000Z\",\"dateModified\":\"2026-03-05T00:00:00.000Z\",\"keywords\":\"crewai, production, best-practices, devops, ai-agent, monitoring\",\"inLanguage\":\"zh-Hant\",\"author\":{\"@type\":\"Person\",\"@id\":\"https://benxhub.com/#author\",\"name\":\"BenX\",\"url\":\"https://benxhub.com/zh/about/\",\"sameAs\":[\"https://github.com/benzhub\"]},\"publisher\":{\"@type\":\"Organization\",\"name\":\"BenXHub Blog\",\"url\":\"https://benxhub.com\"},\"image\":\"https://benxhub.com/og-default.png\"}"}}],["$","div",null,{"className":"mx-auto max-w-6xl px-4 py-12 sm:px-6","children":["$","div",null,{"className":"lg:grid lg:grid-cols-[1fr_240px] lg:gap-14","children":[["$","article",null,{"children":[["$","header",null,{"className":"mb-10","children":[["$","div",null,{"className":"mb-4 flex flex-wrap gap-2","children":[["$","$L2","crewai",{"href":"/zh/tags/crewai","localeCookie":{"name":"NEXT_LOCALE","sameSite":"lax"},"className":"inline-flex items-center rounded-full px-2.5 py-0.5 text-xs font-medium transition-colors","style":{"background":"var(--color-code-bg)","color":"var(--color-accent)","border":"1px solid var(--color-border)"},"children":["#","crewai"]}],["$","$L2","production",{"href":"/zh/tags/production","localeCookie":{"name":"NEXT_LOCALE","sameSite":"lax"},"className":"inline-flex items-center rounded-full px-2.5 py-0.5 text-xs font-medium transition-colors","style":{"background":"var(--color-code-bg)","color":"var(--color-accent)","border":"1px solid var(--color-border)"},"children":["#","production"]}],["$","$L2","best-practices",{"href":"/zh/tags/best-practices","localeCookie":{"name":"NEXT_LOCALE","sameSite":"lax"},"className":"inline-flex items-center rounded-full px-2.5 py-0.5 text-xs font-medium transition-colors","style":{"background":"var(--color-code-bg)","color":"var(--color-accent)","border":"1px solid var(--color-border)"},"children":["#","best-practices"]}],["$","$L2","devops",{"href":"/zh/tags/devops","localeCookie":{"name":"NEXT_LOCALE","sameSite":"lax"},"className":"inline-flex items-center rounded-full px-2.5 py-0.5 text-xs font-medium transition-colors","style":{"background":"var(--color-code-bg)","color":"var(--color-accent)","border":"1px solid var(--color-border)"},"children":["#","devops"]}],["$","$L2","ai-agent",{"href":"/zh/tags/ai-agent","localeCookie":{"name":"NEXT_LOCALE","sameSite":"lax"},"className":"inline-flex items-center rounded-full px-2.5 py-0.5 text-xs font-medium transition-colors","style":{"background":"var(--color-code-bg)","color":"var(--color-accent)","border":"1px solid var(--color-border)"},"children":["#","ai-agent"]}],["$","$L2","monitoring",{"href":"/zh/tags/monitoring","localeCookie":{"name":"NEXT_LOCALE","sameSite":"lax"},"className":"inline-flex items-center rounded-full px-2.5 py-0.5 text-xs font-medium transition-colors","style":{"background":"var(--color-code-bg)","color":"var(--color-accent)","border":"1px solid var(--color-border)"},"children":["#","monitoring"]}]]}],["$","h1",null,{"className":"mb-4 text-3xl leading-snug font-bold tracking-tight sm:text-4xl","style":{"color":"var(--color-text)"},"children":"CrewAI 上線最佳實踐：從 Demo 走到可維運的生產系統"}],["$","div",null,{"className":"flex flex-wrap items-center gap-3 text-sm","style":{"color":"var(--color-muted)"},"children":[["$","time",null,{"dateTime":"2026-03-05","children":"2026 年 3 月 5 日"}],["$","span",null,{"aria-hidden":"true","children":"·"}],["$","span",null,{"children":"8 min read"}]]}],"$undefined","$L3"]}],"$L4","$L5"]}],"$L6"]}]}]],["$L7"],"$L8"]}],"loading":null,"isPartial":false}
+3:["$","div",null,{"className":"mt-6 border-b","style":{"borderColor":"var(--color-border)"}}]
 9:T1791,<p>恭喜，你已經把 CrewAI 主線全破了。</p>
 <p>但有一件事要先說清楚：能跑的 demo 和能穩定維運的生產系統，是兩件性質完全不同的事。Demo 只需要「有時候跑得好」，生產系統需要的是「可以預期它在什麼條件下會成功、什麼條件下會失敗」。</p>
 <p>這篇整理的就是讓你從前者走到後者需要的幾個關鍵轉變。</p>
@@ -113,7 +59,63 @@ b:"$Sreact.suspense"
 <p>你現在有了從 0 建立 CrewAI、到穩定上線維運的完整路徑。</p>
 <p>理論都看完了，最難的部分其實是接下來的這一步：<strong>拿一個你工作中真的存在的重複任務，把它改造成你的第一個正式 Crew 專案</strong>。</p>
 <p>如果跑起來之後流程開始卡，記得回到這三個基本功：角色是否職責單一、任務輸出是否格式明確、流程是否每次可驗證。做到這三點，大部分問題都找得到根因。</p>
-<p>收工，去吸一口水獺級的成就感。</p>5:["$","aside",null,{"className":"hidden lg:block","children":["$","$L8",null,{"html":"$9"}]}]
-6:["$","script","script-0",{"src":"/_next/static/chunks/2dddb3bc05093f69.js","async":true}]
-7:["$","$La",null,{"children":["$","$b",null,{"name":"Next.MetadataOutlet","children":"$@c"}]}]
-c:null
+<p>收工，去吸一口水獺級的成就感。</p>4:["$","div",null,{"className":"prose","dangerouslySetInnerHTML":{"__html":"$9"}}]
+5:["$","footer",null,{"className":"mt-14 border-t pt-8","style":{"borderColor":"var(--color-border)"},"children":[["$","div",null,{"className":"mb-8 flex flex-wrap gap-2","children":[["$","$L2","crewai",{"href":"/zh/tags/crewai","localeCookie":{"name":"NEXT_LOCALE","sameSite":"lax"},"className":"inline-flex items-center rounded-full px-3 py-1 text-sm font-medium transition-colors","style":{"background":"var(--color-code-bg)","color":"var(--color-accent)","border":"1px solid var(--color-border)"},"children":["#","crewai"]}],["$","$L2","production",{"href":"/zh/tags/production","localeCookie":{"name":"NEXT_LOCALE","sameSite":"lax"},"className":"inline-flex items-center rounded-full px-3 py-1 text-sm font-medium transition-colors","style":{"background":"var(--color-code-bg)","color":"var(--color-accent)","border":"1px solid var(--color-border)"},"children":["#","production"]}],["$","$L2","best-practices",{"href":"/zh/tags/best-practices","localeCookie":{"name":"NEXT_LOCALE","sameSite":"lax"},"className":"inline-flex items-center rounded-full px-3 py-1 text-sm font-medium transition-colors","style":{"background":"var(--color-code-bg)","color":"var(--color-accent)","border":"1px solid var(--color-border)"},"children":["#","best-practices"]}],["$","$L2","devops",{"href":"/zh/tags/devops","localeCookie":{"name":"NEXT_LOCALE","sameSite":"lax"},"className":"inline-flex items-center rounded-full px-3 py-1 text-sm font-medium transition-colors","style":{"background":"var(--color-code-bg)","color":"var(--color-accent)","border":"1px solid var(--color-border)"},"children":["#","devops"]}],["$","$L2","ai-agent",{"href":"/zh/tags/ai-agent","localeCookie":{"name":"NEXT_LOCALE","sameSite":"lax"},"className":"inline-flex items-center rounded-full px-3 py-1 text-sm font-medium transition-colors","style":{"background":"var(--color-code-bg)","color":"var(--color-accent)","border":"1px solid var(--color-border)"},"children":["#","ai-agent"]}],["$","$L2","monitoring",{"href":"/zh/tags/monitoring","localeCookie":{"name":"NEXT_LOCALE","sameSite":"lax"},"className":"inline-flex items-center rounded-full px-3 py-1 text-sm font-medium transition-colors","style":{"background":"var(--color-code-bg)","color":"var(--color-accent)","border":"1px solid var(--color-border)"},"children":["#","monitoring"]}]]}],["$","nav",null,{"aria-label":"文章導覽","className":"grid grid-cols-1 gap-4 sm:grid-cols-2","children":[["$","$L2",null,{"href":"/zh/blog/crewai/08-debug-and-common-errors","localeCookie":{"name":"NEXT_LOCALE","sameSite":"lax"},"className":"group rounded-lg border p-4 transition-colors hover:border-accent","style":{"borderColor":"var(--color-border)","background":"var(--color-surface)"},"children":[["$","p",null,{"className":"mb-1 text-xs","style":{"color":"var(--color-muted)"},"children":"← 較新文章"}],["$","p",null,{"className":"line-clamp-1 text-sm font-medium transition-colors group-hover:text-accent","style":{"color":"var(--color-text)"},"children":"CrewAI 除錯指南：新手最常爆的 8 個雷與最快排查路徑"}]]}],["$","$L2",null,{"href":"/zh/blog/crewai/06-flow-basics","localeCookie":{"name":"NEXT_LOCALE","sameSite":"lax"},"className":"group rounded-lg border p-4 text-right transition-colors hover:border-accent","style":{"borderColor":"var(--color-border)","background":"var(--color-surface)"},"children":[["$","p",null,{"className":"mb-1 text-xs","style":{"color":"var(--color-muted)"},"children":"較舊文章 →"}],["$","p",null,{"className":"line-clamp-1 text-sm font-medium transition-colors group-hover:text-accent","style":{"color":"var(--color-text)"},"children":"CrewAI Flow 入門：用狀態機把多個 Crew 串成可控流程"}]]}]]}]]}]
+b:T1791,<p>恭喜，你已經把 CrewAI 主線全破了。</p>
+<p>但有一件事要先說清楚：能跑的 demo 和能穩定維運的生產系統，是兩件性質完全不同的事。Demo 只需要「有時候跑得好」，生產系統需要的是「可以預期它在什麼條件下會成功、什麼條件下會失敗」。</p>
+<p>這篇整理的就是讓你從前者走到後者需要的幾個關鍵轉變。</p>
+<h2 id="上線前必做的-5-件事">上線前必做的 5 件事</h2>
+<p><strong>固定流程版本</strong>：Agent 的設定、Task 的描述、Prompt 的內容，這些都要進版本控制。你今天調了一行 backstory，三天後表現突然變差，你需要能 diff 出差在哪裡。</p>
+<p><strong>建立品質守門（Quality Gate）</strong>：輸出在進入下一步或寫進資料庫之前，要先驗收。最基本的做法是用 Pydantic schema 驗證——格式不符直接拒絕，比讓壞資料悄悄流進去好很多。</p>
+<p><strong>設定成本預算</strong>：每次 Crew 執行消耗多少 token，要心裡有數。設定 token 上限警戒，超過了就通知你，不要等帳單來才發現。</p>
+<p><strong>加監控與日誌</strong>：至少要知道每次執行：花了多久、成功還是失敗、失敗在哪個步驟。沒有這些數字，你很難回答「系統有沒有在變好」。</p>
+<p><strong>設計降級策略</strong>：模型 API 有時候會掛掉或超時，你的流程需要有 fallback——要嘛重試、要嘛降級到更便宜的模型、要嘛優雅地告知用戶暫時無法服務。</p>
+<h2 id="一套不炫但實用的架構組合">一套不炫但實用的架構組合</h2>
+<p>不需要一開始就追求最複雜的設計。這套組合在大多數場景都夠用：</p>
+<ul>
+<li><strong><code>Process.sequential</code></strong> 當主流程——可預期、好 debug</li>
+<li><strong><code>output_pydantic</code></strong> 固定所有關鍵輸出格式——防止資料漂移</li>
+<li><strong><code>knowledge_sources</code></strong> 放高價值業務文件——讓 Agent 引用而不是憑空生成</li>
+<li><strong>外部依賴包成獨立 Tool</strong>——搜尋、資料庫查詢、API 呼叫全部封裝成 Tool，不要散在 Task 描述裡</li>
+</ul>
+<p>就像貓主子的罐罐：樸實無華，但每天都要靠它。</p>
+<h2 id="你至少要監控這-4-個指標">你至少要監控這 4 個指標</h2>
+<p>不是要你建一個完整的 observability 平台，但這 4 個數字如果完全沒有，你就是盲飛：</p>
+<ul>
+<li><strong>每次執行耗時</strong>：知道正常範圍是多久，偏離太多就代表某個步驟出了問題</li>
+<li><strong>每次執行成本</strong>：token 消耗，跟預算比對</li>
+<li><strong>成功率 / 重試率</strong>：多少次執行完成了、多少次失敗或需要重試</li>
+<li><strong>輸出驗收通過率</strong>：Pydantic 驗證通過了幾次，失敗的都在哪一步</li>
+</ul>
+<p>這四個指標週週看，你對系統的理解速度會比只看「有沒有跑完」快很多。</p>
+<h2 id="安全與合規不是最後才想的事">安全與合規不是最後才想的事</h2>
+<p>三個基本的安全習慣，上線前就要確認：</p>
+<p><strong>API Key 放環境變數</strong>：不要 hardcode 進程式碼或 YAML，不要 commit 進 git repo。這件事做不到，其他都是白搭。</p>
+<p><strong>對外輸出做敏感資訊過濾</strong>：如果你的 Agent 會輸出對用戶可見的內容，確認過濾掉可能外洩的資料——個人資訊、內部系統路徑、API Key 等。</p>
+<p><strong>記錄關鍵操作軌跡</strong>：什麼時候跑了什麼流程、輸入是什麼、輸出是什麼，保留日誌。不只是為了除錯，也是為了稽核和追蹤。</p>
+<h2 id="一個務實的迭代節奏">一個務實的迭代節奏</h2>
+<p>別等到「完全準備好」再開始迭代——找一個小範圍先跑起來，然後週週做一次：</p>
+<ol>
+<li>回顧上週失敗案例的前 5 名</li>
+<li>找出最常見的 1-2 個根因</li>
+<li>修正它，重新跑固定測試集</li>
+<li>確認有沒有變好（用數字說話，不是感覺）</li>
+</ol>
+<p>小步快跑比一次大改可靠很多。每次改動範圍越小，出了問題越容易定位到是哪個變更造成的。</p>
+<h2 id="常見問題">常見問題</h2>
+<p><strong>Q：應該用雲端托管的 CrewAI 服務還是自架？</strong><br>
+小型內部工具先自架，成本低、控制完整。當規模變大、需要多人協作或有 SLA 要求時，再評估托管服務。CrewAI 官方有 CrewAI Enterprise，但多數起步情境不需要它。</p>
+<p><strong>Q：如何在不影響生產的情況下測試新版本的 Agent 設定？</strong><br>
+維護兩套配置（staging 和 production），用相同的測試輸入跑兩套，比較輸出差異後再決定是否升級。同時確保你的配置有版本控制，可以隨時回滾。</p>
+<p><strong>Q：Crew 流程可以加 timeout 嗎？</strong><br>
+可以。在 Task 層級或 Crew 層級都可以設定超時，避免某個呼叫卡住讓整個流程懸著。生產環境一定要設，不然一個 API 超時會讓整個流程堵死。</p>
+<p><strong>Q：如何估算一次執行的成本？</strong><br>
+用 <code>verbose=True</code> 跑幾次，觀察 token 用量。LangSmith、LangFuse 等工具可以自動幫你追蹤 token 消耗，比自己算好用很多。</p>
+<h2 id="系列收尾">系列收尾</h2>
+<p>你現在有了從 0 建立 CrewAI、到穩定上線維運的完整路徑。</p>
+<p>理論都看完了，最難的部分其實是接下來的這一步：<strong>拿一個你工作中真的存在的重複任務，把它改造成你的第一個正式 Crew 專案</strong>。</p>
+<p>如果跑起來之後流程開始卡，記得回到這三個基本功：角色是否職責單一、任務輸出是否格式明確、流程是否每次可驗證。做到這三點，大部分問題都找得到根因。</p>
+<p>收工，去吸一口水獺級的成就感。</p>6:["$","aside",null,{"className":"hidden lg:block","children":["$","$La",null,{"html":"$b"}]}]
+7:["$","script","script-0",{"src":"/_next/static/chunks/2dddb3bc05093f69.js","async":true}]
+8:["$","$Lc",null,{"children":["$","$d",null,{"name":"Next.MetadataOutlet","children":"$@e"}]}]
+e:null

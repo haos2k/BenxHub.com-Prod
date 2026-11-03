@@ -1,9 +1,9 @@
 1:"$Sreact.fragment"
-2:I[14864,["/_next/static/chunks/7923a261b80bb6e1.js","/_next/static/chunks/e09b4358027e8033.js","/_next/static/chunks/2dddb3bc05093f69.js"],"default"]
-8:I[24801,["/_next/static/chunks/7923a261b80bb6e1.js","/_next/static/chunks/e09b4358027e8033.js","/_next/static/chunks/2dddb3bc05093f69.js"],"default"]
+2:I[14864,["/_next/static/chunks/4204edc93da35a5e.js","/_next/static/chunks/f2afb7fd2b7566bb.js","/_next/static/chunks/2dddb3bc05093f69.js"],"default"]
+8:I[24801,["/_next/static/chunks/4204edc93da35a5e.js","/_next/static/chunks/f2afb7fd2b7566bb.js","/_next/static/chunks/2dddb3bc05093f69.js"],"default"]
 a:I[50183,["/_next/static/chunks/5a5b5b13c22d14f7.js","/_next/static/chunks/a484d1d3dd4b55ab.js"],"OutletBoundary"]
 b:"$Sreact.suspense"
-3:T1a83,<p>La plupart des échecs CrewAI des débutants ne viennent pas de l'API. Ils viennent d'<strong>un mauvais découpage des rôles</strong>.<br>
+3:T1aa3,<p>La plupart des échecs CrewAI des débutants ne viennent pas de l'API. Ils viennent d'<strong>un mauvais découpage des rôles</strong>.<br>
 Une règle à retenir : <strong>un agent, une spécialité ; une tâche, un job</strong>. Votre taux de succès monte vite.</p>
 <h2 id="découper-les-agents-dabord-puis-écrire-les-tâches">Découper les agents d'abord, puis écrire les tâches</h2>
 <p>Raisonnez ainsi :</p>
@@ -14,44 +14,44 @@ Une règle à retenir : <strong>un agent, une spécialité ; une tâche, un job<
 </ul>
 <p>Si un seul agent fait recherche, rédaction et relecture, il fait généralement les trois de façon superficielle.</p>
 <h2 id="exemple-de-bon-design-dagent">Exemple de bon design d'agent</h2>
-<figure data-rehype-pretty-code-figure=""><pre style="background-color:#24292e;color:#e1e4e8" tabindex="0" data-language="yaml" data-theme="github-dark"><code data-language="yaml" data-theme="github-dark" style="display: grid;"><span data-line=""><span style="color:#85E89D">researcher</span><span style="color:#E1E4E8">:</span></span>
-<span data-line=""><span style="color:#85E89D">  role</span><span style="color:#E1E4E8">: </span><span style="color:#F97583">></span></span>
-<span data-line=""><span style="color:#9ECBFF">    AI Research Analyst</span></span>
-<span data-line=""><span style="color:#85E89D">  goal</span><span style="color:#E1E4E8">: </span><span style="color:#F97583">></span></span>
-<span data-line=""><span style="color:#9ECBFF">    Collect accurate and current information</span></span>
-<span data-line=""><span style="color:#85E89D">  backstory</span><span style="color:#E1E4E8">: </span><span style="color:#F97583">></span></span>
-<span data-line=""><span style="color:#9ECBFF">    You specialize in finding reliable sources and extracting key facts.</span></span>
-<span data-line=""><span style="color:#85E89D">  allow_delegation</span><span style="color:#E1E4E8">: </span><span style="color:#79B8FF">false</span></span>
+<figure data-rehype-pretty-code-figure=""><pre style="background-color:#0d1117;color:#e6edf3" tabindex="0" data-language="yaml" data-theme="github-dark-default"><code data-language="yaml" data-theme="github-dark-default" style="display: grid;"><span data-line=""><span style="color:#7EE787">researcher</span><span style="color:#E6EDF3">:</span></span>
+<span data-line=""><span style="color:#7EE787">  role</span><span style="color:#E6EDF3">: </span><span style="color:#FF7B72">></span></span>
+<span data-line=""><span style="color:#A5D6FF">    AI Research Analyst</span></span>
+<span data-line=""><span style="color:#7EE787">  goal</span><span style="color:#E6EDF3">: </span><span style="color:#FF7B72">></span></span>
+<span data-line=""><span style="color:#A5D6FF">    Collect accurate and current information</span></span>
+<span data-line=""><span style="color:#7EE787">  backstory</span><span style="color:#E6EDF3">: </span><span style="color:#FF7B72">></span></span>
+<span data-line=""><span style="color:#A5D6FF">    You specialize in finding reliable sources and extracting key facts.</span></span>
+<span data-line=""><span style="color:#7EE787">  allow_delegation</span><span style="color:#E6EDF3">: </span><span style="color:#79C0FF">false</span></span>
 <span data-line=""> </span>
-<span data-line=""><span style="color:#85E89D">writer</span><span style="color:#E1E4E8">:</span></span>
-<span data-line=""><span style="color:#85E89D">  role</span><span style="color:#E1E4E8">: </span><span style="color:#F97583">></span></span>
-<span data-line=""><span style="color:#9ECBFF">    Technical Writer</span></span>
-<span data-line=""><span style="color:#85E89D">  goal</span><span style="color:#E1E4E8">: </span><span style="color:#F97583">></span></span>
-<span data-line=""><span style="color:#9ECBFF">    Turn raw findings into clear and practical documentation</span></span>
-<span data-line=""><span style="color:#85E89D">  backstory</span><span style="color:#E1E4E8">: </span><span style="color:#F97583">></span></span>
-<span data-line=""><span style="color:#9ECBFF">    You explain complex ideas in simple language for beginners.</span></span>
-<span data-line=""><span style="color:#85E89D">  allow_delegation</span><span style="color:#E1E4E8">: </span><span style="color:#79B8FF">false</span></span></code></pre></figure>
+<span data-line=""><span style="color:#7EE787">writer</span><span style="color:#E6EDF3">:</span></span>
+<span data-line=""><span style="color:#7EE787">  role</span><span style="color:#E6EDF3">: </span><span style="color:#FF7B72">></span></span>
+<span data-line=""><span style="color:#A5D6FF">    Technical Writer</span></span>
+<span data-line=""><span style="color:#7EE787">  goal</span><span style="color:#E6EDF3">: </span><span style="color:#FF7B72">></span></span>
+<span data-line=""><span style="color:#A5D6FF">    Turn raw findings into clear and practical documentation</span></span>
+<span data-line=""><span style="color:#7EE787">  backstory</span><span style="color:#E6EDF3">: </span><span style="color:#FF7B72">></span></span>
+<span data-line=""><span style="color:#A5D6FF">    You explain complex ideas in simple language for beginners.</span></span>
+<span data-line=""><span style="color:#7EE787">  allow_delegation</span><span style="color:#E6EDF3">: </span><span style="color:#79C0FF">false</span></span></code></pre></figure>
 <blockquote>
 <p>⚠️ Gardez <code>allow_delegation</code> désactivé par défaut. Stabilisez d'abord le flux, puis envisagez la délégation dynamique.</p>
 </blockquote>
 <h2 id="exemple-de-bon-design-de-tâche">Exemple de bon design de tâche</h2>
-<figure data-rehype-pretty-code-figure=""><pre style="background-color:#24292e;color:#e1e4e8" tabindex="0" data-language="yaml" data-theme="github-dark"><code data-language="yaml" data-theme="github-dark" style="display: grid;"><span data-line=""><span style="color:#85E89D">research_task</span><span style="color:#E1E4E8">:</span></span>
-<span data-line=""><span style="color:#85E89D">  description</span><span style="color:#E1E4E8">: </span><span style="color:#F97583">></span></span>
-<span data-line=""><span style="color:#9ECBFF">    Find 8-10 important updates about {topic} in 2026.</span></span>
-<span data-line=""><span style="color:#9ECBFF">    Include what changed and why it matters.</span></span>
-<span data-line=""><span style="color:#85E89D">  expected_output</span><span style="color:#E1E4E8">: </span><span style="color:#F97583">></span></span>
-<span data-line=""><span style="color:#9ECBFF">    A markdown bullet list.</span></span>
-<span data-line=""><span style="color:#9ECBFF">    Each bullet includes: title, summary, and source URL.</span></span>
-<span data-line=""><span style="color:#85E89D">  agent</span><span style="color:#E1E4E8">: </span><span style="color:#9ECBFF">researcher</span></span>
+<figure data-rehype-pretty-code-figure=""><pre style="background-color:#0d1117;color:#e6edf3" tabindex="0" data-language="yaml" data-theme="github-dark-default"><code data-language="yaml" data-theme="github-dark-default" style="display: grid;"><span data-line=""><span style="color:#7EE787">research_task</span><span style="color:#E6EDF3">:</span></span>
+<span data-line=""><span style="color:#7EE787">  description</span><span style="color:#E6EDF3">: </span><span style="color:#FF7B72">></span></span>
+<span data-line=""><span style="color:#A5D6FF">    Find 8-10 important updates about {topic} in 2026.</span></span>
+<span data-line=""><span style="color:#A5D6FF">    Include what changed and why it matters.</span></span>
+<span data-line=""><span style="color:#7EE787">  expected_output</span><span style="color:#E6EDF3">: </span><span style="color:#FF7B72">></span></span>
+<span data-line=""><span style="color:#A5D6FF">    A markdown bullet list.</span></span>
+<span data-line=""><span style="color:#A5D6FF">    Each bullet includes: title, summary, and source URL.</span></span>
+<span data-line=""><span style="color:#7EE787">  agent</span><span style="color:#E6EDF3">: </span><span style="color:#A5D6FF">researcher</span></span>
 <span data-line=""> </span>
-<span data-line=""><span style="color:#85E89D">write_task</span><span style="color:#E1E4E8">:</span></span>
-<span data-line=""><span style="color:#85E89D">  description</span><span style="color:#E1E4E8">: </span><span style="color:#F97583">></span></span>
-<span data-line=""><span style="color:#9ECBFF">    Convert the research bullets into a tutorial article with examples.</span></span>
-<span data-line=""><span style="color:#85E89D">  expected_output</span><span style="color:#E1E4E8">: </span><span style="color:#F97583">></span></span>
-<span data-line=""><span style="color:#9ECBFF">    A markdown article with intro, 3 sections, and conclusion.</span></span>
-<span data-line=""><span style="color:#85E89D">  agent</span><span style="color:#E1E4E8">: </span><span style="color:#9ECBFF">writer</span></span>
-<span data-line=""><span style="color:#85E89D">  context</span><span style="color:#E1E4E8">:</span></span>
-<span data-line=""><span style="color:#E1E4E8">    - </span><span style="color:#9ECBFF">research_task</span></span></code></pre></figure>
+<span data-line=""><span style="color:#7EE787">write_task</span><span style="color:#E6EDF3">:</span></span>
+<span data-line=""><span style="color:#7EE787">  description</span><span style="color:#E6EDF3">: </span><span style="color:#FF7B72">></span></span>
+<span data-line=""><span style="color:#A5D6FF">    Convert the research bullets into a tutorial article with examples.</span></span>
+<span data-line=""><span style="color:#7EE787">  expected_output</span><span style="color:#E6EDF3">: </span><span style="color:#FF7B72">></span></span>
+<span data-line=""><span style="color:#A5D6FF">    A markdown article with intro, 3 sections, and conclusion.</span></span>
+<span data-line=""><span style="color:#7EE787">  agent</span><span style="color:#E6EDF3">: </span><span style="color:#A5D6FF">writer</span></span>
+<span data-line=""><span style="color:#7EE787">  context</span><span style="color:#E6EDF3">:</span></span>
+<span data-line=""><span style="color:#E6EDF3">    - </span><span style="color:#A5D6FF">research_task</span></span></code></pre></figure>
 <h2 id="les-3-pièges-les-plus-fréquents-pour-les-débutants">Les 3 pièges les plus fréquents pour les débutants</h2>
 <ol>
 <li><strong>Description de tâche trop courte</strong> : le modèle ne sait pas quel format vous exigez</li>
@@ -70,9 +70,9 @@ Une règle à retenir : <strong>un agent, une spécialité ; une tâche, un job<
 <h2 id="prochaine-étape">Prochaine étape</h2>
 <p>Après le découpage des rôles, la prochaine décision est la stratégie d'exécution du processus.<br>
 Article suivant :<br>
-👉 <a href="03-crew-and-process">Crew et Process</a></p>0:{"buildId":"sM8YAyjANE7sOnXm3EQGk","rsc":["$","$1","c",{"children":[[["$","script",null,{"type":"application/ld+json","dangerouslySetInnerHTML":{"__html":"{\"@context\":\"https://schema.org\",\"@type\":\"Article\",\"headline\":\"CrewAI — Agents et tâches : répartir les rôles sans chaos\",\"description\":\"Utiliser une logique type SRP pour découper les agents et les tâches afin que la collaboration multi-agents reste stable et maintenable.\",\"url\":\"https://benxhub.com/fr/blog/crewai/02-agents-and-tasks\",\"mainEntityOfPage\":{\"@type\":\"WebPage\",\"@id\":\"https://benxhub.com/fr/blog/crewai/02-agents-and-tasks\"},\"datePublished\":\"2026-03-01T00:00:00.000Z\",\"dateModified\":\"2026-03-01T00:00:00.000Z\",\"keywords\":\"crewai, agent, task, architecture, beginner\",\"inLanguage\":\"fr\",\"author\":{\"@type\":\"Person\",\"name\":\"BenX\",\"url\":\"https://benxhub.com\"},\"publisher\":{\"@type\":\"Organization\",\"name\":\"BenXHub Blog\",\"url\":\"https://benxhub.com\"}}"}}],["$","div",null,{"className":"mx-auto max-w-6xl px-4 py-12 sm:px-6","children":["$","div",null,{"className":"lg:grid lg:grid-cols-[1fr_240px] lg:gap-14","children":[["$","article",null,{"children":[["$","header",null,{"className":"mb-10","children":[["$","div",null,{"className":"mb-4 flex flex-wrap gap-2","children":[["$","$L2","crewai",{"href":"/fr/tags/crewai","localeCookie":{"name":"NEXT_LOCALE","sameSite":"lax"},"className":"inline-flex items-center rounded-full px-2.5 py-0.5 text-xs font-medium transition-colors","style":{"background":"var(--color-code-bg)","color":"var(--color-accent)","border":"1px solid var(--color-border)"},"children":["#","crewai"]}],["$","$L2","agent",{"href":"/fr/tags/agent","localeCookie":{"name":"NEXT_LOCALE","sameSite":"lax"},"className":"inline-flex items-center rounded-full px-2.5 py-0.5 text-xs font-medium transition-colors","style":{"background":"var(--color-code-bg)","color":"var(--color-accent)","border":"1px solid var(--color-border)"},"children":["#","agent"]}],["$","$L2","task",{"href":"/fr/tags/task","localeCookie":{"name":"NEXT_LOCALE","sameSite":"lax"},"className":"inline-flex items-center rounded-full px-2.5 py-0.5 text-xs font-medium transition-colors","style":{"background":"var(--color-code-bg)","color":"var(--color-accent)","border":"1px solid var(--color-border)"},"children":["#","task"]}],["$","$L2","architecture",{"href":"/fr/tags/architecture","localeCookie":{"name":"NEXT_LOCALE","sameSite":"lax"},"className":"inline-flex items-center rounded-full px-2.5 py-0.5 text-xs font-medium transition-colors","style":{"background":"var(--color-code-bg)","color":"var(--color-accent)","border":"1px solid var(--color-border)"},"children":["#","architecture"]}],["$","$L2","beginner",{"href":"/fr/tags/beginner","localeCookie":{"name":"NEXT_LOCALE","sameSite":"lax"},"className":"inline-flex items-center rounded-full px-2.5 py-0.5 text-xs font-medium transition-colors","style":{"background":"var(--color-code-bg)","color":"var(--color-accent)","border":"1px solid var(--color-border)"},"children":["#","beginner"]}]]}],["$","h1",null,{"className":"mb-4 text-3xl leading-snug font-bold tracking-tight sm:text-4xl","style":{"color":"var(--color-text)"},"children":"CrewAI — Agents et tâches : répartir les rôles sans chaos"}],["$","div",null,{"className":"flex flex-wrap items-center gap-3 text-sm","style":{"color":"var(--color-muted)"},"children":[["$","time",null,{"dateTime":"2026-03-01","children":"1 mars 2026"}],["$","span",null,{"aria-hidden":"true","children":"·"}],["$","span",null,{"children":"2 min read"}]]}],"$undefined",["$","div",null,{"className":"mt-6 border-b","style":{"borderColor":"var(--color-border)"}}]]}],["$","div",null,{"className":"prose","dangerouslySetInnerHTML":{"__html":"$3"}}],"$L4"]}],"$L5"]}]}]],["$L6"],"$L7"]}],"loading":null,"isPartial":false}
+👉 <a href="03-crew-and-process">Crew et Process</a></p>0:{"buildId":"ekNoF06-0VZrB4pGVUsy8","rsc":["$","$1","c",{"children":[[["$","script",null,{"type":"application/ld+json","dangerouslySetInnerHTML":{"__html":"{\"@context\":\"https://schema.org\",\"@type\":\"Article\",\"headline\":\"CrewAI — Agents et tâches : répartir les rôles sans chaos\",\"description\":\"Utiliser une logique type SRP pour découper les agents et les tâches afin que la collaboration multi-agents reste stable et maintenable.\",\"url\":\"https://benxhub.com/fr/blog/crewai/02-agents-and-tasks/\",\"mainEntityOfPage\":{\"@type\":\"WebPage\",\"@id\":\"https://benxhub.com/fr/blog/crewai/02-agents-and-tasks/\"},\"datePublished\":\"2026-03-01T00:00:00.000Z\",\"dateModified\":\"2026-03-01T00:00:00.000Z\",\"keywords\":\"crewai, agent, task, architecture, beginner\",\"inLanguage\":\"fr\",\"author\":{\"@type\":\"Person\",\"@id\":\"https://benxhub.com/#author\",\"name\":\"BenX\",\"url\":\"https://benxhub.com/fr/about/\",\"sameAs\":[\"https://github.com/benzhub\"]},\"publisher\":{\"@type\":\"Organization\",\"name\":\"BenXHub Blog\",\"url\":\"https://benxhub.com\"},\"image\":\"https://benxhub.com/og-default.png\"}"}}],["$","div",null,{"className":"mx-auto max-w-6xl px-4 py-12 sm:px-6","children":["$","div",null,{"className":"lg:grid lg:grid-cols-[1fr_240px] lg:gap-14","children":[["$","article",null,{"children":[["$","header",null,{"className":"mb-10","children":[["$","div",null,{"className":"mb-4 flex flex-wrap gap-2","children":[["$","$L2","crewai",{"href":"/fr/tags/crewai","localeCookie":{"name":"NEXT_LOCALE","sameSite":"lax"},"className":"inline-flex items-center rounded-full px-2.5 py-0.5 text-xs font-medium transition-colors","style":{"background":"var(--color-code-bg)","color":"var(--color-accent)","border":"1px solid var(--color-border)"},"children":["#","crewai"]}],["$","$L2","agent",{"href":"/fr/tags/agent","localeCookie":{"name":"NEXT_LOCALE","sameSite":"lax"},"className":"inline-flex items-center rounded-full px-2.5 py-0.5 text-xs font-medium transition-colors","style":{"background":"var(--color-code-bg)","color":"var(--color-accent)","border":"1px solid var(--color-border)"},"children":["#","agent"]}],["$","$L2","task",{"href":"/fr/tags/task","localeCookie":{"name":"NEXT_LOCALE","sameSite":"lax"},"className":"inline-flex items-center rounded-full px-2.5 py-0.5 text-xs font-medium transition-colors","style":{"background":"var(--color-code-bg)","color":"var(--color-accent)","border":"1px solid var(--color-border)"},"children":["#","task"]}],["$","$L2","architecture",{"href":"/fr/tags/architecture","localeCookie":{"name":"NEXT_LOCALE","sameSite":"lax"},"className":"inline-flex items-center rounded-full px-2.5 py-0.5 text-xs font-medium transition-colors","style":{"background":"var(--color-code-bg)","color":"var(--color-accent)","border":"1px solid var(--color-border)"},"children":["#","architecture"]}],["$","$L2","beginner",{"href":"/fr/tags/beginner","localeCookie":{"name":"NEXT_LOCALE","sameSite":"lax"},"className":"inline-flex items-center rounded-full px-2.5 py-0.5 text-xs font-medium transition-colors","style":{"background":"var(--color-code-bg)","color":"var(--color-accent)","border":"1px solid var(--color-border)"},"children":["#","beginner"]}]]}],["$","h1",null,{"className":"mb-4 text-3xl leading-snug font-bold tracking-tight sm:text-4xl","style":{"color":"var(--color-text)"},"children":"CrewAI — Agents et tâches : répartir les rôles sans chaos"}],["$","div",null,{"className":"flex flex-wrap items-center gap-3 text-sm","style":{"color":"var(--color-muted)"},"children":[["$","time",null,{"dateTime":"2026-03-01","children":"1 mars 2026"}],["$","span",null,{"aria-hidden":"true","children":"·"}],["$","span",null,{"children":"2 min read"}]]}],"$undefined",["$","div",null,{"className":"mt-6 border-b","style":{"borderColor":"var(--color-border)"}}]]}],["$","div",null,{"className":"prose","dangerouslySetInnerHTML":{"__html":"$3"}}],"$L4"]}],"$L5"]}]}]],["$L6"],"$L7"]}],"loading":null,"isPartial":false}
 4:["$","footer",null,{"className":"mt-14 border-t pt-8","style":{"borderColor":"var(--color-border)"},"children":[["$","div",null,{"className":"mb-8 flex flex-wrap gap-2","children":[["$","$L2","crewai",{"href":"/fr/tags/crewai","localeCookie":{"name":"NEXT_LOCALE","sameSite":"lax"},"className":"inline-flex items-center rounded-full px-3 py-1 text-sm font-medium transition-colors","style":{"background":"var(--color-code-bg)","color":"var(--color-accent)","border":"1px solid var(--color-border)"},"children":["#","crewai"]}],["$","$L2","agent",{"href":"/fr/tags/agent","localeCookie":{"name":"NEXT_LOCALE","sameSite":"lax"},"className":"inline-flex items-center rounded-full px-3 py-1 text-sm font-medium transition-colors","style":{"background":"var(--color-code-bg)","color":"var(--color-accent)","border":"1px solid var(--color-border)"},"children":["#","agent"]}],["$","$L2","task",{"href":"/fr/tags/task","localeCookie":{"name":"NEXT_LOCALE","sameSite":"lax"},"className":"inline-flex items-center rounded-full px-3 py-1 text-sm font-medium transition-colors","style":{"background":"var(--color-code-bg)","color":"var(--color-accent)","border":"1px solid var(--color-border)"},"children":["#","task"]}],["$","$L2","architecture",{"href":"/fr/tags/architecture","localeCookie":{"name":"NEXT_LOCALE","sameSite":"lax"},"className":"inline-flex items-center rounded-full px-3 py-1 text-sm font-medium transition-colors","style":{"background":"var(--color-code-bg)","color":"var(--color-accent)","border":"1px solid var(--color-border)"},"children":["#","architecture"]}],["$","$L2","beginner",{"href":"/fr/tags/beginner","localeCookie":{"name":"NEXT_LOCALE","sameSite":"lax"},"className":"inline-flex items-center rounded-full px-3 py-1 text-sm font-medium transition-colors","style":{"background":"var(--color-code-bg)","color":"var(--color-accent)","border":"1px solid var(--color-border)"},"children":["#","beginner"]}]]}],["$","nav",null,{"aria-label":"Navigation des articles","className":"grid grid-cols-1 gap-4 sm:grid-cols-2","children":[["$","$L2",null,{"href":"/fr/blog/crewai/01-quick-start","localeCookie":{"name":"NEXT_LOCALE","sameSite":"lax"},"className":"group rounded-lg border p-4 transition-colors hover:border-accent","style":{"borderColor":"var(--color-border)","background":"var(--color-surface)"},"children":[["$","p",null,{"className":"mb-1 text-xs","style":{"color":"var(--color-muted)"},"children":"← Plus récent"}],["$","p",null,{"className":"line-clamp-1 text-sm font-medium transition-colors group-hover:text-accent","style":{"color":"var(--color-text)"},"children":"CrewAI — Démarrage rapide : votre premier Crew de recherche en 10 minutes"}]]}],["$","$L2",null,{"href":"/fr/blog/python/uv/00-overview","localeCookie":{"name":"NEXT_LOCALE","sameSite":"lax"},"className":"group rounded-lg border p-4 text-right transition-colors hover:border-accent","style":{"borderColor":"var(--color-border)","background":"var(--color-surface)"},"children":[["$","p",null,{"className":"mb-1 text-xs","style":{"color":"var(--color-muted)"},"children":"Plus ancien →"}],["$","p",null,{"className":"line-clamp-1 text-sm font-medium transition-colors group-hover:text-accent","style":{"color":"var(--color-text)"},"children":"Vue d'ensemble de la série Python uv : le remplacement de pip 100x plus rapide"}]]}]]}]]}]
-9:T1a83,<p>La plupart des échecs CrewAI des débutants ne viennent pas de l'API. Ils viennent d'<strong>un mauvais découpage des rôles</strong>.<br>
+9:T1aa3,<p>La plupart des échecs CrewAI des débutants ne viennent pas de l'API. Ils viennent d'<strong>un mauvais découpage des rôles</strong>.<br>
 Une règle à retenir : <strong>un agent, une spécialité ; une tâche, un job</strong>. Votre taux de succès monte vite.</p>
 <h2 id="découper-les-agents-dabord-puis-écrire-les-tâches">Découper les agents d'abord, puis écrire les tâches</h2>
 <p>Raisonnez ainsi :</p>
@@ -83,44 +83,44 @@ Une règle à retenir : <strong>un agent, une spécialité ; une tâche, un job<
 </ul>
 <p>Si un seul agent fait recherche, rédaction et relecture, il fait généralement les trois de façon superficielle.</p>
 <h2 id="exemple-de-bon-design-dagent">Exemple de bon design d'agent</h2>
-<figure data-rehype-pretty-code-figure=""><pre style="background-color:#24292e;color:#e1e4e8" tabindex="0" data-language="yaml" data-theme="github-dark"><code data-language="yaml" data-theme="github-dark" style="display: grid;"><span data-line=""><span style="color:#85E89D">researcher</span><span style="color:#E1E4E8">:</span></span>
-<span data-line=""><span style="color:#85E89D">  role</span><span style="color:#E1E4E8">: </span><span style="color:#F97583">></span></span>
-<span data-line=""><span style="color:#9ECBFF">    AI Research Analyst</span></span>
-<span data-line=""><span style="color:#85E89D">  goal</span><span style="color:#E1E4E8">: </span><span style="color:#F97583">></span></span>
-<span data-line=""><span style="color:#9ECBFF">    Collect accurate and current information</span></span>
-<span data-line=""><span style="color:#85E89D">  backstory</span><span style="color:#E1E4E8">: </span><span style="color:#F97583">></span></span>
-<span data-line=""><span style="color:#9ECBFF">    You specialize in finding reliable sources and extracting key facts.</span></span>
-<span data-line=""><span style="color:#85E89D">  allow_delegation</span><span style="color:#E1E4E8">: </span><span style="color:#79B8FF">false</span></span>
+<figure data-rehype-pretty-code-figure=""><pre style="background-color:#0d1117;color:#e6edf3" tabindex="0" data-language="yaml" data-theme="github-dark-default"><code data-language="yaml" data-theme="github-dark-default" style="display: grid;"><span data-line=""><span style="color:#7EE787">researcher</span><span style="color:#E6EDF3">:</span></span>
+<span data-line=""><span style="color:#7EE787">  role</span><span style="color:#E6EDF3">: </span><span style="color:#FF7B72">></span></span>
+<span data-line=""><span style="color:#A5D6FF">    AI Research Analyst</span></span>
+<span data-line=""><span style="color:#7EE787">  goal</span><span style="color:#E6EDF3">: </span><span style="color:#FF7B72">></span></span>
+<span data-line=""><span style="color:#A5D6FF">    Collect accurate and current information</span></span>
+<span data-line=""><span style="color:#7EE787">  backstory</span><span style="color:#E6EDF3">: </span><span style="color:#FF7B72">></span></span>
+<span data-line=""><span style="color:#A5D6FF">    You specialize in finding reliable sources and extracting key facts.</span></span>
+<span data-line=""><span style="color:#7EE787">  allow_delegation</span><span style="color:#E6EDF3">: </span><span style="color:#79C0FF">false</span></span>
 <span data-line=""> </span>
-<span data-line=""><span style="color:#85E89D">writer</span><span style="color:#E1E4E8">:</span></span>
-<span data-line=""><span style="color:#85E89D">  role</span><span style="color:#E1E4E8">: </span><span style="color:#F97583">></span></span>
-<span data-line=""><span style="color:#9ECBFF">    Technical Writer</span></span>
-<span data-line=""><span style="color:#85E89D">  goal</span><span style="color:#E1E4E8">: </span><span style="color:#F97583">></span></span>
-<span data-line=""><span style="color:#9ECBFF">    Turn raw findings into clear and practical documentation</span></span>
-<span data-line=""><span style="color:#85E89D">  backstory</span><span style="color:#E1E4E8">: </span><span style="color:#F97583">></span></span>
-<span data-line=""><span style="color:#9ECBFF">    You explain complex ideas in simple language for beginners.</span></span>
-<span data-line=""><span style="color:#85E89D">  allow_delegation</span><span style="color:#E1E4E8">: </span><span style="color:#79B8FF">false</span></span></code></pre></figure>
+<span data-line=""><span style="color:#7EE787">writer</span><span style="color:#E6EDF3">:</span></span>
+<span data-line=""><span style="color:#7EE787">  role</span><span style="color:#E6EDF3">: </span><span style="color:#FF7B72">></span></span>
+<span data-line=""><span style="color:#A5D6FF">    Technical Writer</span></span>
+<span data-line=""><span style="color:#7EE787">  goal</span><span style="color:#E6EDF3">: </span><span style="color:#FF7B72">></span></span>
+<span data-line=""><span style="color:#A5D6FF">    Turn raw findings into clear and practical documentation</span></span>
+<span data-line=""><span style="color:#7EE787">  backstory</span><span style="color:#E6EDF3">: </span><span style="color:#FF7B72">></span></span>
+<span data-line=""><span style="color:#A5D6FF">    You explain complex ideas in simple language for beginners.</span></span>
+<span data-line=""><span style="color:#7EE787">  allow_delegation</span><span style="color:#E6EDF3">: </span><span style="color:#79C0FF">false</span></span></code></pre></figure>
 <blockquote>
 <p>⚠️ Gardez <code>allow_delegation</code> désactivé par défaut. Stabilisez d'abord le flux, puis envisagez la délégation dynamique.</p>
 </blockquote>
 <h2 id="exemple-de-bon-design-de-tâche">Exemple de bon design de tâche</h2>
-<figure data-rehype-pretty-code-figure=""><pre style="background-color:#24292e;color:#e1e4e8" tabindex="0" data-language="yaml" data-theme="github-dark"><code data-language="yaml" data-theme="github-dark" style="display: grid;"><span data-line=""><span style="color:#85E89D">research_task</span><span style="color:#E1E4E8">:</span></span>
-<span data-line=""><span style="color:#85E89D">  description</span><span style="color:#E1E4E8">: </span><span style="color:#F97583">></span></span>
-<span data-line=""><span style="color:#9ECBFF">    Find 8-10 important updates about {topic} in 2026.</span></span>
-<span data-line=""><span style="color:#9ECBFF">    Include what changed and why it matters.</span></span>
-<span data-line=""><span style="color:#85E89D">  expected_output</span><span style="color:#E1E4E8">: </span><span style="color:#F97583">></span></span>
-<span data-line=""><span style="color:#9ECBFF">    A markdown bullet list.</span></span>
-<span data-line=""><span style="color:#9ECBFF">    Each bullet includes: title, summary, and source URL.</span></span>
-<span data-line=""><span style="color:#85E89D">  agent</span><span style="color:#E1E4E8">: </span><span style="color:#9ECBFF">researcher</span></span>
+<figure data-rehype-pretty-code-figure=""><pre style="background-color:#0d1117;color:#e6edf3" tabindex="0" data-language="yaml" data-theme="github-dark-default"><code data-language="yaml" data-theme="github-dark-default" style="display: grid;"><span data-line=""><span style="color:#7EE787">research_task</span><span style="color:#E6EDF3">:</span></span>
+<span data-line=""><span style="color:#7EE787">  description</span><span style="color:#E6EDF3">: </span><span style="color:#FF7B72">></span></span>
+<span data-line=""><span style="color:#A5D6FF">    Find 8-10 important updates about {topic} in 2026.</span></span>
+<span data-line=""><span style="color:#A5D6FF">    Include what changed and why it matters.</span></span>
+<span data-line=""><span style="color:#7EE787">  expected_output</span><span style="color:#E6EDF3">: </span><span style="color:#FF7B72">></span></span>
+<span data-line=""><span style="color:#A5D6FF">    A markdown bullet list.</span></span>
+<span data-line=""><span style="color:#A5D6FF">    Each bullet includes: title, summary, and source URL.</span></span>
+<span data-line=""><span style="color:#7EE787">  agent</span><span style="color:#E6EDF3">: </span><span style="color:#A5D6FF">researcher</span></span>
 <span data-line=""> </span>
-<span data-line=""><span style="color:#85E89D">write_task</span><span style="color:#E1E4E8">:</span></span>
-<span data-line=""><span style="color:#85E89D">  description</span><span style="color:#E1E4E8">: </span><span style="color:#F97583">></span></span>
-<span data-line=""><span style="color:#9ECBFF">    Convert the research bullets into a tutorial article with examples.</span></span>
-<span data-line=""><span style="color:#85E89D">  expected_output</span><span style="color:#E1E4E8">: </span><span style="color:#F97583">></span></span>
-<span data-line=""><span style="color:#9ECBFF">    A markdown article with intro, 3 sections, and conclusion.</span></span>
-<span data-line=""><span style="color:#85E89D">  agent</span><span style="color:#E1E4E8">: </span><span style="color:#9ECBFF">writer</span></span>
-<span data-line=""><span style="color:#85E89D">  context</span><span style="color:#E1E4E8">:</span></span>
-<span data-line=""><span style="color:#E1E4E8">    - </span><span style="color:#9ECBFF">research_task</span></span></code></pre></figure>
+<span data-line=""><span style="color:#7EE787">write_task</span><span style="color:#E6EDF3">:</span></span>
+<span data-line=""><span style="color:#7EE787">  description</span><span style="color:#E6EDF3">: </span><span style="color:#FF7B72">></span></span>
+<span data-line=""><span style="color:#A5D6FF">    Convert the research bullets into a tutorial article with examples.</span></span>
+<span data-line=""><span style="color:#7EE787">  expected_output</span><span style="color:#E6EDF3">: </span><span style="color:#FF7B72">></span></span>
+<span data-line=""><span style="color:#A5D6FF">    A markdown article with intro, 3 sections, and conclusion.</span></span>
+<span data-line=""><span style="color:#7EE787">  agent</span><span style="color:#E6EDF3">: </span><span style="color:#A5D6FF">writer</span></span>
+<span data-line=""><span style="color:#7EE787">  context</span><span style="color:#E6EDF3">:</span></span>
+<span data-line=""><span style="color:#E6EDF3">    - </span><span style="color:#A5D6FF">research_task</span></span></code></pre></figure>
 <h2 id="les-3-pièges-les-plus-fréquents-pour-les-débutants">Les 3 pièges les plus fréquents pour les débutants</h2>
 <ol>
 <li><strong>Description de tâche trop courte</strong> : le modèle ne sait pas quel format vous exigez</li>

@@ -1,9 +1,9 @@
 1:"$Sreact.fragment"
-2:I[14864,["/_next/static/chunks/7923a261b80bb6e1.js","/_next/static/chunks/e09b4358027e8033.js","/_next/static/chunks/2dddb3bc05093f69.js"],"default"]
-8:I[24801,["/_next/static/chunks/7923a261b80bb6e1.js","/_next/static/chunks/e09b4358027e8033.js","/_next/static/chunks/2dddb3bc05093f69.js"],"default"]
+2:I[14864,["/_next/static/chunks/4204edc93da35a5e.js","/_next/static/chunks/f2afb7fd2b7566bb.js","/_next/static/chunks/2dddb3bc05093f69.js"],"default"]
+8:I[24801,["/_next/static/chunks/4204edc93da35a5e.js","/_next/static/chunks/f2afb7fd2b7566bb.js","/_next/static/chunks/2dddb3bc05093f69.js"],"default"]
 a:I[50183,["/_next/static/chunks/5a5b5b13c22d14f7.js","/_next/static/chunks/a484d1d3dd4b55ab.js"],"OutletBoundary"]
 b:"$Sreact.suspense"
-3:T17d5,<p>Si tu asistente solo funciona en el navegador, ¿qué tan distinto es eso de hablar con una IA en una web cualquiera?</p>
+3:T17f5,<p>Si tu asistente solo funciona en el navegador, ¿qué tan distinto es eso de hablar con una IA en una web cualquiera?</p>
 <p>La respuesta es <strong>Channels</strong>: permiten que tu asistente viva dentro de las apps que ya usas.</p>
 <h2 id="qué-vas-a-aprender">Qué vas a aprender</h2>
 <ul>
@@ -37,15 +37,15 @@ b:"$Sreact.suspense"
 </ol>
 <h3 id="paso-2-configura-channelstelegram">Paso 2: configura <code>channels.telegram</code></h3>
 <p>Abre dashboard → Config → busca <code>channels.telegram</code> y añade algo como:</p>
-<figure data-rehype-pretty-code-figure=""><pre style="background-color:#24292e;color:#e1e4e8" tabindex="0" data-language="json5" data-theme="github-dark"><code data-language="json5" data-theme="github-dark" style="display: grid;"><span data-line=""><span style="color:#E1E4E8">{</span></span>
-<span data-line=""><span style="color:#9ECBFF">  "channels"</span><span style="color:#E1E4E8">: {</span></span>
-<span data-line=""><span style="color:#9ECBFF">    "telegram"</span><span style="color:#E1E4E8">: {</span></span>
-<span data-line=""><span style="color:#9ECBFF">      "enabled"</span><span style="color:#E1E4E8">: </span><span style="color:#79B8FF">true</span><span style="color:#E1E4E8">,</span></span>
-<span data-line=""><span style="color:#9ECBFF">      "botToken"</span><span style="color:#E1E4E8">: </span><span style="color:#9ECBFF">"pega aquí tu bot token"</span><span style="color:#E1E4E8">,</span></span>
-<span data-line=""><span style="color:#9ECBFF">      "dmPolicy"</span><span style="color:#E1E4E8">: </span><span style="color:#9ECBFF">"pairing"</span></span>
-<span data-line=""><span style="color:#E1E4E8">    }</span></span>
-<span data-line=""><span style="color:#E1E4E8">  }</span></span>
-<span data-line=""><span style="color:#E1E4E8">}</span></span></code></pre></figure>
+<figure data-rehype-pretty-code-figure=""><pre style="background-color:#0d1117;color:#e6edf3" tabindex="0" data-language="json5" data-theme="github-dark-default"><code data-language="json5" data-theme="github-dark-default" style="display: grid;"><span data-line=""><span style="color:#E6EDF3">{</span></span>
+<span data-line=""><span style="color:#A5D6FF">  "channels"</span><span style="color:#E6EDF3">: {</span></span>
+<span data-line=""><span style="color:#A5D6FF">    "telegram"</span><span style="color:#E6EDF3">: {</span></span>
+<span data-line=""><span style="color:#A5D6FF">      "enabled"</span><span style="color:#E6EDF3">: </span><span style="color:#79C0FF">true</span><span style="color:#E6EDF3">,</span></span>
+<span data-line=""><span style="color:#A5D6FF">      "botToken"</span><span style="color:#E6EDF3">: </span><span style="color:#A5D6FF">"pega aquí tu bot token"</span><span style="color:#E6EDF3">,</span></span>
+<span data-line=""><span style="color:#A5D6FF">      "dmPolicy"</span><span style="color:#E6EDF3">: </span><span style="color:#A5D6FF">"pairing"</span></span>
+<span data-line=""><span style="color:#E6EDF3">    }</span></span>
+<span data-line=""><span style="color:#E6EDF3">  }</span></span>
+<span data-line=""><span style="color:#E6EDF3">}</span></span></code></pre></figure>
 <h3 id="paso-3-prueba">Paso 3: prueba</h3>
 <p>Busca tu bot en Telegram y envía "hola". El asistente debería responder.</p>
 <blockquote>
@@ -54,18 +54,18 @@ b:"$Sreact.suspense"
 <hr>
 <h2 id="y-en-grupos">¿Y en grupos?</h2>
 <p>Dentro de un grupo normalmente no quieres que el asistente responda a cada frase como si tomara demasiado café. Añade <code>requireMention</code>:</p>
-<figure data-rehype-pretty-code-figure=""><pre style="background-color:#24292e;color:#e1e4e8" tabindex="0" data-language="json5" data-theme="github-dark"><code data-language="json5" data-theme="github-dark" style="display: grid;"><span data-line=""><span style="color:#E1E4E8">{</span></span>
-<span data-line=""><span style="color:#9ECBFF">  "channels"</span><span style="color:#E1E4E8">: {</span></span>
-<span data-line=""><span style="color:#9ECBFF">    "telegram"</span><span style="color:#E1E4E8">: {</span></span>
-<span data-line=""><span style="color:#9ECBFF">      "enabled"</span><span style="color:#E1E4E8">: </span><span style="color:#79B8FF">true</span><span style="color:#E1E4E8">,</span></span>
-<span data-line=""><span style="color:#9ECBFF">      "botToken"</span><span style="color:#E1E4E8">: </span><span style="color:#9ECBFF">"tu bot token"</span><span style="color:#E1E4E8">,</span></span>
-<span data-line=""><span style="color:#9ECBFF">      "dmPolicy"</span><span style="color:#E1E4E8">: </span><span style="color:#9ECBFF">"pairing"</span><span style="color:#E1E4E8">,</span></span>
-<span data-line=""><span style="color:#9ECBFF">      "groups"</span><span style="color:#E1E4E8">: {</span></span>
-<span data-line=""><span style="color:#9ECBFF">        "*"</span><span style="color:#E1E4E8">: { </span><span style="color:#9ECBFF">"requireMention"</span><span style="color:#E1E4E8">: </span><span style="color:#79B8FF">true</span><span style="color:#E1E4E8"> }</span></span>
-<span data-line=""><span style="color:#E1E4E8">      }</span></span>
-<span data-line=""><span style="color:#E1E4E8">    }</span></span>
-<span data-line=""><span style="color:#E1E4E8">  }</span></span>
-<span data-line=""><span style="color:#E1E4E8">}</span></span></code></pre></figure>
+<figure data-rehype-pretty-code-figure=""><pre style="background-color:#0d1117;color:#e6edf3" tabindex="0" data-language="json5" data-theme="github-dark-default"><code data-language="json5" data-theme="github-dark-default" style="display: grid;"><span data-line=""><span style="color:#E6EDF3">{</span></span>
+<span data-line=""><span style="color:#A5D6FF">  "channels"</span><span style="color:#E6EDF3">: {</span></span>
+<span data-line=""><span style="color:#A5D6FF">    "telegram"</span><span style="color:#E6EDF3">: {</span></span>
+<span data-line=""><span style="color:#A5D6FF">      "enabled"</span><span style="color:#E6EDF3">: </span><span style="color:#79C0FF">true</span><span style="color:#E6EDF3">,</span></span>
+<span data-line=""><span style="color:#A5D6FF">      "botToken"</span><span style="color:#E6EDF3">: </span><span style="color:#A5D6FF">"tu bot token"</span><span style="color:#E6EDF3">,</span></span>
+<span data-line=""><span style="color:#A5D6FF">      "dmPolicy"</span><span style="color:#E6EDF3">: </span><span style="color:#A5D6FF">"pairing"</span><span style="color:#E6EDF3">,</span></span>
+<span data-line=""><span style="color:#A5D6FF">      "groups"</span><span style="color:#E6EDF3">: {</span></span>
+<span data-line=""><span style="color:#A5D6FF">        "*"</span><span style="color:#E6EDF3">: { </span><span style="color:#A5D6FF">"requireMention"</span><span style="color:#E6EDF3">: </span><span style="color:#79C0FF">true</span><span style="color:#E6EDF3"> }</span></span>
+<span data-line=""><span style="color:#E6EDF3">      }</span></span>
+<span data-line=""><span style="color:#E6EDF3">    }</span></span>
+<span data-line=""><span style="color:#E6EDF3">  }</span></span>
+<span data-line=""><span style="color:#E6EDF3">}</span></span></code></pre></figure>
 <p>Así solo hablará si alguien menciona explícitamente al bot.</p>
 <hr>
 <h2 id="un-bot-se-te-queda-corto">¿Un bot se te queda corto?</h2>
@@ -73,9 +73,9 @@ b:"$Sreact.suspense"
 <hr>
 <h2 id="siguiente-paso">Siguiente paso</h2>
 <p>Tu asistente ya está esperando en Telegram. Ahora toca enseñarle <strong>nuevas Skills</strong> para que haga más que conversar.</p>
-<p><a href="03-dashboard-auth">← Anterior: Dashboard y autenticación</a> | 👉 <a href="05-skills-intro">Enseña nuevas Skills al asistente</a></p>0:{"buildId":"sM8YAyjANE7sOnXm3EQGk","rsc":["$","$1","c",{"children":[[["$","script",null,{"type":"application/ld+json","dangerouslySetInnerHTML":{"__html":"{\"@context\":\"https://schema.org\",\"@type\":\"Article\",\"headline\":\"Haz que tu asistente trabaje por Telegram: guía completa de Channels\",\"description\":\"Mete tu asistente de IA dentro de Telegram configurando el bot, el comportamiento en grupos y `dmPolicy`.\",\"url\":\"https://benxhub.com/es/blog/openclaw/04-channels-basics\",\"mainEntityOfPage\":{\"@type\":\"WebPage\",\"@id\":\"https://benxhub.com/es/blog/openclaw/04-channels-basics\"},\"datePublished\":\"2026-03-08T00:00:00.000Z\",\"dateModified\":\"2026-03-08T00:00:00.000Z\",\"keywords\":\"openclaw, telegram, channels, bot, setup\",\"inLanguage\":\"es\",\"author\":{\"@type\":\"Person\",\"name\":\"BenX\",\"url\":\"https://benxhub.com\"},\"publisher\":{\"@type\":\"Organization\",\"name\":\"BenXHub Blog\",\"url\":\"https://benxhub.com\"}}"}}],["$","div",null,{"className":"mx-auto max-w-6xl px-4 py-12 sm:px-6","children":["$","div",null,{"className":"lg:grid lg:grid-cols-[1fr_240px] lg:gap-14","children":[["$","article",null,{"children":[["$","header",null,{"className":"mb-10","children":[["$","div",null,{"className":"mb-4 flex flex-wrap gap-2","children":[["$","$L2","openclaw",{"href":"/es/tags/openclaw","localeCookie":{"name":"NEXT_LOCALE","sameSite":"lax"},"className":"inline-flex items-center rounded-full px-2.5 py-0.5 text-xs font-medium transition-colors","style":{"background":"var(--color-code-bg)","color":"var(--color-accent)","border":"1px solid var(--color-border)"},"children":["#","openclaw"]}],["$","$L2","telegram",{"href":"/es/tags/telegram","localeCookie":{"name":"NEXT_LOCALE","sameSite":"lax"},"className":"inline-flex items-center rounded-full px-2.5 py-0.5 text-xs font-medium transition-colors","style":{"background":"var(--color-code-bg)","color":"var(--color-accent)","border":"1px solid var(--color-border)"},"children":["#","telegram"]}],["$","$L2","channels",{"href":"/es/tags/channels","localeCookie":{"name":"NEXT_LOCALE","sameSite":"lax"},"className":"inline-flex items-center rounded-full px-2.5 py-0.5 text-xs font-medium transition-colors","style":{"background":"var(--color-code-bg)","color":"var(--color-accent)","border":"1px solid var(--color-border)"},"children":["#","channels"]}],["$","$L2","bot",{"href":"/es/tags/bot","localeCookie":{"name":"NEXT_LOCALE","sameSite":"lax"},"className":"inline-flex items-center rounded-full px-2.5 py-0.5 text-xs font-medium transition-colors","style":{"background":"var(--color-code-bg)","color":"var(--color-accent)","border":"1px solid var(--color-border)"},"children":["#","bot"]}],["$","$L2","setup",{"href":"/es/tags/setup","localeCookie":{"name":"NEXT_LOCALE","sameSite":"lax"},"className":"inline-flex items-center rounded-full px-2.5 py-0.5 text-xs font-medium transition-colors","style":{"background":"var(--color-code-bg)","color":"var(--color-accent)","border":"1px solid var(--color-border)"},"children":["#","setup"]}]]}],["$","h1",null,{"className":"mb-4 text-3xl leading-snug font-bold tracking-tight sm:text-4xl","style":{"color":"var(--color-text)"},"children":"Haz que tu asistente trabaje por Telegram: guía completa de Channels"}],["$","div",null,{"className":"flex flex-wrap items-center gap-3 text-sm","style":{"color":"var(--color-muted)"},"children":[["$","time",null,{"dateTime":"2026-03-08","children":"8 3月 2026"}],["$","span",null,{"aria-hidden":"true","children":"·"}],["$","span",null,{"children":"3 min read"}]]}],"$undefined",["$","div",null,{"className":"mt-6 border-b","style":{"borderColor":"var(--color-border)"}}]]}],["$","div",null,{"className":"prose","dangerouslySetInnerHTML":{"__html":"$3"}}],"$L4"]}],"$L5"]}]}]],["$L6"],"$L7"]}],"loading":null,"isPartial":false}
+<p><a href="03-dashboard-auth">← Anterior: Dashboard y autenticación</a> | 👉 <a href="05-skills-intro">Enseña nuevas Skills al asistente</a></p>0:{"buildId":"ekNoF06-0VZrB4pGVUsy8","rsc":["$","$1","c",{"children":[[["$","script",null,{"type":"application/ld+json","dangerouslySetInnerHTML":{"__html":"{\"@context\":\"https://schema.org\",\"@type\":\"Article\",\"headline\":\"Haz que tu asistente trabaje por Telegram: guía completa de Channels\",\"description\":\"Mete tu asistente de IA dentro de Telegram configurando el bot, el comportamiento en grupos y `dmPolicy`.\",\"url\":\"https://benxhub.com/es/blog/openclaw/04-channels-basics/\",\"mainEntityOfPage\":{\"@type\":\"WebPage\",\"@id\":\"https://benxhub.com/es/blog/openclaw/04-channels-basics/\"},\"datePublished\":\"2026-03-08T00:00:00.000Z\",\"dateModified\":\"2026-03-08T00:00:00.000Z\",\"keywords\":\"openclaw, telegram, channels, bot, setup\",\"inLanguage\":\"es\",\"author\":{\"@type\":\"Person\",\"@id\":\"https://benxhub.com/#author\",\"name\":\"BenX\",\"url\":\"https://benxhub.com/es/about/\",\"sameAs\":[\"https://github.com/benzhub\"]},\"publisher\":{\"@type\":\"Organization\",\"name\":\"BenXHub Blog\",\"url\":\"https://benxhub.com\"},\"image\":\"https://benxhub.com/og-default.png\"}"}}],["$","div",null,{"className":"mx-auto max-w-6xl px-4 py-12 sm:px-6","children":["$","div",null,{"className":"lg:grid lg:grid-cols-[1fr_240px] lg:gap-14","children":[["$","article",null,{"children":[["$","header",null,{"className":"mb-10","children":[["$","div",null,{"className":"mb-4 flex flex-wrap gap-2","children":[["$","$L2","openclaw",{"href":"/es/tags/openclaw","localeCookie":{"name":"NEXT_LOCALE","sameSite":"lax"},"className":"inline-flex items-center rounded-full px-2.5 py-0.5 text-xs font-medium transition-colors","style":{"background":"var(--color-code-bg)","color":"var(--color-accent)","border":"1px solid var(--color-border)"},"children":["#","openclaw"]}],["$","$L2","telegram",{"href":"/es/tags/telegram","localeCookie":{"name":"NEXT_LOCALE","sameSite":"lax"},"className":"inline-flex items-center rounded-full px-2.5 py-0.5 text-xs font-medium transition-colors","style":{"background":"var(--color-code-bg)","color":"var(--color-accent)","border":"1px solid var(--color-border)"},"children":["#","telegram"]}],["$","$L2","channels",{"href":"/es/tags/channels","localeCookie":{"name":"NEXT_LOCALE","sameSite":"lax"},"className":"inline-flex items-center rounded-full px-2.5 py-0.5 text-xs font-medium transition-colors","style":{"background":"var(--color-code-bg)","color":"var(--color-accent)","border":"1px solid var(--color-border)"},"children":["#","channels"]}],["$","$L2","bot",{"href":"/es/tags/bot","localeCookie":{"name":"NEXT_LOCALE","sameSite":"lax"},"className":"inline-flex items-center rounded-full px-2.5 py-0.5 text-xs font-medium transition-colors","style":{"background":"var(--color-code-bg)","color":"var(--color-accent)","border":"1px solid var(--color-border)"},"children":["#","bot"]}],["$","$L2","setup",{"href":"/es/tags/setup","localeCookie":{"name":"NEXT_LOCALE","sameSite":"lax"},"className":"inline-flex items-center rounded-full px-2.5 py-0.5 text-xs font-medium transition-colors","style":{"background":"var(--color-code-bg)","color":"var(--color-accent)","border":"1px solid var(--color-border)"},"children":["#","setup"]}]]}],["$","h1",null,{"className":"mb-4 text-3xl leading-snug font-bold tracking-tight sm:text-4xl","style":{"color":"var(--color-text)"},"children":"Haz que tu asistente trabaje por Telegram: guía completa de Channels"}],["$","div",null,{"className":"flex flex-wrap items-center gap-3 text-sm","style":{"color":"var(--color-muted)"},"children":[["$","time",null,{"dateTime":"2026-03-08","children":"8 3月 2026"}],["$","span",null,{"aria-hidden":"true","children":"·"}],["$","span",null,{"children":"3 min read"}]]}],"$undefined",["$","div",null,{"className":"mt-6 border-b","style":{"borderColor":"var(--color-border)"}}]]}],["$","div",null,{"className":"prose","dangerouslySetInnerHTML":{"__html":"$3"}}],"$L4"]}],"$L5"]}]}]],["$L6"],"$L7"]}],"loading":null,"isPartial":false}
 4:["$","footer",null,{"className":"mt-14 border-t pt-8","style":{"borderColor":"var(--color-border)"},"children":[["$","div",null,{"className":"mb-8 flex flex-wrap gap-2","children":[["$","$L2","openclaw",{"href":"/es/tags/openclaw","localeCookie":{"name":"NEXT_LOCALE","sameSite":"lax"},"className":"inline-flex items-center rounded-full px-3 py-1 text-sm font-medium transition-colors","style":{"background":"var(--color-code-bg)","color":"var(--color-accent)","border":"1px solid var(--color-border)"},"children":["#","openclaw"]}],["$","$L2","telegram",{"href":"/es/tags/telegram","localeCookie":{"name":"NEXT_LOCALE","sameSite":"lax"},"className":"inline-flex items-center rounded-full px-3 py-1 text-sm font-medium transition-colors","style":{"background":"var(--color-code-bg)","color":"var(--color-accent)","border":"1px solid var(--color-border)"},"children":["#","telegram"]}],["$","$L2","channels",{"href":"/es/tags/channels","localeCookie":{"name":"NEXT_LOCALE","sameSite":"lax"},"className":"inline-flex items-center rounded-full px-3 py-1 text-sm font-medium transition-colors","style":{"background":"var(--color-code-bg)","color":"var(--color-accent)","border":"1px solid var(--color-border)"},"children":["#","channels"]}],["$","$L2","bot",{"href":"/es/tags/bot","localeCookie":{"name":"NEXT_LOCALE","sameSite":"lax"},"className":"inline-flex items-center rounded-full px-3 py-1 text-sm font-medium transition-colors","style":{"background":"var(--color-code-bg)","color":"var(--color-accent)","border":"1px solid var(--color-border)"},"children":["#","bot"]}],["$","$L2","setup",{"href":"/es/tags/setup","localeCookie":{"name":"NEXT_LOCALE","sameSite":"lax"},"className":"inline-flex items-center rounded-full px-3 py-1 text-sm font-medium transition-colors","style":{"background":"var(--color-code-bg)","color":"var(--color-accent)","border":"1px solid var(--color-border)"},"children":["#","setup"]}]]}],["$","nav",null,{"aria-label":"Navegación de artículos","className":"grid grid-cols-1 gap-4 sm:grid-cols-2","children":[["$","$L2",null,{"href":"/es/blog/openclaw/03-dashboard-auth","localeCookie":{"name":"NEXT_LOCALE","sameSite":"lax"},"className":"group rounded-lg border p-4 transition-colors hover:border-accent","style":{"borderColor":"var(--color-border)","background":"var(--color-surface)"},"children":[["$","p",null,{"className":"mb-1 text-xs","style":{"color":"var(--color-muted)"},"children":"← Artículo más reciente"}],["$","p",null,{"className":"line-clamp-1 text-sm font-medium transition-colors group-hover:text-accent","style":{"color":"var(--color-text)"},"children":"¿El dashboard siempre te bloquea? Entiende la autenticación de OpenClaw en 3 minutos"}]]}],["$","$L2",null,{"href":"/es/blog/openclaw/05-skills-intro","localeCookie":{"name":"NEXT_LOCALE","sameSite":"lax"},"className":"group rounded-lg border p-4 text-right transition-colors hover:border-accent","style":{"borderColor":"var(--color-border)","background":"var(--color-surface)"},"children":[["$","p",null,{"className":"mb-1 text-xs","style":{"color":"var(--color-muted)"},"children":"Artículo más antiguo →"}],["$","p",null,{"className":"line-clamp-1 text-sm font-medium transition-colors group-hover:text-accent","style":{"color":"var(--color-text)"},"children":"Dale superpoderes a tu asistente: Skills lo convierten en alguien que actúa"}]]}]]}]]}]
-9:T17d5,<p>Si tu asistente solo funciona en el navegador, ¿qué tan distinto es eso de hablar con una IA en una web cualquiera?</p>
+9:T17f5,<p>Si tu asistente solo funciona en el navegador, ¿qué tan distinto es eso de hablar con una IA en una web cualquiera?</p>
 <p>La respuesta es <strong>Channels</strong>: permiten que tu asistente viva dentro de las apps que ya usas.</p>
 <h2 id="qué-vas-a-aprender">Qué vas a aprender</h2>
 <ul>
@@ -109,15 +109,15 @@ b:"$Sreact.suspense"
 </ol>
 <h3 id="paso-2-configura-channelstelegram">Paso 2: configura <code>channels.telegram</code></h3>
 <p>Abre dashboard → Config → busca <code>channels.telegram</code> y añade algo como:</p>
-<figure data-rehype-pretty-code-figure=""><pre style="background-color:#24292e;color:#e1e4e8" tabindex="0" data-language="json5" data-theme="github-dark"><code data-language="json5" data-theme="github-dark" style="display: grid;"><span data-line=""><span style="color:#E1E4E8">{</span></span>
-<span data-line=""><span style="color:#9ECBFF">  "channels"</span><span style="color:#E1E4E8">: {</span></span>
-<span data-line=""><span style="color:#9ECBFF">    "telegram"</span><span style="color:#E1E4E8">: {</span></span>
-<span data-line=""><span style="color:#9ECBFF">      "enabled"</span><span style="color:#E1E4E8">: </span><span style="color:#79B8FF">true</span><span style="color:#E1E4E8">,</span></span>
-<span data-line=""><span style="color:#9ECBFF">      "botToken"</span><span style="color:#E1E4E8">: </span><span style="color:#9ECBFF">"pega aquí tu bot token"</span><span style="color:#E1E4E8">,</span></span>
-<span data-line=""><span style="color:#9ECBFF">      "dmPolicy"</span><span style="color:#E1E4E8">: </span><span style="color:#9ECBFF">"pairing"</span></span>
-<span data-line=""><span style="color:#E1E4E8">    }</span></span>
-<span data-line=""><span style="color:#E1E4E8">  }</span></span>
-<span data-line=""><span style="color:#E1E4E8">}</span></span></code></pre></figure>
+<figure data-rehype-pretty-code-figure=""><pre style="background-color:#0d1117;color:#e6edf3" tabindex="0" data-language="json5" data-theme="github-dark-default"><code data-language="json5" data-theme="github-dark-default" style="display: grid;"><span data-line=""><span style="color:#E6EDF3">{</span></span>
+<span data-line=""><span style="color:#A5D6FF">  "channels"</span><span style="color:#E6EDF3">: {</span></span>
+<span data-line=""><span style="color:#A5D6FF">    "telegram"</span><span style="color:#E6EDF3">: {</span></span>
+<span data-line=""><span style="color:#A5D6FF">      "enabled"</span><span style="color:#E6EDF3">: </span><span style="color:#79C0FF">true</span><span style="color:#E6EDF3">,</span></span>
+<span data-line=""><span style="color:#A5D6FF">      "botToken"</span><span style="color:#E6EDF3">: </span><span style="color:#A5D6FF">"pega aquí tu bot token"</span><span style="color:#E6EDF3">,</span></span>
+<span data-line=""><span style="color:#A5D6FF">      "dmPolicy"</span><span style="color:#E6EDF3">: </span><span style="color:#A5D6FF">"pairing"</span></span>
+<span data-line=""><span style="color:#E6EDF3">    }</span></span>
+<span data-line=""><span style="color:#E6EDF3">  }</span></span>
+<span data-line=""><span style="color:#E6EDF3">}</span></span></code></pre></figure>
 <h3 id="paso-3-prueba">Paso 3: prueba</h3>
 <p>Busca tu bot en Telegram y envía "hola". El asistente debería responder.</p>
 <blockquote>
@@ -126,18 +126,18 @@ b:"$Sreact.suspense"
 <hr>
 <h2 id="y-en-grupos">¿Y en grupos?</h2>
 <p>Dentro de un grupo normalmente no quieres que el asistente responda a cada frase como si tomara demasiado café. Añade <code>requireMention</code>:</p>
-<figure data-rehype-pretty-code-figure=""><pre style="background-color:#24292e;color:#e1e4e8" tabindex="0" data-language="json5" data-theme="github-dark"><code data-language="json5" data-theme="github-dark" style="display: grid;"><span data-line=""><span style="color:#E1E4E8">{</span></span>
-<span data-line=""><span style="color:#9ECBFF">  "channels"</span><span style="color:#E1E4E8">: {</span></span>
-<span data-line=""><span style="color:#9ECBFF">    "telegram"</span><span style="color:#E1E4E8">: {</span></span>
-<span data-line=""><span style="color:#9ECBFF">      "enabled"</span><span style="color:#E1E4E8">: </span><span style="color:#79B8FF">true</span><span style="color:#E1E4E8">,</span></span>
-<span data-line=""><span style="color:#9ECBFF">      "botToken"</span><span style="color:#E1E4E8">: </span><span style="color:#9ECBFF">"tu bot token"</span><span style="color:#E1E4E8">,</span></span>
-<span data-line=""><span style="color:#9ECBFF">      "dmPolicy"</span><span style="color:#E1E4E8">: </span><span style="color:#9ECBFF">"pairing"</span><span style="color:#E1E4E8">,</span></span>
-<span data-line=""><span style="color:#9ECBFF">      "groups"</span><span style="color:#E1E4E8">: {</span></span>
-<span data-line=""><span style="color:#9ECBFF">        "*"</span><span style="color:#E1E4E8">: { </span><span style="color:#9ECBFF">"requireMention"</span><span style="color:#E1E4E8">: </span><span style="color:#79B8FF">true</span><span style="color:#E1E4E8"> }</span></span>
-<span data-line=""><span style="color:#E1E4E8">      }</span></span>
-<span data-line=""><span style="color:#E1E4E8">    }</span></span>
-<span data-line=""><span style="color:#E1E4E8">  }</span></span>
-<span data-line=""><span style="color:#E1E4E8">}</span></span></code></pre></figure>
+<figure data-rehype-pretty-code-figure=""><pre style="background-color:#0d1117;color:#e6edf3" tabindex="0" data-language="json5" data-theme="github-dark-default"><code data-language="json5" data-theme="github-dark-default" style="display: grid;"><span data-line=""><span style="color:#E6EDF3">{</span></span>
+<span data-line=""><span style="color:#A5D6FF">  "channels"</span><span style="color:#E6EDF3">: {</span></span>
+<span data-line=""><span style="color:#A5D6FF">    "telegram"</span><span style="color:#E6EDF3">: {</span></span>
+<span data-line=""><span style="color:#A5D6FF">      "enabled"</span><span style="color:#E6EDF3">: </span><span style="color:#79C0FF">true</span><span style="color:#E6EDF3">,</span></span>
+<span data-line=""><span style="color:#A5D6FF">      "botToken"</span><span style="color:#E6EDF3">: </span><span style="color:#A5D6FF">"tu bot token"</span><span style="color:#E6EDF3">,</span></span>
+<span data-line=""><span style="color:#A5D6FF">      "dmPolicy"</span><span style="color:#E6EDF3">: </span><span style="color:#A5D6FF">"pairing"</span><span style="color:#E6EDF3">,</span></span>
+<span data-line=""><span style="color:#A5D6FF">      "groups"</span><span style="color:#E6EDF3">: {</span></span>
+<span data-line=""><span style="color:#A5D6FF">        "*"</span><span style="color:#E6EDF3">: { </span><span style="color:#A5D6FF">"requireMention"</span><span style="color:#E6EDF3">: </span><span style="color:#79C0FF">true</span><span style="color:#E6EDF3"> }</span></span>
+<span data-line=""><span style="color:#E6EDF3">      }</span></span>
+<span data-line=""><span style="color:#E6EDF3">    }</span></span>
+<span data-line=""><span style="color:#E6EDF3">  }</span></span>
+<span data-line=""><span style="color:#E6EDF3">}</span></span></code></pre></figure>
 <p>Así solo hablará si alguien menciona explícitamente al bot.</p>
 <hr>
 <h2 id="un-bot-se-te-queda-corto">¿Un bot se te queda corto?</h2>

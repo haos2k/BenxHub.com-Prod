@@ -1,0 +1,444 @@
+1:"$Sreact.fragment"
+2:I[26795,["/_next/static/chunks/5a5b5b13c22d14f7.js","/_next/static/chunks/a484d1d3dd4b55ab.js"],"default"]
+3:I[73489,["/_next/static/chunks/5a5b5b13c22d14f7.js","/_next/static/chunks/a484d1d3dd4b55ab.js"],"default"]
+6:I[50183,["/_next/static/chunks/5a5b5b13c22d14f7.js","/_next/static/chunks/a484d1d3dd4b55ab.js"],"OutletBoundary"]
+7:"$Sreact.suspense"
+9:I[50183,["/_next/static/chunks/5a5b5b13c22d14f7.js","/_next/static/chunks/a484d1d3dd4b55ab.js"],"ViewportBoundary"]
+b:I[50183,["/_next/static/chunks/5a5b5b13c22d14f7.js","/_next/static/chunks/a484d1d3dd4b55ab.js"],"MetadataBoundary"]
+d:I[63847,[],"default"]
+:HL["/_next/static/chunks/4d9c3828f6075602.css","style"]
+:HL["/_next/static/media/797e433ab948586e-s.p.29207c2f.woff2","font",{"crossOrigin":"","type":"font/woff2"}]
+:HL["/_next/static/media/caa3a2e1cccd8315-s.p.3b6cae6d.woff2","font",{"crossOrigin":"","type":"font/woff2"}]
+0:{"P":null,"b":"ekNoF06-0VZrB4pGVUsy8","c":["","en","blog","k8s","gateway","00-overview",""],"q":"","i":false,"f":[[["",{"children":[["locale","en","d"],{"children":["blog",{"children":[["slug","k8s/gateway/00-overview","c"],{"children":["__PAGE__",{}]}]}]}]},"$undefined","$undefined",true],[["$","$1","c",{"children":[null,["$","$L2",null,{"parallelRouterKey":"children","error":"$undefined","errorStyles":"$undefined","errorScripts":"$undefined","template":["$","$L3",null,{}],"templateStyles":"$undefined","templateScripts":"$undefined","notFound":[["$","html",null,{"lang":"zh-Hant","children":["$","body",null,{"children":["$","main",null,{"className":"mx-auto max-w-2xl px-4 py-20 text-center sm:px-6","children":[["$","h1",null,{"className":"mb-3 text-4xl font-bold tracking-tight","children":"404"}],["$","p",null,{"className":"mb-8 text-lg","style":{"color":"var(--color-muted)"},"children":"找不到這個頁面 / Page not found"}],["$","a",null,{"href":"/zh/","className":"inline-flex items-center rounded-lg border px-4 py-2.5 text-sm font-medium","style":{"borderColor":"var(--color-border)","color":"var(--color-accent)","background":"var(--color-surface)"},"children":"BenXHub Blog"}]]}]}]}],[["$","link","0",{"rel":"stylesheet","href":"/_next/static/chunks/4d9c3828f6075602.css","precedence":"next","crossOrigin":"$undefined","nonce":"$undefined"}]]],"forbidden":"$undefined","unauthorized":"$undefined"}]]}],{"children":[["$","$1","c",{"children":[[["$","link","0",{"rel":"stylesheet","href":"/_next/static/chunks/4d9c3828f6075602.css","precedence":"next","crossOrigin":"$undefined","nonce":"$undefined"}],["$","script","script-0",{"src":"/_next/static/chunks/4204edc93da35a5e.js","async":true,"nonce":"$undefined"}],["$","script","script-1",{"src":"/_next/static/chunks/f2afb7fd2b7566bb.js","async":true,"nonce":"$undefined"}]],"$L4"]}],{"children":[["$","$1","c",{"children":[null,["$","$L2",null,{"parallelRouterKey":"children","error":"$undefined","errorStyles":"$undefined","errorScripts":"$undefined","template":["$","$L3",null,{}],"templateStyles":"$undefined","templateScripts":"$undefined","notFound":"$undefined","forbidden":"$undefined","unauthorized":"$undefined"}]]}],{"children":[["$","$1","c",{"children":[null,["$","$L2",null,{"parallelRouterKey":"children","error":"$undefined","errorStyles":"$undefined","errorScripts":"$undefined","template":["$","$L3",null,{}],"templateStyles":"$undefined","templateScripts":"$undefined","notFound":"$undefined","forbidden":"$undefined","unauthorized":"$undefined"}]]}],{"children":[["$","$1","c",{"children":["$L5",[["$","script","script-0",{"src":"/_next/static/chunks/2dddb3bc05093f69.js","async":true,"nonce":"$undefined"}]],["$","$L6",null,{"children":["$","$7",null,{"name":"Next.MetadataOutlet","children":"$@8"}]}]]}],{},null,false,false]},null,false,false]},null,false,false]},null,false,false]},null,false,false],["$","$1","h",{"children":[null,["$","$L9",null,{"children":"$La"}],["$","div",null,{"hidden":true,"children":["$","$Lb",null,{"children":["$","$7",null,{"name":"Next.Metadata","children":"$Lc"}]}]}],["$","meta",null,{"name":"next-size-adjust","content":""}]]}],false]],"m":"$undefined","G":["$d",[]],"S":true}
+4:["$","html",null,{"lang":"en","dir":"ltr","className":"geist_a71539c9-module__T19VSG__variable geist_mono_8d43a2aa-module__8Li5zG__variable","children":["$","body",null,{"className":"flex min-h-screen flex-col antialiased","children":[["$","script",null,{"type":"application/ld+json","dangerouslySetInnerHTML":{"__html":"[{\"@context\":\"https://schema.org\",\"@type\":\"WebSite\",\"name\":\"BenXHub Blog\",\"url\":\"https://benxhub.com/en/\",\"inLanguage\":\"en\",\"publisher\":{\"@type\":\"Organization\",\"name\":\"BenXHub Blog\",\"url\":\"https://benxhub.com\"},\"potentialAction\":{\"@type\":\"SearchAction\",\"target\":{\"@type\":\"EntryPoint\",\"urlTemplate\":\"https://benxhub.com/en/search/?q={search_term_string}\"},\"query-input\":\"required name=search_term_string\"}},{\"@context\":\"https://schema.org\",\"@type\":\"Person\",\"@id\":\"https://benxhub.com/#author\",\"name\":\"BenX\",\"url\":\"https://benxhub.com/en/about/\",\"sameAs\":[\"https://github.com/benzhub\"]}]"}}],"$Le"]}]}]
+f:I[33343,["/_next/static/chunks/4204edc93da35a5e.js","/_next/static/chunks/f2afb7fd2b7566bb.js"],"default"]
+10:I[26817,["/_next/static/chunks/4204edc93da35a5e.js","/_next/static/chunks/f2afb7fd2b7566bb.js"],"default"]
+11:I[6197,["/_next/static/chunks/4204edc93da35a5e.js","/_next/static/chunks/f2afb7fd2b7566bb.js"],"default"]
+13:I[40018,["/_next/static/chunks/4204edc93da35a5e.js","/_next/static/chunks/f2afb7fd2b7566bb.js"],"default"]
+e:["$","$Lf",null,{"formats":"$undefined","locale":"en","messages":{"common":{"siteName":"BenXHub Blog","siteDescription":"BenX's tech blog — sharing Web development, architecture, and engineering practices."},"nav":{"home":"Home","tags":"Tags","about":"About","searchLabel":"Search articles"},"hero":{"subtitle":"Tech notes on Web development, architecture, and engineering practices","cta":"Browse Articles"},"posts":{"title":"Articles","count":"{total} articles total","empty":"No articles yet, stay tuned!","newerPost":"← Newer","olderPost":"Older →","navLabel":"Post navigation"},"pagination":{"prev":"Previous","next":"Next","page":"Page {current} of {total}","label":"Article list pagination","pageTitle":"Page {num}","pageDescription":"BenX's tech blog — article list."},"search":{"title":"Search Articles","description":"Search all articles on BenXHub Blog by title, description, or tags.","subtitle":"Search by title, description, or tags","placeholder":"Search articles by title, description, or tags…","found":"Found {count} related articles","notFound":"No articles found for \"{query}\"","emptyTitle":"No results found","emptyHint":"Try different keywords, or browse","allPosts":"all articles","totalCount":"{count} articles total — type to search"},"tags":{"title":"All Tags","description":"Browse all articles by tag.","count":"{count} tags total","empty":"No tags yet, stay tuned!","allTags":"All Tags","postCount":"{count} articles","otherTags":"Other Tags","tagTitle":"Articles tagged #{tag}","tagDescription":"All articles tagged \"{tag}\"."},"about":{"title":"About","description":"About BenXHub Blog and this site.","subtitle":"About BenXHub Blog and this site","siteTitle":"About This Site","siteContent":"BenXHub Blog is BenX's tech blog, sharing Web development, architecture, and engineering practices.","authorTitle":"About Me","authorContent":"I enjoy coding and sharing knowledge. I like documenting problems I've encountered and their solutions. Feel free to reach out through the links in the sidebar or footer.","linksTitle":"Links"},"sidebar":{"label":"Sidebar","authorBio":"Enjoys coding and sharing — focused on Web development, architecture, and DevOps.","searchPlaceholder":"Search articles…","seriesTitle":"Series","articleCount":"{count} articles"},"toc":{"title":"Contents","label":"Table of contents"},"notFound":{"message":"This page does not exist. The link may be broken or the URL is incorrect.","backHome":"Back to Home"},"localeSwitcher":{"label":"Switch language"}},"now":"$undefined","timeZone":"UTC","children":[["$","$L10",null,{}],["$","$L11",null,{}],["$","main",null,{"className":"flex-1 pt-16","children":["$","$L2",null,{"parallelRouterKey":"children","error":"$undefined","errorStyles":"$undefined","errorScripts":"$undefined","template":["$","$L3",null,{}],"templateStyles":"$undefined","templateScripts":"$undefined","notFound":["$L12",[]],"forbidden":"$undefined","unauthorized":"$undefined"}]}],["$","$L13",null,{}]]}]
+12:["$","div",null,{"className":"mx-auto max-w-2xl px-4 py-20 text-center sm:px-6","children":[["$","h1",null,{"className":"mb-3 text-4xl font-bold tracking-tight","style":{"color":"var(--color-text)"},"children":"404"}],["$","p",null,{"className":"mb-8 text-lg","style":{"color":"var(--color-muted)"},"children":"This page does not exist. The link may be broken or the URL is incorrect."}],"$L14"]}]
+a:[["$","meta","0",{"charSet":"utf-8"}],["$","meta","1",{"name":"viewport","content":"width=device-width, initial-scale=1"}]]
+15:I[14864,["/_next/static/chunks/4204edc93da35a5e.js","/_next/static/chunks/f2afb7fd2b7566bb.js","/_next/static/chunks/2dddb3bc05093f69.js"],"default"]
+14:["$","$L15",null,{"ref":"$undefined","href":"/en","locale":"$undefined","localeCookie":{"name":"NEXT_LOCALE","sameSite":"lax"},"className":"inline-flex items-center rounded-lg border px-4 py-2.5 text-sm font-medium transition-colors hover:border-accent","style":{"borderColor":"var(--color-border)","color":"var(--color-accent)","background":"var(--color-surface)"},"children":"Back to Home"}]
+1b:T3a79,<p>If you've worked with Kubernetes external traffic before, chances are you started with <code>Ingress</code>. It works, and for many scenarios it's genuinely sufficient. But once you hit more complex requirements — multiple listeners, multi-team ownership, gRPC, TCP, TLS passthrough, fine-grained traffic policies — you inevitably end up in a situation where "keep it alive with annotations" becomes the norm. The YAML starts looking like an incantation, and the people maintaining it feel like they're breaking a seal.</p>
+<p>That's where <code>Gateway API + Envoy Gateway</code> comes in — it's the new kit. It doesn't make things more complicated; it cleanly separates the responsibilities that used to be tangled together, making ingress traffic, routing rules, TLS security settings, protocol types, and team ownership much easier to reason about.</p>
+<h2 id="what-is-it-exactly">What Is It, Exactly</h2>
+<p>Let's say it plainly in one sentence:</p>
+<ul>
+<li><code>Envoy Proxy</code>: The data plane that actually receives traffic and forwards requests — also called a Gateway Proxy</li>
+<li><code>Envoy Gateway</code>: The control plane that manages Envoy Proxy for you</li>
+<li><code>Gateway API</code>: The standard interface you use in Kubernetes to declare traffic rules</li>
+</ul>
+<p>Think of it this way:</p>
+<ul>
+<li><code>Gateway API</code> is where you write the requirements</li>
+<li><code>Envoy Gateway</code> is the manager who translates and delegates</li>
+<li><code>Envoy Proxy</code> is the actual guard standing at the door</li>
+</ul>
+<p>The benefit of this separation is that you don't need to hand-craft low-level Envoy config, nor do you need to memorize every private annotation from various controllers. You declare Kubernetes resources, and Envoy Gateway translates them into configuration that Envoy Proxy can actually execute.</p>
+<h2 id="gateway-vs-ingress-whats-the-difference">Gateway vs Ingress: What's the Difference</h2>
+<p>The short answer: <strong>Ingress isn't obsolete, but Gateway API is better suited for medium-to-large systems that need more governance.</strong></p>
+<table>
+<thead>
+<tr>
+<th>Comparison</th>
+<th>Ingress</th>
+<th>Gateway API</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td>Ingress model</td>
+<td>Usually combines ingress and routing in one object</td>
+<td>Separates <code>GatewayClass</code>, <code>Gateway</code>, and <code>Route</code></td>
+</tr>
+<tr>
+<td>Expressiveness</td>
+<td>Primarily HTTP/HTTPS; advanced features rely on annotations</td>
+<td>Native support for multiple route types and clearer fields</td>
+</tr>
+<tr>
+<td>Extension model</td>
+<td>Many capabilities depend on controller-specific private annotations</td>
+<td>Standard fields, plus extension points via CRDs</td>
+</tr>
+<tr>
+<td>Protocol support</td>
+<td>Mostly HTTP/Web-focused</td>
+<td>Supports <code>HTTPRoute</code>, <code>GRPCRoute</code>, <code>TCPRoute</code>, <code>TLSRoute</code></td>
+</tr>
+<tr>
+<td>Team ownership</td>
+<td>Easy to mix platform and app config</td>
+<td>Better suited for platform teams managing ingress, app teams managing routes</td>
+</tr>
+<tr>
+<td>Portability</td>
+<td>Annotations are often tied to specific controllers</td>
+<td>More standardized, better cross-implementation readability</td>
+</tr>
+</tbody>
+</table>
+<p>If your requirements are simply:</p>
+<ul>
+<li>A single website or simple API</li>
+<li>Basic path/host routing</li>
+<li>Small team</li>
+</ul>
+<p>Then Ingress is still fine. But if your requirements start to include:</p>
+<ul>
+<li>One ingress serving multiple protocols</li>
+<li>Multiple listeners, domains, or certificates</li>
+<li>HTTP and gRPC coexisting</li>
+<li>Separating platform ingress from application route permissions</li>
+<li>Config that reads like a proper API, not an annotation wishlist</li>
+</ul>
+<p>Then Gateway API will start to look very appealing.</p>
+<h2 id="why-not-just-use-ingress">Why Not Just Use Ingress</h2>
+<p>The official Gateway API goal is to address several common pain points with Ingress at scale:</p>
+<ul>
+<li><strong>Better expressiveness</strong>: Routing, TLS, traffic policies, and protocol types are more clearly defined</li>
+<li><strong>Better portability</strong>: Less reliance on controller-specific private annotations</li>
+<li><strong>More natural role separation</strong>: Platform teams own ingress, app teams own routes</li>
+</ul>
+<p>For example, Ingress configs often look like this:</p>
+<figure data-rehype-pretty-code-figure=""><pre style="background-color:#0d1117;color:#e6edf3" tabindex="0" data-language="yaml" data-theme="github-dark-default"><code data-language="yaml" data-theme="github-dark-default" style="display: grid;"><span data-line=""><span style="color:#7EE787">metadata</span><span style="color:#E6EDF3">:</span></span>
+<span data-line=""><span style="color:#7EE787">  annotations</span><span style="color:#E6EDF3">:</span></span>
+<span data-line=""><span style="color:#7EE787">    some.ingress.controller/rewrite-target</span><span style="color:#E6EDF3">: </span><span style="color:#A5D6FF">/</span></span>
+<span data-line=""><span style="color:#7EE787">    some.ingress.controller/auth-type</span><span style="color:#E6EDF3">: </span><span style="color:#A5D6FF">basic</span></span>
+<span data-line=""><span style="color:#7EE787">    some.ingress.controller/ssl-redirect</span><span style="color:#E6EDF3">: </span><span style="color:#A5D6FF">"true"</span></span></code></pre></figure>
+<p>Not that it doesn't work — but as requirements grow, annotations easily become mysterious YAML black magic. Gateway API pulls these needs into proper fields. It reads like "configuration," not a "wishlist."</p>
+<h2 id="the-layered-structure">The Layered Structure</h2>
+<p>The official concept page breaks Envoy Gateway into three layers — worth memorizing as a mental map:</p>
+<ul>
+<li><strong>User Configuration</strong>: The <code>Gateway API</code> resources and Envoy Gateway extension CRDs you write</li>
+<li><strong>Envoy Gateway Controller</strong>: Reads these resources, translates them into executable config</li>
+<li><strong>Envoy Proxy</strong>: The data plane that actually handles live traffic</li>
+</ul>
+<p>In practice, you'll spend most of your time modifying the "declarative layer," not SSH-ing into proxy instances to tweak low-level config. This is the elegance of being Kubernetes-native.</p>
+<h2 id="what-youll-learn-in-this-series">What You'll Learn in This Series</h2>
+<p>This series follows a "build it first, then go deeper" order — <strong>10 posts including this overview</strong>:</p>
+<ol>
+<li><a href="01-quick-start">Quick Start</a>: Install Envoy Gateway and run your first HTTP request end-to-end</li>
+<li><a href="02-core-concepts">Core Concepts</a>: Understand <code>GatewayClass</code>, <code>Gateway</code>, <code>Listener</code>, and <code>Envoy Proxy</code></li>
+<li><a href="03-http-routing">HTTP Routing in Practice</a>: Deep dive into <code>HTTPRoute</code> — host, path, header, filter, timeout</li>
+<li><a href="04-tls-and-security">TLS and Security</a>: Set up HTTPS, understand <code>certificateRefs</code>, TLS termination, and <code>TLSRoute</code></li>
+<li><a href="05-best-practices">Best Practices</a>: Key habits before going to production</li>
+<li><a href="06-route-types-cheatsheet">Route Type Cheatsheet</a>: Quickly decide between <code>HTTPRoute</code>, <code>GRPCRoute</code>, <code>TCPRoute</code>, and <code>TLSRoute</code></li>
+<li><a href="07-listener-design">Listener Design Guide</a>: Multi-port, multi-hostname, multi-ingress design patterns</li>
+<li><a href="08-multi-namespace-and-teamwork">Multi-Namespace and Team Ownership</a>: Master <code>allowedRoutes</code>, <code>ReferenceGrant</code>, and shared ingress governance</li>
+<li><a href="09-debugging-and-status">Status and Debugging Handbook</a>: Read <code>Accepted</code>, <code>ResolvedRefs</code>, <code>Programmed</code>, and follow the shortest troubleshooting path</li>
+</ol>
+<p>If you just want to feel what Envoy Gateway is like, go straight to the next post. Getting it running beats memorizing every term first — just like going to the gym, actually showing up beats watching 30 YouTube videos first.</p>
+<h2 id="core-resources-youll-encounter">Core Resources You'll Encounter</h2>
+<p>Beginners often stumble because they assume Gateway API only has <code>Gateway</code> and <code>HTTPRoute</code>. It's actually a whole family of resources.</p>
+<h3 id="gatewayclass"><code>GatewayClass</code></h3>
+<p>Defines "which Gateway implementation to use in this cluster."
+For Envoy Gateway, the key is getting <code>controllerName</code> to point to the right controller.</p>
+<h3 id="gateway"><code>Gateway</code></h3>
+<p>Defines "what the ingress looks like."
+For example: which ports to open, which protocols to listen on, how TLS is attached, which routes are allowed.</p>
+<h3 id="listener"><code>Listener</code></h3>
+<p><code>Listener</code> is one of the most important units inside a <code>Gateway</code>.
+Think of it as an outward-facing slot on the Gateway — each slot defines:</p>
+<ul>
+<li>port</li>
+<li>protocol</li>
+<li>hostname</li>
+<li>TLS config</li>
+<li><code>allowedRoutes</code></li>
+</ul>
+<p>Many people think of <code>Gateway</code> as a black box, but what actually determines ingress behavior is each individual <code>listener</code> inside it.</p>
+<h3 id="the-route-family">The Route Family</h3>
+<ul>
+<li><code>HTTPRoute</code>: HTTP/HTTPS traffic — the most common</li>
+<li><code>GRPCRoute</code>: gRPC traffic — can match on service/method</li>
+<li><code>TCPRoute</code>: Raw TCP traffic — doesn't parse HTTP semantics</li>
+<li><code>TLSRoute</code>: Routes based on TLS SNI — common for TLS passthrough</li>
+</ul>
+<p>What all routes share:
+<strong>They don't "open the door" — they decide "how to route traffic after it enters."</strong></p>
+<h2 id="minimal-mental-model">Minimal Mental Model</h2>
+<p>Keep this map in your head:</p>
+<figure data-rehype-pretty-code-figure=""><pre style="background-color:#0d1117;color:#e6edf3" tabindex="0" data-language="yaml" data-theme="github-dark-default"><code data-language="yaml" data-theme="github-dark-default" style="display: grid;"><span data-line=""><span style="color:#A5D6FF">GatewayClass</span><span style="color:#8B949E">  # Which Gateway implementation to use in this cluster</span></span>
+<span data-line=""><span style="color:#A5D6FF">Gateway</span><span style="color:#8B949E">       # Which listeners this ingress opens</span></span>
+<span data-line=""><span style="color:#A5D6FF">Listener</span><span style="color:#8B949E">      # A port / protocol / hostname / TLS slot</span></span>
+<span data-line=""><span style="color:#A5D6FF">Route</span><span style="color:#8B949E">         # How to distribute traffic once it enters</span></span>
+<span data-line=""><span style="color:#A5D6FF">Service</span><span style="color:#8B949E">       # The backend actually serving requests in the cluster</span></span>
+<span data-line=""><span style="color:#A5D6FF">Envoy Proxy</span><span style="color:#8B949E">   # The data plane that ultimately handles the traffic</span></span></code></pre></figure>
+<p>A minimal example looks like this:</p>
+<figure data-rehype-pretty-code-figure=""><pre style="background-color:#0d1117;color:#e6edf3" tabindex="0" data-language="yaml" data-theme="github-dark-default"><code data-language="yaml" data-theme="github-dark-default" style="display: grid;"><span data-line=""><span style="color:#7EE787">apiVersion</span><span style="color:#E6EDF3">: </span><span style="color:#A5D6FF">gateway.networking.k8s.io/v1</span></span>
+<span data-line=""><span style="color:#7EE787">kind</span><span style="color:#E6EDF3">: </span><span style="color:#A5D6FF">HTTPRoute</span></span>
+<span data-line=""><span style="color:#7EE787">metadata</span><span style="color:#E6EDF3">:</span></span>
+<span data-line=""><span style="color:#7EE787">  name</span><span style="color:#E6EDF3">: </span><span style="color:#A5D6FF">demo</span></span>
+<span data-line=""><span style="color:#7EE787">spec</span><span style="color:#E6EDF3">:</span></span>
+<span data-line=""><span style="color:#7EE787">  parentRefs</span><span style="color:#E6EDF3">:</span></span>
+<span data-line=""><span style="color:#E6EDF3">    - </span><span style="color:#7EE787">name</span><span style="color:#E6EDF3">: </span><span style="color:#A5D6FF">eg</span></span>
+<span data-line=""><span style="color:#7EE787">  hostnames</span><span style="color:#E6EDF3">:</span></span>
+<span data-line=""><span style="color:#E6EDF3">    - </span><span style="color:#A5D6FF">"www.example.com"</span></span>
+<span data-line=""><span style="color:#7EE787">  rules</span><span style="color:#E6EDF3">:</span></span>
+<span data-line=""><span style="color:#E6EDF3">    - </span><span style="color:#7EE787">backendRefs</span><span style="color:#E6EDF3">:</span></span>
+<span data-line=""><span style="color:#E6EDF3">        - </span><span style="color:#7EE787">name</span><span style="color:#E6EDF3">: </span><span style="color:#A5D6FF">backend</span></span>
+<span data-line=""><span style="color:#7EE787">          port</span><span style="color:#E6EDF3">: </span><span style="color:#79C0FF">3000</span></span></code></pre></figure>
+<p>You don't need to memorize every field now. Just understand what it's doing:</p>
+<ul>
+<li><code>parentRefs</code>: Which Gateway this rule attaches to</li>
+<li><code>hostnames</code>: Which domain should match this rule</li>
+<li><code>backendRefs</code>: Which Service to send traffic to</li>
+</ul>
+<h2 id="at-a-glance-when-to-use-which-route">At a Glance: When to Use Which Route</h2>
+<table>
+<thead>
+<tr>
+<th>Requirement</th>
+<th>Recommended Resource</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td>Websites, REST APIs, header/path routing</td>
+<td><code>HTTPRoute</code></td>
+</tr>
+<tr>
+<td>gRPC service/method routing</td>
+<td><code>GRPCRoute</code></td>
+</tr>
+<tr>
+<td>Pure TCP services (custom protocol or non-HTTP)</td>
+<td><code>TCPRoute</code></td>
+</tr>
+<tr>
+<td>Preserve end-to-end TLS, don't decrypt at Gateway</td>
+<td><code>TLSRoute</code></td>
+</tr>
+</tbody>
+</table>
+<p>This decision matrix is very practical. Before writing YAML, ask yourself:</p>
+<p>"Am I dealing with HTTP, gRPC, or raw TCP/TLS traffic?"</p>
+<h2 id="one-line-summary">One-Line Summary</h2>
+<p><code>Envoy Gateway</code> isn't just another term you have to memorize — it's a way to elevate Kubernetes external traffic from "good enough" to "something that resembles an engineering system."</p>
+<blockquote>
+<p>💡 If this is your first time with this stack, don't try to learn every CRD at once. Install it, get your first request through, then revisit the concepts — the absorption rate is much faster that way.</p>
+</blockquote>
+<h2 id="next-step">Next Step</h2>
+<p>Next post, we get hands-on — install Envoy Gateway in your cluster and run your first <code>Gateway + HTTPRoute</code>:
+👉 <a href="01-quick-start">Quick Start</a></p>5:[["$","script",null,{"type":"application/ld+json","dangerouslySetInnerHTML":{"__html":"{\"@context\":\"https://schema.org\",\"@type\":\"Article\",\"headline\":\"K8S Envoy Gateway Series Overview: A More Modern Traffic Ingress Than Ingress\",\"description\":\"Understand the relationship between Envoy Gateway, Gateway API, and Envoy Proxy, and build a learning map for the entire series.\",\"url\":\"https://benxhub.com/en/blog/k8s/gateway/00-overview/\",\"mainEntityOfPage\":{\"@type\":\"WebPage\",\"@id\":\"https://benxhub.com/en/blog/k8s/gateway/00-overview/\"},\"datePublished\":\"2026-03-10T00:00:00.000Z\",\"dateModified\":\"2026-03-10T00:00:00.000Z\",\"keywords\":\"kubernetes, envoy-gateway, gateway-api, envoy-proxy, ingress\",\"inLanguage\":\"en\",\"author\":{\"@type\":\"Person\",\"@id\":\"https://benxhub.com/#author\",\"name\":\"BenX\",\"url\":\"https://benxhub.com/en/about/\",\"sameAs\":[\"https://github.com/benzhub\"]},\"publisher\":{\"@type\":\"Organization\",\"name\":\"BenXHub Blog\",\"url\":\"https://benxhub.com\"},\"image\":\"https://benxhub.com/og-default.png\"}"}}],["$","div",null,{"className":"mx-auto max-w-6xl px-4 py-12 sm:px-6","children":["$","div",null,{"className":"lg:grid lg:grid-cols-[1fr_240px] lg:gap-14","children":[["$","article",null,{"children":[["$","header",null,{"className":"mb-10","children":[["$","div",null,{"className":"mb-4 flex flex-wrap gap-2","children":["$L16","$L17","$L18","$L19","$L1a"]}],["$","h1",null,{"className":"mb-4 text-3xl leading-snug font-bold tracking-tight sm:text-4xl","style":{"color":"var(--color-text)"},"children":"K8S Envoy Gateway Series Overview: A More Modern Traffic Ingress Than Ingress"}],["$","div",null,{"className":"flex flex-wrap items-center gap-3 text-sm","style":{"color":"var(--color-muted)"},"children":[["$","time",null,{"dateTime":"2026-03-10","children":"Mar 10, 2026"}],["$","span",null,{"aria-hidden":"true","children":"·"}],["$","span",null,{"children":"7 min read"}]]}],"$undefined",["$","div",null,{"className":"mt-6 border-b","style":{"borderColor":"var(--color-border)"}}]]}],["$","div",null,{"className":"prose","dangerouslySetInnerHTML":{"__html":"$1b"}}],"$L1c"]}],"$L1d"]}]}]]
+24:I[24801,["/_next/static/chunks/4204edc93da35a5e.js","/_next/static/chunks/f2afb7fd2b7566bb.js","/_next/static/chunks/2dddb3bc05093f69.js"],"default"]
+1c:["$","footer",null,{"className":"mt-14 border-t pt-8","style":{"borderColor":"var(--color-border)"},"children":[["$","div",null,{"className":"mb-8 flex flex-wrap gap-2","children":["$L1e","$L1f","$L20","$L21","$L22"]}],["$","nav",null,{"aria-label":"Post navigation","className":"grid grid-cols-1 gap-4 sm:grid-cols-2","children":[["$","div",null,{}],"$L23"]}]]}]
+25:T3a79,<p>If you've worked with Kubernetes external traffic before, chances are you started with <code>Ingress</code>. It works, and for many scenarios it's genuinely sufficient. But once you hit more complex requirements — multiple listeners, multi-team ownership, gRPC, TCP, TLS passthrough, fine-grained traffic policies — you inevitably end up in a situation where "keep it alive with annotations" becomes the norm. The YAML starts looking like an incantation, and the people maintaining it feel like they're breaking a seal.</p>
+<p>That's where <code>Gateway API + Envoy Gateway</code> comes in — it's the new kit. It doesn't make things more complicated; it cleanly separates the responsibilities that used to be tangled together, making ingress traffic, routing rules, TLS security settings, protocol types, and team ownership much easier to reason about.</p>
+<h2 id="what-is-it-exactly">What Is It, Exactly</h2>
+<p>Let's say it plainly in one sentence:</p>
+<ul>
+<li><code>Envoy Proxy</code>: The data plane that actually receives traffic and forwards requests — also called a Gateway Proxy</li>
+<li><code>Envoy Gateway</code>: The control plane that manages Envoy Proxy for you</li>
+<li><code>Gateway API</code>: The standard interface you use in Kubernetes to declare traffic rules</li>
+</ul>
+<p>Think of it this way:</p>
+<ul>
+<li><code>Gateway API</code> is where you write the requirements</li>
+<li><code>Envoy Gateway</code> is the manager who translates and delegates</li>
+<li><code>Envoy Proxy</code> is the actual guard standing at the door</li>
+</ul>
+<p>The benefit of this separation is that you don't need to hand-craft low-level Envoy config, nor do you need to memorize every private annotation from various controllers. You declare Kubernetes resources, and Envoy Gateway translates them into configuration that Envoy Proxy can actually execute.</p>
+<h2 id="gateway-vs-ingress-whats-the-difference">Gateway vs Ingress: What's the Difference</h2>
+<p>The short answer: <strong>Ingress isn't obsolete, but Gateway API is better suited for medium-to-large systems that need more governance.</strong></p>
+<table>
+<thead>
+<tr>
+<th>Comparison</th>
+<th>Ingress</th>
+<th>Gateway API</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td>Ingress model</td>
+<td>Usually combines ingress and routing in one object</td>
+<td>Separates <code>GatewayClass</code>, <code>Gateway</code>, and <code>Route</code></td>
+</tr>
+<tr>
+<td>Expressiveness</td>
+<td>Primarily HTTP/HTTPS; advanced features rely on annotations</td>
+<td>Native support for multiple route types and clearer fields</td>
+</tr>
+<tr>
+<td>Extension model</td>
+<td>Many capabilities depend on controller-specific private annotations</td>
+<td>Standard fields, plus extension points via CRDs</td>
+</tr>
+<tr>
+<td>Protocol support</td>
+<td>Mostly HTTP/Web-focused</td>
+<td>Supports <code>HTTPRoute</code>, <code>GRPCRoute</code>, <code>TCPRoute</code>, <code>TLSRoute</code></td>
+</tr>
+<tr>
+<td>Team ownership</td>
+<td>Easy to mix platform and app config</td>
+<td>Better suited for platform teams managing ingress, app teams managing routes</td>
+</tr>
+<tr>
+<td>Portability</td>
+<td>Annotations are often tied to specific controllers</td>
+<td>More standardized, better cross-implementation readability</td>
+</tr>
+</tbody>
+</table>
+<p>If your requirements are simply:</p>
+<ul>
+<li>A single website or simple API</li>
+<li>Basic path/host routing</li>
+<li>Small team</li>
+</ul>
+<p>Then Ingress is still fine. But if your requirements start to include:</p>
+<ul>
+<li>One ingress serving multiple protocols</li>
+<li>Multiple listeners, domains, or certificates</li>
+<li>HTTP and gRPC coexisting</li>
+<li>Separating platform ingress from application route permissions</li>
+<li>Config that reads like a proper API, not an annotation wishlist</li>
+</ul>
+<p>Then Gateway API will start to look very appealing.</p>
+<h2 id="why-not-just-use-ingress">Why Not Just Use Ingress</h2>
+<p>The official Gateway API goal is to address several common pain points with Ingress at scale:</p>
+<ul>
+<li><strong>Better expressiveness</strong>: Routing, TLS, traffic policies, and protocol types are more clearly defined</li>
+<li><strong>Better portability</strong>: Less reliance on controller-specific private annotations</li>
+<li><strong>More natural role separation</strong>: Platform teams own ingress, app teams own routes</li>
+</ul>
+<p>For example, Ingress configs often look like this:</p>
+<figure data-rehype-pretty-code-figure=""><pre style="background-color:#0d1117;color:#e6edf3" tabindex="0" data-language="yaml" data-theme="github-dark-default"><code data-language="yaml" data-theme="github-dark-default" style="display: grid;"><span data-line=""><span style="color:#7EE787">metadata</span><span style="color:#E6EDF3">:</span></span>
+<span data-line=""><span style="color:#7EE787">  annotations</span><span style="color:#E6EDF3">:</span></span>
+<span data-line=""><span style="color:#7EE787">    some.ingress.controller/rewrite-target</span><span style="color:#E6EDF3">: </span><span style="color:#A5D6FF">/</span></span>
+<span data-line=""><span style="color:#7EE787">    some.ingress.controller/auth-type</span><span style="color:#E6EDF3">: </span><span style="color:#A5D6FF">basic</span></span>
+<span data-line=""><span style="color:#7EE787">    some.ingress.controller/ssl-redirect</span><span style="color:#E6EDF3">: </span><span style="color:#A5D6FF">"true"</span></span></code></pre></figure>
+<p>Not that it doesn't work — but as requirements grow, annotations easily become mysterious YAML black magic. Gateway API pulls these needs into proper fields. It reads like "configuration," not a "wishlist."</p>
+<h2 id="the-layered-structure">The Layered Structure</h2>
+<p>The official concept page breaks Envoy Gateway into three layers — worth memorizing as a mental map:</p>
+<ul>
+<li><strong>User Configuration</strong>: The <code>Gateway API</code> resources and Envoy Gateway extension CRDs you write</li>
+<li><strong>Envoy Gateway Controller</strong>: Reads these resources, translates them into executable config</li>
+<li><strong>Envoy Proxy</strong>: The data plane that actually handles live traffic</li>
+</ul>
+<p>In practice, you'll spend most of your time modifying the "declarative layer," not SSH-ing into proxy instances to tweak low-level config. This is the elegance of being Kubernetes-native.</p>
+<h2 id="what-youll-learn-in-this-series">What You'll Learn in This Series</h2>
+<p>This series follows a "build it first, then go deeper" order — <strong>10 posts including this overview</strong>:</p>
+<ol>
+<li><a href="01-quick-start">Quick Start</a>: Install Envoy Gateway and run your first HTTP request end-to-end</li>
+<li><a href="02-core-concepts">Core Concepts</a>: Understand <code>GatewayClass</code>, <code>Gateway</code>, <code>Listener</code>, and <code>Envoy Proxy</code></li>
+<li><a href="03-http-routing">HTTP Routing in Practice</a>: Deep dive into <code>HTTPRoute</code> — host, path, header, filter, timeout</li>
+<li><a href="04-tls-and-security">TLS and Security</a>: Set up HTTPS, understand <code>certificateRefs</code>, TLS termination, and <code>TLSRoute</code></li>
+<li><a href="05-best-practices">Best Practices</a>: Key habits before going to production</li>
+<li><a href="06-route-types-cheatsheet">Route Type Cheatsheet</a>: Quickly decide between <code>HTTPRoute</code>, <code>GRPCRoute</code>, <code>TCPRoute</code>, and <code>TLSRoute</code></li>
+<li><a href="07-listener-design">Listener Design Guide</a>: Multi-port, multi-hostname, multi-ingress design patterns</li>
+<li><a href="08-multi-namespace-and-teamwork">Multi-Namespace and Team Ownership</a>: Master <code>allowedRoutes</code>, <code>ReferenceGrant</code>, and shared ingress governance</li>
+<li><a href="09-debugging-and-status">Status and Debugging Handbook</a>: Read <code>Accepted</code>, <code>ResolvedRefs</code>, <code>Programmed</code>, and follow the shortest troubleshooting path</li>
+</ol>
+<p>If you just want to feel what Envoy Gateway is like, go straight to the next post. Getting it running beats memorizing every term first — just like going to the gym, actually showing up beats watching 30 YouTube videos first.</p>
+<h2 id="core-resources-youll-encounter">Core Resources You'll Encounter</h2>
+<p>Beginners often stumble because they assume Gateway API only has <code>Gateway</code> and <code>HTTPRoute</code>. It's actually a whole family of resources.</p>
+<h3 id="gatewayclass"><code>GatewayClass</code></h3>
+<p>Defines "which Gateway implementation to use in this cluster."
+For Envoy Gateway, the key is getting <code>controllerName</code> to point to the right controller.</p>
+<h3 id="gateway"><code>Gateway</code></h3>
+<p>Defines "what the ingress looks like."
+For example: which ports to open, which protocols to listen on, how TLS is attached, which routes are allowed.</p>
+<h3 id="listener"><code>Listener</code></h3>
+<p><code>Listener</code> is one of the most important units inside a <code>Gateway</code>.
+Think of it as an outward-facing slot on the Gateway — each slot defines:</p>
+<ul>
+<li>port</li>
+<li>protocol</li>
+<li>hostname</li>
+<li>TLS config</li>
+<li><code>allowedRoutes</code></li>
+</ul>
+<p>Many people think of <code>Gateway</code> as a black box, but what actually determines ingress behavior is each individual <code>listener</code> inside it.</p>
+<h3 id="the-route-family">The Route Family</h3>
+<ul>
+<li><code>HTTPRoute</code>: HTTP/HTTPS traffic — the most common</li>
+<li><code>GRPCRoute</code>: gRPC traffic — can match on service/method</li>
+<li><code>TCPRoute</code>: Raw TCP traffic — doesn't parse HTTP semantics</li>
+<li><code>TLSRoute</code>: Routes based on TLS SNI — common for TLS passthrough</li>
+</ul>
+<p>What all routes share:
+<strong>They don't "open the door" — they decide "how to route traffic after it enters."</strong></p>
+<h2 id="minimal-mental-model">Minimal Mental Model</h2>
+<p>Keep this map in your head:</p>
+<figure data-rehype-pretty-code-figure=""><pre style="background-color:#0d1117;color:#e6edf3" tabindex="0" data-language="yaml" data-theme="github-dark-default"><code data-language="yaml" data-theme="github-dark-default" style="display: grid;"><span data-line=""><span style="color:#A5D6FF">GatewayClass</span><span style="color:#8B949E">  # Which Gateway implementation to use in this cluster</span></span>
+<span data-line=""><span style="color:#A5D6FF">Gateway</span><span style="color:#8B949E">       # Which listeners this ingress opens</span></span>
+<span data-line=""><span style="color:#A5D6FF">Listener</span><span style="color:#8B949E">      # A port / protocol / hostname / TLS slot</span></span>
+<span data-line=""><span style="color:#A5D6FF">Route</span><span style="color:#8B949E">         # How to distribute traffic once it enters</span></span>
+<span data-line=""><span style="color:#A5D6FF">Service</span><span style="color:#8B949E">       # The backend actually serving requests in the cluster</span></span>
+<span data-line=""><span style="color:#A5D6FF">Envoy Proxy</span><span style="color:#8B949E">   # The data plane that ultimately handles the traffic</span></span></code></pre></figure>
+<p>A minimal example looks like this:</p>
+<figure data-rehype-pretty-code-figure=""><pre style="background-color:#0d1117;color:#e6edf3" tabindex="0" data-language="yaml" data-theme="github-dark-default"><code data-language="yaml" data-theme="github-dark-default" style="display: grid;"><span data-line=""><span style="color:#7EE787">apiVersion</span><span style="color:#E6EDF3">: </span><span style="color:#A5D6FF">gateway.networking.k8s.io/v1</span></span>
+<span data-line=""><span style="color:#7EE787">kind</span><span style="color:#E6EDF3">: </span><span style="color:#A5D6FF">HTTPRoute</span></span>
+<span data-line=""><span style="color:#7EE787">metadata</span><span style="color:#E6EDF3">:</span></span>
+<span data-line=""><span style="color:#7EE787">  name</span><span style="color:#E6EDF3">: </span><span style="color:#A5D6FF">demo</span></span>
+<span data-line=""><span style="color:#7EE787">spec</span><span style="color:#E6EDF3">:</span></span>
+<span data-line=""><span style="color:#7EE787">  parentRefs</span><span style="color:#E6EDF3">:</span></span>
+<span data-line=""><span style="color:#E6EDF3">    - </span><span style="color:#7EE787">name</span><span style="color:#E6EDF3">: </span><span style="color:#A5D6FF">eg</span></span>
+<span data-line=""><span style="color:#7EE787">  hostnames</span><span style="color:#E6EDF3">:</span></span>
+<span data-line=""><span style="color:#E6EDF3">    - </span><span style="color:#A5D6FF">"www.example.com"</span></span>
+<span data-line=""><span style="color:#7EE787">  rules</span><span style="color:#E6EDF3">:</span></span>
+<span data-line=""><span style="color:#E6EDF3">    - </span><span style="color:#7EE787">backendRefs</span><span style="color:#E6EDF3">:</span></span>
+<span data-line=""><span style="color:#E6EDF3">        - </span><span style="color:#7EE787">name</span><span style="color:#E6EDF3">: </span><span style="color:#A5D6FF">backend</span></span>
+<span data-line=""><span style="color:#7EE787">          port</span><span style="color:#E6EDF3">: </span><span style="color:#79C0FF">3000</span></span></code></pre></figure>
+<p>You don't need to memorize every field now. Just understand what it's doing:</p>
+<ul>
+<li><code>parentRefs</code>: Which Gateway this rule attaches to</li>
+<li><code>hostnames</code>: Which domain should match this rule</li>
+<li><code>backendRefs</code>: Which Service to send traffic to</li>
+</ul>
+<h2 id="at-a-glance-when-to-use-which-route">At a Glance: When to Use Which Route</h2>
+<table>
+<thead>
+<tr>
+<th>Requirement</th>
+<th>Recommended Resource</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td>Websites, REST APIs, header/path routing</td>
+<td><code>HTTPRoute</code></td>
+</tr>
+<tr>
+<td>gRPC service/method routing</td>
+<td><code>GRPCRoute</code></td>
+</tr>
+<tr>
+<td>Pure TCP services (custom protocol or non-HTTP)</td>
+<td><code>TCPRoute</code></td>
+</tr>
+<tr>
+<td>Preserve end-to-end TLS, don't decrypt at Gateway</td>
+<td><code>TLSRoute</code></td>
+</tr>
+</tbody>
+</table>
+<p>This decision matrix is very practical. Before writing YAML, ask yourself:</p>
+<p>"Am I dealing with HTTP, gRPC, or raw TCP/TLS traffic?"</p>
+<h2 id="one-line-summary">One-Line Summary</h2>
+<p><code>Envoy Gateway</code> isn't just another term you have to memorize — it's a way to elevate Kubernetes external traffic from "good enough" to "something that resembles an engineering system."</p>
+<blockquote>
+<p>💡 If this is your first time with this stack, don't try to learn every CRD at once. Install it, get your first request through, then revisit the concepts — the absorption rate is much faster that way.</p>
+</blockquote>
+<h2 id="next-step">Next Step</h2>
+<p>Next post, we get hands-on — install Envoy Gateway in your cluster and run your first <code>Gateway + HTTPRoute</code>:
+👉 <a href="01-quick-start">Quick Start</a></p>1d:["$","aside",null,{"className":"hidden lg:block","children":["$","$L24",null,{"html":"$25"}]}]
+16:["$","$L15","kubernetes",{"ref":"$undefined","href":"/en/tags/kubernetes","locale":"$undefined","localeCookie":"$14:props:localeCookie","className":"inline-flex items-center rounded-full px-2.5 py-0.5 text-xs font-medium transition-colors","style":{"background":"var(--color-code-bg)","color":"var(--color-accent)","border":"1px solid var(--color-border)"},"children":["#","kubernetes"]}]
+17:["$","$L15","envoy-gateway",{"ref":"$undefined","href":"/en/tags/envoy-gateway","locale":"$undefined","localeCookie":"$14:props:localeCookie","className":"inline-flex items-center rounded-full px-2.5 py-0.5 text-xs font-medium transition-colors","style":{"background":"var(--color-code-bg)","color":"var(--color-accent)","border":"1px solid var(--color-border)"},"children":["#","envoy-gateway"]}]
+18:["$","$L15","gateway-api",{"ref":"$undefined","href":"/en/tags/gateway-api","locale":"$undefined","localeCookie":"$14:props:localeCookie","className":"inline-flex items-center rounded-full px-2.5 py-0.5 text-xs font-medium transition-colors","style":{"background":"var(--color-code-bg)","color":"var(--color-accent)","border":"1px solid var(--color-border)"},"children":["#","gateway-api"]}]
+19:["$","$L15","envoy-proxy",{"ref":"$undefined","href":"/en/tags/envoy-proxy","locale":"$undefined","localeCookie":"$14:props:localeCookie","className":"inline-flex items-center rounded-full px-2.5 py-0.5 text-xs font-medium transition-colors","style":{"background":"var(--color-code-bg)","color":"var(--color-accent)","border":"1px solid var(--color-border)"},"children":["#","envoy-proxy"]}]
+1a:["$","$L15","ingress",{"ref":"$undefined","href":"/en/tags/ingress","locale":"$undefined","localeCookie":"$14:props:localeCookie","className":"inline-flex items-center rounded-full px-2.5 py-0.5 text-xs font-medium transition-colors","style":{"background":"var(--color-code-bg)","color":"var(--color-accent)","border":"1px solid var(--color-border)"},"children":["#","ingress"]}]
+1e:["$","$L15","kubernetes",{"ref":"$undefined","href":"/en/tags/kubernetes","locale":"$undefined","localeCookie":"$14:props:localeCookie","className":"inline-flex items-center rounded-full px-3 py-1 text-sm font-medium transition-colors","style":{"background":"var(--color-code-bg)","color":"var(--color-accent)","border":"1px solid var(--color-border)"},"children":["#","kubernetes"]}]
+1f:["$","$L15","envoy-gateway",{"ref":"$undefined","href":"/en/tags/envoy-gateway","locale":"$undefined","localeCookie":"$14:props:localeCookie","className":"inline-flex items-center rounded-full px-3 py-1 text-sm font-medium transition-colors","style":{"background":"var(--color-code-bg)","color":"var(--color-accent)","border":"1px solid var(--color-border)"},"children":["#","envoy-gateway"]}]
+20:["$","$L15","gateway-api",{"ref":"$undefined","href":"/en/tags/gateway-api","locale":"$undefined","localeCookie":"$14:props:localeCookie","className":"inline-flex items-center rounded-full px-3 py-1 text-sm font-medium transition-colors","style":{"background":"var(--color-code-bg)","color":"var(--color-accent)","border":"1px solid var(--color-border)"},"children":["#","gateway-api"]}]
+21:["$","$L15","envoy-proxy",{"ref":"$undefined","href":"/en/tags/envoy-proxy","locale":"$undefined","localeCookie":"$14:props:localeCookie","className":"inline-flex items-center rounded-full px-3 py-1 text-sm font-medium transition-colors","style":{"background":"var(--color-code-bg)","color":"var(--color-accent)","border":"1px solid var(--color-border)"},"children":["#","envoy-proxy"]}]
+22:["$","$L15","ingress",{"ref":"$undefined","href":"/en/tags/ingress","locale":"$undefined","localeCookie":"$14:props:localeCookie","className":"inline-flex items-center rounded-full px-3 py-1 text-sm font-medium transition-colors","style":{"background":"var(--color-code-bg)","color":"var(--color-accent)","border":"1px solid var(--color-border)"},"children":["#","ingress"]}]
+23:["$","$L15",null,{"ref":"$undefined","href":"/en/blog/k8s/gateway/01-quick-start","locale":"$undefined","localeCookie":"$14:props:localeCookie","className":"group rounded-lg border p-4 text-right transition-colors hover:border-accent","style":{"borderColor":"var(--color-border)","background":"var(--color-surface)"},"children":[["$","p",null,{"className":"mb-1 text-xs","style":{"color":"var(--color-muted)"},"children":"Older →"}],["$","p",null,{"className":"line-clamp-1 text-sm font-medium transition-colors group-hover:text-accent","style":{"color":"var(--color-text)"},"children":"Envoy Gateway Quick Start: Get Your First Request Through in 10 Minutes"}]]}]
+26:I[92204,["/_next/static/chunks/5a5b5b13c22d14f7.js","/_next/static/chunks/a484d1d3dd4b55ab.js"],"IconMark"]
+8:null
+c:[["$","title","0",{"children":"K8S Envoy Gateway Series Overview: A More Modern Traffic Ingress Than Ingress | BenXHub Blog"}],["$","meta","1",{"name":"description","content":"Understand the relationship between Envoy Gateway, Gateway API, and Envoy Proxy, and build a learning map for the entire series."}],["$","link","2",{"rel":"canonical","href":"https://benxhub.com/en/blog/k8s/gateway/00-overview/"}],["$","link","3",{"rel":"alternate","hrefLang":"zh-Hant","href":"https://benxhub.com/zh/blog/k8s/gateway/00-overview/"}],["$","link","4",{"rel":"alternate","hrefLang":"en","href":"https://benxhub.com/en/blog/k8s/gateway/00-overview/"}],["$","link","5",{"rel":"alternate","hrefLang":"ja","href":"https://benxhub.com/ja/blog/k8s/gateway/00-overview/"}],["$","link","6",{"rel":"alternate","hrefLang":"ko","href":"https://benxhub.com/ko/blog/k8s/gateway/00-overview/"}],["$","link","7",{"rel":"alternate","hrefLang":"es","href":"https://benxhub.com/es/blog/k8s/gateway/00-overview/"}],["$","link","8",{"rel":"alternate","hrefLang":"fr","href":"https://benxhub.com/fr/blog/k8s/gateway/00-overview/"}],["$","link","9",{"rel":"alternate","hrefLang":"ar","href":"https://benxhub.com/ar/blog/k8s/gateway/00-overview/"}],["$","link","10",{"rel":"alternate","hrefLang":"x-default","href":"https://benxhub.com/zh/blog/k8s/gateway/00-overview/"}],["$","link","11",{"rel":"alternate","type":"application/rss+xml","href":"https://benxhub.com/en/feed.xml"}],["$","meta","12",{"property":"og:title","content":"K8S Envoy Gateway Series Overview: A More Modern Traffic Ingress Than Ingress"}],["$","meta","13",{"property":"og:description","content":"Understand the relationship between Envoy Gateway, Gateway API, and Envoy Proxy, and build a learning map for the entire series."}],["$","meta","14",{"property":"og:url","content":"https://benxhub.com/en/blog/k8s/gateway/00-overview/"}],["$","meta","15",{"property":"og:site_name","content":"BenXHub Blog"}],["$","meta","16",{"property":"og:locale","content":"en_US"}],["$","meta","17",{"property":"og:image","content":"https://benxhub.com/og-default.png"}],["$","meta","18",{"property":"og:image:width","content":"1200"}],["$","meta","19",{"property":"og:image:height","content":"630"}],["$","meta","20",{"property":"og:image:alt","content":"BenXHub Blog"}],["$","meta","21",{"property":"og:type","content":"article"}],["$","meta","22",{"property":"article:published_time","content":"2026-03-10T00:00:00.000Z"}],["$","meta","23",{"property":"article:tag","content":"kubernetes"}],["$","meta","24",{"property":"article:tag","content":"envoy-gateway"}],["$","meta","25",{"property":"article:tag","content":"gateway-api"}],["$","meta","26",{"property":"article:tag","content":"envoy-proxy"}],["$","meta","27",{"property":"article:tag","content":"ingress"}],["$","meta","28",{"name":"twitter:card","content":"summary_large_image"}],["$","meta","29",{"name":"twitter:title","content":"K8S Envoy Gateway Series Overview: A More Modern Traffic Ingress Than Ingress"}],["$","meta","30",{"name":"twitter:description","content":"Understand the relationship between Envoy Gateway, Gateway API, and Envoy Proxy, and build a learning map for the entire series."}],["$","meta","31",{"name":"twitter:image","content":"https://benxhub.com/og-default.png"}],["$","link","32",{"rel":"icon","href":"/favicon.ico?favicon.0b3bf435.ico","sizes":"256x256","type":"image/x-icon"}],["$","$L26","33",{}]]

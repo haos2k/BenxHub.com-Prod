@@ -1,0 +1,674 @@
+1:"$Sreact.fragment"
+2:I[26795,["/_next/static/chunks/5a5b5b13c22d14f7.js","/_next/static/chunks/a484d1d3dd4b55ab.js"],"default"]
+3:I[73489,["/_next/static/chunks/5a5b5b13c22d14f7.js","/_next/static/chunks/a484d1d3dd4b55ab.js"],"default"]
+6:I[50183,["/_next/static/chunks/5a5b5b13c22d14f7.js","/_next/static/chunks/a484d1d3dd4b55ab.js"],"OutletBoundary"]
+7:"$Sreact.suspense"
+9:I[50183,["/_next/static/chunks/5a5b5b13c22d14f7.js","/_next/static/chunks/a484d1d3dd4b55ab.js"],"ViewportBoundary"]
+b:I[50183,["/_next/static/chunks/5a5b5b13c22d14f7.js","/_next/static/chunks/a484d1d3dd4b55ab.js"],"MetadataBoundary"]
+d:I[63847,[],"default"]
+:HL["/_next/static/chunks/4d9c3828f6075602.css","style"]
+:HL["/_next/static/media/797e433ab948586e-s.p.29207c2f.woff2","font",{"crossOrigin":"","type":"font/woff2"}]
+:HL["/_next/static/media/caa3a2e1cccd8315-s.p.3b6cae6d.woff2","font",{"crossOrigin":"","type":"font/woff2"}]
+0:{"P":null,"b":"ekNoF06-0VZrB4pGVUsy8","c":["","zh","blog","pve","14-homelab-best-practices",""],"q":"","i":false,"f":[[["",{"children":[["locale","zh","d"],{"children":["blog",{"children":[["slug","pve/14-homelab-best-practices","c"],{"children":["__PAGE__",{}]}]}]}]},"$undefined","$undefined",true],[["$","$1","c",{"children":[null,["$","$L2",null,{"parallelRouterKey":"children","error":"$undefined","errorStyles":"$undefined","errorScripts":"$undefined","template":["$","$L3",null,{}],"templateStyles":"$undefined","templateScripts":"$undefined","notFound":[["$","html",null,{"lang":"zh-Hant","children":["$","body",null,{"children":["$","main",null,{"className":"mx-auto max-w-2xl px-4 py-20 text-center sm:px-6","children":[["$","h1",null,{"className":"mb-3 text-4xl font-bold tracking-tight","children":"404"}],["$","p",null,{"className":"mb-8 text-lg","style":{"color":"var(--color-muted)"},"children":"找不到這個頁面 / Page not found"}],["$","a",null,{"href":"/zh/","className":"inline-flex items-center rounded-lg border px-4 py-2.5 text-sm font-medium","style":{"borderColor":"var(--color-border)","color":"var(--color-accent)","background":"var(--color-surface)"},"children":"BenXHub Blog"}]]}]}]}],[["$","link","0",{"rel":"stylesheet","href":"/_next/static/chunks/4d9c3828f6075602.css","precedence":"next","crossOrigin":"$undefined","nonce":"$undefined"}]]],"forbidden":"$undefined","unauthorized":"$undefined"}]]}],{"children":[["$","$1","c",{"children":[[["$","link","0",{"rel":"stylesheet","href":"/_next/static/chunks/4d9c3828f6075602.css","precedence":"next","crossOrigin":"$undefined","nonce":"$undefined"}],["$","script","script-0",{"src":"/_next/static/chunks/4204edc93da35a5e.js","async":true,"nonce":"$undefined"}],["$","script","script-1",{"src":"/_next/static/chunks/f2afb7fd2b7566bb.js","async":true,"nonce":"$undefined"}]],"$L4"]}],{"children":[["$","$1","c",{"children":[null,["$","$L2",null,{"parallelRouterKey":"children","error":"$undefined","errorStyles":"$undefined","errorScripts":"$undefined","template":["$","$L3",null,{}],"templateStyles":"$undefined","templateScripts":"$undefined","notFound":"$undefined","forbidden":"$undefined","unauthorized":"$undefined"}]]}],{"children":[["$","$1","c",{"children":[null,["$","$L2",null,{"parallelRouterKey":"children","error":"$undefined","errorStyles":"$undefined","errorScripts":"$undefined","template":["$","$L3",null,{}],"templateStyles":"$undefined","templateScripts":"$undefined","notFound":"$undefined","forbidden":"$undefined","unauthorized":"$undefined"}]]}],{"children":[["$","$1","c",{"children":["$L5",[["$","script","script-0",{"src":"/_next/static/chunks/2dddb3bc05093f69.js","async":true,"nonce":"$undefined"}]],["$","$L6",null,{"children":["$","$7",null,{"name":"Next.MetadataOutlet","children":"$@8"}]}]]}],{},null,false,false]},null,false,false]},null,false,false]},null,false,false]},null,false,false],["$","$1","h",{"children":[null,["$","$L9",null,{"children":"$La"}],["$","div",null,{"hidden":true,"children":["$","$Lb",null,{"children":["$","$7",null,{"name":"Next.Metadata","children":"$Lc"}]}]}],["$","meta",null,{"name":"next-size-adjust","content":""}]]}],false]],"m":"$undefined","G":["$d",[]],"S":true}
+4:["$","html",null,{"lang":"zh-Hant","dir":"ltr","className":"geist_a71539c9-module__T19VSG__variable geist_mono_8d43a2aa-module__8Li5zG__variable","children":["$","body",null,{"className":"flex min-h-screen flex-col antialiased","children":[["$","script",null,{"type":"application/ld+json","dangerouslySetInnerHTML":{"__html":"[{\"@context\":\"https://schema.org\",\"@type\":\"WebSite\",\"name\":\"BenXHub Blog\",\"url\":\"https://benxhub.com/zh/\",\"inLanguage\":\"zh-Hant\",\"publisher\":{\"@type\":\"Organization\",\"name\":\"BenXHub Blog\",\"url\":\"https://benxhub.com\"},\"potentialAction\":{\"@type\":\"SearchAction\",\"target\":{\"@type\":\"EntryPoint\",\"urlTemplate\":\"https://benxhub.com/zh/search/?q={search_term_string}\"},\"query-input\":\"required name=search_term_string\"}},{\"@context\":\"https://schema.org\",\"@type\":\"Person\",\"@id\":\"https://benxhub.com/#author\",\"name\":\"BenX\",\"url\":\"https://benxhub.com/zh/about/\",\"sameAs\":[\"https://github.com/benzhub\"]}]"}}],"$Le"]}]}]
+f:I[33343,["/_next/static/chunks/4204edc93da35a5e.js","/_next/static/chunks/f2afb7fd2b7566bb.js"],"default"]
+10:I[26817,["/_next/static/chunks/4204edc93da35a5e.js","/_next/static/chunks/f2afb7fd2b7566bb.js"],"default"]
+11:I[6197,["/_next/static/chunks/4204edc93da35a5e.js","/_next/static/chunks/f2afb7fd2b7566bb.js"],"default"]
+13:I[40018,["/_next/static/chunks/4204edc93da35a5e.js","/_next/static/chunks/f2afb7fd2b7566bb.js"],"default"]
+e:["$","$Lf",null,{"formats":"$undefined","locale":"zh","messages":{"common":{"siteName":"BenXHub Blog","siteDescription":"BenX 的技術部落格，分享 Web 開發、架構設計與工程實踐。"},"nav":{"home":"首頁","tags":"標籤","about":"關於","searchLabel":"搜尋文章"},"hero":{"subtitle":"分享 Web 開發、架構設計與工程實踐的技術筆記","cta":"瀏覽文章"},"posts":{"title":"文章列表","count":"共 {total} 篇文章","empty":"目前還沒有文章，敬請期待！","newerPost":"← 較新文章","olderPost":"較舊文章 →","navLabel":"文章導覽"},"pagination":{"prev":"上一頁","next":"下一頁","page":"第 {current} / {total} 頁","label":"文章列表分頁","pageTitle":"第 {num} 頁","pageDescription":"BenX 的技術部落格 — 文章列表分頁。"},"search":{"title":"搜尋文章","description":"搜尋 BenXHub Blog 的所有文章，按標題、描述或標籤即時篩選。","subtitle":"搜尋標題、描述或標籤，即時顯示結果","placeholder":"搜尋文章標題、描述或標籤…","found":"找到 {count} 篇相關文章","notFound":"沒有找到與「{query}」相關的文章","emptyTitle":"找不到相關文章","emptyHint":"試試看其他關鍵字，或瀏覽","allPosts":"所有文章","totalCount":"共 {count} 篇文章，輸入關鍵字即可搜尋"},"tags":{"title":"所有標籤","description":"依標籤瀏覽所有文章。","count":"共 {count} 個標籤","empty":"目前還沒有標籤，敬請期待！","allTags":"所有標籤","postCount":"共 {count} 篇文章","otherTags":"其他標籤","tagTitle":"#{tag} 的文章","tagDescription":"所有標記為「{tag}」的文章列表。"},"about":{"title":"關於","description":"關於 BenXHub Blog 與本站簡介。","subtitle":"關於 BenXHub Blog 與本站簡介","siteTitle":"關於本站","siteContent":"BenXHub Blog 是 BenX 的技術部落格，分享 Web 開發、架構設計與工程實踐。","authorTitle":"關於我","authorContent":"喜歡寫程式、研究技術，樂於把踩過的坑與解法記錄下來，也歡迎透過本站側欄或 Footer 的連結交流。","linksTitle":"連結"},"sidebar":{"label":"側邊欄","authorBio":"喜歡寫程式與分享，專注 Web 開發、架構與 DevOps。","searchPlaceholder":"搜尋文章…","seriesTitle":"系列文章","articleCount":"{count} 篇"},"toc":{"title":"目錄","label":"文章目錄"},"notFound":{"message":"此頁面不存在，可能連結已失效或網址輸入錯誤。","backHome":"返回首頁"},"localeSwitcher":{"label":"切換語言"}},"now":"$undefined","timeZone":"UTC","children":[["$","$L10",null,{}],["$","$L11",null,{}],["$","main",null,{"className":"flex-1 pt-16","children":["$","$L2",null,{"parallelRouterKey":"children","error":"$undefined","errorStyles":"$undefined","errorScripts":"$undefined","template":["$","$L3",null,{}],"templateStyles":"$undefined","templateScripts":"$undefined","notFound":["$L12",[]],"forbidden":"$undefined","unauthorized":"$undefined"}]}],["$","$L13",null,{}]]}]
+12:["$","div",null,{"className":"mx-auto max-w-2xl px-4 py-20 text-center sm:px-6","children":[["$","h1",null,{"className":"mb-3 text-4xl font-bold tracking-tight","style":{"color":"var(--color-text)"},"children":"404"}],["$","p",null,{"className":"mb-8 text-lg","style":{"color":"var(--color-muted)"},"children":"此頁面不存在，可能連結已失效或網址輸入錯誤。"}],"$L14"]}]
+a:[["$","meta","0",{"charSet":"utf-8"}],["$","meta","1",{"name":"viewport","content":"width=device-width, initial-scale=1"}]]
+15:I[14864,["/_next/static/chunks/4204edc93da35a5e.js","/_next/static/chunks/f2afb7fd2b7566bb.js","/_next/static/chunks/2dddb3bc05093f69.js"],"default"]
+14:["$","$L15",null,{"ref":"$undefined","href":"/zh","locale":"$undefined","localeCookie":{"name":"NEXT_LOCALE","sameSite":"lax"},"className":"inline-flex items-center rounded-lg border px-4 py-2.5 text-sm font-medium transition-colors hover:border-accent","style":{"borderColor":"var(--color-border)","color":"var(--color-accent)","background":"var(--color-surface)"},"children":"返回首頁"}]
+16:I[92204,["/_next/static/chunks/5a5b5b13c22d14f7.js","/_next/static/chunks/a484d1d3dd4b55ab.js"],"IconMark"]
+8:null
+c:[["$","title","0",{"children":"Proxmox VE Homelab 最佳實踐：收尾與長期生存指南 | BenXHub Blog"}],["$","meta","1",{"name":"description","content":"PVE 最佳實踐與 Homelab 完整指南：推薦服務清單、3-2-1 備份策略、VLAN 網路分區到長期維運心法，避開常見地雷穩定運行。"}],["$","link","2",{"rel":"canonical","href":"https://benxhub.com/zh/blog/pve/14-homelab-best-practices/"}],["$","link","3",{"rel":"alternate","hrefLang":"zh-Hant","href":"https://benxhub.com/zh/blog/pve/14-homelab-best-practices/"}],["$","link","4",{"rel":"alternate","hrefLang":"x-default","href":"https://benxhub.com/zh/blog/pve/14-homelab-best-practices/"}],["$","link","5",{"rel":"alternate","type":"application/rss+xml","href":"https://benxhub.com/zh/feed.xml"}],["$","meta","6",{"property":"og:title","content":"Proxmox VE Homelab 最佳實踐：收尾與長期生存指南"}],["$","meta","7",{"property":"og:description","content":"PVE 最佳實踐與 Homelab 完整指南：推薦服務清單、3-2-1 備份策略、VLAN 網路分區到長期維運心法，避開常見地雷穩定運行。"}],["$","meta","8",{"property":"og:url","content":"https://benxhub.com/zh/blog/pve/14-homelab-best-practices/"}],["$","meta","9",{"property":"og:site_name","content":"BenXHub Blog"}],["$","meta","10",{"property":"og:locale","content":"zh_TW"}],["$","meta","11",{"property":"og:image","content":"https://benxhub.com/og-default.png"}],["$","meta","12",{"property":"og:image:width","content":"1200"}],["$","meta","13",{"property":"og:image:height","content":"630"}],["$","meta","14",{"property":"og:image:alt","content":"BenXHub Blog"}],["$","meta","15",{"property":"og:type","content":"article"}],["$","meta","16",{"property":"article:published_time","content":"2026-05-07T00:00:00.000Z"}],["$","meta","17",{"property":"article:tag","content":"proxmox"}],["$","meta","18",{"property":"article:tag","content":"homelab"}],["$","meta","19",{"property":"article:tag","content":"best-practices"}],["$","meta","20",{"property":"article:tag","content":"operations"}],["$","meta","21",{"name":"twitter:card","content":"summary_large_image"}],["$","meta","22",{"name":"twitter:title","content":"Proxmox VE Homelab 最佳實踐：收尾與長期生存指南"}],["$","meta","23",{"name":"twitter:description","content":"PVE 最佳實踐與 Homelab 完整指南：推薦服務清單、3-2-1 備份策略、VLAN 網路分區到長期維運心法，避開常見地雷穩定運行。"}],["$","meta","24",{"name":"twitter:image","content":"https://benxhub.com/og-default.png"}],["$","link","25",{"rel":"icon","href":"/favicon.ico?favicon.0b3bf435.ico","sizes":"256x256","type":"image/x-icon"}],["$","$L16","26",{}]]
+1b:T3183,<p>恭喜你走到這裡。從第一篇的「PVE 是什麼」到 Ceph、GPU 直通、防火牆、自動化——如果你真的跟著做了一遍，手上應該已經有一套蠻完整的虛擬化環境了。這最後一篇收個尾：Homelab 該跑什麼服務、長期維運怎麼不翻車、以及一些過來人的血淚教訓。</p>
+<h2 id="推薦服務清單">推薦服務清單</h2>
+<p>挑你需要的裝就好，不用全上。Homelab 不是集郵，跑太多服務反而是負擔。</p>
+<h3 id="基礎設施">基礎設施</h3>
+<table>
+<thead>
+<tr>
+<th>服務</th>
+<th>部署方式</th>
+<th>幹嘛用的</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td>Pi-hole / AdGuard Home</td>
+<td>LXC 容器</td>
+<td>DNS 層級擋廣告，全家受惠</td>
+</tr>
+<tr>
+<td>Nginx Proxy Manager</td>
+<td>LXC / Docker</td>
+<td>反向代理 + 自動 SSL</td>
+</tr>
+<tr>
+<td>WireGuard / Tailscale</td>
+<td>LXC 容器</td>
+<td>在外面也能連回家</td>
+</tr>
+<tr>
+<td>OPNsense</td>
+<td>VM</td>
+<td>軟體防火牆/路由器</td>
+</tr>
+</tbody>
+</table>
+<h3 id="儲存與備份">儲存與備份</h3>
+<table>
+<thead>
+<tr>
+<th>服務</th>
+<th>部署方式</th>
+<th>幹嘛用的</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td>Proxmox Backup Server</td>
+<td>獨立主機或 VM</td>
+<td>PVE 專屬備份方案</td>
+</tr>
+<tr>
+<td>TrueNAS SCALE</td>
+<td>VM（HBA 直通）</td>
+<td>NAS 儲存管理</td>
+</tr>
+<tr>
+<td>Nextcloud</td>
+<td>LXC / Docker</td>
+<td>自建雲端硬碟</td>
+</tr>
+</tbody>
+</table>
+<h3 id="智慧家居與媒體">智慧家居與媒體</h3>
+<table>
+<thead>
+<tr>
+<th>服務</th>
+<th>部署方式</th>
+<th>幹嘛用的</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td>Home Assistant OS</td>
+<td>VM（USB 直通 Zigbee）</td>
+<td>智慧家居大腦</td>
+</tr>
+<tr>
+<td>Jellyfin</td>
+<td>LXC / VM（<a href="11-gpu-passthrough">GPU 直通</a>）</td>
+<td>免費的家庭影音串流</td>
+</tr>
+<tr>
+<td>*arr Stack</td>
+<td>Docker</td>
+<td>自動化媒體管理</td>
+</tr>
+</tbody>
+</table>
+<h3 id="開發與監控">開發與監控</h3>
+<table>
+<thead>
+<tr>
+<th>服務</th>
+<th>部署方式</th>
+<th>幹嘛用的</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td>Gitea / Forgejo</td>
+<td>LXC / Docker</td>
+<td>自建 Git 伺服器</td>
+</tr>
+<tr>
+<td>Grafana + Prometheus</td>
+<td>LXC / Docker</td>
+<td>監控儀表板</td>
+</tr>
+<tr>
+<td>Uptime Kuma</td>
+<td>LXC / Docker</td>
+<td>服務存活監控</td>
+</tr>
+<tr>
+<td>Portainer</td>
+<td>Docker</td>
+<td>Docker 圖形管理</td>
+</tr>
+</tbody>
+</table>
+<h3 id="ai-與實驗">AI 與實驗</h3>
+<table>
+<thead>
+<tr>
+<th>服務</th>
+<th>部署方式</th>
+<th>幹嘛用的</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td>Ollama</td>
+<td>VM（GPU 直通）</td>
+<td>本地跑大語言模型</td>
+</tr>
+<tr>
+<td>Open WebUI</td>
+<td>Docker</td>
+<td>LLM 的 ChatGPT 風格介面</td>
+</tr>
+<tr>
+<td>K3s</td>
+<td>VM 叢集</td>
+<td>輕量版 Kubernetes 練功</td>
+</tr>
+</tbody>
+</table>
+<blockquote>
+<p>社群腳本 <a href="https://community-scripts.github.io/ProxmoxVE/">community-scripts/ProxmoxVE</a> 收錄了 200 多種服務的一鍵安裝腳本，在 PVE Shell 裡貼上就能自動建好 LXC 容器並裝好服務。省下來的時間夠你泡好幾杯咖啡。</p>
+</blockquote>
+<h2 id="長期維運心法">長期維運心法</h2>
+<h3 id="備份策略3-2-1-法則">備份策略：3-2-1 法則</h3>
+<pre><code>每日：vzdump 自動快照（保留 7 份）
+  ↓
+每週：備份到 PBS（增量去重，保留 4 週）
+  ↓
+每月：PBS 同步到異地（NAS 或雲端，保留 6 個月）
+</code></pre>
+<p>光有備份不夠——<strong>定期抽樣還原</strong>。沒試過能不能還原的備份，跟沒有備份差不多。詳細的 vzdump 和 PBS 設定可以回去看<a href="07-backup-restore">備份與還原</a>那篇。</p>
+<h3 id="網路分區">網路分區</h3>
+<p>即使是 Homelab 也該做 VLAN 隔離：</p>
+<pre><code>VLAN 10：管理（PVE Web GUI、SSH）
+VLAN 20：服務（Web、DNS、NAS）
+VLAN 30：IoT（智慧家電，隔離起來）
+VLAN 40：Guest（訪客 Wi-Fi）
+</code></pre>
+<p>IoT 設備的安全性通常很堪憂，跟你的伺服器放同一個網段就像把前門鑰匙掛在門把上。VLAN 的設定方式在<a href="06-networking">網路管理</a>裡有詳細介紹，搭配 <a href="12-firewall-permissions">PVE 防火牆</a>做存取控制效果更好。</p>
+<h3 id="更新與訂閱策略">更新與訂閱策略</h3>
+<figure data-rehype-pretty-code-figure=""><pre style="background-color:#0d1117;color:#e6edf3" tabindex="0" data-language="bash" data-theme="github-dark-default"><code data-language="bash" data-theme="github-dark-default" style="display: grid;"><span data-line=""><span style="color:#8B949E"># 查訂閱狀態</span></span>
+<span data-line=""><span style="color:#FFA657">pvesubscription</span><span style="color:#A5D6FF"> get</span></span>
+<span data-line=""> </span>
+<span data-line=""><span style="color:#8B949E"># 更新前先打快照</span></span>
+<span data-line=""><span style="color:#FFA657">qm</span><span style="color:#A5D6FF"> snapshot</span><span style="color:#79C0FF"> 100</span><span style="color:#A5D6FF"> before-update</span></span>
+<span data-line=""> </span>
+<span data-line=""><span style="color:#8B949E"># 更新系統</span></span>
+<span data-line=""><span style="color:#FFA657">apt</span><span style="color:#A5D6FF"> update</span><span style="color:#E6EDF3"> &#x26;&#x26; </span><span style="color:#FFA657">apt</span><span style="color:#A5D6FF"> full-upgrade</span><span style="color:#79C0FF"> -y</span></span></code></pre></figure>
+<p>Homelab 用社群版（no-subscription）完全沒問題，功能一模一樣。正式環境考慮付費訂閱拿穩定源和技術支援。</p>
+<blockquote>
+<p>更新前一定打快照。養成習慣之後，你會感謝三個月前的自己。</p>
+</blockquote>
+<h3 id="容量監控">容量監控</h3>
+<figure data-rehype-pretty-code-figure=""><pre style="background-color:#0d1117;color:#e6edf3" tabindex="0" data-language="bash" data-theme="github-dark-default"><code data-language="bash" data-theme="github-dark-default" style="display: grid;"><span data-line=""><span style="color:#8B949E"># 快速看儲存用量</span></span>
+<span data-line=""><span style="color:#FFA657">pvesm</span><span style="color:#A5D6FF"> status</span></span>
+<span data-line=""> </span>
+<span data-line=""><span style="color:#8B949E"># ZFS 用量</span></span>
+<span data-line=""><span style="color:#FFA657">zpool</span><span style="color:#A5D6FF"> list</span></span>
+<span data-line=""> </span>
+<span data-line=""><span style="color:#8B949E"># Ceph 用量</span></span>
+<span data-line=""><span style="color:#FFA657">ceph</span><span style="color:#A5D6FF"> df</span></span></code></pre></figure>
+<p><code>local-lvm</code> 或備份存儲滿了，寫入會直接失敗。不要等到半夜告警才起床處理——設好 Grafana + Prometheus 的警報閾值，80% 就該清理或擴容。</p>
+<h2 id="常見維運誤區">常見維運誤區</h2>
+<table>
+<thead>
+<tr>
+<th>誤區</th>
+<th>為什麼是地雷</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td>ZFS/Ceph 上面疊硬體 RAID</td>
+<td>它們自己管冗餘，疊 RAID 反而廢武功</td>
+</tr>
+<tr>
+<td>一台機器想要 HA</td>
+<td>HA 至少要三台，單點就是單點</td>
+</tr>
+<tr>
+<td>刪掉 Linked Clone 的母盤</td>
+<td>底下所有 Clone 全部報廢</td>
+</tr>
+<tr>
+<td>不做容量監控</td>
+<td>存儲爆了 = 全部停擺</td>
+</tr>
+<tr>
+<td>root 帳號到處共用</td>
+<td>出事的時候連查都沒法查是誰幹的</td>
+</tr>
+<tr>
+<td>從不演練還原</td>
+<td>備份可能是壞的，你只是不知道</td>
+</tr>
+<tr>
+<td>所有服務同一個網段</td>
+<td>一台被打穿，全部曝光</td>
+</tr>
+</tbody>
+</table>
+<h2 id="為什麼選-proxmox-ve">為什麼選 Proxmox VE</h2>
+<p>跟其他平台比一下你就知道了：</p>
+<table>
+<thead>
+<tr>
+<th></th>
+<th>PVE</th>
+<th>VMware ESXi</th>
+<th>Hyper-V</th>
+<th>XCP-ng</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td>授權費</td>
+<td>免費</td>
+<td>$4,500+/CPU/年</td>
+<td>Windows Server 授權</td>
+<td>免費</td>
+</tr>
+<tr>
+<td>容器支援</td>
+<td>LXC 原生</td>
+<td>無</td>
+<td>有限</td>
+<td>無</td>
+</tr>
+<tr>
+<td>內建儲存</td>
+<td>ZFS + Ceph</td>
+<td>vSAN（另付費）</td>
+<td>Storage Spaces</td>
+<td>XOSTOR（付費）</td>
+</tr>
+<tr>
+<td>HA/叢集</td>
+<td>免費</td>
+<td>需 vCenter（付費）</td>
+<td>免費</td>
+<td>免費</td>
+</tr>
+<tr>
+<td>社群活躍度</td>
+<td>高（13.9% 市佔）</td>
+<td>下降中</td>
+<td>企業 Windows 圈</td>
+<td>低（2.4%）</td>
+</tr>
+</tbody>
+</table>
+<p>免費、全功能、社群活躍、Homelab 和企業都能用。說 PVE 是 2026 年虛擬化平台的 CP 值之王，不算誇張。更多平台比較和功能介紹可參考 <a href="https://www.proxmox.com/en/proxmox-virtual-environment/overview">Proxmox VE 官方功能頁</a>、<a href="https://pve.proxmox.com/pve-docs/pve-admin-guide.html">PVE 管理手冊</a> 和 <a href="https://forum.proxmox.com/">Proxmox 官方論壇</a>。</p>
+<h2 id="pve-系列文章回顧">PVE 系列文章回顧</h2>
+<p>走到這裡，整個系列算是完整了。回頭看看我們走了哪些路：</p>
+<ul>
+<li><a href="00-what-is-pve">00 - PVE 是什麼</a>：開源虛擬化的新選擇</li>
+<li><a href="01-hardware-guide">01 - 硬體選購</a>：從 Mini PC 到機架式伺服器</li>
+<li><a href="02-install-first-vm">02 - 安裝與首台 VM</a>：從零開始跑起來</li>
+<li><a href="03-vm-management">03 - VM 管理</a>：設定、快照、範本與效能調校</li>
+<li><a href="04-lxc-containers">04 - LXC 容器</a>：輕量虛擬化與 Docker-in-LXC</li>
+<li><a href="05-storage">05 - 存儲攻略</a>：ZFS、LVM、NFS 完整指南</li>
+<li><a href="06-networking">06 - 網路管理</a>：Bridge、VLAN 與 Bonding</li>
+<li><a href="07-backup-restore">07 - 備份與還原</a>：vzdump 與 PBS</li>
+<li><a href="08-cluster">08 - 叢集管理</a>：多節點組隊打副本</li>
+<li><a href="09-high-availability">09 - 高可用 HA</a>：讓 VM 自己找活路</li>
+<li><a href="10-ceph-storage">10 - Ceph 超融合</a>：分散式儲存深入解析</li>
+<li><a href="11-gpu-passthrough">11 - GPU 直通</a>：PCIe Passthrough 完整攻略</li>
+<li><a href="12-firewall-permissions">12 - 防火牆與權限</a>：安全架構設計</li>
+<li><a href="13-automation">13 - 自動化部署</a>：Cloud-init、Terraform、API</li>
+<li><a href="14-homelab-best-practices">14 - Homelab 最佳實踐</a>：就是這篇</li>
+</ul>
+<hr>
+<p>Homelab 是一個永遠蓋不完的工程，但這不是壞事。每次加一個服務、解一個問題、優化一個流程，都是在累積真正的實戰經驗。PVE 只是平台，上面跑什麼、怎麼跑、跑得多穩——那是你的手藝。</p>
+<p>祝你的 VM 乖乖跑、備份永遠還原得回來、半夜不會被告警吵醒。</p>
+<h2 id="常見問題">常見問題</h2>
+<h3 id="q-proxmox-homelab-用免費的社群版跟付費訂閱版有什麼差別">Q: Proxmox Homelab 用免費的社群版跟付費訂閱版有什麼差別？</h3>
+<p>功能完全一樣，差別在更新源的穩定性和技術支援。社群版用 no-subscription 源也能正常更新，Homelab 用完全沒問題，生產環境建議付費取得穩定源和官方支援。</p>
+<h3 id="q-pve-homelab-該用-vm-還是-lxc-容器跑服務">Q: PVE Homelab 該用 VM 還是 LXC 容器跑服務？</h3>
+<p>能用 LXC 就用 LXC，資源消耗只有 VM 的幾分之一。需要完整 OS 隔離、跑 Docker Compose、或硬體直通（如 GPU）的服務才用 VM。Pi-hole、Nginx 這類輕量服務用 LXC 最划算。</p>
+<h3 id="q-homelab-服務推薦的最小硬體配置是什麼">Q: Homelab 服務推薦的最小硬體配置是什麼？</h3>
+<p>入門可以用一台 N100 Mini PC（16GB RAM、500GB NVMe），跑 5-10 個 LXC 容器綽綽有餘。想玩 Ceph 或 HA 至少準備三台節點，跑 AI 則需要獨顯和 32GB 以上記憶體。</p>
+<h3 id="q-pve-維運最重要的三件事是什麼">Q: PVE 維運最重要的三件事是什麼？</h3>
+<p>備份、備份、還是備份。認真說：第一是定期備份並演練還原，第二是做好網路分區和權限控制，第三是設定監控告警在問題擴大前收到通知。這三件做好，Homelab 就能穩定長期運行。</p>
+<h2 id="延伸資源">延伸資源</h2>
+<ul>
+<li><a href="https://pve.proxmox.com/pve-docs/pve-admin-guide.html">Proxmox VE 官方文件</a></li>
+<li><a href="https://pve.proxmox.com/wiki/Main_Page">Proxmox VE Wiki</a></li>
+<li><a href="https://forum.proxmox.com/">Proxmox 官方論壇</a></li>
+<li><a href="https://community-scripts.github.io/ProxmoxVE/">社群一鍵腳本</a></li>
+</ul>5:[["$","script",null,{"type":"application/ld+json","dangerouslySetInnerHTML":{"__html":"{\"@context\":\"https://schema.org\",\"@type\":\"Article\",\"headline\":\"Proxmox VE Homelab 最佳實踐：收尾與長期生存指南\",\"description\":\"PVE 最佳實踐與 Homelab 完整指南：推薦服務清單、3-2-1 備份策略、VLAN 網路分區到長期維運心法，避開常見地雷穩定運行。\",\"url\":\"https://benxhub.com/zh/blog/pve/14-homelab-best-practices/\",\"mainEntityOfPage\":{\"@type\":\"WebPage\",\"@id\":\"https://benxhub.com/zh/blog/pve/14-homelab-best-practices/\"},\"datePublished\":\"2026-05-07T00:00:00.000Z\",\"dateModified\":\"2026-05-07T00:00:00.000Z\",\"keywords\":\"proxmox, homelab, best-practices, operations\",\"inLanguage\":\"zh-Hant\",\"author\":{\"@type\":\"Person\",\"@id\":\"https://benxhub.com/#author\",\"name\":\"BenX\",\"url\":\"https://benxhub.com/zh/about/\",\"sameAs\":[\"https://github.com/benzhub\"]},\"publisher\":{\"@type\":\"Organization\",\"name\":\"BenXHub Blog\",\"url\":\"https://benxhub.com\"},\"image\":\"https://benxhub.com/og-default.png\"}"}}],["$","div",null,{"className":"mx-auto max-w-6xl px-4 py-12 sm:px-6","children":["$","div",null,{"className":"lg:grid lg:grid-cols-[1fr_240px] lg:gap-14","children":[["$","article",null,{"children":[["$","header",null,{"className":"mb-10","children":[["$","div",null,{"className":"mb-4 flex flex-wrap gap-2","children":["$L17","$L18","$L19","$L1a"]}],["$","h1",null,{"className":"mb-4 text-3xl leading-snug font-bold tracking-tight sm:text-4xl","style":{"color":"var(--color-text)"},"children":"Proxmox VE Homelab 最佳實踐：收尾與長期生存指南"}],["$","div",null,{"className":"flex flex-wrap items-center gap-3 text-sm","style":{"color":"var(--color-muted)"},"children":[["$","time",null,{"dateTime":"2026-05-07","children":"2026 年 5 月 7 日"}],["$","span",null,{"aria-hidden":"true","children":"·"}],["$","span",null,{"children":"10 min read"}]]}],"$undefined",["$","div",null,{"className":"mt-6 border-b","style":{"borderColor":"var(--color-border)"}}]]}],["$","div",null,{"className":"prose","dangerouslySetInnerHTML":{"__html":"$1b"}}],"$L1c"]}],"$L1d"]}]}]]
+23:I[24801,["/_next/static/chunks/4204edc93da35a5e.js","/_next/static/chunks/f2afb7fd2b7566bb.js","/_next/static/chunks/2dddb3bc05093f69.js"],"default"]
+1c:["$","footer",null,{"className":"mt-14 border-t pt-8","style":{"borderColor":"var(--color-border)"},"children":[["$","div",null,{"className":"mb-8 flex flex-wrap gap-2","children":["$L1e","$L1f","$L20","$L21"]}],["$","nav",null,{"aria-label":"文章導覽","className":"grid grid-cols-1 gap-4 sm:grid-cols-2","children":[["$","div",null,{}],"$L22"]}]]}]
+24:T3183,<p>恭喜你走到這裡。從第一篇的「PVE 是什麼」到 Ceph、GPU 直通、防火牆、自動化——如果你真的跟著做了一遍，手上應該已經有一套蠻完整的虛擬化環境了。這最後一篇收個尾：Homelab 該跑什麼服務、長期維運怎麼不翻車、以及一些過來人的血淚教訓。</p>
+<h2 id="推薦服務清單">推薦服務清單</h2>
+<p>挑你需要的裝就好，不用全上。Homelab 不是集郵，跑太多服務反而是負擔。</p>
+<h3 id="基礎設施">基礎設施</h3>
+<table>
+<thead>
+<tr>
+<th>服務</th>
+<th>部署方式</th>
+<th>幹嘛用的</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td>Pi-hole / AdGuard Home</td>
+<td>LXC 容器</td>
+<td>DNS 層級擋廣告，全家受惠</td>
+</tr>
+<tr>
+<td>Nginx Proxy Manager</td>
+<td>LXC / Docker</td>
+<td>反向代理 + 自動 SSL</td>
+</tr>
+<tr>
+<td>WireGuard / Tailscale</td>
+<td>LXC 容器</td>
+<td>在外面也能連回家</td>
+</tr>
+<tr>
+<td>OPNsense</td>
+<td>VM</td>
+<td>軟體防火牆/路由器</td>
+</tr>
+</tbody>
+</table>
+<h3 id="儲存與備份">儲存與備份</h3>
+<table>
+<thead>
+<tr>
+<th>服務</th>
+<th>部署方式</th>
+<th>幹嘛用的</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td>Proxmox Backup Server</td>
+<td>獨立主機或 VM</td>
+<td>PVE 專屬備份方案</td>
+</tr>
+<tr>
+<td>TrueNAS SCALE</td>
+<td>VM（HBA 直通）</td>
+<td>NAS 儲存管理</td>
+</tr>
+<tr>
+<td>Nextcloud</td>
+<td>LXC / Docker</td>
+<td>自建雲端硬碟</td>
+</tr>
+</tbody>
+</table>
+<h3 id="智慧家居與媒體">智慧家居與媒體</h3>
+<table>
+<thead>
+<tr>
+<th>服務</th>
+<th>部署方式</th>
+<th>幹嘛用的</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td>Home Assistant OS</td>
+<td>VM（USB 直通 Zigbee）</td>
+<td>智慧家居大腦</td>
+</tr>
+<tr>
+<td>Jellyfin</td>
+<td>LXC / VM（<a href="11-gpu-passthrough">GPU 直通</a>）</td>
+<td>免費的家庭影音串流</td>
+</tr>
+<tr>
+<td>*arr Stack</td>
+<td>Docker</td>
+<td>自動化媒體管理</td>
+</tr>
+</tbody>
+</table>
+<h3 id="開發與監控">開發與監控</h3>
+<table>
+<thead>
+<tr>
+<th>服務</th>
+<th>部署方式</th>
+<th>幹嘛用的</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td>Gitea / Forgejo</td>
+<td>LXC / Docker</td>
+<td>自建 Git 伺服器</td>
+</tr>
+<tr>
+<td>Grafana + Prometheus</td>
+<td>LXC / Docker</td>
+<td>監控儀表板</td>
+</tr>
+<tr>
+<td>Uptime Kuma</td>
+<td>LXC / Docker</td>
+<td>服務存活監控</td>
+</tr>
+<tr>
+<td>Portainer</td>
+<td>Docker</td>
+<td>Docker 圖形管理</td>
+</tr>
+</tbody>
+</table>
+<h3 id="ai-與實驗">AI 與實驗</h3>
+<table>
+<thead>
+<tr>
+<th>服務</th>
+<th>部署方式</th>
+<th>幹嘛用的</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td>Ollama</td>
+<td>VM（GPU 直通）</td>
+<td>本地跑大語言模型</td>
+</tr>
+<tr>
+<td>Open WebUI</td>
+<td>Docker</td>
+<td>LLM 的 ChatGPT 風格介面</td>
+</tr>
+<tr>
+<td>K3s</td>
+<td>VM 叢集</td>
+<td>輕量版 Kubernetes 練功</td>
+</tr>
+</tbody>
+</table>
+<blockquote>
+<p>社群腳本 <a href="https://community-scripts.github.io/ProxmoxVE/">community-scripts/ProxmoxVE</a> 收錄了 200 多種服務的一鍵安裝腳本，在 PVE Shell 裡貼上就能自動建好 LXC 容器並裝好服務。省下來的時間夠你泡好幾杯咖啡。</p>
+</blockquote>
+<h2 id="長期維運心法">長期維運心法</h2>
+<h3 id="備份策略3-2-1-法則">備份策略：3-2-1 法則</h3>
+<pre><code>每日：vzdump 自動快照（保留 7 份）
+  ↓
+每週：備份到 PBS（增量去重，保留 4 週）
+  ↓
+每月：PBS 同步到異地（NAS 或雲端，保留 6 個月）
+</code></pre>
+<p>光有備份不夠——<strong>定期抽樣還原</strong>。沒試過能不能還原的備份，跟沒有備份差不多。詳細的 vzdump 和 PBS 設定可以回去看<a href="07-backup-restore">備份與還原</a>那篇。</p>
+<h3 id="網路分區">網路分區</h3>
+<p>即使是 Homelab 也該做 VLAN 隔離：</p>
+<pre><code>VLAN 10：管理（PVE Web GUI、SSH）
+VLAN 20：服務（Web、DNS、NAS）
+VLAN 30：IoT（智慧家電，隔離起來）
+VLAN 40：Guest（訪客 Wi-Fi）
+</code></pre>
+<p>IoT 設備的安全性通常很堪憂，跟你的伺服器放同一個網段就像把前門鑰匙掛在門把上。VLAN 的設定方式在<a href="06-networking">網路管理</a>裡有詳細介紹，搭配 <a href="12-firewall-permissions">PVE 防火牆</a>做存取控制效果更好。</p>
+<h3 id="更新與訂閱策略">更新與訂閱策略</h3>
+<figure data-rehype-pretty-code-figure=""><pre style="background-color:#0d1117;color:#e6edf3" tabindex="0" data-language="bash" data-theme="github-dark-default"><code data-language="bash" data-theme="github-dark-default" style="display: grid;"><span data-line=""><span style="color:#8B949E"># 查訂閱狀態</span></span>
+<span data-line=""><span style="color:#FFA657">pvesubscription</span><span style="color:#A5D6FF"> get</span></span>
+<span data-line=""> </span>
+<span data-line=""><span style="color:#8B949E"># 更新前先打快照</span></span>
+<span data-line=""><span style="color:#FFA657">qm</span><span style="color:#A5D6FF"> snapshot</span><span style="color:#79C0FF"> 100</span><span style="color:#A5D6FF"> before-update</span></span>
+<span data-line=""> </span>
+<span data-line=""><span style="color:#8B949E"># 更新系統</span></span>
+<span data-line=""><span style="color:#FFA657">apt</span><span style="color:#A5D6FF"> update</span><span style="color:#E6EDF3"> &#x26;&#x26; </span><span style="color:#FFA657">apt</span><span style="color:#A5D6FF"> full-upgrade</span><span style="color:#79C0FF"> -y</span></span></code></pre></figure>
+<p>Homelab 用社群版（no-subscription）完全沒問題，功能一模一樣。正式環境考慮付費訂閱拿穩定源和技術支援。</p>
+<blockquote>
+<p>更新前一定打快照。養成習慣之後，你會感謝三個月前的自己。</p>
+</blockquote>
+<h3 id="容量監控">容量監控</h3>
+<figure data-rehype-pretty-code-figure=""><pre style="background-color:#0d1117;color:#e6edf3" tabindex="0" data-language="bash" data-theme="github-dark-default"><code data-language="bash" data-theme="github-dark-default" style="display: grid;"><span data-line=""><span style="color:#8B949E"># 快速看儲存用量</span></span>
+<span data-line=""><span style="color:#FFA657">pvesm</span><span style="color:#A5D6FF"> status</span></span>
+<span data-line=""> </span>
+<span data-line=""><span style="color:#8B949E"># ZFS 用量</span></span>
+<span data-line=""><span style="color:#FFA657">zpool</span><span style="color:#A5D6FF"> list</span></span>
+<span data-line=""> </span>
+<span data-line=""><span style="color:#8B949E"># Ceph 用量</span></span>
+<span data-line=""><span style="color:#FFA657">ceph</span><span style="color:#A5D6FF"> df</span></span></code></pre></figure>
+<p><code>local-lvm</code> 或備份存儲滿了，寫入會直接失敗。不要等到半夜告警才起床處理——設好 Grafana + Prometheus 的警報閾值，80% 就該清理或擴容。</p>
+<h2 id="常見維運誤區">常見維運誤區</h2>
+<table>
+<thead>
+<tr>
+<th>誤區</th>
+<th>為什麼是地雷</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td>ZFS/Ceph 上面疊硬體 RAID</td>
+<td>它們自己管冗餘，疊 RAID 反而廢武功</td>
+</tr>
+<tr>
+<td>一台機器想要 HA</td>
+<td>HA 至少要三台，單點就是單點</td>
+</tr>
+<tr>
+<td>刪掉 Linked Clone 的母盤</td>
+<td>底下所有 Clone 全部報廢</td>
+</tr>
+<tr>
+<td>不做容量監控</td>
+<td>存儲爆了 = 全部停擺</td>
+</tr>
+<tr>
+<td>root 帳號到處共用</td>
+<td>出事的時候連查都沒法查是誰幹的</td>
+</tr>
+<tr>
+<td>從不演練還原</td>
+<td>備份可能是壞的，你只是不知道</td>
+</tr>
+<tr>
+<td>所有服務同一個網段</td>
+<td>一台被打穿，全部曝光</td>
+</tr>
+</tbody>
+</table>
+<h2 id="為什麼選-proxmox-ve">為什麼選 Proxmox VE</h2>
+<p>跟其他平台比一下你就知道了：</p>
+<table>
+<thead>
+<tr>
+<th></th>
+<th>PVE</th>
+<th>VMware ESXi</th>
+<th>Hyper-V</th>
+<th>XCP-ng</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td>授權費</td>
+<td>免費</td>
+<td>$4,500+/CPU/年</td>
+<td>Windows Server 授權</td>
+<td>免費</td>
+</tr>
+<tr>
+<td>容器支援</td>
+<td>LXC 原生</td>
+<td>無</td>
+<td>有限</td>
+<td>無</td>
+</tr>
+<tr>
+<td>內建儲存</td>
+<td>ZFS + Ceph</td>
+<td>vSAN（另付費）</td>
+<td>Storage Spaces</td>
+<td>XOSTOR（付費）</td>
+</tr>
+<tr>
+<td>HA/叢集</td>
+<td>免費</td>
+<td>需 vCenter（付費）</td>
+<td>免費</td>
+<td>免費</td>
+</tr>
+<tr>
+<td>社群活躍度</td>
+<td>高（13.9% 市佔）</td>
+<td>下降中</td>
+<td>企業 Windows 圈</td>
+<td>低（2.4%）</td>
+</tr>
+</tbody>
+</table>
+<p>免費、全功能、社群活躍、Homelab 和企業都能用。說 PVE 是 2026 年虛擬化平台的 CP 值之王，不算誇張。更多平台比較和功能介紹可參考 <a href="https://www.proxmox.com/en/proxmox-virtual-environment/overview">Proxmox VE 官方功能頁</a>、<a href="https://pve.proxmox.com/pve-docs/pve-admin-guide.html">PVE 管理手冊</a> 和 <a href="https://forum.proxmox.com/">Proxmox 官方論壇</a>。</p>
+<h2 id="pve-系列文章回顧">PVE 系列文章回顧</h2>
+<p>走到這裡，整個系列算是完整了。回頭看看我們走了哪些路：</p>
+<ul>
+<li><a href="00-what-is-pve">00 - PVE 是什麼</a>：開源虛擬化的新選擇</li>
+<li><a href="01-hardware-guide">01 - 硬體選購</a>：從 Mini PC 到機架式伺服器</li>
+<li><a href="02-install-first-vm">02 - 安裝與首台 VM</a>：從零開始跑起來</li>
+<li><a href="03-vm-management">03 - VM 管理</a>：設定、快照、範本與效能調校</li>
+<li><a href="04-lxc-containers">04 - LXC 容器</a>：輕量虛擬化與 Docker-in-LXC</li>
+<li><a href="05-storage">05 - 存儲攻略</a>：ZFS、LVM、NFS 完整指南</li>
+<li><a href="06-networking">06 - 網路管理</a>：Bridge、VLAN 與 Bonding</li>
+<li><a href="07-backup-restore">07 - 備份與還原</a>：vzdump 與 PBS</li>
+<li><a href="08-cluster">08 - 叢集管理</a>：多節點組隊打副本</li>
+<li><a href="09-high-availability">09 - 高可用 HA</a>：讓 VM 自己找活路</li>
+<li><a href="10-ceph-storage">10 - Ceph 超融合</a>：分散式儲存深入解析</li>
+<li><a href="11-gpu-passthrough">11 - GPU 直通</a>：PCIe Passthrough 完整攻略</li>
+<li><a href="12-firewall-permissions">12 - 防火牆與權限</a>：安全架構設計</li>
+<li><a href="13-automation">13 - 自動化部署</a>：Cloud-init、Terraform、API</li>
+<li><a href="14-homelab-best-practices">14 - Homelab 最佳實踐</a>：就是這篇</li>
+</ul>
+<hr>
+<p>Homelab 是一個永遠蓋不完的工程，但這不是壞事。每次加一個服務、解一個問題、優化一個流程，都是在累積真正的實戰經驗。PVE 只是平台，上面跑什麼、怎麼跑、跑得多穩——那是你的手藝。</p>
+<p>祝你的 VM 乖乖跑、備份永遠還原得回來、半夜不會被告警吵醒。</p>
+<h2 id="常見問題">常見問題</h2>
+<h3 id="q-proxmox-homelab-用免費的社群版跟付費訂閱版有什麼差別">Q: Proxmox Homelab 用免費的社群版跟付費訂閱版有什麼差別？</h3>
+<p>功能完全一樣，差別在更新源的穩定性和技術支援。社群版用 no-subscription 源也能正常更新，Homelab 用完全沒問題，生產環境建議付費取得穩定源和官方支援。</p>
+<h3 id="q-pve-homelab-該用-vm-還是-lxc-容器跑服務">Q: PVE Homelab 該用 VM 還是 LXC 容器跑服務？</h3>
+<p>能用 LXC 就用 LXC，資源消耗只有 VM 的幾分之一。需要完整 OS 隔離、跑 Docker Compose、或硬體直通（如 GPU）的服務才用 VM。Pi-hole、Nginx 這類輕量服務用 LXC 最划算。</p>
+<h3 id="q-homelab-服務推薦的最小硬體配置是什麼">Q: Homelab 服務推薦的最小硬體配置是什麼？</h3>
+<p>入門可以用一台 N100 Mini PC（16GB RAM、500GB NVMe），跑 5-10 個 LXC 容器綽綽有餘。想玩 Ceph 或 HA 至少準備三台節點，跑 AI 則需要獨顯和 32GB 以上記憶體。</p>
+<h3 id="q-pve-維運最重要的三件事是什麼">Q: PVE 維運最重要的三件事是什麼？</h3>
+<p>備份、備份、還是備份。認真說：第一是定期備份並演練還原，第二是做好網路分區和權限控制，第三是設定監控告警在問題擴大前收到通知。這三件做好，Homelab 就能穩定長期運行。</p>
+<h2 id="延伸資源">延伸資源</h2>
+<ul>
+<li><a href="https://pve.proxmox.com/pve-docs/pve-admin-guide.html">Proxmox VE 官方文件</a></li>
+<li><a href="https://pve.proxmox.com/wiki/Main_Page">Proxmox VE Wiki</a></li>
+<li><a href="https://forum.proxmox.com/">Proxmox 官方論壇</a></li>
+<li><a href="https://community-scripts.github.io/ProxmoxVE/">社群一鍵腳本</a></li>
+</ul>1d:["$","aside",null,{"className":"hidden lg:block","children":["$","$L23",null,{"html":"$24"}]}]
+17:["$","$L15","proxmox",{"ref":"$undefined","href":"/zh/tags/proxmox","locale":"$undefined","localeCookie":"$14:props:localeCookie","className":"inline-flex items-center rounded-full px-2.5 py-0.5 text-xs font-medium transition-colors","style":{"background":"var(--color-code-bg)","color":"var(--color-accent)","border":"1px solid var(--color-border)"},"children":["#","proxmox"]}]
+18:["$","$L15","homelab",{"ref":"$undefined","href":"/zh/tags/homelab","locale":"$undefined","localeCookie":"$14:props:localeCookie","className":"inline-flex items-center rounded-full px-2.5 py-0.5 text-xs font-medium transition-colors","style":{"background":"var(--color-code-bg)","color":"var(--color-accent)","border":"1px solid var(--color-border)"},"children":["#","homelab"]}]
+19:["$","$L15","best-practices",{"ref":"$undefined","href":"/zh/tags/best-practices","locale":"$undefined","localeCookie":"$14:props:localeCookie","className":"inline-flex items-center rounded-full px-2.5 py-0.5 text-xs font-medium transition-colors","style":{"background":"var(--color-code-bg)","color":"var(--color-accent)","border":"1px solid var(--color-border)"},"children":["#","best-practices"]}]
+1a:["$","$L15","operations",{"ref":"$undefined","href":"/zh/tags/operations","locale":"$undefined","localeCookie":"$14:props:localeCookie","className":"inline-flex items-center rounded-full px-2.5 py-0.5 text-xs font-medium transition-colors","style":{"background":"var(--color-code-bg)","color":"var(--color-accent)","border":"1px solid var(--color-border)"},"children":["#","operations"]}]
+1e:["$","$L15","proxmox",{"ref":"$undefined","href":"/zh/tags/proxmox","locale":"$undefined","localeCookie":"$14:props:localeCookie","className":"inline-flex items-center rounded-full px-3 py-1 text-sm font-medium transition-colors","style":{"background":"var(--color-code-bg)","color":"var(--color-accent)","border":"1px solid var(--color-border)"},"children":["#","proxmox"]}]
+1f:["$","$L15","homelab",{"ref":"$undefined","href":"/zh/tags/homelab","locale":"$undefined","localeCookie":"$14:props:localeCookie","className":"inline-flex items-center rounded-full px-3 py-1 text-sm font-medium transition-colors","style":{"background":"var(--color-code-bg)","color":"var(--color-accent)","border":"1px solid var(--color-border)"},"children":["#","homelab"]}]
+20:["$","$L15","best-practices",{"ref":"$undefined","href":"/zh/tags/best-practices","locale":"$undefined","localeCookie":"$14:props:localeCookie","className":"inline-flex items-center rounded-full px-3 py-1 text-sm font-medium transition-colors","style":{"background":"var(--color-code-bg)","color":"var(--color-accent)","border":"1px solid var(--color-border)"},"children":["#","best-practices"]}]
+21:["$","$L15","operations",{"ref":"$undefined","href":"/zh/tags/operations","locale":"$undefined","localeCookie":"$14:props:localeCookie","className":"inline-flex items-center rounded-full px-3 py-1 text-sm font-medium transition-colors","style":{"background":"var(--color-code-bg)","color":"var(--color-accent)","border":"1px solid var(--color-border)"},"children":["#","operations"]}]
+22:["$","$L15",null,{"ref":"$undefined","href":"/zh/blog/pve/13-automation","locale":"$undefined","localeCookie":"$14:props:localeCookie","className":"group rounded-lg border p-4 text-right transition-colors hover:border-accent","style":{"borderColor":"var(--color-border)","background":"var(--color-surface)"},"children":[["$","p",null,{"className":"mb-1 text-xs","style":{"color":"var(--color-muted)"},"children":"較舊文章 →"}],["$","p",null,{"className":"line-clamp-1 text-sm font-medium transition-colors group-hover:text-accent","style":{"color":"var(--color-text)"},"children":"Proxmox VE 自動化：別再手動建 VM 了"}]]}]

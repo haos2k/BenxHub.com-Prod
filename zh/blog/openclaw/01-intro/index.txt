@@ -1,0 +1,325 @@
+1:"$Sreact.fragment"
+2:I[26795,["/_next/static/chunks/5a5b5b13c22d14f7.js","/_next/static/chunks/a484d1d3dd4b55ab.js"],"default"]
+3:I[73489,["/_next/static/chunks/5a5b5b13c22d14f7.js","/_next/static/chunks/a484d1d3dd4b55ab.js"],"default"]
+6:I[50183,["/_next/static/chunks/5a5b5b13c22d14f7.js","/_next/static/chunks/a484d1d3dd4b55ab.js"],"OutletBoundary"]
+7:"$Sreact.suspense"
+9:I[50183,["/_next/static/chunks/5a5b5b13c22d14f7.js","/_next/static/chunks/a484d1d3dd4b55ab.js"],"ViewportBoundary"]
+b:I[50183,["/_next/static/chunks/5a5b5b13c22d14f7.js","/_next/static/chunks/a484d1d3dd4b55ab.js"],"MetadataBoundary"]
+d:I[63847,[],"default"]
+:HL["/_next/static/chunks/4d9c3828f6075602.css","style"]
+:HL["/_next/static/media/797e433ab948586e-s.p.29207c2f.woff2","font",{"crossOrigin":"","type":"font/woff2"}]
+:HL["/_next/static/media/caa3a2e1cccd8315-s.p.3b6cae6d.woff2","font",{"crossOrigin":"","type":"font/woff2"}]
+0:{"P":null,"b":"ekNoF06-0VZrB4pGVUsy8","c":["","zh","blog","openclaw","01-intro",""],"q":"","i":false,"f":[[["",{"children":[["locale","zh","d"],{"children":["blog",{"children":[["slug","openclaw/01-intro","c"],{"children":["__PAGE__",{}]}]}]}]},"$undefined","$undefined",true],[["$","$1","c",{"children":[null,["$","$L2",null,{"parallelRouterKey":"children","error":"$undefined","errorStyles":"$undefined","errorScripts":"$undefined","template":["$","$L3",null,{}],"templateStyles":"$undefined","templateScripts":"$undefined","notFound":[["$","html",null,{"lang":"zh-Hant","children":["$","body",null,{"children":["$","main",null,{"className":"mx-auto max-w-2xl px-4 py-20 text-center sm:px-6","children":[["$","h1",null,{"className":"mb-3 text-4xl font-bold tracking-tight","children":"404"}],["$","p",null,{"className":"mb-8 text-lg","style":{"color":"var(--color-muted)"},"children":"找不到這個頁面 / Page not found"}],["$","a",null,{"href":"/zh/","className":"inline-flex items-center rounded-lg border px-4 py-2.5 text-sm font-medium","style":{"borderColor":"var(--color-border)","color":"var(--color-accent)","background":"var(--color-surface)"},"children":"BenXHub Blog"}]]}]}]}],[["$","link","0",{"rel":"stylesheet","href":"/_next/static/chunks/4d9c3828f6075602.css","precedence":"next","crossOrigin":"$undefined","nonce":"$undefined"}]]],"forbidden":"$undefined","unauthorized":"$undefined"}]]}],{"children":[["$","$1","c",{"children":[[["$","link","0",{"rel":"stylesheet","href":"/_next/static/chunks/4d9c3828f6075602.css","precedence":"next","crossOrigin":"$undefined","nonce":"$undefined"}],["$","script","script-0",{"src":"/_next/static/chunks/4204edc93da35a5e.js","async":true,"nonce":"$undefined"}],["$","script","script-1",{"src":"/_next/static/chunks/f2afb7fd2b7566bb.js","async":true,"nonce":"$undefined"}]],"$L4"]}],{"children":[["$","$1","c",{"children":[null,["$","$L2",null,{"parallelRouterKey":"children","error":"$undefined","errorStyles":"$undefined","errorScripts":"$undefined","template":["$","$L3",null,{}],"templateStyles":"$undefined","templateScripts":"$undefined","notFound":"$undefined","forbidden":"$undefined","unauthorized":"$undefined"}]]}],{"children":[["$","$1","c",{"children":[null,["$","$L2",null,{"parallelRouterKey":"children","error":"$undefined","errorStyles":"$undefined","errorScripts":"$undefined","template":["$","$L3",null,{}],"templateStyles":"$undefined","templateScripts":"$undefined","notFound":"$undefined","forbidden":"$undefined","unauthorized":"$undefined"}]]}],{"children":[["$","$1","c",{"children":["$L5",[["$","script","script-0",{"src":"/_next/static/chunks/2dddb3bc05093f69.js","async":true,"nonce":"$undefined"}]],["$","$L6",null,{"children":["$","$7",null,{"name":"Next.MetadataOutlet","children":"$@8"}]}]]}],{},null,false,false]},null,false,false]},null,false,false]},null,false,false]},null,false,false],["$","$1","h",{"children":[null,["$","$L9",null,{"children":"$La"}],["$","div",null,{"hidden":true,"children":["$","$Lb",null,{"children":["$","$7",null,{"name":"Next.Metadata","children":"$Lc"}]}]}],["$","meta",null,{"name":"next-size-adjust","content":""}]]}],false]],"m":"$undefined","G":["$d",[]],"S":true}
+4:["$","html",null,{"lang":"zh-Hant","dir":"ltr","className":"geist_a71539c9-module__T19VSG__variable geist_mono_8d43a2aa-module__8Li5zG__variable","children":["$","body",null,{"className":"flex min-h-screen flex-col antialiased","children":[["$","script",null,{"type":"application/ld+json","dangerouslySetInnerHTML":{"__html":"[{\"@context\":\"https://schema.org\",\"@type\":\"WebSite\",\"name\":\"BenXHub Blog\",\"url\":\"https://benxhub.com/zh/\",\"inLanguage\":\"zh-Hant\",\"publisher\":{\"@type\":\"Organization\",\"name\":\"BenXHub Blog\",\"url\":\"https://benxhub.com\"},\"potentialAction\":{\"@type\":\"SearchAction\",\"target\":{\"@type\":\"EntryPoint\",\"urlTemplate\":\"https://benxhub.com/zh/search/?q={search_term_string}\"},\"query-input\":\"required name=search_term_string\"}},{\"@context\":\"https://schema.org\",\"@type\":\"Person\",\"@id\":\"https://benxhub.com/#author\",\"name\":\"BenX\",\"url\":\"https://benxhub.com/zh/about/\",\"sameAs\":[\"https://github.com/benzhub\"]}]"}}],"$Le"]}]}]
+13:T10d0,<p>你有沒有這種感覺：每次跟 AI 助理聊天，總覺得自己的秘密是在別人的伺服器上流浪？</p>
+<h2 id="本篇學習目標">本篇學習目標</h2>
+<ul>
+<li>理解 OpenClaw 是什麼、解決什麼問題</li>
+<li>知道它跟一般雲端 AI 服務的差異</li>
+<li>判斷自己適不適合用</li>
+<li>了解這個系列的學習路徑</li>
+</ul>
+<hr>
+<h2 id="等一下這跟你有什麼關係">等一下，這跟你有什麼關係？</h2>
+<p>想像你找了一個超能幹的私人秘書，但有個奇怪的條件：<strong>他必須住在別人家</strong>，你的所有任務、對話、資料，都只能透過那個「別人」中轉。</p>
+<p>這就是大多數雲端 AI 助理的現況。</p>
+<p><strong>OpenClaw</strong> 想做的事很簡單：把這位秘書接回你自己家。</p>
+<hr>
+<h2 id="openclaw-是什麼">OpenClaw 是什麼？</h2>
+<p><strong>一句話版本</strong>：OpenClaw 是一個「本地優先」的 AI 助理控制中心，跑在你自己的電腦或伺服器上，讓你用 Telegram、WhatsApp、網頁等任何習慣的 App 和助理對話，<strong>資料與工作區都牢牢握在你手上</strong>。</p>
+<blockquote>
+<p>💡 「本地優先」不是說一定不能上網，而是說<strong>主控權在你</strong>——資料存哪、用什麼模型、誰能存取，都是你說了算。</p>
+</blockquote>
+<hr>
+<h2 id="跟普通-ai-外掛有什麼不同">跟普通 AI 外掛有什麼不同？</h2>
+<table>
+<thead>
+<tr>
+<th></th>
+<th>一般雲端 AI 服務</th>
+<th>OpenClaw</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td>資料存哪</td>
+<td>廠商伺服器</td>
+<td>你的機器</td>
+</tr>
+<tr>
+<td>對話管道</td>
+<td>只有官方介面</td>
+<td>Telegram、WhatsApp、Slack、網頁…</td>
+</tr>
+<tr>
+<td>換模型</td>
+<td>看廠商臉色</td>
+<td>自由換，本地模型也行</td>
+</tr>
+<tr>
+<td>排程自動化</td>
+<td>通常不支援</td>
+<td>內建 Cron</td>
+</tr>
+<tr>
+<td>被廠商鎖定</td>
+<td>是</td>
+<td>開源，自架，想走就走</td>
+</tr>
+</tbody>
+</table>
+<hr>
+<h2 id="適合誰">適合誰？</h2>
+<ul>
+<li>想要 AI 助理，但不想把隱私全交給雲端的人</li>
+<li>需要從手機、電腦、多個 App 都能呼叫同一個助理的人</li>
+<li>想要排程、自動化、多代理分工的進階玩家</li>
+</ul>
+<blockquote>
+<p>⚠️ 需要一點點技術底子（會用終端機、設定 API key），但別擔心——這個系列會一步一步帶你走。</p>
+</blockquote>
+<hr>
+<h2 id="這個系列學什麼">這個系列學什麼？</h2>
+<table>
+<thead>
+<tr>
+<th>篇章</th>
+<th>主題</th>
+<th>難度</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td>01</td>
+<td>認識 OpenClaw（本篇）</td>
+<td>⭐</td>
+</tr>
+<tr>
+<td>02</td>
+<td><a href="02-quick-install">5 分鐘裝起來，第一次啟動</a></td>
+<td>⭐</td>
+</tr>
+<tr>
+<td>03</td>
+<td><a href="03-dashboard-auth">儀表板登入不求人</a></td>
+<td>⭐⭐</td>
+</tr>
+<tr>
+<td>04</td>
+<td><a href="04-channels-basics">接上 Telegram、WhatsApp</a></td>
+<td>⭐⭐</td>
+</tr>
+<tr>
+<td>05</td>
+<td><a href="05-skills-intro">讓助理學新技能（Skills）</a></td>
+<td>⭐⭐</td>
+</tr>
+<tr>
+<td>06</td>
+<td><a href="06-memory-workspace">助理的記憶與私人工作區</a></td>
+<td>⭐⭐</td>
+</tr>
+<tr>
+<td>07</td>
+<td><a href="07-multi-agent-bindings">多個助理各司其職（Bindings）</a></td>
+<td>⭐⭐⭐</td>
+</tr>
+<tr>
+<td>08</td>
+<td><a href="08-remote-gateway-nodes">把助理部署到 VPS 遠端使用</a></td>
+<td>⭐⭐⭐</td>
+</tr>
+<tr>
+<td>09</td>
+<td><a href="09-cron-automation">設定排程，讓助理自動工作</a></td>
+<td>⭐⭐⭐</td>
+</tr>
+<tr>
+<td>10</td>
+<td><a href="10-advanced-config">進階設定與除錯心法</a></td>
+<td>⭐⭐⭐</td>
+</tr>
+<tr>
+<td>11</td>
+<td><a href="11-openclaw-web-ui-setup">用 Web UI 完成所有 OpenClaw 設定</a></td>
+<td>⭐⭐⭐</td>
+</tr>
+<tr>
+<td>12</td>
+<td><a href="12-openclaw-workspace-telegram-setup">一個 Bot，多個任務不混亂——Workspace × Telegram 完整設定指南</a></td>
+<td>⭐⭐⭐</td>
+</tr>
+</tbody>
+</table>
+<hr>
+<h2 id="下一步">下一步</h2>
+<p>準備好了嗎？下一篇我們直接裝起來，跑第一個 Hello World。</p>
+<p>👉 <a href="02-quick-install">5 分鐘裝起來，啟動你的第一個 AI 助理</a></p>5:[["$","script",null,{"type":"application/ld+json","dangerouslySetInnerHTML":{"__html":"{\"@context\":\"https://schema.org\",\"@type\":\"Article\",\"headline\":\"OpenClaw 教學系列：讓 AI 助理住進你家\",\"description\":\"什麼是 OpenClaw？跟雲端 AI 服務有什麼不同？先搞懂這些，再決定要不要繼續往下走。\",\"url\":\"https://benxhub.com/zh/blog/openclaw/01-intro/\",\"mainEntityOfPage\":{\"@type\":\"WebPage\",\"@id\":\"https://benxhub.com/zh/blog/openclaw/01-intro/\"},\"datePublished\":\"2026-03-08T00:00:00.000Z\",\"dateModified\":\"2026-03-08T00:00:00.000Z\",\"keywords\":\"openclaw, ai-agent, self-hosted, overview\",\"inLanguage\":\"zh-Hant\",\"author\":{\"@type\":\"Person\",\"@id\":\"https://benxhub.com/#author\",\"name\":\"BenX\",\"url\":\"https://benxhub.com/zh/about/\",\"sameAs\":[\"https://github.com/benzhub\"]},\"publisher\":{\"@type\":\"Organization\",\"name\":\"BenXHub Blog\",\"url\":\"https://benxhub.com\"},\"image\":\"https://benxhub.com/og-default.png\"}"}}],["$","div",null,{"className":"mx-auto max-w-6xl px-4 py-12 sm:px-6","children":["$","div",null,{"className":"lg:grid lg:grid-cols-[1fr_240px] lg:gap-14","children":[["$","article",null,{"children":[["$","header",null,{"className":"mb-10","children":[["$","div",null,{"className":"mb-4 flex flex-wrap gap-2","children":["$Lf","$L10","$L11","$L12"]}],["$","h1",null,{"className":"mb-4 text-3xl leading-snug font-bold tracking-tight sm:text-4xl","style":{"color":"var(--color-text)"},"children":"OpenClaw 教學系列：讓 AI 助理住進你家"}],["$","div",null,{"className":"flex flex-wrap items-center gap-3 text-sm","style":{"color":"var(--color-muted)"},"children":[["$","time",null,{"dateTime":"2026-03-08","children":"2026 年 3 月 8 日"}],["$","span",null,{"aria-hidden":"true","children":"·"}],["$","span",null,{"children":"4 min read"}]]}],"$undefined",["$","div",null,{"className":"mt-6 border-b","style":{"borderColor":"var(--color-border)"}}]]}],["$","div",null,{"className":"prose","dangerouslySetInnerHTML":{"__html":"$13"}}],"$L14"]}],"$L15"]}]}]]
+1c:I[24801,["/_next/static/chunks/4204edc93da35a5e.js","/_next/static/chunks/f2afb7fd2b7566bb.js","/_next/static/chunks/2dddb3bc05093f69.js"],"default"]
+14:["$","footer",null,{"className":"mt-14 border-t pt-8","style":{"borderColor":"var(--color-border)"},"children":[["$","div",null,{"className":"mb-8 flex flex-wrap gap-2","children":["$L16","$L17","$L18","$L19"]}],["$","nav",null,{"aria-label":"文章導覽","className":"grid grid-cols-1 gap-4 sm:grid-cols-2","children":["$L1a","$L1b"]}]]}]
+1d:T10d0,<p>你有沒有這種感覺：每次跟 AI 助理聊天，總覺得自己的秘密是在別人的伺服器上流浪？</p>
+<h2 id="本篇學習目標">本篇學習目標</h2>
+<ul>
+<li>理解 OpenClaw 是什麼、解決什麼問題</li>
+<li>知道它跟一般雲端 AI 服務的差異</li>
+<li>判斷自己適不適合用</li>
+<li>了解這個系列的學習路徑</li>
+</ul>
+<hr>
+<h2 id="等一下這跟你有什麼關係">等一下，這跟你有什麼關係？</h2>
+<p>想像你找了一個超能幹的私人秘書，但有個奇怪的條件：<strong>他必須住在別人家</strong>，你的所有任務、對話、資料，都只能透過那個「別人」中轉。</p>
+<p>這就是大多數雲端 AI 助理的現況。</p>
+<p><strong>OpenClaw</strong> 想做的事很簡單：把這位秘書接回你自己家。</p>
+<hr>
+<h2 id="openclaw-是什麼">OpenClaw 是什麼？</h2>
+<p><strong>一句話版本</strong>：OpenClaw 是一個「本地優先」的 AI 助理控制中心，跑在你自己的電腦或伺服器上，讓你用 Telegram、WhatsApp、網頁等任何習慣的 App 和助理對話，<strong>資料與工作區都牢牢握在你手上</strong>。</p>
+<blockquote>
+<p>💡 「本地優先」不是說一定不能上網，而是說<strong>主控權在你</strong>——資料存哪、用什麼模型、誰能存取，都是你說了算。</p>
+</blockquote>
+<hr>
+<h2 id="跟普通-ai-外掛有什麼不同">跟普通 AI 外掛有什麼不同？</h2>
+<table>
+<thead>
+<tr>
+<th></th>
+<th>一般雲端 AI 服務</th>
+<th>OpenClaw</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td>資料存哪</td>
+<td>廠商伺服器</td>
+<td>你的機器</td>
+</tr>
+<tr>
+<td>對話管道</td>
+<td>只有官方介面</td>
+<td>Telegram、WhatsApp、Slack、網頁…</td>
+</tr>
+<tr>
+<td>換模型</td>
+<td>看廠商臉色</td>
+<td>自由換，本地模型也行</td>
+</tr>
+<tr>
+<td>排程自動化</td>
+<td>通常不支援</td>
+<td>內建 Cron</td>
+</tr>
+<tr>
+<td>被廠商鎖定</td>
+<td>是</td>
+<td>開源，自架，想走就走</td>
+</tr>
+</tbody>
+</table>
+<hr>
+<h2 id="適合誰">適合誰？</h2>
+<ul>
+<li>想要 AI 助理，但不想把隱私全交給雲端的人</li>
+<li>需要從手機、電腦、多個 App 都能呼叫同一個助理的人</li>
+<li>想要排程、自動化、多代理分工的進階玩家</li>
+</ul>
+<blockquote>
+<p>⚠️ 需要一點點技術底子（會用終端機、設定 API key），但別擔心——這個系列會一步一步帶你走。</p>
+</blockquote>
+<hr>
+<h2 id="這個系列學什麼">這個系列學什麼？</h2>
+<table>
+<thead>
+<tr>
+<th>篇章</th>
+<th>主題</th>
+<th>難度</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td>01</td>
+<td>認識 OpenClaw（本篇）</td>
+<td>⭐</td>
+</tr>
+<tr>
+<td>02</td>
+<td><a href="02-quick-install">5 分鐘裝起來，第一次啟動</a></td>
+<td>⭐</td>
+</tr>
+<tr>
+<td>03</td>
+<td><a href="03-dashboard-auth">儀表板登入不求人</a></td>
+<td>⭐⭐</td>
+</tr>
+<tr>
+<td>04</td>
+<td><a href="04-channels-basics">接上 Telegram、WhatsApp</a></td>
+<td>⭐⭐</td>
+</tr>
+<tr>
+<td>05</td>
+<td><a href="05-skills-intro">讓助理學新技能（Skills）</a></td>
+<td>⭐⭐</td>
+</tr>
+<tr>
+<td>06</td>
+<td><a href="06-memory-workspace">助理的記憶與私人工作區</a></td>
+<td>⭐⭐</td>
+</tr>
+<tr>
+<td>07</td>
+<td><a href="07-multi-agent-bindings">多個助理各司其職（Bindings）</a></td>
+<td>⭐⭐⭐</td>
+</tr>
+<tr>
+<td>08</td>
+<td><a href="08-remote-gateway-nodes">把助理部署到 VPS 遠端使用</a></td>
+<td>⭐⭐⭐</td>
+</tr>
+<tr>
+<td>09</td>
+<td><a href="09-cron-automation">設定排程，讓助理自動工作</a></td>
+<td>⭐⭐⭐</td>
+</tr>
+<tr>
+<td>10</td>
+<td><a href="10-advanced-config">進階設定與除錯心法</a></td>
+<td>⭐⭐⭐</td>
+</tr>
+<tr>
+<td>11</td>
+<td><a href="11-openclaw-web-ui-setup">用 Web UI 完成所有 OpenClaw 設定</a></td>
+<td>⭐⭐⭐</td>
+</tr>
+<tr>
+<td>12</td>
+<td><a href="12-openclaw-workspace-telegram-setup">一個 Bot，多個任務不混亂——Workspace × Telegram 完整設定指南</a></td>
+<td>⭐⭐⭐</td>
+</tr>
+</tbody>
+</table>
+<hr>
+<h2 id="下一步">下一步</h2>
+<p>準備好了嗎？下一篇我們直接裝起來，跑第一個 Hello World。</p>
+<p>👉 <a href="02-quick-install">5 分鐘裝起來，啟動你的第一個 AI 助理</a></p>15:["$","aside",null,{"className":"hidden lg:block","children":["$","$L1c",null,{"html":"$1d"}]}]
+1e:I[14864,["/_next/static/chunks/4204edc93da35a5e.js","/_next/static/chunks/f2afb7fd2b7566bb.js","/_next/static/chunks/2dddb3bc05093f69.js"],"default"]
+f:["$","$L1e","openclaw",{"ref":"$undefined","href":"/zh/tags/openclaw","locale":"$undefined","localeCookie":{"name":"NEXT_LOCALE","sameSite":"lax"},"className":"inline-flex items-center rounded-full px-2.5 py-0.5 text-xs font-medium transition-colors","style":{"background":"var(--color-code-bg)","color":"var(--color-accent)","border":"1px solid var(--color-border)"},"children":["#","openclaw"]}]
+10:["$","$L1e","ai-agent",{"ref":"$undefined","href":"/zh/tags/ai-agent","locale":"$undefined","localeCookie":"$f:props:localeCookie","className":"inline-flex items-center rounded-full px-2.5 py-0.5 text-xs font-medium transition-colors","style":{"background":"var(--color-code-bg)","color":"var(--color-accent)","border":"1px solid var(--color-border)"},"children":["#","ai-agent"]}]
+11:["$","$L1e","self-hosted",{"ref":"$undefined","href":"/zh/tags/self-hosted","locale":"$undefined","localeCookie":"$f:props:localeCookie","className":"inline-flex items-center rounded-full px-2.5 py-0.5 text-xs font-medium transition-colors","style":{"background":"var(--color-code-bg)","color":"var(--color-accent)","border":"1px solid var(--color-border)"},"children":["#","self-hosted"]}]
+12:["$","$L1e","overview",{"ref":"$undefined","href":"/zh/tags/overview","locale":"$undefined","localeCookie":"$f:props:localeCookie","className":"inline-flex items-center rounded-full px-2.5 py-0.5 text-xs font-medium transition-colors","style":{"background":"var(--color-code-bg)","color":"var(--color-accent)","border":"1px solid var(--color-border)"},"children":["#","overview"]}]
+16:["$","$L1e","openclaw",{"ref":"$undefined","href":"/zh/tags/openclaw","locale":"$undefined","localeCookie":"$f:props:localeCookie","className":"inline-flex items-center rounded-full px-3 py-1 text-sm font-medium transition-colors","style":{"background":"var(--color-code-bg)","color":"var(--color-accent)","border":"1px solid var(--color-border)"},"children":["#","openclaw"]}]
+17:["$","$L1e","ai-agent",{"ref":"$undefined","href":"/zh/tags/ai-agent","locale":"$undefined","localeCookie":"$f:props:localeCookie","className":"inline-flex items-center rounded-full px-3 py-1 text-sm font-medium transition-colors","style":{"background":"var(--color-code-bg)","color":"var(--color-accent)","border":"1px solid var(--color-border)"},"children":["#","ai-agent"]}]
+18:["$","$L1e","self-hosted",{"ref":"$undefined","href":"/zh/tags/self-hosted","locale":"$undefined","localeCookie":"$f:props:localeCookie","className":"inline-flex items-center rounded-full px-3 py-1 text-sm font-medium transition-colors","style":{"background":"var(--color-code-bg)","color":"var(--color-accent)","border":"1px solid var(--color-border)"},"children":["#","self-hosted"]}]
+19:["$","$L1e","overview",{"ref":"$undefined","href":"/zh/tags/overview","locale":"$undefined","localeCookie":"$f:props:localeCookie","className":"inline-flex items-center rounded-full px-3 py-1 text-sm font-medium transition-colors","style":{"background":"var(--color-code-bg)","color":"var(--color-accent)","border":"1px solid var(--color-border)"},"children":["#","overview"]}]
+1a:["$","$L1e",null,{"ref":"$undefined","href":"/zh/blog/cursor/cli/12-sessions-cloud","locale":"$undefined","localeCookie":"$f:props:localeCookie","className":"group rounded-lg border p-4 transition-colors hover:border-accent","style":{"borderColor":"var(--color-border)","background":"var(--color-surface)"},"children":[["$","p",null,{"className":"mb-1 text-xs","style":{"color":"var(--color-muted)"},"children":"← 較新文章"}],["$","p",null,{"className":"line-clamp-1 text-sm font-medium transition-colors group-hover:text-accent","style":{"color":"var(--color-text)"},"children":"Cursor CLI 會話管理與雲端執行：--resume 與 -c 怎麼用"}]]}]
+1b:["$","$L1e",null,{"ref":"$undefined","href":"/zh/blog/openclaw/02-quick-install","locale":"$undefined","localeCookie":"$f:props:localeCookie","className":"group rounded-lg border p-4 text-right transition-colors hover:border-accent","style":{"borderColor":"var(--color-border)","background":"var(--color-surface)"},"children":[["$","p",null,{"className":"mb-1 text-xs","style":{"color":"var(--color-muted)"},"children":"較舊文章 →"}],["$","p",null,{"className":"line-clamp-1 text-sm font-medium transition-colors group-hover:text-accent","style":{"color":"var(--color-text)"},"children":"5 分鐘裝起來！OpenClaw 安裝與首次啟動完全不卡關"}]]}]
+1f:I[33343,["/_next/static/chunks/4204edc93da35a5e.js","/_next/static/chunks/f2afb7fd2b7566bb.js"],"default"]
+20:I[26817,["/_next/static/chunks/4204edc93da35a5e.js","/_next/static/chunks/f2afb7fd2b7566bb.js"],"default"]
+21:I[6197,["/_next/static/chunks/4204edc93da35a5e.js","/_next/static/chunks/f2afb7fd2b7566bb.js"],"default"]
+23:I[40018,["/_next/static/chunks/4204edc93da35a5e.js","/_next/static/chunks/f2afb7fd2b7566bb.js"],"default"]
+e:["$","$L1f",null,{"formats":"$undefined","locale":"zh","messages":{"common":{"siteName":"BenXHub Blog","siteDescription":"BenX 的技術部落格，分享 Web 開發、架構設計與工程實踐。"},"nav":{"home":"首頁","tags":"標籤","about":"關於","searchLabel":"搜尋文章"},"hero":{"subtitle":"分享 Web 開發、架構設計與工程實踐的技術筆記","cta":"瀏覽文章"},"posts":{"title":"文章列表","count":"共 {total} 篇文章","empty":"目前還沒有文章，敬請期待！","newerPost":"← 較新文章","olderPost":"較舊文章 →","navLabel":"文章導覽"},"pagination":{"prev":"上一頁","next":"下一頁","page":"第 {current} / {total} 頁","label":"文章列表分頁","pageTitle":"第 {num} 頁","pageDescription":"BenX 的技術部落格 — 文章列表分頁。"},"search":{"title":"搜尋文章","description":"搜尋 BenXHub Blog 的所有文章，按標題、描述或標籤即時篩選。","subtitle":"搜尋標題、描述或標籤，即時顯示結果","placeholder":"搜尋文章標題、描述或標籤…","found":"找到 {count} 篇相關文章","notFound":"沒有找到與「{query}」相關的文章","emptyTitle":"找不到相關文章","emptyHint":"試試看其他關鍵字，或瀏覽","allPosts":"所有文章","totalCount":"共 {count} 篇文章，輸入關鍵字即可搜尋"},"tags":{"title":"所有標籤","description":"依標籤瀏覽所有文章。","count":"共 {count} 個標籤","empty":"目前還沒有標籤，敬請期待！","allTags":"所有標籤","postCount":"共 {count} 篇文章","otherTags":"其他標籤","tagTitle":"#{tag} 的文章","tagDescription":"所有標記為「{tag}」的文章列表。"},"about":{"title":"關於","description":"關於 BenXHub Blog 與本站簡介。","subtitle":"關於 BenXHub Blog 與本站簡介","siteTitle":"關於本站","siteContent":"BenXHub Blog 是 BenX 的技術部落格，分享 Web 開發、架構設計與工程實踐。","authorTitle":"關於我","authorContent":"喜歡寫程式、研究技術，樂於把踩過的坑與解法記錄下來，也歡迎透過本站側欄或 Footer 的連結交流。","linksTitle":"連結"},"sidebar":{"label":"側邊欄","authorBio":"喜歡寫程式與分享，專注 Web 開發、架構與 DevOps。","searchPlaceholder":"搜尋文章…","seriesTitle":"系列文章","articleCount":"{count} 篇"},"toc":{"title":"目錄","label":"文章目錄"},"notFound":{"message":"此頁面不存在，可能連結已失效或網址輸入錯誤。","backHome":"返回首頁"},"localeSwitcher":{"label":"切換語言"}},"now":"$undefined","timeZone":"UTC","children":[["$","$L20",null,{}],["$","$L21",null,{}],["$","main",null,{"className":"flex-1 pt-16","children":["$","$L2",null,{"parallelRouterKey":"children","error":"$undefined","errorStyles":"$undefined","errorScripts":"$undefined","template":["$","$L3",null,{}],"templateStyles":"$undefined","templateScripts":"$undefined","notFound":["$L22",[]],"forbidden":"$undefined","unauthorized":"$undefined"}]}],["$","$L23",null,{}]]}]
+22:["$","div",null,{"className":"mx-auto max-w-2xl px-4 py-20 text-center sm:px-6","children":[["$","h1",null,{"className":"mb-3 text-4xl font-bold tracking-tight","style":{"color":"var(--color-text)"},"children":"404"}],["$","p",null,{"className":"mb-8 text-lg","style":{"color":"var(--color-muted)"},"children":"此頁面不存在，可能連結已失效或網址輸入錯誤。"}],"$L24"]}]
+a:[["$","meta","0",{"charSet":"utf-8"}],["$","meta","1",{"name":"viewport","content":"width=device-width, initial-scale=1"}]]
+24:["$","$L1e",null,{"ref":"$undefined","href":"/zh","locale":"$undefined","localeCookie":"$f:props:localeCookie","className":"inline-flex items-center rounded-lg border px-4 py-2.5 text-sm font-medium transition-colors hover:border-accent","style":{"borderColor":"var(--color-border)","color":"var(--color-accent)","background":"var(--color-surface)"},"children":"返回首頁"}]
+25:I[92204,["/_next/static/chunks/5a5b5b13c22d14f7.js","/_next/static/chunks/a484d1d3dd4b55ab.js"],"IconMark"]
+8:null
+c:[["$","title","0",{"children":"OpenClaw 教學系列：讓 AI 助理住進你家 | BenXHub Blog"}],["$","meta","1",{"name":"description","content":"什麼是 OpenClaw？跟雲端 AI 服務有什麼不同？先搞懂這些，再決定要不要繼續往下走。"}],["$","link","2",{"rel":"canonical","href":"https://benxhub.com/zh/blog/openclaw/01-intro/"}],["$","link","3",{"rel":"alternate","hrefLang":"zh-Hant","href":"https://benxhub.com/zh/blog/openclaw/01-intro/"}],["$","link","4",{"rel":"alternate","hrefLang":"en","href":"https://benxhub.com/en/blog/openclaw/01-intro/"}],["$","link","5",{"rel":"alternate","hrefLang":"ja","href":"https://benxhub.com/ja/blog/openclaw/01-intro/"}],["$","link","6",{"rel":"alternate","hrefLang":"ko","href":"https://benxhub.com/ko/blog/openclaw/01-intro/"}],["$","link","7",{"rel":"alternate","hrefLang":"es","href":"https://benxhub.com/es/blog/openclaw/01-intro/"}],["$","link","8",{"rel":"alternate","hrefLang":"fr","href":"https://benxhub.com/fr/blog/openclaw/01-intro/"}],["$","link","9",{"rel":"alternate","hrefLang":"ar","href":"https://benxhub.com/ar/blog/openclaw/01-intro/"}],["$","link","10",{"rel":"alternate","hrefLang":"x-default","href":"https://benxhub.com/zh/blog/openclaw/01-intro/"}],["$","link","11",{"rel":"alternate","type":"application/rss+xml","href":"https://benxhub.com/zh/feed.xml"}],["$","meta","12",{"property":"og:title","content":"OpenClaw 教學系列：讓 AI 助理住進你家"}],["$","meta","13",{"property":"og:description","content":"什麼是 OpenClaw？跟雲端 AI 服務有什麼不同？先搞懂這些，再決定要不要繼續往下走。"}],["$","meta","14",{"property":"og:url","content":"https://benxhub.com/zh/blog/openclaw/01-intro/"}],["$","meta","15",{"property":"og:site_name","content":"BenXHub Blog"}],["$","meta","16",{"property":"og:locale","content":"zh_TW"}],["$","meta","17",{"property":"og:image","content":"https://benxhub.com/og-default.png"}],["$","meta","18",{"property":"og:image:width","content":"1200"}],["$","meta","19",{"property":"og:image:height","content":"630"}],["$","meta","20",{"property":"og:image:alt","content":"BenXHub Blog"}],["$","meta","21",{"property":"og:type","content":"article"}],["$","meta","22",{"property":"article:published_time","content":"2026-03-08T00:00:00.000Z"}],["$","meta","23",{"property":"article:tag","content":"openclaw"}],["$","meta","24",{"property":"article:tag","content":"ai-agent"}],["$","meta","25",{"property":"article:tag","content":"self-hosted"}],["$","meta","26",{"property":"article:tag","content":"overview"}],["$","meta","27",{"name":"twitter:card","content":"summary_large_image"}],["$","meta","28",{"name":"twitter:title","content":"OpenClaw 教學系列：讓 AI 助理住進你家"}],["$","meta","29",{"name":"twitter:description","content":"什麼是 OpenClaw？跟雲端 AI 服務有什麼不同？先搞懂這些，再決定要不要繼續往下走。"}],["$","meta","30",{"name":"twitter:image","content":"https://benxhub.com/og-default.png"}],["$","link","31",{"rel":"icon","href":"/favicon.ico?favicon.0b3bf435.ico","sizes":"256x256","type":"image/x-icon"}],["$","$L25","32",{}]]

@@ -1,9 +1,9 @@
 1:"$Sreact.fragment"
-2:I[14864,["/_next/static/chunks/7923a261b80bb6e1.js","/_next/static/chunks/e09b4358027e8033.js","/_next/static/chunks/2dddb3bc05093f69.js"],"default"]
-8:I[24801,["/_next/static/chunks/7923a261b80bb6e1.js","/_next/static/chunks/e09b4358027e8033.js","/_next/static/chunks/2dddb3bc05093f69.js"],"default"]
+2:I[14864,["/_next/static/chunks/4204edc93da35a5e.js","/_next/static/chunks/f2afb7fd2b7566bb.js","/_next/static/chunks/2dddb3bc05093f69.js"],"default"]
+8:I[24801,["/_next/static/chunks/4204edc93da35a5e.js","/_next/static/chunks/f2afb7fd2b7566bb.js","/_next/static/chunks/2dddb3bc05093f69.js"],"default"]
 a:I[50183,["/_next/static/chunks/5a5b5b13c22d14f7.js","/_next/static/chunks/a484d1d3dd4b55ab.js"],"OutletBoundary"]
 b:"$Sreact.suspense"
-3:T289f,<p>很多人用 CrewAI 第一次翻車，不是 API 問題，也不是環境設定——是<strong>角色設計從一開始就亂了</strong>。</p>
+3:T28bf,<p>很多人用 CrewAI 第一次翻車，不是 API 問題，也不是環境設定——是<strong>角色設計從一開始就亂了</strong>。</p>
 <p>你可能會想：一個 Agent 搞定全部不是更省事嗎？讓它既研究、又寫作、又審稿，聽起來很高效。但實際跑起來你會發現，一個 Agent 同時扮演三種性質完全不同的角色，通常是三件事都做得普普通通，而且你完全不知道哪一步出了問題。</p>
 <p>只要記住這個核心原則：<strong>一個 Agent 一種專長，一個 Task 一件事</strong>，大多數設計問題就迎刃而解了。</p>
 <h2 id="agenttaskcontext-分別負責什麼">Agent、Task、Context 分別負責什麼</h2>
@@ -15,54 +15,54 @@ b:"$Sreact.suspense"
 </ul>
 <p>如果你讓一個 Agent 同時研究、寫作、審稿，它通常會每件事都沾一點、每件事都不夠深。就像你不會在求職廣告上寫「需要全端工程師，同時負責 PM 和設計」，那個人就算存在，你也管不動他。</p>
 <h2 id="設計一個好的-agent">設計一個好的 Agent</h2>
-<figure data-rehype-pretty-code-figure=""><pre style="background-color:#24292e;color:#e1e4e8" tabindex="0" data-language="yaml" data-theme="github-dark"><code data-language="yaml" data-theme="github-dark" style="display: grid;"><span data-line=""><span style="color:#85E89D">researcher</span><span style="color:#E1E4E8">:</span></span>
-<span data-line=""><span style="color:#85E89D">  role</span><span style="color:#E1E4E8">: </span><span style="color:#F97583">></span></span>
-<span data-line=""><span style="color:#9ECBFF">    AI Research Analyst</span></span>
-<span data-line=""><span style="color:#85E89D">  goal</span><span style="color:#E1E4E8">: </span><span style="color:#F97583">></span></span>
-<span data-line=""><span style="color:#9ECBFF">    Collect accurate and current information from reliable sources</span></span>
-<span data-line=""><span style="color:#85E89D">  backstory</span><span style="color:#E1E4E8">: </span><span style="color:#F97583">></span></span>
-<span data-line=""><span style="color:#9ECBFF">    You specialize in finding credible sources and extracting key facts.</span></span>
-<span data-line=""><span style="color:#9ECBFF">    You always verify information before passing it forward.</span></span>
-<span data-line=""><span style="color:#85E89D">  allow_delegation</span><span style="color:#E1E4E8">: </span><span style="color:#79B8FF">false</span></span>
+<figure data-rehype-pretty-code-figure=""><pre style="background-color:#0d1117;color:#e6edf3" tabindex="0" data-language="yaml" data-theme="github-dark-default"><code data-language="yaml" data-theme="github-dark-default" style="display: grid;"><span data-line=""><span style="color:#7EE787">researcher</span><span style="color:#E6EDF3">:</span></span>
+<span data-line=""><span style="color:#7EE787">  role</span><span style="color:#E6EDF3">: </span><span style="color:#FF7B72">></span></span>
+<span data-line=""><span style="color:#A5D6FF">    AI Research Analyst</span></span>
+<span data-line=""><span style="color:#7EE787">  goal</span><span style="color:#E6EDF3">: </span><span style="color:#FF7B72">></span></span>
+<span data-line=""><span style="color:#A5D6FF">    Collect accurate and current information from reliable sources</span></span>
+<span data-line=""><span style="color:#7EE787">  backstory</span><span style="color:#E6EDF3">: </span><span style="color:#FF7B72">></span></span>
+<span data-line=""><span style="color:#A5D6FF">    You specialize in finding credible sources and extracting key facts.</span></span>
+<span data-line=""><span style="color:#A5D6FF">    You always verify information before passing it forward.</span></span>
+<span data-line=""><span style="color:#7EE787">  allow_delegation</span><span style="color:#E6EDF3">: </span><span style="color:#79C0FF">false</span></span>
 <span data-line=""> </span>
-<span data-line=""><span style="color:#85E89D">writer</span><span style="color:#E1E4E8">:</span></span>
-<span data-line=""><span style="color:#85E89D">  role</span><span style="color:#E1E4E8">: </span><span style="color:#F97583">></span></span>
-<span data-line=""><span style="color:#9ECBFF">    Technical Writer</span></span>
-<span data-line=""><span style="color:#85E89D">  goal</span><span style="color:#E1E4E8">: </span><span style="color:#F97583">></span></span>
-<span data-line=""><span style="color:#9ECBFF">    Turn raw research findings into clear, practical documentation</span></span>
-<span data-line=""><span style="color:#85E89D">  backstory</span><span style="color:#E1E4E8">: </span><span style="color:#F97583">></span></span>
-<span data-line=""><span style="color:#9ECBFF">    You have a talent for making complex ideas accessible.</span></span>
-<span data-line=""><span style="color:#9ECBFF">    You structure content so readers can quickly find what they need.</span></span>
-<span data-line=""><span style="color:#85E89D">  allow_delegation</span><span style="color:#E1E4E8">: </span><span style="color:#79B8FF">false</span></span></code></pre></figure>
+<span data-line=""><span style="color:#7EE787">writer</span><span style="color:#E6EDF3">:</span></span>
+<span data-line=""><span style="color:#7EE787">  role</span><span style="color:#E6EDF3">: </span><span style="color:#FF7B72">></span></span>
+<span data-line=""><span style="color:#A5D6FF">    Technical Writer</span></span>
+<span data-line=""><span style="color:#7EE787">  goal</span><span style="color:#E6EDF3">: </span><span style="color:#FF7B72">></span></span>
+<span data-line=""><span style="color:#A5D6FF">    Turn raw research findings into clear, practical documentation</span></span>
+<span data-line=""><span style="color:#7EE787">  backstory</span><span style="color:#E6EDF3">: </span><span style="color:#FF7B72">></span></span>
+<span data-line=""><span style="color:#A5D6FF">    You have a talent for making complex ideas accessible.</span></span>
+<span data-line=""><span style="color:#A5D6FF">    You structure content so readers can quickly find what they need.</span></span>
+<span data-line=""><span style="color:#7EE787">  allow_delegation</span><span style="color:#E6EDF3">: </span><span style="color:#79C0FF">false</span></span></code></pre></figure>
 <p><code>allow_delegation: false</code> 建議一開始就關掉。它預設開啟，但會讓 Agent 自行決定把子任務轉包給其他 Agent——聽起來很聰明，但新手階段等於把除錯難度直接翻倍。先跑穩、再開啟動態分派。</p>
 <p><code>backstory</code> 不只是裝飾用的——模型會把它當成角色設定讀進去，影響輸出的語氣和判斷方式。短短三行可以明顯改變同一個 Agent 的表現差異。</p>
 <h2 id="設計一個好的-task">設計一個好的 Task</h2>
 <p>Task 最常見的問題是「寫太短」——模型不知道你要什麼格式，輸出就會每次都不一樣。</p>
-<figure data-rehype-pretty-code-figure=""><pre style="background-color:#24292e;color:#e1e4e8" tabindex="0" data-language="yaml" data-theme="github-dark"><code data-language="yaml" data-theme="github-dark" style="display: grid;"><span data-line=""><span style="color:#85E89D">research_task</span><span style="color:#E1E4E8">:</span></span>
-<span data-line=""><span style="color:#85E89D">  description</span><span style="color:#E1E4E8">: </span><span style="color:#F97583">></span></span>
-<span data-line=""><span style="color:#9ECBFF">    Find 8-10 important updates about {topic} in 2026.</span></span>
-<span data-line=""><span style="color:#9ECBFF">    Focus on: what changed, why it matters, and where it came from.</span></span>
-<span data-line=""><span style="color:#9ECBFF">    Prioritize content published in the last 3 months.</span></span>
-<span data-line=""><span style="color:#85E89D">  expected_output</span><span style="color:#E1E4E8">: </span><span style="color:#F97583">></span></span>
-<span data-line=""><span style="color:#9ECBFF">    A markdown bullet list with 8-10 items.</span></span>
-<span data-line=""><span style="color:#9ECBFF">    Each item must include:</span></span>
-<span data-line=""><span style="color:#9ECBFF">    - Title (bold)</span></span>
-<span data-line=""><span style="color:#9ECBFF">    - Summary (2-3 sentences)</span></span>
-<span data-line=""><span style="color:#9ECBFF">    - Source URL (if available)</span></span>
-<span data-line=""><span style="color:#85E89D">  agent</span><span style="color:#E1E4E8">: </span><span style="color:#9ECBFF">researcher</span></span>
+<figure data-rehype-pretty-code-figure=""><pre style="background-color:#0d1117;color:#e6edf3" tabindex="0" data-language="yaml" data-theme="github-dark-default"><code data-language="yaml" data-theme="github-dark-default" style="display: grid;"><span data-line=""><span style="color:#7EE787">research_task</span><span style="color:#E6EDF3">:</span></span>
+<span data-line=""><span style="color:#7EE787">  description</span><span style="color:#E6EDF3">: </span><span style="color:#FF7B72">></span></span>
+<span data-line=""><span style="color:#A5D6FF">    Find 8-10 important updates about {topic} in 2026.</span></span>
+<span data-line=""><span style="color:#A5D6FF">    Focus on: what changed, why it matters, and where it came from.</span></span>
+<span data-line=""><span style="color:#A5D6FF">    Prioritize content published in the last 3 months.</span></span>
+<span data-line=""><span style="color:#7EE787">  expected_output</span><span style="color:#E6EDF3">: </span><span style="color:#FF7B72">></span></span>
+<span data-line=""><span style="color:#A5D6FF">    A markdown bullet list with 8-10 items.</span></span>
+<span data-line=""><span style="color:#A5D6FF">    Each item must include:</span></span>
+<span data-line=""><span style="color:#A5D6FF">    - Title (bold)</span></span>
+<span data-line=""><span style="color:#A5D6FF">    - Summary (2-3 sentences)</span></span>
+<span data-line=""><span style="color:#A5D6FF">    - Source URL (if available)</span></span>
+<span data-line=""><span style="color:#7EE787">  agent</span><span style="color:#E6EDF3">: </span><span style="color:#A5D6FF">researcher</span></span>
 <span data-line=""> </span>
-<span data-line=""><span style="color:#85E89D">write_task</span><span style="color:#E1E4E8">:</span></span>
-<span data-line=""><span style="color:#85E89D">  description</span><span style="color:#E1E4E8">: </span><span style="color:#F97583">></span></span>
-<span data-line=""><span style="color:#9ECBFF">    Convert the research bullets into a tutorial article for developers new to {topic}.</span></span>
-<span data-line=""><span style="color:#9ECBFF">    Do not add information that wasn't in the research notes.</span></span>
-<span data-line=""><span style="color:#85E89D">  expected_output</span><span style="color:#E1E4E8">: </span><span style="color:#F97583">></span></span>
-<span data-line=""><span style="color:#9ECBFF">    A markdown article with:</span></span>
-<span data-line=""><span style="color:#9ECBFF">    - Introduction (1 paragraph)</span></span>
-<span data-line=""><span style="color:#9ECBFF">    - 3 main sections with H2 headings</span></span>
-<span data-line=""><span style="color:#9ECBFF">    - Conclusion with next steps</span></span>
-<span data-line=""><span style="color:#85E89D">  agent</span><span style="color:#E1E4E8">: </span><span style="color:#9ECBFF">writer</span></span>
-<span data-line=""><span style="color:#85E89D">  context</span><span style="color:#E1E4E8">:</span></span>
-<span data-line=""><span style="color:#E1E4E8">    - </span><span style="color:#9ECBFF">research_task</span></span></code></pre></figure>
+<span data-line=""><span style="color:#7EE787">write_task</span><span style="color:#E6EDF3">:</span></span>
+<span data-line=""><span style="color:#7EE787">  description</span><span style="color:#E6EDF3">: </span><span style="color:#FF7B72">></span></span>
+<span data-line=""><span style="color:#A5D6FF">    Convert the research bullets into a tutorial article for developers new to {topic}.</span></span>
+<span data-line=""><span style="color:#A5D6FF">    Do not add information that wasn't in the research notes.</span></span>
+<span data-line=""><span style="color:#7EE787">  expected_output</span><span style="color:#E6EDF3">: </span><span style="color:#FF7B72">></span></span>
+<span data-line=""><span style="color:#A5D6FF">    A markdown article with:</span></span>
+<span data-line=""><span style="color:#A5D6FF">    - Introduction (1 paragraph)</span></span>
+<span data-line=""><span style="color:#A5D6FF">    - 3 main sections with H2 headings</span></span>
+<span data-line=""><span style="color:#A5D6FF">    - Conclusion with next steps</span></span>
+<span data-line=""><span style="color:#7EE787">  agent</span><span style="color:#E6EDF3">: </span><span style="color:#A5D6FF">writer</span></span>
+<span data-line=""><span style="color:#7EE787">  context</span><span style="color:#E6EDF3">:</span></span>
+<span data-line=""><span style="color:#E6EDF3">    - </span><span style="color:#A5D6FF">research_task</span></span></code></pre></figure>
 <p><code>expected_output</code> 越具體越好——不是「寫個報告」，而是「markdown 格式、3 個 H2 段落、結尾有 next steps」。這個欄位直接決定輸出的穩定性。</p>
 <h2 id="新手最常踩的-3-個坑">新手最常踩的 3 個坑</h2>
 <p><strong>1. Task 描述太短</strong></p>
@@ -90,9 +90,9 @@ b:"$Sreact.suspense"
 當你有穩定的監控機制、知道系統在哪種條件下會轉包任務、成本有可控制方式的時候。新手階段先關掉，省麻煩。</p>
 <h2 id="下一步">下一步</h2>
 <p>角色和任務設計清楚後，接下來要決定「這些任務按什麼順序跑、由誰負責協調」。<br>
-👉 <a href="03-crew-and-process">Crew 與 Process</a></p>0:{"buildId":"sM8YAyjANE7sOnXm3EQGk","rsc":["$","$1","c",{"children":[[["$","script",null,{"type":"application/ld+json","dangerouslySetInnerHTML":{"__html":"{\"@context\":\"https://schema.org\",\"@type\":\"Article\",\"headline\":\"CrewAI Agent 與 Task 設計：怎麼拆角色才不會亂成一團\",\"description\":\"用 SRP 思維拆分 CrewAI Agent 和 Task，避免新手最常踩的三個設計坑，讓多代理流程穩定可維護。\",\"url\":\"https://benxhub.com/zh/blog/crewai/02-agents-and-tasks\",\"mainEntityOfPage\":{\"@type\":\"WebPage\",\"@id\":\"https://benxhub.com/zh/blog/crewai/02-agents-and-tasks\"},\"datePublished\":\"2026-03-01T00:00:00.000Z\",\"dateModified\":\"2026-03-01T00:00:00.000Z\",\"keywords\":\"crewai, agent, task, architecture, beginner\",\"inLanguage\":\"zh\",\"author\":{\"@type\":\"Person\",\"name\":\"BenX\",\"url\":\"https://benxhub.com\"},\"publisher\":{\"@type\":\"Organization\",\"name\":\"BenXHub Blog\",\"url\":\"https://benxhub.com\"}}"}}],["$","div",null,{"className":"mx-auto max-w-6xl px-4 py-12 sm:px-6","children":["$","div",null,{"className":"lg:grid lg:grid-cols-[1fr_240px] lg:gap-14","children":[["$","article",null,{"children":[["$","header",null,{"className":"mb-10","children":[["$","div",null,{"className":"mb-4 flex flex-wrap gap-2","children":[["$","$L2","crewai",{"href":"/zh/tags/crewai","localeCookie":{"name":"NEXT_LOCALE","sameSite":"lax"},"className":"inline-flex items-center rounded-full px-2.5 py-0.5 text-xs font-medium transition-colors","style":{"background":"var(--color-code-bg)","color":"var(--color-accent)","border":"1px solid var(--color-border)"},"children":["#","crewai"]}],["$","$L2","agent",{"href":"/zh/tags/agent","localeCookie":{"name":"NEXT_LOCALE","sameSite":"lax"},"className":"inline-flex items-center rounded-full px-2.5 py-0.5 text-xs font-medium transition-colors","style":{"background":"var(--color-code-bg)","color":"var(--color-accent)","border":"1px solid var(--color-border)"},"children":["#","agent"]}],["$","$L2","task",{"href":"/zh/tags/task","localeCookie":{"name":"NEXT_LOCALE","sameSite":"lax"},"className":"inline-flex items-center rounded-full px-2.5 py-0.5 text-xs font-medium transition-colors","style":{"background":"var(--color-code-bg)","color":"var(--color-accent)","border":"1px solid var(--color-border)"},"children":["#","task"]}],["$","$L2","architecture",{"href":"/zh/tags/architecture","localeCookie":{"name":"NEXT_LOCALE","sameSite":"lax"},"className":"inline-flex items-center rounded-full px-2.5 py-0.5 text-xs font-medium transition-colors","style":{"background":"var(--color-code-bg)","color":"var(--color-accent)","border":"1px solid var(--color-border)"},"children":["#","architecture"]}],["$","$L2","beginner",{"href":"/zh/tags/beginner","localeCookie":{"name":"NEXT_LOCALE","sameSite":"lax"},"className":"inline-flex items-center rounded-full px-2.5 py-0.5 text-xs font-medium transition-colors","style":{"background":"var(--color-code-bg)","color":"var(--color-accent)","border":"1px solid var(--color-border)"},"children":["#","beginner"]}]]}],["$","h1",null,{"className":"mb-4 text-3xl leading-snug font-bold tracking-tight sm:text-4xl","style":{"color":"var(--color-text)"},"children":"CrewAI Agent 與 Task 設計：怎麼拆角色才不會亂成一團"}],["$","div",null,{"className":"flex flex-wrap items-center gap-3 text-sm","style":{"color":"var(--color-muted)"},"children":[["$","time",null,{"dateTime":"2026-03-01","children":"2026 年 3 月 1 日"}],["$","span",null,{"aria-hidden":"true","children":"·"}],["$","span",null,{"children":"7 min read"}]]}],"$undefined",["$","div",null,{"className":"mt-6 border-b","style":{"borderColor":"var(--color-border)"}}]]}],["$","div",null,{"className":"prose","dangerouslySetInnerHTML":{"__html":"$3"}}],"$L4"]}],"$L5"]}]}]],["$L6"],"$L7"]}],"loading":null,"isPartial":false}
+👉 <a href="03-crew-and-process">Crew 與 Process</a></p>0:{"buildId":"ekNoF06-0VZrB4pGVUsy8","rsc":["$","$1","c",{"children":[[["$","script",null,{"type":"application/ld+json","dangerouslySetInnerHTML":{"__html":"{\"@context\":\"https://schema.org\",\"@type\":\"Article\",\"headline\":\"CrewAI Agent 與 Task 設計：怎麼拆角色才不會亂成一團\",\"description\":\"用 SRP 思維拆分 CrewAI Agent 和 Task，避免新手最常踩的三個設計坑，讓多代理流程穩定可維護。\",\"url\":\"https://benxhub.com/zh/blog/crewai/02-agents-and-tasks/\",\"mainEntityOfPage\":{\"@type\":\"WebPage\",\"@id\":\"https://benxhub.com/zh/blog/crewai/02-agents-and-tasks/\"},\"datePublished\":\"2026-03-01T00:00:00.000Z\",\"dateModified\":\"2026-03-01T00:00:00.000Z\",\"keywords\":\"crewai, agent, task, architecture, beginner\",\"inLanguage\":\"zh-Hant\",\"author\":{\"@type\":\"Person\",\"@id\":\"https://benxhub.com/#author\",\"name\":\"BenX\",\"url\":\"https://benxhub.com/zh/about/\",\"sameAs\":[\"https://github.com/benzhub\"]},\"publisher\":{\"@type\":\"Organization\",\"name\":\"BenXHub Blog\",\"url\":\"https://benxhub.com\"},\"image\":\"https://benxhub.com/og-default.png\"}"}}],["$","div",null,{"className":"mx-auto max-w-6xl px-4 py-12 sm:px-6","children":["$","div",null,{"className":"lg:grid lg:grid-cols-[1fr_240px] lg:gap-14","children":[["$","article",null,{"children":[["$","header",null,{"className":"mb-10","children":[["$","div",null,{"className":"mb-4 flex flex-wrap gap-2","children":[["$","$L2","crewai",{"href":"/zh/tags/crewai","localeCookie":{"name":"NEXT_LOCALE","sameSite":"lax"},"className":"inline-flex items-center rounded-full px-2.5 py-0.5 text-xs font-medium transition-colors","style":{"background":"var(--color-code-bg)","color":"var(--color-accent)","border":"1px solid var(--color-border)"},"children":["#","crewai"]}],["$","$L2","agent",{"href":"/zh/tags/agent","localeCookie":{"name":"NEXT_LOCALE","sameSite":"lax"},"className":"inline-flex items-center rounded-full px-2.5 py-0.5 text-xs font-medium transition-colors","style":{"background":"var(--color-code-bg)","color":"var(--color-accent)","border":"1px solid var(--color-border)"},"children":["#","agent"]}],["$","$L2","task",{"href":"/zh/tags/task","localeCookie":{"name":"NEXT_LOCALE","sameSite":"lax"},"className":"inline-flex items-center rounded-full px-2.5 py-0.5 text-xs font-medium transition-colors","style":{"background":"var(--color-code-bg)","color":"var(--color-accent)","border":"1px solid var(--color-border)"},"children":["#","task"]}],["$","$L2","architecture",{"href":"/zh/tags/architecture","localeCookie":{"name":"NEXT_LOCALE","sameSite":"lax"},"className":"inline-flex items-center rounded-full px-2.5 py-0.5 text-xs font-medium transition-colors","style":{"background":"var(--color-code-bg)","color":"var(--color-accent)","border":"1px solid var(--color-border)"},"children":["#","architecture"]}],["$","$L2","beginner",{"href":"/zh/tags/beginner","localeCookie":{"name":"NEXT_LOCALE","sameSite":"lax"},"className":"inline-flex items-center rounded-full px-2.5 py-0.5 text-xs font-medium transition-colors","style":{"background":"var(--color-code-bg)","color":"var(--color-accent)","border":"1px solid var(--color-border)"},"children":["#","beginner"]}]]}],["$","h1",null,{"className":"mb-4 text-3xl leading-snug font-bold tracking-tight sm:text-4xl","style":{"color":"var(--color-text)"},"children":"CrewAI Agent 與 Task 設計：怎麼拆角色才不會亂成一團"}],["$","div",null,{"className":"flex flex-wrap items-center gap-3 text-sm","style":{"color":"var(--color-muted)"},"children":[["$","time",null,{"dateTime":"2026-03-01","children":"2026 年 3 月 1 日"}],["$","span",null,{"aria-hidden":"true","children":"·"}],["$","span",null,{"children":"7 min read"}]]}],"$undefined",["$","div",null,{"className":"mt-6 border-b","style":{"borderColor":"var(--color-border)"}}]]}],["$","div",null,{"className":"prose","dangerouslySetInnerHTML":{"__html":"$3"}}],"$L4"]}],"$L5"]}]}]],["$L6"],"$L7"]}],"loading":null,"isPartial":false}
 4:["$","footer",null,{"className":"mt-14 border-t pt-8","style":{"borderColor":"var(--color-border)"},"children":[["$","div",null,{"className":"mb-8 flex flex-wrap gap-2","children":[["$","$L2","crewai",{"href":"/zh/tags/crewai","localeCookie":{"name":"NEXT_LOCALE","sameSite":"lax"},"className":"inline-flex items-center rounded-full px-3 py-1 text-sm font-medium transition-colors","style":{"background":"var(--color-code-bg)","color":"var(--color-accent)","border":"1px solid var(--color-border)"},"children":["#","crewai"]}],["$","$L2","agent",{"href":"/zh/tags/agent","localeCookie":{"name":"NEXT_LOCALE","sameSite":"lax"},"className":"inline-flex items-center rounded-full px-3 py-1 text-sm font-medium transition-colors","style":{"background":"var(--color-code-bg)","color":"var(--color-accent)","border":"1px solid var(--color-border)"},"children":["#","agent"]}],["$","$L2","task",{"href":"/zh/tags/task","localeCookie":{"name":"NEXT_LOCALE","sameSite":"lax"},"className":"inline-flex items-center rounded-full px-3 py-1 text-sm font-medium transition-colors","style":{"background":"var(--color-code-bg)","color":"var(--color-accent)","border":"1px solid var(--color-border)"},"children":["#","task"]}],["$","$L2","architecture",{"href":"/zh/tags/architecture","localeCookie":{"name":"NEXT_LOCALE","sameSite":"lax"},"className":"inline-flex items-center rounded-full px-3 py-1 text-sm font-medium transition-colors","style":{"background":"var(--color-code-bg)","color":"var(--color-accent)","border":"1px solid var(--color-border)"},"children":["#","architecture"]}],["$","$L2","beginner",{"href":"/zh/tags/beginner","localeCookie":{"name":"NEXT_LOCALE","sameSite":"lax"},"className":"inline-flex items-center rounded-full px-3 py-1 text-sm font-medium transition-colors","style":{"background":"var(--color-code-bg)","color":"var(--color-accent)","border":"1px solid var(--color-border)"},"children":["#","beginner"]}]]}],["$","nav",null,{"aria-label":"文章導覽","className":"grid grid-cols-1 gap-4 sm:grid-cols-2","children":[["$","$L2",null,{"href":"/zh/blog/crewai/01-quick-start","localeCookie":{"name":"NEXT_LOCALE","sameSite":"lax"},"className":"group rounded-lg border p-4 transition-colors hover:border-accent","style":{"borderColor":"var(--color-border)","background":"var(--color-surface)"},"children":[["$","p",null,{"className":"mb-1 text-xs","style":{"color":"var(--color-muted)"},"children":"← 較新文章"}],["$","p",null,{"className":"line-clamp-1 text-sm font-medium transition-colors group-hover:text-accent","style":{"color":"var(--color-text)"},"children":"CrewAI 快速上手：10 分鐘建立第一個研究 Crew"}]]}],["$","$L2",null,{"href":"/zh/blog/python/uv/00-overview","localeCookie":{"name":"NEXT_LOCALE","sameSite":"lax"},"className":"group rounded-lg border p-4 text-right transition-colors hover:border-accent","style":{"borderColor":"var(--color-border)","background":"var(--color-surface)"},"children":[["$","p",null,{"className":"mb-1 text-xs","style":{"color":"var(--color-muted)"},"children":"較舊文章 →"}],["$","p",null,{"className":"line-clamp-1 text-sm font-medium transition-colors group-hover:text-accent","style":{"color":"var(--color-text)"},"children":"Python uv 系列總覽：pip 的 100 倍速接班人"}]]}]]}]]}]
-9:T289f,<p>很多人用 CrewAI 第一次翻車，不是 API 問題，也不是環境設定——是<strong>角色設計從一開始就亂了</strong>。</p>
+9:T28bf,<p>很多人用 CrewAI 第一次翻車，不是 API 問題，也不是環境設定——是<strong>角色設計從一開始就亂了</strong>。</p>
 <p>你可能會想：一個 Agent 搞定全部不是更省事嗎？讓它既研究、又寫作、又審稿，聽起來很高效。但實際跑起來你會發現，一個 Agent 同時扮演三種性質完全不同的角色，通常是三件事都做得普普通通，而且你完全不知道哪一步出了問題。</p>
 <p>只要記住這個核心原則：<strong>一個 Agent 一種專長，一個 Task 一件事</strong>，大多數設計問題就迎刃而解了。</p>
 <h2 id="agenttaskcontext-分別負責什麼">Agent、Task、Context 分別負責什麼</h2>
@@ -104,54 +104,54 @@ b:"$Sreact.suspense"
 </ul>
 <p>如果你讓一個 Agent 同時研究、寫作、審稿，它通常會每件事都沾一點、每件事都不夠深。就像你不會在求職廣告上寫「需要全端工程師，同時負責 PM 和設計」，那個人就算存在，你也管不動他。</p>
 <h2 id="設計一個好的-agent">設計一個好的 Agent</h2>
-<figure data-rehype-pretty-code-figure=""><pre style="background-color:#24292e;color:#e1e4e8" tabindex="0" data-language="yaml" data-theme="github-dark"><code data-language="yaml" data-theme="github-dark" style="display: grid;"><span data-line=""><span style="color:#85E89D">researcher</span><span style="color:#E1E4E8">:</span></span>
-<span data-line=""><span style="color:#85E89D">  role</span><span style="color:#E1E4E8">: </span><span style="color:#F97583">></span></span>
-<span data-line=""><span style="color:#9ECBFF">    AI Research Analyst</span></span>
-<span data-line=""><span style="color:#85E89D">  goal</span><span style="color:#E1E4E8">: </span><span style="color:#F97583">></span></span>
-<span data-line=""><span style="color:#9ECBFF">    Collect accurate and current information from reliable sources</span></span>
-<span data-line=""><span style="color:#85E89D">  backstory</span><span style="color:#E1E4E8">: </span><span style="color:#F97583">></span></span>
-<span data-line=""><span style="color:#9ECBFF">    You specialize in finding credible sources and extracting key facts.</span></span>
-<span data-line=""><span style="color:#9ECBFF">    You always verify information before passing it forward.</span></span>
-<span data-line=""><span style="color:#85E89D">  allow_delegation</span><span style="color:#E1E4E8">: </span><span style="color:#79B8FF">false</span></span>
+<figure data-rehype-pretty-code-figure=""><pre style="background-color:#0d1117;color:#e6edf3" tabindex="0" data-language="yaml" data-theme="github-dark-default"><code data-language="yaml" data-theme="github-dark-default" style="display: grid;"><span data-line=""><span style="color:#7EE787">researcher</span><span style="color:#E6EDF3">:</span></span>
+<span data-line=""><span style="color:#7EE787">  role</span><span style="color:#E6EDF3">: </span><span style="color:#FF7B72">></span></span>
+<span data-line=""><span style="color:#A5D6FF">    AI Research Analyst</span></span>
+<span data-line=""><span style="color:#7EE787">  goal</span><span style="color:#E6EDF3">: </span><span style="color:#FF7B72">></span></span>
+<span data-line=""><span style="color:#A5D6FF">    Collect accurate and current information from reliable sources</span></span>
+<span data-line=""><span style="color:#7EE787">  backstory</span><span style="color:#E6EDF3">: </span><span style="color:#FF7B72">></span></span>
+<span data-line=""><span style="color:#A5D6FF">    You specialize in finding credible sources and extracting key facts.</span></span>
+<span data-line=""><span style="color:#A5D6FF">    You always verify information before passing it forward.</span></span>
+<span data-line=""><span style="color:#7EE787">  allow_delegation</span><span style="color:#E6EDF3">: </span><span style="color:#79C0FF">false</span></span>
 <span data-line=""> </span>
-<span data-line=""><span style="color:#85E89D">writer</span><span style="color:#E1E4E8">:</span></span>
-<span data-line=""><span style="color:#85E89D">  role</span><span style="color:#E1E4E8">: </span><span style="color:#F97583">></span></span>
-<span data-line=""><span style="color:#9ECBFF">    Technical Writer</span></span>
-<span data-line=""><span style="color:#85E89D">  goal</span><span style="color:#E1E4E8">: </span><span style="color:#F97583">></span></span>
-<span data-line=""><span style="color:#9ECBFF">    Turn raw research findings into clear, practical documentation</span></span>
-<span data-line=""><span style="color:#85E89D">  backstory</span><span style="color:#E1E4E8">: </span><span style="color:#F97583">></span></span>
-<span data-line=""><span style="color:#9ECBFF">    You have a talent for making complex ideas accessible.</span></span>
-<span data-line=""><span style="color:#9ECBFF">    You structure content so readers can quickly find what they need.</span></span>
-<span data-line=""><span style="color:#85E89D">  allow_delegation</span><span style="color:#E1E4E8">: </span><span style="color:#79B8FF">false</span></span></code></pre></figure>
+<span data-line=""><span style="color:#7EE787">writer</span><span style="color:#E6EDF3">:</span></span>
+<span data-line=""><span style="color:#7EE787">  role</span><span style="color:#E6EDF3">: </span><span style="color:#FF7B72">></span></span>
+<span data-line=""><span style="color:#A5D6FF">    Technical Writer</span></span>
+<span data-line=""><span style="color:#7EE787">  goal</span><span style="color:#E6EDF3">: </span><span style="color:#FF7B72">></span></span>
+<span data-line=""><span style="color:#A5D6FF">    Turn raw research findings into clear, practical documentation</span></span>
+<span data-line=""><span style="color:#7EE787">  backstory</span><span style="color:#E6EDF3">: </span><span style="color:#FF7B72">></span></span>
+<span data-line=""><span style="color:#A5D6FF">    You have a talent for making complex ideas accessible.</span></span>
+<span data-line=""><span style="color:#A5D6FF">    You structure content so readers can quickly find what they need.</span></span>
+<span data-line=""><span style="color:#7EE787">  allow_delegation</span><span style="color:#E6EDF3">: </span><span style="color:#79C0FF">false</span></span></code></pre></figure>
 <p><code>allow_delegation: false</code> 建議一開始就關掉。它預設開啟，但會讓 Agent 自行決定把子任務轉包給其他 Agent——聽起來很聰明，但新手階段等於把除錯難度直接翻倍。先跑穩、再開啟動態分派。</p>
 <p><code>backstory</code> 不只是裝飾用的——模型會把它當成角色設定讀進去，影響輸出的語氣和判斷方式。短短三行可以明顯改變同一個 Agent 的表現差異。</p>
 <h2 id="設計一個好的-task">設計一個好的 Task</h2>
 <p>Task 最常見的問題是「寫太短」——模型不知道你要什麼格式，輸出就會每次都不一樣。</p>
-<figure data-rehype-pretty-code-figure=""><pre style="background-color:#24292e;color:#e1e4e8" tabindex="0" data-language="yaml" data-theme="github-dark"><code data-language="yaml" data-theme="github-dark" style="display: grid;"><span data-line=""><span style="color:#85E89D">research_task</span><span style="color:#E1E4E8">:</span></span>
-<span data-line=""><span style="color:#85E89D">  description</span><span style="color:#E1E4E8">: </span><span style="color:#F97583">></span></span>
-<span data-line=""><span style="color:#9ECBFF">    Find 8-10 important updates about {topic} in 2026.</span></span>
-<span data-line=""><span style="color:#9ECBFF">    Focus on: what changed, why it matters, and where it came from.</span></span>
-<span data-line=""><span style="color:#9ECBFF">    Prioritize content published in the last 3 months.</span></span>
-<span data-line=""><span style="color:#85E89D">  expected_output</span><span style="color:#E1E4E8">: </span><span style="color:#F97583">></span></span>
-<span data-line=""><span style="color:#9ECBFF">    A markdown bullet list with 8-10 items.</span></span>
-<span data-line=""><span style="color:#9ECBFF">    Each item must include:</span></span>
-<span data-line=""><span style="color:#9ECBFF">    - Title (bold)</span></span>
-<span data-line=""><span style="color:#9ECBFF">    - Summary (2-3 sentences)</span></span>
-<span data-line=""><span style="color:#9ECBFF">    - Source URL (if available)</span></span>
-<span data-line=""><span style="color:#85E89D">  agent</span><span style="color:#E1E4E8">: </span><span style="color:#9ECBFF">researcher</span></span>
+<figure data-rehype-pretty-code-figure=""><pre style="background-color:#0d1117;color:#e6edf3" tabindex="0" data-language="yaml" data-theme="github-dark-default"><code data-language="yaml" data-theme="github-dark-default" style="display: grid;"><span data-line=""><span style="color:#7EE787">research_task</span><span style="color:#E6EDF3">:</span></span>
+<span data-line=""><span style="color:#7EE787">  description</span><span style="color:#E6EDF3">: </span><span style="color:#FF7B72">></span></span>
+<span data-line=""><span style="color:#A5D6FF">    Find 8-10 important updates about {topic} in 2026.</span></span>
+<span data-line=""><span style="color:#A5D6FF">    Focus on: what changed, why it matters, and where it came from.</span></span>
+<span data-line=""><span style="color:#A5D6FF">    Prioritize content published in the last 3 months.</span></span>
+<span data-line=""><span style="color:#7EE787">  expected_output</span><span style="color:#E6EDF3">: </span><span style="color:#FF7B72">></span></span>
+<span data-line=""><span style="color:#A5D6FF">    A markdown bullet list with 8-10 items.</span></span>
+<span data-line=""><span style="color:#A5D6FF">    Each item must include:</span></span>
+<span data-line=""><span style="color:#A5D6FF">    - Title (bold)</span></span>
+<span data-line=""><span style="color:#A5D6FF">    - Summary (2-3 sentences)</span></span>
+<span data-line=""><span style="color:#A5D6FF">    - Source URL (if available)</span></span>
+<span data-line=""><span style="color:#7EE787">  agent</span><span style="color:#E6EDF3">: </span><span style="color:#A5D6FF">researcher</span></span>
 <span data-line=""> </span>
-<span data-line=""><span style="color:#85E89D">write_task</span><span style="color:#E1E4E8">:</span></span>
-<span data-line=""><span style="color:#85E89D">  description</span><span style="color:#E1E4E8">: </span><span style="color:#F97583">></span></span>
-<span data-line=""><span style="color:#9ECBFF">    Convert the research bullets into a tutorial article for developers new to {topic}.</span></span>
-<span data-line=""><span style="color:#9ECBFF">    Do not add information that wasn't in the research notes.</span></span>
-<span data-line=""><span style="color:#85E89D">  expected_output</span><span style="color:#E1E4E8">: </span><span style="color:#F97583">></span></span>
-<span data-line=""><span style="color:#9ECBFF">    A markdown article with:</span></span>
-<span data-line=""><span style="color:#9ECBFF">    - Introduction (1 paragraph)</span></span>
-<span data-line=""><span style="color:#9ECBFF">    - 3 main sections with H2 headings</span></span>
-<span data-line=""><span style="color:#9ECBFF">    - Conclusion with next steps</span></span>
-<span data-line=""><span style="color:#85E89D">  agent</span><span style="color:#E1E4E8">: </span><span style="color:#9ECBFF">writer</span></span>
-<span data-line=""><span style="color:#85E89D">  context</span><span style="color:#E1E4E8">:</span></span>
-<span data-line=""><span style="color:#E1E4E8">    - </span><span style="color:#9ECBFF">research_task</span></span></code></pre></figure>
+<span data-line=""><span style="color:#7EE787">write_task</span><span style="color:#E6EDF3">:</span></span>
+<span data-line=""><span style="color:#7EE787">  description</span><span style="color:#E6EDF3">: </span><span style="color:#FF7B72">></span></span>
+<span data-line=""><span style="color:#A5D6FF">    Convert the research bullets into a tutorial article for developers new to {topic}.</span></span>
+<span data-line=""><span style="color:#A5D6FF">    Do not add information that wasn't in the research notes.</span></span>
+<span data-line=""><span style="color:#7EE787">  expected_output</span><span style="color:#E6EDF3">: </span><span style="color:#FF7B72">></span></span>
+<span data-line=""><span style="color:#A5D6FF">    A markdown article with:</span></span>
+<span data-line=""><span style="color:#A5D6FF">    - Introduction (1 paragraph)</span></span>
+<span data-line=""><span style="color:#A5D6FF">    - 3 main sections with H2 headings</span></span>
+<span data-line=""><span style="color:#A5D6FF">    - Conclusion with next steps</span></span>
+<span data-line=""><span style="color:#7EE787">  agent</span><span style="color:#E6EDF3">: </span><span style="color:#A5D6FF">writer</span></span>
+<span data-line=""><span style="color:#7EE787">  context</span><span style="color:#E6EDF3">:</span></span>
+<span data-line=""><span style="color:#E6EDF3">    - </span><span style="color:#A5D6FF">research_task</span></span></code></pre></figure>
 <p><code>expected_output</code> 越具體越好——不是「寫個報告」，而是「markdown 格式、3 個 H2 段落、結尾有 next steps」。這個欄位直接決定輸出的穩定性。</p>
 <h2 id="新手最常踩的-3-個坑">新手最常踩的 3 個坑</h2>
 <p><strong>1. Task 描述太短</strong></p>
